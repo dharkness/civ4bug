@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<!-- HOF MOD V1.60.001 -->
+	<!-- MORECIV4LERTS TEXT -->
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND</Tag>
+		<English>[COLOR_CULTURE_RATE]%s1's cultural boundary is about to expand.[COLOR_REVERT]</English>
+		<French>[COLOR_CULTURE_RATE]la frontière culturelle de %s1's est sur le point d'augmenter.[COLOR_REVERT]</French>
+		<German>[COLOR_CULTURE_RATE]%s1 wird seine Grenze erweitern.[COLOR_REVERT]</German>
+		<Italian>[COLOR_CULTURE_RATE]il confine culturale di %s1's sta per espandersi.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_CULTURE_RATE]el límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_POP_EXCEEDS_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your population: %d1 (%s2) exceeds the Domination Limit: %d3 (%s4).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre population : %d1 (%s2) dépasse la limite de domination : %d3 (%s4).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihre Bevölkerung: %d1 (%s2) übersteigt die Herrschaftssieg-Grenze: %d3 (%s4).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]La tua popolazione: %d1 (%s2) eccede il limite di dominazione: %d3 (%s4).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su población: %d1 (%s2) excede el límite de la dominación: %d3 (%s4).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_POP_CLOSE_TO_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your population: %d1 (%s2) is close to the Domination Limit: %d3 (%s4).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre population : %d1 (%s2) est près de la limite de domination : %d3 (%s4).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihre Bevölkerung: %d1 (%s2) ist nahe an der Herrschaftssieg-Grenze: %d3 (%s4).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]La tua popolazione: %d1 (%s2) è vicina al limite di dominazione: %d3 (%s4).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su población: %d1 (%s2) está cerca del límite de la dominación: %d3 (%s4).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_POP_GROWTH_EXCEEDS_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your population: %d1, plus growth: %d2 (%s3) will exceed the Domination Limit: %d4 (%s5).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre population : %d1, plus la croissance : %d2 (%s3) dépassera la limite de domination : %d4 (%s5).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihre Bevölkerung: %d1, plus Wachstum: %d2 (%s3) übersteigt die Herrschaftssieg-Grenze: %d4 (%s5).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]La tua popolazione: %d1, più crescita: %d2 (%s3) eccederà il limite di dominazione: %d4 (%s5).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su población: %d1, más crecimiento: %d2 (%s3) excederá el límite de la dominación: %d4 (%s5).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_POP_GROWTH_CLOSE_TO_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your population: %d1, plus growth: %d2 (%s3) will put close to the Domination Limit: %d4 (%s5).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre population : %d1, plus la croissance : %d2 (%s3) mettra près de la limite de domination : %d4 (%s5).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihre Bevölkerung: %d1, plus Wachstum: %d2 (%s3) erreicht beinahe die Herrschaftssieg-Grenze: %d4 (%s5).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]La tua popolazione: %d1, più crescita: %d2 (%s3) sarà vicina al limite di dominazione: %d4 (%s5).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su población: %d1, más crecimiento: %d2 (%s3) pondrá cerca del límite de la dominación: %d4 (%s5).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_LAND_EXCEEDS_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your land area: %d1 (%s2) exceeds the Domination Limit: %d3 (%s4).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre secteur de terre : %d1 (%s2) dépasse la limite de domination : %d3 (%s4).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihr Landbereich: %d1 (%s2) übersteigt die Herrschaftssieg-Grenze: %d3 (%s4).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]Il tuo territorio: %d1 (%s2) eccede il limite di dominazione: %d3 (%s4).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su área de la tierra: %d1 (%s2) excede el límite de la dominación: %d3 (%s4).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_LAND_CLOSE_TO_LIMIT</Tag>
+		<English>[COLOR_WARNING_TEXT]Your land area: %d1 (%s2) is close to the Domination Limit: %d3 (%s4).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]Votre secteur de terre : %d1 (%s2) est près de la limite de domination : %d3 (%s4).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Ihr Landbereich: %d1 (%s2) ist nahe an der Herrschaftssieg-Grenze: %d3 (%s4).[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]Il tuo territorio: %d1 (%s2) è vicino al limite di dominazione: %d3 (%s4).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Su área de la tierra: %d1 (%s2) está cerca del límite de la dominación: %d3 (%s4).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL</Tag>
+		<English>[COLOR_TECH_TEXT]New Tech(s) to trade: %s1[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]Nouveau Tech(s) à commercer : %s1[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Neue Technologie(n) zum Handeln: %s1[COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]Nuove Tech(s) da commerciare: %s1[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]Tech(s) nuevo a negociar: %s1[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_REGEN_FAILED</Tag>
+		<English>Ending: Regenerate Failed...</English>
+		<French>Fin : Régénéré Échoué...</French>
+		<German>Ende: Regenerieren erfolglos...</German>
+		<Italian>Conclusione: Rrigenerazione Fallita...</Italian>
+		<Spanish>Conclusión: Regenerado Fallado...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_COUNT</Tag>
+		<English>Count</English>
+		<French>Compte</French>
+		<German>Anzahl</German>
+		<Italian>Conteggio</Italian>
+		<Spanish>Cuenta</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_SAVED</Tag>
+		<English>Saved</English>
+		<French>Économisé</French>
+		<German>Gespeichert</German>
+		<Italian>Salvato</Italian>
+		<Spanish>Ahorrado</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_CANNOT_REGEN</Tag>
+		<English>Ending: Cannot Regenerate...</English>
+		<French>Fin : Ne peut pas Régénérer...</French>
+		<German>Ende: Regenerieren nicht möglich...</German>
+		<Italian>Conclusione: Non può Rigenerare...</Italian>
+		<Spanish>Conclusión: No puede Regenerar...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_ALTX_TO_STOP</Tag>
+		<English>Press Alt-X to stop MapFinder.</English>
+		<French>Serrez Alt-X pour arrêter MapFinder.</French>
+		<German>Drücken Sie Alt-X, um MapFinder zu beenden.</German>
+		<Italian>Premi Alt-X per arrestare MapFinder.</Italian>
+		<Spanish>Presione el Alt-X-X para parar MapFinder.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_STOPPED</Tag>
+		<English>Map Finder stopped.</English>
+		<French>Tracez le trouveur arrêté.</French>
+		<German>Map Finder wurde beendet.</German>
+		<Italian>Map Finder arrestato.</Italian>
+		<Spanish>Traz el buscador parado.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_NO_BONUS</Tag>
+		<English>No_Bonus</English>
+		<French>No_Bonus</French>
+		<German>No_Bonus</German>
+		<Italian>No_Bonus</Italian>
+		<Spanish>No_Bonus</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_UNKNOWN</Tag>
+		<English>Unknown</English>
+		<French>Inconnu</French>
+		<German>Unbekannt</German>
+		<Italian>Sconosciuto</Italian>
+		<Spanish>Desconocido</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_PATH</Tag>
+		<English>MapFinder Path Invalid.</English>
+		<French>Invalide De Chemin De MapFinder.</French>
+		<German>MapFinder Datei-Pfad ungültig.</German>
+		<Italian>Percorso Di MapFinder Non valido.</Italian>
+		<Spanish>Invalid. De la Trayectoria De MapFinder.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_ABORTING</Tag>
+		<English>Aborting MapFinder...</English>
+		<French>Avortant MapFinder...</French>
+		<German>MapFinder wird abgebrochen...</German>
+		<Italian>Abbandonando MapFinder...</Italian>
+		<Spanish>Abortando MapFinder...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_RULE_FILE_NOT_FOUND</Tag>
+		<English>Rule File not found.</English>
+		<French>Dossier de règle non trouvé.</French>
+		<German>Regel-Datei wurde nicht gefunden.</German>
+		<Italian>File delle regole non trovato.</Italian>
+		<Spanish>Archivo de la regla no encontrado.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_SAVE_PATH</Tag>
+		<English>MapFinder Save File Path Invalid.</English>
+		<French>MapFinder Sauvent L'Invalide De Chemin De Dossier.</French>
+		<German>MapFinder Datei-Pfad fürs Speichern ist ungültig.</German>
+		<Italian>Percorso Del file salvato di MapFinder non Valido </Italian>
+		<Spanish>MapFinder Ahorra A Invalid De la Trayectoria Del Archivo.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_ACTIVE</Tag>
+		<English>Map Finder Active...</English>
+		<French>Trouveur De Carte Actif...</French>
+		<German>Map Finder aktiv...</German>
+		<Italian>MapFinder Attivo...</Italian>
+		<Spanish>Buscador Del Mapa Activo...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_ALTX_STOPPING</Tag>
+		<English>Alt-X command recieved. Stopping...</English>
+		<French>La commande Alt-X recieved. Arrêt...</French>
+		<German>Alt-X Befehl erhalten. Beenden...</German>
+		<Italian>Ordine Alt-X ricevuto. Arresto...</Italian>
+		<Spanish>El comando Alt-X-X recieved. El parar...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_SET_REMINDER</Tag>
+		<English>Enter number of turns until reminder goes off and reminder text.</English>
+		<French>Écrivez le nombre de tours jusqu'à ce que le rappel aille au loin et texte de rappel.</French>
+		<German>Tragen Sie Zahl von Runden ein, bis die Erinnerung angezeigt werden soll.</German>
+		<Italian>Inserisci il numero di turni necessari per visualizzare il promemoria.</Italian>
+		<Spanish>Incorpore el número de vueltas hasta que se apaga el recordatorio y texto del recordatorio.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_REMINDER</Tag>
+		<English>Reminder</English>
+		<French>Rappel</French>
+		<German>Erinnerung</German>
+		<Italian>Promemoria</Italian>
+		<Spanish>Recordatorio</Spanish>
+	</TEXT>
+</Civ4GameText>
