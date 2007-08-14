@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 -->
+<!-- -->
+<!-- Game Text - Unit Upgrades for Civilopedia -->
+
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_WIDGET_HELP</Tag>
+		<English>SEVOPEDIA 2.3.1</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
+		<English>Unit Upgrades</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_PROMOTION_TREE</Tag>
+		<English>Promotion Tree</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_NATIONAL_WONDERS</Tag>
+		<English>National Wonders</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_GREAT_WONDERS</Tag>
+		<English>Great Wonders</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW</Tag>
+		<English>BTS Concepts</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIQUE_BUILDINGS</Tag>
+		<English>Unique Building</English>
+	</TEXT>
+</Civ4GameText>
