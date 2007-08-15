@@ -27,6 +27,6 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "Screens_Tech_GPPrefs")
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
-		self.addCheckbox(screen, rightPanel, "Screens_Espionage_Compact")
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_BadRatio")
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_GoodRatio")
+		self.addCheckbox(screen, rightPanel, "Screens_Espionage_Better")
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_BadRatio", True)
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_GoodRatio", True)

@@ -265,7 +265,7 @@ class CvEspionageAdvisor:
 			
 			self.aszEspionageIcons = []
 			
-			if (BugOpt.isCompactEspionageList()):
+			if (BugOpt.isUseBetterEspionageScreen()):
 				for iPlayerID in self.aiKnownPlayers:
 					
 					pTargetPlayer = gc.getPlayer(iPlayerID)
@@ -470,7 +470,7 @@ class CvEspionageAdvisor:
 			
 # BUG - Compact Espionage - start
 			
-			if (BugOpt.isCompactEspionageList()):
+			if (BugOpt.isUseBetterEspionageScreen()):
 				for iPlayerID in self.aiKnownPlayers:
 					
 					iX = 0
@@ -724,7 +724,7 @@ class CvEspionageAdvisor:
 					
 # BUG - Civ List Layout - start
 
-					if (BugOpt.isCompactEspionageList()):
+					if (BugOpt.isUseBetterEspionageScreen()):
 						if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
 							szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 						else:
@@ -750,7 +750,7 @@ class CvEspionageAdvisor:
 						
 # BUG - Compact Espionage - start
 			
-						if (BugOpt.isCompactEspionageList()):
+						if (BugOpt.isUseBetterEspionageScreen()):
 							if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
 								szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 							else:

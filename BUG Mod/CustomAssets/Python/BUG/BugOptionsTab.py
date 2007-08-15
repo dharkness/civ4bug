@@ -149,19 +149,39 @@ class BugOptionsTab:
 			self.addMissingOption(screen, labelPanel, name)
 
 
-	def addDropdown (self, screen, labelPanel, controlPanel, name, elements, index, callback):
+	def addDropdown (self, screen, labelPanel, controlPanel, name, spacer, elements, index, callback):
 		option = self.getOption(name)
 		if (option):
 			# create label
-			if (labelPanel == controlPanel):
-				box = name + "HBox"
-				screen.attachHBox(labelPanel, box)
-				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-				labelPanel = box
-				controlPanel = box
 			if (labelPanel is not None):
+				if (labelPanel == controlPanel or spacer):
+					box = name + "HBox"
+					screen.attachHBox(labelPanel, box)
+					#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+					if (spacer):
+						screen.attachSpacer(box)
+					if (labelPanel == controlPanel):
+						controlPanel = box
+					labelPanel = box
 				label = name + "Label"
 				screen.attachLabel(labelPanel, label, option.getTitle())
+				
+##			if (labelPanel == controlPanel):
+##				box = name + "HBox"
+##				screen.attachHBox(labelPanel, box)
+##				screen.attachSpacer(box)
+##				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+##				labelPanel = box
+##				controlPanel = box
+##			elif (spacer and labelPanel is not None):
+##				box = name + "HBox"
+##				screen.attachHBox(labelPanel, box)
+##				screen.attachSpacer(box)
+##				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+##				labelPanel = box
+##			if (labelPanel is not None):
+##				label = name + "Label"
+##				screen.attachLabel(labelPanel, label, option.getTitle())
 			
 			# create dropdown
 			control = name + "Dropdown"
@@ -171,7 +191,7 @@ class BugOptionsTab:
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
-	def addTextDropdown (self, screen, labelPanel, controlPanel, name):
+	def addTextDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
 		if (option):
 			value = self.options.getInt(name) # the actual index
@@ -179,11 +199,11 @@ class BugOptionsTab:
 			elements = ()
 			for v in values:
 				elements += (v,)
-			self.addDropdown(screen, labelPanel, controlPanel, name, elements, value, "handleBugDropdownChange")
+			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, value, "handleBugDropdownChange")
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
-	def addIntDropdown (self, screen, labelPanel, controlPanel, name):
+	def addIntDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
 		if (option):
 			value = self.options.getInt(name)
@@ -197,12 +217,13 @@ class BugOptionsTab:
 				if (delta < bestDelta):
 					index = i
 					bestDelta = delta
-			control = self.addDropdown(screen, labelPanel, controlPanel, name, elements, index, "handleBugIntDropdownChange")
+			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugIntDropdownChange")
 			screen.setLayoutFlag(control, "LAYOUT_RIGHT")
+			return control
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
-	def addFloatDropdown (self, screen, labelPanel, controlPanel, name):
+	def addFloatDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
 		if (option):
 			value = self.options.getFloat(name)
@@ -219,8 +240,9 @@ class BugOptionsTab:
 				if (delta < bestDelta):
 					index = i
 					bestDelta = delta
-			control = self.addDropdown(screen, labelPanel, controlPanel, name, elements, index, "handleBugFloatDropdownChange")
+			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugFloatDropdownChange")
 			screen.setLayoutFlag(control, "LAYOUT_RIGHT")
+			return control
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
