@@ -14,10 +14,10 @@ class BugScreensOptions(OptionsFacade):
 							  "Customizable Domestic Advisor",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
 
-		self.addOption(Option("Screens_Espionage_Compact",
-							  "Screens", "Compact Espionage List", False,
-							  "Compact Espionage List",
-							  "When checked, uses the Better Espionage Advisor.",
+		self.addOption(Option("Screens_Espionage_Better",
+							  "Screens", "Better Espionage Screen", False,
+							  "Better Espionage Screen",
+							  "When checked, uses the Better Espionage Screen and the options below.",
 							  InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT))
 		self.addOption(OptionList("Screens_Espionage_BadRatio",
 								  "Screens", "Bad Espionage Ratio Cutoff", 105.0,
@@ -42,8 +42,8 @@ class BugScreensOptions(OptionsFacade):
 		return self.getBoolean('Screens_CDA')
 
 
-	def isCompactEspionageList(self):
-		return self.getBoolean('Screens_Espionage_Compact')
+	def isUseBetterEspionageScreen(self):
+		return self.getBoolean('Screens_Espionage_Better')
 
 	def getBadEspionageRatioCutoff(self):
 		return self.getFloat('Screens_Espionage_BadRatio')
