@@ -16,13 +16,17 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel)
 		
 		self.addCheckbox(screen, leftPanel, "Screens_CDA")
-		self.addCheckbox(screen, leftPanel, "Screens_Espionage")
 		
-		screen.attachLabel(leftPanel, "General_CityScreenLabel", "City Screen:")
+		screen.attachLabel(leftPanel, "CityScreenLabel", "City Screen:")
 		self.addCheckbox(screen, leftPanel, "City_RawCommerce")
 		self.addCheckbox(screen, leftPanel, "City_CultureTurns")
 		self.addCheckbox(screen, leftPanel, "City_GreatPersonTurns")
 		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
 		
-		screen.attachLabel(leftPanel, "General_TechScreenLabel", "Technology Chooser:")
-		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
+		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology Advisor:")
+		self.addCheckbox(screen, leftPanel, "Screens_Tech_GPPrefs")
+		
+		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
+		self.addCheckbox(screen, rightPanel, "Screens_Espionage_Compact")
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_BadRatio")
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_GoodRatio")

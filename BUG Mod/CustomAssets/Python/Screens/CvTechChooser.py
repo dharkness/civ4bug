@@ -30,8 +30,8 @@ localText = CyTranslator()
 # BUG - GP Tech Prefs - start
 
 import TechPrefs
-import BugTechScreenOptions
-BugTechScreen = BugTechScreenOptions.getOptions()
+import BugScreensOptions
+BugOpt = BugScreensOptions.getOptions()
 
 PREF_ICON_SIZE = 32
 PREF_ICON_TOP = 728
@@ -857,7 +857,7 @@ class CvTechChooser:
 			return
 		
 		# Check to see if option is disabled
-		if (not BugTechScreen.isShowGPTechPrefs()):
+		if (not BugOpt.isShowGPTechPrefs()):
 			if (self.bPrefsShowing):
 				# ... and if not, remove icons if they are currently showing
 				for i, f in enumerate(FLAVORS):
