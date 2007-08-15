@@ -166,23 +166,6 @@ class BugOptionsTab:
 				label = name + "Label"
 				screen.attachLabel(labelPanel, label, option.getTitle())
 				
-##			if (labelPanel == controlPanel):
-##				box = name + "HBox"
-##				screen.attachHBox(labelPanel, box)
-##				screen.attachSpacer(box)
-##				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-##				labelPanel = box
-##				controlPanel = box
-##			elif (spacer and labelPanel is not None):
-##				box = name + "HBox"
-##				screen.attachHBox(labelPanel, box)
-##				screen.attachSpacer(box)
-##				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-##				labelPanel = box
-##			if (labelPanel is not None):
-##				label = name + "Label"
-##				screen.attachLabel(labelPanel, label, option.getTitle())
-			
 			# create dropdown
 			control = name + "Dropdown"
 			screen.attachDropDown(controlPanel, control, "", elements, self.callbackIFace, callback, name, index)
