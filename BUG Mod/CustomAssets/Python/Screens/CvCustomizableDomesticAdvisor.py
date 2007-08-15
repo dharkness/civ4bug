@@ -1949,6 +1949,13 @@ class CvCustomizableDomesticAdvisor:
 			if ( inputClass.getFunctionName() == "ZoomCity" ):
 				screen = CyGInterfaceScreen( "DomesticAdvisor", CvScreenEnums.DOMESTIC_ADVISOR )
 				screen.hideScreen()
+				
+				CyInterface().selectCity(gc.getPlayer(inputClass.getData1()).getCity(inputClass.getData2()), true);
+				
+				popupInfo = CyPopupInfo()
+				popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
+				popupInfo.setText(u"showDomesticAdvisor")
+				popupInfo.addPopup(inputClass.getData1())
 
 		# If none of the above, we didn't use the input."
 		return 0
