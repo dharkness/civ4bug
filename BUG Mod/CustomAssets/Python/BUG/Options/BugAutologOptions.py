@@ -53,7 +53,7 @@ class BugAutologOptions(OptionsFacade):
 		self.addOption(Option("Autolog_Prefix",
 						 "Autolog", "Prefix", 'Player Comment',
 						 "Prefix",
-						 "Used as a prefix before custom user entries in the log, e.g. your nick."))
+						 "Used as a prefix before user entries in the log (use ALT-E), e.g. your nick."))
 		
 		# Events to log
 		# Research and Builds
@@ -73,6 +73,10 @@ class BugAutologOptions(OptionsFacade):
 						 "Autolog", "Project Completed", True,
 						 "Projects Completed",
 						 "When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings)."))
+		self.addOption(Option("Autolog_LogImprovements",
+						 "Autolog", "Improvements", True,
+						 "Improvements",
+						 "When checked, will log when your improvements are built or destroyed by you."))
 		
 		# Cities
 		self.addOption(Option("Autolog_LogCityFounded",
@@ -95,16 +99,6 @@ class BugAutologOptions(OptionsFacade):
 						 "Autolog", "City Razed", True,
 						 "City Razed",
 						 "When checked, will log when you raze another civ\'s city or one of your cities is razed."))
-		
-		# Combat
-		self.addOption(Option("Autolog_LogCombat",
-						 "Autolog", "Combat", True,
-						 "Combat",
-						 "When checked, will log combat results involving your units."))
-		self.addOption(Option("Autolog_LogPromotions",
-						 "Autolog", "Promotions", True,
-						 "Promotions",
-						 "When checked, will log when you promote one of your units."))
 		
 		# Events
 		self.addOption(Option("Autolog_LogGoodies",
@@ -141,14 +135,41 @@ class BugAutologOptions(OptionsFacade):
 						 "Autolog", "War", True,
 						 "War",
 						 "When checked, will log start and end of wars between civs known to you."))
+		self.addOption(Option("Autolog_LogVassals",
+						 "Autolog", "Vassals", True,
+						 "Vassal States",
+						 "When checked, will log when any civ becomes a vassal state of or frees itself from another."))
 		self.addOption(Option("Autolog_LogCivics",
 						 "Autolog", "Civics", True,
 						 "Civics",
 						 "When checked, will log any change in civics of civs known to you."))
 		
+		# Combat
+		self.addOption(Option("Autolog_LogCombat",
+						 "Autolog", "Combat", True,
+						 "Combat",
+						 "When checked, will log combat results involving your units."))
+		self.addOption(Option("Autolog_LogPromotions",
+						 "Autolog", "Promotions", True,
+						 "Promotions",
+						 "When checked, will log when you promote one of your units."))
+		self.addOption(Option("Autolog_LogPillage",
+						 "Autolog", "Pillage", True,
+						 "Pillaging",
+						 "When checked, will log when you pillage or your improvements are pillaged."))
+		
 
 	def isEnabled(self):
 		return self.getBoolean('Autolog_Enabled')
+
+	def setEnabled(self, value):
+		self.setValue('Autolog_Enabled', value)
+
+	def enable(self):
+		self.setEnabled(True)
+
+	def disable(self):
+		self.setEnabled(False)
 
 	def isSilent(self):
 		return self.getBoolean('Autolog_Silent')
@@ -165,10 +186,13 @@ class BugAutologOptions(OptionsFacade):
 	def getFileName(self):
 		return self.getString('Autolog_FileName')
 	
+	def setFileName(self, name):
+		self.setString('Autolog_FileName', name)
+	
 
 	# Log Format
 	
-	def getFormat(self):
+	def getFormatStyle(self):
 		return self.getInt('Autolog_Format')
 	
 	def get4000BCTurn(self):
@@ -199,6 +223,9 @@ class BugAutologOptions(OptionsFacade):
 	
 	def isLogProjectCompleted(self):
 		return self.getBoolean('Autolog_LogProjects')
+	
+	def isLogImprovements(self):
+		return self.getBoolean('Autolog_LogImprovements')
 
 	# Cities
 
@@ -216,14 +243,6 @@ class BugAutologOptions(OptionsFacade):
 	
 	def isLogCityRazed(self):
 		return self.getBoolean('Autolog_LogCityRazed')
-	
-	# Combat
-
-	def isLogCombat(self):
-		return self.getBoolean('Autolog_LogCombat')
-	
-	def isLogPromotion(self):
-		return self.getBoolean('Autolog_LogPromotions')
 	
 	# Events
 
@@ -253,8 +272,22 @@ class BugAutologOptions(OptionsFacade):
 	def isLogWar(self):
 		return self.getBoolean('Autolog_LogWar')
 	
+	def isLogVassals(self):
+		return self.getBoolean('Autolog_LogVassals')
+	
 	def isLogCivics(self):
 		return self.getBoolean('Autolog_LogCivics')
+	
+	# Combat
+
+	def isLogCombat(self):
+		return self.getBoolean('Autolog_LogCombat')
+	
+	def isLogPromotion(self):
+		return self.getBoolean('Autolog_LogPromotions')
+	
+	def isLogPillage(self):
+		return self.getBoolean('Autolog_LogPillage')
 
 
 # The singleton BugAutologOptions object

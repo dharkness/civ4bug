@@ -114,6 +114,10 @@ class OptionsFacade(object):
 		self.options.setValue(name, value)
 
 
+	def write(self):
+		self.options.write()
+
+
 class Option(object):
 	"Holds the metadata for a single option"
 

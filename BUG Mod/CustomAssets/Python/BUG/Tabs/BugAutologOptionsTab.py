@@ -41,6 +41,7 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, col1, "Autolog_LogBuildStarted")
 		self.addCheckbox(screen, col1, "Autolog_LogBuildCompleted")
 		self.addCheckbox(screen, col1, "Autolog_LogProjects")
+		self.addCheckbox(screen, col1, "Autolog_LogImprovements")
 		
 		screen.attachLabel(col2, "Autolog_CitiesLabel", "Cities:")
 		self.addCheckbox(screen, col2, "Autolog_LogCityFounded")
@@ -56,12 +57,14 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, col3, "Autolog_LogGA")
 		self.addCheckbox(screen, col3, "Autolog_LogEvents")
 		
-		screen.attachLabel(col4, "Autolog_PoliticsLabel", "Politics:")
+		screen.attachLabel(col4, "Autolog_PoliticsLabel", "Diplomacy:")
 		self.addCheckbox(screen, col4, "Autolog_LogContact")
 		self.addCheckbox(screen, col4, "Autolog_LogAttitude")
 		self.addCheckbox(screen, col4, "Autolog_LogWar")
+		self.addCheckbox(screen, col4, "Autolog_LogVassals")
 		self.addCheckbox(screen, col4, "Autolog_LogCivics")
 		
 		screen.attachLabel(col5, "Autolog_CombatLabel", "Combat:")
 		self.addCheckbox(screen, col5, "Autolog_LogCombat")
 		self.addCheckbox(screen, col5, "Autolog_LogPromotions")
+		self.addCheckbox(screen, col5, "Autolog_LogPillage")
