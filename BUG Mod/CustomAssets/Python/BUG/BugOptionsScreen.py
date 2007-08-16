@@ -12,6 +12,7 @@ import BugGeneralOptionsTab
 import BugNJAGCOptionsTab
 import BugScoresOptionsTab
 import BugAlertsOptionsTab
+import BugAutologOptionsTab
 
 class BugOptionsScreen:
 	"Options Screen"
@@ -26,6 +27,7 @@ class BugOptionsScreen:
 		self.addTab(BugNJAGCOptionsTab.BugNJAGCOptionsTab(self))
 		self.addTab(BugScoresOptionsTab.BugScoresOptionsTab(self))
 		self.addTab(BugAlertsOptionsTab.BugAlertsOptionsTab(self))
+		self.addTab(BugAutologOptionsTab.BugAutologOptionsTab(self))
 
 	def addTab(self, tab):
 		self.tabs.append(tab)

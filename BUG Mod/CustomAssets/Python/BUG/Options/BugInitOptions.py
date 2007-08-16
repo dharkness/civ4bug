@@ -6,9 +6,11 @@
 import BugOptions
 
 # create each of the option sets
-import BugScoreOptions
-import BugNJAGCOptions
-import BugAlertsOptions
-
-import BugCityScreenOptions
 import BugScreenSOptions
+import BugCityScreenOptions
+
+import BugNJAGCOptions
+import BugScoreOptions
+
+import BugAlertsOptions
+import BugAutologOptions
