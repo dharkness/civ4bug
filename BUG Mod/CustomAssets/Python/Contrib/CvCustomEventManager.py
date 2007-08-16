@@ -23,7 +23,7 @@ __version__ = "$Revision: 1.3 $"
 
 import CvEventManager
 import ReminderEventManager
-#import autologEventManager
+import autologEventManager
 import Civ4lerts
 import MoreCiv4lerts
 #import UnitNameEventManager
@@ -78,7 +78,7 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         # --> INSERT EVENT HANDLER INITIALIZATION HERE <--
 
         ReminderEventManager.ReminderEventManager(self)
-        #autologEventManager.autologEventManager(self)
+        autologEventManager.autologEventManager(self)
         Civ4lerts.Civ4lerts(self)
         MoreCiv4lerts.MoreCiv4lerts(self)
         #UnitNameEventManager.UnitNameEventManager(self)
