@@ -11,13 +11,13 @@ class BugAlertsOptions(OptionsFacade):
 		self.addOption(Option("Alert_Reminders",
 							  "CIV4LERTS", "Reminders", True,
 							  "Enable Reminders (Alt-M)",
-							  "When checked, you can create messages using Alt-M that pop up in a specified number of turns."))
+							  "When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod."))
 		
 		# Civ4lerts
 		self.addOption(Option("Alert_Civ4lerts",
 							  "CIV4LERTS", "Enabled", True,
 							  "Enable Civ4lerts",
-							  "."))
+							  "When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod."))
 		
 		# City
 		self.addOption(Option("Alert_CityPendingGrowth",
