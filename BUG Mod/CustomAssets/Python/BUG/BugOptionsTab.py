@@ -114,6 +114,35 @@ class BugOptionsTab:
 		
 		return leftColumn, rightColumn
 
+	def addMultiColumnLayout (self, screen, parent, count=2, panel=None, separator=False):
+		"Creates an HBox containing multiple VBoxes for lists of controls"
+		if (count <= 2):
+			return self.addTwoColumnLayout(screen, parent, panel, separator)
+		
+		if (panel is None):
+			panel = parent
+		hbox = panel + "HBox"
+		screen.attachHBox(parent, hbox)
+		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		
+		columns = []
+		first = True
+		for i in range(count):
+			if (separator and not first):
+				sep = panel + "Sep%d" % i
+				screen.attachVSeparator(hbox, sep)
+				#screen.setLayoutFlag(sep, "LAYOUT_LEFT")
+				first = False
+			
+			column = panel + "Col%d" % i
+			screen.attachVBox(hbox, column)
+			screen.setLayoutFlag(column, "LAYOUT_SIZE_HMIN")
+			screen.setLayoutFlag(column, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+			columns.append(column)
+		
+		return columns
+
 
 	def addCheckbox (self, screen, panel, name):
 		option = self.getOption(name)
