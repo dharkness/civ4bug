@@ -187,7 +187,7 @@ class BugAutologOptions(OptionsFacade):
 		return self.getString('Autolog_FileName')
 	
 	def setFileName(self, name):
-		self.setString('Autolog_FileName', name)
+		self.setValue('Autolog_FileName', name)
 	
 
 	# Log Format
