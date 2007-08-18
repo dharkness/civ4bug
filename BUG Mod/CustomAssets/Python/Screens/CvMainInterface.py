@@ -3100,6 +3100,17 @@ class CvMainInterface:
 # BUG - Power Rating - start
 				bShowPower = BugScore.isShowPower()
 				if (bShowPower):
+					iPlayerPower = gc.getActivePlayer().getPower()
+					if (iPlayerPower <= 1):
+						iPlayerPower = 1 # avoid divide by zero
+						
+					szPowerColor = BugScore.getGoodPowerColor()
+					if (szPowerColor):
+						iGoodPowerColor = gc.getInfoTypeForString(szPowerColor)
+					szPowerColor = BugScore.getBadPowerColor()
+					if (szPowerColor):
+						iBadPowerColor = gc.getInfoTypeForString(szPowerColor)
+							
 					NULL_PLOT = CyMap().plot(-1,-1) # used below in canDoEspionageMission()
 					iDemographicsMission = -1
 					for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
@@ -3205,13 +3216,18 @@ class CvMainInterface:
 													szBuffer = szBuffer + szTempBuffer
 										
 # BUG - Power Rating - start
-											# if on, show for active player always and others according to espionage
+											# if on, show according to espionage "see demographics" mission
 											if (bShowPower 
-												and (gc.getGame().getActivePlayer() == ePlayer
-													 or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, NULL_PLOT, -1))):
+												and (gc.getGame().getActivePlayer() != ePlayer
+													 and gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, NULL_PLOT, -1))):
 												iPower = gc.getPlayer(ePlayer).getPower()
+												fPowerRatio = float(iPower) / float(iPlayerPower)
 												cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
-												szTempBuffer = u"-%d%c" %(iPower, cPower)
+												szTempBuffer = u" %.2f%c" %(fPowerRatio, cPower)
+												if (iGoodPowerColor >= 0 and fPowerRatio <= BugScore.getGoodPowerRatio()):
+													szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
+												elif (iBadPowerColor >= 0 and fPowerRatio >= BugScore.getBadPowerRatio()):
+													szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
 												szBuffer = szBuffer + szTempBuffer
 # BUG - Power Rating - end
 											# BUG: ...end of indentation

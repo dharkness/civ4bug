@@ -9,20 +9,20 @@ class BugScoreOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
-		self.addOption(Option("Scores_HideDead",
+		self.addOption(Option("Scores_ShowDead",
 							  "Scoreboard", "Hide Dead Civilizations", False,
-							  "Hide",
-							  "When checked, dead civilizations will be hidden.",
+							  "Show",
+							  "When checked, dead civilizations will remain on the scoreboard.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_TagDead",
 							  "Scoreboard", "Show Dead Tag", False,
 							  "Tag as \"Dead\"",
-							  "When checked, dead civilizations will be tagged as \"Dead\" when not hidden.",
+							  "When checked, dead civilizations will be tagged as \"Dead\" when shown.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_GreyDead",
 							  "Scoreboard", "Grey Out Dead Civilizations", False,
 							  "Use Grey Color",
-							  "When checked, dead civilizations will be greyed out when not hidden.",
+							  "When checked, dead civilizations will be greyed out when not shown.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
 		self.addOption(OptionList("Scores_DisplayName",
@@ -39,14 +39,36 @@ class BugScoreOptions(OptionsFacade):
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
 		self.addOption(Option("Scores_Power",
-							  "Scoreboard", "Power Rating", True,
-							  "Power Rating",
-							  "When checked, shows the power rating of civilizations against whom you have accumulated enough espionage points, including your own.",
+							  "Scoreboard", "Power", True,
+							  "Show",
+							  "When checked, shows the power of civilizations against whom you have accumulated enough espionage points as a ratio of theirs to yours.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(OptionList("Scores_PowerGoodRatio",
+								  "Scoreboard", "Power Good", 1.0,
+								  "Good Ratio",
+								  "Power ratings less than or equal to this value are shown in green.",
+								  [0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5], "%.1f",
+								  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_PowerGoodColor",
+							  "Scoreboard", "Power Good Color", "COLOR_GREEN",
+							  "Good Color",
+							  "Color used for good power ratios.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(OptionList("Scores_PowerBadRatio",
+								  "Scoreboard", "Power Bad", 1.0,
+								  "Bad Ratio",
+								  "Power ratings greater than or equal to this value are shown in yellow.",
+								  [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.5, 3.0, 3.5, 4.0], "%.1f",
+								  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_PowerBadColor",
+							  "Scoreboard", "Power Bad Color", "COLOR_YELLOW",
+							  "Bad Color",
+							  "Color used for bad power ratios.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 
 
 	def isShowDeadCivs(self):
-		return not self.getBoolean("Scores_HideDead")
+		return self.getBoolean("Scores_ShowDead")
 
 	def isShowDeadTag(self):
 		return self.getBoolean("Scores_TagDead")
@@ -75,7 +97,19 @@ class BugScoreOptions(OptionsFacade):
 
 	def isShowPower(self):
 		return self.getBoolean("Scores_Power")
+	
+	def getGoodPowerRatio(self):
+		return self.getFloat("Scores_PowerGoodRatio")
+	
+	def getGoodPowerColor(self):
+		return self.getString("Scores_PowerGoodColor")
+	
+	def getBadPowerRatio(self):
+		return self.getFloat("Scores_PowerBadRatio")
 
+	def getBadPowerColor(self):
+		return self.getString("Scores_PowerBadColor")
+	
 
 # The singleton BugScoreOptions object
 
