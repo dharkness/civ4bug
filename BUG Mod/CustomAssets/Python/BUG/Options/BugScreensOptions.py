@@ -33,7 +33,7 @@ class BugScreensOptions(OptionsFacade):
 								  InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT))
 
 		self.addOption(Option("Screens_Tech_GPPrefs",
-							  "Tech", "GP Tech Prefs", False,
+							  "Screens", "GP Tech Prefs", False,
 							  "Great Person Research",
 							  "When checked, displays the technology each type of great person will research."))
 
