@@ -3,6 +3,7 @@
 ## BUG Mod - Copyright 2007
 
 from CvPythonExtensions import *
+import ColorUtil
 
 localText = CyTranslator()
 
@@ -143,6 +144,10 @@ class BugOptionsTab:
 		
 		return columns
 
+	def addThreeColumnLayout (self, screen, parent, panel=None, separator=False):
+		"Creates an HBox containing three VBoxes for lists of controls"
+		return self.addMultiColumnLayout(screen, parent, 3, panel, separator)
+
 
 	def addCheckbox (self, screen, panel, name):
 		option = self.getOption(name)
@@ -258,6 +263,16 @@ class BugOptionsTab:
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
+	def addColorDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
+		option = self.getOption(name)
+		if (option):
+			value = self.options.getString(name)
+			index = ColorUtil.keyToIndex(value)
+			elements = ColorUtil.getColorDisplayNames()
+			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugColorDropdownChange")
+		else:
+			self.addMissingOption(screen, controlPanel, name)
+	
 
 	def addCheckboxDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, elements, index, callback):
 		"Adds a dropdown with a checkbox for a label."

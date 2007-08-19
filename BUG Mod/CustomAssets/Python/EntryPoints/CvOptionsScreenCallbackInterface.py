@@ -10,6 +10,7 @@ UserProfile = CyUserProfile()
 # BUG - Options - start
 import BugOptions
 import BugOptionsScreen
+import ColorUtil
 # BUG - Options - end
 
 #"""
@@ -546,6 +547,15 @@ def handleBugFloatDropdownChange ( argsList ):
 		g_options.setFloat(szName, fValue)
 		if (option.getDirtyBit()):
 			CyInterface().setDirty(option.getDirtyBit(), True)
+	return 1
+
+def handleBugColorDropdownChange ( argsList ):
+	iIndex, szName = argsList
+	szKey = ColorUtil.indexToKey(iIndex)
+	g_options.setString(szName, szKey)
+	option = g_options.getOption(szName)
+	if (option and option.getDirtyBit()):
+		CyInterface().setDirty(option.getDirtyBit(), True)
 	return 1
 
 # BUG - Options - end

@@ -7,6 +7,7 @@ import ScreenInput
 import CvScreenEnums
 
 # BUG - Compact Espionage - start
+import ColorUtil
 import BugScreensOptions
 BugOpt = BugScreensOptions.getOptions()
 # BUG - Compact Espionage - end
@@ -266,6 +267,9 @@ class CvEspionageAdvisor:
 			self.aszEspionageIcons = []
 			
 			if (BugOpt.isUseBetterEspionageScreen()):
+				iRatioColor = ColorUtil.keyToType(BugOpt.getEspionageRatioColor())
+				iGoodRatioColor = ColorUtil.keyToType(BugOpt.getGoodEspionageRatioColor())
+				iBadRatioColor = ColorUtil.keyToType(BugOpt.getBadEspionageRatioColor())
 				for iPlayerID in self.aiKnownPlayers:
 					
 					pTargetPlayer = gc.getPlayer(iPlayerID)
@@ -319,12 +323,14 @@ class CvEspionageAdvisor:
 					szName = "AmountText%d" %(iPlayerID)
 					self.aszAmountTexts.append(szName)
 					iMultiplier, szMultiplier = self.getMultiplierAgainstTarget(iPlayerID)
-					if (iMultiplier >= BugOpt.getBadEspionageRatioCutoff()):
-						szText = u"<font=2><color=255,255,0,0>%s</color></font>" %(szMultiplier)
-					elif (iMultiplier <= BugOpt.getGoodEspionageRatioCutoff()):
-						szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(szMultiplier)
+					if (iBadRatioColor >= 0 and iMultiplier >= BugOpt.getBadEspionageRatioCutoff()):
+						szText = localText.changeTextColor(szMultiplier, iBadRatioColor)
+					elif (iGoodRatioColor >= 0 and iMultiplier <= BugOpt.getGoodEspionageRatioCutoff()):
+						szText = localText.changeTextColor(szMultiplier, iGoodRatioColor)
+					elif (iRatioColor >= 0):
+						szText = localText.changeTextColor(szMultiplier, iRatioColor)
 					else:
-						szText = u"<font=2>%s</font>" %(szMultiplier)
+						szText = szMultiplier
 
 					screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, 330, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 

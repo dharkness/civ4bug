@@ -1802,7 +1802,7 @@ class CvMainInterface:
 							screen.show( szString )
 
 						iCount = iCount + 1;
-                                                
+
 			self.updateTimeText()
 			screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.show( "TimeText" )
@@ -3103,7 +3103,10 @@ class CvMainInterface:
 					iPlayerPower = gc.getActivePlayer().getPower()
 					if (iPlayerPower <= 1):
 						iPlayerPower = 1 # avoid divide by zero
-						
+					
+					szPowerColor = BugScore.getPowerColor()
+					if (szPowerColor):
+						iPowerColor = gc.getInfoTypeForString(szPowerColor)
 					szPowerColor = BugScore.getGoodPowerColor()
 					if (szPowerColor):
 						iGoodPowerColor = gc.getInfoTypeForString(szPowerColor)
@@ -3228,6 +3231,8 @@ class CvMainInterface:
 													szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
 												elif (iBadPowerColor >= 0 and fPowerRatio >= BugScore.getBadPowerRatio()):
 													szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
+												elif (iPowerColor >= 0):
+													szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
 												szBuffer = szBuffer + szTempBuffer
 # BUG - Power Rating - end
 											# BUG: ...end of indentation

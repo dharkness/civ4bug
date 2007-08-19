@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+  Copyright (c) 2007, BUG Mod.
+
+  This file is part of Civilization IV BUG Mod.
+  -->
+
+<Civ4GameText xmlns="http://www.firaxis.com">
+    <!-- Colors -->
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_RED</Tag>
+		<English>Red</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Rojo</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_YELLOW</Tag>
+		<English>Yellow</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Amarillo</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_GREEN</Tag>
+		<English>Green</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Verde</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_CYAN</Tag>
+		<English>Cyan</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Ci&#225;nico</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_BLUE</Tag>
+		<English>Blue</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Azul</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_MAGENTA</Tag>
+		<English>Magenta</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Magenta</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_WHITE</Tag>
+		<English>White</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Blanco</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_LIGHT_GREY</Tag>
+		<English>Light Grey</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Gris Ligero</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_GREY</Tag>
+		<English>Grey</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Gris</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_DARK_GREY</Tag>
+		<English>Dark Grey</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Gris Oscuro</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_BLACK</Tag>
+		<English>Black</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish>Negro</Spanish>
+	</TEXT>
+</Civ4GameText>

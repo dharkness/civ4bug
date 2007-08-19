@@ -15,7 +15,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel)
 		
-		self.addCheckbox(screen, leftPanel, "Screens_CDA")
+		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 		
 		screen.attachLabel(leftPanel, "CityScreenLabel", "City Screen:")
 		self.addCheckbox(screen, leftPanel, "City_RawCommerce")
@@ -24,9 +24,12 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
 		
 		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology Advisor:")
-		self.addCheckbox(screen, leftPanel, "Screens_Tech_GPPrefs")
+		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
-		self.addCheckbox(screen, rightPanel, "Screens_Espionage_Better")
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_BadRatio", True)
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Screens_Espionage_GoodRatio", True)
+		self.addCheckbox(screen, rightPanel, "Espionage_Better")
+		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_GoodColor", True)
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_BadRatio", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_BadColor", True)

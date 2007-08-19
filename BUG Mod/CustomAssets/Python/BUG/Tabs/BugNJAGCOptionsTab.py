@@ -23,11 +23,20 @@ class BugNJAGCOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addCheckbox(screen, upperPanel, "NJAGCM_Enabled")
 		
-		self.addCheckbox(screen, upperPanel, "NJAGCM_ShowEra")
-		self.addCheckbox(screen, upperPanel, "NJAGCM_ShowEraColor")
+		leftPanel, centerPanel, rightPanel = self.addThreeColumnLayout(screen, upperPanel, "EraColors")
+		
+		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEra")
+		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEraColor")
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_ANCIENT", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_CLASSICAL", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_MEDIEVAL", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_RENAISSANCE", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_INDUSTRIAL", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_MODERN", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_FUTURE", True)
 		
 		screen.attachHSeparator(upperPanel, upperPanel + "Sep")
-		leftPanel, rightPanel = self.addTwoColumnLayout(screen, upperPanel)
+		leftPanel, rightPanel = self.addTwoColumnLayout(screen, upperPanel, "Views")
 		
 		self.addCheckbox(screen, leftPanel, "NJAGCM_AlternateText")
 		self.addIntDropdown(screen, rightPanel, rightPanel, "NJAGCM_AltTiming")

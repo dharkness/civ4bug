@@ -14,41 +14,41 @@ class BugNJAGCOptions(OptionsFacade):
 						 "When checked, the other settings on this tab affect the game clock."))
 		self.addOption(Option("NJAGCM_ShowEra",
 						 "NJAGCM", "Show Era", True,
-						 "Display Era",
-						 "When checked, the current era is displayed."))
+						 "Display Era Name",
+						 "When checked, the name of the current era is displayed."))
 		
 		self.addOption(Option("NJAGCM_ShowEraColor",
 						 "NJAGCM", "Show Reflect Era In Turn Color", True,
-						 "Use Era-Related Color",
-						 "When checked, the game date and era are displayed using a different color for each era."))
+						 "Use Era-Related Colors",
+						 "When checked, the game date and era are displayed using a color for each era."))
 		self.addOption(Option("NJAGCM_Color_ERA_ANCIENT",
 						 "NJAGCM", "ERA_ANCIENT", "COLOR_RED",
-						 "",
-						 "."))
+						 "Ancient Era",
+						 "Color to use for the Ancient era."))
 		self.addOption(Option("NJAGCM_Color_ERA_CLASSICAL",
-						 "NJAGCM", "ERA_CLASSICAL", "COLOR_GREEN",
-						 "",
-						 "."))
+						 "NJAGCM", "ERA_CLASSICAL", "COLOR_YELLOW",
+						 "Classical Era",
+						 "Color to use for the Classical era."))
 		self.addOption(Option("NJAGCM_Color_ERA_MEDIEVAL",
-						 "NJAGCM", "ERA_MEDIEVAL", "COLOR_BLUE",
-						 "",
-						 "."))
+						 "NJAGCM", "ERA_MEDIEVAL", "COLOR_GREEN",
+						 "Medieval Era",
+						 "Color to use for the Medieval era."))
 		self.addOption(Option("NJAGCM_Color_ERA_RENAISSANCE",
 						 "NJAGCM", "ERA_RENAISSANCE", "COLOR_CYAN",
-						 "",
-						 "."))
+						 "Renaissance Era",
+						 "Color to use for the Renaissance era."))
 		self.addOption(Option("NJAGCM_Color_ERA_INDUSTRIAL",
-						 "NJAGCM", "ERA_INDUSTRIAL", "COLOR_YELLOW",
-						 "",
-						 "."))
+						 "NJAGCM", "ERA_INDUSTRIAL", "COLOR_BLUE",
+						 "Industrial Era",
+						 "Color to use for the Industrial era."))
 		self.addOption(Option("NJAGCM_Color_ERA_MODERN",
 						 "NJAGCM", "ERA_MODERN", "COLOR_MAGENTA",
-						 "",
-						 "."))
+						 "Modern Era",
+						 "Color to use for the Modern era."))
 		self.addOption(Option("NJAGCM_Color_ERA_FUTURE",
 						 "NJAGCM", "ERA_FUTURE", "COLOR_WHITE",
-						 "",
-						 "."))
+						 "Future Era",
+						 "Color to use for the Future era."))
 		
 		self.addOption(Option("NJAGCM_ShowTime",
 						 "NJAGCM", "Show Game Clock", False,

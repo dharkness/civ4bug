@@ -40,12 +40,17 @@ class BugScoreOptions(OptionsFacade):
 		
 		self.addOption(Option("Scores_Power",
 							  "Scoreboard", "Power", True,
-							  "Show",
+							  "Power Ratio",
 							  "When checked, shows the power of civilizations against whom you have accumulated enough espionage points as a ratio of theirs to yours.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_PowerColor",
+							  "Scoreboard", "Power Color", "COLOR_WHITE",
+							  "Default Color",
+							  "Color used by default for power ratios.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(OptionList("Scores_PowerGoodRatio",
 								  "Scoreboard", "Power Good", 1.0,
-								  "Good Ratio",
+								  "Good Ratio Cutoff",
 								  "Power ratings less than or equal to this value are shown in green.",
 								  [0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5], "%.1f",
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
@@ -56,7 +61,7 @@ class BugScoreOptions(OptionsFacade):
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(OptionList("Scores_PowerBadRatio",
 								  "Scoreboard", "Power Bad", 1.0,
-								  "Bad Ratio",
+								  "Bad Ratio Cutoff",
 								  "Power ratings greater than or equal to this value are shown in yellow.",
 								  [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.5, 3.0, 3.5, 4.0], "%.1f",
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
@@ -97,6 +102,9 @@ class BugScoreOptions(OptionsFacade):
 
 	def isShowPower(self):
 		return self.getBoolean("Scores_Power")
+	
+	def getPowerColor(self):
+		return self.getString("Scores_PowerColor")
 	
 	def getGoodPowerRatio(self):
 		return self.getFloat("Scores_PowerGoodRatio")
