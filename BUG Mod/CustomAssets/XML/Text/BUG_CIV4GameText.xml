@@ -12,7 +12,7 @@
 		<English>Red</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Rosso</Italian>
 		<Spanish>Rojo</Spanish>
 	</TEXT>
 	<TEXT>
@@ -20,7 +20,7 @@
 		<English>Yellow</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Giallo</Italian>
 		<Spanish>Amarillo</Spanish>
 	</TEXT>
 	<TEXT>
@@ -28,7 +28,7 @@
 		<English>Green</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Verde</Italian>
 		<Spanish>Verde</Spanish>
 	</TEXT>
 	<TEXT>
@@ -36,7 +36,7 @@
 		<English>Cyan</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Azzurro</Italian>
 		<Spanish>Ci&#225;nico</Spanish>
 	</TEXT>
 	<TEXT>
@@ -44,7 +44,7 @@
 		<English>Blue</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Blu</Italian>
 		<Spanish>Azul</Spanish>
 	</TEXT>
 	<TEXT>
@@ -52,7 +52,7 @@
 		<English>Magenta</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Magenta</Italian>
 		<Spanish>Magenta</Spanish>
 	</TEXT>
 	<TEXT>
@@ -60,7 +60,7 @@
 		<English>White</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Bianco</Italian>
 		<Spanish>Blanco</Spanish>
 	</TEXT>
 	<TEXT>
@@ -68,7 +68,7 @@
 		<English>Light Grey</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Grigio chiaro</Italian>
 		<Spanish>Gris Ligero</Spanish>
 	</TEXT>
 	<TEXT>
@@ -76,7 +76,7 @@
 		<English>Grey</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Grigio</Italian>
 		<Spanish>Gris</Spanish>
 	</TEXT>
 	<TEXT>
@@ -84,7 +84,7 @@
 		<English>Dark Grey</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Grigio scuro</Italian>
 		<Spanish>Gris Oscuro</Spanish>
 	</TEXT>
 	<TEXT>
@@ -92,7 +92,7 @@
 		<English>Black</English>
 		<French></French>
 		<German></German>
-		<Italian></Italian>
+		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
 </Civ4GameText>
