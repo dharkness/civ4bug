@@ -54,7 +54,7 @@ class BugScreensOptions(OptionsFacade):
 
 
 	def isCustDomAdv(self):
-		return self.getBoolean('Screens_CDA')
+		return self.getBoolean('CDA_Enabled')
 
 
 	def isUseBetterEspionageScreen(self):
