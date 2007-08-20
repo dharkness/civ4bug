@@ -340,9 +340,19 @@ class CvCustomizableDomesticAdvisor:
 
 		# Location of Text Buttons
 		self.X_EXIT = self.nTableX + self.nTableWidth
+		self.Y_EXIT = self.nPanelLength + self.nPanelY - 32
 		self.Y_TEXT = self.nPanelLength + self.nPanelY - 27
 		self.Z_TEXT = -0.1
 		self.DX_TEXT = -200
+
+# BUG - Colony Split - start
+
+		# Location of Split Empire Button
+		self.SPLIT_NAME = "DomesticSplit"
+		self.X_SPLIT = self.X_EXIT - 100
+		self.Y_SPLIT = self.Y_TEXT - 8
+
+# BUG - Colony Split - end
 
 		# Location of Specialist Toggle Button
 		self.X_SPECIAL = self.nTableX
@@ -824,6 +834,26 @@ class CvCustomizableDomesticAdvisor:
 
 		# Draw the table and the rest based on the mode
 		self.drawScreen (self.currentPage)
+		
+# BUG - Colony Split - start
+
+		player = gc.getActivePlayer()
+		if (player.canSplitEmpire()):
+			self.bCanLiberate = true
+		else:
+			self.bCanLiberate = false
+			(loopCity, iter) = player.firstCity(false)
+			while (loopCity):
+				if loopCity.getLiberationPlayer() != -1:
+					self.bCanLiberate = true
+					break
+				(loopCity, iter) = player.nextCity(iter, false)
+		
+		if (self.bCanLiberate):
+			screen.setImageButton( self.SPLIT_NAME, "", self.X_SPLIT, self.Y_SPLIT, 28, 28, WidgetTypes.WIDGET_ACTION, gc.getControlInfo(ControlTypes.CONTROL_FREE_COLONY).getActionInfoIndex(), -1 )
+			screen.setStyle( self.SPLIT_NAME, "Button_HUDAdvisorVictory_Style" )
+
+# BUG - Colony Split - end
 
 	def drawBasicScreen (self):
 		"""
@@ -836,7 +866,7 @@ class CvCustomizableDomesticAdvisor:
 		#screen.addDDSGFC( self.BACKGROUND_ID, ArtFileMgr.getInterfaceArtInfo("SCREEN_BG").getPath(), 0, 29, 1024, 592, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 		# Text Buttons
-		screen.setText(self.EXIT_NAME, "Background", localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper(), CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_TEXT, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
+		screen.setText(self.EXIT_NAME, "Background", localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper(), CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
 		x = self.X_SPECIAL + 220
 
@@ -1956,6 +1986,14 @@ class CvCustomizableDomesticAdvisor:
 				popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
 				popupInfo.setText(u"showDomesticAdvisor")
 				popupInfo.addPopup(inputClass.getData1())
+
+# BUG - Colony Split - start
+
+			elif (inputClass.getFunctionName() == self.SPLIT_NAME):
+				screen = CyGInterfaceScreen( "DomesticAdvisor", CvScreenEnums.DOMESTIC_ADVISOR )
+				screen.hideScreen()
+
+# BUG - Colony Split - end
 
 		# If none of the above, we didn't use the input."
 		return 0
