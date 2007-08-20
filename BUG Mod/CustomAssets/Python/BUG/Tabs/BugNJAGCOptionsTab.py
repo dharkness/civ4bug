@@ -21,10 +21,9 @@ class BugNJAGCOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		upperPanel = self.addOneColumnLayout(screen, panel)
 		
-		self.addCheckbox(screen, upperPanel, "NJAGCM_Enabled")
-		
 		leftPanel, centerPanel, rightPanel = self.addThreeColumnLayout(screen, upperPanel, "EraColors")
 		
+		self.addCheckbox(screen, leftPanel, "NJAGCM_Enabled")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEra")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEraColor")
 		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_ANCIENT", True)

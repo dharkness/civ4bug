@@ -717,41 +717,41 @@ class CvMainInterface:
 		self.updateEndTurnButton()
 
 # BUG - NJAGC - start
-		if (BugNJAGC.isEnabled()):
-			if (BugNJAGC.isShowEra()):
-				screen.show( "EraText" )
-			else:
-				screen.hide( "EraText" )
-			
-			if (BugNJAGC.isAlternateTimeText()):
-				#global g_iTimeTextCounter (already done above)
-				if (CyUserProfile().wasClockJustTurnedOn() or g_iTimeTextCounter <= 0):
-					# reset timer, display primary
-					g_bShowTimeTextAlt = False
-					g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
-					CyUserProfile().setClockJustTurnedOn(False)
+		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
+			if (BugNJAGC.isEnabled()):
+				if (BugNJAGC.isShowEra()):
+					screen.show( "EraText" )
 				else:
-					# countdown timer
-					g_iTimeTextCounter -= 250
-					if (g_iTimeTextCounter <= 0):
-						# timer elapsed, toggle between primary and alternate
-						g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
-						g_bShowTimeTextAlt = not g_bShowTimeTextAlt
-			else:
-				g_bShowTimeTextAlt = False
-			
-			self.updateTimeText()
-			screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.show( "TimeText" )
+					screen.hide( "EraText" )
 				
-		else:
-			screen.hide( "EraText" )
-			if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
+				if (BugNJAGC.isAlternateTimeText()):
+					#global g_iTimeTextCounter (already done above)
+					if (CyUserProfile().wasClockJustTurnedOn() or g_iTimeTextCounter <= 0):
+						# reset timer, display primary
+						g_bShowTimeTextAlt = False
+						g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
+						CyUserProfile().setClockJustTurnedOn(False)
+					else:
+						# countdown timer
+						g_iTimeTextCounter -= 250
+						if (g_iTimeTextCounter <= 0):
+							# timer elapsed, toggle between primary and alternate
+							g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
+							g_bShowTimeTextAlt = not g_bShowTimeTextAlt
+				else:
+					g_bShowTimeTextAlt = False
+				
 				self.updateTimeText()
 				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 				screen.show( "TimeText" )
 			else:
-				screen.hide( "TimeText" )
+				screen.hide( "EraText" )
+				self.updateTimeText()
+				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.show( "TimeText" )
+		else:
+			screen.hide( "TimeText" )
+			screen.hide( "EraText" )
 # BUG - NJAGC - end
 
 		return 0
