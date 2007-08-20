@@ -62,7 +62,13 @@ def StartLogger(vsFileName):
 	else:
 		zyear = str(zyear) + " AD"
 	zCurrDateTime = time.strftime("%d-%b-%Y %H:%M:%S")
-	message = "Turn %i/%i (%s) [%s]" % (zcurrturn, zmaxturn, zyear, zCurrDateTime)
+
+	if (zmaxturn == 0):
+		zsTurn = "%i" % (zcurrturn)
+	else:
+		zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
+				
+	message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
 	NewAutoLog.writeLog(0, message)
 
 	if (not BugAutolog.isSilent()):
@@ -268,7 +274,13 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				zyear = str(zyear) + " AD"
 			zCurrDateTime = time.strftime("%d-%b-%Y %H:%M:%S")
-			message = "Turn %i/%i (%s) [%s]" % (zcurrturn, zmaxturn, zyear, zCurrDateTime)
+
+			if (zmaxturn == 0):
+				zsTurn = "%i" % (zcurrturn)
+			else:
+				zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
+				
+			message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
 			NewAutoLog.writeLog(0, message)
 
 			self.bCurrPlayerHuman = true	
