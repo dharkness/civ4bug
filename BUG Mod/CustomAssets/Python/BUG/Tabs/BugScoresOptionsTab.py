@@ -13,7 +13,7 @@ class BugScoresOptionsTab(BugOptionsTab.BugOptionsTab):
     def create(self, screen):
         tab = self.createTab(screen)
         panel = self.createMainPanel(screen)
-        leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel)
+        leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel, panel, True)
         
         self.addTextDropdown(screen, leftPanel, leftPanel, "Scores_DisplayName")
         self.addCheckbox(screen, leftPanel, "Scores_Attitude")

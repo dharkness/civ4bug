@@ -13,20 +13,23 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	def create(self, screen):
 		tab = self.createTab(screen)
 		panel = self.createMainPanel(screen)
-		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel)
+		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel, panel, True)
 		
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 		
 		screen.attachLabel(leftPanel, "CityScreenLabel", "City Screen:")
+		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "City_RawCommerce")
 		self.addCheckbox(screen, leftPanel, "City_CultureTurns")
 		self.addCheckbox(screen, leftPanel, "City_GreatPersonTurns")
 		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
 		
 		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology Advisor:")
+		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
+		screen.setControlFlag("EspionageScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, rightPanel, "Espionage_Better")
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)
