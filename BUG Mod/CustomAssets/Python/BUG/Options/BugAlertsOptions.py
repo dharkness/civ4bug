@@ -22,31 +22,31 @@ class BugAlertsOptions(OptionsFacade):
 		# City
 		self.addOption(Option("Alert_CityPendingGrowth",
 							  "CIV4LERTS", "City Pending Growth", False,
-							  "City Pending Growth",
+							  "Pending Growth",
 							  "."))
 		self.addOption(Option("Alert_CityPendingUnhealthy",
 							  "CIV4LERTS", "City Pending Unhealthy", True,
-							  "City Pending Unhealthy",
+							  "Pending Unhealthy",
 							  "."))
 		self.addOption(Option("Alert_CityPendingAngry",
 							  "CIV4LERTS", "City Pending Angry", True,
-							  "City Pending Angry",
+							  "Pending Angry",
 							  "."))
 		self.addOption(Option("Alert_CityGrowth",
 							  "CIV4LERTS", "City Growth", False,
-							  "City Growth",
+							  "Growth",
 							  "."))
 		self.addOption(Option("Alert_CityUnhealthy",
 							  "CIV4LERTS", "City Growth Unhealthy", True,
-							  "City Growth Unhealthy",
+							  "Growth Unhealthy",
 							  "."))
 		self.addOption(Option("Alert_CityAngry",
 							  "CIV4LERTS", "City Growth Angry", True,
-							  "City Growth Angry",
+							  "Growth Angry",
 							  "."))
 		self.addOption(Option("Alert_CityExpandBorder",
 							  "CIV4LERTS", "CheckForCityBorderExpansion", True,
-							  "City Border Expansion",
+							  "Border Expansion",
 							  "."))
 		
 		# Trade

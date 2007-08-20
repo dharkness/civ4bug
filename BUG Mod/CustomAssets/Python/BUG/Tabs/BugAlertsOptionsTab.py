@@ -22,6 +22,8 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		cityPanel, rightPanel = self.addTwoColumnLayout(screen, column, "Civ4lerts", True)
 		
 		# Cities
+		screen.attachLabel(cityPanel, "Alert_CityLabel", "City Related:")
+		screen.setControlFlag("Alert_CityLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, cityPanel, "Alert_CityPendingGrowth")
 		self.addCheckbox(screen, cityPanel, "Alert_CityPendingUnhealthy")
 		self.addCheckbox(screen, cityPanel, "Alert_CityPendingAngry")
