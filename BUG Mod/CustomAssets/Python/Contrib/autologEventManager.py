@@ -34,7 +34,8 @@ lPercent = "%"
 def StartLogger(vsFileName):
 	NewAutoLog.setLogFileEnabled(True)
 	if (BugAutolog.isUseDefaultFileName()
-	or  BugAutolog.isSilent()):
+		or BugAutolog.isSilent()
+		or not vsFileName):
 		ePlayer = gc.getGame().getActivePlayer()
 		szfileName = gc.getPlayer(ePlayer).getName()
 	else:

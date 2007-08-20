@@ -7,6 +7,7 @@
 import os
 import os.path
 import string
+import CvPath
 import BugOptions
 import BugAutologOptions
 
@@ -85,11 +86,16 @@ class autologInstance:
 		self.closeLog()
 
 	def openLog(self):
-		temppath = os.getcwd()
-		os.chdir(BugAutolog.getFilePath())
-		self.log = open(BugAutolog.getFileName(), 'a')
-		os.chdir(temppath)
-		return
+#		temppath = os.getcwd()
+#		os.chdir(BugAutolog.getFilePath())
+		szPath = BugAutolog.getFilePath()
+		if (not szPath or szPath == "Default"):
+			if (os.path.isdir(CvPath.userDir)):
+				szPath = os.path.join(CvPath.userDir, "AutoLog")
+		if (not os.path.isdir(szPath)):
+			os.makedirs(szPath)
+		self.log = open(os.path.join(szPath, BugAutolog.getFileName()), 'a')
+#		os.chdir(temppath)
 
 	def closeLog(self):
 		self.log.close()
