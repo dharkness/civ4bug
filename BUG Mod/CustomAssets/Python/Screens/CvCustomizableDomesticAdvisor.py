@@ -1807,19 +1807,19 @@ class CvCustomizableDomesticAdvisor:
 
 			zoomArt = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CITYSELECTION").getPath()
 
+			# Add a blank header for the "zoom" column
+			screen.setTableColumnHeader (page, 0, "", 35 )
+
 			# Add blank rows to the table
 			for i in cityRange:
 				screen.appendTableRow (page)
-				szWidgetName = "ZoomCity" + str(i)
 				if (cityList[i].getName() in self.listSelectedCities):
 					screen.selectRow( page, i, True )
 				if not self.PAGES[self.currentPageNum]["showSpecControls"]:
-					screen.setImageButton( szWidgetName, zoomArt, 0, 0, 24, 24, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID() )
-					screen.attachControlToTableCell( szWidgetName, page, i, 0 )
-##					screen.setTableText( page, 0, i, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID(), CvUtil.FONT_LEFT_JUSTIFY);
-
-			# Add a blank header for the "zoom" column
-			screen.setTableColumnHeader (page, 0, "", 30 )
+#					szWidgetName = "ZoomCity" + str(i)
+#					screen.setImageButton( szWidgetName, zoomArt, 0, 0, 24, 24, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID() )
+#					screen.attachControlToTableCell( szWidgetName, page, i, 0 )
+					screen.setTableText( page, 0, i, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID(), CvUtil.FONT_LEFT_JUSTIFY)
 
 			# Loop through the columns first. This is unintuitive, but faster.
 			for key, value in self.columnDict.items():
@@ -1953,14 +1953,23 @@ class CvCustomizableDomesticAdvisor:
 				
 			elif(szWidget == self.currentPage):
 				screen = self.getScreen()
-
-				if self.PAGES[self.currentPageNum]["showSpecControls"]:
-					self.showSpecialists()
-
-				# And pass it back to the screen
-				self.updateAppropriateCitySelection( self.currentPage, len( PyPlayer(CyGame().getActivePlayer()).getCityList() ) )
-
-				return 1
+				if (inputClass.getMouseX() == 0):
+					screen.hideScreen()
+					
+					CyInterface().selectCity(gc.getPlayer(inputClass.getData1()).getCity(inputClass.getData2()), true);
+					
+					popupInfo = CyPopupInfo()
+					popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
+					popupInfo.setText(u"showDomesticAdvisor")
+					popupInfo.addPopup(inputClass.getData1())
+				else:
+					if self.PAGES[self.currentPageNum]["showSpecControls"]:
+						self.showSpecialists()
+					
+					# And pass it back to the screen
+					self.updateAppropriateCitySelection( self.currentPage, len( PyPlayer(CyGame().getActivePlayer()).getCityList() ) )
+					
+					return 1
 
 			else:
 				CvUtil.pyPrint(szWidget)
