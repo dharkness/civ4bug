@@ -17,7 +17,7 @@ class BugScreensOptions(OptionsFacade):
 		self.addOption(Option("Espionage_Better",
 							  "Screens", "Better Espionage Screen", False,
 							  "Better Espionage Screen",
-							  "When checked, uses the Better Espionage Screen and the options below.",
+							  "When checked, uses Almightix's Better Espionage Screen.",
 							  InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT))
 		self.addOption(Option("Espionage_RatioColor",
 							  "Screens", "Espionage Ratio Color", "COLOR_CYAN",
