@@ -730,17 +730,12 @@ class CvEspionageAdvisor:
 					
 # BUG - Civ List Layout - start
 
-					if (BugOpt.isUseBetterEspionageScreen()):
-						if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
-							szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-						else:
-							szText = u""
-						screen.setLabelAt( "SpendingIcon%d" %(iPlayerID), attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					else:
+					# EF: This can be removed, but since it's original code I've left it in.
+					if (not BugOpt.isUseBetterEspionageScreen()):
 						szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
 						screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-# BUG - Civ List Layout - end
+
+# BUG - Better Espionage - end
 
 					CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, True)
 					
@@ -753,21 +748,16 @@ class CvEspionageAdvisor:
 					if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):	# Can't reduce weight below 0
 						
 						CyMessageControl().sendEspionageSpendingWeightChange(iTargetTeam, -1)
-						
-# BUG - Compact Espionage - start
-			
-						if (BugOpt.isUseBetterEspionageScreen()):
-							if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
-								szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-							else:
-								szText = u""
-							screen.setLabelAt( "SpendingIcon%d" %(iPlayerID), attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-						else:
+
+# BUG - Civ List Layout - start
+
+						# EF: This can be removed, but since it's original code I've left it in.
+						if (not BugOpt.isUseBetterEspionageScreen()):
 							szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
 							screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
-# BUG - Civ List Layout - end
-						
+# BUG - Better Espionage - end
+
 						CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, True)
 		
 		return 0
