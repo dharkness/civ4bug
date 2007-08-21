@@ -266,7 +266,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if NewAutoLog.Enabled():
 			NewAutoLog.writeLog(1, "")
-			zcurrturn = gc.getGame().getElapsedGameTurns() + 1 + BugAutolog.get4000BCTurn
+			zcurrturn = gc.getGame().getElapsedGameTurns() + 1 + BugAutolog.get4000BCTurn()
 			zmaxturn = gc.getGame().getMaxTurns()
 			zturn = gc.getGame().getGameTurn() + 1
 			zyear = gc.getGame().getTurnYear(zturn)
