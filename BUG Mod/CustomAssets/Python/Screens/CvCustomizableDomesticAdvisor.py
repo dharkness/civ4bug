@@ -1795,9 +1795,9 @@ class CvCustomizableDomesticAdvisor:
 			if not self.PAGES[self.currentPageNum]["showSpecControls"] and \
 				not self.PAGES[self.currentPageNum]["showCultureLegend"] and \
 				not self.PAGES[self.currentPageNum]["showGPLegend"]:
-				screen.addTableControlGFC (page, len (dDict) + 1, self.nTableX, self.nTableY, self.nTableWidth, self.nTableLength, True, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+				screen.addTableControlGFC (page, len (dDict) + 1, self.nTableX, self.nTableY, self.nTableWidth, self.nTableLength, True, False, 24, 24, TableStyles.TABLE_STYLE_STANDARD )
 			else:
-				screen.addTableControlGFC (page, len (dDict) + 1, self.nTableX, self.nTableY, self.nTableWidth, self.nShortTableLength, True, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+				screen.addTableControlGFC (page, len (dDict) + 1, self.nTableX, self.nTableY, self.nTableWidth, self.nShortTableLength, True, False, 24, 24, TableStyles.TABLE_STYLE_STANDARD )
 
 			screen.enableSelect (page, True)
 			screen.enableSort (page)
@@ -1808,7 +1808,7 @@ class CvCustomizableDomesticAdvisor:
 			zoomArt = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CITYSELECTION").getPath()
 
 			# Add a blank header for the "zoom" column
-			screen.setTableColumnHeader (page, 0, "", 35 )
+			screen.setTableColumnHeader (page, 0, "", 30 )
 
 			# Add blank rows to the table
 			for i in cityRange:
