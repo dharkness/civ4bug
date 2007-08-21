@@ -419,7 +419,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onUnitPromoted(self, argsList):
 		if (NewAutoLog.Enabled()
-		and BugAutolog.isLogPromotions()):
+		and BugAutolog.isLogPromotion()):
 			pUnit, iPromotion = argsList
 			if pUnit.getOwner() == CyGame().getActivePlayer():
 				message = "%s promoted: %s" % (pUnit.getName(), PyInfo.PromotionInfo(iPromotion).getDescription())
