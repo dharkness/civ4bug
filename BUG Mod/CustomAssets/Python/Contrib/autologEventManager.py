@@ -731,11 +731,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		and BugAutolog.isLogVassals()
 		and gc.getTeam(iMaster).isHasMet(gc.getActivePlayer().getTeam())
 		and gc.getTeam(iVassal).isHasMet(gc.getActivePlayer().getTeam())):
-#		if (gc.getTeam(gc.getPlayer(iCiv).getTeam()).isHasMet(gc.getActivePlayer().getTeam())
+
+			zsMaster = gc.getTeam(iMaster).getName()
+			zsVassal = gc.getTeam(iVassal).getName()
+
 			if (bVassal):
-				message = "Team %d becomes a Vassal State of Team %d" % (iVassal, iMaster)
+				message = "%s becomes a Vassal State of %s" % (zsVassal, zsMaster)
 			else:
-				message = "Team %d revolts and is no longer a Vassal State of Team %d" % (iVassal, iMaster)
+				message = "%s revolts and is no longer a Vassal State of %s" % (zsVassal, zsMaster)
 			NewAutoLog.writeLog(3, message)
 
 	def initStuff(self):
