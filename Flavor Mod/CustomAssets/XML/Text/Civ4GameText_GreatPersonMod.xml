@@ -10,7 +10,7 @@
 		<English>Moses</English>
 		<French>Moses</French>
 		<German>Moses</German>
-		<Italian>Moses</Italian>
+		<Italian>Mosè</Italian>
 		<Spanish>Moses</Spanish>
 	</TEXT>
 	<TEXT>
@@ -26,7 +26,7 @@
 		<English>Zoroaster</English>
 		<French>Zoroaster</French>
 		<German>Zoroaster</German>
-		<Italian>Zoroaster</Italian>
+		<Italian>Zoroastro</Italian>
 		<Spanish>Zoroaster</Spanish>
 	</TEXT>
 	<TEXT>
@@ -58,7 +58,7 @@
 		<English>Mo Tzu</English>
 		<French>Mo Tzu</French>
 		<German>Mo Tzu</German>
-		<Italian>Mo Tzu</Italian>
+		<Italian>Mozi</Italian>
 		<Spanish>Mo Tzu</Spanish>
 	</TEXT>
 	<TEXT>
@@ -66,7 +66,7 @@
 		<English>Saint John</English>
 		<French>Saint John</French>
 		<German>Saint John</German>
-		<Italian>Saint John</Italian>
+		<Italian>San Giovanni</Italian>
 		<Spanish>Saint John</Spanish>
 	</TEXT>
 	<TEXT>
@@ -74,7 +74,7 @@
 		<English>Saint Peter</English>
 		<French>Saint Peter</French>
 		<German>Saint Peter</German>
-		<Italian>Saint Peter</Italian>
+		<Italian>San Pietro</Italian>
 		<Spanish>Saint Peter</Spanish>
 	</TEXT>
 	<TEXT>
@@ -82,7 +82,7 @@
 		<English>Saint Paul</English>
 		<French>Saint Paul</French>
 		<German>Saint Paul</German>
-		<Italian>Saint Paul</Italian>
+		<Italian>San Paolo</Italian>
 		<Spanish>Saint Paul</Spanish>
 	</TEXT>
 	<TEXT>
@@ -106,7 +106,7 @@
 		<English>Saint Augustine</English>
 		<French>Saint Augustine</French>
 		<German>Saint Augustine</German>
-		<Italian>Saint Augustine</Italian>
+		<Italian>Sant'Agostino</Italian>
 		<Spanish>Saint Augustine</Spanish>
 	</TEXT>
 	<TEXT>
@@ -114,7 +114,7 @@
 		<English>Saint Patrick</English>
 		<French>Saint Patrick</French>
 		<German>Saint Patrick</German>
-		<Italian>Saint Patrick</Italian>
+		<Italian>San Patrizio</Italian>
 		<Spanish>Saint Patrick</Spanish>
 	</TEXT>
 	<TEXT>
@@ -154,7 +154,7 @@
 		<English>Saint Thomas Aquinas</English>
 		<French>Saint Thomas Aquinas</French>
 		<German>Saint Thomas Aquinas</German>
-		<Italian>Saint Thomas Aquinas</Italian>
+		<Italian>San Tommaso d'Aquino</Italian>
 		<Spanish>Saint Thomas Aquinas</Spanish>
 	</TEXT>
 	<TEXT>
@@ -178,7 +178,7 @@
 		<English>Jeanne d'Arc</English>
 		<French>Jeanne d'Arc</French>
 		<German>Jeanne d'Arc</German>
-		<Italian>Jeanne d'Arc</Italian>
+		<Italian>Giovanna d'Arco</Italian>
 		<Spanish>Jeanne d'Arc</Spanish>
 	</TEXT>
 	<TEXT>
@@ -226,7 +226,7 @@
 		<English>Homer</English>
 		<French>Homer</French>
 		<German>Homer</German>
-		<Italian>Homer</Italian>
+		<Italian>Omero</Italian>
 		<Spanish>Homer</Spanish>
 	</TEXT>
 	<TEXT>
@@ -234,7 +234,7 @@
 		<English>Thespis</English>
 		<French>Thespis</French>
 		<German>Thespis</German>
-		<Italian>Thespis</Italian>
+		<Italian>Tespi</Italian>
 		<Spanish>Thespis</Spanish>
 	</TEXT>
 	<TEXT>
@@ -266,7 +266,7 @@
 		<English>Virgil</English>
 		<French>Virgil</French>
 		<German>Virgil</German>
-		<Italian>Virgil</Italian>
+		<Italian>Virgilio</Italian>
 		<Spanish>Virgil</Spanish>
 	</TEXT>
 	<TEXT>
@@ -338,7 +338,7 @@
 		<English>Michaelangelo</English>
 		<French>Michaelangelo</French>
 		<German>Michaelangelo</German>
-		<Italian>Michaelangelo</Italian>
+		<Italian>Michelangelo</Italian>
 		<Spanish>Michaelangelo</Spanish>
 	</TEXT>
 	<TEXT>
@@ -346,7 +346,7 @@
 		<English>Raphael</English>
 		<French>Raphael</French>
 		<German>Raphael</German>
-		<Italian>Raphael</Italian>
+		<Italian>Raffaello</Italian>
 		<Spanish>Raphael</Spanish>
 	</TEXT>
 	<TEXT>
@@ -378,7 +378,7 @@
 		<English>Johannes Vermeer</English>
 		<French>Johannes Vermeer</French>
 		<German>Johannes Vermeer</German>
-		<Italian>Johannes Vermeer</Italian>
+		<Italian>Jan Vermeer</Italian>
 		<Spanish>Johannes Vermeer</Spanish>
 	</TEXT>
 	<TEXT>
@@ -386,7 +386,7 @@
 		<English>JS Bach</English>
 		<French>JS Bach</French>
 		<German>JS Bach</German>
-		<Italian>JS Bach</Italian>
+		<Italian>Johann Sebastian Bach</Italian>
 		<Spanish>JS Bach</Spanish>
 	</TEXT>
 	<TEXT>
@@ -538,7 +538,7 @@
 		<English>Socrates</English>
 		<French>Socrates</French>
 		<German>Socrates</German>
-		<Italian>Socrates</Italian>
+		<Italian>Socrate</Italian>
 		<Spanish>Socrates</Spanish>
 	</TEXT>
 	<TEXT>
@@ -546,7 +546,7 @@
 		<English>Plato</English>
 		<French>Plato</French>
 		<German>Plato</German>
-		<Italian>Plato</Italian>
+		<Italian>Platone</Italian>
 		<Spanish>Plato</Spanish>
 	</TEXT>
 	<TEXT>
@@ -554,7 +554,7 @@
 		<English>Aristotle</English>
 		<French>Aristotle</French>
 		<German>Aristotle</German>
-		<Italian>Aristotle</Italian>
+		<Italian>Aristotele</Italian>
 		<Spanish>Aristotle</Spanish>
 	</TEXT>
 	<TEXT>
@@ -562,7 +562,7 @@
 		<English>Euclid</English>
 		<French>Euclid</French>
 		<German>Euclid</German>
-		<Italian>Euclid</Italian>
+		<Italian>Euclide</Italian>
 		<Spanish>Euclid</Spanish>
 	</TEXT>
 	<TEXT>
@@ -570,7 +570,7 @@
 		<English>Ptolemy</English>
 		<French>Ptolemy</French>
 		<German>Ptolemy</German>
-		<Italian>Ptolemy</Italian>
+		<Italian>Tolomeo</Italian>
 		<Spanish>Ptolemy</Spanish>
 	</TEXT>
 	<TEXT>
@@ -578,7 +578,7 @@
 		<English>Hypatia</English>
 		<French>Hypatia</French>
 		<German>Hypatia</German>
-		<Italian>Hypatia</Italian>
+		<Italian>Ipazia</Italian>
 		<Spanish>Hypatia</Spanish>
 	</TEXT>
 	<TEXT>
@@ -634,7 +634,7 @@
 		<English>Nicolaus Copernicus</English>
 		<French>Nicolaus Copernicus</French>
 		<German>Nicolaus Copernicus</German>
-		<Italian>Nicolaus Copernicus</Italian>
+		<Italian>Nicolò Copernico</Italian>
 		<Spanish>Nicolaus Copernicus</Spanish>
 	</TEXT>
 	<TEXT>
@@ -642,7 +642,7 @@
 		<English>Francis Bacon</English>
 		<French>Francis Bacon</French>
 		<German>Francis Bacon</German>
-		<Italian>Francis Bacon</Italian>
+		<Italian>Francesco Bacone</Italian>
 		<Spanish>Francis Bacon</Spanish>
 	</TEXT>
 	<TEXT>
@@ -658,7 +658,7 @@
 		<English>Johannes Kepler</English>
 		<French>Johannes Kepler</French>
 		<German>Johannes Kepler</German>
-		<Italian>Johannes Kepler</Italian>
+		<Italian>Giovanni Keplero</Italian>
 		<Spanish>Johannes Kepler</Spanish>
 	</TEXT>
 	<TEXT>
@@ -850,7 +850,7 @@
 		<English>Pytheas</English>
 		<French>Pytheas</French>
 		<German>Pytheas</German>
-		<Italian>Pytheas</Italian>
+		<Italian>Pitea</Italian>
 		<Spanish>Pytheas</Spanish>
 	</TEXT>
 	<TEXT>
@@ -946,7 +946,7 @@
 		<English>Christopher Columbus</English>
 		<French>Christopher Columbus</French>
 		<German>Christopher Columbus</German>
-		<Italian>Christopher Columbus</Italian>
+		<Italian>Cristoforo Colombo</Italian>
 		<Spanish>Christopher Columbus</Spanish>
 	</TEXT>
 	<TEXT>
@@ -954,7 +954,7 @@
 		<English>Ferdinand Magellan</English>
 		<French>Ferdinand Magellan</French>
 		<German>Ferdinand Magellan</German>
-		<Italian>Ferdinand Magellan</Italian>
+		<Italian>Ferdinando Magellano</Italian>
 		<Spanish>Ferdinand Magellan</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1082,7 +1082,7 @@
 		<English>Archimedes</English>
 		<French>Archimedes</French>
 		<German>Archimedes</German>
-		<Italian>Archimedes</Italian>
+		<Italian>Archimede</Italian>
 		<Spanish>Archimedes</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1339,7 +1339,7 @@
 		<English>Nebuchadrezzar II</English>
 		<French>Nebuchadrezzar II</French>
 		<German>Nebuchadrezzar II</German>
-		<Italian>Nebuchadrezzar II</Italian>
+		<Italian>Nabucodonosor II</Italian>
 		<Spanish>Nebuchadrezzar II</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1355,7 +1355,7 @@
 		<English>Leonidas</English>
 		<French>Leonidas</French>
 		<German>Leonidas</German>
-		<Italian>Leonidas</Italian>
+		<Italian>Leonida</Italian>
 		<Spanish>Leonidas</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1363,7 +1363,7 @@
 		<English>Lysander</English>
 		<French>Lysander</French>
 		<German>Lysander</German>
-		<Italian>Lysander</Italian>
+		<Italian>Lisandro</Italian>
 		<Spanish>Lysander</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1371,7 +1371,7 @@
 		<English>Ptolemy I Soter</English>
 		<French>Ptolemy I Soter</French>
 		<German>Ptolemy I Soter</German>
-		<Italian>Ptolemy I Soter</Italian>
+		<Italian>Tolomeo I Sotere</Italian>
 		<Spanish>Ptolemy I Soter</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1387,7 +1387,7 @@
 		<English>Hamilcar Barca</English>
 		<French>Hamilcar Barca</French>
 		<German>Hamilcar Barca</German>
-		<Italian>Hamilcar Barca</Italian>
+		<Italian>Amilcare Barca</Italian>
 		<Spanish>Hamilcar Barca</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1395,7 +1395,7 @@
 		<English>Gaius Marius</English>
 		<French>Gaius Marius</French>
 		<German>Gaius Marius</German>
-		<Italian>Gaius Marius</Italian>
+		<Italian>Gaio Mario</Italian>
 		<Spanish>Gaius Marius</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1403,7 +1403,7 @@
 		<English>Scipio Africanus</English>
 		<French>Scipio Africanus</French>
 		<German>Scipio Africanus</German>
-		<Italian>Scipio Africanus</Italian>
+		<Italian>Scipione l'Africano</Italian>
 		<Spanish>Scipio Africanus</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1411,7 +1411,7 @@
 		<English>Vercingetorix</English>
 		<French>Vercingetorix</French>
 		<German>Vercingetorix</German>
-		<Italian>Vercingetorix</Italian>
+		<Italian>Vercingetorige</Italian>
 		<Spanish>Vercingetorix</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1419,7 +1419,7 @@
 		<English>Arminius</English>
 		<French>Arminius</French>
 		<German>Arminius</German>
-		<Italian>Arminius</Italian>
+		<Italian>Arminio</Italian>
 		<Spanish>Arminius</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1427,7 +1427,7 @@
 		<English>Boudica</English>
 		<French>Boudica</French>
 		<German>Boudica</German>
-		<Italian>Boudica</Italian>
+		<Italian>Budicca</Italian>
 		<Spanish>Boudica</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1451,7 +1451,7 @@
 		<English>Belisarius</English>
 		<French>Belisarius</French>
 		<German>Belisarius</German>
-		<Italian>Belisarius</Italian>
+		<Italian>Belisario</Italian>
 		<Spanish>Belisarius</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1467,7 +1467,7 @@
 		<English>Charles Martel</English>
 		<French>Charles Martel</French>
 		<German>Charles Martel</German>
-		<Italian>Charles Martel</Italian>
+		<Italian>Carlo Martello</Italian>
 		<Spanish>Charles Martel</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1475,7 +1475,7 @@
 		<English>Charlemagne</English>
 		<French>Charlemagne</French>
 		<German>Charlemagne</German>
-		<Italian>Charlemagne</Italian>
+		<Italian>Carlo Magno</Italian>
 		<Spanish>Charlemagne</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1499,7 +1499,7 @@
 		<English>William the Conqueror</English>
 		<French>William the Conqueror</French>
 		<German>William the Conqueror</German>
-		<Italian>William the Conqueror</Italian>
+		<Italian>Guglielmo il Conquistatore</Italian>
 		<Spanish>William the Conqueror</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1523,7 +1523,7 @@
 		<English>Joan d'Arc</English>
 		<French>Joan d'Arc</French>
 		<German>Joan d'Arc</German>
-		<Italian>Joan d'Arc</Italian>
+		<Italian>Giovanna d'Arco</Italian>
 		<Spanish>Joan d'Arc</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1563,7 +1563,7 @@
 		<English>Ivan the Terrible</English>
 		<French>Ivan the Terrible</French>
 		<German>Ivan the Terrible</German>
-		<Italian>Ivan the Terrible</Italian>
+		<Italian>Ivan il Terribile</Italian>
 		<Spanish>Ivan the Terrible</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1579,7 +1579,7 @@
 		<English>Gustavus II Adolphus</English>
 		<French>Gustavus II Adolphus</French>
 		<German>Gustavus II Adolphus</German>
-		<Italian>Gustavus II Adolphus</Italian>
+		<Italian>Gustavo II Adolfo</Italian>
 		<Spanish>Gustavus II Adolphus</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1603,7 +1603,7 @@
 		<English>Eugene of Savoy</English>
 		<French>Eugene of Savoy</French>
 		<German>Eugene of Savoy</German>
-		<Italian>Eugene of Savoy</Italian>
+		<Italian>Eugenio di Savoia</Italian>
 		<Spanish>Eugene of Savoy</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1611,7 +1611,7 @@
 		<English>Horatio Nelson</English>
 		<French>Horatio Nelson</French>
 		<German>Horatio Nelson</German>
-		<Italian>Horatio Nelson</Italian>
+		<Italian>Orazio Nelson</Italian>
 		<Spanish>Horatio Nelson</Spanish>
 	</TEXT>
 	<TEXT>
