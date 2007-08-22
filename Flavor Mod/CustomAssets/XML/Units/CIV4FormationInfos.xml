@@ -2356,6 +2356,7 @@
 			<DirVariation>0.521536192416</DirVariation>
 		</UnitEntry>
 	</UnitFormation>
+<!-- BUG Mod changes Start -->
 	<UnitFormation>
 		<Name>IDLE (7)</Name>
 		<FormationType>FORMATION_TYPE_SETTLER</FormationType>
@@ -2466,4 +2467,5 @@
 			<DirVariation>0.722772439984</DirVariation>
 		</UnitEntry>
 	</UnitFormation>
+<!-- BUG Mod changes End -->
 </UnitFormations>

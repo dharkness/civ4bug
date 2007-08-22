@@ -8,7 +8,9 @@
 	<BuildingArtInfos>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_PALACE</Type>
+<!-- BUG Mod changes 1/5 Start -->
 			<LSystem>LSYSTEM_PALACE</LSystem>
+<!-- BUG Mod changes 1/5 End -->
 			<bAnimated>0</bAnimated>
 			<fScale>1.15</fScale>
 			<fInterfaceScale>0.43</fInterfaceScale>
@@ -138,7 +140,9 @@
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_GRANARY</Type>
+<!-- BUG Mod changes 2/5 Start -->
 			<LSystem>LSYSTEM_GRANARY</LSystem>
+<!-- BUG Mod changes 2/5 End -->
 			<bAnimated>0</bAnimated>
 			<fScale>1.0</fScale>
 			<fInterfaceScale>0.5</fInterfaceScale>
@@ -269,7 +273,9 @@
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_AIRPORT</Type>
+<!-- BUG Mod changes 3/5 Start -->
 			<LSystem>LSYSTEM_4x2</LSystem>
+<!-- BUG Mod changes 3/5 End -->
 			<bAnimated>0</bAnimated>
 			<fScale>2.64</fScale>
 			<fInterfaceScale>0.42</fInterfaceScale>
@@ -279,7 +285,9 @@
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_FORGE</Type>
+<!-- BUG Mod changes 4/5 Start -->
 			<LSystem>LSYSTEM_FORGE</LSystem>
+<!-- BUG Mod changes 4/5 End -->
 			<bAnimated>1</bAnimated>
 			<fScale>1.31</fScale>
 			<fInterfaceScale>0.47</fInterfaceScale>
@@ -509,7 +517,9 @@
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_COLOSSEUM</Type>
+<!-- BUG Mod changes 5/5 Start -->
 			<LSystem>LSYSTEM_COLOSSEUM</LSystem>
+<!-- BUG Mod changes 5/5 End -->
 			<bAnimated>0</bAnimated>
 			<fScale>2.63</fScale>
 			<fInterfaceScale>0.52</fInterfaceScale>
