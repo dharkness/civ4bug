@@ -1,6 +1,6 @@
-28/07/2007
+15/08/2007
 Ethnic Artstyles
-Beyond the Sword 3.02 - mod version 1.0
+Beyond the Sword 3.02 - mod version 1.02
 
 Description:
 This mod is made to make the civilizations more culturally diverse with the available art made by freelance modders and unused art by Firaxis.
