@@ -1,4 +1,36 @@
-Ethnically Diverse Units MOD v3.0 Beyond the Sword Edition
+Ethnically Diverse Units MOD v3.13 Beyond the Sword Edition
+
+
+VERSION HYSTORY
+
+
+Version 3.13
+- Added ten African units
+Worker
+Warrior
+Scout
+Archer
+Spearman
+Chariot (Bakuel)
+HorseArcher
+Axeman
+Swordsman
+WarElephant
+
+- Added 2 Arabian units
+Chariot
+Spearman
+
+Version 3.01
+- Added European War Elephant in XML
+
+Version 3.0
+- Initial Version for Beyond the Sword
+
+
+
+
+
 
 DESCRIPTION
 
