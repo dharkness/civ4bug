@@ -3101,9 +3101,6 @@ class CvMainInterface:
 				bShowPower = BugScore.isShowPower()
 				if (bShowPower):
 					iPlayerPower = gc.getActivePlayer().getPower()
-					if (iPlayerPower <= 1):
-						iPlayerPower = 1 # avoid divide by zero
-					
 					szPowerColor = BugScore.getPowerColor()
 					if (szPowerColor):
 						iPowerColor = gc.getInfoTypeForString(szPowerColor)
@@ -3224,16 +3221,17 @@ class CvMainInterface:
 												and (gc.getGame().getActivePlayer() != ePlayer
 													 and gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, NULL_PLOT, -1))):
 												iPower = gc.getPlayer(ePlayer).getPower()
-												fPowerRatio = float(iPower) / float(iPlayerPower)
-												cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
-												szTempBuffer = u" %.2f%c" %(fPowerRatio, cPower)
-												if (iGoodPowerColor >= 0 and fPowerRatio <= BugScore.getGoodPowerRatio()):
-													szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
-												elif (iBadPowerColor >= 0 and fPowerRatio >= BugScore.getBadPowerRatio()):
-													szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
-												elif (iPowerColor >= 0):
-													szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
-												szBuffer = szBuffer + szTempBuffer
+												if (iPower > 0): # avoid divide by zero
+													fPowerRatio = float(iPlayerPower) / float(iPower)
+													cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
+													szTempBuffer = u" %.1f%c" %(fPowerRatio, cPower)
+													if (iGoodPowerColor >= 0 and fPowerRatio >= BugScore.getGoodPowerRatio()):
+														szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
+													elif (iBadPowerColor >= 0 and fPowerRatio <= BugScore.getBadPowerRatio()):
+														szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
+													elif (iPowerColor >= 0):
+														szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
+													szBuffer = szBuffer + szTempBuffer
 # BUG - Power Rating - end
 											# BUG: ...end of indentation
 # BUG - Dead Civs - end

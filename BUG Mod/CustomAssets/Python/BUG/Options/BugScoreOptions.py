@@ -41,7 +41,7 @@ class BugScoreOptions(OptionsFacade):
 		self.addOption(Option("Scores_Power",
 							  "Scoreboard", "Power", True,
 							  "Power Ratio",
-							  "When checked, shows the power of civilizations against whom you have accumulated enough espionage points as a ratio of theirs to yours.",
+							  "When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_PowerColor",
 							  "Scoreboard", "Power Color", "COLOR_WHITE",
@@ -49,10 +49,10 @@ class BugScoreOptions(OptionsFacade):
 							  "Color used by default for power ratios.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(OptionList("Scores_PowerGoodRatio",
-								  "Scoreboard", "Power Good", 1.0,
+								  "Scoreboard", "Power Good", 1.2,
 								  "Good Ratio Cutoff",
-								  "Power ratings less than or equal to this value are shown in green.",
-								  [0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5], "%.1f",
+								  "Power ratings greater than or equal to this value are shown in the Good Color.",
+								  [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0], "%.1f",
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_PowerGoodColor",
 							  "Scoreboard", "Power Good Color", "COLOR_GREEN",
@@ -60,10 +60,10 @@ class BugScoreOptions(OptionsFacade):
 							  "Color used for good power ratios.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(OptionList("Scores_PowerBadRatio",
-								  "Scoreboard", "Power Bad", 1.0,
+								  "Scoreboard", "Power Bad", 0.8,
 								  "Bad Ratio Cutoff",
-								  "Power ratings greater than or equal to this value are shown in yellow.",
-								  [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.5, 3.0, 3.5, 4.0], "%.1f",
+								  "Power ratings less than or equal to this value are shown in in the Bad Color.",
+								  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "%.1f",
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_PowerBadColor",
 							  "Scoreboard", "Power Bad Color", "COLOR_YELLOW",
