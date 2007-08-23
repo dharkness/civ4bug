@@ -16853,18 +16853,18 @@
 			<iAsset>1</iAsset>
 			<iPower>0</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_WORKBOAT</EarlyArtDefineTag>
 					<LateArtDefineTag>ART_DEF_UNIT_WORKBOAT_MODERN</LateArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -17036,17 +17036,17 @@
 			<iAsset>1</iAsset>
 			<iPower>2</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
-				<iMeleeWaveSize>1</iMeleeWaveSize>
-				<iRangedWaveSize>1</iRangedWaveSize>
+				<iMeleeWaveSize>2</iMeleeWaveSize>
+				<iRangedWaveSize>2</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_GALLEY</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -17244,17 +17244,17 @@
 			<iAsset>1</iAsset>
 			<iPower>3</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
-				<iMeleeWaveSize>1</iMeleeWaveSize>
-				<iRangedWaveSize>1</iRangedWaveSize>
+				<iMeleeWaveSize>2</iMeleeWaveSize>
+				<iRangedWaveSize>2</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_TRIREME</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -17445,17 +17445,17 @@
 			<iAsset>1</iAsset>
 			<iPower>3</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CARAVEL</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -17654,17 +17654,17 @@
 			<iAsset>2</iAsset>
 			<iPower>3</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PORTUGAL_CARRACK</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -17835,17 +17835,17 @@
 			<iAsset>2</iAsset>
 			<iPower>4</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_GALLEON</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18020,17 +18020,17 @@
 			<iAsset>2</iAsset>
 			<iPower>5</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_NETHERLANDS_OOSTINDIEVAARDER</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18215,17 +18215,17 @@
 			<iAsset>2</iAsset>
 			<iPower>4</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>2</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>2</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PRIVATEER</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18409,17 +18409,17 @@
 			<iAsset>2</iAsset>
 			<iPower>6</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_FRIGATE</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18600,17 +18600,17 @@
 			<iAsset>2</iAsset>
 			<iPower>6</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>2</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>2</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_SHIP_OF_THE_LINE</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18791,17 +18791,17 @@
 			<iAsset>3</iAsset>
 			<iPower>6</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>2</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>2</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_IRONCLAD</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>
@@ -18968,17 +18968,17 @@
 			<iAsset>4</iAsset>
 			<iPower>6</iPower>
 			<UnitMeshGroups>
-				<iGroupSize>1</iGroupSize>
+				<iGroupSize>3</iGroupSize>
 				<fMaxSpeed>2.25</fMaxSpeed>
 				<fPadTime>1</fPadTime>
 				<iMeleeWaveSize>1</iMeleeWaveSize>
 				<iRangedWaveSize>1</iRangedWaveSize>
 				<UnitMeshGroup>
-					<iRequired>1</iRequired>
+					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_TRANSPORT</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
-			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+			<FormationType>FORMATION_TYPE_NAVAL</FormationType>
 			<HotKey/>
 			<bAltDown>0</bAltDown>
 			<bShiftDown>0</bShiftDown>

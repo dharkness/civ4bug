@@ -2467,5 +2467,424 @@
 			<DirVariation>0.722772439984</DirVariation>
 		</UnitEntry>
 	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval (1)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_IDLE</EventType>
+			<EventType>ENTITY_EVENT_SURRENDER</EventType>
+			<EventType>ENTITY_EVENT_CAPTURED</EventType>
+			<EventType>ENTITY_EVENT_FORTIFY</EventType>
+			<EventType>ENTITY_EVENT_SLEEP</EventType>
+			<EventType>ENTITY_EVENT_PILLAGE</EventType>
+			<EventType>ENTITY_EVENT_HEAL</EventType>
+			<EventType>ENTITY_EVENT_SENTRY</EventType>
+			<EventType>ENTITY_EVENT_BEGIN_COMBAT</EventType>
+			<EventType>ENTITY_EVENT_BUILD</EventType>
+			<EventType>ENTITY_EVENT_DIE</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.04</x>
+				<y>00.01</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Fortify (2)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_FORTIFY</EventType>
+			<EventType>ENTITY_EVENT_SLEEP</EventType>
+			<EventType>ENTITY_EVENT_PILLAGE</EventType>
+			<EventType>ENTITY_EVENT_HEAL</EventType>
+			<EventType>ENTITY_EVENT_SENTRY</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>00.5</x>
+				<y>00.01</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>0</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.5</x>
+				<y>00.01</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Fortify (3)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_FORTIFY</EventType>
+			<EventType>ENTITY_EVENT_SLEEP</EventType>
+			<EventType>ENTITY_EVENT_PILLAGE</EventType>
+			<EventType>ENTITY_EVENT_HEAL</EventType>
+			<EventType>ENTITY_EVENT_SENTRY</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>00.6</x>
+				<y>-00.5</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>2.618</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.6</x>
+				<y>-00.5</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>0.5236</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+		<!-- Begin Unit (3) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.06</x>
+				<y>00.5</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>4.7124</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (3) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Idle (2)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_IDLE</EventType>
+			<EventType>ENTITY_EVENT_PILLAGE</EventType>
+			<EventType>ENTITY_EVENT_BUILD</EventType>
+			<EventType>ENTITY_EVENT_DIE</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.5</x>
+				<y>00.01</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>00.5</x>
+				<y>00.01</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Idle (3)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_IDLE</EventType>
+			<EventType>ENTITY_EVENT_PILLAGE</EventType>
+			<EventType>ENTITY_EVENT_BUILD</EventType>
+			<EventType>ENTITY_EVENT_DIE</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.65</x>
+				<y>00.07</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.00</x>
+				<y>00.07</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+		<!-- Begin Unit (3) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>00.65</x>
+				<y>00.07</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>3.1416</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (3) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Battle (2)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_BEGIN_COMBAT</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.04</x>
+				<y>01.06</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>2.618</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.04</x>
+				<y>-00.03</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>0.5236</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
+	<UnitFormation>
+		<Name>Naval Battle (3)</Name>
+		<FormationType>FORMATION_TYPE_NAVAL</FormationType>
+		<EventMaskList>
+			<EventType>ENTITY_EVENT_BEGIN_COMBAT</EventType>
+		</EventMaskList>
+		<!-- Begin Unit (1) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>00.86</x>
+				<y>01.00</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>2.618</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (1) -->
+		<!-- Begin Unit (2) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.91</x>
+				<y>00.99</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>0.5236</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (2) -->
+		<!-- Begin Unit (3) -->
+		<UnitEntry>
+			<UnitEntryType>UNIT</UnitEntryType>
+			<Position>
+				<x>-00.05</x>
+				<y>-00.30</y>
+			</Position>
+			<PositionRadius>13.04</PositionRadius>
+			<Direction>4.7124</Direction>
+			<DirVariation>0.189</DirVariation>
+		</UnitEntry>
+		<!-- End Unit (3) -->
+
+		<UnitEntry>
+			<UnitEntryType>GENERAL</UnitEntryType>
+			<Position>
+				<x>0.0</x>
+				<y>0.5</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+
+		<UnitEntry>
+			<UnitEntryType>SEIGE</UnitEntryType>
+			<Position>
+				<x>-0.5</x>
+				<y>-0.8</y>
+			</Position>
+			<PositionRadius>13.0384048104</PositionRadius>
+			<Direction>3.14159265359</Direction>
+			<DirVariation>0.188679622641</DirVariation>
+		</UnitEntry>
+	</UnitFormation>
 <!-- BUG Mod changes End -->
 </UnitFormations>

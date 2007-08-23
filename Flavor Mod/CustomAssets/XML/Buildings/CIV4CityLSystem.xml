@@ -299,13 +299,13 @@
 		</ArtRef>
 
 		<!-- EGYPT ANCIENT/CLASSICAL/MEDIEVAL -->
-		<ArtRef Name="generic:an_egyptian::1x1_05">
+		<ArtRef Name="generic:an_egyptian.nif::1x1_05">
 			<Attribute Class="Era">ERA_ANCIENT</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_EGYPT</Attribute>
 			<Attribute Class="Scalar">iBatchGroup:0</Attribute>
 			<Scale>0.9</Scale>
 		</ArtRef>
-		<ArtRef Name="generic:an_egyptian::1x1_06">
+		<ArtRef Name="generic:an_egyptian.nif::1x1_06">
 			<Attribute Class="Era">ERA_ANCIENT</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_EGYPT</Attribute>
 			<Attribute Class="Scalar">iBatchGroup:0</Attribute>
@@ -318,7 +318,7 @@
 			<Attribute Class="Scalar">iBatchGroup:1</Attribute>
 			<Scale>0.9</Scale>
 		</ArtRef>
-		<ArtRef Name="generic:med_egyptian::1x1x1_02">
+		<ArtRef Name="generic:med_egyptian.nif::1x1x1_02">
 			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL,ERA_MEDIEVAL</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_EGYPT</Attribute>
 			<Attribute Class="Scalar">iBatchGroup:1</Attribute>
@@ -3196,6 +3196,13 @@
 		<!-- INDIAN ANCIENT/CLASSICAL -->
 		<ArtRef Name="generic:an_egyptian.nif::2x2_01">
 			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_INDIAN</Attribute>
+			<Attribute Class="Scalar">iBatchGroup:0</Attribute>
+			<Scale>0.9</Scale>
+		</ArtRef>
+		<!-- INDIAN MEDIEVAL -->
+		<ArtRef Name="generic:med_egyptian.nif::2x2x2_01">
+			<Attribute Class="Era">ERA_MEDIEVAL</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_INDIAN</Attribute>
 			<Attribute Class="Scalar">iBatchGroup:0</Attribute>
 			<Scale>0.9</Scale>
