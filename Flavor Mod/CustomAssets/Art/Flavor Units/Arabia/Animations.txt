@@ -1,0 +1,21 @@
+Axeman -----------------------------use "Warrior" animations
+
+Swordsman------------------------use "Swordsman" animations
+
+Pikeman----------------------------use "Pikeman" animations
+
+Spearman--------------------------use "Spearman" animations
+
+Maceman---------------------------included 
+
+Chariot------------------------------use "Chariot" animations
+
+Knight-------------------------------in game (ARABIA_CAMELARCHER)
+
+Horseman-------------------------use "Companion_Cavalry" animations
+
+Archer--------------------------------use "Archer" animations
+
+Longbowman---------------------use "Longbowman" animations
+
+Crossbowman-------------------use "Crossbowman" animations

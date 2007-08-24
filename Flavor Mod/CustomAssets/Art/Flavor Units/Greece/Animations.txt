@@ -1,0 +1,22 @@
+Swordsman------------------------use "Greek_Hypaspist" animations
+
+Axeman -----------------------------use "Praetorian" animations
+
+Maceman---------------------------use "Praetorian" animations
+
+Spearman--------------------------use "GreekPhalanx" animations
+
+Pikeman----------------------------use "Pikeman" animations
+
+Archer--------------------------------use "Archer" animations
+
+Longbowman---------------------use "Longbowman" animations
+
+Crossbowman-------------------use "Crossbowman" animations
+
+Chariot------------------------------use "Chariot" animations
+
+Horseman-------------------------use "Companion_Cavalry" animations
+
+Knight-------------------------------use "Companion_Cavalry" animations
+

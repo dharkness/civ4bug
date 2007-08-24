@@ -1,0 +1,21 @@
+Axeman -----------------------------use "Warrior" animations
+
+Archer--------------------------------use "Archer" animations
+
+Swordsman------------------------has been included 
+
+Pikeman----------------------------use "Pikeman" animations
+
+Spearman--------------------------has been included 
+
+Maceman---------------------------use "Swordsman" animations
+
+Chariot------------------------------use "EgyptianWarChariot" animations
+
+Knight-------------------------------has been included 
+
+Horseman-------------------------has been included
+
+Crossbowman-------------------use "Crossbowman" animations
+
+Longbowman---------------------use "Longbowman" animations

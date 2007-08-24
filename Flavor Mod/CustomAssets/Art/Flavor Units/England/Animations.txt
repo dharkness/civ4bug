@@ -1,0 +1,11 @@
+Axeman        Warrior
+Archer        Archer
+Chariot       EgyptianWarChariot
+Crossbowman   Crossbowman
+Horseman      Companion_Cavalry
+Knight        Included
+Longbowman    Longbowman
+Maceman       Included
+Pikeman       Pikeman
+Spearman      Included
+Swordsman     Included
