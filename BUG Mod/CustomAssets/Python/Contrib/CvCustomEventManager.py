@@ -28,7 +28,6 @@ import Civ4lerts
 import MoreCiv4lerts
 #import UnitNameEventManager
 
-import RuffOptionsEventManager
 import BugOptionsEventManager
 
 
@@ -83,7 +82,6 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         MoreCiv4lerts.MoreCiv4lerts(self)
         #UnitNameEventManager.UnitNameEventManager(self)
         
-        RuffOptionsEventManager.RuffOptionsEventManager(self)
         BugOptionsEventManager.BugOptionsEventManager(self)
 
     def addEventHandler(self, eventType, eventHandler):

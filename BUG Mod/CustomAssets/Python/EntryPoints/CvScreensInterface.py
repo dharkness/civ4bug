@@ -51,7 +51,6 @@ from CvScreenEnums import *
 from CvPythonExtensions import *
 
 # BUG - Options - start
-import CvRuffModScreen
 import BugOptionsScreen
 # BUG - Options - end
 
@@ -105,10 +104,6 @@ def showOptionsScreen():
 	optionsScreen.interfaceScreen()
 
 # BUG - Options - start
-RuffModScreen = CvRuffModScreen.CvRuffModScreen()
-def showRuffModScreen():
-	RuffModScreen.interfaceScreen()
-
 g_bugOptionsScreen = BugOptionsScreen.BugOptionsScreen()
 
 def getBugOptionsScreen():
