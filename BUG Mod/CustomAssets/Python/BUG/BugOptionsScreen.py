@@ -41,7 +41,7 @@ class BugOptionsScreen:
 
 	def interfaceScreen(self):
 		"Initial creation of the screen"
-		self.pTabControl = CyGTabCtrl("TabControl", False, False)
+		self.pTabControl = CyGTabCtrl("BUG Mod Options", False, False)
 		self.pTabControl.setModal(1)
 		self.pTabControl.setSize(800, 695)
 		self.pTabControl.setControlsExpanding(False)
