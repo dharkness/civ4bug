@@ -12,7 +12,6 @@
 ##
 ## TODO:
 ## - Use onPlayerChangeStateReligion event
-## - log events and quests
 
 from CvPythonExtensions import *
 import CvUtil
@@ -160,6 +159,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		eventManager.addEventHandler("religionFounded", self.onReligionFounded)
 		eventManager.addEventHandler("religionSpread", self.onReligionSpread)
 		eventManager.addEventHandler("religionRemove", self.onReligionRemove)
+		eventManager.addEventHandler("corporationFounded", self.onCorporationFounded)
+		eventManager.addEventHandler("corporationSpread", self.onCorporationSpread)
+		eventManager.addEventHandler("corporationRemove", self.onCorporationRemove)
 		eventManager.addEventHandler("goldenAge", self.onGoldenAge)
 		eventManager.addEventHandler("endGoldenAge", self.onEndGoldenAge)
 		eventManager.addEventHandler("changeWar", self.onChangeWar)
@@ -516,6 +518,45 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has been removed: %s" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName())
 				else:
 					message = "%s has been removed: %s (%s)" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
+				NewAutoLog.writeLog(6, message)
+
+	def onCorporationFounded(self, argsList):
+		if (NewAutoLog.Enabled()
+		and BugAutolog.isLogCorporation()):
+			iCorporation, iFounder = argsList
+			player = PyPlayer(iFounder)
+			iCityId = gc.getGame().getHeadquarters(iCorporation).getID()
+			if (player.getTeamID() == 0):
+				messageEnd = gc.getPlayer(iFounder).getCity(iCityId).getName()
+			else:
+				messageEnd = "a distant land"
+			message = "%s founded in %s" % (gc.getCorporationInfo(iCorporation).getDescription(), messageEnd)
+			NewAutoLog.writeLog(6, message)
+
+	def onCorporationSpread(self, argsList):
+		if (NewAutoLog.Enabled()
+		and BugAutolog.isLogCorporation()):
+			iCorporation, iOwner, pSpreadCity = argsList
+			player = PyPlayer(iOwner)
+
+			if gc.getGame().getHeadquarters(iCorporation).getOwner() == CyGame().getActivePlayer() or pSpreadCity.getOwner() == CyGame().getActivePlayer():
+				if (pSpreadCity.getOwner() == CyGame().getActivePlayer()):
+					message = "%s has spread: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName())
+				else:
+					message = "%s has spread: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName(), player.getCivilizationName())
+				NewAutoLog.writeLog(6, message)
+
+	def onCorporationRemove(self, argsList):
+		if (NewAutoLog.Enabled()
+		and BugAutolog.isLogCorporation()):
+			iCorporation, iOwner, pRemoveCity = argsList
+			player = PyPlayer(iOwner)
+
+			if gc.getGame().getHeadquarters(iCorporation).getOwner() == CyGame().getActivePlayer() or pRemoveCity.getOwner() == CyGame().getActivePlayer():
+				if (pRemoveCity.getOwner() == CyGame().getActivePlayer()):
+					message = "%s has been removed: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName())
+				else:
+					message = "%s has been removed: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
 				NewAutoLog.writeLog(6, message)
 
 	def onGoldenAge(self, argsList):

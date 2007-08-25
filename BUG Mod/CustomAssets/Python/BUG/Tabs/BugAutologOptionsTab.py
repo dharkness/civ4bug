@@ -53,9 +53,9 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachLabel(col3, "Autolog_EventsLabel", "Events:")
 		self.addCheckbox(screen, col3, "Autolog_LogGoodies")
 		self.addCheckbox(screen, col3, "Autolog_LogReligion")
+		self.addCheckbox(screen, col3, "Autolog_LogCorporation")
 		self.addCheckbox(screen, col3, "Autolog_LogGP")
 		self.addCheckbox(screen, col3, "Autolog_LogGA")
-		self.addCheckbox(screen, col3, "Autolog_LogEvents")
 		
 		screen.attachLabel(col4, "Autolog_PoliticsLabel", "Diplomacy:")
 		self.addCheckbox(screen, col4, "Autolog_LogContact")

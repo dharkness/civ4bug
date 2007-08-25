@@ -107,8 +107,12 @@ class BugAutologOptions(OptionsFacade):
 						 "When checked, will log results from popping tribal villages."))
 		self.addOption(Option("Autolog_LogReligion",
 						 "Autolog", "Religion", True,
-						 "Religion",
+						 "Religions",
 						 "When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities"))
+		self.addOption(Option("Autolog_LogCorporation",
+						 "Autolog", "Corporation", True,
+						 "Corporations",
+						 "When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities"))
 		self.addOption(Option("Autolog_LogGP",
 						 "Autolog", "Great People", True,
 						 "Great People",
@@ -117,10 +121,6 @@ class BugAutologOptions(OptionsFacade):
 						 "Autolog", "Golden Age", True,
 						 "Golden Age",
 						 "When checked, will log begin and end of your Golden Ages."))
-		self.addOption(Option("Autolog_LogEvents",
-						 "Autolog", "Events", True,
-						 "Events and Quests",
-						 "When checked, will log events and quests."))
 		
 		# Politics
 		self.addOption(Option("Autolog_LogContact",
@@ -252,14 +252,14 @@ class BugAutologOptions(OptionsFacade):
 	def isLogReligion(self):
 		return self.getBoolean('Autolog_LogReligion')
 	
+	def isLogCorporation(self):
+		return self.getBoolean('Autolog_LogCorporation')
+	
 	def isLogGreatPeople(self):
 		return self.getBoolean('Autolog_LogGP')
 	
 	def isLogGoldenAge(self):
 		return self.getBoolean('Autolog_LogGA')
-	
-	def isLogEvents(self):
-		return self.getBoolean('Autolog_LogEvents')
 
 	# Politics
 
