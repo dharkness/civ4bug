@@ -30,9 +30,13 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
 		screen.setControlFlag("EspionageScreenLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, rightPanel, "Espionage_Better")
+		self.addCheckbox(screen, rightPanel, "Espionage_Enabled")
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_GoodColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_BadRatio", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_BadColor", True)
+		
+		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_PossibleColor", True)
+		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)

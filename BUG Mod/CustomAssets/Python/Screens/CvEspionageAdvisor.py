@@ -6,11 +6,11 @@ import CvUtil
 import ScreenInput
 import CvScreenEnums
 
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 import ColorUtil
-import BugScreensOptions
-BugOpt = BugScreensOptions.getOptions()
-# BUG - Compact Espionage - end
+import BugEspionageOptions
+BugOpt = BugEspionageOptions.getOptions()
+# BUG - Better Espionage - end
 
 # globals
 gc = CyGlobalContext()
@@ -132,9 +132,9 @@ class CvEspionageAdvisor:
 		
 		self.aiKnownPlayers = []
 		self.aiUnknownPlayers = []
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 		self.iNumEntries = 0
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 
 		for iLoop in range(gc.getMAX_PLAYERS()):
 			pPlayer = gc.getPlayer(iLoop)
@@ -143,18 +143,18 @@ class CvEspionageAdvisor:
 					if (pActiveTeam.isHasMet(pPlayer.getTeam())):
 						
 						self.aiKnownPlayers.append(iLoop)
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 						self.iNumEntries += 1
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 						
 						if (self.iTargetPlayer == -1):
 							self.iTargetPlayer = iLoop
 
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 		while(self.iNumEntries < 17):
 			self.iNumEntries = self.iNumEntries + 1
 			self.aiUnknownPlayers.append(self.iNumEntries)
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 		
 		############################
 		#### Total EPs Per Turn Text
@@ -262,14 +262,14 @@ class CvEspionageAdvisor:
 			self.aszDecreaseButtons = []
 			self.aszAmountTexts = []
 			
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 			
 			self.aszEspionageIcons = []
 			
-			if (BugOpt.isUseBetterEspionageScreen()):
-				iRatioColor = ColorUtil.keyToType(BugOpt.getEspionageRatioColor())
-				iGoodRatioColor = ColorUtil.keyToType(BugOpt.getGoodEspionageRatioColor())
-				iBadRatioColor = ColorUtil.keyToType(BugOpt.getBadEspionageRatioColor())
+			if (BugOpt.isEnabled()):
+				iRatioColor = ColorUtil.keyToType(BugOpt.getDefaultRatioColor())
+				iGoodRatioColor = ColorUtil.keyToType(BugOpt.getGoodRatioColor())
+				iBadRatioColor = ColorUtil.keyToType(BugOpt.getBadRatioColor())
 				for iPlayerID in self.aiKnownPlayers:
 					
 					pTargetPlayer = gc.getPlayer(iPlayerID)
@@ -323,9 +323,9 @@ class CvEspionageAdvisor:
 					szName = "AmountText%d" %(iPlayerID)
 					self.aszAmountTexts.append(szName)
 					iMultiplier, szMultiplier = self.getMultiplierAgainstTarget(iPlayerID)
-					if (iBadRatioColor >= 0 and iMultiplier >= BugOpt.getBadEspionageRatioCutoff()):
+					if (iBadRatioColor >= 0 and iMultiplier >= BugOpt.getBadRatioCutoff()):
 						szText = localText.changeTextColor(szMultiplier, iBadRatioColor)
-					elif (iGoodRatioColor >= 0 and iMultiplier <= BugOpt.getGoodEspionageRatioCutoff()):
+					elif (iGoodRatioColor >= 0 and iMultiplier <= BugOpt.getGoodRatioCutoff()):
 						szText = localText.changeTextColor(szMultiplier, iGoodRatioColor)
 					elif (iRatioColor >= 0):
 						szText = localText.changeTextColor(szMultiplier, iRatioColor)
@@ -431,7 +431,7 @@ class CvEspionageAdvisor:
 					
 					iPlayerLoop += 1
 
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 
 	def getMultiplierAgainstTarget(self, iTargetPlayer=-1):
 		
@@ -445,10 +445,10 @@ class CvEspionageAdvisor:
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		pTargetTeam = gc.getTeam(pTargetPlayer.getTeam())
 		
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 		iMultiplier = getEspionageModifier(pActivePlayer.getTeam(), pTargetPlayer.getTeam())
 		szMultiplier = localText.getText("TXT_KEY_ESPIONAGE_COST", (iMultiplier, ))
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 			
 		if (pActiveTeam.getCounterespionageTurnsLeftAgainstTeam(pTargetPlayer.getTeam()) > 0):
 			szMultiplier += u"*"
@@ -456,9 +456,9 @@ class CvEspionageAdvisor:
 		if (pTargetTeam.getCounterespionageTurnsLeftAgainstTeam(pActivePlayer.getTeam()) > 0):
 			szMultiplier += u"+"
 		
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 		return iMultiplier, szMultiplier
-# BUG - Compact Espionage - end
+# BUG - Better Espionage - end
 		
 	def refreshScreen(self):
 		
@@ -474,9 +474,9 @@ class CvEspionageAdvisor:
 			
 			iPlayerLoop = 0
 			
-# BUG - Compact Espionage - start
+# BUG - Better Espionage - start
 			
-			if (BugOpt.isUseBetterEspionageScreen()):
+			if (BugOpt.isEnabled()):
 				for iPlayerID in self.aiKnownPlayers:
 					
 					iX = 0
@@ -533,7 +533,7 @@ class CvEspionageAdvisor:
 					
 					iPlayerLoop += 1
 			
-# BUG - Civ List Layout - end
+# BUG - Better Espionage - end
 
 			# Is there any other players which have been met?
 			if (self.iTargetPlayer != -1):
@@ -590,6 +590,20 @@ class CvEspionageAdvisor:
 				screen.setTableColumnHeader(szMissionsTable, 2, "", self.W_TABLE_2)
 				screen.setTableColumnHeader(szMissionsTable, 3, "", self.W_TABLE_3)
 												
+# BUG - Better Espionage - start
+
+				iTargetTeam = pTargetPlayer.getTeam()
+				iPlayerEPs = pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam)
+				if (BugOpt.isEnabled()):
+					iPossibleColor = ColorUtil.keyToType(BugOpt.getPossibleMissionColor())
+					iCloseColor = ColorUtil.keyToType(BugOpt.getCloseMissionColor())
+					iClosePercent = BugOpt.getCloseMissionPercent()
+				else:
+					iPossibleColor = -1
+					iCloseColor = -1
+					iClosePercent = -1
+
+# BUG - Better Espionage - end
 								
 				# Loop through all Missions
 				for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
@@ -626,7 +640,17 @@ class CvEspionageAdvisor:
 																
 								iRow = screen.appendTableRow(szEffectsTable)
 								screen.setTableText(szEffectsTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szEffectsTable, 2, iRow, str(iCost), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+
+# BUG - Better Espionage - start
+
+								szCost = unicode(str(iCost))
+								if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
+									szCost = localText.changeTextColor(szCost, iPossibleColor)
+								elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
+									szCost = localText.changeTextColor(szCost, iCloseColor)
+								screen.setTableText(szEffectsTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+
+# BUG - Better Espionage - end
 									
 						# Active Mission
 						else:
@@ -655,8 +679,18 @@ class CvEspionageAdvisor:
 														
 							iRow = screen.appendTableRow(szMissionsTable)
 							screen.setTableText(szMissionsTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+# BUG - Better Espionage - start
+
 							if iCost > 0:
-								screen.setTableText(szMissionsTable, 2, iRow, str(iCost), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+								szCost = unicode(str(iCost))
+								if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
+									szCost = localText.changeTextColor(szCost, iPossibleColor)
+								elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
+									szCost = localText.changeTextColor(szCost, iCloseColor)
+								screen.setTableText(szMissionsTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+
+# BUG - Better Espionage - end
 							
 		return 0
 		
@@ -728,10 +762,10 @@ class CvEspionageAdvisor:
 					
 					CyMessageControl().sendEspionageSpendingWeightChange(iTargetTeam, 1)
 					
-# BUG - Civ List Layout - start
+# BUG - Better Espionage - start
 
 					# EF: This can be removed, but since it's original code I've left it in.
-					if (not BugOpt.isUseBetterEspionageScreen()):
+					if (not BugOpt.isEnabled()):
 						szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
 						screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
@@ -749,10 +783,10 @@ class CvEspionageAdvisor:
 						
 						CyMessageControl().sendEspionageSpendingWeightChange(iTargetTeam, -1)
 
-# BUG - Civ List Layout - start
+# BUG - Better Espionage - start
 
 						# EF: This can be removed, but since it's original code I've left it in.
-						if (not BugOpt.isUseBetterEspionageScreen()):
+						if (not BugOpt.isEnabled()):
 							szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
 							screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
