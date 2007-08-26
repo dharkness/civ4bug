@@ -43,26 +43,19 @@ class BuildUnitName(AbstractBuildUnitName):
 
 		city = argsList[0]
 		unit = argsList[1]
+#		iOwner = gc.getPlayer(unit.getOwner())
 
-		iOwner = gc.getPlayer(unit.getOwner())
+		if (not unit.getOwner() == CyGame().getActivePlayer()
+		or not BugUnitName.isEnabled()
+		or BugUnitName.isAdvanced()):
+			return
+
 		civtype = iOwner.getCivilizationType()
 
-		return
-#		if (iOwner.isHuman()):
-#			ziNameMthd = RuffMod.get_int('UNITNAME', 'Method', 0)
-#			if ziNameMthd == 0:
-#				return
-#			elif ziNameMthd == 1:
-#				zsName = RandomNameUtils.getRandomName()
-#			elif ziNameMthd == 2:
-#				znName = RandomNameUtils.getRandomCivilizationName(civtype)
-#			elif ziNameMthd == 3:
-#				zsName = UnitNameRuff.getUnitNameNoCity(unit)
-#			elif ziNameMthd == 4:
-#				zsName = UnitNameRuff.getUnitNameWithCity(unit, city)
-#			elif ziNameMthd == 5:
-#				zsName = UnitNameRuff.getUnitBorgName()
-#			else:
-#				return
+		zsUnitNameConv = BugUnitName.getCombat(unit.getUnitCombatType)
+		if zsUnitNameConv == 'DEFAULT':
+			zsUnitNameConv = BugUnitName.getDefault()
 
-#			unit.setName(zsName)
+		unit.setName(zsUnitNameConv)
+
+		return
