@@ -632,7 +632,7 @@ class CvCustomizableDomesticAdvisor:
 		self.objectHave = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_GREEN")) #"x"
 		self.objectNotPossible = localText.changeTextColor (self.objectIsNotPresent, gc.getInfoTypeForString("COLOR_RED")) #"-"
 		self.objectPossible = localText.changeTextColor (self.objectCanBeBuild, gc.getInfoTypeForString("COLOR_BLUE")) #"o"
-		self.objectHaveObsolete = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_WHITE")) #"+"
+		self.objectHaveObsolete = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_WHITE")) #"x"
 		self.objectNotPossibleConcurrent = localText.changeTextColor (self.objectIsNotPresent, gc.getInfoTypeForString("COLOR_YELLOW")) #"-"
 		self.objectPossibleConcurrent = localText.changeTextColor (self.objectCanBeBuild, gc.getInfoTypeForString("COLOR_YELLOW")) #"o"		
 
@@ -1517,10 +1517,12 @@ class CvCustomizableDomesticAdvisor:
 				return self.objectHaveObsolete
 		elif city.getProductionBuilding() == bldg:
 			return self.objectUnderConstruction
-		elif not city.canConstruct(bldg, False, False, False):
-			return self.objectNotPossible
-		else:
+		elif city.canConstruct(bldg, False, False, False):
 			return self.objectPossible
+		elif city.canConstruct(bldg, True, False, False):
+			return self.objectPossibleConcurrent
+		else:
+			return self.objectNotPossible
 
 	def findGlobalBaseYieldRateRank (self, city, szKey, arg):
 		
