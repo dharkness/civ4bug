@@ -1515,7 +1515,7 @@ class CvCustomizableDomesticAdvisor:
 				return self.objectHave
 			else:
 				return self.objectHaveObsolete
-		elif city.getProductionBuilding() == bldg:
+		elif city.getFirstBuildingOrder(bldg) != -1:
 			return self.objectUnderConstruction
 		elif city.canConstruct(bldg, False, False, False):
 			return self.objectPossible
@@ -1896,8 +1896,9 @@ class CvCustomizableDomesticAdvisor:
 						building = civInfo.getCivilizationBuildings(buildingClass)
 						screen.setTableColumnHeader (page, value + 1, "", self.columnWidth[key])
 						szName = "BLDG_BTN_%d" % building
+						x = iBuildingButtonX + (self.columnWidth[key] - self.BUILDING_BUTTON_X_SIZE) / 2
 						screen.setImageButton (szName, self.BUILDING_INFO_LIST[building].getButton(), 
-											   iBuildingButtonX, iBuildingButtonY, self.BUILDING_BUTTON_X_SIZE, self.BUILDING_BUTTON_Y_SIZE, 
+											   x, iBuildingButtonY, self.BUILDING_BUTTON_X_SIZE, self.BUILDING_BUTTON_Y_SIZE, 
 											   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, building, -1)
 					else:
 						screen.setTableColumnHeader (page, value + 1, "<font=2>" + self.HEADER_DICT[key] + "</font>", self.columnWidth[key] )
