@@ -22,7 +22,6 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		left, right = self.addTwoColumnLayout(screen, column, "Options")
 		
 		self.addCheckbox(screen, left, "Autolog_Silent")
-		self.addTextDropdown(screen, left, left, "Autolog_Format")
 		self.addCheckbox(screen, left, "Autolog_ColorCoding")
 		self.addIntDropdown(screen, left, left, "Autolog_4000BC")
 		self.addCheckbox(screen, left, "Autolog_IBT")
@@ -31,6 +30,7 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextEdit(screen, right, right, "Autolog_FilePath")
 		self.addTextEdit(screen, right, right, "Autolog_FileName")
 		self.addTextEdit(screen, right, right, "Autolog_Prefix")
+		self.addTextDropdown(screen, right, right, "Autolog_Format")
 		
 		# What to Log
 		screen.attachHSeparator(column, column + "Sep2")

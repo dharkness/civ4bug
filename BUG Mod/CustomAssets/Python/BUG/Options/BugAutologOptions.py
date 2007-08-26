@@ -36,13 +36,13 @@ class BugAutologOptions(OptionsFacade):
 							 "Autolog", "Format Style", 2,
 							 "Format Style",
 							 "The format of the log output.",
-							 ['Plain', 'HTML Tags', 'Forum Tags']))
+							 ['Plain', 'HTML Tags', 'Forum Tags, With " around color codes', 'Forum Tags, No " around color codes']))
 		self.addOption(Option("Autolog_ColorCoding",
 						 "Autolog", "", True,
 						 "Color Coding",
 						 "When checked, comments are color-coded for forum posts."))
 		self.addOption(OptionList("Autolog_4000BC",
-								  "Autolog", "4000BC", 1,
+								  "Autolog", "4000BC", 0,
 								  "4000BC is Turn",
 								  "Select which turn number 4000BC should be.",
 								  [0, 1]))
