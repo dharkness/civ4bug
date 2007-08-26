@@ -354,6 +354,10 @@ class CvCustomizableDomesticAdvisor:
 
 # BUG - Colony Split - end
 
+		# Building Button Headers
+		self.BUILDING_BUTTON_X_SIZE = 24
+		self.BUILDING_BUTTON_Y_SIZE = 24
+
 		# Location of Specialist Toggle Button
 		self.X_SPECIAL = self.nTableX
 		self.Y_SPECIAL = self.Y_TEXT - 10
@@ -430,7 +434,7 @@ class CvCustomizableDomesticAdvisor:
 		self.visiblePage = None
 
 		self.COLUMNS_LIST = [
-				# Name                      Width    Type   CyCityFunction0			CyCityFunction1			Arg									selfFunction
+				# Name                      Width    Type   CyCityFunction0			CyCityFunction1			Arg									selfFunction							Arg							Title
 
 				("NAME",					95,		"text",	CyCity.getName,			None,					0,									None,									None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_NAME\", ()).upper()"),
 				("ADVISE_CULTURE",			150,	"text",	None,					None,					0,									self.advise,							"Culture",					"localText.getText(\"TXT_KEY_CONCEPT_CULTURE\", ()).upper()"),
@@ -618,12 +622,27 @@ class CvCustomizableDomesticAdvisor:
 		self.silverStarIcon = u"%c" % CyGame().getSymbolID(FontSymbols.SILVER_STAR_CHAR)
 		self.bulletIcon = u"%c" % CyGame().getSymbolID(FontSymbols.BULLET_CHAR)
 
+		# Special symbols for building, wonder and project views
+		self.objectIsPresent = "x"
+		self.objectIsNotPresent = "-"
+		self.objectCanBeBuild = "o"
+		self.objectUnderConstruction = self.hammerIcon
+		
+		# add the colors dependant on the statuses
+		self.objectHave = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_GREEN")) #"x"
+		self.objectNotPossible = localText.changeTextColor (self.objectIsNotPresent, gc.getInfoTypeForString("COLOR_RED")) #"-"
+		self.objectPossible = localText.changeTextColor (self.objectCanBeBuild, gc.getInfoTypeForString("COLOR_BLUE")) #"o"
+		self.objectHaveObsolete = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_WHITE")) #"+"
+		self.objectNotPossibleConcurrent = localText.changeTextColor (self.objectIsNotPresent, gc.getInfoTypeForString("COLOR_YELLOW")) #"-"
+		self.objectPossibleConcurrent = localText.changeTextColor (self.objectCanBeBuild, gc.getInfoTypeForString("COLOR_YELLOW")) #"o"		
+
 		self.loadPages()
 
 		self.BUILDING_ICONS_DICT = { }
 		self.BUILDING_DICT = { }
 		self.BUILDING_INFO_LIST = []
 
+#		extraBldgColumns = []
 		for i in range(gc.getNumBuildingInfos()):
 			info = gc.getBuildingInfo(i)
 			desc = info.getDescription()
@@ -687,7 +706,8 @@ class CvCustomizableDomesticAdvisor:
 				or info.getYieldChange(YieldTypes.YIELD_PRODUCTION) > 0:
 				icon += self.hammerIcon
 
-			if info.getTradeRouteModifier() > 0 or info.getTradeRoutes() > 0 or info.getCoastalTradeRoutes() > 0:
+			if info.getTradeRouteModifier() > 0 or info.getTradeRoutes() > 0 or info.getCoastalTradeRoutes() > 0 \
+			or info.getGlobalTradeRoutes() > 0 or info.getForeignTradeRouteModifier() > 0:
 				icon += self.tradeIcon
 
 			if info.getMaintenanceModifier() < 0:
@@ -710,6 +730,17 @@ class CvCustomizableDomesticAdvisor:
 
 			self.COLUMNS_LIST.append((key, 50 + 15 * len(icon), "text", None, None, 0, self.calculateValue, None, u"u\"" + desc + u"\""))
 			self.BUILDING_ICONS_DICT[key] = icon
+#			extraBldgColumns.append(("BLDG_" + key, 22, "bldg", None, None, 0, self.calculateBuilding, i, "u\"%s\"" % desc))
+		
+		# Duplicate building columns
+#		self.COLUMNS_LIST += extraBldgColumns
+
+		# Building classes
+		for i in range(gc.getNumBuildingClassInfos()):
+			info = gc.getBuildingClassInfo(i)
+			key = "BLDGCLASS_" + info.getType()
+			desc = info.getDescription()
+			self.COLUMNS_LIST.append((key, 22, "bldg", None, None, 0, self.calculateBuilding, i, "u\"%s\"" % desc))
 
 		# Hurry types
 		for i in range(gc.getNumHurryInfos()):
@@ -1475,6 +1506,22 @@ class CvCustomizableDomesticAdvisor:
 		# return the final value
 		return szReturn
 
+	def calculateBuilding (self, city, szKey, arg):
+		
+		# Turn building class into building
+		bldg = gc.getCivilizationInfo(city.getCivilizationType()).getCivilizationBuildings(arg)
+		if city.getNumBuilding(bldg) > 0:
+			if city.getNumActiveBuilding(bldg) > 0:
+				return self.objectHave
+			else:
+				return self.objectHaveObsolete
+		elif city.getProductionBuilding() == bldg:
+			return self.objectUnderConstruction
+		elif not city.canConstruct(bldg, False, False, False):
+			return self.objectNotPossible
+		else:
+			return self.objectPossible
+
 	def findGlobalBaseYieldRateRank (self, city, szKey, arg):
 		
 		L = []
@@ -1691,7 +1738,7 @@ class CvCustomizableDomesticAdvisor:
 				# Color it red and return it
 				return localText.changeTextColor (nValue, gc.getInfoTypeForString("COLOR_RED"))
 			# For each type of comparison
-			for szCompareType, clDict in self.COLOR_DICT_DICT.items():
+			for szCompareType, clDict in self.COLOR_DICT_DICT.iteritems():
 				# Get the color we will use.
 				color = self.COLOR_DICT[szCompareType]
 
@@ -1709,6 +1756,11 @@ class CvCustomizableDomesticAdvisor:
 		screen = self.getScreen()
 		iPlayer = PyPlayer(CyGame().getActivePlayer())
 		cityList = iPlayer.getCityList()
+		
+		# Hide building icons
+		for i in range(gc.getNumBuildingInfos()):
+			szName = "BLDG_BTN_%d" % i
+			screen.hide(szName)
 
 		# Fill the pages drop down
 		screen.addDropDownBoxGFC(self.PAGES_DD_NAME, self.X_SPECIAL, self.Y_SPECIAL, 200, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
@@ -1821,16 +1873,37 @@ class CvCustomizableDomesticAdvisor:
 #					screen.attachControlToTableCell( szWidgetName, page, i, 0 )
 					screen.setTableText( page, 0, i, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID(), CvUtil.FONT_LEFT_JUSTIFY)
 
-			# Loop through the columns first. This is unintuitive, but faster.
-			for key, value in self.columnDict.items():
+			# Order the columns
+			columns = []
+			for key, value in self.columnDict.iteritems():
+				columns.append((value, key))
+			columns.sort()
 
+			iBuildingButtonX = self.nTableX + 30
+			iBuildingButtonY = self.nTableY
+			civInfo = gc.getCivilizationInfo(gc.getActivePlayer().getCivilizationType())
+			
+			# Loop through the columns first. This is unintuitive, but faster.
+			for value, key in columns:
+				
 				try:
 					columnDef = self.COLUMNS_LIST[self.COLUMNS_INDEX[key]]
+					type = columnDef[2]
+					if (type == "bldg"):
+						buildingClass = columnDef[7]
+						building = civInfo.getCivilizationBuildings(buildingClass)
+						screen.setTableColumnHeader (page, value + 1, "", self.columnWidth[key])
+						szName = "BLDG_BTN_%d" % building
+						screen.setImageButton (szName, self.BUILDING_INFO_LIST[building].getButton(), 
+											   iBuildingButtonX, iBuildingButtonY, self.BUILDING_BUTTON_X_SIZE, self.BUILDING_BUTTON_Y_SIZE, 
+											   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, building, -1)
+					else:
+						screen.setTableColumnHeader (page, value + 1, "<font=2>" + self.HEADER_DICT[key] + "</font>", self.columnWidth[key] )
 
-					screen.setTableColumnHeader (page, value + 1, "<font=2>" + self.HEADER_DICT[key] + "</font>", self.columnWidth[key] )
+					iBuildingButtonX += self.columnWidth[key]
 
 					# Get the type
-					type = columnDef[2]
+#					type = columnDef[2]
 
 					buttonType = None
 
@@ -1846,6 +1919,9 @@ class CvCustomizableDomesticAdvisor:
 						justify = CvUtil.FONT_RIGHT_JUSTIFY
 					elif (type == "bonus"):
 						buttonType = "bonus"
+					elif (type == "bldg"):
+						funcTableWrite = screen.setTableText
+						justify = CvUtil.FONT_CENTER_JUSTIFY
 					else:
 						return;
 
