@@ -19,33 +19,33 @@ class autologInstance:
 	def __init__(self):
 		## USER SETTINGS
 		self.colorMessageFormats = [
-			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n"],
-			["%s\n", "<span style=\"color: Red\">%s</span><br>\n", "[color=\"Red\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Purple\">%s</span><br>\n", "[color=\"Purple\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: RoyalBlue\">%s</span><br>\n", "[color=\"RoyalBlue\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: DarkOrange\">%s</span><br>\n", "[color=\"DarkOrange\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Green\">%s</span><br>\n", "[color=\"Green\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Brown\">%s</span><br>\n", "[color=\"Brown\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: DarkRed\">%s</span><br>\n", "[color=\"DarkRed\"]%s[/color]\n"],
-			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n"],
-			["%s\n", "<span style=\"color: SeaGreen\">%s</span><br>\n", "[color=\"SeaGreen\"]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Blue\">%s</span><br>\n", "[color=\"Blue\"]%s[/color]\n"]];
+			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n", "[b][u]%s[/u][/b]\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n", "[b]%s[/b] %s\n"],
+			["%s\n", "<span style=\"color: Red\">%s</span><br>\n", "[color=\"Red\"]%s[/color]\n", "[color=\"Red\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: Purple\">%s</span><br>\n", "[color=\"Purple\"]%s[/color]\n", "[color=\"Purple\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: RoyalBlue\">%s</span><br>\n", "[color=\"RoyalBlue\"]%s[/color]\n", "[color=\"RoyalBlue\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: DarkOrange\">%s</span><br>\n", "[color=\"DarkOrange\"]%s[/color]\n", "[color=\"DarkOrange\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: Green\">%s</span><br>\n", "[color=\"Green\"]%s[/color]\n", "[color=\"Green\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: Brown\">%s</span><br>\n", "[color=\"Brown\"]%s[/color]\n", "[color=\"Brown\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: DarkRed\">%s</span><br>\n", "[color=\"DarkRed\"]%s[/color]\n", "[color=\"DarkRed\"]%s[/color]\n"],
+			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n", "[b]%s[/b]\n"],
+			["%s\n", "<span style=\"color: SeaGreen\">%s</span><br>\n", "[color=\"SeaGreen\"]%s[/color]\n", "[color=\"SeaGreen\"]%s[/color]\n"],
+			["%s\n", "<span style=\"color: Blue\">%s</span><br>\n", "[color=\"Blue\"]%s[/color]\n", "[color=\"Blue\"]%s[/color]\n"]];
 		self.plainMessageFormats = [
-			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n"]];
+			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n", "[b][u]%s[/u][/b]\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n", "[b]%s[/b] %s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n", "[b]%s[/b]\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
+			["%s\n", "%s<br>\n", "%s\n", "%s\n"]];
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)

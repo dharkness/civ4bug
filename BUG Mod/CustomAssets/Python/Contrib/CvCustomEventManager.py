@@ -26,7 +26,7 @@ import ReminderEventManager
 import autologEventManager
 import Civ4lerts
 import MoreCiv4lerts
-#import UnitNameEventManager
+import UnitNameEventManager
 
 import BugOptionsEventManager
 
@@ -80,7 +80,7 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         autologEventManager.autologEventManager(self)
         Civ4lerts.Civ4lerts(self)
         MoreCiv4lerts.MoreCiv4lerts(self)
-        #UnitNameEventManager.UnitNameEventManager(self)
+        UnitNameEventManager.UnitNameEventManager(self)
         
         BugOptionsEventManager.BugOptionsEventManager(self)
 
