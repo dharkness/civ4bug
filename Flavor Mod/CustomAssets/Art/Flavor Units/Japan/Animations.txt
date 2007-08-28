@@ -1,0 +1,21 @@
+Axeman -----------------------------use "JapaneseSamurai" animations
+
+Swordsman------------------------use "JapaneseSamurai" animations
+
+Pikeman----------------------------use "Pikeman" animations
+
+Spearman--------------------------use "Pikeman" animations
+
+Maceman---------------------------included (JapaneseSamurai)
+
+Chariot------------------------------included
+
+Knight-------------------------------use "MongelKeshik" animations
+
+Horseman-------------------------use "Knight" animations
+
+Archer--------------------------------use "Longbowman" animations
+
+Longbowman---------------------use "Longbowman" animations
+
+Crossbowman-------------------use "Crossbowman" animations
