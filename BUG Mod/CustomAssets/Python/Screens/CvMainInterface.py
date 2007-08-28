@@ -3169,13 +3169,6 @@ class CvMainInterface:
 										szBuffer = szBuffer + szTempBuffer
 # BUG - Dead Civs - end
 
-# BUG - Attitude Icons - start
-										if (BugScore.isShowAttitude() and not gc.getPlayer(ePlayer).isHuman()):
-											iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
-											cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-											szBuffer = szBuffer + u" %c" %cAtt
-# BUG - Attitude Icons - end
-
 # BUG - Dead Civs - start
 										if (gc.getPlayer(ePlayer).isAlive()):
 											# BUG: Rest of this change is merely indentation by 1 level ...
@@ -3236,6 +3229,13 @@ class CvMainInterface:
 											# BUG: ...end of indentation
 # BUG - Dead Civs - end
 										
+# BUG - Attitude Icons - start
+										if (BugScore.isShowAttitude() and not gc.getPlayer(ePlayer).isHuman()):
+											iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
+											cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+											szBuffer = szBuffer + u" %c" %cAtt
+# BUG - Attitude Icons - end
+
 										if (CyGame().isNetworkMultiPlayer()):
 											szBuffer = szBuffer + CyGameTextMgr().getNetStats(ePlayer)
 										
