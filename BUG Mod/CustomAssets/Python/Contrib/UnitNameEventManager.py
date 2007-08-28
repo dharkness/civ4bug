@@ -45,17 +45,17 @@ class BuildUnitName(AbstractBuildUnitName):
 		unit = argsList[1]
 #		iOwner = gc.getPlayer(unit.getOwner())
 
-		if (not unit.getOwner() == CyGame().getActivePlayer()
-		or not BugUnitName.isEnabled()
-		or BugUnitName.isAdvanced()):
-			return
+#		if (not unit.getOwner() == CyGame().getActivePlayer()
+#		or not BugUnitName.isEnabled()
+#		or BugUnitName.isAdvanced()):
+#			return
 
-		civtype = iOwner.getCivilizationType()
+#		civtype = iOwner.getCivilizationType()
 
-		zsUnitNameConv = BugUnitName.getCombat(unit.getUnitCombatType)
-		if zsUnitNameConv == 'DEFAULT':
-			zsUnitNameConv = BugUnitName.getDefault()
+#		zsUnitNameConv = BugUnitName.getCombat(unit.getUnitCombatType)
+#		if zsUnitNameConv == 'DEFAULT':
+#			zsUnitNameConv = BugUnitName.getDefault()
 
-		unit.setName(zsUnitNameConv)
+#		unit.setName(zsUnitNameConv)
 
 		return
