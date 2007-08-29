@@ -11368,9 +11368,9 @@
 			<fInterfaceScale>0.9</fInterfaceScale>
 			<bActAsLand>0</bActAsLand>
 			<bActAsAir>0</bActAsAir>
-			<NIF>Art/Flavor Units/Egypt/Knight_Egypt/egyptmidhvycavalry.nif</NIF>
-			<KFM>Art/Units/Knight_South_America/Companion_Cavalry.kfm</KFM>
-			<SHADERNIF>Art/Flavor Units/Egypt/Knight_Egypt/egyptmidhvycavalry_fx.nif</SHADERNIF>
+			<NIF>Art/Flavor Units/Egypt/Knight_Egypt/Anubisknightarmor.nif</NIF>
+			<KFM>Art/Units/Unique/Persia/Immortal/PersianImmortal.kfm</KFM>
+			<SHADERNIF>Art/Flavor Units/Egypt/Knight_Egypt/Anubisknightarmor_fx.nif</SHADERNIF>
 			<ShadowDef>
 				<ShadowNIF>Art/Units/01_UnitShadows/HorseShadow.nif</ShadowNIF>
 				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
