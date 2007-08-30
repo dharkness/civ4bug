@@ -617,6 +617,16 @@ class CvCustomizableDomesticAdvisor:
 		self.sickIcon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHEALTHY_CHAR)
 		self.tradeIcon = u"%c" % CyGame().getSymbolID(FontSymbols.TRADE_CHAR)
 		self.unhappyicon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHAPPY_CHAR)
+		
+		self.yieldIcons = {}
+		for eYieldType in range(YieldTypes.NUM_YIELD_TYPES):
+			info = gc.getYieldInfo(eYieldType)
+			self.yieldIcons[eYieldType] = u"%c" % info.getChar()
+		
+		self.commerceIcons = {}
+		for eCommerceType in range(CommerceTypes.NUM_COMMERCE_TYPES):
+			info = gc.getCommerceInfo(eCommerceType)
+			self.commerceIcons[eCommerceType] = u"%c" % info.getChar()
 
 		self.starIcon = u"%c" % CyGame().getSymbolID(FontSymbols.STAR_CHAR)
 		self.silverStarIcon = u"%c" % CyGame().getSymbolID(FontSymbols.SILVER_STAR_CHAR)
@@ -635,6 +645,36 @@ class CvCustomizableDomesticAdvisor:
 		self.objectHaveObsolete = localText.changeTextColor (self.objectIsPresent, gc.getInfoTypeForString("COLOR_WHITE")) #"x"
 		self.objectNotPossibleConcurrent = localText.changeTextColor (self.objectIsNotPresent, gc.getInfoTypeForString("COLOR_YELLOW")) #"-"
 		self.objectPossibleConcurrent = localText.changeTextColor (self.objectCanBeBuild, gc.getInfoTypeForString("COLOR_YELLOW")) #"o"		
+		
+		# Corporation Yield and Commerce values by Bonus
+		# Maps are { bonus -> { yield/commerce -> { corporation -> value } } }
+		self.corpMaintPercent = gc.getWorldInfo(gc.getMap().getWorldSize()).getCorporationMaintenancePercent()
+		self.bonusCorpYields = {}
+		self.bonusCorpCommerces = {}
+		for eCorp in range(gc.getNumCorporationInfos()):
+			info = gc.getCorporationInfo(eCorp)
+			for i in range(gc.getNUM_CORPORATION_PREREQ_BONUSES()):
+				eBonus = info.getPrereqBonus(i)
+				if (eBonus >= 0):
+					for eYield in range(YieldTypes.NUM_YIELD_TYPES):
+						iYieldValue = info.getYieldProduced(eYield)
+						if (iYieldValue != 0):
+							if (not self.bonusCorpYields.has_key(eBonus)):
+								self.bonusCorpYields[eBonus] = {}
+							if (not self.bonusCorpYields[eBonus].has_key(eYield)):
+								self.bonusCorpYields[eBonus][eYield] = {}
+							if (not self.bonusCorpYields[eBonus][eYield].has_key(eCorp)):
+								self.bonusCorpYields[eBonus][eYield][eCorp] = iYieldValue
+						
+					for eCommerce in range(CommerceTypes.NUM_COMMERCE_TYPES):
+						iCommerceValue = info.getCommerceProduced(eCommerce)
+						if (iCommerceValue != 0):
+							if (not self.bonusCorpCommerces.has_key(eBonus)):
+								self.bonusCorpCommerces[eBonus] = {}
+							if (not self.bonusCorpCommerces[eBonus].has_key(eCommerce)):
+								self.bonusCorpCommerces[eBonus][eCommerce] = {}
+							if (not self.bonusCorpCommerces[eBonus][eCommerce].has_key(eCorp)):
+								self.bonusCorpCommerces[eBonus][eCommerce][eCorp] = iCommerceValue
 
 		self.loadPages()
 
@@ -759,13 +799,21 @@ class CvCustomizableDomesticAdvisor:
 
 			self.COLUMNS_LIST.append((name, 50, "text", None, None, 0, self.canHurry, i, header))
 
-		# Resources ("bonuses")
+		# Resources ("bonuses") -- presence
 		for i in range(gc.getNumBonusInfos()):
 			info = gc.getBonusInfo(i)
-			desc = info.getDescription()
+			desc = u"%c" % info.getChar()
+			key = "HAS_" + self.getBonusKey(i)
+
+			self.COLUMNS_LIST.append((key, 24, "bonus", None, None, 0, self.calculateHasBonus, i, "u\"" + desc + "\""))
+
+		# Resources ("bonuses") -- effects
+		for i in range(gc.getNumBonusInfos()):
+			info = gc.getBonusInfo(i)
+			desc = u"%c" % info.getChar()
 			key = self.getBonusKey(i)
 
-			self.COLUMNS_LIST.append((key, 40, "bonus", None, CyCity.hasBonus, i, None, 0, "u\"" + desc + "\""))
+			self.COLUMNS_LIST.append((key, 50, "text", None, None, 0, self.calculateBonus, i, "u\"" + desc + "\""))
 
 		self.COLUMNS_INDEX = { }
 		self.HEADER_DICT = { }
@@ -1524,6 +1572,113 @@ class CvCustomizableDomesticAdvisor:
 		else:
 			return self.objectNotPossible
 
+	def calculateHasBonus (self, city, szKey, arg):
+		
+		# Determine whether or not city has the given bonus
+		if (city.hasBonus(arg)):
+			return self.objectHave
+		else:
+			return self.objectNotPossible
+
+	def calculateBonus (self, city, szKey, arg):
+		
+		# Determine the effects of the given bonus (health, happiness, commerce)
+		if (not city.hasBonus(arg)):
+			return self.objectNotPossible
+		
+		szEffects = u""
+		iEffect = city.getBonusHappiness(arg)
+		if (iEffect == 1):
+			szEffects += u"%s " % (self.happyIcon)
+		elif (iEffect > 1):
+			szEffects += u"%d%s " % (iEffect, self.happyIcon)
+		elif (iEffect < 0):
+			szEffects += u"%d%s " % (-iEffect, self.unhappyIcon)
+		
+		iEffect = city.getBonusHealth(arg)
+		if (iEffect == 1):
+			szEffects += u"%s " % (self.healthIcon)
+		elif (iEffect > 1):
+			szEffects += u"%d%s " % (iEffect, self.healthIcon)
+		elif (iEffect < 0):
+			szEffects += u"%d%s " % (-iEffect, self.sickIcon)
+		
+		for eYieldType in range(YieldTypes.NUM_YIELD_TYPES):
+			iEffect = city.getBonusYieldRateModifier(eYieldType, arg)
+			if (iEffect > 0):
+				szEffects += u"%s " % self.yieldIcons[eYieldType]
+#			elif (iEffect > 1 or iEffect < 0):
+#				szEffects += u"%d%s " % (iEffect, self.yieldIcons[eYieldType])
+		
+		iNumBonuses = city.getNumBonuses(arg)
+		if (self.bonusCorpYields.has_key(arg)):
+			yields = self.bonusCorpYields[arg]
+			for eYield in range(YieldTypes.NUM_YIELD_TYPES):
+				if (yields.has_key(eYield)):
+					iEffect = 0
+					for eCorp, iValue in yields[eYield].iteritems():
+						if (city.isActiveCorporation(eCorp)):
+							iEffect += iValue * iNumBonuses * self.corpMaintPercent / 100
+					iEffect = (iEffect + 99) / 100
+					if (iEffect == 1):
+						szEffects += u"%s " % self.yieldIcons[eYield]
+					elif (iEffect > 1 or iEffect < 0):
+						szEffects += u"%d%s " % (iEffect, self.yieldIcons[eYield])
+		
+		if (self.bonusCorpCommerces.has_key(arg)):
+			commerces = self.bonusCorpCommerces[arg]
+			for eCommerce in range(CommerceTypes.NUM_COMMERCE_TYPES):
+				if (commerces.has_key(eCommerce)):
+					iEffect = 0
+					for eCorp, iValue in commerces[eCommerce].iteritems():
+						if (city.isActiveCorporation(eCorp)):
+							iEffect += iValue * iNumBonuses * self.corpMaintPercent / 100
+					iEffect = (iEffect + 99) / 100
+					if (iEffect == 1):
+						szEffects += u"%s " % self.commerceIcons[eCommerce]
+					elif (iEffect > 1 or iEffect < 0):
+						szEffects += u"%d%s " % (iEffect, self.commerceIcons[eCommerce])
+		
+#		for eYieldType in range(YieldTypes.NUM_YIELD_TYPES):
+#			if (city.getCorporationYield(eYieldType) > 0):
+#				iEffect = 0
+#				for eCorporation in range(gc.getNumCorporationInfos()):
+#					if (city.isActiveCorporation(eCorporation)):
+#						info = gc.getCorporationInfo(eCorporation)
+#						for i in range(gc.getNUM_CORPORATION_PREREQ_BONUSES()):
+#							if (info.getPrereqBonus(i) == arg):
+#								iEffect += info.getYieldProduced(eYieldType) * city.getNumBonuses(arg) * self.corpMaintPercent / 100
+#				iEffect = (iEffect + 99) / 100
+#				if (iEffect == 1):
+#					szEffects += u"%s " % self.yieldIcons[eYieldType]
+#				elif (iEffect > 1 or iEffect < 0):
+#					szEffects += u"%d%s " % (iEffect, self.yieldIcons[eYieldType])
+#		
+#		for eCommerceType in range(CommerceTypes.NUM_COMMERCE_TYPES):
+#			if (city.getCorporationCommerce(eCommerceType) > 0):
+#				iEffect = 0
+#				for eCorporation in range(gc.getNumCorporationInfos()):
+#					if (city.isActiveCorporation(eCorporation)):
+#						info = gc.getCorporationInfo(eCorporation)
+#						for i in range(gc.getNUM_CORPORATION_PREREQ_BONUSES()):
+#							if (info.getPrereqBonus(i) == arg):
+#								iEffect += info.getCommerceProduced(eCommerceType) * city.getNumBonuses(arg) * self.corpMaintPercent / 100
+#				iEffect = (iEffect + 99) / 100
+#				if (iEffect == 1):
+#					szEffects += u"%s " % self.commerceIcons[eCommerceType]
+#				elif (iEffect > 1 or iEffect < 0):
+#					szEffects += u"%d%s " % (iEffect, self.commerceIcons[eCommerceType])
+		
+		iEffect = city.getBonusPower(arg, False) + city.getBonusPower(arg, True)
+		if (iEffect == 1):
+			szEffects += u"%s " % (self.powerIcon)
+		elif (iEffect > 1):
+			szEffects += u"%d%s " % (iEffect, self.powerIcon)
+		
+		if (szEffects == u""):
+			return self.objectHave
+		return szEffects.strip()
+
 	def findGlobalBaseYieldRateRank (self, city, szKey, arg):
 		
 		L = []
@@ -1921,7 +2076,8 @@ class CvCustomizableDomesticAdvisor:
 						funcTableWrite = screen.setTableInt
 						justify = CvUtil.FONT_RIGHT_JUSTIFY
 					elif (type == "bonus"):
-						buttonType = "bonus"
+						funcTableWrite = screen.setTableText
+						justify = CvUtil.FONT_CENTER_JUSTIFY
 					elif (type == "bldg"):
 						funcTableWrite = screen.setTableText
 						justify = CvUtil.FONT_CENTER_JUSTIFY
@@ -1930,22 +2086,7 @@ class CvCustomizableDomesticAdvisor:
 
 					colorFunc = self.ColorCityValues
 
-					if(buttonType == "bonus"):
-						calcFunc = columnDef[4]
-						bonus = columnDef[5]
-						if self.PAGES[self.currentPageNum]["showSpecControls"]:
-							for i in cityRange:
-								szValue = unicode(calcFunc(cityList[i].city, bonus))
-								screen.setTableText(page, value + 1, i, szValue, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						else:
-							art = gc.getBonusInfo(bonus).getButton()
-							for i in cityRange:
-								if calcFunc(cityList[i].city, columnDef[5]):
-									szWidgetName = "Bonus%03d%d" % (i, bonus)
-									screen.setImageButton( szWidgetName, art, 0, 0, 24, 24, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, bonus, -1 )
-									screen.attachControlToTableCell( szWidgetName, page, i, value + 1 )
-						
-					elif(columnDef[3]):
+					if(columnDef[3]):
 						calcFunc = columnDef[3]
 						# Loop through the cities
 						for i in cityRange:
