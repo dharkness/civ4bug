@@ -4,6 +4,7 @@
 ## contains variables to turn on and off various extra log messages
 ## Alt+E is always on
 
+import codecs
 import os
 import os.path
 import string
@@ -94,7 +95,7 @@ class autologInstance:
 				szPath = os.path.join(CvPath.userDir, "AutoLog")
 		if (not os.path.isdir(szPath)):
 			os.makedirs(szPath)
-		self.log = open(os.path.join(szPath, BugAutolog.getFileName()), 'a')
+		self.log = codecs.open(os.path.join(szPath, BugAutolog.getFileName()), 'a', 'utf-8')
 #		os.chdir(temppath)
 
 	def closeLog(self):
