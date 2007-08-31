@@ -9,16 +9,16 @@ class BugUnitNameOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
-		self.addOption(Option("UnitName_Enable",
-							  "UnitName", "Enable", False,
+		self.addOption(Option("UnitName_Enabled",
+							  "UnitName", "Enabled", False,
 							  "Enabled",
 							  "When checked, the player's units will be named."))
 		self.addOption(Option("UnitName_UseAdvanced",
 							  "UnitName", "UseAdvanced", False,
-							  "Use Advanced Methods",
+							  "Use Advanced Methods (not present in code yet ... so it doesn't work",
 							  "When checked, the advanced naming conventions in 'BUG_UnitName.ini' file will be used."))
 		self.addOption(Option("UnitName_Default",
-							  "UnitName", "UserDefined", 'blah blah blah',
+							  "UnitName", "Default", 'blah blah blah',
 							  "Naming Convention: DEFAULT",
 							  "Enter the user defined naming convention (see docs for further information)."))
 		self.addOption(Option("UnitName_Combat_AIR",
@@ -78,6 +78,13 @@ class BugUnitNameOptions(OptionsFacade):
 	
 	def getCombat(self, Combat_Type):
 		return self.getString('UnitName_Combat_' + Combat_Type)
+
+	def getAdvanced(self, Era, UnitClass):
+		try:
+			zsTemp = self.getString(Era + '_' + UnitClass)
+		except:
+			zsTemp = "DEFAULT"
+		return zsTemp
 
 
 # The singleton BugUnitNameOptions object

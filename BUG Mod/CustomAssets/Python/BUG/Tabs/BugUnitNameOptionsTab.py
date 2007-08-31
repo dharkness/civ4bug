@@ -15,7 +15,7 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 	
-		self.addCheckbox(screen, column, "UnitName_Enable")
+		self.addCheckbox(screen, column, "UnitName_Enabled")
 		self.addCheckbox(screen, column, "UnitName_UseAdvanced")
 
 		#self.addTextEdit(screen, right, right, "Autolog_FilePath")
