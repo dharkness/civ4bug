@@ -15,14 +15,20 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel, panel, True)
 		
-		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
+		screen.attachLabel(leftPanel, "MainInterfaceLabel", "Main Interface:")
+		screen.setControlFlag("MainInterfaceLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addCheckbox(screen, leftPanel, "Main_GPBar")
 		
 		screen.attachLabel(leftPanel, "CityScreenLabel", "City Screen:")
 		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "City_RawCommerce")
 		self.addCheckbox(screen, leftPanel, "City_CultureTurns")
 		self.addCheckbox(screen, leftPanel, "City_GreatPersonTurns")
-		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
+#		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
+		
+		screen.attachLabel(leftPanel, "DomAdvScreenLabel", "Domestic Advisor:")
+		screen.setControlFlag("DomAdvScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 		
 		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology Advisor:")
 		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")

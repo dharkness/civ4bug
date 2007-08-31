@@ -19,6 +19,9 @@ BugNJAGC = BugNJAGCOptions.getOptions()
 import BugScoreOptions
 BugScore = BugScoreOptions.getOptions()
 
+import BugScreensOptions
+BugScreens = BugScreensOptions.getOptions()
+
 import BugCityScreenOptions
 BugCityScreen = BugCityScreenOptions.getOptions()
 # BUG - Options - end
@@ -488,6 +491,15 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar" )
+		
+# BUG - Great Person Bar - start
+		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 30, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
+		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
+		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
+		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
+		screen.hide( "GreatPersonBar" )
+# BUG - Great Person Bar - end
 		
 		# *********************************************************************************
 		# SELECTION DATA BUTTONS/STRINGS
@@ -1757,9 +1769,15 @@ class CvMainInterface:
 		screen.hide( "GoldText" )
 		screen.hide( "TimeText" )
 		screen.hide( "ResearchBar" )
+		
 # BUG - NJAGC - start
 		screen.hide( "EraText" )
 # BUG - NJAGC - end
+
+# BUG - Great Person Bar - start
+		screen.hide( "GreatPersonBar" )
+		screen.hide( "GreatPersonBarText" )
+# BUG - Great Person Bar - end
 
 		bShift = CyInterface().shiftKey()
 		
@@ -1859,7 +1877,51 @@ class CvMainInterface:
 
 					screen.show( "ResearchBar" )
 					
+# BUG - Great Person Bar - start
+				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):				
+					pGreatPersonCity, iGPTurns = self.getNextGPCity()
+					if (iGPTurns < 10000000 and pGreatPersonCity):
+						szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pGreatPersonCity.getName(), iGPTurns))
+						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 31, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
+						screen.show( "GreatPersonBarText" )
+						
+						iFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) )
+						screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, iFirst )
+						if ( iFirst == 1 ):
+							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, ( float(pGreatPersonCity.getGreatPeopleRate()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) ) ) )
+						else:
+							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, ( ( float(pGreatPersonCity.getGreatPeopleRate()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) ) ) ) / ( 1 - iFirst ) )				
+						screen.show( "GreatPersonBar" )
+					else:	
+						screen.hide( "GreatPersonBar" )
+						screen.hide( "GreatPersonBarText" )
+# BUG - Great Person Bar - end
+					
 		return 0
+								
+# BUG - Great Person Bar - start
+	def getNextGPCity( self ):
+	
+		iFastestPerson = 10000000
+		iGPTurns = 0
+		pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
+		iGPNext = pPlayer.greatPeopleThreshold(false)
+		pFastestCity = CyInterface().getHeadSelectedCity()
+		
+		for icity in range(pPlayer.getNumCities()):
+			pCity = pPlayer.getCity(icity)
+			if (pCity):
+				iGPRate = pCity.getGreatPeopleRate()
+				if (iGPRate > 0):
+					iGPNow = pCity.getGreatPeopleProgress()
+					iGPTurns = (iGPNext - iGPNow + iGPRate - 1) / iGPRate
+					if (iGPTurns < iFastestPerson):
+						iFastestPerson = iGPTurns
+						pFastestCity = pCity
+		
+		return (pFastestCity, iFastestPerson)
+# BUG - Great Person Bar - end
 		
 	def updateTimeText( self ):
 		

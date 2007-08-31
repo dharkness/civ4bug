@@ -9,15 +9,25 @@ class BugScreensOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
+		self.addOption(Option("Main_GPBar",
+							  "Screens", "GP Progress Bar", True,
+							  "Great Person Progress Bar",
+							  "When checked, displays the progress and city of the next Great Person.",
+							  InterfaceDirtyBits.GameData_DIRTY_BIT))
+		
 		self.addOption(Option("CDA_Enabled",
-							  "Screens", "CustDomAdv", False,
+							  "Screens", "CustDomAdv", True,
 							  "Customizable Domestic Advisor",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
 
 		self.addOption(Option("Tech_GPPrefs",
-							  "Screens", "GP Tech Prefs", False,
+							  "Screens", "GP Tech Prefs", True,
 							  "Great Person Research",
 							  "When checked, displays the technology each type of great person will research."))
+
+
+	def isShowGPProgressBar(self):
+		return self.getBoolean('Main_GPBar')
 
 
 	def isCustDomAdv(self):

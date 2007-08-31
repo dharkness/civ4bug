@@ -6,6 +6,15 @@
   -->
 
 <Civ4GameText xmlns="http://www.firaxis.com">
+	<!-- Interface Text -->
+	<TEXT>
+		<Tag>INTERFACE_NEXT_GREATPERSON_CITY_TURNS</Tag>
+		<English>Great Person: %s1 (%d2)</English>
+		<French>Personnage Illustre: %s1 (%d2)</French>
+		<German>Gro&#223;e Pers&#246;nlichkeit: %s1 (%d2)</German>
+		<Italian>Grande Personaggio: %s1 (%d2)</Italian>
+		<Spanish>Grandes Personajes: %s1 (%d2)</Spanish>
+	</TEXT>
     <!-- Colors -->
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
