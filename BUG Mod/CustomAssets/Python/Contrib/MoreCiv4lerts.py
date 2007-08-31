@@ -135,8 +135,8 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		popGrowthCount = 0
 		currentTurn = gc.getGame().getGameTurn()
 
-		if (self.getCheckForDomPopVictory() or (BeginTurn and (self.getCheckForDomLandVictory() or self.getCheckForCityBorderExpansion()))):
-			# Check for cultural expansion
+		if (self.getCheckForDomPopVictory() or (BeginTurn and self.getCheckForCityBorderExpansion())):
+			# Check for cultural expansion and population growth
 			teamPlayerList = []
 			teamPlayerList = PyGame.getCivTeamList(PyGame.getActiveTeam())
 			teamPlayerList.append(PyPlayer(iPlayer))
@@ -147,7 +147,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 					city = gc.getPlayer(loopPlayer).getCity(loopCity)
 					if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction()) and not city.AI_isEmphasize(5):
 						popGrowthCount = popGrowthCount + 1
-					if (BeginTurn and (self.getCheckForDomLandVictory() or self.getCheckForCityBorderExpansion())):
+					if (BeginTurn and self.getCheckForCityBorderExpansion()):
 						if (city.getCultureLevel() != gc.getNumCultureLevelInfos() - 1):
 							if ((city.getCulture(loopPlayer) + city.getCommerceRate(CommerceTypes.COMMERCE_CULTURE)) > city.getCultureThreshold()):
 								message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND",(city.getName(),))
