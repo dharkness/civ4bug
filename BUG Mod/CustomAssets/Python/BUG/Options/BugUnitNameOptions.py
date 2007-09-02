@@ -15,10 +15,10 @@ class BugUnitNameOptions(OptionsFacade):
 							  "When checked, the player's units will be named."))
 		self.addOption(Option("UnitName_UseAdvanced",
 							  "UnitName", "UseAdvanced", False,
-							  "Use Advanced Methods (not present in code yet ... so it doesn't work",
-							  "When checked, the advanced naming conventions in 'BUG_UnitName.ini' file will be used."))
+							  "Use Advanced Methods - see ini file for Era_UnitClass options",
+							  "When checked, the advanced naming conventions in 'BUG Mod.ini' file will be used."))
 		self.addOption(Option("UnitName_Default",
-							  "UnitName", "Default", 'blah blah blah',
+							  "UnitName", "Default", '^u^ ^cnt[r]^ of ^ct^',
 							  "Naming Convention: DEFAULT",
 							  "Enter the user defined naming convention (see docs for further information)."))
 		self.addOption(Option("UnitName_Combat_AIR",
@@ -81,10 +81,10 @@ class BugUnitNameOptions(OptionsFacade):
 
 	def getAdvanced(self, Era, UnitClass):
 		try:
-			zsTemp = self.getString(Era + '_' + UnitClass)
+			zsTemp = self.getRawString('UnitName', Era + '_' + UnitClass, 'DEFAULT')
 		except:
 			zsTemp = "DEFAULT"
-		return zsTemp
+		return zsTemp	
 
 
 # The singleton BugUnitNameOptions object

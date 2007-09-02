@@ -3,21 +3,23 @@
 ## for BUG Mod
 ##-------------------------------------------------------------------
 ## Naming Convention
-##  - %n% - no naming convention, uses standard civ4
-##  - %ct% - City
-##  - %v% - Civilization
-##  - %c[n]% - count across all units (increments based on unit)
-##  - %cu[n]% - count across same unit (increments based on unit)
-##  - %cc[n]% - count across same combat type (increments based on combat type)
-##  - %cd[n]% - count across same domain (increments based on domain)
-##  - %tt[n][x:y]% - total where the total is a random number between x and y (number)
-##  - %tc[n][x]% - total count (starts at x, incremented by 1 each time %tt is reset to 1)
-##  - %r% - random name
-##  - %rc% - random civ related name
-##  - %u% - unit (eg Archer)
-##  - %t% - combat type (Melee)
-##  - %d% - domain (Water)
-##  - %l% - leader
+##  - ^n^ - no naming convention, uses standard civ4
+##  - ^r^ - random name
+##  - ^rc^ - random civ related name
+##  - ^ct^ - City
+##  - ^v^ - Civilization
+##  - ^cnt[n]^ - count across all units (increments based on unit)
+##  - ^cntu[n]^ - count across same unit (increments based on unit)
+##  - ^cntct[n]^ - count across same city (increments based on unit)
+##  - ^cntuct[n]^ - count across same unit / city (increments based on unit)
+##  - ^cntc[n]^ - count across same combat type (increments based on combat type)
+##  - ^cntd[n]^ - count across same domain (increments based on domain)
+##  - ^tt1[n][x:y]^ - total where the total is a random number between x and y (number)
+##  - ^tt2[n][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
+##  - ^u^ - unit (eg Archer)
+##  - ^t^ - combat type (Melee)
+##  - ^d^ - domain (Water)
+##  - ^l^ - leader
 ##
 ## Where [n] can be either 's', 'A', 'a', 'p', 'g', 'n', 'o' or 'r' for ...
 ##  - silent (not shown)
@@ -67,8 +69,28 @@ import CvUtil
 import PyHelpers
 import BugUnitNameOptions
 import Roman
+import RandomNameUtils
+import random
+import Popup as PyPopup
+
+#######SD Tool Kit#######
+
+import SdToolKit
+sdEcho			= SdToolKit.sdEcho
+sdModInit		= SdToolKit.sdModInit
+sdModLoad		= SdToolKit.sdModLoad
+sdModSave		= SdToolKit.sdModSave
+sdEntityInit	= SdToolKit.sdEntityInit
+sdEntityExists	= SdToolKit.sdEntityExists
+sdEntityWipe	= SdToolKit.sdEntityWipe
+sdGetVal		= SdToolKit.sdGetVal
+sdSetVal		= SdToolKit.sdSetVal
+sdGroup			= "UnitCnt"
+
+############################
 
 gc = CyGlobalContext()
+PyInfo = PyHelpers.PyInfo
 BugUnitName = BugUnitNameOptions.BugUnitNameOptions()
 
 phonetic_array = ['ALPHA', 'BRAVO', 'CHARLIE', 'DELTA', 'ECHO', 'FOXTROT', 'GOLF', 'HOTEL', 'INDIA', 'JULIETT', 'KILO', 'LIMA', 'MIKE',
@@ -78,6 +100,7 @@ greek_array = ['ALPHA', 'BETA', 'GAMMA', 'DELTA', 'EPSILON', 'ZETA', 'ETA', 'THE
                'OMICRON', 'PI', 'RHO', 'SIGMA', 'TAU', 'UPSILON', 'PHI', 'CHI', 'PSI', 'OMEGA']
 
 ordinal_array = 'th st nd rd th th th th th th'.split()
+
 
 class UnitNameEventManager:
 
@@ -106,195 +129,370 @@ class BuildUnitName(AbstractBuildUnitName):
 			if (int(key) == int(InputTypes.KB_T)
 			and self.eventMgr.bCtrl
 			and self.eventMgr.bAlt):
-				for j in range(pPlot.getNumUnits()):
-					pLoopUnit = CyInterface().getInterfacePlotUnit(pPlot, j)
-					zsEra = getEra(pUnit)
-					zsUnitType = getUnitType(pUnit)
-					zsUnitCombat = getUnitCombat(pUnit)
-					zsUnitClass = getUnitClass(pUnit)
-					zMsg = "%s %s %s %s" % (zsEra, zsUnitClass, zsUnitCombat, zsUnitType)
-					CyInterface().addImmediateMessage(zMsg, "")
 
-		return 1
+#				popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
+#				popup.setHeaderString("Enter unit name code")
+#				popup.createEditBox("", 1)
+#				popup.addButton("Ok")
+#				popup.addButton("Cancel")
+#				popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
+
+#				if (popup.getButtonClicked() != 1):
+#					zsUnitNameConv = popup.getEditBoxString(1)
+
+					for i in range(CyMap().numPlots()):
+						tPlot = CyMap().plot(CyMap().plotX(i),CyMap().plotY(i))
+						if (tPlot.isCity()
+						and tPlot.getOwner() == CyGame().getActivePlayer()):
+							pPlot = tPlot
+							i = CyMap().numPlots()
+
+					for j in range(pPlot.getNumUnits()):
+						pLoopUnit = CyInterface().getInterfacePlotUnit(pPlot, j)
+
+						iPlayer = pLoopUnit.getOwner()
+						pPlayer = gc.getPlayer(iPlayer)
+						pCity = pPlayer.getCity(0)
+
+						zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+						zsUnitCombat = gc.getUnitCombatInfo(pLoopUnit.getUnitCombatType()).getType()
+						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
+
+						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
+
+						zsUnitNameConv = "^u^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
+
+						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
+
+						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
+
+						if not (zsUnitName == ""):
+							pLoopUnit.setName(zsUnitName)
+
+						zMsg = "unit name is %s" % (zsUnitName)
+						CyInterface().addImmediateMessage(zMsg, "")
+
+			return 1
+		return 0
 
 
 	def onUnitBuilt(self, argsList):
 		'Unit Completed'
 
-#		put in while I am developing this feature
+# I have this in as it doesn't work yet
+#		return
+	
+		pCity = argsList[0]
+		pUnit = argsList[1]
+		iPlayer = pUnit.getOwner()
+		pPlayer = gc.getPlayer(iPlayer)
+
+		if (pUnit == None
+		or pUnit.isNone()):
+			return
+
+		if (not iPlayer == CyGame().getActivePlayer()
+		or not BugUnitName.isEnabled()):
+			return
+
+		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+		zsUnitCombat = gc.getUnitCombatInfo(pUnit.getUnitCombatType()).getType()
+		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
+		zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+
+		zsUnitName = self.getUnitName(zsUnitNameConv, pUnit, pCity)
+
+		if not (zsUnitName == ""):
+			pUnit.setName(zsUnitName)
+
 		return
 
-#		city = argsList[0]
-#		pUnit = argsList[1]
-#		iOwner = gc.getPlayer(pUnit.getOwner())
 
-#		if (not pUnit.getOwner() == CyGame().getActivePlayer()
-#		or not BugUnitName.isEnabled()):
-#			return
-
-#		zsEra = getEra(pUnit)
-#		zsUnitType = getUnitType(pUnit)
-#		zsUnitCombat = getUnitCombat(pUnit)
-#		zsUnitClass = getUnitClass(pUnit)
-
-#		if (BugUnitName.isAdvanced()):
-#			zsUnitNameConv = BugUnitName.getAdvanced(zsEra[4:], zsUnitClass[10:])
-#		else:
-#			zsUnitNameConv = BugUnitName.getCombat(zsUnitCombat)
-
-#		if (zsUnitNameConv = "DEFAULT"): zsUnitNameConv = BugUnitName.getDefault()
-
-#		zsName = zsUnitNameConv
-#		zsName = "%u% %c[o]% of %c%"
-
-#		zsName = zsName.replace("%ct%", zsCity)
-#		zsName = zsName.replace("%v%", zsCiv)
-#		zsName = zsName.replace("%u%", zsUnit)
-#		zsName = zsName.replace("%t%", zsCombat)
-#		zsName = zsName.replace("%d%", zsDomain)
-#		zsName = zsName.replace("%l%", zsLeader)
-
-
-
-
-
-#		civtype = iOwner.getCivilizationType()
-
-
-
-
-
-
-
-
-#		zsUnitNameConv = BugUnitName.getCombat(zsUnitCombat)
-#		if zsUnitNameConv == 'DEFAULT':
-#			zsUnitNameConv = BugUnitName.getDefault()
-
-#		unit.setName(zsUnitNameConv)
-
-#		return
-
-
-	def getEra(self, pUnit):
-
-		# Return immediately if the unit passed in is invalid
-		if (pUnit == None):
-			return None
-	
-		# Return immediately if the unit passed in is invalid
-		if (pUnit.isNone()):
-			return None
+	def getUnitName(self, sUnitNameConv, pUnit, pCity):
 
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
-		iPlayerEra = pPlayer.getCurrentEra()
-		infoPlayerEra = gc.getEraInfo(iPlayerEra)
-		return infoPlayerEra.getType()
+
+		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+		zsCiv = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
+		zsLeader = gc.getPlayer(iPlayer).getName()
+		zsUnitCombat = gc.getUnitCombatInfo(pUnit.getUnitCombatType()).getType()
+		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
+		zsUnitType = gc.getUnitInfo(pUnit.getUnitType()).getType()
+		zsUnitDomain = gc.getDomainInfo(pUnit.getDomainType()).getType()
+		zsUnit = PyInfo.UnitInfo(pUnit.getUnitType()).getDescription()
+		zsCity = pCity.getName()
+
+		self.RuffEcho("ERA(%s)" % (zsEra), false, true)
+		self.RuffEcho("Civ(%s)" % (zsCiv), false, true)
+		self.RuffEcho("Leader(%s)" % (zsLeader), false, true)
+		self.RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
+		self.RuffEcho("Class(%s)" % (zsUnitClass), false, true)
+		self.RuffEcho("Type(%s)" % (zsUnitType), false, true)
+		self.RuffEcho("Domain(%s)" % (zsUnitDomain), false, true)
+		self.RuffEcho("Unit(%s)" % (zsUnit), false, true)
+		self.RuffEcho("City(%s)" % (zsCity), false, true)
+
+		#zsName = sUnitNameConv
+
+		#if zsName == "":
+		#zsName = "^u^ ^cnt[r]^ Div ^tt1[s][5:7]^ : ^ct^ ^tt2[o][101]^"
+
+		self.RuffEcho("UnitNameEM-A [" + zsName + "]", false, true)
+
+#		check if Civ4 naming convention is required
+		if not (zsName.find("^n^") == -1):
+			return ""
+
+#		check if random naming convention is required
+		if not (zsName.find("^r^") == -1):
+			return RandomNameUtils.getRandomName()
+
+		self.RuffEcho("UnitNameEM-B", false, true)
+
+#		check if random civ related naming convention is required
+		if not (zsName.find("^rc^") == -1):
+			return RandomNameUtils.getRandomCivilizationName(iPlayer.getCivilizationType())
+
+		self.RuffEcho("UnitNameEM-C [" + zsName + "]", false, true)
+
+#		replace the fixed items in the naming conv
+		zsName = zsName.replace("^ct^", zsCity)
+		zsName = zsName.replace("^v^", zsCiv)
+		zsName = zsName.replace("^u^", zsUnit)
+		zsName = zsName.replace("^t^", zsUnitCombat)
+		zsName = zsName.replace("^d^", zsUnitDomain)
+		zsName = zsName.replace("^l^", zsLeader)
+
+		self.RuffEcho("UnitNameEM-D [" + zsName + "]", false, true)
+
+#		check if there are any more codes to swap out, return if not
+		if (zsName.find("^") == -1):
+			return zsName
+
+#		determine what I am counting across
+		zsSDKey = self.getCounter(zsName)
+		if zsSDKey == "UNIT":		zsSDKey = zsSDKey + zsUnit
+		elif zsSDKey == "COMBAT":	zsSDKey = zsSDKey + zsUnitCombat
+		elif zsSDKey == "CITY":		zsSDKey = zsSDKey + zsCity
+		elif zsSDKey == "UNITCITY": zsSDKey = zsSDKey + zsUnit + zsCity
+		elif zsSDKey == "DOMAIN":	zsSDKey = zsSDKey + zsUnitDomain
+
+		self.RuffEcho("UnitNameEM-E [" + zsSDKey + "]", false, true)
+
+#		see if we have already started this counter
+		if (sdEntityExists(sdGroup, zsSDKey) == False):
+			#Since no record create entries
+			ziTT1 = self.getTotal1(zsName)
+			ziTT2 = self.getTotal2(zsName)
+			zDic = {'cnt':0, 'tt1':ziTT1, 'tt2':ziTT2}
+			sdEntityInit(sdGroup, zsSDKey, zDic)
+
+#		get the count values
+		ziCnt = sdGetVal(sdGroup, zsSDKey, "cnt")
+		ziTT1 = sdGetVal(sdGroup, zsSDKey, "tt1")
+		ziTT2 = sdGetVal(sdGroup, zsSDKey, "tt2")
+
+		self.RuffEcho("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]", false, true)
+
+#		increment count, adjust totals if required
+		ziCnt = ziCnt + 1
+		if (ziCnt > ziTT1
+		and ziTT1 > 0):
+			ziCnt = 1
+			ziTT1 = self.getTotal1(zsName)
+			ziTT2 = ziTT2 + 1
+
+#		store the new values
+		sdSetVal(sdGroup, zsSDKey, "cnt", ziCnt)
+		sdSetVal(sdGroup, zsSDKey, "tt1", ziTT1)
+		sdSetVal(sdGroup, zsSDKey, "tt2", ziTT2)
+
+#		swap out the count code items for count value
+		zsName = self.swapCountCode(zsName, "^cnt", ziCnt)
+		zsName = self.swapCountCode(zsName, "^tt1", ziTT1)
+		zsName = self.swapCountCode(zsName, "^tt2", ziTT2)
+
+		return zsName
 
 
+	def getUnitNameConvFromIniFile(self, Era, UnitClass, UnitCombat):
+		if (BugUnitName.isAdvanced()):
+			zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
+		else:
+			zsUnitNameConv = BugUnitName.getCombat(UnitCombat)
+
+		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]", false, true)
+
+		if (zsUnitNameConv == "DEFAULT"): zsUnitNameConv = BugUnitName.getDefault()
+
+		self.RuffEcho("UnitNameEM-iniB [" + zsUnitNameConv + "]", false, true)
+
+		return zsUnitNameConv
 
 
+	def getCounter(self, conv):
+##  - ^cnt[n]^ - count across all units (increments based on unit)
+##  - ^cntu[n]^ - count across same unit (increments based on unit)
+##  - ^cntct[n]^ - count across same city (increments based on unit)
+##  - ^cntuct[n]^ - count across same unit / city (increments based on unit)
+##  - ^cntc[n]^ - count across same combat type (increments based on combat type)
+##  - ^cntd[n]^ - count across same domain (increments based on domain)
 
-	def getUnitCombat(self, pUnit):
+		if not (conv.find("^cnt[") == -1):
+			return "ALL"
 
-		# Return immediately if the unit passed in is invalid
-		if (pUnit == None):
-			return "None"
-			
-		# Return immediately if the unit passed in is invalid
-		if (pUnit.isNone()):
-			return "None"
+		if not (conv.find("^cntu[") == -1):
+			return "UNIT"
 
-		iUnitCombat = pUnit.getUnitCombatType()
-		infoUnitCombat = gc.getUnitCombatInfo(iUnitCombat)
+		if not (conv.find("^cntc[") == -1):
+			return "COMBAT"
 
-		if (infoUnitCombat == None):
-			return "None"
+		if not (conv.find("^cntct[") == -1):
+			return "CITY"
 
-		return infoUnitCombat.getType()
+		if not (conv.find("^cntuct[") == -1):
+			return "UNITCITY"
 
+		if not (conv.find("^cntd[") == -1):
+			return "DOMAIN"
 
-
-	def getUnitClass(self, pUnit):
-
-		# Return immediately if the unit passed in is invalid
-		if (pUnit == None):
-			return "None"
-	
-		# Return immediately if the unit passed in is invalid
-		if (pUnit.isNone()):
-			return "None"
-
-		iUnitClass = pUnit.getUnitClassType()
-		infoUnitClass = gc.getUnitClassInfo(iUnitClass)
-		return infoUnitClass.getType()
+		return "ALL"
 
 
+	def getTotal1(self, conv):
+##  - ^tt1[n][x:y]^ - total where the total is a random number between x and y (number)
+
+#		return 'not found' indicator
+		ziStart = conv.find("^tt1[")
+		if (ziStart == -1):
+			return -1
+
+#		locate and extract the 'low' value
+		ziStart = conv.find("[",ziStart)
+		ziStart = conv.find("[",ziStart + 1)
+		ziEnd = conv.find(":",ziStart)
+		ziLow = int(conv[ziStart + 1:ziEnd])
+		if (ziLow < 1): ziLow = 1
+
+#		locate and extract the 'high' value
+		ziStart = ziEnd
+		ziEnd = conv.find("]",ziStart)
+		ziHigh = int(conv[ziStart + 1:ziEnd])
+		if (ziHigh < 1): ziHigh = 1
+
+#		check that the user isn't an idiot
+		if (ziLow > ziHigh): return ziLow
+
+#		return the value
+		return random.randint(ziLow, ziHigh)
 
 
-	def getUnitType(self, pUnit):
+	def getTotal2(self, conv):
+##  - ^tt2[n][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
 
-		# Return immediately if the unit passed in is invalid
-		if (pUnit == None):
-			return "None"
-	
-		# Return immediately if the unit passed in is invalid
-		if (pUnit.isNone()):
-			return "None"
+#		return 'not found' indicator
+		ziStart = conv.find("^tt2[")
+		if (ziStart == -1):
+			return -1
 
-		iUnitType = pUnit.getUnitType()
-		infoUnitType = gc.getUnitInfo(iUnitType)
-		return str(infoUnitType.getType())
+#		locate and extract the value
+		ziStart = conv.find("[",ziStart)
+		ziStart = conv.find("[",ziStart + 1)
+		ziEnd = conv.find("]",ziStart)
+		ziValue = int(conv[ziStart + 1:ziEnd])
+
+		if (ziValue < 1): ziValue = 1
+		return ziValue
 
 
-	def getNumberFormat(self, n, i):
+	def getNumberFormat(self, conv, searchStr):
+#		return 'not found' indicator
+		ziStart = conv.find(searchStr)
+		ziStart = conv.find("[",ziStart)
+		if (ziStart == -1):
+			return "s"   # s for silent, hides number
+		else:
+			return conv[ziStart + 1:ziStart + 2]
+
+
+	def getCountCode(self, conv, searchStr):
+#		return 'not found' indicator
+		ziStart = conv.find(searchStr)
+		if (ziStart == -1):
+			return ""
+		else:
+			ziEnd = conv.find("^", ziStart + 1)
+			return conv[ziStart:ziEnd + 1]
+
+
+	def swapCountCode(self, conv, searchStr, iCnt):
+
+#		return if iCnt is negative (this means that the code is not in the unitnameconv)
+		if iCnt < 0: return conv
+
+		self.RuffEcho("UnitNameEM-SCC [" + conv + "] [" + searchStr + "] [" + str(iCnt) + "]", false, true)
+
+		zsCntCode = self.getCountCode(conv, searchStr)
+
+		if zsCntCode == "": return conv
+
+		self.RuffEcho("UnitNameEM-SCC [" + zsCntCode + "]", false, true)
+
+		zsNumberFormat = self.getNumberFormat(conv, searchStr)
+
+		self.RuffEcho("UnitNameEM-SCC [" + zsNumberFormat + "]", false, true)
+
+		zsCnt = self.FormatNumber(zsNumberFormat, iCnt)
+
+		self.RuffEcho("UnitNameEM-SCC [" + zsCnt + "]", false, true)
+
+		if zsCntCode == "":
+			return conv
+		else:
+			return conv.replace(zsCntCode, zsCnt)
+
+
+	def FormatNumber(self, n, i):
 		if (n == "s"):     # silent
 			return ""
 		elif (n == "a"):   # lower case alpha
+			i = ((i + 1) % 26) - 1
 			return chr(96+i)
 		elif (n == "A"):   # upper case alpha
+			i = ((i + 1) % 26) - 1
 			return chr(64+i)
 		elif (n == "p"):   # phonetic
+			i = ((i + 1) % 26) - 1
 			return phonetic_array[i]
 		elif (n == "g"):   # greek
+			i = ((i + 1) % 24) - 1
 			return greek_array[i]
 		elif (n == "n"):   # number    
 			return str(i)
 		elif (n == "o"):   # ordinal
-			return getOrdinal(i)
+			return self.getOrdinal(i)
 		elif (n == "r"):   # roman
 			return Roman.toRoman(i)
 		else:
 			return str(i)
 
 
-	def getOrdinal(i):
+	def getOrdinal(self, i):
 		if i % 100 in (11, 12, 13): #special case
 			return '%dth' % i
 		return str(i) + ordinal_array[i % 10]
 
 
+	def RuffEcho(self, echoString, printToScr, printToLog):
+		printToScr = false
+		printToLog = false
 
-
-
-
-
-
-
-
-
-#zsName = zsName.replace("%ct%", zsCity)
-
-
-
-#    * getting a single char: "banana"[3] -> "a"
-#    * slice notation (like sub/midstr): "banana"[2:4] -> "na"
-#    * "banana".find("an") -> 1
-#    * "banana".find("an", 2) -> 3
-#    * "banana".find("an", 2, 4) -> -1
-#    * "banana".split("n") -> [ "ba", "a", "a" ]
-
-
-
+		szMessage = "%s" % (echoString)
+		if (printToScr):
+			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, szMessage, "", 2, None, ColorTypes(8), 0, 0, False, False)
+		if (printToLog):
+			CvUtil.pyPrint(szMessage)
+		return 0
 

@@ -18,7 +18,6 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, column, "UnitName_Enabled")
 		self.addCheckbox(screen, column, "UnitName_UseAdvanced")
 
-		#self.addTextEdit(screen, right, right, "Autolog_FilePath")
 		self.addTextEdit(screen, column, column, "UnitName_Default")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_AIR")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_ARCHER")
