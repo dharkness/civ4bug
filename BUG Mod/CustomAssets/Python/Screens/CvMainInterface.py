@@ -6,6 +6,9 @@ import ScreenInput
 import CvScreenEnums
 import CvEventInterface
 import time
+# BUG - Align Icons - start
+import Scoreboard
+# BUG - Align Icons - end
 
 # globals
 gc = CyGlobalContext()
@@ -3148,9 +3151,16 @@ class CvMainInterface:
 		
 		screen.hide( "ScoreBackground" )
 		
+# BUG - Align Icons - start
 		for i in range( gc.getMAX_PLAYERS() ):
 			szName = "ScoreText" + str(i)
 			screen.hide( szName )
+			szName = "ScoreTech" + str(i)
+			screen.hide( szName )
+			for j in range( Scoreboard.NOT_MET, Scoreboard.NUM_PARTS ):
+				szName = "ScoreText%d-%d" %( i, j )
+				screen.hide( szName )
+# BUG - Align Icons - end
 
 		iWidth = 0
 		iCount = 0
@@ -3158,6 +3168,12 @@ class CvMainInterface:
 		
 		if ((CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY)):
 			if (CyInterface().isScoresVisible() and not CyInterface().isCityScreenUp() and CyEngine().isGlobeviewUp() == false):
+
+# BUG - Align Icons - start
+				bAlignIcons = BugScore.isAlignIcons()
+				if (bAlignIcons):
+					scores = Scoreboard.Scoreboard()
+# BUG - Align Icons - end
 
 # BUG - Power Rating - start
 				bShowPower = BugScore.isShowPower()
@@ -3199,10 +3215,17 @@ class CvMainInterface:
 # BUG - Dead Civs - end
 									if (gc.getPlayer(ePlayer).getTeam() == eTeam):
 										szBuffer = u"<font=2>"
+# BUG - Align Icons - start
+										if (bAlignIcons):
+											scores.addPlayer(ePlayer)
+											# BUG: Align Icons continues throughout -- if (bAlignIcons): scores.setFoo(foo)
+# BUG - Align Icons - end
 
 										if (gc.getGame().isGameMultiPlayer()):
 											if (not (gc.getPlayer(ePlayer).isTurnActive())):
 												szBuffer = szBuffer + "*"
+												if (bAlignIcons):
+													scores.setActive()
 
 # BUG - Dead Civs - start
 										if (BugScore.isShowBothNames()):
@@ -3229,37 +3252,53 @@ class CvMainInterface:
 										else:
 											szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
 										szBuffer = szBuffer + szTempBuffer
-# BUG - Dead Civs - end
-
-# BUG - Dead Civs - start
+										if (bAlignIcons):
+											scores.setNameScore(szTempBuffer)
+										
 										if (gc.getPlayer(ePlayer).isAlive()):
-											# BUG: Rest of this change is merely indentation by 1 level ...
+											if (bAlignIcons):
+												scores.setAlive()
+											# BUG: Rest of Dead Civs change is merely indentation by 1 level ...
 											if (gc.getTeam(eTeam).isAlive()):
 												if ( not (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam)) ):
 													szBuffer = szBuffer + (" ?")
+													if (bAlignIcons):
+														scores.setNotMet()
 												if (gc.getTeam(eTeam).isAtWar(gc.getGame().getActiveTeam())):
 													szBuffer = szBuffer + "("  + localText.getColorText("TXT_KEY_CONCEPT_WAR", (), gc.getInfoTypeForString("COLOR_RED")).upper() + ")"
+													if (bAlignIcons):
+														scores.setWar()
 												if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setTrade()
 												if (gc.getTeam(eTeam).isOpenBorders(gc.getGame().getActiveTeam())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OPEN_BORDERS_CHAR))
 													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setBorders()
 												if (gc.getTeam(eTeam).isDefensivePact(gc.getGame().getActiveTeam())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR))
 													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setPact()
 												if (gc.getPlayer(ePlayer).getStateReligion() != -1):
 													if (gc.getPlayer(ePlayer).hasHolyCity(gc.getPlayer(ePlayer).getStateReligion())):
 														szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getHolyCityChar())
-														szBuffer = szBuffer + szTempBuffer
 													else:
 														szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getChar())
-														szBuffer = szBuffer + szTempBuffer
+													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setReligion(szTempBuffer)
+												
 												if (gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
 													szTempBuffer = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setEspionage()
 											
-											bEspionageCanSeeResearch = false
+											bEspionageCanSeeResearch = False
 											for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 												if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
 													bEspionageCanSeeResearch = gc.getPlayer(gc.getGame().getActivePlayer()).canDoEspionageMission(iMissionLoop, ePlayer, CyMap().plot(-1,-1), -1)
@@ -3269,7 +3308,9 @@ class CvMainInterface:
 												if (gc.getPlayer(ePlayer).getCurrentResearch() != -1):
 													szTempBuffer = u"-%s (%d)" %(gc.getTechInfo(gc.getPlayer(ePlayer).getCurrentResearch()).getDescription(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
 													szBuffer = szBuffer + szTempBuffer
-										
+													if (bAlignIcons):
+														scores.setResearch(gc.getPlayer(ePlayer).getCurrentResearch(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
+											
 # BUG - Power Rating - start
 											# if on, show according to espionage "see demographics" mission
 											if (bShowPower 
@@ -3279,67 +3320,85 @@ class CvMainInterface:
 												if (iPower > 0): # avoid divide by zero
 													fPowerRatio = float(iPlayerPower) / float(iPower)
 													cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
-													szTempBuffer = u" %.1f%c" %(fPowerRatio, cPower)
+													szTempBuffer = u"%.1f%c" %(fPowerRatio, cPower)
 													if (iGoodPowerColor >= 0 and fPowerRatio >= BugScore.getGoodPowerRatio()):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
 													elif (iBadPowerColor >= 0 and fPowerRatio <= BugScore.getBadPowerRatio()):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
 													elif (iPowerColor >= 0):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
-													szBuffer = szBuffer + szTempBuffer
+													szBuffer = szBuffer + u" " + szTempBuffer
+													if (bAlignIcons):
+														scores.setPower(szTempBuffer)
 # BUG - Power Rating - end
 											# BUG: ...end of indentation
 # BUG - Dead Civs - end
-										
+
 # BUG - Attitude Icons - start
-										if (BugScore.isShowAttitude() and not gc.getPlayer(ePlayer).isHuman()):
-											iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
-											cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-											szBuffer = szBuffer + u" %c" %cAtt
+										if (BugScore.isShowAttitude()):
+											if (not gc.getPlayer(ePlayer).isHuman()):
+												iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
+												cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+												szBuffer += cAtt
+												if (bAlignIcons):
+													scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
 
 										if (CyGame().isNetworkMultiPlayer()):
-											szBuffer = szBuffer + CyGameTextMgr().getNetStats(ePlayer)
+											szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
+											szBuffer = szBuffer + szTempBuffer
+											if (bAlignIcons):
+												scores.setNetStats(szTempBuffer)
 										
 										if (gc.getPlayer(ePlayer).isHuman() and CyInterface().isOOSVisible()):
 											szTempBuffer = u" <color=255,0,0>* %s *</color>" %(CyGameTextMgr().getOOSSeeds(ePlayer))
 											szBuffer = szBuffer + szTempBuffer
+											if (bAlignIcons):
+												scores.setNetStats(szTempBuffer)
 											
 										szBuffer = szBuffer + "</font>"
 
-										if ( CyInterface().determineWidth( szBuffer ) > iWidth ):
-											iWidth = CyInterface().determineWidth( szBuffer )
-
-										szName = "ScoreText" + str(ePlayer)
-										if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
-											yCoord = yResolution - 206
-										else:
-											yCoord = yResolution - 88
-
+# BUG - Align Icons - start
+										if (not bAlignIcons):
+											if ( CyInterface().determineWidth( szBuffer ) > iWidth ):
+												iWidth = CyInterface().determineWidth( szBuffer )
+	
+											szName = "ScoreText" + str(ePlayer)
+											if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
+												yCoord = yResolution - 206
+											else:
+												yCoord = yResolution - 88
+	
 # BUG - Dead Civs - start
-										# Don't try to contact dead civs
-										if (gc.getPlayer(ePlayer).isAlive()):
-											iWidgetType = WidgetTypes.WIDGET_CONTACT_CIV
-											iPlayer = ePlayer
-										else:
-											iWidgetType = WidgetTypes.WIDGET_GENERAL
-											iPlayer = -1
-										screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight), -0.3, FontTypes.SMALL_FONT, iWidgetType, iPlayer, -1 )
+											# Don't try to contact dead civs
+											if (gc.getPlayer(ePlayer).isAlive()):
+												iWidgetType = WidgetTypes.WIDGET_CONTACT_CIV
+												iPlayer = ePlayer
+											else:
+												iWidgetType = WidgetTypes.WIDGET_GENERAL
+												iPlayer = -1
+											screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight), -0.3, FontTypes.SMALL_FONT, iWidgetType, iPlayer, -1 )
 # BUG - Dead Civs - end
-										screen.show( szName )
-										
-										CyInterface().checkFlashReset(ePlayer)
-
-										iCount = iCount + 1
+											screen.show( szName )
+											
+											CyInterface().checkFlashReset(ePlayer)
+	
+											iCount = iCount + 1
+# BUG - Align Icons - end
 							j = j - 1
 					i = i - 1
 
-				if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
-					yCoord = yResolution - 186
+# BUG - Align Icons - start
+				if (bAlignIcons):
+					scores.draw(screen)
 				else:
-					yCoord = yResolution - 68
-				screen.setPanelSize( "ScoreBackground", xResolution - 21 - iWidth, yCoord - (iBtnHeight * iCount) - 4, iWidth + 12, (iBtnHeight * iCount) + 8 )
-				screen.show( "ScoreBackground" )
+					if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
+						yCoord = yResolution - 186
+					else:
+						yCoord = yResolution - 68
+					screen.setPanelSize( "ScoreBackground", xResolution - 21 - iWidth, yCoord - (iBtnHeight * iCount) - 4, iWidth + 12, (iBtnHeight * iCount) + 8 )
+					screen.show( "ScoreBackground" )
+# BUG - Align Icons - end
 
 	# Will update the help Strings
 	def updateHelpStrings( self ):
@@ -3631,5 +3690,3 @@ class CvMainInterface:
 	
 	def update(self, fDelta):
 		return
-
-

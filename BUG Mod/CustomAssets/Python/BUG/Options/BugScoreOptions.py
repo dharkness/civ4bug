@@ -32,6 +32,16 @@ class BugScoreOptions(OptionsFacade):
 								  ['Leader', 'Civilization', 'Both'], None,
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
+		self.addOption(Option("Scores_AlignIcons",
+							  "Scoreboard", "Align Icons", True,
+							  "Align Icons",
+							  "When checked, empty space is used to vertically align the various icons in the scoreboard.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_ResearchIcons",
+							  "Scoreboard", "Research Icons", True,
+							  "Research Icons",
+							  "When checked, shows icons instead of names for AIs whose research you can see.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_Attitude",
 							  "Scoreboard", "Attitude Icons", True,
 							  "Attitude Icons",
@@ -95,6 +105,12 @@ class BugScoreOptions(OptionsFacade):
 	def isShowBothNames(self):
 		return self.getShowNameEnum() == 2
 
+
+	def isAlignIcons(self):
+		return self.getBoolean("Scores_AlignIcons")
+
+	def isShowResearchIcons(self):
+		return self.getBoolean("Scores_ResearchIcons")
 
 	def isShowAttitude(self):
 		return self.getBoolean("Scores_Attitude")

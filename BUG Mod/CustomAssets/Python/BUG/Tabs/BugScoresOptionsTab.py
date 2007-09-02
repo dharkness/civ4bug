@@ -16,6 +16,8 @@ class BugScoresOptionsTab(BugOptionsTab.BugOptionsTab):
         leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel, panel, True)
         
         self.addTextDropdown(screen, leftPanel, leftPanel, "Scores_DisplayName")
+        self.addCheckbox(screen, leftPanel, "Scores_AlignIcons")
+        self.addCheckbox(screen, leftPanel, "Scores_ResearchIcons")
         self.addCheckbox(screen, leftPanel, "Scores_Attitude")
         
         screen.attachLabel(leftPanel, "Scores_DeadCivsLabel", "Dead Civilizations:")
