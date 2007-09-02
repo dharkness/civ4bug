@@ -25,7 +25,7 @@ class BugOptions(object):
 	def getValue(self, name):
 		option = self.getOption(name)
 		if (option):
-			return self.config.get_str(option.getSection(), option.getKey(), option.getDefault())
+			return self.getRawString(option.getSection(), option.getKey(), option.getDefault())
 
 	def getString(self, name):
 		return self.getValue(name)
@@ -33,17 +33,17 @@ class BugOptions(object):
 	def getBoolean(self, name):
 		option = self.getOption(name)
 		if (option):
-			return self.config.get_boolean(option.getSection(), option.getKey(), option.getDefault())
+			return self.getRawBoolean(option.getSection(), option.getKey(), option.getDefault())
 
 	def getInt(self, name):
 		option = self.getOption(name)
 		if (option):
-			return self.config.get_int(option.getSection(), option.getKey(), option.getDefault())
+			return self.getRawInt(option.getSection(), option.getKey(), option.getDefault())
 
 	def getFloat(self, name):
 		option = self.getOption(name)
 		if (option):
-			return self.config.get_float(option.getSection(), option.getKey(), option.getDefault())
+			return self.getRawFloat(option.getSection(), option.getKey(), option.getDefault())
 
 
 	def setValue(self, name, value):
@@ -68,6 +68,22 @@ class BugOptions(object):
 		option = self.getOption(name)
 		if (option):
 			self.config.set_float(option.getSection(), option.getKey(), value)
+
+
+	def getRawValue(self, section, key, default=None):
+		return self.config.get_str(section, key, default)
+
+	def getRawString(self, section, key, default=None):
+		return self.getRawValue(section, key, default)
+
+	def getRawBoolean(self, section, key, default=None):
+		return self.config.get_boolean(section, key, default)
+
+	def getRawInt(self, section, key, default=None):
+		return self.config.get_int(section, key, default)
+
+	def getRawFloat(self, section, key, default=None):
+		return self.config.get_float(section, key, default)
 
 
 	def read(self):
