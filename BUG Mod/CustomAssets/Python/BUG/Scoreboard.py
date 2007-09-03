@@ -19,11 +19,12 @@ ICON_SIZE = 24
 ROW_HEIGHT = 22
 Z_DEPTH = -0.3
 
-# Parts (columns)
+# Columns: War Power Tech Espionage Network OpenBorders DefesivePact Religion Attitude
 ALIVE = 0
 PLAYER = ALIVE + 1
-NAME_SCORE = PLAYER + 1
-NOT_MET = NAME_SCORE + 1
+SCORE = PLAYER + 1
+NAME = SCORE + 1
+NOT_MET = NAME + 1
 WAR = NOT_MET + 1
 POWER = WAR + 1
 RESEARCH = POWER + 1
@@ -48,7 +49,8 @@ SPECIAL = 3
 
 bInitDone = False
 columns = []
-ordered = [ NAME_SCORE, NOT_MET, WAR, ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
+columnsByKey = {}
+ordered = [ SCORE, NOT_MET, WAR, ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
 			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WAITING, NET_STATS, OOS ]
 ordered.reverse()
 
@@ -64,37 +66,42 @@ def _init():
 	global parts
 	game = CyGame()
 	
-	columns.append(Column(ALIVE))
-	columns.append(Column(PLAYER))
-	columns.append(Column(NAME_SCORE, DYNAMIC))
-	columns.append(Column(NOT_MET, FIXED, u"<font=2>?</font>"))
-	columns.append(Column(WAR, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
-	columns.append(Column(POWER, DYNAMIC))
-	columns.append(Column(RESEARCH, SPECIAL))
-	columns.append(Column(RESEARCH_TURNS, DYNAMIC))
-	columns.append(Column(ESPIONAGE, FIXED, u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())))
-	columns.append(Column(TRADE, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.TRADE_CHAR)))
-	columns.append(Column(BORDERS, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OPEN_BORDERS_CHAR)))
-	columns.append(Column(PACT, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR)))
-	columns.append(Column(RELIGION, DYNAMIC))
-	columns.append(Column(ATTITUDE, DYNAMIC))
-	columns.append(Column(WAITING, FIXED, u"<font=2>*</font>"))
-	columns.append(Column(NET_STATS, DYNAMIC))
-	columns.append(Column(OOS, DYNAMIC))
+	columns.append(Column('', ALIVE))
+	columns.append(Column('', PLAYER))
+	columns.append(Column('S', SCORE, DYNAMIC))
+	columns.append(Column('C', NAME, DYNAMIC))
+	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
+	columns.append(Column('W', WAR, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
+	columns.append(Column('P', POWER, DYNAMIC))
+	columns.append(Column('T', RESEARCH, SPECIAL))
+	columns.append(Column('U', RESEARCH_TURNS, DYNAMIC))
+	columns.append(Column('E', ESPIONAGE, FIXED, u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())))
+	columns.append(Column('N', TRADE, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.TRADE_CHAR)))
+	columns.append(Column('B', BORDERS, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OPEN_BORDERS_CHAR)))
+	columns.append(Column('D', PACT, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR)))
+	columns.append(Column('R', RELIGION, DYNAMIC))
+	columns.append(Column('A', ATTITUDE, DYNAMIC))
+	columns.append(Column('*', WAITING, FIXED, u"<font=2>*</font>"))
+	columns.append(Column('L', NET_STATS, DYNAMIC))
+	columns.append(Column('O', OOS, DYNAMIC))
 	
 	bInitDone = True
 
 
 class Column:
 	
-	def __init__(self, id, type=SKIP, text=None):
+	def __init__(self, key, id, type=SKIP, text=None, alt=None):
+		self.key = key
 		self.id = id
 		self.type = type
 		self.text = text
+		self.alt = alt
 		if (type == FIXED):
 			self.width = CyInterface().determineWidth( text )
 		else:
 			self.width = 0
+		if (key):
+			columnsByKey[key] = self
 	
 	def isSkip(self):
 		return self.type == SKIP
@@ -142,8 +149,11 @@ class Scoreboard:
 	def setPlayer(self, value):
 		self._set(PLAYER, value)
 		
-	def setNameScore(self, value):
-		self._set(NAME_SCORE, u"<font=2>%s</font>" % value)
+	def setScore(self, value):
+		self._set(SCORE, u"<font=2>%s</font>" % value)
+		
+	def setName(self, value):
+		self._set(NAME, u"<font=2>%s</font>" % value)
 		
 	def setNotMet(self):
 		self._set(NOT_MET)
@@ -223,10 +233,15 @@ class Scoreboard:
 		else:
 			height = ROW_HEIGHT
 		
-		for c in ordered:
+		format = [ l for l in BugOpt.getDisplayOrder().upper() ]
+		format.reverse()
+		for k in format:
+			if (not columnsByKey.has_key(k)):
+				continue
+			column = columnsByKey[k]
+			c = column.id
 			if (not self.hasAny[c]):
 				continue
-			column = columns[c]
 			type = column.type
 			if (c == RESEARCH and not BugOpt.isShowResearchIcons()):
 				# switch SPECIAL research icon to DYNAMIC name
@@ -260,21 +275,26 @@ class Scoreboard:
 					continue
 				for p in range( self.count ):
 					if (self.has[p][c]):
+						name = "ScoreText%d-%d" %( p, c )
 						value = self.values[p][c]
+						align = CvUtil.FONT_RIGHT_JUSTIFY
+						adjustX = 0
 						widget = WidgetTypes.WIDGET_GENERAL
 						player = -1
-						if (c == NAME_SCORE):
-							name = "ScoreText%d" % p
+						if (c == NAME or c == SCORE):
 							if (self.values[p][ALIVE]):
 								widget = WidgetTypes.WIDGET_CONTACT_CIV
 								player = self.values[p][PLAYER]
-						else:
-							name = "ScoreText%d-%d" %( p, c )
-						screen.setText( name, "Background", value, CvUtil.FONT_RIGHT_JUSTIFY, 
-										x, y - p * height, Z_DEPTH, 
+							if (c == NAME):
+								name = "ScoreText%d" % p
+								if (BugOpt.isLeftAlignName()):
+									align = CvUtil.FONT_LEFT_JUSTIFY
+									adjustX = width
+						screen.setText( name, "Background", value, align, 
+										x - adjustX, y - p * height, Z_DEPTH, 
 										FontTypes.SMALL_FONT, widget, player, -1 )
 						screen.show( name )
-						if (c != NAME_SCORE):
+						if (c != NAME and c != SCORE):
 							screen.setHitTest( name, HitTestTypes.HITTEST_NOHIT )
 				x -= width
 				totalWidth += width

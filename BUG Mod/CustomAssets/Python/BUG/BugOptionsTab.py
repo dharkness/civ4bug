@@ -179,6 +179,7 @@ class BugOptionsTab:
 			value = self.options.getString(name)
 			screen.attachEdit(controlPanel, control, value, self.callbackIFace, "handleBugTextEditChange", name)
 			screen.setToolTip(control, option.getTooltip())
+			screen.setLayoutFlag(control, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 		else:
 			self.addMissingOption(screen, labelPanel, name)
 

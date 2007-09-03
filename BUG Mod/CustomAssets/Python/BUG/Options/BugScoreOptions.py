@@ -10,7 +10,7 @@ class BugScoreOptions(OptionsFacade):
 	def __init__(self):
 		OptionsFacade.__init__(self)
 		self.addOption(Option("Scores_ShowDead",
-							  "Scoreboard", "Hide Dead Civilizations", False,
+							  "Scoreboard", "Show Dead Civilizations", True,
 							  "Show",
 							  "When checked, dead civilizations will remain on the scoreboard.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
@@ -31,21 +31,47 @@ class BugScoreOptions(OptionsFacade):
 								  "Determines how civilizations are labeled on the scoreboard.",
 								  ['Leader', 'Civilization', 'Both'], None,
 								  InterfaceDirtyBits.Score_DIRTY_BIT))
-		
-		self.addOption(Option("Scores_AlignIcons",
-							  "Scoreboard", "Align Icons", True,
-							  "Align Icons",
-							  "When checked, empty space is used to vertically align the various icons in the scoreboard.",
-							  InterfaceDirtyBits.Score_DIRTY_BIT))
-		self.addOption(Option("Scores_ResearchIcons",
-							  "Scoreboard", "Research Icons", True,
-							  "Research Icons",
-							  "When checked, shows icons instead of names for AIs whose research you can see.",
-							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		self.addOption(Option("Scores_Attitude",
 							  "Scoreboard", "Attitude Icons", True,
 							  "Attitude Icons",
 							  "When checked, shows faces depicting each AI's attitude toward you.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		
+		self.addOption(Option("Scores_AlignIcons",
+							  "Scoreboard", "Align Icons", True,
+							  "Enabled",
+							  "When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_DisplayOrder",
+							  "Scoreboard", "Display Order", "SC?WEPTUNBDRA*LO",
+							  "Display Order",
+							  "This determines the order in which the score columns appear.\n\
+S - The civ's score.\n\
+C - The civ's/leader's name.\n\
+? - You have not yet met the civ.\n\
+W - You are at war with the civ.\n\
+E - You have a positive espionage point ratio against the civ.\n\
+P - The civ's power ratio compared to you.\n\
+T - The tech the civ is researching (vassals, teammates and espionage).\n\
+U - The number of research turns left.\n\
+N - The civ is connected to your trade network.\n\
+B - You have an open borders agreement with the civ.\n\
+D - You have a defensive pact with the civ.\n\
+R - The civ's state religion.\n\
+A - The civ's attitude toward you.\n\
+* - You are waiting for this civ to finish its turn.\n\
+L - Civ's network stats (ping).\n\
+O - The network player is out-of-sync.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_LeftAlignName",
+							  "Scoreboard", "Left-Align Name", True,
+							  "Left-Align Name",
+							  "When checked, the civ/leader name is left-aligned instead of right-aligned.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_ResearchIcons",
+							  "Scoreboard", "Research Icons", True,
+							  "Research Icons",
+							  "When checked, shows icons instead of names for civs whose research you can see.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
 		self.addOption(Option("Scores_Power",
@@ -105,15 +131,21 @@ class BugScoreOptions(OptionsFacade):
 	def isShowBothNames(self):
 		return self.getShowNameEnum() == 2
 
+	def isShowAttitude(self):
+		return self.getBoolean("Scores_Attitude")
+
 
 	def isAlignIcons(self):
 		return self.getBoolean("Scores_AlignIcons")
 
+	def isLeftAlignName(self):
+		return self.getBoolean("Scores_LeftAlignName")
+
+	def getDisplayOrder(self):
+		return self.getString("Scores_DisplayOrder")
+
 	def isShowResearchIcons(self):
 		return self.getBoolean("Scores_ResearchIcons")
-
-	def isShowAttitude(self):
-		return self.getBoolean("Scores_Attitude")
 
 
 	def isShowPower(self):

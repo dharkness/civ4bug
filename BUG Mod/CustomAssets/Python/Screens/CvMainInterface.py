@@ -3157,7 +3157,7 @@ class CvMainInterface:
 			screen.hide( szName )
 			szName = "ScoreTech" + str(i)
 			screen.hide( szName )
-			for j in range( Scoreboard.NOT_MET, Scoreboard.NUM_PARTS ):
+			for j in range( Scoreboard.SCORE, Scoreboard.NUM_PARTS ):
 				szName = "ScoreText%d-%d" %( i, j )
 				screen.hide( szName )
 # BUG - Align Icons - end
@@ -3243,17 +3243,17 @@ class CvMainInterface:
 										
 										if (not CyInterface().isFlashingPlayer(ePlayer) or CyInterface().shouldFlash(ePlayer)):
 											if (ePlayer == gc.getGame().getActivePlayer()):
-												szTempBuffer = u"%s: [<color=%d,%d,%d,%d>%s</color>]" %(szPlayerScore, gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+												szPlayerName = u"[<color=%d,%d,%d,%d>%s</color>]" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
 											else:
 												if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isGreyOutDeadCivs()):
-													szTempBuffer = u"%s: <color=%d,%d,%d,%d>%s</color>" %(szPlayerScore, 175, 175, 175, gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(175, 175, 175, gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
 												else:
-													szTempBuffer = u"%s: <color=%d,%d,%d,%d>%s</color>" %(szPlayerScore, gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
-										else:
-											szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
+													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+										szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
 										szBuffer = szBuffer + szTempBuffer
 										if (bAlignIcons):
-											scores.setNameScore(szTempBuffer)
+											scores.setScore(szPlayerScore + u" ")
+											scores.setName(szPlayerName + u" ")
 										
 										if (gc.getPlayer(ePlayer).isAlive()):
 											if (bAlignIcons):
