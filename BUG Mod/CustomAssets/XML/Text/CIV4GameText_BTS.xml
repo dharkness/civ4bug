@@ -3857,11 +3857,11 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_INTERFACE_71</Tag>
-		<English>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Alt + S and then clicking on an existing note will remove it.</English>
-		<French>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Alt + S and then clicking on an existing note will remove it.</French>
-		<German>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Alt + S and then clicking on an existing note will remove it.</German>
-		<Italian>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Alt + S and then clicking on an existing note will remove it.</Italian>
-		<Spanish>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Alt + S and then clicking on an existing note will remove it.</Spanish>
+		<English>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</English>
+		<French>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</French>
+		<German>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</German>
+		<Italian>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Italian>
+		<Spanish>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_INTERFACE_72</Tag>
@@ -3882,18 +3882,18 @@ ___________________________________________________________________
 	<TEXT>
 		<Tag>TXT_KEY_HINT_INTERFACE_74</Tag>
 		<English>Clicking on the [COLOR_YELLOW}"!"[COLOR_REVERT] within the Domestic Advisor will allow you to customize it to your playing style.</English>
-		<French>Clicking on the yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</French>
-		<German>Clicking on the yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</German>
-		<Italian>Clicking on the yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</Italian>
-		<Spanish>Clicking on the yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</Spanish>
+		<French>Clicking on the [COLOR_YELLOW}"!"[COLOR_REVERT] within the Domestic Advisor will allow you to customize it to your playing style.</French>
+		<German>Clicking on the [COLOR_YELLOW}"!"[COLOR_REVERT] within the Domestic Advisor will allow you to customize it to your playing style.</German>
+		<Italian>Clicking on the [COLOR_YELLOW}"!"[COLOR_REVERT] within the Domestic Advisor will allow you to customize it to your playing style.</Italian>
+		<Spanish>Clicking on the [COLOR_YELLOW}"!"[COLOR_REVERT] within the Domestic Advisor will allow you to customize it to your playing style.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_INTERFACE_75</Tag>
-		<English>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  {NEWLINE| To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</English>
-		<French>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  {NEWLINE| To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</French>
-		<German>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  {NEWLINE| To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</German>
-		<Italian>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  {NEWLINE| To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Italian>
-		<Spanish>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  {NEWLINE| To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Spanish>
+		<English>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</English>
+		<French>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</French>
+		<German>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</German>
+		<Italian>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Italian>
+		<Spanish>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Spanish>
 	</TEXT>
 <!-- ______________________________________________________________
 End The BUG Mod Hints & Tips Modification for Interface Hints.
