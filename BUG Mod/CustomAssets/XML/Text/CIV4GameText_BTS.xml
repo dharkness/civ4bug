@@ -4438,27 +4438,27 @@ ___________________________________________________________________
 -->	
 	<TEXT>
 		<Tag>TXT_KEY_HINT_74</Tag>
-		<English>If a tile is in the fat cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city screen.</English>
-		<French>If a tile is in the fat cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city screen.</French>
-		<German>If a tile is in the fat cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city screen.</German>
-		<Italian>If a tile is in the fat cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city screen.</Italian>
-		<Spanish>If a tile is in the fat cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city screen.</Spanish>
+		<English>When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</English>
+		<French> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</French>
+		<German> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</German>
+		<Italian> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</Italian>
+		<Spanish> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_75</Tag>
-		<English>If you're weak there is no shame in giving into a rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</English>
-		<French>If you're weak there is no shame in giving into a rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</French>
-		<German>If you're weak there is no shame in giving into a rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</German>
-		<Italian>If you're weak there is no shame in giving into a rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Italian>
-		<Spanish>If you're weak there is no shame in giving into a rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Spanish>
+		<English>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</English>
+		<French>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</French>
+		<German>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</German>
+		<Italian>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Italian>
+		<Spanish>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_76</Tag>
-		<English>When at War, use fast moving units to pillage stratagic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</English>
-		<French>When at War, use fast moving units to pillage stratagic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</French>
-		<German>When at War, use fast moving units to pillage stratagic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</German>
-		<Italian>When at War, use fast moving units to pillage stratagic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Italian>
-		<Spanish>When at War, use fast moving units to pillage stratagic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Spanish>
+		<English>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</English>
+		<French>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</French>
+		<German>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</German>
+		<Italian>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Italian>
+		<Spanish>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_77</Tag>
@@ -4478,11 +4478,11 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_79</Tag>
-		<English>Examine what resources your Capitol city has before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</English>
-		<French>Examine what resources your Capitol city has before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</French>
-		<German>Examine what resources your Capitol city has before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</German>
-		<Italian>Examine what resources your Capitol city has before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Italian>
-		<Spanish>Examine what resources your Capitol city has before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Spanish>
+		<English>Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</English>
+		<French> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</French>
+		<German> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</German>
+		<Italian> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Italian>
+		<Spanish> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_80</Tag>
@@ -4494,43 +4494,43 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_81</Tag>
-		<English>Play to your Civilizations traits.  No use being charsmatic and aggressive and never starting a war.</English>
-		<French>Play to your Civilizations traits.  No use being charsmatic and aggressive and never starting a war.</French>
-		<German>Play to your Civilizations traits.  No use being charsmatic and aggressive and never starting a war.</German>
-		<Italian>Play to your Civilizations traits.  No use being charsmatic and aggressive and never starting a war.</Italian>
-		<Spanish>Play to your Civilizations traits.  No use being charsmatic and aggressive and never starting a war.</Spanish>
+		<English> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</English>
+		<French> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</French>
+		<German>Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</German>
+		<Italian> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Italian>
+		<Spanish> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_82</Tag>
-		<English>Sell resources that you no longer use, such as copper or iron.  Just make sure it's to a weaker friend!</English>
-		<French>Sell resources that you no longer use, such as copper or iron.  Just make sure it's to a weaker friend!</French>
-		<German>Sell resources that you no longer use, such as copper or iron.  Just make sure it's to a weaker friend!</German>
-		<Italian>Sell resources that you no longer use, such as copper or iron.  Just make sure it's to a weaker friend!</Italian>
-		<Spanish>Sell resources that you no longer use, such as copper or iron.  Just make sure it's to a weaker friend!</Spanish>
+		<English> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.</English>
+		<French> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</French>
+		<German> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</German>
+		<Italian> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Italian>
+		<Spanish> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_83</Tag>
-		<English>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is avaliable out there.</English>
-		<French>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is avaliable out there.</French>
-		<German>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is avaliable out there.</German>
-		<Italian>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is avaliable out there.</Italian>
-		<Spanish>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is avaliable out there.</Spanish>
+		<English>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</English>
+		<French>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</French>
+		<German>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</German>
+		<Italian>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Italian>
+		<Spanish>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_84</Tag>
-		<English>Be the first to circle the globe, and your Naval Units all recieve +1 movement.</English>
-		<French>Be the first to circle the globe, and your Naval Units all recieve +1 movement.</French>
-		<German>Be the first to circle the globe, and your Naval Units all recieve +1 movement.</German>
-		<Italian>Be the first to circle the globe, and your Naval Units all recieve +1 movement.</Italian>
-		<Spanish>Be the first to circle the globe, and your Naval Units all recieve +1 movement.</Spanish>
+		<English>Be the first to circle the globe, and your Naval Units all receive +1 movement.</English>
+		<French>Be the first to circle the globe, and your Naval Units all receive +1 movement.</French>
+		<German>Be the first to circle the globe, and your Naval Units all receive +1 movement.</German>
+		<Italian>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Italian>
+		<Spanish>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_85</Tag>
-		<English>Animals can't enter your land, so it can be worth the risk to leave your city undefened and use your warrior for early exploration.</English>
-		<French>Animals can't enter your land, so it can be worth the risk to leave your city undefened and use your warrior for early exploration.</French>
-		<German>Animals can't enter your land, so it can be worth the risk to leave your city undefened and use your warrior for early exploration.</German>
-		<Italian>Animals can't enter your land, so it can be worth the risk to leave your city undefened and use your warrior for early exploration.</Italian>
-		<Spanish>Animals can't enter your land, so it can be worth the risk to leave your city undefened and use your warrior for early exploration.</Spanish>
+		<English>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</English>
+		<French>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</French>
+		<German>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</German>
+		<Italian>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Italian>
+		<Spanish>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_86</Tag>
@@ -4542,11 +4542,11 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_87</Tag>
-		<English>If you neglect your military, and your power becomes weaks, a neighbor WILL attack you.</English>
-		<French>If you neglect your military, and your power becomes weaks, a neighbor WILL attack you.</French>
-		<German>If you neglect your military, and your power becomes weaks, a neighbor WILL attack you.</German>
-		<Italian>If you neglect your military, and your power becomes weaks, a neighbor WILL attack you.</Italian>
-		<Spanish>If you neglect your military, and your power becomes weaks, a neighbor WILL attack you.</Spanish>
+		<English>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</English>
+		<French>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</French>
+		<German>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</German>
+		<Italian>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Italian>
+		<Spanish>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_88</Tag>
@@ -4558,11 +4558,11 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_89</Tag>
-		<English>When selling Techonolgies, shop around for the highest bidder, and then work your way down.</English>
-		<French>When selling Techonolgies, shop around for the highest bidder, and then work your way down.</French>
-		<German>When selling Techonolgies, shop around for the highest bidder, and then work your way down.</German>
-		<Italian>When selling Techonolgies, shop around for the highest bidder, and then work your way down.</Italian>
-		<Spanish>When selling Techonolgies, shop around for the highest bidder, and then work your way down.</Spanish>
+		<English>When selling Technologies, shop around for the highest bidder, and then work your way down.</English>
+		<French>When selling Technologies, shop around for the highest bidder, and then work your way down.</French>
+		<German>When selling Technologies, shop around for the highest bidder, and then work your way down.</German>
+		<Italian>When selling Technologies, shop around for the highest bidder, and then work your way down.</Italian>
+		<Spanish>When selling Technologies, shop around for the highest bidder, and then work your way down.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_HINT_90</Tag>
@@ -4582,12 +4582,13 @@ ___________________________________________________________________
 	</TEXT>	
 	<TEXT>
 		<Tag>TXT_KEY_HINT_92</Tag>
-		<English>Sometimes it's better to stop a Scout or Explorer on a forrest, hill, or jungle tile and lossing the extra movement in favor of safety.</English>
-		<French>Sometimes it's better to stop a Scout or Explorer on a forrest, hill, or jungle tile and lossing the extra movement in favor of safety.</French>
-		<German>Sometimes it's better to stop a Scout or Explorer on a forrest, hill, or jungle tile and lossing the extra movement in favor of safety.</German>
-		<Italian>Sometimes it's better to stop a Scout or Explorer on a forrest, hill, or jungle tile and lossing the extra movement in favor of safety.</Italian>
-		<Spanish>Sometimes it's better to stop a Scout or Explorer on a forrest, hill, or jungle tile and lossing the extra movement in favor of safety.</Spanish>
+		<English>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</English>
+		<French>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</French>
+		<German>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</German>
+		<Italian>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Italian>
+		<Spanish>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
 	</TEXT>	
+
 <!-- ______________________________________________________________
 End The BUG Mod Hints & Tips Modification for gameplay Hints.
 	<TEXT>
