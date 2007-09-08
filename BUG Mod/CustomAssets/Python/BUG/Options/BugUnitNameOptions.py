@@ -13,10 +13,10 @@ class BugUnitNameOptions(OptionsFacade):
 							  "UnitName", "Enabled", False,
 							  "Enabled",
 							  "When checked, the player's units will be named."))
-		self.addOption(Option("UnitName_UseAdvanced",
-							  "UnitName", "UseAdvanced", False,
-							  "Use Advanced Methods - see ini file for Era_UnitClass options",
-							  "When checked, the advanced naming conventions in 'BUG Mod.ini' file will be used."))
+#		self.addOption(Option("UnitName_UseAdvanced",
+#							  "UnitName", "UseAdvanced", False,
+#							  "Use Advanced Methods - see ini file for Era_UnitClass options",
+#							  "When checked, the advanced naming conventions in 'BUG Mod.ini' file will be used."))
 		self.addOption(Option("UnitName_Default",
 							  "UnitName", "Default", '^u^ ^cnt[r]^ of ^ct^',
 							  "Naming Convention: DEFAULT",
@@ -53,6 +53,10 @@ class BugUnitNameOptions(OptionsFacade):
 							  "UnitName", "CombatNAVAL", 'DEFAULT',
 							  "Naming Convention: Combat[NAVAL]",
 							  "Enter the user defined naming convention for combat units 'NAVAL'."))
+		self.addOption(Option("UnitName_Combat_None",
+							  "UnitName", "CombatNone", 'DEFAULT',
+							  "Naming Convention: Combat[None]",
+							  "Enter the user defined naming convention for combat units 'NAVAL'."))
 		self.addOption(Option("UnitName_Combat_RECON",
 							  "UnitName", "CombatRECON", 'DEFAULT',
 							  "Naming Convention: Combat[RECON]",
@@ -63,13 +67,13 @@ class BugUnitNameOptions(OptionsFacade):
 							  "Enter the user defined naming convention for combat units 'SIEGE'."))
 
 	def isEnabled(self):
-		return self.getBoolean('UnitName_Enable')
+		return self.getBoolean('UnitName_Enabled')
 
 	def setEnabled(self, value):
-		self.setValue('UnitName_Enable', value)
+		self.setValue('UnitName_Enabled', value)
 
-	def isAdvanced(self):
-		return self.getBoolean('UnitName_UseAdvanced')
+#	def isAdvanced(self):
+#		return self.getBoolean('UnitName_UseAdvanced')
 
 
 # get standard naming conventions

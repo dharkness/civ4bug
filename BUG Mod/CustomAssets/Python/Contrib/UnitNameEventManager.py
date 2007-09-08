@@ -3,25 +3,25 @@
 ## for BUG Mod
 ##-------------------------------------------------------------------
 ## Naming Convention
-##  - ^n^ - no naming convention, uses standard civ4
-##  - ^r^ - random name
+##  - ^civ4^ - no naming convention, uses standard civ4
+##  - ^rd^ - random name
 ##  - ^rc^ - random civ related name
 ##  - ^ct^ - City
-##  - ^v^ - Civilization
-##  - ^cnt[n]^ - count across all units (increments based on unit)
-##  - ^cntu[n]^ - count across same unit (increments based on unit)
-##  - ^cntct[n]^ - count across same city (increments based on unit)
-##  - ^cntuct[n]^ - count across same unit / city (increments based on unit)
-##  - ^cntc[n]^ - count across same combat type (increments based on combat type)
-##  - ^cntd[n]^ - count across same domain (increments based on domain)
-##  - ^tt1[n][x:y]^ - total where the total is a random number between x and y (number)
-##  - ^tt2[n][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
-##  - ^u^ - unit (eg Archer)
-##  - ^t^ - combat type (Melee)
-##  - ^d^ - domain (Water)
-##  - ^l^ - leader
+##  - ^cv^ - Civilization
+##  - ^ut^ - unit (eg Archer)
+##  - ^cb^ - combat type (Melee)
+##  - ^dm^ - domain (Water)
+##  - ^ld^ - leader
+##  - ^cnt[f]^ - count across all units (increments based on unit)
+##  - ^cntu[f]^ - count across same unit (increments based on unit)
+##  - ^cntct[f]^ - count across same city (increments based on unit)
+##  - ^cntuct[f]^ - count across same unit / city (increments based on unit)
+##  - ^cntc[f]^ - count across same combat type (increments based on combat type)
+##  - ^cntd[f]^ - count across same domain (increments based on domain)
+##  - ^tt1[f][x:y]^ - total where the total is a random number between x and y (number)
+##  - ^tt2[f][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
 ##
-## Where [n] can be either 's', 'A', 'a', 'p', 'g', 'n', 'o' or 'r' for ...
+## Where [f] can be either 's', 'A', 'a', 'p', 'g', 'n', 'o' or 'r' for ...
 ##  - silent (not shown)
 ##  - alpha (A, B, C, D, ...)
 ##  - alpha (a, b, c, d, ...)
@@ -40,8 +40,8 @@
 ## Unit name engine:
 ##
 ## 1. get naming convention from ini file
-##    a. if isAdvanced, get advanced naming convention
-##    b. otherwise, get combat based naming convention
+##    a. try to get the advanced naming convention
+##    b. if it returns 'DEFAULT', then get the combat based naming convention
 ##    c. if naming convention is 'DEFAULT', get default naming convention
 ## 
 ## 2. determine if you have 'civ naming' or no valid naming codes in your naming convention, if YES, return 'NULL'
@@ -155,13 +155,13 @@ class BuildUnitName(AbstractBuildUnitName):
 						pCity = pPlayer.getCity(0)
 
 						zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
-						zsUnitCombat = gc.getUnitCombatInfo(pLoopUnit.getUnitCombatType()).getType()
+						zsUnitCombat = self.getUnitCombat(pLoopUnit)
 						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
 
 						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
 
-						zsUnitNameConv = "^u^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
+						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
 
 						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
 
@@ -188,23 +188,37 @@ class BuildUnitName(AbstractBuildUnitName):
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
 
+		self.RuffEcho("onUnitBuild-A", false, true)
+
 		if (pUnit == None
 		or pUnit.isNone()):
 			return
 
-		if (not iPlayer == CyGame().getActivePlayer()
-		or not BugUnitName.isEnabled()):
+		self.RuffEcho("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), BugUnitName.isEnabled()), false, true)
+
+		if not (iPlayer == CyGame().getActivePlayer()
+		and BugUnitName.isEnabled()):
 			return
 
-		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
-		zsUnitCombat = gc.getUnitCombatInfo(pUnit.getUnitCombatType()).getType()
-		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
-		zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+		self.RuffEcho("onUnitBuild-C", false, true)
 
+		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+		zsUnitCombat = self.getUnitCombat(pUnit)
+		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
+
+		self.RuffEcho("ERA(%s)" % (zsEra), false, true)
+		self.RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
+		self.RuffEcho("Class(%s)" % (zsUnitClass), false, true)
+
+		zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 		zsUnitName = self.getUnitName(zsUnitNameConv, pUnit, pCity)
+
+		self.RuffEcho("onUnitBuild-D", false, true)
 
 		if not (zsUnitName == ""):
 			pUnit.setName(zsUnitName)
+
+		self.RuffEcho("onUnitBuild-E", false, true)
 
 		return
 
@@ -217,7 +231,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 		zsCiv = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
 		zsLeader = gc.getPlayer(iPlayer).getName()
-		zsUnitCombat = gc.getUnitCombatInfo(pUnit.getUnitCombatType()).getType()
+		zsUnitCombat = self.getUnitCombat(pUnit)
 		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
 		zsUnitType = gc.getUnitInfo(pUnit.getUnitType()).getType()
 		zsUnitDomain = gc.getDomainInfo(pUnit.getDomainType()).getType()
@@ -234,36 +248,45 @@ class BuildUnitName(AbstractBuildUnitName):
 		self.RuffEcho("Unit(%s)" % (zsUnit), false, true)
 		self.RuffEcho("City(%s)" % (zsCity), false, true)
 
-		#zsName = sUnitNameConv
+		zsName = sUnitNameConv
 
 		#if zsName == "":
-		#zsName = "^u^ ^cnt[r]^ Div ^tt1[s][5:7]^ : ^ct^ ^tt2[o][101]^"
+		#zsName = "^ut^ ^cnt[r]^ Div ^tt1[s][5:7]^ : ^ct^ ^tt2[o][101]^"
 
 		self.RuffEcho("UnitNameEM-A [" + zsName + "]", false, true)
 
+##  - ^civ4^ - no naming convention, uses standard civ4
 #		check if Civ4 naming convention is required
-		if not (zsName.find("^n^") == -1):
+		if not (zsName.find("^civ4^") == -1):
 			return ""
 
+##  - ^rd^ - random name
 #		check if random naming convention is required
-		if not (zsName.find("^r^") == -1):
+		if not (zsName.find("^rd^") == -1):
 			return RandomNameUtils.getRandomName()
 
 		self.RuffEcho("UnitNameEM-B", false, true)
 
+##  - ^rc^ - random civ related name
 #		check if random civ related naming convention is required
 		if not (zsName.find("^rc^") == -1):
 			return RandomNameUtils.getRandomCivilizationName(iPlayer.getCivilizationType())
 
 		self.RuffEcho("UnitNameEM-C [" + zsName + "]", false, true)
 
+##  - ^ct^ - City
+##  - ^cv^ - Civilization
+##  - ^ut^ - unit (eg Archer)
+##  - ^cb^ - combat type (Melee)
+##  - ^dm^ - domain (Water)
+##  - ^ld^ - leader
 #		replace the fixed items in the naming conv
 		zsName = zsName.replace("^ct^", zsCity)
-		zsName = zsName.replace("^v^", zsCiv)
-		zsName = zsName.replace("^u^", zsUnit)
-		zsName = zsName.replace("^t^", zsUnitCombat)
-		zsName = zsName.replace("^d^", zsUnitDomain)
-		zsName = zsName.replace("^l^", zsLeader)
+		zsName = zsName.replace("^cv^", zsCiv)
+		zsName = zsName.replace("^ut^", zsUnit)
+		zsName = zsName.replace("^cb^", zsUnitCombat)
+		zsName = zsName.replace("^dm^", zsUnitDomain)
+		zsName = zsName.replace("^ld^", zsLeader)
 
 		self.RuffEcho("UnitNameEM-D [" + zsName + "]", false, true)
 
@@ -318,27 +341,55 @@ class BuildUnitName(AbstractBuildUnitName):
 
 
 	def getUnitNameConvFromIniFile(self, Era, UnitClass, UnitCombat):
-		if (BugUnitName.isAdvanced()):
-			zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
-		else:
-			zsUnitNameConv = BugUnitName.getCombat(UnitCombat)
+##    a. try to get the advanced naming convention
+##    b. if it returns 'DEFAULT', then get the combat based naming convention
+##    c. if naming convention is 'DEFAULT', get default naming convention
 
-		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]", false, true)
+		self.RuffEcho("UnitNameEM-ini [" + Era[4:] + "_" + UnitClass[10:] + "]", false, true)
 
-		if (zsUnitNameConv == "DEFAULT"): zsUnitNameConv = BugUnitName.getDefault()
+		zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
+
+		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:], false, true)
+
+		if not (zsUnitNameConv == "DEFAULT"):
+			return zsUnitNameConv
+
+		zsUnitNameConv = BugUnitName.getCombat(UnitCombat[11:])
 
 		self.RuffEcho("UnitNameEM-iniB [" + zsUnitNameConv + "]", false, true)
 
+		if not (zsUnitNameConv == "DEFAULT"):
+			return zsUnitNameConv
+
+		self.RuffEcho("UnitNameEM-iniC [" + zsUnitNameConv + "]", false, true)
+
+		zsUnitNameConv = BugUnitName.getDefault()
 		return zsUnitNameConv
 
 
+	def getUnitCombat(self, pUnit):
+
+# Return immediately if the unit passed in is invalid
+		if (pUnit == None
+		or pUnit.isNone()):
+			return "UNITCOMBAT_None"
+
+		iUnitCombat = pUnit.getUnitCombatType()
+		infoUnitCombat = gc.getUnitCombatInfo(iUnitCombat)
+
+		if (infoUnitCombat == None):
+			return "UNITCOMBAT_None"
+
+		return infoUnitCombat.getType()
+
+
 	def getCounter(self, conv):
-##  - ^cnt[n]^ - count across all units (increments based on unit)
-##  - ^cntu[n]^ - count across same unit (increments based on unit)
-##  - ^cntct[n]^ - count across same city (increments based on unit)
-##  - ^cntuct[n]^ - count across same unit / city (increments based on unit)
-##  - ^cntc[n]^ - count across same combat type (increments based on combat type)
-##  - ^cntd[n]^ - count across same domain (increments based on domain)
+##  - ^cnt[f]^ - count across all units (increments based on unit)
+##  - ^cntu[f]^ - count across same unit (increments based on unit)
+##  - ^cntct[f]^ - count across same city (increments based on unit)
+##  - ^cntuct[f]^ - count across same unit / city (increments based on unit)
+##  - ^cntc[f]^ - count across same combat type (increments based on combat type)
+##  - ^cntd[f]^ - count across same domain (increments based on domain)
 
 		if not (conv.find("^cnt[") == -1):
 			return "ALL"
@@ -362,7 +413,7 @@ class BuildUnitName(AbstractBuildUnitName):
 
 
 	def getTotal1(self, conv):
-##  - ^tt1[n][x:y]^ - total where the total is a random number between x and y (number)
+##  - ^tt1[f][x:y]^ - total where the total is a random number between x and y (number)
 
 #		return 'not found' indicator
 		ziStart = conv.find("^tt1[")
@@ -390,7 +441,7 @@ class BuildUnitName(AbstractBuildUnitName):
 
 
 	def getTotal2(self, conv):
-##  - ^tt2[n][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
+##  - ^tt2[f][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
 
 #		return 'not found' indicator
 		ziStart = conv.find("^tt2[")
@@ -454,26 +505,26 @@ class BuildUnitName(AbstractBuildUnitName):
 			return conv.replace(zsCntCode, zsCnt)
 
 
-	def FormatNumber(self, n, i):
-		if (n == "s"):     # silent
+	def FormatNumber(self, fmt, i):
+		if (fmt == "s"):     # silent
 			return ""
-		elif (n == "a"):   # lower case alpha
+		elif (fmt == "a"):   # lower case alpha
 			i = ((i + 1) % 26) - 1
 			return chr(96+i)
-		elif (n == "A"):   # upper case alpha
+		elif (fmt == "A"):   # upper case alpha
 			i = ((i + 1) % 26) - 1
 			return chr(64+i)
-		elif (n == "p"):   # phonetic
+		elif (fmt == "p"):   # phonetic
 			i = ((i + 1) % 26) - 1
 			return phonetic_array[i]
-		elif (n == "g"):   # greek
+		elif (fmt == "g"):   # greek
 			i = ((i + 1) % 24) - 1
 			return greek_array[i]
-		elif (n == "n"):   # number    
+		elif (fmt == "n"):   # number    
 			return str(i)
-		elif (n == "o"):   # ordinal
+		elif (fmt == "o"):   # ordinal
 			return self.getOrdinal(i)
-		elif (n == "r"):   # roman
+		elif (fmt == "r"):   # roman
 			return Roman.toRoman(i)
 		else:
 			return str(i)
