@@ -7,85 +7,6 @@
 
 ## REQUIRES Civilization 4 - Beyond the Sword - PATCH 3.02
 
-## Features
-#
-#    Customizable tables!
-#    Independent columns for production and turns remaining for easy sorting
-#    Support for the city zoom button from patch 1.52
-#    Correct sorting by date founded
-#    Accurate city selections in sorted lists
-#
-#  And quite a few new fields:
-#
-#    Threats - which displays an angry icon if enemy units are nearby
-#    Defense bonus, including terrain and bombardment
-#    X and Y location
-#    "Real" population (this is the "population" displayed on the info screen)
-#    Best conscript unit, and best potential conscript (if you aren't running nationhood, for example)
-#    Electric power
-#    And all the fields from Requies' wonderful Special Domestic Advisor
-#
-## Buildings
-#
-#  This advisor includes fields for all the buildings, National Wonders, and World 
-#  Wonders, with their effects! For example, the advisor displays a food icon for a 
-#  granary (saved food). It also displays a health icon if the city has a granary 
-#  AND rice, wheat, corn, or bananas connected; and the health icon disappears if 
-#  the last of those resources is lost.
-#
-#  The following information is available:
-#
-#    Working building   - (see the next list)
-#    No known benefits  - "+"
-#    In production      - the icons above surrounded by "()"
-#    Obsolete           - "X"
-#    Can't be built     - "-"
-#    Just not there     - blank
-#
-#  Effects displayed:
-#
-#       Bread slice            - stored food or extra food from water tiles
-#       Gold star on the left  - capital
-#       Silver star            - other government center (e.g. Forbidden Palace, Versailles)
-#       Gold star on the right - World Wonder or shrine
-#       Religion icons         - religious buildings
-#       Flexing arm            - free experience or promotions for new units
-#       Keep (defense icon)    - land, air, or nuke defense bonus
-#       Red cross              - health bonuses
-#       Happy face             - happiness bonuses
-#       Lightning bolt         - electric power
-#       [Angry person]         - reduced war weariness or anarchy
-#       Music note             - culture bonus
-#       Gold                   - gold bonus
-#       Beaker                 - research bonus
-#       Hammer                 - increase production (general or specific)
-#       3 Arrows (trade icon)  - extra trade routes or increased trade income
-#       Coin                   - reduced maintenance
-#       Green sick face        - unhealthiness
-#       Figurehead             - great person points
-#
-#  None of this is hardcoded, so the advisor should work with any mod, even fantasy mods 
-#  and others that redefine the game. It will even display new fields for the buildings 
-#  from a mod and hide the fields for buildings from the original game!
-#
-## Features retained from Requies's Special Domestic Advisor v0.92 ("including work by terrasol and Arkeide"):
-#
-#    Specialists (and the ability to CHANGE specialists)
-#    Religions
-#    Automation
-#    City Garrison
-#    Combine Happy/Unhappy/Angry into "Net Happiness"
-#    Combine Food produced/eaten into "Food Turns until Growth"
-#    Combine Healthy/Unhealthy into "Net Healthiness"
-#    City Maintenance Cost
-#    Turns til production complete
-#    Landmarks
-#    Net Food
-#    Trade Income
-#    Turns until growth/starvation
-#    Gold/turn
-#    Culture and GP threshold legends
-
 ## Credits
 #
 #    This advisor was inspired by the fantastic work of Homegrown and Requies of civfanatics.com, and all
@@ -109,131 +30,6 @@
 #
 #     Fixaxis, of course, for making CivIV and stealing months of my life. ;)
 
-## Installation
-#
-#    To install this mod, simply copy this file, CvDomesticAdvisor.py, to CustomAssets\python\screens
-#    in your personal Civ4 folder. Don't copy it to Assets\python\screens - the original will be gone and
-#    future patches will overwrite this file.
-#
-#    One way to do this is: 
-#
-#    From the main Civ4 folder C:\Program Files\Firaxis Games\Sid Meier's Civilization 4
-#    double-click on the _Civ4CustomAssets shortcut, then open the python subfolder, then the screens subfolder.
-#    Copy CvDomesticAdvisor.py here.
-#
-#    If you've installed another domestic advisor that modifies CvScreensInterface.py, you'll need to remove it.
-#    Usually you can just delete CvScreensInterface.py from CustomAssets\python\screens. DO NOT delete 
-#    CvScreensInterface.py from the main CivIV Assets\python\screens folder, or the game won't work! :(
-
-## Controls
-#
-#    The controls along the bottom of the advisor interface, from left to right, are:
-#
-#    Page selection drop-down list
-#    Customize columns on page
-#    Rename active page
-#    Add new page
-#    Remove active page
-#    Save current configuration
-#    Restore last saved configuration
-#
-#  The controls on the customization interface, from left to right, are:
-#
-#    Shrink column(s)
-#    Widen column(s)
-#    Promote selected column(s) (moves them toward the left on the main interface)
-#    Demote selected column(s) (moves them toward the right on the main interface)
-#    Add column(s) (adds all columns selected in the list on the right side)
-#    Remove selected column(s)
-
-## Columns
-#    Name                   Title                 Width   Contents
-#
-#    NAME                   "NAME"                95      The name of the city
-#    AUTOMATION             "Automation"          80      What's automated in the city?
-#    BASE_COMMERCE          coin icon             38      Base (unmodified) commerce/turn (of all kinds)
-#    BASE_FOOD              food icon             38      Base (unmodified) food/turn
-#    BASE_PRODUCTION        hammer icon           38      Base (unmodified) production/turn
-#    CAN_HURRY_GOLD         hammer and gold       50      Can the city hurry with gold?
-#    CAN_HURRY_WHIP         hammer and angry face 50      Can the city hurry with slavery?
-#    CONSCRIPT_UNIT         "DRAFT"               90      The best unit the city can conscript
-#    COULD_CONSCRIPT_UNIT   "DRAFT"               90      The best unit the city could conscript, if it could
-#    CULTURE                "TOT"                 53      Total culture
-#    CULTURE_RATE           music note icon       38      Culture/turn generated
-#    CULTURE_TURNS          music note icon "T"   35      Turns until the borders expand
-#    DEFENSE                castle keep icon      60      Defense bonus
-#    ESPIONAGE              espionage icon        38      Espionage/turn generated
-#    ESPIONAGE_DEF          espionage icon "%"    60      Espionage defense modifier
-#    FEATURES               "Features"            106     Capital, national Wonders, disorder, and trade status
-#    FOOD                   "Food"                35      Surplus food/turn
-#    FOUNDED                "Founded"             80      Date founded
-#    GARRISON               flexing arm icon      30      Number of military units in the city
-#    GOLD                   gold icon             38      Gold/turn generated
-#    GREATPEOPLE            "TOT"                 45      Total great people points
-#    GREATPEOPLE_RATE       figurehead icon       38      Great people points/turn
-#    GREATPEOPLE_TURNS      figurehead icon "T"   38      Turns until next great person birth
-#    GROWTH                 red food icon         35      Turns until the city grows
-#    HAPPY                  happy face icon       30      Extra happiness in the city
-#    HEALTH                 red cross icon        30      Extra health in the city
-#    LOCATION_X             "X"                   50      Horizontal location of the city
-#    LOCATION_Y             "Y"                   50      Vertical location of the city
-#    MAINTENANCE            red coin icon         30      Maintenance costs/turn
-#    POPULATION             "POP"                 35      Population of the city
-#    POPULATION_REAL        "POP"                 65      Population of the city in "real" numbers
-#    POWER                  lightning icon        50      Does the city have power?
-#    PRODUCING              "PRODUCING"           90      What's being built?
-#    PRODUCING_TURNS        none                  33      How long will it take?
-#    PRODUCTION             hammer icon           38      Hammers/turn
-#    RELIGIONS              "Religions"           90      Religions present in the city
-#    RESEARCH               beaker icon           38      Beakers/turn generated
-#    SPECIALISTS            "Specialists"         209     What kind of specialists are in the city?
-#    THREATS                "Threats"             60      How many enemy units are in the area?
-#    TRADE                  trade icon (3 arrows) 30      Income from trade routes
-
-#  NRANK columns for several of the fields above, with national rankings
-#  GRANK columns for several of the fields above, with global rankings
-#  And columns for every building, National Wonder, and World Wonder
-
-## Known Issues
-#
-#  Forges, factories, and the Ironworks aren't displaying hammer icons, and nuclear 
-#  plants aren't displaying power icons. And forges, factories, etc. display single
-#  unhealthy faces even after recycling centers are built. I'm working on it. ;)
-#
-#  When changing the width or order of columns, the first selected column description scrolls to the top.
-#
-#  Triggering a Python module reload (by changing a Python file for example) with the game running
-#  causes the advisor to go blank, and lose any unsaved customizations. Unless you're modding with Python,
-#  you'll probably never run into this. If you are, be sure to save any customizations before 
-#  changing Python files. And simply close the advisor and press F1 again to fix any funkiness.
-
-## Possible Future Enhancements
-#
-#  I'm not sure if any of these can be done with the current version of CivIV, but
-#  some ideas I'm considering include:
-#
-#  Move the configuration file to the personal CivIV folder (suggested by Cammagno)
-#  Scrolling (suggested by Cammagno)
-#  Building icons (suggested by Cammagno)
-#
-
-## History
-#
-#  v0.90 Dec 27, 2005: Initial public beta
-#
-#  v0.91 Dec 28. 2005: Fixed the culture field and the title of the automation field
-#                      Fixed a crash from incompatibility between the specialist buttons and the city zoom button
-#                      Added national and global rank, can hurry, base production, and some VERY basic advice
-#                      Added the flavorful release with new pages
-#
-#  v0.92 Dec 29, 2005: Added resources columns
-#                      Fixed the features field display of national wonders in mods
-#                      Fixed hidden fields and broken customization screen in non-English versions
-#
-#  v0.93 Dec 29, 2005: Fixed the exchanging of configuration files across languages.
-#                      Fixed startup when CustomDomAdv.txt doesn't exist.
-#                      Prevented a crash from incompatibility between specialist buttons and resource icons.
- 
 ## Legal Stuff
 #
 #  THIS MATERIAL IS NOT MADE, GUARANTEED OR SUPPORTED BY THE PUBLISHER OF THE SOFTWARE OR ITS AFFILIATES.
@@ -439,19 +235,19 @@ class CvCustomizableDomesticAdvisor:
 				("NAME",					95,		"text",	CyCity.getName,			None,					0,									None,									None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_NAME\", ()).upper()"),
 				("ADVISE_CULTURE",			150,	"text",	None,					None,					0,									self.advise,							"Culture",					"localText.getText(\"TXT_KEY_CONCEPT_CULTURE\", ()).upper()"),
 				("ADVISE_MILITARY",			150,	"text",	None,					None,					0,									self.advise,							"Military",					"localText.getText(\"TXT_KEY_ADVISOR_MILITARY\", ()).upper()"),
-				("ADVISE_NUTTY",			150,	"text",	None,					None,					0,									self.advise,							"Nutty",					"u\"Nutty Professor\""),
+				("ADVISE_NUTTY",			150,	"text",	None,					None,					0,									self.advise,							"Nutty",					"u\"NUTTY\""),
 				("ADVISE_RELIGION",			150,	"text",	None,					None,					0,									self.advise,							"Religion",					"localText.getText(\"TXT_KEY_CONCEPT_RELIGION\", ()).upper()"),
 				("ADVISE_RESEARCH",			150,	"text",	None,					None,					0,									self.advise,							"Research",					"localText.getText(\"TXT_KEY_COMMERCE_RESEARCH\", ()).upper()"),
 				("ADVISE_SPACESHIP",		150,	"text",	None,					None,					0,									self.advise,							"Spaceship",				"localText.getText(\"TXT_KEY_CONCEPT_SPACESHIP\", ()).upper()"),
-				("AUTOMATION",				80,		"text",	None,					None,					0,									self.calculateAutomation,				None,						"u\"Automation\""),
-				("BASE_COMMERCE",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_COMMERCE,			None,									None,						"self.commerceIcon"),
-				("BASE_FOOD",				38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_FOOD,				None,									None,						"self.foodIcon"),
-				("BASE_PRODUCTION",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_PRODUCTION,		None,									None,						"self.hammerIcon"),
+				("AUTOMATION",				80,		"text",	None,					None,					0,									self.calculateAutomation,				None,						"u\"AUTO\""),
+				("BASE_COMMERCE",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_COMMERCE,			None,									None,						"self.commerceIcon + u\"B\""),
+				("BASE_FOOD",				38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_FOOD,				None,									None,						"self.foodIcon + u\"B\""),
+				("BASE_PRODUCTION",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_PRODUCTION,		None,									None,						"self.hammerIcon + u\"B\""),
 				("CONSCRIPT_UNIT",			90,		"text",	None,					None,					0,									self.calculateConscriptUnit,			None,						"localText.getText(\"TXT_KEY_CONCEPT_DRAFT\", ()).upper()"),
 				("COULD_CONSCRIPT_UNIT",	90,		"text",	None,					None,					0,									self.calculatePotentialConscriptUnit,	None,						"localText.getText(\"TXT_KEY_CONCEPT_DRAFT\", ()).upper()"),
 				("CORPORATIONS",			90,		"text",	None,					None,					0,									self.calculateCorporations,				None,						"localText.getText(\"TXT_KEY_CONCEPT_CORPORATIONS\", ()).upper()"),
-				("CULTURE",					53,		"int",	None,					None,					0,									self.calculateTotalCulture,				None,						"localText.getText(\"TXT_KEY_TOTAL\", ())"),
-				("CULTURE_RATE",			38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_CULTURE,		None,									None,						"self.cultureIcon"),
+				("CULTURE",					53,		"int",	None,					None,					0,									self.calculateTotalCulture,				None,						"self.cultureIcon"),
+				("CULTURE_RATE",			38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_CULTURE,		None,									None,						"self.cultureIcon + u\"R\""),
 				("CULTURE_TURNS",			38,		"int",	None,					None,					None,								self.calculateCultureTurns,				None,						"self.cultureIcon + u\"T\""),
 				("DEFENSE",					60,		"int",	None,					None,					0,									self.calculateDefense,					None,						"self.defenseIcon"),
 				("ESPIONAGE",			    38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_ESPIONAGE,	None,									None,						"self.espionageIcon"),
@@ -461,17 +257,17 @@ class CvCustomizableDomesticAdvisor:
 				("FOUNDED",					80,		"date",	None,					None,					0,									self.calculateFounded,					None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_FOUNDED\", ()).upper()"),
 				("GARRISON",				30,		"int",	CyCity.getMilitaryHappinessUnits,	None,		0,									None,									None,						"self.militaryIcon"),
 				("GOLD",					38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_GOLD,		None,									None,						"self.goldIcon"),
-				("GRANK_BASE_COMMERCE",		38,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,		"self.commerceIcon + u\"#\""),
-				("GRANK_BASE_FOOD",			38,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_FOOD,			"self.foodIcon + u\"#\""),
-				("GRANK_BASE_PRODUCTION",	38,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,		"self.hammerIcon + u\"#\""),
-				("GRANK_COMMERCE",			38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_COMMERCE,			"self.commerceIcon + u\"#\""),
-				("GRANK_FOOD",				38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_FOOD,				"self.foodIcon + u\"#\""),
-				("GRANK_PRODUCTION",		38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_PRODUCTION,			"self.hammerIcon + u\"#\""),
-				("GRANK_CULTURE",			38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	"self.cultureIcon + u\"#\""),
-				("GRANK_GOLD",				38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_GOLD,		"self.goldIcon + u\"#\""),
-				("GRANK_RESEARCH",			38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	"self.researchIcon + u\"#\""),
-				("GREATPEOPLE",				45,		"int",	CyCity.getGreatPeopleProgress,	None,			0,									None,									None,						"localText.getText(\"TXT_KEY_TOTAL\", ())"),
-				("GREATPEOPLE_RATE",		38,		"int",	CyCity.getGreatPeopleRate,		None,			0,									None,									None,						"self.figureheadIcon"),
+				("GRANK_BASE_COMMERCE",		42,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,		"self.commerceIcon + u\"B\" + u\"g\""),
+				("GRANK_BASE_FOOD",			42,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_FOOD,			"self.foodIcon + u\"B\" + u\"g\""),
+				("GRANK_BASE_PRODUCTION",	42,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,		"self.hammerIcon + u\"B\" + u\"g\""),
+				("GRANK_COMMERCE",			38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_COMMERCE,			"self.commerceIcon + u\"g\""),
+				("GRANK_FOOD",				38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_FOOD,				"self.foodIcon + u\"g\""),
+				("GRANK_PRODUCTION",		38,		"int",	None,					None,					0,									self.findGlobalYieldRateRank, YieldTypes.YIELD_PRODUCTION,			"self.hammerIcon + u\"g\""),
+				("GRANK_CULTURE",			38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	"self.cultureIcon + u\"g\""),
+				("GRANK_GOLD",				38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_GOLD,		"self.goldIcon + u\"g\""),
+				("GRANK_RESEARCH",			38,		"int",	None,					None,					0,									self.findGlobalCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	"self.researchIcon + u\"g\""),
+				("GREATPEOPLE",				45,		"int",	CyCity.getGreatPeopleProgress,	None,			0,									None,									None,						"self.figureheadIcon"),
+				("GREATPEOPLE_RATE",		38,		"int",	CyCity.getGreatPeopleRate,		None,			0,									None,									None,						"self.figureheadIcon + u\"R\""),
 				("GREATPEOPLE_TURNS",		38,		"int",	None,					None,					None,								self.calculateGreatPeopleTurns,			None,						"self.figureheadIcon + u\"T\""),
 				("GROWTH",					35,		"int",	None,					None,					0,									self.calculateGrowth,					None,						"self.redfoodIcon"),
 				("HAPPY",					30,		"int",	None,					None,					0,									self.calculateNetHappiness,				None,						"self.happyIcon"),
@@ -485,15 +281,15 @@ class CvCustomizableDomesticAdvisor:
 				("PRODUCING",				90,		"text",	None,					None,					0,									self.calculateProducing,				None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_PRODUCING\", ())"),
 				("PRODUCING_TURNS",			33,		"int",	None,					None,					0,									self.calculateProducingTurns,			None,						"self.hammerIcon + u\"T\""),
 				("PRODUCTION",				38,		"int",	None,					None,					0,									self.calculateProduction,				None,						"self.hammerIcon"),
-				("NRANK_BASE_COMMERCE",		38,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,	None,									None,						"self.commerceIcon + u\"#\""),
-				("NRANK_BASE_FOOD",			38,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_FOOD,		None,									None,						"self.foodIcon + u\"#\""),
-				("NRANK_BASE_PRODUCTION",	38,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,	None,									None,						"self.hammerIcon + u\"#\""),
-				("NRANK_COMMERCE",			38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_COMMERCE,		None,									None,						"self.commerceIcon + u\"#\""),
-				("NRANK_FOOD",				38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_FOOD,			None,									None,						"self.foodIcon + u\"#\""),
-				("NRANK_PRODUCTION",		38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_PRODUCTION,		None,									None,						"self.hammerIcon + u\"#\""),
-				("NRANK_CULTURE",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	None,								None,						"self.cultureIcon + u\"#\""),
-				("NRANK_GOLD",				38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_GOLD,	None,									None,						"self.goldIcon + u\"#\""),
-				("NRANK_RESEARCH",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	None,								None,						"self.researchIcon + u\"#\""),
+				("NRANK_BASE_COMMERCE",		42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,	None,									None,						"self.commerceIcon + u\"B\" + u\"n\""),
+				("NRANK_BASE_FOOD",			42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_FOOD,		None,									None,						"self.foodIcon + u\"B\" + u\"n\""),
+				("NRANK_BASE_PRODUCTION",	42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,	None,									None,						"self.hammerIcon + u\"B\" + u\"n\""),
+				("NRANK_COMMERCE",			38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_COMMERCE,		None,									None,						"self.commerceIcon + u\"n\""),
+				("NRANK_FOOD",				38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_FOOD,			None,									None,						"self.foodIcon + u\"n\""),
+				("NRANK_PRODUCTION",		38,		"int",	None,					CyCity.findYieldRateRank, YieldTypes.YIELD_PRODUCTION,		None,									None,						"self.hammerIcon + u\"n\""),
+				("NRANK_CULTURE",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	None,								None,						"self.cultureIcon + u\"n\""),
+				("NRANK_GOLD",				38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_GOLD,	None,									None,						"self.goldIcon + u\"n\""),
+				("NRANK_RESEARCH",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	None,								None,						"self.researchIcon + u\"n\""),
 				("RELIGIONS",				90,		"text",	None,					None,					0,									self.calculateReligions,				None,						"localText.getText(\"TXT_KEY_ADVISOR_RELIGION\", ()).upper()"),
 				("RESEARCH",				38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_RESEARCH,	None,									None,						"self.researchIcon"),
 				("SPECIALISTS",				209,	"text",	None,					None,					0,									self.calculateSpecialists,				None,						"localText.getText(\"TXT_KEY_CONCEPT_SPECIALISTS\", ()).upper()"),
