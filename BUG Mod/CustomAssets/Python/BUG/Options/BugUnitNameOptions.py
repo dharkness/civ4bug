@@ -72,11 +72,11 @@ class BugUnitNameOptions(OptionsFacade):
 	def setEnabled(self, value):
 		self.setValue('UnitName_Enabled', value)
 
-#	def isAdvanced(self):
-#		return self.getBoolean('UnitName_UseAdvanced')
+	def isAdvanced(self):
+		return self.getBoolean('UnitName_UseAdvanced')
 
 
-# get standard naming conventions
+	# get standard naming conventions
 	def getDefault(self):
 		return self.getString('UnitName_Default')
 	
@@ -84,11 +84,7 @@ class BugUnitNameOptions(OptionsFacade):
 		return self.getString('UnitName_Combat_' + Combat_Type)
 
 	def getAdvanced(self, Era, UnitClass):
-		try:
-			zsTemp = self.getRawString('UnitName', Era + '_' + UnitClass, 'DEFAULT')
-		except:
-			zsTemp = "DEFAULT"
-		return zsTemp	
+		return self.getRawString('UnitName', Era + '_' + UnitClass, 'DEFAULT')
 
 
 # The singleton BugUnitNameOptions object

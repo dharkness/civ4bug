@@ -26,6 +26,8 @@ class BugOptions(object):
 		option = self.getOption(name)
 		if (option):
 			return self.getRawString(option.getSection(), option.getKey(), option.getDefault())
+		else:
+			return ""
 
 	def getString(self, name):
 		return self.getValue(name)
@@ -34,22 +36,31 @@ class BugOptions(object):
 		option = self.getOption(name)
 		if (option):
 			return self.getRawBoolean(option.getSection(), option.getKey(), option.getDefault())
+		else:
+			return False
 
 	def getInt(self, name):
 		option = self.getOption(name)
 		if (option):
 			return self.getRawInt(option.getSection(), option.getKey(), option.getDefault())
+		else:
+			return 0
 
 	def getFloat(self, name):
 		option = self.getOption(name)
 		if (option):
 			return self.getRawFloat(option.getSection(), option.getKey(), option.getDefault())
+		else:
+			return 0.0
 
 
 	def setValue(self, name, value):
 		option = self.getOption(name)
 		if (option):
-			self.config.set_str(option.getSection(), option.getKey(), value)
+			try:
+				self.config.set_str(option.getSection(), option.getKey(), value)
+			except:
+				pass
 
 	def setString(self, name, value):
 		self.setValue(name, value)
@@ -57,33 +68,54 @@ class BugOptions(object):
 	def setBoolean(self, name, value):
 		option = self.getOption(name)
 		if (option):
-			self.config.set_boolean(option.getSection(), option.getKey(), value)
+			try:
+				self.config.set_boolean(option.getSection(), option.getKey(), value)
+			except:
+				pass
 
 	def setInt(self, name, value):
 		option = self.getOption(name)
 		if (option):
-			self.config.set_int(option.getSection(), option.getKey(), value)
+			try:
+				self.config.set_int(option.getSection(), option.getKey(), value)
+			except:
+				pass
 
 	def setFloat(self, name, value):
 		option = self.getOption(name)
 		if (option):
-			self.config.set_float(option.getSection(), option.getKey(), value)
+			try:
+				self.config.set_float(option.getSection(), option.getKey(), value)
+			except:
+				pass
 
 
 	def getRawValue(self, section, key, default=None):
-		return self.config.get_str(section, key, default)
+		try:
+			return self.config.get_str(section, key, default)
+		except:
+			return default
 
 	def getRawString(self, section, key, default=None):
 		return self.getRawValue(section, key, default)
 
 	def getRawBoolean(self, section, key, default=None):
-		return self.config.get_boolean(section, key, default)
+		try:
+			return self.config.get_boolean(section, key, default)
+		except:
+			return default
 
 	def getRawInt(self, section, key, default=None):
-		return self.config.get_int(section, key, default)
+		try:
+			return self.config.get_int(section, key, default)
+		except:
+			return default
 
 	def getRawFloat(self, section, key, default=None):
-		return self.config.get_float(section, key, default)
+		try:
+			return self.config.get_float(section, key, default)
+		except:
+			return default
 
 
 	def read(self):
@@ -106,6 +138,9 @@ class OptionsFacade(object):
 		self.options = getOptions()
 
 
+	def getOption(self, name):
+		return self.options.getOption(name)
+
 	def addOption(self, option):
 		self.options.addOption(option)
 
@@ -124,6 +159,22 @@ class OptionsFacade(object):
 
 	def getFloat(self, name):
 		return self.options.getFloat(name)
+
+
+	def getRawValue(self, section, key, default=None):
+		return self.options.getRawValue(section, key, default)
+
+	def getRawString(self, section, key, default=None):
+		return self.options.getRawValue(section, key, default)
+
+	def getRawBoolean(self, section, key, default=None):
+		return self.options.getRawBoolean(section, key, default)
+
+	def getRawInt(self, section, key, default=None):
+		return self.options.getRawInt(section, key, default)
+
+	def getRawFloat(self, section, key, default=None):
+		return self.options.getRawFloat(section, key, default)
 
 
 	def setValue(self, name, value):
