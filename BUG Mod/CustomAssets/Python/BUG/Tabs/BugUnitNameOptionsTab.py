@@ -16,7 +16,10 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		column = self.addOneColumnLayout(screen, panel)
 	
 		self.addCheckbox(screen, column, "UnitName_Enabled")
-		self.addCheckbox(screen, column, "UnitName_UseAdvanced")
+#		tab.addMissingOption(screen, column, "")
+#		screen.attachLabel(column, "AdvancedLabel", "There are also naming options in the ini file that take up too much room here.")
+#	def addMissingOption (self, screen, panel, name):
+#		self.addCheckbox(screen, column, "UnitName_UseAdvanced")
 
 		self.addTextEdit(screen, column, column, "UnitName_Default")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_AIR")
@@ -27,5 +30,6 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextEdit(screen, column, column, "UnitName_Combat_MELEE")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_MOUNTED")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_NAVAL")
+		self.addTextEdit(screen, column, column, "UnitName_Combat_None")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_RECON")
 		self.addTextEdit(screen, column, column, "UnitName_Combat_SIEGE")

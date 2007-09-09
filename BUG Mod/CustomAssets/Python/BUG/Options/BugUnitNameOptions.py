@@ -11,7 +11,7 @@ class BugUnitNameOptions(OptionsFacade):
 		OptionsFacade.__init__(self)
 		self.addOption(Option("UnitName_Enabled",
 							  "UnitName", "Enabled", False,
-							  "Enabled",
+							  "Enabled (There are also naming options in the ini file that take up too much room here).",
 							  "When checked, the player's units will be named."))
 #		self.addOption(Option("UnitName_UseAdvanced",
 #							  "UnitName", "UseAdvanced", False,
@@ -56,7 +56,7 @@ class BugUnitNameOptions(OptionsFacade):
 		self.addOption(Option("UnitName_Combat_None",
 							  "UnitName", "CombatNone", 'DEFAULT',
 							  "Naming Convention: Combat[None]",
-							  "Enter the user defined naming convention for combat units 'NAVAL'."))
+							  "Enter the user defined naming convention for combat units 'None'."))
 		self.addOption(Option("UnitName_Combat_RECON",
 							  "UnitName", "CombatRECON", 'DEFAULT',
 							  "Naming Convention: Combat[RECON]",
@@ -72,8 +72,8 @@ class BugUnitNameOptions(OptionsFacade):
 	def setEnabled(self, value):
 		self.setValue('UnitName_Enabled', value)
 
-	def isAdvanced(self):
-		return self.getBoolean('UnitName_UseAdvanced')
+#	def isAdvanced(self):
+#		return self.getBoolean('UnitName_UseAdvanced')
 
 
 	# get standard naming conventions

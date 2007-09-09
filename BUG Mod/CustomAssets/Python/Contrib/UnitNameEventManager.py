@@ -125,10 +125,10 @@ class BuildUnitName(AbstractBuildUnitName):
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
-		if ( eventType == self.eventMgr.EventKeyDown ):
-			if (int(key) == int(InputTypes.KB_N)
-			and self.eventMgr.bCtrl
-			and self.eventMgr.bAlt):
+#		if ( eventType == self.eventMgr.EventKeyDown ):
+#			if (int(key) == int(InputTypes.KB_N)
+#			and self.eventMgr.bCtrl
+#			and self.eventMgr.bAlt):
 
 #				popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
 #				popup.setHeaderString("Enter unit name code")
@@ -140,15 +140,15 @@ class BuildUnitName(AbstractBuildUnitName):
 #				if (popup.getButtonClicked() != 1):
 #					zsUnitNameConv = popup.getEditBoxString(1)
 				
-				player = gc.getActivePlayer()
-				for i in range(player.getNumUnits()):
-					unit = player.getUnit(i)
+#				player = gc.getActivePlayer()
+#				for i in range(player.getNumUnits()):
+#					unit = player.getUnit(i)
 #					self.RuffEcho("Unit %d is a %s" %(i, unit.getName()), true, true)
-					if (unit.getName() == "Worker"):
-						city = unit.plot().getPlotCity()
+#					if (unit.getName() == "Worker"):
+#						city = unit.plot().getPlotCity()
 #						self.RuffEcho("...in city %s" %(city.getName()), true, true)
-						self.onUnitBuilt([city, unit])
-						break
+#						self.onUnitBuilt([city, unit])
+#						break
 
 #					for i in range(CyMap().numPlots()):
 #						tPlot = CyMap().plot(CyMap().plotX(i),CyMap().plotY(i))
@@ -183,7 +183,7 @@ class BuildUnitName(AbstractBuildUnitName):
 #						zMsg = "unit name is %s" % (zsUnitName)
 #						CyInterface().addImmediateMessage(zMsg, "")
 
-				return 1
+#				return 1
 		return 0
 
 
@@ -547,8 +547,8 @@ class BuildUnitName(AbstractBuildUnitName):
 
 
 	def RuffEcho(self, echoString, printToScr, printToLog):
-		printToScr = true
-		printToLog = true
+#		printToScr = true
+#		printToLog = true
 
 		szMessage = "%s" % (echoString)
 		if (printToScr):

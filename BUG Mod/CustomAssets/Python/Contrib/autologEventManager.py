@@ -41,13 +41,13 @@ def StartLogger(vsFileName):
 		szfileName = vsFileName
 
 	ziStyle = BugAutolog.getFormatStyle()
-#	' valid styles are plain (0), html (1) or forum (2)'
-	if (ziStyle == 0 or ziStyle == 2):
-		if not (szfileName.endswith(".txt")):
-			szfileName = szfileName + ".txt"
-	else:
+#	' valid styles are plain (0), html (1), forum with " for color(2) or forum without " for color(3)'
+	if (ziStyle == 1):
 		if not (szfileName.endswith(".html")):
 			szfileName = szfileName + ".html"
+	else:
+		if not (szfileName.endswith(".txt")):
+			szfileName = szfileName + ".txt"
 
 	NewAutoLog.setLogFileName(szfileName)
 	NewAutoLog.writeLog(1,"")
