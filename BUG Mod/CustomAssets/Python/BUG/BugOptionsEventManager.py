@@ -3,8 +3,9 @@
 ## BUG Mod - Copyright 2007
 
 from CvPythonExtensions import *
-#import CvUtil
+import CvUtil
 import CvScreensInterface
+import Popup as PyPopup
 
 class BugOptionsEventManager:
 
@@ -47,4 +48,11 @@ class BugOptionsEvent(AbstractBugOptionsEvent):
 				CvScreensInterface.showBugOptionsScreen()
 				return 1
 
+			if (theKey == int(InputTypes.KB_J) and self.eventMgr.bAlt):
+#				CvScreensInterface.showRuffModScreen()
+				popup = PyPopup.PyPopup(CvUtil.EventReminderRecall, EventContextTypes.EVENTCONTEXT_SELF)
+				popup.setHeaderString("BtS Unaltered Mod Options")
+				popup.setBodyString("The BtS Unaltered Mod uses Alt-Ctrl-O to bring up the option screen")
+				popup.launch()
+				return 1
 		return 0
