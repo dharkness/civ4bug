@@ -496,7 +496,7 @@ class CvMainInterface:
 		screen.hide( "ResearchBar" )
 		
 # BUG - Great Person Bar - start
-		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 30, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
