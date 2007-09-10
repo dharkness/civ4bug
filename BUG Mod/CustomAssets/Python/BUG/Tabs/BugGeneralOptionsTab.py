@@ -18,6 +18,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachLabel(leftPanel, "MainInterfaceLabel", "Main Interface:")
 		screen.setControlFlag("MainInterfaceLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "Main_GPBar")
+		self.addCheckbox(screen, leftPanel, "Main_CityArrows")
 		
 		screen.attachLabel(leftPanel, "CityScreenLabel", "City Screen:")
 		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")

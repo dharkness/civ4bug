@@ -14,6 +14,11 @@ class BugScreensOptions(OptionsFacade):
 							  "Great Person Progress Bar",
 							  "When checked, displays the progress and city of the next Great Person.",
 							  InterfaceDirtyBits.GameData_DIRTY_BIT))
+		self.addOption(Option("Main_CityArrows",
+							  "Screens", "City Cycle Arrows", True,
+							  "City Cycle Arrows",
+							  "When checked, displays arrows to cycle through cities above your civ's flag.",
+							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 		
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
@@ -28,6 +33,9 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowGPProgressBar(self):
 		return self.getBoolean('Main_GPBar')
+
+	def isShowCityCycleArrows(self):
+		return self.getBoolean('Main_CityArrows')
 
 
 	def isCustDomAdv(self):

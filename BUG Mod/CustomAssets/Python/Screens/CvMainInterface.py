@@ -523,17 +523,15 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType() )
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ProductionBar" )
-# BUG - Resizing of City Bars - start		
-		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 248, yResolution - 184, 237, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
-# BUG - Resizing of City Bars - end
+		
+		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 180, 194, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "GreatPeopleBar" )
-# BUG - Resizing of City Bars - start		
-		screen.addStackedBarGFC( "CultureBar", 11, yResolution - 184, 237, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_CULTURE, -1, -1 )
-# BUG - Resizing of City Bars - end
+		
+		screen.addStackedBarGFC( "CultureBar", 16, yResolution - 188, 220, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_CULTURE, -1, -1 )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_CULTURE_STORED") )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_CULTURE_RATE") )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -554,9 +552,8 @@ class CvMainInterface:
 			szName = "CorporationHeadquarterDDS" + str(i)
 			screen.addDDSGFC( szName, ArtFileMgr.getInterfaceArtInfo("INTERFACE_HOLYCITY_OVERLAY").getPath(), xCoord, yCoord, 24, 24, WidgetTypes.WIDGET_HELP_CORPORATION_CITY, i, -1 )
 			screen.hide( szName )
-# BUG - Resizing of City Bars - start
-		screen.addStackedBarGFC( "NationalityBar", 11, yResolution - 214, 237, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_NATIONALITY, -1, -1 )
-# BUG - Resizing of City Bars - end
+
+		screen.addStackedBarGFC( "NationalityBar", 16, yResolution - 214, 220, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_NATIONALITY, -1, -1 )
 		screen.hide( "NationalityBar" )
 
 		screen.setButtonGFC( "CityScrollMinus", u"", "", 274, 32, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
@@ -564,6 +561,7 @@ class CvMainInterface:
 
 		screen.setButtonGFC( "CityScrollPlus", u"", "", 288, 32, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
 		screen.hide( "CityScrollPlus" )
+		
 # BUG - City Arrows - start
 		screen.setButtonGFC( "MainCityScrollMinus", u"", "", xResolution - 275, yResolution - 165, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 		screen.hide( "MainCityScrollMinus" )
@@ -571,6 +569,7 @@ class CvMainInterface:
 		screen.setButtonGFC( "MainCityScrollPlus", u"", "", xResolution - 255, yResolution - 165, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
+		
 		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 		screen.hide( "PlotListMinus" )
 
@@ -934,8 +933,9 @@ class CvMainInterface:
 			screen.show( "MainMenuButton" )
 		else:
 			screen.hide( "CivilizationFlag" )
-# BUG - City Arrows (moved lines to next if statement)- start
-# BUG - City Arrows - end
+			screen.hide( "InterfaceHelpButton" )
+			screen.hide( "MainMenuButton" )
+
 		if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE_ALL or CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_MINIMAP_ONLY ):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
 			screen.hide( "InterfaceTopBackgroundWidget" )
@@ -957,13 +957,14 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
+# BUG - NJAGC - start
+			screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
-			screen.hide( "InterfaceHelpButton" )
-			screen.hide( "MainMenuButton" )
-			screen.hide( "EraText" )
 # BUG - City Arrows - end			
+		
 		elif ( CyInterface().isCityScreenUp() ):
 			screen.show( "InterfaceLeftBackgroundWidget" )
 			screen.show( "InterfaceTopBackgroundWidget" )
@@ -988,7 +989,8 @@ class CvMainInterface:
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
-# BUG - City Arrows - end			
+# BUG - City Arrows - end
+		
 		elif ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
 			screen.show( "InterfaceTopBackgroundWidget" )
@@ -1113,8 +1115,12 @@ class CvMainInterface:
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
 # BUG - City Arrows - start
-			screen.show( "MainCityScrollMinus" )
-			screen.show( "MainCityScrollPlus" )
+			if (BugScreens.isShowCityCycleArrows()):
+				screen.show( "MainCityScrollMinus" )
+				screen.show( "MainCityScrollPlus" )
+			else:
+				screen.hide( "MainCityScrollMinus" )
+				screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -1918,7 +1924,7 @@ class CvMainInterface:
 					pGreatPersonCity, iGPTurns = self.getNextGPCity()
 					if (iGPTurns < 10000000 and pGreatPersonCity):
 						szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pGreatPersonCity.getName(), iGPTurns))
-						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 31, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
 						screen.show( "GreatPersonBarText" )
 						
@@ -2273,6 +2279,8 @@ class CvMainInterface:
 					screen.setBarPercentage( "PopulationBar", InfoBarTypes.INFOBAR_RATE_EXTRA, 0.0 )
 					
 				screen.show( "PopulationBar" )
+
+# BUG - Whip Assist - start
 
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
 					if (pHeadSelectedCity.isProductionProcess()):
