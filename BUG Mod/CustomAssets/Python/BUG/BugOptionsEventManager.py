@@ -1,5 +1,5 @@
 ## BugOptionsEventManager
-## Displays BUG Mod Options Screen in response to CTRL-ALT-O.
+## Displays BUG Mod Options Screen in response to CTRL-ALT-O and ALT-J.
 ## BUG Mod - Copyright 2007
 
 from CvPythonExtensions import *
@@ -12,18 +12,6 @@ class BugOptionsEventManager:
 	def __init__(self, eventManager):
 
 		BugOptionsEvent(eventManager)
-
-		# additions to self.Events
-##		moreEvents = {
-##			CvUtil.EventBugOptions : ('', self.__eventBugOptionsApply,  self.__eventBugOptionsBegin),
-##		}
-##		eventManager.Events.update(moreEvents)
-
-##	def __eventBugOptionsBegin(self, argsList):
-##		return 1
-##
-##	def __eventBugOptionsApply(self, playerID, userData, popupReturn):
-##		return 1
 
 class AbstractBugOptionsEvent(object):
 
@@ -43,16 +31,9 @@ class BugOptionsEvent(AbstractBugOptionsEvent):
 		eventType, key, mx, my, px, py = argsList
 		if ( eventType == self.eventMgr.EventKeyDown ):
 			theKey = int(key)
-			"Check if CTRL-ALT-O was hit"
-			if (theKey == int(InputTypes.KB_O) and self.eventMgr.bAlt and self.eventMgr.bCtrl):
+			# Check if CTRL-ALT-O or ALT-J were hit (the latter for Ruff's users).
+			if ((theKey == int(InputTypes.KB_O) and self.eventMgr.bAlt and self.eventMgr.bCtrl)
+			or (theKey == int(InputTypes.KB_J) and self.eventMgr.bAlt)):
 				CvScreensInterface.showBugOptionsScreen()
-				return 1
-
-			if (theKey == int(InputTypes.KB_J) and self.eventMgr.bAlt):
-#				CvScreensInterface.showRuffModScreen()
-				popup = PyPopup.PyPopup(CvUtil.EventReminderRecall, EventContextTypes.EVENTCONTEXT_SELF)
-				popup.setHeaderString("BtS Unaltered Mod Options")
-				popup.setBodyString("The BtS Unaltered Mod uses Alt-Ctrl-O to bring up the option screen")
-				popup.launch()
 				return 1
 		return 0
