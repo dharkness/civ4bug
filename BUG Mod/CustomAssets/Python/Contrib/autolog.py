@@ -17,7 +17,7 @@ BugAutolog = BugAutologOptions.BugAutologOptions()
 
 class autologInstance:
 
-	def __init__(self):
+#	def __init__(self):
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
