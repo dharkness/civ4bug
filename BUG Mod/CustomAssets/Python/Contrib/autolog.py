@@ -18,35 +18,6 @@ BugAutolog = BugAutologOptions.BugAutologOptions()
 class autologInstance:
 
 	def __init__(self):
-		## USER SETTINGS
-		self.colorMessageFormats = [
-			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n", "[b][u]%s[/u][/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n", "[b]%s[/b] %s\n"],
-			["%s\n", "<span style=\"color: Red\">%s</span><br>\n", "[color=\"Red\"]%s[/color]\n", "[color=Red]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Purple\">%s</span><br>\n", "[color=\"Purple\"]%s[/color]\n", "[color=Purple]%s[/color]\n"],
-			["%s\n", "<span style=\"color: RoyalBlue\">%s</span><br>\n", "[color=\"RoyalBlue\"]%s[/color]\n", "[color=RoyalBlue]%s[/color]\n"],
-			["%s\n", "<span style=\"color: DarkOrange\">%s</span><br>\n", "[color=\"DarkOrange\"]%s[/color]\n", "[color=DarkOrange]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Green\">%s</span><br>\n", "[color=\"Green\"]%s[/color]\n", "[color=Green]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Brown\">%s</span><br>\n", "[color=\"Brown\"]%s[/color]\n", "[color=Brown]%s[/color]\n"],
-			["%s\n", "<span style=\"color: DarkRed\">%s</span><br>\n", "[color=\"DarkRed\"]%s[/color]\n", "[color=DarkRed]%s[/color]\n"],
-			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n", "[b]%s[/b]\n"],
-			["%s\n", "<span style=\"color: SeaGreen\">%s</span><br>\n", "[color=\"SeaGreen\"]%s[/color]\n", "[color=SeaGreen]%s[/color]\n"],
-			["%s\n", "<span style=\"color: Blue\">%s</span><br>\n", "[color=\"Blue\"]%s[/color]\n", "[color=Blue]%s[/color]\n"]];
-		self.plainMessageFormats = [
-			["%s\n", "<b><u>%s</b></u><br>\n", "[b][u]%s[/u][/b]\n", "[b][u]%s[/u][/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s %s\n", "<b>%s</b> %s<br>\n", "[b]%s[/b] %s\n", "[b]%s[/b] %s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "<b>%s</b>\n", "[b]%s[/b]\n", "[b]%s[/b]\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"],
-			["%s\n", "%s<br>\n", "%s\n", "%s\n"]];
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
@@ -62,28 +33,48 @@ class autologInstance:
 		else:
 			return False
 
-	def writeLog(self, type, message, year = 0, turn = 0):
+	def writeLog(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
 		self.openLog()
-		## fix formatting of year
-		if (year < 0):
-			year = str(-year) + " BC"
-		else:
-			year = str(year) + " AD"
-		## determine type of message
-		style = BugAutolog.getFormatStyle()
-		if style<0 or style>3: style=0
-		if type<0 or type>12: type=3
-		if BugAutolog.isColorCoding():
-			format = self.colorMessageFormats[type][style]
-		else:
-			format = self.plainMessageFormats[type][style]
-		
-		if (type == 2): ## custom user comment
-			logMessage = format % (BugAutolog.getPrefix(), message)
-		else:
-			logMessage = format % message
 
-		self.log.write(logMessage)
+		if vPrefix != "":
+			zMsg = "%s %s" % (vPrefix, vMsg)
+		else:
+			zMsg = vMsg
+
+		## determine type of message
+		zStyle = BugAutolog.getFormatStyle()
+		if (zStyle < 0
+		or zStyle > 3): zStyle=0
+
+		if zStyle == 0: # no formatting so do nothing
+			zMsg = zMsg
+
+		elif zStyle == 1:  # html formatting
+			if vBold:
+				zMsg = "<b>%s</b>" % (zMsg)
+			if vUnderline:
+				zMsg = "<u>%s</u>" % (zMsg)
+			if (vColor != "Black"
+			and BugAutolog.isColorCoding()):
+				zMsg = "<span style=\"color: %s\">%s</span>" % (vColor, zMsg)
+
+			zMge = "%s<br>" % (zMsg)
+
+		else: # forum formatting
+			if vBold:
+				zMsg = "[b]%s[/b]" % (zMsg)
+			if vUnderline:
+				zMsg = "[u]%s[/u]" % (zMsg)
+			if (vColor != "Black"
+			and BugAutolog.isColorCoding()):
+				if zStyle == 2:  # color coding with "
+					zMsg = "[color=\"%s\"]%s[/color]" % (vColor, zMsg)
+				else:  # color coding without "
+					zMsg = "[color=%s]%s[/color]" % (vColor, zMsg)
+
+		zMsg = "%s\r\n" % (zMsg)
+
+		self.log.write(zMsg)
 		self.closeLog()
 
 	def openLog(self):
@@ -101,9 +92,21 @@ class autologInstance:
 	def closeLog(self):
 		self.log.close()
 
+	def RuffEcho(self, echoString, printToScr, printToLog):
+		printToScr = False
+		printToLog = False
+
+		szMessage = "%s" % (echoString)
+		if (printToScr):
+			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, szMessage, "", 2, None, ColorTypes(8), 0, 0, False, False)
+		if (printToLog):
+			CvUtil.pyPrint(szMessage)
+		return 0
+
 class autologRetain:
 
 	def __init__(self):
-		bLogFileOpen = false
-		bPlayerHuman = false
+		bLogFileOpen = False
+		bPlayerHuman = False
 		Counter = 0
+

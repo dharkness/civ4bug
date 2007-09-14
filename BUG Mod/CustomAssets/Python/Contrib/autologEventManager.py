@@ -50,9 +50,9 @@ def StartLogger(vsFileName):
 			szfileName = szfileName + ".txt"
 
 	NewAutoLog.setLogFileName(szfileName)
-	NewAutoLog.writeLog(1,"")
-	NewAutoLog.writeLog(1,"Logging by BUG Mod (BtS v3.02) - New Log Entries")
-	NewAutoLog.writeLog(1,"------------------------------------------------")
+	NewAutoLog.writeLog("")
+	NewAutoLog.writeLog("Logging by BUG Mod (BtS v3.02) - New Log Entries")
+	NewAutoLog.writeLog("------------------------------------------------")
 	
 	zcurrturn = gc.getGame().getElapsedGameTurns() + BugAutolog.get4000BCTurn()
 	zmaxturn = gc.getGame().getMaxTurns()
@@ -69,7 +69,7 @@ def StartLogger(vsFileName):
 		zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
 				
 	message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
-	NewAutoLog.writeLog(0, message)
+	NewAutoLog.writeLog(message, vBold=True, vUnderline=True)
 
 	if (not BugAutolog.isSilent()):
 		message = "Logging Game to File: %s" % (szfileName)
@@ -124,7 +124,8 @@ class autologEventManager:
 		if NewAutoLog.Enabled():
 			message = popupReturn.getEditBoxString(0)
 			if (popupReturn.getButtonClicked() != 1):
-				NewAutoLog.writeLog(2, message)
+				NewAutoLog.writeLog(message, vPrefix=BugAutolog.getPrefix())
+
 				if (not BugAutolog.isSilent()):
 					CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
 
@@ -208,16 +209,16 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (theKey == int(InputTypes.KB_B)
 			and self.eventMgr.bAlt
 			and NewAutoLog.Enabled()):
-				NewAutoLog.writeLog(1, "")
-				NewAutoLog.writeLog(10, "Battle Stats:")
+				NewAutoLog.writeLog("")
+				NewAutoLog.writeLog("Battle Stats:", vBold=True)
 				message = "Units victorious while attacking : %i" %(self.iBattleWonAttacking)
-				NewAutoLog.writeLog(9, message)
+				NewAutoLog.writeLog(message, vColor="DarkRed")
 				message = "Units victorious while defending : %i" %(self.iBattleWonDefending)
-				NewAutoLog.writeLog(9, message)
+				NewAutoLog.writeLog(message, vColor="DarkRed")
 				message = "Units defeated while attacking : %i" %(self.iBattleLostAttacking)
-				NewAutoLog.writeLog(3, message)
+				NewAutoLog.writeLog(message, vColor="Red")
 				message = "Units defeated while defending : %i" %(self.iBattleLostDefending)
-				NewAutoLog.writeLog(3, message)
+				NewAutoLog.writeLog(message, vColor="Red")
 
 				self.iBattleWonDefending = 0
 				self.iBattleLostDefending = 0
@@ -267,7 +268,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			self.storeStuff()
 
 		if NewAutoLog.Enabled():
-			NewAutoLog.writeLog(1, "")
+			NewAutoLog.writeLog("")
+
 			zcurrturn = gc.getGame().getElapsedGameTurns() + 1 + BugAutolog.get4000BCTurn()
 			zmaxturn = gc.getGame().getMaxTurns()
 			zturn = gc.getGame().getGameTurn() + 1
@@ -284,7 +286,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
 				
 			message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
-			NewAutoLog.writeLog(0, message)
+			NewAutoLog.writeLog(message, vBold=True, vUnderline=True)
 
 			self.bCurrPlayerHuman = true	
 
@@ -299,8 +301,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if NewAutoLog.Enabled():
 			if (self.bCurrPlayerHuman):
 				if BugAutolog.isShowIBT():
-					NewAutoLog.writeLog(1, "")
-					NewAutoLog.writeLog(10, "IBT:")
+					NewAutoLog.writeLog("")
+					NewAutoLog.writeLog("IBT:", vBold=True)
 
 			self.bCurrPlayerHuman = false
 
@@ -312,7 +314,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			and gc.getGame().getGameTurn() > 0):
 					civMet = PyPlayer(gc.getTeam(iHasMetTeamY).getLeaderID())
 					message = "Contact made: %s" % (civMet.getCivilizationName())
-					NewAutoLog.writeLog(8, message)
+					NewAutoLog.writeLog(message, vColor="Brown")
 
 	def onCombatLogCalc(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -344,7 +346,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						message = "While defending %s, %s defeats (%.2f/%i): %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
 						self.iBattleWonDefending = self.iBattleWonDefending + 1
 
-					NewAutoLog.writeLog(9, message)
+					NewAutoLog.writeLog(message, vColor="DarkRed")
+
 				else:
 					if (self.bCurrPlayerHuman):
 						message = "While attacking %s, %s loses to: %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
@@ -354,7 +357,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						message = "While defending %s, %s loses to: %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
 						self.iBattleLostDefending = self.iBattleLostDefending + 1
 
-					NewAutoLog.writeLog(3, message)
+					NewAutoLog.writeLog(message, vColor="Red")
 
 	def getUnitLocation(self, objUnit):
 		iX = objUnit.getX()
@@ -400,7 +403,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			pCity, iBuildingType = argsList
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				message = "%s finishes: %s"%(pCity.getName(),gc.getBuildingInfo(iBuildingType).getDescription())
-				NewAutoLog.writeLog(4, message)
+				NewAutoLog.writeLog(message, vColor="Purple")
 
 	def onProjectBuilt(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -408,7 +411,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			pCity, iProjectType = argsList
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				message = "%s finishes: %s"%(pCity.getName(),gc.getProjectInfo(iProjectType).getDescription())
-				NewAutoLog.writeLog(4, message)
+				NewAutoLog.writeLog(message, vColor="Purple")
 
 	def onUnitBuilt(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -417,7 +420,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			unit = argsList[1]
 			if city.getOwner() == CyGame().getActivePlayer():
 				message = "%s finishes: %s"%(city.getName(),gc.getUnitInfo(unit.getUnitType()).getDescription())
-				NewAutoLog.writeLog(4, message)
+				NewAutoLog.writeLog(message, vColor="Purple")
 
 	def onUnitPromoted(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -425,7 +428,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			pUnit, iPromotion = argsList
 			if pUnit.getOwner() == CyGame().getActivePlayer():
 				message = "%s promoted: %s" % (pUnit.getName(), PyInfo.PromotionInfo(iPromotion).getDescription())
-				NewAutoLog.writeLog(6, message)
+				NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onGoodyReceived(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -448,7 +451,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						11: 'strong hostiles'
 					}
 				message = "Tribal village results: %s" % (GoodyTypeMap[iGoodyType])
-				NewAutoLog.writeLog(8, message)
+				NewAutoLog.writeLog(message, vColor="Brown")
 
 	def onGreatPersonBorn(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -456,7 +459,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			pUnit, iPlayer, pCity = argsList
 			if iPlayer == CyGame().getActivePlayer():
 				message = "%s born in %s" % (pUnit.getName(), pCity.getName())
-				NewAutoLog.writeLog(8, message)
+				NewAutoLog.writeLog(message, vColor="Brown")
 
 	def onTechAcquired(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -465,7 +468,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (iPlayer == CyGame().getActivePlayer()
 			and gc.getGame().getGameTurn() > 0):
 				message = "Tech learned: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
-				NewAutoLog.writeLog(7, message)
+				NewAutoLog.writeLog(message, vColor="Green")
 
 	def onTechSelected(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -479,7 +482,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zTurns = (researchCost - researchProgress - overflowResearch) / researchRate + 1
 
 				message = "Research begun: %s (%i Turns)" %(PyInfo.TechnologyInfo(iTechType).getDescription(), zTurns)
-				NewAutoLog.writeLog(7, message)
+				NewAutoLog.writeLog(message, vColor="Green")
 
 	def onReligionFounded(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -492,7 +495,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				messageEnd = "a distant land"
 			message = "%s founded in %s" % (gc.getReligionInfo(iReligion).getDescription(), messageEnd)
-			NewAutoLog.writeLog(6, message)
+			NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onReligionSpread(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -505,7 +508,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has spread: %s" % (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName())
 				else:
 					message = "%s has spread: %s (%s)" % (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName(), player.getCivilizationName())
-				NewAutoLog.writeLog(6, message)
+				NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onReligionRemove(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -518,7 +521,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has been removed: %s" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName())
 				else:
 					message = "%s has been removed: %s (%s)" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
-				NewAutoLog.writeLog(6, message)
+				NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationFounded(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -531,7 +534,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				messageEnd = "a distant land"
 			message = "%s founded in %s" % (gc.getCorporationInfo(iCorporation).getDescription(), messageEnd)
-			NewAutoLog.writeLog(6, message)
+			NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationSpread(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -544,7 +547,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has spread: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName())
 				else:
 					message = "%s has spread: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName(), player.getCivilizationName())
-				NewAutoLog.writeLog(6, message)
+				NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationRemove(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -557,7 +560,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has been removed: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName())
 				else:
 					message = "%s has been removed: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
-				NewAutoLog.writeLog(6, message)
+				NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 	def onGoldenAge(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -565,7 +568,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer = argsList[0]
 			if iPlayer == CyGame().getActivePlayer():
 				message = "Golden Age begins"
-				NewAutoLog.writeLog(8, message)
+				NewAutoLog.writeLog(message, vColor="Brown")
 
 	def onEndGoldenAge(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -573,7 +576,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer = argsList[0]
 			if iPlayer == CyGame().getActivePlayer():
 				message = "Golden Age ends"
-				NewAutoLog.writeLog(8, message)
+				NewAutoLog.writeLog(message, vColor="Brown")
 
 	def onChangeWar(self, argsList):
 		bIsWar = argsList[0]
@@ -595,7 +598,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s declares war on %s" % (zsCiv1, zsCiv2)
 				else:
 					message = "%s and %s have signed a peace treaty" % (zsCiv1, zsCiv2)
-				NewAutoLog.writeLog(3, message)
+				NewAutoLog.writeLog(message, vColor="Red")
 
 	def onSetPlayerAlive(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -607,7 +610,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "%s has been eliminated" % (PyPlayer(iPlayerID).getCivDescription())
 				else:
 					message = "Another civilization has been eliminated"
-				NewAutoLog.writeLog(3, message)
+
+				NewAutoLog.writeLog(message, vColor="Red")
 
 	def onCityBuilt(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -615,7 +619,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			city = argsList[0]
 			if city.getOwner() == CyGame().getActivePlayer():
 				message = "%s founded"%(city.getName())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityRazed(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -625,10 +629,11 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			razor = PyPlayer(iPlayer)
 			if (iPlayer == CyGame().getActivePlayer()):
 				message = "Razed %s" % (city.getName())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
+
 			elif (city.getOwner() == CyGame().getActivePlayer()):
 				message = "%s razed by %s" % (city.getName(), razor.getCivilizationName())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityAcquired(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -641,7 +646,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "Traded for %s (%s)" % (city.getName(), PyPlayer(owner).getName())
 				else:
 					message = "%s (%s) culture flips" % (city.getName(), PyPlayer(owner).getName())
-				NewAutoLog.writeLog(5, message)
+
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityLost(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -649,7 +655,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			city = argsList[0]
 			if city.getOwner() == CyGame().getActivePlayer():
 				message = "%s lost" % (city.getName())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCultureExpansion(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -658,7 +664,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer = argsList[1]
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				message = "%s's borders expand" % (pCity.getName())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityGrowth(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -668,7 +674,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			#CvUtil.pyPrint("%s has grown to size %i" %(pCity.getName(),pCity.getPopulation()))
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				message = "%s grows: %i" %(pCity.getName(), pCity.getPopulation())
-				NewAutoLog.writeLog(5, message)
+				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityBuildingUnit(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -678,7 +684,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				zTurns = pCity.getUnitProductionTurnsLeft(iUnitType, 1)
 				message = "%s begins: %s (%i turns)" %(pCity.getName(),gc.getUnitInfo(iUnitType).getDescription(), zTurns)
-				NewAutoLog.writeLog(4, message)
+				NewAutoLog.writeLog(message, vColor="Purple")
 
 	def onCityBuildingBuilding(self, argsList):
 		if (NewAutoLog.Enabled()
@@ -688,7 +694,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				zTurns = pCity.getBuildingProductionTurnsLeft(iBuildingType, 1)
 				message = "%s begins: %s (%i turns)" %(pCity.getName(),gc.getBuildingInfo(iBuildingType).getDescription(), zTurns)
-				NewAutoLog.writeLog(4, message)
+				NewAutoLog.writeLog(message, vColor="Purple")
 
 	def onImprovementBuilt(self, argsList):
 		'Improvement Built'
@@ -713,7 +719,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsLocn = " near %s" % (zsCity.getName())
 
 			message = message + zsLocn
-			NewAutoLog.writeLog(5, message)
+			NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onImprovementDestroyed(self, argsList):
 		'Improvement Destroyed'
@@ -738,7 +744,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsLocn = " near %s" % (zsCity.getName())
 
 			message = message + zsLocn
-			NewAutoLog.writeLog(5, message)
+			NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onUnitPillage(self, argsList):
 		'Unit pillages a plot'
@@ -767,7 +773,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			message = message + zsLocn
 			message = message + " was destroyed by %s %s" %(PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName())
-			NewAutoLog.writeLog(3, message)
+
+			NewAutoLog.writeLog(message, vColor="Red")
 
 	def onVassalState(self, argsList):
 		'Vassal State'
@@ -785,7 +792,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				message = "%s becomes a Vassal State of %s" % (zsVassal, zsMaster)
 			else:
 				message = "%s revolts and is no longer a Vassal State of %s" % (zsVassal, zsMaster)
-			NewAutoLog.writeLog(3, message)
+
+			NewAutoLog.writeLog(message, vColor="Red")
 
 	def initStuff(self):
 		#set up variables to hold stuff
@@ -837,7 +845,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					else:
 						zsNewRel = gc.getReligionInfo(gc.getPlayer(iCiv).getStateReligion()).getDescription()
 					message = "State Religion Change: %s from '%s' to '%s'" % (zsCiv, zsOldRel, zsNewRel)
-					NewAutoLog.writeLog(6, message)
+					NewAutoLog.writeLog(message, vColor="DarkOrange")
 
 		# check if the attitude has changed
 		if (NewAutoLog.Enabled()
@@ -856,7 +864,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsCiv1 = gc.getPlayer(iCiv1).getName() + "(" + gc.getPlayer(iCiv1).getCivilizationShortDescription(0) + ")"
 						zsCiv2 = gc.getPlayer(iCiv2).getName() + "(" + gc.getPlayer(iCiv2).getCivilizationShortDescription(0) + ")"
 						message = "Attitude Change: %s towards %s, from '%s' to '%s'" % (zsCiv1, zsCiv2, self.CIVAttitude[zKey], zsNewAttitude)
-						NewAutoLog.writeLog(12, message)
+						NewAutoLog.writeLog(message, vColor="Blue")
 
 		# check if the civ's civics have changed
 		if (NewAutoLog.Enabled()
@@ -871,23 +879,23 @@ class AutoLogEvent(AbstractAutoLogEvent):
 							zsOldCiv = gc.getCivicInfo(self.CIVCivics[zKey]).getDescription()
 							zsNewCiv = gc.getCivicInfo(gc.getPlayer(iCiv).getCivics(iCivic)).getDescription()
 							message = "Civics Change: %s from '%s' to '%s'" % (zsCiv, zsOldCiv, zsNewCiv)
-							NewAutoLog.writeLog(11, message)
+							NewAutoLog.writeLog(message, vColor="SeaGreen")
 		return 0
 
 	def dumpStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
-		NewAutoLog.writeLog(1, "")
-		NewAutoLog.writeLog(1, "dumpStuff")
-		NewAutoLog.writeLog(1, "state religion")
+		NewAutoLog.writeLog("")
+		NewAutoLog.writeLog("dumpStuff")
+		NewAutoLog.writeLog("state religion")
 
 		# dump civ state religion
 		for iCiv in range(0, ziMaxCiv, 1):
 			zsCiv = gc.getPlayer(iCiv).getCivilizationShortDescription(0)
 			message = "zsCiv %s, %i, %i" % (zsCiv, self.CIVReligion[iCiv], gc.getPlayer(iCiv).getStateReligion())
-			NewAutoLog.writeLog(1, message)
+			NewAutoLog.writeLog(message)
 
-		NewAutoLog.writeLog(1, "")
-		NewAutoLog.writeLog(1, "attitude")
+		NewAutoLog.writeLog("")
+		NewAutoLog.writeLog("attitude")
 
 		# dump attitude
 		for iCiv1 in range(0, ziMaxCiv, 1):
@@ -897,10 +905,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zsNewAttitude = gc.getAttitudeInfo(gc.getPlayer(iCiv1).AI_getAttitude(iCiv2)).getDescription()
 				zKey = ziMaxCiv * iCiv1 + iCiv2
 				message = "Attitude, %s, %s, %s, %s" % (zsCiv1, zsCiv2, self.CIVAttitude[zKey], zsNewAttitude)
-				NewAutoLog.writeLog(1, message)
+				NewAutoLog.writeLog(message)
 
-		NewAutoLog.writeLog(1, "")
-		NewAutoLog.writeLog(1, "civics")
+		NewAutoLog.writeLog("")
+		NewAutoLog.writeLog("civics")
 
 		# dump civ's civics
 		for iCiv in range(0, ziMaxCiv, 1):
@@ -910,7 +918,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zsOldCiv = gc.getCivicInfo(self.CIVCivics[zKey]).getDescription()
 				zsNewCiv = gc.getCivicInfo(gc.getPlayer(iCiv).getCivics(iCivic)).getDescription()
 				message = "Civics, %s, %s, %s" % (zsCiv, zsOldCiv, zsNewCiv)
-				NewAutoLog.writeLog(1, message)
+				NewAutoLog.writeLog(message)
 
-		NewAutoLog.writeLog(1, "")
+		NewAutoLog.writeLog("")
 		return 0
