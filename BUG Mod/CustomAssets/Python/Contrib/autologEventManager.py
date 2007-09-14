@@ -751,7 +751,12 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		and BugAutolog.isLogPillage()
 		and (pPlot.getOwner() == CyGame().getActivePlayer()
 		or   pUnit.getOwner() == CyGame().getActivePlayer())):
-			message = "A %s" % (PyInfo.ImprovementInfo(iImprovement).getDescription())
+			if (iImprovement != -1):
+				message = "A %s" % (gc.getImprovementInfo(iImprovement).getDescription())
+			elif (iRoute != -1):
+				message = "A %s" % (gc.getRouteInfo(iRoute).getDescription())
+			else:
+				message = "An improvement"
 			zsLocn = ""
 			for iiX in range(iX-2, iX+3, 1):
 				for iiY in range(iY-2, iY+3, 1):
