@@ -208,8 +208,6 @@ class CvCustomizableDomesticAdvisor:
 		self.EXIT_NAME = "DomesticExit"
 		self.BACKGROUND_ID = "DomesticAdvisorBG"
 		self.PAGES_DD_NAME = "DomPagesDD"
-		self.PREV_PAGE_NAME = "DomPagePrev"
-		self.NEXT_PAGE_NAME = "DomPageNext"
 
 		self.CULTURE_TEXT_NAME = "DomCultureText"
 		self.GP_TEXT_NAME = "DomGPText"
@@ -223,10 +221,14 @@ class CvCustomizableDomesticAdvisor:
 		self.CUSTOMIZE_PAGE = "DomCustomize"
 		self.COLUMNS_LIST_PAGE = "DomColumnsList"
 		
+		self.PREV_PAGE_NAME = "DomPagePrevButton"
+		self.NEXT_PAGE_NAME = "DomPageNextButton"
 		self.START_CUSTOMIZING_NAME = "DomStartCustomizing"
 		self.RENAME_PAGE_NAME = "DomRenamePage"
 		self.ADD_PAGE_NAME = "DomAddPageButton"
 		self.DEL_PAGE_NAME = "DomDelPageButton"
+		self.PAGE_UP_NAME = "DomPageUpButton"
+		self.PAGE_DOWN_NAME = "DomPageDownButton"
 		self.SAVE_NAME = "DomSaveButton"
 		self.RELOAD_PAGES_NAME = "DomReloadPages"
 
@@ -396,6 +398,8 @@ class CvCustomizableDomesticAdvisor:
 			self.DEL_PAGE_NAME			: self.delPage,
 			self.PREV_PAGE_NAME			: self.previousPage,
 			self.NEXT_PAGE_NAME			: self.nextPage,
+			self.PAGE_UP_NAME			: self.upPage,
+			self.PAGE_DOWN_NAME			: self.downPage,
 
 			self.COLUMN_SHRINK_NAME		: self.shrinkCol,
 			self.COLUMN_WIDEN_NAME		: self.widenCol,
@@ -786,10 +790,10 @@ class CvCustomizableDomesticAdvisor:
 		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
-#		x += self.nControlSize + 2
-#		screen.setImageButton( self.MOVE_PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
-#		x += self.nControlSize + 2
-#		screen.setImageButton( self.MOVE_PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		x += self.nControlSize + 2
+		screen.setImageButton( self.PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		x += self.nControlSize + 2
+		screen.setImageButton( self.PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
 		x += self.nControlSize + 12
 		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
 		x += self.nControlSize + 2
@@ -990,6 +994,8 @@ class CvCustomizableDomesticAdvisor:
 			screen.show(self.RENAME_PAGE_NAME)
 			screen.show(self.ADD_PAGE_NAME)
 			screen.show(self.DEL_PAGE_NAME)
+			screen.show(self.PAGE_UP_NAME)
+			screen.show(self.PAGE_DOWN_NAME)
 			screen.show(self.SAVE_NAME)
 			screen.show(self.RELOAD_PAGES_NAME)
 
@@ -1013,6 +1019,8 @@ class CvCustomizableDomesticAdvisor:
 			screen.hide(self.RENAME_PAGE_NAME)
 			screen.hide(self.ADD_PAGE_NAME)
 			screen.hide(self.DEL_PAGE_NAME)
+			screen.hide(self.PAGE_UP_NAME)
+			screen.hide(self.PAGE_DOWN_NAME)
 			screen.hide(self.SAVE_NAME)
 			screen.hide(self.RELOAD_PAGES_NAME)
 
@@ -2335,8 +2343,42 @@ class CvCustomizableDomesticAdvisor:
 
 		return 1
 
+	def upPage(self, inputClass):
+		
+		if (self.currentPageNum < 1):
+			# Cannot move first page up
+			return 1
+		curPage = self.currentPageNum
+		prevPage = curPage - 1
+		temp = self.PAGES[curPage]
+		self.PAGES[curPage] = self.PAGES[prevPage]
+		self.PAGES[prevPage] = temp
+		if(self.customizing):
+			self.customizingClearSelection()
+		self.switchPage(temp["name"])
+		self.drawScreen(self.currentPage)
+
+		return 1
+
+	def downPage(self, inputClass):
+		
+		if (self.currentPageNum + 1 >= len(self.PAGES)):
+			# Cannot move last page down
+			return 1
+		curPage = self.currentPageNum
+		nextPage = curPage + 1
+		temp = self.PAGES[curPage]
+		self.PAGES[curPage] = self.PAGES[nextPage]
+		self.PAGES[nextPage] = temp
+		if(self.customizing):
+			self.customizingClearSelection()
+		self.switchPage(temp["name"])
+		self.drawScreen(self.currentPage)
+
+		return 1
+
 	def previousPage(self, inputClass):
-				
+		
 		if (self.currentPageNum < 1):
 			# Already on first page
 			return 1
@@ -2348,7 +2390,7 @@ class CvCustomizableDomesticAdvisor:
 		return 1
 
 	def nextPage(self, inputClass):
-				
+		
 		if (self.currentPageNum + 1 >= len(self.PAGES)):
 			# Already on last page
 			return 1
