@@ -180,6 +180,18 @@ class OptionsFacade(object):
 	def setValue(self, name, value):
 		self.options.setValue(name, value)
 
+	def setString(self, name, value):
+		self.options.setString(name, value)
+
+	def setBoolean(self, name, value):
+		self.options.setBoolean(name, value)
+
+	def setInt(self, name, value):
+		self.options.setInt(name, value)
+
+	def setFloat(self, name, value):
+		self.options.setFloat(name, value)
+
 
 	def write(self):
 		self.options.write()
