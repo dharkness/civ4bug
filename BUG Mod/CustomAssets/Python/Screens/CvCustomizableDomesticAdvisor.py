@@ -7,6 +7,18 @@
 
 ## REQUIRES Civilization 4 - Beyond the Sword - PATCH 3.02
 
+## Ported to BtS for BUG by EmperorFool
+#
+#    - Added BtS columns (e.g. corporations and espionage) and "Liberate Colony" button.
+#    - Added other new columns (e.g. turns until culture growth and great person birth).
+#    - Added a set of building class columns that show the building type for the civ you're playing.
+#    - Added a second set of building type/class columns that show if you have the building or not
+#      instead of the effects of the building. These columns are narrower than the originals.
+#    - Changed all building columns to use the building's icon instead of its name.
+#    - Resource columns now show their icon as the header and the effects as the value.
+#      TODO: Add duplicate set of bonus columns that show just if you have it.
+#    - Fixed crash caused when you have more than 20 or so cities.
+#
 ## Credits
 #
 #    This advisor was inspired by the fantastic work of Homegrown and Requies of civfanatics.com, and all
@@ -576,7 +588,17 @@ class CvCustomizableDomesticAdvisor:
 			info = gc.getBuildingClassInfo(i)
 			key = "BLDGCLASS_" + info.getType()
 			desc = info.getDescription()
-			self.COLUMNS_LIST.append((key, 22, "bldg", None, None, 0, self.calculateBuilding, i, "u\"%s\"" % desc))
+			self.COLUMNS_LIST.append((key, 22, "bldgclass", None, None, 0, self.calculateBuildingClass, i, "u\"%s\"" % desc))
+
+		# Civ-Specific Buildings
+		for i in range(gc.getNumBuildingInfos()):
+			info = gc.getBuildingInfo(i)
+			classInfo = gc.getBuildingClassInfo(info.getBuildingClassType())
+			if (classInfo.getDefaultBuildingIndex() != i):
+				# Assume civ-specific if it isn't default building for its class
+				key = "BLDGCIV_" + info.getType()
+				desc = info.getDescription()
+				self.COLUMNS_LIST.append((key, 22, "bldg", None, None, 0, self.calculateBuilding, i, "u\"%s\"" % desc))
 
 		# Hurry types
 		for i in range(gc.getNumHurryInfos()):
@@ -1350,20 +1372,25 @@ class CvCustomizableDomesticAdvisor:
 		# return the final value
 		return szReturn
 
-	def calculateBuilding (self, city, szKey, arg):
+	def calculateBuildingClass (self, city, szKey, arg):
 		
 		# Turn building class into building
 		bldg = gc.getCivilizationInfo(city.getCivilizationType()).getCivilizationBuildings(arg)
-		if city.getNumBuilding(bldg) > 0:
-			if city.getNumActiveBuilding(bldg) > 0:
+		return self.calculateBuilding(city, szKey, bldg)
+
+	def calculateBuilding (self, city, szKey, arg):
+		
+		# Turn building class into building
+		if city.getNumBuilding(arg) > 0:
+			if city.getNumActiveBuilding(arg) > 0:
 				return self.objectHave
 			else:
 				return self.objectHaveObsolete
-		elif city.getFirstBuildingOrder(bldg) != -1:
+		elif city.getFirstBuildingOrder(arg) != -1:
 			return self.objectUnderConstruction
-		elif city.canConstruct(bldg, False, False, False):
+		elif city.canConstruct(arg, False, False, False):
 			return self.objectPossible
-		elif city.canConstruct(bldg, True, False, False):
+		elif city.canConstruct(arg, True, False, False):
 			return self.objectPossibleConcurrent
 		else:
 			return self.objectNotPossible
@@ -1842,24 +1869,28 @@ class CvCustomizableDomesticAdvisor:
 				try:
 					columnDef = self.COLUMNS_LIST[self.COLUMNS_INDEX[key]]
 					type = columnDef[2]
-					if (type == "bldg"):
-						buildingClass = columnDef[7]
-						building = civInfo.getCivilizationBuildings(buildingClass)
+					if (type == "bldg" or type == "bldgclass"):
+						if (type == "bldg"):
+							building = columnDef[7]
+							buildingInfo = self.BUILDING_INFO_LIST[building]
+							buildingClass = buildingInfo.getBuildingClassType()
+							if (building != civInfo.getCivilizationBuildings(buildingClass)):
+								# Skip column if building isn't available for this civ
+								continue
+						else:
+							buildingClass = columnDef[7]
+							building = civInfo.getCivilizationBuildings(buildingClass)
+							buildingInfo = self.BUILDING_INFO_LIST[building]
 						screen.setTableColumnHeader (page, value + 1, "", self.columnWidth[key])
 						szName = "BLDG_BTN_%d" % building
 						x = iBuildingButtonX + (self.columnWidth[key] - self.BUILDING_BUTTON_X_SIZE) / 2
-						screen.setImageButton (szName, self.BUILDING_INFO_LIST[building].getButton(), 
+						screen.setImageButton (szName, buildingInfo.getButton(), 
 											   x, iBuildingButtonY, self.BUILDING_BUTTON_X_SIZE, self.BUILDING_BUTTON_Y_SIZE, 
 											   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, building, -1)
 					else:
 						screen.setTableColumnHeader (page, value + 1, "<font=2>" + self.HEADER_DICT[key] + "</font>", self.columnWidth[key] )
 
 					iBuildingButtonX += self.columnWidth[key]
-
-					# Get the type
-#					type = columnDef[2]
-
-					buttonType = None
 
 					# And the correct writing function.
 					if (type == "text"):
@@ -1874,7 +1905,7 @@ class CvCustomizableDomesticAdvisor:
 					elif (type == "bonus"):
 						funcTableWrite = screen.setTableText
 						justify = CvUtil.FONT_CENTER_JUSTIFY
-					elif (type == "bldg"):
+					elif (type == "bldg" or type == "bldgclass"):
 						funcTableWrite = screen.setTableText
 						justify = CvUtil.FONT_CENTER_JUSTIFY
 					else:
