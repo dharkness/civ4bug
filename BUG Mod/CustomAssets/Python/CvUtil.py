@@ -65,9 +65,6 @@ EventCustomLogEntry = 5051
 EventReminderStore = 5060
 EventReminderRecall = 5061
 
-# ruff mod addition 1/1
-EventRuffOptions = 5070
-
 # BUG - Events - end
 
 EventLButtonDown=1
