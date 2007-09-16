@@ -8,6 +8,14 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<!-- Interface Text -->
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
+		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
+		<French>Press Ctrl-Alt-O to customize BUG Mod</French>
+		<German>Press Ctrl-Alt-O to customize BUG Mod</German>
+		<Italian>Press Ctrl-Alt-O to customize BUG Mod</Italian>
+		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>INTERFACE_NEXT_GREATPERSON_CITY_TURNS</Tag>
 		<English>Great Person: %s1 (%d2)</English>
 		<French>Personnage Illustre: %s1 (%d2)</French>

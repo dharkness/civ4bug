@@ -727,6 +727,11 @@ class CvMainInterface:
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
+				elif ( BugScreens.isShowOptionsKeyReminder() ):
+					acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
+					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
+					screen.setEndTurnState( "EndTurnText", acOutput )
+					bShow = True
 
 		if ( bShow ):
 			screen.showEndTurn( "EndTurnText" )

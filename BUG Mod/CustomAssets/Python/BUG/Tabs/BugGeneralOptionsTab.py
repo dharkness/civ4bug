@@ -13,7 +13,9 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	def create(self, screen):
 		tab = self.createTab(screen)
 		panel = self.createMainPanel(screen)
-		leftPanel, rightPanel = self.addTwoColumnLayout(screen, panel, panel, True)
+		column = self.addOneColumnLayout(screen, panel)
+		
+		leftPanel, rightPanel = self.addTwoColumnLayout(screen, column, column, True)
 		
 		screen.attachLabel(leftPanel, "MainInterfaceLabel", "Main Interface:")
 		screen.setControlFlag("MainInterfaceLabel", "CF_LABEL_DEFAULTSIZE")
@@ -47,3 +49,6 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_PossibleColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)
+		
+		screen.attachHSeparator(column, column + "Sep")
+		self.addCheckbox(screen, column, "Main_OptionsKey")

@@ -9,6 +9,11 @@ class BugScreensOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
+		self.addOption(Option("Main_OptionsKey",
+							  "Screens", "Options Shortcut Reminder", True,
+							  "Options Shortcut Reminder",
+							  "When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.",
+							  InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("Main_GPBar",
 							  "Screens", "GP Progress Bar", True,
 							  "Great Person Progress Bar",
@@ -30,6 +35,9 @@ class BugScreensOptions(OptionsFacade):
 							  "Great Person Research",
 							  "When checked, displays the technology each type of great person will research."))
 
+
+	def isShowOptionsKeyReminder(self):
+		return self.getBoolean('Main_OptionsKey')
 
 	def isShowGPProgressBar(self):
 		return self.getBoolean('Main_GPBar')
