@@ -240,6 +240,10 @@ class CvCustomizableDomesticAdvisor:
 		self.DELCOLUMN_NAME = "DomDelCol"
 		self.COLUMNUP_NAME = "DomColUp"
 		self.COLUMNDN_NAME = "DomColDn"
+		
+		self.SHOW_SPECS_NAME = "ShowSpecsCB"
+		self.SHOW_CULTURE_NAME = "ShowCultureCB"
+		self.SHOW_GP_NAME = "ShowGreatPeopleCB"
 
 		self.customizing = False
 		self.currentPageNum = 0
@@ -390,11 +394,15 @@ class CvCustomizableDomesticAdvisor:
 			self.SPECIALIST_PLUS_NAME	: self.HandleSpecialistPlus,
 			self.SPECIALIST_MINUS_NAME	: self.HandleSpecialistMinus,
 			self.EXIT_NAME				: self.DomesticExit,
+			
 			self.ADDCOLUMN_NAME			: self.AddCol,
 			self.DELCOLUMN_NAME			: self.DelCol,
 			self.COLUMNUP_NAME			: self.MoveColUp,
 			self.COLUMNDN_NAME			: self.MoveColDn,
-			self.START_CUSTOMIZING_NAME				: self.ModifyPage,
+			self.COLUMN_SHRINK_NAME		: self.shrinkCol,
+			self.COLUMN_WIDEN_NAME		: self.widenCol,
+			
+			self.START_CUSTOMIZING_NAME	: self.ModifyPage,
 			self.SAVE_NAME				: self.save,
 			self.ADD_PAGE_NAME			: self.addPage,
 			self.DEL_PAGE_NAME			: self.delPage,
@@ -402,9 +410,10 @@ class CvCustomizableDomesticAdvisor:
 			self.NEXT_PAGE_NAME			: self.nextPage,
 			self.PAGE_UP_NAME			: self.upPage,
 			self.PAGE_DOWN_NAME			: self.downPage,
-
-			self.COLUMN_SHRINK_NAME		: self.shrinkCol,
-			self.COLUMN_WIDEN_NAME		: self.widenCol,
+			
+			self.SHOW_SPECS_NAME		: self.toggleShowSpecialistControls,
+			self.SHOW_CULTURE_NAME		: self.toggleShowCultureLegend,
+			self.SHOW_GP_NAME			: self.toggleShowGPLegend,
 
 			self.RELOAD_PAGES_NAME		: self.reloadPages,
 			self.RENAME_PAGE_NAME		: self.renamePage,
@@ -781,29 +790,29 @@ class CvCustomizableDomesticAdvisor:
 		x = self.X_SPECIAL + self.PAGES_DD_W + 10
 
 		# Buttons to switch screens
-		screen.setImageButton( self.PREV_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.PREV_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 12
-		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1, ButtonStyles.BUTTON_STYLE_STANDARD )
+		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_STANDARD )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 12
-		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.RELOAD_PAGES_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		screen.setImageButton( self.RELOAD_PAGES_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
 
 		# Cultural Levels Text
-		screen.setText (self.CULTURE_TEXT_NAME, "Background", self.HEADER_DICT["CULTURE_RATE"], CvUtil.FONT_LEFT_JUSTIFY, self.nCultureLevelX, self.nCultureLevelY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		screen.setText (self.CULTURE_TEXT_NAME, "Background", self.cultureIcon, CvUtil.FONT_LEFT_JUSTIFY, self.nCultureLevelX, self.nCultureLevelY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		nGameSpeed = CyGame().getGameSpeedType()
 		# Start with 2 because we need it farther from the icon.
@@ -826,7 +835,7 @@ class CvCustomizableDomesticAdvisor:
 		iPlayer = PyPlayer(CyGame().getActivePlayer())
 
 		# GP Level Text
-		screen.setText (self.GP_TEXT_NAME, "Background", self.HEADER_DICT["GREATPEOPLE_RATE"], CvUtil.FONT_RIGHT_JUSTIFY, self.nGPLevelX, self.nGPLevelY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		screen.setText (self.GP_TEXT_NAME, "Background", self.figureheadIcon, CvUtil.FONT_RIGHT_JUSTIFY, self.nGPLevelX, self.nGPLevelY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		screen.setText (self.GP_TEXT_NAME + self.NUMBER_TEXT, "Background", "<font=2>" + str (iPlayer.player.greatPeopleThreshold(false)) + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.nGPLevelX, self.nGPLevelY + self.nGPLevelDistance, self.Z_TEXT, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		# Header...
@@ -974,6 +983,14 @@ class CvCustomizableDomesticAdvisor:
 		x -= self.nControlSize + 2
 		screen.setImageButton( self.COLUMN_SHRINK_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
+		x = self.nSecondHalfTableX + 20
+		y = self.nCustomizeControlY + 20
+		screen.setText(self.SHOW_SPECS_NAME, "Background", self.figureheadIcon, CvUtil.FONT_LEFT_JUSTIFY, x, y, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		x += self.nControlSize + 2
+		screen.setText(self.SHOW_CULTURE_NAME, "Background", self.cultureIcon, CvUtil.FONT_LEFT_JUSTIFY, x, y, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		x += self.nControlSize + 2
+#		screen.setText(self.SHOW_GP_NAME, "Background", self.figureheadIcon, CvUtil.FONT_LEFT_JUSTIFY, x, self.nCustomizeControlY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
+		
 		self.hideCustomizationControls()
 
 	def showCustomizationControls(self):
@@ -990,6 +1007,10 @@ class CvCustomizableDomesticAdvisor:
 		screen.show(self.COLUMNDN_NAME)
 		screen.show(self.COLUMN_SHRINK_NAME)
 		screen.show(self.COLUMN_WIDEN_NAME)
+		
+		screen.show(self.SHOW_SPECS_NAME)
+		screen.show(self.SHOW_CULTURE_NAME)
+#		screen.show(self.SHOW_GP_NAME)
 
 		if self.isFlavorful:
 
@@ -1015,6 +1036,10 @@ class CvCustomizableDomesticAdvisor:
 		screen.hide(self.COLUMNDN_NAME)
 		screen.hide(self.COLUMN_SHRINK_NAME)
 		screen.hide(self.COLUMN_WIDEN_NAME)
+		
+		screen.hide(self.SHOW_SPECS_NAME)
+		screen.hide(self.SHOW_CULTURE_NAME)
+#		screen.hide(self.SHOW_GP_NAME)
 
 		if self.isFlavorful:
 
@@ -1875,11 +1900,11 @@ class CvCustomizableDomesticAdvisor:
 				screen.appendTableRow (page)
 				if (cityList[i].getName() in self.listSelectedCities):
 					screen.selectRow( page, i, True )
-				if not self.PAGES[self.currentPageNum]["showSpecControls"]:
+#				if not self.PAGES[self.currentPageNum]["showSpecControls"]:
 #					szWidgetName = "ZoomCity" + str(i)
 #					screen.setImageButton( szWidgetName, zoomArt, 0, 0, 24, 24, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID() )
 #					screen.attachControlToTableCell( szWidgetName, page, i, 0 )
-					screen.setTableText( page, 0, i, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID(), CvUtil.FONT_LEFT_JUSTIFY)
+				screen.setTableText( page, 0, i, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, cityList[i].getOwner(), cityList[i].getID(), CvUtil.FONT_LEFT_JUSTIFY)
 
 			# Order the columns
 			columns = []
@@ -2314,6 +2339,35 @@ class CvCustomizableDomesticAdvisor:
 		self.drawScreen(self.currentPage)
 		self.customizingRestoreSelection()
 
+		return 1
+	
+	def toggleShowSpecialistControls(self, inputClass):
+		"""
+		Toggle the page's 'show specialists' field.
+		Also toggles the 'show GP legend' field until a different icon can be found.
+		"""
+		page = self.PAGES[self.currentPageNum]
+		page["showSpecControls"] = not page["showSpecControls"]
+		page["showGPLegend"] = not page["showGPLegend"]
+		
+		return 1
+	
+	def toggleShowCultureLegend(self, inputClass):
+		"""
+		Toggle the page's 'show culture legend' field.
+		"""
+		page = self.PAGES[self.currentPageNum]
+		page["showCultureLegend"] = not page["showCultureLegend"]
+		
+		return 1
+	
+	def toggleShowGPLegend(self, inputClass):
+		"""
+		Toggle the page's 'show GP legend' field.
+		"""
+		page = self.PAGES[self.currentPageNum]
+		page["showGPLegend"] = not page["showGPLegend"]
+		
 		return 1
 
 	def addPage(self, inputClass):
