@@ -169,6 +169,9 @@ class CvCustomizableDomesticAdvisor:
 		# Location of Specialist Toggle Button
 		self.X_SPECIAL = self.nTableX
 		self.Y_SPECIAL = self.Y_TEXT - 10
+		
+		# Width of page dropdown
+		self.PAGES_DD_W = 300
 
 		# Location of Culture Threshold Info
 		self.nCultureLevelX = 670
@@ -205,6 +208,8 @@ class CvCustomizableDomesticAdvisor:
 		self.EXIT_NAME = "DomesticExit"
 		self.BACKGROUND_ID = "DomesticAdvisorBG"
 		self.PAGES_DD_NAME = "DomPagesDD"
+		self.PREV_PAGE_NAME = "DomPagePrev"
+		self.NEXT_PAGE_NAME = "DomPageNext"
 
 		self.CULTURE_TEXT_NAME = "DomCultureText"
 		self.GP_TEXT_NAME = "DomGPText"
@@ -389,6 +394,8 @@ class CvCustomizableDomesticAdvisor:
 			self.SAVE_NAME				: self.save,
 			self.ADD_PAGE_NAME			: self.addPage,
 			self.DEL_PAGE_NAME			: self.delPage,
+			self.PREV_PAGE_NAME			: self.previousPage,
+			self.NEXT_PAGE_NAME			: self.nextPage,
 
 			self.COLUMN_SHRINK_NAME		: self.shrinkCol,
 			self.COLUMN_WIDEN_NAME		: self.widenCol,
@@ -765,9 +772,13 @@ class CvCustomizableDomesticAdvisor:
 		# Text Buttons
 		screen.setText(self.EXIT_NAME, "Background", localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper(), CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
-		x = self.X_SPECIAL + 220
+		x = self.X_SPECIAL + self.PAGES_DD_W + 10
 
 		# Buttons to switch screens
+		screen.setImageButton( self.PREV_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		x += self.nControlSize + 2
+		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		x += self.nControlSize + 12
 		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1, ButtonStyles.BUTTON_STYLE_STANDARD )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
@@ -775,7 +786,11 @@ class CvCustomizableDomesticAdvisor:
 		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
-		x += self.nControlSize + 2
+#		x += self.nControlSize + 2
+#		screen.setImageButton( self.MOVE_PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+#		x += self.nControlSize + 2
+#		screen.setImageButton( self.MOVE_PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
+		x += self.nControlSize + 12
 		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.RELOAD_PAGES_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_ACTION, -1, -1 )
@@ -1743,7 +1758,7 @@ class CvCustomizableDomesticAdvisor:
 			screen.hide(szName)
 
 		# Fill the pages drop down
-		screen.addDropDownBoxGFC(self.PAGES_DD_NAME, self.X_SPECIAL, self.Y_SPECIAL, 200, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		screen.addDropDownBoxGFC(self.PAGES_DD_NAME, self.X_SPECIAL, self.Y_SPECIAL, self.PAGES_DD_W, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
 		for i, p in enumerate(self.PAGES):
 			screen.addPullDownString(self.PAGES_DD_NAME, p["name"], i, i, i == self.currentPageNum )
 
@@ -2317,6 +2332,30 @@ class CvCustomizableDomesticAdvisor:
 			del self.PAGES[self.currentPageNum]
 			self.switchPage(self.PAGES[0]["name"])
 			self.drawScreen(self.currentPage)
+
+		return 1
+
+	def previousPage(self, inputClass):
+				
+		if (self.currentPageNum < 1):
+			# Already on first page
+			return 1
+		if(self.customizing):
+			self.customizingClearSelection()
+		self.switchPage(self.PAGES[self.currentPageNum - 1]["name"])
+		self.drawScreen(self.currentPage)
+
+		return 1
+
+	def nextPage(self, inputClass):
+				
+		if (self.currentPageNum + 1 >= len(self.PAGES)):
+			# Already on last page
+			return 1
+		if(self.customizing):
+			self.customizingClearSelection()
+		self.switchPage(self.PAGES[self.currentPageNum + 1]["name"])
+		self.drawScreen(self.currentPage)
 
 		return 1
 
