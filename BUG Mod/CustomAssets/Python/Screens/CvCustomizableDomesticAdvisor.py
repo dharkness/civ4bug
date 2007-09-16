@@ -18,6 +18,8 @@
 #    - Resource columns now show their icon as the header and the effects as the value.
 #      TODO: Add duplicate set of bonus columns that show just if you have it.
 #    - Fixed crash caused when you have more than 20 or so cities.
+#    - Added page switching buttons.
+#    - Added buttons to move pages while customizing.
 #
 ## Credits
 #
@@ -270,7 +272,7 @@ class CvCustomizableDomesticAdvisor:
 				("CULTURE_TURNS",			38,		"int",	None,					None,					None,								self.calculateCultureTurns,				None,						"self.cultureIcon + u\"T\""),
 				("DEFENSE",					60,		"int",	None,					None,					0,									self.calculateDefense,					None,						"self.defenseIcon"),
 				("ESPIONAGE",			    38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_ESPIONAGE,	None,									None,						"self.espionageIcon"),
-				("ESPIONAGE_DEF",			60,		"int",	CyCity.getEspionageDefenseModifier,	None,		0,									self.calculateDefense,					None,						"self.espionageIcon + u\"%\""),
+				("ESPIONAGE_DEF",			60,		"int",	CyCity.getEspionageDefenseModifier,	None,		0,									self.calculateEspionageDefense,			None,						"self.espionageIcon + u\"%\""),
 				("FEATURES",				106,	"text",	None,					None,					0,									self.calculateFeatures,					None,						"localText.getText(\"TXT_KEY_MISC_FEATURES\", ())"),
 				("FOOD",					35,		"int",	None,					None,					0,									self.calculateFood,						None,						"self.foodIcon"),
 				("FOUNDED",					80,		"date",	None,					None,					0,									self.calculateFounded,					None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_FOUNDED\", ()).upper()"),
@@ -1092,7 +1094,10 @@ class CvCustomizableDomesticAdvisor:
 		return szReturn
 
 	def calculateDefense(self, city, szKey, arg):
-		return unicode(city.plot().defenseModifier(True)) + u"%"
+		return unicode(city.plot().defenseModifier(-1, True, False)) + u"%"
+
+	def calculateEspionageDefense(self, city, szKey, arg):
+		return unicode(city.getEspionageDefenseModifier()) + u"%"
 
 	def calculateThreats(self, city, szKey, arg):
 
