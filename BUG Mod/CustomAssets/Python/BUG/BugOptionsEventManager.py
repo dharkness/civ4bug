@@ -3,9 +3,7 @@
 ## BUG Mod - Copyright 2007
 
 from CvPythonExtensions import *
-import CvUtil
 import CvScreensInterface
-import Popup as PyPopup
 
 class BugOptionsEventManager:
 
