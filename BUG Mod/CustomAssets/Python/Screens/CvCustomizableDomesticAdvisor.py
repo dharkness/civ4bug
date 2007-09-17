@@ -241,9 +241,7 @@ class CvCustomizableDomesticAdvisor:
 		self.COLUMNUP_NAME = "DomColUp"
 		self.COLUMNDN_NAME = "DomColDn"
 		
-		self.SHOW_SPECS_NAME = "ShowSpecsCB"
-		self.SHOW_CULTURE_NAME = "ShowCultureCB"
-		self.SHOW_GP_NAME = "ShowGreatPeopleCB"
+		self.TOGGLE_SPECS_NAME = "ToggleSpecsCB"
 
 		self.customizing = False
 		self.currentPageNum = 0
@@ -411,9 +409,7 @@ class CvCustomizableDomesticAdvisor:
 			self.PAGE_UP_NAME			: self.upPage,
 			self.PAGE_DOWN_NAME			: self.downPage,
 			
-			self.SHOW_SPECS_NAME		: self.toggleShowSpecialistControls,
-			self.SHOW_CULTURE_NAME		: self.toggleShowCultureLegend,
-			self.SHOW_GP_NAME			: self.toggleShowGPLegend,
+			self.TOGGLE_SPECS_NAME		: self.toggleShowSpecialistControls,
 
 			self.RELOAD_PAGES_NAME		: self.reloadPages,
 			self.RENAME_PAGE_NAME		: self.renamePage,
@@ -794,9 +790,12 @@ class CvCustomizableDomesticAdvisor:
 		x += self.nControlSize + 2
 		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 12
-		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_STANDARD )
+		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		x += self.nControlSize + 2
+		info = gc.getSpecialistInfo(gc.getInfoTypeForString("SPECIALIST_CITIZEN"))
+		screen.addCheckBoxGFC(self.TOGGLE_SPECS_NAME, info.getTexture(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
 		x += self.nControlSize + 2
 		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x += self.nControlSize + 2
@@ -982,14 +981,6 @@ class CvCustomizableDomesticAdvisor:
 		screen.setImageButton( self.COLUMN_WIDEN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		x -= self.nControlSize + 2
 		screen.setImageButton( self.COLUMN_SHRINK_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-
-		x = self.nSecondHalfTableX + 20
-		y = self.nCustomizeControlY + 20
-		screen.setText(self.SHOW_SPECS_NAME, "Background", self.figureheadIcon, CvUtil.FONT_LEFT_JUSTIFY, x, y, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		x += self.nControlSize + 2
-		screen.setText(self.SHOW_CULTURE_NAME, "Background", self.cultureIcon, CvUtil.FONT_LEFT_JUSTIFY, x, y, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		x += self.nControlSize + 2
-#		screen.setText(self.SHOW_GP_NAME, "Background", self.figureheadIcon, CvUtil.FONT_LEFT_JUSTIFY, x, self.nCustomizeControlY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 		
 		self.hideCustomizationControls()
 
@@ -1008,12 +999,9 @@ class CvCustomizableDomesticAdvisor:
 		screen.show(self.COLUMN_SHRINK_NAME)
 		screen.show(self.COLUMN_WIDEN_NAME)
 		
-		screen.show(self.SHOW_SPECS_NAME)
-		screen.show(self.SHOW_CULTURE_NAME)
-#		screen.show(self.SHOW_GP_NAME)
-
 		if self.isFlavorful:
 
+			screen.show(self.RENAME_PAGE_NAME)
 			screen.show(self.RENAME_PAGE_NAME)
 			screen.show(self.ADD_PAGE_NAME)
 			screen.show(self.DEL_PAGE_NAME)
@@ -1021,6 +1009,10 @@ class CvCustomizableDomesticAdvisor:
 			screen.show(self.PAGE_DOWN_NAME)
 			screen.show(self.SAVE_NAME)
 			screen.show(self.RELOAD_PAGES_NAME)
+			screen.show(self.TOGGLE_SPECS_NAME)
+			
+			page = self.PAGES[self.currentPageNum]
+			screen.setState(self.TOGGLE_SPECS_NAME, page["showSpecControls"])
 
 	def hideCustomizationControls(self):
 
@@ -1036,13 +1028,10 @@ class CvCustomizableDomesticAdvisor:
 		screen.hide(self.COLUMNDN_NAME)
 		screen.hide(self.COLUMN_SHRINK_NAME)
 		screen.hide(self.COLUMN_WIDEN_NAME)
-		
-		screen.hide(self.SHOW_SPECS_NAME)
-		screen.hide(self.SHOW_CULTURE_NAME)
-#		screen.hide(self.SHOW_GP_NAME)
 
 		if self.isFlavorful:
 
+			screen.hide(self.RENAME_PAGE_NAME)
 			screen.hide(self.RENAME_PAGE_NAME)
 			screen.hide(self.ADD_PAGE_NAME)
 			screen.hide(self.DEL_PAGE_NAME)
@@ -1050,6 +1039,7 @@ class CvCustomizableDomesticAdvisor:
 			screen.hide(self.PAGE_DOWN_NAME)
 			screen.hide(self.SAVE_NAME)
 			screen.hide(self.RELOAD_PAGES_NAME)
+			screen.hide(self.TOGGLE_SPECS_NAME)
 
 	def hide (self, screen, page):
 		""" Hide function which hides a specific screen."""
@@ -2344,11 +2334,13 @@ class CvCustomizableDomesticAdvisor:
 	def toggleShowSpecialistControls(self, inputClass):
 		"""
 		Toggle the page's 'show specialists' field.
-		Also toggles the 'show GP legend' field until a different icon can be found.
+		Also toggles the 'show culture/GP legend' fields (one button).
 		"""
 		page = self.PAGES[self.currentPageNum]
 		page["showSpecControls"] = not page["showSpecControls"]
+		page["showCultureLegend"] = not page["showCultureLegend"]
 		page["showGPLegend"] = not page["showGPLegend"]
+#		screen.setState(self.TOGGLE_SPECS_NAME, page["showSpecControls"])
 		
 		return 1
 	
