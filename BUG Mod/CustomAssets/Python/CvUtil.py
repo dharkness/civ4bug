@@ -64,6 +64,7 @@ EventCustomLogEntry = 5051
 # reminder addition 1/1
 EventReminderStore = 5060
 EventReminderRecall = 5061
+EventReminderRecallAgain = 5062
 
 # BUG - Events - end
 
