@@ -62,6 +62,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.eventMgr = eventManager
 		self.CurrAvailTechTrades = {}
 		self.PrevAvailTechTrades = {}
+		self.PrevAvailOpenBordersTrades = set()
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
@@ -84,6 +85,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def getCheckForNewTrades(self):
 		return BugAlerts.isShowTechTradeAlert()
 
+	def getCheckForOpenBorders(self):
+		return BugAlerts.isShowOpenBordersAlert()
+
 	def getCheckForDomVictory(self):
 		return self.getCheckForDomPopVictory() or self.getCheckForDomLandVictory()
 
@@ -101,27 +105,27 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		iPlayer = city.getOwner()
 		if (not self.getCheckForDomVictory()): return
 		if (iPlayer == gc.getGame().getActivePlayer()):
-				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 
 	def OnCityBuilt(self, argsList):
 		city = argsList[0]
 		iPlayer = city.getOwner()
 		if (not self.getCheckForDomVictory()): return
 		if (iPlayer == gc.getGame().getActivePlayer()):
-				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 
 	def OnCityRazed(self, argsList):
 		city, iPlayer = argsList
 		if (not self.getCheckForDomVictory()): return
 		if (iPlayer == gc.getGame().getActivePlayer()):
-				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 
 	def OnCityLost(self, argsList):
 		city = argsList[0]
 		iPlayer = city.getOwner()
 		if (not self.getCheckForDomVictory()): return
 		if (iPlayer == gc.getGame().getActivePlayer()):
-				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 
 	def CheckForAlerts(self, iPlayer, iActiveTeam, BeginTurn):
 	##Added "else: pass" code to diagnose strange results - might be related to indent issues
@@ -281,6 +285,22 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			else: pass
 
 		else: pass #end new trades if
+		
+		if (BeginTurn and self.getCheckForOpenBorders()):
+			currentTrades = self.getOpenBordersTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			newTrades = currentTrades.difference(self.PrevAvailOpenBordersTrades)
+			if (newTrades):
+				players = u""
+				bFirst = True
+				for iLoopPlayer in newTrades:
+					if (not bFirst):
+						players += u", "
+					else:
+						bFirst = False
+					players += PyPlayer(iLoopPlayer).getName()
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_OPEN_BORDERS", (players,))
+				self._addMessageNoIcon(iPlayer, message)
+				self.PrevAvailOpenBordersTrades.update(newTrades)
 
 
 	def getTechForTrade(self, iPlayer, iActiveTeam):
@@ -295,8 +315,8 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			currentTeam = currentPlayer.getTeam()
 
 			TechCanTrade = []
-			if (currentPlayer.isBarbarian()): return
-			if (currentPlayer.isMinorCiv()): return
+			if (currentPlayer.isBarbarian()): continue
+			if (currentPlayer.isMinorCiv()): continue
 			if (iLoopPlayer != iPlayer.getID()):
 				if (gc.getTeam(currentTeam).isHasMet(iActiveTeamID)):
 					if (currentPlayer.isAlive()):
@@ -314,3 +334,26 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				else: pass
 			else: pass
 		return
+
+	def getOpenBordersTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_OPEN_BORDERS
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				if (activeTeam.isOpenBorders(iLoopTeamID) or loopTeam.isOpenBorders(iActiveTeamID)):
+					continue
+				if (activeTeam.isOpenBordersTrading() or loopTeam.isOpenBordersTrading()):
+					#tradeData.iData = None
+					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+							currentTrades.add(iLoopPlayerID)
+		return currentTrades

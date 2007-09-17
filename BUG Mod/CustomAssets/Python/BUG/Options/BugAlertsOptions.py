@@ -54,6 +54,10 @@ class BugAlertsOptions(OptionsFacade):
 							  "CIV4LERTS", "CheckForNewTrades", True,
 							  "Technologies",
 							  "."))
+		self.addOption(Option("Alert_OpenBordersTrade",
+							  "CIV4LERTS", "Open Borders Trades", True,
+							  "Open Borders",
+							  "."))
 		self.addOption(Option("Alert_GoldTrade",
 							  "CIV4LERTS", "Gold Trade", True,
 							  "Gold",
@@ -127,6 +131,9 @@ class BugAlertsOptions(OptionsFacade):
 
 	def isShowTechTradeAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_TechTrade')
+
+	def isShowOpenBordersAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_OpenBordersTrade')
 
 	def isShowGoldTradeAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_GoldTrade')

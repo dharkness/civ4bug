@@ -67,6 +67,14 @@
 		<Spanish>[COLOR_TECH_TEXT]Tech(s) nuevo a negociar: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_OPEN_BORDERS</Tag>
+		<English>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_REGEN_FAILED</Tag>
 		<English>Ending: Regenerate Failed...</English>
 		<French>Fin : Régénéré Échoué...</French>

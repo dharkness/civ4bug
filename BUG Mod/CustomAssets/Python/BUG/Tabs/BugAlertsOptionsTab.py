@@ -36,6 +36,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachLabel(rightPanel, "Alert_TradeLabel", "Trade Opportunities:")
 		screen.setControlFlag("Alert_TradeLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, rightPanel, "Alert_TechTrade")
+		self.addCheckbox(screen, rightPanel, "Alert_OpenBordersTrade")
 		
 		self.addCheckboxIntDropdown(screen, rightPanel, rightPanel, "Alert_GoldTrade", "Alert_GoldTradeThresh")
 		self.addCheckboxIntDropdown(screen, rightPanel, rightPanel, "Alert_GoldPerTurnTrade", "Alert_GoldPerTurnTradeThresh")
