@@ -15,11 +15,11 @@
 #    - Added a second set of building type/class columns that show if you have the building or not
 #      instead of the effects of the building. These columns are narrower than the originals.
 #    - Changed all building columns to use the building's icon instead of its name.
-#    - Resource columns now show their icon as the header and the effects as the value.
-#      TODO: Add duplicate set of bonus columns that show just if you have it.
+#    - Resource columns now show their icon as the header and their effects as the value.
 #    - Fixed crash caused when you have more than 20 or so cities.
 #    - Added page switching buttons.
 #    - Added buttons to move pages while customizing.
+#    - Added a button to toggle whether or not to display the controls for changing specialists.
 #
 ## Credits
 #
