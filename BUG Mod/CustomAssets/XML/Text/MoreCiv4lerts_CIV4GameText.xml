@@ -71,7 +71,7 @@
 		<English>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]Firmerà un Trattato di Libero Accesso: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -127,7 +127,7 @@
 		<English>No_Bonus</English>
 		<French>No_Bonus</French>
 		<German>No_Bonus</German>
-		<Italian>No_Bonus</Italian>
+		<Italian>Nessun Bonus</Italian>
 		<Spanish>No_Bonus</Spanish>
 	</TEXT>
 	<TEXT>

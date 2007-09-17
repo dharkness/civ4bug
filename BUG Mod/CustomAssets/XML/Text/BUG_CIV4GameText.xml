@@ -12,7 +12,7 @@
 		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
 		<French>Press Ctrl-Alt-O to customize BUG Mod</French>
 		<German>Press Ctrl-Alt-O to customize BUG Mod</German>
-		<Italian>Press Ctrl-Alt-O to customize BUG Mod</Italian>
+		<Italian>Premi Ctrl-Alt-O per personalizzare il BUG Mod</Italian>
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
@@ -31,7 +31,7 @@
 		<English>Create Reminder</English>
 		<French>Create Reminder</French>
 		<German>Create Reminder</German>
-		<Italian>Create Reminder</Italian>
+		<Italian>Crea un Promemoria</Italian>
 		<Spanish>Create Reminder</Spanish>
 	</TEXT>
 	<TEXT>
@@ -39,7 +39,7 @@
 		<English>Enter the number of turns until the reminder goes off and the message to display.</English>
 		<French>Enter the number of turns until the reminder goes off and the message to display.</French>
 		<German>Enter the number of turns until the reminder goes off and the message to display.</German>
-		<Italian>Enter the number of turns until the reminder goes off and the message to display.</Italian>
+		<Italian>Inserisci il numero di turni che devono passare prima che il promemoria scada ed il messaggio venga visualizzato.</Italian>
 		<Spanish>Enter the number of turns until the reminder goes off and the message to display.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -47,7 +47,7 @@
 		<English>Show reminder again at the end of this turn?</English>
 		<French>Show reminder again at the end of this turn?</French>
 		<German>Show reminder again at the end of this turn?</German>
-		<Italian>Show reminder again at the end of this turn?</Italian>
+		<Italian>Mostrare nuovamente il promemoria alla fine del turno?</Italian>
 		<Spanish>Show reminder again at the end of this turn?</Spanish>
 	</TEXT>
 	<TEXT>
@@ -55,7 +55,7 @@
 		<English>Show reminder again next turn?</English>
 		<French>Show reminder again next turn?</French>
 		<German>Show reminder again next turn?</German>
-		<Italian>Show reminder again next turn?</Italian>
+		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
 	
@@ -64,88 +64,88 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>
-		<French></French>
-		<German></German>
+		<French>Red</French>
+		<German>Red</German>
 		<Italian>Rosso</Italian>
 		<Spanish>Rojo</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_YELLOW</Tag>
 		<English>Yellow</English>
-		<French></French>
-		<German></German>
+		<French>Yellow</French>
+		<German>Yellow</German>
 		<Italian>Giallo</Italian>
 		<Spanish>Amarillo</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_GREEN</Tag>
 		<English>Green</English>
-		<French></French>
-		<German></German>
+		<French>Green</French>
+		<German>Green</German>
 		<Italian>Verde</Italian>
 		<Spanish>Verde</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_CYAN</Tag>
 		<English>Cyan</English>
-		<French></French>
-		<German></German>
+		<French>Cyan</French>
+		<German>Cyan</German>
 		<Italian>Azzurro</Italian>
 		<Spanish>Ci&#225;nico</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_BLUE</Tag>
 		<English>Blue</English>
-		<French></French>
-		<German></German>
+		<French>Blue</French>
+		<German>Blue</German>
 		<Italian>Blu</Italian>
 		<Spanish>Azul</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_MAGENTA</Tag>
 		<English>Magenta</English>
-		<French></French>
-		<German></German>
+		<French>Magenta</French>
+		<German>Magenta</German>
 		<Italian>Magenta</Italian>
 		<Spanish>Magenta</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_WHITE</Tag>
 		<English>White</English>
-		<French></French>
-		<German></German>
+		<French>White</French>
+		<German>White</German>
 		<Italian>Bianco</Italian>
 		<Spanish>Blanco</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_LIGHT_GREY</Tag>
 		<English>Light Grey</English>
-		<French></French>
-		<German></German>
+		<French>Light Grey</French>
+		<German>Light Grey</German>
 		<Italian>Grigio Chiaro</Italian>
 		<Spanish>Gris Ligero</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_GREY</Tag>
 		<English>Grey</English>
-		<French></French>
-		<German></German>
+		<French>Grey</French>
+		<German>Grey</German>
 		<Italian>Grigio</Italian>
 		<Spanish>Gris</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_DARK_GREY</Tag>
 		<English>Dark Grey</English>
-		<French></French>
-		<German></German>
+		<French>Dark Grey</French>
+		<German>Dark Grey</German>
 		<Italian>Grigio Scuro</Italian>
 		<Spanish>Gris Oscuro</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_BLACK</Tag>
 		<English>Black</English>
-		<French></French>
-		<German></German>
+		<French>Black</French>
+		<German>Black</German>
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
