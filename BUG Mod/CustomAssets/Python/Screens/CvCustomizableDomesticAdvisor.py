@@ -70,8 +70,10 @@ import CvEventManager
 import Popup as PyPopup
 
 import CvEventInterface
+import CvPath
 
 import math
+import os.path
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -2149,7 +2151,8 @@ class CvCustomizableDomesticAdvisor:
 				self.listSelectedCities.append(screen.getTableText(page, 1, i))
 	
 	def save(self, inputClass):
-		file = open("CustomDomAdv.txt", 'w')
+		name = os.path.join(CvPath.userDir, "CustomDomAdv", "CustomDomAdv.txt")
+		file = open(name, 'w')
 
 		if(file != 0):
 			pickle.dump({ "version" : self.PICKLED_VERSION, "pages" : self.PAGES }, file)
@@ -2482,52 +2485,57 @@ class CvCustomizableDomesticAdvisor:
 
 	def loadPages(self):
 
-		try:
-			file = open("CustomDomAdv.txt", 'r')
-			dict = pickle.load(file)
-			version = dict["version"]
-			self.PAGES = dict["pages"]
-			file.close()
-
-			if version == 0:
-				for p in self.PAGES:
-					newColumns = []
-					for c in p["columns"]:
-						for i in range(gc.getNumBuildingInfos()):
-							info = gc.getBuildingInfo(i)
-							desc = info.getDescription()
-							key = "_"
-							key = key.join(desc.split())
-							key = "BUILDING_" + key.upper()
-							if c[0] == key:
-								c = (self.getBuildingKey(i), c[1], c[2])
-								break
-						for i in range(gc.getNumBonusInfos()):
-							info = gc.getBonusInfo(i)
-							desc = info.getDescription()
-							key = "_"
-							key = key.join(desc.split())
-							key = "BONUS_" + key
-							if c[0] == key:
-								c = (self.getBonusKey(i), c[1], c[2])
-								break
-						newColumns.append(c)
-					p["columns"] = newColumns
-
-				# Updated from version 0 to version 1 format. Fall through to update version 1 format in the future
-				version = 1						
-
-			if(version != self.PICKLED_VERSION):
+		self.PAGES = None
+		name = os.path.join(CvPath.userDir, "CustomDomAdv", "CustomDomAdv.txt")
+		if (not os.path.isfile(name)):
+			name = "CustomDomAdv.txt"
+		if (os.path.isfile(name)):
+			try:
+				file = open(name, 'r')
+				dict = pickle.load(file)
+				version = dict["version"]
+				self.PAGES = dict["pages"]
+				file.close()
+	
+				if version == 0:
+					for p in self.PAGES:
+						newColumns = []
+						for c in p["columns"]:
+							for i in range(gc.getNumBuildingInfos()):
+								info = gc.getBuildingInfo(i)
+								desc = info.getDescription()
+								key = "_"
+								key = key.join(desc.split())
+								key = "BUILDING_" + key.upper()
+								if c[0] == key:
+									c = (self.getBuildingKey(i), c[1], c[2])
+									break
+							for i in range(gc.getNumBonusInfos()):
+								info = gc.getBonusInfo(i)
+								desc = info.getDescription()
+								key = "_"
+								key = key.join(desc.split())
+								key = "BONUS_" + key
+								if c[0] == key:
+									c = (self.getBonusKey(i), c[1], c[2])
+									break
+							newColumns.append(c)
+						p["columns"] = newColumns
+	
+					# Updated from version 0 to version 1 format. Fall through to update version 1 format in the future
+					version = 1						
+	
+				if(version != self.PICKLED_VERSION):
+					self.PAGES = None
+	
+			except IOError:
 				self.PAGES = None
-
-		except IOError:
-			self.PAGES = None
-		except IndexError:
-			self.PAGES = None
-		except ValueError:
-			self.PAGES = None
-		except TypeError:
-			self.PAGES = None
+			except IndexError:
+				self.PAGES = None
+			except ValueError:
+				self.PAGES = None
+			except TypeError:
+				self.PAGES = None
 
 		if(self.PAGES is None):
 			if(self.isFlavorful):
