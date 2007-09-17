@@ -15,8 +15,10 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		self.addCheckbox(screen, column, "Alert_Reminders")
-		self.addCheckbox(screen, column, "Alert_Civ4lerts")
+		left, right = self.addTwoColumnLayout(screen, column, "Main")
+		self.addCheckbox(screen, left, "Alert_Reminders")
+		self.addTextDropdown(screen, right, right, "Alert_RemindersMethod")
+		self.addCheckbox(screen, left, "Alert_Civ4lerts")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		cityPanel, rightPanel = self.addTwoColumnLayout(screen, column, "Civ4lerts", True)

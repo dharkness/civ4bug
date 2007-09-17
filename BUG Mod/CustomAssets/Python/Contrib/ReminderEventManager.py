@@ -80,7 +80,6 @@ class ReminderEventManager:
 
 	def showReminders(self, endOfTurn):
 		thisTurn = gc.getGame().getGameTurn() + 1
-		
 		if (endOfTurn):
 			queue = self.endOfTurnReminders
 			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
@@ -103,15 +102,16 @@ class ReminderEventManager:
 				self.reminders.pop()
 			else:
 				self.reminder = queue.pop()
-				CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
-										 None, 0, None, ColorTypes(8), 0, 0, False, False)
-				
-				popup = PyPopup.PyPopup(eventId, EventContextTypes.EVENTCONTEXT_SELF)
-				popup.setHeaderString(self.reminder.message)
-				popup.setBodyString(prompt)
-				popup.addButton(yes)
-				popup.addButton(no)
-				popup.launch(False)
+				if (BugAlerts.isShowRemindersLog()):
+					CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
+											 None, 0, None, ColorTypes(8), 0, 0, False, False)
+				if (BugAlerts.isShowRemindersPopup()):
+					popup = PyPopup.PyPopup(eventId, EventContextTypes.EVENTCONTEXT_SELF)
+					popup.setHeaderString(self.reminder.message)
+					popup.setBodyString(prompt)
+					popup.addButton(yes)
+					popup.addButton(no)
+					popup.launch(False)
 
 	def clearReminders(self):
 		self.reminders.clear()

@@ -12,6 +12,11 @@ class BugAlertsOptions(OptionsFacade):
 							  "CIV4LERTS", "Reminders", True,
 							  "Enable Reminders (Alt-M)",
 							  "When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod."))
+		self.addOption(OptionList("Alert_RemindersMethod",
+								  "CIV4LERTS", "Reminder Display Method", 2,
+								  "Display Method",
+								  "Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both",
+								  ['Message', 'Popup', 'Both'], None))
 		
 		# Civ4lerts
 		self.addOption(Option("Alert_Civ4lerts",
@@ -101,6 +106,15 @@ class BugAlertsOptions(OptionsFacade):
 
 	def isShowReminders(self):
 		return self.getBoolean('Alert_Reminders')
+
+	def getRemindersDisplayMethod(self):
+		return self.getInt('Alert_RemindersMethod')
+
+	def isShowRemindersPopup(self):
+		return self.getRemindersDisplayMethod() != 0
+
+	def isShowRemindersLog(self):
+		return self.getRemindersDisplayMethod() != 1
 
 
 	def isShowAlerts(self):
