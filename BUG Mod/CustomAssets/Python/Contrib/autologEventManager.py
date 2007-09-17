@@ -187,6 +187,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.iBattleLostDefending = 0
 		self.iBattleWonAttacking = 0
 		self.iBattleLostAttacking = 0
+		
+		self.CIVAttitude = None
+		self.CIVCivics = None
+		self.CIVReligion = None
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
@@ -805,6 +809,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def storeStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
+		if (not self.CIVReligion):
+			self.initStuff()
 
 		# store civ state religion
 		for iCiv in range(0, ziMaxCiv, 1):
@@ -827,6 +833,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def checkStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
+		if (not self.CIVReligion):
+			self.storeStuff()
 
 		# check if civ state religion has changed
 		if (NewAutoLog.Enabled()
@@ -884,6 +892,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def dumpStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
+		if (not self.CIVReligion):
+			self.storeStuff()
+		
 		NewAutoLog.writeLog("")
 		NewAutoLog.writeLog("dumpStuff")
 		NewAutoLog.writeLog("state religion")
