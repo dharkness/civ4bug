@@ -23,7 +23,44 @@
 		<Italian>Grande Personaggio: %s1 (%d2)</Italian>
 		<Spanish>Grandes Personajes: %s1 (%d2)</Spanish>
 	</TEXT>
+	
+	<!-- Reminders -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_HEADER</Tag>
+		<English>Create Reminder</English>
+		<French>Create Reminder</French>
+		<German>Create Reminder</German>
+		<Italian>Create Reminder</Italian>
+		<Spanish>Create Reminder</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_PROMPT</Tag>
+		<English>Enter the number of turns until the reminder goes off and the message to display.</English>
+		<French>Enter the number of turns until the reminder goes off and the message to display.</French>
+		<German>Enter the number of turns until the reminder goes off and the message to display.</German>
+		<Italian>Enter the number of turns until the reminder goes off and the message to display.</Italian>
+		<Spanish>Enter the number of turns until the reminder goes off and the message to display.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMIND_END_TURN_PROMPT</Tag>
+		<English>Show reminder again at the end of this turn?</English>
+		<French>Show reminder again at the end of this turn?</French>
+		<German>Show reminder again at the end of this turn?</German>
+		<Italian>Show reminder again at the end of this turn?</Italian>
+		<Spanish>Show reminder again at the end of this turn?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMIND_NEXT_TURN_PROMPT</Tag>
+		<English>Show reminder again next turn?</English>
+		<French>Show reminder again next turn?</French>
+		<German>Show reminder again next turn?</German>
+		<Italian>Show reminder again next turn?</Italian>
+		<Spanish>Show reminder again next turn?</Spanish>
+	</TEXT>
+	
     <!-- Colors -->
+    
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>

@@ -12,10 +12,12 @@
 from CvPythonExtensions import *
 import CvUtil
 import Popup as PyPopup
+
 import BugAlertsOptions
+BugAlerts = BugAlertsOptions.getOptions()
 
 gc = CyGlobalContext()
-BugAlerts = BugAlertsOptions.getOptions()
+localText = CyTranslator()
 
 class ReminderEventManager:
 
@@ -24,21 +26,29 @@ class ReminderEventManager:
 		ReminderEvent(eventManager, self)
 
 		self.reminders = ReminderQueue()
+		self.endOfTurnReminders = ReminderQueue()
+		self.reminder = None
 
 		# additions to self.Events
 		moreEvents = {
-			CvUtil.EventReminderStore  : ('', self.__eventReminderStoreApply,  self.__eventReminderStoreBegin),
-			CvUtil.EventReminderRecall : ('', self.__eventReminderRecallApply, self.__eventReminderRecallBegin),
+			CvUtil.EventReminderStore       : ('', self.__eventReminderStoreApply,  self.__eventReminderStoreBegin),
+			CvUtil.EventReminderRecall      : ('', self.__eventReminderRecallApply, self.__eventReminderRecallBegin),
+			CvUtil.EventReminderRecallAgain : ('', self.__eventReminderRecallAgainApply, self.__eventReminderRecallAgainBegin),
 		}
 		eventManager.Events.update(moreEvents)
 
 	def __eventReminderStoreBegin(self, argsList):
+		header = localText.getText("TXT_KEY_REMINDER_HEADER", ())
+		prompt = localText.getText("TXT_KEY_REMINDER_PROMPT", ())
+		ok = localText.getText("TXT_KEY_MAIN_MENU_OK", ())
+		cancel = localText.getText("TXT_KEY_POPUP_CANCEL", ())
 		popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
-		popup.setHeaderString("Enter number of turns until reminder goes off and reminder text")
-		popup.createSpinBox(0, "", 0, 1, 100, 0)
-		popup.createEditBox("", 1)
-		popup.addButton("Ok")
-		popup.addButton("Cancel")
+		popup.setHeaderString(header)
+		popup.setBodyString(prompt)
+		popup.createSpinBox(0, "", 1, 1, 100, 0)
+		popup.createEditBox("Whip ", 1)
+		popup.addButton(ok)
+		popup.addButton(cancel)
 		popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
 
 	def __eventReminderStoreApply(self, playerID, userData, popupReturn):
@@ -49,29 +59,63 @@ class ReminderEventManager:
 			self.reminders.push(reminder)
 
 	def __eventReminderRecallBegin(self, argsList):
-		thisTurn = gc.getGame().getGameTurn() + 1 # remove +1 ?
+		self.showReminders(False)
+
+	def __eventReminderRecallApply(self, playerID, userData, popupReturn):
+		if (popupReturn.getButtonClicked() != 1):
+			if (self.reminder):
+				self.endOfTurnReminders.push(self.reminder)
+				self.reminder = None
+
+	def __eventReminderRecallAgainBegin(self, argsList):
+		self.showReminders(True)
+
+	def __eventReminderRecallAgainApply(self, playerID, userData, popupReturn):
+		if (popupReturn.getButtonClicked() != 1):
+			if (self.reminder):
+				# Put it back into the queue for next turn
+				self.reminder.turn += 1
+				self.reminders.push(self.reminder)
+				self.reminder = None
+
+	def showReminders(self, endOfTurn):
+		thisTurn = gc.getGame().getGameTurn() + 1
 		
-		while (not self.reminders.isEmpty()):
-			nextTurn = self.reminders.nextTurn()
+		if (endOfTurn):
+			queue = self.endOfTurnReminders
+			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
+			eventId = CvUtil.EventReminderRecallAgain
+		else:
+			queue = self.reminders
+			# endTurnReady isn't firing :(
+#			prompt = localText.getText("TXT_KEY_REMIND_END_TURN_PROMPT", ())
+#			eventId = CvUtil.EventReminderRecall
+			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
+			eventId = CvUtil.EventReminderRecallAgain
+		yes = localText.getText("TXT_KEY_POPUP_YES", ())
+		no = localText.getText("TXT_KEY_POPUP_NO", ())
+		while (not queue.isEmpty()):
+			nextTurn = queue.nextTurn()
 			if (nextTurn > thisTurn):
 				break
 			elif (nextTurn < thisTurn):
 				# invalid (lost) reminder
 				self.reminders.pop()
 			else:
-				message = self.reminders.pop().message
-				CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
+				self.reminder = queue.pop()
+				CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
+										 None, 0, None, ColorTypes(8), 0, 0, False, False)
 				
-				popup = PyPopup.PyPopup(CvUtil.EventReminderRecall, EventContextTypes.EVENTCONTEXT_SELF)
-				popup.setHeaderString("Reminder!")
-				popup.setBodyString(message)
-				popup.launch()
-
-	def __eventReminderRecallApply(self, playerID, userData, popupReturn):
-		message = "eventReminderRecallApply"
+				popup = PyPopup.PyPopup(eventId, EventContextTypes.EVENTCONTEXT_SELF)
+				popup.setHeaderString(self.reminder.message)
+				popup.setBodyString(prompt)
+				popup.addButton(yes)
+				popup.addButton(no)
+				popup.launch(False)
 
 	def clearReminders(self):
 		self.reminders.clear()
+		self.endOfTurnReminders.clear()
 
 
 class AbstractReminderEvent(object):
@@ -86,6 +130,7 @@ class ReminderEvent(AbstractReminderEvent):
 
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
 		eventManager.addEventHandler("BeginPlayerTurn", self.onBeginPlayerTurn)
+		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
 
@@ -110,17 +155,25 @@ class ReminderEvent(AbstractReminderEvent):
 		if (gc.getPlayer(iPlayer).isHuman()):
 			if (BugAlerts.isShowReminders()):
 				self.eventMgr.beginEvent(CvUtil.EventReminderRecall)
-				return 1
+#				return 1
+
+	def onEndTurnReady(self, argsList):
+		iGameTurn = argsList[0]
+		
+		if (gc.getPlayer(iPlayer).isHuman()):
+			if (BugAlerts.isShowReminders()):
+				self.eventMgr.beginEvent(CvUtil.EventReminderRecallAgain)
+#				return 1
 
 	def onGameStart(self, argsList):
 		'Called when a new game is started'
 		self.reminderManager.clearReminders()
-		return 1
+#		return 1
 
 	def onLoadGame(self, argsList):
 		'Called when a game is loaded' # would be nice to save/load events with game
 		self.reminderManager.clearReminders()
-		return 1
+#		return 1
 
 class Reminder(object):
 
