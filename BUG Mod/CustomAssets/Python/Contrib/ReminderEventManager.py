@@ -12,12 +12,16 @@
 from CvPythonExtensions import *
 import CvUtil
 import Popup as PyPopup
+import SdToolKit
 
 import BugAlertsOptions
 BugAlerts = BugAlertsOptions.getOptions()
 
 gc = CyGlobalContext()
 localText = CyTranslator()
+
+SD_MOD_ID = "Reminders"
+SD_QUEUE_ID = "queue"
 
 class ReminderEventManager:
 
@@ -46,7 +50,7 @@ class ReminderEventManager:
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
 		popup.createSpinBox(0, "", 1, 1, 100, 0)
-		popup.createEditBox("Whip ", 1)
+		popup.createEditBox("", 1)
 		popup.addButton(ok)
 		popup.addButton(cancel)
 		popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
@@ -116,6 +120,9 @@ class ReminderEventManager:
 	def clearReminders(self):
 		self.reminders.clear()
 		self.endOfTurnReminders.clear()
+	
+	def setReminders(self, queue):
+		self.reminders = queue
 
 
 class AbstractReminderEvent(object):
@@ -133,6 +140,7 @@ class ReminderEvent(AbstractReminderEvent):
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
+		eventManager.addEventHandler("OnPreSave", self.onPreSave)
 
 		self.eventMgr = eventManager
 		self.reminderManager = reminderManager
@@ -168,18 +176,29 @@ class ReminderEvent(AbstractReminderEvent):
 	def onGameStart(self, argsList):
 		'Called when a new game is started'
 		self.reminderManager.clearReminders()
+		SdToolKit.sdModInit(SD_MOD_ID)
 #		return 1
 
 	def onLoadGame(self, argsList):
-		'Called when a game is loaded' # would be nice to save/load events with game
+		'Called when a game is loaded'
 		self.reminderManager.clearReminders()
+		queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
+		if (queue):
+			self.reminderManager.setReminders(queue)
 #		return 1
+
+	def onPreSave(self, argsList):
+		"Called before a game is actually saved"
+		SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
+#		return 1
+
 
 class Reminder(object):
 
 	def __init__(self, turn, message):
 		self.turn = turn
 		self.message = message
+
 
 class ReminderQueue(object):
 
@@ -188,6 +207,9 @@ class ReminderQueue(object):
 
 	def clear(self):
 		self.queue = []
+
+	def size(self):
+		return len(self.queue)
 
 	def isEmpty(self):
 		return len(self.queue) == 0
