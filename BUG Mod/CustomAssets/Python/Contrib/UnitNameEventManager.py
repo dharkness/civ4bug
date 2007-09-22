@@ -125,10 +125,10 @@ class BuildUnitName(AbstractBuildUnitName):
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
-#		if ( eventType == self.eventMgr.EventKeyDown ):
-#			if (int(key) == int(InputTypes.KB_N)
-#			and self.eventMgr.bCtrl
-#			and self.eventMgr.bAlt):
+		if ( eventType == self.eventMgr.EventKeyDown ):
+			if (int(key) == int(InputTypes.KB_N)
+			and self.eventMgr.bCtrl
+			and self.eventMgr.bAlt):
 
 #				popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
 #				popup.setHeaderString("Enter unit name code")
@@ -140,59 +140,60 @@ class BuildUnitName(AbstractBuildUnitName):
 #				if (popup.getButtonClicked() != 1):
 #					zsUnitNameConv = popup.getEditBoxString(1)
 				
-#				player = gc.getActivePlayer()
-#				for i in range(player.getNumUnits()):
-#					unit = player.getUnit(i)
+				player = gc.getActivePlayer()
+				for i in range(player.getNumUnits()):
+					unit = player.getUnit(i)
+
 #					self.RuffEcho("Unit %d is a %s" %(i, unit.getName()), true, true)
+
 #					if (unit.getName() == "Worker"):
 #						city = unit.plot().getPlotCity()
 #						self.RuffEcho("...in city %s" %(city.getName()), true, true)
 #						self.onUnitBuilt([city, unit])
 #						break
 
-#					for i in range(CyMap().numPlots()):
-#						tPlot = CyMap().plot(CyMap().plotX(i),CyMap().plotY(i))
-#						if (tPlot.isCity()
-#						and tPlot.getOwner() == CyGame().getActivePlayer()):
-#							pPlot = tPlot
-#							i = CyMap().numPlots()
-#
-#					for j in range(pPlot.getNumUnits()):
-#						pLoopUnit = CyInterface().getInterfacePlotUnit(pPlot, j)
-#
-#						iPlayer = pLoopUnit.getOwner()
-#						pPlayer = gc.getPlayer(iPlayer)
-#						pCity = pPlayer.getCity(0)
-#
-#						zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
-#						zsUnitCombat = self.getUnitCombat(pLoopUnit)
-#						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
-#
-#						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
-#						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
-#
-#						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
-#
-#						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
-#
-#						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
-#
-#						if not (zsUnitName == ""):
-#							pLoopUnit.setName(zsUnitName)
-#
-#						zMsg = "unit name is %s" % (zsUnitName)
-#						CyInterface().addImmediateMessage(zMsg, "")
+					for i in range(CyMap().numPlots()):
+						tPlot = CyMap().plot(CyMap().plotX(i),CyMap().plotY(i))
+						if (tPlot.isCity()
+						and tPlot.getOwner() == CyGame().getActivePlayer()):
+							pPlot = tPlot
+							i = CyMap().numPlots()
 
-#				return 1
+					for j in range(pPlot.getNumUnits()):
+						pLoopUnit = CyInterface().getInterfacePlotUnit(pPlot, j)
+
+						iPlayer = pLoopUnit.getOwner()
+						pPlayer = gc.getPlayer(iPlayer)
+						pCity = pPlayer.getCity(0)
+
+						zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+						zsUnitCombat = self.getUnitCombat(pLoopUnit)
+						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
+
+						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
+
+						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
+						zsUnitNameConv = "^rd^"
+						zsUnitNameConv = "^rc^"
+
+						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
+
+						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
+
+						if not (zsUnitName == ""):
+							pLoopUnit.setName(zsUnitName)
+
+						zMsg = "unit name is %s" % (zsUnitName)
+						CyInterface().addImmediateMessage(zMsg, "")
+
+				return 1
 		return 0
 
 
 	def onUnitBuilt(self, argsList):
 		'Unit Completed'
 
-# I have this in as it doesn't work yet
-#		return
-	
 		pCity = argsList[0]
 		pUnit = argsList[1]
 		iPlayer = pUnit.getOwner()
@@ -237,7 +238,7 @@ class BuildUnitName(AbstractBuildUnitName):
 
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
-
+		
 		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 		zsCiv = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
 		zsLeader = gc.getPlayer(iPlayer).getName()
@@ -280,7 +281,7 @@ class BuildUnitName(AbstractBuildUnitName):
 ##  - ^rc^ - random civ related name
 #		check if random civ related naming convention is required
 		if not (zsName.find("^rc^") == -1):
-			return RandomNameUtils.getRandomCivilizationName(iPlayer.getCivilizationType())
+			return RandomNameUtils.getRandomCivilizationName(pPlayer.getCivilizationType())
 
 		self.RuffEcho("UnitNameEM-C [" + zsName + "]", false, true)
 
