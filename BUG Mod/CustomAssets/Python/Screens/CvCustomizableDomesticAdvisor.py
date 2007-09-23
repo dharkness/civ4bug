@@ -1606,22 +1606,25 @@ class CvCustomizableDomesticAdvisor:
 		bestData = 0.0
 
 		player = PyPlayer(CyGame().getActivePlayer())
+		civInfo = gc.getCivilizationInfo(city.getCivilizationType())
 
 		# For all cities, start with growth
 		if self.calculateNetHappiness(city) > 2 and self.calculateNetHealth(city) > 2:
-			for i in range(gc.getNumBuildingInfos()):
-				if self.canAdviseToConstruct(city, i):
-					info = gc.getBuildingInfo(i)
+			for i in range(gc.getNumBuildingClassInfos()):
+				bldg = civInfo.getCivilizationBuildings(i)
+				if self.canAdviseToConstruct(city, bldg):
+					info = gc.getBuildingInfo(bldg)
 					value = info.getFoodKept() / float(info.getProductionCost())
 					if(value > bestData):
-						bestOrder = i
+						bestOrder = bldg
 						bestData = value
 
 		# then balancing health and happiness for further growth
 		if bestOrder == -1:
-			for i in range(gc.getNumBuildingInfos()):
-				if self.canAdviseToConstruct(city, i):
-					info = gc.getBuildingInfo(i)
+			for i in range(gc.getNumBuildingClassInfos()):
+				bldg = civInfo.getCivilizationBuildings(i)
+				if self.canAdviseToConstruct(city, bldg):
+					info = gc.getBuildingInfo(bldg)
 					if self.calculateNetHappiness(city) < 3 and self.calculateNetHappiness(city) - self.calculateNetHealth(city) > 2:
 						iHealth = info.getHealth()
 						for j in range(gc.getNumBonusInfos()):
@@ -1629,7 +1632,7 @@ class CvCustomizableDomesticAdvisor:
 								iHealth += info.getBonusHealthChanges(j)
 						value = iHealth / float(info.getProductionCost())
 						if(value > bestData):
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 					elif self.calculateNetHealth(city) < 3 and self.calculateNetHealth(city) - self.calculateNetHappiness(city) > 2:
 						iHappiness = info.getHappiness()
@@ -1638,78 +1641,78 @@ class CvCustomizableDomesticAdvisor:
 								iHappiness += info.getBonusHappinessChanges(j)
 						value = iHappiness  / float(info.getProductionCost())
 						if(value > bestData):
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 
 		# First pass
 		if(bestOrder == -1):
-			for i in range(gc.getNumBuildingInfos()):
-				if self.canAdviseToConstruct(city, i):
-					
-					info = gc.getBuildingInfo(i)
+			for i in range(gc.getNumBuildingClassInfos()):
+				bldg = civInfo.getCivilizationBuildings(i)
+				if self.canAdviseToConstruct(city, bldg):
+					info = gc.getBuildingInfo(bldg)
 
 					if type == "Culture":
 						if city.findBaseYieldRateRank(YieldTypes.YIELD_COMMERCE) < 6:
 							value = info.getCommerceModifier(CommerceTypes.COMMERCE_CULTURE) / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 						else:
 							value = info.getPowerValue() / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 					elif type == "Military":
 						value = info.getPowerValue() / float(info.getProductionCost())
 						if value > bestData:
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 					elif type == "Nutty":
 						value = math.sin(float(info.getProductionCost()) * city.getBaseYieldRate(YieldTypes.YIELD_COMMERCE)) + 1
 						if value > bestData:
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 					elif type == "Religion":
 						bestOrder = -1
 					elif type == "Research":
 						value = info.getCommerceModifier(CommerceTypes.COMMERCE_RESEARCH) / float(info.getProductionCost())
 						if value > bestData:
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 					elif type == "Spaceship":
 						if not city.isPower():
 							if info.isPower():
 								value = getBaseYieldRate(YieldTypes.YIELD_PRODUCTION) / float(info.getProductionCost())
 								if value > bestData:
-									bestOrder = i
+									bestOrder = bldg
 									bestData = value
 						
 						if city.findBaseYieldRateRank(YieldTypes.YIELD_PRODUCTION) < 12:
 							value = city.getBaseYieldRate(YieldTypes.YIELD_PRODUCTION) * 2 * info.getYieldModifier(YieldTypes.YIELD_PRODUCTION) / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 						
 						if city.findBaseYieldRateRank(YieldTypes.YIELD_COMMERCE) < player.getNumCities() / 2:
 							value = city.getBaseYieldRate(YieldTypes.YIELD_COMMERCE) * info.getCommerceModifier(CommerceTypes.COMMERCE_RESEARCH) / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 						else:
 							bestOrder = -1
 
 		# Second pass
 		if(bestOrder == -1):
-			for i in range(gc.getNumBuildingInfos()):
-				if self.canAdviseToConstruct(city, i):
-					
-					info = gc.getBuildingInfo(i)
+			for i in range(gc.getNumBuildingClassInfos()):
+				bldg = civInfo.getCivilizationBuildings(i)
+				if self.canAdviseToConstruct(city, bldg):
+					info = gc.getBuildingInfo(bldg)
 
 					if type == "Culture":
 						if city.findBaseYieldRateRank(YieldTypes.YIELD_COMMERCE) < 6:
 							value = info.getPowerValue() / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 						else:
 							bestOrder = -1  # In a cultural game, build units in the culturally weak cities
@@ -1718,18 +1721,18 @@ class CvCustomizableDomesticAdvisor:
 							value = -1 * info.getMilitaryProductionModifier() / float(info.getProductionCost())
 							CvUtil.pyPrint(info.getDescription() + ": " + str(value))
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 						else:
 							value = info.getYieldModifier(YieldTypes.YIELD_PRODUCTION) / float(info.getProductionCost())
 							if value > bestData:
-								bestOrder = i
+								bestOrder = bldg
 								bestData = value
 							if not city.isPower():
 								if info.isPower():
 									value = 1 / float(info.getProductionCost())
 									if value > bestData:
-										bestOrder = i
+										bestOrder = bldg
 										bestData = value
 
 					elif type == "Nutty":
@@ -1739,7 +1742,7 @@ class CvCustomizableDomesticAdvisor:
 					elif type == "Research":
 						value = info.getCommerceModifier(CommerceTypes.COMMERCE_GOLD) / float(info.getProductionCost())
 						if value > bestData:
-							bestOrder = i
+							bestOrder = bldg
 							bestData = value
 					elif type == "Spaceship":
 						bestOrder = -1
