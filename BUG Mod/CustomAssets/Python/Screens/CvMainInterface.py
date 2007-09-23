@@ -496,7 +496,7 @@ class CvMainInterface:
 		screen.hide( "ResearchBar" )
 		
 # BUG - Great Person Bar - start
-		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -1929,8 +1929,8 @@ class CvMainInterface:
 					pGreatPersonCity, iGPTurns = self.getNextGPCity()
 					if (iGPTurns < 10000000 and pGreatPersonCity):
 						szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pGreatPersonCity.getName(), iGPTurns))
-						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
-						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
+						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
+#						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
 						screen.show( "GreatPersonBarText" )
 						
 						iFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) )
@@ -3731,6 +3731,12 @@ class CvMainInterface:
 				#self.updateCityScreen()
 				return 1
 # BUG - Raw Commerce - end
+		
+# BUG - Great Person Bar - start
+			elif (inputClass.getFunctionName() == "GreatPersonBarText"):
+				CyInterface().selectCity(gc.getActivePlayer().getCity(inputClass.getData1()), False)
+				return 1
+# BUG - Great Person Bar - end
 		
 		return 0
 	
