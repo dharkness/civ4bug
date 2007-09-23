@@ -69,10 +69,26 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_OPEN_BORDERS</Tag>
 		<English>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</German>
+		<French>[COLOR_TECH_TEXT]Signera les Frontières Ouvertes: %s1[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Unterzeichnet Geöffnete Ränder: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Firmerà un Trattato di Libero Accesso: %s1[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</Spanish>
+		<Spanish>[COLOR_TECH_TEXT]Firmará las Fronteras Abiertas: %s1[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT</Tag>
+		<English>[COLOR_TECH_TEXT]Will Sign a Defensive Pact: %s1[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]Signera un Pacte Défensif: %s1[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Unterzeichnet einen Defensiven Pakt: %s1[COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]Firmerà un Patto Difensivo: %s1[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]Firmará un Pacto Defensivo: %s1[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE</Tag>
+		<English>[COLOR_TECH_TEXT]Will Sign a Permanent Alliance: %s1[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]Signera une Alliance Permanente: %s1[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Unterzeichnet ein Dauerhaftes Bündnis: %s1[COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]Firmerà un'Alleanza Permanente: %s1[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]Firmará una Alianza Permanente: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_REGEN_FAILED</Tag>

@@ -859,7 +859,7 @@ class CvTechChooser:
 		# Check to see if option is disabled
 		if (not BugOpt.isShowGPTechPrefs()):
 			if (self.bPrefsShowing):
-				# ... and if not, remove icons if they are currently showing
+				# ... and if so, remove icons if they are currently showing
 				for i, f in enumerate(FLAVORS):
 					screen.hide( "GreatPerson" + str(f) )
 					screen.hide( "GreatPersonTech" + str(f) )

@@ -51,17 +51,13 @@ class BugAlertsOptions(OptionsFacade):
 							  "."))
 		self.addOption(Option("Alert_CityExpandBorder",
 							  "CIV4LERTS", "CheckForCityBorderExpansion", True,
-							  "Border Expansion",
+							  "Pending Border Expansion",
 							  "."))
 		
 		# Trade
 		self.addOption(Option("Alert_TechTrade",
 							  "CIV4LERTS", "CheckForNewTrades", True,
 							  "Technologies",
-							  "."))
-		self.addOption(Option("Alert_OpenBordersTrade",
-							  "CIV4LERTS", "Open Borders Trades", True,
-							  "Open Borders",
 							  "."))
 		self.addOption(Option("Alert_GoldTrade",
 							  "CIV4LERTS", "Gold Trade", True,
@@ -74,13 +70,25 @@ class BugAlertsOptions(OptionsFacade):
 								  [1,2,3,5,10,20,30,50,100,200,300,500,1000]))
 		self.addOption(Option("Alert_GoldPerTurnTrade",
 							  "CIV4LERTS", "Gold Per Turn Trade", True,
-							  "Gold Per Turn Trade",
+							  "Gold Per Turn",
 							  "."))
 		self.addOption(OptionList("Alert_GoldPerTurnTradeThresh",
 								  "CIV4LERTS", "Gold Per Turn Threshold", 5,
 								  "Threshold",
 								  ".",
 								  [1,2,3,5,10,15,20,25,30,50,100]))
+		self.addOption(Option("Alert_OpenBordersTrade",
+							  "CIV4LERTS", "Open Borders Trades", True,
+							  "Open Borders",
+							  "."))
+		self.addOption(Option("Alert_DefensivePactTrade",
+							  "CIV4LERTS", "Defensive Pact Trades", True,
+							  "Defensive Pact",
+							  "."))
+		self.addOption(Option("Alert_PermanentAllianceTrade",
+							  "CIV4LERTS", "Permanent Alliance Trades", True,
+							  "Permanent Alliance",
+							  "."))
 		
 		# Victory
 		self.addOption(Option("Alert_DomPop",
@@ -146,9 +154,6 @@ class BugAlertsOptions(OptionsFacade):
 	def isShowTechTradeAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_TechTrade')
 
-	def isShowOpenBordersAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_OpenBordersTrade')
-
 	def isShowGoldTradeAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_GoldTrade')
 
@@ -161,6 +166,15 @@ class BugAlertsOptions(OptionsFacade):
 	def getGoldPerTurnTradeThreshold(self):
 		return self.getInt('Alert_GoldPerTurnTradeThresh')
 	
+	def isShowOpenBordersTradeAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_OpenBordersTrade')
+
+	def isShowDefensivePactTradeAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_DefensivePactTrade')
+
+	def isShowPermanentAllianceTradeAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_PermanentAllianceTrade')
+
 
 	def isShowDomPopAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_DomPop')

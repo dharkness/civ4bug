@@ -21,31 +21,37 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Alert_Civ4lerts")
 		
 		screen.attachHSeparator(column, column + "Sep")
-		cityPanel, rightPanel = self.addTwoColumnLayout(screen, column, "Civ4lerts", True)
+		left, center, right = self.addThreeColumnLayout(screen, column, "Civ4lerts", True)
 		
 		# Cities
-		screen.attachLabel(cityPanel, "Alert_CityLabel", "City Related:")
+		screen.attachLabel(left, "Alert_CityLabel", "Cities:")
 		screen.setControlFlag("Alert_CityLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, cityPanel, "Alert_CityPendingGrowth")
-		self.addCheckbox(screen, cityPanel, "Alert_CityPendingUnhealthy")
-		self.addCheckbox(screen, cityPanel, "Alert_CityPendingAngry")
-		self.addCheckbox(screen, cityPanel, "Alert_CityGrowth")
-		self.addCheckbox(screen, cityPanel, "Alert_CityUnhealthy")
-		self.addCheckbox(screen, cityPanel, "Alert_CityAngry")
-		self.addCheckbox(screen, cityPanel, "Alert_CityExpandBorder")
+		self.addCheckbox(screen, left, "Alert_CityPendingGrowth")
+		self.addCheckbox(screen, left, "Alert_CityPendingUnhealthy")
+		self.addCheckbox(screen, left, "Alert_CityPendingAngry")
+		self.addCheckbox(screen, left, "Alert_CityExpandBorder")
+		self.addCheckbox(screen, left, "Alert_CityGrowth")
+		self.addCheckbox(screen, left, "Alert_CityUnhealthy")
+		self.addCheckbox(screen, left, "Alert_CityAngry")
+		
+		# Diplomacy
+		screen.attachLabel(center, "Alert_DiplomacyLabel", "Diplomacy:")
+		screen.setControlFlag("Alert_DiplomacyLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addCheckbox(screen, center, "Alert_OpenBordersTrade")
+		self.addCheckbox(screen, center, "Alert_DefensivePactTrade")
+		self.addCheckbox(screen, center, "Alert_PermanentAllianceTrade")
 		
 		# Trades
-		screen.attachLabel(rightPanel, "Alert_TradeLabel", "Trade Opportunities:")
+		screen.attachLabel(right, "Alert_TradeLabel", "Trading:")
 		screen.setControlFlag("Alert_TradeLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, rightPanel, "Alert_TechTrade")
-		self.addCheckbox(screen, rightPanel, "Alert_OpenBordersTrade")
+		self.addCheckbox(screen, right, "Alert_TechTrade")
 		
-		self.addCheckboxIntDropdown(screen, rightPanel, rightPanel, "Alert_GoldTrade", "Alert_GoldTradeThresh")
-		self.addCheckboxIntDropdown(screen, rightPanel, rightPanel, "Alert_GoldPerTurnTrade", "Alert_GoldPerTurnTradeThresh")
+		self.addCheckboxIntDropdown(screen, right, right, "Alert_GoldTrade", "Alert_GoldTradeThresh")
+		self.addCheckboxIntDropdown(screen, right, right, "Alert_GoldPerTurnTrade", "Alert_GoldPerTurnTradeThresh")
 		
 		# Victories
-		screen.attachLabel(rightPanel, "Alert_VictoryLabel", "Victory Conditions:")
+		screen.attachLabel(right, "Alert_VictoryLabel", "Victory:")
 		screen.setControlFlag("Alert_VictoryLabel", "CF_LABEL_DEFAULTSIZE")
 		
-		self.addCheckboxFloatDropdown(screen, rightPanel, rightPanel, "Alert_DomPop", "Alert_DomPopThresh")
-		self.addCheckboxFloatDropdown(screen, rightPanel, rightPanel, "Alert_DomLand", "Alert_DomLandThresh")
+		self.addCheckboxFloatDropdown(screen, right, right, "Alert_DomPop", "Alert_DomPopThresh")
+		self.addCheckboxFloatDropdown(screen, right, right, "Alert_DomLand", "Alert_DomLandThresh")

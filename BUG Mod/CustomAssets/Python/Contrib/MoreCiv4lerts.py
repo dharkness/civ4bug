@@ -63,6 +63,8 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.CurrAvailTechTrades = {}
 		self.PrevAvailTechTrades = {}
 		self.PrevAvailOpenBordersTrades = set()
+		self.PrevAvailDefensivePactTrades = set()
+		self.PrevAvailPermanentAllianceTrades = set()
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
@@ -86,7 +88,13 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		return BugAlerts.isShowTechTradeAlert()
 
 	def getCheckForOpenBorders(self):
-		return BugAlerts.isShowOpenBordersAlert()
+		return BugAlerts.isShowOpenBordersTradeAlert()
+
+	def getCheckForDefensivePact(self):
+		return BugAlerts.isShowDefensivePactTradeAlert()
+
+	def getCheckForPermanentAlliance(self):
+		return BugAlerts.isShowPermanentAllianceTradeAlert()
 
 	def getCheckForDomVictory(self):
 		return self.getCheckForDomPopVictory() or self.getCheckForDomLandVictory()
@@ -301,6 +309,38 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_OPEN_BORDERS", (players,))
 				self._addMessageNoIcon(iPlayer, message)
 				self.PrevAvailOpenBordersTrades.update(newTrades)
+		
+		if (BeginTurn and self.getCheckForDefensivePact()):
+			currentTrades = self.getDefensivePactTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			newTrades = currentTrades.difference(self.PrevAvailDefensivePactTrades)
+			if (newTrades):
+				players = u""
+				bFirst = True
+				for iLoopPlayer in newTrades:
+					if (not bFirst):
+						players += u", "
+					else:
+						bFirst = False
+					players += PyPlayer(iLoopPlayer).getName()
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT", (players,))
+				self._addMessageNoIcon(iPlayer, message)
+				self.PrevAvailDefensivePactTrades.update(newTrades)
+		
+		if (BeginTurn and self.getCheckForPermanentAlliance()):
+			currentTrades = self.getPermanentAllianceTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			newTrades = currentTrades.difference(self.PrevAvailPermanentAllianceTrades)
+			if (newTrades):
+				players = u""
+				bFirst = True
+				for iLoopPlayer in newTrades:
+					if (not bFirst):
+						players += u", "
+					else:
+						bFirst = False
+					players += PyPlayer(iLoopPlayer).getName()
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE", (players,))
+				self._addMessageNoIcon(iPlayer, message)
+				self.PrevAvailPermanentAllianceTrades.update(newTrades)
 
 
 	def getTechForTrade(self, iPlayer, iActiveTeam):
@@ -352,6 +392,53 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				if (activeTeam.isOpenBorders(iLoopTeamID) or loopTeam.isOpenBorders(iActiveTeamID)):
 					continue
 				if (activeTeam.isOpenBordersTrading() or loopTeam.isOpenBordersTrading()):
+					#tradeData.iData = None
+					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+							currentTrades.add(iLoopPlayerID)
+		return currentTrades
+
+	def getDefensivePactTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_DEFENSIVE_PACT
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				if (activeTeam.isDefensivePact(iLoopTeamID) or loopTeam.isDefensivePact(iActiveTeamID)):
+					continue
+				if (activeTeam.isDefensivePactTrading() or loopTeam.isDefensivePactTrading()):
+					#tradeData.iData = None
+					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+							currentTrades.add(iLoopPlayerID)
+		return currentTrades
+
+	def getPermanentAllianceTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_PERMANENT_ALLIANCE
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				# Once teams sign a PA, they become a single team
+				#if (activeTeam.isDefensivePact(iLoopTeamID) or loopTeam.isDefensivePact(iActiveTeamID)):
+				#	continue
+				if (activeTeam.isPermanentAllianceTrading() or loopTeam.isPermanentAllianceTrading()):
 					#tradeData.iData = None
 					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
 						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
