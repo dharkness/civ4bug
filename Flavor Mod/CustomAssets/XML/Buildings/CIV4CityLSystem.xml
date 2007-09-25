@@ -3402,13 +3402,12 @@
 			<Scale>1.15</Scale>
 		</ArtRef>
 
-
 		<!-- AFRICAN PALACE -->
 		<ArtRef Name="building:LSYSTEM_PALACE">
 			<Attribute Class="Rotation">0,180</Attribute>
-			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/an_africa_palace.nif</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/an_african_palace.nif</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN</Attribute>
-			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL</Attribute>
+			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL</Attribute>
 			<Scale>1.15</Scale>
 		</ArtRef>
 		<!-- ASIAN PALACE -->
@@ -3471,19 +3470,11 @@
 			<Attribute Class="ArtStyle">ARTSTYLE_GRECO_ROMAN</Attribute>
 			<Scale>1.25</Scale>
 		</ArtRef>
-		<!-- MESO PALACE -->
-		<ArtRef Name="building:LSYSTEM_PALACE">
-			<Attribute Class="Rotation">0,180</Attribute>
-			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/meso_palace/an_meso_palace.nif</Attribute>
-			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL,ERA_MEDIEVAL</Attribute>
-			<Attribute Class="ArtStyle">ARTSTYLE_SOUTH_AMERICA</Attribute>
-			<Scale>1.10</Scale>
-		</ArtRef>
 		<!-- NATIVE PALACE -->
 		<ArtRef Name="building:LSYSTEM_PALACE">
 			<Attribute Class="Rotation">0,180</Attribute>
 			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/an_native_palace.nif</Attribute>
-			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE</Attribute>
+			<Attribute Class="Era">ERA_ANCIENT,ERA_CLASSICAL</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_NATIVE_AMERICA</Attribute>
 			<Scale>0.35</Scale>
 		</ArtRef>
@@ -3517,6 +3508,13 @@
 		<Width>4</Width>
 		<Height>2</Height>
 		<!-- LEAF 4x2 BUILDINGS -->
+		<ArtRef Name="building:LSYSTEM_PALACE">
+			<Attribute Class="Rotation">0,180</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/med_african_palace.nif</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN</Attribute>
+			<Attribute Class="Era">ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL</Attribute>
+			<Scale>1.15</Scale>
+		</ArtRef>
 		<ArtRef Name="building:LSYSTEM_COLOSSEUM">
 			<Attribute Class="Era">ERA_MODERN,ERA_FUTURE</Attribute>
 			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/Stadium/colosseum.nif</Attribute>
@@ -3539,8 +3537,38 @@
 			<Attribute Class="Rotation">0,180</Attribute>
 			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/mod_eu_palace.nif</Attribute>
 			<Attribute Class="Era">ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
-			<Attribute Class="ArtStyle">ARTSTYLE_VIKING,ARTSTYLE_EUROPEAN,ARTSTYLE_GRECO_ROMAN,ARTSTYLE_MEDITERRANEAN,ARTSTYLE_AFRICAN,ARTSTYLE_NATIVE_AMERICA,ARTSTYLE_SOUTH_AMERICA</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_VIKING,ARTSTYLE_EUROPEAN,ARTSTYLE_GRECO_ROMAN,ARTSTYLE_MEDITERRANEAN,ARTSTYLE_NATIVE_AMERICA,ARTSTYLE_SOUTH_AMERICA</Attribute>
 			<Scale>1.0</Scale>
+		</ArtRef>
+		<ArtRef Name="building:LSYSTEM_PALACE">
+			<Attribute Class="Rotation">0,180</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/mod_eu_palace.nif</Attribute>
+			<Attribute Class="Era">ERA_MODERN,ERA_FUTURE</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN</Attribute>
+			<Scale>1.0</Scale>
+		</ArtRef>
+		<!-- NATIVE PALACE -->
+		<ArtRef Name="building:LSYSTEM_PALACE">
+			<Attribute Class="Rotation">0,180</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/meso_palace/an_meso_palace.nif</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_NATIVE_AMERICA</Attribute>
+			<Attribute Class="Era">ERA_MEDIEVAL,ERA_RENAISSANCE</Attribute>
+			<Scale>1.15</Scale>
+		</ArtRef>
+		<!-- MESO PALACE -->
+		<ArtRef Name="building:LSYSTEM_PALACE">
+			<Attribute Class="Rotation">0,180</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/meso_palace/an_meso_palace.nif</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_SOUTH_AMERICA</Attribute>
+			<Attribute Class="Era">ERA_ANCIENT</Attribute>
+			<Scale>1.15</Scale>
+		</ArtRef>
+		<ArtRef Name="building:LSYSTEM_PALACE">
+			<Attribute Class="Rotation">0,180</Attribute>
+			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/meso_palace/clas_meso_palace.nif</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_SOUTH_AMERICA</Attribute>
+			<Attribute Class="Era">ERA_CLASSICAL,ERA_MEDIEVAL</Attribute>
+			<Scale>1.15</Scale>
 		</ArtRef>
 		<ArtRef Name="building:LSYSTEM_PALACE">
 			<Attribute Class="Scalar">szNIF:Art/Structures/Buildings/palace/meso_palace/ren_meso_palace.nif</Attribute>
@@ -3589,15 +3617,28 @@
 			<Attribute Class="Scalar">szBuilder:WallBuilder</Attribute>
 			<Attribute Class="Scalar">bLayoutAfterGenerics:1</Attribute>
 			<Attribute Class="Scalar">bNoContour:1</Attribute>
-			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Walls/post01_eu_an.nif</Attribute>
-			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Walls/wall%1_eu_an.nif</Attribute>
+			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Walls/post01_afro.nif</Attribute>
+			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Walls/wall%1_afro.nif</Attribute>
 			<Rotate>45</Rotate>
 			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
 		</ArtRef>
-		<!-- AFRICA/SOUTH_AMERICA/NATIVE_AMERICA/BARBARIAN WALLS -->
+		<!-- CLASSICAL AFRICAN/NATIVE_AMERICAN/NORSE/BARBARIAN WALLS -->
 		<ArtRef Name="building:LSYSTEM_WALLS">
-			<Attribute Class="Era">ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
-			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN,ARTSTYLE_SOUTH_AMERICA,ARTSTYLE_NATIVE_AMERICA,ARTSTYLE_BARBARIAN</Attribute>
+			<Attribute Class="Era">ERA_CLASSICAL</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN,ARTSTYLE_NATIVE_AMERICA,ARTSTYLE_VIKING,ARTSTYLE_BARBARIAN</Attribute>
+			<Attribute Class="Scalar">szSpecialLayout:CityCenter</Attribute>
+			<Attribute Class="Scalar">szBuilder:WallBuilder</Attribute>
+			<Attribute Class="Scalar">bLayoutAfterGenerics:1</Attribute>
+			<Attribute Class="Scalar">bNoContour:1</Attribute>
+			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Walls/post01_afro.nif</Attribute>
+			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Walls/wall%1_afro.nif</Attribute>
+			<Rotate>45</Rotate>
+			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
+		</ArtRef>
+		<!-- AFRICAN/NATIVE_AMERICAN/BARBARIAN WALLS -->
+		<ArtRef Name="building:LSYSTEM_WALLS">
+			<Attribute Class="Era">ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_AFRICAN,ARTSTYLE_NATIVE_AMERICA,ARTSTYLE_BARBARIAN</Attribute>
 			<Attribute Class="Scalar">szSpecialLayout:CityCenter</Attribute>
 			<Attribute Class="Scalar">szBuilder:WallBuilder</Attribute>
 			<Attribute Class="Scalar">bLayoutAfterGenerics:1</Attribute>
@@ -3620,7 +3661,7 @@
 			<Rotate>45</Rotate>
 			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
 		</ArtRef>
-		<!-- EGYPT/INDIA/MIDDLE_EAST WALLS -->
+		<!-- EGYPTIAN/INDIAN/MIDDLE_EASTERN WALLS -->
 		<ArtRef Name="building:LSYSTEM_WALLS">
 			<Attribute Class="Era">ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_EGYPT,ARTSTYLE_INDIAN,ARTSTYLE_MIDDLE_EAST</Attribute>
@@ -3633,7 +3674,7 @@
 			<Rotate>45</Rotate>
 			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
 		</ArtRef>
-		<!-- EUROPEAN/NORSE/MEDITERRANEAN WALLS -->
+		<!-- EUROPEAN/MEDITERRANEAN WALLS -->
 		<ArtRef Name="building:LSYSTEM_WALLS">
 			<Attribute Class="Era">ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
 			<Attribute Class="ArtStyle">ARTSTYLE_EUROPEAN,ARTSTYLE_VIKING,ARTSTYLE_MEDITERRANEAN</Attribute>
@@ -3656,6 +3697,32 @@
 			<Attribute Class="Scalar">bNoContour:1</Attribute>
 			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Tall Wall/post01_tall.nif</Attribute>
 			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Tall Wall/wall%1_tall.nif</Attribute>
+			<Rotate>45</Rotate>
+			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
+		</ArtRef>
+		<!-- NORSE WALLS -->
+		<ArtRef Name="building:LSYSTEM_WALLS">
+			<Attribute Class="Era">ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_EUROPEAN,ARTSTYLE_VIKING,ARTSTYLE_MEDITERRANEAN</Attribute>
+			<Attribute Class="Scalar">szSpecialLayout:CityCenter</Attribute>
+			<Attribute Class="Scalar">szBuilder:WallBuilder</Attribute>
+			<Attribute Class="Scalar">bLayoutAfterGenerics:1</Attribute>
+			<Attribute Class="Scalar">bNoContour:1</Attribute>
+			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Walls/post01_eu_med.nif</Attribute>
+			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Walls/wall%1_eu_med.nif</Attribute>
+			<Rotate>45</Rotate>
+			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
+		</ArtRef>
+		<!-- SOUTH_AMERICAN WALLS -->
+		<ArtRef Name="building:LSYSTEM_WALLS">
+			<Attribute Class="Era">ERA_CLASSICAL,ERA_MEDIEVAL,ERA_RENAISSANCE,ERA_INDUSTRIAL,ERA_MODERN,ERA_FUTURE</Attribute>
+			<Attribute Class="ArtStyle">ARTSTYLE_SOUTH_AMERICA</Attribute>
+			<Attribute Class="Scalar">szSpecialLayout:CityCenter</Attribute>
+			<Attribute Class="Scalar">szBuilder:WallBuilder</Attribute>
+			<Attribute Class="Scalar">bLayoutAfterGenerics:1</Attribute>
+			<Attribute Class="Scalar">bNoContour:1</Attribute>
+			<Attribute Class="Scalar">szPostArtFile:Art/Structures/Buildings/Walls/post01_eu_an.nif</Attribute>
+			<Attribute Class="Scalar">szWallArtFile:Art/Structures/Buildings/Walls/wall%1_eu_an.nif</Attribute>
 			<Rotate>45</Rotate>
 			<!-- this needs to be the negative of the CITY_TWIST value in detail manager; note that this uses degrees but DetailManager uses radians. Sorry. -->
 		</ArtRef>
