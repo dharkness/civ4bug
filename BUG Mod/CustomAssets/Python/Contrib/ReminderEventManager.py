@@ -176,7 +176,6 @@ class ReminderEvent(AbstractReminderEvent):
 	def onGameStart(self, argsList):
 		'Called when a new game is started'
 		self.reminderManager.clearReminders()
-		SdToolKit.sdModInit(SD_MOD_ID)
 #		return 1
 
 	def onLoadGame(self, argsList):
@@ -185,11 +184,13 @@ class ReminderEvent(AbstractReminderEvent):
 		queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
 		if (queue):
 			self.reminderManager.setReminders(queue)
+			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, None)
 #		return 1
 
 	def onPreSave(self, argsList):
 		"Called before a game is actually saved"
-		SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
+		if (not self.reminderManager.reminders.isEMpty()):
+			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
 #		return 1
 
 
