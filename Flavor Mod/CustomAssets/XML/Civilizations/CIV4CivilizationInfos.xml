@@ -4,7 +4,7 @@
 <!-- Copyright Firaxis Games 2005 -->
 <!-- -->
 <!-- Civilization Infos -->
-<Civ4CivilizationInfos xmlns="x-schema:VD_CIV4CivilizationsSchema.xml">
+<Civ4CivilizationInfos xmlns="x-schema:CIV4CivilizationsSchema.xml">
 	<CivilizationInfos>
 		<CivilizationInfo>
 			<Type>CIVILIZATION_AMERICA</Type>
