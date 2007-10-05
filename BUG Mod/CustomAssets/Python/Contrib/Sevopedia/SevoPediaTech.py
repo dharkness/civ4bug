@@ -14,13 +14,13 @@ from CvPythonExtensions import *
 import CvUtil
 import CvPediaScreen
 import ScreenInput
-import CvScreenEnums
+import SevoScreenEnums
 
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-class CvPediaTech(CvPediaScreen.CvPediaScreen):
+class SevoPediaTech(CvPediaScreen.CvPediaScreen):
 
 	def __init__(self, main):
 		self.iTech = -1

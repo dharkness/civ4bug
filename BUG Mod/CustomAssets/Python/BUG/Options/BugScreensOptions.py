@@ -29,6 +29,15 @@ class BugScreensOptions(OptionsFacade):
 							  "Screens", "CustDomAdv", True,
 							  "Customizable Domestic Advisor",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
+		
+		self.addOption(Option("Sevopedia_Enabled",
+							  "Screens", "Sevopedia", True,
+							  "Sevopedia",
+							  "When checked, uses the Sevopedia (requires restart)."))
+		self.addOption(Option("Sevopedia_Sort",
+							  "Screens", "Sevopedia Sort", True,
+							  "Sort Lists",
+							  "When checked, the lists of units, buildings, technologies, etc. are sorted."))
 
 		self.addOption(Option("Tech_GPPrefs",
 							  "Screens", "GP Tech Prefs", True,
@@ -48,6 +57,12 @@ class BugScreensOptions(OptionsFacade):
 
 	def isCustDomAdv(self):
 		return self.getBoolean('CDA_Enabled')
+
+	def isSevopedia(self):
+		return self.getBoolean('Sevopedia_Enabled')
+
+	def isSortSevopedia(self):
+		return self.getBoolean('Sevopedia_Sort')
 
 
 	def isShowGPTechPrefs(self):

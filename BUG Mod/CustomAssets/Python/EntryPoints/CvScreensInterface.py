@@ -2,7 +2,8 @@
 ## Copyright Firaxis Games 2005
 import CvMainInterface
 # BUG - CustDomAdv - start
-#import CvDomesticAdvisor (conditionally imported below)
+# (conditionally imported below)
+#import CvDomesticAdvisor
 # BUG - CustDomAdv - end
 import CvTechChooser
 import CvForeignAdvisor
@@ -32,8 +33,11 @@ import CvWonderMovieScreen
 import CvEraMovieScreen
 import CvSpaceShipScreen
 
-import CvPediaMain
-import CvPediaHistory
+# BUG - Sevopedia - start
+# (conditionally imported below)
+#import CvPediaMain
+#import CvPediaHistory
+# BUG - Sevopedia - end
 
 import CvWorldBuilderScreen
 import CvWorldBuilderDiplomacyScreen
@@ -217,73 +221,142 @@ def showVictoryScreen():
 
 # BUG - Sevopedia - start
 
-pediaMainScreen = CvPediaMain.CvPediaMain()
+import SevoScreenEnums
+pediaMainScreen = None
+bUsingSevopedia = False
+if (BugScreens.isSevopedia()):
+	import SevoPediaMain
+	import SevoPediaHistory
+	global pediaMainScreen
+	global bUsingSevopedia
+	bUsingSevopedia = True
+	pediaMainScreen = SevoPediaMain.SevoPediaMain()
+else:
+	import CvPediaMain
+	import CvPediaHistory
+	global pediaMainScreen
+	pediaMainScreen = CvPediaMain.CvPediaMain()
 
 def linkToPedia(argsList):
 	pediaMainScreen.link(argsList[0])
 
 def pediaShow():
-	pediaMainScreen.pediaShow()
+	return pediaMainScreen.pediaShow()
 
 def pediaBack():
-	pediaMainScreen.back()
+	return pediaMainScreen.back()
 
 def pediaForward():
-	pediaMainScreen.forward()
+	return pediaMainScreen.forward()
 
 def pediaMain(argsList):
-	pediaMainScreen.pediaJump(PEDIA_MAIN, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_MAIN, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_MAIN, argsList[0], True)
 
 def pediaJumpToTech(argsList):
-	pediaMainScreen.pediaJump(PEDIA_TECHS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_TECHS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_TECH, argsList[0], True)
 
 def pediaJumpToUnit(argsList):
-	pediaMainScreen.pediaJump(PEDIA_UNITS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_UNITS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_UNIT, argsList[0], True)
 
 def pediaJumpToUnitChart(argsList):
-	pediaMainScreen.pediaJump(PEDIA_UNIT_CATEGORIES, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_UNIT_CATEGORIES, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_UNIT_CHART, argsList[0], True)
 
 def pediaJumpToPromotion(argsList):
-	pediaMainScreen.pediaJump(PEDIA_PROMOTIONS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_PROMOTIONS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_PROMOTION, argsList[0], True)
 
 def pediaJumpToBuilding(argsList):
-	pediaMainScreen.pediaJump(PEDIA_BUILDINGS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_BUILDINGS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_BUILDING, argsList[0], True)
 
 def pediaJumpToProject(argsList):
-	pediaMainScreen.pediaJump(PEDIA_PROJECTS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_PROJECTS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_PROJECT, argsList[0], True)
 
 def pediaJumpToSpecialist(argsList):
-	pediaMainScreen.pediaJump(PEDIA_SPECIALISTS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_SPECIALISTS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_SPECIALIST, argsList[0], True)
 
 def pediaJumpToTerrain(argsList):
-	pediaMainScreen.pediaJump(PEDIA_TERRAINS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_TERRAINS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_TERRAIN, argsList[0], True)
 
 def pediaJumpToFeature(argsList):
-	pediaMainScreen.pediaJump(PEDIA_FEATURES, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_FEATURES, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_FEATURE, argsList[0], True)
 
 def pediaJumpToBonus(argsList):
-	pediaMainScreen.pediaJump(PEDIA_BONUSES, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_BONUSES, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_BONUS, argsList[0], True)
 
 def pediaJumpToImprovement(argsList):
-	pediaMainScreen.pediaJump(PEDIA_IMPROVEMENTS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_IMPROVEMENTS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_IMPROVEMENT, argsList[0], True)
 
 def pediaJumpToCiv(argsList):
-	pediaMainScreen.pediaJump(PEDIA_CIVS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_CIVS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_CIVILIZATION, argsList[0], True)
 
 def pediaJumpToLeader(argsList):
-	pediaMainScreen.pediaJump(PEDIA_LEADERS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_LEADERS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_LEADER, argsList[0], True)
 
 def pediaJumpToCivic(argsList):
-	pediaMainScreen.pediaJump(PEDIA_CIVICS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_CIVICS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_CIVIC, argsList[0], True)
 
 def pediaJumpToReligion(argsList):
-	pediaMainScreen.pediaJump(PEDIA_RELIGIONS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_RELIGIONS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_RELIGION, argsList[0], True)
 
 def pediaJumpToCorporation(argsList):
-	pediaMainScreen.pediaJump(PEDIA_CORPORATIONS, argsList[0], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_CORPORATIONS, argsList[0], True, False)
+	else:
+		pediaMainScreen.pediaJump(PEDIA_CORPORATION, argsList[0], True)
 
 def pediaShowHistorical(argsList):
-	pediaMainScreen.pediaJump(pediaMainScreen.iCategory, argsList[1], True, False)
+	if (bUsingSevopedia):
+		pediaMainScreen.pediaJump(pediaMainScreen.iCategory, argsList[1], True, False)
+	else:
+		iEntryId = pediaMainScreen.pediaHistorical.getIdFromEntryInfo(argsList[0], argsList[1])
+		pediaMainScreen.pediaJump(PEDIA_HISTORY, iEntryId, True)
 
 # BUG - Sevopedia - end
 
@@ -920,32 +993,50 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					ESPIONAGE_ADVISOR : espionageAdvisor,
 					DAN_QUAYLE_SCREEN : danQuayleScreen,
 					
+					PEDIA_MAIN : pediaMainScreen,
+					PEDIA_TECH : pediaMainScreen,
+					PEDIA_UNIT : pediaMainScreen,
+					PEDIA_BUILDING : pediaMainScreen,
+					PEDIA_PROMOTION : pediaMainScreen,
+					PEDIA_PROJECT : pediaMainScreen,
+					PEDIA_UNIT_CHART : pediaMainScreen,
+					PEDIA_BONUS : pediaMainScreen,
+					PEDIA_IMPROVEMENT : pediaMainScreen,
+					PEDIA_TERRAIN : pediaMainScreen,
+					PEDIA_FEATURE : pediaMainScreen,
+					PEDIA_CIVIC : pediaMainScreen,
+					PEDIA_CIVILIZATION : pediaMainScreen,
+					PEDIA_LEADER : pediaMainScreen,
+					PEDIA_RELIGION : pediaMainScreen,
+					PEDIA_CORPORATION : pediaMainScreen,
+					PEDIA_HISTORY : pediaMainScreen,
+					
 # BUG - Sevopedia - start
 
-					PEDIA_MAIN		: pediaMainScreen,
-					PEDIA_TECHS		: pediaMainScreen,
-					PEDIA_UNITS		: pediaMainScreen,
-					PEDIA_UNIT_UPGRADES	: pediaMainScreen,
-					PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
-					PEDIA_PROMOTIONS	: pediaMainScreen,
-					PEDIA_PROMOTION_TREE	: pediaMainScreen,
-					PEDIA_BUILDINGS		: pediaMainScreen,
-					PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
-					PEDIA_GREAT_WONDERS	: pediaMainScreen,
-					PEDIA_PROJECTS		: pediaMainScreen,
-					PEDIA_SPECIALISTS	: pediaMainScreen,
-					PEDIA_TERRAINS		: pediaMainScreen,
-					PEDIA_FEATURES		: pediaMainScreen,
-					PEDIA_BONUSES		: pediaMainScreen,
-					PEDIA_IMPROVEMENTS	: pediaMainScreen,
-					PEDIA_CIVS		: pediaMainScreen,
-					PEDIA_LEADERS		: pediaMainScreen,
-					PEDIA_CIVICS		: pediaMainScreen,
-					PEDIA_RELIGIONS		: pediaMainScreen,
-					PEDIA_CORPORATIONS	: pediaMainScreen,
-					PEDIA_CONCEPTS		: pediaMainScreen,
-					PEDIA_BTS_CONCEPTS	: pediaMainScreen,
-					PEDIA_HINTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
 					
 # BUG - Sevopedia - end
 
@@ -961,33 +1052,50 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 ## Handle Navigation Map
 #######################################################################################
 HandleNavigationMap = {
+					PEDIA_MAIN : pediaMainScreen,
+					PEDIA_TECH : pediaMainScreen,
+					PEDIA_UNIT : pediaMainScreen,
+					PEDIA_BUILDING : pediaMainScreen,
+					PEDIA_PROMOTION : pediaMainScreen,
+					PEDIA_PROJECT : pediaMainScreen,
+					PEDIA_UNIT_CHART : pediaMainScreen,
+					PEDIA_BONUS : pediaMainScreen,
+					PEDIA_IMPROVEMENT : pediaMainScreen,
+					PEDIA_TERRAIN : pediaMainScreen,
+					PEDIA_FEATURE : pediaMainScreen,
+					PEDIA_CIVIC : pediaMainScreen,
+					PEDIA_CIVILIZATION : pediaMainScreen,
+					PEDIA_LEADER : pediaMainScreen,
+					PEDIA_HISTORY : pediaMainScreen,
+					PEDIA_RELIGION : pediaMainScreen,
+					PEDIA_CORPORATION : pediaMainScreen,
 
 # BUG - Sevopedia - start
 
-					PEDIA_MAIN		: pediaMainScreen,
-					PEDIA_TECHS		: pediaMainScreen,
-					PEDIA_UNITS		: pediaMainScreen,
-					PEDIA_UNIT_UPGRADES	: pediaMainScreen,
-					PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
-					PEDIA_PROMOTIONS	: pediaMainScreen,
-					PEDIA_PROMOTION_TREE	: pediaMainScreen,
-					PEDIA_BUILDINGS		: pediaMainScreen,
-					PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
-					PEDIA_GREAT_WONDERS	: pediaMainScreen,
-					PEDIA_PROJECTS		: pediaMainScreen,
-					PEDIA_SPECIALISTS	: pediaMainScreen,
-					PEDIA_TERRAINS		: pediaMainScreen,
-					PEDIA_FEATURES		: pediaMainScreen,
-					PEDIA_BONUSES		: pediaMainScreen,
-					PEDIA_IMPROVEMENTS	: pediaMainScreen,
-					PEDIA_CIVS		: pediaMainScreen,
-					PEDIA_LEADERS		: pediaMainScreen,
-					PEDIA_CIVICS		: pediaMainScreen,
-					PEDIA_RELIGIONS		: pediaMainScreen,
-					PEDIA_CORPORATIONS	: pediaMainScreen,
-					PEDIA_CONCEPTS		: pediaMainScreen,
-					PEDIA_BTS_CONCEPTS	: pediaMainScreen,
-					PEDIA_HINTS		: pediaMainScreen
+					SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
+					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen
 				
 # BUG - Sevopedia - end
 

@@ -13,13 +13,13 @@
 from CvPythonExtensions import *
 import CvUtil
 import ScreenInput
-import CvScreenEnums
+import SevoScreenEnums
 
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-class CvPediaHistory:
+class SevoPediaHistory:
 
 	def __init__(self, main):
 		self.top = main
@@ -48,7 +48,7 @@ class CvPediaHistory:
 
 
 	def getCivilopedia(self, iEntry):
-		if (self.top.iCategory == CvScreenEnums.PEDIA_CONCEPTS):
+		if (self.top.iCategory == SevoScreenEnums.PEDIA_CONCEPTS):
 			info = gc.getConceptInfo(iEntry)
 		else:
 			info = gc.getNewConceptInfo(iEntry)

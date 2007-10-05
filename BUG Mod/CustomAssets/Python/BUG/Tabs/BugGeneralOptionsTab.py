@@ -50,5 +50,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)
 		
+		self.addCheckbox(screen, rightPanel, "Sevopedia_Enabled")
+		self.addCheckbox(screen, rightPanel, "Sevopedia_Sort")
+		
 		screen.attachHSeparator(column, column + "Sep")
 		self.addCheckbox(screen, column, "Main_OptionsKey")
