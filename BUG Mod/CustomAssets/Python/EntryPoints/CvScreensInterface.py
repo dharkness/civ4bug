@@ -962,6 +962,7 @@ def featAccomplishedOnFocusCallback(argsList):
 #######################################################################################
 HandleCloseMap = {  DAWN_OF_MAN : dawnOfMan,
 					SPACE_SHIP_SCREEN : spaceShip,			
+					TECH_CHOOSER : techChooser,			
 				# add new screens here
 				}
 

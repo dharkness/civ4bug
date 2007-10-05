@@ -17,8 +17,6 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-NULL_PLOT = CyMap().plot(-1,-1)
-
 class CvEspionageAdvisor:
 
 	def __init__(self):
@@ -615,7 +613,7 @@ class CvEspionageAdvisor:
 						# Only passive effects
 						if (pMission.isPassive()):
 							
-							pPlot = NULL_PLOT
+							pPlot = None
 							
 							if (self.iActiveCityID != -1 and pMission.isTargetsCity()):
 								
@@ -662,7 +660,7 @@ class CvEspionageAdvisor:
 							if (self.iActiveCityID != -1):
 								pPlot = pActiveCity.plot()
 							else:
-								pPlot = NULL_PLOT
+								pPlot = None
 							
 							iCost = pActivePlayer.getEspionageMissionCost(iMissionLoop, self.iTargetPlayer, pPlot, -1)
 							

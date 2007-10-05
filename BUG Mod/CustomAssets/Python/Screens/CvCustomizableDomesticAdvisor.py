@@ -761,7 +761,7 @@ class CvCustomizableDomesticAdvisor:
 			self.bCanLiberate = false
 			(loopCity, iter) = player.firstCity(false)
 			while (loopCity):
-				if loopCity.getLiberationPlayer() != -1:
+				if loopCity.getLiberationPlayer(false) != -1:
 					self.bCanLiberate = true
 					break
 				(loopCity, iter) = player.nextCity(iter, false)
