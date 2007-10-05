@@ -1,8 +1,6 @@
 ## Sid Meier's Civilization 4
 ## Copyright 2007 BUG Mod
 
-# Enum for Sevopedia
-
 PEDIA_MAIN		= 200
 PEDIA_TECHS		= 201
 PEDIA_UNITS		= 202
