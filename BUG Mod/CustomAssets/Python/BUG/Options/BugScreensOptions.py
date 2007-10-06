@@ -49,6 +49,11 @@ class BugScreensOptions(OptionsFacade):
 							  "Foreign: Glance Tab",
 							  "When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen."))
 
+		self.addOption(Option("EFA_Glance_Smilies",
+							  "Screens", "EFA Glance Smilies", True,
+							  "Foreign: Glance Tab Smilies",
+							  "When checked, displays the 'Glance' tab shows Smilies."))
+
 
 	def isShowOptionsKeyReminder(self):
 		return self.getBoolean('Main_OptionsKey')
@@ -72,9 +77,11 @@ class BugScreensOptions(OptionsFacade):
 	def isShowGPTechPrefs(self):
 		return self.getBoolean("Tech_GPPrefs")
 
-
 	def isShowGlance(self):
 		return self.getBoolean("EFA_Glance")
+
+	def isShowGlanceSmilies(self):
+		return self.getBoolean("EFA_Glance_Smilies")
 
 
 # The singleton BugScreensOptions object

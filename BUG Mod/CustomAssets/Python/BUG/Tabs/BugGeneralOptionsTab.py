@@ -34,6 +34,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance")
+		self.addCheckbox(screen, leftPanel, "EFA_Glance_Smilies")
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
 		screen.setControlFlag("EspionageScreenLabel", "CF_LABEL_DEFAULTSIZE")

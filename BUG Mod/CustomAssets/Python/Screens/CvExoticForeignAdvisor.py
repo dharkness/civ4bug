@@ -510,7 +510,10 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 							if nAttitude != None:
 								szText = self.getAttitudeText (nAttitude, j, iLoopPlayer)
 							else:
-								szText = "-"  #localText.getText("TXT_KEY_FOREIGN_ADVISOR_NONE", ())
+								if BugScreens.isShowGlanceSmilies():
+									szText = "     -"  #localText.getText("TXT_KEY_FOREIGN_ADVISOR_NONE", ())
+								else:
+									szText = "  -"  #localText.getText("TXT_KEY_FOREIGN_ADVISOR_NONE", ())
 
 							screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET + (self.nSpread * nCount), self.Y_GLANCE_OFFSET + (self.GLANCE_BUTTON_SIZE / 1.8), -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
 						nCount += 1
@@ -531,16 +534,21 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
 		if nAttitude > 0:
 			szText = "+" + szText
+
+		szText = "[" + szText + "]"
 #		ExoticForPrint ("Attitude String = %s" % szAttitude)
 		for szColor, szSearchString in self.ATTITUDE_DICT.items():
 			if re.search (szSearchString, szAttitude):
 				color = gc.getInfoTypeForString(szColor)
 				szText = localText.changeTextColor (szText, color)
 
-		iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
-		szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+		if BugScreens.isShowGlanceSmilies():
+			iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
+			szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+			szText = szSmilie + " <font=3>" + szText + "</font>"
+		else:
+			szText = "<font=3>" + szText + "</font>"
 
-		szText = szSmilie + " <font=3>" + "[" + szText + "]</font>"
 #		szText = "<font=4>" + szText + "</font>"
 
 		return szText
