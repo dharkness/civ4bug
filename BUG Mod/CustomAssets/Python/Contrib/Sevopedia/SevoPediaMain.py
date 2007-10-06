@@ -632,11 +632,13 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		return szName
 
 
+	def isSortLists(self):
+		return BugScreens.isSortSevopedia()
 
 	def getSortedList(self, numInfos, getInfo):
 		list = [(0,0)] * numInfos
 		for i in range(numInfos):
 			list[i] = (getInfo(i).getDescription(), i)
-		if BugScreens.isSortSevopedia():
+		if self.isSortLists():
 			list.sort()
 		return list

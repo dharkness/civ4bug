@@ -259,7 +259,7 @@ class SevoPediaBuilding:
 		for iBuilding in list1:
 			list2[i] = (gc.getBuildingInfo(iBuilding).getDescription(), iBuilding)
 			i += 1
-		if self.top.bSortLists:
+		if self.top.isSortLists():
 			list2.sort()
 		return list2
 
