@@ -27,32 +27,31 @@ class BugScreensOptions(OptionsFacade):
 		
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
-							  "Domestic: Customizable Domestic Advisor",
+							  "Customizable",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
+
+		self.addOption(Option("EFA_Glance",
+							  "Screens", "EFA Glance", True,
+							  "Glance Tab",
+							  "When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen."))
+		self.addOption(Option("EFA_Glance_Smilies",
+							  "Screens", "EFA Glance Smilies", True,
+							  "Glance Tab Smilies",
+							  "When checked, the 'Glance' tab shows Smilies (attitude icons)."))
+
+		self.addOption(Option("Tech_GPPrefs",
+							  "Screens", "GP Tech Prefs", True,
+							  "Great Person Research",
+							  "When checked, displays the technology each type of great person will research."))
 
 		self.addOption(Option("Sevopedia_Enabled",
 							  "Screens", "Sevopedia", True,
-							  "Sevopedia",
+							  "Enabled",
 							  "When checked, uses the Sevopedia (requires restart)."))
 		self.addOption(Option("Sevopedia_Sort",
 							  "Screens", "Sevopedia Sort", True,
 							  "Sort Lists",
 							  "When checked, the lists of units, buildings, technologies, etc. are sorted."))
-
-		self.addOption(Option("Tech_GPPrefs",
-							  "Screens", "GP Tech Prefs", True,
-							  "Tech: Great Person Research",
-							  "When checked, displays the technology each type of great person will research."))
-
-		self.addOption(Option("EFA_Glance",
-							  "Screens", "EFA Glance", True,
-							  "Foreign: Glance Tab",
-							  "When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen."))
-
-		self.addOption(Option("EFA_Glance_Smilies",
-							  "Screens", "EFA Glance Smilies", True,
-							  "Foreign: Glance Tab Smilies",
-							  "When checked, displays the 'Glance' tab shows Smilies."))
 
 
 	def isShowOptionsKeyReminder(self):
@@ -68,20 +67,23 @@ class BugScreensOptions(OptionsFacade):
 	def isCustDomAdv(self):
 		return self.getBoolean('CDA_Enabled')
 
-	def isSevopedia(self):
-		return self.getBoolean('Sevopedia_Enabled')
-
-	def isSortSevopedia(self):
-		return self.getBoolean('Sevopedia_Sort')
-
-	def isShowGPTechPrefs(self):
-		return self.getBoolean("Tech_GPPrefs")
-
+	
 	def isShowGlance(self):
 		return self.getBoolean("EFA_Glance")
 
 	def isShowGlanceSmilies(self):
 		return self.getBoolean("EFA_Glance_Smilies")
+
+
+	def isShowGPTechPrefs(self):
+		return self.getBoolean("Tech_GPPrefs")
+
+
+	def isSevopedia(self):
+		return self.getBoolean('Sevopedia_Enabled')
+
+	def isSortSevopedia(self):
+		return self.getBoolean('Sevopedia_Sort')
 
 
 # The singleton BugScreensOptions object
