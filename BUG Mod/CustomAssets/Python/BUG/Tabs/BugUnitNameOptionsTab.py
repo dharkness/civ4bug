@@ -8,7 +8,7 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG Unit Name Options Screen Tab"
 	
 	def __init__(self, screen):
-		BugOptionsTab.BugOptionsTab.__init__(self, "UnitName", "UnitNames")
+		BugOptionsTab.BugOptionsTab.__init__(self, "UnitName", "Unit Naming")
 
 	def create(self, screen):
 		tab = self.createTab(screen)

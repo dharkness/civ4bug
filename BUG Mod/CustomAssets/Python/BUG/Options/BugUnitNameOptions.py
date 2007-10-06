@@ -12,7 +12,30 @@ class BugUnitNameOptions(OptionsFacade):
 		self.addOption(Option("UnitName_Enabled",
 							  "UnitName", "Enabled", False,
 							  "Enabled (There are also naming options in the ini file that take up too much room here).",
-							  "When checked, the player's units will be named."))
+							  "When checked, uses the formats on this tab and in the INI file to name the player's units. \
+Names can be built from plain text and format codes that appear between matching carets (^).\n\
+    e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\
+General Codes:\n\
+    civ4 - Use built-in Civ4 names\n\
+    rd - Random name\n\
+    rc - Random civ-related name\n\
+Unit Info Codes:\n\
+    ct - City where unit was built (e.g. Boston)\n\
+    cv - Civilization that built the unit in adjective form (e.g. American)\n\
+    ut - Unit type (e.g. Archer)\n\
+    cb - Combat type (e.g. Melee)\n\
+    dm - Domain type (e.g. Water)\n\
+    ld - Leader that built the unit (e.g. Roosevelt)\n\
+Counting Codes:\n\
+    cnt[f] - Count across all units\n\
+    cntu[f] - Count per unit type\n\
+    cntct[f] - Count per city\n\
+    cntuct[f] - Count per unit/city combination\n\
+    cntc[f] - Count per combat type\n\
+    cntd[f] - Count per domain\n\
+    tt1[f][x:y] - Count up to a number chosen between x and y\n\
+    tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\
+    * f in [f] is one of s, A, a, p, g, n, o, r (see readme)"))
 #		self.addOption(Option("UnitName_UseAdvanced",
 #							  "UnitName", "UseAdvanced", False,
 #							  "Use Advanced Methods - see ini file for Era_UnitClass options",
