@@ -27,9 +27,9 @@ class BugScreensOptions(OptionsFacade):
 		
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
-							  "Customizable Domestic Advisor",
+							  "Domestic: Customizable Domestic Advisor",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
-		
+
 		self.addOption(Option("Sevopedia_Enabled",
 							  "Screens", "Sevopedia", True,
 							  "Sevopedia",
@@ -41,8 +41,13 @@ class BugScreensOptions(OptionsFacade):
 
 		self.addOption(Option("Tech_GPPrefs",
 							  "Screens", "GP Tech Prefs", True,
-							  "Great Person Research",
+							  "Tech: Great Person Research",
 							  "When checked, displays the technology each type of great person will research."))
+
+		self.addOption(Option("EFA_Glance",
+							  "Screens", "EFA Glance", True,
+							  "Foreign: Glance Tab",
+							  "When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen."))
 
 
 	def isShowOptionsKeyReminder(self):
@@ -64,9 +69,12 @@ class BugScreensOptions(OptionsFacade):
 	def isSortSevopedia(self):
 		return self.getBoolean('Sevopedia_Sort')
 
-
 	def isShowGPTechPrefs(self):
 		return self.getBoolean("Tech_GPPrefs")
+
+
+	def isShowGlance(self):
+		return self.getBoolean("EFA_Glance")
 
 
 # The singleton BugScreensOptions object

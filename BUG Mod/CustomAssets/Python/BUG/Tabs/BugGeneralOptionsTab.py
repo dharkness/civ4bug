@@ -29,13 +29,11 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "City_GreatPersonTurns")
 #		self.addCheckbox(screen, leftPanel, "City_StackSpecialists")
 		
-		screen.attachLabel(leftPanel, "DomAdvScreenLabel", "Domestic Advisor:")
+		screen.attachLabel(leftPanel, "DomAdvScreenLabel", "Advisors:")
 		screen.setControlFlag("DomAdvScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
-		
-		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology Advisor:")
-		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
+		self.addCheckbox(screen, leftPanel, "EFA_Glance")
 		
 		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage Screen:")
 		screen.setControlFlag("EspionageScreenLabel", "CF_LABEL_DEFAULTSIZE")
@@ -49,9 +47,9 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_PossibleColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)
-		
+
 		self.addCheckbox(screen, rightPanel, "Sevopedia_Enabled")
 		self.addCheckbox(screen, rightPanel, "Sevopedia_Sort")
-		
+
 		screen.attachHSeparator(column, column + "Sep")
 		self.addCheckbox(screen, column, "Main_OptionsKey")
