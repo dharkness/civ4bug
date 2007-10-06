@@ -34,6 +34,7 @@ import CvEraMovieScreen
 import CvSpaceShipScreen
 
 # BUG - Sevopedia - start
+import SevoScreenEnums
 # (conditionally imported below)
 #import CvPediaMain
 #import CvPediaHistory
@@ -221,20 +222,15 @@ def showVictoryScreen():
 
 # BUG - Sevopedia - start
 
-import SevoScreenEnums
-pediaMainScreen = None
-bUsingSevopedia = False
 if (BugScreens.isSevopedia()):
 	import SevoPediaMain
 	import SevoPediaHistory
-	global pediaMainScreen
-	global bUsingSevopedia
 	bUsingSevopedia = True
 	pediaMainScreen = SevoPediaMain.SevoPediaMain()
 else:
 	import CvPediaMain
 	import CvPediaHistory
-	global pediaMainScreen
+	bUsingSevopedia = False
 	pediaMainScreen = CvPediaMain.CvPediaMain()
 
 def linkToPedia(argsList):
