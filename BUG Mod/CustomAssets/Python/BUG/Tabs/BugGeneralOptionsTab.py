@@ -3,6 +3,7 @@
 ## BUG Mod - Copyright 2007
 
 import BugOptionsTab
+import CvModName
 
 class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG General Options Screen Tab"
@@ -15,19 +16,25 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		leftPanel, rightPanel = self.addTwoColumnLayout(screen, column, column, True)
+		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
-		screen.attachLabel(leftPanel, "MainInterfaceLabel", "Main Interface:")
+		screen.attachLabel(left, "MainInterfaceLabel", "Main Interface:")
 		screen.setControlFlag("MainInterfaceLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, leftPanel, "Main_GPBar")
-		self.addCheckbox(screen, leftPanel, "Main_CityArrows")
+		self.addCheckbox(screen, left, "Main_GPBar")
+		self.addCheckbox(screen, left, "Main_CityArrows")
 		
-		screen.attachLabel(rightPanel, "CityScreenLabel", "City Screen:")
+		screen.attachLabel(right, "CityScreenLabel", "City Screen:")
 		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, rightPanel, "City_RawCommerce")
-		self.addCheckbox(screen, rightPanel, "City_CultureTurns")
-		self.addCheckbox(screen, rightPanel, "City_GreatPersonTurns")
-#		self.addCheckbox(screen, rightPanel, "City_StackSpecialists")
+		self.addCheckbox(screen, right, "City_RawCommerce")
+		self.addCheckbox(screen, right, "City_CultureTurns")
+		self.addCheckbox(screen, right, "City_GreatPersonTurns")
+#		self.addCheckbox(screen, right, "City_StackSpecialists")
 
 		screen.attachHSeparator(column, column + "Sep")
-		self.addCheckbox(screen, column, "Main_OptionsKey")
+		left, right = self.addTwoColumnLayout(screen, column, "Bottom", False)
+		self.addCheckbox(screen, left, "Main_OptionsKey")
+		screen.setLayoutFlag(right, "LAYOUT_RIGHT")
+		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+		screen.attachLabel(right, "VersionLabel", 
+						   CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
+		screen.setControlFlag("VersionLabel", "CF_LABEL_DEFAULTSIZE")

@@ -20,6 +20,7 @@ import PyHelpers
 import autolog
 import time
 import BugAutologOptions
+import CvModName
 
 BugAutolog = BugAutologOptions.BugAutologOptions()
 
@@ -51,7 +52,7 @@ def StartLogger(vsFileName):
 
 	NewAutoLog.setLogFileName(szfileName)
 	NewAutoLog.writeLog("")
-	NewAutoLog.writeLog("Logging by BUG Mod (BtS v3.02) - New Log Entries")
+	NewAutoLog.writeLog("Logging by " + CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
 	NewAutoLog.writeLog("------------------------------------------------")
 	
 	zcurrturn = gc.getGame().getElapsedGameTurns() + BugAutolog.get4000BCTurn()
