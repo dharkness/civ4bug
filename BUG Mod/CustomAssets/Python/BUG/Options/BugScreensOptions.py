@@ -29,6 +29,17 @@ class BugScreensOptions(OptionsFacade):
 							  "Combat Experience",
 							  "When checked, displays Combat Experience to track next Great General.",
 							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+
+		self.addOption(Option("Unit_Promo_Available",
+							  "Screens", "Promo Available", True,
+							  "Promotion Available",
+							  "When checked, puts blue border around units that have a promotion available.",
+							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+		self.addOption(Option("Unit_Actions",
+							  "Screens", "Unit Actions", True,
+							  "Unit Actions",
+							  "When checked, puts unit actions text on unit icons.",
+							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 		
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
@@ -70,6 +81,14 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowCombatCounter(self):
 		return self.getBoolean('Main_Combat_Counter')
+
+
+	def isShowUnitPromo(self):
+		return self.getBoolean('Unit_Promo_Available')
+
+	def isShowUnitActions(self):
+		return self.getBoolean('Unit_Actions')
+
 
 	def isCustDomAdv(self):
 		return self.getBoolean('CDA_Enabled')

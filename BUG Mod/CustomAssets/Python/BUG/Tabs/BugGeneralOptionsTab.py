@@ -23,6 +23,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Main_GPBar")
 		self.addCheckbox(screen, left, "Main_CityArrows")
 		self.addCheckbox(screen, left, "Main_Combat_Counter")
+		self.addCheckbox(screen, left, "Unit_Promo_Available")
+		self.addCheckbox(screen, left, "Unit_Actions")
 
 		screen.attachLabel(right, "CityScreenLabel", "City Screen:")
 		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")

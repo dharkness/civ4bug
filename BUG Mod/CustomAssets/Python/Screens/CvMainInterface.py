@@ -385,6 +385,24 @@ class CvMainInterface:
 				xOffset = i * 34
 				
 				szString = "PlotListButton" + str(k)
+
+# BUG - plot list - start
+				szStringPromoFrameT = szString + "PromoFrameT"
+				szStringPromoFrameB = szString + "PromoFrameB"
+				szStringPromoFrameL = szString + "PromoFrameL"
+				szStringPromoFrameR = szString + "PromoFrameR"
+				szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
+				screen.addDDSGFCAt( szStringPromoFrameT, szStringPanel, szFileNamePromo, xOffset +  2,  2, 34,  2, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.addDDSGFCAt( szStringPromoFrameB, szStringPanel, szFileNamePromo, xOffset +  2, 32, 34,  2, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.addDDSGFCAt( szStringPromoFrameL, szStringPanel, szFileNamePromo, xOffset +  2,  2,  2, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.addDDSGFCAt( szStringPromoFrameR, szStringPanel, szFileNamePromo, xOffset + 32,  2,  2, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+
+				screen.hide( szStringPromoFrameT )
+				screen.hide( szStringPromoFrameB )
+				screen.hide( szStringPromoFrameL )
+				screen.hide( szStringPromoFrameR )
+# BUG - plot list - end
+
 				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
 				screen.hide( szString )
 				
@@ -1247,6 +1265,21 @@ class CvMainInterface:
 			for i in range(self.numPlotListButtons()):
 				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
 				screen.hide( szString )
+
+# BUG - plot list - start
+				# hide promo frame
+				szStringPromoFrameT = szString+"PromoFrameT"
+				szStringPromoFrameB = szString+"PromoFrameB"
+				szStringPromoFrameL = szString+"PromoFrameL"
+				szStringPromoFrameR = szString+"PromoFrameR"
+				screen.hide( szStringPromoFrameT )
+				screen.hide( szStringPromoFrameB )
+				screen.hide( szStringPromoFrameL )
+				screen.hide( szStringPromoFrameR )
+				# hide mission info
+				szStringActionIcon = szString+"ActionIcon"
+				screen.hide( szStringActionIcon )			
+# BUG - plot list - end
 				
 				szStringHealth = szString + "Health"
 				screen.hide( szStringHealth )
@@ -1307,7 +1340,91 @@ class CvMainInterface:
 						else:
 							screen.setState(szString, False)
 						screen.show( szString )
-						
+
+# BUG - plot list - start
+						if (BugScreens.isShowUnitPromo()
+						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()							
+						and pLoopUnit.isPromotionReady()):
+							szStringPromoFrameT = szString+"PromoFrameT"
+							szStringPromoFrameB = szString+"PromoFrameB"
+							szStringPromoFrameL = szString+"PromoFrameL"
+							szStringPromoFrameR = szString+"PromoFrameR"
+							screen.show( szStringPromoFrameT )
+							screen.show( szStringPromoFrameB )
+							screen.show( szStringPromoFrameL )
+							screen.show( szStringPromoFrameR )
+
+						if (BugScreens.isShowUnitActions()
+						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()):
+							# place the activity info below the unit icon.
+							szFileNameAction = ""						
+							eActivityType = pLoopUnit.getGroup().getActivityType()
+							eAutomationType = pLoopUnit.getGroup().getAutomateType()
+
+							# is unit on air patrol/intercept mission
+							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
+								# place "PAT" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
+								iOffset = 14
+							# is unit fortified for healing (wake up when healed)
+							elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
+								# place "HEAL" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
+								iOffset = 10
+							# is unit sentry (wake up when enemy in sight)
+							elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
+								# place "SEN" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
+								iOffset = 13
+							# is the turn for this unit skipped (wake up next turn)
+							elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
+								# place "SKIP" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
+								iOffset = 13
+							# has unit explaration mission
+							elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
+								# place "EXP" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
+								iOffset = 14
+							# is unit automated generally (only worker units)
+							elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
+								# place "AUT-B" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
+								iOffset = 8
+							# is unit automated for nearest city (only worker units)
+							elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
+								# place "AUT-C" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
+								iOffset = 8
+							# is unit automated for network(only worker units)
+							elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
+								# place "AUT-N" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
+								iOffset = 8
+							# has unit a mission
+							elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
+								# is the mission a "move to" mission
+								eMissionType = pLoopUnit.getGroup().getMissionType(0)
+								if ( (eMissionType == MissionTypes.MISSION_MOVE_TO) or \
+									 (eMissionType == MissionTypes.MISSION_MOVE_TO_UNIT) ):
+									# place "GOTO" icon
+									szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
+									iOffset = 6
+							# if nothing of above, but unit is waiting -> unit is fortified
+							elif (pLoopUnit.isWaiting()):
+								# place "FORT" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
+								iOffset = 8
+										
+							# display the mission icon
+							if (szFileNameAction != ""):
+								x = 315 + ((iCount % self.numPlotListButtons()) * 34)
+								y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+								szStringActionIcon = szString+"ActionIcon"
+								screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+iOffset-3, y+29, 32, 8, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+								screen.show( szStringActionIcon )
+# BUG - plot list - end
+
 						# place the health bar
 						if (pLoopUnit.isFighting()):
 							bShowHealth = False
@@ -1315,7 +1432,7 @@ class CvMainInterface:
 							bShowHealth = pLoopUnit.canAirAttack()
 						else:
 							bShowHealth = pLoopUnit.canFight()
-						
+
 						if bShowHealth:
 							szStringHealth = szString + "Health"
 							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )

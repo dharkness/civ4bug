@@ -1322,5 +1322,54 @@
 
 <!-- BUG - Sevopedia - end -->
 
+<!-- ## BUG - PlotList Button Enhancement  - start  -->	
+
+		<InterfaceArtInfo>
+			<Type>OVERLAY_PROMOTION_FRAME</Type>
+			<Path>Art/PlotListEnhancements/frame_promo.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_SKIP</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_skip.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_GOTO</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_goto.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_FORTIFY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_fortify.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_SENTRY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_sentry.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_HEAL</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_BUILD</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_build.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_CITY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_city.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_NETWORK</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_network.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_EXPLORE</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_explore.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_PATROL</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
+		</InterfaceArtInfo>	
+
+<!-- ## BUG - PlotList Button Enhancement  - end  -->					
+
 	</InterfaceArtInfos>
 </Civ4ArtDefines>
