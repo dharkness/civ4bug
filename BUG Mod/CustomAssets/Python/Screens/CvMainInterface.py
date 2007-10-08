@@ -569,7 +569,15 @@ class CvMainInterface:
 		screen.setButtonGFC( "MainCityScrollPlus", u"", "", xResolution - 255, yResolution - 165, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
-		
+
+# BUG - Combat Counter - start
+		screen.setLabel( "CombatXPButton", "Background", u"", CvUtil.FONT_RIGHT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.hide( "CombatXPButton" )
+
+		screen.setLabel( "CombatXPText", "Background", u"", CvUtil.FONT_LEFT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 		screen.hide( "PlotListMinus" )
 
@@ -969,6 +977,10 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end			
+# BUG - Combat Counter - start
+			screen.hide( "CombatXPButton" )
+			screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
 		
 		elif ( CyInterface().isCityScreenUp() ):
 			screen.show( "InterfaceLeftBackgroundWidget" )
@@ -995,7 +1007,11 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-		
+# BUG - Combat Counter - start
+			screen.hide( "CombatXPButton" )
+			screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+	
 		elif ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
 			screen.show( "InterfaceTopBackgroundWidget" )
@@ -1021,6 +1037,11 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )			
 # BUG - City Arrows - end
+# BUG - Combat Counter - start
+			screen.hide( "CombatXPButton" )
+			screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
 			screen.moveToFront( "DomesticAdvisorButton" )
@@ -1059,7 +1080,11 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-			
+# BUG - Combat Counter - start
+			screen.hide( "CombatXPButton" )
+			screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 		elif ( CyEngine().isGlobeviewUp() ):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
 			screen.hide( "InterfaceTopBackgroundWidget" )
@@ -1085,6 +1110,11 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
+# BUG - Combat Counter - start
+			screen.hide( "CombatXPButton" )
+			screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
 			screen.moveToFront( "DomesticAdvisorButton" )
@@ -1127,6 +1157,15 @@ class CvMainInterface:
 				screen.hide( "MainCityScrollMinus" )
 				screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
+# BUG - Combat Counter - start
+			if BugScreens.isShowCombatCounter():
+				screen.show( "CombatXPButton" )
+				screen.show( "CombatXPText" )
+			else:
+				screen.hide( "CombatXPButton" )
+				screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
 			screen.moveToFront( "DomesticAdvisorButton" )
@@ -1899,6 +1938,20 @@ class CvMainInterface:
 					screen.show( "EraText" )
 # BUG - NJAGC - emd
 				
+# BUG - Combat Counter - start
+				if (BugScreens.isShowCombatCounter()
+				and not CyInterface().isCityScreenUp()):
+					eCombatXPButton = u"<font=2>%c</font>" %(CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR))
+					eCombatXPText = ": " + unicode(gc.getPlayer(ePlayer).getCombatExperience()) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
+					screen.setLabel( "CombatXPButton", "Background", eCombatXPButton, CvUtil.FONT_RIGHT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "CombatXPText", "Background", eCombatXPText, CvUtil.FONT_LEFT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.show( "CombatXPButton" )
+					screen.show( "CombatXPText" )
+				else:
+					screen.hide( "CombatXPButton" )
+					screen.hide( "CombatXPText" )
+# BUG - Combat Counter - end
+
 				if (gc.getPlayer(ePlayer).isAnarchy()):
 				
 					szText = localText.getText("INTERFACE_ANARCHY", (gc.getPlayer(ePlayer).getAnarchyTurns(), ))

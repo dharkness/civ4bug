@@ -24,6 +24,11 @@ class BugScreensOptions(OptionsFacade):
 							  "City Cycle Arrows",
 							  "When checked, displays arrows to cycle through cities above your civ's flag.",
 							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+		self.addOption(Option("Main_Combat_Counter",
+							  "Screens", "Combat Counter", True,
+							  "Combat Experience",
+							  "When checked, displays Combat Experience to track next Great General.",
+							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 		
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
@@ -63,6 +68,8 @@ class BugScreensOptions(OptionsFacade):
 	def isShowCityCycleArrows(self):
 		return self.getBoolean('Main_CityArrows')
 
+	def isShowCombatCounter(self):
+		return self.getBoolean('Main_Combat_Counter')
 
 	def isCustDomAdv(self):
 		return self.getBoolean('CDA_Enabled')
