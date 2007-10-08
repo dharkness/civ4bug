@@ -58,7 +58,7 @@ class autologInstance:
 			and BugAutolog.isColorCoding()):
 				zMsg = "<span style=\"color: %s\">%s</span>" % (vColor, zMsg)
 
-			zMge = "%s<br>" % (zMsg)
+			zMsg = "%s<br>" % (zMsg)
 
 		else: # forum formatting
 			if vBold:
