@@ -387,20 +387,10 @@ class CvMainInterface:
 				szString = "PlotListButton" + str(k)
 
 # BUG - plot list - start
-				szStringPromoFrameT = szString + "PromoFrameT"
-				szStringPromoFrameB = szString + "PromoFrameB"
-				szStringPromoFrameL = szString + "PromoFrameL"
-				szStringPromoFrameR = szString + "PromoFrameR"
 				szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
-				screen.addDDSGFCAt( szStringPromoFrameT, szStringPanel, szFileNamePromo, xOffset +  2,  2, 34,  2, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.addDDSGFCAt( szStringPromoFrameB, szStringPanel, szFileNamePromo, xOffset +  2, 32, 34,  2, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.addDDSGFCAt( szStringPromoFrameL, szStringPanel, szFileNamePromo, xOffset +  2,  2,  2, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.addDDSGFCAt( szStringPromoFrameR, szStringPanel, szFileNamePromo, xOffset + 32,  2,  2, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-
-				screen.hide( szStringPromoFrameT )
-				screen.hide( szStringPromoFrameB )
-				screen.hide( szStringPromoFrameL )
-				screen.hide( szStringPromoFrameR )
+				szStringPromoFrame  = szString + "PromoFrame"
+				screen.addDDSGFCAt( szStringPromoFrame , szStringPanel, szFileNamePromo, xOffset +  2,  2, 34, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.hide( szStringPromoFrame  )
 # BUG - plot list - end
 
 				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
@@ -1268,14 +1258,9 @@ class CvMainInterface:
 
 # BUG - plot list - start
 				# hide promo frame
-				szStringPromoFrameT = szString+"PromoFrameT"
-				szStringPromoFrameB = szString+"PromoFrameB"
-				szStringPromoFrameL = szString+"PromoFrameL"
-				szStringPromoFrameR = szString+"PromoFrameR"
-				screen.hide( szStringPromoFrameT )
-				screen.hide( szStringPromoFrameB )
-				screen.hide( szStringPromoFrameL )
-				screen.hide( szStringPromoFrameR )
+				szStringPromoFrame  = szString+"PromoFrame"
+				screen.hide( szStringPromoFrame )
+
 				# hide mission info
 				szStringActionIcon = szString+"ActionIcon"
 				screen.hide( szStringActionIcon )			
@@ -1345,14 +1330,8 @@ class CvMainInterface:
 						if (BugScreens.isShowUnitPromo()
 						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()							
 						and pLoopUnit.isPromotionReady()):
-							szStringPromoFrameT = szString+"PromoFrameT"
-							szStringPromoFrameB = szString+"PromoFrameB"
-							szStringPromoFrameL = szString+"PromoFrameL"
-							szStringPromoFrameR = szString+"PromoFrameR"
-							screen.show( szStringPromoFrameT )
-							screen.show( szStringPromoFrameB )
-							screen.show( szStringPromoFrameL )
-							screen.show( szStringPromoFrameR )
+							szStringPromoFrame = szString+"PromoFrame"
+							screen.show( szStringPromoFrame )
 
 						if (BugScreens.isShowUnitActions()
 						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()):
