@@ -8,13 +8,14 @@ import CvModName
 credits = [ "BUG Team",
 		    "Alerum68 - Release, Testing",
 		    "EmperorFool - Coding",
-		    "Massimo \"Cammagno\" Maccagno - Documentation",
+		    "Cammagno - Documentation",
 		    "Ruff_Hi - Coding, Testing",
 		    "-",
 		    "Mod Authors",
 		    "12monkeys - Plot List Enhancements",
 		    "Almightix - Better Espionage Screen",
 		    "asioasioasio - Wide City Bar",
+		    "Cammagno - Cammagno's CDA Pages",
 		    "Chinese American - Culture Turns, Great Person Turns",
 		    "Dr. Elmer Jiggles - Civ4lerts, Custom Event Manager, MoreCiv4lerts",
 		    "EmperorFool - Advanced Scoreboard, GP Tech Prefs, Options Core, Power Ratio, Raw Production",
@@ -32,8 +33,9 @@ credits = [ "BUG Team",
 		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
 		    "-",
 		    "Translators",
+		    "Cammagno - Italian",
 		    "Ludwig II - German",
-		    "Massimo \"Cammagno\" Maccagno - Italian"
+
 		    ]
 
 class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
