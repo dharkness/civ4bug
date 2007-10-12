@@ -48,12 +48,31 @@ class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		labelNum = 0
 		sepNum = 0
+		boxNum = 0
+		inBox = False
 		for line in credits:
 			if line == "-":
 				screen.attachHSeparator(column, column + "Sep%d" % sepNum)
 				sepNum += 1
+				inBox = False
 			else:
-				label = "CreditsLabel%d" % labelNum
-				screen.attachLabel(column, label, line)
-				#screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
+				# Make sure a box exists
+				if not inBox:
+					box = "CreditsBox%d" % boxNum
+					left, right = self.addTwoColumnLayout(screen, column, box)
+					boxNum += 1
+					inBox = True
+				leftLabel = "CreditsLabelLeft%d" % labelNum
+				rightLabel = "CreditsLabelRight%d" % labelNum
+				pos = line.find(" - ")
+				if pos != -1:
+					# Person - Task
+					leftText = line[0:pos] + "   "
+					rightText = line[pos+3:]
+				else:
+					# Header
+					leftText = line
+					rightText = " "
+				screen.attachLabel(left, leftLabel, leftText)
+				screen.attachLabel(right, rightLabel, rightText)
 				labelNum += 1
