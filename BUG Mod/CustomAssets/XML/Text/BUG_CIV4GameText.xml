@@ -24,6 +24,25 @@
 		<Spanish>Grandes Personajes: %s1 (%d2)</Spanish>
 	</TEXT>
 	
+	<!-- Fix for Sevo/Civilopedia -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_CIVILOPEDIA_STRATEGY</Tag>
+		<English>[BOLD]Strategy:[\BOLD][PARAGRAPH:1]</English>
+		<French>[BOLD]Strat&#233;gie :[\BOLD][PARAGRAPH:1]</French>
+		<German>[BOLD]Strategie:[\BOLD][PARAGRAPH:1]</German>
+		<Italian>[BOLD]Strategia:[\BOLD][PARAGRAPH:1]</Italian>
+		<Spanish>[BOLD]Estrategia:[\BOLD][PARAGRAPH:1]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVILOPEDIA_BACKGROUND</Tag>
+		<English>[BOLD]Background:[\BOLD][NEWLINE]</English>
+		<French>[BOLD]Histoire :[\BOLD][NEWLINE]</French>
+		<German>[BOLD]Hintergrund:[\BOLD][NEWLINE]</German>
+		<Italian>[BOLD]Informazioni:[\BOLD][NEWLINE]</Italian>
+		<Spanish>[BOLD]Historia:[\BOLD][NEWLINE]</Spanish>
+	</TEXT>
+	
 	<!-- Reminders -->
 	
 	<TEXT>
