@@ -1,4 +1,4 @@
-## BugGeneralOptionsTab
+## BugAdvisorOptionsTab
 ## Tab for the BUG Scoreboard Options
 ## BUG Mod - Copyright 2007
 
