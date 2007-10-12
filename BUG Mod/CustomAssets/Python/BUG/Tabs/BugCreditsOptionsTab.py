@@ -5,34 +5,35 @@
 import BugOptionsTab
 import CvModName
 
-credits = [ "BUG Team:",
+credits = [ "BUG Team",
 		    "Alerum68 - Release, Testing",
-		    "Massimo \"Cammagno\" Maccagno - Documentation",
 		    "EmperorFool - Coding",
+		    "Massimo \"Cammagno\" Maccagno - Documentation",
 		    "Ruff_Hi - Coding, Testing",
 		    "-",
-		    "Mod Authors:",
+		    "Mod Authors",
 		    "12monkeys - Plot List Enhancements",
 		    "Almightix - Better Espionage Screen",
 		    "asioasioasio - Wide City Bar",
 		    "Chinese American - Culture Turns, Great Person Turns",
 		    "Dr. Elmer Jiggles - Civ4lerts, Custom Event Manager, MoreCiv4lerts",
-		    "EmperorFool - Advanced Scoreboard, Great Person Tech Prefs, Options Framework, Power Ratio in Score, Raw Production "
-		        "(extended Better Espionage Screen, Civ4lerts, Customizable Domestic Advisor, Reminders)",
+		    "EmperorFool - Advanced Scoreboard, GP Tech Prefs, Options Core, Power Ratio, Raw Production",
+		    " -    (extended BES, Civ4lerts, CDA, Raw Commerce, Reminders)",
 		    "Eotinb - Autolog, Reminders",
 		    "Impaler[WrG] - Great Person Progress Bar",
 		    "NeverMind - Great General Combat Experience Counter",
 		    "Porges - Attitude Icons",
 		    "Requies - Exotic Foreign Advisor",
-		    "Ruff_Hi - Generic Unit Naming (extended AutoLog, Reminders, Promotion/Action Indicators in PLE, Smilies in GLANCE tab)",
+		    "Ruff_Hi - Generic Unit Naming",
+		    " -    (extended AutoLog, Reminders, Promo/Actions in PLE, Smilies in EFA)",
 		    "Sevo - Raw Commerce, Sevopedia",
 		    "SimCutie - Attitudes in Score, City Cycle Arrows, Extended Color Table",
 		    "Taelis - Customizable Domestic Advisor",
 		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
 		    "-",
-		    "Translators:",
-		    "Massimo \"Cammagno\" Maccagno - Italian",
-		    "Ludwig II - German"
+		    "Translators",
+		    "Ludwig II - German",
+		    "Massimo \"Cammagno\" Maccagno - Italian"
 		    ]
 
 class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
@@ -49,30 +50,39 @@ class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
 		labelNum = 0
 		sepNum = 0
 		boxNum = 0
-		inBox = False
+		first = True
 		for line in credits:
 			if line == "-":
-				screen.attachHSeparator(column, column + "Sep%d" % sepNum)
-				sepNum += 1
-				inBox = False
+				pass
 			else:
-				# Make sure a box exists
-				if not inBox:
+				pos = line.find(" - ")
+				if pos == -1:
+					# Header
+					if not first:
+						label = "CreditsSpacerLabel%d" % labelNum
+						screen.attachLabel(column, label, " ")
+						labelNum += 1
+					else:
+						first = False
+					label = "CreditsHeaderLabel%d" % labelNum
+					screen.attachLabel(column, label, line)
+					#screen.setLayoutFlag(label, "LAYOUT_CENTER")
+					#screen.setLayoutFlag(label, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+					labelNum += 1
+					screen.attachHSeparator(column, column + "Sep%d" % sepNum)
+					sepNum += 1
 					box = "CreditsBox%d" % boxNum
 					left, right = self.addTwoColumnLayout(screen, column, box)
+					screen.setLayoutFlag(box + "HBox", "LAYOUT_CENTER")
 					boxNum += 1
-					inBox = True
-				leftLabel = "CreditsLabelLeft%d" % labelNum
-				rightLabel = "CreditsLabelRight%d" % labelNum
-				pos = line.find(" - ")
-				if pos != -1:
+				else:
 					# Person - Task
+					leftLabel = "CreditsLabelLeft%d" % labelNum
+					rightLabel = "CreditsLabelRight%d" % labelNum
 					leftText = line[0:pos] + "   "
 					rightText = line[pos+3:]
-				else:
-					# Header
-					leftText = line
-					rightText = " "
-				screen.attachLabel(left, leftLabel, leftText)
-				screen.attachLabel(right, rightLabel, rightText)
-				labelNum += 1
+					screen.attachLabel(left, leftLabel, leftText)
+					screen.setLayoutFlag(leftLabel, "LAYOUT_RIGHT")
+					#screen.setLayoutFlag(leftLabel, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+					screen.attachLabel(right, rightLabel, rightText)
+					labelNum += 1
