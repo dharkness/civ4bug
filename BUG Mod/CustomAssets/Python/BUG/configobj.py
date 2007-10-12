@@ -1296,7 +1296,7 @@ class ConfigObj(Section):
             line = infile[cur_index]
             sline = line.strip()
             # do we have anything on the line ?
-            if not sline or sline.startswith('#'):
+            if not sline or sline.startswith('#') or sline.startswith(';'):
                 reset_comment = False
                 comment_list.append(line)
                 continue
@@ -1832,7 +1832,7 @@ class ConfigObj(Section):
             start = self._a_to_u('\t')
         else:
             start = self._a_to_u(' ' * NUM_INDENT_SPACES)
-        if not comment.startswith('#'):
+        if not comment.startswith('#') and not comment.startswith(';'):
             start += _a_to_u('# ')
         return (start + comment)
 
@@ -2996,6 +2996,7 @@ if __name__ == '__main__':
     (square brackets and parentheses are no longer recognised as lists)
     
     ';' is no longer valid for comments and no multiline comments
+    EF: Added ';' back in as a valid comment character.
     
     No attribute access
     
@@ -3004,7 +3005,7 @@ if __name__ == '__main__':
     In ConfigObj 3 - setting a non-flatfile member to ``None`` would
     initialise it as an empty section.
     
-    The escape entities '&mjf-lf;' and '&mjf-quot;' have gone
+    The escape entities '&mjf-lfk' and '&mjf-quot;' have gone
     replaced by triple quote, multiple line values.
     
     The ``newline``, ``force_return``, and ``default`` options have gone
