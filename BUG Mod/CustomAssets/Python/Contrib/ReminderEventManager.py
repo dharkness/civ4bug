@@ -189,7 +189,7 @@ class ReminderEvent(AbstractReminderEvent):
 
 	def onPreSave(self, argsList):
 		"Called before a game is actually saved"
-		if (not self.reminderManager.reminders.isEMpty()):
+		if (not self.reminderManager.reminders.isEmpty()):
 			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
 #		return 1
 
