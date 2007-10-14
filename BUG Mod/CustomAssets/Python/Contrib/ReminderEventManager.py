@@ -17,11 +17,17 @@ import SdToolKit
 import BugAlertsOptions
 BugAlerts = BugAlertsOptions.getOptions()
 
+import autolog
+g_autolog = autolog.autologInstance()
+
 gc = CyGlobalContext()
 localText = CyTranslator()
 
 SD_MOD_ID = "Reminders"
 SD_QUEUE_ID = "queue"
+
+# Used to display flashing end-of-turn text
+g_turnReminderTexts = None
 
 class ReminderEventManager:
 
@@ -61,6 +67,8 @@ class ReminderEventManager:
 			reminderText = popupReturn.getEditBoxString(1)
 			reminder = Reminder(reminderTurn, reminderText)
 			self.reminders.push(reminder)
+			if (g_autolog.Enabled() and BugAlerts.isLogReminders()):
+				g_autolog.writeLog("Reminder: On Turn %d, %s" % (reminderTurn, reminderText))
 
 	def __eventReminderRecallBegin(self, argsList):
 		self.showReminders(False)
@@ -83,12 +91,14 @@ class ReminderEventManager:
 				self.reminder = None
 
 	def showReminders(self, endOfTurn):
+		global g_turnReminderTexts
 		thisTurn = gc.getGame().getGameTurn() + 1
 		if (endOfTurn):
 			queue = self.endOfTurnReminders
 			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
 			eventId = CvUtil.EventReminderRecallAgain
 		else:
+			g_turnReminderTexts = ""
 			queue = self.reminders
 			# endTurnReady isn't firing :(
 #			prompt = localText.getText("TXT_KEY_REMIND_END_TURN_PROMPT", ())
@@ -103,9 +113,15 @@ class ReminderEventManager:
 				break
 			elif (nextTurn < thisTurn):
 				# invalid (lost) reminder
-				self.reminders.pop()
+				queue.pop()
 			else:
 				self.reminder = queue.pop()
+				if (g_autolog.Enabled() and BugAlerts.isLogReminders()):
+					g_autolog.writeLog("Reminder: %s" % self.reminder.message)
+				if (not endOfTurn):
+					if (g_turnReminderTexts):
+						g_turnReminderTexts += ", "
+					g_turnReminderTexts += self.reminder.message
 				if (BugAlerts.isShowRemindersLog()):
 					CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
 											 None, 0, None, ColorTypes(8), 0, 0, False, False)
@@ -120,6 +136,8 @@ class ReminderEventManager:
 	def clearReminders(self):
 		self.reminders.clear()
 		self.endOfTurnReminders.clear()
+		global g_turnReminderTexts
+		g_turnReminderTexts = None
 	
 	def setReminders(self, queue):
 		self.reminders = queue
@@ -161,6 +179,7 @@ class ReminderEvent(AbstractReminderEvent):
 		iGameTurn, iPlayer = argsList
 
 		if (gc.getPlayer(iPlayer).isHuman()):
+			g_turnReminderTexts = None
 			if (BugAlerts.isShowReminders()):
 				self.eventMgr.beginEvent(CvUtil.EventReminderRecall)
 #				return 1

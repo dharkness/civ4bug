@@ -76,10 +76,10 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
             self.setEventHandler(eventType, eventHandler)
         # --> INSERT EVENT HANDLER INITIALIZATION HERE <--
 
-        ReminderEventManager.ReminderEventManager(self)
         autologEventManager.autologEventManager(self)
         Civ4lerts.Civ4lerts(self)
         MoreCiv4lerts.MoreCiv4lerts(self)
+        ReminderEventManager.ReminderEventManager(self)
         UnitNameEventManager.UnitNameEventManager(self)
         
         BugOptionsEventManager.BugOptionsEventManager(self)

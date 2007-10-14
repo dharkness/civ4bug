@@ -17,6 +17,10 @@ class BugAlertsOptions(OptionsFacade):
 								  "Display Method",
 								  "Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both",
 								  ['Message', 'Popup', 'Both'], None))
+		self.addOption(Option("Alert_LogReminders",
+							  "CIV4LERTS", "Log Reminders", True,
+							  "Log w. Autolog",
+							  "When checked, reminders will be logged using Autolog when created and triggered."))
 		
 		# Civ4lerts
 		self.addOption(Option("Alert_Civ4lerts",
@@ -123,6 +127,9 @@ class BugAlertsOptions(OptionsFacade):
 
 	def isShowRemindersLog(self):
 		return self.getRemindersDisplayMethod() != 1
+
+	def isLogReminders(self):
+		return self.getBoolean('Alert_LogReminders')
 
 
 	def isShowAlerts(self):

@@ -15,13 +15,23 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
+		# Reminders
 		left, right = self.addTwoColumnLayout(screen, column, "Main")
 		self.addCheckbox(screen, left, "Alert_Reminders")
-		self.addTextDropdown(screen, right, right, "Alert_RemindersMethod")
-		self.addCheckbox(screen, left, "Alert_Civ4lerts")
+		screen.attachLabel(right, "Alert_SpaceLabel3", " ")
+		screen.setControlFlag("Alert_SpaceLabel3", "CF_LABEL_DEFAULTSIZE")
+		self.addTextDropdown(screen, left, left, "Alert_RemindersMethod")
+		self.addCheckbox(screen, right, "Alert_LogReminders")
 		
 		screen.attachHSeparator(column, column + "Sep")
+		
+		# Civ4lerts
 		left, center, right = self.addThreeColumnLayout(screen, column, "Civ4lerts", True)
+		self.addCheckbox(screen, left, "Alert_Civ4lerts")
+		screen.attachLabel(center, "Alert_SpaceLabel1", " ")
+		screen.setControlFlag("Alert_SpaceLabel1", "CF_LABEL_DEFAULTSIZE")
+		screen.attachLabel(right, "Alert_SpaceLabel2", " ")
+		screen.setControlFlag("Alert_SpaceLabel2", "CF_LABEL_DEFAULTSIZE")
 		
 		# Cities
 		screen.attachLabel(left, "Alert_CityLabel", "Cities:")

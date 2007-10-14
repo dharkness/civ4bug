@@ -29,6 +29,10 @@ import BugCityScreenOptions
 BugCityScreen = BugCityScreenOptions.getOptions()
 # BUG - Options - end
 
+# BUG - Reminders - start
+import ReminderEventManager
+# BUG - Reminders - end
+
 g_NumEmphasizeInfos = 0
 g_NumCityTabTypes = 0
 g_NumHurryInfos = 0
@@ -734,7 +738,12 @@ class CvMainInterface:
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
 				elif ( CyInterface().shouldDisplayEndTurn() ):
-					acOutput = localText.getText("SYSTEM_END_TURN", ())
+# BUG - Reminders - start
+					if ( ReminderEventManager.g_turnReminderTexts ):
+						acOutput = u"%s" % ReminderEventManager.g_turnReminderTexts
+					else:
+						acOutput = localText.getText("SYSTEM_END_TURN", ())
+# BUG - Reminders - end
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
@@ -743,11 +752,13 @@ class CvMainInterface:
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
+# BUG - Options - start
 				elif ( BugScreens.isShowOptionsKeyReminder() ):
 					acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
+# BUG - Options - end
 
 		if ( bShow ):
 			screen.showEndTurn( "EndTurnText" )
