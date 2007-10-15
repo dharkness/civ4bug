@@ -154,7 +154,7 @@ class ReminderEvent(AbstractReminderEvent):
 		super(ReminderEvent, self).__init__(eventManager, *args, **kwargs)
 
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
-		eventManager.addEventHandler("BeginPlayerTurn", self.onBeginPlayerTurn)
+		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
@@ -174,15 +174,13 @@ class ReminderEvent(AbstractReminderEvent):
 					return 1
 		return 0
 
-	def onBeginPlayerTurn(self, argsList):
-		'Called at the beginning of a players turn'
-		iGameTurn, iPlayer = argsList
+	def onEndGameTurn(self, argsList):
+		'Called at the end of the end of each full game turn'
+		iGameTurn = argsList[0]
 
-		if (gc.getPlayer(iPlayer).isHuman()):
-			g_turnReminderTexts = None
-			if (BugAlerts.isShowReminders()):
-				self.eventMgr.beginEvent(CvUtil.EventReminderRecall)
-#				return 1
+		g_turnReminderTexts = None
+		if (BugAlerts.isShowReminders()):
+			self.eventMgr.beginEvent(CvUtil.EventReminderRecall)
 
 	def onEndTurnReady(self, argsList):
 		iGameTurn = argsList[0]
