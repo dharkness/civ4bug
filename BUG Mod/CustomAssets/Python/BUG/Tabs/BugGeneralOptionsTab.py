@@ -31,6 +31,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "City_RawCommerce")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")
+		self.addCheckbox(screen, right, "City_Anger_Counter")
 #		self.addCheckbox(screen, right, "City_StackSpecialists")
 
 		screen.attachHSeparator(column, column + "Sep")
