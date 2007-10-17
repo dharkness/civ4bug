@@ -2478,6 +2478,20 @@ class CvMainInterface:
 						szBuffer = localText.getText("INTERFACE_CITY_UNHAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0), pHeadSelectedCity.angryPopulation(0)))
 					elif (pHeadSelectedCity.unhappyLevel(0) > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0)))
+
+# BUG - Anger Display - start
+						izAngerTimer = pHeadSelectedCity.getHurryAngerTimer()
+						if izAngerTimer < pHeadSelectedCity.getConscriptAngerTimer():
+							izAngerTimer = pHeadSelectedCity.getConscriptAngerTimer()
+
+						if izAngerTimer != 0:
+							zsAnger = u"[%i]" %(izAngerTimer)
+						else:
+							zsAnger = ""
+
+						szBuffer = u"%s %s" %(szBuffer, zsAnger)
+# BUG - Anger Display - end
+
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY_NO_UNHAPPY", (pHeadSelectedCity.happyLevel(), ))
 
