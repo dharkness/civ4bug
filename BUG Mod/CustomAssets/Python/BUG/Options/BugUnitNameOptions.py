@@ -11,7 +11,7 @@ class BugUnitNameOptions(OptionsFacade):
 		OptionsFacade.__init__(self)
 		self.addOption(Option("UnitName_Enabled",
 							  "UnitName", "Enabled", False,
-							  "Enabled (There are also naming options in the ini file that take up too much room here).",
+							  "Enabled.",
 							  "When checked, uses the formats on this tab and in the INI file to name the player's units. \
 Names can be built from plain text and format codes that appear between matching carets (^).\n\
     e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\
@@ -36,10 +36,11 @@ Counting Codes:\n\
     tt1[f][x:y] - Count up to a number chosen between x and y\n\
     tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\
     * f in [f] is one of s, A, a, p, g, n, o, r (see readme)"))
-#		self.addOption(Option("UnitName_UseAdvanced",
-#							  "UnitName", "UseAdvanced", False,
-#							  "Use Advanced Methods - see ini file for Era_UnitClass options",
-#							  "When checked, the advanced naming conventions in 'BUG Mod.ini' file will be used."))
+
+		self.addOption(Option("UnitName_UseAdvanced",
+							  "UnitName", "UseAdvanced", False,
+							  "Use Advanced Methods - see ini file for Era_UnitClass options",
+							  "When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used."))
 		self.addOption(Option("UnitName_Default",
 							  "UnitName", "Default", '^u^ ^cnt[r]^ of ^ct^',
 							  "Naming Convention: DEFAULT",
@@ -95,8 +96,8 @@ Counting Codes:\n\
 	def setEnabled(self, value):
 		self.setValue('UnitName_Enabled', value)
 
-#	def isAdvanced(self):
-#		return self.getBoolean('UnitName_UseAdvanced')
+	def isAdvanced(self):
+		return self.getBoolean('UnitName_UseAdvanced')
 
 
 	# get standard naming conventions
@@ -107,7 +108,7 @@ Counting Codes:\n\
 		return self.getString('UnitName_Combat_' + Combat_Type)
 
 	def getAdvanced(self, Era, UnitClass):
-		return self.getRawString('UnitName', Era + '_' + UnitClass, 'DEFAULT')
+		return self.getAdvUnitName('UnitName', Era + '_' + UnitClass, 'DEFAULT')
 
 
 # The singleton BugUnitNameOptions object

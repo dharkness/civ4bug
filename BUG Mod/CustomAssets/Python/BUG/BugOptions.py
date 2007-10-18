@@ -118,6 +118,13 @@ class BugOptions(object):
 			return default
 
 
+	def getAdvUnitName(self, section, key, default=None):
+		try:
+			return self.config.get_advunitname(section, key, default)
+		except:
+			return default
+
+
 	def read(self):
 		RuffModControl.RuffModConfigFile = RuffModControl.read_ConfigFile()
 
@@ -175,6 +182,10 @@ class OptionsFacade(object):
 
 	def getRawFloat(self, section, key, default=None):
 		return self.options.getRawFloat(section, key, default)
+
+
+	def getAdvUnitName(self, section, key, default=None):
+		return self.options.getAdvUnitName(section, key, default)
 
 
 	def setValue(self, name, value):

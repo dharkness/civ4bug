@@ -22,6 +22,9 @@ def get_AutoLog_Path():
         os.makedirs(AutoLogPath)
     return AutoLogPath
 
+def read_AdvUnitNameFile():
+    return ConfigObj(AdvUnitNameFile)
+
 def read_ConfigFile():
     return ConfigObj(FileName)
 
@@ -36,6 +39,9 @@ except:
     mod = "BUG Mod"
 FileName = CvPath.get_INI_File(mod + ".ini")
 RuffModConfigFile = read_ConfigFile()
+
+AdvUnitNameFile = CvPath.get_INI_File("Adv Unit Naming.ini")
+RuffModAdvUnitNameFile = read_AdvUnitNameFile()
 
 ##----------------------------------------------------------------
 class RuffModConfig:
@@ -84,6 +90,11 @@ class RuffModConfig:
         except: keyvalue = default
         return keyvalue
     
+    def get_advunitname(self, section, key, default):
+        keyvalue = RuffModAdvUnitNameFile[section][key]
+        if not isinstance(keyvalue, StringTypes) : keyvalue = default
+        return keyvalue
+
 ## Set Functions
     def set_int(self, section, key, keyvalue):
         self.__set_keyvalue(section, key, keyvalue)
