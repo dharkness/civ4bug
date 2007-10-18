@@ -171,20 +171,21 @@ class BuildUnitName(AbstractBuildUnitName):
 						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
 
 						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
-						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
+#						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
 
-						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
-						zsUnitNameConv = "^rd^"
-						zsUnitNameConv = "^rc^"
+#						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
+#						zsUnitNameConv = "^rd^"
+#						zsUnitNameConv = "^rc^"
 
-						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
+#						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
 
-						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
+#						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
 
-						if not (zsUnitName == ""):
-							pLoopUnit.setName(zsUnitName)
+#						if not (zsUnitName == ""):
+#							pLoopUnit.setName(zsUnitName)
 
-						zMsg = "unit name is %s" % (zsUnitName)
+						zMsg = zsUnitNameConv
+#						zMsg = "unit name is %s" % (zsUnitName)
 						CyInterface().addImmediateMessage(zMsg, "")
 
 				return 1
@@ -356,14 +357,16 @@ class BuildUnitName(AbstractBuildUnitName):
 ##    b. if it returns 'DEFAULT', then get the combat based naming convention
 ##    c. if naming convention is 'DEFAULT', get default naming convention
 
-		self.RuffEcho("UnitNameEM-ini [" + Era[4:] + "_" + UnitClass[10:] + "]", false, true)
-
-		zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
-
-		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:], false, true)
+		if BugUnitName.isAdvanced():
+			self.RuffEcho("UnitNameEM-ini [" + Era[4:] + "_" + UnitClass[10:] + "]", false, true)
+			zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
+		else:
+			zsUnitNameConv = "DEFAULT"
 
 		if not (zsUnitNameConv == "DEFAULT"):
 			return zsUnitNameConv
+
+		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:], false, true)
 
 		zsUnitNameConv = BugUnitName.getCombat(UnitCombat[11:])
 
