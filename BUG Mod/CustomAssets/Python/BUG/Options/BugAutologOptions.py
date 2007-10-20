@@ -99,6 +99,10 @@ class BugAutologOptions(OptionsFacade):
 						 "Autolog", "City Razed", True,
 						 "City Razed",
 						 "When checked, will log when you raze another civ\'s city or one of your cities is razed."))
+		self.addOption(Option("Autolog_LogCityWhipStatus",
+						 "Autolog", "City Whip", True,
+						 "City Whip",
+						 "When checked, will log when you whip a city or when the whip anger decreases in a city."))
 		
 		# Events
 		self.addOption(Option("Autolog_LogGoodies",
@@ -243,7 +247,10 @@ class BugAutologOptions(OptionsFacade):
 	
 	def isLogCityRazed(self):
 		return self.getBoolean('Autolog_LogCityRazed')
-	
+
+	def isLogCityWhipStatus(self):
+		return self.getBoolean('Autolog_LogCityWhipStatus')
+
 	# Events
 
 	def isLogTribalVillage(self):

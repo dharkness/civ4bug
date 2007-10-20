@@ -192,6 +192,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.CIVAttitude = None
 		self.CIVCivics = None
 		self.CIVReligion = None
+		self.CityWhipCounter = None
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
@@ -251,6 +252,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		# initialize storage stuff
 		self.initStuff()
 		self.storeStuff()
+		self.storeWhip()
 
 	def onGameStart(self, argsList):
 		self.bCurrPlayerHuman = true	
@@ -260,6 +262,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		# initialize storage stuff
 		self.initStuff()
 		self.storeStuff()
+		self.storeWhip()
 
 	def onGameEnd(self, argsList):
 		'Called at the End of the game'
@@ -298,6 +301,29 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	def onBeginPlayerTurn(self, argsList):
 		'Called at the beginning of a players turn'
 		iGameTurn, iPlayer = argsList
+
+		if (self.bCurrPlayerHuman
+		and BugAutolog.isLogCityWhipStatus()):
+			iPlayer = gc.getActivePlayer()
+			for i in range(0, iPlayer.getNumCities(), 1):
+				iCity = iPlayer.getCity(i)
+				iCurrentWhipCounter = iCity.getHurryAngerTimer()
+#				if iCurrentWhipCounter != 0: iCurrentWhipCounter += 1  # onBeginPlayerTurn fires after whip counter has decreased by 1
+
+#				message = "Whip Testing: %s, current(%i), prior(%i), flat(%i)" % (iCity.getName(), iCurrentWhipCounter, self.CityWhipCounter[i], iCity.flatHurryAngerLength())
+#				NewAutoLog.writeLog(message)
+
+				if iCurrentWhipCounter > self.CityWhipCounter[i]:
+					message = "The whip was applied in %s" % (iCity.getName())
+					NewAutoLog.writeLog(message, vColor="Red")
+
+				if (self.CityWhipCounter[i] != 0
+				and iCurrentWhipCounter < self.CityWhipCounter[i]
+				and iCurrentWhipCounter % iCity.flatHurryAngerLength() == 0):
+					message = "Whip anger has decreased in %s" % (iCity.getName())
+					NewAutoLog.writeLog(message, vColor="DarkRed")
+
+			self.storeWhip()
 
 	def onEndPlayerTurn(self, argsList):
 		'Called at the end of a players turn'
@@ -779,7 +805,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			message = message + zsLocn
 			message = message + " was destroyed by %s %s" %(PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName())
 
-			NewAutoLog.writeLog(message, vColor="Red")
+			if self.bCurrPlayerHuman:
+				NewAutoLog.writeLog(message, vColor="DarkRed")
+			else:
+				NewAutoLog.writeLog(message, vColor="Red")
 
 	def onVassalState(self, argsList):
 		'Vassal State'
@@ -807,6 +836,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.CIVAttitude = [""] * ziMaxCiv * ziMaxCiv
 		self.CIVCivics = [0] * ziMaxCiv * 5
 		self.CIVReligion = [-1] * ziMaxCiv
+		self.CityWhipCounter = [0] * 1000
 
 	def storeStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
@@ -831,6 +861,13 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					self.CIVCivics[zKey] = gc.getPlayer(iCiv).getCivics(iCivic)
 
 		return 0
+
+	def storeWhip(self):
+		# store the city whip counter
+		iPlayer = gc.getActivePlayer()
+		for i in range(0, iPlayer.getNumCities(), 1):
+			iCity = iPlayer.getCity(i)
+			self.CityWhipCounter[i] = iCity.getHurryAngerTimer()
 
 	def checkStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
@@ -933,4 +970,15 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				NewAutoLog.writeLog(message)
 
 		NewAutoLog.writeLog("")
+		NewAutoLog.writeLog("City Whip Counter")
+
+		# dump the city whip counter
+		iPlayer = gc.getActivePlayer()
+		for i in range(0, iPlayer.getNumCities(), 1):
+			iCity = iPlayer.getCity(i)
+			message = "Whip Counter, %s, %s, %s" % (iCity.getName(), self.CityWhipCounter[i], iCity.getHurryAngerTimer())
+			NewAutoLog.writeLog(message)
+
+		NewAutoLog.writeLog("")
+
 		return 0

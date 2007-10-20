@@ -49,14 +49,15 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, col2, "Autolog_LogCityBorders")
 		self.addCheckbox(screen, col2, "Autolog_LogCityOwner")
 		self.addCheckbox(screen, col2, "Autolog_LogCityRazed")
-		
+		self.addCheckbox(screen, col2, "Autolog_LogCityWhipStatus")
+
 		screen.attachLabel(col3, "Autolog_EventsLabel", "Events:")
 		self.addCheckbox(screen, col3, "Autolog_LogGoodies")
 		self.addCheckbox(screen, col3, "Autolog_LogReligion")
 		self.addCheckbox(screen, col3, "Autolog_LogCorporation")
 		self.addCheckbox(screen, col3, "Autolog_LogGP")
 		self.addCheckbox(screen, col3, "Autolog_LogGA")
-		
+
 		screen.attachLabel(col4, "Autolog_PoliticsLabel", "Diplomacy:")
 		self.addCheckbox(screen, col4, "Autolog_LogContact")
 		self.addCheckbox(screen, col4, "Autolog_LogAttitude")
