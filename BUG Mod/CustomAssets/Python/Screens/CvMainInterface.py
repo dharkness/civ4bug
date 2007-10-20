@@ -2471,30 +2471,39 @@ class CvMainInterface:
 				screen.setLabel( "ProductionInputText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, iCityCenterRow1X - 6, iCityCenterRow2Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_PRODUCTION_MOD_HELP, -1, -1 )
 				screen.show( "ProductionInputText" )
 
+# BUG - Anger Display - start
+				bShowAngerCounter = False
+# BUG - Anger Display - end
 				if ((pHeadSelectedCity.happyLevel() >= 0) or (pHeadSelectedCity.unhappyLevel(0) > 0)):
 					if (pHeadSelectedCity.isDisorder()):
 						szBuffer = u"%d%c" %(pHeadSelectedCity.angryPopulation(0), CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 					elif (pHeadSelectedCity.angryPopulation(0) > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_UNHAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0), pHeadSelectedCity.angryPopulation(0)))
+# BUG - Anger Display - start
+						bShowAngerCounter = True
+# BUG - Anger Display - end
 					elif (pHeadSelectedCity.unhappyLevel(0) > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0)))
-
 # BUG - Anger Display - start
-						if (BugCityScreen.isShowAngerCounter()):
-							izAngerTimer = pHeadSelectedCity.getHurryAngerTimer()
-							if izAngerTimer < pHeadSelectedCity.getConscriptAngerTimer():
-								izAngerTimer = pHeadSelectedCity.getConscriptAngerTimer()
-
-							if izAngerTimer != 0:
-								zsAnger = u"[%i]" %(izAngerTimer)
-							else:
-								zsAnger = ""
-
-							szBuffer = u"%s %s" %(szBuffer, zsAnger)
+						bShowAngerCounter = True
 # BUG - Anger Display - end
-
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY_NO_UNHAPPY", (pHeadSelectedCity.happyLevel(), ))
+
+# BUG - Anger Display - start
+					if (BugCityScreen.isShowAngerCounter()
+					and bShowAngerCounter):
+						iAngerTimer = pHeadSelectedCity.getHurryAngerTimer()
+						if iAngerTimer < pHeadSelectedCity.getConscriptAngerTimer():
+							iAngerTimer = pHeadSelectedCity.getConscriptAngerTimer()
+
+						if iAngerTimer != 0:
+							szAnger = u"(%i)" %(iAngerTimer)
+						else:
+							szAnger = ""
+#						szAnger = pHeadSelectedCity.flatHurryAngerLength()
+						szBuffer = u"%s %s" %(szBuffer, szAnger)
+# BUG - Anger Display - end
 
 					screen.setLabel( "HappinessText", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, xResolution - iCityCenterRow1X + 6, iCityCenterRow2Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_HAPPINESS, -1, -1 )
 					screen.show( "HappinessText" )

@@ -41,12 +41,6 @@ class BugScreensOptions(OptionsFacade):
 							  "When checked, puts unit actions text on unit icons.",
 							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 	
-		self.addOption(Option("City_Anger_Counter",
-							  "Screens", "Anger Counter", True,
-							  "Anger Counter",
-							  "When checked, puts anger countdown on city screen.",
-							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
-
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
 							  "Customizable",
@@ -87,9 +81,6 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowCombatCounter(self):
 		return self.getBoolean('Main_Combat_Counter')
-
-	def isShowAngerCounter(self):
-		return self.getBoolean('City_Anger_Counter')
 
 	def isShowUnitPromo(self):
 		return self.getBoolean('Unit_Promo_Available')

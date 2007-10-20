@@ -29,6 +29,11 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Stack Specialists",
 							  "When checked, the specialists are displayed in a more compact form.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+		self.addOption(Option("City_Anger_Counter",
+							  "Screens", "Anger Counter", True,
+							  "Anger Counter",
+							  "When checked, puts anger countdown on city screen.",
+							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 
 	def isShowRawCommerce(self):
 		return self.getBoolean('City_RawCommerce')
@@ -41,6 +46,9 @@ class BugCityScreenOptions(OptionsFacade):
 
 	def isStackSpecialists(self):
 		return self.getBoolean('City_StackSpecialists')
+
+	def isShowAngerCounter(self):
+		return self.getBoolean('City_Anger_Counter')
 
 
 # The singleton BugCityScreenOptions object
