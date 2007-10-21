@@ -436,7 +436,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					self.nCount += 1
 
 			self.X_Spread = self.W_SCREEN / self.nCount
-			self.Y_Spread = self.H_SCREEN / (self.nCount + 2)
+			self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
 
 #		ExoticForPrint ("# players = %d" % self.nCount)
 
