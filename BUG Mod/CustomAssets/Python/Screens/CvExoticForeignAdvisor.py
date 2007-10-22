@@ -56,7 +56,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		self.Y_LINK = 726
 		
 		self.X_GLANCE_OFFSET = 10
-		self.Y_GLANCE_OFFSET = 2
+		self.Y_GLANCE_OFFSET = 6
 		self.GLANCE_BUTTON_SIZE = 50
 		self.PLUS_MINUS_SIZE = 25
 		self.bGlancePlus = True
@@ -192,7 +192,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		self.ATTITUDE_DICT = {
 			"COLOR_YELLOW": re.sub (":", "|", localText.getText ("TXT_KEY_ATTITUDE_FRIENDLY", ())),
 			"COLOR_GREEN" : re.sub (":", "|", localText.getText ("TXT_KEY_ATTITUDE_PLEASED", ())),
-			"COLOR_MAGENTA" : re.sub (":", "|", localText.getText ("TXT_KEY_ATTITUDE_ANNOYED", ())),
+			"COLOR_CYAN" : re.sub (":", "|", localText.getText ("TXT_KEY_ATTITUDE_ANNOYED", ())),
 			"COLOR_RED" : re.sub (":", "|", localText.getText ("TXT_KEY_ATTITUDE_FURIOUS", ())),
 			}
 
@@ -400,61 +400,67 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		playerActive = gc.getPlayer(self.iActiveLeader)
 					
 		# Put everything inside a main panel, so we get vertical scrolling
-		mainPanelName = self.getNextWidgetName()
-		screen.addPanel(mainPanelName, "", "", True, True, 0, 50, self.W_SCREEN, self.H_SCREEN - 100, PanelStyles.PANEL_STYLE_EMPTY)
+		headerPanelName = self.getNextWidgetName()
+		screen.addPanel(headerPanelName, "", "", True, True, 0, 55, self.W_SCREEN, 65, PanelStyles.PANEL_STYLE_MAIN)
 
-		screen.attachPanel(mainPanelName, self.GLANCE_HEADER, "", "", False, True, PanelStyles.PANEL_STYLE_MAIN)
-
-		# loop through all players and display leaderheads
-		# Their leaderheads
 		if (bInitial):
-			self.nCount = 0
-			self.ltPlayerRelations = [[0] * gc.getMAX_PLAYERS() for i in range (gc.getMAX_PLAYERS())]
-			self.ltPlayerMet = [False] * gc.getMAX_PLAYERS()
+			self.initializeGlance()
 
-			for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-				if (gc.getPlayer(iLoopPlayer).isAlive()
-				and (gc.getTeam(gc.getPlayer(iLoopPlayer).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
-				or gc.getGame().isDebugMode())
-				and not gc.getPlayer(iLoopPlayer).isBarbarian()
-				and not gc.getPlayer(iLoopPlayer).isMinorCiv()):
+		self.drawGlanceHeader(screen, headerPanelName)
 
-#					ExoticForPrint ("Player = %d" % iLoopPlayer)
-					self.ltPlayerMet [iLoopPlayer] = True
+		mainPanelName = self.getNextWidgetName()
+		screen.addPanel(mainPanelName, "", "", True, True, 0, 120, self.W_SCREEN, self.H_SCREEN - 170, PanelStyles.PANEL_STYLE_MAIN)
 
-					for nHost in range(gc.getMAX_PLAYERS()):
-						if (gc.getPlayer(nHost).isAlive()
-						and nHost != self.iActiveLeader
-						and (gc.getTeam(gc.getPlayer(nHost).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
-						or gc.getGame().isDebugMode())
-						and not gc.getPlayer(nHost).isBarbarian()
-						and not gc.getPlayer(nHost).isMinorCiv()):
-							nRelation = self.calculateRelations (nHost, iLoopPlayer)
-							self.ltPlayerRelations [iLoopPlayer][nHost] = nRelation
+		self.drawGlanceRows (screen, mainPanelName, self.iSelectedLeader != self.iActiveLeader, self.iSelectedLeader)
 
-					# Player panel
-					self.nCount += 1
+	def initializeGlance (self):
+		self.nCount = 0
+		self.ltPlayerRelations = [[0] * gc.getMAX_PLAYERS() for i in range (gc.getMAX_PLAYERS())]
+		self.ltPlayerMet = [False] * gc.getMAX_PLAYERS()
 
-			self.X_Spread = self.W_SCREEN / self.nCount
-			self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			if (gc.getPlayer(iLoopPlayer).isAlive()
+			and (gc.getTeam(gc.getPlayer(iLoopPlayer).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
+			or gc.getGame().isDebugMode())
+			and not gc.getPlayer(iLoopPlayer).isBarbarian()
+			and not gc.getPlayer(iLoopPlayer).isMinorCiv()):
 
-#		ExoticForPrint ("# players = %d" % self.nCount)
+#				ExoticForPrint ("Player = %d" % iLoopPlayer)
+				self.ltPlayerMet [iLoopPlayer] = True
 
+				for nHost in range(gc.getMAX_PLAYERS()):
+					if (gc.getPlayer(nHost).isAlive()
+					and nHost != self.iActiveLeader
+					and (gc.getTeam(gc.getPlayer(nHost).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
+					or gc.getGame().isDebugMode())
+					and not gc.getPlayer(nHost).isBarbarian()
+					and not gc.getPlayer(nHost).isMinorCiv()):
+						nRelation = self.calculateRelations (nHost, iLoopPlayer)
+						self.ltPlayerRelations [iLoopPlayer][nHost] = nRelation
+
+				# Player panel
+				self.nCount += 1
+
+		self.X_Spread = (self.W_SCREEN - 20) / self.nCount
+		self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
+
+#		self.X_Spread = 58
+#		self.Y_Spread = 58
+
+	def drawGlanceHeader (self, screen, panelName):
 		nCount = 0
 		for iLoopPlayer in range (gc.getMAX_PLAYERS()):
 			if self.ltPlayerMet[iLoopPlayer]:
 				if (iLoopPlayer != self.iActiveLeader):
 					szName = self.getNextWidgetName()
-					screen.addCheckBoxGFCAt(self.GLANCE_HEADER, szName, gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + 3, self.GLANCE_BUTTON_SIZE, self.GLANCE_BUTTON_SIZE, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, ButtonStyles.BUTTON_STYLE_LABEL, False)
+					screen.addCheckBoxGFCAt(panelName, szName, gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET, self.GLANCE_BUTTON_SIZE, self.GLANCE_BUTTON_SIZE, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, ButtonStyles.BUTTON_STYLE_LABEL, False)
 					if (self.iSelectedLeader == iLoopPlayer):
 						screen.setState(szName, True)
 					else:
 						screen.setState(szName, False)
 
 				nCount += 1
-
-		self.drawGlanceRows (screen, mainPanelName, self.iSelectedLeader != self.iActiveLeader, self.iSelectedLeader)
-
+		
 	def calculateRelations (self, nPlayer, nTarget):
 		if (nPlayer != nTarget and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
 			nAttitude = 0
@@ -470,7 +476,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		return nAttitude
 
 	def drawGlanceRows (self, screen, mainPanelName, bSorted = False, nPlayer = 1):
-
 		ltSortedRelations = [(None,-1)] * gc.getMAX_PLAYERS()
 #		ExoticForPrint ("MAX Players = %d" % gc.getMAX_PLAYERS())
 		if bSorted:
@@ -491,8 +496,10 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			iLoopPlayer = ltSortedRelations[nOffset + i][1]
 #			ExoticForPrint ("iLoopPlayer = %d" % iLoopPlayer)
 
-			szName = self.getNextWidgetName()
-			screen.addCheckBoxGFCAt(self.GLANCE_HEADER, szName, gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), self.X_GLANCE_OFFSET, self.Y_GLANCE_OFFSET + (self.Y_Spread * (i + 1)), self.GLANCE_BUTTON_SIZE, self.GLANCE_BUTTON_SIZE, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, ButtonStyles.BUTTON_STYLE_LABEL, False)
+			playerPanelName = self.getNextWidgetName()
+			screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_OUT)
+
+			screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
 
 			nCount = 0
 			for j in range (gc.getMAX_PLAYERS()):
@@ -505,7 +512,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						else:
 							szText = ""
 
-						screen.setTextAt (szName, self.GLANCE_HEADER, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + (self.Y_Spread * (i + 1) + 10), -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
+						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + 5, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
 
 					nCount += 1
 
@@ -523,7 +530,12 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		if nAttitude > 0:
 			szText = "+" + szText
 
-		szText = "[" + szText + "]"
+		if BugScreens.isShowGlanceSmilies():
+			szText = "[" + szText + "]"
+		else:
+			szText = "<font=3>    " + szText + "</font>"
+			
+
 #		ExoticForPrint ("Attitude String = %s" % szAttitude)
 		for szColor, szSearchString in self.ATTITUDE_DICT.items():
 			if re.search (szSearchString, szAttitude):
