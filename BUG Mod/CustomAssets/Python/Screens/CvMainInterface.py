@@ -33,6 +33,11 @@ BugCityScreen = BugCityScreenOptions.getOptions()
 import ReminderEventManager
 # BUG - Reminders - end
 
+# BUG - Great Person Bar - start
+import GPUtil
+GP_BAR_WIDTH = 367
+# BUG - Great Person Bar - end
+
 g_NumEmphasizeInfos = 0
 g_NumCityTabTypes = 0
 g_NumHurryInfos = 0
@@ -508,7 +513,7 @@ class CvMainInterface:
 		screen.hide( "ResearchBar" )
 		
 # BUG - Great Person Bar - start
-		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, 367, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, GP_BAR_WIDTH, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -646,7 +651,7 @@ class CvMainInterface:
 			szName = "ScoreText" + str(i)
 			screen.setText( szName, "Background", u"", CvUtil.FONT_RIGHT_JUSTIFY, 996, 622, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_CONTACT_CIV, i, -1 )
 			screen.hide( szName )
-			
+
 		# This should be a forced redraw screen
 		screen.setForcedRedraw( True )
 		
@@ -2090,19 +2095,44 @@ class CvMainInterface:
 					
 # BUG - Great Person Bar - start
 				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):				
-					pGreatPersonCity, iGPTurns = self.getNextGPCity()
-					if (iGPTurns < 10000000 and pGreatPersonCity):
-						szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pGreatPersonCity.getName(), iGPTurns))
+					pGreatPersonCity, iGPTurns = GPUtil.findNextCity()
+					if (pGreatPersonCity):
+						if (BugScreens.isGPBarTypesNone()):
+							szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
+						else:
+							lPercents = GPUtil.calcPercentages(pGreatPersonCity)
+							if (len(lPercents) == 0):
+								szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
+							else:
+								lPercents.sort(reverse=True)
+								if (BugScreens.isGPBarTypesOne() or len(lPercents) == 1):
+									iPercent, iUnit = lPercents[0]
+									pInfo = gc.getUnitInfo(iUnit)
+									szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pInfo.getDescription(), pGreatPersonCity.getName(), iGPTurns))
+								else:
+									szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
+									szTypes = ""
+									for iPercent, iUnit in lPercents:
+										szNewTypes = szTypes + u" %c%d%%" % (GPUtil.getUnitIcon(iUnit), iPercent)
+										szNewText = szText + u"<font=2> -%s</font>" % szTypes
+										if (CyInterface().determineWidth(szNewText) > GP_BAR_WIDTH - 10):
+											# Keep under width
+											break
+										szTypes = szNewTypes
+									if (len(szTypes) > 0):
+										szText += u"<font=2> -%s</font>" % szTypes
+						
 						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
-#						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
 						screen.show( "GreatPersonBarText" )
 						
-						iFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) )
-						screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, iFirst )
-						if ( iFirst == 1 ):
-							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, ( float(pGreatPersonCity.getGreatPeopleRate()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) ) ) )
+						fThreshold = float(gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(False))
+						fRate = float(pGreatPersonCity.getGreatPeopleRate())
+						fFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / fThreshold
+						screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, fFirst )
+						if ( fFirst == 1 ):
+							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
 						else:
-							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, ( ( float(pGreatPersonCity.getGreatPeopleRate()) / float( gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(false) ) ) ) / ( 1 - iFirst ) )				
+							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
 						screen.show( "GreatPersonBar" )
 					else:	
 						screen.hide( "GreatPersonBar" )
@@ -2110,29 +2140,6 @@ class CvMainInterface:
 # BUG - Great Person Bar - end
 					
 		return 0
-								
-# BUG - Great Person Bar - start
-	def getNextGPCity( self ):
-	
-		iFastestPerson = 10000000
-		iGPTurns = 0
-		pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-		iGPNext = pPlayer.greatPeopleThreshold(false)
-		pFastestCity = CyInterface().getHeadSelectedCity()
-		
-		for icity in range(pPlayer.getNumCities()):
-			pCity = pPlayer.getCity(icity)
-			if (pCity):
-				iGPRate = pCity.getGreatPeopleRate()
-				if (iGPRate > 0):
-					iGPNow = pCity.getGreatPeopleProgress()
-					iGPTurns = (iGPNext - iGPNow + iGPRate - 1) / iGPRate
-					if (iGPTurns < iFastestPerson):
-						iFastestPerson = iGPTurns
-						pFastestCity = pCity
-		
-		return (pFastestCity, iFastestPerson)
-# BUG - Great Person Bar - end
 		
 	def updateTimeText( self ):
 		
@@ -3920,13 +3927,18 @@ class CvMainInterface:
 				else:
 					g_iYieldType = YieldTypes.YIELD_COMMERCE
 				CyInterface().setDirty(InterfaceDirtyBits.CityScreen_DIRTY_BIT, True)
-				#self.updateCityScreen()
 				return 1
 # BUG - Raw Commerce - end
 		
 # BUG - Great Person Bar - start
-			elif (inputClass.getFunctionName() == "GreatPersonBarText"):
-				CyInterface().selectCity(gc.getActivePlayer().getCity(inputClass.getData1()), False)
+			elif (inputClass.getFunctionName() == "GreatPersonBar" or inputClass.getFunctionName() == "GreatPersonBarText"):
+				# Zoom to next GP city
+				iCity = inputClass.getData1()
+				if (iCity == -1):
+					pCity, _ = GPUtil.findNextCity()
+				else:
+					pCity = gc.getActivePlayer().getCity(iCity)
+				CyInterface().selectCity(pCity, False)
 				return 1
 # BUG - Great Person Bar - end
 		

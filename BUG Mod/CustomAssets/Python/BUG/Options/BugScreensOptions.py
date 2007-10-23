@@ -19,27 +19,34 @@ class BugScreensOptions(OptionsFacade):
 							  "Great Person Progress Bar",
 							  "When checked, displays the progress and city of the next Great Person.",
 							  InterfaceDirtyBits.GameData_DIRTY_BIT))
+		self.addOption(OptionList("Main_GPBar_Types",
+								  "Screens", "GP Progress Bar Types", 0,
+								  "GP Bar Types",
+								  "Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.",
+								  ['None', 'One', 'Maximum'], None,
+								  InterfaceDirtyBits.GameData_DIRTY_BIT))
+		self.addOption(Option("Main_Combat_Counter",
+							  "Screens", "Combat Counter", True,
+							  "Combat Experience",
+							  "When checked, displays Combat Experience to track next Great General.",
+							  InterfaceDirtyBits.GameData_DIRTY_BIT))
+		
 		self.addOption(Option("Main_CityArrows",
 							  "Screens", "City Cycle Arrows", True,
 							  "City Cycle Arrows",
 							  "When checked, displays arrows to cycle through cities above your civ's flag.",
 							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
-		self.addOption(Option("Main_Combat_Counter",
-							  "Screens", "Combat Counter", True,
-							  "Combat Experience",
-							  "When checked, displays Combat Experience to track next Great General.",
-							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 
 		self.addOption(Option("Unit_Promo_Available",
-							  "Screens", "Promo Available", True,
+							  "PlotList", "Promo Available", True,
 							  "Promotion Available",
 							  "When checked, puts blue border around units that have a promotion available.",
-							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("Unit_Actions",
-							  "Screens", "Unit Actions", True,
+							  "PlotList", "Unit Actions", True,
 							  "Unit Actions",
 							  "When checked, puts unit actions text on unit icons.",
-							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 	
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
@@ -76,11 +83,25 @@ class BugScreensOptions(OptionsFacade):
 	def isShowGPProgressBar(self):
 		return self.getBoolean('Main_GPBar')
 
-	def isShowCityCycleArrows(self):
-		return self.getBoolean('Main_CityArrows')
+	def getGPBarPercents(self):
+		return self.getInt('Main_GPBar_Types')
+
+	def isGPBarTypesNone(self):
+		return self.getGPBarPercents() == 0
+
+	def isGPBarTypesOne(self):
+		return self.getGPBarPercents() == 1
+
+	def isGPBarTypesMax(self):
+		return self.getGPBarPercents() == 2
 
 	def isShowCombatCounter(self):
 		return self.getBoolean('Main_Combat_Counter')
+	
+
+	def isShowCityCycleArrows(self):
+		return self.getBoolean('Main_CityArrows')
+	
 
 	def isShowUnitPromo(self):
 		return self.getBoolean('Unit_Promo_Available')
