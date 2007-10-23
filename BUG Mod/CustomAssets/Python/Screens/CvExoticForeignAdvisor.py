@@ -56,8 +56,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		self.Y_LINK = 726
 		
 		self.X_GLANCE_OFFSET = 10
-		self.Y_GLANCE_OFFSET = 6
-		self.GLANCE_BUTTON_SIZE = 50
+		self.Y_GLANCE_OFFSET = 3
+		self.GLANCE_BUTTON_SIZE = 46
 		self.PLUS_MINUS_SIZE = 25
 		self.bGlancePlus = True
 
@@ -401,7 +401,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					
 		# Put everything inside a main panel, so we get vertical scrolling
 		headerPanelName = self.getNextWidgetName()
-		screen.addPanel(headerPanelName, "", "", True, True, 0, 55, self.W_SCREEN, 65, PanelStyles.PANEL_STYLE_MAIN)
+		screen.addPanel(headerPanelName, "", "", True, True, 0, 50, self.W_SCREEN, 60, PanelStyles.PANEL_STYLE_TOPBAR)
 
 		if (bInitial):
 			self.initializeGlance()
@@ -409,7 +409,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		self.drawGlanceHeader(screen, headerPanelName)
 
 		mainPanelName = self.getNextWidgetName()
-		screen.addPanel(mainPanelName, "", "", True, True, 0, 120, self.W_SCREEN, self.H_SCREEN - 170, PanelStyles.PANEL_STYLE_MAIN)
+		screen.addPanel(mainPanelName, "", "", True, True, 0, 104, self.W_SCREEN, self.H_SCREEN - 155, PanelStyles.PANEL_STYLE_MAIN)
 
 		self.drawGlanceRows (screen, mainPanelName, self.iSelectedLeader != self.iActiveLeader, self.iSelectedLeader)
 
@@ -442,10 +442,25 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				self.nCount += 1
 
 		self.X_Spread = (self.W_SCREEN - 20) / self.nCount
-		self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
+		if self.X_Spread < 58: self.X_Spread = 58
 
-#		self.X_Spread = 58
-#		self.Y_Spread = 58
+		self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
+		self.Y_Text_Offset = (self.Y_Spread - 36) / 2
+		if self.Y_Text_Offset < 0: self.Y_Text_Offset = 0
+
+	def calculateRelations (self, nPlayer, nTarget):
+		if (nPlayer != nTarget and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
+			nAttitude = 0
+			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
+#			ExoticForPrint (("%d toward %d" % (nPlayer, nTarget)) + str(szAttitude))
+			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
+#			ExoticForPrint ("Length: %d" % len (ltPlusAndMinuses))
+			for i in range (len (ltPlusAndMinuses)):
+				nAttitude += int (ltPlusAndMinuses[i])
+#			ExoticForPrint ("Attitude: %d" % nAttitude)
+		else:
+			return None
+		return nAttitude
 
 	def drawGlanceHeader (self, screen, panelName):
 		nCount = 0
@@ -461,20 +476,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				nCount += 1
 		
-	def calculateRelations (self, nPlayer, nTarget):
-		if (nPlayer != nTarget and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
-			nAttitude = 0
-			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-#			ExoticForPrint (("%d toward %d" % (nPlayer, nTarget)) + str(szAttitude))
-			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
-#			ExoticForPrint ("Length: %d" % len (ltPlusAndMinuses))
-			for i in range (len (ltPlusAndMinuses)):
-				nAttitude += int (ltPlusAndMinuses[i])
-#			ExoticForPrint ("Attitude: %d" % nAttitude)
-		else:
-			return None
-		return nAttitude
-
 	def drawGlanceRows (self, screen, mainPanelName, bSorted = False, nPlayer = 1):
 		ltSortedRelations = [(None,-1)] * gc.getMAX_PLAYERS()
 #		ExoticForPrint ("MAX Players = %d" % gc.getMAX_PLAYERS())
@@ -497,9 +498,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 #			ExoticForPrint ("iLoopPlayer = %d" % iLoopPlayer)
 
 			playerPanelName = self.getNextWidgetName()
-			screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_OUT)
-
-			screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+			screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_FLAT)
 
 			nCount = 0
 			for j in range (gc.getMAX_PLAYERS()):
@@ -512,9 +511,14 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						else:
 							szText = ""
 
-						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + 5, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
+						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET - 2 + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + self.Y_Text_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
 
 					nCount += 1
+
+			if nCount > 8:
+				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+			else:
+				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
 
 	def loadColIntoList (self, ltPlayers, ltTarget, nCol):
 		nCount = 0
@@ -533,8 +537,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		if BugScreens.isShowGlanceSmilies():
 			szText = "[" + szText + "]"
 		else:
-			szText = "<font=3>    " + szText + "</font>"
-			
+			szText = "<font=3>   " + szText + "</font>"
 
 #		ExoticForPrint ("Attitude String = %s" % szAttitude)
 		for szColor, szSearchString in self.ATTITUDE_DICT.items():
