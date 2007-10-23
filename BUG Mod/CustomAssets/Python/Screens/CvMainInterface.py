@@ -2830,7 +2830,7 @@ class CvMainInterface:
 					COMMERCE_CHAR = gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar()
 					
 					if (g_iYieldType == YieldTypes.YIELD_PRODUCTION):
-						lYieldLabels = [ "Worked Tiles", "Specialists", "Buildings", "Total" ]
+						lYieldLabels = [ "Worked Tiles", "Specialists", "Buildings &amp; Corporations", "Total" ]
 						cYieldChar = PRODUCTION_CHAR
 					else:
 						lYieldLabels = [ "Worked Tiles", "Trade Routes", "Buildings", "Total" ]
@@ -2839,6 +2839,11 @@ class CvMainInterface:
 					iSpecialistsYield = 0
 					for iSpec in range(gc.getNumSpecialistInfos()):
 						iSpecialistsYield += gc.getActivePlayer().specialistYield(iSpec, g_iYieldType) * (pHeadSelectedCity.getSpecialistCount(iSpec) + pHeadSelectedCity.getFreeSpecialistCount(iSpec))
+					
+					iCorporationsYield = 0
+					for iCorp in range(gc.getNumCorporationInfos()):
+						if (pHeadSelectedCity.isHasCorporation(iCorp)):
+							iCorporationsYield += pHeadSelectedCity.getCorporationYieldByCorporation(g_iYieldType, iCorp)
 					
 					iCityBaseYield = pHeadSelectedCity.getBaseYieldRate(g_iYieldType)
 					iCityTotalYield = pHeadSelectedCity.getYieldRate(g_iYieldType)
@@ -2883,7 +2888,7 @@ class CvMainInterface:
 					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
 						szBuffer = u"%d%c" %( iCityBaseYield - iBuildingsYield - iSpecialistsYield - iNetTradeYield, cYieldChar )
 					else:
-						szBuffer = u"%d%c" %( iCityBaseYield - iBuildingsProdYield - iSpecialistsYield, cYieldChar )
+						szBuffer = u"%d%c" %( iCityBaseYield - iSpecialistsYield - iBuildingsProdYield - iCorporationsYield, cYieldChar )
 					screen.setLabel( "RawWorkedPlotsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 160, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawWorkedPlotsText" )
 					
@@ -2899,7 +2904,7 @@ class CvMainInterface:
 					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
 						szBuffer = u"%d%c" %( iBuildingsYield + iSpecialistsYield, cYieldChar )
 					else:
-						szBuffer = u"%d%c" %( iBuildingsProdYield, cYieldChar )
+						szBuffer = u"%d%c" %( iBuildingsProdYield + iCorporationsYield, cYieldChar )
 					screen.setLabel( "RawBuildingsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 200, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawBuildingsText" )
 					
@@ -2913,10 +2918,10 @@ class CvMainInterface:
 					
 					# Toggle Button
 					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"%c" %( PRODUCTION_CHAR )
+						szBuffer = u"<font=3>%c</font><font=2>%c</font>" %( COMMERCE_CHAR, PRODUCTION_CHAR )
 					else:
-						szBuffer = u"%c" %( COMMERCE_CHAR )
-					screen.setText( "RawToggleButton", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, 140, 170, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, g_iYieldType, -1 )
+						szBuffer = u"<font=2>%c</font><font=3>%c</font>" %( COMMERCE_CHAR, PRODUCTION_CHAR )
+					screen.setText( "RawToggleButton", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, 140, 168, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, g_iYieldType, -1 )
 					screen.show( "RawToggleButton" )
 # BUG - Raw Commerce - end
 
