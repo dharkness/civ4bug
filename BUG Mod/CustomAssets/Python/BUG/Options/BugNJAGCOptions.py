@@ -64,7 +64,7 @@ class BugNJAGCOptions(OptionsFacade):
 		self.addOption(Option("NJAGCM_ShowTime",
 						 "NJAGCM", "Show Game Clock", False,
 						 "Clock",
-						 "When checked, the real time is displayed (set 24-hour mode in normal options screen).",
+						 "When checked, the real time is displayed.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowCompletedTurns",
 						 "NJAGCM", "Show Game Completed Turns", True,
@@ -73,13 +73,13 @@ class BugNJAGCOptions(OptionsFacade):
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowTotalTurns",
 						 "NJAGCM", "Show Game Total Turns", True,
-						 "Total Turns (Time Victory Only)",
-						 "When checked, the total turns in the game is displayed.",
+						 "Total Turns",
+						 "When checked, the total turns in the game is displayed if Time Victory is enabled.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowCompletedPercent",
 						 "NJAGCM", "Show Game Completed Percent", False,
 						 "Completed Percentage",
-						 "When checked, the completed percentage is displayed.",
+						 "When checked, the completed percentage is displayed if Time Victory is enabled.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowDate",
 						 "NJAGCM", "Show Turns", True,
@@ -102,7 +102,7 @@ class BugNJAGCOptions(OptionsFacade):
 		self.addOption(Option("NJAGCM_ShowAltTime",
 						 "NJAGCM", "Alternate Show Game Clock", False,
 						 "Clock",
-						 "When checked, the real time is displayed (set 24-hour mode in normal options screen).",
+						 "When checked, the real time is displayed.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowAltCompletedTurns",
 						 "NJAGCM", "Alternate Show Game Completed Turns", False,
@@ -111,13 +111,13 @@ class BugNJAGCOptions(OptionsFacade):
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowAltTotalTurns",
 						 "NJAGCM", "Alternate Show Game Total Turns", False,
-						 "Total Turns (Time Victory Only)",
-						 "When checked, the total turns in the game is displayed.",
+						 "Total Turns",
+						 "When checked, the total turns in the game is displayed if Time Victory is enabled.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowAltCompletedPercent",
 						 "NJAGCM", "Alternate Show Game Completed Percent", True,
 						 "Completed Percentage",
-						 "When checked, the completed percentage is displayed.",
+						 "When checked, the completed percentage is displayed if Time Victory is enabled.",
 						 InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("NJAGCM_ShowAltDate",
 						 "NJAGCM", "Alternate Show Turns", True,
