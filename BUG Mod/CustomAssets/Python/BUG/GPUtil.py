@@ -116,9 +116,9 @@ def calcPercentages(pCity):
 				iPercent = 100 * iProgress / iTotal
 				iLeftover -= iPercent
 				percents.append((iPercent, iUnit))
-	# Add remaining from 100 to first in list to match Civ4
-	if (iLeftover > 0):
-		percents[0] = (percents[0][0] + iLeftover, percents[0][1])
+		# Add remaining from 100 to first in list to match Civ4
+		if (iLeftover > 0):
+			percents[0] = (percents[0][0] + iLeftover, percents[0][1])
 	return percents
 
 def createHoverText(pCity, iTurns):
