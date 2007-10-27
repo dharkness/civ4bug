@@ -102,7 +102,7 @@
 		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3 cittadini[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -110,7 +110,7 @@
 		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3 oro[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</Spanish>
 	</TEXT>
 </Civ4GameText>
