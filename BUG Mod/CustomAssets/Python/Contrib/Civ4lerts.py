@@ -76,6 +76,8 @@ class Civ4lerts:
         CityGrowth(eventManager)
         CityGrowthUnhealthy(eventManager)
         CityGrowthAngry(eventManager)
+        CanHurryPopulation(eventManager)
+        CanHurryGold(eventManager)
         GoldTrade(eventManager)
         GoldPerTurnTrade(eventManager)
     
@@ -153,6 +155,8 @@ class AbstractCityPendingGrowth(AbstractAlert):
 
     def onCityDoTurn(self, argsList):
         city, player = argsList
+        if (city.getOwner() != self.gc.getGame().getActivePlayer()):
+            return
         if (((city.getFoodTurnsLeft() == 1)
         and not city.isFoodProduction())
         and not city.AI_isEmphasize(5)):
@@ -213,6 +217,7 @@ class CityPendingAngry(AbstractCityPendingGrowth):
             icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
             self._addMessageAtCity(player, message, icon, city)
 
+
 class CityGrowth(AbstractAlert):
 #   Displays an alert when a city's population grows."""
 
@@ -225,6 +230,8 @@ class CityGrowth(AbstractAlert):
             return
 
         city, player = argsList
+        if (city.getOwner() != self.gc.getGame().getActivePlayer()):
+            return
         message = self.localText.getText(
                 "TXT_KEY_CIV4LERTS_ON_CITY_GROWTH",
                 (city.getName(), city.getPopulation()))
@@ -244,6 +251,8 @@ class CityGrowthUnhealthy(AbstractAlert):
             return
 
         city, player = argsList
+        if (city.getOwner() != self.gc.getGame().getActivePlayer()):
+            return
         if (city.healthRate(False, 0) < 0):
             message = self.localText.getText(
                     "TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY",
@@ -263,6 +272,8 @@ class CityGrowthAngry(AbstractAlert):
             return
 
         city, player = argsList
+        if (city.getOwner() != self.gc.getGame().getActivePlayer()):
+            return
         if (city.angryPopulation(0) > 0):
             message = self.localText.getText(
                     "TXT_KEY_CIV4LERTS_ON_CITY_ANGRY",
@@ -270,19 +281,114 @@ class CityGrowthAngry(AbstractAlert):
             icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
             self._addMessageAtCity(player, message, icon, city)
 
+
+class AbstractCanHurry(AbstractStatefulAlert):
+#   Displays an alert when a city can hurry the current production item.
+
+    def __init__(self, eventManager, hurryType, *args, **kwargs): 
+        super(AbstractCanHurry, self).__init__(eventManager, *args, **kwargs)
+        eventManager.addEventHandler("cityDoTurn", self.onCityDoTurn)
+        eventManager.addEventHandler("cityBuildingUnit", self.onCityBuildingUnit)
+        eventManager.addEventHandler("cityBuildingBuilding", self.onCityBuildingBuilding)
+        self.hurryType = hurryType
+
+    def onCityDoTurn(self, argsList):
+        city, iPlayer = argsList
+        if (iPlayer != self.gc.getGame().getActivePlayer()):
+            return
+        iCity = city.getID()
+        
+        eHurryType = self.gc.getInfoTypeForString(self.hurryType)
+        if (city.canHurry(eHurryType, False) and not self._canHurryCity(iCity)):
+            self._addCity(iCity)
+            if (city.isProductionBuilding()):
+                iType = city.getProductionBuilding()
+                if (iType >= 0):
+                    info = self.gc.getBuildingInfo(iType)
+                    self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
+            elif (city.isProductionUnit()):
+                iType = city.getProductionUnit()
+                if (iType >= 0):
+                    info = self.gc.getUnitInfo(iType)
+                    self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
+            elif (city.isProductionProject()):
+                # Can't hurry projects, but just in case
+                iType = city.getProductionProject()
+                if (iType >= 0):
+                    info = self.gc.getProjectInfo(iType)
+                    self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
+
+    def onCityCanHurry(self, city, iPlayer, item, eHurryType):
+        "Override to display the alert."
+        pass
+
+    def onCityBuildingUnit(self, argsList):
+        city, iUnit = argsList
+        self.onItemStarted(city)
+
+    def onCityBuildingBuilding(self, argsList):
+        city, iBuilding = argsList
+        self.onItemStarted(city)
+
+    def onItemStarted(self, city):
+        if (city.getOwner() != self.gc.getGame().getActivePlayer()):
+            return
+        self._removeCity(city.getID())
+
+    def _reset(self, *args, **kwargs):
+        super(AbstractCanHurry, self)._reset(*args, **kwargs)
+        self.canHurryCities = set()
+
+    def _canHurryCity(self, iCity):
+        return iCity in self.canHurryCities
+
+    def _addCity(self, iCity):
+        self.canHurryCities.add(iCity)
+
+    def _removeCity(self, iCity):
+        self.canHurryCities.discard(iCity)
+
+class CanHurryPopulation(AbstractCanHurry):
+#   Displays an alert when a city can hurry using population.
+
+    def __init__(self, eventManager, *args, **kwargs): 
+        super(CanHurryPopulation, self).__init__(eventManager, "HURRY_POPULATION", *args, **kwargs)
+
+    def onCityCanHurry(self, city, iPlayer, item, eHurryType):
+        iPop = city.hurryPopulation(eHurryType)
+        message = self.localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
+                                         (item, city.getName(), iPop))
+        icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
+        self._addMessageAtCity(iPlayer, message, icon, city)
+
+class CanHurryGold(AbstractCanHurry):
+#   Displays an alert when a city can hurry using gold.
+
+    def __init__(self, eventManager, *args, **kwargs): 
+        super(CanHurryGold, self).__init__(eventManager, "HURRY_GOLD", *args, **kwargs)
+
+    def onCityCanHurry(self, city, iPlayer, item, eHurryType):
+        iGold = city.hurryGold(eHurryType)
+        message = self.localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD", 
+                                         (item, city.getName(), iGold))
+        icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
+        self._addMessageAtCity(iPlayer, message, icon, city)
+
+
 class GoldTrade(AbstractStatefulAlert):
 #   Displays an alert when a civilization has a significant increase
 #    in gold available for trade since the last alert.
 
     def __init__(self, eventManager, *args, **kwargs): 
         super(GoldTrade, self).__init__(eventManager, *args, **kwargs)
-        eventManager.addEventHandler("BeginPlayerTurn", self.onBeginPlayerTurn)
+        eventManager.addEventHandler("BeginGameTurn", self.onBeginGameTurn)
 
-    def onBeginPlayerTurn(self, argsList):
+    def onBeginGameTurn(self, argsList):
         if (not BugAlerts.isShowGoldTradeAlert()):
             return
 
-        turn, player = argsList
+        turn = argsList[0]
+        player = self.gc.getGame().getActivePlayer()
         team = self.gc.getTeam(self.gc.getPlayer(player).getTeam())
         for rival in range(self.gc.getMAX_PLAYERS()):
             if (rival == player): continue
@@ -325,13 +431,14 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 
     def __init__(self, eventManager, *args, **kwargs): 
         super(GoldPerTurnTrade, self).__init__(eventManager, *args, **kwargs)
-        eventManager.addEventHandler("BeginPlayerTurn", self.onBeginPlayerTurn)
+        eventManager.addEventHandler("BeginGameTurn", self.onBeginGameTurn)
 
-    def onBeginPlayerTurn(self, argsList):
+    def onBeginGameTurn(self, argsList):
         if (not BugAlerts.isShowGoldPerTurnTradeAlert()):
             return
 
-        turn, player = argsList
+        turn = argsList[0]
+        player = self.gc.getGame().getActivePlayer()
         team = self.gc.getTeam(self.gc.getPlayer(player).getTeam())
         for rival in range(self.gc.getMAX_PLAYERS()):
             if (rival == player): continue
