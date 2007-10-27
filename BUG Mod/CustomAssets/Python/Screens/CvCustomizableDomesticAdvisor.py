@@ -2437,26 +2437,33 @@ class CvCustomizableDomesticAdvisor:
 	def previousPage(self, inputClass):
 		
 		if (self.currentPageNum < 1):
-			# Already on first page
-			return 1
-		if(self.customizing):
-			self.customizingClearSelection()
-		self.switchPage(self.PAGES[self.currentPageNum - 1]["name"])
-		self.drawScreen(self.currentPage)
+			# Go to last page
+			self.gotoPage(len(self.PAGES) - 1)
+		else:
+			self.gotoPage(self.currentPageNum - 1)
 
 		return 1
 
 	def nextPage(self, inputClass):
 		
 		if (self.currentPageNum + 1 >= len(self.PAGES)):
-			# Already on last page
-			return 1
-		if(self.customizing):
-			self.customizingClearSelection()
-		self.switchPage(self.PAGES[self.currentPageNum + 1]["name"])
-		self.drawScreen(self.currentPage)
+			# Go to first page
+			self.gotoPage(0)
+		else:
+			self.gotoPage(self.currentPageNum + 1)
 
 		return 1
+	
+	def gotoPage(self, page):
+		if (page < 0 or page >= len(self.PAGES)):
+			# Invalid page
+			return False
+		if(self.customizing):
+			self.customizingClearSelection()
+		self.switchPage(self.PAGES[page]["name"])
+		self.drawScreen(self.currentPage)
+		
+		return True
 
 
 	def reloadPages(self, inputClass):
