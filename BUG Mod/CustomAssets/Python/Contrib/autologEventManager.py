@@ -627,9 +627,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			and gc.getTeam(gc.getPlayer(iCiv2).getTeam()).isHasMet(gc.getActivePlayer().getTeam())):
 				if (bIsWar):
 					message = "%s declares war on %s" % (zsCiv1, zsCiv2)
+					NewAutoLog.writeLog(message, vColor="Red")
 				else:
 					message = "%s and %s have signed a peace treaty" % (zsCiv1, zsCiv2)
-				NewAutoLog.writeLog(message, vColor="Red")
+					NewAutoLog.writeLog(message, vColor="DarkRed")
 
 	def onSetPlayerAlive(self, argsList):
 		if (NewAutoLog.Enabled()
