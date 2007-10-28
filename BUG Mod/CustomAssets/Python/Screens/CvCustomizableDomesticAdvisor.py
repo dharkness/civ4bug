@@ -78,8 +78,8 @@ import os.path
 PyPlayer = PyHelpers.PyPlayer
 
 # BUG - Options - start
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
+#import BugScreensOptions
+#BugScreens = BugScreensOptions.getOptions()
 # BUG - Options - end
 
 # Needed to save changes
@@ -253,10 +253,6 @@ class CvCustomizableDomesticAdvisor:
 		self.customizing = False
 		self.currentPageNum = 0
 
-		# global information surppressed text
-		self.GLOBAL_INFO_SURPPRESSED = "-"
-		# global information surppressed text
-		
 		# Special Class variables
 
 		# The currently active page
@@ -1558,9 +1554,6 @@ class CvCustomizableDomesticAdvisor:
 
 	def findGlobalBaseYieldRateRank (self, city, szKey, arg):
 
-		if not BugScreens.isCDAShowGlobalRanks():
-			return localText.changeTextColor (self.GLOBAL_INFO_SURPPRESSED, gc.getInfoTypeForString("COLOR_RED"))
-
 		L = []
 		for i in range(gc.getMAX_PLAYERS()):
 			cl = PyPlayer(i).getCityList()
@@ -1572,9 +1565,6 @@ class CvCustomizableDomesticAdvisor:
 
 	def findGlobalYieldRateRank (self, city, szKey, arg):
 
-		if not BugScreens.isCDAShowGlobalRanks():
-			return localText.changeTextColor (self.GLOBAL_INFO_SURPPRESSED, gc.getInfoTypeForString("COLOR_RED"))
-
 		L = []
 		for i in range(gc.getMAX_PLAYERS()):
 			cl = PyPlayer(i).getCityList()
@@ -1585,9 +1575,6 @@ class CvCustomizableDomesticAdvisor:
 		return len([i for i in L if i > y]) + 1
 
 	def findGlobalCommerceRateRank (self, city, szKey, arg):
-
-		if not BugScreens.isCDAShowGlobalRanks():
-			return localText.changeTextColor (self.GLOBAL_INFO_SURPPRESSED, gc.getInfoTypeForString("COLOR_RED"))
 
 		L = []
 		for i in range(gc.getMAX_PLAYERS()):

@@ -52,10 +52,6 @@ class BugScreensOptions(OptionsFacade):
 							  "Screens", "CustDomAdv", True,
 							  "Customizable",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
-		self.addOption(Option("CDA_Global_Ranks_Enabled",
-							  "Screens", "CustDomAdvGlobalRanks", True,
-							  "Allow Global Ranks",
-							  "When checked, the Global Rank values are displayed.  A red '-' is displayed if this option is left unchecked."))
 
 		self.addOption(Option("EFA_Glance",
 							  "Screens", "EFA Glance", True,
@@ -116,10 +112,6 @@ class BugScreensOptions(OptionsFacade):
 
 	def isCustDomAdv(self):
 		return self.getBoolean('CDA_Enabled')
-
-	def isCDAShowGlobalRanks(self):
-		return self.getBoolean('CDA_Global_Ranks_Enabled')
-	
 
 	
 	def isShowGlance(self):

@@ -20,7 +20,6 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachLabel(leftPanel, "DomAdvScreenLabel", "Domestic (F1):")
 		screen.setControlFlag("DomAdvScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
-		self.addCheckbox(screen, leftPanel, "CDA_Global_Ranks_Enabled")
 
 		screen.attachLabel(leftPanel, "TechScreenLabel", "Foreign (F4):")
 		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
