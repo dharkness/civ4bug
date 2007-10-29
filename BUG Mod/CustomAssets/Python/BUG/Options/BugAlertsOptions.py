@@ -32,31 +32,39 @@ class BugAlertsOptions(OptionsFacade):
 		self.addOption(Option("Alert_CityPendingGrowth",
 							  "CIV4LERTS", "City Pending Growth", False,
 							  "Pending Growth",
-							  "."))
-		self.addOption(Option("Alert_CityPendingUnhealthy",
-							  "CIV4LERTS", "City Pending Unhealthy", True,
-							  "Pending Unhealthy",
-							  "."))
-		self.addOption(Option("Alert_CityPendingAngry",
-							  "CIV4LERTS", "City Pending Angry", True,
-							  "Pending Angry",
-							  "."))
+							  "When checked, displays an alert when a city will grow in population next turn."))
+		self.addOption(Option("Alert_CityPendingHappiness",
+							  "CIV4LERTS", "City Pending Happiness", True,
+							  "Pending Happiness",
+							  "When checked, displays an alert when a city will become happy or unhappy next turn."))
+		self.addOption(Option("Alert_CityPendingHealthiness",
+							  "CIV4LERTS", "City Pending Healthiness", True,
+							  "Pending Healthiness",
+							  "When checked, displays an alert when a city will become healthy or unhealthy next turn."))
+		self.addOption(Option("Alert_CityPendingBorderExpansion",
+							  "CIV4LERTS", "City Pending Border Expansion", True,
+							  "Pending Border Expansion",
+							  "When checked, displays an alert when a city will expand its curltural borders next turn."))
 		self.addOption(Option("Alert_CityGrowth",
 							  "CIV4LERTS", "City Growth", False,
 							  "Growth",
-							  "."))
-		self.addOption(Option("Alert_CityUnhealthy",
-							  "CIV4LERTS", "City Growth Unhealthy", True,
-							  "Growth Unhealthy",
-							  "."))
-		self.addOption(Option("Alert_CityAngry",
-							  "CIV4LERTS", "City Growth Angry", True,
-							  "Growth Angry",
-							  "."))
-		self.addOption(Option("Alert_CityExpandBorder",
-							  "CIV4LERTS", "CheckForCityBorderExpansion", True,
-							  "Pending Border Expansion",
-							  "."))
+							  "When checked, displays an alert when a city has grown in population."))
+		self.addOption(Option("Alert_CityHappiness",
+							  "CIV4LERTS", "City Happiness", True,
+							  "Happiness",
+							  "When checked, displays an alert when a city has become happy or unhappy."))
+		self.addOption(Option("Alert_CityHealthiness",
+							  "CIV4LERTS", "City Healthiness", True,
+							  "Healthiness",
+							  "When checked, displays an alert when a city has become healthy or unhealthy."))
+		self.addOption(Option("Alert_CityCanHurryPop",
+							  "CIV4LERTS", "City Can Hurry Pop", True,
+							  "Can Hurry w. Whip",
+							  "When checked, displays an alert once a city can hurry the item it's building with the whip."))
+		self.addOption(Option("Alert_CityCanHurryGold",
+							  "CIV4LERTS", "City Can Hurry Gold", True,
+							  "Can Hurry w. Gold",
+							  "When checked, displays an alert once a city can hurry the item it's building with gold."))
 		
 		# Trade
 		self.addOption(Option("Alert_TechTrade",
@@ -81,6 +89,8 @@ class BugAlertsOptions(OptionsFacade):
 								  "Threshold",
 								  ".",
 								  [1,2,3,5,10,15,20,25,30,50,100]))
+		
+		# Diplomacy
 		self.addOption(Option("Alert_OpenBordersTrade",
 							  "CIV4LERTS", "Open Borders Trades", True,
 							  "Open Borders",
@@ -139,23 +149,29 @@ class BugAlertsOptions(OptionsFacade):
 	def isShowCityPendingGrowthAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingGrowth')
 
-	def isShowCityPendingUnhealthyAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingUnhealthy')
+	def isShowCityPendingHappinessAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingHappiness')
 
-	def isShowCityPendingAngryAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingAngry')
+	def isShowCityPendingHealthinessAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingHealthiness')
+
+	def isShowCityPendingExpandBorderAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityPendingBorderExpansion')
 
 	def isShowCityGrowthAlert(self):
 		return self.isShowAlerts() and self.getBoolean('Alert_CityGrowth')
 
-	def isShowCityGrowthUnhealthyAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_CityUnhealthy')
+	def isShowCityHappinessAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityHappiness')
 
-	def isShowCityGrowthAngryAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_CityAngry')
+	def isShowCityHealthinessAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityHealthiness')
 
-	def isShowCityExpandBorderAlert(self):
-		return self.isShowAlerts() and self.getBoolean('Alert_CityExpandBorder')
+	def isShowCityCanHurryPopAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityCanHurryPop')
+
+	def isShowCityCanHurryGoldAlert(self):
+		return self.isShowAlerts() and self.getBoolean('Alert_CityCanHurryGold')
 	
 
 	def isShowTechTradeAlert(self):

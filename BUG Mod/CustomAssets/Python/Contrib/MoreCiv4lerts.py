@@ -82,7 +82,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		return BugAlerts.getDomLandThreshold()
 
 	def getCheckForCityBorderExpansion(self):
-		return BugAlerts.isShowCityExpandBorderAlert()
+		return BugAlerts.isShowCityPendingExpandBorderAlert()
 
 	def getCheckForNewTrades(self):
 		return BugAlerts.isShowTechTradeAlert()

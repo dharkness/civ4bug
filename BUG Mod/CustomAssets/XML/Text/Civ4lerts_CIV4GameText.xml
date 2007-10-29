@@ -66,12 +66,28 @@
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá insalubre el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_ANGRY</Tag>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY</Tag>
+		<English>[COLOR_WARNING_TEXT]%s1 will become healthy on the next turn[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]%s1 deviendra sain sur le prochain tour [COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]%s1 wird in der nächsten Runde gesund [COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà sana al prossimo turno [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá sano el próximo turno [COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will become unhappy on the next turn[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]%s1 deviendra malheureux sur le prochain tour [COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]%s1 wird in der nächsten Runde unglücklich [COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà infelice al prossimo turno [COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá infeliz el próximo turno [COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY</Tag>
+		<English>[COLOR_WARNING_TEXT]%s1 will become happy on the next turn[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]%s1 deviendra heureux sur le prochain tour [COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]%s1 wird in der nächsten Runde glücklich [COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà felice al prossimo turno [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá feliz el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY</Tag>
@@ -82,12 +98,28 @@
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se ha vuelto insalubre [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_ANGRY</Tag>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_HEALTHY</Tag>
+		<English>[COLOR_TECH_TEXT]%s1 has become healthy[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 est devenu sain [COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]%s1 ist gesund geworden [COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 è diventata sana [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto sano [COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_UNHAPPY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 has become unhappy[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]%s1 est devenu malheureux [COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]%s1 ist unglücklich geworden [COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 è diventata infelice [COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se ha vuelto infeliz [COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_HAPPY</Tag>
+		<English>[COLOR_TECH_TEXT]%s1 has become happy[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 est devenu heureux [COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]%s1 ist glücklich geworden [COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 è diventata felice [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto feliz [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_GROWTH</Tag>
@@ -99,18 +131,18 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP</Tag>
-		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3 cittadini[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 population[COLOR_REVERT]</Spanish>
+		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3%s4 with %d5%s6 overflow[COLOR_REVERT]</English>
+		<French>[COLOR_YIELD_FOOD]La %s1 à %s2 peut être dépêchée pour %d3%c4 avec %d5%c6 de débordement[COLOR_REVERT]</French>
+		<German>[COLOR_YIELD_FOOD]Die %s1 in %s2 kann eilte für %d3%c4 mit %d5%s6 der Überlauf[COLOR_REVERT]</German>
+		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%c4 con %d5%c6 di straripamento[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YIELD_FOOD]La %s1 en %s2 puede ser apresurada para %d3%c4 con %d5%c6 de desbordamiento[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD</Tag>
-		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3 oro[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3 gold[COLOR_REVERT]</Spanish>
+		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3%s4[COLOR_REVERT]</English>
+		<French>[COLOR_YIELD_FOOD]La %s1 à %s2 peut être dépêchée pour %d3%s4[COLOR_REVERT]</French>
+		<German>[COLOR_YIELD_FOOD]Die %s1 in %s2 kann für %d3%s4 beeilt werden[COLOR_REVERT]</German>
+		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%s4[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YIELD_FOOD]La %s1 en %s2 puede ser apresurada para %d3%s4[COLOR_REVERT]</Spanish>
 	</TEXT>
 </Civ4GameText>
