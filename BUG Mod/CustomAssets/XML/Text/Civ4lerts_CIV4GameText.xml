@@ -67,11 +67,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY</Tag>
-		<English>[COLOR_WARNING_TEXT]%s1 will become healthy on the next turn[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 deviendra sain sur le prochain tour [COLOR_REVERT]</French>
-		<German>[COLOR_WARNING_TEXT]%s1 wird in der nächsten Runde gesund [COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà sana al prossimo turno [COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá sano el próximo turno [COLOR_REVERT]</Spanish>
+		<English>[COLOR_TECH_TEXT]%s1 will become healthy on the next turn[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 deviendra sain sur le prochain tour [COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]%s1 wird in der nächsten Runde gesund [COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 diventerà sana al prossimo turno [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá sano el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY</Tag>
@@ -83,11 +83,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY</Tag>
-		<English>[COLOR_WARNING_TEXT]%s1 will become happy on the next turn[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 deviendra heureux sur le prochain tour [COLOR_REVERT]</French>
-		<German>[COLOR_WARNING_TEXT]%s1 wird in der nächsten Runde glücklich [COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà felice al prossimo turno [COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá feliz el próximo turno [COLOR_REVERT]</Spanish>
+		<English>[COLOR_TECH_TEXT]%s1 will become happy on the next turn[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 deviendra heureux sur le prochain tour [COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]%s1 wird in der nächsten Runde glücklich [COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 diventerà felice al prossimo turno [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá feliz el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY</Tag>
