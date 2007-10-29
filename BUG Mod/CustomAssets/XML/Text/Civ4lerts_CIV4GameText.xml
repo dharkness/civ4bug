@@ -131,18 +131,18 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP</Tag>
-		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3%s4 with %d5%s6 overflow[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]La %s1 à %s2 peut être dépêchée pour %d3%c4 avec %d5%c6 de débordement[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]Die %s1 in %s2 kann eilte für %d3%c4 mit %d5%s6 der Überlauf[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%c4 con %d5%c6 in eccesso[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YIELD_FOOD]La %s1 en %s2 puede ser apresurada para %d3%c4 con %d5%c6 de desbordamiento[COLOR_REVERT]</Spanish>
+		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3%s4 with %d5%s6 overflow[COLOR_REVERT]</English>
+		<French>[COLOR_YIELD_FOOD]%s1 peut précipiter %s2 pour %d3%c4 avec %d5%c6 de débordement[COLOR_REVERT]</French>
+		<German>[COLOR_YIELD_FOOD]%s1 eilen kann %s2 für %d3%c4 mit %d5%s6 der Überlauf[COLOR_REVERT]</German>
+		<Italian>[COLOR_YIELD_FOOD]%s1 può accelerata %s2 per %d3%c4 con %d5%c6 in eccesso[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YIELD_FOOD]%s1 puede acelerar %s2 para %d3%c4 con %d5%c6 de desbordamiento[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD</Tag>
-		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3%s4[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]La %s1 à %s2 peut être dépêchée pour %d3%s4[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]Die %s1 in %s2 kann für %d3%s4 beeilt werden[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%s4[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YIELD_FOOD]La %s1 en %s2 puede ser apresurada para %d3%s4[COLOR_REVERT]</Spanish>
+		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3%s4[COLOR_REVERT]</English>
+		<French>[COLOR_YIELD_FOOD]%s1 peut précipiter %s2 pour %d3%s4[COLOR_REVERT]</French>
+		<German>[COLOR_YIELD_FOOD]%s1 eilen kann %s2 für %d3%s4 beeilt werden[COLOR_REVERT]</German>
+		<Italian>[COLOR_YIELD_FOOD]%s1 può accelerata %s2 per %d3%s4[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YIELD_FOOD]%s1 puede acelerar %s2 para %d3%s4[COLOR_REVERT]</Spanish>
 	</TEXT>
 </Civ4GameText>

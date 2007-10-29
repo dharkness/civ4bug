@@ -496,7 +496,7 @@ class CanHurryPopulation(AbstractCanHurry):
 			cPop = u"%c" % gc.getGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR)
 			cHammer = u"%c" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
 			message = localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
-										(item, city.getName(), iPop, cPop, iOverflow, cHammer))
+										(city.getName(), item, iPop, cPop, iOverflow, cHammer))
 			icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
 			addMessageAtCity(iPlayer, message, icon, city)
 
@@ -511,7 +511,7 @@ class CanHurryGold(AbstractCanHurry):
 			iGold = city.hurryGold(eHurryType)
 			cGold = u"%c" % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar()
 			message = localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD", 
-										(item, city.getName(), iGold, cGold))
+										(city.getName(), item, iGold, cGold))
 			icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
 			addMessageAtCity(iPlayer, message, icon, city)
 
