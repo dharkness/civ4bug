@@ -7,17 +7,17 @@
 
 ## REQUIRES Civilization 4 - Beyond the Sword - PATCH 3.02
 
-## Ported to BtS for BUG by EmperorFool
+## Ported to BtS and modified for BUG by EmperorFool
 #
 #    - Added BtS columns (e.g. corporations and espionage) and "Liberate Colony" button.
 #    - Added other new columns (e.g. turns until culture growth and great person birth).
 #    - Added a set of building class columns that show the building type for the civ you're playing.
 #    - Added a second set of building type/class columns that show if you have the building or not
 #      instead of the effects of the building. These columns are narrower than the originals.
-#    - Changed all building columns to use the building's icon instead of its name.
+#    - Changed most building columns to use the building's icon instead of its name.
 #    - Resource columns now show their icon as the header and their effects as the value.
 #    - Fixed crash caused when you have more than 20 or so cities.
-#    - Added page switching buttons.
+#    - Added page switching buttons that wrap around.
 #    - Added buttons to move pages while customizing.
 #    - Added a button to toggle whether or not to display the controls for changing specialists.
 #
@@ -302,15 +302,12 @@ class CvCustomizableDomesticAdvisor:
 				("GROWTH",					35,		"int",	None,					None,					0,									self.calculateGrowth,					None,						"self.redfoodIcon"),
 				("HAPPY",					30,		"int",	None,					None,					0,									self.calculateNetHappiness,				None,						"self.happyIcon"),
 				("HEALTH",					30,		"int",	None,					None,					0,									self.calculateNetHealth,				None,						"self.healthIcon"),
+				("HURRY_GOLD",				38,		"int",	None,					None,					0,									self.calculateHurryGoldCost,			None,						"u\"H\" + self.goldIcon"),
+				("HURRY_POP",				38,		"int",	None,					None,					0,									self.calculateWhipPopulation,			None,						"u\"H\" + self.angryIcon"),
+				("HURRY_POP_EXTRA",			38,		"int",	None,					None,					0,									self.calculateWhipOverflow,				None,						"u\"H\" + self.hammerIcon"),
 				("LOCATION_X",				50,		"int",	CyCity.getX,			None,					0,									None,									None,						"u\"X\""),
 				("LOCATION_Y",				50,		"int",	CyCity.getY,			None,					0,									None,									None,						"u\"Y\""),
 				("MAINTENANCE",				30,		"int",	CyCity.getMaintenance,	None,					0,									None,									None,						"u\"%c\" % CyGame().getSymbolID(FontSymbols.BAD_GOLD_CHAR)"),
-				("POPULATION",				35,		"int",	CyCity.getPopulation,	None,					0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper()"),
-				("POPULATION_REAL",			65,		"int",	CyCity.getRealPopulation,	None,				0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper() + u\"#\""),
-				("POWER",					50,		"text",	None,					None,					0,									self.calculatePower,					None,						"self.powerIcon"),
-				("PRODUCING",				90,		"text",	None,					None,					0,									self.calculateProducing,				None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_PRODUCING\", ())"),
-				("PRODUCING_TURNS",			33,		"int",	None,					None,					0,									self.calculateProducingTurns,			None,						"self.hammerIcon + u\"T\""),
-				("PRODUCTION",				38,		"int",	None,					None,					0,									self.calculateProduction,				None,						"self.hammerIcon"),
 				("NRANK_BASE_COMMERCE",		42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,	None,									None,						"u\"B\" + self.commerceIcon + u\"n\""),
 				("NRANK_BASE_FOOD",			42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_FOOD,		None,									None,						"u\"B\" + self.foodIcon + u\"n\""),
 				("NRANK_BASE_PRODUCTION",	42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,	None,									None,						"u\"B\" + self.hammerIcon + u\"n\""),
@@ -320,6 +317,12 @@ class CvCustomizableDomesticAdvisor:
 				("NRANK_CULTURE",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	None,								None,						"self.cultureIcon + u\"n\""),
 				("NRANK_GOLD",				38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_GOLD,	None,									None,						"self.goldIcon + u\"n\""),
 				("NRANK_RESEARCH",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	None,								None,						"self.researchIcon + u\"n\""),
+				("POPULATION",				35,		"int",	CyCity.getPopulation,	None,					0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper()"),
+				("POPULATION_REAL",			65,		"int",	CyCity.getRealPopulation,	None,				0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper() + u\"#\""),
+				("POWER",					50,		"text",	None,					None,					0,									self.calculatePower,					None,						"self.powerIcon"),
+				("PRODUCING",				90,		"text",	None,					None,					0,									self.calculateProducing,				None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_PRODUCING\", ())"),
+				("PRODUCING_TURNS",			33,		"int",	None,					None,					0,									self.calculateProducingTurns,			None,						"self.hammerIcon + u\"T\""),
+				("PRODUCTION",				38,		"int",	None,					None,					0,									self.calculateProduction,				None,						"self.hammerIcon"),
 				("RELIGIONS",				90,		"text",	None,					None,					0,									self.calculateReligions,				None,						"localText.getText(\"TXT_KEY_ADVISOR_RELIGION\", ()).upper()"),
 				("RESEARCH",				38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_RESEARCH,	None,									None,						"self.researchIcon"),
 				("SPECIALISTS",				209,	"text",	None,					None,					0,									self.calculateSpecialists,				None,						"localText.getText(\"TXT_KEY_CONCEPT_SPECIALISTS\", ()).upper()"),
@@ -430,7 +433,10 @@ class CvCustomizableDomesticAdvisor:
 
 		if(self.runtimeInitDone):
 			return
-
+		
+		self.HURRY_TYPE_POP = gc.getInfoTypeForString("HURRY_POPULATION")
+		self.HURRY_TYPE_GOLD = gc.getInfoTypeForString("HURRY_GOLD")
+		
 		self.angryIcon = u"%c" % CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR)
 		self.commerceIcon = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
 		self.cultureIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar())
@@ -1224,6 +1230,34 @@ class CvCustomizableDomesticAdvisor:
 			if (not (city.isProductionProcess())):
 
 				szReturn = unicode(city.getProductionTurnsLeft())
+
+		return szReturn
+
+	def calculateWhipPopulation (self, city, szKey, arg):
+		
+		szReturn = u"-"
+
+		if (city.canHurry(self.HURRY_TYPE_POP, False)):
+			szReturn = unicode(city.hurryPopulation(self.HURRY_TYPE_POP))
+
+		return szReturn
+
+	def calculateWhipOverflow (self, city, szKey, arg):
+		
+		szReturn = u"-"
+
+		if (city.canHurry(self.HURRY_TYPE_POP, False)):
+			szReturn = unicode(city.hurryProduction(self.HURRY_TYPE_POP) - 
+							   (city.getProductionNeeded() - city.getProduction()))
+
+		return szReturn
+
+	def calculateHurryGoldCost (self, city, szKey, arg):
+		
+		szReturn = u"-"
+
+		if (city.canHurry(self.HURRY_TYPE_GOLD, False)):
+			szReturn = unicode(city.hurryGold(self.HURRY_TYPE_GOLD))
 
 		return szReturn
 
