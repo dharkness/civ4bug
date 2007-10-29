@@ -59,7 +59,7 @@ class BugAlertsOptions(OptionsFacade):
 							  "When checked, displays an alert when a city has become healthy or unhealthy."))
 		self.addOption(Option("Alert_CityCanHurryPop",
 							  "CIV4LERTS", "City Can Hurry Pop", True,
-							  "Can Hurry w. Whip",
+							  "Can Hurry w. Population",
 							  "When checked, displays an alert once a city can hurry the item it's building with the whip."))
 		self.addOption(Option("Alert_CityCanHurryGold",
 							  "CIV4LERTS", "City Can Hurry Gold", True,
