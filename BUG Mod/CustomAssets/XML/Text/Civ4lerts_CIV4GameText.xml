@@ -70,7 +70,7 @@
 		<English>[COLOR_TECH_TEXT]%s1 will become healthy on the next turn[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 deviendra sain sur le prochain tour [COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]%s1 wird in der nächsten Runde gesund [COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 diventerà sana al prossimo turno [COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]%s1 diventerà salubre al prossimo turno [COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá sano el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -102,7 +102,7 @@
 		<English>[COLOR_TECH_TEXT]%s1 has become healthy[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 est devenu sain [COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]%s1 ist gesund geworden [COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 è diventata sana [COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]%s1 è diventata salubre [COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto sano [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -134,7 +134,7 @@
 		<English>[COLOR_YIELD_FOOD]The %s1 in %s2 can be hurried for %d3%s4 with %d5%s6 overflow[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]La %s1 à %s2 peut être dépêchée pour %d3%c4 avec %d5%c6 de débordement[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]Die %s1 in %s2 kann eilte für %d3%c4 mit %d5%s6 der Überlauf[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%c4 con %d5%c6 di straripamento[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_YIELD_FOOD]La costruzione di %s1 a %s2 può essere accelerata per %d3%c4 con %d5%c6 in eccesso[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]La %s1 en %s2 puede ser apresurada para %d3%c4 con %d5%c6 de desbordamiento[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
