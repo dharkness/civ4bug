@@ -62,7 +62,7 @@
 		<English>[COLOR_WARNING_TEXT]%s1 will shrink to size %d2 on the next turn[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]%s1 se rétrécir à la taille %d2 sur le prochain tour [COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 schrumpft nächste Runde auf %d2 [COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]%s1 sotrarrà a grandezza %d2 al prossimo turno [COLOR_REVERT]</Italian>
+		<Italian>[COLOR_WARNING_TEXT]%s1 si ridurrà a grandezza %d2 al prossimo turno [COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se reducirá tamaño %d2 el próximo turno [COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -142,7 +142,7 @@
 		<English>[COLOR_WARNING_TEXT]%s1 has shrunk to size %d2[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]%s1 s'est réduit pour classer %d2[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 ist geschrumpft %d2 gewachsen[COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]%s1 è ridotto a grandezza %d2[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_WARNING_TEXT]%s1 si è ridotta a grandezza %d2[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se ha reducido tamaño %d2[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
