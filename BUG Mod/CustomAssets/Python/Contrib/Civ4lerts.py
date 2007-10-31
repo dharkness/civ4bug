@@ -70,15 +70,14 @@ __version__ = "$Revision: 1.2 $"
 class Civ4lerts:
 
 	def __init__(self, eventManager):
-		CityGrowth(eventManager)
+		cityEvent = EndGameTurnCityAlertManager(eventManager)
+		cityEvent.add(CityPendingGrowth(eventManager))
+		cityEvent.add(CityGrowth(eventManager))
+		cityEvent.add(CityHealthiness(eventManager))
+		cityEvent.add(CityHappiness(eventManager))
+		cityEvent.add(CanHurryPopulation(eventManager))
+		cityEvent.add(CanHurryGold(eventManager))
 		
-		cityEvent = EndGameTurnCityEvent(eventManager)
-		cityEvent.add(CityPendingGrowth())
-		cityEvent.add(CityHealthiness())
-		cityEvent.add(CityHappiness())
-		
-		CanHurryPopulation(eventManager)
-		CanHurryGold(eventManager)
 		GoldTrade(eventManager)
 		GoldPerTurnTrade(eventManager)
 
@@ -89,17 +88,22 @@ import BugAlertsOptions
 BugAlerts = BugAlertsOptions.getOptions()
 # BUG - Options - end
 
+
+### Globals
+
 gc = CyGlobalContext()
 localText = CyTranslator()
 
-# Icons don't seem to be displayed anyway
+# Must set alerts to "not immediate" to have icons show up
 HEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
 UNHEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
 
 HAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
 UNHAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
 
-# Displaying alerts on-screen
+
+### Displaying alerts on-screen
+
 def addMessageNoIcon(iPlayer, message):
 	"Displays an on-screen message with no popup icon."
 	addMessage(iPlayer, message, None, 0, 0)
@@ -119,16 +123,47 @@ def addMessage(iPlayer, szString, szIcon, iFlashX, iFlashY):
 							 szString, None, 0, szIcon, ColorTypes(-1),
 							 iFlashX, iFlashY, True, True)
 
-class EndGameTurnCityEvent:
+
+### Abstract and Core Classes
+
+class AbstractStatefulAlert:
 	"""
-	Triggered at the end of each game turn, this event loops over all of the
-	active player's cities, passing each off to a set of alert checkers.
-	
-	All of the alerts are reset when the game is loaded or started, too.
+	Provides a base class and several convenience functions for 
+	implementing an alert that retains state information between turns.
 	"""
 	def __init__(self, eventManager):
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
+
+	def onGameStart(self, argsList):
+		self._init()
+		self._reset()
+
+	def onLoadGame(self, argsList):
+		self._init()
+		self._reset()
+		return 0
+
+	def _init(self):
+		"Initializes globals that could not be done in __init__."
+		pass
+
+	def _reset(self):
+		"Resets the state for this alert."
+		pass
+
+class EndGameTurnCityAlertManager(AbstractStatefulAlert):
+	"""
+	Triggered at the end of each game turn, this event loops over all of the
+	active player's cities, passing each off to a set of alert checkers.
+	
+	This is like a mini event manager that triggers an EndGameTurn event
+	for each city of the active player.
+	
+	All of the alerts are reset when the game is loaded or started.
+	"""
+	def __init__(self, eventManager):
+		AbstractStatefulAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("cityAcquiredAndKept", self.onCityAcquiredAndKept)
 		eventManager.addEventHandler("cityLost", self.onCityLost)
 		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
@@ -136,18 +171,11 @@ class EndGameTurnCityEvent:
 
 	def add(self, alert):
 		self.alerts.append(alert)
-
-	def onGameStart(self, argsList):
-		self._reset()
-
-	def onLoadGame(self, argsList):
-		self._reset()
-		return 0
 	
 	def onCityAcquiredAndKept(self, argsList):
 		iPlayer, city = argsList
 		if (iPlayer == gc.getGame().getActivePlayer()):
-			self._checkCity(city)
+			self._resetCity(city)
 	
 	def onCityLost(self, argsList):
 		'City Lost'
@@ -166,17 +194,22 @@ class EndGameTurnCityEvent:
 			if (city and not city.isNone()):
 				for alert in self.alerts:
 					iCityID = city.getID()
-					alert.check(iTurn, iCityID, city, iPlayer, player)
+					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
+
+	def _init(self):
+		"Initializes each alert."
+		for alert in self.alerts:
+			alert.init()
 
 	def _reset(self):
 		"Resets each alert."
 		for alert in self.alerts:
 			alert.reset()
 
-	def _checkCity(self, city):
+	def _resetCity(self, city):
 		"tells each alert to check the state of the given city -- no alerts are displayed."
 		for alert in self.alerts:
-			alert.checkCity(city)
+			alert.resetCity(city)
 
 	def _discardCity(self, city):
 		"tells each alert to discard the state of the given city."
@@ -188,19 +221,32 @@ class AbstractCityAlert:
 	Tracks cities from turn-to-turn and checks each at the end of every game turn
 	to see if the alert should be displayed.
 	"""
-	def __init__(self):
+	def __init__(self, eventManager):
 		"Performs static initialization that doesn't require game data."
+		pass
+	
+	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+		"Checks the city, updates its tracked state and possibly displays an alert."
+		pass
+	
+	def init(self):
+		"Initializes globals that could not be done in __init__."
 		pass
 	
 	def reset(self):
 		"Clears state kept for each city."
+		self._beforeReset()
+		player = gc.getActivePlayer()
+		for iCity in range(player.getNumCities()):
+			city = player.getCity(iCity)
+			if (city and not city.isNone()):
+				self.resetCity(city)
+	
+	def _beforeReset(self):
+		"Performs clearing of state before looping over cities."
 		pass
 	
-	def check(self, iTurn, iCityID, city, iPlayer, player):
-		"Checks the city, updates its tracked state and possibly displays an alert."
-		pass
-	
-	def checkCity(self, city):
+	def resetCity(self, city):
 		"Checks the city and updates its tracked state."
 		pass
 	
@@ -208,313 +254,363 @@ class AbstractCityAlert:
 		"Discards the tracked state of the city."
 		pass
 
+class AbstractCityTestAlert(AbstractCityAlert):
+	"""
+	Extends the basic city alert by applying a boolean test to each city, tracking the results,
+	and displaying an alert whenever a city switches or will switch state on the following turn.
+	
+	State: set of city IDs that pass the test.
+	"""
+	def __init__(self, eventManager):
+		AbstractCityAlert.__init__(self, eventManager)
+
+	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+		message = None
+		passes = self._passesTest(city)
+		passed = iCityID in self.cities
+		if (passes != passed):
+			# City switched this turn, save new state and display an alert
+			if (passes):
+				self.cities.add(iCityID)
+				if (self._isShowAlert(passes)):
+					message, icon = self._getAlertMessageIcon(city, passes)
+			else:
+				self.cities.discard(iCityID)
+				if (self._isShowAlert(passes)):
+					message, icon = self._getAlertMessageIcon(city, passes)
+		elif (self._isShowPendingAlert(passes)):
+			# See if city will switch next turn
+			willPass = self._willPassTest(city)
+			if (passed != willPass):
+				message, icon = self._getPendingAlertMessageIcon(city, willPass)
+		if (message):
+			addMessageAtCity(iPlayer, message, icon, city)
+	
+	def _passedTest(self, iCityID):
+		"Returns true if the city passed the test last turn."
+		return iCityID in self.cities
+
+	def _passesTest(self, city):
+		"Returns true if the city passes the test."
+		return False
+
+	def _willPassTest(self, city):
+		"Returns true if the city will pass the test next turn based on current conditions."
+		return False
+
+	def _beforeReset(self):
+		self.cities = set()
+	
+	def resetCity(self, city):
+		if (self._passesTest(city)):
+			self.cities.add(city.getID())
+	
+	def discardCity(self, city):
+		self.cities.discard(city.getID())
+	
+	def _isShowAlert(self, passes):
+		"Returns true if the alert is enabled."
+		return False
+	
+	def _getAlertMessageIcon(self, city, passes):
+		"Returns a tuple of the message and icon to use for the alert."
+		return (None, None)
+	
+	def _isShowPendingAlert(self, passes):
+		"Returns true if the alert is enabled."
+		return False
+
+	def _getPendingAlertMessageIcon(self, city, passes):
+		"Returns a tuple of the message and icon to use for the pending alert."
+		return (None, None)
+
+
+### Population
 
 class CityPendingGrowth(AbstractCityAlert):
 	"""
-	Displays an alert when a city's population will grow next turn.
+	Displays an alert when a city's population will change next turn.
 	State: None.
 	"""
-	def __init__(self):
-		AbstractCityAlert.__init__(self)
+	def __init__(self, eventManager):
+		AbstractCityAlert.__init__(self, eventManager)
 	
-	def check(self, iTurn, iCityID, city, iPlayer, player):
-		if (not BugAlerts.isShowCityPendingGrowthAlert()):
-			return
-		if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
-			message = localText.getText(
-					"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_GROWTH",
-					(city.getName(), city.getPopulation() + 1))
-			icon = "Art/Interface/Symbols/Food/food05.dds"
-			addMessageAtCity(iPlayer, message, icon, city)
+	def init(self):
+		CyInterface().addImmediateMessage("5 / 4 = %d" % (5//-4), "")
+		CyInterface().addImmediateMessage("4 / 4 = %d" % (4//-4), "")
+		CyInterface().addImmediateMessage("3 / 4 = %d" % (3//-4), "")
+		CyInterface().addImmediateMessage("2 / 4 = %d" % (2//-4), "")
+		CyInterface().addImmediateMessage("1 / 4 = %d" % (1//-4), "")
+		CyInterface().addImmediateMessage("0 / 4 = %d" % (0//-4), "")
+	
+	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+		if (BugAlerts.isShowCityPendingGrowthAlert()):
+			iFoodRate = city.foodDifference(True)
+			if (iFoodRate > 0 and city.getFoodTurnsLeft() == 1 
+			and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+				message = localText.getText(
+						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_GROWTH",
+						(city.getName(), city.getPopulation() + 1))
+				icon = "Art/Interface/Symbols/Food/food05.dds"
+				addMessageAtCity(iPlayer, message, icon, city)
+			elif (iFoodRate < 0 and city.getFood() // -iFoodRate == 0):
+				message = localText.getText(
+						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_SHRINKAGE",
+						(city.getName(), city.getPopulation() - 1))
+				icon = "Art/Interface/Symbols/Food/food05.dds"
+				addMessageAtCity(iPlayer, message, icon, city)
 
-class CityGrowth:
+class CityGrowth(AbstractCityAlert):
 	"""
-	Displays an alert when a city's population grows.
+	Displays an alert when a city's population changes.
+	State: map of populations by city ID.
 	"""
-	def __init__(self, eventManager): 
-		eventManager.addEventHandler("cityGrowth", self.onCityGrowth)
+	def __init__(self, eventManager):
+		AbstractCityAlert.__init__(self, eventManager)
+	
+	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+		if (iCityID not in self.populations):
+			self.resetCity(city)
+		else:
+			iPop = city.getPopulation()
+			iOldPop = self.populations[iCityID]
+			if (iPop > iOldPop):
+				self.populations[iCityID] = iPop
+				if (BugAlerts.isShowCityGrowthAlert()):
+					message = localText.getText(
+							"TXT_KEY_CIV4LERTS_ON_CITY_GROWTH",
+							(city.getName(), iPop))
+					icon = "Art/Interface/Symbols/Food/food05.dds"
+					addMessageAtCity(iPlayer, message, icon, city)
+			elif (iPop < iOldPop):
+				self.populations[iCityID] = iPop
+				if (BugAlerts.isShowCityGrowthAlert()):
+					message = localText.getText(
+							"TXT_KEY_CIV4LERTS_ON_CITY_SHRINKAGE",
+							(city.getName(), iPop))
+					icon = "Art/Interface/Symbols/Food/food05.dds"
+					addMessageAtCity(iPlayer, message, icon, city)
 
-	def onCityGrowth(self, argsList):
-		city, iPlayer = argsList
-		if (iPlayer == gc.getGame().getActivePlayer() and BugAlerts.isShowCityGrowthAlert()):
-			message = localText.getText(
-					"TXT_KEY_CIV4LERTS_ON_CITY_GROWTH",
-					(city.getName(), city.getPopulation()))
-			icon = "Art/Interface/Symbols/Food/food05.dds"
-			addMessageAtCity(iPlayer, message, icon, city)
+	def _beforeReset(self):
+		self.populations = dict()
+	
+	def resetCity(self, city):
+		self.populations[city.getID()] = city.getPopulation()
+	
+	def discardCity(self, city):
+		self.populations.discard(city.getID())
 
 
-class CityHappiness(AbstractCityAlert):
+### Happiness and Healthiness
+
+class CityHappiness(AbstractCityTestAlert):
 	"""
 	Displays an event when a city goes from happy to angry or vice versa.
-	State: set of unhappy city IDs.
+	
+	Test: True if the city is unhappy.
 	"""
-	def __init__(self):
-		AbstractCityAlert.__init__(self)
-
-	def check(self, iTurn, iCityID, city, iPlayer, player):
-		angry = city.angryPopulation(0) > 0
-		wasAngry = iCityID in self.angryCities
-		if (angry != wasAngry):
-			# City switched this turn
-			if (angry):
-				self.angryCities.add(iCityID)
-				if (BugAlerts.isShowCityHappinessAlert()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_CITY_UNHAPPY",
-							(city.getName(), ))
-					addMessageAtCity(iPlayer, message, UNHAPPY_ICON, city)
-			else:
-				self.angryCities.discard(iCityID)
-				if (BugAlerts.isShowCityHappinessAlert()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_CITY_HAPPY",
-							(city.getName(), ))
-					addMessageAtCity(iPlayer, message, HAPPY_ICON, city)
-		elif (BugAlerts.isShowCityPendingHappinessAlert()):
-			# See if city will switch next turn
-			if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() 
-			and not city.AI_isEmphasize(5)):
-				iExtra = 1
-			else:
-				iExtra = 0
-			iHappy = city.happyLevel()
-			iUnhappy = city.unhappyLevel(iExtra)
-			if (iUnhappy > 0 and city.getHurryAngerTimer() > 0 
-			and city.getHurryAngerTimer() % city.flatHurryAngerLength() == 0):
-				iUnhappy -= 1
-			if (iUnhappy > 0 and city.getConscriptAngerTimer()
-			and city.getConscriptAngerTimer() % city.flatConscriptAngerLength() == 0):
-				iUnhappy -= 1
-			if (iUnhappy > 0 and city.getDefyResolutionAngerTimer() > 0
-			and city.getDefyResolutionAngerTimer() % city.flatDefyResolutionAngerLength() == 0):
-				iUnhappy -= 1
-			if (iUnhappy > 0 and city.getEspionageHappinessCounter() > 0):
-				iUnhappy -= 1
-			if (iHappy > 0 and city.getHappinessTimer() == 1):
-				iHappy -= gc.getDefineINT("TEMP_HAPPY")
-			if (iHappy < 0):
-				iHappy = 0
-			if (iUnhappy < 0):
-				iUnhappy = 0
-			if (not wasAngry and iHappy < iUnhappy):
-				message = localText.getText(
-						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY",
-						(city.getName(), ))
-				addMessageAtCity(iPlayer, message, UNHAPPY_ICON, city)
-			elif (wasAngry and iHappy >= iUnhappy):
-				message = localText.getText(
-						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY",
-						(city.getName(), ))
-				addMessageAtCity(iPlayer, message, HAPPY_ICON, city)
-
-	def reset(self):
-		self.angryCities = set()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (not city.isNone() and city.angryPopulation(0) > 0):
-				self.angryCities.add(city.getID())
+	def __init__(self, eventManager):
+		AbstractCityTestAlert.__init__(self, eventManager)
 	
-	def checkCity(self, city):
-		if (city.angryPopulation(0) > 0):
-			self.angryCities.add(city.getID())
+	def init(self):
+		AbstractCityTestAlert.init(self)
+		self.kiTempHappy = gc.getDefineINT("TEMP_HAPPY")
 	
-	def discardCity(self, city):
-		self.angryCities.discard(city.getID())
+	def _passesTest(self, city):
+		return city.angryPopulation(0) > 0
 
-class CityHealthiness(AbstractCityAlert):
+	def _willPassTest(self, city):
+		if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+			iExtra = 1
+		elif (city.getFoodTurnsLeft() == -1):
+			iExtra = -1
+		else:
+			iExtra = 0
+		iHappy = city.happyLevel()
+		iUnhappy = city.unhappyLevel(iExtra)
+		if (iUnhappy > 0 and city.getHurryAngerTimer() > 0 
+		and city.getHurryAngerTimer() % city.flatHurryAngerLength() == 0):
+			iUnhappy -= 1
+		if (iUnhappy > 0 and city.getConscriptAngerTimer()
+		and city.getConscriptAngerTimer() % city.flatConscriptAngerLength() == 0):
+			iUnhappy -= 1
+		if (iUnhappy > 0 and city.getDefyResolutionAngerTimer() > 0
+		and city.getDefyResolutionAngerTimer() % city.flatDefyResolutionAngerLength() == 0):
+			iUnhappy -= 1
+		if (iUnhappy > 0 and city.getEspionageHappinessCounter() > 0):
+			iUnhappy -= 1
+		if (iHappy > 0 and city.getHappinessTimer() == 1):
+			iHappy -= self.kiTempHappy
+		if (iHappy < 0):
+			iHappy = 0
+		if (iUnhappy < 0):
+			iUnhappy = 0
+		return iHappy < iUnhappy
+	
+	def _isShowAlert(self, passes):
+		return BugAlerts.isShowCityHappinessAlert()
+	
+	def _getAlertMessageIcon(self, city, passes):
+		if (passes):
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_UNHAPPY", (city.getName(), )),
+					UNHAPPY_ICON)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_HAPPY", (city.getName(), )),
+					HAPPY_ICON)
+	
+	def _isShowPendingAlert(self, passes):
+		return BugAlerts.isShowCityPendingHappinessAlert()
+
+	def _getPendingAlertMessageIcon(self, city, passes):
+		if (passes):
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY", (city.getName(), )),
+					UNHAPPY_ICON)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY", (city.getName(), )),
+					HAPPY_ICON)
+
+class CityHealthiness(AbstractCityTestAlert):
 	"""
 	Displays an event when a city goes from healthy to sick or vice versa.
-	State: set of unhealthy city IDs.
+	
+	Test: True if the city is unhealthy.
 	"""
-	def __init__(self):
-		AbstractCityAlert.__init__(self)
-
-	def check(self, iTurn, iCityID, city, iPlayer, player):
-		sick = city.healthRate(False, 0) < 0
-		wasSick = iCityID in self.sickCities
-		if (sick != wasSick):
-			if (sick):
-				self.sickCities.add(iCityID)
-				if (BugAlerts.isShowCityHealthinessAlert()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY",
-							(city.getName(), ))
-					addMessageAtCity(iPlayer, message, UNHEALTHY_ICON, city)
-			else:
-				self.sickCities.discard(iCityID)
-				if (BugAlerts.isShowCityHealthinessAlert()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_CITY_HEALTHY",
-							(city.getName(), ))
-					addMessageAtCity(iPlayer, message, HEALTHY_ICON, city)
-		elif (BugAlerts.isShowCityPendingHealthinessAlert()):
-			# See if city will switch next turn
-			if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() 
-			and not city.AI_isEmphasize(5)):
-				iExtra = 1
-			else:
-				iExtra = 0
-			# badHealth() doesn't take iExtra!
-			iHealth = city.healthRate(False, iExtra)
-			if (city.getEspionageHealthCounter() > 0):
-				iHealth -= 1
-			if (not wasSick and iHealth < 0):
-				message = localText.getText(
-						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHEALTHY",
-						(city.getName(), ))
-				addMessageAtCity(iPlayer, message, UNHEALTHY_ICON, city)
-			elif (wasSick and iHealth >= 0):
-				message = localText.getText(
-						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY",
-						(city.getName(), ))
-				addMessageAtCity(iPlayer, message, HEALTHY_ICON, city)
-
-	def reset(self):
-		self.sickCities = set()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (not city.isNone() and city.healthRate(False, 0) < 0):
-				self.sickCities.add(city.getID())
-	
-	def checkCity(self, city):
-		if (city.healthRate(False, 0) < 0):
-			self.sickCities.add(city.getID())
-	
-	def discardCity(self, city):
-		self.sickCities.discard(city.getID())
-
-
-class AbstractStatefulAlert:
-
-#   Provides a base class and several convenience functions for 
-#   implementing an alert that retains state information between turns.
-
 	def __init__(self, eventManager):
-		eventManager.addEventHandler("GameStart", self.onGameStart)
-		eventManager.addEventHandler("OnLoad", self.onLoadGame)
+		AbstractCityTestAlert.__init__(self, eventManager)
+	
+	def _passesTest(self, city):
+		return city.healthRate(False, 0) < 0
 
-	def onGameStart(self, argsList):
-#	   Called at the start of the game
-		self._reset()
+	def _willPassTest(self, city):
+		if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+			iExtra = 1
+		elif (city.getFoodTurnsLeft() == -1):
+			iExtra = -1
+		else:
+			iExtra = 0
+		# badHealth() doesn't take iExtra!
+		iHealthRate = city.healthRate(False, iExtra)
+		if (city.getEspionageHealthCounter() > 0):
+			iHealthRate -= 1
+		return iHealthRate < 0
+	
+	def _isShowAlert(self, passes):
+		return BugAlerts.isShowCityHealthinessAlert()
+	
+	def _getAlertMessageIcon(self, city, passes):
+		if (passes):
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY", (city.getName(), )),
+					UNHEALTHY_ICON)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_HEALTHY", (city.getName(), )),
+					HEALTHY_ICON)
+	
+	def _isShowPendingAlert(self, passes):
+		return BugAlerts.isShowCityPendingHealthinessAlert()
 
-	def onLoadGame(self, argsList):
-		self._reset()
-		return 0
+	def _getPendingAlertMessageIcon(self, city, passes):
+		if (passes):
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHEALTHY", (city.getName(), )),
+					UNHEALTHY_ICON)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY", (city.getName(), )),
+					HEALTHY_ICON)
 
-	def _reset(self):
-#	   Override this method to reset any turn state information.
-		pass
 
-class AbstractCanHurry(AbstractStatefulAlert):
-#   Displays an alert when a city can hurry the current production item.
+### Hurrying Production
 
-	def __init__(self, eventManager, hurryType):
-		AbstractStatefulAlert.__init__(self, eventManager)
-		eventManager.addEventHandler("cityDoTurn", self.onCityDoTurn)
+class AbstractCanHurry(AbstractCityTestAlert):
+	"""
+	Displays an alert when a city can hurry the current production item.
+	
+	Test: True if the city can hurry.
+	"""
+	def __init__(self, eventManager):
+		AbstractCityTestAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("cityBuildingUnit", self.onCityBuildingUnit)
 		eventManager.addEventHandler("cityBuildingBuilding", self.onCityBuildingBuilding)
-		self.hurryType = hurryType
+	
+	def init(self, szHurryType):
+		AbstractCityTestAlert.init(self)
+		self.keHurryType = gc.getInfoTypeForString(szHurryType)
 
-	def onCityDoTurn(self, argsList):
-		city, iPlayer = argsList
-		if (iPlayer != gc.getGame().getActivePlayer()):
-			return
-		self.checkCity(city, iPlayer)
-		
-	def checkCity(self, city, iPlayer):
-		iCityID = city.getID()
-		eHurryType = gc.getInfoTypeForString(self.hurryType)
-		if (city.canHurry(eHurryType, False) and not self._canHurryCity(iCityID)):
-			self._addCity(iCityID)
+	def onCityBuildingUnit(self, argsList):
+		city, iUnit = argsList
+		self._onItemStarted(city)
+
+	def onCityBuildingBuilding(self, argsList):
+		city, iBuilding = argsList
+		self._onItemStarted(city)
+
+	def _onItemStarted(self, city):
+		if (city.getOwner() == gc.getGame().getActivePlayer()):
+			self.discardCity(city)
+	
+	def _passesTest(self, city):
+		return city.canHurry(self.keHurryType, False)
+	
+	def _getAlertMessageIcon(self, city, passes):
+		if (passes):
+			info = None
 			if (city.isProductionBuilding()):
 				iType = city.getProductionBuilding()
 				if (iType >= 0):
 					info = gc.getBuildingInfo(iType)
-					self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
 			elif (city.isProductionUnit()):
 				iType = city.getProductionUnit()
 				if (iType >= 0):
 					info = gc.getUnitInfo(iType)
-					self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
 			elif (city.isProductionProject()):
 				# Can't hurry projects, but just in case
 				iType = city.getProductionProject()
 				if (iType >= 0):
 					info = gc.getProjectInfo(iType)
-					self.onCityCanHurry(city, iPlayer, info.getDescription(), eHurryType)
-
-	def onCityCanHurry(self, city, iPlayer, item, eHurryType):
-		"Override to display the alert."
-		pass
-
-	def onCityBuildingUnit(self, argsList):
-		city, iUnit = argsList
-		self.onItemStarted(city)
-
-	def onCityBuildingBuilding(self, argsList):
-		city, iBuilding = argsList
-		self.onItemStarted(city)
-
-	def onItemStarted(self, city):
-		iPlayer = city.getOwner()
-		if (iPlayer != gc.getGame().getActivePlayer()):
-			return
-		self._removeCity(city.getID())
-
-	def _reset(self, *args, **kwargs):
-		self.canHurryCities = set()
-		eHurryType = gc.getInfoTypeForString(self.hurryType)
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (city and not city.isNone()):
-				if (city.canHurry(eHurryType, False)):
-					self._addCity(city.getID())
-
-	def _canHurryCity(self, iCityID):
-		return iCityID in self.canHurryCities
-
-	def _addCity(self, iCityID):
-		self.canHurryCities.add(iCityID)
-
-	def _removeCity(self, iCityID):
-		self.canHurryCities.discard(iCityID)
+			if (info):
+				return (self._getAlertMessage(city, info), info.getButton())
+		return (None, None)
 
 class CanHurryPopulation(AbstractCanHurry):
 #   Displays an alert when a city can hurry using population.
 
 	def __init__(self, eventManager): 
-		AbstractCanHurry.__init__(self, eventManager, "HURRY_POPULATION")
+		AbstractCanHurry.__init__(self, eventManager)
+	
+	def init(self):
+		AbstractCanHurry.init(self, "HURRY_POPULATION")
+		self.kszPopIcon = u"%c" % gc.getGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR)
+		self.kszHammerIcon = u"%c" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
 
-	def onCityCanHurry(self, city, iPlayer, item, eHurryType):
-		if (BugAlerts.isShowCityCanHurryPopAlert()):
-			iPop = city.hurryPopulation(eHurryType)
-			iOverflow = city.hurryProduction(eHurryType) - (city.getProductionNeeded() - city.getProduction())
-			cPop = u"%c" % gc.getGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR)
-			cHammer = u"%c" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
-			message = localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
-										(city.getName(), item, iPop, cPop, iOverflow, cHammer))
-			icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
-			addMessageAtCity(iPlayer, message, icon, city)
+	def _isShowAlert(self, passes):
+		return passes and BugAlerts.isShowCityCanHurryPopAlert()
+	
+	def _getAlertMessage(self, city, info):
+		iPop = city.hurryPopulation(self.keHurryType)
+		iOverflow = city.hurryProduction(self.keHurryType) - (city.getProductionNeeded() - city.getProduction())
+		return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
+								 (city.getName(), info.getDescription(), 
+								  iPop, self.kszPopIcon, iOverflow, self.kszHammerIcon))
 
 class CanHurryGold(AbstractCanHurry):
 #   Displays an alert when a city can hurry using gold.
 
 	def __init__(self, eventManager): 
-		AbstractCanHurry.__init__(self, eventManager, "HURRY_GOLD")
+		AbstractCanHurry.__init__(self, eventManager)
 
-	def onCityCanHurry(self, city, iPlayer, item, eHurryType):
-		if (BugAlerts.isShowCityCanHurryGoldAlert()):
-			iGold = city.hurryGold(eHurryType)
-			cGold = u"%c" % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar()
-			message = localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD", 
-										(city.getName(), item, iGold, cGold))
-			icon = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
-			addMessageAtCity(iPlayer, message, icon, city)
+	def init(self):
+		AbstractCanHurry.init(self, "HURRY_GOLD")
+		self.kszGoldIcon = u"%c" % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar()
 
+	def _isShowAlert(self, passes):
+		return passes and BugAlerts.isShowCityCanHurryGoldAlert()
+	
+	def _getAlertMessage(self, city, info):
+		iGold = city.hurryGold(self.keHurryType)
+		return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD", 
+								 (city.getName(), info.getDescription(), 
+								  iGold, self.kszGoldIcon))
+
+
+### Trading Gold
 
 class GoldTrade(AbstractStatefulAlert):
 #   Displays an alert when a civilization has a significant increase
@@ -522,9 +618,9 @@ class GoldTrade(AbstractStatefulAlert):
 
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
-		eventManager.addEventHandler("BeginGameTurn", self.onBeginGameTurn)
+		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
 
-	def onBeginGameTurn(self, argsList):
+	def onEndGameTurn(self, argsList):
 		if (not BugAlerts.isShowGoldTradeAlert()):
 			return
 
@@ -571,9 +667,9 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
-		eventManager.addEventHandler("BeginGameTurn", self.onBeginGameTurn)
+		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
 
-	def onBeginGameTurn(self, argsList):
+	def onEndGameTurn(self, argsList):
 		if (not BugAlerts.isShowGoldPerTurnTradeAlert()):
 			return
 
