@@ -1235,31 +1235,25 @@ class CvCustomizableDomesticAdvisor:
 
 	def calculateWhipPopulation (self, city, szKey, arg):
 		
-		szReturn = u"-"
-
 		if (city.canHurry(self.HURRY_TYPE_POP, False)):
-			szReturn = unicode(city.hurryPopulation(self.HURRY_TYPE_POP))
-
-		return szReturn
+			return unicode(city.hurryPopulation(self.HURRY_TYPE_POP))
+		else:
+			return self.objectNotPossible
 
 	def calculateWhipOverflow (self, city, szKey, arg):
 		
-		szReturn = u"-"
-
 		if (city.canHurry(self.HURRY_TYPE_POP, False)):
-			szReturn = unicode(city.hurryProduction(self.HURRY_TYPE_POP) - 
-							   (city.getProductionNeeded() - city.getProduction()))
-
-		return szReturn
+			return unicode(city.hurryProduction(self.HURRY_TYPE_POP) - 
+						   (city.getProductionNeeded() - city.getProduction()))
+		else:
+			return self.objectNotPossible
 
 	def calculateHurryGoldCost (self, city, szKey, arg):
 		
-		szReturn = u"-"
-
 		if (city.canHurry(self.HURRY_TYPE_GOLD, False)):
-			szReturn = unicode(city.hurryGold(self.HURRY_TYPE_GOLD))
-
-		return szReturn
+			return unicode(city.hurryGold(self.HURRY_TYPE_GOLD))
+		else:
+			return self.objectNotPossible
 
 	def calculatePotentialConscriptUnit (self, city, szKey, arg):
 		
@@ -1384,7 +1378,10 @@ class CvCustomizableDomesticAdvisor:
 
 	def canHurry (self, city, szKey, arg):
 
-		return city.canHurry(arg, False)
+		if city.canHurry(arg, False):
+			return self.objectHave
+		else:
+			return self.objectNotPossible
 
 	def calculateValue (self, city, szKey, arg):
 
