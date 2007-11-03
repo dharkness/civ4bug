@@ -305,6 +305,7 @@ class CvCustomizableDomesticAdvisor:
 				("HURRY_GOLD",				38,		"int",	None,					None,					0,									self.calculateHurryGoldCost,			None,						"u\"H\" + self.goldIcon"),
 				("HURRY_POP",				38,		"int",	None,					None,					0,									self.calculateWhipPopulation,			None,						"u\"H\" + self.angryIcon"),
 				("HURRY_POP_EXTRA",			38,		"int",	None,					None,					0,									self.calculateWhipOverflow,				None,						"u\"H\" + self.hammerIcon"),
+				("LIBERATE",				35,		"int",	None,					None,					0,									self.canLiberate,						None,						"self.fistIcon"),
 				("LOCATION_X",				50,		"int",	CyCity.getX,			None,					0,									None,									None,						"u\"X\""),
 				("LOCATION_Y",				50,		"int",	CyCity.getY,			None,					0,									None,									None,						"u\"Y\""),
 				("MAINTENANCE",				30,		"int",	CyCity.getMaintenance,	None,					0,									None,									None,						"u\"%c\" % CyGame().getSymbolID(FontSymbols.BAD_GOLD_CHAR)"),
@@ -442,6 +443,7 @@ class CvCustomizableDomesticAdvisor:
 		self.cultureIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar())
 		self.defenseIcon = u"%c" % CyGame().getSymbolID(FontSymbols.DEFENSE_CHAR)
 		self.espionageIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+		self.fistIcon = u"%c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
 		self.foodIcon = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar())
 		self.goldIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
 		self.figureheadIcon = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
@@ -1379,6 +1381,13 @@ class CvCustomizableDomesticAdvisor:
 	def canHurry (self, city, szKey, arg):
 
 		if city.canHurry(arg, False):
+			return self.objectHave
+		else:
+			return self.objectNotPossible
+
+	def canLiberate (self, city, szKey, arg):
+
+		if city.getLiberationPlayer(False) != -1:
 			return self.objectHave
 		else:
 			return self.objectNotPossible
