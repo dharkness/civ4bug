@@ -907,7 +907,7 @@ class CvCustomizableDomesticAdvisor:
 		# Get the current city
 		city = self.getCurrentCity()
 		if (city):
-
+			
 			# Get values which we will need for each calculation
 			nPopulation = city.getPopulation()
 			nFreeSpecial = city.totalFreeSpecialists()
@@ -2103,6 +2103,10 @@ class CvCustomizableDomesticAdvisor:
 					popupInfo.setText(u"showDomesticAdvisor")
 					popupInfo.addPopup(inputClass.getData1())
 				else:
+					city = self.getCurrentCity()
+					if (city):
+						CyInterface().lookAtCityOffset(city.getID())
+					
 					if self.PAGES[self.currentPageNum]["showSpecControls"]:
 						self.showSpecialists()
 					
