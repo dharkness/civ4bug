@@ -31,15 +31,15 @@ class BugAlertsOptions(OptionsFacade):
 		# City
 		self.addOption(Option("Alert_CityPendingGrowth",
 							  "CIV4LERTS", "City Pending Growth", False,
-							  "Pending Growth",
-							  "When checked, displays an alert when a city will grow in population next turn."))
+							  "Pending",
+							  "When checked, displays an alert when a city's population will grow or shrink next turn."))
 		self.addOption(Option("Alert_CityPendingHappiness",
 							  "CIV4LERTS", "City Pending Happiness", True,
-							  "Pending Happiness",
+							  "Pending",
 							  "When checked, displays an alert when a city will become happy or unhappy next turn."))
 		self.addOption(Option("Alert_CityPendingHealthiness",
 							  "CIV4LERTS", "City Pending Healthiness", True,
-							  "Pending Healthiness",
+							  "Pending",
 							  "When checked, displays an alert when a city will become healthy or unhealthy next turn."))
 		self.addOption(Option("Alert_CityPendingBorderExpansion",
 							  "CIV4LERTS", "City Pending Border Expansion", True,
@@ -48,7 +48,7 @@ class BugAlertsOptions(OptionsFacade):
 		self.addOption(Option("Alert_CityGrowth",
 							  "CIV4LERTS", "City Growth", False,
 							  "Growth",
-							  "When checked, displays an alert when a city has grown in population."))
+							  "When checked, displays an alert when a city's population has grown or shrunk."))
 		self.addOption(Option("Alert_CityHappiness",
 							  "CIV4LERTS", "City Happiness", True,
 							  "Happiness",

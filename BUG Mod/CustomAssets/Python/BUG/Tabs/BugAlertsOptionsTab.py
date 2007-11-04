@@ -26,23 +26,30 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachHSeparator(column, column + "Sep")
 		
 		# Civ4lerts
+		self.addCheckbox(screen, column, "Alert_Civ4lerts")
 		left, center, right = self.addThreeColumnLayout(screen, column, "Civ4lerts", True)
-		self.addCheckbox(screen, left, "Alert_Civ4lerts")
-		screen.attachLabel(center, "Alert_SpaceLabel1", " ")
-		screen.setControlFlag("Alert_SpaceLabel1", "CF_LABEL_DEFAULTSIZE")
-		screen.attachLabel(right, "Alert_SpaceLabel2", " ")
-		screen.setControlFlag("Alert_SpaceLabel2", "CF_LABEL_DEFAULTSIZE")
+#		screen.attachLabel(center, "Alert_SpaceLabel1", " ")
+#		screen.setControlFlag("Alert_SpaceLabel1", "CF_LABEL_DEFAULTSIZE")
+#		screen.attachLabel(right, "Alert_SpaceLabel2", " ")
+#		screen.setControlFlag("Alert_SpaceLabel2", "CF_LABEL_DEFAULTSIZE")
 		
 		# Cities
 		screen.attachLabel(left, "Alert_CityLabel", "Cities:")
 		screen.setControlFlag("Alert_CityLabel", "CF_LABEL_DEFAULTSIZE")
-		self.addCheckbox(screen, left, "Alert_CityPendingGrowth")
-		self.addCheckbox(screen, left, "Alert_CityPendingHealthiness")
-		self.addCheckbox(screen, left, "Alert_CityPendingHappiness")
+		comboBox = "Alert_ComboBoxGrowth"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Alert_CityPendingGrowth")
+		self.addCheckbox(screen, comboBox, "Alert_CityGrowth")
+		comboBox = "Alert_ComboBoxHealthiness"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Alert_CityPendingHealthiness")
+		self.addCheckbox(screen, comboBox, "Alert_CityHealthiness")
+		comboBox = "Alert_ComboBoxHappiness"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Alert_CityPendingHappiness")
+		self.addCheckbox(screen, comboBox, "Alert_CityHappiness")
+		
 		self.addCheckbox(screen, left, "Alert_CityPendingBorderExpansion")
-		self.addCheckbox(screen, left, "Alert_CityGrowth")
-		self.addCheckbox(screen, left, "Alert_CityHealthiness")
-		self.addCheckbox(screen, left, "Alert_CityHappiness")
 		self.addCheckbox(screen, left, "Alert_CityCanHurryPop")
 		self.addCheckbox(screen, left, "Alert_CityCanHurryGold")
 		
