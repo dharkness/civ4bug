@@ -256,9 +256,15 @@ class Scoreboard:
 				for p in range( self.count ):
 					if (self.has[p][c] and self.values[p][c]):
 						name = "ScoreText%d-%d" %( p, c )
+						if (self.values[p][ALIVE]):
+							widget = WidgetTypes.WIDGET_CONTACT_CIV
+							player = self.values[p][PLAYER]
+						else:
+							widget = WidgetTypes.WIDGET_GENERAL
+							player = -1
 						screen.setText( name, "Background", value, CvUtil.FONT_RIGHT_JUSTIFY, 
 										x, y - p * height, Z_DEPTH, 
-										FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+										FontTypes.SMALL_FONT, widget, player, -1 )
 						screen.show( name )
 				x -= width
 				totalWidth += width
@@ -279,23 +285,22 @@ class Scoreboard:
 						value = self.values[p][c]
 						align = CvUtil.FONT_RIGHT_JUSTIFY
 						adjustX = 0
-						widget = WidgetTypes.WIDGET_GENERAL
-						player = -1
 						if (c == NAME or c == SCORE):
-							if (self.values[p][ALIVE]):
-								widget = WidgetTypes.WIDGET_CONTACT_CIV
-								player = self.values[p][PLAYER]
 							if (c == NAME):
 								name = "ScoreText%d" % p
 								if (BugOpt.isLeftAlignName()):
 									align = CvUtil.FONT_LEFT_JUSTIFY
 									adjustX = width
+						if (self.values[p][ALIVE]):
+							widget = WidgetTypes.WIDGET_CONTACT_CIV
+							player = self.values[p][PLAYER]
+						else:
+							widget = WidgetTypes.WIDGET_GENERAL
+							player = -1
 						screen.setText( name, "Background", value, align, 
 										x - adjustX, y - p * height, Z_DEPTH, 
 										FontTypes.SMALL_FONT, widget, player, -1 )
 						screen.show( name )
-						if (c != NAME and c != SCORE):
-							screen.setHitTest( name, HitTestTypes.HITTEST_NOHIT )
 				x -= width
 				totalWidth += width
 			
