@@ -549,6 +549,9 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
 			szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
 			szText = szSmilie + " " + szText
+		
+		if gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isAtWar(gc.getPlayer(nTarget).getTeam()):
+			szText += u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
 
 		return szText
 
