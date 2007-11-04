@@ -115,6 +115,10 @@ class BugOptionsTab:
 		
 		return leftColumn, rightColumn
 
+	def addThreeColumnLayout (self, screen, parent, panel=None, separator=False):
+		"Creates an HBox containing three VBoxes for lists of controls"
+		return self.addMultiColumnLayout(screen, parent, 3, panel, separator)
+
 	def addMultiColumnLayout (self, screen, parent, count=2, panel=None, separator=False):
 		"Creates an HBox containing multiple VBoxes for lists of controls"
 		if (count <= 2):
@@ -134,7 +138,7 @@ class BugOptionsTab:
 				sep = panel + "Sep%d" % i
 				screen.attachVSeparator(hbox, sep)
 				#screen.setLayoutFlag(sep, "LAYOUT_LEFT")
-				first = False
+			first = False
 			
 			column = panel + "Col%d" % i
 			screen.attachVBox(hbox, column)
@@ -143,10 +147,6 @@ class BugOptionsTab:
 			columns.append(column)
 		
 		return columns
-
-	def addThreeColumnLayout (self, screen, parent, panel=None, separator=False):
-		"Creates an HBox containing three VBoxes for lists of controls"
-		return self.addMultiColumnLayout(screen, parent, 3, panel, separator)
 
 
 	def addCheckbox (self, screen, panel, name):
