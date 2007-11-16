@@ -115,7 +115,11 @@ else:
 	
 	def _getInstallDir():
 		subkey = r"Software\Firaxis Games\Sid Meier's Civilization 4 - Beyond the Sword"
-		return __getRegValue(_winreg.HKEY_LOCAL_MACHINE, subkey, "INSTALLDIR")
+		dir = __getRegValue(_winreg.HKEY_LOCAL_MACHINE, subkey, "INSTALLDIR")
+		if (not dir):
+			subkey = r"Software\Firaxis Games\Sid Meier's Civilization 4 Complete"
+			dir = __getRegValue(_winreg.HKEY_LOCAL_MACHINE, subkey, "INSTALLDIR")
+		return dir
 
 
 activeModName = None
