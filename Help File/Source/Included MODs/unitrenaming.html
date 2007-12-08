@@ -3,9 +3,597 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Unit Renaming</title>
+<title>Unit Naming</title>
+<style type="text/css">
+<!--
+.style2 {	font-size: 16pt;
+	color: #0000FF;
+	font-weight: bold;
+	font-style: italic;
+}
+.style7 {font-size: 12pt}
+.style8 {
+	font-size: 14pt;
+	font-weight: bold;
+	color: #0000FF;
+}
+.style10 {font-size: 12pt; color: #0000FF; }
+.style11 {color: #0000FF}
+-->
+</style>
 </head>
 
 <body>
+<p><span class="style2">Unit Naming</span><span class="style2"> <span class="style7">by ruff_hi </span></span></p>
+<p>
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+  <HTML>
+  <!--  		@page { size: 8.5in 11in; margin: 0.79in }  		P { margin-bottom: 0.17in; line-height: 180%; text-align: justify }  		P.table-text { margin-top: 0.08in; margin-bottom: 0.08in; line-height: 120%; text-align: left }  		P.table-title { margin-top: 0.08in; margin-bottom: 0.08in; font-size: 14pt; font-weight: bold; line-height: 120%; text-align: center }  	-->
+  <BODY DIR="LTR">
+</p>
+<OL TYPE="I"><LI><p ALIGN="LEFT" class="style8">Overview</p>
+</OL>
+<p>This document explains the unit naming convention used in the BUG  Mod.  It documents what is <em>meant</em> to happen, not necessarily  what actually happens.  If you find a situation where this document  differs from the unit name actually generated within the game, then  please report it as a bug.</p>
+<OL TYPE="I" START="2">
+  <LI>
+    <p ALIGN="LEFT" class="style8"><strong>Unit  	Naming Convention</strong></p>
+</OL>
+<p>The following is the code that controls the name that your unit  will have.</p>
+<UL>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^civ4^</span>  	- no naming convention, uses standard civ4</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^rd^</span>  	- random name</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^rc^</span>  	- random civ related name</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^ct^</span>  	- City</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cv^</span>  	- Civilization</p>
+  <LI>
+    <p ALIGN="LEFT"><SPAN class="style10" LANG="fr-FR">^ut^</SPAN><SPAN class="style10" LANG="fr-FR"></SPAN><SPAN LANG="fr-FR">  	- unit (eg Archer)</SPAN></p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cb^ </span>- combat type (Melee)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^dm^</span>  	- domain (Water)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^ld^</span>  	- leader</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cnt[f]^</span>  	- count across all units (increments based on unit)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cntu[f]^</span>  	- count across same unit (increments based on unit)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cntct[f]^</span>  	- count across same city (increments based on unit)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cntuct[f]^</span>  	- count across same unit / city (increments based on unit)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cntc[f]^</span>  	- count across same combat type (increments based on combat type)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^cntd[f]^</span>  	- count across same domain (increments based on domain)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^tt1[f][x:y]^</span>  	- total where the total is a random number between x and y (number)</p>
+  <LI>
+    <p ALIGN="LEFT"><span class="style10">^tt2[f][x]^</span>  	- total count (starts at x, incremented by 1 each time ^tt is reset  	to 1)</p>
+</UL>
+<p><BR>
+    <BR>
+</p>
+<p>There are a number of number  formats, as follows:</p>
+<UL>
+  <LI>
+    <p ALIGN="LEFT"><span class="style11">[f]</span>  	can be either 's', 'A', 'a', 'p', 'g', 'n', 'o' or 'r' for ... </p>
+    <UL>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">s</span> - silent  		(not shown)</p>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">A</span> - upper  		case alpha (A, B, C, D, ...)</p>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">a</span> - lower  		case alpha (a, b, c, d, ...)</p>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">p</span> - phonetic  		(alpha, bravo, charlie, delta, echo, ...)</p>
+      <LI>
+        <p LANG="it-IT" ALIGN="LEFT"> <span class="style10">g</span> - greek (alpha, beta, gamma, delta, epsilon, ...)</p>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">n</span> - number</p>
+      <LI>
+        <p ALIGN="LEFT"><span class="style10">o</span> - ordinal  		(1st, 2nd, 3rd, 4th, ...)</p>
+      <LI>
+        <p LANG="da-DK" ALIGN="LEFT"><span class="style10"> r</span> - roman (I, IV, V, X, ...)</p>
+    </UL>
+</UL>
+<p LANG="da-DK">  Some number formats have a built in max (i.e. alpha).  In these  situations, the numbering loops back to the start.  For example, if  you pass the number &lsquo;30&rsquo; and ask for the number to be formatted  with an &lsquo;A&rsquo; (upper case alpha) then it will return &lsquo;D&rsquo;.</p>
+<OL TYPE="I" START="3">
+  <LI>
+    <p ALIGN="LEFT" class="style8"><strong>Sample  	Units</strong></p>
+</OL>
+<p>The best way to illustrate the naming convention is to work  through some examples.  I shall use the following units to set  through these examples.</p>
+<UL>
+  <LI>
+    <p ALIGN="LEFT">Scout  	built in Moscow</p>
+  <LI>
+    <p ALIGN="LEFT">Worker  	built in Moscow</p>
+  <LI>
+    <p ALIGN="LEFT">Galley  	built in Leeds</p>
+  <LI>
+    <p ALIGN="LEFT">Bomber  	built in Leeds</p>
+  <LI>
+    <p ALIGN="LEFT">Axeman  	built in Moscow</p>
+  <LI>
+    <p ALIGN="LEFT">Swordsman  	built in Moscow</p>
+</UL>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"> <strong>^civ4^  of ^ct^</strong></p>
+<p>This naming convention over-rides all other naming conventions  because it includes the key ^civ4^.  This signifies that the normal  Civ4 name should be used.  In other words, the unit&rsquo;s name is not  changed.  Note, the &ldquo;of ^ct^&rdquo; part is ignored.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^civ4^ of ^ct^</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Scout</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Worker</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Galley</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Bomber</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Axeman</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Swordsman</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^rd^  ^cv^ Army </strong> </p>
+<p>This naming convention over-rides nearly all other naming  conventions except the ^civ4^ naming convention because it includes  the key ^rd^.  This signifies that the unit should be given a totally  random name.  Note, the &ldquo;^cv^ Army&rdquo; part is ignored.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^rd^ ^cv^ Army</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^rc^</strong></p>
+<p>This naming convention over-rides nearly all other naming  conventions except the ^civ4^ and ^rd^ naming convention because it  includes the key ^rc^.  This signifies that the unit should be given  a totally random name that is civilization related.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^rc^</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Who knows, it is  					random</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^ut^  [^cv^]</strong></p>
+<p>This naming convention is a straight swapping code.  The ^cv^ is  replaced by the civilization short description while the ^ut^ is  replaced by the unit type.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^ut^ [^cv^]</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Scout [Persian]</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Worker [Roman]</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Galley [English]</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Bomber [Russian]</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Axeman [Russian]</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Swordsman [Greek]</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^ut^  ^cnt[r]^</strong></p>
+<p>This naming convention is the first example of a count.  It  includes the unit type and a count that is never reset.  The count is  shown in the roman format.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^ut^ ^cnt[r]^</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Scout I</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Worker II</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Galley III</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Bomber IV</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Axeman V</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Swordsman VI</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^cnt[A]^  Troop ^tt1[s][5:5]^</strong></p>
+<p>This naming convention illustrates a counting convention that  resets.  It also includes the &lsquo;[s]&rsquo; format which hides the total.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^cnt[A]^ Troop  					^tt1[s][5:5]^</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>A Troop</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>B Troop</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>C Troop</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>D Troop</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>F Troop</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>A Troop</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^cntc[p]^  Force ^tt1[o][5:5]^ Company, ^tt2[o][101]^ Div</strong></p>
+<p>A more complicated naming convention that illustrates a counting  convention over combat type.  It also includes the phonetic and  ordinal number formats.</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^cntc[p]^ Force  					^tt1[o][5:5]^ Company, ^tt2[o][101]^ Div</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Alpha Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Beta Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Alpha Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Alpha Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Alpha Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>Beta Force 1st  					Company, 101st Div</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<p ALIGN="LEFT" class="style10"><strong>^cnt[f]^  of ^tt1[f][6:10]^, Unimatrix ^tt2[f][1]^</strong></p>
+<p>Just for fun!</p>
+<CENTER>
+  <TABLE WIDTH="494" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0" FRAME="ABOVE" RULES="GROUPS">
+    <COL WIDTH="88">
+    <COL WIDTH="20">
+    <COL WIDTH="343">
+    <THEAD>
+      <TR>
+        <TD COLSPAN="3" WIDTH="480" VALIGN="BOTTOM"><p class="style10">^cnt[f]^ of  					^tt1[f][6:10]^, Unimatrix ^tt2[f][1]^</p></TD>
+      </TR>
+      <TR></TR>
+    </THEAD>
+    <TBODY>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Scout</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>1 of 7, Unimatrix  					1</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Worker</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>2 of 7, Unimatrix  					1</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Galley</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>3 of 7, Unimatrix  					1</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Bomber</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>4 of 7, Unimatrix  					1</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Axeman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>5 of 7, Unimatrix  					1</p></TD>
+      </TR>
+      <TR VALIGN="TOP">
+        <TD WIDTH="88"><p>Swordman</p></TD>
+        <TD WIDTH="20"><p><BR>
+        </p></TD>
+        <TD WIDTH="343"><p>6 of 7, Unimatrix  					1</p></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</CENTER>
+<p><BR>
+    <BR>
+</p>
+<OL TYPE="I" START="4">
+  <LI>
+    <p ALIGN="LEFT" class="style8"><strong>FAQ</strong></p>
+</OL>
+<p>Q: What is the code if I just want to count all of my units (eg  &ldquo;Warrior 1&rdquo;)?</p>
+<p>A:<span class="style10"> ^ut^ ^cnt[n]^</span></p>
+<p>&nbsp;</p>
+<p>Q: What is the code if I just want to count all of my units coming  from each city but I don&rsquo;t want the city name shown (eg &ldquo;Warrior  1&rdquo;)?</p>
+<p>A:<span class="style10"> ^ut^ ^cntct[n]^</span></p>
+<p>&nbsp;</p>
+<p>Q: What is the code if I just want to count my units by combat  type?</p>
+<p>A: <span class="style10">^ut^ ^cntc[n]^</span></p>
+<p>&nbsp;</p>
+<p>Q: I really like Nexus&rsquo; army naming convention (1st army 2nd  corp 8th div).  Why haven&rsquo;t you included this in your naming pack?</p>
+<p>A: We don&rsquo;t need to.  Use this code instead &hellip;</p>
+<p class="style10"><SPAN LANG="pt-BR"> ^cnt[o]^ Army ^tt1[o][5:5]^ Corp  ^tt2[o][1]^ Div</SPAN></p>
+<p class="style10">&nbsp;</p>
+<p class="style10">&nbsp;</p>
+<p class="style8">Credits</p>
+<p>Forum: <a href="http://forums.civfanatics.com/forumdisplay.php?f=268">http://forums.civfanatics.com/forumdisplay.php?f=268</a></p>
+<p>Author: <span class="style10">ruff_hi</span> <BR>
+    <BR>
+</p>
 </body>
 </html>
