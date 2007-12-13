@@ -35,7 +35,7 @@ Counting Codes:\n\
     cntd[f] - Count per domain\n\
     tt1[f][x:y] - Count up to a number chosen between x and y\n\
     tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\
-    * f in [f] is one of s, A, a, p, g, n, o, r (see readme)"))
+    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)"))
 
 		self.addOption(Option("UnitName_UseAdvanced",
 							  "UnitName", "UseAdvanced", False,
@@ -44,7 +44,7 @@ Counting Codes:\n\
 		self.addOption(Option("UnitName_Default",
 							  "UnitName", "Default", '^u^ ^cnt[r]^ of ^ct^',
 							  "Naming Convention: DEFAULT",
-							  "Enter the user defined naming convention (see docs for further information)."))
+							  "Enter the user defined naming convention (see help file for further information)."))
 		self.addOption(Option("UnitName_Combat_AIR",
 							  "UnitName", "CombatAIR", 'DEFAULT',
 							  "Naming Convention: Combat[AIR]",
