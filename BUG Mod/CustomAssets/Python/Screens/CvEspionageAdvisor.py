@@ -1,5 +1,6 @@
 ## Sid Meier's Civilization 4
 ## Copyright Firaxis Games 2005
+## Improvements to this screen by Almightix - thanks
 from CvPythonExtensions import *
 from PyHelpers import PyPlayer
 import CvUtil
@@ -130,9 +131,7 @@ class CvEspionageAdvisor:
 		
 		self.aiKnownPlayers = []
 		self.aiUnknownPlayers = []
-# BUG - Better Espionage - start
-		self.iNumEntries = 0
-# BUG - Better Espionage - end
+		self.iNumEntries= 0
 
 		for iLoop in range(gc.getMAX_PLAYERS()):
 			pPlayer = gc.getPlayer(iLoop)
@@ -141,18 +140,14 @@ class CvEspionageAdvisor:
 					if (pActiveTeam.isHasMet(pPlayer.getTeam())):
 						
 						self.aiKnownPlayers.append(iLoop)
-# BUG - Better Espionage - start
-						self.iNumEntries += 1
-# BUG - Better Espionage - end
+						self.iNumEntries = self.iNumEntries + 1
 						
 						if (self.iTargetPlayer == -1):
 							self.iTargetPlayer = iLoop
 
-# BUG - Better Espionage - start
 		while(self.iNumEntries < 17):
 			self.iNumEntries = self.iNumEntries + 1
 			self.aiUnknownPlayers.append(self.iNumEntries)
-# BUG - Better Espionage - end
 		
 		############################
 		#### Total EPs Per Turn Text
@@ -259,56 +254,59 @@ class CvEspionageAdvisor:
 			self.aszIncreaseButtons = []
 			self.aszDecreaseButtons = []
 			self.aszAmountTexts = []
-			
-# BUG - Better Espionage - start
-			
 			self.aszEspionageIcons = []
-			
-			if (BugOpt.isEnabled()):
-				iRatioColor = ColorUtil.keyToType(BugOpt.getDefaultRatioColor())
-				iGoodRatioColor = ColorUtil.keyToType(BugOpt.getGoodRatioColor())
-				iBadRatioColor = ColorUtil.keyToType(BugOpt.getBadRatioColor())
-				for iPlayerID in self.aiKnownPlayers:
-					
-					pTargetPlayer = gc.getPlayer(iPlayerID)
-					
-					iTargetTeam = pTargetPlayer.getTeam()
-					
-					iX = 0
-					iY = 14 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
-					
-					attach = "LeaderContainer%d" % (iPlayerID)
-					
-					screen.attachPanel(self.szScrollPanel, attach, "", "", True, False, PanelStyles.PANEL_STYLE_STANDARD)
-					
-					szName = "LeaderImageA%d" %(iPlayerID)
-					screen.attachSeparator(attach, szName, true, 30)
-					
-					self.iLeaderImagesID = 456
-					szName = "LeaderImage%d" %(iPlayerID)
-					self.aszLeaderImages.append(szName)
-		
-					screen.addCheckBoxGFCAt(attach, szName, gc.getLeaderHeadInfo(gc.getPlayer(iPlayerID).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
-						iX +21 , iY - 14, 32, 32, WidgetTypes.WIDGET_GENERAL, self.iLeaderImagesID, iPlayerID, ButtonStyles.BUTTON_STYLE_LABEL, False)
-					if (self.iTargetPlayer == iPlayerID):
-						screen.setState(szName, true)
-					
-					szName = "LeaderNamePanel%d" %(iPlayerID)
-					self.aszLeaderNamePanels.append(szName)
-					screen.attachPanelAt( attach, szName, "", "", true, false, PanelStyles.PANEL_STYLE_MAIN,
-						iX + 5, iY-15, self.W_NAME_PANEL, self.H_NAME_PANEL, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
-					szName = "NameText%d" %(iPlayerID)
-					self.aszNameTexts.append(szName)
-					szTempBuffer = u"<color=%d,%d,%d,%d>%s</color>" %(pTargetPlayer.getPlayerTextColorR(), pTargetPlayer.getPlayerTextColorG(), pTargetPlayer.getPlayerTextColorB(), pTargetPlayer.getPlayerTextColorA(), pTargetPlayer.getName())
-					szText = u"<font=2>" + szTempBuffer + "</font>"
-					screen.setLabelAt( szName, attach, szText, 0, iX + 55, iY - 15, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
+# BUG - Better Espionage - start
+			iRatioColor = ColorUtil.keyToType(BugOpt.getDefaultRatioColor())
+			iGoodRatioColor = ColorUtil.keyToType(BugOpt.getGoodRatioColor())
+			iBadRatioColor = ColorUtil.keyToType(BugOpt.getBadRatioColor())
+# BUG - Better Espionage - end
+			
+			for iPlayerID in self.aiKnownPlayers:
+				
+				pTargetPlayer = gc.getPlayer(iPlayerID)
+				
+				iTargetTeam = pTargetPlayer.getTeam()
+				
+				iX = 0
+				iY = 14 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
+				
+				attach = "LeaderContainer%d" % (iPlayerID)
+				
+				screen.attachPanel(self.szScrollPanel, attach, "", "", True, False, PanelStyles.PANEL_STYLE_STANDARD)
+				
+				szName = "LeaderImageA%d" %(iPlayerID)
+				screen.attachSeparator(attach, szName, true, 30)
+				
+				self.iLeaderImagesID = 456
+				szName = "LeaderImage%d" %(iPlayerID)
+				self.aszLeaderImages.append(szName)
+	
+				screen.addCheckBoxGFCAt(attach, szName, gc.getLeaderHeadInfo(gc.getPlayer(iPlayerID).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
+					iX +21 , iY - 14, 32, 32, WidgetTypes.WIDGET_GENERAL, self.iLeaderImagesID, iPlayerID, ButtonStyles.BUTTON_STYLE_LABEL, False)
+				if (self.iTargetPlayer == iPlayerID):
+					screen.setState(szName, true)
+				
+				szName = "LeaderNamePanel%d" %(iPlayerID)
+				self.aszLeaderNamePanels.append(szName)
+				screen.attachPanelAt( attach, szName, "", "", true, false, PanelStyles.PANEL_STYLE_MAIN,
+					iX + 5, iY-15, self.W_NAME_PANEL, self.H_NAME_PANEL, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+
+				szName = "NameText%d" %(iPlayerID)
+				self.aszNameTexts.append(szName)
+
+				iMultiplier, szMultiplier = self.getMultiplierAgainstTarget(iPlayerID)
+				szTempBuffer = u"<color=%d,%d,%d,%d>%s (%s)</color>" %(pTargetPlayer.getPlayerTextColorR(), pTargetPlayer.getPlayerTextColorG(), pTargetPlayer.getPlayerTextColorB(), pTargetPlayer.getPlayerTextColorA(), pTargetPlayer.getName(), szMultiplier)
+				szText = u"<font=2>" + szTempBuffer + "</font>"
+				screen.setLabelAt( szName, attach, szText, 0, iX + 55, iY -15, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				
+# BUG - Better Espionage - start
+				if (BugOpt.isEnabled()):
 					szName = "PointsText%d" %(iPlayerID)
 					self.aszPointsTexts.append(szName)
 					szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam), )) + "</font>"
 					screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, 330, iY - 15, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
+
 					szName = "SpendingText%d" %(iPlayerID)
 					self.aszSpendingTexts.append(szName)
 					szTempBuffer = u"%s: %d" %(localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()), pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
@@ -331,105 +329,58 @@ class CvEspionageAdvisor:
 						szText = szMultiplier
 
 					screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, 330, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-
-					szName = "SpendingIcon%d" %(iPlayerID)
-					self.aszEspionageIcons.append(szName)
-					if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
-						szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-					else:
-						szText = u""
-
-					screen.setLabelAt( szName, attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					iSize = 16
-					self.iIncreaseButtonID = 555
-					szName = "IncreaseButton%d" %(iPlayerID)
-					self.aszIncreaseButtons.append(szName)
-					screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), 53, iY + 1, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iIncreaseButtonID, iPlayerID );
-					self.iDecreaseButtonID = 556
-					szName = "DecreaseButton%d" %(iPlayerID)
-					self.aszDecreaseButtons.append(szName)
-					screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), 68, iY + 1, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iDecreaseButtonID, iPlayerID );
-					
-					iPlayerLoop += 1
-			
-				for iPlayerID in self.aiUnknownPlayers:
-					attach = "EmptyLeaderContainer%d" % (iPlayerID)
-					screen.attachPanel(self.szScrollPanel, attach, "", "", True, False, PanelStyles.PANEL_STYLE_STANDARD)
-					screen.attachSeparator(attach, "EmptyLeaderImageA%d" %(iPlayerID), true, 30)
-			
-			else:
-				
-				# Regular Espionage Screen List
-				for iPlayerID in self.aiKnownPlayers:
-					
-					pTargetPlayer = gc.getPlayer(iPlayerID)
-					
-					iTargetTeam = pTargetPlayer.getTeam()
-					
-					iX = 0
-					iY = 15 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
-					
-					attach = "LeaderContainer%d" % (iPlayerID)
-					
-					screen.attachPanel(self.szScrollPanel, attach, "", "", True, False, PanelStyles.PANEL_STYLE_EMPTY)
-					
-					szName = "LeaderImageA%d" %(iPlayerID)
-					screen.attachSeparator(attach, szName, true, self.H_LEADER + 20)
-					
-					self.iLeaderImagesID = 456
-					szName = "LeaderImage%d" %(iPlayerID)
-					self.aszLeaderImages.append(szName)
-		
-					screen.addCheckBoxGFCAt(attach, szName, gc.getLeaderHeadInfo(gc.getPlayer(iPlayerID).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
-						iX, iY - 15, self.W_LEADER, self.H_LEADER, WidgetTypes.WIDGET_GENERAL, self.iLeaderImagesID, iPlayerID, ButtonStyles.BUTTON_STYLE_LABEL, False)
-					if (self.iTargetPlayer == iPlayerID):
-						screen.setState(szName, true)
-					
-					szName = "LeaderNamePanel%d" %(iPlayerID)
-					self.aszLeaderNamePanels.append(szName)
-					screen.attachPanelAt( attach, szName, "", "", true, false, PanelStyles.PANEL_STYLE_MAIN,
-						iX, iY, self.W_NAME_PANEL, self.H_NAME_PANEL, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					
-					szName = "NameText%d" %(iPlayerID)
-					self.aszNameTexts.append(szName)
-					szText = u"<font=4>" + pTargetPlayer.getName() + "</font>"
-					screen.setLabelAt( szName, attach, szText, 0, iX + self.W_LEADER + 15, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
+				else:
 					szName = "PointsText%d" %(iPlayerID)
 					self.aszPointsTexts.append(szName)
 					szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam), )) + "</font>"
-					screen.setLabelAt( szName, attach, szText, 0, iX + 230, iY + 30, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
+					screen.setLabelAt( szName, attach, szText, 0, 247, iY - 14, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
 					szName = "SpendingText%d" %(iPlayerID)
 					self.aszSpendingTexts.append(szName)
-					szText = u"<font=3><u>" + localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()) + "</u> (%d)</font>" %(pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
-					screen.setLabelAt( szName, attach, szText, 0, iX + self.W_LEADER + 15, iY + 35, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					iSize = 20
-					self.iIncreaseButtonID = 555
-					szName = "IncreaseButton%d" %(iPlayerID)
-					self.aszIncreaseButtons.append(szName)
-					screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), iX + self.W_LEADER + 15, iY + 75, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iIncreaseButtonID, iPlayerID );
-					self.iDecreaseButtonID = 556
-					szName = "DecreaseButton%d" %(iPlayerID)
-					self.aszDecreaseButtons.append(szName)
-					screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), iX + self.W_LEADER + 35, iY + 75, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iDecreaseButtonID, iPlayerID );
-					
+					szText = u"<font=2>%s: %d</font>" %(localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()), pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
+					screen.setLabelAt( szName, attach, szText, 0, 85, iY - 1, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
 					szName = "AmountText%d" %(iPlayerID)
 					self.aszAmountTexts.append(szName)
-					szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
-					screen.setLabelAt( szName, attach, szText, 0, iX + 230, iY + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					szName = "RelativeText%d" %(iPlayerID)
-					self.aszRelativeTexts.append(szName)
-					iMultiplier, szMultiplier = self.getMultiplierAgainstTarget(iPlayerID)
-					szText = u"<font=2>%s</font>" %(szMultiplier)
-					screen.setLabelAt( szName, attach, szText, 0, iX + 230, iY + 75, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					iPlayerLoop += 1
+					if (pActivePlayer.getEspionageSpending(iTargetTeam) > 0):
+						szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
+					else:
+						szText = u"<font=2><color=192,0,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
 
+					screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, 330, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 # BUG - Better Espionage - end
+				
+				
+
+
+				screen.setLabelAt( szName, attach, szText, 0, 247, iY - 1, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
+				szName = "SpendingIcon%d" %(iPlayerID)
+				self.aszEspionageIcons.append(szName)
+				if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
+					szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+				else:
+					szText = u""
+
+				screen.setLabelAt( szName, attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				
+				iSize = 16
+				self.iIncreaseButtonID = 555
+				szName = "IncreaseButton%d" %(iPlayerID)
+				self.aszIncreaseButtons.append(szName)
+				screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), 53, iY + 1, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iIncreaseButtonID, iPlayerID );
+				self.iDecreaseButtonID = 556
+				szName = "DecreaseButton%d" %(iPlayerID)
+				self.aszDecreaseButtons.append(szName)
+				screen.setImageButtonAt( szName, attach, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), 68, iY + 1, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iDecreaseButtonID, iPlayerID );
+				
+				
+				iPlayerLoop += 1
+		
+			for iPlayerID in self.aiUnknownPlayers:
+				attach = "EmptyLeaderContainer%d" % (iPlayerID)
+				screen.attachPanel(self.szScrollPanel, attach, "", "", True, False, PanelStyles.PANEL_STYLE_STANDARD)
+				screen.attachSeparator(attach, "EmptyLeaderImageA%d" %(iPlayerID), true, 30)
 
 	def getMultiplierAgainstTarget(self, iTargetPlayer=-1):
 		
@@ -443,17 +394,19 @@ class CvEspionageAdvisor:
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		pTargetTeam = gc.getTeam(pTargetPlayer.getTeam())
 		
+#		szMultiplier = localText.getText("TXT_KEY_ESPIONAGE_COST", (getEspionageModifier(pActivePlayer.getTeam(), pTargetPlayer.getTeam()), ))
 # BUG - Better Espionage - start
 		iMultiplier = getEspionageModifier(pActivePlayer.getTeam(), pTargetPlayer.getTeam())
 		szMultiplier = localText.getText("TXT_KEY_ESPIONAGE_COST", (iMultiplier, ))
 # BUG - Better Espionage - end
-			
+	
 		if (pActiveTeam.getCounterespionageTurnsLeftAgainstTeam(pTargetPlayer.getTeam()) > 0):
 			szMultiplier += u"*"
 		
 		if (pTargetTeam.getCounterespionageTurnsLeftAgainstTeam(pActivePlayer.getTeam()) > 0):
 			szMultiplier += u"+"
 		
+#		return szMultiplier
 # BUG - Better Espionage - start
 		return iMultiplier, szMultiplier
 # BUG - Better Espionage - end
@@ -472,67 +425,44 @@ class CvEspionageAdvisor:
 			
 			iPlayerLoop = 0
 			
-# BUG - Better Espionage - start
-			
-			if (BugOpt.isEnabled()):
-				for iPlayerID in self.aiKnownPlayers:
-					
-					iX = 0
-					iY = 14 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
-					
-					pTargetPlayer = gc.getPlayer(iPlayerID)
-					iTargetTeam = pTargetPlayer.getTeam()
-					
-					attach = "LeaderContainer%d" % (iPlayerID)
-					
-					szName = "SpendingText%d" %(iPlayerID)
-					self.aszSpendingTexts.append(szName)
-					szTempBuffer = u"%s: %d" %(localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()), pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
-					iSpending = pActivePlayer.getEspionageSpending(iTargetTeam)
-					if (iSpending > 0):
-						szTempBuffer += u" (+%d%s)" %(iSpending, localText.getText("TXT_KEY_PER_TURN", ()))
-					szText = u"<font=2>" + szTempBuffer + "</font>"
-					screen.deleteWidget(szName)
-					screen.setLabelAt( szName, attach, szText, 0, 85, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-
-					szName = "SpendingIcon%d" %(iPlayerID)
-					if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
-						szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-					else:
-						szText = u""
-					screen.deleteWidget(szName)
-					screen.setLabelAt( szName, attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					iPlayerLoop += 1
+			for iPlayerID in self.aiKnownPlayers:
 				
-			else:
+				iX = 0
+				iY = 15 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
 				
-				# Regular Espionage Screen List
-				for iPlayerID in self.aiKnownPlayers:
-					
-					iX = 0
-					iY = 15 #+ (148 * iPlayerLoop)#(110 * iPlayerLoop)
-					
-					pTargetPlayer = gc.getPlayer(iPlayerID)
-					iTargetTeam = pTargetPlayer.getTeam()
-					
-					attach = "LeaderContainer%d" % (iPlayerID)
-					
-					szName = "SpendingText%d" %(iPlayerID)
-					self.aszSpendingTexts.append(szName)
-					szText = u"<font=3><u>" + localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()) + "</u> (%d)</font>" %(pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
-					screen.deleteWidget(szName)
-					screen.setLabelAt( szName, attach, szText, 0, iX + self.W_LEADER + 15, iY + 35, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					szName = "AmountText%d" %(iPlayerID)
-					szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
-					screen.deleteWidget(szName)
-					screen.setLabelAt( szName, attach, szText, 0, iX + 230, iY + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-					
-					iPlayerLoop += 1
-			
-# BUG - Better Espionage - end
+				pTargetPlayer = gc.getPlayer(iPlayerID)
+				iTargetTeam = pTargetPlayer.getTeam()
+				
+				attach = "LeaderContainer%d" % (iPlayerID)
+				
+				szName = "SpendingText%d" %(iPlayerID)
+				self.aszSpendingTexts.append(szName)
+				szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()) + ": %d</font>" %(pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
+				screen.deleteWidget(szName)
+				screen.setLabelAt( szName, attach, szText, 0, 85, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				
+				szName = "AmountText%d" %(iPlayerID)
 
+				if (pActivePlayer.getEspionageSpending(iTargetTeam) > 0):
+					szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
+				else:
+					szText = u"<font=2><color=192,0,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
+
+				screen.deleteWidget(szName)
+				screen.setLabelAt( szName, attach, szText, 0, 247, iY - 1, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
+				szName = "SpendingIcon%d" %(iPlayerID)
+				if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
+					szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+				else:
+					szText = u""
+
+				screen.deleteWidget(szName)
+				screen.setLabelAt( szName, attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+								
+
+				iPlayerLoop += 1
+			
 			# Is there any other players which have been met?
 			if (self.iTargetPlayer != -1):
 				
@@ -587,9 +517,8 @@ class CvEspionageAdvisor:
 				screen.setTableColumnHeader(szMissionsTable, 1, "", self.W_TABLE_1)
 				screen.setTableColumnHeader(szMissionsTable, 2, "", self.W_TABLE_2)
 				screen.setTableColumnHeader(szMissionsTable, 3, "", self.W_TABLE_3)
-												
-# BUG - Better Espionage - start
 
+# BUG - Better Espionage - start
 				iTargetTeam = pTargetPlayer.getTeam()
 				iPlayerEPs = pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam)
 				if (BugOpt.isEnabled()):
@@ -600,9 +529,8 @@ class CvEspionageAdvisor:
 					iPossibleColor = -1
 					iCloseColor = -1
 					iClosePercent = -1
-
 # BUG - Better Espionage - end
-								
+
 				# Loop through all Missions
 				for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 					
@@ -640,16 +568,16 @@ class CvEspionageAdvisor:
 								screen.setTableText(szEffectsTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 # BUG - Better Espionage - start
-
 								szCost = unicode(str(iCost))
-								if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
-									szCost = localText.changeTextColor(szCost, iPossibleColor)
-								elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
-									szCost = localText.changeTextColor(szCost, iCloseColor)
+								if (BugOpt.isEnabled()):
+									if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
+										szCost = localText.changeTextColor(szCost, iPossibleColor)
+									elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
+										szCost = localText.changeTextColor(szCost, iCloseColor)
+# BUG - Better Espionage - end
+
 								screen.setTableText(szEffectsTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 
-# BUG - Better Espionage - end
-									
 						# Active Mission
 						else:
 							
@@ -677,18 +605,17 @@ class CvEspionageAdvisor:
 														
 							iRow = screen.appendTableRow(szMissionsTable)
 							screen.setTableText(szMissionsTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							if iCost > 0:
 
 # BUG - Better Espionage - start
-
-							if iCost > 0:
 								szCost = unicode(str(iCost))
-								if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
-									szCost = localText.changeTextColor(szCost, iPossibleColor)
-								elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
-									szCost = localText.changeTextColor(szCost, iCloseColor)
-								screen.setTableText(szMissionsTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
-
+								if (BugOpt.isEnabled()):
+									if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
+										szCost = localText.changeTextColor(szCost, iPossibleColor)
+									elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
+										szCost = localText.changeTextColor(szCost, iCloseColor)
 # BUG - Better Espionage - end
+								screen.setTableText(szMissionsTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 							
 		return 0
 		
@@ -760,15 +687,21 @@ class CvEspionageAdvisor:
 					
 					CyMessageControl().sendEspionageSpendingWeightChange(iTargetTeam, 1)
 					
-# BUG - Better Espionage - start
+					if (pActivePlayer.getEspionageSpending(iTargetTeam) > 0):
+						szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
+					else:
+						szText = u"<font=2><color=192,0,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
 
-					# EF: This can be removed, but since it's original code I've left it in.
-					if (not BugOpt.isEnabled()):
-						szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
-						screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+					screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 247, 15 - 1, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
-# BUG - Better Espionage - end
-
+					if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
+						szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+					else:
+						szText = u""
+					attach = "LeaderContainer%d" % (iPlayerID)
+					iY = 15
+					screen.setLabelAt( "SpendingIcon%d" %(iPlayerID), attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+					
 					CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, True)
 					
 				##### Decrease Button #####
@@ -780,16 +713,22 @@ class CvEspionageAdvisor:
 					if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):	# Can't reduce weight below 0
 						
 						CyMessageControl().sendEspionageSpendingWeightChange(iTargetTeam, -1)
+						
+						if (pActivePlayer.getEspionageSpending(iTargetTeam) > 0):
+							szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
+						else:
+							szText = u"<font=2><color=192,0,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )))
 
-# BUG - Better Espionage - start
+						screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 247, 15 - 1, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
-						# EF: This can be removed, but since it's original code I've left it in.
-						if (not BugOpt.isEnabled()):
-							szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (pActivePlayer.getEspionageSpending(iTargetTeam), )) + "</font>"
-							screen.setLabelAt( "AmountText%d" %(iPlayerID), "LeaderContainer%d" % (iPlayerID), szText, 0, 230, 15 + 53, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
-
-# BUG - Better Espionage - end
-
+						if (pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam) > 0):
+							szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+						else:
+							szText = u""
+						attach = "LeaderContainer%d" % (iPlayerID)
+						iY = 15
+						screen.setLabelAt( "SpendingIcon%d" %(iPlayerID), attach, szText, 0, 3, iY - 9, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+						
 						CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, True)
 		
 		return 0
