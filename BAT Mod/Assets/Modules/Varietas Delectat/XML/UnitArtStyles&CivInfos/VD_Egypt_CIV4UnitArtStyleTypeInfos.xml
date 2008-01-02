@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Alex Mantzaris (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Civilization Infos -->
+<Civ4UnitArtStyleTypeInfos xmlns="x-schema:VD_CIV4CivilizationsSchema.xml">
+	<UnitArtStyleTypeInfos>
+<!--________________________________________________________________________________________________________________________________________________-->
+<!--                                                                                                                                                -->
+<!-- VD mod BEGIN Egyptian ArtStyle                                                                                                                 -->
+<!--________________________________________________________________________________________________________________________________________________-->
+
+		<UnitArtStyleTypeInfo>
+			<Type>UNIT_ARTSTYLE_EGYPT</Type>
+			<StyleUnits>
+
+				<StyleUnit>
+					<UnitType>UNIT_SETTLER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SETTLER_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CAMEL_PACK</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CAMEL_PACK</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CAMEL_PACK</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_FEMALE_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CAMEL</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CAMEL</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CAMEL</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SCOUT</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SCOUT_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SCOUT_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_WARRIOR</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_PIKEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_PIKEMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_PIKEMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_PIKEMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_ARCHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ARCHER_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ARCHER_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ARCHER_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_LONGBOWMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CROSSBOWMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_AXEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_AXEMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_AXEMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_AXEMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MACEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HORUS_KNIGHT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HORUS_KNIGHT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HORUS_KNIGHT</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CHARIOT</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_HORSE_ARCHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_WAR_ELEPHANT</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_KNIGHT</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KNIGHT_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KNIGHT_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CUIRASSIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CUIRASSIER_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CANNON</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CANNON_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CANNON_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CANNON_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MUSKETMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MUSKETMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MUSKETMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MUSKETMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_GRENADIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_GRENADIER_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_GRENADIER_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_GRENADIER_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CAVALRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CAVALRY_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CAVALRY_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_RIFLEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_RIFLEMAN_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_RIFLEMAN_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_RIFLEMAN_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ASKARI_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ASKARI_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ASKARI_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MACHINE_GUN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SAM_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_TANK</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T26</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T26</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T26</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+								
+				<StyleUnit>
+					<UnitType>UNIT_MODERN_ARMOR</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T72_DESERT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T72_DESERT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T72_DESERT</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>																	
+				
+				<StyleUnit>
+					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_BTR80_DESERT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_BTR80_DESERT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_BTR80_DESERT</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>					
+
+				<StyleUnit>
+					<UnitType>UNIT_FRIGATE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CHEBEQUE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CHEBEQUE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CHEBEQUE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_FIGHTER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>	
+				
+				<StyleUnit>
+					<UnitType>UNIT_BOMBER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>					
+				
+				<StyleUnit>
+					<UnitType>UNIT_JET_FIGHTER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>	
+				
+				<StyleUnit>
+					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>									
+				
+				<StyleUnit>
+					<UnitType>UNIT_GUNSHIP</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MI24_HIND</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MI24_HIND</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+								
+			</StyleUnits>
+		</UnitArtStyleTypeInfo>
+
+<!--________________________________________________________________________________________________________________________________________________-->
+<!--                                                                                                                                                -->
+<!-- VD mod END Egyptian ArtStyle                                                                                                                   -->
+<!--________________________________________________________________________________________________________________________________________________-->
+	</UnitArtStyleTypeInfos>
+</Civ4UnitArtStyleTypeInfos>
