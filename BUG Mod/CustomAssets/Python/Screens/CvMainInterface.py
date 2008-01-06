@@ -3465,13 +3465,13 @@ class CvMainInterface:
 											scores.addPlayer(ePlayer)
 											# BUG: Align Icons continues throughout -- if (bAlignIcons): scores.setFoo(foo)
 # BUG - Align Icons - end
-
-										if (gc.getGame().isGameMultiPlayer()):
-											if (not (gc.getPlayer(ePlayer).isTurnActive())):
-												szBuffer = szBuffer + "*"
-												if (bAlignIcons):
-													scores.setActive()
-
+#
+#										if (gc.getGame().isGameMultiPlayer()):
+#											if (not (gc.getPlayer(ePlayer).isTurnActive())):
+#												szBuffer = szBuffer + "*"
+#												if (bAlignIcons):
+#													scores.setActive()
+#
 # BUG - Dead Civs - start
 										if (BugScore.isShowBothNames()):
 											szPlayerName = gc.getPlayer(ePlayer).getName() + "/" + gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
@@ -3479,7 +3479,16 @@ class CvMainInterface:
 											szPlayerName = gc.getPlayer(ePlayer).getName()
 										else:
 											szPlayerName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+									
+#BUG - Scoreboard (AIMackey Multiplayer Fix) - Start
 
+										if (gc.getGame().isGameMultiPlayer()):
+											if (not (gc.getPlayer(ePlayer).isTurnActive())):
+												szPlayerName = "*"+szPlayerName	
+												if (bAlignIcons):
+													scores.setActive()
+#BUG - Scoreboard (AIMackey Multiplayer Fix) - End
+													
 										if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isShowDeadTag()):
 											# BUG-TODO: localize
 											szPlayerScore = "Dead"
