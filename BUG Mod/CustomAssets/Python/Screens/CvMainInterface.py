@@ -1357,7 +1357,8 @@ class CvMainInterface:
 							eAutomationType = pLoopUnit.getGroup().getAutomateType()
 
 							# is unit on air patrol/intercept mission
-							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
+							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT
+							or  eActivityType == ActivityTypes.ACTIVITY_PATROL):
 								# place "PAT" icon
 								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
 								iOffset = 14
@@ -1376,6 +1377,11 @@ class CvMainInterface:
 								# place "SKIP" icon
 								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
 								iOffset = 13
+							# is the unit blockading
+							elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
+								# place "BLOCKADE" icon
+								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BLOCKADE").getPath()
+								iOffset = 8
 							# has unit explaration mission
 							elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
 								# place "EXP" icon

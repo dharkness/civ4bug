@@ -1345,6 +1345,10 @@
 			<Path>Art/PlotListEnhancements/medallion_action_sentry.dds</Path>
 		</InterfaceArtInfo>	
 		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_BLOCKADE</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_blockade.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
 			<Type>OVERLAY_ACTION_HEAL</Type>
 			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
 		</InterfaceArtInfo>	
