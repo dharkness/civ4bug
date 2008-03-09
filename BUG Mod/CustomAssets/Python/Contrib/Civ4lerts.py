@@ -398,7 +398,10 @@ class CityGrowth(AbstractCityAlert):
 		self.populations[city.getID()] = city.getPopulation()
 	
 	def discardCity(self, city):
-		self.populations.discard(city.getID())
+		# thx Kalimakhus
+		cityID = city.getID()
+		if ( cityID in self.populations):
+			del self.populations[cityID]		
 
 
 ### Happiness and Healthiness

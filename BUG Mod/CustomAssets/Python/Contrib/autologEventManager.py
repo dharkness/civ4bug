@@ -436,6 +436,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		iNumUnits = argsList[2]
 		listUnitIds = argsList[3]
 
+		if self.WdlDefender == None: return
+
 		if (NewAutoLog.Enabled()
 		and BugAutolog.isLogCombat()
 		and gc.getPlayer(eOwner).getTeam() == gc.getActivePlayer().getTeam()):
@@ -454,6 +456,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "While attacking, %s %s %s %s (Prob Victory: %.1f%s)" %(self.WdlAttacker.sUnitName, sAction, defCivName, self.WdlDefender.sUnitName, self.fOdds, lPercent)
 					NewAutoLog.writeLog(message, vColor="DarkRed")
 					self.iBattleWdlAttacking = self.iBattleWdlAttacking + 1
+
+		self.WdlDefender = None
 
 	def getUnitLocation(self, objUnit):
 		iX = objUnit.getX()
