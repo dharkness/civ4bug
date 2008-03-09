@@ -150,6 +150,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		eventManager.addEventHandler("firstContact", self.onFirstContact)
 		eventManager.addEventHandler("combatLogCalc", self.onCombatLogCalc)
 		eventManager.addEventHandler("combatResult", self.onCombatResult)
+		eventManager.addEventHandler("combatLogHit", self.onCombatLogHit)
 		eventManager.addEventHandler("buildingBuilt", self.onBuildingBuilt)
 		eventManager.addEventHandler("projectBuilt", self.onProjectBuilt)
 		eventManager.addEventHandler("unitBuilt", self.onUnitBuilt)
@@ -180,6 +181,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		eventManager.addEventHandler("improvementDestroyed", self.onImprovementDestroyed)
 		eventManager.addEventHandler("unitPillage", self.onUnitPillage)
 		eventManager.addEventHandler("vassalState", self.onVassalState)
+		eventManager.addEventHandler("selectionGroupPushMission", self.onSelectionGroupPushMission)
 
 		self.eventMgr = eventManager
 		self.bCurrPlayerHuman = false
@@ -188,7 +190,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.iBattleLostDefending = 0
 		self.iBattleWonAttacking = 0
 		self.iBattleLostAttacking = 0
-		
+		self.iBattleWdlAttacking = 0
+		self.iBattleEscAttacking = 0
+
+		self.UnitKilled = 0
+		self.WonLastRound = 0
+		self.WdlAttacker = None
+		self.WdlDefender = None
+
 		self.CIVAttitude = None
 		self.CIVCivics = None
 		self.CIVReligion = None
@@ -221,15 +230,21 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				NewAutoLog.writeLog(message, vColor="DarkRed")
 				message = "Units victorious while defending : %i" %(self.iBattleWonDefending)
 				NewAutoLog.writeLog(message, vColor="DarkRed")
+				message = "Units withdrawing while attacking: %i" %(self.iBattleWdlAttacking)
+				NewAutoLog.writeLog(message, vColor="DarkRed")
 				message = "Units defeated while attacking : %i" %(self.iBattleLostAttacking)
 				NewAutoLog.writeLog(message, vColor="Red")
 				message = "Units defeated while defending : %i" %(self.iBattleLostDefending)
+				NewAutoLog.writeLog(message, vColor="Red")
+				message = "Units escaping while attacking : %i" %(self.iBattleEscAttacking)
 				NewAutoLog.writeLog(message, vColor="Red")
 
 				self.iBattleWonDefending = 0
 				self.iBattleLostDefending = 0
 				self.iBattleWonAttacking = 0
 				self.iBattleLostAttacking = 0
+				self.iBattleWdlAttacking = 0
+				self.iBattleEscAttacking = 0
 
 				message = "Battle stats written to log & reset"
 				CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
@@ -357,10 +372,17 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			self.fOdds = float(iCombatOdds)/10
 
+			self.UnitKilled = 0
+			self.WonLastRound = 0
+
 	def onCombatResult(self, argsList):
 		if (NewAutoLog.Enabled()
 		and BugAutolog.isLogCombat()):
+
+			self.UnitKilled = 1
+
 			pWinner,pLoser = argsList
+
 			if (pWinner.getOwner() == CyGame().getActivePlayer()
 			or pLoser.getOwner() == CyGame().getActivePlayer()):
 				playerX = PyPlayer(pWinner.getOwner())
@@ -370,25 +392,68 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 				if (pWinner.getOwner() == CyGame().getActivePlayer()):
 					if (self.bCurrPlayerHuman):
-						message = "While attacking %s, %s defeats (%.2f/%i): %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
+						message = "While attacking %s, %s (%.2f/%i) defeats %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
 						self.iBattleWonAttacking = self.iBattleWonAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = "While defending %s, %s defeats (%.2f/%i): %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
+						message = "While defending %s, %s (%.2f/%i) defeats %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
 						self.iBattleWonDefending = self.iBattleWonDefending + 1
 
 					NewAutoLog.writeLog(message, vColor="DarkRed")
 
 				else:
 					if (self.bCurrPlayerHuman):
-						message = "While attacking %s, %s loses to: %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
+						message = "While attacking %s, %s loses to %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
 						self.iBattleLostAttacking = self.iBattleLostAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = "While defending %s, %s loses to: %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
+						message = "While defending %s, %s loses to %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
 						self.iBattleLostDefending = self.iBattleLostDefending + 1
 
 					NewAutoLog.writeLog(message, vColor="Red")
+
+	def onCombatLogHit(self, argsList):
+		'Combat Message'
+		genericArgs = argsList[0][0]
+		cdAttacker = genericArgs[0]
+		cdDefender = genericArgs[1]
+		iIsAttacker = genericArgs[2]
+		iDamage = genericArgs[3]
+
+		self.WdlAttacker = cdAttacker
+		self.WdlDefender = cdDefender
+		
+		if (iIsAttacker == 0):
+			self.WonLastRound = 0
+			
+		elif (iIsAttacker == 1):
+			self.WonLastRound = 1
+
+	def onSelectionGroupPushMission(self, argsList):
+		'selection group mission'
+		eOwner = argsList[0]
+		eMission = argsList[1]
+		iNumUnits = argsList[2]
+		listUnitIds = argsList[3]
+
+		if (NewAutoLog.Enabled()
+		and BugAutolog.isLogCombat()
+		and gc.getPlayer(eOwner).getTeam() == gc.getActivePlayer().getTeam()):
+
+			playerX = PyPlayer(self.WdlDefender.eOwner)
+			defCivName = playerX.getCivilizationAdjective()
+
+			if self.UnitKilled == 0:
+				if self.WonLastRound == 1:
+					sAction = "escapes from"
+					message = "While attacking, %s %s %s %s (Prob Victory: %.1f%s)" %(self.WdlAttacker.sUnitName, sAction, defCivName, self.WdlDefender.sUnitName, self.fOdds, lPercent)
+					NewAutoLog.writeLog(message, vColor="Red")
+					self.iBattleEscAttacking = self.iBattleEscAttacking + 1
+				else:
+					sAction = "decimates"
+					message = "While attacking, %s %s %s %s (Prob Victory: %.1f%s)" %(self.WdlAttacker.sUnitName, sAction, defCivName, self.WdlDefender.sUnitName, self.fOdds, lPercent)
+					NewAutoLog.writeLog(message, vColor="DarkRed")
+					self.iBattleWdlAttacking = self.iBattleWdlAttacking + 1
 
 	def getUnitLocation(self, objUnit):
 		iX = objUnit.getX()
