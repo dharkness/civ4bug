@@ -36,6 +36,7 @@ import ReminderEventManager
 # BUG - Great Person Bar - start
 import GPUtil
 GP_BAR_WIDTH = 367
+GG_BAR_WIDTH = 200
 # BUG - Great Person Bar - end
 
 g_NumEmphasizeInfos = 0
@@ -512,8 +513,18 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar" )
 		
+# BUG - Combat Counter - start
+#		screen.setLabel( "CombatXPButton", "Background", u"", CvUtil.FONT_RIGHT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatGeneralBar", 268 + ( (xResolution - 1024) / 2 ), 27, 160, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
+		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
+		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
+		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
+		screen.hide( "GreatGeneralBar" )
+# BUG - Combat Counter - start
+
 # BUG - Great Person Bar - start
-		screen.addStackedBarGFC( "GreatPersonBar", 328 + ( (xResolution - 1024) / 2 ), 27, GP_BAR_WIDTH, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar", 268 + 167 + ( (xResolution - 1024) / 2 ), 27, 320, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -586,14 +597,6 @@ class CvMainInterface:
 		screen.setButtonGFC( "MainCityScrollPlus", u"", "", xResolution - 255, yResolution - 165, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
-
-# BUG - Combat Counter - start
-		screen.setLabel( "CombatXPButton", "Background", u"", CvUtil.FONT_RIGHT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		screen.hide( "CombatXPButton" )
-
-		screen.setLabel( "CombatXPText", "Background", u"", CvUtil.FONT_LEFT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 
 		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 		screen.hide( "PlotListMinus" )
@@ -1001,10 +1004,6 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end			
-# BUG - Combat Counter - start
-			screen.hide( "CombatXPButton" )
-			screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 		
 		elif ( CyInterface().isCityScreenUp() ):
 			screen.show( "InterfaceLeftBackgroundWidget" )
@@ -1031,10 +1030,6 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - Combat Counter - start
-			screen.hide( "CombatXPButton" )
-			screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 	
 		elif ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
@@ -1061,10 +1056,6 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )			
 # BUG - City Arrows - end
-# BUG - Combat Counter - start
-			screen.hide( "CombatXPButton" )
-			screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -1104,10 +1095,6 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - Combat Counter - start
-			screen.hide( "CombatXPButton" )
-			screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 
 		elif ( CyEngine().isGlobeviewUp() ):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
@@ -1134,10 +1121,6 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - Combat Counter - start
-			screen.hide( "CombatXPButton" )
-			screen.hide( "CombatXPText" )
-# BUG - Combat Counter - end
 
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -1183,11 +1166,24 @@ class CvMainInterface:
 # BUG - City Arrows - end
 # BUG - Combat Counter - start
 			if BugScreens.isShowCombatCounter():
-				screen.show( "CombatXPButton" )
-				screen.show( "CombatXPText" )
+				ePlayer = gc.getGame().getActivePlayer()
+				fThreshold = float(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
+				fRate = float(0)
+				fFirst = float(gc.getPlayer(ePlayer).getCombatExperience()) / fThreshold
+				screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, fFirst )
+				if ( fFirst == 1 ):
+					screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
+				else:
+					screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
+				screen.show( "GreatGeneralBar" )
+
+				eGGText = "General " + unicode(gc.getPlayer(ePlayer).getCombatExperience()) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
+#				screen.setLabel( "GreatGeneralBarText", "Background", eGGText, CvUtil.FONT_LEFT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.setLabel( "GreatGeneralBarText", "Background", eGGText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) - 200, 32, -0.4, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.show( "GreatGeneralBarText" )
 			else:
-				screen.hide( "CombatXPButton" )
-				screen.hide( "CombatXPText" )
+				screen.hide( "GreatGeneralBar" )
+				screen.hide( "GreatGeneralBarText" )
 # BUG - Combat Counter - end
 
 			screen.moveToFront( "TurnLogButton" )
@@ -1357,8 +1353,7 @@ class CvMainInterface:
 							eAutomationType = pLoopUnit.getGroup().getAutomateType()
 
 							# is unit on air patrol/intercept mission
-							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT
-							or  eActivityType == ActivityTypes.ACTIVITY_PATROL):
+							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
 								# place "PAT" icon
 								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
 								iOffset = 14
@@ -1377,11 +1372,6 @@ class CvMainInterface:
 								# place "SKIP" icon
 								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
 								iOffset = 13
-							# is the unit blockading
-							elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
-								# place "BLOCKADE" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BLOCKADE").getPath()
-								iOffset = 8
 							# has unit explaration mission
 							elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
 								# place "EXP" icon
@@ -1987,6 +1977,11 @@ class CvMainInterface:
 		screen.hide( "GreatPersonBarText" )
 # BUG - Great Person Bar - end
 
+# BUG - Great General Bar - start
+		screen.hide( "GreatGeneralBar" )
+		screen.hide( "GreatGeneralBarText" )
+# BUG - Great General Bar - end
+
 		bShift = CyInterface().shiftKey()
 		
 		xResolution = screen.getXResolution()
@@ -2043,7 +2038,8 @@ class CvMainInterface:
 					screen.show( "GoldText" )
 
 # BUG - NJAGC - start
-				if (BugNJAGC.isShowEra()):
+				if (BugNJAGC.isEnabled()
+				and BugNJAGC.isShowEra()):
 					# BUG-TODO: Create text key for "Era"
 					szText = gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getDescription() + " Era"
 					if(BugNJAGC.isUseEraColor()):
@@ -2059,15 +2055,23 @@ class CvMainInterface:
 # BUG - Combat Counter - start
 				if (BugScreens.isShowCombatCounter()
 				and not CyInterface().isCityScreenUp()):
-					eCombatXPButton = u"<font=2>%c</font>" %(CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR))
-					eCombatXPText = ": " + unicode(gc.getPlayer(ePlayer).getCombatExperience()) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
-					screen.setLabel( "CombatXPButton", "Background", eCombatXPButton, CvUtil.FONT_RIGHT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.setLabel( "CombatXPText", "Background", eCombatXPText, CvUtil.FONT_LEFT_JUSTIFY, 220, 50, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "CombatXPButton" )
-					screen.show( "CombatXPText" )
+					ePlayer = gc.getGame().getActivePlayer()
+					fThreshold = float(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
+					fRate = float(0)
+					fFirst = float(gc.getPlayer(ePlayer).getCombatExperience()) / fThreshold
+					screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, fFirst )
+					if ( fFirst == 1 ):
+						screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
+					else:
+						screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
+					screen.show( "GreatGeneralBar" )
+
+					eGGText = "General " + unicode(gc.getPlayer(ePlayer).getCombatExperience()) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
+					screen.setLabel( "GreatGeneralBarText", "Background", eGGText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) - 200, 32, -0.4, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.show( "GreatGeneralBarText" )
 				else:
-					screen.hide( "CombatXPButton" )
-					screen.hide( "CombatXPText" )
+					screen.hide( "GreatGeneralBar" )
+					screen.hide( "GreatGeneralBarText" )
 # BUG - Combat Counter - end
 
 				if (gc.getPlayer(ePlayer).isAnarchy()):
@@ -2128,12 +2132,13 @@ class CvMainInterface:
 									if (len(szTypes) > 0):
 										szText += u"<font=2> -%s</font>" % szTypes
 						
-						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
+						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) + 90, 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
 						screen.show( "GreatPersonBarText" )
 						
 						fThreshold = float(gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(False))
 						fRate = float(pGreatPersonCity.getGreatPeopleRate())
 						fFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / fThreshold
+
 						screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, fFirst )
 						if ( fFirst == 1 ):
 							screen.setBarPercentage( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )

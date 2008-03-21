@@ -374,35 +374,48 @@ class CityGrowth(AbstractCityAlert):
 		else:
 			iPop = city.getPopulation()
 			iOldPop = self.populations[iCityID]
-			if (iPop > iOldPop):
-				self.populations[iCityID] = iPop
-				if (BugAlerts.isShowCityGrowthAlert()):
+			iWhipCounter = city.getHurryAngerTimer()
+			iOldWhipCounter = self.CityWhipCounter[iCityID]
+			iConscriptCounter = city.getConscriptAngerTimer()
+			iOldConscriptCounter = self.CityConscriptCounter[iCityID]
+
+			bWhipOrDraft = False
+			if (iWhipCounter > iOldWhipCounter
+			or  iConscriptCounter > iOldConscriptCounter):
+				bWhipOrDraft = True
+
+			if (BugAlerts.isShowCityGrowthAlert()):
+				if (iPop > iOldPop):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_CITY_GROWTH",
 							(city.getName(), iPop))
 					icon = "Art/Interface/Symbols/Food/food05.dds"
 					addMessageAtCity(iPlayer, message, icon, city)
-			elif (iPop < iOldPop):
-				self.populations[iCityID] = iPop
-				if (BugAlerts.isShowCityGrowthAlert()):
+				elif iPop < iOldPop and not bWhipOrDraft:
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_CITY_SHRINKAGE",
 							(city.getName(), iPop))
 					icon = "Art/Interface/Symbols/Food/food05.dds"
 					addMessageAtCity(iPlayer, message, icon, city)
 
+			self.populations[iCityID] = iPop
+			self.CityWhipCounter[iCityID] = iWhipCounter
+			self.CityConscriptCounter[iCityID] = iConscriptCounter
+
 	def _beforeReset(self):
 		self.populations = dict()
+		self.CityWhipCounter = dict()
+		self.CityConscriptCounter = dict()
 	
 	def resetCity(self, city):
 		self.populations[city.getID()] = city.getPopulation()
+		self.CityWhipCounter[city.getID()] = city.getHurryAngerTimer()
+		self.CityConscriptCounter[city.getID()] = city.getConscriptAngerTimer()
 	
 	def discardCity(self, city):
-		# thx Kalimakhus
-		cityID = city.getID()
-		if ( cityID in self.populations):
-			del self.populations[cityID]		
-
+		self.populations.discard(city.getID())
+		self.CityWhipCounter.discard(city.getID())
+		self.CityConscriptCounter.discard(city.getID())
 
 ### Happiness and Healthiness
 

@@ -197,11 +197,12 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.WonLastRound = 0
 		self.WdlAttacker = None
 		self.WdlDefender = None
-
+		
 		self.CIVAttitude = None
 		self.CIVCivics = None
 		self.CIVReligion = None
 		self.CityWhipCounter = None
+		self.CityConscriptCounter = None
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
@@ -323,6 +324,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			for i in range(0, iPlayer.getNumCities(), 1):
 				iCity = iPlayer.getCity(i)
 				iCurrentWhipCounter = iCity.getHurryAngerTimer()
+				iCurrentConstrictCounter = iCity.getConscriptAngerTimer()
 #				if iCurrentWhipCounter != 0: iCurrentWhipCounter += 1  # onBeginPlayerTurn fires after whip counter has decreased by 1
 
 #				message = "Whip Testing: %s, current(%i), prior(%i), flat(%i)" % (iCity.getName(), iCurrentWhipCounter, self.CityWhipCounter[i], iCity.flatHurryAngerLength())
@@ -332,10 +334,20 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					message = "The whip was applied in %s" % (iCity.getName())
 					NewAutoLog.writeLog(message, vColor="Red")
 
+				if iCurrentConstrictCounter > self.CityConscriptCounter[i]:
+					message = "A %s was drafted in %s" % (gc.getUnitInfo(iCity.getConscriptUnit()).getDescription(), iCity.getName())
+					NewAutoLog.writeLog(message, vColor="Red")
+
 				if (self.CityWhipCounter[i] != 0
 				and iCurrentWhipCounter < self.CityWhipCounter[i]
 				and iCurrentWhipCounter % iCity.flatHurryAngerLength() == 0):
 					message = "Whip anger has decreased in %s" % (iCity.getName())
+					NewAutoLog.writeLog(message, vColor="DarkRed")
+
+				if (self.CityConscriptCounter[i] != 0
+				and iCurrentConstrictCounter < self.CityConscriptCounter[i]
+				and iCurrentConstrictCounter % iCity.flatConscriptAngerLength() == 0):
+					message = "Draft anger has decreased in %s" % (iCity.getName())
 					NewAutoLog.writeLog(message, vColor="DarkRed")
 
 			self.storeWhip()
@@ -382,7 +394,6 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			self.UnitKilled = 1
 
 			pWinner,pLoser = argsList
-
 			if (pWinner.getOwner() == CyGame().getActivePlayer()
 			or pLoser.getOwner() == CyGame().getActivePlayer()):
 				playerX = PyPlayer(pWinner.getOwner())
@@ -774,7 +785,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer = argsList[1]
 			#CvUtil.pyPrint("%s has grown to size %i" %(pCity.getName(),pCity.getPopulation()))
 			if pCity.getOwner() == CyGame().getActivePlayer():
-				message = "%s grows: %i" %(pCity.getName(), pCity.getPopulation())
+				message = "grows"
+				message = "%s %s to size %i" %(pCity.getName(), message, pCity.getPopulation())
 				NewAutoLog.writeLog(message, vColor="RoyalBlue")
 
 	def onCityBuildingUnit(self, argsList):
@@ -907,6 +919,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.CIVCivics = [0] * ziMaxCiv * 5
 		self.CIVReligion = [-1] * ziMaxCiv
 		self.CityWhipCounter = [0] * 1000
+		self.CityConscriptCounter = [0] * 1000
 
 	def storeStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
@@ -938,6 +951,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		for i in range(0, iPlayer.getNumCities(), 1):
 			iCity = iPlayer.getCity(i)
 			self.CityWhipCounter[i] = iCity.getHurryAngerTimer()
+			self.CityConscriptCounter[i] = iCity.getConscriptAngerTimer()
 
 	def checkStuff(self):
 		ziMaxCiv = gc.getGame().countCivPlayersEverAlive()
