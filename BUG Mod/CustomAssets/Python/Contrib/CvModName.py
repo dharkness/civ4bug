@@ -1,7 +1,7 @@
 #CvModName.py
 
 modName = "BUG Mod"
-modVersion = "2.20"
+modVersion = "2.21"
 
 civName = "BtS"
 civVersion = "3.13"
