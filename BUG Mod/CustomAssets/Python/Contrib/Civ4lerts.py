@@ -336,12 +336,13 @@ class CityPendingGrowth(AbstractCityAlert):
 		AbstractCityAlert.__init__(self, eventManager)
 	
 	def init(self):
-		CyInterface().addImmediateMessage("5 / 4 = %d" % (5//-4), "")
-		CyInterface().addImmediateMessage("4 / 4 = %d" % (4//-4), "")
-		CyInterface().addImmediateMessage("3 / 4 = %d" % (3//-4), "")
-		CyInterface().addImmediateMessage("2 / 4 = %d" % (2//-4), "")
-		CyInterface().addImmediateMessage("1 / 4 = %d" % (1//-4), "")
-		CyInterface().addImmediateMessage("0 / 4 = %d" % (0//-4), "")
+		return
+#		CyInterface().addImmediateMessage("5 / 4 = %d" % (5//-4), "")
+#		CyInterface().addImmediateMessage("4 / 4 = %d" % (4//-4), "")
+#		CyInterface().addImmediateMessage("3 / 4 = %d" % (3//-4), "")
+#		CyInterface().addImmediateMessage("2 / 4 = %d" % (2//-4), "")
+#		CyInterface().addImmediateMessage("1 / 4 = %d" % (1//-4), "")
+#		CyInterface().addImmediateMessage("0 / 4 = %d" % (0//-4), "")
 	
 	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
 		if (BugAlerts.isShowCityPendingGrowthAlert()):
@@ -413,9 +414,11 @@ class CityGrowth(AbstractCityAlert):
 		self.CityConscriptCounter[city.getID()] = city.getConscriptAngerTimer()
 	
 	def discardCity(self, city):
-		self.populations.discard(city.getID())
-		self.CityWhipCounter.discard(city.getID())
-		self.CityConscriptCounter.discard(city.getID())
+		cityID = city.getID()
+		if (cityID in self.populations):
+			del self.populations[cityID]
+			del self.CityWhipCounter[cityID]
+			del self.CityConscriptCounter[cityID]
 
 ### Happiness and Healthiness
 
@@ -649,14 +652,14 @@ class GoldTrade(AbstractStatefulAlert):
 			rivalTeam = gc.getTeam(rivalPlayer.getTeam())
 			# TODO: does this need to check for war or trade denial?
 			if (team.isHasMet(rivalPlayer.getTeam())
-				and (team.isGoldTrading() or rivalTeam.isGoldTrading())):
+			and (team.isGoldTrading() or rivalTeam.isGoldTrading())):
 				oldMaxGoldTrade = self._getMaxGoldTrade(player, rival)
 				newMaxGoldTrade = rivalPlayer.AI_maxGoldTrade(player)
 				deltaMaxGoldTrade = newMaxGoldTrade - oldMaxGoldTrade
 				if (deltaMaxGoldTrade >= BugAlerts.getGoldTradeThreshold()):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_GOLD_TRADE",
-							(gc.getTeam(rival).getName(),
+							(gc.getPlayer(rival).getName(),
 							 newMaxGoldTrade))
 					addMessageNoIcon(player, message)
 					self._setMaxGoldTrade(player, rival, newMaxGoldTrade)
@@ -705,7 +708,7 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 				if (deltaMaxGoldPerTurnTrade >= BugAlerts.getGoldPerTurnTradeThreshold()):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_GOLD_PER_TURN_TRADE",
-							(gc.getTeam(rival).getName(),
+							(gc.getPlayer(rival).getName(),
 							 newMaxGoldPerTurnTrade))
 					addMessageNoIcon(player, message)
 					self._setMaxGoldPerTurnTrade(player, rival, newMaxGoldPerTurnTrade)
