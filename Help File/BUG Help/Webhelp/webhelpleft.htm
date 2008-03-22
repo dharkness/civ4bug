@@ -1,0 +1,278 @@
+<html>
+<head>
+<title>The BUG Mod Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+<style type="text/css"> 
+<!-- 
+.selected {font-weight: normal;background-color: #E2E2E2;padding:0px,2px,0px,2px;}
+.unselected { font-weight: normal;padding:0px,2px,0px,2px;}
+.hand { cursor: hand; }
+.p {height: 16px;width: 16px;vertical-align: middle;border: 0;}
+div,body { font-family: Tahoma, Verdana; font-size: 11px; }
+A:link {text-decoration: none; color:#000000}
+A:visited {text-decoration: none; color: #000000}
+A:active {text-decoration: none; color: #000000 }
+A:hover {text-decoration: none; color: #FF0000 }
+
+-->
+</style>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var cl,pn,pm,bl;
+var path = 'icons/';
+var pos = 0;
+var icon;
+var tar = 'content';
+var display;
+var imgi;
+var AutoCollapse;
+var LastSelected = 0;
+var loaded = false;
+var max;
+var divlist;
+
+function SetEnv(v,a){
+
+if(v==0){ 
+	pn = [['daplus.gif','daminus.gif'],['tplus.gif','tminus.gif'],['uaplus.gif','uaminus.gif'],['splus.gif','sminus.gif']];
+	PreloadImg('downangle.gif','tshaped.gif','upangle.gif','sline.gif','daplus.gif','daminus.gif','tplus.gif','tminus.gif','uaplus.gif','uaminus.gif','splus.gif','sminus.gif','blank.gif','line.gif');
+}else{
+	pn = [['plus.gif','minus.gif']];
+	PreloadImg('plus.gif','minus.gif','blank.gif');
+
+}
+AutoCollapse = a;
+}
+
+ function PreloadImg(){
+if (document.images) { 
+	var imgs = PreloadImg.arguments; 
+	var pload = new Array();
+	for (var i=0; i<imgs.length; i++) { 
+		pload[i] = new Image; 
+		pload[i].src = path + imgs; 
+	} 
+} 
+ } 
+
+function get(o){
+var x;
+if(document.all) x=document.all[o]; 
+if(document.getElementById) x=document.getElementById(o);
+
+return x;
+}
+
+
+function pnImg(img){
+var i,j;
+for(i=0;i<=3;i++){
+	for(j=0;j<=1;j++){
+	if(img.substr(img.lastIndexOf('/') + 1)== pn[i][j]){
+		return i;
+	}
+	}
+}
+}
+function icon(img){
+var f;
+f = img.substr(img.lastIndexOf('/') + 1);
+if( f=='1.gif' || f=='2.gif'){
+	return ['1.gif','2.gif'];
+}
+if( f=='3.gif' || f=='4.gif'){
+	return ['3.gif','4.gif'];
+}
+if( f=='5.gif' || f=='6.gif'){
+	return ['5.gif','6.gif'];
+}
+if( f=='7.gif' || f=='8.gif'){
+	return ['7.gif','8.gif'];
+}
+return [f,f];
+}
+
+function show(id){
+get('d' + id).style.display='block';
+if(get('imgn' + id )) get('imgn' + id ).src= path + pn[pnImg(get('imgn' + id ).src)][1];
+get('img' + id ).src= path + icon(get('img' + id ).src)[1];
+
+}
+
+function collapse(id){
+get('d' + id ).style.display='none';
+if(get('imgn' + id )) get('imgn' + id ).src= path + pn[pnImg(get('imgn' + id ).src)][0];
+get('img' + id ).src= path + icon(get('img' + id ).src)[0];
+
+}
+
+function collapseAll(){
+var i;
+var o;
+for(i=0;i<=divlist.length-1;i++){
+	if(o=get('d' + divlist[i])){
+		if(o.style.display!='none'){ 
+			collapse(divlist[i]);
+		}
+	}
+}
+}
+
+function unselectAll(){
+var i=0;
+while(get("l" + i)){
+	get("l" + i).className = "unselected";
+	i++;
+}
+}
+
+function showParent(ele){
+var e;
+e = ele.parentNode;
+
+if(e==null) return;
+
+if(e.nodeName == 'DIV'){
+	if(e.id!='') show(e.id.substring(1,e.id.length ));
+}else if(e.nodeName == 'A'){
+
+}
+showParent(e);
+}
+
+function showNode(index){
+showParent(get("l" + index));
+LinkClick(index);
+}
+
+function selectNode(index){
+showParent(get("l" + index));
+LinkClick(index);
+}
+
+
+function NodeClick(id){
+if(get('d' + id ).style.display=='none'){
+	show(id);
+}else{
+	collapse(id);
+}
+return false;
+}
+
+function LinkDblClick(id){
+if(!AutoCollapse){
+	if(get('d' + id ).style.display=='none'){
+		show(id);
+	}else{
+		collapse(id);
+	}
+}
+return false;
+}
+
+function LinkClick(index,hasChild,r){
+if(AutoCollapse && hasChild){
+	if(get('d' + index ).style.display=='none'){
+		collapseAll()
+		showParent(get('l' + index));
+		show(index);
+	}else{
+		collapseAll()
+		showParent(get('l' + index));	
+		collapse(index);
+	}
+}
+get('l' + LastSelected).className = "unselected";
+get('l' + index).className = "selected";
+LastSelected = index;
+return r;
+}
+
+function body_onmousemove(event){
+if(typeof(document.body.scrollTop)!='undefined'){
+if(parseInt(event.clientX)<5){
+window.scroll(0,document.body.scrollTop);}}
+if(typeof(window.scrollY)!='undefined'){
+if(parseInt(event.clientX)<5){
+window.scrollTo(0,window.scrollY);}}
+}
+
+window.defaultStatus = '';
+
+//-->
+</SCRIPT>
+<style type="text/css"> 
+<!-- 
+BODY {
+scrollbar-face-color:#DCDBD6;
+scrollbar-highlight-color:#DFDFDF;
+scrollbar-3dlight-color:#DCDBD6;
+scrollbar-darkshadow-color:#000000;
+scrollbar-shadow-color:#DFDFDF;
+scrollbar-arrow-color:#EFEFEF;
+scrollbar-track-color:#EFEFEF;
+}
+-->
+</style>
+
+
+</head>
+
+<body bgcolor="#ffffff" leftmargin="5" topmargin="5" marginwidth="5" marginheight="5" onmousemove="body_onmousemove(event);" onload="loaded = true;">
+<!--BEGINBAR-->
+<table width="100%" border="0" cellspacing="2" cellpadding="2">
+<tr align="center" bgcolor="#E1E1E1"> 
+<td width="50%"><font size="2"><strong>Contents</strong></font></td>
+<td width="50%"><font size="2"><a href="webhelpindex.htm">Index</a></font></td>
+</tr>
+</table>
+<br>
+<!--ENDBAR-->
+<div id="loading"><font color="#FF0000" size="1"> Loading table of contents... 
+</font><br><br></div>
+<script>SetEnv(0,false)</script><div><nobr><img src="icons/downangle.gif" class="p"><a href="scr/whatis.html" onclick="return LinkClick('0',false,true)" target="content" title=" What is The BUG Mod?" onmousemove="window.status='What is The BUG Mod?'"><img src="icons/11.gif" class="p"> <span id="l0" class="unselected">What is The BUG Mod?</span></a></nobr></div>
+<div><nobr><img src="icons/tshaped.gif" class="p"><a href="scr/installation.html" onclick="return LinkClick('1',false,true)" target="content" title=" How to Install" onmousemove="window.status='How to Install'"><img src="icons/11.gif" class="p"> <span id="l1" class="unselected">How to Install</span></a></nobr></div>
+<div><nobr><img src="icons/tshaped.gif" class="p"><a href="scr/Changes.html" onclick="return LinkClick('2',false,true)" target="content" title=" Changes made to original Mods" onmousemove="window.status='Changes made to original Mods'"><img src="icons/11.gif" class="p"> <span id="l2" class="unselected">Changes made to original Mods</span></a></nobr></div>
+<div><nobr><img src="icons/tshaped.gif" class="p"><a href="scr/Commands.html" onclick="return LinkClick('3',false,true)" target="content" title=" Shortcut Commands in The BUG Project" onmousemove="window.status='Shortcut Commands in The BUG Project'"><img src="icons/11.gif" class="p"> <span id="l3" class="unselected">Shortcut Commands in The BUG Project</span></a></nobr></div>
+<div><nobr><img src="icons/tshaped.gif" class="p"><a href="scr/contact.html" onclick="return LinkClick('4',false,true)" target="content" title=" How to contact The BUG Team" onmousemove="window.status='How to contact The BUG Team'"><img src="icons/11.gif" class="p"> <span id="l4" class="unselected">How to contact The BUG Team</span></a></nobr></div>
+<div><nobr><a href="#" onClick="return NodeClick('5')"><img id="imgn5" src="icons/tplus.gif" class="p"></a><a href="scr/IncludedMods.html" onclick="return LinkClick('5',true,true)" onDblClick="return LinkDblClick('5')" target="content" title="Included MODs" onmousemove="window.status='Included MODs'"><img id="img5" src="icons/1.gif" class="p"> <span id="l5" class="unselected">Included MODs</span></a></nobr></div>
+<div id="d5" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/autolog.html" onclick="return LinkClick('6',false,true)" target="content" title=" Autlog" onmousemove="window.status='Autlog'"><img src="icons/11.gif" class="p"> <span id="l6" class="unselected">Autlog</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/bes.html" onclick="return LinkClick('7',false,true)" target="content" title=" Better Espionnage Screen" onmousemove="window.status='Better Espionnage Screen'"><img src="icons/11.gif" class="p"> <span id="l7" class="unselected">Better Espionnage Screen</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/C&GPT.html" onclick="return LinkClick('8',false,true)" target="content" title=" Cultural and Great Person Turns" onmousemove="window.status='Cultural and Great Person Turns'"><img src="icons/11.gif" class="p"> <span id="l8" class="unselected">Cultural and Great Person Turns</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/camscda.html" onclick="return LinkClick('9',false,true)" target="content" title=" Cammagno's CDA Pages" onmousemove="window.status='Cammagno\'s CDA Pages'"><img src="icons/11.gif" class="p"> <span id="l9" class="unselected">Cammagno's CDA Pages</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/CDA.html" onclick="return LinkClick('10',false,true)" target="content" title=" Custom Domestic Advisor" onmousemove="window.status='Custom Domestic Advisor'"><img src="icons/11.gif" class="p"> <span id="l10" class="unselected">Custom Domestic Advisor</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/cityarrows.html" onclick="return LinkClick('11',false,true)" target="content" title=" City Cycle Arrows" onmousemove="window.status='City Cycle Arrows'"><img src="icons/11.gif" class="p"> <span id="l11" class="unselected">City Cycle Arrows</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/Civ4lerts.html" onclick="return LinkClick('12',false,true)" target="content" title=" Civ4lerts" onmousemove="window.status='Civ4lerts'"><img src="icons/11.gif" class="p"> <span id="l12" class="unselected">Civ4lerts</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/glance.html" onclick="return LinkClick('13',false,true)" target="content" title=" Improved Glance Tab" onmousemove="window.status='Improved Glance Tab'"><img src="icons/11.gif" class="p"> <span id="l13" class="unselected">Improved Glance Tab</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/GPPB.html" onclick="return LinkClick('14',false,true)" target="content" title=" Great Person Progress Bar" onmousemove="window.status='Great Person Progress Bar'"><img src="icons/11.gif" class="p"> <span id="l14" class="unselected">Great Person Progress Bar</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/GPTech.html" onclick="return LinkClick('15',false,true)" target="content" title=" Great Person Tech Prefrences" onmousemove="window.status='Great Person Tech Prefrences'"><img src="icons/11.gif" class="p"> <span id="l15" class="unselected">Great Person Tech Prefrences</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/hints.html" onclick="return LinkClick('16',false,true)" target="content" title=" Hints &amp;amp; Tips" onmousemove="window.status='Hints &amp;amp; Tips'"><img src="icons/11.gif" class="p"> <span id="l16" class="unselected">Hints &amp;amp; Tips</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/IUI.html" onclick="return LinkClick('17',false,true)" target="content" title=" Improved Unit Icons" onmousemove="window.status='Improved Unit Icons'"><img src="icons/11.gif" class="p"> <span id="l17" class="unselected">Improved Unit Icons</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/NJAGC.html" onclick="return LinkClick('18',false,true)" target="content" title=" Not Just Another Game Clock" onmousemove="window.status='Not Just Another Game Clock'"><img src="icons/11.gif" class="p"> <span id="l18" class="unselected">Not Just Another Game Clock</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/RCP.html" onclick="return LinkClick('19',false,true)" target="content" title=" Raw Commerce and Production" onmousemove="window.status='Raw Commerce and Production'"><img src="icons/11.gif" class="p"> <span id="l19" class="unselected">Raw Commerce and Production</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/Reminders.html" onclick="return LinkClick('20',false,true)" target="content" title=" Reminders" onmousemove="window.status='Reminders'"><img src="icons/11.gif" class="p"> <span id="l20" class="unselected">Reminders</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/scoreboard.html" onclick="return LinkClick('21',false,true)" target="content" title=" Advanced Scoredboard" onmousemove="window.status='Advanced Scoredboard'"><img src="icons/11.gif" class="p"> <span id="l21" class="unselected">Advanced Scoredboard</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/Sevopedia.html" onclick="return LinkClick('22',false,true)" target="content" title=" SevoPedia" onmousemove="window.status='SevoPedia'"><img src="icons/11.gif" class="p"> <span id="l22" class="unselected">SevoPedia</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/unitrenaming.html" onclick="return LinkClick('23',false,true)" target="content" title=" Unit Naming" onmousemove="window.status='Unit Naming'"><img src="icons/11.gif" class="p"> <span id="l23" class="unselected">Unit Naming</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Included MODs/WhipAssitant.html" onclick="return LinkClick('24',false,true)" target="content" title=" Whip Assistant" onmousemove="window.status='Whip Assistant'"><img src="icons/11.gif" class="p"> <span id="l24" class="unselected">Whip Assistant</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="scr/Included MODs/WideCityBars.html" onclick="return LinkClick('25',false,true)" target="content" title=" WideCityBar" onmousemove="window.status='WideCityBar'"><img src="icons/11.gif" class="p"> <span id="l25" class="unselected">WideCityBar</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('26')"><img id="imgn26" src="icons/tplus.gif" class="p"></a><a href="scr/options.html" onclick="return LinkClick('26',true,true)" onDblClick="return LinkDblClick('26')" target="content" title="Options" onmousemove="window.status='Options'"><img id="img26" src="icons/1.gif" class="p"> <span id="l26" class="unselected">Options</span></a></nobr></div>
+<div id="d26" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/Advisors.html" onclick="return LinkClick('27',false,true)" target="content" title=" Advisors Options" onmousemove="window.status='Advisors Options'"><img src="icons/11.gif" class="p"> <span id="l27" class="unselected">Advisors Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/Alerts.html" onclick="return LinkClick('28',false,true)" target="content" title=" Alerts Options" onmousemove="window.status='Alerts Options'"><img src="icons/11.gif" class="p"> <span id="l28" class="unselected">Alerts Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/Clock.html" onclick="return LinkClick('29',false,true)" target="content" title=" Clock Options" onmousemove="window.status='Clock Options'"><img src="icons/11.gif" class="p"> <span id="l29" class="unselected">Clock Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/General.html" onclick="return LinkClick('30',false,true)" target="content" title=" General Options" onmousemove="window.status='General Options'"><img src="icons/11.gif" class="p"> <span id="l30" class="unselected">General Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/Logging.html" onclick="return LinkClick('31',false,true)" target="content" title=" Logging Options" onmousemove="window.status='Logging Options'"><img src="icons/11.gif" class="p"> <span id="l31" class="unselected">Logging Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/Options/Scoreboard.html" onclick="return LinkClick('32',false,true)" target="content" title=" Scoreboard Options" onmousemove="window.status='Scoreboard Options'"><img src="icons/11.gif" class="p"> <span id="l32" class="unselected">Scoreboard Options</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="scr/Options/UnitNaming.html" onclick="return LinkClick('33',false,true)" target="content" title=" Unit Naming Options" onmousemove="window.status='Unit Naming Options'"><img src="icons/11.gif" class="p"> <span id="l33" class="unselected">Unit Naming Options</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('34')"><img id="imgn34" src="icons/tplus.gif" class="p"></a><a href="scr/#DEU/readme_deu.html" onclick="return LinkClick('34',true,true)" onDblClick="return LinkDblClick('34')" target="content" title="#DEU" onmousemove="window.status='#DEU'"><img id="img34" src="icons/1.gif" class="p"> <span id="l34" class="unselected">#DEU</span></a></nobr></div>
+<div id="d34" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="scr/#DEU/included_deu.html" onclick="return LinkClick('35',false,true)" target="content" title=" Deutsch Included Mods" onmousemove="window.status='Deutsch Included Mods'"><img src="icons/11.gif" class="p"> <span id="l35" class="unselected">Deutsch Included Mods</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('36')"><img id="imgn36" src="icons/uaplus.gif" class="p"></a><a href="scr/#ITA/readme_ita.html" onclick="return LinkClick('36',true,true)" onDblClick="return LinkDblClick('36')" target="content" title="#ITA" onmousemove="window.status='#ITA'"><img id="img36" src="icons/1.gif" class="p"> <span id="l36" class="unselected">#ITA</span></a></nobr></div>
+<div id="d36" style="display:none"><div><nobr><img src="icons/blank.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/#ITA/camscda_ita.html" onclick="return LinkClick('37',false,true)" target="content" title=" Cammagno's CDA Pages Italiano" onmousemove="window.status='Cammagno\'s CDA Pages Italiano'"><img src="icons/11.gif" class="p"> <span id="l37" class="unselected">Cammagno's CDA Pages Italiano</span></a></nobr></div>
+<div><nobr><img src="icons/blank.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="scr/#ITA/includeddocs_ita.html" onclick="return LinkClick('38',false,true)" target="content" title=" Italiano Included Mods" onmousemove="window.status='Italiano Included Mods'"><img src="icons/11.gif" class="p"> <span id="l38" class="unselected">Italiano Included Mods</span></a></nobr></div>
+<div><nobr><img src="icons/blank.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="scr/#ITA/unitrenaming_ita.html" onclick="return LinkClick('39',false,true)" target="content" title=" Unit Naming Italiano" onmousemove="window.status='Unit Naming Italiano'"><img src="icons/11.gif" class="p"> <span id="l39" class="unselected">Unit Naming Italiano</span></a></nobr></div>
+</div><script>divlist = [5,26,34,36]</script>
+<script>get('loading').style.display='none';</script>
+</body>
+</html>
