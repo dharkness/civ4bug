@@ -56,7 +56,7 @@
 				<StyleUnit>
 					<UnitType>UNIT_WORKER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_WORKER_EUROPEAN</EarlyArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WORKER_SOUTH_AMERICA</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WORKERMODERN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WORKERMEDIEVAL_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
@@ -153,6 +153,33 @@
 				</StyleUnit>
 				
 				<StyleUnit>
+					<UnitType>UNIT_BATTLESHIP</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_IOWA_BATTLESHIP_USA</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_IOWA_BATTLESHIP_USA</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_IOWA_BATTLESHIP_USA</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>				
+				
+				<StyleUnit>
+					<UnitType>UNIT_CARRIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>		
+				
+				<StyleUnit>
+					<UnitType>UNIT_TRANSPORT</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAN_ANTONIO_TRANSPORT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAN_ANTONIO_TRANSPORT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAN_ANTONIO_TRANSPORT</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>								
+				
+				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_P40_FIGHTER_USA</EarlyArtDefineTag>
@@ -173,9 +200,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_F22_JET_FIGHTER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_F22_JET_FIGHTER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_F22_JET_FIGHTER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_F15_JET_FIGHTER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_F15_JET_FIGHTER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_F15_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				

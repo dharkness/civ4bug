@@ -1,7 +1,7 @@
 #CvModName.py
 
 modName = "BAT Mod"
-modVersion = "0.07"
+modVersion = "0.08"
 
 civName = "BtS"
 civVersion = "3.13"

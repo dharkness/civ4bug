@@ -88,10 +88,30 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN_2</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN_2</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN_2</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
@@ -146,6 +166,16 @@
 				
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_IBUTHO_ZULU</LateArtDefineTag>
@@ -382,9 +412,9 @@
 				<StyleUnit> 
 					<UnitType>UNIT_ARTIST</UnitType>
 					<UnitMeshGroup>
-					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST_JT_AFRICA</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST_AFRICAN</EarlyArtDefineTag>
 					<LateArtDefineTag>ART_DEF_UNIT_ARTIST_MODERN_JT_AFRICA</LateArtDefineTag>
-					<MiddleArtDefineTag>ART_DEF_UNIT_ARTIST_JT_AFRICA</MiddleArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_ARTIST_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				<StyleUnit> 
@@ -414,9 +444,9 @@
 				<StyleUnit> 
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
-					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT_JT_AFRICA</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_AFRICAN</EarlyArtDefineTag>
 					<LateArtDefineTag>ART_DEF_UNIT_WARLORD_MODERN_JT_AFRICA</LateArtDefineTag>
-					<MiddleArtDefineTag>ART_DEF_UNIT_WARLORD_MEDIEVAL_JT_AFRICA</MiddleArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				<StyleUnit> 
@@ -582,6 +612,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
+
 																		
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

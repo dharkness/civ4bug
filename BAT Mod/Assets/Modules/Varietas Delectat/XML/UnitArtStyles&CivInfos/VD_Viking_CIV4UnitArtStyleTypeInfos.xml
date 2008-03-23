@@ -72,9 +72,28 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
+<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
 					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
+			<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
+			<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_VIKING</MiddleArtDefineTag>
@@ -83,6 +102,16 @@
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_VIKING</LateArtDefineTag>
@@ -133,6 +162,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>	
 				
 				<StyleUnit>
@@ -147,9 +186,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_CHARIOT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_EUROPEAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_EUROPEAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_EUROPEAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_VIKING</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_VIKING</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -224,6 +263,24 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_GALLEY_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_FIGHTER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_FFVSJ22_HOLLAND</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_FFVSJ22_HOLLAND</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_FFVSJ22_HOLLAND</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>				
+
+				<StyleUnit>
+					<UnitType>UNIT_BOMBER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAAB18_SWEDISH</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAAB18_SWEDISH</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAAB18_SWEDISH</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>					
 				
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>

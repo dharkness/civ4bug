@@ -57,23 +57,52 @@
 				<StyleUnit>
 					<UnitType>UNIT_WORKER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_WORKER_SOUTH_AMERICA</EarlyArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WORKER_INCAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WORKERMODERN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_WORKER_SOUTH_AMERICA</MiddleArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WORKER_INCAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_SOUTH_AMERICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_SOUTH_AMERICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_SOUTH_AMERICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO_2</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO_2</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO_2</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MESO</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_INCAN</LateArtDefineTag>
@@ -111,9 +140,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_CROSSBOWMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -133,23 +162,33 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_INCAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MACEMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MACEMAN_INCAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MACEMAN_INCAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MACEMAN_INCAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVYFOOTMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVYFOOTMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVYFOOTMAN_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CHARIOT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -183,18 +222,18 @@
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_PRESIDENTIAL_LANCER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_PRESIDENTIAL_LANCER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_PRESIDENTIAL_LANCER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CUIRASSIER_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CAVALRY_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CAVALRY_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CAVALRY_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CAVALRY_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -219,9 +258,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_RIFLEMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_RIFLEMAN_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_RIFLEMAN_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_RIFLEMAN_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_RIFLEMAN_INCAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_RIFLEMAN_INCAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_RIFLEMAN_INCAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -234,12 +273,49 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
+		<StyleUnit>
+					<UnitType>UNIT_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_INFANTRY_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_INFANTRY_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_INFANTRY_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+		<StyleUnit>
+					<UnitType>UNIT_MACHINE_GUN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+
+		<StyleUnit>
+					<UnitType>UNIT_AT_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_SOUTH_AMERICA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_SOUTH_AMERICA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_SOUTH_AMERICA</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+			<StyleUnit>
+					<UnitType>UNIT_SAM_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				
@@ -287,7 +363,35 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
+				</StyleUnit>		
+
+				<StyleUnit> 
+					<UnitType>UNIT_GREAT_GENERAL</UnitType>
+					<UnitMeshGroup>
+					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_INCA</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_WARLORD_MODERN</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_INCA</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>			
+				
+				<StyleUnit> 
+					<UnitType>UNIT_ARTIST</UnitType>
+					<UnitMeshGroup>
+					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST_MESO</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_ARTIST_MODERN</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_ARTIST_MESO</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit> 
+					<UnitType>UNIT_PROPHET</UnitType>
+					<UnitMeshGroup>
+					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

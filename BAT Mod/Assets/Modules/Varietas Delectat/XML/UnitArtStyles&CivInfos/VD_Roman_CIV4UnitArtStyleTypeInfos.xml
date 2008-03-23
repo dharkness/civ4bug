@@ -71,17 +71,46 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
+<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC</MiddleArtDefineTag>
+					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_2</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_2</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_2</MiddleArtDefineTag>
+					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_3</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_3</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_HELLENISTIC_3</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_ROMAN</LateArtDefineTag>
@@ -164,9 +193,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_WAR_ELEPHANT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CARTHAGE_WAR_ELEPHANT</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CARTHAGE_WAR_ELEPHANT</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CARTHAGE_WAR_ELEPHANT</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_ROMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_ROMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -279,6 +308,15 @@
 				</StyleUnit>
 				
 				<StyleUnit>
+					<UnitType>UNIT_BATTLESHIP</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LITTORIO_BATTLESHIP</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LITTORIO_BATTLESHIP</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LITTORIO_BATTLESHIP</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_FIAT_CR42_FIGHTER</EarlyArtDefineTag>
@@ -304,6 +342,16 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>				
+
+	<StyleUnit> 
+					<UnitType>UNIT_GREAT_GENERAL</UnitType>
+					<UnitMeshGroup>
+					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_ROMAN</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_WARLORD_MODERN</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MED_ROMAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

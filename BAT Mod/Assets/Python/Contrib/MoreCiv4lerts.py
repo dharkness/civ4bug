@@ -53,7 +53,10 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def __init__(self, eventManager, *args, **kwargs):
 		super(MoreCiv4lertsEvent, self).__init__(eventManager, *args, **kwargs)
 
+		eventManager.addEventHandler("BeginPlayerTurn", self.onBeginPlayerTurn)
 		eventManager.addEventHandler("BeginGameTurn", self.OnBeginGameTurn)
+		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
+		eventManager.addEventHandler("unitMove", self.onUnitMove)
 		eventManager.addEventHandler("cityAcquired", self.OnCityAcquired)
 		eventManager.addEventHandler("cityBuilt", self.OnCityBuilt)
 		eventManager.addEventHandler("cityRazed", self.OnCityRazed)
@@ -68,6 +71,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
+
+		self.zsCurrTurn = 0
+		self.zsPrevTurn = 0
 
 	def getCheckForDomPopVictory(self):
 		return BugAlerts.isShowDomPopAlert()
@@ -102,11 +108,44 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def getDoChecks(self):
 		return self.getCheckForDomVictory() or self.getCheckForCityBorderExpansion() or self.getCheckForNewTrades()
 
-	def OnBeginGameTurn(self, argsList):
-		iGameTurn = argsList[0]
+	def onKbdEvent(self, argsList):
 		if (not self.getDoChecks()): return
+
+		self.zsCurrTurn = gc.getGame().getElapsedGameTurns()
+		if self.zsCurrTurn == self.zsPrevTurn: return
+
 		iPlayer = gc.getGame().getActivePlayer()
 		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
+
+		self.zsPrevTurn = self.zsCurrTurn
+
+	def onUnitMove(self, argsList):
+		pPlot,pUnit,pOldPlot = argsList
+
+		if (not self.getDoChecks()): return
+
+		self.zsCurrTurn = gc.getGame().getElapsedGameTurns()
+		if self.zsCurrTurn == self.zsPrevTurn: return
+
+		iPlayer = gc.getGame().getActivePlayer()
+		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
+
+		self.zsPrevTurn = self.zsCurrTurn
+
+	def onBeginPlayerTurn(self, argsList):
+		'Called at the beginning of a players turn'
+		iGameTurn, iPlayer = argsList
+		return
+#		if iPlayer != 0: return
+#		if (not self.getDoChecks()): return
+#		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
+
+	def OnBeginGameTurn(self, argsList):
+		iGameTurn = argsList[0]
+		return
+#		if (not self.getDoChecks()): return
+#		iPlayer = gc.getGame().getActivePlayer()
+#		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
 
 	def OnCityAcquired(self, argsList):
 		owner,playerType,city,bConquest,bTrade = argsList
@@ -250,8 +289,10 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			CurrTechCanTrade = []
 			PrevTechCanTrade = []
 			PlayerHasTech = ""
+
 			self.getTechForTrade(gc.getPlayer(iPlayer), iActiveTeam)
 			for iLoopPlayer, CurrTechCanTrade in self.CurrAvailTechTrades.iteritems():
+
 				#Did he have trades avail last turn
 				if (self.PrevAvailTechTrades.has_key(iLoopPlayer)):
 					PrevTechCanTrade = []

@@ -88,10 +88,30 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</LateArtDefineTag>
@@ -111,9 +131,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_ARCHER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_ARCHER_AFRICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_ARCHER_AFRICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_ARCHER_AFRICAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ARCHER_ETHIOPIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ARCHER_ETHIOPIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ARCHER_ETHIOPIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -151,6 +171,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_ETHIOPIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
@@ -165,9 +195,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_CHARIOT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_AFRICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_AFRICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_AFRICAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CHARIOT_ETHIOPIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_ETHIOPIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_ETHIOPIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -192,9 +222,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_KNIGHT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_KNIGHT_AFRICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_KNIGHT_AFRICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_AFRICAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KNIGHT_ETHIOPIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KNIGHT_ETHIOPIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_ETHIOPIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 

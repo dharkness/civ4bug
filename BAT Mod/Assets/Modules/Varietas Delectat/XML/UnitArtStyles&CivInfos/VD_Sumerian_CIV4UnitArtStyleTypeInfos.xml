@@ -79,6 +79,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+	<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
@@ -115,6 +125,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
@@ -128,6 +148,16 @@
 
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_SUMERIAN</LateArtDefineTag>
@@ -174,18 +204,18 @@
 				<StyleUnit>
 					<UnitType>UNIT_KNIGHT</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_KNIGHT_MIDDLE_EAST</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_KNIGHT_MIDDLE_EAST</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_MIDDLE_EAST</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ANSAR_ARABIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ANSAR_ARABIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ANSAR_ARABIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_PARTHIAN_GRIVPANVAR</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_PARTHIAN_GRIVPANVAR</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_PARTHIAN_GRIVPANVAR</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CATAPHRACT_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CATAPHRACT_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CATAPHRACT_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 

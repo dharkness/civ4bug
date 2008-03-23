@@ -71,6 +71,15 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_ASIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_ASIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_ASIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
@@ -79,10 +88,30 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</MiddleArtDefineTag>
 					</UnitMeshGroup>
+		<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+		<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MONK_WARRIOR_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_JAPANESE</LateArtDefineTag>
@@ -137,6 +166,16 @@
 
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_JAPANESE</LateArtDefineTag>
@@ -381,11 +420,19 @@
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_D3A1_DIVE_BOMBER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_D3A1_DIVE_BOMBER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_D3A1_DIVE_BOMBER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>																
+				</StyleUnit>		
+<StyleUnit> 
+					<UnitType>UNIT_PROPHET</UnitType>
+					<UnitMeshGroup>
+					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>														
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

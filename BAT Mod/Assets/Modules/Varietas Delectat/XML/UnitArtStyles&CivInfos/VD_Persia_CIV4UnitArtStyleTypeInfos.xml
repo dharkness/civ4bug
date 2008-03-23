@@ -79,6 +79,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
+		<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+		<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_PERSIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
@@ -115,6 +125,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MIDDLE_EAST</MiddleArtDefineTag>
+					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
@@ -128,6 +148,16 @@
 
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIAN</LateArtDefineTag>
@@ -181,15 +211,6 @@
 				</StyleUnit>
 
 				<StyleUnit>
-					<UnitType>UNIT_CUIRASSIER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIA</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
-
-				<StyleUnit>
 					<UnitType>UNIT_KNIGHT</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_KNIGHT_MIDDLE_EAST</EarlyArtDefineTag>
@@ -197,6 +218,15 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_CUIRASSIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CATAPHRACT_PERSIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>				
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
