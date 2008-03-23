@@ -21718,7 +21718,33 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_RAMAKRISHNA</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_NARAYANA_GURU</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_SOJOURNER_TRUTH</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>Sevo</UniqueName>
+				<UniqueName>Nostradamus</UniqueName>
+				<UniqueName>Shirdi Sai Baba</UniqueName>
+				<UniqueName>Confucius</UniqueName>
+				<UniqueName>Theophrastus</UniqueName>
+				<UniqueName>Thales</UniqueName>
+				<UniqueName>Friedrich Nietzsche</UniqueName>
+				<UniqueName>Maimonides</UniqueName>
+				<UniqueName>Avicenna</UniqueName>
+				<UniqueName>Madame Blavatsky</UniqueName>
+				<UniqueName>John Titor</UniqueName>
+				<UniqueName>Anacharsis</UniqueName>
+				<UniqueName>Isaiah</UniqueName>
+				<UniqueName>Gautama Buddha</UniqueName>
+				<UniqueName>Saint Francis of Assisi</UniqueName>
+				<UniqueName>Jan Hus</UniqueName>
+				<UniqueName>Martin Luther</UniqueName>
+				<UniqueName>Saint Ignatius of Loyola</UniqueName>
+				<UniqueName>George Fox</UniqueName>
+				<UniqueName>John Wesley</UniqueName>
+				<UniqueName>Brigham Young</UniqueName>
+				<UniqueName>Sabbatai Zevi</UniqueName>
+				<UniqueName>Al-Mahdi</UniqueName>
+				<UniqueName>Abraham</UniqueName>
+				<UniqueName>Baha'u'llah</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -21961,7 +21987,32 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_DUKE_ELLINGTON</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_PABLO_PICASSO</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_MILES_DAVIS</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>Frank Frazetta</UniqueName>
+				<UniqueName>Barry Windsor-Smith</UniqueName>
+				<UniqueName>Rabbit, White</UniqueName>
+				<UniqueName>Robert E Howard</UniqueName>
+				<UniqueName>Paul Cezanne</UniqueName>
+				<UniqueName>Janis Joplin</UniqueName>
+				<UniqueName>Edgar Rice Burroughs</UniqueName>
+				<UniqueName>Jimi Hendrix</UniqueName>
+				<UniqueName>Paul Gauguin</UniqueName>
+				<UniqueName>Salvador Dali</UniqueName>
+				<UniqueName>Henri Matisse</UniqueName>
+				<UniqueName>Grandma Moses</UniqueName>
+				<UniqueName>Sandro Botticelli</UniqueName>
+				<UniqueName>Giotto di Bondone</UniqueName>
+				<UniqueName>Fra Angelico</UniqueName>
+				<UniqueName>Caravaggio</UniqueName>
+				<UniqueName>Marc Chagall</UniqueName>
+				<UniqueName>John Constable</UniqueName>
+				<UniqueName>Edgar Degas</UniqueName>
+				<UniqueName>Renoir</UniqueName>
+				<UniqueName>James McNeill Whistler</UniqueName>
+				<UniqueName>Ray Bradbury</UniqueName>
+				<UniqueName>Arthur Conan Doyle</UniqueName>
+				<UniqueName>Frank Herbert</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -22185,7 +22236,29 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_ENRICO_FERMI</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_ROSALIND_FRANKLIN</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_ANDREI_SAKHAROV</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>Hippocrates</UniqueName>
+				<UniqueName>Paracelsus</UniqueName>
+				<UniqueName>Luis Walter Alvarez</UniqueName>
+				<UniqueName>Felix Hoffman</UniqueName>
+				<UniqueName>Alfred Nobel</UniqueName>
+				<UniqueName>Isaac Asimov</UniqueName>
+				<UniqueName>John James Audubon</UniqueName>
+				<UniqueName>Elizabeth Blackwell</UniqueName>
+				<UniqueName>Dian Fossey</UniqueName>
+				<UniqueName>Louis Agassiz</UniqueName>
+				<UniqueName>Robert Ballard</UniqueName>
+				<UniqueName>Benjamin Banneker</UniqueName>
+				<UniqueName>George Bentham</UniqueName>
+				<UniqueName>Howard Carter</UniqueName>
+				<UniqueName>Doctor Emmett Brown</UniqueName>
+				<UniqueName>Edsger Dijkstra</UniqueName>
+				<UniqueName>Arthur Stanley Eddington</UniqueName>
+				<UniqueName>Edwin Hubble</UniqueName>
+				<UniqueName>Joseph Priestley</UniqueName>
+				<UniqueName>Jonas Salk</UniqueName>
+				<UniqueName>Alexander Fleming</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -22407,7 +22480,29 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_JOHN_D_ROCKEFELLER</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_JOHN_MAYNARD_KEYNES</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_COCO_CHANEL</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>George Eastman</UniqueName>
+				<UniqueName>John Deere</UniqueName>
+				<UniqueName>J Paul Getty</UniqueName>
+				<UniqueName>Ezra Cornell</UniqueName>
+				<UniqueName>Harvey S Firestone</UniqueName>
+				<UniqueName>Jay Gould</UniqueName>
+				<UniqueName>Lee Iacocca</UniqueName>
+				<UniqueName>Donald Trump</UniqueName>
+				<UniqueName>Paul Allen</UniqueName>
+				<UniqueName>Elizabeth Arden</UniqueName>
+				<UniqueName>Mary Kay Ash</UniqueName>
+				<UniqueName>Warren Buffett</UniqueName>
+				<UniqueName>George Cadbury</UniqueName>
+				<UniqueName>Edward Coke</UniqueName>
+				<UniqueName>Walt Disney</UniqueName>
+				<UniqueName>Marshall Field</UniqueName>
+				<UniqueName>Samuel Goldwyn</UniqueName>
+				<UniqueName>Armand Hammer</UniqueName>
+				<UniqueName>James J Hill</UniqueName>
+				<UniqueName>JP Morgan</UniqueName>
+				<UniqueName>Levi Strauss</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -22627,7 +22722,27 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_HENRY_FORD</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_WILBUR_WRIGHT</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_ORVILLE_WRIGHT</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>Sid Meier</UniqueName>
+				<UniqueName>TheLopez</UniqueName>
+				<UniqueName>Eli Whitney</UniqueName>
+				<UniqueName>Igor Sikorsky</UniqueName>
+				<UniqueName>George Westinghouse</UniqueName>
+				<UniqueName>Robert Fulton</UniqueName>
+				<UniqueName>Robert H Goddard</UniqueName>
+				<UniqueName>Frank Lloyd Wright</UniqueName>
+				<UniqueName>Vitruvius</UniqueName>
+				<UniqueName>Senemut</UniqueName>
+				<UniqueName>Edwin Armstrong</UniqueName>
+				<UniqueName>Tim Berners-Lee</UniqueName>
+				<UniqueName>Louis Braille</UniqueName>
+				<UniqueName>Philo Farnsworth</UniqueName>
+				<UniqueName>Johann Gutenberg</UniqueName>
+				<UniqueName>Samuel Morse</UniqueName>
+				<UniqueName>Adolphe Sax</UniqueName>
+				<UniqueName>Douglas Engelbart</UniqueName>
+				<UniqueName>Daniel Bernoulli</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -22855,7 +22970,34 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_GUERDIAN</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_ROMMEL</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_ZHUKOV</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                                <UniqueName>Joan Arc</UniqueName>
+                                <UniqueName>Chaing Kai-shek</UniqueName>
+				<UniqueName>David Ben-Gurion</UniqueName>
+				<UniqueName>Douglas MacArthur</UniqueName>
+				<UniqueName>Dwight D Eisenhower</UniqueName>
+				<UniqueName>Ehud Barak</UniqueName>
+				<UniqueName>Fidel Castro</UniqueName>
+				<UniqueName>Mustafa Kemal</UniqueName>
+				<UniqueName>Norman Schwarzkopf</UniqueName>
+				<UniqueName>Richard the Lion-Hearted</UniqueName>
+				<UniqueName>Simon Bolivar</UniqueName>
+				<UniqueName>Tamerlane</UniqueName>
+				<UniqueName>Ulysses S Grant</UniqueName>
+				<UniqueName>Vo Nguyen Giap</UniqueName>
+				<UniqueName>William Tecumseh Sherman</UniqueName>
+				<UniqueName>David Dixon Porter</UniqueName>
+				<UniqueName>Anthony McAuliffe</UniqueName>
+				<UniqueName>Vasily Chuikov</UniqueName>
+				<UniqueName>Pyrrhus of Epirus</UniqueName>
+				<UniqueName>Merneptah</UniqueName>
+				<UniqueName>Joshua</UniqueName>
+				<UniqueName>Agamemnon</UniqueName>
+				<UniqueName>Samudragupta</UniqueName>
+				<UniqueName>Darius the Great</UniqueName>
+				<UniqueName>Pericles</UniqueName>
+				<UniqueName>William Wallace</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>
@@ -23082,7 +23224,8 @@
 				<UniqueName>TXT_KEY_GREAT_PERSON_DANIEL_COLE</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_MAX_GOGF</UniqueName>
 				<UniqueName>TXT_KEY_GREAT_PERSON_MARK_SWISS</UniqueName>
-			</UniqueNames>
+			        <UniqueName>TXT_KEY_GREAT_PERSON_ROAMTY</UniqueName>
+                        </UniqueNames>
 			<Special>SPECIALUNIT_PEOPLE</Special>
 			<Capture>NONE</Capture>
 			<Combat>NONE</Combat>

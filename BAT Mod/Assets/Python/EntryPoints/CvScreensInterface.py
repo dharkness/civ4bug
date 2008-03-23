@@ -58,6 +58,9 @@ from CvPythonExtensions import *
 # BUG - Options - start
 import BugOptionsScreen
 # BUG - Options - end
+# GreatPersonMod BTS for changes 1/2 Begin
+import CvGreatPersonScreen
+# GreatPersonMod BTS for changes 1/2 End
 
 g_bIsScreenActive = -1
 
@@ -219,7 +222,10 @@ victoryScreen = CvVictoryScreen.CvVictoryScreen(VICTORY_SCREEN)
 def showVictoryScreen():
 	if (-1 != CyGame().getActivePlayer()):
 		victoryScreen.interfaceScreen()
-
+# GreatPersonMod BTS for changes 2/2 Begin
+def showGreatPersonScreen(argsList):
+	CvGreatPersonScreen.CvGreatPersonScreen().interfaceScreen(argsList[0])
+# GreatPersonMod BTS for changes 2/2 End
 # BUG - Sevopedia - start
 
 if (BugScreens.isSevopedia()):
