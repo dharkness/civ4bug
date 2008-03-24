@@ -414,6 +414,13 @@ class CvMainInterface:
 				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
 				screen.hide( szStringIcon )
 
+# BUG - plot list - start
+				szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
+				szStringGreatGeneral  = szString + "GreatGeneral"
+				screen.addDDSGFCAt( szStringGreatGeneral , szStringPanel, szFileNameGreatGeneral, xOffset +  8,  0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.hide( szStringGreatGeneral  )
+# BUG - plot list - end
+
 		# End Turn Text		
 		screen.setLabel( "EndTurnText", "Background", u"", CvUtil.FONT_CENTER_JUSTIFY, 0, yResolution - 188, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setHitTest( "EndTurnText", HitTestTypes.HITTEST_NOHIT )
@@ -1253,6 +1260,10 @@ class CvMainInterface:
 				# hide mission info
 				szStringActionIcon = szString+"ActionIcon"
 				screen.hide( szStringActionIcon )			
+
+				# hide GG info
+				szStringGreatGeneral = szString+"GreatGeneral"
+				screen.hide( szStringGreatGeneral )			
 # BUG - plot list - end
 				
 				szStringHealth = szString + "Health"
@@ -1321,6 +1332,13 @@ class CvMainInterface:
 						and pLoopUnit.isPromotionReady()):
 							szStringPromoFrame = szString+"PromoFrame"
 							screen.show( szStringPromoFrame )
+
+						iGreatGeneral = gc.getInfoTypeForString('PROMOTION_LEADER')
+						if (BugScreens.isShowGreatGeneral()
+						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()
+						and pLoopUnit.isHasPromotion(iGreatGeneral)):
+							szStringGreatGeneral = szString+"GreatGeneral"
+							screen.show( szStringGreatGeneral )
 
 						if (BugScreens.isShowUnitActions()
 						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()):
@@ -2106,11 +2124,14 @@ class CvMainInterface:
 # BUG - Great Person Bar - end
 
 # BUG - Great General Bar - start
-				if (not CyInterface().isCityScreenUp() and BugScreens.isShowCombatCounter()):
+				iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
+				if (not CyInterface().isCityScreenUp()
+				and BugScreens.isShowCombatCounter()
+				and iCombatExp != 0):
 					ePlayer = gc.getGame().getActivePlayer()
 					fThreshold = float(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
 					fRate = float(0)
-					fFirst = float(gc.getPlayer(ePlayer).getCombatExperience()) / fThreshold
+					fFirst = float(iCombatExp) / fThreshold
 					screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, fFirst )
 					if ( fFirst == 1 ):
 						screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
@@ -2118,7 +2139,7 @@ class CvMainInterface:
 						screen.setBarPercentage( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
 					screen.show( "GreatGeneralBar" )
 
-					eGGText = "General [" + unicode(gc.getPlayer(ePlayer).getCombatExperience()) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true)) + "]"
+					eGGText = "General [" + unicode(iCombatExp) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true)) + "]"
 					screen.setLabel( "GreatGeneralBarText", "Background", eGGText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) - 165, 32, -0.4, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "GreatGeneralBarText" )
 				else:

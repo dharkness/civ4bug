@@ -47,7 +47,12 @@ class BugScreensOptions(OptionsFacade):
 							  "Unit Actions",
 							  "When checked, puts unit actions text on unit icons.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-	
+		self.addOption(Option("Great_General",
+							  "PlotList", "Great General", True,
+							  "Great General",
+							  "When checked, puts a little gold star on an Great General icon.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
 							  "Customizable",
@@ -108,6 +113,9 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowUnitActions(self):
 		return self.getBoolean('Unit_Actions')
+
+	def isShowGreatGeneral(self):
+		return self.getBoolean('Great_General')
 
 
 	def isCustDomAdv(self):

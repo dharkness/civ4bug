@@ -1372,6 +1372,10 @@
 			<Type>OVERLAY_ACTION_PATROL</Type>
 			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
 		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_GREATGENERAL</Type>
+			<Path>Art/PlotListEnhancements/medallion_GG.dds</Path>
+		</InterfaceArtInfo>	
 
 <!-- ## BUG - PlotList Button Enhancement  - end  -->					
 
