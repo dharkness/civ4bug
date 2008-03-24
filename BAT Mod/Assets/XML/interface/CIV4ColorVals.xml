@@ -2121,5 +2121,61 @@
 			<fBlue>0.392</fBlue>
 			<fAlpha>1.00</fAlpha>
 		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_INDISCHGELB</Type>
+			<fRed>1.00</fRed>
+			<fGreen>0.725</fGreen>
+			<fBlue>0.058</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_CHINAROT</Type>
+			<fRed>0.996</fRed>
+			<fGreen>0.054</fGreen>
+			<fBlue>0.00</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_RUSSISCHKAKI</Type>
+			<fRed>0.431</fRed>
+			<fGreen>0.545</fGreen>
+			<fBlue>0.239</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_ARABISCHGRUEN</Type>
+			<fRed>0.00</fRed>
+			<fGreen>0.392</fGreen>
+			<fBlue>0.00</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_BABYLONISCHGRUEN</Type>
+			<fRed>0.215</fRed>
+			<fGreen>0.435</fGreen>
+			<fBlue>0.435</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_TUERKISCHROT</Type>
+			<fRed>1.00</fRed>
+			<fGreen>0.415</fGreen>
+			<fBlue>0.415</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_AGYPTENBESCH</Type>
+			<fRed>0.87</fRed>
+			<fGreen>0.807</fGreen>
+			<fBlue>0.596</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
+			<Type>COLOR_PLAYER_PERSISCHGRUEN</Type>
+			<fRed>0.533</fRed>
+			<fGreen>0.968</fGreen>
+			<fBlue>0.643</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
 	</ColorVals>
 </Civ4ColorVals>

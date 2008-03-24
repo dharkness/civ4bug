@@ -44,33 +44,7 @@ class GreatPerson(AbstractGreatPerson):
 		self.eventMgr = eventManager
 
 		# Begin Test Code
-		""" # Uncomment this block to enable test code
-		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
-
-	# Test (ok cheat...) code to make sure that we can go through the vanilla great person
-	# names and test the random names.
-	## Changed event from just clicking mouse to hitting ALT-SHIFT-G. Test code not multiplayer compatible.
-	## def onMouseEvent(self, argsList):
-	def onKbdEvent(self, argsList):
-		eventType,key,mx,my,px,py = argsList
-
-		if(not g_bGreatPersonModFeaturesEnabled):
-			return
-
-		if ( eventType == self.eventMgr.EventKeyDown ):
-			theKey=int(key)
-			
-			# Check if ALT + Shift + G was hit
-			if (theKey == int(InputTypes.KB_G) and self.eventMgr.bAlt and self.eventMgr.bShift):	
-				gc.getActivePlayer().getCapitalCity().createGreatPeople(gc.getInfoTypeForString("UNIT_GENERAL"), False, False)
-				return 1
-			
-			# Check if CTRL + Shift + G was hit
-			if (theKey == int(InputTypes.KB_G) and self.eventMgr.bCtrl and self.eventMgr.bShift):	
-				gc.getActivePlayer().getCapitalCity().createGreatPeople(gc.getInfoTypeForString("UNIT_GREAT_SPY"), False, False)
-				return 1
-		return 0
-		"""
+		# -- BAT Mod 0.08 – Test code removed to conform to The BUG Project 			# standards. --
 		# End Test Code
 
 
