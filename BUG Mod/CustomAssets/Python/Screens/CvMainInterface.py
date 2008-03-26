@@ -48,6 +48,17 @@ g_NumProcessInfos = 0
 g_NumActionInfos = 0
 g_eEndTurnButtonState = -1
 
+# BUG - city specialist - start
+g_iSuperSpecialistCount = 0
+g_iCitySpecialistCount = 0
+g_iAngryCitizensCount = 0
+SUPER_SPECIALIST_STACK_WIDTH = 15
+SPECIALIST_ROW_HEIGHT = 34
+SPECIALIST_ROWS = 3
+MAX_SPECIALIST_BUTTON_SPACING = 30
+SPECIALIST_AREA_MARGIN = 45
+# BUG - city specialist - start
+
 MAX_SELECTED_TEXT = 5
 MAX_DISPLAYABLE_BUILDINGS = 15
 MAX_DISPLAYABLE_TRADE_ROUTES = 4
@@ -415,9 +426,9 @@ class CvMainInterface:
 				screen.hide( szStringIcon )
 
 # BUG - plot list - start
-				szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
+				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
 				szStringGreatGeneral  = szString + "GreatGeneral"
-				screen.addDDSGFCAt( szStringGreatGeneral , szStringPanel, szFileNameGreatGeneral, xOffset +  8,  0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.addDDSGFCAt( szStringGreatGeneral , szStringPanel, szFileName, xOffset +  8,  0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
 				screen.hide( szStringGreatGeneral  )
 # BUG - plot list - end
 
@@ -505,6 +516,14 @@ class CvMainInterface:
 					szName = "CitizenButton" + str((i * 100) + j)
 					screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xResolution - 74 - (26 * j), (yResolution - 272 - (26 * i)), 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j, ButtonStyles.BUTTON_STYLE_LABEL )
 					screen.hide( szName )
+
+# BUG - city specialist - start
+		screen.addPanel( "SpecialistBackground", u"", u"", True, False, xResolution - 243, yResolution - 423, 230, 30, PanelStyles.PANEL_STYLE_STANDARD )
+		screen.setStyle( "SpecialistBackground", "Panel_City_Header_Style" )
+		screen.hide( "SpecialistBackground" )
+		screen.setLabel( "SpecialistLabel", "Background", "Specialists", CvUtil.FONT_CENTER_JUSTIFY, xResolution - 128, yResolution - 415, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.hide( "SpecialistLabel" )
+# BUG - city specialist - end
 
 		# **********************************************************
 		# GAME DATA STRINGS
@@ -861,7 +880,17 @@ class CvMainInterface:
 			CyInterface().setDirty(InterfaceDirtyBits.ResearchButtons_DIRTY_BIT, False)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.CitizenButtons_DIRTY_BIT) == True ):
 			# Citizen Buttons Dirty
-			self.updateCitizenButtons()
+
+# BUG - city specialist - start
+			self.updateCitizenButtons_hide()
+			if (BugCityScreen.isCitySpecialist_Stacker()):
+				self.updateCitizenButtons_Stacker()
+			elif (BugCityScreen.isCitySpecialist_Chevron()):
+				self.updateCitizenButtons_Chevron()
+			else:
+				self.updateCitizenButtons()
+# BUG - city specialist - start
+			
 			CyInterface().setDirty(InterfaceDirtyBits.CitizenButtons_DIRTY_BIT, False)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.GameData_DIRTY_BIT) == True ):
 			# Game Data Strings Dirty
@@ -1831,13 +1860,11 @@ class CvMainInterface:
 					
 		return 0
 		
-	# Will update the citizen buttons
-	def updateCitizenButtons( self ):
-	
+# BUG - city specialist - start
+	def updateCitizenButtons_hide( self ):
+
 		global MAX_CITIZEN_BUTTONS
 		
-		bHandled = False
-	
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
 		# Find out our resolution
@@ -1862,97 +1889,416 @@ class CvMainInterface:
 				screen.hide( szName )
 				szName = "CitizenButtonHighlight" + str((i * 100) + j)
 				screen.hide( szName )
+				szName = "CitizenChevron" + str((i * 100) + j)
+				screen.hide( szName )
+
+				szName = "IncresseCitizenButton" + str((i * 100) + j)
+				screen.hide( szName )
+				szName = "IncresseCitizenBanner" + str((i * 100) + j)
+				screen.hide( szName )
+				szName = "DecresseCitizenButton" + str((i * 100) + j)
+				screen.hide( szName )
+				szName = "CitizenButtonHighlight" + str((i * 100) + j)
+				screen.hide( szName )
+
+		global g_iSuperSpecialistCount
+		global g_iCitySpecialistCount
+		global g_iAngryCitizensCount
+
+		screen.hide( "SpecialistBackground" )
+		screen.hide( "SpecialistLabel" )
+
+		for i in range( g_iSuperSpecialistCount ):
+			szName = "FreeSpecialist" + str(i)
+			screen.hide( szName )
+		for i in range( g_iAngryCitizensCount ):
+			szName = "AngryCitizen" + str(i)
+			screen.hide( szName )
+
+		for i in range( gc.getNumSpecialistInfos() ):
+			for k in range( g_iCitySpecialistCount ):
+				szName = "IncresseCitizenBanner" + str((i * 100) + k)					
+				screen.hide( szName )
+				szName = "IncresseCitizenButton" + str((i * 100) + k)					
+				screen.hide( szName )
+				szName = "DecresseCitizenButton" + str((i * 100) + k)					
+				screen.hide( szName )
+
+		return 0
+# BUG - city specialist - end
+
+
+	# Will update the citizen buttons
+	def updateCitizenButtons( self ):
+
+		if not CyInterface().isCityScreenUp(): return 0
+
+		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+		if not (pHeadSelectedCity and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW): return 0
+	
+		global MAX_CITIZEN_BUTTONS
+		
+		bHandled = False
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+
+		# Find out our resolution
+		xResolution = screen.getXResolution()
+		yResolution = screen.getYResolution()
+
+		if ( pHeadSelectedCity.angryPopulation(0) < MAX_CITIZEN_BUTTONS ):
+			iCount = pHeadSelectedCity.angryPopulation(0)
+		else:
+			iCount = MAX_CITIZEN_BUTTONS
+
+		for i in range(iCount):
+			bHandled = True
+			szName = "AngryCitizen" + str(i)
+			screen.show( szName )
+
+		iFreeSpecialistCount = 0
+		for i in range(gc.getNumSpecialistInfos()):
+			iFreeSpecialistCount += pHeadSelectedCity.getFreeSpecialistCount(i)
+
+		iCount = 0
+
+		bHandled = False
+		
+		if (iFreeSpecialistCount > MAX_CITIZEN_BUTTONS):
+			for i in range(gc.getNumSpecialistInfos()):
+				if (pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
+					if (iCount < MAX_CITIZEN_BUTTONS):
+						szName = "FreeSpecialist" + str(iCount)
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
+						screen.show( szName )
+						bHandled = true
+					iCount += 1
+					
+		else:				
+			for i in range(gc.getNumSpecialistInfos()):
+				for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
+					if (iCount < MAX_CITIZEN_BUTTONS):
+						szName = "FreeSpecialist" + str(iCount)
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
+						screen.show( szName )
+						bHandled = true
+
+					iCount = iCount + 1
+
+		for i in range( gc.getNumSpecialistInfos() ):
+		
+			bHandled = False
+
+			if (pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer() or gc.getGame().isDebugMode()):
+			
+				if (pHeadSelectedCity.isCitizensAutomated()):
+					iSpecialistCount = max(pHeadSelectedCity.getSpecialistCount(i), pHeadSelectedCity.getForceSpecialistCount(i))
+				else:
+					iSpecialistCount = pHeadSelectedCity.getSpecialistCount(i)
+			
+				if (pHeadSelectedCity.isSpecialistValid(i, 1) and (pHeadSelectedCity.isCitizensAutomated() or iSpecialistCount < (pHeadSelectedCity.getPopulation() + pHeadSelectedCity.totalFreeSpecialists()))):
+					szName = "IncreaseSpecialist" + str(i)
+					screen.show( szName )
+					szName = "CitizenDisabledButton" + str(i)
+					screen.show( szName )
+
+				if iSpecialistCount > 0:
+					szName = "CitizenDisabledButton" + str(i)
+					screen.hide( szName )
+					szName = "DecreaseSpecialist" + str(i)
+					screen.show( szName )
+					
+			if (pHeadSelectedCity.getSpecialistCount(i) < MAX_CITIZEN_BUTTONS):
+				iCount = pHeadSelectedCity.getSpecialistCount(i)
+			else:
+				iCount = MAX_CITIZEN_BUTTONS
+
+			j = 0
+			for j in range( iCount ):
+				bHandled = True
+				szName = "CitizenButton" + str((i * 100) + j)
+				screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xResolution - 74 - (26 * j), (yResolution - 272 - (26 * i)), 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j, ButtonStyles.BUTTON_STYLE_LABEL )
+				screen.show( szName )
+				szName = "CitizenButtonHighlight" + str((i * 100) + j)
+				screen.addDDSGFC( szName, ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xResolution - 74 - (26 * j), (yResolution - 272 - (26 * i)), 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j )
+				if ( pHeadSelectedCity.getForceSpecialistCount(i) > j ):
+					screen.show( szName )
+				else:
+					screen.hide( szName )
+				
+			if ( not bHandled ):
+				szName = "CitizenDisabledButton" + str(i)
+				screen.show( szName )
+
+		return 0
+
+# BUG - city specialist - start
+	def updateCitizenButtons_Stacker( self ):
+	
+		if not CyInterface().isCityScreenUp(): return 0
+
+		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+		if not (pHeadSelectedCity and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW): return 0
+
+		global g_iSuperSpecialistCount
+		global g_iCitySpecialistCount
+		global g_iAngryCitizensCount
+		
+		bHandled = False
+	
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+
+		# Find out our resolution
+		xResolution = screen.getXResolution()
+		yResolution = screen.getYResolution()
 
 		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
 
-		if ( CyInterface().isCityScreenUp() ):
-			if (pHeadSelectedCity and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW):
-				if ( pHeadSelectedCity.angryPopulation(0) < MAX_CITIZEN_BUTTONS ):
-					iCount = pHeadSelectedCity.angryPopulation(0)
-				else:
-					iCount = MAX_CITIZEN_BUTTONS
+		currentAngryCitizenCount = pHeadSelectedCity.angryPopulation(0)
+		
+		if(currentAngryCitizenCount > 0):
+			stackWidth = 220 / currentAngryCitizenCount
+			if (stackWidth > MAX_SPECIALIST_BUTTON_SPACING):
+				stackWidth = MAX_SPECIALIST_BUTTON_SPACING
 
-				for i in range(iCount):
-					bHandled = True
-					szName = "AngryCitizen" + str(i)
+		for i in range(currentAngryCitizenCount):
+			bHandled = True
+			szName = "AngryCitizen" + str(i)
+			screen.setImageButton( szName, ArtFileMgr.getInterfaceArtInfo("INTERFACE_ANGRYCITIZEN_TEXTURE").getPath(), xResolution - SPECIALIST_AREA_MARGIN - (stackWidth * i), yResolution - (282- SPECIALIST_ROW_HEIGHT), 30, 30, WidgetTypes.WIDGET_ANGRY_CITIZEN, -1, -1 )
+			screen.show( szName )
+			
+		# update the max ever citizen counts
+		if g_iAngryCitizensCount < currentAngryCitizenCount:
+			g_iAngryCitizensCount = currentAngryCitizenCount
+
+		iCount = 0
+		bHandled = False
+		currentSuperSpecialistCount = 0
+
+		for i in range(gc.getNumSpecialistInfos()):
+			if(pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
+				currentSuperSpecialistCount = currentSuperSpecialistCount + pHeadSelectedCity.getFreeSpecialistCount(i)
+
+		if(currentSuperSpecialistCount > 0):
+			stackWidth = 220 / currentSuperSpecialistCount 
+			if (stackWidth > MAX_SPECIALIST_BUTTON_SPACING):
+				stackWidth = MAX_SPECIALIST_BUTTON_SPACING
+
+		for i in range(gc.getNumSpecialistInfos()):
+			for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
+
+				szName = "FreeSpecialist" + str(iCount)
+				screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - SPECIALIST_AREA_MARGIN  - (stackWidth * iCount)), yResolution - (282 - SPECIALIST_ROW_HEIGHT * 2), 30, 30, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
+				screen.show( szName )
+				bHandled = true
+
+				iCount = iCount + 1
+
+		# update the max ever citizen counts
+		if g_iSuperSpecialistCount < iCount:
+			g_iSuperSpecialistCount = iCount
+
+		iXShiftVal = 0
+		iYShiftVal = 0
+		iSpecialistCount = 0
+
+		for i in range( gc.getNumSpecialistInfos() ):
+		
+			bHandled = False
+			if( iSpecialistCount > SPECIALIST_ROWS ):
+				iXShiftVal = 115
+				iYShiftVal = (iSpecialistCount % SPECIALIST_ROWS) + 1
+			else:
+				iYShiftVal = iSpecialistCount
+
+			if (gc.getSpecialistInfo(i).isVisible()):
+				iSpecialistCount = iSpecialistCount + 1					
+				
+			if (gc.getPlayer(pHeadSelectedCity.getOwner()).isSpecialistValid(i) or i == 0):
+				iCount = (pHeadSelectedCity.getPopulation() - pHeadSelectedCity.angryPopulation(0)) +  pHeadSelectedCity.totalFreeSpecialists()
+			else:
+				iCount = pHeadSelectedCity.getMaxSpecialistCount(i)
+
+			# update the max ever citizen counts
+			if g_iCitySpecialistCount < iCount:
+				g_iCitySpecialistCount = iCount
+
+			RowLength = 110
+			if (i == 0):
+			#if (i == gc.getInfoTypeForString(gc.getDefineSTRING("DEFAULT_SPECIALIST"))):
+				RowLength *= 2
+			
+			HorizontalSpacing = MAX_SPECIALIST_BUTTON_SPACING	
+			if (iCount > 0):
+				HorizontalSpacing = RowLength / iCount
+			if (HorizontalSpacing > MAX_SPECIALIST_BUTTON_SPACING):
+				HorizontalSpacing = MAX_SPECIALIST_BUTTON_SPACING
+									
+			for k in range (iCount):
+				if (k  >= pHeadSelectedCity.getSpecialistCount(i)):
+					szName = "IncresseCitizenBanner" + str((i * 100) + k)					
+					screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xResolution - (SPECIALIST_AREA_MARGIN + iXShiftVal) - (HorizontalSpacing * k), (yResolution - 282 - (SPECIALIST_ROW_HEIGHT * iYShiftVal)), 30, 30, WidgetTypes.WIDGET_CHANGE_SPECIALIST, i, 1, ButtonStyles.BUTTON_STYLE_LABEL )
+					screen.enable( szName, False )
+					screen.show( szName )
+					
+					szName = "IncresseCitizenButton" + str((i * 100) + k)					
+					screen.addCheckBoxGFC( szName, "", "", xResolution - (SPECIALIST_AREA_MARGIN + iXShiftVal) - (HorizontalSpacing * k), (yResolution - 282 - (SPECIALIST_ROW_HEIGHT * iYShiftVal)), 30, 30, WidgetTypes.WIDGET_CHANGE_SPECIALIST, i, 1, ButtonStyles.BUTTON_STYLE_LABEL )					
 					screen.show( szName )
 
-				iFreeSpecialistCount = 0
-				for i in range(gc.getNumSpecialistInfos()):
-					iFreeSpecialistCount += pHeadSelectedCity.getFreeSpecialistCount(i)
-
-				iCount = 0
-
-				bHandled = False
-				
-				if (iFreeSpecialistCount > MAX_CITIZEN_BUTTONS):
-					for i in range(gc.getNumSpecialistInfos()):
-						if (pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
-							if (iCount < MAX_CITIZEN_BUTTONS):
-								szName = "FreeSpecialist" + str(iCount)
-								screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
-								screen.show( szName )
-								bHandled = true
-							iCount += 1
-							
-				else:				
-					for i in range(gc.getNumSpecialistInfos()):
-						for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
-							if (iCount < MAX_CITIZEN_BUTTONS):
-								szName = "FreeSpecialist" + str(iCount)
-								screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
-								screen.show( szName )
-								bHandled = true
-
-							iCount = iCount + 1
-
-				for i in range( gc.getNumSpecialistInfos() ):
-				
-					bHandled = False
-
-					if (pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer() or gc.getGame().isDebugMode()):
+				else:
+					szName = "DecresseCitizenButton" + str((i * 100) + k)					
+					screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xResolution - (SPECIALIST_AREA_MARGIN + iXShiftVal) - (HorizontalSpacing * k), (yResolution - 282 - (SPECIALIST_ROW_HEIGHT * iYShiftVal)), 30, 30, WidgetTypes.WIDGET_CHANGE_SPECIALIST, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+					screen.show( szName )
 					
-						if (pHeadSelectedCity.isCitizensAutomated()):
-							iSpecialistCount = max(pHeadSelectedCity.getSpecialistCount(i), pHeadSelectedCity.getForceSpecialistCount(i))
-						else:
-							iSpecialistCount = pHeadSelectedCity.getSpecialistCount(i)
+		screen.show( "SpecialistBackground" )
+		screen.show( "SpecialistLabel" )
+	
+		return 0
+# BUG - city specialist - end
+
+# BUG - BUG specialists - start
+	def updateCitizenButtons_Chevron( self ):
+	
+		if not CyInterface().isCityScreenUp(): return 0
+
+		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+		if not (pHeadSelectedCity and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW): return 0
+
+		global MAX_CITIZEN_BUTTONS
+		
+		bHandled = False
+	
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+
+		# Find out our resolution
+		xResolution = screen.getXResolution()
+		yResolution = screen.getYResolution()
+
+
+		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+
+		iCount = pHeadSelectedCity.angryPopulation(0)
+
+		j = 0
+		while (iCount > 0):
+			bHandled = True
+			szName = "AngryCitizen" + str(j)
+			screen.show( szName )
+
+			xCoord = xResolution - 74 - (26 * j)
+			yCoord = yResolution - 238
+
+			szName = "AngryCitizenChevron" + str(j)
+			if iCount >= 20:
+				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON20").getPath()
+				iCount -= 20
+			elif iCount >= 10:
+				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON10").getPath()
+				iCount -= 10
+			elif iCount >= 5:
+				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON5").getPath()
+				iCount -= 5
+			else:
+				szFileName = ""
+				iCount -= 1
+
+			if (szFileName != ""):
+				screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 8, 8, WidgetTypes.WIDGET_CITIZEN, i, False )
+				screen.show( szName )
+
+			j += 1
+
+		iFreeSpecialistCount = 0
+		for i in range(gc.getNumSpecialistInfos()):
+			iFreeSpecialistCount += pHeadSelectedCity.getFreeSpecialistCount(i)
+
+		iCount = 0
+
+		bHandled = False
+		
+		if (iFreeSpecialistCount > MAX_CITIZEN_BUTTONS):
+			for i in range(gc.getNumSpecialistInfos()):
+				if (pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
+					if (iCount < MAX_CITIZEN_BUTTONS):
+						szName = "FreeSpecialist" + str(iCount)
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
+						screen.show( szName )
+						bHandled = true
+					iCount += 1
 					
-						if (pHeadSelectedCity.isSpecialistValid(i, 1) and (pHeadSelectedCity.isCitizensAutomated() or iSpecialistCount < (pHeadSelectedCity.getPopulation() + pHeadSelectedCity.totalFreeSpecialists()))):
-							szName = "IncreaseSpecialist" + str(i)
-							screen.show( szName )
-							szName = "CitizenDisabledButton" + str(i)
-							screen.show( szName )
-
-						if iSpecialistCount > 0:
-							szName = "CitizenDisabledButton" + str(i)
-							screen.hide( szName )
-							szName = "DecreaseSpecialist" + str(i)
-							screen.show( szName )
-							
-					if (pHeadSelectedCity.getSpecialistCount(i) < MAX_CITIZEN_BUTTONS):
-						iCount = pHeadSelectedCity.getSpecialistCount(i)
-					else:
-						iCount = MAX_CITIZEN_BUTTONS
-
-					j = 0
-					for j in range( iCount ):
-						bHandled = True
-						szName = "CitizenButton" + str((i * 100) + j)
-						screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xResolution - 74 - (26 * j), (yResolution - 272 - (26 * i)), 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j, ButtonStyles.BUTTON_STYLE_LABEL )
+		else:				
+			for i in range(gc.getNumSpecialistInfos()):
+				for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
+					if (iCount < MAX_CITIZEN_BUTTONS):
+						szName = "FreeSpecialist" + str(iCount)
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
 						screen.show( szName )
-						szName = "CitizenButtonHighlight" + str((i * 100) + j)
-						screen.addDDSGFC( szName, ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xResolution - 74 - (26 * j), (yResolution - 272 - (26 * i)), 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j )
-						if ( pHeadSelectedCity.getForceSpecialistCount(i) > j ):
-							screen.show( szName )
-						else:
-							screen.hide( szName )
-						
-					if ( not bHandled ):
-						szName = "CitizenDisabledButton" + str(i)
-						screen.show( szName )
+						bHandled = true
+
+					iCount = iCount + 1
+
+		for i in range( gc.getNumSpecialistInfos() ):
+		
+			bHandled = False
+
+			if (pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer() or gc.getGame().isDebugMode()):
+			
+				if (pHeadSelectedCity.isCitizensAutomated()):
+					iSpecialistCount = max(pHeadSelectedCity.getSpecialistCount(i), pHeadSelectedCity.getForceSpecialistCount(i))
+				else:
+					iSpecialistCount = pHeadSelectedCity.getSpecialistCount(i)
+			
+				if (pHeadSelectedCity.isSpecialistValid(i, 1) and (pHeadSelectedCity.isCitizensAutomated() or iSpecialistCount < (pHeadSelectedCity.getPopulation() + pHeadSelectedCity.totalFreeSpecialists()))):
+					szName = "IncreaseSpecialist" + str(i)
+					screen.show( szName )
+					szName = "CitizenDisabledButton" + str(i)
+					screen.show( szName )
+
+				if iSpecialistCount > 0:
+					szName = "CitizenDisabledButton" + str(i)
+					screen.hide( szName )
+					szName = "DecreaseSpecialist" + str(i)
+					screen.show( szName )
+					
+			iCount = pHeadSelectedCity.getSpecialistCount(i)
+
+			j = 0
+			while (iCount > 0):
+				bHandled = True
+
+				xCoord = xResolution - 74 - (26 * j)
+				yCoord = yResolution - 272 - (26 * i)
+
+				szName = "CitizenButton" + str((i * 100) + j)
+				screen.addCheckBoxGFC( szName, gc.getSpecialistInfo(i).getTexture(), "", xCoord, yCoord, 24, 24, WidgetTypes.WIDGET_CITIZEN, i, j, ButtonStyles.BUTTON_STYLE_LABEL )
+				screen.show( szName )
+
+				szName = "CitizenChevron" + str((i * 100) + j)
+				if iCount >= 20:
+					szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON20").getPath()
+					iCount -= 20
+				elif iCount >= 10:
+					szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON10").getPath()
+					iCount -= 10
+				elif iCount >= 5:
+					szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_CHEVRON5").getPath()
+					iCount -= 5
+				else:
+					szFileName = ""
+					iCount -= 1
+
+				if (szFileName != ""):
+					screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 8, 8, WidgetTypes.WIDGET_CITIZEN, i, False )
+					screen.show( szName )
+
+				j += 1
+
+			if ( not bHandled ):
+				szName = "CitizenDisabledButton" + str(i)
+				screen.show( szName )
 
 		return 0
-			
+# BUG - BUG specialists - end
+
 	# Will update the game data strings
 	def updateGameDataStrings( self ):
 	

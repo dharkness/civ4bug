@@ -1379,5 +1379,22 @@
 
 <!-- ## BUG - PlotList Button Enhancement  - end  -->					
 
+<!-- ## BUG - specialists  - start  -->
+
+		<InterfaceArtInfo>
+			<Type>OVERLAY_CHEVRON5</Type>
+			<Path>Art/Interface/screens/medallion_Chevron5.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_CHEVRON10</Type>
+			<Path>Art/Interface/screens/medallion_Chevron10.dds</Path>
+		</InterfaceArtInfo>	
+		<InterfaceArtInfo>
+			<Type>OVERLAY_CHEVRON20</Type>
+			<Path>Art/Interface/screens/medallion_Chevron20.dds</Path>
+		</InterfaceArtInfo>	
+
+<!-- ## BUG - specialists  - end  -->					
+
 	</InterfaceArtInfos>
 </Civ4ArtDefines>

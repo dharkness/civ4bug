@@ -24,11 +24,18 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Great Person Turns",
 							  "When checked, displays the number of turns until the city will produce a Great Person.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
-		self.addOption(Option("City_StackSpecialists",
-							  "City Screen", "Specialist Stacker", False,
-							  "Stack Specialists",
-							  "When checked, the specialists are displayed in a more compact form.",
-							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+
+
+		self.addOption(OptionList("City_Specialists",
+								  "City Screen", "City Specialists", 0,
+								  "City Specialists",
+								  "Determines how specialists are displayed.\n\
+The \"Default\" setting shows the specialists using the vanilla BtS format. \
+The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \
+The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (double chevron) and 20 (capped double chevron) format. ",
+								  ['Default', 'Stacker', 'Chevron'], None,
+								  InterfaceDirtyBits.GameData_DIRTY_BIT))
+
 		self.addOption(Option("City_Anger_Counter",
 							  "Screens", "Anger Counter", True,
 							  "Anger Counter",
@@ -44,11 +51,20 @@ class BugCityScreenOptions(OptionsFacade):
 	def isShowGreatPersonTurns(self):
 		return self.getBoolean('City_GreatPersonTurns')
 
-	def isStackSpecialists(self):
-		return self.getBoolean('City_StackSpecialists')
-
 	def isShowAngerCounter(self):
 		return self.getBoolean('City_Anger_Counter')
+
+	def getCitySpecialist(self):
+		return self.getInt('City_Specialists')
+
+	def isCitySpecialist_Default(self):
+		return self.getCitySpecialist() == 0
+
+	def isCitySpecialist_Stacker(self):
+		return self.getCitySpecialist() == 1
+
+	def isCitySpecialist_Chevron(self):
+		return self.getCitySpecialist() == 2
 
 
 # The singleton BugCityScreenOptions object
