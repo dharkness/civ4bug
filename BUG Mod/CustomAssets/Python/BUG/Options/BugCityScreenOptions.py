@@ -24,7 +24,11 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Great Person Turns",
 							  "When checked, displays the number of turns until the city will produce a Great Person.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
-
+		self.addOption(Option("City_GreatPersonInfo",
+							  "City Screen", "Great Person Info", False,
+							  "Great Person Info",
+							  "When checked, displays additional Great Person Information.",
+							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 
 		self.addOption(OptionList("City_Specialists",
 								  "City Screen", "City Specialists", 0,
@@ -50,6 +54,9 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 
 	def isShowGreatPersonTurns(self):
 		return self.getBoolean('City_GreatPersonTurns')
+
+	def isShowCityGreatPersonInfo(self):
+		return self.getBoolean('City_GreatPersonInfo')
 
 	def isShowAngerCounter(self):
 		return self.getBoolean('City_Anger_Counter')

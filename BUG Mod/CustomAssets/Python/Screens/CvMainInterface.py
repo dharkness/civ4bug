@@ -57,7 +57,7 @@ SPECIALIST_ROW_HEIGHT = 34
 SPECIALIST_ROWS = 3
 MAX_SPECIALIST_BUTTON_SPACING = 30
 SPECIALIST_AREA_MARGIN = 45
-# BUG - city specialist - start
+# BUG - city specialist - end
 
 MAX_SELECTED_TEXT = 5
 MAX_DISPLAYABLE_BUILDINGS = 15
@@ -889,7 +889,7 @@ class CvMainInterface:
 				self.updateCitizenButtons_Chevron()
 			else:
 				self.updateCitizenButtons()
-# BUG - city specialist - start
+# BUG - city specialist - end
 			
 			CyInterface().setDirty(InterfaceDirtyBits.CitizenButtons_DIRTY_BIT, False)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.GameData_DIRTY_BIT) == True ):
@@ -2155,7 +2155,7 @@ class CvMainInterface:
 		return 0
 # BUG - city specialist - end
 
-# BUG - BUG specialists - start
+# BUG - city specialist - start
 	def updateCitizenButtons_Chevron( self ):
 	
 		if not CyInterface().isCityScreenUp(): return 0
@@ -2297,7 +2297,7 @@ class CvMainInterface:
 				screen.show( szName )
 
 		return 0
-# BUG - BUG specialists - end
+# BUG - city specialist - end
 
 	# Will update the game data strings
 	def updateGameDataStrings( self ):
@@ -2426,30 +2426,7 @@ class CvMainInterface:
 				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):				
 					pGreatPersonCity, iGPTurns = GPUtil.findNextCity()
 					if (pGreatPersonCity):
-						if (BugScreens.isGPBarTypesNone()):
-							szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
-						else:
-							lPercents = GPUtil.calcPercentages(pGreatPersonCity)
-							if (len(lPercents) == 0):
-								szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
-							else:
-								lPercents.sort(reverse=True)
-								if (BugScreens.isGPBarTypesOne() or len(lPercents) == 1):
-									iPercent, iUnit = lPercents[0]
-									pInfo = gc.getUnitInfo(iUnit)
-									szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (pInfo.getDescription(), pGreatPersonCity.getName(), iGPTurns))
-								else:
-									szText = localText.getText("INTERFACE_NEXT_GREATPERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pGreatPersonCity.getName(), iGPTurns))
-									szTypes = ""
-									for iPercent, iUnit in lPercents:
-										szNewTypes = szTypes + u" %c%d%%" % (GPUtil.getUnitIcon(iUnit), iPercent)
-										szNewText = szText + u"<font=2> -%s</font>" % szTypes
-										if (CyInterface().determineWidth(szNewText) > GP_BAR_WIDTH - 10):
-											# Keep under width
-											break
-										szTypes = szNewTypes
-									if (len(szTypes) > 0):
-										szText += u"<font=2> -%s</font>" % szTypes
+						szText = GPUtil.getGreatPeopleText(pGreatPersonCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne())
 						
 						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) + 90, 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
 						screen.show( "GreatPersonBarText" )
@@ -3451,6 +3428,9 @@ class CvMainInterface:
 					if BugCityScreen.isShowGreatPersonTurns() and iRate > 0:
 						iGPPLeft = gc.getPlayer(pHeadSelectedCity.getOwner()).greatPeopleThreshold(False) - pHeadSelectedCity.getGreatPeopleProgress()
 						szBuffer += u" " + localText.getText("INTERFACE_CITY_TURNS", (((iGPPLeft + iRate - 1) / iRate),))
+					elif BugCityScreen.isShowCityGreatPersonInfo() and iRate > 0:
+						iGPPLeft = gc.getPlayer(pHeadSelectedCity.getOwner()).greatPeopleThreshold(False) - pHeadSelectedCity.getGreatPeopleProgress()
+						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, ((iGPPLeft + iRate - 1) / iRate), 194, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne())
 # BUG - Great Person Turns - end
 
 					screen.setLabel( "GreatPeopleText", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, xResolution - 146, yResolution - 176, -1.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
