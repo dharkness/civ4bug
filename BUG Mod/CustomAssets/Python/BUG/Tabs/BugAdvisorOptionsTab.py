@@ -21,14 +21,15 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.setControlFlag("DomAdvScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 
-		screen.attachLabel(leftPanel, "TechScreenLabel", "Foreign (F4):")
-		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		screen.attachLabel(leftPanel, "ForeignScreenLabel", "Foreign (F4):")
+		screen.setControlFlag("ForeignScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance_Smilies")
 		
 		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology (F6):")
 		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
+		self.addCheckbox(screen, leftPanel, "TechScreen_Wide")
 
 		screen.attachLabel(leftPanel, "SevopdiaLabel", "Sevopdia (F12):")
 		screen.setControlFlag("SevopdiaLabel", "CF_LABEL_DEFAULTSIZE")

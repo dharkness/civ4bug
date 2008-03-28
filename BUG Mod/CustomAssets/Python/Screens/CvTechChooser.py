@@ -119,14 +119,28 @@ class CvTechChooser:
 			szText = localText.getText("TXT_KEY_WB_AS_ADD_TECH", ())
 			screen.setButtonGFC( "AddTechButton", szText, "", self.X_ADD_TECH_BUTTON, self.Y_ADD_TECH_BUTTON, self.W_ADD_TECH_BUTTON, self.H_ADD_TECH_BUTTON, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_STANDARD )
 			screen.hide("AddTechButton")
-			
-		# Here we set the background widget and exit button, and we show the screen
-		screen.showWindowBackground( False )
-		screen.setDimensions(screen.centerX(0), screen.centerY(0), 1024, 768)
-		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, 1024, 55, PanelStyles.PANEL_STYLE_TOPBAR )
-		screen.addDDSGFC("TechBG", ArtFileMgr.getInterfaceArtInfo("SCREEN_BG_OPAQUE").getPath(), 0, 48, 1024, 672, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		screen.addPanel( "TechBottomPanel", u"", u"", True, False, 0, 713, 1024, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
-		screen.setText( "TechChooserExit", "Background", u"<font=4>" + CyTranslator().getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, 994, 726, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
+
+# BUG - Tech Screen Resolution - start
+		if (BugOpt.isWideTechScreen()):
+			xPanelWidth = screen.getXResolution() - 2 * 30
+			yPanelHeight = 768
+
+			# Here we set the background widget and exit button, and we show the screen
+			screen.showWindowBackground( False )
+			screen.setDimensions(30, screen.centerY(0), xPanelWidth, yPanelHeight)
+		else:
+# BUG - Tech Screen Resolution - else
+			xPanelWidth = 1024
+			yPanelHeight = 768
+
+			screen.showWindowBackground( False )
+			screen.setDimensions(screen.centerX(0), screen.centerY(0), 1024, 768)
+# BUG - Tech Screen Resolution - end
+
+		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, xPanelWidth, 55, PanelStyles.PANEL_STYLE_TOPBAR )
+		screen.addDDSGFC("TechBG", ArtFileMgr.getInterfaceArtInfo("SCREEN_BG_OPAQUE").getPath(), 0, 48, xPanelWidth, yPanelHeight - 96, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addPanel( "TechBottomPanel", u"", u"", True, False, 0, yPanelHeight - 55, xPanelWidth, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
+		screen.setText( "TechChooserExit", "Background", u"<font=4>" + CyTranslator().getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, xPanelWidth - 30, yPanelHeight - 42, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 		screen.setActivation( "TechChooserExit", ActivationTypes.ACTIVATE_MIMICPARENTFOCUS )
 
 		# Header...
@@ -136,7 +150,7 @@ class CvTechChooser:
 		screen.setLabel( "TechTitleHeader", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, 502, 8, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 		# Make the scrollable area for the city list...
-		screen.addScrollPanel( "TechList", u"", 0, 64, 1024, 626, PanelStyles.PANEL_STYLE_EXTERNAL )
+		screen.addScrollPanel( "TechList", u"", 0, 64, xPanelWidth, yPanelHeight - 142, PanelStyles.PANEL_STYLE_EXTERNAL )
 		screen.setActivation( "TechList", ActivationTypes.ACTIVATE_NORMAL )
 		screen.hide( "TechList" )
 		

@@ -318,6 +318,12 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		'Called at the beginning of a players turn'
 		iGameTurn, iPlayer = argsList
 
+		if NewAutoLog.Enabled():
+			if (self.bCurrPlayerHuman):
+				if BugAutolog.isShowIBT():
+					NewAutoLog.writeLog("")
+					NewAutoLog.writeLog("After End Turn:", vBold=True)
+
 		if (self.bCurrPlayerHuman
 		and BugAutolog.isLogCityWhipStatus()):
 			iPlayer = gc.getActivePlayer()
@@ -360,7 +366,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (self.bCurrPlayerHuman):
 				if BugAutolog.isShowIBT():
 					NewAutoLog.writeLog("")
-					NewAutoLog.writeLog("IBT:", vBold=True)
+					NewAutoLog.writeLog("Other Player Actions:", vBold=True)
 
 			self.bCurrPlayerHuman = false
 

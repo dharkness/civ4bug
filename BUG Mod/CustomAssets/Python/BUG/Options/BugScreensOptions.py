@@ -71,6 +71,10 @@ class BugScreensOptions(OptionsFacade):
 							  "Screens", "GP Tech Prefs", True,
 							  "Great Person Research",
 							  "When checked, displays the technology each type of great person will research."))
+		self.addOption(Option("TechScreen_Wide",
+							  "Screens", "Wide Tech Screen", True,
+							  "Wide Tech Screen",
+							  "When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect)."))
 
 		self.addOption(Option("Sevopedia_Enabled",
 							  "Screens", "Sevopedia", True,
@@ -80,7 +84,6 @@ class BugScreensOptions(OptionsFacade):
 							  "Screens", "Sevopedia Sort", True,
 							  "Sort Lists",
 							  "When checked, the lists of units, buildings, technologies, etc. are sorted."))
-
 
 	def isShowOptionsKeyReminder(self):
 		return self.getBoolean('Main_OptionsKey')
@@ -139,6 +142,8 @@ class BugScreensOptions(OptionsFacade):
 	def isSortSevopedia(self):
 		return self.getBoolean('Sevopedia_Sort')
 
+	def isWideTechScreen(self):
+		return self.getBoolean('TechScreen_Wide')
 
 # The singleton BugScreensOptions object
 

@@ -2202,7 +2202,7 @@ class CvMainInterface:
 				iCount -= 1
 
 			if (szFileName != ""):
-				screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 8, 8, WidgetTypes.WIDGET_CITIZEN, i, False )
+				screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 10, 10, WidgetTypes.WIDGET_CITIZEN, j, False )
 				screen.show( szName )
 
 			j += 1
@@ -2287,7 +2287,7 @@ class CvMainInterface:
 					iCount -= 1
 
 				if (szFileName != ""):
-					screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 8, 8, WidgetTypes.WIDGET_CITIZEN, i, False )
+					screen.addDDSGFC( szName , szFileName, xCoord, yCoord, 10, 10, WidgetTypes.WIDGET_CITIZEN, i, False )
 					screen.show( szName )
 
 				j += 1
@@ -2426,7 +2426,7 @@ class CvMainInterface:
 				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):				
 					pGreatPersonCity, iGPTurns = GPUtil.findNextCity()
 					if (pGreatPersonCity):
-						szText = GPUtil.getGreatPeopleText(pGreatPersonCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne())
+						szText = GPUtil.getGreatPeopleText(pGreatPersonCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
 						
 						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512) + 90, 28, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
 						screen.show( "GreatPersonBarText" )
@@ -3430,7 +3430,7 @@ class CvMainInterface:
 						szBuffer += u" " + localText.getText("INTERFACE_CITY_TURNS", (((iGPPLeft + iRate - 1) / iRate),))
 					elif BugCityScreen.isShowCityGreatPersonInfo() and iRate > 0:
 						iGPPLeft = gc.getPlayer(pHeadSelectedCity.getOwner()).greatPeopleThreshold(False) - pHeadSelectedCity.getGreatPeopleProgress()
-						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, ((iGPPLeft + iRate - 1) / iRate), 194, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne())
+						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, ((iGPPLeft + iRate - 1) / iRate), 194, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), False)
 # BUG - Great Person Turns - end
 
 					screen.setLabel( "GreatPeopleText", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, xResolution - 146, yResolution - 176, -1.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )

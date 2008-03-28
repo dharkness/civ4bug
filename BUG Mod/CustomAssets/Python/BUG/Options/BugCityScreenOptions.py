@@ -36,7 +36,7 @@ class BugCityScreenOptions(OptionsFacade):
 								  "Determines how specialists are displayed.\n\
 The \"Default\" setting shows the specialists using the vanilla BtS format. \
 The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \
-The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (double chevron) and 20 (capped double chevron) format. ",
+The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format. ",
 								  ['Default', 'Stacker', 'Chevron'], None,
 								  InterfaceDirtyBits.GameData_DIRTY_BIT))
 
