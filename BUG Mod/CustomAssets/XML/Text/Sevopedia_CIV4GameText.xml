@@ -16,7 +16,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
 		<English>Unit Upgrades</English>
 		<French>Unit Upgrades</French>
-		<German>Unit Upgrades</German>
+		<German>Einheitenbeförderungen</German>
 		<Italian>Miglioramenti Unità</Italian>
 		<Spanish>Unit Upgrades</Spanish>
 	</TEXT>
@@ -24,7 +24,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_PROMOTION_TREE</Tag>
 		<English>Promotion Tree</English>
 		<French>Promotion Tree</French>
-		<German>Promotion Tree</German>
+		<German>Beförderungsbaum</German>
 		<Italian>Albero delle Promozioni</Italian>
 		<Spanish>Promotion Tree</Spanish>
 	</TEXT>
@@ -32,7 +32,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_NATIONAL_WONDERS</Tag>
 		<English>National Wonders</English>
 		<French>National Wonders</French>
-		<German>National Wonders</German>
+		<German>Nationalwunder</German>
 		<Italian>Meraviglie Nazionali</Italian>
 		<Spanish>National Wonders</Spanish>
 	</TEXT>
@@ -40,7 +40,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_GREAT_WONDERS</Tag>
 		<English>Great Wonders</English>
 		<French>Great Wonders</French>
-		<German>Great Wonders</German>
+		<German>Weltwunder</German>
 		<Italian>Grandi Meraviglie</Italian>
 		<Spanish>Great Wonders</Spanish>
 	</TEXT>
@@ -48,7 +48,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW</Tag>
 		<English>BTS Concepts</English>
 		<French>BTS Concepts</French>
-		<German>BTS Concepts</German>
+		<German>BTS -Konzepte</German>
 		<Italian>Concetti di BTS</Italian>
 		<Spanish>BTS Concepts</Spanish>
 	</TEXT>
@@ -56,7 +56,7 @@
 		<Tag>TXT_KEY_UNIQUE_BUILDINGS</Tag>
 		<English>Unique Building</English>
 		<French>Unique Building</French>
-		<German>Unique Building</German>
+		<German>Einzigartige Stadteinrichtungen</German>
 		<Italian>Edifici Unici</Italian>
 		<Spanish>Unique Building</Spanish>
 	</TEXT>
