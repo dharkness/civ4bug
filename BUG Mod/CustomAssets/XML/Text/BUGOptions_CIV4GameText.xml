@@ -1,0 +1,2529 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+  Copyright (c) 2007, BUG Mod.
+
+  This file is part of Civilization IV BUG Mod.
+  -->
+
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<!-- BUG Option Screen Text -->
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_REMINDERS_TEXT</Tag>
+		<English>Enable Reminders (Alt-M)</English>
+		<French>Enable Reminders (Alt-M)</French>
+		<German>Enable Reminders (Alt-M)</German>
+		<Italian>Enable Reminders (Alt-M)</<Italian>
+		<Spanish>Enable Reminders (Alt-M)</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_REMINDERS_HOVER</Tag>
+		<English>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</English>
+		<French>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</French>
+		<German>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</German>
+		<Italian>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</<Italian>
+		<Spanish>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_REMINDERSMETHOD_TEXT</Tag>
+		<English>Display Method</English>
+		<French>Display Method</French>
+		<German>Display Method</German>
+		<Italian>Display Method</<Italian>
+		<Spanish>Display Method</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_REMINDERSMETHOD_HOVER</Tag>
+		<English>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</English>
+		<French>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</French>
+		<German>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</German>
+		<Italian>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</<Italian>
+		<Spanish>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_LOGREMINDERS_TEXT</Tag>
+		<English>Log w. Autolog</English>
+		<French>Log w. Autolog</French>
+		<German>Log w. Autolog</German>
+		<Italian>Log w. Autolog</<Italian>
+		<Spanish>Log w. Autolog</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_LOGREMINDERS_HOVER</Tag>
+		<English>When checked, reminders will be logged using Autolog when created and triggered.</English>
+		<French>When checked, reminders will be logged using Autolog when created and triggered.</French>
+		<German>When checked, reminders will be logged using Autolog when created and triggered.</German>
+		<Italian>When checked, reminders will be logged using Autolog when created and triggered.</<Italian>
+		<Spanish>When checked, reminders will be logged using Autolog when created and triggered.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CIV4LERTS_TEXT</Tag>
+		<English>Enable Civ4lerts</English>
+		<French>Enable Civ4lerts</French>
+		<German>Enable Civ4lerts</German>
+		<Italian>Enable Civ4lerts</<Italian>
+		<Spanish>Enable Civ4lerts</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CIV4LERTS_HOVER</Tag>
+		<English>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</English>
+		<French>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</French>
+		<German>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</German>
+		<Italian>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</<Italian>
+		<Spanish>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGGROWTH_TEXT</Tag>
+		<English>Pending</English>
+		<French>Pending</French>
+		<German>Pending</German>
+		<Italian>Pending</<Italian>
+		<Spanish>Pending</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGGROWTH_HOVER</Tag>
+		<English>When checked, displays an alert when a city's population will grow or shrink next turn.</English>
+		<French>When checked, displays an alert when a city's population will grow or shrink next turn.</French>
+		<German>When checked, displays an alert when a city's population will grow or shrink next turn.</German>
+		<Italian>When checked, displays an alert when a city's population will grow or shrink next turn.</<Italian>
+		<Spanish>When checked, displays an alert when a city's population will grow or shrink next turn.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGHAPPINESS_TEXT</Tag>
+		<English>Pending</English>
+		<French>Pending</French>
+		<German>Pending</German>
+		<Italian>Pending</<Italian>
+		<Spanish>Pending</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGHAPPINESS_HOVER</Tag>
+		<English>When checked, displays an alert when a city will become happy or unhappy next turn.</English>
+		<French>When checked, displays an alert when a city will become happy or unhappy next turn.</French>
+		<German>When checked, displays an alert when a city will become happy or unhappy next turn.</German>
+		<Italian>When checked, displays an alert when a city will become happy or unhappy next turn.</<Italian>
+		<Spanish>When checked, displays an alert when a city will become happy or unhappy next turn.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGHEALTHINESS_TEXT</Tag>
+		<English>Pending</English>
+		<French>Pending</French>
+		<German>Pending</German>
+		<Italian>Pending</<Italian>
+		<Spanish>Pending</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGHEALTHINESS_HOVER</Tag>
+		<English>When checked, displays an alert when a city will become healthy or unhealthy next turn.</English>
+		<French>When checked, displays an alert when a city will become healthy or unhealthy next turn.</French>
+		<German>When checked, displays an alert when a city will become healthy or unhealthy next turn.</German>
+		<Italian>When checked, displays an alert when a city will become healthy or unhealthy next turn.</<Italian>
+		<Spanish>When checked, displays an alert when a city will become healthy or unhealthy next turn.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGBORDEREXPANSION_TEXT</Tag>
+		<English>Pending Border Expansion</English>
+		<French>Pending Border Expansion</French>
+		<German>Pending Border Expansion</German>
+		<Italian>Pending Border Expansion</<Italian>
+		<Spanish>Pending Border Expansion</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYPENDINGBORDEREXPANSION_HOVER</Tag>
+		<English>When checked, displays an alert when a city will expand its curltural borders next turn.</English>
+		<French>When checked, displays an alert when a city will expand its curltural borders next turn.</French>
+		<German>When checked, displays an alert when a city will expand its curltural borders next turn.</German>
+		<Italian>When checked, displays an alert when a city will expand its curltural borders next turn.</<Italian>
+		<Spanish>When checked, displays an alert when a city will expand its curltural borders next turn.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYGROWTH_TEXT</Tag>
+		<English>Growth</English>
+		<French>Growth</French>
+		<German>Growth</German>
+		<Italian>Growth</<Italian>
+		<Spanish>Growth</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYGROWTH_HOVER</Tag>
+		<English>When checked, displays an alert when a city's population has grown or shrunk.</English>
+		<French>When checked, displays an alert when a city's population has grown or shrunk.</French>
+		<German>When checked, displays an alert when a city's population has grown or shrunk.</German>
+		<Italian>When checked, displays an alert when a city's population has grown or shrunk.</<Italian>
+		<Spanish>When checked, displays an alert when a city's population has grown or shrunk.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYHAPPINESS_TEXT</Tag>
+		<English>Happiness</English>
+		<French>Happiness</French>
+		<German>Happiness</German>
+		<Italian>Happiness</<Italian>
+		<Spanish>Happiness</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYHAPPINESS_HOVER</Tag>
+		<English>When checked, displays an alert when a city has become happy or unhappy.</English>
+		<French>When checked, displays an alert when a city has become happy or unhappy.</French>
+		<German>When checked, displays an alert when a city has become happy or unhappy.</German>
+		<Italian>When checked, displays an alert when a city has become happy or unhappy.</<Italian>
+		<Spanish>When checked, displays an alert when a city has become happy or unhappy.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYHEALTHINESS_TEXT</Tag>
+		<English>Healthiness</English>
+		<French>Healthiness</French>
+		<German>Healthiness</German>
+		<Italian>Healthiness</<Italian>
+		<Spanish>Healthiness</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYHEALTHINESS_HOVER</Tag>
+		<English>When checked, displays an alert when a city has become healthy or unhealthy.</English>
+		<French>When checked, displays an alert when a city has become healthy or unhealthy.</French>
+		<German>When checked, displays an alert when a city has become healthy or unhealthy.</German>
+		<Italian>When checked, displays an alert when a city has become healthy or unhealthy.</<Italian>
+		<Spanish>When checked, displays an alert when a city has become healthy or unhealthy.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYCANHURRYPOP_TEXT</Tag>
+		<English>Can Hurry w. Population</English>
+		<French>Can Hurry w. Population</French>
+		<German>Can Hurry w. Population</German>
+		<Italian>Can Hurry w. Population</<Italian>
+		<Spanish>Can Hurry w. Population</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYCANHURRYPOP_HOVER</Tag>
+		<English>When checked, displays an alert once a city can hurry the item it's building with the whip.</English>
+		<French>When checked, displays an alert once a city can hurry the item it's building with the whip.</French>
+		<German>When checked, displays an alert once a city can hurry the item it's building with the whip.</German>
+		<Italian>When checked, displays an alert once a city can hurry the item it's building with the whip.</<Italian>
+		<Spanish>When checked, displays an alert once a city can hurry the item it's building with the whip.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYCANHURRYGOLD_TEXT</Tag>
+		<English>Can Hurry w. Gold</English>
+		<French>Can Hurry w. Gold</French>
+		<German>Can Hurry w. Gold</German>
+		<Italian>Can Hurry w. Gold</<Italian>
+		<Spanish>Can Hurry w. Gold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_CITYCANHURRYGOLD_HOVER</Tag>
+		<English>When checked, displays an alert once a city can hurry the item it's building with gold.</English>
+		<French>When checked, displays an alert once a city can hurry the item it's building with gold.</French>
+		<German>When checked, displays an alert once a city can hurry the item it's building with gold.</German>
+		<Italian>When checked, displays an alert once a city can hurry the item it's building with gold.</<Italian>
+		<Spanish>When checked, displays an alert once a city can hurry the item it's building with gold.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_TECHTRADE_TEXT</Tag>
+		<English>Technologies</English>
+		<French>Technologies</French>
+		<German>Technologies</German>
+		<Italian>Technologies</<Italian>
+		<Spanish>Technologies</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_TECHTRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDTRADE_TEXT</Tag>
+		<English>Gold</English>
+		<French>Gold</French>
+		<German>Gold</German>
+		<Italian>Gold</<Italian>
+		<Spanish>Gold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDTRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDTRADETHRESH_TEXT</Tag>
+		<English>Threshold</English>
+		<French>Threshold</French>
+		<German>Threshold</German>
+		<Italian>Threshold</<Italian>
+		<Spanish>Threshold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDTRADETHRESH_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDPERTURNTRADE_TEXT</Tag>
+		<English>Gold Per Turn</English>
+		<French>Gold Per Turn</French>
+		<German>Gold Per Turn</German>
+		<Italian>Gold Per Turn</<Italian>
+		<Spanish>Gold Per Turn</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDPERTURNTRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDPERTURNTRADETHRESH_TEXT</Tag>
+		<English>Threshold</English>
+		<French>Threshold</French>
+		<German>Threshold</German>
+		<Italian>Threshold</<Italian>
+		<Spanish>Threshold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_GOLDPERTURNTRADETHRESH_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_OPENBORDERSTRADE_TEXT</Tag>
+		<English>Open Borders</English>
+		<French>Open Borders</French>
+		<German>Open Borders</German>
+		<Italian>Open Borders</<Italian>
+		<Spanish>Open Borders</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_OPENBORDERSTRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DEFENSIVEPACTTRADE_TEXT</Tag>
+		<English>Defensive Pact</English>
+		<French>Defensive Pact</French>
+		<German>Defensive Pact</German>
+		<Italian>Defensive Pact</<Italian>
+		<Spanish>Defensive Pact</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DEFENSIVEPACTTRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_PERMANENTALLIANCETRADE_TEXT</Tag>
+		<English>Permanent Alliance</English>
+		<French>Permanent Alliance</French>
+		<German>Permanent Alliance</German>
+		<Italian>Permanent Alliance</<Italian>
+		<Spanish>Permanent Alliance</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_PERMANENTALLIANCETRADE_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMPOP_TEXT</Tag>
+		<English>Domination: Population</English>
+		<French>Domination: Population</French>
+		<German>Domination: Population</German>
+		<Italian>Domination: Population</<Italian>
+		<Spanish>Domination: Population</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMPOP_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMPOPTHRESH_TEXT</Tag>
+		<English>Pop Threshold</English>
+		<French>Pop Threshold</French>
+		<German>Pop Threshold</German>
+		<Italian>Pop Threshold</<Italian>
+		<Spanish>Pop Threshold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMPOPTHRESH_HOVER</Tag>
+		<English>Population threshold for Domination victory.</English>
+		<French>Population threshold for Domination victory.</French>
+		<German>Population threshold for Domination victory.</German>
+		<Italian>Population threshold for Domination victory.</<Italian>
+		<Spanish>Population threshold for Domination victory.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMLAND_TEXT</Tag>
+		<English>Domination: Land</English>
+		<French>Domination: Land</French>
+		<German>Domination: Land</German>
+		<Italian>Domination: Land</<Italian>
+		<Spanish>Domination: Land</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMLAND_HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</<Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMLANDTHRESH_TEXT</Tag>
+		<English>Land Threshold</English>
+		<French>Land Threshold</French>
+		<German>Land Threshold</German>
+		<Italian>Land Threshold</<Italian>
+		<Spanish>Land Threshold</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ALERT_DOMLANDTHRESH_HOVER</Tag>
+		<English>Land threshold for Domination victory.</English>
+		<French>Land threshold for Domination victory.</French>
+		<German>Land threshold for Domination victory.</German>
+		<Italian>Land threshold for Domination victory.</<Italian>
+		<Spanish>Land threshold for Domination victory.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_ENABLED_TEXT</Tag>
+		<English>Enable Logging</English>
+		<French>Enable Logging</French>
+		<German>Enable Logging</German>
+		<Italian>Enable Logging</<Italian>
+		<Spanish>Enable Logging</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_ENABLED_HOVER</Tag>
+		<English>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</English>
+		<French>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</French>
+		<German>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</German>
+		<Italian>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</<Italian>
+		<Spanish>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_SILENT_TEXT</Tag>
+		<English>Silent Start</English>
+		<French>Silent Start</French>
+		<German>Silent Start</German>
+		<Italian>Silent Start</<Italian>
+		<Spanish>Silent Start</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_SILENT_HOVER</Tag>
+		<English>When checked, the logger is automatically started with no in-game message.</English>
+		<French>When checked, the logger is automatically started with no in-game message.</French>
+		<German>When checked, the logger is automatically started with no in-game message.</German>
+		<Italian>When checked, the logger is automatically started with no in-game message.</<Italian>
+		<Spanish>When checked, the logger is automatically started with no in-game message.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_DEFAULTFILENAME_TEXT</Tag>
+		<English>Use Default File Name</English>
+		<French>Use Default File Name</French>
+		<German>Use Default File Name</German>
+		<Italian>Use Default File Name</<Italian>
+		<Spanish>Use Default File Name</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_DEFAULTFILENAME_HOVER</Tag>
+		<English>When checked, the default (playername.txt) will be used, ignores log file name option.</English>
+		<French>When checked, the default (playername.txt) will be used, ignores log file name option.</French>
+		<German>When checked, the default (playername.txt) will be used, ignores log file name option.</German>
+		<Italian>When checked, the default (playername.txt) will be used, ignores log file name option.</<Italian>
+		<Spanish>When checked, the default (playername.txt) will be used, ignores log file name option.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FILEPATH_TEXT</Tag>
+		<English>Path</English>
+		<French>Path</French>
+		<German>Path</German>
+		<Italian>Path</<Italian>
+		<Spanish>Path</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FILEPATH_HOVER</Tag>
+		<English>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</English>
+		<French>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</French>
+		<German>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</German>
+		<Italian>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</<Italian>
+		<Spanish>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FILENAME_TEXT</Tag>
+		<English>File</English>
+		<French>File</French>
+		<German>File</German>
+		<Italian>File</<Italian>
+		<Spanish>File</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FILENAME_HOVER</Tag>
+		<English>Name of log file. If there is no file of this name in the directory above, one will be created.</English>
+		<French>Name of log file. If there is no file of this name in the directory above, one will be created.</French>
+		<German>Name of log file. If there is no file of this name in the directory above, one will be created.</German>
+		<Italian>Name of log file. If there is no file of this name in the directory above, one will be created.</<Italian>
+		<Spanish>Name of log file. If there is no file of this name in the directory above, one will be created.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FORMAT_TEXT</Tag>
+		<English>Format Style</English>
+		<French>Format Style</French>
+		<German>Format Style</German>
+		<Italian>Format Style</<Italian>
+		<Spanish>Format Style</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_FORMAT_HOVER</Tag>
+		<English>The format of the log output.</English>
+		<French>The format of the log output.</French>
+		<German>The format of the log output.</German>
+		<Italian>The format of the log output.</<Italian>
+		<Spanish>The format of the log output.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_COLORCODING_TEXT</Tag>
+		<English>Color Coding</English>
+		<French>Color Coding</French>
+		<German>Color Coding</German>
+		<Italian>Color Coding</<Italian>
+		<Spanish>Color Coding</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_COLORCODING_HOVER</Tag>
+		<English>When checked, comments are color-coded for forum posts.</English>
+		<French>When checked, comments are color-coded for forum posts.</French>
+		<German>When checked, comments are color-coded for forum posts.</German>
+		<Italian>When checked, comments are color-coded for forum posts.</<Italian>
+		<Spanish>When checked, comments are color-coded for forum posts.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_4000BC_TEXT</Tag>
+		<English>4000BC is Turn</English>
+		<French>4000BC is Turn</French>
+		<German>4000BC is Turn</German>
+		<Italian>4000BC is Turn</<Italian>
+		<Spanish>4000BC is Turn</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_4000BC_HOVER</Tag>
+		<English>Select which turn number 4000BC should be.</English>
+		<French>Select which turn number 4000BC should be.</French>
+		<German>Select which turn number 4000BC should be.</German>
+		<Italian>Select which turn number 4000BC should be.</<Italian>
+		<Spanish>Select which turn number 4000BC should be.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_IBT_TEXT</Tag>
+		<English>Show IBT</English>
+		<French>Show IBT</French>
+		<German>Show IBT</German>
+		<Italian>Show IBT</<Italian>
+		<Spanish>Show IBT</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_IBT_HOVER</Tag>
+		<English>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</English>
+		<French>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</French>
+		<German>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</German>
+		<Italian>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</<Italian>
+		<Spanish>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_PREFIX_TEXT</Tag>
+		<English>Prefix</English>
+		<French>Prefix</French>
+		<German>Prefix</German>
+		<Italian>Prefix</<Italian>
+		<Spanish>Prefix</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_PREFIX_HOVER</Tag>
+		<English>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</English>
+		<French>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</French>
+		<German>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</German>
+		<Italian>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</<Italian>
+		<Spanish>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGTECH_TEXT</Tag>
+		<English>Technologies</English>
+		<French>Technologies</French>
+		<German>Technologies</German>
+		<Italian>Technologies</<Italian>
+		<Spanish>Technologies</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGTECH_HOVER</Tag>
+		<English>When checked, will log techs acquired and research started.</English>
+		<French>When checked, will log techs acquired and research started.</French>
+		<German>When checked, will log techs acquired and research started.</German>
+		<Italian>When checked, will log techs acquired and research started.</<Italian>
+		<Spanish>When checked, will log techs acquired and research started.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGBUILDSTARTED_TEXT</Tag>
+		<English>Builds Started</English>
+		<French>Builds Started</French>
+		<German>Builds Started</German>
+		<Italian>Builds Started</<Italian>
+		<Spanish>Builds Started</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGBUILDSTARTED_HOVER</Tag>
+		<English>When checked, will log when a city starts a build.</English>
+		<French>When checked, will log when a city starts a build.</French>
+		<German>When checked, will log when a city starts a build.</German>
+		<Italian>When checked, will log when a city starts a build.</<Italian>
+		<Spanish>When checked, will log when a city starts a build.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGBUILDCOMPLETED_TEXT</Tag>
+		<English>Builds Completed</English>
+		<French>Builds Completed</French>
+		<German>Builds Completed</German>
+		<Italian>Builds Completed</<Italian>
+		<Spanish>Builds Completed</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGBUILDCOMPLETED_HOVER</Tag>
+		<English>When checked, will log when a city completes a build.</English>
+		<French>When checked, will log when a city completes a build.</French>
+		<German>When checked, will log when a city completes a build.</German>
+		<Italian>When checked, will log when a city completes a build.</<Italian>
+		<Spanish>When checked, will log when a city completes a build.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPROJECTS_TEXT</Tag>
+		<English>Projects Completed</English>
+		<French>Projects Completed</French>
+		<German>Projects Completed</German>
+		<Italian>Projects Completed</<Italian>
+		<Spanish>Projects Completed</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPROJECTS_HOVER</Tag>
+		<English>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</English>
+		<French>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</French>
+		<German>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</German>
+		<Italian>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</<Italian>
+		<Spanish>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGIMPROVEMENTS_TEXT</Tag>
+		<English>Improvements</English>
+		<French>Improvements</French>
+		<German>Improvements</German>
+		<Italian>Improvements</<Italian>
+		<Spanish>Improvements</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGIMPROVEMENTS_HOVER</Tag>
+		<English>When checked, will log when your improvements are built or destroyed by you.</English>
+		<French>When checked, will log when your improvements are built or destroyed by you.</French>
+		<German>When checked, will log when your improvements are built or destroyed by you.</German>
+		<Italian>When checked, will log when your improvements are built or destroyed by you.</<Italian>
+		<Spanish>When checked, will log when your improvements are built or destroyed by you.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYFOUNDED_TEXT</Tag>
+		<English>City Founded</English>
+		<French>City Founded</French>
+		<German>City Founded</German>
+		<Italian>City Founded</<Italian>
+		<Spanish>City Founded</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYFOUNDED_HOVER</Tag>
+		<English>When checked, will log when you found a city.</English>
+		<French>When checked, will log when you found a city.</French>
+		<German>When checked, will log when you found a city.</German>
+		<Italian>When checked, will log when you found a city.</<Italian>
+		<Spanish>When checked, will log when you found a city.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYGROWTH_TEXT</Tag>
+		<English>City Growth</English>
+		<French>City Growth</French>
+		<German>City Growth</German>
+		<Italian>City Growth</<Italian>
+		<Spanish>City Growth</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYGROWTH_HOVER</Tag>
+		<English>When checked, will log when one of your cities grows in population.</English>
+		<French>When checked, will log when one of your cities grows in population.</French>
+		<German>When checked, will log when one of your cities grows in population.</German>
+		<Italian>When checked, will log when one of your cities grows in population.</<Italian>
+		<Spanish>When checked, will log when one of your cities grows in population.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYBORDERS_TEXT</Tag>
+		<English>City Borders</English>
+		<French>City Borders</French>
+		<German>City Borders</German>
+		<Italian>City Borders</<Italian>
+		<Spanish>City Borders</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYBORDERS_HOVER</Tag>
+		<English>When checked, will log when one of your city\'s borders expand.</English>
+		<French>When checked, will log when one of your city\'s borders expand.</French>
+		<German>When checked, will log when one of your city\'s borders expand.</German>
+		<Italian>When checked, will log when one of your city\'s borders expand.</<Italian>
+		<Spanish>When checked, will log when one of your city\'s borders expand.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYOWNER_TEXT</Tag>
+		<English>City Ownership</English>
+		<French>City Ownership</French>
+		<German>City Ownership</German>
+		<Italian>City Ownership</<Italian>
+		<Spanish>City Ownership</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYOWNER_HOVER</Tag>
+		<English>When checked, will log when you acquire or lose a city through conquest or trade.</English>
+		<French>When checked, will log when you acquire or lose a city through conquest or trade.</French>
+		<German>When checked, will log when you acquire or lose a city through conquest or trade.</German>
+		<Italian>When checked, will log when you acquire or lose a city through conquest or trade.</<Italian>
+		<Spanish>When checked, will log when you acquire or lose a city through conquest or trade.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYRAZED_TEXT</Tag>
+		<English>City Razed</English>
+		<French>City Razed</French>
+		<German>City Razed</German>
+		<Italian>City Razed</<Italian>
+		<Spanish>City Razed</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYRAZED_HOVER</Tag>
+		<English>When checked, will log when you raze another civ\'s city or one of your cities is razed.</English>
+		<French>When checked, will log when you raze another civ\'s city or one of your cities is razed.</French>
+		<German>When checked, will log when you raze another civ\'s city or one of your cities is razed.</German>
+		<Italian>When checked, will log when you raze another civ\'s city or one of your cities is razed.</<Italian>
+		<Spanish>When checked, will log when you raze another civ\'s city or one of your cities is razed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYWHIPSTATUS_TEXT</Tag>
+		<English>City Whip</English>
+		<French>City Whip</French>
+		<German>City Whip</German>
+		<Italian>City Whip</<Italian>
+		<Spanish>City Whip</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCITYWHIPSTATUS_HOVER</Tag>
+		<English>When checked, will log when you whip a city or when the whip anger decreases in a city.</English>
+		<French>When checked, will log when you whip a city or when the whip anger decreases in a city.</French>
+		<German>When checked, will log when you whip a city or when the whip anger decreases in a city.</German>
+		<Italian>When checked, will log when you whip a city or when the whip anger decreases in a city.</<Italian>
+		<Spanish>When checked, will log when you whip a city or when the whip anger decreases in a city.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGOODIES_TEXT</Tag>
+		<English>Tribal Villages</English>
+		<French>Tribal Villages</French>
+		<German>Tribal Villages</German>
+		<Italian>Tribal Villages</<Italian>
+		<Spanish>Tribal Villages</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGOODIES_HOVER</Tag>
+		<English>When checked, will log results from popping tribal villages.</English>
+		<French>When checked, will log results from popping tribal villages.</French>
+		<German>When checked, will log results from popping tribal villages.</German>
+		<Italian>When checked, will log results from popping tribal villages.</<Italian>
+		<Spanish>When checked, will log results from popping tribal villages.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGRELIGION_TEXT</Tag>
+		<English>Religions</English>
+		<French>Religions</French>
+		<German>Religions</German>
+		<Italian>Religions</<Italian>
+		<Spanish>Religions</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGRELIGION_HOVER</Tag>
+		<English>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</English>
+		<French>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</French>
+		<German>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</German>
+		<Italian>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</<Italian>
+		<Spanish>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCORPORATION_TEXT</Tag>
+		<English>Corporations</English>
+		<French>Corporations</French>
+		<German>Corporations</German>
+		<Italian>Corporations</<Italian>
+		<Spanish>Corporations</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCORPORATION_HOVER</Tag>
+		<English>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</English>
+		<French>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</French>
+		<German>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</German>
+		<Italian>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</<Italian>
+		<Spanish>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGP_TEXT</Tag>
+		<English>Great People</English>
+		<French>Great People</French>
+		<German>Great People</German>
+		<Italian>Great People</<Italian>
+		<Spanish>Great People</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGP_HOVER</Tag>
+		<English>When checked, will log the birth of great people (in your cities).</English>
+		<French>When checked, will log the birth of great people (in your cities).</French>
+		<German>When checked, will log the birth of great people (in your cities).</German>
+		<Italian>When checked, will log the birth of great people (in your cities).</<Italian>
+		<Spanish>When checked, will log the birth of great people (in your cities).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGA_TEXT</Tag>
+		<English>Golden Age</English>
+		<French>Golden Age</French>
+		<German>Golden Age</German>
+		<Italian>Golden Age</<Italian>
+		<Spanish>Golden Age</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGGA_HOVER</Tag>
+		<English>When checked, will log begin and end of your Golden Ages.</English>
+		<French>When checked, will log begin and end of your Golden Ages.</French>
+		<German>When checked, will log begin and end of your Golden Ages.</German>
+		<Italian>When checked, will log begin and end of your Golden Ages.</<Italian>
+		<Spanish>When checked, will log begin and end of your Golden Ages.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCONTACT_TEXT</Tag>
+		<English>Contact</English>
+		<French>Contact</French>
+		<German>Contact</German>
+		<Italian>Contact</<Italian>
+		<Spanish>Contact</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCONTACT_HOVER</Tag>
+		<English>When checked, will log first contact with other civs.</English>
+		<French>When checked, will log first contact with other civs.</French>
+		<German>When checked, will log first contact with other civs.</German>
+		<Italian>When checked, will log first contact with other civs.</<Italian>
+		<Spanish>When checked, will log first contact with other civs.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGATTITUDE_TEXT</Tag>
+		<English>Attitude</English>
+		<French>Attitude</French>
+		<German>Attitude</German>
+		<Italian>Attitude</<Italian>
+		<Spanish>Attitude</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGATTITUDE_HOVER</Tag>
+		<English>When checked, will log any change in attitude between civs known to you.</English>
+		<French>When checked, will log any change in attitude between civs known to you.</French>
+		<German>When checked, will log any change in attitude between civs known to you.</German>
+		<Italian>When checked, will log any change in attitude between civs known to you.</<Italian>
+		<Spanish>When checked, will log any change in attitude between civs known to you.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGWAR_TEXT</Tag>
+		<English>War</English>
+		<French>War</French>
+		<German>War</German>
+		<Italian>War</<Italian>
+		<Spanish>War</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGWAR_HOVER</Tag>
+		<English>When checked, will log start and end of wars between civs known to you.</English>
+		<French>When checked, will log start and end of wars between civs known to you.</French>
+		<German>When checked, will log start and end of wars between civs known to you.</German>
+		<Italian>When checked, will log start and end of wars between civs known to you.</<Italian>
+		<Spanish>When checked, will log start and end of wars between civs known to you.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGVASSALS_TEXT</Tag>
+		<English>Vassal States</English>
+		<French>Vassal States</French>
+		<German>Vassal States</German>
+		<Italian>Vassal States</<Italian>
+		<Spanish>Vassal States</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGVASSALS_HOVER</Tag>
+		<English>When checked, will log when any civ becomes a vassal state of or frees itself from another.</English>
+		<French>When checked, will log when any civ becomes a vassal state of or frees itself from another.</French>
+		<German>When checked, will log when any civ becomes a vassal state of or frees itself from another.</German>
+		<Italian>When checked, will log when any civ becomes a vassal state of or frees itself from another.</<Italian>
+		<Spanish>When checked, will log when any civ becomes a vassal state of or frees itself from another.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCIVICS_TEXT</Tag>
+		<English>Civics</English>
+		<French>Civics</French>
+		<German>Civics</German>
+		<Italian>Civics</<Italian>
+		<Spanish>Civics</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCIVICS_HOVER</Tag>
+		<English>When checked, will log any change in civics of civs known to you.</English>
+		<French>When checked, will log any change in civics of civs known to you.</French>
+		<German>When checked, will log any change in civics of civs known to you.</German>
+		<Italian>When checked, will log any change in civics of civs known to you.</<Italian>
+		<Spanish>When checked, will log any change in civics of civs known to you.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCOMBAT_TEXT</Tag>
+		<English>Combat</English>
+		<French>Combat</French>
+		<German>Combat</German>
+		<Italian>Combat</<Italian>
+		<Spanish>Combat</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGCOMBAT_HOVER</Tag>
+		<English>When checked, will log combat results involving your units.</English>
+		<French>When checked, will log combat results involving your units.</French>
+		<German>When checked, will log combat results involving your units.</German>
+		<Italian>When checked, will log combat results involving your units.</<Italian>
+		<Spanish>When checked, will log combat results involving your units.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPROMOTIONS_TEXT</Tag>
+		<English>Promotions</English>
+		<French>Promotions</French>
+		<German>Promotions</German>
+		<Italian>Promotions</<Italian>
+		<Spanish>Promotions</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPROMOTIONS_HOVER</Tag>
+		<English>When checked, will log when you promote one of your units.</English>
+		<French>When checked, will log when you promote one of your units.</French>
+		<German>When checked, will log when you promote one of your units.</German>
+		<Italian>When checked, will log when you promote one of your units.</<Italian>
+		<Spanish>When checked, will log when you promote one of your units.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPILLAGE_TEXT</Tag>
+		<English>Pillaging</English>
+		<French>Pillaging</French>
+		<German>Pillaging</German>
+		<Italian>Pillaging</<Italian>
+		<Spanish>Pillaging</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_AUTOLOG_LOGPILLAGE_HOVER</Tag>
+		<English>When checked, will log when you pillage or your improvements are pillaged.</English>
+		<French>When checked, will log when you pillage or your improvements are pillaged.</French>
+		<German>When checked, will log when you pillage or your improvements are pillaged.</German>
+		<Italian>When checked, will log when you pillage or your improvements are pillaged.</<Italian>
+		<Spanish>When checked, will log when you pillage or your improvements are pillaged.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_RAWCOMMERCE_TEXT</Tag>
+		<English>Raw Commerce / Production</English>
+		<French>Raw Commerce / Production</French>
+		<German>Raw Commerce / Production</German>
+		<Italian>Raw Commerce / Production</<Italian>
+		<Spanish>Raw Commerce / Production</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_RAWCOMMERCE_HOVER</Tag>
+		<English>When checked, the raw commerce and production are displayed above the trade routes.</English>
+		<French>When checked, the raw commerce and production are displayed above the trade routes.</French>
+		<German>When checked, the raw commerce and production are displayed above the trade routes.</German>
+		<Italian>When checked, the raw commerce and production are displayed above the trade routes.</<Italian>
+		<Spanish>When checked, the raw commerce and production are displayed above the trade routes.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_CULTURETURNS_TEXT</Tag>
+		<English>Culture Turns</English>
+		<French>Culture Turns</French>
+		<German>Culture Turns</German>
+		<Italian>Culture Turns</<Italian>
+		<Spanish>Culture Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_CULTURETURNS_HOVER</Tag>
+		<English>When checked, displays the number of turns until the city's borders expand.</English>
+		<French>When checked, displays the number of turns until the city's borders expand.</French>
+		<German>When checked, displays the number of turns until the city's borders expand.</German>
+		<Italian>When checked, displays the number of turns until the city's borders expand.</<Italian>
+		<Spanish>When checked, displays the number of turns until the city's borders expand.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_GREATPERSONTURNS_TEXT</Tag>
+		<English>Great Person Turns</English>
+		<French>Great Person Turns</French>
+		<German>Great Person Turns</German>
+		<Italian>Great Person Turns</<Italian>
+		<Spanish>Great Person Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_GREATPERSONTURNS_HOVER</Tag>
+		<English>When checked, displays the number of turns until the city will produce a Great Person.</English>
+		<French>When checked, displays the number of turns until the city will produce a Great Person.</French>
+		<German>When checked, displays the number of turns until the city will produce a Great Person.</German>
+		<Italian>When checked, displays the number of turns until the city will produce a Great Person.</<Italian>
+		<Spanish>When checked, displays the number of turns until the city will produce a Great Person.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_GREATPERSONINFO_TEXT</Tag>
+		<English>Great Person Info</English>
+		<French>Great Person Info</French>
+		<German>Great Person Info</German>
+		<Italian>Great Person Info</<Italian>
+		<Spanish>Great Person Info</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_GREATPERSONINFO_HOVER</Tag>
+		<English>When checked, displays additional Great Person Information.</English>
+		<French>When checked, displays additional Great Person Information.</French>
+		<German>When checked, displays additional Great Person Information.</German>
+		<Italian>When checked, displays additional Great Person Information.</<Italian>
+		<Spanish>When checked, displays additional Great Person Information.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_ANGER_COUNTER_TEXT</Tag>
+		<English>Anger Counter</English>
+		<French>Anger Counter</French>
+		<German>Anger Counter</German>
+		<Italian>Anger Counter</<Italian>
+		<Spanish>Anger Counter</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_ANGER_COUNTER_HOVER</Tag>
+		<English>When checked, puts anger countdown on city screen.</English>
+		<French>When checked, puts anger countdown on city screen.</French>
+		<German>When checked, puts anger countdown on city screen.</German>
+		<Italian>When checked, puts anger countdown on city screen.</<Italian>
+		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_SPECIALISTS_TEXT</Tag>
+		<English>City Specialists</English>
+		<French>City Specialists</French>
+		<German>City Specialists</German>
+		<Italian>City Specialists</<Italian>
+		<Spanish>City Specialists</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CITY_SPECIALISTS_HOVER</Tag>
+		<English>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
+		<French>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</French>
+		<German>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</German>
+		<Italian>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</<Italian>
+		<Spanish>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_ENABLED_TEXT</Tag>
+		<English>Better Espionage Screen</English>
+		<French>Better Espionage Screen</French>
+		<German>Better Espionage Screen</German>
+		<Italian>Better Espionage Screen</<Italian>
+		<Spanish>Better Espionage Screen</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_ENABLED_HOVER</Tag>
+		<English>When checked, uses Almightix's Better Espionage Screen.</English>
+		<French>When checked, uses Almightix's Better Espionage Screen.</French>
+		<German>When checked, uses Almightix's Better Espionage Screen.</German>
+		<Italian>When checked, uses Almightix's Better Espionage Screen.</<Italian>
+		<Spanish>When checked, uses Almightix's Better Espionage Screen.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_RATIOCOLOR_TEXT</Tag>
+		<English>Ratio Color</English>
+		<French>Ratio Color</French>
+		<German>Ratio Color</German>
+		<Italian>Ratio Color</<Italian>
+		<Spanish>Ratio Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_RATIOCOLOR_HOVER</Tag>
+		<English>Default color used for espionage ratios.</English>
+		<French>Default color used for espionage ratios.</French>
+		<German>Default color used for espionage ratios.</German>
+		<Italian>Default color used for espionage ratios.</<Italian>
+		<Spanish>Default color used for espionage ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_GOODRATIO_TEXT</Tag>
+		<English>Good Ratio Cutoff</English>
+		<French>Good Ratio Cutoff</French>
+		<German>Good Ratio Cutoff</German>
+		<Italian>Good Ratio Cutoff</<Italian>
+		<Spanish>Good Ratio Cutoff</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_GOODRATIO_HOVER</Tag>
+		<English>Ratios less than or equal to this value are colored with the following color.</English>
+		<French>Ratios less than or equal to this value are colored with the following color.</French>
+		<German>Ratios less than or equal to this value are colored with the following color.</German>
+		<Italian>Ratios less than or equal to this value are colored with the following color.</<Italian>
+		<Spanish>Ratios less than or equal to this value are colored with the following color.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_GOODCOLOR_TEXT</Tag>
+		<English>Good Color</English>
+		<French>Good Color</French>
+		<German>Good Color</German>
+		<Italian>Good Color</<Italian>
+		<Spanish>Good Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_GOODCOLOR_HOVER</Tag>
+		<English>Color used for good espionage ratios.</English>
+		<French>Color used for good espionage ratios.</French>
+		<German>Color used for good espionage ratios.</German>
+		<Italian>Color used for good espionage ratios.</<Italian>
+		<Spanish>Color used for good espionage ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_BADRATIO_TEXT</Tag>
+		<English>Bad Ratio Cutoff</English>
+		<French>Bad Ratio Cutoff</French>
+		<German>Bad Ratio Cutoff</German>
+		<Italian>Bad Ratio Cutoff</<Italian>
+		<Spanish>Bad Ratio Cutoff</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_BADRATIO_HOVER</Tag>
+		<English>Ratios greater than or equal to this value are colored with the following color.</English>
+		<French>Ratios greater than or equal to this value are colored with the following color.</French>
+		<German>Ratios greater than or equal to this value are colored with the following color.</German>
+		<Italian>Ratios greater than or equal to this value are colored with the following color.</<Italian>
+		<Spanish>Ratios greater than or equal to this value are colored with the following color.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_BADCOLOR_TEXT</Tag>
+		<English>Bad Color</English>
+		<French>Bad Color</French>
+		<German>Bad Color</German>
+		<Italian>Bad Color</<Italian>
+		<Spanish>Bad Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_BADCOLOR_HOVER</Tag>
+		<English>Color used for bad espionage ratios.</English>
+		<French>Color used for bad espionage ratios.</French>
+		<German>Color used for bad espionage ratios.</German>
+		<Italian>Color used for bad espionage ratios.</<Italian>
+		<Spanish>Color used for bad espionage ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_POSSIBLECOLOR_TEXT</Tag>
+		<English>Possible Mission Color</English>
+		<French>Possible Mission Color</French>
+		<German>Possible Mission Color</German>
+		<Italian>Possible Mission Color</<Italian>
+		<Spanish>Possible Mission Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_POSSIBLECOLOR_HOVER</Tag>
+		<English>Color used for missions that you can perform now (you have enough EPs against the target).</English>
+		<French>Color used for missions that you can perform now (you have enough EPs against the target).</French>
+		<German>Color used for missions that you can perform now (you have enough EPs against the target).</German>
+		<Italian>Color used for missions that you can perform now (you have enough EPs against the target).</<Italian>
+		<Spanish>Color used for missions that you can perform now (you have enough EPs against the target).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_CLOSEPERCENT_TEXT</Tag>
+		<English>Close Percent Cutoff</English>
+		<French>Close Percent Cutoff</French>
+		<German>Close Percent Cutoff</German>
+		<Italian>Close Percent Cutoff</<Italian>
+		<Spanish>Close Percent Cutoff</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_CLOSEPERCENT_HOVER</Tag>
+		<English>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</English>
+		<French>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</French>
+		<German>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</German>
+		<Italian>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</<Italian>
+		<Spanish>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_CLOSECOLOR_TEXT</Tag>
+		<English>Close Mission Color</English>
+		<French>Close Mission Color</French>
+		<German>Close Mission Color</German>
+		<Italian>Close Mission Color</<Italian>
+		<Spanish>Close Mission Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_ESPIONAGE_CLOSECOLOR_HOVER</Tag>
+		<English>Color used for missions that you can perform soon (you have close to enough EPs against the target).</English>
+		<French>Color used for missions that you can perform soon (you have close to enough EPs against the target).</French>
+		<German>Color used for missions that you can perform soon (you have close to enough EPs against the target).</German>
+		<Italian>Color used for missions that you can perform soon (you have close to enough EPs against the target).</<Italian>
+		<Spanish>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ENABLED_TEXT</Tag>
+		<English>Enable NJAGC</English>
+		<French>Enable NJAGC</French>
+		<German>Enable NJAGC</German>
+		<Italian>Enable NJAGC</<Italian>
+		<Spanish>Enable NJAGC</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ENABLED_HOVER</Tag>
+		<English>When checked, the game clock is displayed using TheLopez's NJAGC mod.</English>
+		<French>When checked, the game clock is displayed using TheLopez's NJAGC mod.</French>
+		<German>When checked, the game clock is displayed using TheLopez's NJAGC mod.</German>
+		<Italian>When checked, the game clock is displayed using TheLopez's NJAGC mod.</<Italian>
+		<Spanish>When checked, the game clock is displayed using TheLopez's NJAGC mod.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWERA_TEXT</Tag>
+		<English>Display Era</English>
+		<French>Display Era</French>
+		<German>Display Era</German>
+		<Italian>Display Era</<Italian>
+		<Spanish>Display Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWERA_HOVER</Tag>
+		<English>When checked, the current era is displayed to the left of the research bar.</English>
+		<French>When checked, the current era is displayed to the left of the research bar.</French>
+		<German>When checked, the current era is displayed to the left of the research bar.</German>
+		<Italian>When checked, the current era is displayed to the left of the research bar.</<Italian>
+		<Spanish>When checked, the current era is displayed to the left of the research bar.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWERACOLOR_TEXT</Tag>
+		<English>Use Era-Related Colors</English>
+		<French>Use Era-Related Colors</French>
+		<German>Use Era-Related Colors</German>
+		<Italian>Use Era-Related Colors</<Italian>
+		<Spanish>Use Era-Related Colors</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWERACOLOR_HOVER</Tag>
+		<English>When checked, the game date and era are displayed using a color for each era.</English>
+		<French>When checked, the game date and era are displayed using a color for each era.</French>
+		<German>When checked, the game date and era are displayed using a color for each era.</German>
+		<Italian>When checked, the game date and era are displayed using a color for each era.</<Italian>
+		<Spanish>When checked, the game date and era are displayed using a color for each era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_ANCIENT_TEXT</Tag>
+		<English>Ancient Era</English>
+		<French>Ancient Era</French>
+		<German>Ancient Era</German>
+		<Italian>Ancient Era</<Italian>
+		<Spanish>Ancient Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_ANCIENT_HOVER</Tag>
+		<English>Color to use for the Ancient era.</English>
+		<French>Color to use for the Ancient era.</French>
+		<German>Color to use for the Ancient era.</German>
+		<Italian>Color to use for the Ancient era.</<Italian>
+		<Spanish>Color to use for the Ancient era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_CLASSICAL_TEXT</Tag>
+		<English>Classical Era</English>
+		<French>Classical Era</French>
+		<German>Classical Era</German>
+		<Italian>Classical Era</<Italian>
+		<Spanish>Classical Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_CLASSICAL_HOVER</Tag>
+		<English>Color to use for the Classical era.</English>
+		<French>Color to use for the Classical era.</French>
+		<German>Color to use for the Classical era.</German>
+		<Italian>Color to use for the Classical era.</<Italian>
+		<Spanish>Color to use for the Classical era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_MEDIEVAL_TEXT</Tag>
+		<English>Medieval Era</English>
+		<French>Medieval Era</French>
+		<German>Medieval Era</German>
+		<Italian>Medieval Era</<Italian>
+		<Spanish>Medieval Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_MEDIEVAL_HOVER</Tag>
+		<English>Color to use for the Medieval era.</English>
+		<French>Color to use for the Medieval era.</French>
+		<German>Color to use for the Medieval era.</German>
+		<Italian>Color to use for the Medieval era.</<Italian>
+		<Spanish>Color to use for the Medieval era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_RENAISSANCE_TEXT</Tag>
+		<English>Renaissance Era</English>
+		<French>Renaissance Era</French>
+		<German>Renaissance Era</German>
+		<Italian>Renaissance Era</<Italian>
+		<Spanish>Renaissance Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_RENAISSANCE_HOVER</Tag>
+		<English>Color to use for the Renaissance era.</English>
+		<French>Color to use for the Renaissance era.</French>
+		<German>Color to use for the Renaissance era.</German>
+		<Italian>Color to use for the Renaissance era.</<Italian>
+		<Spanish>Color to use for the Renaissance era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_INDUSTRIAL_TEXT</Tag>
+		<English>Industrial Era</English>
+		<French>Industrial Era</French>
+		<German>Industrial Era</German>
+		<Italian>Industrial Era</<Italian>
+		<Spanish>Industrial Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_INDUSTRIAL_HOVER</Tag>
+		<English>Color to use for the Industrial era.</English>
+		<French>Color to use for the Industrial era.</French>
+		<German>Color to use for the Industrial era.</German>
+		<Italian>Color to use for the Industrial era.</<Italian>
+		<Spanish>Color to use for the Industrial era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_MODERN_TEXT</Tag>
+		<English>Modern Era</English>
+		<French>Modern Era</French>
+		<German>Modern Era</German>
+		<Italian>Modern Era</<Italian>
+		<Spanish>Modern Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_MODERN_HOVER</Tag>
+		<English>Color to use for the Modern era.</English>
+		<French>Color to use for the Modern era.</French>
+		<German>Color to use for the Modern era.</German>
+		<Italian>Color to use for the Modern era.</<Italian>
+		<Spanish>Color to use for the Modern era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_FUTURE_TEXT</Tag>
+		<English>Future Era</English>
+		<French>Future Era</French>
+		<German>Future Era</German>
+		<Italian>Future Era</<Italian>
+		<Spanish>Future Era</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_COLOR_ERA_FUTURE_HOVER</Tag>
+		<English>Color to use for the Future era.</English>
+		<French>Color to use for the Future era.</French>
+		<German>Color to use for the Future era.</German>
+		<Italian>Color to use for the Future era.</<Italian>
+		<Spanish>Color to use for the Future era.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWTIME_TEXT</Tag>
+		<English>Clock</English>
+		<French>Clock</French>
+		<German>Clock</German>
+		<Italian>Clock</<Italian>
+		<Spanish>Clock</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWTIME_HOVER</Tag>
+		<English>When checked, the real time is displayed.</English>
+		<French>When checked, the real time is displayed.</French>
+		<German>When checked, the real time is displayed.</German>
+		<Italian>When checked, the real time is displayed.</<Italian>
+		<Spanish>When checked, the real time is displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWCOMPLETEDTURNS_TEXT</Tag>
+		<English>Completed Turns</English>
+		<French>Completed Turns</French>
+		<German>Completed Turns</German>
+		<Italian>Completed Turns</<Italian>
+		<Spanish>Completed Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWCOMPLETEDTURNS_HOVER</Tag>
+		<English>When checked, the number of turns completed is displayed.</English>
+		<French>When checked, the number of turns completed is displayed.</French>
+		<German>When checked, the number of turns completed is displayed.</German>
+		<Italian>When checked, the number of turns completed is displayed.</<Italian>
+		<Spanish>When checked, the number of turns completed is displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWTOTALTURNS_TEXT</Tag>
+		<English>Total Turns</English>
+		<French>Total Turns</French>
+		<German>Total Turns</German>
+		<Italian>Total Turns</<Italian>
+		<Spanish>Total Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWTOTALTURNS_HOVER</Tag>
+		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
+		<French>When checked, the total turns in the game is displayed if Time Victory is enabled.</French>
+		<German>When checked, the total turns in the game is displayed if Time Victory is enabled.</German>
+		<Italian>When checked, the total turns in the game is displayed if Time Victory is enabled.</<Italian>
+		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWCOMPLETEDPERCENT_TEXT</Tag>
+		<English>Completed Percentage</English>
+		<French>Completed Percentage</French>
+		<German>Completed Percentage</German>
+		<Italian>Completed Percentage</<Italian>
+		<Spanish>Completed Percentage</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWCOMPLETEDPERCENT_HOVER</Tag>
+		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
+		<French>When checked, the completed percentage is displayed if Time Victory is enabled.</French>
+		<German>When checked, the completed percentage is displayed if Time Victory is enabled.</German>
+		<Italian>When checked, the completed percentage is displayed if Time Victory is enabled.</<Italian>
+		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWDATE_TEXT</Tag>
+		<English>Game Date and Golden Age Turns</English>
+		<French>Game Date and Golden Age Turns</French>
+		<German>Game Date and Golden Age Turns</German>
+		<Italian>Game Date and Golden Age Turns</<Italian>
+		<Spanish>Game Date and Golden Age Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWDATE_HOVER</Tag>
+		<English>When checked, the in-game date and turns left in a Golden Age are displayed.</English>
+		<French>When checked, the in-game date and turns left in a Golden Age are displayed.</French>
+		<German>When checked, the in-game date and turns left in a Golden Age are displayed.</German>
+		<Italian>When checked, the in-game date and turns left in a Golden Age are displayed.</<Italian>
+		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ALTERNATETEXT_TEXT</Tag>
+		<English>Alternate Game Clock</English>
+		<French>Alternate Game Clock</French>
+		<German>Alternate Game Clock</German>
+		<Italian>Alternate Game Clock</<Italian>
+		<Spanish>Alternate Game Clock</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ALTERNATETEXT_HOVER</Tag>
+		<English>When checked, the game clock switches between two views: standard and alternate.</English>
+		<French>When checked, the game clock switches between two views: standard and alternate.</French>
+		<German>When checked, the game clock switches between two views: standard and alternate.</German>
+		<Italian>When checked, the game clock switches between two views: standard and alternate.</<Italian>
+		<Spanish>When checked, the game clock switches between two views: standard and alternate.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ALTTIMING_TEXT</Tag>
+		<English>Period (in seconds)</English>
+		<French>Period (in seconds)</French>
+		<German>Period (in seconds)</German>
+		<Italian>Period (in seconds)</<Italian>
+		<Spanish>Period (in seconds)</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_ALTTIMING_HOVER</Tag>
+		<English>Select the time each view of the game clock is displayed when alternating is enabled.</English>
+		<French>Select the time each view of the game clock is displayed when alternating is enabled.</French>
+		<German>Select the time each view of the game clock is displayed when alternating is enabled.</German>
+		<Italian>Select the time each view of the game clock is displayed when alternating is enabled.</<Italian>
+		<Spanish>Select the time each view of the game clock is displayed when alternating is enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTTIME_TEXT</Tag>
+		<English>Clock</English>
+		<French>Clock</French>
+		<German>Clock</German>
+		<Italian>Clock</<Italian>
+		<Spanish>Clock</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTTIME_HOVER</Tag>
+		<English>When checked, the real time is displayed.</English>
+		<French>When checked, the real time is displayed.</French>
+		<German>When checked, the real time is displayed.</German>
+		<Italian>When checked, the real time is displayed.</<Italian>
+		<Spanish>When checked, the real time is displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTCOMPLETEDTURNS_TEXT</Tag>
+		<English>Completed Turns</English>
+		<French>Completed Turns</French>
+		<German>Completed Turns</German>
+		<Italian>Completed Turns</<Italian>
+		<Spanish>Completed Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTCOMPLETEDTURNS_HOVER</Tag>
+		<English>When checked, the number of turns completed is displayed.</English>
+		<French>When checked, the number of turns completed is displayed.</French>
+		<German>When checked, the number of turns completed is displayed.</German>
+		<Italian>When checked, the number of turns completed is displayed.</<Italian>
+		<Spanish>When checked, the number of turns completed is displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTTOTALTURNS_TEXT</Tag>
+		<English>Total Turns</English>
+		<French>Total Turns</French>
+		<German>Total Turns</German>
+		<Italian>Total Turns</<Italian>
+		<Spanish>Total Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTTOTALTURNS_HOVER</Tag>
+		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
+		<French>When checked, the total turns in the game is displayed if Time Victory is enabled.</French>
+		<German>When checked, the total turns in the game is displayed if Time Victory is enabled.</German>
+		<Italian>When checked, the total turns in the game is displayed if Time Victory is enabled.</<Italian>
+		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTCOMPLETEDPERCENT_TEXT</Tag>
+		<English>Completed Percentage</English>
+		<French>Completed Percentage</French>
+		<German>Completed Percentage</German>
+		<Italian>Completed Percentage</<Italian>
+		<Spanish>Completed Percentage</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTCOMPLETEDPERCENT_HOVER</Tag>
+		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
+		<French>When checked, the completed percentage is displayed if Time Victory is enabled.</French>
+		<German>When checked, the completed percentage is displayed if Time Victory is enabled.</German>
+		<Italian>When checked, the completed percentage is displayed if Time Victory is enabled.</<Italian>
+		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTDATE_TEXT</Tag>
+		<English>Game Date and Golden Age Turns</English>
+		<French>Game Date and Golden Age Turns</French>
+		<German>Game Date and Golden Age Turns</German>
+		<Italian>Game Date and Golden Age Turns</<Italian>
+		<Spanish>Game Date and Golden Age Turns</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_NJAGCM_SHOWALTDATE_HOVER</Tag>
+		<English>When checked, the in-game date and turns left in a Golden Age are displayed.</English>
+		<French>When checked, the in-game date and turns left in a Golden Age are displayed.</French>
+		<German>When checked, the in-game date and turns left in a Golden Age are displayed.</German>
+		<Italian>When checked, the in-game date and turns left in a Golden Age are displayed.</<Italian>
+		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_SHOWDEAD_TEXT</Tag>
+		<English>Show</English>
+		<French>Show</French>
+		<German>Show</German>
+		<Italian>Show</<Italian>
+		<Spanish>Show</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_SHOWDEAD_HOVER</Tag>
+		<English>When checked, dead civilizations will remain on the scoreboard.</English>
+		<French>When checked, dead civilizations will remain on the scoreboard.</French>
+		<German>When checked, dead civilizations will remain on the scoreboard.</German>
+		<Italian>When checked, dead civilizations will remain on the scoreboard.</<Italian>
+		<Spanish>When checked, dead civilizations will remain on the scoreboard.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_TAGDEAD_TEXT</Tag>
+		<English>Tag as \"Dead\"</English>
+		<French>Tag as \"Dead\"</French>
+		<German>Tag as \"Dead\"</German>
+		<Italian>Tag as \"Dead\"</<Italian>
+		<Spanish>Tag as \"Dead\"</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_TAGDEAD_HOVER</Tag>
+		<English>When checked, dead civilizations will be tagged as \"Dead\" when shown.</English>
+		<French>When checked, dead civilizations will be tagged as \"Dead\" when shown.</French>
+		<German>When checked, dead civilizations will be tagged as \"Dead\" when shown.</German>
+		<Italian>When checked, dead civilizations will be tagged as \"Dead\" when shown.</<Italian>
+		<Spanish>When checked, dead civilizations will be tagged as \"Dead\" when shown.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_GREYDEAD_TEXT</Tag>
+		<English>Use Grey Color</English>
+		<French>Use Grey Color</French>
+		<German>Use Grey Color</German>
+		<Italian>Use Grey Color</<Italian>
+		<Spanish>Use Grey Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_GREYDEAD_HOVER</Tag>
+		<English>When checked, dead civilizations will be greyed out when not shown.</English>
+		<French>When checked, dead civilizations will be greyed out when not shown.</French>
+		<German>When checked, dead civilizations will be greyed out when not shown.</German>
+		<Italian>When checked, dead civilizations will be greyed out when not shown.</<Italian>
+		<Spanish>When checked, dead civilizations will be greyed out when not shown.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_DISPLAYNAME_TEXT</Tag>
+		<English>Display Name</English>
+		<French>Display Name</French>
+		<German>Display Name</German>
+		<Italian>Display Name</<Italian>
+		<Spanish>Display Name</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_DISPLAYNAME_HOVER</Tag>
+		<English>Determines how civilizations are labeled on the scoreboard.</English>
+		<French>Determines how civilizations are labeled on the scoreboard.</French>
+		<German>Determines how civilizations are labeled on the scoreboard.</German>
+		<Italian>Determines how civilizations are labeled on the scoreboard.</<Italian>
+		<Spanish>Determines how civilizations are labeled on the scoreboard.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_ATTITUDE_TEXT</Tag>
+		<English>Attitude Icons</English>
+		<French>Attitude Icons</French>
+		<German>Attitude Icons</German>
+		<Italian>Attitude Icons</<Italian>
+		<Spanish>Attitude Icons</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_ATTITUDE_HOVER</Tag>
+		<English>When checked, shows faces depicting each AI's attitude toward you.</English>
+		<French>When checked, shows faces depicting each AI's attitude toward you.</French>
+		<German>When checked, shows faces depicting each AI's attitude toward you.</German>
+		<Italian>When checked, shows faces depicting each AI's attitude toward you.</<Italian>
+		<Spanish>When checked, shows faces depicting each AI's attitude toward you.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_ALIGNICONS_TEXT</Tag>
+		<English>Enabled</English>
+		<French>Enabled</French>
+		<German>Enabled</German>
+		<Italian>Enabled</<Italian>
+		<Spanish>Enabled</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_ALIGNICONS_HOVER</Tag>
+		<English>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</English>
+		<French>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</French>
+		<German>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</German>
+		<Italian>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</<Italian>
+		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_DISPLAYORDER_TEXT</Tag>
+		<English>Display Order</English>
+		<French>Display Order</French>
+		<German>Display Order</German>
+		<Italian>Display Order</<Italian>
+		<Spanish>Display Order</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_DISPLAYORDER_HOVER</Tag>
+		<English>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</English>
+		<French>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</French>
+		<German>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</German>
+		<Italian>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</<Italian>
+		<Spanish>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_LEFTALIGNNAME_TEXT</Tag>
+		<English>Left-Align Name</English>
+		<French>Left-Align Name</French>
+		<German>Left-Align Name</German>
+		<Italian>Left-Align Name</<Italian>
+		<Spanish>Left-Align Name</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_LEFTALIGNNAME_HOVER</Tag>
+		<English>When checked, the civ/leader name is left-aligned instead of right-aligned.</English>
+		<French>When checked, the civ/leader name is left-aligned instead of right-aligned.</French>
+		<German>When checked, the civ/leader name is left-aligned instead of right-aligned.</German>
+		<Italian>When checked, the civ/leader name is left-aligned instead of right-aligned.</<Italian>
+		<Spanish>When checked, the civ/leader name is left-aligned instead of right-aligned.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_RESEARCHICONS_TEXT</Tag>
+		<English>Research Icons</English>
+		<French>Research Icons</French>
+		<German>Research Icons</German>
+		<Italian>Research Icons</<Italian>
+		<Spanish>Research Icons</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_RESEARCHICONS_HOVER</Tag>
+		<English>When checked, shows icons instead of names for civs whose research you can see.</English>
+		<French>When checked, shows icons instead of names for civs whose research you can see.</French>
+		<German>When checked, shows icons instead of names for civs whose research you can see.</German>
+		<Italian>When checked, shows icons instead of names for civs whose research you can see.</<Italian>
+		<Spanish>When checked, shows icons instead of names for civs whose research you can see.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWER_TEXT</Tag>
+		<English>Power Ratio</English>
+		<French>Power Ratio</French>
+		<German>Power Ratio</German>
+		<Italian>Power Ratio</<Italian>
+		<Spanish>Power Ratio</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWER_HOVER</Tag>
+		<English>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</English>
+		<French>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</French>
+		<German>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</German>
+		<Italian>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</<Italian>
+		<Spanish>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERCOLOR_TEXT</Tag>
+		<English>Default Color</English>
+		<French>Default Color</French>
+		<German>Default Color</German>
+		<Italian>Default Color</<Italian>
+		<Spanish>Default Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERCOLOR_HOVER</Tag>
+		<English>Color used by default for power ratios.</English>
+		<French>Color used by default for power ratios.</French>
+		<German>Color used by default for power ratios.</German>
+		<Italian>Color used by default for power ratios.</<Italian>
+		<Spanish>Color used by default for power ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERGOODRATIO_TEXT</Tag>
+		<English>Good Ratio Cutoff</English>
+		<French>Good Ratio Cutoff</French>
+		<German>Good Ratio Cutoff</German>
+		<Italian>Good Ratio Cutoff</<Italian>
+		<Spanish>Good Ratio Cutoff</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERGOODRATIO_HOVER</Tag>
+		<English>Power ratings greater than or equal to this value are shown in the Good Color.</English>
+		<French>Power ratings greater than or equal to this value are shown in the Good Color.</French>
+		<German>Power ratings greater than or equal to this value are shown in the Good Color.</German>
+		<Italian>Power ratings greater than or equal to this value are shown in the Good Color.</<Italian>
+		<Spanish>Power ratings greater than or equal to this value are shown in the Good Color.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERGOODCOLOR_TEXT</Tag>
+		<English>Good Color</English>
+		<French>Good Color</French>
+		<German>Good Color</German>
+		<Italian>Good Color</<Italian>
+		<Spanish>Good Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERGOODCOLOR_HOVER</Tag>
+		<English>Color used for good power ratios.</English>
+		<French>Color used for good power ratios.</French>
+		<German>Color used for good power ratios.</German>
+		<Italian>Color used for good power ratios.</<Italian>
+		<Spanish>Color used for good power ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERBADRATIO_TEXT</Tag>
+		<English>Bad Ratio Cutoff</English>
+		<French>Bad Ratio Cutoff</French>
+		<German>Bad Ratio Cutoff</German>
+		<Italian>Bad Ratio Cutoff</<Italian>
+		<Spanish>Bad Ratio Cutoff</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERBADRATIO_HOVER</Tag>
+		<English>Power ratings less than or equal to this value are shown in in the Bad Color.</English>
+		<French>Power ratings less than or equal to this value are shown in in the Bad Color.</French>
+		<German>Power ratings less than or equal to this value are shown in in the Bad Color.</German>
+		<Italian>Power ratings less than or equal to this value are shown in in the Bad Color.</<Italian>
+		<Spanish>Power ratings less than or equal to this value are shown in in the Bad Color.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERBADCOLOR_TEXT</Tag>
+		<English>Bad Color</English>
+		<French>Bad Color</French>
+		<German>Bad Color</German>
+		<Italian>Bad Color</<Italian>
+		<Spanish>Bad Color</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SCORES_POWERBADCOLOR_HOVER</Tag>
+		<English>Color used for bad power ratios.</English>
+		<French>Color used for bad power ratios.</French>
+		<German>Color used for bad power ratios.</German>
+		<Italian>Color used for bad power ratios.</<Italian>
+		<Spanish>Color used for bad power ratios.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_OPTIONSKEY_TEXT</Tag>
+		<English>Options Shortcut Reminder</English>
+		<French>Options Shortcut Reminder</French>
+		<German>Options Shortcut Reminder</German>
+		<Italian>Options Shortcut Reminder</<Italian>
+		<Spanish>Options Shortcut Reminder</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_OPTIONSKEY_HOVER</Tag>
+		<English>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</English>
+		<French>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</French>
+		<German>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</German>
+		<Italian>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</<Italian>
+		<Spanish>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_GPBAR_TEXT</Tag>
+		<English>Great Person Progress Bar</English>
+		<French>Great Person Progress Bar</French>
+		<German>Great Person Progress Bar</German>
+		<Italian>Great Person Progress Bar</<Italian>
+		<Spanish>Great Person Progress Bar</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_GPBAR_HOVER</Tag>
+		<English>When checked, displays the progress and city of the next Great Person.</English>
+		<French>When checked, displays the progress and city of the next Great Person.</French>
+		<German>When checked, displays the progress and city of the next Great Person.</German>
+		<Italian>When checked, displays the progress and city of the next Great Person.</<Italian>
+		<Spanish>When checked, displays the progress and city of the next Great Person.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_GPBAR_TYPES_TEXT</Tag>
+		<English>GP Bar Types</English>
+		<French>GP Bar Types</French>
+		<German>GP Bar Types</German>
+		<Italian>GP Bar Types</<Italian>
+		<Spanish>GP Bar Types</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_GPBAR_TYPES_HOVER</Tag>
+		<English>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</English>
+		<French>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</French>
+		<German>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</German>
+		<Italian>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</<Italian>
+		<Spanish>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_COMBAT_COUNTER_TEXT</Tag>
+		<English>Combat Experience</English>
+		<French>Combat Experience</French>
+		<German>Combat Experience</German>
+		<Italian>Combat Experience</<Italian>
+		<Spanish>Combat Experience</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_COMBAT_COUNTER_HOVER</Tag>
+		<English>When checked, displays Combat Experience to track next Great General.</English>
+		<French>When checked, displays Combat Experience to track next Great General.</French>
+		<German>When checked, displays Combat Experience to track next Great General.</German>
+		<Italian>When checked, displays Combat Experience to track next Great General.</<Italian>
+		<Spanish>When checked, displays Combat Experience to track next Great General.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_CITYARROWS_TEXT</Tag>
+		<English>City Cycle Arrows</English>
+		<French>City Cycle Arrows</French>
+		<German>City Cycle Arrows</German>
+		<Italian>City Cycle Arrows</<Italian>
+		<Spanish>City Cycle Arrows</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_MAIN_CITYARROWS_HOVER</Tag>
+		<English>When checked, displays arrows to cycle through cities above your civ's flag.</English>
+		<French>When checked, displays arrows to cycle through cities above your civ's flag.</French>
+		<German>When checked, displays arrows to cycle through cities above your civ's flag.</German>
+		<Italian>When checked, displays arrows to cycle through cities above your civ's flag.</<Italian>
+		<Spanish>When checked, displays arrows to cycle through cities above your civ's flag.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNIT_PROMO_AVAILABLE_TEXT</Tag>
+		<English>Promotion Available</English>
+		<French>Promotion Available</French>
+		<German>Promotion Available</German>
+		<Italian>Promotion Available</<Italian>
+		<Spanish>Promotion Available</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNIT_PROMO_AVAILABLE_HOVER</Tag>
+		<English>When checked, puts blue border around units that have a promotion available.</English>
+		<French>When checked, puts blue border around units that have a promotion available.</French>
+		<German>When checked, puts blue border around units that have a promotion available.</German>
+		<Italian>When checked, puts blue border around units that have a promotion available.</<Italian>
+		<Spanish>When checked, puts blue border around units that have a promotion available.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNIT_ACTIONS_TEXT</Tag>
+		<English>Unit Actions</English>
+		<French>Unit Actions</French>
+		<German>Unit Actions</German>
+		<Italian>Unit Actions</<Italian>
+		<Spanish>Unit Actions</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNIT_ACTIONS_HOVER</Tag>
+		<English>When checked, puts unit actions text on unit icons.</English>
+		<French>When checked, puts unit actions text on unit icons.</French>
+		<German>When checked, puts unit actions text on unit icons.</German>
+		<Italian>When checked, puts unit actions text on unit icons.</<Italian>
+		<Spanish>When checked, puts unit actions text on unit icons.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_GREAT_GENERAL_TEXT</Tag>
+		<English>Great General</English>
+		<French>Great General</French>
+		<German>Great General</German>
+		<Italian>Great General</<Italian>
+		<Spanish>Great General</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_GREAT_GENERAL_HOVER</Tag>
+		<English>When checked, puts a little gold star on an Great General icon.</English>
+		<French>When checked, puts a little gold star on an Great General icon.</French>
+		<German>When checked, puts a little gold star on an Great General icon.</German>
+		<Italian>When checked, puts a little gold star on an Great General icon.</<Italian>
+		<Spanish>When checked, puts a little gold star on an Great General icon.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CDA_ENABLED_TEXT</Tag>
+		<English>Customizable</English>
+		<French>Customizable</French>
+		<German>Customizable</German>
+		<Italian>Customizable</<Italian>
+		<Spanish>Customizable</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_CDA_ENABLED_HOVER</Tag>
+		<English>When checked, uses the Customizable Domestic Advisor (requires restart).</English>
+		<French>When checked, uses the Customizable Domestic Advisor (requires restart).</French>
+		<German>When checked, uses the Customizable Domestic Advisor (requires restart).</German>
+		<Italian>When checked, uses the Customizable Domestic Advisor (requires restart).</<Italian>
+		<Spanish>When checked, uses the Customizable Domestic Advisor (requires restart).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_EFA_GLANCE_TEXT</Tag>
+		<English>Glance Tab</English>
+		<French>Glance Tab</French>
+		<German>Glance Tab</German>
+		<Italian>Glance Tab</<Italian>
+		<Spanish>Glance Tab</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_EFA_GLANCE_HOVER</Tag>
+		<English>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</English>
+		<French>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</French>
+		<German>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</German>
+		<Italian>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</<Italian>
+		<Spanish>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_EFA_GLANCE_SMILIES_TEXT</Tag>
+		<English>Glance Tab Smilies</English>
+		<French>Glance Tab Smilies</French>
+		<German>Glance Tab Smilies</German>
+		<Italian>Glance Tab Smilies</<Italian>
+		<Spanish>Glance Tab Smilies</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_EFA_GLANCE_SMILIES_HOVER</Tag>
+		<English>When checked, the 'Glance' tab shows Smilies (attitude icons).</English>
+		<French>When checked, the 'Glance' tab shows Smilies (attitude icons).</French>
+		<German>When checked, the 'Glance' tab shows Smilies (attitude icons).</German>
+		<Italian>When checked, the 'Glance' tab shows Smilies (attitude icons).</<Italian>
+		<Spanish>When checked, the 'Glance' tab shows Smilies (attitude icons).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_TECH_GPPREFS_TEXT</Tag>
+		<English>Great Person Research</English>
+		<French>Great Person Research</French>
+		<German>Great Person Research</German>
+		<Italian>Great Person Research</<Italian>
+		<Spanish>Great Person Research</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_TECH_GPPREFS_HOVER</Tag>
+		<English>When checked, displays the technology each type of great person will research.</English>
+		<French>When checked, displays the technology each type of great person will research.</French>
+		<German>When checked, displays the technology each type of great person will research.</German>
+		<Italian>When checked, displays the technology each type of great person will research.</<Italian>
+		<Spanish>When checked, displays the technology each type of great person will research.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_TECHSCREEN_WIDE_TEXT</Tag>
+		<English>Wide Tech Screen</English>
+		<French>Wide Tech Screen</French>
+		<German>Wide Tech Screen</German>
+		<Italian>Wide Tech Screen</<Italian>
+		<Spanish>Wide Tech Screen</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_TECHSCREEN_WIDE_HOVER</Tag>
+		<English>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</English>
+		<French>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</French>
+		<German>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</German>
+		<Italian>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</<Italian>
+		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SEVOPEDIA_ENABLED_TEXT</Tag>
+		<English>Enabled</English>
+		<French>Enabled</French>
+		<German>Enabled</German>
+		<Italian>Enabled</<Italian>
+		<Spanish>Enabled</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SEVOPEDIA_ENABLED_HOVER</Tag>
+		<English>When checked, uses the Sevopedia (requires restart).</English>
+		<French>When checked, uses the Sevopedia (requires restart).</French>
+		<German>When checked, uses the Sevopedia (requires restart).</German>
+		<Italian>When checked, uses the Sevopedia (requires restart).</<Italian>
+		<Spanish>When checked, uses the Sevopedia (requires restart).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SEVOPEDIA_SORT_TEXT</Tag>
+		<English>Sort Lists</English>
+		<French>Sort Lists</French>
+		<German>Sort Lists</German>
+		<Italian>Sort Lists</<Italian>
+		<Spanish>Sort Lists</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_SEVOPEDIA_SORT_HOVER</Tag>
+		<English>When checked, the lists of units, buildings, technologies, etc. are sorted.</English>
+		<French>When checked, the lists of units, buildings, technologies, etc. are sorted.</French>
+		<German>When checked, the lists of units, buildings, technologies, etc. are sorted.</German>
+		<Italian>When checked, the lists of units, buildings, technologies, etc. are sorted.</<Italian>
+		<Spanish>When checked, the lists of units, buildings, technologies, etc. are sorted.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_ENABLED_TEXT</Tag>
+		<English>Enabled.</English>
+		<French>Enabled.</French>
+		<German>Enabled.</German>
+		<Italian>Enabled.</<Italian>
+		<Spanish>Enabled.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_ENABLED_HOVER</Tag>
+		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
+		<French>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</French>
+		<German>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</German>
+		<Italian>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</<Italian>
+		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_USEADVANCED_TEXT</Tag>
+		<English>Use Advanced Methods - see ini file for Era_UnitClass options</English>
+		<French>Use Advanced Methods - see ini file for Era_UnitClass options</French>
+		<German>Use Advanced Methods - see ini file for Era_UnitClass options</German>
+		<Italian>Use Advanced Methods - see ini file for Era_UnitClass options</<Italian>
+		<Spanish>Use Advanced Methods - see ini file for Era_UnitClass options</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_USEADVANCED_HOVER</Tag>
+		<English>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</English>
+		<French>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</French>
+		<German>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</German>
+		<Italian>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</<Italian>
+		<Spanish>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_DEFAULT_TEXT</Tag>
+		<English>Naming Convention: DEFAULT</English>
+		<French>Naming Convention: DEFAULT</French>
+		<German>Naming Convention: DEFAULT</German>
+		<Italian>Naming Convention: DEFAULT</<Italian>
+		<Spanish>Naming Convention: DEFAULT</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_DEFAULT_HOVER</Tag>
+		<English>Enter the user defined naming convention (see help file for further information).</English>
+		<French>Enter the user defined naming convention (see help file for further information).</French>
+		<German>Enter the user defined naming convention (see help file for further information).</German>
+		<Italian>Enter the user defined naming convention (see help file for further information).</<Italian>
+		<Spanish>Enter the user defined naming convention (see help file for further information).</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_AIR_TEXT</Tag>
+		<English>Naming Convention: Combat[AIR]</English>
+		<French>Naming Convention: Combat[AIR]</French>
+		<German>Naming Convention: Combat[AIR]</German>
+		<Italian>Naming Convention: Combat[AIR]</<Italian>
+		<Spanish>Naming Convention: Combat[AIR]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_AIR_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'AIR'.</English>
+		<French>Enter the user defined naming convention for combat units 'AIR'.</French>
+		<German>Enter the user defined naming convention for combat units 'AIR'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'AIR'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'AIR'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_ARCHER_TEXT</Tag>
+		<English>Naming Convention: Combat[ARCHER]</English>
+		<French>Naming Convention: Combat[ARCHER]</French>
+		<German>Naming Convention: Combat[ARCHER]</German>
+		<Italian>Naming Convention: Combat[ARCHER]</<Italian>
+		<Spanish>Naming Convention: Combat[ARCHER]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_ARCHER_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'ARCHER'.</English>
+		<French>Enter the user defined naming convention for combat units 'ARCHER'.</French>
+		<German>Enter the user defined naming convention for combat units 'ARCHER'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'ARCHER'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'ARCHER'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_ARMOR_TEXT</Tag>
+		<English>Naming Convention: Combat[ARMOR]</English>
+		<French>Naming Convention: Combat[ARMOR]</French>
+		<German>Naming Convention: Combat[ARMOR]</German>
+		<Italian>Naming Convention: Combat[ARMOR]</<Italian>
+		<Spanish>Naming Convention: Combat[ARMOR]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_ARMOR_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'ARMOR'.</English>
+		<French>Enter the user defined naming convention for combat units 'ARMOR'.</French>
+		<German>Enter the user defined naming convention for combat units 'ARMOR'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'ARMOR'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'ARMOR'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_GUN_TEXT</Tag>
+		<English>Naming Convention: Combat[GUN]</English>
+		<French>Naming Convention: Combat[GUN]</French>
+		<German>Naming Convention: Combat[GUN]</German>
+		<Italian>Naming Convention: Combat[GUN]</<Italian>
+		<Spanish>Naming Convention: Combat[GUN]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_GUN_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'GUN'.</English>
+		<French>Enter the user defined naming convention for combat units 'GUN'.</French>
+		<German>Enter the user defined naming convention for combat units 'GUN'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'GUN'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'GUN'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_HELICOPTER_TEXT</Tag>
+		<English>Naming Convention: Combat[HELICOPTER]</English>
+		<French>Naming Convention: Combat[HELICOPTER]</French>
+		<German>Naming Convention: Combat[HELICOPTER]</German>
+		<Italian>Naming Convention: Combat[HELICOPTER]</<Italian>
+		<Spanish>Naming Convention: Combat[HELICOPTER]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_HELICOPTER_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'HELICOPTER'.</English>
+		<French>Enter the user defined naming convention for combat units 'HELICOPTER'.</French>
+		<German>Enter the user defined naming convention for combat units 'HELICOPTER'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'HELICOPTER'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'HELICOPTER'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_MELEE_TEXT</Tag>
+		<English>Naming Convention: Combat[MELEE]</English>
+		<French>Naming Convention: Combat[MELEE]</French>
+		<German>Naming Convention: Combat[MELEE]</German>
+		<Italian>Naming Convention: Combat[MELEE]</<Italian>
+		<Spanish>Naming Convention: Combat[MELEE]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_MELEE_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'MELEE'.</English>
+		<French>Enter the user defined naming convention for combat units 'MELEE'.</French>
+		<German>Enter the user defined naming convention for combat units 'MELEE'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'MELEE'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'MELEE'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_MOUNTED_TEXT</Tag>
+		<English>Naming Convention: Combat[MOUNTED]</English>
+		<French>Naming Convention: Combat[MOUNTED]</French>
+		<German>Naming Convention: Combat[MOUNTED]</German>
+		<Italian>Naming Convention: Combat[MOUNTED]</<Italian>
+		<Spanish>Naming Convention: Combat[MOUNTED]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_MOUNTED_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'MOUNTED'.</English>
+		<French>Enter the user defined naming convention for combat units 'MOUNTED'.</French>
+		<German>Enter the user defined naming convention for combat units 'MOUNTED'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'MOUNTED'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'MOUNTED'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_NAVAL_TEXT</Tag>
+		<English>Naming Convention: Combat[NAVAL]</English>
+		<French>Naming Convention: Combat[NAVAL]</French>
+		<German>Naming Convention: Combat[NAVAL]</German>
+		<Italian>Naming Convention: Combat[NAVAL]</<Italian>
+		<Spanish>Naming Convention: Combat[NAVAL]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_NAVAL_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'NAVAL'.</English>
+		<French>Enter the user defined naming convention for combat units 'NAVAL'.</French>
+		<German>Enter the user defined naming convention for combat units 'NAVAL'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'NAVAL'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'NAVAL'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_NONE_TEXT</Tag>
+		<English>Naming Convention: Combat[None]</English>
+		<French>Naming Convention: Combat[None]</French>
+		<German>Naming Convention: Combat[None]</German>
+		<Italian>Naming Convention: Combat[None]</<Italian>
+		<Spanish>Naming Convention: Combat[None]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_NONE_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'None'.</English>
+		<French>Enter the user defined naming convention for combat units 'None'.</French>
+		<German>Enter the user defined naming convention for combat units 'None'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'None'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'None'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_RECON_TEXT</Tag>
+		<English>Naming Convention: Combat[RECON]</English>
+		<French>Naming Convention: Combat[RECON]</French>
+		<German>Naming Convention: Combat[RECON]</German>
+		<Italian>Naming Convention: Combat[RECON]</<Italian>
+		<Spanish>Naming Convention: Combat[RECON]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_RECON_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'RECON'.</English>
+		<French>Enter the user defined naming convention for combat units 'RECON'.</French>
+		<German>Enter the user defined naming convention for combat units 'RECON'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'RECON'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'RECON'.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_SIEGE_TEXT</Tag>
+		<English>Naming Convention: Combat[SIEGE]</English>
+		<French>Naming Convention: Combat[SIEGE]</French>
+		<German>Naming Convention: Combat[SIEGE]</German>
+		<Italian>Naming Convention: Combat[SIEGE]</<Italian>
+		<Spanish>Naming Convention: Combat[SIEGE]</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUGOPTIONS_UNITNAME_COMBAT_SIEGE_HOVER</Tag>
+		<English>Enter the user defined naming convention for combat units 'SIEGE'.</English>
+		<French>Enter the user defined naming convention for combat units 'SIEGE'.</French>
+		<German>Enter the user defined naming convention for combat units 'SIEGE'.</German>
+		<Italian>Enter the user defined naming convention for combat units 'SIEGE'.</<Italian>
+		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
+	</TEXT>
+</Civ4GameText>
