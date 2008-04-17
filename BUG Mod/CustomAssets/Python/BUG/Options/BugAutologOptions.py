@@ -8,6 +8,9 @@ class BugAutologOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
+
+		self.bLoggingOn = False
+
 		self.addOption(Option("Autolog_Enabled",
 						 "Autolog", "Enabled", False,
 						 "Enable Logging",
@@ -163,6 +166,13 @@ class BugAutologOptions(OptionsFacade):
 						 "When checked, will log when you pillage or your improvements are pillaged."))
 		
 
+	def setLoggingOn(self, value):
+		self.bLoggingOn = value
+
+	def isLoggingOn(self):
+		return self.isEnabled() and self.bLoggingOn
+
+		
 	def isEnabled(self):
 		return self.getBoolean('Autolog_Enabled')
 
@@ -182,7 +192,7 @@ class BugAutologOptions(OptionsFacade):
 	# Log File
 	
 	def isUseDefaultFileName(self):
-		return self.getBoolean('Autolog_DefaultFileName')
+		return self.isLoggingOn() and self.getBoolean('Autolog_DefaultFileName')
 	
 	def getFilePath(self):
 		return self.getString('Autolog_FilePath')
@@ -206,7 +216,7 @@ class BugAutologOptions(OptionsFacade):
 		return self.getBoolean('Autolog_ColorCoding')
 	
 	def isShowIBT(self):
-		return self.getBoolean('Autolog_IBT')
+		return self.isLoggingOn() and self.getBoolean('Autolog_IBT')
 	
 	def getPrefix(self):
 		return self.getString('Autolog_Prefix')
@@ -217,84 +227,84 @@ class BugAutologOptions(OptionsFacade):
 	# Research and Builds
 
 	def isLogTechnology(self):
-		return self.getBoolean('Autolog_LogTech')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogTech')
 	
 	def isLogBuildStarted(self):
-		return self.getBoolean('Autolog_LogBuildStarted')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogBuildStarted')
 	
 	def isLogBuildCompleted(self):
-		return self.getBoolean('Autolog_LogBuildCompleted')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogBuildCompleted')
 	
 	def isLogProjectCompleted(self):
-		return self.getBoolean('Autolog_LogProjects')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogProjects')
 	
 	def isLogImprovements(self):
-		return self.getBoolean('Autolog_LogImprovements')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogImprovements')
 
 	# Cities
 
 	def isLogCityFounded(self):
-		return self.getBoolean('Autolog_LogCityFounded')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityFounded')
 	
 	def isLogCityGrowth(self):
-		return self.getBoolean('Autolog_LogCityGrowth')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityGrowth')
 	
 	def isLogCityBorders(self):
-		return self.getBoolean('Autolog_LogCityBorders')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityBorders')
 	
 	def isLogCityOwner(self):
-		return self.getBoolean('Autolog_LogCityOwner')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityOwner')
 	
 	def isLogCityRazed(self):
-		return self.getBoolean('Autolog_LogCityRazed')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityRazed')
 
 	def isLogCityWhipStatus(self):
-		return self.getBoolean('Autolog_LogCityWhipStatus')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCityWhipStatus')
 
 	# Events
 
 	def isLogTribalVillage(self):
-		return self.getBoolean('Autolog_LogGoodies')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogGoodies')
 	
 	def isLogReligion(self):
-		return self.getBoolean('Autolog_LogReligion')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogReligion')
 	
 	def isLogCorporation(self):
-		return self.getBoolean('Autolog_LogCorporation')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCorporation')
 	
 	def isLogGreatPeople(self):
-		return self.getBoolean('Autolog_LogGP')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogGP')
 	
 	def isLogGoldenAge(self):
-		return self.getBoolean('Autolog_LogGA')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogGA')
 
 	# Politics
 
 	def isLogContact(self):
-		return self.getBoolean('Autolog_LogContact')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogContact')
 	
 	def isLogAttitude(self):
-		return self.getBoolean('Autolog_LogAttitude')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogAttitude')
 	
 	def isLogWar(self):
-		return self.getBoolean('Autolog_LogWar')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogWar')
 	
 	def isLogVassals(self):
-		return self.getBoolean('Autolog_LogVassals')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogVassals')
 	
 	def isLogCivics(self):
-		return self.getBoolean('Autolog_LogCivics')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCivics')
 	
 	# Combat
 
 	def isLogCombat(self):
-		return self.getBoolean('Autolog_LogCombat')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogCombat')
 	
 	def isLogPromotion(self):
-		return self.getBoolean('Autolog_LogPromotions')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogPromotions')
 	
 	def isLogPillage(self):
-		return self.getBoolean('Autolog_LogPillage')
+		return self.isLoggingOn() and self.getBoolean('Autolog_LogPillage')
 
 
 # The singleton BugAutologOptions object

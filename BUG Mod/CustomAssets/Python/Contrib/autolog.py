@@ -23,15 +23,15 @@ class autologInstance:
 		BugAutolog.setFileName(LogFileName)
 		BugAutolog.write()
 
-	def setLogFileEnabled(self, LogFileEnabled):
-		BugAutolog.setEnabled(LogFileEnabled)
-		BugAutolog.write()
+#	def setLogFileEnabled(self, LogFileEnabled):
+#		BugAutolog.setEnabled(LogFileEnabled)
+#		BugAutolog.write()
 
-	def Enabled(self):
-		if BugAutolog.isEnabled():
-			return True
-		else:
-			return False
+#	def Enabled(self):
+#		if BugAutolog.isEnabled():
+#			return True
+#		else:
+#			return False
 
 	def writeLog(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
 		self.openLog()
