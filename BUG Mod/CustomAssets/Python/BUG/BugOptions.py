@@ -3,8 +3,11 @@
 ## BUG Mod - Copyright 2007
 
 import RuffModControl
+from CvPythonExtensions import *
 
 #__all__ = [ getOptions, Option, OptionList, OptionsFacade ]
+
+localText = CyTranslator()
 
 class BugOptions(object):
 
@@ -219,8 +222,10 @@ class Option(object):
 		self.section = section
 		self.key = key
 		self.default = default
-		self.title = title
-		self.tooltip = tooltip
+		
+		self.xmlKey = "TXT_KEY_BUG_OPT_" + self.name.upper()
+		self.title = None
+		self.tooltip = None
 		self.dirtyBit = dirtyBit
 
 	def getName(self):
@@ -236,9 +241,13 @@ class Option(object):
 		return self.default
 
 	def getTitle(self):
+		if not self.title:
+			self.title = localText.getText(self.xmlKey + "_TEXT", ())
 		return self.title
 
 	def getTooltip(self):
+		if not self.tooltip:
+			self.tooltip = localText.getText(self.xmlKey + "_HOVER", ())
 		return self.tooltip
 
 	def getDirtyBit(self):
