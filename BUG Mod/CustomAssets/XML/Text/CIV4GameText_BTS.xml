@@ -2080,7 +2080,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_ESPIONAGE_PASSIVE_AUTOMATIC</Tag>
-		<English>Active automatically when enough points have been acumulated</English>
+		<English>Active automatically when enough points have been accumulated</English>
 		<French>Automatiquement activ&#233; quand suffisamment de points ont &#233;t&#233; cumul&#233;s</French>
 		<German>Automatisch aktiv, wenn gen&#252;gend Punkte gesammelt wurden</German>
 		<Italian>Attiva automaticamente quando ci sono abbastanza punti spionaggio</Italian>
@@ -2184,7 +2184,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_WB_AS_ITEM_NAME_AND_COST_UNREMOVABLE</Tag>
-		<English>[NEWLINE]Cost: %d1_Num (UNREMOVABLE)</English>
+		<English>[NEWLINE]Cost: %d1_Num (NOT REMOVABLE)</English>
 		<French>[NEWLINE]Co&#251;t : %d1_Num (INAMOVIBLE)</French>
 		<German>[NEWLINE]Kosten: %d1_Num (NICHT ENTFERNBAR)</German>
 		<Italian>[NEWLINE]Costo: %d1_Num (NON RIMUOVIBILE)</Italian>
@@ -2192,7 +2192,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_WB_AS_ITEM_NAME_AND_COST_PLUS_UNREMOVABLE</Tag>
-		<English>[NEWLINE]Starting Cost: %d1_Num (UNREMOVABLE)</English>
+		<English>[NEWLINE]Starting Cost: %d1_Num (NOT REMOVABLE)</English>
 		<French>[NEWLINE]Co&#251;t initial : %d1_Num (INAMOVIBLE)</French>
 		<German>[NEWLINE]Startkosten: %d1_Num (NICHT ENTFERNBAR)</German>
 		<Italian>[NEWLINE]Costo iniziale: %d1_Num (NON RIMUOVIBILE)</Italian>
@@ -3048,11 +3048,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_TRADE_ROUTE_HELP_BASE</Tag>
-		<English>%d1 [ICON_COMMERCE]: Base profit</English>
-		<French>%d1 [ICON_COMMERCE] : b&#233;n&#233;fice de base</French>
-		<German>%d1 [ICON_COMMERCE]: Basisprofit</German>
-		<Italian>%d1 [ICON_COMMERCE]: profitto basilare</Italian>
-		<Spanish>%d1 [ICON_COMMERCE]: Beneficio base</Spanish>
+		<English>%s1 [ICON_COMMERCE]: Base profit</English>
+		<French>%s1 [ICON_COMMERCE] : b&#233;n&#233;fice de base</French>
+		<German>%s1 [ICON_COMMERCE]: Basisprofit</German>
+		<Italian>%s1 [ICON_COMMERCE]: profitto basilare</Italian>
+		<Spanish>%s1 [ICON_COMMERCE]: Beneficio base</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_TRADE_ROUTE_MOD_BUILDING</Tag>
@@ -4827,7 +4827,7 @@ ___________________________________________________________________
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_AS_UNREMOVABLE</Tag>
-		<English>[NEWLINE][COLOR_WARNING_TEXT]Unremovable[COLOR_REVERT]</English>
+		<English>[NEWLINE][COLOR_WARNING_TEXT]Not removable[COLOR_REVERT]</English>
 		<French>[NEWLINE][COLOR_WARNING_TEXT]Inamovible[COLOR_REVERT]</French>
 		<German>[NEWLINE][COLOR_WARNING_TEXT]Nicht entfernbar[COLOR_REVERT]</German>
 		<Italian>[NEWLINE][COLOR_WARNING_TEXT]Non rimuovibile[COLOR_REVERT]</Italian>
