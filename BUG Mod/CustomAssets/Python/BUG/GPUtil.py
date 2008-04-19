@@ -83,11 +83,11 @@ def findNextCity():
 	iMinTurns = 10000000
 	iTurns = 0
 	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-	iThreshold = pPlayer.greatPeopleThreshold(false)
-	pBestCity = None #CyInterface().getHeadSelectedCity()
+	iThreshold = pPlayer.greatPeopleThreshold(False)
+	pBestCity = None
 	
-	for icity in range(pPlayer.getNumCities()):
-		pCity = pPlayer.getCity(icity)
+	for iCity in range(pPlayer.getNumCities()):
+		pCity = pPlayer.getCity(iCity)
 		if (pCity):
 			iRate = pCity.getGreatPeopleRate()
 			if (iRate > 0):
@@ -97,6 +97,17 @@ def findNextCity():
 					iMinTurns = iTurns
 					pBestCity = pCity
 	return (pBestCity, iMinTurns)
+
+def getCityTurns(pCity):
+	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
+	iThreshold = pPlayer.greatPeopleThreshold(False)
+	if (pCity):
+		iRate = pCity.getGreatPeopleRate()
+		if (iRate > 0):
+			iProgress = pCity.getGreatPeopleProgress()
+			iTurns = (iThreshold - iProgress + iRate - 1) / iRate
+			return iTurns
+	return None
 
 def calcPercentages(pCity):
 	init()
