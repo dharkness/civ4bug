@@ -122,19 +122,13 @@ class CvTechChooser:
 
 # BUG - Tech Screen Resolution - start
 		if (BugOpt.isWideTechScreen()):
-			xPanelWidth = screen.getXResolution() - 2 * 30
-			yPanelHeight = 768
-
-			# Here we set the background widget and exit button, and we show the screen
-			screen.showWindowBackground( False )
-			screen.setDimensions(30, screen.centerY(0), xPanelWidth, yPanelHeight)
+			xPanelWidth = screen.getXResolution()
 		else:
-# BUG - Tech Screen Resolution - else
 			xPanelWidth = 1024
-			yPanelHeight = 768
+		yPanelHeight = 768
 
-			screen.showWindowBackground( False )
-			screen.setDimensions(screen.centerX(0), screen.centerY(0), 1024, 768)
+		screen.showWindowBackground( False )
+		screen.setDimensions((screen.getXResolution() - xPanelWidth) / 2, screen.centerY(0), xPanelWidth, yPanelHeight)
 # BUG - Tech Screen Resolution - end
 
 		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, xPanelWidth, 55, PanelStyles.PANEL_STYLE_TOPBAR )
@@ -147,7 +141,7 @@ class CvTechChooser:
 		szText = u"<font=4>"
 		szText = szText + localText.getText("TXT_KEY_TECH_CHOOSER_TITLE", ()).upper()
 		szText = szText + u"</font>"
-		screen.setLabel( "TechTitleHeader", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, 502, 8, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setLabel( "TechTitleHeader", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xPanelWidth / 2, 8, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 		# Make the scrollable area for the city list...
 		screen.addScrollPanel( "TechList", u"", 0, 64, xPanelWidth, yPanelHeight - 142, PanelStyles.PANEL_STYLE_EXTERNAL )
