@@ -540,9 +540,9 @@ class CvMainInterface:
 		screen.hide( "ResearchBar" )
 
 # BUG - Great General Bar - start
-		screen.addStackedBarGFC( "GreatGeneralBar", xCoord, 27, 100, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatGeneralBar", xCoord, 27, 100, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_NEGATIVE_RATE") ) #gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
-		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
+		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "GreatGeneralBar" )
@@ -560,9 +560,9 @@ class CvMainInterface:
 
 # BUG - Bars on single line for higher resolution screens - start
 		xCoord = 268 + (xResolution - 1440) / 2
-		screen.addStackedBarGFC( "GreatGeneralBar-w", xCoord, 2, 84, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatGeneralBar-w", xCoord, 2, 84, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatGeneralBar-w", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_NEGATIVE_RATE") ) #gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
-		screen.setStackedBarColors( "GreatGeneralBar-w", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
+		screen.setStackedBarColors( "GreatGeneralBar-w", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatGeneralBar-w", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatGeneralBar-w", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "GreatGeneralBar-w" )
@@ -2430,8 +2430,17 @@ class CvMainInterface:
 				
 				if (gc.getPlayer(ePlayer).isAnarchy()):
 				
+# BUG - Bars on single line for higher resolution screens - start
+					if (xResolution >= 1440
+					and (BugScreens.isShowCombatCounter() or BugScreens.isShowGPProgressBar())):
+						xCoord = 268 + (xResolution - 1440) / 2 + 84 + 6 + 487 / 2
+					else:
+						xCoord = screen.centerX(512)
+
+					yCoord = 3
 					szText = localText.getText("INTERFACE_ANARCHY", (gc.getPlayer(ePlayer).getAnarchyTurns(), ))
-					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), 3, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
+					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
+# BUG - Bars on single line for higher resolution screens - end
 					if ( gc.getPlayer(ePlayer).getCurrentResearch() != -1 ):
 						screen.show( "ResearchText" )
 					else:
@@ -2471,9 +2480,13 @@ class CvMainInterface:
 					
 # BUG - Great Person Bar - start
 				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):
-					pGreatPersonCity, iGPTurns = GPUtil.findNextCity()
-					if (pGreatPersonCity):
-						szText = GPUtil.getGreatPeopleText(pGreatPersonCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
+#					if (pHeadSelectedCity):
+#						pGPCity = pHeadSelectedCity
+#						iGPTurns = GPUtil.getCityTurns(pGPCity)
+#					else:
+					pGPCity, iGPTurns = GPUtil.findNextCity()
+					if (pGPCity and iGPTurns):
+						szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
 						szText = u"<font=2>%s</font>" % (szText)
 						
 # BUG - Bars on single line for higher resolution screens - start
@@ -2484,15 +2497,15 @@ class CvMainInterface:
 						else:
 							zsGreatPersonBar = "GreatPersonBar"
 							xCoord = 268 + (xResolution - 1024) / 2 + 100 + 7 + 380 / 2
-							yCoord = 32
+							yCoord = 30
 
-						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGreatPersonCity.getID(), -1 )
+						screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, pGPCity.getID(), -1 )
 						screen.show( "GreatPersonBarText" )
 # BUG - Bars on single line for higher resolution screens - end
 						
-						fThreshold = float(gc.getPlayer( pGreatPersonCity.getOwner() ).greatPeopleThreshold(False))
-						fRate = float(pGreatPersonCity.getGreatPeopleRate())
-						fFirst = float(pGreatPersonCity.getGreatPeopleProgress()) / fThreshold
+						fThreshold = float(gc.getPlayer( pGPCity.getOwner() ).greatPeopleThreshold(False))
+						fRate = float(pGPCity.getGreatPeopleRate())
+						fFirst = float(pGPCity.getGreatPeopleProgress()) / fThreshold
 
 						screen.setBarPercentage( zsGreatPersonBar, InfoBarTypes.INFOBAR_STORED, fFirst )
 						if ( fFirst == 1 ):
@@ -2501,19 +2514,17 @@ class CvMainInterface:
 							screen.setBarPercentage( zsGreatPersonBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
 
 						screen.show( zsGreatPersonBar )
-#					else:	
-#						screen.hide( zsGreatPersonBar )
-#						screen.hide( "GreatPersonBarText" )
 # BUG - Great Person Bar - end
 
 # BUG - Great General Bar - start
-				iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
-				if (not CyInterface().isCityScreenUp()
-				and BugScreens.isShowCombatCounter()):
-				#and iCombatExp != 0):
+				if (not CyInterface().isCityScreenUp() and BugScreens.isShowCombatCounter()):
 
-					eGGText = u"<font=2>%c</font>" %(CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR))
-					eGGText = eGGText + "<font=2>[" + unicode(iCombatExp) + "/" + unicode(gc.getPlayer(ePlayer).greatPeopleThreshold(true)) + "]</font>"
+					iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
+					iThresholdExp = gc.getPlayer(ePlayer).greatPeopleThreshold(True)
+					iNeededExp = iThresholdExp - iCombatExp
+					
+					szText = localText.getText("INTERFACE_NEXT_GREAT_GENERAL_XP", (iNeededExp,))
+					szText = u"<font=2>%s</font>" %(szText)
 
 # BUG - Bars on single line for higher resolution screens - start
 					if (xResolution >= 1440):
@@ -2526,23 +2537,12 @@ class CvMainInterface:
 						yCoord = 32
 
 					screen.show( "GreatGeneralBarText" )
-					screen.setLabel( "GreatGeneralBarText", "Background", eGGText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "GreatGeneralBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
 # BUG - Bars on single line for higher resolution screens - end
 
-					ePlayer = gc.getGame().getActivePlayer()
-					fThreshold = float(gc.getPlayer(ePlayer).greatPeopleThreshold(true))
-					fRate = float(0)
-					fFirst = float(iCombatExp) / fThreshold
-					screen.setBarPercentage( zsGreatGeneralBar, InfoBarTypes.INFOBAR_STORED, fFirst )
-					if ( fFirst == 1 ):
-						screen.setBarPercentage( zsGreatGeneralBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
-					else:
-						screen.setBarPercentage( zsGreatGeneralBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )				
-
+					fProgress = float(iCombatExp) / float(iThresholdExp)
+					screen.setBarPercentage( zsGreatGeneralBar, InfoBarTypes.INFOBAR_STORED, fProgress )
 					screen.show( zsGreatGeneralBar )
-#				else:
-#					screen.hide( zsGreatGeneralBar )
-#					screen.hide( "GreatGeneralBarText" )
 # BUG - Great General Bar - end
 					
 		return 0
