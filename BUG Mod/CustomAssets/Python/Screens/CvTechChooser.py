@@ -122,7 +122,7 @@ class CvTechChooser:
 
 # BUG - Tech Screen Resolution - start
 		if (BugOpt.isWideTechScreen()):
-			xPanelWidth = screen.getXResolution()
+			xPanelWidth = screen.getXResolution() - 60
 		else:
 			xPanelWidth = 1024
 		yPanelHeight = 768
