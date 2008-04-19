@@ -40,14 +40,14 @@ class BugNJAGCOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "NJAGCM_AlternateText")
 		self.addIntDropdown(screen, rightPanel, rightPanel, "NJAGCM_AltTiming")
 		
-		screen.attachLabel(leftPanel, "NJAGC_RegularLabel", "Standard View:")
+		self.addLabel(screen, leftPanel, "NJAGC_Regular", "Standard View:")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowTime")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowCompletedTurns")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowTotalTurns")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowCompletedPercent")
 		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowDate")
 		
-		screen.attachLabel(rightPanel, "NJAGC_AltLabel", "Alternate View:")
+		self.addLabel(screen, rightPanel, "NJAGC_Alternate", "Alternate View:")
 		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltTime")
 		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltCompletedTurns")
 		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltTotalTurns")

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!--
-  Copyright (c) 2007, BUG Mod.
+	BUG Option Screen Text
 
-  This file is part of Civilization IV BUG Mod.
-  -->
+	Copyright (c) 2007, BUG Mod.
+
+	This file is part of Civilization IV BUG Mod.
+-->
 
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- BUG Option Screen Text -->
+
+<!-- Option Titles and Hovers -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
 		<English>Enable Reminders (Alt-M)</English>
@@ -36,11 +40,26 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERSMETHOD_HOVER</Tag>
-		<English>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</English>
-		<French>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</French>
-		<German>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</German>
-		<Italian>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</Italian>
-		<Spanish>Determines how reminders are displayed to you.\n- On-screen message with entry in the log\n- A modal popup message with the option to retrigger the event next turn\n- Both</Spanish>
+		<English>Determines how reminders are displayed to you.
+- On-screen message with entry in the log
+- A modal popup message with the option to retrigger the event next turn
+- Both</English>
+		<French>Determines how reminders are displayed to you.
+- On-screen message with entry in the log
+- A modal popup message with the option to retrigger the event next turn
+- Both</French>
+		<German>Determines how reminders are displayed to you.
+- On-screen message with entry in the log
+- A modal popup message with the option to retrigger the event next turn
+- Both</German>
+		<Italian>Determines how reminders are displayed to you.
+- On-screen message with entry in the log
+- A modal popup message with the option to retrigger the event next turn
+- Both</Italian>
+		<Spanish>Determines how reminders are displayed to you.
+- On-screen message with entry in the log
+- A modal popup message with the option to retrigger the event next turn
+- Both</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -612,11 +631,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_IBT_HOVER</Tag>
-		<English>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</English>
-		<French>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</French>
-		<German>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</German>
-		<Italian>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</Italian>
-		<Spanish>When checked, the logger inserts IBT (in between turns) at the end of the player\'s turn.</Spanish>
+		<English>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</English>
+		<French>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</French>
+		<German>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</German>
+		<Italian>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</Italian>
+		<Spanish>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -774,11 +793,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYBORDERS_HOVER</Tag>
-		<English>When checked, will log when one of your city\'s borders expand.</English>
-		<French>When checked, will log when one of your city\'s borders expand.</French>
-		<German>When checked, will log when one of your city\'s borders expand.</German>
-		<Italian>When checked, will log when one of your city\'s borders expand.</Italian>
-		<Spanish>When checked, will log when one of your city\'s borders expand.</Spanish>
+		<English>When checked, will log when one of your city's borders expand.</English>
+		<French>When checked, will log when one of your city's borders expand.</French>
+		<German>When checked, will log when one of your city's borders expand.</German>
+		<Italian>When checked, will log when one of your city's borders expand.</Italian>
+		<Spanish>When checked, will log when one of your city's borders expand.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -810,11 +829,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYRAZED_HOVER</Tag>
-		<English>When checked, will log when you raze another civ\'s city or one of your cities is razed.</English>
-		<French>When checked, will log when you raze another civ\'s city or one of your cities is razed.</French>
-		<German>When checked, will log when you raze another civ\'s city or one of your cities is razed.</German>
-		<Italian>When checked, will log when you raze another civ\'s city or one of your cities is razed.</Italian>
-		<Spanish>When checked, will log when you raze another civ\'s city or one of your cities is razed.</Spanish>
+		<English>When checked, will log when you raze another civ's city or one of your cities is razed.</English>
+		<French>When checked, will log when you raze another civ's city or one of your cities is razed.</French>
+		<German>When checked, will log when you raze another civ's city or one of your cities is razed.</German>
+		<Italian>When checked, will log when you raze another civ's city or one of your cities is razed.</Italian>
+		<Spanish>When checked, will log when you raze another civ's city or one of your cities is razed.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -864,11 +883,26 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGRELIGION_HOVER</Tag>
-		<English>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</English>
-		<French>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</French>
-		<German>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</German>
-		<Italian>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</Italian>
-		<Spanish>When checked, will log\n1. When you found a religion\n2. Spread of any religion to your cities\n 3. Spread of religions whose Holy city you control to foreign cities</Spanish>
+		<English>When checked, will log
+- When you found a religion
+- Spread of any religion to your cities
+- Spread of religions whose Holy city you control to foreign cities</English>
+		<French>When checked, will log
+- When you found a religion
+- Spread of any religion to your cities
+- Spread of religions whose Holy city you control to foreign cities</French>
+		<German>When checked, will log
+- When you found a religion
+- Spread of any religion to your cities
+- Spread of religions whose Holy city you control to foreign cities</German>
+		<Italian>When checked, will log
+- When you found a religion
+- Spread of any religion to your cities
+- Spread of religions whose Holy city you control to foreign cities</Italian>
+		<Spanish>When checked, will log
+- When you found a religion
+- Spread of any religion to your cities
+- Spread of religions whose Holy city you control to foreign cities</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -882,11 +916,26 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCORPORATION_HOVER</Tag>
-		<English>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</English>
-		<French>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</French>
-		<German>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</German>
-		<Italian>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</Italian>
-		<Spanish>When checked, will log\n1. When you found a corporation\n2. Spread of any corporation to your cities\n 3. Spread of corporation whose headquarters you control to foreign cities</Spanish>
+		<English>When checked, will log
+- When you found a corporation
+- Spread of any corporation to your cities
+- Spread of corporation whose headquarters you control to foreign cities</English>
+		<French>When checked, will log
+- When you found a corporation
+- Spread of any corporation to your cities
+- Spread of corporation whose headquarters you control to foreign cities</French>
+		<German>When checked, will log
+- When you found a corporation
+- Spread of any corporation to your cities
+- Spread of corporation whose headquarters you control to foreign cities</German>
+		<Italian>When checked, will log
+- When you found a corporation
+- Spread of any corporation to your cities
+- Spread of corporation whose headquarters you control to foreign cities</Italian>
+		<Spanish>When checked, will log
+- When you found a corporation
+- Spread of any corporation to your cities
+- Spread of corporation whose headquarters you control to foreign cities</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -1170,11 +1219,26 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_SPECIALISTS_HOVER</Tag>
-		<English>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
-		<French>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</French>
-		<German>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</German>
-		<Italian>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Italian>
-		<Spanish>Determines how specialists are displayed.\n\The \"Default\" setting shows the specialists using the vanilla BtS format. \The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
+		<English>Determines how specialists are displayed.
+- Default: Shows specialists using the vanilla BtS format.
+- Stacker: Shows specialists stacked using the Stacked Specialist mod.
+- Chevron: Shows specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
+		<French>Determines how specialists are displayed.
+- Default: Shows specialists using the vanilla BtS format.
+- Stacker: Shows specialists stacked using the Stacked Specialist mod.
+- Chevron: Shows specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</French>
+		<German>Determines how specialists are displayed.
+- Default: Shows specialists using the vanilla BtS format.
+- Stacker: Shows specialists stacked using the Stacked Specialist mod.
+- Chevron: Shows specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</German>
+		<Italian>Determines how specialists are displayed.
+- Default: Shows specialists using the vanilla BtS format.
+- Stacker: Shows specialists stacked using the Stacked Specialist mod.
+- Chevron: Shows specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Italian>
+		<Spanish>Determines how specialists are displayed.
+- Default: Shows specialists using the vanilla BtS format.
+- Stacker: Shows specialists stacked using the Stacked Specialist mod.
+- Chevron: Shows specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -1755,20 +1819,20 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_TEXT</Tag>
-		<English>Tag as \"Dead\"</English>
-		<French>Tag as \"Dead\"</French>
-		<German>Tag as \"Dead\"</German>
-		<Italian>Tag as \"Dead\"</Italian>
-		<Spanish>Tag as \"Dead\"</Spanish>
+		<English>Tag as "Dead"</English>
+		<French>Tag as "Dead"</French>
+		<German>Tag as "Dead"</German>
+		<Italian>Tag as "Dead"</Italian>
+		<Spanish>Tag as "Dead"</Spanish>
 	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_HOVER</Tag>
-		<English>When checked, dead civilizations will be tagged as \"Dead\" when shown.</English>
-		<French>When checked, dead civilizations will be tagged as \"Dead\" when shown.</French>
-		<German>When checked, dead civilizations will be tagged as \"Dead\" when shown.</German>
-		<Italian>When checked, dead civilizations will be tagged as \"Dead\" when shown.</Italian>
-		<Spanish>When checked, dead civilizations will be tagged as \"Dead\" when shown.</Spanish>
+		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
+		<French>When checked, dead civilizations will be tagged as "Dead" when shown.</French>
+		<German>When checked, dead civilizations will be tagged as "Dead" when shown.</German>
+		<Italian>When checked, dead civilizations will be tagged as "Dead" when shown.</Italian>
+		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -1854,11 +1918,91 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYORDER_HOVER</Tag>
-		<English>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</English>
-		<French>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</French>
-		<German>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</German>
-		<Italian>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</Italian>
-		<Spanish>This determines the order in which the score columns appear.\n\S - The civ's score.\n\C - The civ's/leader's name.\n\? - You have not yet met the civ.\n\W - You are at war with the civ.\n\E - You have a positive espionage point ratio against the civ.\n\P - The civ's power ratio compared to you.\n\T - The tech the civ is researching (vassals, teammates and espionage).\n\U - The number of research turns left.\n\N - The civ is connected to your trade network.\n\B - You have an open borders agreement with the civ.\n\D - You have a defensive pact with the civ.\n\R - The civ's state religion.\n\A - The civ's attitude toward you.\n\* - You are waiting for this civ to finish its turn.\n\L - Civ's network stats (ping).\n\O - The network player is out-of-sync.</Spanish>
+		<English>This determines the order in which the score columns appear.
+S - The civ's score.
+C - The civ's/leader's name.
+? - You have not yet met the civ.
+W - You are at war with the civ.
+E - You have a positive espionage point ratio against the civ.
+P - The civ's power ratio compared to you.
+T - The tech the civ is researching (vassals, teammates and espionage).
+U - The number of research turns left.
+N - The civ is connected to your trade network.
+B - You have an open borders agreement with the civ.
+D - You have a defensive pact with the civ.
+R - The civ's state religion.
+A - The civ's attitude toward you.
+* - You are waiting for this civ to finish its turn.
+L - Civ's network stats (ping).
+O - The network player is out-of-sync.</English>
+		<French>This determines the order in which the score columns appear.
+S - The civ's score.
+C - The civ's/leader's name.
+? - You have not yet met the civ.
+W - You are at war with the civ.
+E - You have a positive espionage point ratio against the civ.
+P - The civ's power ratio compared to you.
+T - The tech the civ is researching (vassals, teammates and espionage).
+U - The number of research turns left.
+N - The civ is connected to your trade network.
+B - You have an open borders agreement with the civ.
+D - You have a defensive pact with the civ.
+R - The civ's state religion.
+A - The civ's attitude toward you.
+* - You are waiting for this civ to finish its turn.
+L - Civ's network stats (ping).
+O - The network player is out-of-sync.</French>
+		<German>This determines the order in which the score columns appear.
+S - The civ's score.
+C - The civ's/leader's name.
+? - You have not yet met the civ.
+W - You are at war with the civ.
+E - You have a positive espionage point ratio against the civ.
+P - The civ's power ratio compared to you.
+T - The tech the civ is researching (vassals, teammates and espionage).
+U - The number of research turns left.
+N - The civ is connected to your trade network.
+B - You have an open borders agreement with the civ.
+D - You have a defensive pact with the civ.
+R - The civ's state religion.
+A - The civ's attitude toward you.
+* - You are waiting for this civ to finish its turn.
+L - Civ's network stats (ping).
+O - The network player is out-of-sync.</German>
+		<Italian>This determines the order in which the score columns appear.
+S - The civ's score.
+C - The civ's/leader's name.
+? - You have not yet met the civ.
+W - You are at war with the civ.
+E - You have a positive espionage point ratio against the civ.
+P - The civ's power ratio compared to you.
+T - The tech the civ is researching (vassals, teammates and espionage).
+U - The number of research turns left.
+N - The civ is connected to your trade network.
+B - You have an open borders agreement with the civ.
+D - You have a defensive pact with the civ.
+R - The civ's state religion.
+A - The civ's attitude toward you.
+* - You are waiting for this civ to finish its turn.
+L - Civ's network stats (ping).
+O - The network player is out-of-sync.</Italian>
+		<Spanish>This determines the order in which the score columns appear.
+S - The civ's score.
+C - The civ's/leader's name.
+? - You have not yet met the civ.
+W - You are at war with the civ.
+E - You have a positive espionage point ratio against the civ.
+P - The civ's power ratio compared to you.
+T - The tech the civ is researching (vassals, teammates and espionage).
+U - The number of research turns left.
+N - The civ is connected to your trade network.
+B - You have an open borders agreement with the civ.
+D - You have a defensive pact with the civ.
+R - The civ's state religion.
+A - The civ's attitude toward you.
+* - You are waiting for this civ to finish its turn.
+L - Civ's network stats (ping).
+O - The network player is out-of-sync.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -2052,11 +2196,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TYPES_HOVER</Tag>
-		<English>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</English>
-		<French>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</French>
-		<German>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</German>
-		<Italian>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</Italian>
-		<Spanish>Determines how many GP types to display in the GP Progress Bar. The \"Maximum\" setting also displays the percent chance for each.</Spanish>
+		<English>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</English>
+		<French>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</French>
+		<German>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</German>
+		<Italian>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Italian>
+		<Spanish>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -2132,7 +2276,7 @@
 	</TEXT>
 
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_GREAT_GENERAL_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_TEXT</Tag>
 		<English>Great General</English>
 		<French>Great General</French>
 		<German>Great General</German>
@@ -2141,12 +2285,12 @@
 	</TEXT>
 
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_GREAT_GENERAL_HOVER</Tag>
-		<English>When checked, puts a little gold star on an Great General icon.</English>
-		<French>When checked, puts a little gold star on an Great General icon.</French>
-		<German>When checked, puts a little gold star on an Great General icon.</German>
-		<Italian>When checked, puts a little gold star on an Great General icon.</Italian>
-		<Spanish>When checked, puts a little gold star on an Great General icon.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_HOVER</Tag>
+		<English>When checked, puts a little gold star on units lead by a Great General.</English>
+		<French>When checked, puts a little gold star on units lead by a Great General.</French>
+		<German>When checked, puts a little gold star on units lead by a Great General.</German>
+		<Italian>When checked, puts a little gold star on units lead by a Great General.</Italian>
+		<Spanish>When checked, puts a little gold star on units lead by a Great General.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -2286,11 +2430,126 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_HOVER</Tag>
-		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
-		<French>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</French>
-		<German>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</German>
-		<Italian>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Italian>
-		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. \Names can be built from plain text and format codes that appear between matching carets (^).\n\ - e.g. \"^cv^ ^ut^ from ^ct^\" --> \"American Archer from Boston\"\n\n\General Codes:\n\ - civ4 - Use built-in Civ4 names\n\ - rd - Random name\n\ - rc - Random civ-related name\n\Unit Info Codes:\n\ - ct - City where unit was built (e.g. Boston)\n\ - cv - Civilization that built the unit in adjective form (e.g. American)\n\ - ut - Unit type (e.g. Archer)\n\ - cb - Combat type (e.g. Melee)\n\ - dm - Domain type (e.g. Water)\n\ - ld - Leader that built the unit (e.g. Roosevelt)\n\Counting Codes:\n\ - cnt[f] - Count across all units\n\ - cntu[f] - Count per unit type\n\ - cntct[f] - Count per city\n\ - cntuct[f] - Count per unit/city combination\n\ - cntc[f] - Count per combat type\n\ - cntd[f] - Count per domain\n\ - tt1[f][x:y] - Count up to a number chosen between x and y\n\ - tt1[f][x] - Count from x, incrementing each time tt1 code is reset\n\    * f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
+		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. 
+Names can be built from plain text and format codes that appear between matching carets (^).
+- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"
+General Codes:
+- civ4 - Use built-in Civ4 names
+- rd - Random name
+- rc - Random civ-related name
+Unit Info Codes:
+- ct - City where unit was built (e.g. Boston)
+- cv - Civilization that built the unit in adjective form (e.g. American)
+- ut - Unit type (e.g. Archer)
+- cb - Combat type (e.g. Melee)
+- dm - Domain type (e.g. Water)
+- ld - Leader that built the unit (e.g. Roosevelt)
+Counting Codes:
+- cnt[f] - Count across all units
+- cntu[f] - Count per unit type
+- cntct[f] - Count per city
+- cntuct[f] - Count per unit/city combination
+- cntc[f] - Count per combat type
+- cntd[f] - Count per domain
+- tt1[f][x:y] - Count up to a number chosen between x and y
+- tt1[f][x] - Count from x, incrementing each time tt1 code is reset
+* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
+		<French>When checked, uses the formats on this tab and in the INI file to name the player's units. 
+Names can be built from plain text and format codes that appear between matching carets (^).
+- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"
+General Codes:
+- civ4 - Use built-in Civ4 names
+- rd - Random name
+- rc - Random civ-related name
+Unit Info Codes:
+- ct - City where unit was built (e.g. Boston)
+- cv - Civilization that built the unit in adjective form (e.g. American)
+- ut - Unit type (e.g. Archer)
+- cb - Combat type (e.g. Melee)
+- dm - Domain type (e.g. Water)
+- ld - Leader that built the unit (e.g. Roosevelt)
+Counting Codes:
+- cnt[f] - Count across all units
+- cntu[f] - Count per unit type
+- cntct[f] - Count per city
+- cntuct[f] - Count per unit/city combination
+- cntc[f] - Count per combat type
+- cntd[f] - Count per domain
+- tt1[f][x:y] - Count up to a number chosen between x and y
+- tt1[f][x] - Count from x, incrementing each time tt1 code is reset
+* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</French>
+		<German>When checked, uses the formats on this tab and in the INI file to name the player's units. 
+Names can be built from plain text and format codes that appear between matching carets (^).
+- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"
+General Codes:
+- civ4 - Use built-in Civ4 names
+- rd - Random name
+- rc - Random civ-related name
+Unit Info Codes:
+- ct - City where unit was built (e.g. Boston)
+- cv - Civilization that built the unit in adjective form (e.g. American)
+- ut - Unit type (e.g. Archer)
+- cb - Combat type (e.g. Melee)
+- dm - Domain type (e.g. Water)
+- ld - Leader that built the unit (e.g. Roosevelt)
+Counting Codes:
+- cnt[f] - Count across all units
+- cntu[f] - Count per unit type
+- cntct[f] - Count per city
+- cntuct[f] - Count per unit/city combination
+- cntc[f] - Count per combat type
+- cntd[f] - Count per domain
+- tt1[f][x:y] - Count up to a number chosen between x and y
+- tt1[f][x] - Count from x, incrementing each time tt1 code is reset
+* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</German>
+		<Italian>When checked, uses the formats on this tab and in the INI file to name the player's units. 
+Names can be built from plain text and format codes that appear between matching carets (^).
+- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"
+General Codes:
+- civ4 - Use built-in Civ4 names
+- rd - Random name
+- rc - Random civ-related name
+Unit Info Codes:
+- ct - City where unit was built (e.g. Boston)
+- cv - Civilization that built the unit in adjective form (e.g. American)
+- ut - Unit type (e.g. Archer)
+- cb - Combat type (e.g. Melee)
+- dm - Domain type (e.g. Water)
+- ld - Leader that built the unit (e.g. Roosevelt)
+Counting Codes:
+- cnt[f] - Count across all units
+- cntu[f] - Count per unit type
+- cntct[f] - Count per city
+- cntuct[f] - Count per unit/city combination
+- cntc[f] - Count per combat type
+- cntd[f] - Count per domain
+- tt1[f][x:y] - Count up to a number chosen between x and y
+- tt1[f][x] - Count from x, incrementing each time tt1 code is reset
+* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Italian>
+		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. 
+Names can be built from plain text and format codes that appear between matching carets (^).
+- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"
+General Codes:
+- civ4 - Use built-in Civ4 names
+- rd - Random name
+- rc - Random civ-related name
+Unit Info Codes:
+- ct - City where unit was built (e.g. Boston)
+- cv - Civilization that built the unit in adjective form (e.g. American)
+- ut - Unit type (e.g. Archer)
+- cb - Combat type (e.g. Melee)
+- dm - Domain type (e.g. Water)
+- ld - Leader that built the unit (e.g. Roosevelt)
+Counting Codes:
+- cnt[f] - Count across all units
+- cntu[f] - Count per unit type
+- cntct[f] - Count per city
+- cntuct[f] - Count per unit/city combination
+- cntc[f] - Count per combat type
+- cntd[f] - Count per domain
+- tt1[f][x:y] - Count up to a number chosen between x and y
+- tt1[f][x] - Count from x, incrementing each time tt1 code is reset
+* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -2525,5 +2784,271 @@
 		<German>Enter the user defined naming convention for combat units 'SIEGE'.</German>
 		<Italian>Enter the user defined naming convention for combat units 'SIEGE'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
+	</TEXT>
+	
+<!-- Tabs and Labels -->
+
+	<!-- General Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_GENERAL</Tag>
+		<English>General</English>
+		<French>General</French>
+		<German>General</German>
+		<Italian>General</Italian>
+		<Spanish>General</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MAIN_INTERFACE</Tag>
+		<English>Main Interface:</English>
+		<French>Main Interface:</French>
+		<German>Main Interface:</German>
+		<Italian>Main Interface:</Italian>
+		<Spanish>Main Interface:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PLOTLIST</Tag>
+		<English>Unit Icons (Plot List):</English>
+		<French>Unit Icons (Plot List):</French>
+		<German>Unit Icons (Plot List):</German>
+		<Italian>Unit Icons (Plot List):</Italian>
+		<Spanish>Unit Icons (Plot List):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>
+		<English>City Screen:</English>
+		<French>City Screen:</French>
+		<German>City Screen:</German>
+		<Italian>City Screen:</Italian>
+		<Spanish>City Screen:</Spanish>
+	</TEXT>
+
+	<!-- Advisors Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_ADVISOR</Tag>
+		<English>Advisors</English>
+		<French>Advisors</French>
+		<German>Advisors</German>
+		<Italian>Advisors</Italian>
+		<Spanish>Advisors</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_DOMESTIC_ADVISOR</Tag>
+		<English>Domestic (F1):</English>
+		<French>Domestic (F1):</French>
+		<German>Domestic (F1):</German>
+		<Italian>Domestic (F1):</Italian>
+		<Spanish>Domestic (F1):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_FOREIGN_ADVISOR</Tag>
+		<English>Foreign (F4):</English>
+		<French>Foreign (F4):</French>
+		<German>Foreign (F4):</German>
+		<Italian>Foreign (F4):</Italian>
+		<Spanish>Foreign (F4):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_TECHNOLOGY_ADVISOR</Tag>
+		<English>Technology (F6):</English>
+		<French>Technology (F6):</French>
+		<German>Technology (F6):</German>
+		<Italian>Technology (F6):</Italian>
+		<Spanish>Technology (F6):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SEVOPEDIA</Tag>
+		<English>Sevopdia (F12):</English>
+		<French>Sevopdia (F12):</French>
+		<German>Sevopdia (F12):</German>
+		<Italian>Sevopdia (F12):</Italian>
+		<Spanish>Sevopdia (F12):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_SCREEN</Tag>
+		<English>Espionage (Ctrl-E):</English>
+		<French>Espionage (Ctrl-E):</French>
+		<German>Espionage (Ctrl-E):</German>
+		<Italian>Espionage (Ctrl-E):</Italian>
+		<Spanish>Espionage (Ctrl-E):</Spanish>
+	</TEXT>
+
+	<!-- Clock Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_NJAGC</Tag>
+		<English>Clock</English>
+		<French>Clock</French>
+		<German>Clock</German>
+		<Italian>Clock</Italian>
+		<Spanish>Clock</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_NJAGC_REGULAR</Tag>
+		<English>Standard View:</English>
+		<French>Standard View:</French>
+		<German>Standard View:</German>
+		<Italian>Standard View:</Italian>
+		<Spanish>Standard View:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_NJAGC_ALTERNATE</Tag>
+		<English>Alternate View:</English>
+		<French>Alternate View:</French>
+		<German>Alternate View:</German>
+		<Italian>Alternate View:</Italian>
+		<Spanish>Alternate View:</Spanish>
+	</TEXT>
+
+	<!-- Scores Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_SCORES</Tag>
+		<English>Scoreboard</English>
+		<French>Scoreboard</French>
+		<German>Scoreboard</German>
+		<Italian>Scoreboard</Italian>
+		<Spanish>Scoreboard</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_DEAD_CIVS</Tag>
+		<English>Dead Civilizations:</English>
+		<French>Dead Civilizations:</French>
+		<German>Dead Civilizations:</German>
+		<Italian>Dead Civilizations:</Italian>
+		<Spanish>Dead Civilizations:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GRID</Tag>
+		<English>Advanced Layout:</English>
+		<French>Advanced Layout:</French>
+		<German>Advanced Layout:</German>
+		<Italian>Advanced Layout:</Italian>
+		<Spanish>Advanced Layout:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_ORDER</Tag>
+		<English>Column Order:</English>
+		<French>Column Order:</French>
+		<German>Column Order:</German>
+		<Italian>Column Order:</Italian>
+		<Spanish>Column Order:</Spanish>
+	</TEXT>
+
+	<!-- Alerts Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_ALERTS</Tag>
+		<English>Alerts</English>
+		<French>Alerts</French>
+		<German>Alerts</German>
+		<Italian>Alerts</Italian>
+		<Spanish>Alerts</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_CITY</Tag>
+		<English>City:</English>
+		<French>City:</French>
+		<German>City:</German>
+		<Italian>City:</Italian>
+		<Spanish>City:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_DIPLOMACY</Tag>
+		<English>Diplomacy:</English>
+		<French>Diplomacy:</French>
+		<German>Diplomacy:</German>
+		<Italian>Diplomacy:</Italian>
+		<Spanish>Diplomacy:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_TRADE</Tag>
+		<English>Trading:</English>
+		<French>Trading:</French>
+		<German>Trading:</German>
+		<Italian>Trading:</Italian>
+		<Spanish>Trading:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_VICTORY</Tag>
+		<English>Victory:</English>
+		<French>Victory:</French>
+		<German>Victory:</German>
+		<Italian>Victory:</Italian>
+		<Spanish>Victory:</Spanish>
+	</TEXT>
+
+	<!-- Logging Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_AUTOLOG</Tag>
+		<English>Logging</English>
+		<French>Logging</French>
+		<German>Logging</German>
+		<Italian>Logging</Italian>
+		<Spanish>Logging</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_BUILDS</Tag>
+		<English>Research and Builds:</English>
+		<French>Research and Builds:</French>
+		<German>Research and Builds:</German>
+		<Italian>Research and Builds:</Italian>
+		<Spanish>Research and Builds:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_CITIES</Tag>
+		<English>Cities:</English>
+		<French>Cities:</French>
+		<German>Cities:</German>
+		<Italian>Cities:</Italian>
+		<Spanish>Cities:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_EVENTS</Tag>
+		<English>Events:</English>
+		<French>Events:</French>
+		<German>Events:</German>
+		<Italian>Events:</Italian>
+		<Spanish>Events:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_POLITICS</Tag>
+		<English>Diplomacy:</English>
+		<French>Diplomacy:</French>
+		<German>Diplomacy:</German>
+		<Italian>Diplomacy:</Italian>
+		<Spanish>Diplomacy:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_COMBAT</Tag>
+		<English>Combat:</English>
+		<French>Combat:</French>
+		<German>Combat:</German>
+		<Italian>Combat:</Italian>
+		<Spanish>Combat:</Spanish>
+	</TEXT>
+
+	<!-- Unit Naming Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_UNITNAME</Tag>
+		<English>Unit Naming</English>
+		<French>Unit Naming</French>
+		<German>Unit Naming</German>
+		<Italian>Unit Naming</Italian>
+		<Spanish>Unit Naming</Spanish>
+	</TEXT>
+
+	<!-- Credits Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_CREDITS</Tag>
+		<English>Credits</English>
+		<French>Credits</French>
+		<German>Credits</German>
+		<Italian>Credits</Italian>
+		<Spanish>Credits</Spanish>
 	</TEXT>
 </Civ4GameText>

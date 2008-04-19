@@ -17,27 +17,22 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		leftPanel, rightPanel = self.addTwoColumnLayout(screen, column, column, True)
 		
-		screen.attachLabel(leftPanel, "DomAdvScreenLabel", "Domestic (F1):")
-		screen.setControlFlag("DomAdvScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, leftPanel, "Domestic_Advisor", "Domestic (F1):")
 		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
 
-		screen.attachLabel(leftPanel, "ForeignScreenLabel", "Foreign (F4):")
-		screen.setControlFlag("ForeignScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, leftPanel, "Foreign_Advisor", "Foreign (F4):")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance_Smilies")
 		
-		screen.attachLabel(leftPanel, "TechScreenLabel", "Technology (F6):")
-		screen.setControlFlag("TechScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, leftPanel, "Technology_Advisor", "Technology (F6):")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
 		self.addCheckbox(screen, leftPanel, "TechScreen_Wide")
 
-		screen.attachLabel(leftPanel, "SevopdiaLabel", "Sevopdia (F12):")
-		screen.setControlFlag("SevopdiaLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, leftPanel, "Sevopedia", "Sevopdia (F12):")
 		self.addCheckbox(screen, leftPanel, "Sevopedia_Enabled")
 		self.addCheckbox(screen, leftPanel, "Sevopedia_Sort")
 		
-		screen.attachLabel(rightPanel, "EspionageScreenLabel", "Espionage (Ctrl-E):")
-		screen.setControlFlag("EspionageScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, rightPanel, "Espionage_Screen", "Espionage (Ctrl-E):")
 		self.addCheckbox(screen, rightPanel, "Espionage_Enabled")
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)

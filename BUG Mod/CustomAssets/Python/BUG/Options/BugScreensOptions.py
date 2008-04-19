@@ -47,10 +47,10 @@ class BugScreensOptions(OptionsFacade):
 							  "Unit Actions",
 							  "When checked, puts unit actions text on unit icons.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("Great_General",
+		self.addOption(Option("Unit_Great_General",
 							  "PlotList", "Great General", True,
 							  "Great General",
-							  "When checked, puts a little gold star on an Great General icon.",
+							  "When checked, puts a little gold star on units lead by a Great General.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 
 		self.addOption(Option("CDA_Enabled",

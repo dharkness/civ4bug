@@ -11,9 +11,16 @@ class BugOptionsTab:
 	"BUG Options Screen screen"
 	
 	def __init__(self, name, title):
+		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 		self.name = name
 		self.tab = self.name + "Tab"
-		self.title = title
+		
+		xmlKey = "TXT_KEY_BUG_OPTTAB_" + name.upper()
+		xmlTitle = localText.getText(xmlKey, ())
+		if (xmlTitle and xmlTitle != xmlKey):
+			self.title = xmlTitle
+		else:
+			self.title = title
 		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 
 	def getName (self):
@@ -148,6 +155,21 @@ class BugOptionsTab:
 		
 		return columns
 
+
+	def addLabel (self, screen, panel, name, title):
+		xmlKey = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
+		xmlTitle = localText.getText(xmlKey, ())
+		if (xmlTitle and xmlTitle != xmlKey):
+			title = xmlTitle
+		if (title):
+			label = name + "_Label"
+			screen.attachLabel(panel, label, title)
+			screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
+
+	def addSpacer (self, screen, panel, name):
+		spacer = name + "_Spacer"
+		screen.attachLabel(panel, spacer, " ")
+		screen.setControlFlag(spacer, "CF_LABEL_DEFAULTSIZE")
 
 	def addCheckbox (self, screen, panel, name):
 		option = self.getOption(name)

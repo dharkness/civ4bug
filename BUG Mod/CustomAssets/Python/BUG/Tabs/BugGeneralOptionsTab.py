@@ -18,18 +18,17 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 
-		screen.attachLabel(left, "MainInterfaceLabel", "Main Interface:")
-		screen.setControlFlag("MainInterfaceLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, left, "Main_Interface", "Main Interface:")
 		self.addCheckbox(screen, left, "Main_GPBar")
 		self.addTextDropdown(screen, left, left, "Main_GPBar_Types")
 		self.addCheckbox(screen, left, "Main_Combat_Counter")
 		self.addCheckbox(screen, left, "Main_CityArrows")
+		self.addLabel(screen, left, "PlotList", "Unit Icons (Plot List):")
 		self.addCheckbox(screen, left, "Unit_Promo_Available")
 		self.addCheckbox(screen, left, "Unit_Actions")
-		self.addCheckbox(screen, left, "Great_General")
+		self.addCheckbox(screen, left, "Unit_Great_General")
 
-		screen.attachLabel(right, "CityScreenLabel", "City Screen:")
-		screen.setControlFlag("CityScreenLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, right, "CityScreen", "City Screen:")
 		self.addCheckbox(screen, right, "City_RawCommerce")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")
@@ -42,6 +41,5 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Main_OptionsKey")
 		screen.setLayoutFlag(right, "LAYOUT_RIGHT")
 		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-		screen.attachLabel(right, "VersionLabel", 
-						   CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
-		screen.setControlFlag("VersionLabel", "CF_LABEL_DEFAULTSIZE")
+		self.addLabel(screen, right, "Version", 
+					  CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
