@@ -79,7 +79,6 @@ def getUnitIcon(iUnit):
 	return g_unitIcons[iUnit]
 
 def findNextCity():
-
 	iMinTurns = 10000000
 	iTurns = 0
 	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
@@ -98,10 +97,24 @@ def findNextCity():
 					pBestCity = pCity
 	return (pBestCity, iMinTurns)
 
-def getCityTurns(pCity):
+def findMaxCity():
+	iMaxProgress = 0
 	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-	iThreshold = pPlayer.greatPeopleThreshold(False)
+	pBestCity = None
+	
+	for iCity in range(pPlayer.getNumCities()):
+		pCity = pPlayer.getCity(iCity)
+		if (pCity):
+			iProgress = pCity.getGreatPeopleProgress()
+			if (iProgress > iMaxProgress):
+				iMaxProgress = iProgress
+				pBestCity = pCity
+	return (pBestCity, iMaxProgress)
+
+def getCityTurns(pCity):
 	if (pCity):
+		pPlayer = gc.getPlayer(pCity.getOwner())
+		iThreshold = pPlayer.greatPeopleThreshold(False)
 		iRate = pCity.getGreatPeopleRate()
 		if (iRate > 0):
 			iProgress = pCity.getGreatPeopleProgress()
@@ -151,33 +164,56 @@ def createHoverText(pCity, iTurns):
 	return szText
 
 def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypesOne, bIncludeCityName):
-
-	if (bGPBarTypesNone):
-		if (bIncludeCityName):
-			szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pCity.getName(), iGPTurns))
+	sGreatPeopleChar = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
+	if (not pCity):
+		szText = localText.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
+	elif (bGPBarTypesNone):
+		if (iGPTurns):
+			if (bIncludeCityName):
+				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+			else:
+				szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 		else:
-			szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), "", iGPTurns))
+			if (bIncludeCityName):
+				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+			else:
+				szText = sGreatPeopleChar
 	else:
 		lPercents = calcPercentages(pCity)
 		if (len(lPercents) == 0):
-			if (bIncludeCityName):
-				szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pCity.getName(), iGPTurns))
+			if (iGPTurns):
+				if (bIncludeCityName):
+					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+				else:
+					szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 			else:
-				szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), "", iGPTurns))
+				szText = localText.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
 		else:
 			lPercents.sort(reverse=True)
 			if (bGPBarTypesOne or len(lPercents) == 1):
 				iPercent, iUnit = lPercents[0]
 				pInfo = gc.getUnitInfo(iUnit)
-				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), pCity.getName(), iGPTurns))
+				if (iGPTurns):
+					if (bIncludeCityName):
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), pCity.getName(), iGPTurns))
+					else:
+						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (pInfo.getDescription(), iGPTurns))
 				else:
-					szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), "", iGPTurns))
+					if (bIncludeCityName):
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (pInfo.getDescription(), pCity.getName()))
+					else:
+						szText = unicode(pInfo.getDescription())
 			else:
-				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pCity.getName(), iGPTurns))
+				if (iGPTurns):
+					if (bIncludeCityName):
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+					else:
+						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 				else:
-					szText = localText.getText("INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS", (u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), "", iGPTurns))
+					if (bIncludeCityName):
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+					else:
+						szText = sGreatPeople + u":"
 				szTypes = ""
 				for iPercent, iUnit in lPercents:
 					szNewTypes = szTypes + u" %c%d%%" % (getUnitIcon(iUnit), iPercent)

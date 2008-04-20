@@ -16,7 +16,31 @@
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>INTERFACE_NEXT_GREAT_PERSON_CITY_TURNS</Tag>
+		<Tag>INTERFACE_GREAT_PERSON_NONE</Tag>
+		<English>%s1: None</English>
+		<French>%s1: Aucun</French>
+		<German>%s1: Keine</German>
+		<Italian>%s1: Non</Italian>
+		<Spanish>%s1: Ninguno</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_CITY</Tag>
+		<English>%s1: %s2</English>
+		<French>%s1: %s2</French>
+		<German>%s1: %s2</German>
+		<Italian>%s1: %s2</Italian>
+		<Spanish>%s1: %s2</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_TURNS</Tag>
+		<English>%s1: (%d2)</English>
+		<French>%s1: (%d2)</French>
+		<German>%s1: (%d2)</German>
+		<Italian>%s1: (%d2)</Italian>
+		<Spanish>%s1: (%d2)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_CITY_TURNS</Tag>
 		<English>%s1: %s2 (%d3)</English>
 		<French>%s1: %s2 (%d3)</French>
 		<German>%s1: %s2 (%d3)</German>
@@ -30,25 +54,6 @@
 		<German>General (%d1)</German>
 		<Italian>Generale (%d1)</Italian>
 		<Spanish>General (%d1)</Spanish>
-	</TEXT>
-	
-	<!-- Fix for Sevo/Civilopedia -->
-	
-	<TEXT>
-		<Tag>TXT_KEY_CIVILOPEDIA_STRATEGY</Tag>
-		<English>[BOLD]Strategy:[\BOLD][PARAGRAPH:1]</English>
-		<French>[BOLD]Strat&#233;gie :[\BOLD][PARAGRAPH:1]</French>
-		<German>[BOLD]Strategie:[\BOLD][PARAGRAPH:1]</German>
-		<Italian>[BOLD]Strategia:[\BOLD][PARAGRAPH:1]</Italian>
-		<Spanish>[BOLD]Estrategia:[\BOLD][PARAGRAPH:1]</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_CIVILOPEDIA_BACKGROUND</Tag>
-		<English>[BOLD]Background:[\BOLD][NEWLINE]</English>
-		<French>[BOLD]Histoire :[\BOLD][NEWLINE]</French>
-		<German>[BOLD]Hintergrund:[\BOLD][NEWLINE]</German>
-		<Italian>[BOLD]Informazioni:[\BOLD][NEWLINE]</Italian>
-		<Spanish>[BOLD]Historia:[\BOLD][NEWLINE]</Spanish>
 	</TEXT>
 	
 	<!-- Reminders -->
