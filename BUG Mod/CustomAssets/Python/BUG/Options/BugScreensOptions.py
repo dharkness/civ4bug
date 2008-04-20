@@ -58,6 +58,11 @@ class BugScreensOptions(OptionsFacade):
 							  "Customizable",
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
 
+		self.addOption(Option("BMA_Sit_Rep",
+							  "Screens", "BMA Sit-Rep", True,
+							  "Sit Rep Tab",
+							  "When checked, displays the 'Sit Rep' tab on the Military Advisor screen."))
+
 		self.addOption(Option("EFA_Glance",
 							  "Screens", "EFA Glance", True,
 							  "Glance Tab",
@@ -130,6 +135,10 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowGlanceSmilies(self):
 		return self.getBoolean("EFA_Glance_Smilies")
+
+
+	def isShowSitRep(self):
+		return self.getBoolean("BMA_Sit_Rep")
 
 
 	def isShowGPTechPrefs(self):

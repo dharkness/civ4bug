@@ -8,7 +8,10 @@ import CvMainInterface
 import CvTechChooser
 import CvForeignAdvisor
 import CvExoticForeignAdvisor
-import CvMilitaryAdvisor
+# BUG - Military Advisor - start
+import CvBUGMilitaryAdvisor
+#import CvMilitaryAdvisor
+# BUG - Military Advisor - end
 import CvFinanceAdvisor
 import CvReligionScreen
 import CvCorporationScreen
@@ -130,7 +133,6 @@ def showFinanceAdvisor():
 		financeAdvisor.interfaceScreen()
 
 # BUG - CustDomAdv - start
-
 import BugScreensOptions
 BugScreens = BugScreensOptions.getOptions()
 
@@ -144,13 +146,15 @@ else:
 def showDomesticAdvisor(argsList):
 	if (-1 != CyGame().getActivePlayer()):
 		domesticAdvisor.interfaceScreen()
-
 # BUG - CustDomAdv - end
 
-militaryAdvisor = CvMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+# BUG - Military Advisor - start
+militaryAdvisor = CvBUGMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+#militaryAdvisor = CvMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+# BUG - Military Advisor - end
 def showMilitaryAdvisor():
 	if (-1 != CyGame().getActivePlayer()):
-		militaryAdvisor.interfaceScreen()
+		militaryAdvisor.interfaceScreen()  #(0)
 
 espionageAdvisor = CvEspionageAdvisor.CvEspionageAdvisor()
 def showEspionageAdvisor():
@@ -816,6 +820,11 @@ def minimapClicked (argsList):
 	
 	if (MILITARY_ADVISOR == argsList[0]):
 		militaryAdvisor.minimapClicked()
+
+# BUG Military Advisor
+#	if (VICTORY_SCREEN ==  argsList[0]):
+#		victoryScreen.minimapClicked()
+
 	return
 
 ############################################################################
@@ -839,6 +848,7 @@ def handleForward(screens):
 	return 0
 
 def refreshMilitaryAdvisor (argsList):
+
 	if (1 == argsList[0]):
 		militaryAdvisor.refreshSelectedGroup(argsList[1])
 	elif (2 == argsList[0]):
@@ -847,6 +857,7 @@ def refreshMilitaryAdvisor (argsList):
 		militaryAdvisor.drawCombatExperience()
 	elif (argsList[0] <= 0):
 		militaryAdvisor.refreshSelectedUnit(-argsList[0], argsList[1])
+
 	
 def updateMusicPath (argsList):
     szPathName = argsList[0]
@@ -925,14 +936,14 @@ def featAccomplishedOnClickedCallback(argsList):
 		if (iData1 == FeatTypes.FEAT_TRADE_ROUTE):
 			showDomesticAdvisor(())
 		elif ((iData1 >= FeatTypes.FEAT_UNITCOMBAT_ARCHER) and (iData1 <= FeatTypes.FEAT_UNIT_SPY)):
-			showMilitaryAdvisor()
+			showMilitaryAdvisor(0)
 		elif ((iData1 >= FeatTypes.FEAT_COPPER_CONNECTED) and (iData1 <= FeatTypes.FEAT_FOOD_CONNECTED)):
 			showForeignAdvisorScreen([0])
 		elif ((iData1 == FeatTypes.FEAT_NATIONAL_WONDER)):
-		  # 2 is for the wonder tab...
+			# 2 is for the wonder tab...
 			showInfoScreen([2, 0])
 		elif ((iData1 >= FeatTypes.FEAT_POPULATION_HALF_MILLION) and (iData1 <= FeatTypes.FEAT_POPULATION_2_BILLION)):
-		  # 1 is for the demographics tab...
+			# 1 is for the demographics tab...
 			showInfoScreen([1, 0])
 		elif iData1 == FeatTypes.FEAT_CORPORATION_ENABLED:
 			showCorporationScreen()

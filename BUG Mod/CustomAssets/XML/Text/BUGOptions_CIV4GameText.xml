@@ -2348,6 +2348,24 @@ O - The network player is out-of-sync.</Spanish>
 	</TEXT>
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_TEXT</Tag>
+		<English>Sit Rep Tab</English>
+		<French>Sit Rep Tab</French>
+		<German>Sit Rep Tab</German>
+		<Italian>Sit Rep Tab</Italian>
+		<Spanish>Sit Rep Tab</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_HOVER</Tag>
+		<English>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</English>
+		<French>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</French>
+		<German>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</German>
+		<Italian>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</Italian>
+		<Spanish>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECH_GPPREFS_TEXT</Tag>
 		<English>Great Person Research</English>
 		<French>Great Person Research</French>

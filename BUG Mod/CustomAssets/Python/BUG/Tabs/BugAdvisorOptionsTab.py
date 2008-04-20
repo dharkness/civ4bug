@@ -24,6 +24,9 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, leftPanel, "EFA_Glance")
 		self.addCheckbox(screen, leftPanel, "EFA_Glance_Smilies")
 		
+		self.addLabel(screen, leftPanel, "Military_Advisor", "Military (F5):")
+		self.addCheckbox(screen, leftPanel, "BMA_Sit_Rep")
+
 		self.addLabel(screen, leftPanel, "Technology_Advisor", "Technology (F6):")
 		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
 		self.addCheckbox(screen, leftPanel, "TechScreen_Wide")

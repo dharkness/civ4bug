@@ -55,7 +55,81 @@
 		<Italian>Generale (%d1)</Italian>
 		<Spanish>General (%d1)</Spanish>
 	</TEXT>
-	
+
+	<!-- Military Adviser -->
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
+		<English>Deployment</English>
+		<French>Deployment</French>
+		<German>Deployment</German>
+		<Italian>Deployment</Italian>
+		<Spanish>Deployment</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
+		<English>Sit-Rep</English>
+		<French>Sit-Rep</French>
+		<German>Sit-Rep</German>
+		<Italian>Sit-Rep</Italian>
+		<Spanish>Sit-Rep</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_RELATIONSHIP</Tag>
+		<English>Relationship</English>
+		<French>Relationship</French>
+		<German>Relationship</German>
+		<Italian>Relationship</Italian>
+		<Spanish>Relationship</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
+		<English>Worst Enemy</English>
+		<French>Worst Enemy</French>
+		<German>Worst Enemy</German>
+		<Italian>Worst Enemy</Italian>
+		<Spanish>Worst Enemy</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_THREAD_INDEX</Tag>
+		<English>Thread Index</English>
+		<French>Thread Index</French>
+		<German>Thread Index</German>
+		<Italian>Thread Index</Italian>
+		<Spanish>Thread Index</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_ACTIVE_WARS</Tag>
+		<English>Active Wars</English>
+		<French>Active Wars</French>
+		<German>Active Wars</German>
+		<Italian>Active Wars</Italian>
+		<Spanish>Active Wars</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
+		<English>Strat. Res</English>
+		<French>Create Reminder</French>
+		<German>Erinnerung schreiben</German>
+		<Italian>Crea un Promemoria</Italian>
+		<Spanish>Create Reminder</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
+		<English>Create Reminder</English>
+		<French>Create Reminder</French>
+		<German>Erinnerung schreiben</German>
+		<Italian>Crea un Promemoria</Italian>
+		<Spanish>Create Reminder</Spanish>
+	</TEXT>
+
 	<!-- Reminders -->
 	
 	<TEXT>
