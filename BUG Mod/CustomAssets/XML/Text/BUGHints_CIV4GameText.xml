@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- BUG Hints -->
+<!-- Copyright (c) 2007, BUG Mod -->
+
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_69</Tag>
+		<English>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</English>
+		<French>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</French>
+		<German>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</German>
+		<Italian>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</Italian>
+		<Spanish>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_70</Tag>
+		<English>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</English>
+		<French>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</French>
+		<German>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</German>
+		<Italian>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</Italian>
+		<Spanish>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_71</Tag>
+		<English>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</English>
+		<French>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</French>
+		<German>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</German>
+		<Italian>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Italian>
+		<Spanish>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_72</Tag>
+		<English>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</English>
+		<French>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</French>
+		<German>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</German>
+		<Italian>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</Italian>
+		<Spanish>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_73</Tag>
+		<English>Alt + E will allow you to make a custom Event in the autologger.</English>
+		<French>Alt + E will allow you to make a custom Event in the autologger.</French>
+		<German>Alt + E will allow you to make a custom Event in the autologger.</German>
+		<Italian>Alt + E will allow you to make a custom Event in the autologger.</Italian>
+		<Spanish>Alt + E will allow you to make a custom Event in the autologger.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_74</Tag>
+		<English>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</English>
+		<French>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</French>
+		<German>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</German>
+		<Italian>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</Italian>
+		<Spanish>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style..</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_INTERFACE_75</Tag>
+		<English>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</English>
+		<French>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</French>
+		<German>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</German>
+		<Italian>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Italian>
+		<Spanish>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.  [NEWLINE] To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_HINT_74</Tag>
+		<English>When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</English>
+		<French> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</French>
+		<German> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</German>
+		<Italian> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</Italian>
+		<Spanish> When a tile is in the City Cross of two different cities, then you can change its ownership by clicking on that tile from the chosen city’s City Screen.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_75</Tag>
+		<English>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</English>
+		<French>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</French>
+		<German>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</German>
+		<Italian>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Italian>
+		<Spanish>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_76</Tag>
+		<English>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</English>
+		<French>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</French>
+		<German>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</German>
+		<Italian>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Italian>
+		<Spanish>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_77</Tag>
+		<English>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</English>
+		<French>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</French>
+		<German>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</German>
+		<Italian>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Italian>
+		<Spanish>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_78</Tag>
+		<English>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</English>
+		<French>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</French>
+		<German>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</German>
+		<Italian>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Italian>
+		<Spanish>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_79</Tag>
+		<English>Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</English>
+		<French> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</French>
+		<German> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</German>
+		<Italian> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Italian>
+		<Spanish> Examine what resources are before researching worker techs.  Why research Animal Husbandry when only have Corn and Wheat near?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_80</Tag>
+		<English>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</English>
+		<French>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</French>
+		<German>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</German>
+		<Italian>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</Italian>
+		<Spanish>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_81</Tag>
+		<English> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</English>
+		<French> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</French>
+		<German>Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</German>
+		<Italian> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Italian>
+		<Spanish> Play to your Civilizations traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_82</Tag>
+		<English> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.</English>
+		<French> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</French>
+		<German> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</German>
+		<Italian> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Italian>
+		<Spanish> Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_83</Tag>
+		<English>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</English>
+		<French>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</French>
+		<German>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</German>
+		<Italian>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Italian>
+		<Spanish>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_84</Tag>
+		<English>Be the first to circle the globe, and your Naval Units all receive +1 movement.</English>
+		<French>Be the first to circle the globe, and your Naval Units all receive +1 movement.</French>
+		<German>Be the first to circle the globe, and your Naval Units all receive +1 movement.</German>
+		<Italian>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Italian>
+		<Spanish>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_85</Tag>
+		<English>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</English>
+		<French>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</French>
+		<German>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</German>
+		<Italian>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Italian>
+		<Spanish>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_86</Tag>
+		<English>Form trade relations with nations that get along with each other to avoid an attitude penalty.</English>
+		<French>Form trade relations with nations that get along with each other to avoid an attitude penalty.</French>
+		<German>Form trade relations with nations that get along with each other to avoid an attitude penalty.</German>
+		<Italian>Form trade relations with nations that get along with each other to avoid an attitude penalty.</Italian>
+		<Spanish>Form trade relations with nations that get along with each other to avoid an attitude penalty.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_87</Tag>
+		<English>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</English>
+		<French>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</French>
+		<German>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</German>
+		<Italian>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Italian>
+		<Spanish>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_88</Tag>
+		<English>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</English>
+		<French>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</French>
+		<German>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</German>
+		<Italian>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Italian>
+		<Spanish>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_89</Tag>
+		<English>When selling Technologies, shop around for the highest bidder, and then work your way down.</English>
+		<French>When selling Technologies, shop around for the highest bidder, and then work your way down.</French>
+		<German>When selling Technologies, shop around for the highest bidder, and then work your way down.</German>
+		<Italian>When selling Technologies, shop around for the highest bidder, and then work your way down.</Italian>
+		<Spanish>When selling Technologies, shop around for the highest bidder, and then work your way down.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HINT_90</Tag>
+		<English>Watch your neighbor civic changes.  A change from Free Religion to Theology could mean an arms build up.</English>
+		<French>>Watch your neighbor civic changes.  A change from Free Religion to Theology could mean an arms build up.</French>
+		<German>>Watch your neighbor civic changes.  A change from Free Religion to Theology could mean an arms build up.</German>
+		<Italian>>Watch your neighbor civic changes.  A change from Free Religion to Theology could mean an arms build up.</Italian>
+		<Spanish>>Watch your neighbor civic changes.  A change from Free Religion to Theology could mean an arms build up.</Spanish>
+	</TEXT>	
+	<TEXT>
+		<Tag>TXT_KEY_HINT_91</Tag>
+		<English>Speak softly and carry a big stick, and you will go far.</English>
+		<French>Speak softly and carry a big stick, and you will go far.</French>
+		<German>Speak softly and carry a big stick, and you will go far.</German>
+		<Italian>Speak softly and carry a big stick, and you will go far.</Italian>
+		<Spanish>Speak softly and carry a big stick, and you will go far.</Spanish>
+	</TEXT>	
+	<TEXT>
+		<Tag>TXT_KEY_HINT_92</Tag>
+		<English>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</English>
+		<French>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</French>
+		<German>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</German>
+		<Italian>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Italian>
+		<Spanish>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
+	</TEXT>	
+</Civ4GameText>
