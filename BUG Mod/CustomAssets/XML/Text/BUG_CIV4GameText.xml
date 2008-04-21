@@ -115,19 +115,19 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
 		<English>Strat. Res</English>
-		<French>Create Reminder</French>
-		<German>Erinnerung schreiben</German>
-		<Italian>Crea un Promemoria</Italian>
-		<Spanish>Create Reminder</Spanish>
+		<French>Strat. Res</French>
+		<German>Strat. Res</German>
+		<Italian>Strat. Res</Italian>
+		<Spanish>Strat. Res</Spanish>
 	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
-		<English>Create Reminder</English>
-		<French>Create Reminder</French>
-		<German>Erinnerung schreiben</German>
-		<Italian>Crea un Promemoria</Italian>
-		<Spanish>Create Reminder</Spanish>
+		<English>Will Declare?</English>
+		<French>Will Declare?</French>
+		<German>Will Declare?</German>
+		<Italian>Will Declare?</Italian>
+		<Spanish>Will Declare?</Spanish>
 	</TEXT>
 
 	<!-- Reminders -->
