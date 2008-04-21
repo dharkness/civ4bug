@@ -110,8 +110,7 @@ else:
 		myDocuments = __getRegValue(_winreg.HKEY_CURRENT_USER, 
 				r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
 				"Personal")
-		civ4Dir = os.path.basename(_getInstallDir())
-		return os.path.join(myDocuments, "My Games", civ4Dir)
+		return os.path.join(myDocuments, "My Games")
 	
 	def _getInstallDir():
 		subkey = r"Software\Firaxis Games\Sid Meier's Civilization 4 - Beyond the Sword"
@@ -129,7 +128,7 @@ try:
 except:
     pass
 
-userDir = _getUserDir()
+userDir = os.path.join(_getUserDir(), activeModName)
 
 userAssetsDir = os.path.join(userDir, "CustomAssets")
 
@@ -200,12 +199,7 @@ def getINIPathForCvConfigParser(fileName):
 # to an ini file which should be located just outside one of the
 # directories in the assets path. This is called from RuffModControl.py
 def get_INI_File(szINIFileName):
-    filepaths = [os.path.join(os.path.dirname(dir), szINIFileName) 
-        for dir in assetsPath]
-    for filepath in filepaths:
-        if os.path.isfile(filepath):
-            return filepath
-    return ""
+    return os.path.join(userDir, szINIFileName)
 
 # YAUGM changes end
 
