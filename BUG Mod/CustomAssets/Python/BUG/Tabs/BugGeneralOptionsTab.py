@@ -4,6 +4,7 @@
 
 import BugOptionsTab
 import CvModName
+import RuffModControl
 
 class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG General Options Screen Tab"
@@ -43,3 +44,5 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 		self.addLabel(screen, right, "Version", 
 					  CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
+		if (not RuffModControl.FileName or RuffModControl.FileName == ""):
+			self.addLabel(screen, right, "INIFileNotFound", "Cannot Find INI File")

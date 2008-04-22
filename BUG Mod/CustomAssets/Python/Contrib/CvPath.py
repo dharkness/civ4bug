@@ -82,6 +82,13 @@ import os
 import os.path
 import sys
 
+activeModName = None
+try:
+    import CvModName
+    activeModName = CvModName.modName
+except:
+    pass
+
 if (sys.platform == 'darwin'):
 	""" Mac OS X """
 	def _getUserDir():
@@ -110,25 +117,14 @@ else:
 		myDocuments = __getRegValue(_winreg.HKEY_CURRENT_USER, 
 				r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
 				"Personal")
-		return os.path.join(myDocuments, "My Games")
+		civ4Dir = os.path.basename(_getInstallDir())
+		return os.path.join(myDocuments, "My Games", civ4Dir)
 	
 	def _getInstallDir():
-		subkey = r"Software\Firaxis Games\Sid Meier's Civilization 4 - Beyond the Sword"
-		dir = __getRegValue(_winreg.HKEY_LOCAL_MACHINE, subkey, "INSTALLDIR")
-		if (not dir):
-			subkey = r"Software\Firaxis Games\Sid Meier's Civilization 4 Complete"
-			dir = __getRegValue(_winreg.HKEY_LOCAL_MACHINE, subkey, "INSTALLDIR")
-		return dir
+		return os.path.dirname(sys.executable)
 
 
-activeModName = None
-try:
-    import CvModName
-    activeModName = CvModName.modName
-except:
-    pass
-
-userDir = os.path.join(_getUserDir(), activeModName)
+userDir = _getUserDir()
 
 userAssetsDir = os.path.join(userDir, "CustomAssets")
 
@@ -199,7 +195,12 @@ def getINIPathForCvConfigParser(fileName):
 # to an ini file which should be located just outside one of the
 # directories in the assets path. This is called from RuffModControl.py
 def get_INI_File(szINIFileName):
-    return os.path.join(userDir, szINIFileName)
+    filepaths = [os.path.join(os.path.dirname(dir), szINIFileName) 
+        for dir in assetsPath]
+    for filepath in filepaths:
+        if os.path.isfile(filepath):
+            return filepath
+    return ""
 
 # YAUGM changes end
 

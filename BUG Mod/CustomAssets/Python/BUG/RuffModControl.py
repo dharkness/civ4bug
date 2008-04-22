@@ -15,10 +15,10 @@ def get_AutoLog_Path():
     try:
         AutoLogPath = RuffModConfigFile['AUTOLOG']['AutoLogPath']
     except:
-        AutoLogPath = CvPath.userDir + '\AutoLog'
+        AutoLogPath = os.path.join(CvPath.userDir, 'AutoLog')
     if (AutoLogPath == 'Default'):
-        AutoLogPath = CvPath.userDir + '\AutoLog'
-    if not os.path.isdir(AutoLogPath):
+        AutoLogPath = os.path.join(CvPath.userDir, 'AutoLog')
+    if not os.path.isdir(AutoLogPath) and not os.path.isfile(AutoLogPath):
         os.makedirs(AutoLogPath)
     return AutoLogPath
 
@@ -29,8 +29,10 @@ def read_ConfigFile():
     return ConfigObj(FileName)
 
 def write_ConfigFile():
-    RuffModConfigFile.write()
-    return
+	try:
+		RuffModConfigFile.write()
+	except:
+		pass
 
 try:
     import CvModName

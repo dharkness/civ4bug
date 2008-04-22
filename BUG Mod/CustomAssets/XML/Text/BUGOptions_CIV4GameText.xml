@@ -2840,6 +2840,14 @@ Counting Codes:
 		<Italian>City Screen:</Italian>
 		<Spanish>City Screen:</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_INIFILENOTFOUND</Tag>
+		<English>Cannot Find INI File</English>
+		<French>Cannot Find INI File</French>
+		<German>Cannot Find INI File</German>
+		<Italian>Cannot Find INI File</Italian>
+		<Spanish>Cannot Find INI File</Spanish>
+	</TEXT>
 
 	<!-- Advisors Tab -->
 
