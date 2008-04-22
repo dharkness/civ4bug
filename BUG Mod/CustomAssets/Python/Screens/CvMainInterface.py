@@ -1030,6 +1030,10 @@ class CvMainInterface:
 		
 		xResolution = screen.getXResolution()
 
+# BUG - Great Person Bar - start
+		self.updateGreatPersonBar(screen)
+# BUG - Great Person Bar - end
+
 		if ( CyInterface().shouldDisplayFlag() and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
 			screen.show( "CivilizationFlag" )
 			screen.show( "InterfaceHelpButton" )
@@ -2479,87 +2483,98 @@ class CvMainInterface:
 					screen.show( szResearchBar )
 					
 # BUG - Great Person Bar - start
-				if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):
-#					if (pHeadSelectedCity):
-#						pGPCity = pHeadSelectedCity
-#						iGPTurns = GPUtil.getCityTurns(pGPCity)
-#					else:
-					pGPCity, iGPTurns = GPUtil.findNextCity()
-					if (pGPCity and iGPTurns):
-						szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
-					else:
-						pGPCity, iGPP = GPUtil.findMaxCity()
-						szText = GPUtil.getGreatPeopleText(pGPCity, None, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
-					szText = u"<font=2>%s</font>" % (szText)
-					if (pGPCity):
-						iCityID = pGPCity.getID()
-					else:
-						iCityID = -1
-						
-# BUG - Bars on single line for higher resolution screens - start
-					if (xResolution >= 1440):
-						szGreatPersonBar = "GreatPersonBar-w"
-						xCoord = 268 + (xResolution - 1440) / 2 + 84 + 6 + 487 + 6 + 320 / 2
-						yCoord = 5
-					else:
-						szGreatPersonBar = "GreatPersonBar"
-						xCoord = 268 + (xResolution - 1024) / 2 + 100 + 7 + 380 / 2
-						yCoord = 30
-
-					screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, iCityID, -1 )
-					if (not pGPCity):
-						screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
-					screen.show( "GreatPersonBarText" )
-# BUG - Bars on single line for higher resolution screens - end
-					
-					if (pGPCity):
-						fThreshold = float(gc.getPlayer( pGPCity.getOwner() ).greatPeopleThreshold(False))
-						fRate = float(pGPCity.getGreatPeopleRate())
-						fFirst = float(pGPCity.getGreatPeopleProgress()) / fThreshold
-	
-						screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_STORED, fFirst )
-						if ( fFirst == 1 ):
-							screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
-						else:
-							screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )
-					else:
-						screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_STORED, 0 )
-						screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, 0 )
-
-					screen.show( szGreatPersonBar )
+				self.updateGreatPersonBar(screen)
 # BUG - Great Person Bar - end
 
 # BUG - Great General Bar - start
-				if (not CyInterface().isCityScreenUp() and BugScreens.isShowCombatCounter()):
-
-					iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
-					iThresholdExp = gc.getPlayer(ePlayer).greatPeopleThreshold(True)
-					iNeededExp = iThresholdExp - iCombatExp
-					
-					szText = localText.getText("INTERFACE_NEXT_GREAT_GENERAL_XP", (iNeededExp,))
-					szText = u"<font=2>%s</font>" %(szText)
-
-# BUG - Bars on single line for higher resolution screens - start
-					if (xResolution >= 1440):
-						szGreatGeneralBar = "GreatGeneralBar-w"
-						xCoord = 268 + (xResolution - 1440) / 2 + 84 / 2
-						yCoord = 5
-					else:
-						szGreatGeneralBar = "GreatGeneralBar"
-						xCoord = 268 + (xResolution - 1024) / 2 + 100 / 2
-						yCoord = 32
-
-					screen.show( "GreatGeneralBarText" )
-					screen.setLabel( "GreatGeneralBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
-# BUG - Bars on single line for higher resolution screens - end
-
-					fProgress = float(iCombatExp) / float(iThresholdExp)
-					screen.setBarPercentage( szGreatGeneralBar, InfoBarTypes.INFOBAR_STORED, fProgress )
-					screen.show( szGreatGeneralBar )
+				self.updateGreatGeneralBar(screen)
 # BUG - Great General Bar - end
 					
 		return 0
 		
+# BUG - Great Person Bar - start
+	def updateGreatPersonBar(self, screen):
+		if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):
+			pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+			if (pHeadSelectedCity and pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer()):
+				pGPCity = pHeadSelectedCity
+				iGPTurns = GPUtil.getCityTurns(pGPCity)
+			else:
+				pGPCity, iGPTurns = GPUtil.findNextCity()
+				if (not pGPCity):
+					pGPCity, iGPP = GPUtil.findMaxCity()
+			szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
+			szText = u"<font=2>%s</font>" % (szText)
+			if (pGPCity):
+				iCityID = pGPCity.getID()
+			else:
+				iCityID = -1
+				
+# BUG - Bars on single line for higher resolution screens - start
+			xResolution = screen.getXResolution()
+			if (xResolution >= 1440):
+				szGreatPersonBar = "GreatPersonBar-w"
+				xCoord = 268 + (xResolution - 1440) / 2 + 84 + 6 + 487 + 6 + 320 / 2
+				yCoord = 5
+			else:
+				szGreatPersonBar = "GreatPersonBar"
+				xCoord = 268 + (xResolution - 1024) / 2 + 100 + 7 + 380 / 2
+				yCoord = 30
+
+			screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, iCityID, -1 )
+			if (not pGPCity):
+				screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
+			screen.show( "GreatPersonBarText" )
+# BUG - Bars on single line for higher resolution screens - end
+			
+			if (pGPCity):
+				fThreshold = float(gc.getPlayer( pGPCity.getOwner() ).greatPeopleThreshold(False))
+				fRate = float(pGPCity.getGreatPeopleRate())
+				fFirst = float(pGPCity.getGreatPeopleProgress()) / fThreshold
+
+				screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_STORED, fFirst )
+				if ( fFirst == 1 ):
+					screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold )
+				else:
+					screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, fRate / fThreshold / ( 1 - fFirst ) )
+			else:
+				screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_STORED, 0 )
+				screen.setBarPercentage( szGreatPersonBar, InfoBarTypes.INFOBAR_RATE, 0 )
+
+			screen.show( szGreatPersonBar )
+# BUG - Great Person Bar - end
+
+# BUG - Great General Bar - start
+	def updateGreatGeneralBar(self, screen):
+		if (not CyInterface().isCityScreenUp() and BugScreens.isShowCombatCounter()):
+			ePlayer = gc.getGame().getActivePlayer()
+			iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
+			iThresholdExp = gc.getPlayer(ePlayer).greatPeopleThreshold(True)
+			iNeededExp = iThresholdExp - iCombatExp
+			
+			szText = localText.getText("INTERFACE_NEXT_GREAT_GENERAL_XP", (iNeededExp,))
+			szText = u"<font=2>%s</font>" %(szText)
+
+# BUG - Bars on single line for higher resolution screens - start
+			xResolution = screen.getXResolution()
+			if (xResolution >= 1440):
+				szGreatGeneralBar = "GreatGeneralBar-w"
+				xCoord = 268 + (xResolution - 1440) / 2 + 84 / 2
+				yCoord = 5
+			else:
+				szGreatGeneralBar = "GreatGeneralBar"
+				xCoord = 268 + (xResolution - 1024) / 2 + 100 / 2
+				yCoord = 32
+
+			screen.show( "GreatGeneralBarText" )
+			screen.setLabel( "GreatGeneralBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
+# BUG - Bars on single line for higher resolution screens - end
+
+			fProgress = float(iCombatExp) / float(iThresholdExp)
+			screen.setBarPercentage( szGreatGeneralBar, InfoBarTypes.INFOBAR_STORED, fProgress )
+			screen.show( szGreatGeneralBar )
+# BUG - Great General Bar - end
+					
 	def updateTimeText( self ):
 		
 		global g_szTimeText
