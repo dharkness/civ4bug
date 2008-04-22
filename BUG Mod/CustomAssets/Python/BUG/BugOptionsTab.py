@@ -165,6 +165,8 @@ class BugOptionsTab:
 			label = name + "_Label"
 			screen.attachLabel(panel, label, title)
 			screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
+			return label
+		return None
 
 	def addSpacer (self, screen, panel, name):
 		spacer = name + "_Spacer"
