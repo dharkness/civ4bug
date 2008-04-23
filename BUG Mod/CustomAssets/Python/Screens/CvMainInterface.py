@@ -3271,10 +3271,16 @@ class CvMainInterface:
 					COMMERCE_CHAR = gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar()
 					
 					if (g_iYieldType == YieldTypes.YIELD_PRODUCTION):
-						lYieldLabels = [ "Worked Tiles", "Specialists", "Buildings &amp; Corporations", "Total" ]
+						lYieldLabels = [ localText.getText("TXT_KEY_RAW_PRODCOM_TILES", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_SPECIALISTS", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_BUILDINGS_CORPS", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TOTAL", ()) ]
 						cYieldChar = PRODUCTION_CHAR
 					else:
-						lYieldLabels = [ "Worked Tiles", "Trade Routes", "Buildings", "Total" ]
+						lYieldLabels = [ localText.getText("TXT_KEY_RAW_PRODCOM_TILES", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TRADE", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_BUILDINGS", ()),
+									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TOTAL", ()) ]
 						cYieldChar = COMMERCE_CHAR
 					
 					iSpecialistsYield = 0
@@ -3330,7 +3336,7 @@ class CvMainInterface:
 						szBuffer = u"%d%c" %( iCityBaseYield - iBuildingsYield - iSpecialistsYield - iNetTradeYield, cYieldChar )
 					else:
 						szBuffer = u"%d%c" %( iCityBaseYield - iSpecialistsYield - iBuildingsProdYield - iCorporationsYield, cYieldChar )
-					screen.setLabel( "RawWorkedPlotsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 160, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "RawWorkedPlotsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 160, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawWorkedPlotsText" )
 					
 					# Trade Routes / Specialists
@@ -3338,7 +3344,7 @@ class CvMainInterface:
 						szBuffer = u"%d%c" %( iNetTradeYield, cYieldChar )
 					else:
 						szBuffer = u"%d%c" %( iSpecialistsYield, cYieldChar )
-					screen.setLabel( "RawTradeRoutesSpecsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 180, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "RawTradeRoutesSpecsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 180, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawTradeRoutesSpecsText" )
 					
 					# Buildings
@@ -3346,7 +3352,7 @@ class CvMainInterface:
 						szBuffer = u"%d%c" %( iBuildingsYield + iSpecialistsYield, cYieldChar )
 					else:
 						szBuffer = u"%d%c" %( iBuildingsProdYield + iCorporationsYield, cYieldChar )
-					screen.setLabel( "RawBuildingsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 200, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "RawBuildingsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 200, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawBuildingsText" )
 					
 					# Base Commerce (excludes modifiers like +50% Capital)
@@ -3354,15 +3360,15 @@ class CvMainInterface:
 						szBuffer = u"<color=205,180,55,255>%d%c + %d%c = %d%c</color>" %( iCityBaseYield, cYieldChar, iCityYieldDelta, cYieldChar, iCityTotalYield, cYieldChar )
 					else:
 						szBuffer = u"<color=205,180,55,255>%d</color>%c" %( iCityBaseYield, cYieldChar )
-					screen.setLabel( "RawTotalText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 225, 220, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "RawTotalText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 220, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "RawTotalText" )
 					
 					# Toggle Button
 					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"<font=3>%c</font><font=2>%c</font>" %( COMMERCE_CHAR, PRODUCTION_CHAR )
+						szBuffer = u"<font=2>%c</font><font=3>%c</font>" %( PRODUCTION_CHAR, COMMERCE_CHAR )
 					else:
-						szBuffer = u"<font=2>%c</font><font=3>%c</font>" %( COMMERCE_CHAR, PRODUCTION_CHAR )
-					screen.setText( "RawToggleButton", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, 140, 168, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, g_iYieldType, -1 )
+						szBuffer = u"<font=3>%c</font><font=2>%c</font>" %( PRODUCTION_CHAR, COMMERCE_CHAR )
+					screen.setText( "RawToggleButton", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, 165, 168, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, g_iYieldType, -1 )
 					screen.show( "RawToggleButton" )
 # BUG - Raw Commerce - end
 

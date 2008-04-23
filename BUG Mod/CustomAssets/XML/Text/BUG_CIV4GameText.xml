@@ -6,7 +6,9 @@
   -->
 
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- Interface Text -->
+
+	<!-- BUG -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
 		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
@@ -15,6 +17,9 @@
 		<Italian>Premi Ctrl-Alt-O per personalizzare il BUG Mod</Italian>
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
 	</TEXT>
+
+	<!-- Great Person / General Bars -->
+	
 	<TEXT>
 		<Tag>INTERFACE_GREAT_PERSON_NONE</Tag>
 		<English>%s1: None</English>
@@ -56,6 +61,57 @@
 		<Spanish>General (%d1)</Spanish>
 	</TEXT>
 
+	<!-- Raw Production / Commerce -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_TILES</Tag>
+		<English>Worked Tiles</English>
+		<French>Tuiles Travaillées</French>
+		<German>Bearbeitete Fliesen</German>
+		<Italian>Mattonelle Funzionate</Italian>
+		<Spanish>Azulejos Trabajados</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_SPECIALISTS</Tag>
+		<English>Specialists</English>
+		<French>Sp&#233;cialistes</French>
+		<German>Spezialisten</German>
+		<Italian>Specialistas</Italian>
+		<Spanish>Especialistas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_TRADE</Tag>
+		<English>Trade Routes</English>
+		<French>Routes Commerciales</French>
+		<German>Handelswege</German>
+		<Italian>Rotte Commerciali</Italian>
+		<Spanish>Rutas Comerciales</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_BUILDINGS</Tag>
+		<English>Buildings</English>
+		<French>B&#226;timents</French>
+		<German>Geb&#228;ude</German>
+		<Italian>Edifici</Italian>
+		<Spanish>Edificios</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_BUILDINGS_CORPS</Tag>
+		<English>Buildings &amp; Corporations</English>
+		<French>B&#226;timents &amp; Soci&#233;t&#233;s</French>
+		<German>Geb&#228;ude &amp; Kapitalgesellschaften</German>
+		<Italian>Edifici &amp; Corporazioni</Italian>
+		<Spanish>Edificios &amp; Corporaciones</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_PRODCOM_TOTAL</Tag>
+		<English>Total</English>
+		<French>Total</French>
+		<German>Gesamtmenge</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+
 	<!-- Military Adviser -->
 
 	<TEXT>
@@ -66,7 +122,6 @@
 		<Italian>Deployment</Italian>
 		<Spanish>Deployment</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
 		<English>Sit-Rep</English>
@@ -75,7 +130,6 @@
 		<Italian>Sit-Rep</Italian>
 		<Spanish>Sit-Rep</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_RELATIONSHIP</Tag>
 		<English>Relationship</English>
@@ -84,7 +138,6 @@
 		<Italian>Relationship</Italian>
 		<Spanish>Relationship</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
 		<English>Worst Enemy</English>
@@ -93,7 +146,6 @@
 		<Italian>Worst Enemy</Italian>
 		<Spanish>Worst Enemy</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_THREAD_INDEX</Tag>
 		<English>Thread Index</English>
@@ -102,7 +154,6 @@
 		<Italian>Thread Index</Italian>
 		<Spanish>Thread Index</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_ACTIVE_WARS</Tag>
 		<English>Active Wars</English>
@@ -111,7 +162,6 @@
 		<Italian>Active Wars</Italian>
 		<Spanish>Active Wars</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
 		<English>Strat. Res</English>
@@ -120,7 +170,6 @@
 		<Italian>Strat. Res</Italian>
 		<Spanish>Strat. Res</Spanish>
 	</TEXT>
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
 		<English>Will Declare?</English>
