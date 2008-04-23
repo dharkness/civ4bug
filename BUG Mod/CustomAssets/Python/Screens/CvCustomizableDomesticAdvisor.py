@@ -70,7 +70,7 @@ import CvEventManager
 import Popup as PyPopup
 
 import CvEventInterface
-import CvPath
+import BugPath
 
 import math
 import os.path
@@ -2228,12 +2228,13 @@ class CvCustomizableDomesticAdvisor:
 				self.listSelectedCities.append(screen.getTableText(page, 1, i))
 	
 	def save(self, inputClass):
-		name = os.path.join(CvPath.userDir, "CustomDomAdv", "CustomDomAdv.txt")
-		file = open(name, 'w')
-
-		if(file != 0):
-			pickle.dump({ "version" : self.PICKLED_VERSION, "pages" : self.PAGES }, file)
-			file.close()
+		name = BugPath.findIniFile("CustomDomAdv.txt", "CustomDomAdv")
+		if (name):
+			file = open(name, 'w')
+	
+			if(file != 0):
+				pickle.dump({ "version" : self.PICKLED_VERSION, "pages" : self.PAGES }, file)
+				file.close()
 
 		return 1
 
@@ -2563,10 +2564,10 @@ class CvCustomizableDomesticAdvisor:
 	def loadPages(self):
 
 		self.PAGES = None
-		name = os.path.join(CvPath.userDir, "CustomDomAdv", "CustomDomAdv.txt")
-		if (not os.path.isfile(name)):
-			name = "CustomDomAdv.txt"
-		if (os.path.isfile(name)):
+		name = BugPath.findIniFile("CustomDomAdv.txt", "CustomDomAdv")
+		if (not name):
+			name = BugPath.findIniFile("CustomDomAdv.txt")
+		if (name):
 			try:
 				file = open(name, 'r')
 				dict = pickle.load(file)
