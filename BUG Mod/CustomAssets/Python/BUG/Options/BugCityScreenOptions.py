@@ -38,13 +38,13 @@ The \"Default\" setting shows the specialists using the vanilla BtS format. \
 The \"Stacker\" setting shows the specialists stacked using the Stacked Specialist mod. \
 The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10 (capped chevron) and 20 (boxed capped chevron) format. ",
 								  ['Default', 'Stacker', 'Chevron'], None,
-								  InterfaceDirtyBits.GameData_DIRTY_BIT))
+								  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 
 		self.addOption(Option("City_Anger_Counter",
 							  "Screens", "Anger Counter", True,
 							  "Anger Counter",
 							  "When checked, puts anger countdown on city screen.",
-							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 
 	def isShowRawCommerce(self):
 		return self.getBoolean('City_RawCommerce')
