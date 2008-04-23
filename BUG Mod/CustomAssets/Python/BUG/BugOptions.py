@@ -2,18 +2,30 @@
 ## Provides access to all options and a facade base class for option sets
 ## BUG Mod - Copyright 2007
 
-import RuffModControl
+from BugPath import findMainModIniFile
+from configobj import ConfigObj
 from CvPythonExtensions import *
+import CvUtil
 
 #__all__ = [ getOptions, Option, OptionList, OptionsFacade ]
 
 localText = CyTranslator()
 
 class BugOptions(object):
+	
+	"""
+	Manages a dictionary of Option objects which describe the options that
+	control the mod, provides methods for getting/setting values for them,
+	and reading/writing them from/to an INI file.
+	"""
 
 	def __init__(self):
-		self.config = RuffModControl.RuffModConfig()
+		"Initializes an empty dictionary of options and reads the main INI file."
 		self.options = {}
+		self.iniFile = None
+		self.config = None
+		
+		self.read()
 
 
 	def getOption(self, name):
@@ -25,15 +37,12 @@ class BugOptions(object):
 		self.options[option.getName()] = option
 
 
-	def getValue(self, name):
+	def getString(self, name):
 		option = self.getOption(name)
 		if (option):
 			return self.getRawString(option.getSection(), option.getKey(), option.getDefault())
 		else:
 			return ""
-
-	def getString(self, name):
-		return self.getValue(name)
 
 	def getBoolean(self, name):
 		option = self.getOption(name)
@@ -57,82 +66,79 @@ class BugOptions(object):
 			return 0.0
 
 
-	def setValue(self, name, value):
-		option = self.getOption(name)
-		if (option):
-			try:
-				self.config.set_str(option.getSection(), option.getKey(), value)
-			except:
-				pass
-
 	def setString(self, name, value):
-		self.setValue(name, value)
+		self._setValue(name, str(value))
 
 	def setBoolean(self, name, value):
-		option = self.getOption(name)
-		if (option):
-			try:
-				self.config.set_boolean(option.getSection(), option.getKey(), value)
-			except:
-				pass
+		self._setValue(name, bool(value))
 
 	def setInt(self, name, value):
-		option = self.getOption(name)
-		if (option):
-			try:
-				self.config.set_int(option.getSection(), option.getKey(), value)
-			except:
-				pass
+		self._setValue(name, int(value))
 
 	def setFloat(self, name, value):
-		option = self.getOption(name)
-		if (option):
-			try:
-				self.config.set_float(option.getSection(), option.getKey(), value)
-			except:
-				pass
+		self._setValue(name, float(value))
 
+	def _setValue(self, name, value):
+		if (self.config):
+			option = self.getOption(name)
+			if (option):
+				try:
+					self.config[option.getSection()][option.getKey()] = value
+				except:
+					pass
 
-	def getRawValue(self, section, key, default=None):
-		try:
-			return self.config.get_str(section, key, default)
-		except:
-			return default
 
 	def getRawString(self, section, key, default=None):
-		return self.getRawValue(section, key, default)
+		try:
+			value = self.config[section][key]
+			if (isinstance(value, str)):
+				return value
+		except:
+			pass
+		return default
 
 	def getRawBoolean(self, section, key, default=None):
 		try:
-			return self.config.get_boolean(section, key, default)
+			return self.config[section].as_bool(key)
 		except:
 			return default
 
 	def getRawInt(self, section, key, default=None):
 		try:
-			return self.config.get_int(section, key, default)
+			return self.config[section].as_int(key)
 		except:
 			return default
 
 	def getRawFloat(self, section, key, default=None):
 		try:
-			return self.config.get_float(section, key, default)
-		except:
-			return default
-
-
-	def getAdvUnitName(self, section, key, default=None):
-		try:
-			return self.config.get_advunitname(section, key, default)
+			return self.config[section].as_float(key)
 		except:
 			return default
 
 
 	def read(self):
-		RuffModControl.RuffModConfigFile = RuffModControl.read_ConfigFile()
+		try:
+			self.iniFile = findMainModIniFile()
+			self.config = ConfigObj(self.iniFile)
+		except:
+			self.iniFile = None
+			self.config = None
+			CvUtil.pyPrint("Couldn't find INI file")
 
 	def write(self):
-		RuffModControl.write_ConfigFile()
+		if (self.config):
+			try:
+				self.config.write()
+			except:
+				CvUtil.pyPrint("Failed writing to INI file")
+		else:
+			CvUtil.pyPrint("INI file wasn't read")
+	
+	def isLoaded(self):
+		if (self.iniFile):
+			return True
+		else:
+			return False
 
 
 # The singleton BugOptions object
@@ -143,6 +149,12 @@ def getOptions():
 
 
 class OptionsFacade(object):
+	
+	"""
+	Facade wrapper to the global set of all options. Allows each submod to group
+	its options together independently of other mods yet have all options stored
+	in a single INI file.
+	"""
 
 	def __init__(self):
 		self.options = getOptions()
@@ -154,9 +166,6 @@ class OptionsFacade(object):
 	def addOption(self, option):
 		self.options.addOption(option)
 
-
-	def getValue(self, name):
-		return self.options.getValue(name)
 
 	def getString(self, name):
 		return self.options.getString(name)
@@ -171,11 +180,8 @@ class OptionsFacade(object):
 		return self.options.getFloat(name)
 
 
-	def getRawValue(self, section, key, default=None):
-		return self.options.getRawValue(section, key, default)
-
 	def getRawString(self, section, key, default=None):
-		return self.options.getRawValue(section, key, default)
+		return self.options.getRawString(section, key, default)
 
 	def getRawBoolean(self, section, key, default=None):
 		return self.options.getRawBoolean(section, key, default)
@@ -186,13 +192,6 @@ class OptionsFacade(object):
 	def getRawFloat(self, section, key, default=None):
 		return self.options.getRawFloat(section, key, default)
 
-
-	def getAdvUnitName(self, section, key, default=None):
-		return self.options.getAdvUnitName(section, key, default)
-
-
-	def setValue(self, name, value):
-		self.options.setValue(name, value)
 
 	def setString(self, name, value):
 		self.options.setString(name, value)
@@ -212,7 +211,17 @@ class OptionsFacade(object):
 
 
 class Option(object):
-	"Holds the metadata for a single option"
+	
+	"""
+	Holds the metadata for a single option:
+	- A name which is used to access the option. This must be unique for all options.
+	- A section and key used to store it in an INI file.
+	- A default value used when no value is found in the INI file.
+	- A title and tooltip (hover text) used to display it in the Options Screen.
+	  Both are now stored in an external XML file and accessed using its name.
+	- A Civ4 dirty-bit that is set when the option is changed. This allows changing
+	  the option to force certain aspects of the interface to redraw themselves.
+	"""
 
 	def __init__(self, name, section, key, default, title, tooltip, dirtyBit=None):
 		if (name is not None):
@@ -255,7 +264,12 @@ class Option(object):
 
 
 class OptionList(Option):
-	"Adds a list of possible values for a single option"
+	
+	"""
+	Adds a list of possible values to a single option and a display format to use
+	when creating the dropdown listbox in the Options Screen.
+	The values are not yet stored in the XML file for translation.
+	"""
 
 	def __init__(self, name, section, key, default, title, tooltip, values, format=None, dirtyBit=None):
 		Option.__init__(self, name, section, key, default, title, tooltip, dirtyBit)

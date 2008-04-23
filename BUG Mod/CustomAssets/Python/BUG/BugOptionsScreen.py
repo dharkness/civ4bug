@@ -17,6 +17,8 @@ import BugAutologOptionsTab
 import BugUnitNameOptionsTab
 import BugCreditsOptionsTab
 
+import BugErrorOptionsTab
+
 class BugOptionsScreen:
 	"Options Screen"
 	
@@ -25,15 +27,18 @@ class BugOptionsScreen:
 		self.options = BugOptions.getOptions()
 		self.tabs = []
 		
-		# instantiate all the tab objects
-		self.addTab(BugGeneralOptionsTab.BugGeneralOptionsTab(self))
-		self.addTab(BugAdvisorOptionsTab.BugAdvisorOptionsTab(self))
-		self.addTab(BugNJAGCOptionsTab.BugNJAGCOptionsTab(self))
-		self.addTab(BugScoreOptionsTab.BugScoreOptionsTab(self))
-		self.addTab(BugAlertsOptionsTab.BugAlertsOptionsTab(self))
-		self.addTab(BugAutologOptionsTab.BugAutologOptionsTab(self))
-		self.addTab(BugUnitNameOptionsTab.BugUnitNameOptionsTab(self))
-		self.addTab(BugCreditsOptionsTab.BugCreditsOptionsTab(self))
+		if (not self.options.isLoaded()):
+			self.addTab(BugErrorOptionsTab.BugErrorOptionsTab(self))
+		else:
+			# instantiate all the tab objects
+			self.addTab(BugGeneralOptionsTab.BugGeneralOptionsTab(self))
+			self.addTab(BugAdvisorOptionsTab.BugAdvisorOptionsTab(self))
+			self.addTab(BugNJAGCOptionsTab.BugNJAGCOptionsTab(self))
+			self.addTab(BugScoreOptionsTab.BugScoreOptionsTab(self))
+			self.addTab(BugAlertsOptionsTab.BugAlertsOptionsTab(self))
+			self.addTab(BugAutologOptionsTab.BugAutologOptionsTab(self))
+			self.addTab(BugUnitNameOptionsTab.BugUnitNameOptionsTab(self))
+			self.addTab(BugCreditsOptionsTab.BugCreditsOptionsTab(self))
 
 	def addTab(self, tab):
 		self.tabs.append(tab)

@@ -156,15 +156,23 @@ class BugOptionsTab:
 		return columns
 
 
-	def addLabel (self, screen, panel, name, title):
-		xmlKey = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
-		xmlTitle = localText.getText(xmlKey, ())
-		if (xmlTitle and xmlTitle != xmlKey):
-			title = xmlTitle
+	def getText (self, key, default):
+		value = localText.getText(key, ())
+		if (value and value != key):
+			return value
+		else:
+			return default
+
+	def addLabel (self, screen, panel, name, title=None, tooltip=None):
+		key = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
+		title = self.getText(key, title)
+		tooltip = self.getText(key + "_HOVER", tooltip)
 		if (title):
 			label = name + "_Label"
 			screen.attachLabel(panel, label, title)
 			screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
+			if (tooltip):
+				screen.setToolTip(label, tooltip)
 			return label
 		return None
 

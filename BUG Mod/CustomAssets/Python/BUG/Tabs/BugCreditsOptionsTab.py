@@ -3,7 +3,6 @@
 ## BUG Mod - Copyright 2007
 
 import BugOptionsTab
-import CvModName
 
 credits = [ "BUG Team",
 		    "Alerum68 - Release, Testing",
