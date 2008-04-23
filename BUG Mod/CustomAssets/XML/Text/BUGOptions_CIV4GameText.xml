@@ -63,6 +63,15 @@
 	</TEXT>
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERSMETHOD_LIST</Tag>
+		<English>Message|Popup|Both</English>
+		<French>Message|Popup|Both</French>
+		<German>Message|Popup|Both</German>
+		<Italian>Message|Popup|Both</Italian>
+		<Spanish>Message|Popup|Both</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_LOGREMINDERS_TEXT</Tag>
 		<English>Log w. Autolog</English>
 		<French>Log w. Autolog</French>
@@ -582,6 +591,15 @@
 		<German>The format of the log output.</German>
 		<Italian>The format of the log output.</Italian>
 		<Spanish>The format of the log output.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FORMAT_LIST</Tag>
+		<English>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</English>
+		<French>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</French>
+		<German>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</German>
+		<Italian>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</Italian>
+		<Spanish>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -1242,6 +1260,15 @@
 	</TEXT>
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITY_SPECIALISTS_LIST</Tag>
+		<English>Default|Stacker|Chevron</English>
+		<French>Default|Stacker|Chevron</French>
+		<German>Rückstellung|Stapler|Sparren</German>
+		<Italian>Default|Stacker|Chevron</Italian>
+		<Spanish>Default|Stacker|Chevron</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_ENABLED_TEXT</Tag>
 		<English>Better Espionage Screen</English>
 		<French>Better Espionage Screen</French>
@@ -1872,6 +1899,15 @@
 	</TEXT>
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_LIST</Tag>
+		<English>Leader|Civilization|Both</English>
+		<French>Leader|Civilization|Both</French>
+		<German>Leader|Civilization|Both</German>
+		<Italian>Leader|Civilization|Both</Italian>
+		<Spanish>Leader|Civilization|Both</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ATTITUDE_TEXT</Tag>
 		<English>Attitude Icons</English>
 		<French>Attitude Icons</French>
@@ -2201,6 +2237,15 @@ O - The network player is out-of-sync.</Spanish>
 		<German>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</German>
 		<Italian>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Italian>
 		<Spanish>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TYPES_LIST</Tag>
+		<English>None|One|Maximum</English>
+		<French>None|One|Maximum</French>
+		<German>None|One|Maximum</German>
+		<Italian>None|One|Maximum</Italian>
+		<Spanish>None|One|Maximum</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -3085,4 +3130,29 @@ Counting Codes:
 		<Italian>Credits</Italian>
 		<Spanish>Credits</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_TEAM</Tag>
+		<English>BUG Team</English>
+		<French>BUG Team</French>
+		<German>BUG Mannschaft</German>
+		<Italian>BUG Team</Italian>
+		<Spanish>BUG Team</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MOD_AUTHORS</Tag>
+		<English>Mod Authors</English>
+		<French>Mod Authors</French>
+		<German>Mod Autoren</German>
+		<Italian>Mod Authors</Italian>
+		<Spanish>Mod Authors</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_TRANSLATORS</Tag>
+		<English>Translators</English>
+		<French>Translators</French>
+		<German>Übersetzer</German>
+		<Italian>Translators</Italian>
+		<Spanish>Translators</Spanish>
+	</TEXT>
+	
 </Civ4GameText>

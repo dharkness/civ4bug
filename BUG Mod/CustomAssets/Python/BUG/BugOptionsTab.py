@@ -15,19 +15,29 @@ class BugOptionsTab:
 		self.name = name
 		self.tab = self.name + "Tab"
 		
-		xmlKey = "TXT_KEY_BUG_OPTTAB_" + name.upper()
-		xmlTitle = localText.getText(xmlKey, ())
-		if (xmlTitle and xmlTitle != xmlKey):
-			self.title = xmlTitle
-		else:
-			self.title = title
+		self.title = title
+		self.translated = False
 		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 
 	def getName (self):
 		return self.name
 
 	def getTitle (self):
+		if (not self.translated):
+			self.translate()
 		return self.title
+	
+	def translate (self):
+		xmlKey = "TXT_KEY_BUG_OPTTAB_" + self.name.upper()
+		self.title = self.getText(xmlKey, self.title)
+		self.translated = True
+	
+	def getText (self, key, default):
+		text = localText.getText(key, ())
+		if (text and text != key):
+			return text
+		else:
+			return default
 
 
 	def setOptions (self, options):
@@ -43,7 +53,7 @@ class BugOptionsTab:
 
 	def createTab (self, screen):
 		"Creates and returns the options tab"
-		screen.attachTabItem(self.tab, self.title)
+		screen.attachTabItem(self.tab, self.getTitle())
 		
 		return self.tab
 
@@ -156,13 +166,6 @@ class BugOptionsTab:
 		return columns
 
 
-	def getText (self, key, default):
-		value = localText.getText(key, ())
-		if (value and value != key):
-			return value
-		else:
-			return default
-
 	def addLabel (self, screen, panel, name, title=None, tooltip=None):
 		key = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
 		title = self.getText(key, title)
@@ -245,7 +248,7 @@ class BugOptionsTab:
 		option = self.getOption(name)
 		if (option):
 			value = self.options.getInt(name) # the actual index
-			values = option.getValues()
+			values = option.getDisplayValues()
 			elements = ()
 			for v in values:
 				elements += (v,)
@@ -331,6 +334,24 @@ class BugOptionsTab:
 				self.addMissingOption(screen, controlPanel, checkOption)
 			if (not dropOption):
 				self.addMissingOption(screen, controlPanel, dropOption)
+
+	def addCheckboxTextDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
+		checkOption = self.getOption(checkName)
+		dropOption = self.getOption(dropName)
+		if (checkOption and dropOption):
+			value = self.options.getInt(name) # the actual index
+			values = option.getDisplayValues()
+			elements = ()
+			for v in values:
+				elements += (v,)
+			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, value, "handleBugDropdownChange")
+			screen.setLayoutFlag(dropControl, "LAYOUT_RIGHT")
+			return checkControl, dropControl
+		else:
+			if (not checkOption):
+				self.addMissingOption(screen, checkPanel, checkOption)
+			if (not dropOption):
+				self.addMissingOption(screen, dropPanel, dropOption)
 
 	def addCheckboxIntDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
 		checkOption = self.getOption(checkName)

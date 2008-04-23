@@ -4,13 +4,13 @@
 
 import BugOptionsTab
 
-credits = [ "BUG Team",
+credits = [ "BUG_TEAM|BUG Team",
 		    "Alerum68 - Release, Testing",
 		    "EmperorFool - Coding",
 		    "Cammagno - Documentation",
 		    "Ruff_Hi - Coding, Testing",
 		    "-",
-		    "Mod Authors",
+		    "MOD_AUTHORS|Mod Authors",
 		    "12monkeys - Plot List Enhancements",
 		    "Almightix - Better Espionage Screen",
 		    "asioasioasio - Wide City Bar",
@@ -18,7 +18,7 @@ credits = [ "BUG Team",
 		    "Chinese American - Culture Turns, Great Person Turns",
 		    "Dr. Elmer Jiggles - Civ4lerts, Custom Event Manager, MoreCiv4lerts",
 		    "EmperorFool - Advanced Scoreboard, GP Tech Prefs, Options Core, Power Ratio, Raw Production",
-		    " -    (extended BES, Civ4lerts, CDA, Raw Commerce, Reminders)",
+		    " -    (extended BES, Civ4lerts, CDA, GP Progress Bar, Raw Commerce, Reminders)",
 		    "Eotinb - Autolog, Reminders",
 		    "Impaler[WrG] - Great Person Progress Bar",
 		    "NeverMind - Great General Combat Experience Counter",
@@ -31,9 +31,10 @@ credits = [ "BUG Team",
 		    "Taelis - Customizable Domestic Advisor",
 		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
 		    "-",
-		    "Translators",
-		    "Cammagno - Italian",
-		    "Ludwig II - German",
+		    "TRANSLATORS|Translators",
+		    "Cammagno - Italian (Documentation)",
+		    "Ludwig II - German (Documentation)",
+		    "The Doc - German (Options Screen)",
 
 		    ]
 
@@ -65,8 +66,14 @@ class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
 						labelNum += 1
 					else:
 						first = False
-					label = "CreditsHeaderLabel%d" % labelNum
-					screen.attachLabel(column, label, line)
+					pos = line.find("|")
+					if pos != -1:
+						label = line[:pos]
+						text = line[pos+1:]
+						self.addLabel(screen, column, label, text)
+					else:
+						label = "CreditsHeaderLabel%d" % labelNum
+						self.addLabel(screen, column, label, line)
 					#screen.setLayoutFlag(label, "LAYOUT_CENTER")
 					#screen.setLayoutFlag(label, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 					labelNum += 1
@@ -80,7 +87,7 @@ class BugCreditsOptionsTab(BugOptionsTab.BugOptionsTab):
 					# Person - Task
 					leftLabel = "CreditsLabelLeft%d" % labelNum
 					rightLabel = "CreditsLabelRight%d" % labelNum
-					leftText = line[0:pos] + "   "
+					leftText = line[:pos] + "   "
 					rightText = line[pos+3:]
 					screen.attachLabel(left, leftLabel, leftText)
 					screen.setLayoutFlag(leftLabel, "LAYOUT_RIGHT")

@@ -233,9 +233,11 @@ class Option(object):
 		self.default = default
 		
 		self.xmlKey = "TXT_KEY_BUG_OPT_" + self.name.upper()
-		self.title = None
-		self.tooltip = None
+		self.title = title
+		self.tooltip = tooltip
 		self.dirtyBit = dirtyBit
+		
+		self.translated = False
 
 	def getName(self):
 		return self.name
@@ -250,17 +252,29 @@ class Option(object):
 		return self.default
 
 	def getTitle(self):
-		if not self.title:
-			self.title = localText.getText(self.xmlKey + "_TEXT", ())
+		if (not self.translated):
+			self.translate()
 		return self.title
 
 	def getTooltip(self):
-		if not self.tooltip:
-			self.tooltip = localText.getText(self.xmlKey + "_HOVER", ())
+		if (not self.translated):
+			self.translate()
 		return self.tooltip
 
 	def getDirtyBit(self):
 		return self.dirtyBit
+	
+	def translate(self):
+		self.title = self.getText(self.xmlKey + "_TEXT", self.title)
+		self.tooltip = self.getText(self.xmlKey + "_HOVER", self.tooltip)
+		self.translated = True
+	
+	def getText(self, key, default):
+		text = localText.getText(key, ())
+		if (text and text != key):
+			return text
+		else:
+			return default
 
 
 class OptionList(Option):
@@ -275,12 +289,28 @@ class OptionList(Option):
 		Option.__init__(self, name, section, key, default, title, tooltip, dirtyBit)
 		self.values = values
 		self.format = format
+		self.displayValues = None
 
 	def getValues(self):
 		return self.values
 
 	def getFormat(self):
 		return self.format
+
+	def getDisplayValues(self):
+		if (not self.translated):
+			self.translate()
+		return self.displayValues
+	
+	def translate(self):
+		list = self.getText(self.xmlKey + "_LIST", None)
+		if (list):
+			self.displayValues = []
+			for item in list.split("|"):
+				self.displayValues.append(item)
+		else:
+			self.displayValues = self.values
+		Option.translate(self)
 
 	def isValid(self, value):
 		return value in self.values
