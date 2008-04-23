@@ -65,10 +65,13 @@ if (rootDir):
 if (not iniFileSearchPaths):
 	pass
 
-def findIniFile(name):
-	"Locates the named INI file using the search paths above."
+def findIniFile(name, subdir=None):
+	"Locates the named configuration file using the search paths above."
 	for dir in iniFileSearchPaths:
-		file = os.path.join(dir, name)
+		if (subdir):
+			file = os.path.join(dir, subdir, name)
+		else:
+			file = os.path.join(dir, name)
 		if (os.path.isfile(file)):
 			return file
 	return None
