@@ -2876,6 +2876,14 @@ Counting Codes:
 		<Spanish>Foreign (F4):</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MILITARY_ADVISOR</Tag>
+		<English>Military (F5):</English>
+		<French>Military (F5):</French>
+		<German>Military (F5):</German>
+		<Italian>Military (F5):</Italian>
+		<Spanish>Military (F5):</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHNOLOGY_ADVISOR</Tag>
 		<English>Technology (F6):</English>
 		<French>Technology (F6):</French>
