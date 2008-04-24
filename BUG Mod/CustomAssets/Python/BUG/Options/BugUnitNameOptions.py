@@ -4,7 +4,6 @@
 
 from CvPythonExtensions import *
 from BugOptions import OptionsFacade, Option, OptionList
-import RuffModControl
 
 class BugUnitNameOptions(OptionsFacade):
 
