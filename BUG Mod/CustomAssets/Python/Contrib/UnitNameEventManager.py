@@ -67,11 +67,15 @@
 from CvPythonExtensions import *
 import CvUtil
 import PyHelpers
+import BugPath
+import BugConfigTracker
 import BugUnitNameOptions
+from configobj import ConfigObj
 import Roman
 import RandomNameUtils
 import random
 import Popup as PyPopup
+from RuffEcho import RuffEcho
 
 #######SD Tool Kit#######
 
@@ -122,6 +126,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		eventManager.addEventHandler("unitBuilt", self.onUnitBuilt)
 
 		self.eventMgr = eventManager
+		self.config = None
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
@@ -144,11 +149,11 @@ class BuildUnitName(AbstractBuildUnitName):
 				for i in range(player.getNumUnits()):
 					unit = player.getUnit(i)
 
-#					self.RuffEcho("Unit %d is a %s" %(i, unit.getName()), true, true)
+#					RuffEcho("Unit %d is a %s" %(i, unit.getName()), true, true)
 
 #					if (unit.getName() == "Worker"):
 #						city = unit.plot().getPlotCity()
-#						self.RuffEcho("...in city %s" %(city.getName()), true, true)
+#						RuffEcho("...in city %s" %(city.getName()), true, true)
 #						self.onUnitBuilt([city, unit])
 #						break
 
@@ -171,13 +176,13 @@ class BuildUnitName(AbstractBuildUnitName):
 						zsUnitClass = gc.getUnitClassInfo(pLoopUnit.getUnitClassType()).getType()
 
 						zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
-#						self.RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
+#						RuffEcho("UnitNameEM [" + zsUnitNameConv + "]", false, true)
 
 #						zsUnitNameConv = "^ut^ ^cnt[r]^ ^tt1[g][5:7]^ : ^ct^ ^tt2[o][101]^"
 #						zsUnitNameConv = "^rd^"
 #						zsUnitNameConv = "^rc^"
 
-#						self.RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
+#						RuffEcho("UnitNameEM-0 [" + zsUnitNameConv + "]", false, true)
 
 #						zsUnitName = self.getUnitName(zsUnitNameConv, pLoopUnit, pCity)
 
@@ -200,37 +205,37 @@ class BuildUnitName(AbstractBuildUnitName):
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
 
-		self.RuffEcho("onUnitBuild-A", false, true)
+		RuffEcho("onUnitBuild-A", false, true)
 
 		if (pUnit == None
 		or pUnit.isNone()):
 			return
 
-		self.RuffEcho("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), BugUnitName.isEnabled()), false, true)
+		RuffEcho("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), BugUnitName.isEnabled()), false, true)
 
 		if not (iPlayer == CyGame().getActivePlayer()
 		and BugUnitName.isEnabled()):
 			return
 
-		self.RuffEcho("onUnitBuild-C", false, true)
+		RuffEcho("onUnitBuild-C", false, true)
 
 		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 		zsUnitCombat = self.getUnitCombat(pUnit)
 		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
 
-		self.RuffEcho("ERA(%s)" % (zsEra), false, true)
-		self.RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
-		self.RuffEcho("Class(%s)" % (zsUnitClass), false, true)
+		RuffEcho("ERA(%s)" % (zsEra), false, true)
+		RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
+		RuffEcho("Class(%s)" % (zsUnitClass), false, true)
 
 		zsUnitNameConv = self.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 		zsUnitName = self.getUnitName(zsUnitNameConv, pUnit, pCity)
 
-		self.RuffEcho("onUnitBuild-D", false, true)
+		RuffEcho("onUnitBuild-D", false, true)
 
 		if not (zsUnitName == ""):
 			pUnit.setName(zsUnitName)
 
-		self.RuffEcho("onUnitBuild-E", false, true)
+		RuffEcho("onUnitBuild-E", false, true)
 
 		return
 
@@ -250,22 +255,22 @@ class BuildUnitName(AbstractBuildUnitName):
 		zsUnit = PyInfo.UnitInfo(pUnit.getUnitType()).getDescription()
 		zsCity = pCity.getName()
 
-		self.RuffEcho("ERA(%s)" % (zsEra), false, true)
-		self.RuffEcho("Civ(%s)" % (zsCiv), false, true)
-		self.RuffEcho("Leader(%s)" % (zsLeader), false, true)
-		self.RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
-		self.RuffEcho("Class(%s)" % (zsUnitClass), false, true)
-		self.RuffEcho("Type(%s)" % (zsUnitType), false, true)
-		self.RuffEcho("Domain(%s)" % (zsUnitDomain), false, true)
-		self.RuffEcho("Unit(%s)" % (zsUnit), false, true)
-		self.RuffEcho("City(%s)" % (zsCity), false, true)
+		RuffEcho("ERA(%s)" % (zsEra), false, true)
+		RuffEcho("Civ(%s)" % (zsCiv), false, true)
+		RuffEcho("Leader(%s)" % (zsLeader), false, true)
+		RuffEcho("Combat(%s)" % (zsUnitCombat), false, true)
+		RuffEcho("Class(%s)" % (zsUnitClass), false, true)
+		RuffEcho("Type(%s)" % (zsUnitType), false, true)
+		RuffEcho("Domain(%s)" % (zsUnitDomain), false, true)
+		RuffEcho("Unit(%s)" % (zsUnit), false, true)
+		RuffEcho("City(%s)" % (zsCity), false, true)
 
 		zsName = sUnitNameConv
 
 		#if zsName == "":
 		#zsName = "^ut^ ^cnt[r]^ Div ^tt1[s][5:7]^ : ^ct^ ^tt2[o][101]^"
 
-		self.RuffEcho("UnitNameEM-A [" + zsName + "]", false, true)
+		RuffEcho("UnitNameEM-A [" + zsName + "]", false, true)
 
 ##  - ^civ4^ - no naming convention, uses standard civ4
 #		check if Civ4 naming convention is required
@@ -277,14 +282,14 @@ class BuildUnitName(AbstractBuildUnitName):
 		if not (zsName.find("^rd^") == -1):
 			return RandomNameUtils.getRandomName()
 
-		self.RuffEcho("UnitNameEM-B", false, true)
+		RuffEcho("UnitNameEM-B", false, true)
 
 ##  - ^rc^ - random civ related name
 #		check if random civ related naming convention is required
 		if not (zsName.find("^rc^") == -1):
 			return RandomNameUtils.getRandomCivilizationName(pPlayer.getCivilizationType())
 
-		self.RuffEcho("UnitNameEM-C [" + zsName + "]", false, true)
+		RuffEcho("UnitNameEM-C [" + zsName + "]", false, true)
 
 ##  - ^ct^ - City
 ##  - ^cv^ - Civilization
@@ -300,7 +305,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		zsName = zsName.replace("^dm^", zsUnitDomain)
 		zsName = zsName.replace("^ld^", zsLeader)
 
-		self.RuffEcho("UnitNameEM-D [" + zsName + "]", false, true)
+		RuffEcho("UnitNameEM-D [" + zsName + "]", false, true)
 
 #		check if there are any more codes to swap out, return if not
 		if (zsName.find("^") == -1):
@@ -314,7 +319,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		elif zsSDKey == "UNITCITY": zsSDKey = zsSDKey + zsUnit + zsCity
 		elif zsSDKey == "DOMAIN":	zsSDKey = zsSDKey + zsUnitDomain
 
-		self.RuffEcho("UnitNameEM-E [" + zsSDKey + "]", false, true)
+		RuffEcho("UnitNameEM-E [" + zsSDKey + "]", false, true)
 
 #		see if we have already started this counter
 		if (sdEntityExists(sdGroup, zsSDKey) == False):
@@ -329,7 +334,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		ziTT1 = sdGetVal(sdGroup, zsSDKey, "tt1")
 		ziTT2 = sdGetVal(sdGroup, zsSDKey, "tt2")
 
-		self.RuffEcho("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]", false, true)
+		RuffEcho("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]", false, true)
 
 #		increment count, adjust totals if required
 		ziCnt = ziCnt + 1
@@ -352,30 +357,48 @@ class BuildUnitName(AbstractBuildUnitName):
 		return zsName
 
 
+	def loadIniFile(self):
+		if not self.config:
+			iniFile = BugPath.findIniFile("Adv Unit Naming.ini")
+			if iniFile:
+				try:
+					self.config = ConfigObj(iniFile)
+					BugConfigTracker.add("UnitNaming_Config", iniFile)
+				except:
+					self.config = None
+		if self.config:
+			return True
+		else:
+			return False
+	
 	def getUnitNameConvFromIniFile(self, Era, UnitClass, UnitCombat):
 ##    a. try to get the advanced naming convention
 ##    b. if it returns 'DEFAULT', then get the combat based naming convention
 ##    c. if naming convention is 'DEFAULT', get default naming convention
 
-		if BugUnitName.isAdvanced():
-			self.RuffEcho("UnitNameEM-ini [" + Era[4:] + "_" + UnitClass[10:] + "]", false, true)
-			zsUnitNameConv = BugUnitName.getAdvanced(Era[4:], UnitClass[10:])
+		if BugUnitName.isAdvanced() and self.loadIniFile():
+			key = Era[4:] + "_" + UnitClass[10:]
+			RuffEcho("UnitNameEM-ini [" + key + "]", false, true)
+			try:
+				zsUnitNameConv = self.config["UnitName"][key]
+			except:
+				zsUnitNameConv = "DEFAULT"
 		else:
 			zsUnitNameConv = "DEFAULT"
 
 		if not (zsUnitNameConv == "DEFAULT"):
 			return zsUnitNameConv
 
-		self.RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:], false, true)
+		RuffEcho("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:], false, true)
 
 		zsUnitNameConv = BugUnitName.getCombat(UnitCombat[11:])
 
-		self.RuffEcho("UnitNameEM-iniB [" + zsUnitNameConv + "]", false, true)
+		RuffEcho("UnitNameEM-iniB [" + zsUnitNameConv + "]", false, true)
 
 		if not (zsUnitNameConv == "DEFAULT"):
 			return zsUnitNameConv
 
-		self.RuffEcho("UnitNameEM-iniC [" + zsUnitNameConv + "]", false, true)
+		RuffEcho("UnitNameEM-iniC [" + zsUnitNameConv + "]", false, true)
 
 		zsUnitNameConv = BugUnitName.getDefault()
 		return zsUnitNameConv
@@ -497,21 +520,21 @@ class BuildUnitName(AbstractBuildUnitName):
 #		return if iCnt is negative (this means that the code is not in the unitnameconv)
 		if iCnt < 0: return conv
 
-		self.RuffEcho("UnitNameEM-SCC [" + conv + "] [" + searchStr + "] [" + str(iCnt) + "]", false, true)
+		RuffEcho("UnitNameEM-SCC [" + conv + "] [" + searchStr + "] [" + str(iCnt) + "]", false, true)
 
 		zsCntCode = self.getCountCode(conv, searchStr)
 
 		if zsCntCode == "": return conv
 
-		self.RuffEcho("UnitNameEM-SCC [" + zsCntCode + "]", false, true)
+		RuffEcho("UnitNameEM-SCC [" + zsCntCode + "]", false, true)
 
 		zsNumberFormat = self.getNumberFormat(conv, searchStr)
 
-		self.RuffEcho("UnitNameEM-SCC [" + zsNumberFormat + "]", false, true)
+		RuffEcho("UnitNameEM-SCC [" + zsNumberFormat + "]", false, true)
 
 		zsCnt = self.FormatNumber(zsNumberFormat, iCnt)
 
-		self.RuffEcho("UnitNameEM-SCC [" + zsCnt + "]", false, true)
+		RuffEcho("UnitNameEM-SCC [" + zsCnt + "]", false, true)
 
 		if zsCntCode == "":
 			return conv
@@ -548,16 +571,3 @@ class BuildUnitName(AbstractBuildUnitName):
 		if i % 100 in (11, 12, 13): #special case
 			return '%dth' % i
 		return str(i) + ordinal_array[i % 10]
-
-
-	def RuffEcho(self, echoString, printToScr, printToLog):
-		printToScr = False
-		printToLog = False
-
-		szMessage = "%s" % (echoString)
-		if (printToScr):
-			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, szMessage, "", 2, None, ColorTypes(8), 0, 0, False, False)
-		if (printToLog):
-			CvUtil.pyPrint(szMessage)
-		return 0
-

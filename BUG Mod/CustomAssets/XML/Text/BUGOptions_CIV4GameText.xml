@@ -3120,6 +3120,57 @@ Counting Codes:
 		<Spanish>Unit Naming</Spanish>
 	</TEXT>
 
+	<!-- Configuration Tab -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_CONFIG</Tag>
+		<English>Config</English>
+		<French>Config</French>
+		<German>Config</German>
+		<Italian>Config</Italian>
+		<Spanish>Config</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CONFIG_SEARCH_PATHS</Tag>
+		<English>Search Paths:</English>
+		<French>Search Paths:</French>
+		<German>Search Paths:</German>
+		<Italian>Search Paths:</Italian>
+		<Spanish>Search Paths:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_MOD_CONFIG</Tag>
+		<English>BUG Mod Options File:</English>
+		<French>BUG Mod Options File:</French>
+		<German>BUG Mod Options File:</German>
+		<Italian>BUG Mod Options File:</Italian>
+		<Spanish>BUG Mod Options File:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CDA_CONFIG</Tag>
+		<English>CDA Pages File:</English>
+		<French>CDA Pages File:</French>
+		<German>CDA Pages File:</German>
+		<Italian>CDA Pages File:</Italian>
+		<Spanish>CDA Pages File:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_UNITNAMING_CONFIG</Tag>
+		<English>Advanced Unit Naming Options File:</English>
+		<French>Advanced Unit Naming Options File:</French>
+		<German>Advanced Unit Naming Options File:</German>
+		<Italian>Advanced Unit Naming Options File:</Italian>
+		<Spanish>Advanced Unit Naming Options File:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_LOG</Tag>
+		<English>Autolog File:</English>
+		<French>Autolog File:</French>
+		<German>Autolog File:</German>
+		<Italian>Autolog File:</Italian>
+		<Spanish>Autolog File:</Spanish>
+	</TEXT>
+
 	<!-- Credits Tab -->
 
 	<TEXT>

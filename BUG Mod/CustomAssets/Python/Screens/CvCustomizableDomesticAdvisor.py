@@ -71,6 +71,7 @@ import Popup as PyPopup
 
 import CvEventInterface
 import BugPath
+import BugConfigTracker
 
 import math
 import os.path
@@ -2568,6 +2569,7 @@ class CvCustomizableDomesticAdvisor:
 		if (not name):
 			name = BugPath.findIniFile("CustomDomAdv.txt")
 		if (name):
+			BugConfigTracker.add("CDA_Config", name)
 			try:
 				file = open(name, 'r')
 				dict = pickle.load(file)

@@ -4,6 +4,7 @@
 
 from CvPythonExtensions import *
 from BugOptions import OptionsFacade, Option, OptionList
+import RuffModControl
 
 class BugUnitNameOptions(OptionsFacade):
 
@@ -106,9 +107,6 @@ Counting Codes:\n\
 	
 	def getCombat(self, Combat_Type):
 		return self.getString('UnitName_Combat_' + Combat_Type)
-
-	def getAdvanced(self, Era, UnitClass):
-		return self.getAdvUnitName('UnitName', Era + '_' + UnitClass, 'DEFAULT')
 
 
 # The singleton BugUnitNameOptions object

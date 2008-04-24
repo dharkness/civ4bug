@@ -15,6 +15,7 @@ import BugScoreOptionsTab
 import BugAlertsOptionsTab
 import BugAutologOptionsTab
 import BugUnitNameOptionsTab
+import BugConfigTrackerTab
 import BugCreditsOptionsTab
 
 import BugErrorOptionsTab
@@ -38,6 +39,7 @@ class BugOptionsScreen:
 			self.addTab(BugAlertsOptionsTab.BugAlertsOptionsTab(self))
 			self.addTab(BugAutologOptionsTab.BugAutologOptionsTab(self))
 			self.addTab(BugUnitNameOptionsTab.BugUnitNameOptionsTab(self))
+			self.addTab(BugConfigTrackerTab.BugConfigTrackerTab(self))
 			self.addTab(BugCreditsOptionsTab.BugCreditsOptionsTab(self))
 
 	def addTab(self, tab):

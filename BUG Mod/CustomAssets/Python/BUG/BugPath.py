@@ -5,9 +5,46 @@
 ##
 ## Copyright 2008 (c) BUG Mod
 
+# This module locates INI and other configuration files and directories.
+# It exposes several useful variables:
+#
+# modName
+#   Pulled from CvModName
+#
+# userDir
+#   Typically the "My Documents\My Games" folder on Windows and the "Documents"
+#   folder on MacOS X. Both are in the user's private documents area.
+#
+# rootDir
+#   Location of the Civ4 executable (CIV4BeyondSword.exe on Windows)
+#
+# appName
+#   The final component in rootDir, typically "Beyond the Sword"
+#
+# iniFileSearchPaths
+#   A set of existing directories in which this module searches for configuration
+#   files and directories.
+#
+#   The preference order is
+#
+#     1. <user-dir>\<mod-name>
+#     2. <user-dir>\<app-name>\Mods\<mod-name>
+#     3. <user-dir>\<app-name>
+#     4. <root-dir>\<app-name>\Mods\<mod-name>
+#     5. <root-dir>\<app-name>
+#
+# mainModIniDir
+#   If the main INI file is loaded, this holds the directory where it was found.
+#   It will be one of the directories in iniFileSearchPaths. It can be used as a
+#   preference for where to store new files.
+#
+# All directory variables exposed are guaranteed to be existing directories when
+# they were found. Otherwise they will be the Python None value.
+
 import os
 import os.path
 import sys
+import BugConfigTracker
 
 modName = None
 try:
@@ -62,23 +99,56 @@ if (rootDir):
 		addIniFileSearchPath(os.path.join(rootDir, "Mods", modName))
 	addIniFileSearchPath(os.path.join(rootDir))
 
-if (not iniFileSearchPaths):
+if (iniFileSearchPaths):
+	BugConfigTracker.add("Config_Search_Paths", iniFileSearchPaths)
+else:
 	pass
 
 def findIniFile(name, subdir=None):
 	"Locates the named configuration file using the search paths above."
 	for dir in iniFileSearchPaths:
 		if (subdir):
-			file = os.path.join(dir, subdir, name)
+			path = os.path.join(dir, subdir, name)
 		else:
-			file = os.path.join(dir, name)
-		if (os.path.isfile(file)):
-			return file
+			path = os.path.join(dir, name)
+		if (os.path.isfile(path)):
+			return path
 	return None
 
+mainModIniDir = None
 def findMainModIniFile():
 	"Locates the main INI file for the mod."
 	if (modName):
-		return findIniFile(modName + ".ini")
+		file = findIniFile(modName + ".ini")
+		if (file):
+			mainModIniDir = os.path.dirname(file)
+		return file
 	else:
 		return None
+
+def findDir(name):
+	"Locates the named directory using the INI file search paths above."
+	for dir in iniFileSearchPaths:
+		path = os.path.join(dir, name)
+		if (os.path.isdir(path)):
+			return path
+	return None
+
+def makeDir(name):
+	"Creates a new directory where the INI file was found or the first directory in the search path."
+	if (mainModIniDir):
+		path = os.path.join(mainModIniDir, name)
+	elif (iniFileSearchPaths):
+		path = os.path.join(iniFileSearchPaths[0], name)
+	else:
+		path = name
+	if (not os.path.isdir(path)):
+		os.makedirs(path)
+	return path
+
+def findOrMakeDir(name):
+	"Locates or creates the specified directory."
+	dir = findDir(name)
+	if (not dir):
+		dir = makeDir(name)
+	return dir

@@ -3,6 +3,7 @@
 ## BUG Mod - Copyright 2007
 
 from BugPath import findMainModIniFile
+import BugConfigTracker
 from configobj import ConfigObj
 from CvPythonExtensions import *
 import CvUtil
@@ -120,6 +121,7 @@ class BugOptions(object):
 		try:
 			self.iniFile = findMainModIniFile()
 			self.config = ConfigObj(self.iniFile)
+			BugConfigTracker.add("BUG_Mod_Config", self.iniFile)
 		except:
 			self.iniFile = None
 			self.config = None

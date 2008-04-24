@@ -8,11 +8,10 @@ import codecs
 import os
 import os.path
 import string
-import CvPath
-import BugOptions
+import BugPath
+import BugConfigTracker
 import BugAutologOptions
 
-BugOpt = BugOptions.getOptions()
 BugAutolog = BugAutologOptions.BugAutologOptions()
 
 class autologInstance:
@@ -22,16 +21,6 @@ class autologInstance:
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
 		BugAutolog.write()
-
-#	def setLogFileEnabled(self, LogFileEnabled):
-#		BugAutolog.setEnabled(LogFileEnabled)
-#		BugAutolog.write()
-
-#	def Enabled(self):
-#		if BugAutolog.isEnabled():
-#			return True
-#		else:
-#			return False
 
 	def writeLog(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
 		self.openLog()
@@ -78,30 +67,17 @@ class autologInstance:
 		self.closeLog()
 
 	def openLog(self):
-#		temppath = os.getcwd()
-#		os.chdir(BugAutolog.getFilePath())
 		szPath = BugAutolog.getFilePath()
 		if (not szPath or szPath == "Default"):
-			if (os.path.isdir(CvPath.userDir)):
-				szPath = os.path.join(CvPath.userDir, "AutoLog")
+			szPath = BugPath.findOrMakeDir("Autolog")
 		if (not os.path.isdir(szPath)):
 			os.makedirs(szPath)
-		self.log = codecs.open(os.path.join(szPath, BugAutolog.getFileName()), 'a', 'utf-8')
-#		os.chdir(temppath)
+		szFile = os.path.join(szPath, BugAutolog.getFileName())
+		self.log = codecs.open(szFile, 'a', 'utf-8')
+		BugConfigTracker.add("Autolog_Log", szFile)
 
 	def closeLog(self):
 		self.log.close()
-
-	def RuffEcho(self, echoString, printToScr, printToLog):
-		printToScr = False
-		printToLog = False
-
-		szMessage = "%s" % (echoString)
-		if (printToScr):
-			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, szMessage, "", 2, None, ColorTypes(8), 0, 0, False, False)
-		if (printToLog):
-			CvUtil.pyPrint(szMessage)
-		return 0
 
 class autologRetain:
 
@@ -109,4 +85,3 @@ class autologRetain:
 		bLogFileOpen = False
 		bPlayerHuman = False
 		Counter = 0
-
