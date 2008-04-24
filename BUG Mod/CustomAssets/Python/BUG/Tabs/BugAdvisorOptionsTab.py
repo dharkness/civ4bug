@@ -37,12 +37,15 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addLabel(screen, rightPanel, "Espionage_Screen", "Espionage (Ctrl-E):")
 		self.addCheckbox(screen, rightPanel, "Espionage_Enabled")
+		
+		self.addLabel(screen, rightPanel, "Espionage_Ratio", "Ratio:")
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_GoodColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_BadRatio", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_BadColor", True)
 		
+		self.addLabel(screen, rightPanel, "Espionage_Missions", "Missions:")
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_PossibleColor", True)
 		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
 		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)

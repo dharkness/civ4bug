@@ -2952,6 +2952,22 @@ Counting Codes:
 		<Italian>Espionage (Ctrl-E):</Italian>
 		<Spanish>Espionage (Ctrl-E):</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_RATIO</Tag>
+		<English>Ratio:</English>
+		<French>Ratio:</French>
+		<German>Ratio:</German>
+		<Italian>Ratio:</Italian>
+		<Spanish>Ratio:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_MISSIONS</Tag>
+		<English>Missions:</English>
+		<French>Missions:</French>
+		<German>Missions:</German>
+		<Italian>Missions:</Italian>
+		<Spanish>Missions:</Spanish>
+	</TEXT>
 
 	<!-- Clock Tab -->
 
