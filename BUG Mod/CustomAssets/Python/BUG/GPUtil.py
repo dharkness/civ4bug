@@ -213,7 +213,7 @@ def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarType
 					if (bIncludeCityName):
 						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
 					else:
-						szText = sGreatPeople + u":"
+						szText = sGreatPeopleChar + u":"
 				szTypes = ""
 				for iPercent, iUnit in lPercents:
 					szNewTypes = szTypes + u" %c%d%%" % (getUnitIcon(iUnit), iPercent)
