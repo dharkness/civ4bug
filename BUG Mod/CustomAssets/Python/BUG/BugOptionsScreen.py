@@ -56,7 +56,7 @@ class BugOptionsScreen:
 		"Initial creation of the screen"
 		self.pTabControl = CyGTabCtrl("BUG Mod Options", False, False)
 		self.pTabControl.setModal(1)
-		self.pTabControl.setSize(1000, 695)
+		self.pTabControl.setSize(820, 695)
 		self.pTabControl.setControlsExpanding(False)
 		self.pTabControl.setColumnLength(self.iScreenHeight)
 		
