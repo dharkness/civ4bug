@@ -172,11 +172,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
-		<English>Will Declare?</English>
-		<French>Will Declare?</French>
-		<German>Will Declare?</German>
-		<Italian>Will Declare?</Italian>
-		<Spanish>Will Declare?</Spanish>
+		<English>Will Declare On</English>
+		<French>Will Declare On</French>
+		<German>Will Declare On</German>
+		<Italian>Will Declare On</Italian>
+		<Spanish>Will Declare On</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WAR_DENIAL</Tag>
+		<English>War Denial</English>
+		<French>War Denial</French>
+		<German>War Denial</German>
+		<Italian>War Denial</Italian>
+		<Spanish>War Denial</Spanish>
 	</TEXT>
 
 	<!-- Reminders -->

@@ -154,6 +154,7 @@ militaryAdvisor = CvBUGMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
 # BUG - Military Advisor - end
 def showMilitaryAdvisor():
 	if (-1 != CyGame().getActivePlayer()):
+		militaryAdvisor.IconGridActive = False
 		militaryAdvisor.interfaceScreen()  #(0)
 
 espionageAdvisor = CvEspionageAdvisor.CvEspionageAdvisor()

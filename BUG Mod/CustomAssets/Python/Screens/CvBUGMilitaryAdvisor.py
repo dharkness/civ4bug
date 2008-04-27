@@ -152,7 +152,7 @@ class CvMilitaryAdvisor:
 		self.SETTINGS_PANEL_HEIGHT = 500
 								
 		self.nWidgetCount = 0
-		self.iActiveLeader = -1
+		self.iActivePlayer = -1
 #		self.bVoteTab = False
 
 		self.iScreen = UNIT_LOCATION_SCREEN
@@ -177,13 +177,15 @@ class CvMilitaryAdvisor:
 		self.SCROLL_TABLE_UP = 1
 		self.SCROLL_TABLE_DOWN = 2
 
-
+		self.bWHEOOH = False
+		self.bCurrentWar = False
 
 						
 	def getScreen(self):
 		return CyGInterfaceScreen(self.SCREEN_NAME, self.screenId)
 
 	def hideScreen(self):
+		self.IconGridActive = False
 		screen = self.getScreen()
 		screen.hideScreen()
 										
@@ -196,13 +198,13 @@ class CvMilitaryAdvisor:
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
 
-		self.iActiveLeader = CyGame().getActivePlayer()
+		self.iActivePlayer = CyGame().getActivePlayer()
 		if self.iScreen == -1:
 			self.iScreen = UNIT_LOCATION_SCREEN
 
 # BUG - optional sit rep - start
-		if not BugScreens.isShowSitRep():
-			self.iScreen = UNIT_LOCATION_SCREEN
+#		if not BugScreens.isShowSitRep():
+#			self.iScreen = UNIT_LOCATION_SCREEN
 # BUG - optional sit rep - end
 
 		# Set the background widget and exit button
@@ -330,7 +332,7 @@ class CvMilitaryAdvisor:
 
 
 
-		activePlayer = gc.getPlayer(self.iActiveLeader)		
+		activePlayer = gc.getPlayer(self.iActivePlayer)		
 
 		szSettingsPanel = self.getNextWidgetName()
 		screen.addPanel(szSettingsPanel, localText.getText("TXT_KEY_MAIN_MENU_SETTINGS", ()).upper(), "", True, True, self.SETTINGS_PANEL_X1, self.SETTINGS_PANEL_Y - 10, self.SETTINGS_PANEL_WIDTH, self.SETTINGS_PANEL_HEIGHT, PanelStyles.PANEL_STYLE_MAIN)
@@ -394,7 +396,7 @@ class CvMilitaryAdvisor:
 
 		for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
 			player = gc.getPlayer(iLoopPlayer)
-			if (player.isEverAlive() and iLoopPlayer != self.iActiveLeader and (gc.getTeam(player.getTeam()).isHasMet(activePlayer.getTeam()) or gc.getGame().isDebugMode()) and not player.isBarbarian() and not player.isMinorCiv()):
+			if (player.isEverAlive() and iLoopPlayer != self.iActivePlayer and (gc.getTeam(player.getTeam()).isHasMet(activePlayer.getTeam()) or gc.getGame().isDebugMode()) and not player.isBarbarian() and not player.isMinorCiv()):
 				screen.appendListBoxStringNoUpdate(szCivsTable, localText.getText("TXT_KEY_LEADER_CIV_DESCRIPTION", (player.getNameKey(), player.getCivilizationShortDescriptionKey())), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 				screen.appendListBoxStringNoUpdate(szCivsTable, u"     (" + CyGameTextMgr().parseLeaderTraits(player.getLeaderType(), player.getCivilizationType(), True, False) + ")", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 				screen.appendListBoxStringNoUpdate(szCivsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
@@ -416,7 +418,7 @@ class CvMilitaryAdvisor:
 		screen = self.getScreen()
 		self.initGrid(screen)
 		
-		activePlayer = gc.getPlayer(self.iActiveLeader)		
+		activePlayer = gc.getPlayer(self.iActivePlayer)		
 
 		# Assemble the panel
 #		iPANEL_X = self.SITREP_LEFT_RIGHT_SPACE
@@ -442,13 +444,13 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.clearData()
 
 		iRow = 0
-		for iLoopLeader in range(gc.getMAX_PLAYERS()):
-			iLeader = gc.getPlayer(iLoopLeader)
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			iLeader = gc.getPlayer(iLoopPlayer)
 
 			if (iLeader.isAlive()
-			and (gc.getTeam(iLeader.getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
+			and (gc.getTeam(iLeader.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
 			or gc.getGame().isDebugMode())
-			and iLoopLeader != self.iActiveLeader
+			and iLoopPlayer != self.iActivePlayer
 			and not iLeader.isBarbarian()
 			and not iLeader.isMinorCiv()):
 
@@ -456,32 +458,33 @@ class CvMilitaryAdvisor:
 
 				self.SitRepGrid.addIcon( iRow, self.Col_Leader
 										, gc.getLeaderHeadInfo(iLeader.getLeaderType()).getButton()
-										, WidgetTypes.WIDGET_LEADERHEAD, iLoopLeader)
+										, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
 				# add attitude
-#				szRel = self.SR_calculateRelations (iLoopLeader, self.iActiveLeader)
-#				szText = self.SR_LRow_getAttitudeText (szRel, self.iActiveLeader, iLoopLeader)
+#				szRel = self.SR_calculateRelations (iLoopLeader, self.iActivePlayer)
+#				szText = self.SR_LRow_getAttitudeText (szRel, self.iActivePlayer, iLoopLeader)
 #				self.SitRepGrid.setText(iRow, self.Col_Attitude, szText)
 
 				# add worst enemy
 #				self.Grid_WorstEnemy(iRow, iLoopLeader)
 
 				# add current war opponents
-				self.Grid_CurrentWars(iRow, iLoopLeader)
+				self.bCurrentWar = False
+				self.Grid_CurrentWars(iRow, iLoopPlayer)
 
 				self.SitRepGrid.addIcon( iRow, self.Col_StratRes
 										, gc.getLeaderHeadInfo(iLeader.getLeaderType()).getButton()
-										, WidgetTypes.WIDGET_LEADERHEAD, iLoopLeader)
+										, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
-				self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_YELLOW", "yellow")
+				self.bWHEOOH = False
+				self.Grid_DeclareWar(iRow, iLoopPlayer)
 
-				self.SitRepGrid.setText(iRow, self.Col_WillDeclare, "not working")
-
-#				sDeclare = self.Grid_DeclareWar(iLoopLeader)
-#				if sDeclare[1] == "":
-#					self.SitRepGrid.setText(iRow, self.Col_WillDeclare, sDeclare[0])
-#				else:
-#					self.SitRepGrid.setText(iRow, self.Col_WillDeclare, sDeclare[0] + " [" + sDeclare[0] + "]")
+#				if (self.bWHEOOH
+#				and not self.bCurrentWar = True):
+				if self.bWHEOOH:
+					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_RED", "red")
+				else:
+					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_YELLOW", "yellow")
 
 				iRow += 1
 
@@ -530,10 +533,12 @@ class CvMilitaryAdvisor:
 		self.Col_Threat = 1
 		self.Col_Curr_Wars = 2
 		self.Col_StratRes = 3
-		self.Col_WillDeclare = 4
+		self.Col_WillDeclareOn = 4
+		self.Col_WarDenial = 5
 
 		columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 					IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
+					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_TEXT_COLUMN )
@@ -565,11 +570,12 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAD_INDEX", ()))
 		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()))
 		self.SitRepGrid.setHeader(self.Col_StratRes, localText.getText("TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES", ()))
-		self.SitRepGrid.setHeader(self.Col_WillDeclare, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
+		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
+		self.SitRepGrid.setHeader(self.Col_WarDenial, localText.getText("TXT_KEY_MILITARY_SITREP_WAR_DENIAL", ()))
 
 #		self.SitRepGrid.setTextColWidth(self.Col_Attitude, 100)
 		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 100)
-		self.SitRepGrid.setTextColWidth(self.Col_WillDeclare, 300)
+		self.SitRepGrid.setTextColWidth(self.Col_WarDenial, 200)
 		
 		
 		gridWidth = self.SitRepGrid.getPrefferedWidth()
@@ -606,46 +612,124 @@ class CvMilitaryAdvisor:
 	def Grid_CurrentWars(self, iRow, iLeader):
 		iLeaderWars = []
 
-		for iLoopLeader in range(gc.getMAX_PLAYERS()):
-			gcLoopLeader = gc.getPlayer(iLoopLeader)
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			gcLoopLeader = gc.getPlayer(iLoopPlayer)
 			if (gcLoopLeader.isAlive()
-			and (gc.getTeam(gcLoopLeader.getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
+			and (gc.getTeam(gcLoopLeader.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
 			or gc.getGame().isDebugMode())
 			and not gcLoopLeader.isBarbarian()
 			and not gcLoopLeader.isMinorCiv()):
 				if gc.getTeam(gc.getPlayer(iLeader).getTeam()).isAtWar(gcLoopLeader.getTeam()):
-					iLeaderWars.append(iLoopLeader)
+					iLeaderWars.append(iLoopPlayer)
 
-		for iLoopLeader in iLeaderWars:
+		for iLoopPlayer in iLeaderWars:
+			self.bCurrentWar = True
 			self.SitRepGrid.addIcon(iRow, self.Col_Curr_Wars, 
-									gc.getLeaderHeadInfo (gc.getPlayer(iLoopLeader).getLeaderType()).getButton(), 
-									WidgetTypes.WIDGET_LEADERHEAD, iLoopLeader)
+									gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), 
+									WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 		return
 
 	
 
-	def getDeclareWar(self, iLeader):
-		sReturn = ["", "", False]		
+	def Grid_DeclareWar(self, iRow, iPlayer):
+		# this module will check if the iPlayer will declare war
+		# on the other leaders.  We cannot check if the iPlayer, the iActivePlayer
+		# and the iTargetPlayer don't all know each other.
+		# However, the code wouldn't have got this far if the iPlayer didn't know the iActivePlayer
+		# so we only need to check if the iPlayer and the iActivePlayer both know the iTargetPlayer.
+
+		# also need to check on vassal state - will do that later
+
+		iLeaderWars = []
+		szWarDenial = ""
+
+#		sReturn = ("", False, DenialTypes.NO_DENIAL)
+
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_WAR
 
-#		for iLoopLeader in range(gc.getMAX_PLAYERS()):
-#			gcLoopLeader = gc.getPlayer(iLoopLeader)
-#			if (gcLoopLeader.isAlive()
-#			and (gc.getTeam(gcLoopLeader.getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
-#			or gc.getGame().isDebugMode())
-#			and not iLoopLeader == self.iActiveLeader
-#			and not gcLoopLeader.isBarbarian()
-#			and not gcLoopLeader.isMinorCiv()):
+		pPlayer = gc.getPlayer(iPlayer)
+
+		szPlayerName = gc.getPlayer(iPlayer).getName() + "/" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
+#		print "start: %s" % (szPlayerName)
+
+		for iTargetPlayer in range(gc.getMAX_PLAYERS()):
+			pTargetPlayer = gc.getPlayer(iTargetPlayer)
+			
+			if (pTargetPlayer.isAlive()
+			and (gc.getTeam(pTargetPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
+			and  gc.getTeam(pTargetPlayer.getTeam()).isHasMet(gc.getPlayer(iPlayer).getTeam())
+			or   gc.getGame().isDebugMode())
+			and not iTargetPlayer == self.iActivePlayer
+			and not iTargetPlayer == iPlayer
+			and not gc.getTeam(pPlayer.getTeam()).isAtWar(pTargetPlayer.getTeam())
+			and not pTargetPlayer.isBarbarian()
+			and not pTargetPlayer.isMinorCiv()):
+
+				szPlayerName = gc.getPlayer(iTargetPlayer).getName() + "/" + gc.getPlayer(iTargetPlayer).getCivilizationShortDescription(0)
+#				print "TargetPlayer: %s" % (szPlayerName)
+
+				tradeData.iData = iTargetPlayer
+				if (pPlayer.canTradeItem(self.iActivePlayer, tradeData, False)):
+#					print "trade is possible"
+					WarDenial = pPlayer.getTradeDenial(self.iActivePlayer, tradeData)
+					if WarDenial == DenialTypes.NO_DENIAL:
+						iLeaderWars.append(iTargetPlayer)
+					elif szWarDenial == "":
+						szWarDenial = gc.getDenialInfo(WarDenial).getDescription()
+#						print WarDenial
+
+					if WarDenial == DenialTypes.DENIAL_TOO_MANY_WARS:
+						self.bWHEOOH = True
+
+#					if szWillTradeWar == "":
+#						szWillTradeWar = "YES"
+#					elif szWillTradeWar == "NO":
+#						szWillTradeWar = "MIXED"
+#				else:
+#					print "no trade is possible"
+#					if szWillTradeWar == "":
+#						szWillTradeWar = "NO"
+#					elif szWillTradeWar == "YES":
+#						szWillTradeWar = "MIXED"
+
+		#			if sReturn[1] == False:
+		#				sReturn[1] = True
+		#				sReturn[2] = pPlayer.getTradeDenial(self.iActivePlayer, tradeData)
+		#				print "denial %i" % (sReturn[2])
+
+		#print sReturn
+
+#		self.Grid_DeclareWar(iRow, iLoopLeader)
+#		if sDeclare[1] == -1:
+#		self.SitRepGrid.setText(iRow, self.Col_WillDeclare, szWillTradeWar)
+#		else:
+#			self.SitRepGrid.setText(iRow, self.Col_WillDeclare, sDeclare[0] + " [")   # + gc.getDenialInfo(sDeclare[1]).getDescription + "]")
+				
+#		if szWillTradeWar == "":
+#			szWillTradeWar = "NOO"
+
+		for iLoopPlayer in iLeaderWars:
+			self.SitRepGrid.addIcon(iRow, self.Col_WillDeclareOn, 
+									gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), 
+									WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
+
+		if szWarDenial != "":
+			self.SitRepGrid.setText(iRow, self.Col_WarDenial, szWarDenial)
+
+		return
+
+
+		
 
 # code here to check if iLeader will trade war with iLoopLeader to iActiveLeader
 
 #		return sReturn
 
 #			if (iLeader.isAlive()
-#			and (gc.getTeam(iLeader.getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam())
+#			and (gc.getTeam(iLeader.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
 #			or gc.getGame().isDebugMode())
-#			and iLoopLeader != self.iActiveLeader
+#			and iLoopLeader != self.iActivePlayer
 #			and not iLeader.isBarbarian()
 #			and not iLeader.isMinorCiv()):
 
@@ -706,7 +790,7 @@ class CvMilitaryAdvisor:
 #		zsRowsPanel_ID = self.getNextWidgetName()
 #		screen.addPanel(zsRowsPanel_ID, "", "", True, True, 0, 104, self.W_SCREEN, self.H_SCREEN - 155, PanelStyles.PANEL_STYLE_MAIN)
 
-#		self.drawGlanceRows (screen, zsRowsPanel_ID, self.iSelectedLeader != self.iActiveLeader, self.iSelectedLeader)
+#		self.drawGlanceRows (screen, zsRowsPanel_ID, self.iSelectedLeader != self.iActivePlayer, self.iSelectedLeader)
 
 
 
@@ -776,7 +860,7 @@ class CvMilitaryAdvisor:
 #		szText = "Threat"
 
 #		szPanel_ID = self.getNextWidgetName()
-#		screen.setTextAt (szPanel_ID, sPanel, szText, CvUtil.FONT_CENTER_JUSTIFY, self.SitRep_X3, self.Y_Text_Offset + self.SitRep_Y_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLeader, self.iActiveLeader)
+#		screen.setTextAt (szPanel_ID, sPanel, szText, CvUtil.FONT_CENTER_JUSTIFY, self.SitRep_X3, self.Y_Text_Offset + self.SitRep_Y_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLeader, self.iActivePlayer)
 
 
 		#szBar_ID = self.getNextWidgetName()
@@ -788,7 +872,7 @@ class CvMilitaryAdvisor:
 #		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE"))
 #		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY"))
 #		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY"))
-#		screen.setBarPercentage(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, float(iExperience) / float(gc.getPlayer(self.iActiveLeader).greatPeopleThreshold(true)))
+#		screen.setBarPercentage(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, float(iExperience) / float(gc.getPlayer(self.iActivePlayer).greatPeopleThreshold(true)))
 
 #		screen.setLabel(szGGTxt_ID, "", localText.getText("TXT_KEY_MISC_COMBAT_EXPERIENCE", ()), CvUtil.FONT_CENTER_JUSTIFY, self.X_GREAT_GENERAL_BAR + self.W_GREAT_GENERAL_BAR/2, self.Y_GREAT_GENERAL_BAR + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1)
 
@@ -809,7 +893,7 @@ class CvMilitaryAdvisor:
 
 	def SR_LRow_StratResources(self, screen, sPanel, iLeader, nCount):
 
-		activePlayer = gc.getPlayer(self.iActiveLeader)		
+		activePlayer = gc.getPlayer(self.iActivePlayer)		
 
 		iBUTTON_SIZE = 32
 		screen.attachMultiListControlGFC(sPanel, "StratRes" + sPanel, "", 1, iBUTTON_SIZE, iBUTTON_SIZE, TableStyles.TABLE_STYLE_STANDARD)
@@ -824,37 +908,37 @@ class CvMilitaryAdvisor:
 
 			# copper
 			tradeData.iData = gc.getInfoTypeForString("BONUS_COPPER")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# iron
 			tradeData.iData = gc.getInfoTypeForString("BONUS_IRON")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# horse
 			tradeData.iData = gc.getInfoTypeForString("BONUS_HORSE")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# ivory
 			tradeData.iData = gc.getInfoTypeForString("BONUS_IVORY")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# aluminum
 			tradeData.iData = gc.getInfoTypeForString("BONUS_ALUMINUM")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# oil
 			tradeData.iData = gc.getInfoTypeForString("BONUS_OIL")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			# unanium
 			tradeData.iData = gc.getInfoTypeForString("BONUS_URANIUM")
-			if (gc.getPlayer(iLeader).canTradeItem(self.iActiveLeader, tradeData, False)):
+			if (gc.getPlayer(iLeader).canTradeItem(self.iActivePlayer, tradeData, False)):
 				StratRes.append(tradeData.iData)
 
 			for iLoopBonus in StratRes:
@@ -902,8 +986,8 @@ class CvMilitaryAdvisor:
 
 #			for iLoopBonus in range(gc.getNumBonusInfos()):
 #				tradeData.iData = iLoopBonus
-#				if (gc.getPlayer(iLoopPlayer).canTradeItem(self.iActiveLeader, tradeData, False)):
-#					if (gc.getPlayer(iLoopPlayer).getTradeDenial(self.iActiveLeader, tradeData) == DenialTypes.NO_DENIAL):
+#				if (gc.getPlayer(iLoopPlayer).canTradeItem(self.iActivePlayer, tradeData, False)):
+#					if (gc.getPlayer(iLoopPlayer).getTradeDenial(self.iActivePlayer, tradeData) == DenialTypes.NO_DENIAL):
 #						listTradeable.append(iLoopBonus)
 #					else:
 #						listUntradeable.append(iLoopBonus)
@@ -948,12 +1032,12 @@ class CvMilitaryAdvisor:
 		self.deleteAllWidgets()	
 		screen = self.getScreen()
 
-		activePlayer = PyHelpers.PyPlayer(self.iActiveLeader)
-		iActiveTeam = gc.getPlayer(self.iActiveLeader).getTeam()
+		activePlayer = PyHelpers.PyPlayer(self.iActivePlayer)
+		iActiveTeam = gc.getPlayer(self.iActivePlayer).getTeam()
 		
 		self.unitsList = [(0, 0, [], 0)] * gc.getNumUnitInfos()
 		self.selectedUnitList = []
-		self.selectedLeaderList.append(self.iActiveLeader)
+		self.selectedLeaderList.append(self.iActivePlayer)
 
 		if bReload:
 			self.UL_initMinimap(screen)
@@ -1000,7 +1084,7 @@ class CvMilitaryAdvisor:
 
 	def UL_refresh(self, bReload):
 	
-		if (self.iActiveLeader < 0):
+		if (self.iActivePlayer < 0):
 			return
 						
 		screen = self.getScreen()
@@ -1017,7 +1101,7 @@ class CvMilitaryAdvisor:
 		listLeaders = []
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
 			player = gc.getPlayer(iLoopPlayer)
-			if (player.isAlive() and (gc.getTeam(player.getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam()) or gc.getGame().isDebugMode())):
+			if (player.isAlive() and (gc.getTeam(player.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam()) or gc.getGame().isDebugMode())):
 				listLeaders.append(iLoopPlayer)
 				
 		iNumLeaders = len(listLeaders)
@@ -1086,11 +1170,11 @@ class CvMilitaryAdvisor:
 						bVisible = False
 						plot = loopUnit.plot()
 						if (not plot.isNone()):
-							bVisible = plot.isVisible(gc.getPlayer(self.iActiveLeader).getTeam(), False) and not loopUnit.isInvisible(gc.getPlayer(self.iActiveLeader).getTeam(), False)
+							bVisible = plot.isVisible(gc.getPlayer(self.iActivePlayer).getTeam(), False) and not loopUnit.isInvisible(gc.getPlayer(self.iActivePlayer).getTeam(), False)
 
 						if unitType >= 0 and unitType < gc.getNumUnitInfos() and bVisible:
 							iNumUnits = self.unitsList[unitType][3]
-							if (iPlayer == self.iActiveLeader):
+							if (iPlayer == self.iActivePlayer):
 								iNumUnits += 1
 							if loopUnit.getVisualOwner() in self.selectedLeaderList:
 								self.unitsList[unitType][2].append(loopUnit)							
@@ -1175,9 +1259,9 @@ class CvMilitaryAdvisor:
 					screen.setMinimapColor(MinimapModeTypes.MINIMAPMODE_MILITARY, loopUnit.getX(), loopUnit.getY(), iColor, 0.6)
 					if (self.UL_isSelectedUnit(loopUnit.getOwner(), loopUnit.getID(), True) and (iPlayer in self.selectedLeaderList)):
 						
-						if (player.getTeam().isAtWar(gc.getPlayer(self.iActiveLeader).getTeam())):
+						if (player.getTeam().isAtWar(gc.getPlayer(self.iActivePlayer).getTeam())):
 							iColor = gc.getInfoTypeForString("COLOR_RED")
-						elif (gc.getPlayer(iPlayer).getTeam() != gc.getPlayer(self.iActiveLeader).getTeam()):
+						elif (gc.getPlayer(iPlayer).getTeam() != gc.getPlayer(self.iActivePlayer).getTeam()):
 							iColor = gc.getInfoTypeForString("COLOR_YELLOW")
 						else:
 							iColor = gc.getInfoTypeForString("COLOR_WHITE")
@@ -1244,7 +1328,7 @@ class CvMilitaryAdvisor:
 
 	def drawCombatExperience(self):
 	
-		if (gc.getPlayer(self.iActiveLeader).greatPeopleThreshold(true) > 0):
+		if (gc.getPlayer(self.iActivePlayer).greatPeopleThreshold(true) > 0):
 
 			screen = self.getScreen()
 
@@ -1262,7 +1346,7 @@ class CvMilitaryAdvisor:
 			self.W_GREAT_GENERAL_BAR = iPanel_W - iPanel_X - self.MAP_MARGIN
 			self.H_GREAT_GENERAL_BAR = 30
 
-			iExperience = gc.getPlayer(self.iActiveLeader).getCombatExperience()
+			iExperience = gc.getPlayer(self.iActivePlayer).getCombatExperience()
 			
 			szGGBar_ID = self.getNextWidgetName()
 			szGGTxt_ID = self.getNextWidgetName()
@@ -1272,7 +1356,7 @@ class CvMilitaryAdvisor:
 			screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE"))
 			screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY"))
 			screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY"))
-			screen.setBarPercentage(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, float(iExperience) / float(gc.getPlayer(self.iActiveLeader).greatPeopleThreshold(true)))
+			screen.setBarPercentage(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, float(iExperience) / float(gc.getPlayer(self.iActivePlayer).greatPeopleThreshold(true)))
 
 			screen.setLabel(szGGTxt_ID, "", localText.getText("TXT_KEY_MISC_COMBAT_EXPERIENCE", ()), CvUtil.FONT_CENTER_JUSTIFY, self.X_GREAT_GENERAL_BAR + self.W_GREAT_GENERAL_BAR/2, self.Y_GREAT_GENERAL_BAR + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1)
 
