@@ -1377,6 +1377,13 @@ class CvMilitaryAdvisor:
 		return szName
 
 
+	def scrollGrid_Up(self):
+		if self.iScreen == SITUATION_REPORT_SCREEN:
+			self.SitRepGrid.scrollUp()
+
+	def scrollGrid_Down(self):
+		if self.iScreen == SITUATION_REPORT_SCREEN:
+			self.SitRepGrid.scrollDown()
 
 
 
@@ -1433,6 +1440,14 @@ class CvMilitaryAdvisor:
 			elif (inputClass.getFunctionName() == self.UNIT_BUTTON_ID):
 				self.bUnitDetails = not self.bUnitDetails
 				self.UL_refreshUnitSelection(True)
+
+			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
+				if (inputClass.getData1() == self.SCROLL_TABLE_UP):
+					print "scroll up"
+					self.scrollGrid_Up()
+				elif (inputClass.getData1() == self.SCROLL_TABLE_DOWN):
+					print "scroll down"
+					self.scrollGrid_Down()
 
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
 			if (inputClass.getData() == int(InputTypes.KB_LSHIFT)
