@@ -26,7 +26,7 @@ localText = CyTranslator()
 
 UNIT_LOCATION_SCREEN = 0
 SITUATION_REPORT_SCREEN = 1
-PLACE_HOLDER = 2
+#PLACE_HOLDER = 2
 
 # Debugging help
 def BUGPrint (stuff):
@@ -42,7 +42,7 @@ class CvMilitaryAdvisor:
 
 		self.UNIT_LOC_TAB_ID = "MilitaryUnitLocTabWidget-BUG"
 		self.SIT_REP_TAB_ID = "MilitarySitRepTabWidget-BUG"
-		self.PLACE_HOLDER_TAB = "placeholder"
+#		self.PLACE_HOLDER_TAB = "placeholder"
 
 		self.X_MAP = 20
 		self.Y_MAP = 190
@@ -91,6 +91,8 @@ class CvMilitaryAdvisor:
 		self.SitRep_X6 = self.SitRep_X5 + 100
 
 
+		self.iPlayerPower = 0
+		self.iDemographicsMission = -1
 
 
 
@@ -222,8 +224,8 @@ class CvMilitaryAdvisor:
 			self.showUnitLocation(True)
 		elif self.iScreen == SITUATION_REPORT_SCREEN:
 			self.showSituationReport()
-		elif self.iScreen == PLACE_HOLDER:
-			self.showGameSettingsScreen()
+#		elif self.iScreen == PLACE_HOLDER:
+#			self.showGameSettingsScreen()
 
 	def drawTabs(self):
 	
@@ -246,11 +248,11 @@ class CvMilitaryAdvisor:
 			xLink += self.DX_LINK
 
 # remove when finished with BUG Military			
-		if (self.iScreen != PLACE_HOLDER):
-			screen.setText(self.PLACE_HOLDER_TAB, "", u"<font=4>" + localText.getText("TXT_KEY_MAIN_MENU_SETTINGS", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		else:
-			screen.setText(self.PLACE_HOLDER_TAB, "", u"<font=4>" + localText.getColorText("TXT_KEY_MAIN_MENU_SETTINGS", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		xLink += self.DX_LINK
+#		if (self.iScreen != PLACE_HOLDER):
+#			screen.setText(self.PLACE_HOLDER_TAB, "", u"<font=4>" + localText.getText("TXT_KEY_MAIN_MENU_SETTINGS", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+#		else:
+#			screen.setText(self.PLACE_HOLDER_TAB, "", u"<font=4>" + localText.getColorText("TXT_KEY_MAIN_MENU_SETTINGS", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+#		xLink += self.DX_LINK
 			
 
 
@@ -417,9 +419,11 @@ class CvMilitaryAdvisor:
 		self.deleteAllWidgets()
 		screen = self.getScreen()
 		self.initGrid(screen)
+		self.initPower()
 		
 		activePlayer = gc.getPlayer(self.iActivePlayer)		
 
+		
 		# Assemble the panel
 #		iPANEL_X = self.SITREP_LEFT_RIGHT_SPACE
 #		iPANEL_Y = self.SITREP_TOP_BOTTOM_SPACE
@@ -479,12 +483,16 @@ class CvMilitaryAdvisor:
 				self.bWHEOOH = False
 				self.Grid_DeclareWar(iRow, iLoopPlayer)
 
-#				if (self.bWHEOOH
-#				and not self.bCurrentWar = True):
+				# WHEOOH
 				if self.bWHEOOH:
-					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_RED", "red")
+					sWHEOOH = u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
+#					sWHEOOH = localText.getColorText("TXT_KEY_CONCEPT_WAR", (), gc.getInfoTypeForString("COLOR_RED")).upper()
 				else:
-					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_YELLOW", "yellow")
+					sWHEOOH = ""
+
+				self.SitRepGrid.setText(iRow, self.Col_WHEOOH, sWHEOOH)
+
+				self.Grid_ThreatIndex(iRow, iLoopPlayer)
 
 				iRow += 1
 
@@ -530,18 +538,33 @@ class CvMilitaryAdvisor:
 #					IconGrid_BUG.GRID_TEXT_COLUMN )
 
 		self.Col_Leader = 0
-		self.Col_Threat = 1
-		self.Col_Curr_Wars = 2
-		self.Col_StratRes = 3
-		self.Col_WillDeclareOn = 4
-		self.Col_WarDenial = 5
+		self.Col_WHEOOH = 1
+		self.Col_Threat = 2
+		self.Col_Curr_Wars = 3
+		self.Col_StratRes = 4
+		self.Col_WillDeclareOn = 5
+#		self.Col_WarDenial = 6
 
 		columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
+					IconGrid_BUG.GRID_TEXT_COLUMN,
 					IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
-					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
-					IconGrid_BUG.GRID_TEXT_COLUMN )
+					IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
+
+#		self.Col_Leader = 0
+#		self.Col_WHEOOH = 1
+#		self.Col_Threat = 2
+#		self.Col_Curr_Wars = 3
+#		self.Col_StratRes = 4
+#		self.Col_WillDeclareOn = 5
+
+#		columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
+#					IconGrid_BUG.GRID_TEXT_COLUMN,
+#					IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
+#					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+#					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+#					IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
 
 #		self.NUM_RESOURCE_COLUMNS = len(columns) - 1
 		
@@ -565,17 +588,19 @@ class CvMilitaryAdvisor:
 
 		# set headings
 		self.SitRepGrid.setHeader(self.Col_Leader, "")
+		self.SitRepGrid.setHeader(self.Col_WHEOOH, "")
 #		self.SitRepGrid.setHeader(self.Col_Attitude, localText.getText("TXT_KEY_MILITARY_SITREP_RELATIONSHIP", ()))
 #		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()))
 		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAD_INDEX", ()))
 		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()))
 		self.SitRepGrid.setHeader(self.Col_StratRes, localText.getText("TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES", ()))
 		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
-		self.SitRepGrid.setHeader(self.Col_WarDenial, localText.getText("TXT_KEY_MILITARY_SITREP_WAR_DENIAL", ()))
+#		self.SitRepGrid.setHeader(self.Col_WarDenial, localText.getText("TXT_KEY_MILITARY_SITREP_WAR_DENIAL", ()))
 
 #		self.SitRepGrid.setTextColWidth(self.Col_Attitude, 100)
-		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 100)
-		self.SitRepGrid.setTextColWidth(self.Col_WarDenial, 200)
+		self.SitRepGrid.setTextColWidth(self.Col_WHEOOH, 25)
+		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 120)
+#		self.SitRepGrid.setTextColWidth(self.Col_WarDenial, 200)
 		
 		
 		gridWidth = self.SitRepGrid.getPrefferedWidth()
@@ -589,6 +614,218 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.setSize(gridWidth, gridHeight)
 
 		self.IconGridActive = True		
+
+
+	def initPower(self):
+		# active player power
+		self.iPlayerPower = gc.getActivePlayer().getPower()
+
+		# see demographics?		
+		self.iDemographicsMission = -1
+		for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
+			if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
+				self.iDemographicsMission = iMissionLoop
+				break
+
+		return
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	def Grid_ThreatIndex(self, iRow, iPlayer):
+
+		# no threat index if active player cannot see the demographics
+		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
+			return
+
+		# initialize threat index
+		iThreat = 0
+
+		# add attitude threat value
+		iRel = self.calculateRelations(iPlayer, self.iActivePlayer)
+		fRel_Threat = float(38) * float(15 - iRel) / float(30)
+		if fRel_Threat < 0:
+			fRel_Threat = 0.0
+		elif fRel_Threat > 38:
+			fRel_Threat = 38.0
+
+		# calculate the power threat value
+		fPwr_Threat = 0
+		iPower = gc.getPlayer(iPlayer).getPower()
+		if (iPower > 0): # avoid divide by zero
+			fPowerRatio = float(self.iPlayerPower) / float(iPower)
+			fPwr_Threat = float(38) * float(1.5 - fPowerRatio)
+			if fPwr_Threat < 0:
+				fPwr_Threat = 0.0
+			elif fPwr_Threat > 38:
+				fPwr_Threat = 38.0
+
+
+		# total threat, pre WHEOOH adjustment
+		fThreat = fRel_Threat + fPwr_Threat
+
+		# WHEOOH adjustment
+#		if (self.bWHEOOH
+#		and not self.bCurrentWar = True):
+		if self.bWHEOOH:
+			fThreat = fThreat * 1.3
+
+		if fThreat < 15:
+			sColour = "COLOR_PLAYER_GREEN"
+			sThreat = "Low"
+		elif  fThreat < 35:
+			sColour = "COLOR_PLAYER_BLUE"
+			sThreat = "Guarded"
+		elif  fThreat < 55:
+			sColour = "COLOR_PLAYER_YELLOW"
+			sThreat = "Elevated"
+		elif  fThreat < 75:
+			sColour = "COLOR_PLAYER_ORANGE"
+			sThreat = "High"
+		else:
+			sColour = "COLOR_PLAYER_RED"
+			sThreat = "Severe"
+
+		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat)
+
+# BUG - Power Rating - start
+#				bShowPower = BugScore.isShowPower()
+#				if (bShowPower):
+#					iPlayerPower = gc.getActivePlayer().getPower()
+#					szPowerColor = BugScore.getPowerColor()
+#					if (szPowerColor):
+#						iPowerColor = gc.getInfoTypeForString(szPowerColor)
+#					szPowerColor = BugScore.getGoodPowerColor()
+#					if (szPowerColor):
+#						iGoodPowerColor = gc.getInfoTypeForString(szPowerColor)
+#					szPowerColor = BugScore.getBadPowerColor()
+#					if (szPowerColor):
+#						iBadPowerColor = gc.getInfoTypeForString(szPowerColor)
+							
+#					iDemographicsMission = -1
+#					for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
+#						if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
+#							iDemographicsMission = iMissionLoop
+#							break
+#					if (iDemographicsMission == -1):
+#						bShowPower = False
+# BUG - Power Rating - end
+
+
+
+		
+#				szText = self.SR_LRow_getAttitudeText (szRel, self.iActivePlayer, iLoopLeader)
+#				self.SitRepGrid.setText(iRow, self.Col_Attitude, szText)
+
+#				if (self.bWHEOOH
+#				and not self.bCurrentWar = True):
+#				if self.bWHEOOH:
+#					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_RED", "red")
+#				else:
+#					self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, 75, "COLOR_PLAYER_YELLOW", "yellow")
+
+
+
+
+
+	def calculateRelations (self, nPlayer, nTarget):
+		if (nPlayer != nTarget
+		and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
+			nAttitude = 0
+			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
+#			ExoticForPrint (("%d toward %d" % (nPlayer, nTarget)) + str(szAttitude))
+			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
+#			ExoticForPrint ("Length: %d" % len (ltPlusAndMinuses))
+			for i in range (len (ltPlusAndMinuses)):
+				nAttitude += int (ltPlusAndMinuses[i])
+#			ExoticForPrint ("Attitude: %d" % nAttitude)
+		else:
+			return None
+		return nAttitude
+
+	def getAttitudeText (self, nAttitude, nPlayer, nTarget):
+		szText = str (nAttitude)
+		szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
+		if nAttitude > 0:
+			szText = "+" + szText
+
+		if BugScreens.isShowGlanceSmilies():
+			szText = "[" + szText + "]"
+		else:
+			szText = "<font=3>   " + szText + "</font>"
+
+#		ExoticForPrint ("Attitude String = %s" % szAttitude)
+		for szColor, szSearchString in self.ATTITUDE_DICT.items():
+			if re.search (szSearchString, szAttitude):
+				color = gc.getInfoTypeForString(szColor)
+				szText = localText.changeTextColor (szText, color)
+
+		if BugScreens.isShowGlanceSmilies():
+			iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
+			szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+			szText = szSmilie + " " + szText
+		
+		if gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isAtWar(gc.getPlayer(nTarget).getTeam()):
+			szText += u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
+
+		return szText
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	def Grid_WorstEnemy(self, iRow, iLeader):
@@ -677,7 +914,7 @@ class CvMilitaryAdvisor:
 						iLeaderWars.append(iTargetPlayer)
 					elif szWarDenial == "":
 						szWarDenial = gc.getDenialInfo(WarDenial).getDescription()
-#						print WarDenial
+						print WarDenial
 
 					if WarDenial == DenialTypes.DENIAL_TOO_MANY_WARS:
 						self.bWHEOOH = True
@@ -714,8 +951,8 @@ class CvMilitaryAdvisor:
 									gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), 
 									WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
-		if szWarDenial != "":
-			self.SitRepGrid.setText(iRow, self.Col_WarDenial, szWarDenial)
+#		if szWarDenial != "":
+#			self.SitRepGrid.setText(iRow, self.Col_WarDenial, szWarDenial)
 
 		return
 
@@ -1433,9 +1670,9 @@ class CvMilitaryAdvisor:
 				self.iScreen = SITUATION_REPORT_SCREEN
 				self.showSituationReport()
 
-			elif (inputClass.getFunctionName() == self.PLACE_HOLDER_TAB):
-				self.iScreen = PLACE_HOLDER
-				self.showGameSettingsScreen()
+#			elif (inputClass.getFunctionName() == self.PLACE_HOLDER_TAB):
+#				self.iScreen = PLACE_HOLDER
+#				self.showGameSettingsScreen()
 
 			elif (inputClass.getFunctionName() == self.UNIT_BUTTON_ID):
 				self.bUnitDetails = not self.bUnitDetails
