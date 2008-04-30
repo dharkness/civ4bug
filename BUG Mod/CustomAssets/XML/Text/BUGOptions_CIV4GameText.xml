@@ -14,7 +14,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
 		<English>Enable Reminders (Alt-M)</English>
-		<French>Enable Reminders (Alt-M)</French>
+		<French>Activer les Rappels (Alt-M)</French>
 		<German>Erinnerungen aktivieren [ALT-M]</German>
 		<Italian>Enable Reminders (Alt-M)</Italian>
 		<Spanish>Enable Reminders (Alt-M)</Spanish>
@@ -23,7 +23,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_HOVER</Tag>
 		<English>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</English>
-		<French>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</French>
+		<French>En activant, vous pourrez créer des messages avec Alt-M qui réapparaîtront un nombre de tours spécifiés plus tard, grâce au mod Reminders de eotinb.</French>
 		<German>Ermöglicht das Schreiben von Erinnerungsmeldungen (Tastenkombination [ALT-M]), die nach einer bestimmten Anzahl Runden wieder erscheinen (verwendet "eotinbs Reminders" Mod)</German>
 		<Italian>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</Italian>
 		<Spanish>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</Spanish>
@@ -32,7 +32,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERSMETHOD_TEXT</Tag>
 		<English>Display Method</English>
-		<French>Display Method</French>
+		<French>Méthode d'affichage</French>
 		<German>Anzeigemethode</German>
 		<Italian>Display Method</Italian>
 		<Spanish>Display Method</Spanish>
@@ -41,7 +41,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERSMETHOD_HOVER</Tag>
 		<English>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</English>
-		<French>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</French>
+		<French>Determine comment les rappels vous sont montrés.[NEWLINE]- Un message qui s'affich à l'écran plus entrée dans le log[NEWLINE]- Popup modal avec l'option de le faire réapparaître le tour suivant[NEWLINE]- Les deux</French>
 		<German>Bestimmt die Anzeigemethode für Erinnerungen:[NEWLINE]- Meldung: einfache Meldung mit einem Eintrag im Log[NEWLINE]- Popup: Dialogfenster mit der Möglichkeit, die Meldung in der nächsten Runde erneut anzeigen zu lassen[NEWLINE]- Beides</German>
 		<Italian>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</Italian>
 		<Spanish>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</Spanish>
@@ -50,7 +50,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERSMETHOD_LIST</Tag>
 		<English>Message|Popup|Both</English>
-		<French>Message|Popup|Both</French>
+		<French>Message|Popup|Les deux</French>
 		<German>Meldung|Popup|Beides</German>
 		<Italian>Message|Popup|Both</Italian>
 		<Spanish>Message|Popup|Both</Spanish>
@@ -59,7 +59,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_LOGREMINDERS_TEXT</Tag>
 		<English>Log w. Autolog</English>
-		<French>Log w. Autolog</French>
+		<French>Log avec Autolog</French>
 		<German>Autolog aktivieren</German>
 		<Italian>Log w. Autolog</Italian>
 		<Spanish>Log w. Autolog</Spanish>
@@ -68,7 +68,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_LOGREMINDERS_HOVER</Tag>
 		<English>When checked, reminders will be logged using Autolog when created and triggered.</English>
-		<French>When checked, reminders will be logged using Autolog when created and triggered.</French>
+		<French>En activant, les rappels seront écrits dans le log à travers Autolog quand ils sont créés et montrés.</French>
 		<German>Protokolliert die Erstellung und Auslösung von Erinnerungen (verwendet "eotinbs Autolog" Mod)</German>
 		<Italian>When checked, reminders will be logged using Autolog when created and triggered.</Italian>
 		<Spanish>When checked, reminders will be logged using Autolog when created and triggered.</Spanish>
@@ -77,7 +77,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CIV4LERTS_TEXT</Tag>
 		<English>Enable Civ4lerts</English>
-		<French>Enable Civ4lerts</French>
+		<French>Activer Civ4lerts</French>
 		<German>Civ4lerts aktivieren</German>
 		<Italian>Enable Civ4lerts</Italian>
 		<Spanish>Enable Civ4lerts</Spanish>
@@ -86,7 +86,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CIV4LERTS_HOVER</Tag>
 		<English>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</English>
-		<French>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</French>
+		<French>En activant, des messages apparaissent pour vous informer de l'état de plusieurs éléments du jeu, grâce au mod Civ4lerts de Dr. Elmer Jiggle.</French>
 		<German>Lässt Warnungen erscheinen, die bevorstehende oder bereits eingetretene Ereignisse melden (verwendet "Dr. Elmer Jiggles Civ4lerts" Mod)</German>
 		<Italian>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</Italian>
 		<Spanish>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</Spanish>
@@ -95,7 +95,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGGROWTH_TEXT</Tag>
 		<English>Pending</English>
-		<French>Pending</French>
+		<French>Prochain tour</French>
 		<German>Bevorstehend</German>
 		<Italian>Pending</Italian>
 		<Spanish>Pending</Spanish>
@@ -104,7 +104,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGGROWTH_HOVER</Tag>
 		<English>When checked, displays an alert when a city's population will grow or shrink next turn.</English>
-		<French>When checked, displays an alert when a city's population will grow or shrink next turn.</French>
+		<French>En activant, une alerte sera montrée quand la population d'une ville grandira ou retrécira au prochain tour.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Bevölkerung einer Stadt in der nächsten Runde wächst oder schrumpft</German>
 		<Italian>When checked, displays an alert when a city's population will grow or shrink next turn.</Italian>
 		<Spanish>When checked, displays an alert when a city's population will grow or shrink next turn.</Spanish>
@@ -113,7 +113,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGHAPPINESS_TEXT</Tag>
 		<English>Pending</English>
-		<French>Pending</French>
+		<French>Prochain tour</French>
 		<German>Bevorstehend</German>
 		<Italian>Pending</Italian>
 		<Spanish>Pending</Spanish>
@@ -122,7 +122,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGHAPPINESS_HOVER</Tag>
 		<English>When checked, displays an alert when a city will become happy or unhappy next turn.</English>
-		<French>When checked, displays an alert when a city will become happy or unhappy next turn.</French>
+		<French>En activant, une alerte sera montrée quand une ville deviendra heureuse ou malheureuse au prochain tour.</French>
 		<German>Lässt eine Warnung erscheinen, wenn sich die Zufriedenheit der Bevölkerung einer Stadt in der nächsten Runde verbessert oder verschlechtert</German>
 		<Italian>When checked, displays an alert when a city will become happy or unhappy next turn.</Italian>
 		<Spanish>When checked, displays an alert when a city will become happy or unhappy next turn.</Spanish>
@@ -131,7 +131,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGHEALTHINESS_TEXT</Tag>
 		<English>Pending</English>
-		<French>Pending</French>
+		<French>Prochain tour</French>
 		<German>Bevorstehend</German>
 		<Italian>Pending</Italian>
 		<Spanish>Pending</Spanish>
@@ -140,7 +140,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGHEALTHINESS_HOVER</Tag>
 		<English>When checked, displays an alert when a city will become healthy or unhealthy next turn.</English>
-		<French>When checked, displays an alert when a city will become healthy or unhealthy next turn.</French>
+		<French>En activant, une alerte sera montrée quand une ville deviendra saine ou malsaine au prochain tour.</French>
 		<German>Lässt eine Warnung erscheinen, wenn sich die Gesundheit der Bevölkerung einer Stadt in der nächsten Runde verbessert oder verschlechtert</German>
 		<Italian>When checked, displays an alert when a city will become healthy or unhealthy next turn.</Italian>
 		<Spanish>When checked, displays an alert when a city will become healthy or unhealthy next turn.</Spanish>
@@ -149,7 +149,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGBORDEREXPANSION_TEXT</Tag>
 		<English>Pending Border Expansion</English>
-		<French>Pending Border Expansion</French>
+		<French>Expansion Culturelle</French>
 		<German>Bevorstehende Grenzerweiterung</German>
 		<Italian>Pending Border Expansion</Italian>
 		<Spanish>Pending Border Expansion</Spanish>
@@ -157,17 +157,17 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYPENDINGBORDEREXPANSION_HOVER</Tag>
-		<English>When checked, displays an alert when a city will expand its curltural borders next turn.</English>
-		<French>When checked, displays an alert when a city will expand its curltural borders next turn.</French>
+		<English>When checked, displays an alert when a city will expand its cultural borders next turn.</English>
+		<French>En activant, une alerte sera montrée quand les frontières culturelles d'une ville s'aggrandiront au prochain tour.</French>
 		<German>Lässt eine Warnung erscheinen, wenn sich die Kulturgrenzen einer Stadt in der nächsten Runde erweitern</German>
-		<Italian>When checked, displays an alert when a city will expand its curltural borders next turn.</Italian>
-		<Spanish>When checked, displays an alert when a city will expand its curltural borders next turn.</Spanish>
+		<Italian>When checked, displays an alert when a city will expand its cultural borders next turn.</Italian>
+		<Spanish>When checked, displays an alert when a city will expand its cultural borders next turn.</Spanish>
 	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYGROWTH_TEXT</Tag>
 		<English>Growth</English>
-		<French>Growth</French>
+		<French>Taille</French>
 		<German>Wachstum</German>
 		<Italian>Growth</Italian>
 		<Spanish>Growth</Spanish>
@@ -176,7 +176,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYGROWTH_HOVER</Tag>
 		<English>When checked, displays an alert when a city's population has grown or shrunk.</English>
-		<French>When checked, displays an alert when a city's population has grown or shrunk.</French>
+		<French>En activant, une alerte sera montrée quand la population d'une ville a grandie ou retrécie.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Bevölkerung einer Stadt gewachsen oder geschrumpft ist</German>
 		<Italian>When checked, displays an alert when a city's population has grown or shrunk.</Italian>
 		<Spanish>When checked, displays an alert when a city's population has grown or shrunk.</Spanish>
@@ -185,7 +185,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYHAPPINESS_TEXT</Tag>
 		<English>Happiness</English>
-		<French>Happiness</French>
+		<French>Bonheur</French>
 		<German>Zufriedenheit</German>
 		<Italian>Happiness</Italian>
 		<Spanish>Happiness</Spanish>
@@ -194,7 +194,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYHAPPINESS_HOVER</Tag>
 		<English>When checked, displays an alert when a city has become happy or unhappy.</English>
-		<French>When checked, displays an alert when a city has become happy or unhappy.</French>
+		<French>En activant, une alerte sera montrée quand une ville est devenue heureuse ou malheureuse.</French>
 		<German>Lässt eine Warnung erscheinen, wenn sich die Zufriedenheit der Bevölkerung einer Stadt verbessert oder verschlechtert hat</German>
 		<Italian>When checked, displays an alert when a city has become happy or unhappy.</Italian>
 		<Spanish>When checked, displays an alert when a city has become happy or unhappy.</Spanish>
@@ -203,7 +203,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYHEALTHINESS_TEXT</Tag>
 		<English>Healthiness</English>
-		<French>Healthiness</French>
+		<French>Santé</French>
 		<German>Gesundheit</German>
 		<Italian>Healthiness</Italian>
 		<Spanish>Healthiness</Spanish>
@@ -212,7 +212,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYHEALTHINESS_HOVER</Tag>
 		<English>When checked, displays an alert when a city has become healthy or unhealthy.</English>
-		<French>When checked, displays an alert when a city has become healthy or unhealthy.</French>
+		<French>En activant, une alerte sera montrée quand une ville est devenue saine ou malsaine.</French>
 		<German>Lässt eine Warnung erscheinen, wenn sich die Gesundheit der Bevölkerung einer Stadt verbessert oder verschlechtert hat</German>
 		<Italian>When checked, displays an alert when a city has become healthy or unhealthy.</Italian>
 		<Spanish>When checked, displays an alert when a city has become healthy or unhealthy.</Spanish>
@@ -221,7 +221,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYCANHURRYPOP_TEXT</Tag>
 		<English>Can Hurry w. Population</English>
-		<French>Can Hurry w. Population</French>
+		<French>Précipiter à cout de Population</French>
 		<German>Zwangsarbeit möglich</German>
 		<Italian>Can Hurry w. Population</Italian>
 		<Spanish>Can Hurry w. Population</Spanish>
@@ -230,7 +230,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYCANHURRYPOP_HOVER</Tag>
 		<English>When checked, displays an alert once a city can hurry the item it's building with the whip.</English>
-		<French>When checked, displays an alert once a city can hurry the item it's building with the whip.</French>
+		<French>En activant, une alerte sera montrée quand une ville peut précipiter sa construction avec le fouet.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Produktion einer Stadt durch Opferung eines Teils der Bevölkerung beschleunigt werden kann</German>
 		<Italian>When checked, displays an alert once a city can hurry the item it's building with the whip.</Italian>
 		<Spanish>When checked, displays an alert once a city can hurry the item it's building with the whip.</Spanish>
@@ -239,7 +239,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYCANHURRYGOLD_TEXT</Tag>
 		<English>Can Hurry w. Gold</English>
-		<French>Can Hurry w. Gold</French>
+		<French>Précipiter à cout d'or</French>
 		<German>Goldzahlung möglich</German>
 		<Italian>Can Hurry w. Gold</Italian>
 		<Spanish>Can Hurry w. Gold</Spanish>
@@ -248,7 +248,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_CITYCANHURRYGOLD_HOVER</Tag>
 		<English>When checked, displays an alert once a city can hurry the item it's building with gold.</English>
-		<French>When checked, displays an alert once a city can hurry the item it's building with gold.</French>
+		<French>En activant, une alerte sera montrée quand une ville peut précipiter sa construction avec de l'or.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Produktion einer Stadt durch Zahlung von Gold beschleunigt werden kann</German>
 		<Italian>When checked, displays an alert once a city can hurry the item it's building with gold.</Italian>
 		<Spanish>When checked, displays an alert once a city can hurry the item it's building with gold.</Spanish>
@@ -275,7 +275,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_GOLDTRADE_TEXT</Tag>
 		<English>Gold</English>
-		<French>Gold</French>
+		<French>Or</French>
 		<German>Goldbetrag</German>
 		<Italian>Gold</Italian>
 		<Spanish>Gold</Spanish>
@@ -293,7 +293,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_GOLDTRADETHRESH_TEXT</Tag>
 		<English>Threshold</English>
-		<French>Threshold</French>
+		<French>Seuil</French>
 		<German>Schwelle</German>
 		<Italian>Threshold</Italian>
 		<Spanish>Threshold</Spanish>
@@ -311,7 +311,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_GOLDPERTURNTRADE_TEXT</Tag>
 		<English>Gold Per Turn</English>
-		<French>Gold Per Turn</French>
+		<French>Or Par Tour</French>
 		<German>Gold pro Runde</German>
 		<Italian>Gold Per Turn</Italian>
 		<Spanish>Gold Per Turn</Spanish>
@@ -329,7 +329,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_GOLDPERTURNTRADETHRESH_TEXT</Tag>
 		<English>Threshold</English>
-		<French>Threshold</French>
+		<French>Seuil</French>
 		<German>Schwelle</German>
 		<Italian>Threshold</Italian>
 		<Spanish>Threshold</Spanish>
@@ -347,7 +347,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_OPENBORDERSTRADE_TEXT</Tag>
 		<English>Open Borders</English>
-		<French>Open Borders</French>
+		<French>Frontières Ouvertes</French>
 		<German>Offene Grenzen</German>
 		<Italian>Open Borders</Italian>
 		<Spanish>Open Borders</Spanish>
@@ -365,7 +365,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DEFENSIVEPACTTRADE_TEXT</Tag>
 		<English>Defensive Pact</English>
-		<French>Defensive Pact</French>
+		<French>Pacte Défensif</French>
 		<German>Verteidigungsbündnis</German>
 		<Italian>Defensive Pact</Italian>
 		<Spanish>Defensive Pact</Spanish>
@@ -383,7 +383,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_PERMANENTALLIANCETRADE_TEXT</Tag>
 		<English>Permanent Alliance</English>
-		<French>Permanent Alliance</French>
+		<French>Alliance Permanente</French>
 		<German>Allianz</German>
 		<Italian>Permanent Alliance</Italian>
 		<Spanish>Permanent Alliance</Spanish>
@@ -419,7 +419,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMPOPTHRESH_TEXT</Tag>
 		<English>Pop Threshold</English>
-		<French>Pop Threshold</French>
+		<French>Seuil de Population</French>
 		<German>Grenzbereich Bev.</German>
 		<Italian>Pop Threshold</Italian>
 		<Spanish>Pop Threshold</Spanish>
@@ -428,7 +428,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMPOPTHRESH_HOVER</Tag>
 		<English>Population threshold for Domination victory.</English>
-		<French>Population threshold for Domination victory.</French>
+		<French>Seuil de Population pour une Victoire par Domination.</French>
 		<German>Bestimmt den Grenzbereich für die Bevölkerungszahl, ab dem eine Warnung vor einem Vorherrschafts-Sieg erscheint</German>
 		<Italian>Population threshold for Domination victory.</Italian>
 		<Spanish>Population threshold for Domination victory.</Spanish>
@@ -437,7 +437,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMLAND_TEXT</Tag>
 		<English>Domination: Land</English>
-		<French>Domination: Land</French>
+		<French>Domination: Territoire</French>
 		<German>Landmasse</German>
 		<Italian>Domination: Land</Italian>
 		<Spanish>Domination: Land</Spanish>
@@ -455,7 +455,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMLANDTHRESH_TEXT</Tag>
 		<English>Land Threshold</English>
-		<French>Land Threshold</French>
+		<French>Seuil de Territoire</French>
 		<German>Grenzbereich Land</German>
 		<Italian>Land Threshold</Italian>
 		<Spanish>Land Threshold</Spanish>
@@ -464,7 +464,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMLANDTHRESH_HOVER</Tag>
 		<English>Land threshold for Domination victory.</English>
-		<French>Land threshold for Domination victory.</French>
+		<French>Seuil de Territoire pour une Victoire par Domination.</French>
 		<German>Bestimmt den Grenzbereich für die Größe der Landmasse, ab dem eine Warnung vor einem Vorherrschafts-Sieg erscheint</German>
 		<Italian>Land threshold for Domination victory.</Italian>
 		<Spanish>Land threshold for Domination victory.</Spanish>
@@ -473,7 +473,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_ENABLED_TEXT</Tag>
 		<English>Enable Logging</English>
-		<French>Enable Logging</French>
+		<French>Activer le log</French>
 		<German>Protokollierung aktivieren</German>
 		<Italian>Enable Logging</Italian>
 		<Spanish>Enable Logging</Spanish>
@@ -482,7 +482,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_ENABLED_HOVER</Tag>
 		<English>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</English>
-		<French>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</French>
+		<French>En activant, plusieurs évènements du jeu sont loggés dans un fichier texte grâce au mod AutoLog de eotinb.</French>
 		<German>Protokolliert verschiedene Spielereignisse in einer Textdatei (verwendet "eotinbs AutoLog" Mod)</German>
 		<Italian>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</Italian>
 		<Spanish>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</Spanish>
@@ -491,7 +491,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_TEXT</Tag>
 		<English>Silent Start</English>
-		<French>Silent Start</French>
+		<French>Démarrage Silencieux</French>
 		<German>Stummer Start</German>
 		<Italian>Silent Start</Italian>
 		<Spanish>Silent Start</Spanish>
@@ -500,7 +500,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_HOVER</Tag>
 		<English>When checked, the logger is automatically started with no in-game message.</English>
-		<French>When checked, the logger is automatically started with no in-game message.</French>
+		<French>En activant, Autolog est démarré automatiquement sans message à l'écran.</French>
 		<German>Startet das Protokoll automatisch, ohne eine Meldung im Spiel auszugeben</German>
 		<Italian>When checked, the logger is automatically started with no in-game message.</Italian>
 		<Spanish>When checked, the logger is automatically started with no in-game message.</Spanish>
@@ -509,7 +509,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_DEFAULTFILENAME_TEXT</Tag>
 		<English>Use Default File Name</English>
-		<French>Use Default File Name</French>
+		<French>Utiliser le nom de Fichier par défaut</French>
 		<German>Standard-Dateiname verwenden</German>
 		<Italian>Use Default File Name</Italian>
 		<Spanish>Use Default File Name</Spanish>
@@ -518,7 +518,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_DEFAULTFILENAME_HOVER</Tag>
 		<English>When checked, the default (playername.txt) will be used, ignores log file name option.</English>
-		<French>When checked, the default (playername.txt) will be used, ignores log file name option.</French>
+		<French>En activant, le nom de fichier par défaut (playername.txt) sera utilisé, en ignorant l'option çi-dessous.</French>
 		<German>Den Standard-Dateinamen (playername.txt) verwenden, wobei die Namensoption für die Protokolldatei ignoriert wird</German>
 		<Italian>When checked, the default (playername.txt) will be used, ignores log file name option.</Italian>
 		<Spanish>When checked, the default (playername.txt) will be used, ignores log file name option.</Spanish>
@@ -527,7 +527,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FILEPATH_TEXT</Tag>
 		<English>Path</English>
-		<French>Path</French>
+		<French>Chemin</French>
 		<German>Pfad</German>
 		<Italian>Path</Italian>
 		<Spanish>Path</Spanish>
@@ -536,7 +536,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FILEPATH_HOVER</Tag>
 		<English>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</English>
-		<French>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</French>
+		<French>Le Répertoire ou le fichier de log sera sauvegardé (chemin complet, p.ex. C:\folder\subfolder ou vide).</French>
 		<German>Verzeichnis, in dem sich die Protokolldatei befindet (komplette Pfadangabe, d.h. C:\Ordner\Unterordner oder leer lassen)</German>
 		<Italian>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</Italian>
 		<Spanish>Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).</Spanish>
@@ -545,7 +545,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FILENAME_TEXT</Tag>
 		<English>File</English>
-		<French>File</French>
+		<French>Fichier</French>
 		<German>Datei</German>
 		<Italian>File</Italian>
 		<Spanish>File</Spanish>
@@ -554,7 +554,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FILENAME_HOVER</Tag>
 		<English>Name of log file. If there is no file of this name in the directory above, one will be created.</English>
-		<French>Name of log file. If there is no file of this name in the directory above, one will be created.</French>
+		<French>Nom du fichier de log. Si un fichier de ce nom n'existe pas dans le répertoire spécifié ci-dessus, il sera créé.</French>
 		<German>Falls sich keine Datei mit diesem Namen im obigen Verzeichnis befindet, wird eine erstellt</German>
 		<Italian>Name of log file. If there is no file of this name in the directory above, one will be created.</Italian>
 		<Spanish>Name of log file. If there is no file of this name in the directory above, one will be created.</Spanish>
@@ -563,7 +563,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FORMAT_TEXT</Tag>
 		<English>Format Style</English>
-		<French>Format Style</French>
+		<French>Formattage</French>
 		<German>Ausgabeformat</German>
 		<Italian>Format Style</Italian>
 		<Spanish>Format Style</Spanish>
@@ -572,7 +572,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FORMAT_HOVER</Tag>
 		<English>The format of the log output.</English>
-		<French>The format of the log output.</French>
+		<French>Le style du log.</French>
 		<German>Bestimmt die Formatierung, in der das Protokoll erstellt wird</German>
 		<Italian>The format of the log output.</Italian>
 		<Spanish>The format of the log output.</Spanish>
@@ -581,7 +581,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_FORMAT_LIST</Tag>
 		<English>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</English>
-		<French>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</French>
+		<French>Simple|Tags HTML|Tags de Forum, avec des " autour des codes couleur|Tags de Forum, sans " autour des codes couleur</French>
 		<German>Klartext|HTML-Code|Foren-Code, mit Anführungszeichen (") um Farbcodes|Foren-Code, ohne Anführungszeichen (") um Farbcodes</German>
 		<Italian>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</Italian>
 		<Spanish>Plain|HTML Tags|Forum Tags, With " around color codes|Forum Tags, No " around color codes</Spanish>
@@ -590,7 +590,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_COLORCODING_TEXT</Tag>
 		<English>Color Coding</English>
-		<French>Color Coding</French>
+		<French>Couleurs</French>
 		<German>Farbkodierung</German>
 		<Italian>Color Coding</Italian>
 		<Spanish>Color Coding</Spanish>
@@ -599,7 +599,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_COLORCODING_HOVER</Tag>
 		<English>When checked, comments are color-coded for forum posts.</English>
-		<French>When checked, comments are color-coded for forum posts.</French>
+		<French>En activant, les commentaires sont colorés pour les forums.</French>
 		<German>Hebt Kommentare farblich hervor, um sie in Forumsbeiträgen verwenden zu können</German>
 		<Italian>When checked, comments are color-coded for forum posts.</Italian>
 		<Spanish>When checked, comments are color-coded for forum posts.</Spanish>
@@ -608,7 +608,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_4000BC_TEXT</Tag>
 		<English>4000BC is Turn</English>
-		<French>4000BC is Turn</French>
+		<French>4000 av. J.C. est le Tour</French>
 		<German>4000 n.Chr. ist Runde</German>
 		<Italian>4000BC is Turn</Italian>
 		<Spanish>4000BC is Turn</Spanish>
@@ -617,7 +617,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_4000BC_HOVER</Tag>
 		<English>Select which turn number 4000BC should be.</English>
-		<French>Select which turn number 4000BC should be.</French>
+		<French>Sélectionnez quel devrait être le numéro de tour de 4000 av.J.C.</French>
 		<German>Bestimmt die Runde, der das Jahr 4000 n. Chr. entsprechen soll</German>
 		<Italian>Select which turn number 4000BC should be.</Italian>
 		<Spanish>Select which turn number 4000BC should be.</Spanish>
@@ -626,7 +626,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_IBT_TEXT</Tag>
 		<English>Show IBT</English>
-		<French>Show IBT</French>
+		<French>Montrez IBT</French>
 		<German>"IBT" einfügen</German>
 		<Italian>Show IBT</Italian>
 		<Spanish>Show IBT</Spanish>
@@ -635,7 +635,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_IBT_HOVER</Tag>
 		<English>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</English>
-		<French>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</French>
+		<French>En activant, Autolog insère IBT (in between turns = entre les tours) à la fin du tour du joueur.</French>
 		<German>Dem Protokoll wird am Ende einer Runde des Spielers die Abkürzung "IBT" ("in between turns", dt. "zwischen den Runden") angehängt</German>
 		<Italian>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</Italian>
 		<Spanish>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</Spanish>
@@ -644,7 +644,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_TEXT</Tag>
 		<English>Prefix</English>
-		<French>Prefix</French>
+		<French>Préfixe</French>
 		<German>Präfix</German>
 		<Italian>Prefix</Italian>
 		<Spanish>Prefix</Spanish>
@@ -653,7 +653,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_HOVER</Tag>
 		<English>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</English>
-		<French>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</French>
+		<French>Utilisé comme préfixe avant les entrées manuelles (ALT-E) dans le log, p.ex. devant votre nom d'utilisateur.</French>
 		<German>Bestimmt das Präfix, das den Protokolleinträgen des Spielers vorangestellt wird (Tastenkombination [ALT-E]), z.B. der Spielername</German>
 		<Italian>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Italian>
 		<Spanish>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Spanish>
@@ -671,7 +671,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGTECH_HOVER</Tag>
 		<English>When checked, will log techs acquired and research started.</English>
-		<French>When checked, will log techs acquired and research started.</French>
+		<French>En activant, les technologies découvertes et les recherches commencées seront notés dans le log.</French>
 		<German>Protokolliert erworbene Technologien und begonnene Forschungen</German>
 		<Italian>When checked, will log techs acquired and research started.</Italian>
 		<Spanish>When checked, will log techs acquired and research started.</Spanish>
@@ -680,7 +680,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGBUILDSTARTED_TEXT</Tag>
 		<English>Builds Started</English>
-		<French>Builds Started</French>
+		<French>Constructions Démarrées</French>
 		<German>Bauten begonnen</German>
 		<Italian>Builds Started</Italian>
 		<Spanish>Builds Started</Spanish>
@@ -689,7 +689,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGBUILDSTARTED_HOVER</Tag>
 		<English>When checked, will log when a city starts a build.</English>
-		<French>When checked, will log when a city starts a build.</French>
+		<French>En activant, le démarrage des constructions sera noté dans le log.</French>
 		<German>Protokolliert begonnene Bauprojekte einer Stadt</German>
 		<Italian>When checked, will log when a city starts a build.</Italian>
 		<Spanish>When checked, will log when a city starts a build.</Spanish>
@@ -698,7 +698,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGBUILDCOMPLETED_TEXT</Tag>
 		<English>Builds Completed</English>
-		<French>Builds Completed</French>
+		<French>Constructions Finies</French>
 		<German>Bauten vollendet</German>
 		<Italian>Builds Completed</Italian>
 		<Spanish>Builds Completed</Spanish>
@@ -707,7 +707,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGBUILDCOMPLETED_HOVER</Tag>
 		<English>When checked, will log when a city completes a build.</English>
-		<French>When checked, will log when a city completes a build.</French>
+		<French>En activant, la fin des constructions sera noté dans le log.</French>
 		<German>Protokolliert fertiggestellte Bauprojekte einer Stadt</German>
 		<Italian>When checked, will log when a city completes a build.</Italian>
 		<Spanish>When checked, will log when a city completes a build.</Spanish>
@@ -716,7 +716,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGPROJECTS_TEXT</Tag>
 		<English>Projects Completed</English>
-		<French>Projects Completed</French>
+		<French>Projets Finis</French>
 		<German>Wunder vollendet</German>
 		<Italian>Projects Completed</Italian>
 		<Spanish>Projects Completed</Spanish>
@@ -725,7 +725,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGPROJECTS_HOVER</Tag>
 		<English>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</English>
-		<French>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</French>
+		<French>En activant, la fin d'un projet sera noté dans le log. (Certaines merveilles sont techniquement des projets -- des autres merveilles sont traités comme des bâtiments normaux.)</French>
 		<German>Protokolliert fertiggestellte Wunder (bestimmte Wunder sind eigentlich Projekte, während andere Wunder wie normale Gebäude behandelt werden)</German>
 		<Italian>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</Italian>
 		<Spanish>When checked, will log completion of projects (certain wonders are technically projects -- other wonders are treated like normal buildings).</Spanish>
@@ -734,7 +734,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGIMPROVEMENTS_TEXT</Tag>
 		<English>Improvements</English>
-		<French>Improvements</French>
+		<French>Améliorations</French>
 		<German>Modernisierungen</German>
 		<Italian>Improvements</Italian>
 		<Spanish>Improvements</Spanish>
@@ -743,7 +743,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGIMPROVEMENTS_HOVER</Tag>
 		<English>When checked, will log when your improvements are built or destroyed by you.</English>
-		<French>When checked, will log when your improvements are built or destroyed by you.</French>
+		<French>En activant, la construction d'une Améliorations, ou la destruction par vous-même, seront notés dans le log.</French>
 		<German>Protokolliert errichtete oder zerstörte Modernisierungen des Spielers</German>
 		<Italian>When checked, will log when your improvements are built or destroyed by you.</Italian>
 		<Spanish>When checked, will log when your improvements are built or destroyed by you.</Spanish>
@@ -752,7 +752,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYFOUNDED_TEXT</Tag>
 		<English>City Founded</English>
-		<French>City Founded</French>
+		<French>Fondation</French>
 		<German>Gründungen</German>
 		<Italian>City Founded</Italian>
 		<Spanish>City Founded</Spanish>
@@ -761,7 +761,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYFOUNDED_HOVER</Tag>
 		<English>When checked, will log when you found a city.</English>
-		<French>When checked, will log when you found a city.</French>
+		<French>En activant, la fondation d'une ville sera noté dans le log.</French>
 		<German>Protokolliert die Gründung von Städten</German>
 		<Italian>When checked, will log when you found a city.</Italian>
 		<Spanish>When checked, will log when you found a city.</Spanish>
@@ -770,7 +770,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYGROWTH_TEXT</Tag>
 		<English>City Growth</English>
-		<French>City Growth</French>
+		<French>Population</French>
 		<German>Wachstum</German>
 		<Italian>City Growth</Italian>
 		<Spanish>City Growth</Spanish>
@@ -779,7 +779,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYGROWTH_HOVER</Tag>
 		<English>When checked, will log when one of your cities grows in population.</English>
-		<French>When checked, will log when one of your cities grows in population.</French>
+		<French>En activant, l'aggrandissement de la population de vos villes sera noté dans le log.</French>
 		<German>Protokolliert das Bevölkerungswachstum von Städten</German>
 		<Italian>When checked, will log when one of your cities grows in population.</Italian>
 		<Spanish>When checked, will log when one of your cities grows in population.</Spanish>
@@ -788,7 +788,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYBORDERS_TEXT</Tag>
 		<English>City Borders</English>
-		<French>City Borders</French>
+		<French>Frontières</French>
 		<German>Stadtgrenzen</German>
 		<Italian>City Borders</Italian>
 		<Spanish>City Borders</Spanish>
@@ -797,7 +797,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYBORDERS_HOVER</Tag>
 		<English>When checked, will log when one of your city's borders expand.</English>
-		<French>When checked, will log when one of your city's borders expand.</French>
+		<French>En activant, l'expansion des frontières de vos villes sera noté dans le log.</French>
 		<German>Protokolliert die Erweiterung der städtischen Kulturgrenzen</German>
 		<Italian>When checked, will log when one of your city's borders expand.</Italian>
 		<Spanish>When checked, will log when one of your city's borders expand.</Spanish>
@@ -806,7 +806,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYOWNER_TEXT</Tag>
 		<English>City Ownership</English>
-		<French>City Ownership</French>
+		<French>Contrôle</French>
 		<German>Besitzwechsel</German>
 		<Italian>City Ownership</Italian>
 		<Spanish>City Ownership</Spanish>
@@ -815,7 +815,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYOWNER_HOVER</Tag>
 		<English>When checked, will log when you acquire or lose a city through conquest or trade.</English>
-		<French>When checked, will log when you acquire or lose a city through conquest or trade.</French>
+		<French>En activant, l'aquisition ou la perte d'une ville par la conquête ou le commerce sera noté dans le log.</French>
 		<German>Protokolliert den Erwerb oder Verlust von Städten durch Eroberung oder Verhandlung</German>
 		<Italian>When checked, will log when you acquire or lose a city through conquest or trade.</Italian>
 		<Spanish>When checked, will log when you acquire or lose a city through conquest or trade.</Spanish>
@@ -824,7 +824,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYRAZED_TEXT</Tag>
 		<English>City Razed</English>
-		<French>City Razed</French>
+		<French>Démolition</French>
 		<German>Zerstörungen</German>
 		<Italian>City Razed</Italian>
 		<Spanish>City Razed</Spanish>
@@ -833,7 +833,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYRAZED_HOVER</Tag>
 		<English>When checked, will log when you raze another civ's city or one of your cities is razed.</English>
-		<French>When checked, will log when you raze another civ's city or one of your cities is razed.</French>
+		<French>En activant, la démolition d'une ville par vos troupes et la démolition de vos villes sera noté dans le log.</French>
 		<German>Protokolliert die Zerstörung eigener und feindlicher Städte</German>
 		<Italian>When checked, will log when you raze another civ's city or one of your cities is razed.</Italian>
 		<Spanish>When checked, will log when you raze another civ's city or one of your cities is razed.</Spanish>
@@ -842,7 +842,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYWHIPSTATUS_TEXT</Tag>
 		<English>City Whip</English>
-		<French>City Whip</French>
+		<French>Le Fouet</French>
 		<German>Zwangsarbeit</German>
 		<Italian>City Whip</Italian>
 		<Spanish>City Whip</Spanish>
@@ -851,7 +851,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCITYWHIPSTATUS_HOVER</Tag>
 		<English>When checked, will log when you whip a city or when the whip anger decreases in a city.</English>
-		<French>When checked, will log when you whip a city or when the whip anger decreases in a city.</French>
+		<French>En activant, l'utilisation du fouet dans vos villes sera noté dans le log, ainsi que le décroissement de la colère.</French>
 		<German>Protokolliert die Opferung von Bevölkerung zur Beschleunigung der Produktion oder das Abklingen der Unzufriedenheit darüber</German>
 		<Italian>When checked, will log when you whip a city or when the whip anger decreases in a city.</Italian>
 		<Spanish>When checked, will log when you whip a city or when the whip anger decreases in a city.</Spanish>
@@ -860,7 +860,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGOODIES_TEXT</Tag>
 		<English>Tribal Villages</English>
-		<French>Tribal Villages</French>
+		<French>Villages Tribaux</French>
 		<German>Stammesdörfer</German>
 		<Italian>Tribal Villages</Italian>
 		<Spanish>Tribal Villages</Spanish>
@@ -869,7 +869,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGOODIES_HOVER</Tag>
 		<English>When checked, will log results from popping tribal villages.</English>
-		<French>When checked, will log results from popping tribal villages.</French>
+		<French>En activant, le résultats des villages tribaux sera noté dans le log.</French>
 		<German>Protokolliert die Ereignisse beim Betreten von Eingeborenendörfern</German>
 		<Italian>When checked, will log results from popping tribal villages.</Italian>
 		<Spanish>When checked, will log results from popping tribal villages.</Spanish>
@@ -887,7 +887,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGRELIGION_HOVER</Tag>
 		<English>When checked, will log[NEWLINE]- When you found a religion[NEWLINE]- Spread of any religion to your cities[NEWLINE]- Spread of religions whose Holy city you control to foreign cities</English>
-		<French>When checked, will log[NEWLINE]- When you found a religion[NEWLINE]- Spread of any religion to your cities[NEWLINE]- Spread of religions whose Holy city you control to foreign cities</French>
+		<French>En activant, le log contiendra[NEWLINE]- Quand vous fondez une religion[NEWLINE]- Quand une religion se propage dans vos villes[NEWLINE]- Quand une religion dont vous contrôlez la Cité Sainte se propage dans une ville étrangère</French>
 		<German>Protokolliert:[NEWLINE]- die Gründung einer Religion[NEWLINE]- die Verbreitung von Religionen in eigenen Städten[NEWLINE]- die Verbreitung von Religionen, deren Heilige Städte der eigenen Zivilisation angehören, in ausländischen Städten</German>
 		<Italian>When checked, will log[NEWLINE]- When you found a religion[NEWLINE]- Spread of any religion to your cities[NEWLINE]- Spread of religions whose Holy city you control to foreign cities</Italian>
 		<Spanish>When checked, will log[NEWLINE]- When you found a religion[NEWLINE]- Spread of any religion to your cities[NEWLINE]- Spread of religions whose Holy city you control to foreign cities</Spanish>
@@ -905,7 +905,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCORPORATION_HOVER</Tag>
 		<English>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</English>
-		<French>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</French>
+		<French>En activant, le log contiendra[NEWLINE]- Quand vous fondez une corporation[NEWLINE]- Quand une corporation se propage dans vos villes[NEWLINE]- Quand une corporation dont vous contrôlez la Quartier Général se propage dans une ville étrangère</French>
 		<German>Protokolliert:[NEWLINE]- die Gründung einer Kapitalgesellschaft[NEWLINE]- die Verbreitung von Kapitalgesellschaften in eigenen Städten[NEWLINE]- die Verbreitung von Kapitalgesellschaften, deren Hauptsitze der eigenen Zivilisation angehören, in ausländischen Städten</German>
 		<Italian>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</Italian>
 		<Spanish>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</Spanish>
@@ -914,7 +914,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGP_TEXT</Tag>
 		<English>Great People</English>
-		<French>Great People</French>
+		<French>Personnages Illustres</French>
 		<German>Große Persönlichkeiten</German>
 		<Italian>Great People</Italian>
 		<Spanish>Great People</Spanish>
@@ -923,7 +923,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGP_HOVER</Tag>
 		<English>When checked, will log the birth of great people (in your cities).</English>
-		<French>When checked, will log the birth of great people (in your cities).</French>
+		<French>En activant, la naissance des personnages illustres dans vos villes sera noté dans le log.</French>
 		<German>Protokolliert das Erscheinen Großer Persönlichkeiten (in eigenen Städten)</German>
 		<Italian>When checked, will log the birth of great people (in your cities).</Italian>
 		<Spanish>When checked, will log the birth of great people (in your cities).</Spanish>
@@ -932,7 +932,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGA_TEXT</Tag>
 		<English>Golden Age</English>
-		<French>Golden Age</French>
+		<French>Age d'Or</French>
 		<German>Goldene Zeitalter</German>
 		<Italian>Golden Age</Italian>
 		<Spanish>Golden Age</Spanish>
@@ -941,7 +941,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGGA_HOVER</Tag>
 		<English>When checked, will log begin and end of your Golden Ages.</English>
-		<French>When checked, will log begin and end of your Golden Ages.</French>
+		<French>En activant, le début et la fin de vos Ages d'Or sera noté dans le log.</French>
 		<German>Protokolliert den Beginn und das Ende eigener Goldener Zeitalter</German>
 		<Italian>When checked, will log begin and end of your Golden Ages.</Italian>
 		<Spanish>When checked, will log begin and end of your Golden Ages.</Spanish>
@@ -959,7 +959,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCONTACT_HOVER</Tag>
 		<English>When checked, will log first contact with other civs.</English>
-		<French>When checked, will log first contact with other civs.</French>
+		<French>En activant, le premier contact avec une autre civilisation sera noté dans le log.</French>
 		<German>Protokolliert den Erstkontakt mit anderen Zivilisationen</German>
 		<Italian>When checked, will log first contact with other civs.</Italian>
 		<Spanish>When checked, will log first contact with other civs.</Spanish>
@@ -977,7 +977,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGATTITUDE_HOVER</Tag>
 		<English>When checked, will log any change in attitude between civs known to you.</English>
-		<French>When checked, will log any change in attitude between civs known to you.</French>
+		<French>En activant, tout changement d'attitude entre les civilisations que vous connaissez sera noté dans le log.</French>
 		<German>Protokolliert jede Veränderung der diplomatischen Beziehungen zwischen allen bekannten Zivilisationen</German>
 		<Italian>When checked, will log any change in attitude between civs known to you.</Italian>
 		<Spanish>When checked, will log any change in attitude between civs known to you.</Spanish>
@@ -986,7 +986,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGWAR_TEXT</Tag>
 		<English>War</English>
-		<French>War</French>
+		<French>Guere</French>
 		<German>Kriege</German>
 		<Italian>War</Italian>
 		<Spanish>War</Spanish>
@@ -995,7 +995,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGWAR_HOVER</Tag>
 		<English>When checked, will log start and end of wars between civs known to you.</English>
-		<French>When checked, will log start and end of wars between civs known to you.</French>
+		<French>En activant, le début et la fin des guerres entre civilisations que vous connaissez sera noté dans le log.</French>
 		<German>Protokolliert den Beginn und das Ende von Kriegen zwischen allen bekannten Zivilisationen</German>
 		<Italian>When checked, will log start and end of wars between civs known to you.</Italian>
 		<Spanish>When checked, will log start and end of wars between civs known to you.</Spanish>
@@ -1004,7 +1004,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGVASSALS_TEXT</Tag>
 		<English>Vassal States</English>
-		<French>Vassal States</French>
+		<French>Etat Vassal</French>
 		<German>Vasallen</German>
 		<Italian>Vassal States</Italian>
 		<Spanish>Vassal States</Spanish>
@@ -1013,7 +1013,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGVASSALS_HOVER</Tag>
 		<English>When checked, will log when any civ becomes a vassal state of or frees itself from another.</English>
-		<French>When checked, will log when any civ becomes a vassal state of or frees itself from another.</French>
+		<French>En activant, il sera noté dans le log quand une civilisation devient vassale ou se libère.</French>
 		<German>Protokolliert jede Zivilisationen, die zu einem Vasallenstaat wird oder sich aus einer Fremdherrschaft befreit</German>
 		<Italian>When checked, will log when any civ becomes a vassal state of or frees itself from another.</Italian>
 		<Spanish>When checked, will log when any civ becomes a vassal state of or frees itself from another.</Spanish>
@@ -1022,7 +1022,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCIVICS_TEXT</Tag>
 		<English>Civics</English>
-		<French>Civics</French>
+		<French>Doctrines</French>
 		<German>Staatsformen</German>
 		<Italian>Civics</Italian>
 		<Spanish>Civics</Spanish>
@@ -1031,7 +1031,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCIVICS_HOVER</Tag>
 		<English>When checked, will log any change in civics of civs known to you.</English>
-		<French>When checked, will log any change in civics of civs known to you.</French>
+		<French>En activant, tout changement de doctrine par des civilisations que vous connaissez sera noté dans le log.</French>
 		<German>Protokolliert jede Veränderung der Gesellschaftsform in allen bekannten Zivilisationen</German>
 		<Italian>When checked, will log any change in civics of civs known to you.</Italian>
 		<Spanish>When checked, will log any change in civics of civs known to you.</Spanish>
@@ -1049,7 +1049,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGCOMBAT_HOVER</Tag>
 		<English>When checked, will log combat results involving your units.</English>
-		<French>When checked, will log combat results involving your units.</French>
+		<French>En activant, le résultat des combats de vos unités sera noté dans le log.</French>
 		<German>Protokolliert die Kampfergebnisse aller eigenen Einheiten</German>
 		<Italian>When checked, will log combat results involving your units.</Italian>
 		<Spanish>When checked, will log combat results involving your units.</Spanish>
@@ -1067,7 +1067,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGPROMOTIONS_HOVER</Tag>
 		<English>When checked, will log when you promote one of your units.</English>
-		<French>When checked, will log when you promote one of your units.</French>
+		<French>En activant, les promotions de vos unités seront notés dans le log.</French>
 		<German>Protokolliert die Beförderungen aller eigenen Einheiten</German>
 		<Italian>When checked, will log when you promote one of your units.</Italian>
 		<Spanish>When checked, will log when you promote one of your units.</Spanish>
@@ -1076,7 +1076,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGPILLAGE_TEXT</Tag>
 		<English>Pillaging</English>
-		<French>Pillaging</French>
+		<French>Pillage</French>
 		<German>Plünderungen</German>
 		<Italian>Pillaging</Italian>
 		<Spanish>Pillaging</Spanish>
@@ -1085,7 +1085,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_LOGPILLAGE_HOVER</Tag>
 		<English>When checked, will log when you pillage or your improvements are pillaged.</English>
-		<French>When checked, will log when you pillage or your improvements are pillaged.</French>
+		<French>En activant, vos pillages et ceux de vos améliorations seront notés dans le log.</French>
 		<German>Protokolliert die Plünderung eigener und feindlicher Modernisierungen</German>
 		<Italian>When checked, will log when you pillage or your improvements are pillaged.</Italian>
 		<Spanish>When checked, will log when you pillage or your improvements are pillaged.</Spanish>
@@ -1094,7 +1094,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_TEXT</Tag>
 		<English>Raw Commerce / Production</English>
-		<French>Raw Commerce / Production</French>
+		<French>Commerce Pur / Production</French>
 		<German>Wirtschaftskraft / Produktion</German>
 		<Italian>Raw Commerce / Production</Italian>
 		<Spanish>Raw Commerce / Production</Spanish>
@@ -1103,7 +1103,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_HOVER</Tag>
 		<English>When checked, the raw commerce and production are displayed above the trade routes.</English>
-		<French>When checked, the raw commerce and production are displayed above the trade routes.</French>
+		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
 		<German>Zeigt die Wirtschaftskraft und die Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>When checked, the raw commerce and production are displayed above the trade routes.</Italian>
 		<Spanish>When checked, the raw commerce and production are displayed above the trade routes.</Spanish>
@@ -1112,7 +1112,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
-		<French>Culture Turns</French>
+		<French>Tours de Culture</French>
 		<German>Kulturanzeige (Runden)</German>
 		<Italian>Culture Turns</Italian>
 		<Spanish>Culture Turns</Spanish>
@@ -1121,7 +1121,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_HOVER</Tag>
 		<English>When checked, displays the number of turns until the city's borders expand.</English>
-		<French>When checked, displays the number of turns until the city's borders expand.</French>
+		<French>En activant, le nombre de tours nécessaire à l'expansion des frontières culturelles est montré.</French>
 		<German>Zeigt in der Kulturanzeige die Anzahl der Runden an, bis sich die Kulturgrenzen einer Stadt erweitern</German>
 		<Italian>When checked, displays the number of turns until the city's borders expand.</Italian>
 		<Spanish>When checked, displays the number of turns until the city's borders expand.</Spanish>
@@ -1130,7 +1130,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONTURNS_TEXT</Tag>
 		<English>Great Person Turns</English>
-		<French>Great Person Turns</French>
+		<French>Tours des Personnages Illustres</French>
 		<German>Große Persönlichkeit-Punkte (Runden)</German>
 		<Italian>Great Person Turns</Italian>
 		<Spanish>Great Person Turns</Spanish>
@@ -1139,7 +1139,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONTURNS_HOVER</Tag>
 		<English>When checked, displays the number of turns until the city will produce a Great Person.</English>
-		<French>When checked, displays the number of turns until the city will produce a Great Person.</French>
+		<French>En activant, le nombre de tours nécessaire à la naissance d'un Personnage Illustre est montré.</French>
 		<German>Zeigt in der Anzeige der Große Persönlichkeit-Punkte die Anzahl der Runden an, bis eine Stadt eine Große Persönlichkeit hervorbringt</German>
 		<Italian>When checked, displays the number of turns until the city will produce a Great Person.</Italian>
 		<Spanish>When checked, displays the number of turns until the city will produce a Great Person.</Spanish>
@@ -1148,7 +1148,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONINFO_TEXT</Tag>
 		<English>Great Person Info</English>
-		<French>Great Person Info</French>
+		<French>Info des Personnages Illustres</French>
 		<German>Große Persönlichkeiten (Informationen)</German>
 		<Italian>Great Person Info</Italian>
 		<Spanish>Great Person Info</Spanish>
@@ -1157,7 +1157,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONINFO_HOVER</Tag>
 		<English>When checked, displays additional Great Person Information.</English>
-		<French>When checked, displays additional Great Person Information.</French>
+		<French>En activant, de l'information supplémentaire sur les Personnages Illustres est montrée.</French>
 		<German>Zeigt zusätzliche Information über Große Persönlichkeiten an</German>
 		<Italian>When checked, displays additional Great Person Information.</Italian>
 		<Spanish>When checked, displays additional Great Person Information.</Spanish>
@@ -1166,7 +1166,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_ANGER_COUNTER_TEXT</Tag>
 		<English>Anger Counter</English>
-		<French>Anger Counter</French>
+		<French>Compteur de Colère</French>
 		<German>Rundenzähler für Unruhen</German>
 		<Italian>Anger Counter</Italian>
 		<Spanish>Anger Counter</Spanish>
@@ -1175,7 +1175,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_ANGER_COUNTER_HOVER</Tag>
 		<English>When checked, puts anger countdown on city screen.</English>
-		<French>When checked, puts anger countdown on city screen.</French>
+		<French>En activant, montre un compteur de colère sur l'écran de ville.</French>
 		<German>Zeigt einen Countdown für Unruhen im Stadt-Bildschirm an</German>
 		<Italian>When checked, puts anger countdown on city screen.</Italian>
 		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
@@ -1184,7 +1184,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_SPECIALISTS_TEXT</Tag>
 		<English>City Specialists</English>
-		<French>City Specialists</French>
+		<French>Spécialistes</French>
 		<German>Spezialisten</German>
 		<Italian>City Specialists</Italian>
 		<Spanish>City Specialists</Spanish>
@@ -1193,7 +1193,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_SPECIALISTS_HOVER</Tag>
 		<English>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
-		<French>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</French>
+		<French>Determine comment les spécialistes sont montrés.[NEWLINE]- Défaut: Montre les spécialistes comme BtS.[NEWLINE]- Tas: Tasse les spécialistes.[NEWLINE]- Chevrons: Groupe les spécialistes par 5 (simple chevron), 10 (chevron plein) et 20 (chevron plein plus carré).</French>
 		<German>Bestimmt die Anordnung der Spezialisten im Stadt-Bildschirm:[NEWLINE]- Standard: Spezialisten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Stapel: Spezialisten werden gestapelt angeordnet (verwendet die "Stacked Specialist" Mod)[NEWLINE]- Chevron: Spezialisten werden zu Gruppen aus 5 (einfaches Chevron), 10 (geschlossenes Chevron) und 20 (eingerahmtes geschlossenes Chevron) Spezialisten zusammengefasst</German>
 		<Italian>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Italian>
 		<Spanish>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
@@ -1202,7 +1202,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_SPECIALISTS_LIST</Tag>
 		<English>Default|Stacker|Chevron</English>
-		<French>Default|Stacker|Chevron</French>
+		<French>Défaut|Tas|Chevrons</French>
 		<German>Standard|Stapel|Chevron</German>
 		<Italian>Default|Stacker|Chevron</Italian>
 		<Spanish>Default|Stacker|Chevron</Spanish>
@@ -1211,7 +1211,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_ENABLED_TEXT</Tag>
 		<English>Better Espionage Screen</English>
-		<French>Better Espionage Screen</French>
+		<French>Meilleur Ecran d'Espionnage</French>
 		<German>Besserer Spionagebildschirm</German>
 		<Italian>Better Espionage Screen</Italian>
 		<Spanish>Better Espionage Screen</Spanish>
@@ -1220,7 +1220,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_ENABLED_HOVER</Tag>
 		<English>When checked, uses Almightix's Better Espionage Screen.</English>
-		<French>When checked, uses Almightix's Better Espionage Screen.</French>
+		<French>En activant, utilise le mod Better Espionage Screen de Almightix.</French>
 		<German>Aktiviert den verbesserten Spionagebildschirm (verwendet "Almightix' Better Espionage Screen" Mod)</German>
 		<Italian>When checked, uses Almightix's Better Espionage Screen.</Italian>
 		<Spanish>When checked, uses Almightix's Better Espionage Screen.</Spanish>
@@ -1229,7 +1229,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_RATIOCOLOR_TEXT</Tag>
 		<English>Ratio Color</English>
-		<French>Ratio Color</French>
+		<French>Couleur de Pro Rata</French>
 		<German>Standardfarbe</German>
 		<Italian>Ratio Color</Italian>
 		<Spanish>Ratio Color</Spanish>
@@ -1238,7 +1238,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_RATIOCOLOR_HOVER</Tag>
 		<English>Default color used for espionage ratios.</English>
-		<French>Default color used for espionage ratios.</French>
+		<French>Couleur utilisée par défaut pour le pro rata d'espionnage.</French>
 		<German>Bestimmt die Standardfarbe für das Spionagepunktverhältnis</German>
 		<Italian>Default color used for espionage ratios.</Italian>
 		<Spanish>Default color used for espionage ratios.</Spanish>
@@ -1247,7 +1247,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_GOODRATIO_TEXT</Tag>
 		<English>Good Ratio Cutoff</English>
-		<French>Good Ratio Cutoff</French>
+		<French>Limite du Bon Pro Rata</French>
 		<German>Gutes Punkteverhältnis</German>
 		<Italian>Good Ratio Cutoff</Italian>
 		<Spanish>Good Ratio Cutoff</Spanish>
@@ -1256,7 +1256,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_GOODRATIO_HOVER</Tag>
 		<English>Ratios less than or equal to this value are colored with the following color.</English>
-		<French>Ratios less than or equal to this value are colored with the following color.</French>
+		<French>Un pro rata égal ou moins que cette valeur aura la couleur suivante.</French>
 		<German>Gute Spionagepunktverhältnisse kleiner oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Ratios less than or equal to this value are colored with the following color.</Italian>
 		<Spanish>Ratios less than or equal to this value are colored with the following color.</Spanish>
@@ -1265,7 +1265,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_GOODCOLOR_TEXT</Tag>
 		<English>Good Color</English>
-		<French>Good Color</French>
+		<French>Bonne Couleur</French>
 		<German>Farbe (gut)</German>
 		<Italian>Good Color</Italian>
 		<Spanish>Good Color</Spanish>
@@ -1274,7 +1274,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_GOODCOLOR_HOVER</Tag>
 		<English>Color used for good espionage ratios.</English>
-		<French>Color used for good espionage ratios.</French>
+		<French>Couleur utilisé pour les bons pro rata d'espionnage.</French>
 		<German>Bestimmt die Farbe für gute Spionagepunktverhältnisse</German>
 		<Italian>Color used for good espionage ratios.</Italian>
 		<Spanish>Color used for good espionage ratios.</Spanish>
@@ -1283,7 +1283,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_BADRATIO_TEXT</Tag>
 		<English>Bad Ratio Cutoff</English>
-		<French>Bad Ratio Cutoff</French>
+		<French>Limite du Mauvais Pro Rata</French>
 		<German>Schlechtes Punkteverhältnis</German>
 		<Italian>Bad Ratio Cutoff</Italian>
 		<Spanish>Bad Ratio Cutoff</Spanish>
@@ -1292,7 +1292,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_BADRATIO_HOVER</Tag>
 		<English>Ratios greater than or equal to this value are colored with the following color.</English>
-		<French>Ratios greater than or equal to this value are colored with the following color.</French>
+		<French>Un pro rata égal ou plus que cette valeur aura la couleur suivante.</French>
 		<German>Schlechte Spionagepunktverhältnisse größer oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Ratios greater than or equal to this value are colored with the following color.</Italian>
 		<Spanish>Ratios greater than or equal to this value are colored with the following color.</Spanish>
@@ -1301,7 +1301,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_BADCOLOR_TEXT</Tag>
 		<English>Bad Color</English>
-		<French>Bad Color</French>
+		<French>Mauvaise Couleur</French>
 		<German>Farbe (schlecht)</German>
 		<Italian>Bad Color</Italian>
 		<Spanish>Bad Color</Spanish>
@@ -1310,7 +1310,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_BADCOLOR_HOVER</Tag>
 		<English>Color used for bad espionage ratios.</English>
-		<French>Color used for bad espionage ratios.</French>
+		<French>Couleur utilisé pour les mauvais pro rata d'espionnage.</French>
 		<German>Bestimmt die Farbe für schlechte Spionagepunktverhältnisse</German>
 		<Italian>Color used for bad espionage ratios.</Italian>
 		<Spanish>Color used for bad espionage ratios.</Spanish>
@@ -1319,7 +1319,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_POSSIBLECOLOR_TEXT</Tag>
 		<English>Possible Mission Color</English>
-		<French>Possible Mission Color</French>
+		<French>Couleur des Missions Possibles</French>
 		<German>Farbe (durchfürbar)</German>
 		<Italian>Possible Mission Color</Italian>
 		<Spanish>Possible Mission Color</Spanish>
@@ -1328,7 +1328,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_POSSIBLECOLOR_HOVER</Tag>
 		<English>Color used for missions that you can perform now (you have enough EPs against the target).</English>
-		<French>Color used for missions that you can perform now (you have enough EPs against the target).</French>
+		<French>Couleur pour les missions que vous pouvez entreprendre maintenant (vous avez assez de PE sur la victime).</French>
 		<German>Bestimmt die Farbe für sofort durchführbare Spionagemissionen (d.h. es sind genug Spionagepunkte investiert worden)</German>
 		<Italian>Color used for missions that you can perform now (you have enough EPs against the target).</Italian>
 		<Spanish>Color used for missions that you can perform now (you have enough EPs against the target).</Spanish>
@@ -1337,7 +1337,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_CLOSEPERCENT_TEXT</Tag>
 		<English>Close Percent Cutoff</English>
-		<French>Close Percent Cutoff</French>
+		<French>Pourcentage Limite Presque</French>
 		<German>Grenzbereich (bald durchfürbar)</German>
 		<Italian>Close Percent Cutoff</Italian>
 		<Spanish>Close Percent Cutoff</Spanish>
@@ -1346,7 +1346,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_CLOSEPERCENT_HOVER</Tag>
 		<English>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</English>
-		<French>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</French>
+		<French>Détermine quel pourcentage de PE vous devez avoir pourqu'une mission soit presque possible.</French>
 		<German>Bestimmt den Grenzbereich, ab dem eine Spionagemission als bald durchführbar gekennzeichnet wird</German>
 		<Italian>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</Italian>
 		<Spanish>Determines how close your EPs have to be to the cost of a mission for it to be considered close to possible.</Spanish>
@@ -1355,7 +1355,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_CLOSECOLOR_TEXT</Tag>
 		<English>Close Mission Color</English>
-		<French>Close Mission Color</French>
+		<French>Couleur Mission Prête</French>
 		<German>Farbe (bald durchfürbar)</German>
 		<Italian>Close Mission Color</Italian>
 		<Spanish>Close Mission Color</Spanish>
@@ -1364,7 +1364,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_CLOSECOLOR_HOVER</Tag>
 		<English>Color used for missions that you can perform soon (you have close to enough EPs against the target).</English>
-		<French>Color used for missions that you can perform soon (you have close to enough EPs against the target).</French>
+		<French>Couleur utilisée pour indiquer les missions qui sont presque possibles (vous avez presque assez de PE).</French>
 		<German>Bestimmt die Farbe für bald durchführbare Spionagemissionen (d.h. es sind fast genug Spionagepunkte investiert worden)</German>
 		<Italian>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Italian>
 		<Spanish>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Spanish>
@@ -1373,7 +1373,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ENABLED_TEXT</Tag>
 		<English>Enable NJAGC</English>
-		<French>Enable NJAGC</French>
+		<French>Activez NJAGC</French>
 		<German>NJAGC aktivieren</German>
 		<Italian>Enable NJAGC</Italian>
 		<Spanish>Enable NJAGC</Spanish>
@@ -1382,7 +1382,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ENABLED_HOVER</Tag>
 		<English>When checked, the game clock is displayed using TheLopez's NJAGC mod.</English>
-		<French>When checked, the game clock is displayed using TheLopez's NJAGC mod.</French>
+		<French>En activant, l'horloge est remplacé par le mod NJAGC de TheLopez.</French>
 		<German>Zeigt die Uhr- und Spielzeit an (verwendet "TheLopez' Not Just Another Game Clock" Mod)</German>
 		<Italian>When checked, the game clock is displayed using TheLopez's NJAGC mod.</Italian>
 		<Spanish>When checked, the game clock is displayed using TheLopez's NJAGC mod.</Spanish>
@@ -1391,7 +1391,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWERA_TEXT</Tag>
 		<English>Display Era</English>
-		<French>Display Era</French>
+		<French>Montrer l'Ere</French>
 		<German>Epoche anzeigen</German>
 		<Italian>Display Era</Italian>
 		<Spanish>Display Era</Spanish>
@@ -1400,7 +1400,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWERA_HOVER</Tag>
 		<English>When checked, the current era is displayed to the left of the research bar.</English>
-		<French>When checked, the current era is displayed to the left of the research bar.</French>
+		<French>En activant, l'ère actualle est montrée à gauche de la barre des recherches.</French>
 		<German>Zeigt die derzeitige Epoche links neben dem Forschungsbalken an</German>
 		<Italian>When checked, the current era is displayed to the left of the research bar.</Italian>
 		<Spanish>When checked, the current era is displayed to the left of the research bar.</Spanish>
@@ -1409,7 +1409,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWERACOLOR_TEXT</Tag>
 		<English>Use Era-Related Colors</English>
-		<French>Use Era-Related Colors</French>
+		<French>Coloriser les Eres</French>
 		<German>Epochenbezogene Farben</German>
 		<Italian>Use Era-Related Colors</Italian>
 		<Spanish>Use Era-Related Colors</Spanish>
@@ -1418,7 +1418,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWERACOLOR_HOVER</Tag>
 		<English>When checked, the game date and era are displayed using a color for each era.</English>
-		<French>When checked, the game date and era are displayed using a color for each era.</French>
+		<French>En activant, la date et l'ère du jeu seront colorisés différemment selon l'ère actuelle.</French>
 		<German>Zeigt das Spieljahr und die Epoche in jeder Epoche in einer anderen Farbe an</German>
 		<Italian>When checked, the game date and era are displayed using a color for each era.</Italian>
 		<Spanish>When checked, the game date and era are displayed using a color for each era.</Spanish>
@@ -1427,7 +1427,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_ANCIENT_TEXT</Tag>
 		<English>Ancient Era</English>
-		<French>Ancient Era</French>
+		<French>Antiquité</French>
 		<German>Antike</German>
 		<Italian>Ancient Era</Italian>
 		<Spanish>Ancient Era</Spanish>
@@ -1436,7 +1436,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_ANCIENT_HOVER</Tag>
 		<English>Color to use for the Ancient era.</English>
-		<French>Color to use for the Ancient era.</French>
+		<French>Couleur pour l'Antiquité.</French>
 		<German>Bestimmt die Farbe für die Epoche "Antike"</German>
 		<Italian>Color to use for the Ancient era.</Italian>
 		<Spanish>Color to use for the Ancient era.</Spanish>
@@ -1445,7 +1445,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_CLASSICAL_TEXT</Tag>
 		<English>Classical Era</English>
-		<French>Classical Era</French>
+		<French>Ere Classique</French>
 		<German>Klassik</German>
 		<Italian>Classical Era</Italian>
 		<Spanish>Classical Era</Spanish>
@@ -1454,7 +1454,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_CLASSICAL_HOVER</Tag>
 		<English>Color to use for the Classical era.</English>
-		<French>Color to use for the Classical era.</French>
+		<French>Couleur pour l'Ere Classique.</French>
 		<German>Bestimmt die Farbe für die Epoche "Klassik"</German>
 		<Italian>Color to use for the Classical era.</Italian>
 		<Spanish>Color to use for the Classical era.</Spanish>
@@ -1463,7 +1463,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MEDIEVAL_TEXT</Tag>
 		<English>Medieval Era</English>
-		<French>Medieval Era</French>
+		<French>Moyen Age</French>
 		<German>Mittelalter</German>
 		<Italian>Medieval Era</Italian>
 		<Spanish>Medieval Era</Spanish>
@@ -1472,7 +1472,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MEDIEVAL_HOVER</Tag>
 		<English>Color to use for the Medieval era.</English>
-		<French>Color to use for the Medieval era.</French>
+		<French>Couleur pour le Moyen Age.</French>
 		<German>Bestimmt die Farbe für die Epoche "Mittelalter"</German>
 		<Italian>Color to use for the Medieval era.</Italian>
 		<Spanish>Color to use for the Medieval era.</Spanish>
@@ -1481,7 +1481,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_RENAISSANCE_TEXT</Tag>
 		<English>Renaissance Era</English>
-		<French>Renaissance Era</French>
+		<French>Renaissance</French>
 		<German>Renaissance</German>
 		<Italian>Renaissance Era</Italian>
 		<Spanish>Renaissance Era</Spanish>
@@ -1490,7 +1490,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_RENAISSANCE_HOVER</Tag>
 		<English>Color to use for the Renaissance era.</English>
-		<French>Color to use for the Renaissance era.</French>
+		<French>Couleur pour la Renaissance.</French>
 		<German>Bestimmt die Farbe für die Epoche "Renaissance"</German>
 		<Italian>Color to use for the Renaissance era.</Italian>
 		<Spanish>Color to use for the Renaissance era.</Spanish>
@@ -1499,7 +1499,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_INDUSTRIAL_TEXT</Tag>
 		<English>Industrial Era</English>
-		<French>Industrial Era</French>
+		<French>Ere Industrielle</French>
 		<German>Industriezeitalter</German>
 		<Italian>Industrial Era</Italian>
 		<Spanish>Industrial Era</Spanish>
@@ -1508,7 +1508,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_INDUSTRIAL_HOVER</Tag>
 		<English>Color to use for the Industrial era.</English>
-		<French>Color to use for the Industrial era.</French>
+		<French>Couleur pour l'Ere industrielle.</French>
 		<German>Bestimmt die Farbe für die Epoche "Industriezeitalter"</German>
 		<Italian>Color to use for the Industrial era.</Italian>
 		<Spanish>Color to use for the Industrial era.</Spanish>
@@ -1517,7 +1517,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MODERN_TEXT</Tag>
 		<English>Modern Era</English>
-		<French>Modern Era</French>
+		<French>Ere Moderne</French>
 		<German>Moderne</German>
 		<Italian>Modern Era</Italian>
 		<Spanish>Modern Era</Spanish>
@@ -1526,7 +1526,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MODERN_HOVER</Tag>
 		<English>Color to use for the Modern era.</English>
-		<French>Color to use for the Modern era.</French>
+		<French>Couleur pour l'Ere Moderne.</French>
 		<German>Bestimmt die Farbe für die Epoche "Moderne"</German>
 		<Italian>Color to use for the Modern era.</Italian>
 		<Spanish>Color to use for the Modern era.</Spanish>
@@ -1535,7 +1535,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_FUTURE_TEXT</Tag>
 		<English>Future Era</English>
-		<French>Future Era</French>
+		<French>Temps Futurs</French>
 		<German>Zukunft</German>
 		<Italian>Future Era</Italian>
 		<Spanish>Future Era</Spanish>
@@ -1544,7 +1544,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_FUTURE_HOVER</Tag>
 		<English>Color to use for the Future era.</English>
-		<French>Color to use for the Future era.</French>
+		<French>Couleur pour les Temps Futurs.</French>
 		<German>Bestimmt die Farbe für die Epoche "Zukunft"</German>
 		<Italian>Color to use for the Future era.</Italian>
 		<Spanish>Color to use for the Future era.</Spanish>
@@ -1553,7 +1553,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTIME_TEXT</Tag>
 		<English>Clock</English>
-		<French>Clock</French>
+		<French>Horloge</French>
 		<German>Uhrzeit</German>
 		<Italian>Clock</Italian>
 		<Spanish>Clock</Spanish>
@@ -1562,7 +1562,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTIME_HOVER</Tag>
 		<English>When checked, the real time is displayed.</English>
-		<French>When checked, the real time is displayed.</French>
+		<French>En activant, l'heure est montrée.</French>
 		<German>Zeigt die tatsächliche Uhrzeit an</German>
 		<Italian>When checked, the real time is displayed.</Italian>
 		<Spanish>When checked, the real time is displayed.</Spanish>
@@ -1571,7 +1571,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWCOMPLETEDTURNS_TEXT</Tag>
 		<English>Completed Turns</English>
-		<French>Completed Turns</French>
+		<French>Tours Complétés</French>
 		<German>Verstrichene Runden</German>
 		<Italian>Completed Turns</Italian>
 		<Spanish>Completed Turns</Spanish>
@@ -1580,7 +1580,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWCOMPLETEDTURNS_HOVER</Tag>
 		<English>When checked, the number of turns completed is displayed.</English>
-		<French>When checked, the number of turns completed is displayed.</French>
+		<French>En activant, le nombre de tours complétés est montré.</French>
 		<German>Zeigt die Anzahl der verstrichenen Runden an</German>
 		<Italian>When checked, the number of turns completed is displayed.</Italian>
 		<Spanish>When checked, the number of turns completed is displayed.</Spanish>
@@ -1589,7 +1589,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTOTALTURNS_TEXT</Tag>
 		<English>Total Turns</English>
-		<French>Total Turns</French>
+		<French>Total des Tours</French>
 		<German>Gesamtrunden</German>
 		<Italian>Total Turns</Italian>
 		<Spanish>Total Turns</Spanish>
@@ -1598,7 +1598,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTOTALTURNS_HOVER</Tag>
 		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
-		<French>When checked, the total turns in the game is displayed if Time Victory is enabled.</French>
+		<French>En activant, le nombre total de tours pour une Victoire de Temps est montré.</French>
 		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Wertungs-Sieg" aktiviert ist</German>
 		<Italian>When checked, the total turns in the game is displayed if Time Victory is enabled.</Italian>
 		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
@@ -1607,7 +1607,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWCOMPLETEDPERCENT_TEXT</Tag>
 		<English>Completed Percentage</English>
-		<French>Completed Percentage</French>
+		<French>Pourcentage Complété</French>
 		<German>Verstrichene Runden (in Prozent)</German>
 		<Italian>Completed Percentage</Italian>
 		<Spanish>Completed Percentage</Spanish>
@@ -1616,7 +1616,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWCOMPLETEDPERCENT_HOVER</Tag>
 		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
-		<French>When checked, the completed percentage is displayed if Time Victory is enabled.</French>
+		<French>En activant, le pourcentage complété pour une Victoire de Temps est montré.</French>
 		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Wertungs-Sieg" aktiviert ist</German>
 		<Italian>When checked, the completed percentage is displayed if Time Victory is enabled.</Italian>
 		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
@@ -1625,7 +1625,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWDATE_TEXT</Tag>
 		<English>Game Date and Golden Age Turns</English>
-		<French>Game Date and Golden Age Turns</French>
+		<French>Date du Jeu et Tours d'Age d'Or</French>
 		<German>Spieldatum und Goldenes Zeitalter (Runden)</German>
 		<Italian>Game Date and Golden Age Turns</Italian>
 		<Spanish>Game Date and Golden Age Turns</Spanish>
@@ -1634,7 +1634,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWDATE_HOVER</Tag>
 		<English>When checked, the in-game date and turns left in a Golden Age are displayed.</English>
-		<French>When checked, the in-game date and turns left in a Golden Age are displayed.</French>
+		<French>En activant, la date du jeu et les tours restant de vos Ages d'Or sont montrés.</French>
 		<German>Zeigt das Spieldatum und die verbleibenden Runden eines Goldenen Zeitalters an</German>
 		<Italian>When checked, the in-game date and turns left in a Golden Age are displayed.</Italian>
 		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
@@ -1643,7 +1643,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ALTERNATETEXT_TEXT</Tag>
 		<English>Alternate Game Clock</English>
-		<French>Alternate Game Clock</French>
+		<French>Alterner l'Horloge</French>
 		<German>Anzeige abwechseln</German>
 		<Italian>Alternate Game Clock</Italian>
 		<Spanish>Alternate Game Clock</Spanish>
@@ -1652,7 +1652,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ALTERNATETEXT_HOVER</Tag>
 		<English>When checked, the game clock switches between two views: standard and alternate.</English>
-		<French>When checked, the game clock switches between two views: standard and alternate.</French>
+		<French>En activant, l'horloge alterne entre la vue standard et la vue alternative.</French>
 		<German>Lässt die Zeitanzeige zwischen den beiden Ansichten "Standard" und "Alternativ" wechseln</German>
 		<Italian>When checked, the game clock switches between two views: standard and alternate.</Italian>
 		<Spanish>When checked, the game clock switches between two views: standard and alternate.</Spanish>
@@ -1661,7 +1661,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ALTTIMING_TEXT</Tag>
 		<English>Period (in seconds)</English>
-		<French>Period (in seconds)</French>
+		<French>Rythme (en secondes)</French>
 		<German>Intervall (in Sekunden)</German>
 		<Italian>Period (in seconds)</Italian>
 		<Spanish>Period (in seconds)</Spanish>
@@ -1670,7 +1670,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ALTTIMING_HOVER</Tag>
 		<English>Select the time each view of the game clock is displayed when alternating is enabled.</English>
-		<French>Select the time each view of the game clock is displayed when alternating is enabled.</French>
+		<French>Sélectionnez la rythme à laquelle l'horloge alterne entre les deux vues.</French>
 		<German>Legt den Zeitabstand fest, in dem die Zeitanzeige zwischen den beiden Ansichten wechselt, wenn die entsprechende Option gewählt wurde</German>
 		<Italian>Select the time each view of the game clock is displayed when alternating is enabled.</Italian>
 		<Spanish>Select the time each view of the game clock is displayed when alternating is enabled.</Spanish>
@@ -1679,7 +1679,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTTIME_TEXT</Tag>
 		<English>Clock</English>
-		<French>Clock</French>
+		<French>Horloge</French>
 		<German>Uhrzeit</German>
 		<Italian>Clock</Italian>
 		<Spanish>Clock</Spanish>
@@ -1688,7 +1688,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTTIME_HOVER</Tag>
 		<English>When checked, the real time is displayed.</English>
-		<French>When checked, the real time is displayed.</French>
+		<French>En activant, l'heure est montrée.</French>
 		<German>Zeigt die tatsächliche Uhrzeit an</German>
 		<Italian>When checked, the real time is displayed.</Italian>
 		<Spanish>When checked, the real time is displayed.</Spanish>
@@ -1697,7 +1697,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTCOMPLETEDTURNS_TEXT</Tag>
 		<English>Completed Turns</English>
-		<French>Completed Turns</French>
+		<French>Tours Complétés</French>
 		<German>Verstrichene Runden</German>
 		<Italian>Completed Turns</Italian>
 		<Spanish>Completed Turns</Spanish>
@@ -1706,7 +1706,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTCOMPLETEDTURNS_HOVER</Tag>
 		<English>When checked, the number of turns completed is displayed.</English>
-		<French>When checked, the number of turns completed is displayed.</French>
+		<French>En activant, le nombre de tours complétés est montré.</French>
 		<German>Zeigt die Anzahl der verstrichenen Runden an</German>
 		<Italian>When checked, the number of turns completed is displayed.</Italian>
 		<Spanish>When checked, the number of turns completed is displayed.</Spanish>
@@ -1715,7 +1715,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTTOTALTURNS_TEXT</Tag>
 		<English>Total Turns</English>
-		<French>Total Turns</French>
+		<French>Total des Tours</French>
 		<German>Gesamtrunden</German>
 		<Italian>Total Turns</Italian>
 		<Spanish>Total Turns</Spanish>
@@ -1724,7 +1724,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTTOTALTURNS_HOVER</Tag>
 		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
-		<French>When checked, the total turns in the game is displayed if Time Victory is enabled.</French>
+		<French>En activant, le nombre total de tours pour une Victoire de Temps est montré.</French>
 		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Wertungs-Sieg" aktiviert ist</German>
 		<Italian>When checked, the total turns in the game is displayed if Time Victory is enabled.</Italian>
 		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
@@ -1733,7 +1733,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTCOMPLETEDPERCENT_TEXT</Tag>
 		<English>Completed Percentage</English>
-		<French>Completed Percentage</French>
+		<French>Pourcentage Complété</French>
 		<German>Verstrichene Runden (in Prozent)</German>
 		<Italian>Completed Percentage</Italian>
 		<Spanish>Completed Percentage</Spanish>
@@ -1742,7 +1742,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTCOMPLETEDPERCENT_HOVER</Tag>
 		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
-		<French>When checked, the completed percentage is displayed if Time Victory is enabled.</French>
+		<French>En activant, le pourcentage complété pour une Victoire de Temps est montré.</French>
 		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Wertungs-Sieg" aktiviert ist</German>
 		<Italian>When checked, the completed percentage is displayed if Time Victory is enabled.</Italian>
 		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
@@ -1751,7 +1751,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTDATE_TEXT</Tag>
 		<English>Game Date and Golden Age Turns</English>
-		<French>Game Date and Golden Age Turns</French>
+		<French>Date du Jeu et Tours d'Age d'Or</French>
 		<German>Spieldatum und Goldenes Zeitalter (Runden)</German>
 		<Italian>Game Date and Golden Age Turns</Italian>
 		<Spanish>Game Date and Golden Age Turns</Spanish>
@@ -1760,7 +1760,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTDATE_HOVER</Tag>
 		<English>When checked, the in-game date and turns left in a Golden Age are displayed.</English>
-		<French>When checked, the in-game date and turns left in a Golden Age are displayed.</French>
+		<French>En activant, la date du jeu et les tours restant de vos Ages d'Or sont montrés.</French>
 		<German>Zeigt das Spieldatum und die verbleibenden Runden eines Goldenen Zeitalters an</German>
 		<Italian>When checked, the in-game date and turns left in a Golden Age are displayed.</Italian>
 		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
@@ -1769,7 +1769,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_SHOWDEAD_TEXT</Tag>
 		<English>Show</English>
-		<French>Show</French>
+		<French>Montrer</French>
 		<German>Anzeigen</German>
 		<Italian>Show</Italian>
 		<Spanish>Show</Spanish>
@@ -1778,7 +1778,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_SHOWDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will remain on the scoreboard.</English>
-		<French>When checked, dead civilizations will remain on the scoreboard.</French>
+		<French>En activant, les civilisations mortes resteront sur le panneau des scores.</French>
 		<German>Lässt ausgelöschte Zivilisationen weiter in der Wertungsanzeige erscheinen</German>
 		<Italian>When checked, dead civilizations will remain on the scoreboard.</Italian>
 		<Spanish>When checked, dead civilizations will remain on the scoreboard.</Spanish>
@@ -1787,7 +1787,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_TEXT</Tag>
 		<English>Tag as "Dead"</English>
-		<French>Tag as "Dead"</French>
+		<French>Marquer "Mort"</French>
 		<German>Mit "Dead" markieren</German>
 		<Italian>Tag as "Dead"</Italian>
 		<Spanish>Tag as "Dead"</Spanish>
@@ -1796,7 +1796,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
-		<French>When checked, dead civilizations will be tagged as "Dead" when shown.</French>
+		<French>En activant, les civilisations mortes seront marquées "Mort".</French>
 		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Dead" in der Wertungsanzeige, wenn die entsprechende Option gewählt wurde</German>
 		<Italian>When checked, dead civilizations will be tagged as "Dead" when shown.</Italian>
 		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
@@ -1805,7 +1805,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_GREYDEAD_TEXT</Tag>
 		<English>Use Grey Color</English>
-		<French>Use Grey Color</French>
+		<French>En Gris</French>
 		<German>Ausgrauen</German>
 		<Italian>Use Grey Color</Italian>
 		<Spanish>Use Grey Color</Spanish>
@@ -1814,7 +1814,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_GREYDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be greyed out when not shown.</English>
-		<French>When checked, dead civilizations will be greyed out when not shown.</French>
+		<French>En activant, les civilisations mortes seront marquées en gris.</French>
 		<German>Graut ausgelöschte Zivilisationen aus, wenn sie nicht angezeigt werden sollen</German>
 		<Italian>When checked, dead civilizations will be greyed out when not shown.</Italian>
 		<Spanish>When checked, dead civilizations will be greyed out when not shown.</Spanish>
@@ -1823,7 +1823,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_TEXT</Tag>
 		<English>Display Name</English>
-		<French>Display Name</French>
+		<French>Nom Affiché</French>
 		<German>Anzeigename</German>
 		<Italian>Display Name</Italian>
 		<Spanish>Display Name</Spanish>
@@ -1832,7 +1832,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_HOVER</Tag>
 		<English>Determines how civilizations are labeled on the scoreboard.</English>
-		<French>Determines how civilizations are labeled on the scoreboard.</French>
+		<French>Determine comment les civilisations sont affichées sur le panneau des scores.</French>
 		<German>Bestimmt den Namen, mit dem Zivilisationen in der Wertungsanzeige angezeigt werden</German>
 		<Italian>Determines how civilizations are labeled on the scoreboard.</Italian>
 		<Spanish>Determines how civilizations are labeled on the scoreboard.</Spanish>
@@ -1841,7 +1841,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_LIST</Tag>
 		<English>Leader|Civilization|Both</English>
-		<French>Leader|Civilization|Both</French>
+		<French>Dirigeant|Civilisation|Les Deux</French>
 		<German>Oberhaupt|Zivilisation|Beides</German>
 		<Italian>Leader|Civilization|Both</Italian>
 		<Spanish>Leader|Civilization|Both</Spanish>
@@ -1850,7 +1850,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ATTITUDE_TEXT</Tag>
 		<English>Attitude Icons</English>
-		<French>Attitude Icons</French>
+		<French>Icônes d'Attitude</French>
 		<German>Einstellung als Smiley</German>
 		<Italian>Attitude Icons</Italian>
 		<Spanish>Attitude Icons</Spanish>
@@ -1859,7 +1859,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ATTITUDE_HOVER</Tag>
 		<English>When checked, shows faces depicting each AI's attitude toward you.</English>
-		<French>When checked, shows faces depicting each AI's attitude toward you.</French>
+		<French>En activant, utilise des smileys pour indiquer l'attitude des IA envers vous.</French>
 		<German>Zeigt die Einstellung jedes Computerspielers gegenüber der eigenen Zivilisation als Smiley an</German>
 		<Italian>When checked, shows faces depicting each AI's attitude toward you.</Italian>
 		<Spanish>When checked, shows faces depicting each AI's attitude toward you.</Spanish>
@@ -1868,7 +1868,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ALIGNICONS_TEXT</Tag>
 		<English>Enabled</English>
-		<French>Enabled</French>
+		<French>Activé</French>
 		<German>Aktivieren</German>
 		<Italian>Enabled</Italian>
 		<Spanish>Enabled</Spanish>
@@ -1877,7 +1877,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ALIGNICONS_HOVER</Tag>
 		<English>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</English>
-		<French>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</French>
+		<French>En activant, le panneau des scores devient un tableau, et les options ci)-dessous l'affectent.</French>
 		<German>Stellt die Wertungsanzeige als Raster dar, um die folgenden Optionen nutzen zu können</German>
 		<Italian>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Italian>
 		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>
@@ -1886,7 +1886,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYORDER_TEXT</Tag>
 		<English>Display Order</English>
-		<French>Display Order</French>
+		<French>Ordre d'Affichage</French>
 		<German>Anzeigereihenfolge</German>
 		<Italian>Display Order</Italian>
 		<Spanish>Display Order</Spanish>
@@ -1895,7 +1895,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYORDER_HOVER</Tag>
 		<English>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</English>
-		<French>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</French>
+		<French>Ceci détermine l'ordre dans lequel les colonnes apparaissent.[NEWLINE]S - Score de la civilisation.[NEWLINE]C - Nom de la civilisation et/ou du dirigeant.[NEWLINE]? - Vous n'avez pas encore rencontré cette civilisation.[NEWLINE]W - Vous êtes en guerre contre cette civilisation.[NEWLINE]E - Votre pro rata d'espionnage avec cette civilisation est bon.[NEWLINE]P - Pro rata du pouvoir de cette civilisation comparé à vous.[NEWLINE]T - La technologie que la civilisation recherche (vassaux, équipe et espionnage).[NEWLINE]U - Le nombre de tours qui restent à la recherche.[NEWLINE]N - Cette civilisation est connectée à votre réseau de commerce.[NEWLINE]B - Vous avez une accord de frontières ouvertes avec cette civilisation.[NEWLINE]D - Vous avez un pacte défensif avec cette civilisation.[NEWLINE]R - La religion nationale de cette civilisation.[NEWLINE]A - L'attitude de cette civilisation envers vous.[NEWLINE]* - Vous attendez que cette civilisation finisse son tour.[NEWLINE]L - Statistique de Réseau (ping).[NEWLINE]O - Le joueur est out-of-sync.</French>
 		<German>Bestimmt die Reihenfolge, in der die Spalten der Wertungsanzeige angeordnet werden:[NEWLINE]S - Wertung der Zivilisation[NEWLINE]C - Name der Zivilisation/des Oberhaupts[NEWLINE]? - Zivilisation noch nicht kontaktiert[NEWLINE]W - Kriegszustand[NEWLINE]E - Gutes Spionagepunktverhältnis gegenüber der Zivilisation[NEWLINE]P - Punkteverhältnis zwischen der Zivilisation und der eigenen[NEWLINE]T - Derzeitiges Forschungsprojekt der Zivilisation (gilt für Vasallen, Verbündete und durch Spionage erlangt)[NEWLINE]U - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE]N - Handelsverbindungen mit der Zivilisation[NEWLINE]B - "Offene Grenzen" mit der Zivilisation[NEWLINE]D - "Verteidigungsbündis" mit der Zivilisation[NEWLINE]R - Staatsreligion der Zivilisation[NEWLINE]A - Einstellung der Zivilisation gegenüber der eigenen[NEWLINE]* - Warten auf den Zug der Zivilisation[NEWLINE]L - Netzwerkstatistik der Zivilisation (Ping)[NEWLINE]O - Verbundener Spieler ist "out-of-sync"</German>
 		<Italian>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</Italian>
 		<Spanish>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</Spanish>
@@ -1904,7 +1904,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_LEFTALIGNNAME_TEXT</Tag>
 		<English>Left-Align Name</English>
-		<French>Left-Align Name</French>
+		<French>Nom Aligné à Gauche</French>
 		<German>Linksbündige Namen</German>
 		<Italian>Left-Align Name</Italian>
 		<Spanish>Left-Align Name</Spanish>
@@ -1913,7 +1913,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_LEFTALIGNNAME_HOVER</Tag>
 		<English>When checked, the civ/leader name is left-aligned instead of right-aligned.</English>
-		<French>When checked, the civ/leader name is left-aligned instead of right-aligned.</French>
+		<French>En activant, le nom du dirigeant et/ou de la cvilisation est aligné à gauche au lieu d'à droite.</French>
 		<German>Zeigt den Namen der Zivilisation/des Oberhaupts linksbündig statt rechtsbündig an</German>
 		<Italian>When checked, the civ/leader name is left-aligned instead of right-aligned.</Italian>
 		<Spanish>When checked, the civ/leader name is left-aligned instead of right-aligned.</Spanish>
@@ -1922,7 +1922,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_RESEARCHICONS_TEXT</Tag>
 		<English>Research Icons</English>
-		<French>Research Icons</French>
+		<French>Icônes de Recherche</French>
 		<German>Technologiesymbole</German>
 		<Italian>Research Icons</Italian>
 		<Spanish>Research Icons</Spanish>
@@ -1931,7 +1931,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_RESEARCHICONS_HOVER</Tag>
 		<English>When checked, shows icons instead of names for civs whose research you can see.</English>
-		<French>When checked, shows icons instead of names for civs whose research you can see.</French>
+		<French>En activant, montre des icônes au lieu des noms des technologies recherchées.</French>
 		<German>Zeigt die Symbole statt der Namen der Technologien, falls die Forschungsprojekte der Zivilisationen bekannt sind</German>
 		<Italian>When checked, shows icons instead of names for civs whose research you can see.</Italian>
 		<Spanish>When checked, shows icons instead of names for civs whose research you can see.</Spanish>
@@ -1940,7 +1940,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWER_TEXT</Tag>
 		<English>Power Ratio</English>
-		<French>Power Ratio</French>
+		<French>Pro Rata de Pouvoir</French>
 		<German>Punkteverhältnis</German>
 		<Italian>Power Ratio</Italian>
 		<Spanish>Power Ratio</Spanish>
@@ -1949,7 +1949,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWER_HOVER</Tag>
 		<English>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</English>
-		<French>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</French>
+		<French>En activant, montre le pro rata de votre pouvoir comparé à ceux des civilisation pour lesquelles vous avez accumulé assez de points d'espionnage.</French>
 		<German>Zeigt das Verhältnis zwischen der eigenen Punktwertung und den Punktwertungen anderer Zivilisationen an, falls genug Spionagepunkte investiert wurden</German>
 		<Italian>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</Italian>
 		<Spanish>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</Spanish>
@@ -1958,7 +1958,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERCOLOR_TEXT</Tag>
 		<English>Default Color</English>
-		<French>Default Color</French>
+		<French>Couleur par Défaut</French>
 		<German>Standardfarbe</German>
 		<Italian>Default Color</Italian>
 		<Spanish>Default Color</Spanish>
@@ -1967,7 +1967,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERCOLOR_HOVER</Tag>
 		<English>Color used by default for power ratios.</English>
-		<French>Color used by default for power ratios.</French>
+		<French>Couleur utilisaée par défaut pour les pro rata de pouvoir.</French>
 		<German>Bestimmt die Standardfarbe für das Punkteverhältnis</German>
 		<Italian>Color used by default for power ratios.</Italian>
 		<Spanish>Color used by default for power ratios.</Spanish>
@@ -1976,7 +1976,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERGOODRATIO_TEXT</Tag>
 		<English>Good Ratio Cutoff</English>
-		<French>Good Ratio Cutoff</French>
+		<French>Limite du Bon Pro Rata</French>
 		<German>Gutes Verhältnis</German>
 		<Italian>Good Ratio Cutoff</Italian>
 		<Spanish>Good Ratio Cutoff</Spanish>
@@ -1985,7 +1985,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERGOODRATIO_HOVER</Tag>
 		<English>Power ratings greater than or equal to this value are shown in the Good Color.</English>
-		<French>Power ratings greater than or equal to this value are shown in the Good Color.</French>
+		<French>Un pro rata égal ou plus que cette valeur aura la couleur suivante.</French>
 		<German>Gute Punkteverhältnisse größer oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Power ratings greater than or equal to this value are shown in the Good Color.</Italian>
 		<Spanish>Power ratings greater than or equal to this value are shown in the Good Color.</Spanish>
@@ -1994,7 +1994,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERGOODCOLOR_TEXT</Tag>
 		<English>Good Color</English>
-		<French>Good Color</French>
+		<French>Bonne Couleur</French>
 		<German>Farbe (gut)</German>
 		<Italian>Good Color</Italian>
 		<Spanish>Good Color</Spanish>
@@ -2003,7 +2003,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERGOODCOLOR_HOVER</Tag>
 		<English>Color used for good power ratios.</English>
-		<French>Color used for good power ratios.</French>
+		<French>Couleur utilisé pour les bons pro rata d'espionnage.</French>
 		<German>Bestimmt die Farbe für gute Punkteverhältnisse</German>
 		<Italian>Color used for good power ratios.</Italian>
 		<Spanish>Color used for good power ratios.</Spanish>
@@ -2012,7 +2012,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERBADRATIO_TEXT</Tag>
 		<English>Bad Ratio Cutoff</English>
-		<French>Bad Ratio Cutoff</French>
+		<French>Limite du Mauvais Pro Rata</French>
 		<German>Schlechtes Verhältnis</German>
 		<Italian>Bad Ratio Cutoff</Italian>
 		<Spanish>Bad Ratio Cutoff</Spanish>
@@ -2021,7 +2021,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERBADRATIO_HOVER</Tag>
 		<English>Power ratings less than or equal to this value are shown in in the Bad Color.</English>
-		<French>Power ratings less than or equal to this value are shown in in the Bad Color.</French>
+		<French>Un pro rata égal ou moins que cette valeur aura la couleur suivante.</French>
 		<German>Schlechte Punkteverhältnisse kleiner oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Power ratings less than or equal to this value are shown in in the Bad Color.</Italian>
 		<Spanish>Power ratings less than or equal to this value are shown in in the Bad Color.</Spanish>
@@ -2030,7 +2030,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERBADCOLOR_TEXT</Tag>
 		<English>Bad Color</English>
-		<French>Bad Color</French>
+		<French>Mauvaise Couleur</French>
 		<German>Farbe (schlecht)</German>
 		<Italian>Bad Color</Italian>
 		<Spanish>Bad Color</Spanish>
@@ -2039,7 +2039,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERBADCOLOR_HOVER</Tag>
 		<English>Color used for bad power ratios.</English>
-		<French>Color used for bad power ratios.</French>
+		<French>Couleur utilisé pour les mauvais pro rata d'espionnage.</French>
 		<German>Bestimmt die Farbe für schlechte Punkteverhältnisse</German>
 		<Italian>Color used for bad power ratios.</Italian>
 		<Spanish>Color used for bad power ratios.</Spanish>
@@ -2048,7 +2048,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_OPTIONSKEY_TEXT</Tag>
 		<English>Options Shortcut Reminder</English>
-		<French>Options Shortcut Reminder</French>
+		<French>Rappel du Raccourci des Options</French>
 		<German>Erinnerung für die BUG-Optionen</German>
 		<Italian>Options Shortcut Reminder</Italian>
 		<Spanish>Options Shortcut Reminder</Spanish>
@@ -2057,7 +2057,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_OPTIONSKEY_HOVER</Tag>
 		<English>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</English>
-		<French>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</French>
+		<French>En activant, en rappel sur l'utilisation de Ctrl-Alt-O est montré quand un jeu démarre ou est chargé.</French>
 		<German>Zeigt nach dem Spielstart oder dem Laden eines Spielstands eine Meldung, die an die Tastenkombination [STRG-ALT-O] erinnert, mit der man die Optionen der "BUG Mod" aufrufen kann</German>
 		<Italian>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</Italian>
 		<Spanish>When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.</Spanish>
@@ -2066,7 +2066,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TEXT</Tag>
 		<English>Great Person Progress Bar</English>
-		<French>Great Person Progress Bar</French>
+		<French>Barre de Progrès des Personnages Illustres</French>
 		<German>Anzeige für Große Persönlichkeit-Punkte</German>
 		<Italian>Great Person Progress Bar</Italian>
 		<Spanish>Great Person Progress Bar</Spanish>
@@ -2075,7 +2075,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_HOVER</Tag>
 		<English>When checked, displays the progress and city of the next Great Person.</English>
-		<French>When checked, displays the progress and city of the next Great Person.</French>
+		<French>En activant, montre la barre de progrès et la ville du prochain Personnage Illustre.</French>
 		<German>Zeigt einen Fortschrittsbalken an, um zu bestimmen, wann und in welcher Stadt die nächste Große Persönlichkeit erscheinen wird</German>
 		<Italian>When checked, displays the progress and city of the next Great Person.</Italian>
 		<Spanish>When checked, displays the progress and city of the next Great Person.</Spanish>
@@ -2084,7 +2084,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TYPES_TEXT</Tag>
 		<English>GP Bar Types</English>
-		<French>GP Bar Types</French>
+		<French>Types de Barre PI</French>
 		<German>Anzeigemethode</German>
 		<Italian>GP Bar Types</Italian>
 		<Spanish>GP Bar Types</Spanish>
@@ -2093,7 +2093,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TYPES_HOVER</Tag>
 		<English>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</English>
-		<French>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</French>
+		<French>Determine combien de types de PI doivent être montrés dans la Barre de Progrès. L'option "Maximum" montre aussi les chances de chacun.</French>
 		<German>Bestimmt die Anzahl der Typen von Großen Persönlichkeiten, die im Fortschrittsbalken angezeigt werden (die Einstellung "Maximal" zeigt zusätzlich die prozentuale Chance für jede an)</German>
 		<Italian>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Italian>
 		<Spanish>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Spanish>
@@ -2102,7 +2102,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_GPBAR_TYPES_LIST</Tag>
 		<English>None|One|Maximum</English>
-		<French>None|One|Maximum</French>
+		<French>Aucun|Un|Maximum</French>
 		<German>Keine|Eine|Maximal</German>
 		<Italian>None|One|Maximum</Italian>
 		<Spanish>None|One|Maximum</Spanish>
@@ -2111,7 +2111,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_COMBAT_COUNTER_TEXT</Tag>
 		<English>Combat Experience</English>
-		<French>Combat Experience</French>
+		<French>Expérience au Combat</French>
 		<German>Gefechtserfahrung</German>
 		<Italian>Combat Experience</Italian>
 		<Spanish>Combat Experience</Spanish>
@@ -2120,7 +2120,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_COMBAT_COUNTER_HOVER</Tag>
 		<English>When checked, displays Combat Experience to track next Great General.</English>
-		<French>When checked, displays Combat Experience to track next Great General.</French>
+		<French>En activant, montre l'Expérience au Combat nécessaire pour le prochain Général Illustre.</French>
 		<German>Zeigt die gesammelte Gefechtserfahrung an, um das Erscheinen des nächsten Großen Generals zu bestimmen</German>
 		<Italian>When checked, displays Combat Experience to track next Great General.</Italian>
 		<Spanish>When checked, displays Combat Experience to track next Great General.</Spanish>
@@ -2129,7 +2129,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_CITYARROWS_TEXT</Tag>
 		<English>City Cycle Arrows</English>
-		<French>City Cycle Arrows</French>
+		<French>Fleches de Ville</French>
 		<German>Städtepfeile</German>
 		<Italian>City Cycle Arrows</Italian>
 		<Spanish>City Cycle Arrows</Spanish>
@@ -2138,7 +2138,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_CITYARROWS_HOVER</Tag>
 		<English>When checked, displays arrows to cycle through cities above your civ's flag.</English>
-		<French>When checked, displays arrows to cycle through cities above your civ's flag.</French>
+		<French>En activant, montre des flèches pour cycler vos villes au-dessous du drapeau de votre civilisation.</French>
 		<German>Zeigt Pfeile über der Flagge der eigenen Zivilisation an, mit denen durch die einzelnen Städte geschaltet werden kann</German>
 		<Italian>When checked, displays arrows to cycle through cities above your civ's flag.</Italian>
 		<Spanish>When checked, displays arrows to cycle through cities above your civ's flag.</Spanish>
@@ -2147,7 +2147,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_PROMO_AVAILABLE_TEXT</Tag>
 		<English>Promotion Available</English>
-		<French>Promotion Available</French>
+		<French>Promotion Disponible</French>
 		<German>Beförderung verfügbar</German>
 		<Italian>Promotion Available</Italian>
 		<Spanish>Promotion Available</Spanish>
@@ -2156,7 +2156,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_PROMO_AVAILABLE_HOVER</Tag>
 		<English>When checked, puts blue border around units that have a promotion available.</English>
-		<French>When checked, puts blue border around units that have a promotion available.</French>
+		<French>En activant, un bord bleu sera mis autour des unités qui ont une promotion disponible.</French>
 		<German>Legt einen blauen Rahmen um das Einheitensymbol, wenn die Einheit befördert werden kann</German>
 		<Italian>When checked, puts blue border around units that have a promotion available.</Italian>
 		<Spanish>When checked, puts blue border around units that have a promotion available.</Spanish>
@@ -2165,7 +2165,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_ACTIONS_TEXT</Tag>
 		<English>Unit Actions</English>
-		<French>Unit Actions</French>
+		<French>Actions d'Unité</French>
 		<German>Einheitenaktionen</German>
 		<Italian>Unit Actions</Italian>
 		<Spanish>Unit Actions</Spanish>
@@ -2174,7 +2174,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_ACTIONS_HOVER</Tag>
 		<English>When checked, puts unit actions text on unit icons.</English>
-		<French>When checked, puts unit actions text on unit icons.</French>
+		<French>En activant, le texte des actions des unités est ajoutée à leur icône.</French>
 		<German>Fügt den Einheitensymbolen die gerade ausgeführte Aktion als Text hinzu</German>
 		<Italian>When checked, puts unit actions text on unit icons.</Italian>
 		<Spanish>When checked, puts unit actions text on unit icons.</Spanish>
@@ -2183,7 +2183,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_TEXT</Tag>
 		<English>Great General</English>
-		<French>Great General</French>
+		<French>Général Illustre</French>
 		<German>Großer General</German>
 		<Italian>Great General</Italian>
 		<Spanish>Great General</Spanish>
@@ -2192,7 +2192,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_HOVER</Tag>
 		<English>When checked, puts a little gold star on units lead by a Great General.</English>
-		<French>When checked, puts a little gold star on units lead by a Great General.</French>
+		<French>En activant, une étoile dorée indiquera une unité qui contient un Général Illustre.</French>
 		<German>Fügt den Einheitensymbolen von Einheiten, die von Großen Generälen geführt werden, einen kleinen goldenen Stern hinzu</German>
 		<Italian>When checked, puts a little gold star on units lead by a Great General.</Italian>
 		<Spanish>When checked, puts a little gold star on units lead by a Great General.</Spanish>
@@ -2201,7 +2201,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CDA_ENABLED_TEXT</Tag>
 		<English>Customizable</English>
-		<French>Customizable</French>
+		<French>Personnalisable</French>
 		<German>CDA aktivieren</German>
 		<Italian>Customizable</Italian>
 		<Spanish>Customizable</Spanish>
@@ -2210,7 +2210,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CDA_ENABLED_HOVER</Tag>
 		<English>When checked, uses the Customizable Domestic Advisor (requires restart).</English>
-		<French>When checked, uses the Customizable Domestic Advisor (requires restart).</French>
+		<French>En activant, utilise le Customizable Domestic Advisor (requièrt un redémarrage).</French>
 		<German>Aktiviert den anpassbaren Inlandsberater (verwendet "Cammagnos Customizable Domestic Advisor Pages" Mod; erfordert Neustart)</German>
 		<Italian>When checked, uses the Customizable Domestic Advisor (requires restart).</Italian>
 		<Spanish>When checked, uses the Customizable Domestic Advisor (requires restart).</Spanish>
@@ -2219,7 +2219,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EFA_GLANCE_TEXT</Tag>
 		<English>Glance Tab</English>
-		<French>Glance Tab</French>
+		<French>Page Coup d'Oeuil</French>
 		<German>Überblick</German>
 		<Italian>Glance Tab</Italian>
 		<Spanish>Glance Tab</Spanish>
@@ -2228,7 +2228,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EFA_GLANCE_HOVER</Tag>
 		<English>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</English>
-		<French>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</French>
+		<French>En activant, montre la page 'Coup d'Oeuil' sur la page de l'Adviseur Etranger Exotique.</French>
 		<German>Zeigt einen zusätzlichen Kurzüberblick im Bildschirm des Auslandsberaters an</German>
 		<Italian>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</Italian>
 		<Spanish>When checked, displays the 'Glance' tab on the Exotic Foreign Advisor screen.</Spanish>
@@ -2237,7 +2237,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EFA_GLANCE_SMILIES_TEXT</Tag>
 		<English>Glance Tab Smilies</English>
-		<French>Glance Tab Smilies</French>
+		<French>Smileys Page Coup d'Oeuil</French>
 		<German>Smilies im Überblick</German>
 		<Italian>Glance Tab Smilies</Italian>
 		<Spanish>Glance Tab Smilies</Spanish>
@@ -2246,7 +2246,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EFA_GLANCE_SMILIES_HOVER</Tag>
 		<English>When checked, the 'Glance' tab shows Smilies (attitude icons).</English>
-		<French>When checked, the 'Glance' tab shows Smilies (attitude icons).</French>
+		<French>En activant, la page 'Coup d'Oeuil' utilise des Smileys (icônes d'attitude).</French>
 		<German>Zeigt im Kurzüberblick Smilies (Beziehungssymbole) an</German>
 		<Italian>When checked, the 'Glance' tab shows Smilies (attitude icons).</Italian>
 		<Spanish>When checked, the 'Glance' tab shows Smilies (attitude icons).</Spanish>
@@ -2255,7 +2255,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_TEXT</Tag>
 		<English>Sit Rep Tab</English>
-		<French>Sit Rep Tab</French>
+		<French>Page Rap Sit</French>
 		<German>Situationsbericht</German>
 		<Italian>Sit Rep Tab</Italian>
 		<Spanish>Sit Rep Tab</Spanish>
@@ -2264,7 +2264,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_HOVER</Tag>
 		<English>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</English>
-		<French>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</French>
+		<French>En activant, montre la page 'Rapport de Situation' sur la page de l'Adviseur Militaire.</French>
 		<German>Zeigt einen Situationsbericht im Bildschirm des Militärberaters an</German>
 		<Italian>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</Italian>
 		<Spanish>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</Spanish>
@@ -2273,7 +2273,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECH_GPPREFS_TEXT</Tag>
 		<English>Great Person Research</English>
-		<French>Great Person Research</French>
+		<French>Recherche des Personnages Illustres</French>
 		<German>Große Persönlichkeiten (Forschung)</German>
 		<Italian>Great Person Research</Italian>
 		<Spanish>Great Person Research</Spanish>
@@ -2282,7 +2282,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECH_GPPREFS_HOVER</Tag>
 		<English>When checked, displays the technology each type of great person will research.</English>
-		<French>When checked, displays the technology each type of great person will research.</French>
+		<French>En activant, montre la technologie que chaque Personnage Illustre peut découvrir.</French>
 		<German>Zeigt die Technologien an, die jeder Typ einer Großen Persönlichkeit erforschen kann</German>
 		<Italian>When checked, displays the technology each type of great person will research.</Italian>
 		<Spanish>When checked, displays the technology each type of great person will research.</Spanish>
@@ -2291,7 +2291,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHSCREEN_WIDE_TEXT</Tag>
 		<English>Wide Tech Screen</English>
-		<French>Wide Tech Screen</French>
+		<French>Ecran de Technologie Large</French>
 		<German>Breiter Technologiebaum</German>
 		<Italian>Wide Tech Screen</Italian>
 		<Spanish>Wide Tech Screen</Spanish>
@@ -2300,7 +2300,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHSCREEN_WIDE_HOVER</Tag>
 		<English>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</English>
-		<French>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</French>
+		<French>En activant, la largeur de l'écran de technologie dépendra de votre résolution d'écran (requièrt un redémarrage).</French>
 		<German>Koppelt die Breite des Technologiebaums an die Bildschirmauflösung (erfordert Neustart)</German>
 		<Italian>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</Italian>
 		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</Spanish>
@@ -2309,7 +2309,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SEVOPEDIA_ENABLED_TEXT</Tag>
 		<English>Enabled</English>
-		<French>Enabled</French>
+		<French>Activé</French>
 		<German>Aktivieren</German>
 		<Italian>Enabled</Italian>
 		<Spanish>Enabled</Spanish>
@@ -2318,7 +2318,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SEVOPEDIA_ENABLED_HOVER</Tag>
 		<English>When checked, uses the Sevopedia (requires restart).</English>
-		<French>When checked, uses the Sevopedia (requires restart).</French>
+		<French>En activant, utilise le Sevopedia (requièrt un redémarrage).</French>
 		<German>Aktiviert die "Sevopedia" (erfordert Neustart)</German>
 		<Italian>When checked, uses the Sevopedia (requires restart).</Italian>
 		<Spanish>When checked, uses the Sevopedia (requires restart).</Spanish>
@@ -2327,7 +2327,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SEVOPEDIA_SORT_TEXT</Tag>
 		<English>Sort Lists</English>
-		<French>Sort Lists</French>
+		<French>Trier les Listes</French>
 		<German>Listen sortieren</German>
 		<Italian>Sort Lists</Italian>
 		<Spanish>Sort Lists</Spanish>
@@ -2336,7 +2336,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SEVOPEDIA_SORT_HOVER</Tag>
 		<English>When checked, the lists of units, buildings, technologies, etc. are sorted.</English>
-		<French>When checked, the lists of units, buildings, technologies, etc. are sorted.</French>
+		<French>En activant, les listes des unités, bâtiments, technologies, etc. seront triées.</French>
 		<German>Sortiert die Listen der Einheiten, Gebäuden, Technologien etc.</German>
 		<Italian>When checked, the lists of units, buildings, technologies, etc. are sorted.</Italian>
 		<Spanish>When checked, the lists of units, buildings, technologies, etc. are sorted.</Spanish>
@@ -2345,7 +2345,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_TEXT</Tag>
 		<English>Enabled</English>
-		<French>Enabled</French>
+		<French>Activé</French>
 		<German>Aktivieren</German>
 		<Italian>Enabled</Italian>
 		<Spanish>Enabled</Spanish>
@@ -2354,7 +2354,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_HOVER</Tag>
 		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
-		<French>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</French>
+		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités. [NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
 		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Element (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Element[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt1[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfedatei)</German>
 		<Italian>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Italian>
 		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
@@ -2363,7 +2363,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_USEADVANCED_TEXT</Tag>
 		<English>Use Advanced Methods - see ini file for Era_UnitClass options</English>
-		<French>Use Advanced Methods - see ini file for Era_UnitClass options</French>
+		<French>Utiliser la Méthode Avancée - voir le fichier INI pour les options Era_UnitClass</French>
 		<German>Erweitertes System verwenden - siehe INI-Datei für "Era_UnitClass"-Optionen</German>
 		<Italian>Use Advanced Methods - see ini file for Era_UnitClass options</Italian>
 		<Spanish>Use Advanced Methods - see ini file for Era_UnitClass options</Spanish>
@@ -2372,7 +2372,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_USEADVANCED_HOVER</Tag>
 		<English>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</English>
-		<French>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</French>
+		<French>En activant, les conventions de noms du fichier 'Adv Unit Naming.ini' seront utilisées.</French>
 		<German>Verwendet die erweiterten Benennungsregeln, die sich in der Datei "Adv Unit Naming.ini" befinden</German>
 		<Italian>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</Italian>
 		<Spanish>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</Spanish>
@@ -2381,7 +2381,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_DEFAULT_TEXT</Tag>
 		<English>Naming Convention: DEFAULT</English>
-		<French>Naming Convention: DEFAULT</French>
+		<French>Convention des Noms: DEFAUT</French>
 		<German>Benennungsregel: DEFAULT</German>
 		<Italian>Naming Convention: DEFAULT</Italian>
 		<Spanish>Naming Convention: DEFAULT</Spanish>
@@ -2390,7 +2390,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_DEFAULT_HOVER</Tag>
 		<English>Enter the user defined naming convention (see help file for further information).</English>
-		<French>Enter the user defined naming convention (see help file for further information).</French>
+		<French>Entrez la convention des noms (voir le fichier d'aide pour plus d'information).</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel (siehe Hilfedatei für weitere Information)</German>
 		<Italian>Enter the user defined naming convention (see help file for further information).</Italian>
 		<Spanish>Enter the user defined naming convention (see help file for further information).</Spanish>
@@ -2399,7 +2399,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_AIR_TEXT</Tag>
 		<English>Naming Convention: Combat[AIR]</English>
-		<French>Naming Convention: Combat[AIR]</French>
+		<French>Convention des Noms: Combat[AIR]</French>
 		<German>Benennungsregel: Kampf[LUFT]</German>
 		<Italian>Naming Convention: Combat[AIR]</Italian>
 		<Spanish>Naming Convention: Combat[AIR]</Spanish>
@@ -2408,7 +2408,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_AIR_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'AIR'.</English>
-		<French>Enter the user defined naming convention for combat units 'AIR'.</French>
+		<French>Entrez la convention des noms pour les unités 'AIR'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Luft-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'AIR'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'AIR'.</Spanish>
@@ -2417,7 +2417,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_ARCHER_TEXT</Tag>
 		<English>Naming Convention: Combat[ARCHER]</English>
-		<French>Naming Convention: Combat[ARCHER]</French>
+		<French>Convention des Noms: Combat[ARCHER]</French>
 		<German>Benennungsregel: Kampf[FERN]</German>
 		<Italian>Naming Convention: Combat[ARCHER]</Italian>
 		<Spanish>Naming Convention: Combat[ARCHER]</Spanish>
@@ -2426,7 +2426,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_ARCHER_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'ARCHER'.</English>
-		<French>Enter the user defined naming convention for combat units 'ARCHER'.</French>
+		<French>Entrez la convention des noms pour les unités 'ARCHER'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Fernkampf-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'ARCHER'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'ARCHER'.</Spanish>
@@ -2435,7 +2435,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_ARMOR_TEXT</Tag>
 		<English>Naming Convention: Combat[ARMOR]</English>
-		<French>Naming Convention: Combat[ARMOR]</French>
+		<French>Convention des Noms: Combat[ARMOR]</French>
 		<German>Benennungsregel: Kampf[GEPANZERT]</German>
 		<Italian>Naming Convention: Combat[ARMOR]</Italian>
 		<Spanish>Naming Convention: Combat[ARMOR]</Spanish>
@@ -2444,7 +2444,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_ARMOR_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'ARMOR'.</English>
-		<French>Enter the user defined naming convention for combat units 'ARMOR'.</French>
+		<French>Entrez la convention des noms pour les unités 'ARMOR'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Gepanzerte Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'ARMOR'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'ARMOR'.</Spanish>
@@ -2453,7 +2453,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_GUN_TEXT</Tag>
 		<English>Naming Convention: Combat[GUN]</English>
-		<French>Naming Convention: Combat[GUN]</French>
+		<French>Convention des Noms: Combat[GUN]</French>
 		<German>Benennungsregel: Kampf[FEUERWAFFE]</German>
 		<Italian>Naming Convention: Combat[GUN]</Italian>
 		<Spanish>Naming Convention: Combat[GUN]</Spanish>
@@ -2462,7 +2462,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_GUN_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'GUN'.</English>
-		<French>Enter the user defined naming convention for combat units 'GUN'.</French>
+		<French>Entrez la convention des noms pour les unités 'GUN'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Feuerwaffen-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'GUN'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'GUN'.</Spanish>
@@ -2471,7 +2471,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_HELICOPTER_TEXT</Tag>
 		<English>Naming Convention: Combat[HELICOPTER]</English>
-		<French>Naming Convention: Combat[HELICOPTER]</French>
+		<French>Convention des Noms: Combat[HELICOPTER]</French>
 		<German>Benennungsregel: Kampf[HELIKOPTER]</German>
 		<Italian>Naming Convention: Combat[HELICOPTER]</Italian>
 		<Spanish>Naming Convention: Combat[HELICOPTER]</Spanish>
@@ -2480,7 +2480,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_HELICOPTER_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'HELICOPTER'.</English>
-		<French>Enter the user defined naming convention for combat units 'HELICOPTER'.</French>
+		<French>Entrez la convention des noms pour les unités 'HELICOPTER'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Helikopter-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'HELICOPTER'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'HELICOPTER'.</Spanish>
@@ -2489,7 +2489,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_MELEE_TEXT</Tag>
 		<English>Naming Convention: Combat[MELEE]</English>
-		<French>Naming Convention: Combat[MELEE]</French>
+		<French>Convention des Noms: Combat[MELEE]</French>
 		<German>Benennungsregel: Kampf[NAH]</German>
 		<Italian>Naming Convention: Combat[MELEE]</Italian>
 		<Spanish>Naming Convention: Combat[MELEE]</Spanish>
@@ -2498,7 +2498,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_MELEE_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'MELEE'.</English>
-		<French>Enter the user defined naming convention for combat units 'MELEE'.</French>
+		<French>Entrez la convention des noms pour les unités 'MELEE'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Nahkampf-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'MELEE'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'MELEE'.</Spanish>
@@ -2507,7 +2507,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_MOUNTED_TEXT</Tag>
 		<English>Naming Convention: Combat[MOUNTED]</English>
-		<French>Naming Convention: Combat[MOUNTED]</French>
+		<French>Convention des Noms: Combat[MOUNTED]</French>
 		<German>Benennungsregel: Kampf[BERITTEN]</German>
 		<Italian>Naming Convention: Combat[MOUNTED]</Italian>
 		<Spanish>Naming Convention: Combat[MOUNTED]</Spanish>
@@ -2516,7 +2516,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_MOUNTED_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'MOUNTED'.</English>
-		<French>Enter the user defined naming convention for combat units 'MOUNTED'.</French>
+		<French>Entrez la convention des noms pour les unités 'MOUNTED'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Berittene Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'MOUNTED'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'MOUNTED'.</Spanish>
@@ -2525,7 +2525,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_NAVAL_TEXT</Tag>
 		<English>Naming Convention: Combat[NAVAL]</English>
-		<French>Naming Convention: Combat[NAVAL]</French>
+		<French>Convention des Noms: Combat[NAVAL]</French>
 		<German>Benennungsregel: Kampf[SEE]</German>
 		<Italian>Naming Convention: Combat[NAVAL]</Italian>
 		<Spanish>Naming Convention: Combat[NAVAL]</Spanish>
@@ -2534,7 +2534,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_NAVAL_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'NAVAL'.</English>
-		<French>Enter the user defined naming convention for combat units 'NAVAL'.</French>
+		<French>Entrez la convention des noms pour les unités 'NAVAL'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für See-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'NAVAL'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'NAVAL'.</Spanish>
@@ -2543,7 +2543,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_NONE_TEXT</Tag>
 		<English>Naming Convention: Combat[None]</English>
-		<French>Naming Convention: Combat[None]</French>
+		<French>Convention des Noms: Combat[None]</French>
 		<German>Benennungsregel: Kampf[Keine]</German>
 		<Italian>Naming Convention: Combat[None]</Italian>
 		<Spanish>Naming Convention: Combat[None]</Spanish>
@@ -2552,7 +2552,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_NONE_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'None'.</English>
-		<French>Enter the user defined naming convention for combat units 'None'.</French>
+		<French>Entrez la convention des noms pour les unités 'None'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Nicht-Kampfeinheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'None'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'None'.</Spanish>
@@ -2561,7 +2561,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_RECON_TEXT</Tag>
 		<English>Naming Convention: Combat[RECON]</English>
-		<French>Naming Convention: Combat[RECON]</French>
+		<French>Convention des Noms: Combat[RECON]</French>
 		<German>Benennungsregel: Kampf[ERKUNDUNG]</German>
 		<Italian>Naming Convention: Combat[RECON]</Italian>
 		<Spanish>Naming Convention: Combat[RECON]</Spanish>
@@ -2570,7 +2570,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_RECON_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'RECON'.</English>
-		<French>Enter the user defined naming convention for combat units 'RECON'.</French>
+		<French>Entrez la convention des noms pour les unités 'RECON'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Erkundungs-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'RECON'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'RECON'.</Spanish>
@@ -2579,7 +2579,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_SIEGE_TEXT</Tag>
 		<English>Naming Convention: Combat[SIEGE]</English>
-		<French>Naming Convention: Combat[SIEGE]</French>
+		<French>Convention des Noms: Combat[SIEGE]</French>
 		<German>Benennungsregel: Kampf[BELAGERUNG]</German>
 		<Italian>Naming Convention: Combat[SIEGE]</Italian>
 		<Spanish>Naming Convention: Combat[SIEGE]</Spanish>
@@ -2588,7 +2588,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_COMBAT_SIEGE_HOVER</Tag>
 		<English>Enter the user defined naming convention for combat units 'SIEGE'.</English>
-		<French>Enter the user defined naming convention for combat units 'SIEGE'.</French>
+		<French>Entrez la convention des noms pour les unités 'SIEGE'.</French>
 		<German>Eingabe der benutzerdefinierten Benennungsregel für Belagerungs-Einheiten</German>
 		<Italian>Enter the user defined naming convention for combat units 'SIEGE'.</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
@@ -2601,7 +2601,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_GENERAL</Tag>
 		<English>General</English>
-		<French>General</French>
+		<French>Général</French>
 		<German>Allgemein</German>
 		<Italian>General</Italian>
 		<Spanish>General</Spanish>
@@ -2609,7 +2609,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAIN_INTERFACE</Tag>
 		<English>Main Interface:</English>
-		<French>Main Interface:</French>
+		<French>Interface Centrale:</French>
 		<German>Hauptbildschirm:</German>
 		<Italian>Main Interface:</Italian>
 		<Spanish>Main Interface:</Spanish>
@@ -2617,7 +2617,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_PLOTLIST</Tag>
 		<English>Unit Icons (Plot List):</English>
-		<French>Unit Icons (Plot List):</French>
+		<French>Icônes des Unités (Plot List):</French>
 		<German>Einheitensymbole (grafische Ergänzungen):</German>
 		<Italian>Unit Icons (Plot List):</Italian>
 		<Spanish>Unit Icons (Plot List):</Spanish>
@@ -2625,7 +2625,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>
 		<English>City Screen:</English>
-		<French>City Screen:</French>
+		<French>Ecran de Ville:</French>
 		<German>Stadt-Bildschirm:</German>
 		<Italian>City Screen:</Italian>
 		<Spanish>City Screen:</Spanish>
@@ -2633,7 +2633,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_INIFILENOTFOUND</Tag>
 		<English>Cannot Find INI File</English>
-		<French>Cannot Find INI File</French>
+		<French>Fichier INI Non Trouvé</French>
 		<German>INI-Datei nicht gefunden</German>
 		<Italian>Cannot Find INI File</Italian>
 		<Spanish>Cannot Find INI File</Spanish>
@@ -2644,7 +2644,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_ADVISOR</Tag>
 		<English>Advisors</English>
-		<French>Advisors</French>
+		<French>Adviseurs</French>
 		<German>Berater</German>
 		<Italian>Advisors</Italian>
 		<Spanish>Advisors</Spanish>
@@ -2652,7 +2652,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_DOMESTIC_ADVISOR</Tag>
 		<English>Domestic (F1):</English>
-		<French>Domestic (F1):</French>
+		<French>Domestique (F1):</French>
 		<German>Inland [F1]:</German>
 		<Italian>Domestic (F1):</Italian>
 		<Spanish>Domestic (F1):</Spanish>
@@ -2660,7 +2660,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_FOREIGN_ADVISOR</Tag>
 		<English>Foreign (F4):</English>
-		<French>Foreign (F4):</French>
+		<French>Etranger (F4):</French>
 		<German>Ausland [F4]:</German>
 		<Italian>Foreign (F4):</Italian>
 		<Spanish>Foreign (F4):</Spanish>
@@ -2668,7 +2668,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MILITARY_ADVISOR</Tag>
 		<English>Military (F5):</English>
-		<French>Military (F5):</French>
+		<French>Militaire (F5):</French>
 		<German>Militär [F5]:</German>
 		<Italian>Military (F5):</Italian>
 		<Spanish>Military (F5):</Spanish>
@@ -2676,7 +2676,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHNOLOGY_ADVISOR</Tag>
 		<English>Technology (F6):</English>
-		<French>Technology (F6):</French>
+		<French>Technologie (F6):</French>
 		<German>Technologie [F6]:</German>
 		<Italian>Technology (F6):</Italian>
 		<Spanish>Technology (F6):</Spanish>
@@ -2692,7 +2692,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_SCREEN</Tag>
 		<English>Espionage (Ctrl-E):</English>
-		<French>Espionage (Ctrl-E):</French>
+		<French>Espionnage (Ctrl-E):</French>
 		<German>Spionage [STRG-E]:</German>
 		<Italian>Espionage (Ctrl-E):</Italian>
 		<Spanish>Espionage (Ctrl-E):</Spanish>
@@ -2700,7 +2700,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_RATIO</Tag>
 		<English>Ratio:</English>
-		<French>Ratio:</French>
+		<French>Pro Rata:</French>
 		<German>Spionagepunktverhältnis:</German>
 		<Italian>Ratio:</Italian>
 		<Spanish>Ratio:</Spanish>
@@ -2719,7 +2719,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_NJAGC</Tag>
 		<English>Clock</English>
-		<French>Clock</French>
+		<French>Horloge</French>
 		<German>Uhr</German>
 		<Italian>Clock</Italian>
 		<Spanish>Clock</Spanish>
@@ -2727,7 +2727,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_NJAGC_REGULAR</Tag>
 		<English>Standard View:</English>
-		<French>Standard View:</French>
+		<French>Vue Standard:</French>
 		<German>Standardansicht:</German>
 		<Italian>Standard View:</Italian>
 		<Spanish>Standard View:</Spanish>
@@ -2735,7 +2735,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_NJAGC_ALTERNATE</Tag>
 		<English>Alternate View:</English>
-		<French>Alternate View:</French>
+		<French>Vue Alternative:</French>
 		<German>Alternative Ansicht:</German>
 		<Italian>Alternate View:</Italian>
 		<Spanish>Alternate View:</Spanish>
@@ -2746,7 +2746,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_SCORES</Tag>
 		<English>Scoreboard</English>
-		<French>Scoreboard</French>
+		<French>Scores</French>
 		<German>Wertungsanzeige</German>
 		<Italian>Scoreboard</Italian>
 		<Spanish>Scoreboard</Spanish>
@@ -2754,7 +2754,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_DEAD_CIVS</Tag>
 		<English>Dead Civilizations:</English>
-		<French>Dead Civilizations:</French>
+		<French>Civilisations Mortes:</French>
 		<German>Ausgelöschte Zivilisationen:</German>
 		<Italian>Dead Civilizations:</Italian>
 		<Spanish>Dead Civilizations:</Spanish>
@@ -2762,7 +2762,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GRID</Tag>
 		<English>Advanced Layout:</English>
-		<French>Advanced Layout:</French>
+		<French>Layout Avancé:</French>
 		<German>Erweitertes Layout:</German>
 		<Italian>Advanced Layout:</Italian>
 		<Spanish>Advanced Layout:</Spanish>
@@ -2770,7 +2770,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_ORDER</Tag>
 		<English>Column Order:</English>
-		<French>Column Order:</French>
+		<French>Ordre des Colonnes:</French>
 		<German>Spaltenanordnung:</German>
 		<Italian>Column Order:</Italian>
 		<Spanish>Column Order:</Spanish>
@@ -2781,7 +2781,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_ALERTS</Tag>
 		<English>Alerts</English>
-		<French>Alerts</French>
+		<French>Alertes</French>
 		<German>Warnungen</German>
 		<Italian>Alerts</Italian>
 		<Spanish>Alerts</Spanish>
@@ -2789,7 +2789,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_CITY</Tag>
 		<English>City:</English>
-		<French>City:</French>
+		<French>Ville:</French>
 		<German>Städte:</German>
 		<Italian>City:</Italian>
 		<Spanish>City:</Spanish>
@@ -2797,7 +2797,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_DIPLOMACY</Tag>
 		<English>Diplomacy:</English>
-		<French>Diplomacy:</French>
+		<French>Diplomatie:</French>
 		<German>Diplomatie:</German>
 		<Italian>Diplomacy:</Italian>
 		<Spanish>Diplomacy:</Spanish>
@@ -2805,7 +2805,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_TRADE</Tag>
 		<English>Trading:</English>
-		<French>Trading:</French>
+		<French>Commerce:</French>
 		<German>Handel:</German>
 		<Italian>Trading:</Italian>
 		<Spanish>Trading:</Spanish>
@@ -2813,7 +2813,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_VICTORY</Tag>
 		<English>Victory:</English>
-		<French>Victory:</French>
+		<French>Victoire:</French>
 		<German>Vorherrschafts-Sieg:</German>
 		<Italian>Victory:</Italian>
 		<Spanish>Victory:</Spanish>
@@ -2824,7 +2824,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_AUTOLOG</Tag>
 		<English>Logging</English>
-		<French>Logging</French>
+		<French>Log</French>
 		<German>Protokollierung</German>
 		<Italian>Logging</Italian>
 		<Spanish>Logging</Spanish>
@@ -2832,7 +2832,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_BUILDS</Tag>
 		<English>Research and Builds:</English>
-		<French>Research and Builds:</French>
+		<French>Recherche et Construction:</French>
 		<German>Forschung / Bauten:</German>
 		<Italian>Research and Builds:</Italian>
 		<Spanish>Research and Builds:</Spanish>
@@ -2840,7 +2840,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_CITIES</Tag>
 		<English>Cities:</English>
-		<French>Cities:</French>
+		<French>Villes:</French>
 		<German>Städte:</German>
 		<Italian>Cities:</Italian>
 		<Spanish>Cities:</Spanish>
@@ -2848,7 +2848,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_EVENTS</Tag>
 		<English>Events:</English>
-		<French>Events:</French>
+		<French>Evènements:</French>
 		<German>Ereignisse:</German>
 		<Italian>Events:</Italian>
 		<Spanish>Events:</Spanish>
@@ -2856,7 +2856,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_POLITICS</Tag>
 		<English>Diplomacy:</English>
-		<French>Diplomacy:</French>
+		<French>Diplomatie:</French>
 		<German>Diplomatie:</German>
 		<Italian>Diplomacy:</Italian>
 		<Spanish>Diplomacy:</Spanish>
@@ -2875,7 +2875,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_UNITNAME</Tag>
 		<English>Unit Naming</English>
-		<French>Unit Naming</French>
+		<French>Noms des Unités</French>
 		<German>Einheitennamen</German>
 		<Italian>Unit Naming</Italian>
 		<Spanish>Unit Naming</Spanish>
@@ -2886,7 +2886,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_CONFIG</Tag>
 		<English>Config</English>
-		<French>Config</French>
+		<French>Configuration</French>
 		<German>System</German>
 		<Italian>Config</Italian>
 		<Spanish>Config</Spanish>
@@ -2894,7 +2894,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CONFIG_SEARCH_PATHS</Tag>
 		<English>Search Paths:</English>
-		<French>Search Paths:</French>
+		<French>Chemins de Recherche:</French>
 		<German>Erkannte Pfade:</German>
 		<Italian>Search Paths:</Italian>
 		<Spanish>Search Paths:</Spanish>
@@ -2902,7 +2902,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_MOD_CONFIG</Tag>
 		<English>BUG Mod Options File:</English>
-		<French>BUG Mod Options File:</French>
+		<French>Fichier d'Options du BUG Mod:</French>
 		<German>"BUG Mod" Optionsdatei:</German>
 		<Italian>BUG Mod Options File:</Italian>
 		<Spanish>BUG Mod Options File:</Spanish>
@@ -2910,7 +2910,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CDA_CONFIG</Tag>
 		<English>CDA Pages File:</English>
-		<French>CDA Pages File:</French>
+		<French>Fichiers des Pages CDA:</French>
 		<German>"CDA" Optionsdatei:</German>
 		<Italian>CDA Pages File:</Italian>
 		<Spanish>CDA Pages File:</Spanish>
@@ -2918,7 +2918,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_UNITNAMING_CONFIG</Tag>
 		<English>Advanced Unit Naming Options File:</English>
-		<French>Advanced Unit Naming Options File:</French>
+		<French>Fichier d'options Advanced Unit Naming:</French>
 		<German>"Advanced Unit Naming" Optionsdatei:</German>
 		<Italian>Advanced Unit Naming Options File:</Italian>
 		<Spanish>Advanced Unit Naming Options File:</Spanish>
@@ -2926,7 +2926,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_LOG</Tag>
 		<English>Autolog File:</English>
-		<French>Autolog File:</French>
+		<French>Fichier Autolog:</French>
 		<German>"Autolog" Protokolldatei:</German>
 		<Italian>Autolog File:</Italian>
 		<Spanish>Autolog File:</Spanish>
@@ -2945,7 +2945,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_TEAM</Tag>
 		<English>BUG Team</English>
-		<French>BUG Team</French>
+		<French>Team BUG</French>
 		<German>BUG Team</German>
 		<Italian>BUG Team</Italian>
 		<Spanish>BUG Team</Spanish>
@@ -2953,7 +2953,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MOD_AUTHORS</Tag>
 		<English>Mod Authors</English>
-		<French>Mod Authors</French>
+		<French>Auteurs des Mods</French>
 		<German>Mod-Autoren</German>
 		<Italian>Mod Authors</Italian>
 		<Spanish>Mod Authors</Spanish>
@@ -2961,7 +2961,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TRANSLATORS</Tag>
 		<English>Translators</English>
-		<French>Translators</French>
+		<French>Traducteurs</French>
 		<German>Übersetzer</German>
 		<Italian>Translators</Italian>
 		<Spanish>Translators</Spanish>

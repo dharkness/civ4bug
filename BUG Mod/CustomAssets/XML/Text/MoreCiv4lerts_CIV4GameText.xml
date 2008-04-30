@@ -5,10 +5,10 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND</Tag>
 		<English>[COLOR_CULTURE_RATE]%s1's cultural boundary is about to expand.[COLOR_REVERT]</English>
-		<French>[COLOR_CULTURE_RATE]la frontière culturelle de %s1's est sur le point d'augmenter.[COLOR_REVERT]</French>
+		<French>[COLOR_CULTURE_RATE]La frontière culturelle de %s1's est sur le point d'augmenter.[COLOR_REVERT]</French>
 		<German>[COLOR_CULTURE_RATE]Die Stadtgrenzen von %s1 werden sich erweitern.[COLOR_REVERT]</German>
-		<Italian>[COLOR_CULTURE_RATE]il confine culturale di %s1 sta per espandersi.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_CULTURE_RATE]el límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
+		<Italian>[COLOR_CULTURE_RATE]Il confine culturale di %s1 sta per espandersi.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_CULTURE_RATE]El límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_POP_EXCEEDS_LIMIT</Tag>
@@ -37,7 +37,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_POP_GROWTH_CLOSE_TO_LIMIT</Tag>
 		<English>[COLOR_WARNING_TEXT]Your population: %d1, plus growth: %d2 (%s3) will put close to the Domination Limit: %d4 (%s5)[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]Votre population : %d1, plus la croissance : %d2 (%s3) mettra près de la limite de domination : %d4 (%s5)[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]Votre population : %d1, plus la croissance : %d2 (%s3) vous mettra près de la limite de domination : %d4 (%s5)[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Eure Bevölkerung: %d1, plus Wachstum: %d2 (%s3) überschreitet beinahe die Schwelle für einen Vorherrschafts-Sieg: %d4 (%s5)[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]La tua popolazione: %d1, più crescita: %d2 (%s3) sarà vicina al limite di dominazione: %d4 (%s5)[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]Su población: %d1, más crecimiento: %d2 (%s3) pondrá cerca del límite de la dominación: %d4 (%s5)[COLOR_REVERT]</Spanish>
@@ -45,15 +45,16 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_LAND_EXCEEDS_LIMIT</Tag>
 		<English>[COLOR_WARNING_TEXT]Your land area: %d1 (%s2) exceeds the Domination Limit: %d3 (%s4)[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]Votre secteur de terre : %d1 (%s2) dépasse la limite de domination : %d3 (%s4)[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]Votre territoire : %d1 (%s2) dépasse la limite de domination : %d3 (%s4)[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Eure Landmasse: %d1 (%s2) überschreitet die Schwelle für einen Vorherrschafts-Sieg: %d3 (%s4)[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]Il tuo territorio: %d1 (%s2) eccede il limite di dominazione: %d3 (%s4)[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]Su área de la tierra: %d1 (%s2) excede el límite de la dominación: %d3 (%s4)[COLOR_REVERT]</Spanish>
+>>>>>>> .r647
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_LAND_CLOSE_TO_LIMIT</Tag>
 		<English>[COLOR_WARNING_TEXT]Your land area: %d1 (%s2) is close to the Domination Limit: %d3 (%s4)[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]Votre secteur de terre : %d1 (%s2) est près de la limite de domination : %d3 (%s4)[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]Votre territoire : %d1 (%s2) est près de la limite de domination : %d3 (%s4)[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Eure Landmasse: %d1 (%s2) überschreitet beinahe die Schwelle für einen Vorherrschafts-Sieg: %d3 (%s4)[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]Il tuo territorio: %d1 (%s2) è vicino al limite di dominazione: %d3 (%s4)[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]Su área de la tierra: %d1 (%s2) está cerca del límite de la dominación: %d3 (%s4)[COLOR_REVERT]</Spanish>
@@ -61,7 +62,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL</Tag>
 		<English>[COLOR_TECH_TEXT]New Tech(s) to trade: %s1[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]Nouveau Tech(s) à commercer : %s1[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]Nouvelle(s) Technologie(s) à marchander : %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Hat neue Technologie(n) zum Handeln: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Nuove tecnologie da commerciare: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Tech(s) nuevo a negociar: %s1[COLOR_REVERT]</Spanish>
@@ -69,7 +70,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_OPEN_BORDERS</Tag>
 		<English>[COLOR_TECH_TEXT]Will Sign Open Borders: %s1[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]Signera les Frontières Ouvertes: %s1[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]Signera les Frontières Ouvertes : %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird "Offenen Grenzen" zustimmen: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Firmerà un Trattato di Libero Accesso: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Firmará las Fronteras Abiertas: %s1[COLOR_REVERT]</Spanish>
@@ -77,7 +78,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT</Tag>
 		<English>[COLOR_TECH_TEXT]Will Sign a Defensive Pact: %s1[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]Signera un Pacte Défensif: %s1[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]Signera un Pacte Défensif : %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird einem "Verteidigungsbündnis" zustimmen: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Firmerà un Patto Difensivo: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Firmará un Pacto Defensivo: %s1[COLOR_REVERT]</Spanish>
@@ -85,7 +86,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE</Tag>
 		<English>[COLOR_TECH_TEXT]Will Sign a Permanent Alliance: %s1[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]Signera une Alliance Permanente: %s1[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]Signera une Alliance Permanente : %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird einer "Allianz" zustimmen: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Firmerà un'Alleanza Permanente: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Firmará una Alianza Permanente: %s1[COLOR_REVERT]</Spanish>
@@ -93,7 +94,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_REGEN_FAILED</Tag>
 		<English>Ending: Regenerate Failed...</English>
-		<French>Fin : Régénéré Échoué...</French>
+		<French>Fin : Régénération Échouée...</French>
 		<German>Beenden: Regenerieren erfolglos...</German>
 		<Italian>Conclusione: rigenerazione fallita...</Italian>
 		<Spanish>Conclusión: Regenerado Fallado...</Spanish>
@@ -109,7 +110,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_SAVED</Tag>
 		<English>Saved</English>
-		<French>Économisé</French>
+		<French>Sauvegardé</French>
 		<German>Gespeichert</German>
 		<Italian>Salvato</Italian>
 		<Spanish>Ahorrado</Spanish>
@@ -125,7 +126,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_ALTX_TO_STOP</Tag>
 		<English>Press Alt-X to stop MapFinder.</English>
-		<French>Serrez Alt-X pour arrêter MapFinder.</French>
+		<French>Poussez Alt-X pour arrêter MapFinder.</French>
 		<German>Drücken Sie [ALT-X], um den MapFinder zu beenden.</German>
 		<Italian>Premi Alt-X per arrestare MapFinder.</Italian>
 		<Spanish>Presione el Alt-X-X para parar MapFinder.</Spanish>
@@ -133,7 +134,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_STOPPED</Tag>
 		<English>Map Finder stopped.</English>
-		<French>Tracez le trouveur arrêté.</French>
+		<French>Map Finder arrêté.</French>
 		<German>Map Finder wurde beendet.</German>
 		<Italian>Map Finder arrestato.</Italian>
 		<Spanish>Traz el buscador parado.</Spanish>
@@ -157,7 +158,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_INVALID_PATH</Tag>
 		<English>MapFinder Path Invalid.</English>
-		<French>Invalide De Chemin De MapFinder.</French>
+		<French>Chemin de MapFinder invalide.</French>
 		<German>MapFinder: Dateipfad ungültig.</German>
 		<Italian>Percorso di MapFinder non valido.</Italian>
 		<Spanish>Invalid. De la Trayectoria De MapFinder.</Spanish>
@@ -165,7 +166,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_ABORTING</Tag>
 		<English>Aborting MapFinder...</English>
-		<French>Avortant MapFinder...</French>
+		<French>MapFinder est interrompu...</French>
 		<German>MapFinder wird beendet...</German>
 		<Italian>Lasciando MapFinder...</Italian>
 		<Spanish>Abortando MapFinder...</Spanish>
@@ -173,7 +174,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_RULE_FILE_NOT_FOUND</Tag>
 		<English>Rule File not found.</English>
-		<French>Dossier de règle non trouvé.</French>
+		<French>Fichier de Règles non trouvé.</French>
 		<German>Regeldatei wurde nicht gefunden.</German>
 		<Italian>File delle regole non trovato.</Italian>
 		<Spanish>Archivo de la regla no encontrado.</Spanish>
@@ -181,7 +182,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_INVALID_SAVE_PATH</Tag>
 		<English>MapFinder Save File Path Invalid.</English>
-		<French>MapFinder Sauvent L'Invalide De Chemin De Dossier.</French>
+		<French>Chemin de Sauvegarde de MapFinder invalide.</French>
 		<German>MapFinder: Dateipfad zum Speichern ist ungültig.</German>
 		<Italian>Percorso del save file di MapFinder non valido </Italian>
 		<Spanish>MapFinder Ahorra A Invalid De la Trayectoria Del Archivo.</Spanish>
@@ -189,7 +190,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_ACTIVE</Tag>
 		<English>Map Finder Active...</English>
-		<French>Trouveur De Carte Actif...</French>
+		<French>MapFinder Actif...</French>
 		<German>Map Finder aktiv...</German>
 		<Italian>MapFinder attivo...</Italian>
 		<Spanish>Buscador Del Mapa Activo...</Spanish>
@@ -197,7 +198,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_ALTX_STOPPING</Tag>
 		<English>Alt-X command recieved. Stopping...</English>
-		<French>La commande Alt-X recieved. Arrêt...</French>
+		<French>Recu la commande Alt-X. Arrêt...</French>
 		<German>[ALT-X]-Befehl erhalten. Beenden...</German>
 		<Italian>Ordine Alt-X ricevuto. Arresto...</Italian>
 		<Spanish>El comando Alt-X recieved. El parar...</Spanish>
@@ -205,7 +206,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMINDER_SET_REMINDER</Tag>
 		<English>Enter number of turns until reminder goes off and reminder text.</English>
-		<French>Écrivez le nombre de tours jusqu'à ce que le rappel aille au loin et texte de rappel.</French>
+		<French>Notez le nombre de tours jusqu'à ce que le rappel se passe et le texte du rappel.</French>
 		<German>Geben Sie die Anzahl der Runden an, bis die Erinnerung angezeigt werden soll.</German>
 		<Italian>Inserisci il numero di turni necessari per visualizzare il promemoria.</Italian>
 		<Spanish>Incorpore el número de vueltas hasta que se apaga el recordatorio y texto del recordatorio.</Spanish>

@@ -36,7 +36,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_GOLD_TRADE</Tag>
 		<English>[COLOR_YIELD_COMMERCE]%s1 has %d2 gold available for trade.[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_COMMERCE]%s1 a l'or %d2 disponible pour le commerce.[COLOR_REVERT]</French>
+		<French>[COLOR_YIELD_COMMERCE]%s1 a %d2 pièces d'or disponible pour le commerce.[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_COMMERCE]%s1 hat %d2 Gold zum Handeln.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_COMMERCE]%s1 ha %d2 oro disponibile per il commercio.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_COMMERCE]%s1 tiene %d2 de oro disponible para el comercio.[COLOR_REVERT]</Spanish>
@@ -44,7 +44,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_GOLD_PER_TURN_TRADE</Tag>
 		<English>[COLOR_YIELD_COMMERCE]%s1 has %d2 gold per turn available for trade.[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_COMMERCE]%s1 a l'or %d2 par tour disponible pour le commerce.[COLOR_REVERT]</French>
+		<French>[COLOR_YIELD_COMMERCE]%s1 a %d2 pièces d'or par tour disponible pour le commerce.[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_COMMERCE]%s1 hat %d2 Gold pro Runde zum Handeln.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_COMMERCE]%s1 ha %d2 oro per turno disponibile per il commercio.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_COMMERCE]%s1 tiene %d2 de oro por turno disponible para el comercio.[COLOR_REVERT]</Spanish>
@@ -52,7 +52,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_GROWTH</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 will grow to size %d2 on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]%s1 deviendra la taille %d2 sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_YIELD_FOOD]%s1 atteindra la taille %d2 au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]Die Bevölkerung von %s1 wächst nächste Runde auf %d2 an.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 crescerà a grandezza %d2 al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]%s1 alcanzará tamaño %d2 el próximo turno.[COLOR_REVERT]</Spanish>
@@ -60,7 +60,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_SHRINKAGE</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will shrink to size %d2 on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 se rétrécir à la taille %d2 sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]%s1 retrécira à la taille %d2 au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 schrumpft nächste Runde auf %d2.[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 si ridurrà a grandezza %d2 al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se reducirá tamaño %d2 el próximo turno.[COLOR_REVERT]</Spanish>
@@ -68,7 +68,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHEALTHY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will become unhealthy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 deviendra malsain sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]%s1 deviendra malsain au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 wird nächste Runde krank.[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà insalubre al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá insalubre el próximo turno.[COLOR_REVERT]</Spanish>
@@ -76,7 +76,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 will become healthy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 deviendra sain sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]%s1 deviendra sain au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde gesund.[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 diventerà salubre al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá sano el próximo turno.[COLOR_REVERT]</Spanish>
@@ -84,7 +84,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will become unhappy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 deviendra malheureux sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]%s1 deviendra malheureux au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 wird nächste Runde unzufrieden.[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 diventerà infelice al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se volverá infeliz el próximo turno.[COLOR_REVERT]</Spanish>
@@ -92,7 +92,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 will become happy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 deviendra heureux sur le prochain tour.[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]%s1 deviendra heureux au prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde zufrieden.[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 diventerà felice al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá feliz el próximo turno.[COLOR_REVERT]</Spanish>
@@ -132,7 +132,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_GROWTH</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 has grown to size %d2.[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]%s1 s'est développé pour classer %d2.[COLOR_REVERT]</French>
+		<French>[COLOR_YIELD_FOOD]%s1 a grandi jusqu'à la taille %d2.[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]Die Bevölkerung von %s1 ist auf %d2 gewachsen.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 è cresciuta a grandezza %d2.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]%s1 ha alcanzado tamaño %d2.[COLOR_REVERT]</Spanish>
@@ -140,7 +140,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_SHRINKAGE</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 has shrunk to size %d2.[COLOR_REVERT]</English>
-		<French>[COLOR_WARNING_TEXT]%s1 s'est réduit pour classer %d2.[COLOR_REVERT]</French>
+		<French>[COLOR_WARNING_TEXT]%s1 à retréci jusqu'à la taille %d2.[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Die Bevölkerung von %s1 ist auf %d2 geschrumpft.[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]%s1 si è ridotta a grandezza %d2.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se ha reducido tamaño %d2.[COLOR_REVERT]</Spanish>

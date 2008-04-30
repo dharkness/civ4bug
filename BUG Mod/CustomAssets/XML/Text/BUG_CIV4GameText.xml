@@ -12,7 +12,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
 		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
-		<French>Press Ctrl-Alt-O to customize BUG Mod</French>
+		<French>Poussez sur Ctrl-Alt-O pour configurer le BUG Mod</French>
 		<German>Drücken Sie [STRG-ALT-O], um die BUG Mod anzupassen</German>
 		<Italian>Premi Ctrl-Alt-O per personalizzare il BUG Mod</Italian>
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
@@ -117,7 +117,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
 		<English>Deployment</English>
-		<French>Deployment</French>
+		<French>Deploiement</French>
 		<German>Aufstellung</German>
 		<Italian>Deployment</Italian>
 		<Spanish>Deployment</Spanish>
@@ -125,7 +125,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
 		<English>Sit-Rep</English>
-		<French>Sit-Rep</French>
+		<French>Rapport de Situation</French>
 		<German>Situationsbericht</German>
 		<Italian>Sit-Rep</Italian>
 		<Spanish>Sit-Rep</Spanish>
@@ -133,7 +133,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_RELATIONSHIP</Tag>
 		<English>Relationship</English>
-		<French>Relationship</French>
+		<French>Relation</French>
 		<German>Beziehung</German>
 		<Italian>Relationship</Italian>
 		<Spanish>Relationship</Spanish>
@@ -141,7 +141,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
 		<English>Worst Enemy</English>
-		<French>Worst Enemy</French>
+		<French>Ennemi n° 1</French>
 		<German>Schlimmster Feind</German>
 		<Italian>Worst Enemy</Italian>
 		<Spanish>Worst Enemy</Spanish>
@@ -157,7 +157,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_ACTIVE_WARS</Tag>
 		<English>Active Wars</English>
-		<French>Active Wars</French>
+		<French>Guerres Actives</French>
 		<German>Aktive Kriege</German>
 		<Italian>Active Wars</Italian>
 		<Spanish>Active Wars</Spanish>
@@ -165,7 +165,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
 		<English>Strat. Res</English>
-		<French>Strat. Res</French>
+		<French>Ressources Stratégiques</French>
 		<German>Strat. Res.</German>
 		<Italian>Strat. Res</Italian>
 		<Spanish>Strat. Res</Spanish>
@@ -173,7 +173,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
 		<English>Will Declare On</English>
-		<French>Will Declare On</French>
+		<French>Déclarera en?</French>
 		<German>Kriegserkl&#228;rung an</German>
 		<Italian>Will Declare On</Italian>
 		<Spanish>Will Declare On</Spanish>
@@ -192,7 +192,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMINDER_HEADER</Tag>
 		<English>Create Reminder</English>
-		<French>Create Reminder</French>
+		<French>Créez un Rappel</French>
 		<German>Erinnerung schreiben</German>
 		<Italian>Crea un Promemoria</Italian>
 		<Spanish>Create Reminder</Spanish>
@@ -200,7 +200,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMINDER_PROMPT</Tag>
 		<English>Enter the number of turns until the reminder goes off and the message to display.</English>
-		<French>Enter the number of turns until the reminder goes off and the message to display.</French>
+		<French>Entrez le nombre de tours jusqu'à l'apparition du rappel et le message montrer.</French>
 		<German>Geben Sie die Anzahl der Runden an, bis die Erinnerung angezeigt werden soll.</German>
 		<Italian>Inserisci il numero di turni che devono passare prima che il promemoria scada ed il messaggio venga visualizzato.</Italian>
 		<Spanish>Enter the number of turns until the reminder goes off and the message to display.</Spanish>
@@ -208,7 +208,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMIND_END_TURN_PROMPT</Tag>
 		<English>Show reminder again at the end of this turn?</English>
-		<French>Show reminder again at the end of this turn?</French>
+		<French>Remontrer le rappel à la fin de ce tour?</French>
 		<German>Erinnerung am Ende dieser Runde erneut anzeigen?</German>
 		<Italian>Mostrare nuovamente il promemoria alla fine del turno?</Italian>
 		<Spanish>Show reminder again at the end of this turn?</Spanish>
@@ -216,7 +216,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMIND_NEXT_TURN_PROMPT</Tag>
 		<English>Show reminder again next turn?</English>
-		<French>Show reminder again next turn?</French>
+		<French>Remontrer le rappel au prochain tour?</French>
 		<German>Erinnerung n&#228;chste Runde erneut anzeigen?</German>
 		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
@@ -227,7 +227,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>
-		<French>Red</French>
+		<French>Rouge</French>
 		<German>Rot</German>
 		<Italian>Rosso</Italian>
 		<Spanish>Rojo</Spanish>
@@ -235,7 +235,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_YELLOW</Tag>
 		<English>Yellow</English>
-		<French>Yellow</French>
+		<French>Jaune</French>
 		<German>Gelb</German>
 		<Italian>Giallo</Italian>
 		<Spanish>Amarillo</Spanish>
@@ -243,7 +243,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_GREEN</Tag>
 		<English>Green</English>
-		<French>Green</French>
+		<French>Vert</French>
 		<German>Grün</German>
 		<Italian>Verde</Italian>
 		<Spanish>Verde</Spanish>
@@ -259,7 +259,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_BLUE</Tag>
 		<English>Blue</English>
-		<French>Blue</French>
+		<French>Bleu</French>
 		<German>Blau</German>
 		<Italian>Blu</Italian>
 		<Spanish>Azul</Spanish>
@@ -275,7 +275,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_WHITE</Tag>
 		<English>White</English>
-		<French>White</French>
+		<French>Blanc</French>
 		<German>Weiß</German>
 		<Italian>Bianco</Italian>
 		<Spanish>Blanco</Spanish>
@@ -283,7 +283,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_LIGHT_GREY</Tag>
 		<English>Light Grey</English>
-		<French>Light Grey</French>
+		<French>Gris Pâle</French>
 		<German>Hellgrau</German>
 		<Italian>Grigio Chiaro</Italian>
 		<Spanish>Gris Ligero</Spanish>
@@ -291,7 +291,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_GREY</Tag>
 		<English>Grey</English>
-		<French>Grey</French>
+		<French>Gris</French>
 		<German>Grau</German>
 		<Italian>Grigio</Italian>
 		<Spanish>Gris</Spanish>
@@ -299,7 +299,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_DARK_GREY</Tag>
 		<English>Dark Grey</English>
-		<French>Dark Grey</French>
+		<French>Gris Foncé</French>
 		<German>Dunkelgrau</German>
 		<Italian>Grigio Scuro</Italian>
 		<Spanish>Gris Oscuro</Spanish>
@@ -307,7 +307,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_BLACK</Tag>
 		<English>Black</English>
-		<French>Black</French>
+		<French>Noir</French>
 		<German>Schwarz</German>
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
