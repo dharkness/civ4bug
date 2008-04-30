@@ -16,7 +16,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
 		<English>Unit Upgrades</English>
 		<French>Unit Upgrades</French>
-		<German>Einheitenbeförderungen</German>
+		<German>Einheitenmodernisierungen</German>
 		<Italian>Miglioramenti Unità</Italian>
 		<Spanish>Unit Upgrades</Spanish>
 	</TEXT>
@@ -48,16 +48,16 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW</Tag>
 		<English>BTS Concepts</English>
 		<French>BTS Concepts</French>
-		<German>BTS -Konzepte</German>
+		<German>Beyond the Sword-Konzepte</German>
 		<Italian>Concetti di BTS</Italian>
 		<Spanish>BTS Concepts</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIQUE_BUILDINGS</Tag>
-		<English>Unique Building</English>
-		<French>Unique Building</French>
-		<German>Einzigartige Stadteinrichtungen</German>
+		<English>Unique Buildings</English>
+		<French>Unique Buildings</French>
+		<German>Spezialeinrichtungen</German>
 		<Italian>Edifici Unici</Italian>
-		<Spanish>Unique Building</Spanish>
+		<Spanish>Unique Buildings</Spanish>
 	</TEXT>
 </Civ4GameText>

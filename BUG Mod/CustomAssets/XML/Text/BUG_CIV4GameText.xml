@@ -13,7 +13,7 @@
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
 		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
 		<French>Press Ctrl-Alt-O to customize BUG Mod</French>
-		<German>Drücken Sie Strg-Alt-O, um BUG Mod anzupassen</German>
+		<German>Drücken Sie [STRG-ALT-O], um die BUG Mod anzupassen</German>
 		<Italian>Premi Ctrl-Alt-O per personalizzare il BUG Mod</Italian>
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
 	</TEXT>
@@ -67,7 +67,7 @@
 		<Tag>TXT_KEY_RAW_PRODCOM_TILES</Tag>
 		<English>Worked Tiles</English>
 		<French>Tuiles Travaillées</French>
-		<German>Bearbeitete Fliesen</German>
+		<German>Bearbeitete Geländefelder</German>
 		<Italian>Mattonelle Funzionate</Italian>
 		<Spanish>Azulejos Trabajados</Spanish>
 	</TEXT>
@@ -107,7 +107,7 @@
 		<Tag>TXT_KEY_RAW_PRODCOM_TOTAL</Tag>
 		<English>Total</English>
 		<French>Total</French>
-		<German>Gesamtmenge</German>
+		<German>Summe</German>
 		<Italian>Totale</Italian>
 		<Spanish>Total</Spanish>
 	</TEXT>
@@ -118,7 +118,7 @@
 		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
 		<English>Deployment</English>
 		<French>Deployment</French>
-		<German>Deployment</German>
+		<German>Aufstellung</German>
 		<Italian>Deployment</Italian>
 		<Spanish>Deployment</Spanish>
 	</TEXT>
@@ -126,7 +126,7 @@
 		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
 		<English>Sit-Rep</English>
 		<French>Sit-Rep</French>
-		<German>Sit-Rep</German>
+		<German>Situationsbericht</German>
 		<Italian>Sit-Rep</Italian>
 		<Spanish>Sit-Rep</Spanish>
 	</TEXT>
@@ -134,7 +134,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_RELATIONSHIP</Tag>
 		<English>Relationship</English>
 		<French>Relationship</French>
-		<German>Relationship</German>
+		<German>Beziehung</German>
 		<Italian>Relationship</Italian>
 		<Spanish>Relationship</Spanish>
 	</TEXT>
@@ -142,23 +142,23 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
 		<English>Worst Enemy</English>
 		<French>Worst Enemy</French>
-		<German>Worst Enemy</German>
+		<German>Schlimmster Feind</German>
 		<Italian>Worst Enemy</Italian>
 		<Spanish>Worst Enemy</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_THREAD_INDEX</Tag>
-		<English>Thread Index</English>
-		<French>Thread Index</French>
-		<German>Thread Index</German>
-		<Italian>Thread Index</Italian>
-		<Spanish>Thread Index</Spanish>
+		<English>Threat Index</English>
+		<French>Threat Index</French>
+		<German>Bedrohungsstufe</German>
+		<Italian>Threat Index</Italian>
+		<Spanish>Threat Index</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_ACTIVE_WARS</Tag>
 		<English>Active Wars</English>
 		<French>Active Wars</French>
-		<German>Active Wars</German>
+		<German>Aktive Kriege</German>
 		<Italian>Active Wars</Italian>
 		<Spanish>Active Wars</Spanish>
 	</TEXT>
@@ -166,7 +166,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
 		<English>Strat. Res</English>
 		<French>Strat. Res</French>
-		<German>Strat. Res</German>
+		<German>Strat. Res.</German>
 		<Italian>Strat. Res</Italian>
 		<Spanish>Strat. Res</Spanish>
 	</TEXT>
@@ -174,7 +174,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
 		<English>Will Declare On</English>
 		<French>Will Declare On</French>
-		<German>Will Declare On</German>
+		<German>Kriegserkl&#228;rung an</German>
 		<Italian>Will Declare On</Italian>
 		<Spanish>Will Declare On</Spanish>
 	</TEXT>
@@ -182,7 +182,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WAR_DENIAL</Tag>
 		<English>War Denial</English>
 		<French>War Denial</French>
-		<German>War Denial</German>
+		<German>Kriegsgrund</German>
 		<Italian>War Denial</Italian>
 		<Spanish>War Denial</Spanish>
 	</TEXT>
@@ -209,7 +209,7 @@
 		<Tag>TXT_KEY_REMIND_END_TURN_PROMPT</Tag>
 		<English>Show reminder again at the end of this turn?</English>
 		<French>Show reminder again at the end of this turn?</French>
-		<German>Notiz am Ende dieser Runde erneut anzeigen?</German>
+		<German>Erinnerung am Ende dieser Runde erneut anzeigen?</German>
 		<Italian>Mostrare nuovamente il promemoria alla fine del turno?</Italian>
 		<Spanish>Show reminder again at the end of this turn?</Spanish>
 	</TEXT>
@@ -217,7 +217,7 @@
 		<Tag>TXT_KEY_REMIND_NEXT_TURN_PROMPT</Tag>
 		<English>Show reminder again next turn?</English>
 		<French>Show reminder again next turn?</French>
-		<German>Notiz nächste Runde erneut anzeigen?</German>
+		<German>Erinnerung n&#228;chste Runde erneut anzeigen?</German>
 		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
