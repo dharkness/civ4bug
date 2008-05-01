@@ -8,7 +8,7 @@
 		<English>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</English>
 		<French>Pressez Ctrl + Alt + O pour accèder aux écrans d'options du BUG Mod.</French>
 		<German>Tipp... Mit der Tastenkombination [STRG + ALT + O] lässt sich das Optionsmenü der BUG Mod aufrufen.</German>
-		<Italian>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</Italian>
+		<Italian>Premi Ctrl + Alt + O per accedere alla schermata di configurazione del BUG Mod.</Italian>
 		<Spanish>Press Ctrl + Alt + O to enter The BUG Mod Options Screen.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -16,7 +16,7 @@
 		<English>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</English>
 		<French>Oublié de construire une Caserne?  Alt + M vous permet de créer une alerte pour que vous ne l'oublierez plus jamais!</French>
 		<German>Tipp... Mit der Tastenkombination [ALT + M] lassen sich Erinnerungen verfassen, die nach einer festgelegten Anzahl Runden wieder erscheinen.</German>
-		<Italian>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</Italian>
+		<Italian>Ti dimentichi sempre di costruire le caserme? Alt + M ti permette di inserire un promemoria in modo da non dimenticartene più!</Italian>
 		<Spanish>Ever forget to build that Barracks?  Alt + M will allow you to set up reminders so you don't forget again!</Spanish>
 	</TEXT>
 	<TEXT>
@@ -24,7 +24,7 @@
 		<English>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</English>
 		<French>Alt + S vous permet de mettre un signe sur une case.  Il suffit de cliquer et de typer.  Pressez Alt + S de nouveau et puis cliquer sur un signe existant l'enlèvera.</French>
 		<German>Tipp... Mit der Tastenkombination [ALT + S] lassen sich Haftnotizen an Geländefeldern anbringen. Eine Haftnotiz lässt sich mit der selben Tastenkombination auch wieder entfernen.</German>
-		<Italian>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Italian>
+		<Italian>Alt + S ti consente di inserire note nelle caselle. Devi solo cliccarci e scrivere. Premendo nuovamente Alt + S e cliccando su una nota esistente, la si rimuove.</Italian>
 		<Spanish>Alt + S allows you to make Sticky Notes on tiles.  Just click and type.  Pressing Alt + S again, and then clicking on an existing note will remove it.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -32,7 +32,7 @@
 		<English>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</English>
 		<French>Pour annuler tous les ordres des Ouvriers, sélectionnez 1 ouvrier avec des ordres, et en gardant Alt enfoncé, cliquez le bouton pour annuler les ordres.</French>
 		<German>Tipp... Bei gedrückter [ALT]-Taste lassen sich die Missionen aller aktiven Arbeitstrupps per Mausklick auf das Abbrechensymbol eines aktiven Arbeitstrupps abbrechen.</German>
-		<Italian>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</Italian>
+		<Italian>Per cancellare velocemente tutti gli ordini dei lavoratori, selezionane uno che abbia ordini attivi, tieni premuto il tasto Alt e clicca il pulsante di cancellazione degli ordini.</Italian>
 		<Spanish>To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the Alt key, click the cancel orders button.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -40,7 +40,7 @@
 		<English>Alt + E will allow you to make a custom Event in the autologger.</English>
 		<French>Alt + E vous permet d'ajouter une entrée customisée dans l'autologger.</French>
 		<German>Tipp... Mit der Tastenkombination [ALT + E] lassen sich eigene Ereignisse in das automatische Logbuch eintragen.</German>
-		<Italian>Alt + E will allow you to make a custom Event in the autologger.</Italian>
+		<Italian>Alt + E ti consente di inserire un evento personalizzato nel registro automatico.</Italian>
 		<Spanish>Alt + E will allow you to make a custom Event in the autologger.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -48,7 +48,7 @@
 		<English>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</English>
 		<French>Cliquer sur le "!" jaune dans l'adviseur domestique vous permet de le customiser comme vous le désirez.</French>
 		<German>Tipp... Mit einem Klick auf das gelbe "!" im Bildschirm "Inland" lässt sich dieser an den eigenen Spielstil anpassen.</German>
-		<Italian>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style.</Italian>
+		<Italian>Cliccare sul "!" giallo all'interno del Consigliere Domestico ti permetterà di personalizzarlo in base al tuo stile di gioco.</Italian>
 		<Spanish>Clicking on the Yellow "!" within the Domestic Advisor will allow you to customize it to your playing style..</Spanish>
 	</TEXT>
 	<TEXT>
@@ -56,7 +56,7 @@
 		<English>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.[NEWLINE]To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</English>
 		<French>Pour créer des points de rassemblement, sélectionnez la ville ou les villes où vous construisez vos unités, gardez Shift enfoncé et cliquez avec le bouton de droite sur la case où vous voulez que vos unités aillent. Un cercle jaune indiquera le point de rassemblement.[NEWLINE]Pour annuler cet ordre, sélectionnez la même ville, gardez Shift enfoncé et cliquez avec le bouton de droite et cliquez sur une case de ville.</French>
 		<German>Tipp... Bei gedrückter [UMSCHALT]-Taste in Verbindung mit einem Rechtsklick lässt sich für eine oder mehrere Städte ein Sammelpunkt für Einheiten setzen. Der Sammelpunkt wird durch einen gelben Kreis markiert. Wird bei gedrückter [UMSCHALT]-Taste in Verbindung mit einem Rechtsklick ein Stadtgeländefeld ausgewählt, lässt sich der Sammelpunkt wieder aufheben.</German>
-		<Italian>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.[NEWLINE]To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Italian>
+		<Italian>Per creare punti di raduno, seleziona la città (o le città) in cui stai costruendo le unità, tieni premuto il tasto Maiusc e clicca col destro sulla casella dove vuoi collocare il punto di raduno. Vedrai un cerchio giallo indicare il punto di raduno.[NEWLINE]Per cancellare il punto di raduno, seleziona la stessa (o le stesse) città, tieni premuto il tasto Maiusc e clicca col destro su una qualunque casella cittadina.</Italian>
 		<Spanish>To create rally points, select the city, or cities, you are building units it, hold down the Shift key and Right Click on the tile you want your rally point to be at.  You will see a yellow circle showing the rally point.[NEWLINE]To cancel orders select the same city or cities, Shift and Right click on any city square, and it will cancel the rally orders.</Spanish>
 	</TEXT>
 
@@ -65,7 +65,7 @@
 		<English>When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</English>
 		<French>Quand une case est dans la Croix de Ville de plusieures villes, vous pouvez changez la ville à laquelle la case appartient en cliquant dessus dans l'écran de ville de la ville choisie.</French>
 		<German>Tipp...  Befindet sich ein Geländefeld im Einzugsbereich zweier Städte, lässt sich dessen Zugehörigkeit festlegen, indem es im Stadt-Bildschirm der betreffenden Stadt per Mausklick ausgewählt wird.</German>
-		<Italian>When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</Italian>
+		<Italian>Quando una casella appartiene all'area cittadina di due diverse città, puoi cambiare la sua appartenenza cliccando su di essa dalla Schermata Cittadina della città a cui vuoi che appartenga.</Italian>
 		<Spanish>When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -73,7 +73,7 @@
 		<English>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</English>
 		<French>Il n'y a pas de déshonneur à accèder aux demandes de vos rivaux quand vous êtes faible. Ceci vous permettra de renforcer vos défenses pendant le temps qui vous profitez des relations améliorées de vos nations.</French>
 		<German>Tipp... Es ist keine Schande, in einer unterlegenen Position den Forderungen von stärkeren Gegnern nachzukommen. Die durch die kurze Verbesserung der diplomatischen Beziehungen gewonnene Zeit kann genutzt werden, um die eigenen Verteidigungslinien zu verstärken.</German>
-		<Italian>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Italian>
+		<Italian>Quando sei debole, non c'è vergogna nell'accettare le pretese dei rivali. Ti concederà il tempo necessario per costruire le tue difese nel conseguente breve periodo di miglioramento dei rapporti fra le vostre nazioni.</Italian>
 		<Spanish>When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -81,7 +81,7 @@
 		<English>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</English>
 		<French>Pendant une Guerre, utilisez des unités rapides pour piller les ressources stratégiques comme le Fer ou l'Aluminium, et laissez-y une sentinelle pour éviter que votre ennemi ne reconnecte la ressource.</French>
 		<German>Tipp... Während eines Krieges sollten schnelle Einheiten genutzt werden, um zuerst strategische Ressourcen, wie Eisen oder Aluminium, zu plündern. Nachrückende Einheiten sollten dann deren Bewachung übernehmen, um dem Gegner den Zugang zu diesen Ressourcen dauerhaft zu verwehren.</German>
-		<Italian>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Italian>
+		<Italian>Quando sei in guerra, utilizza le unità che si muovono velocemente per depredare le risorse strategiche, e lascia sul posto una sentinella per evitare che il nemico le recuperi.</Italian>
 		<Spanish>When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -89,7 +89,7 @@
 		<English>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</English>
 		<French>Attendez pour promouvoir une unité pour le moment ou elle a besoin de soins. Quand vous promovez, choisissez les promotions en fonction de l'ennemi que vous encontrez.</French>
 		<German>Tipp... Eine verfügbare Beförderung braucht nicht sofort auf eine Einheit angewendet zu werden. Manchmal lohnt es sich zu warten, um im passenden Moment die bestgeeignete Beförderung und Bonusfähigkeit zu wählen. Eine Beförderung wirkt auf verletzte Einheiten übrigens heilsam.</German>
-		<Italian>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Italian>
+		<Italian>Risparmia le promozioni per accelerare la cura quando le tue unità vengono ferite, e quando le promuovi, ottimizza le tue unità contro il tipo di nemico che stai affrontando.</Italian>
 		<Spanish>Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -97,7 +97,7 @@
 		<English>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</English>
 		<French>N'attaquez pas une ville sans machines de siège. Un Spadassin peut faire plus de dégats en rentrant par une brèche dans la muraille, qu'en essayant de l'escalader sous une pluie de flèches.</French>
 		<German>Tipp... Für die Einnahme einer größeren Stadt sollten genügend Belagerungswaffen zur Verfügung stehen, um die Verteidigungsanlagen niederzureißen und die Verteidiger zu schwächen.</German>
-		<Italian>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Italian>
+		<Italian>Procurati sempre l'equipaggiamento d'assedio prima di assediare una città. Uno Spadaccino può fare più danni entrando da un buco nelle mura, che cercando di scavalcarle sotto una pioggia di frecce.</Italian>
 		<Spanish>Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -105,15 +105,15 @@
 		<English>Examine what resources are available before researching worker techs.  Why research Animal Husbandry when you only have Corn and Wheat nearby?</English>
 		<French>Examinez quelles ressources sont à votre disposition avant de choisir une technologie à rechercher. Pourquoi rechercher l'Elevage si vous n'avez que du Maïs et du Blé disponible?</French>
 		<German>Tipp...  Die Erkundung des Umlands ist lebenswichtig, vor allem das Auffinden von Ressourcen. Dieses erlaubt eine Planung der Expansion und der technologischen Entwicklung, um die Rohstoffe möglichst schnell erschließen und nutzen zu können.</German>
-		<English>Examine what resources are available before researching worker techs.  Why research Animal Husbandry when you only have Corn and Wheat nearby?</English>
-		<English>Examine what resources are available before researching worker techs.  Why research Animal Husbandry when you only have Corn and Wheat nearby?</English>
+		<Italian>Esamina quali risorse sono disponibili prima di ricercare le tecnologie dei lavoratori. Perchè ricercare Allevamento Animali quando hai solamente Grano e Frumento vicino?</English>
+		<Spanish>Examine what resources are available before researching worker techs.  Why research Animal Husbandry when you only have Corn and Wheat nearby?</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_7</Tag>
 		<English>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</English>
 		<French>Escortez toujours vos Colons. La nature peut être très dangereuse.</French>
 		<German>Tipp... Wertvolle Einheiten ohne nennenswerte Verteidigungsfähigkeiten, wie Siedler und Galeonen, können leicht Opfer von Angriffen werden und verdienen deshalb auf fremdem Terrain einen Begleitschutz.</German>
-		<Italian>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</Italian>
+		<Italian>Scorta sempre i tuoi Coloni. E' molto pericoloso vagare per le Terre Selvagge (specialmente quelle inesplorate).</Italian>
 		<Spanish>Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -121,7 +121,7 @@
 		<English>Play to your Civilization's traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</English>
 		<French>Utilisez les Traits de votre Civilisation et spécialisez votre Empire. Que vaut être Charismatique et Aggressif si vous ne partez pas en guerre?</French>
 		<German>Tipp... Der eigene Spielstil sollte sich an den Eigenschaften des gewählten Staatsoberhaupts orientieren und die Zivilisation entsprechend spezialisiert werden. Die Eigenschaften "Charismatisch" und "Aggressiv" nützen wenig, wenn keine Kriege beabsichtigt sind.</German>
-		<Italian>Play to your Civilization's traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Italian>
+		<Italian>Sfrutta le caratteristiche della tua Civiltà, e specializza il tuo Impero.  E' inutile essere Carismatico ed Aggressivo e non iniziare neppure una guerra.</Italian>
 		<Spanish>Play to your Civilization's traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -129,7 +129,7 @@
 		<English>Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.</English>
 		<French>Vendre des ressources que vous n'utilisez plus, comme le Cuivre ou le Fer, peut être très profitable. Veillez juste que vous les vendez à un ami plus faible que vous!</French>
 		<German>Tipp...  Der Verkauf von zwischenzeitlich unbrauchbaren Ressourcen, wie Kupfer oder Eisen, kann langfristig vorteilhaft sein, wenn der Käufer ein momentan noch schwacher Verbündeter ist.</German>
-		<Italian>Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Italian>
+		<Italian>Vendere le risorse che non usi più, come Rame e Ferro, può rendere parecchio a lungo termine. Però assicurati di venderle ad una nazione amica più debole!</Italian>
 		<Spanish>Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.  Just make sure it's to a weaker friend!</Spanish>
 	</TEXT>
 	<TEXT>
@@ -137,7 +137,7 @@
 		<English>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</English>
 		<French>Ne négligez pas votre Diplomatie! Faites attention aux Alertes qui arrivent et qui vous informent de ce qui est disponible.</French>
 		<German>Tipp... Die Diplomatie sollte nicht vernachlässigt werden. Während einer Partie erscheinende Meldung zeigen ständig die verfügbaren Handelswaren anderer Zivilisationen.</German>
-		<Italian>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Italian>
+		<Italian>Non trascurare la Diplomazia!  Fai attenzione agli avvisi che compaiono per dirti cosa c'è di disponibile in giro.</Italian>
 		<Spanish>Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -145,7 +145,7 @@
 		<English>Be the first to circle the globe, and your Naval Units all receive +1 movement.</English>
 		<French>Soyez le premier à naviguer autour du globe, et tous vos Unités Navales recevront +1 en mouvement.</French>
 		<German>Tipp... Die See-Einheiten der Zivilisation, die als erste die Welt umrundet, erhalten einen Bewegungsbonus von +1.</German>
-		<Italian>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Italian>
+		<Italian>Circunnaviga il globo per primo, e tutte le tue Unità Navali presenti e future riceveranno un bonus di +1 al loro movimento.</Italian>
 		<Spanish>Be the first to circle the globe, and your Naval Units all receive +1 movement.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -153,7 +153,7 @@
 		<English>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</English>
 		<French>Les Animaux ne peuvent pas entrer en votre territoire. Vous pouvez donc prendre le risque de laisser votre ville sans défense et d'aller explorer avec votre Guerrier au début du jeu.</French>
 		<German>Tipp... Tiere können die Grenzen von Städten nicht überschreiten. Deshalb kann es sinnvoll sein, ein Risiko einzugehen und Städte zunächst unbewacht zu lassen, um mit den ersten Kriegern die Welt schon früh zu erkunden.</German>
-		<Italian>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Italian>
+		<Italian>Gli animali non possono entrare nel tuo territorio, perciò nele prime fasi del gioco può valere la pena di correre il rischio di lasciare la tua città indifesa e utilizzare il tuo Guerriero per una esplorazione preliminare.</Italian>
 		<Spanish>Animals can't enter your land, so it can be worth the risk to leave your city undefended and use your warrior for early exploration.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -161,7 +161,7 @@
 		<English>Form trade relations with nations that get along with each other to avoid an attitude penalty.</English>
 		<French>Formez des relations commerciales avec des nations qui s'agréent entre eux, pour éviter des pénalités diplomatiques.</French>
 		<German>Tipp... Zwischen ähnlichen Zivilisationen sollten Handelsverbindungen geknüpft werden, um einen Beziehungsmalus zu vermeiden.</German>
-		<Italian>Form trade relations with nations that get along with each other to avoid an attitude penalty.</Italian>
+		<Italian>Stabilisci relazioni mercantili con nazioni che vanno d'accordo per evitare penalità nei rapporti.</Italian>
 		<Spanish>Form trade relations with nations that get along with each other to avoid an attitude penalty.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -169,7 +169,7 @@
 		<English>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</English>
 		<French>Si vous négligez votre armée et que votre pouvoir décline, un de vos voisins vous attaquera sûrement!</French>
 		<German>Tipp... Das Militär sollte nicht vernachlässigt werden. Ein schwaches Reich wird gern von benachbarten Reichen angegriffen.</German>
-		<Italian>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Italian>
+		<Italian>Se trascuri il tuo esercito, e la tua potenza si indebolisce, un paese confinante ti attaccherà sicuramente.</Italian>
 		<Spanish>If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -177,7 +177,7 @@
 		<English>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</English>
 		<French>Stationnez des unités navales près de vos ressources aquatiques, et faites les Patrouiller pour les protéger.</French>
 		<German>Tipp... See-Einheiten sollten in der Nähe von Ressourcen auf Meeres-Geländefeldern stationiert und mit dem Auftrag "Seepatrouille" versehen werden, um diese zu verteidigen.</German>
-		<Italian>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Italian>
+		<Italian>Disloca le tue unità navali vicino alle tue risorse acquatiche e mettile di pattuglia per proteggerle.</Italian>
 		<Spanish>Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -185,7 +185,7 @@
 		<English>When selling Technologies, shop around for the highest bidder, and then work your way down.</English>
 		<French>Quand vous vendez des Technologies, essayez d'abord de les vendre à celui qui vous payera le plus.</French>
 		<German>Tipp... Beim Technologiehandel sollten die Angebote verschiedener Oberhäupter verglichen werden, um dann dem höchsten Bieter den Zuschlag zu geben.</German>
-		<Italian>When selling Technologies, shop around for the highest bidder, and then work your way down.</Italian>
+		<Italian>Quando ti appresti a vendere Tecnologie, prima non dimenticare di controllare chi te le pagherà di più.</Italian>
 		<Spanish>When selling Technologies, shop around for the highest bidder, and then work your way down.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -193,7 +193,7 @@
 		<English>Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</English>
 		<French>Gardez un oeuil sur les changements de Doctrine de vos voisins. Un changement de Liberté de Culte vers Théologie peut indiquer l'assemblement d'une armée.</French>
 		<German>Tipp... Ein Wechsel der Gesellschaftsform in einem benachbarten Reich sollte aufmerksam verfolgt werden. Er könnte die Vorbereitung auf einen Krieg sein.</German>
-		<Italian>Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</Italian>
+		<Italian>Tieni d'occhio i cambiamenti civici dei tuoi vicini. Un cambiamento da Libertà Religiosa a Teologia può significare un aumento di aggressività.</Italian>
 		<Spanish>Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -201,7 +201,7 @@
 		<English>Speak softly and carry a big stick, and you will go far.</English>
 		<French>Parlez doucement et portez un gros bâton, et vous irez loin.</French>
 		<German>Tipp... Anregungen und Hinweise zur "BUG Mod" können bei civfanatics.com im Forum hinterlassen werden.</German>
-		<Italian>Speak softly and carry a big stick, and you will go far.</Italian>
+		<Italian>Poche parole e un grosso bastone ti porteranno lontano.</Italian>
 		<Spanish>Speak softly and carry a big stick, and you will go far.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -209,7 +209,7 @@
 		<English>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</English>
 		<French>Parfois il vaut mieux arrêter un Eclaireur ou un Explorateur sur une fôret, une montagne ou une jungle et perdre un peu de mouvement pour gagner en sécurité.</French>
 		<German>Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter die Runde auf einem Wald-, Hügel- or Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen Sicherheit zu tauschen.</German>
-		<Italian>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Italian>
+		<Italian>A volte è meglio fermare un Esploratore su una casella di collina, foresta o giungla e perdere il movimento extra in favore della prudenza.</Italian>
 		<Spanish>Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
 	</TEXT>
 </Civ4GameText>
