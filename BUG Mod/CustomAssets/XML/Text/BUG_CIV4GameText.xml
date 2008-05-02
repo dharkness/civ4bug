@@ -176,7 +176,7 @@
 		<English>Threat Index</English>
 		<French>Threat Index</French>
 		<German>Bedrohungsstufe</German>
-		<Italian>Liv. Rischio</Italian>
+		<Italian>Rischio</Italian>
 		<Spanish>Threat Index</Spanish>
 	</TEXT>
 	<TEXT>
@@ -184,7 +184,7 @@
 		<English>Active Wars</English>
 		<French>Guerres Actives</French>
 		<German>Aktive Kriege</German>
-		<Italian>Guerre in corso</Italian>
+		<Italian>Guerre</Italian>
 		<Spanish>Active Wars</Spanish>
 	</TEXT>
 	<TEXT>
@@ -192,7 +192,7 @@
 		<English>Strat. Res</English>
 		<French>Ressources Stratégiques</French>
 		<German>Strat. Res.</German>
-		<Italian>Risorse Strategiche</Italian>
+		<Italian>Risorse</Italian>
 		<Spanish>Strat. Res</Spanish>
 	</TEXT>
 	<TEXT>
@@ -208,7 +208,7 @@
 		<English>War Denial</English>
 		<French>War Denial</French>
 		<German>Kriegsgrund</German>
-		<Italian>War Denial</Italian>
+		<Italian>No guerra</Italian>
 		<Spanish>War Denial</Spanish>
 	</TEXT>
 
