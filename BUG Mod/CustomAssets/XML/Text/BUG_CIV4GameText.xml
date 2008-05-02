@@ -23,7 +23,7 @@
 		<English>Opening the BUG Mod help file...</English>
 		<French>Opening the BUG Mod help file...</French>
 		<German>Opening the BUG Mod help file...</German>
-		<Italian>Opening the BUG Mod help file...</Italian>
+		<Italian>Apertura della Guida del BUG Mod in corso...</Italian>
 		<Spanish>Opening the BUG Mod help file...</Spanish>
 	</TEXT>
 	<TEXT>
@@ -31,7 +31,7 @@
 		<English>Help File Not Found</English>
 		<French>Help File Not Found</French>
 		<German>Help File Not Found</German>
-		<Italian>Help File Not Found</Italian>
+		<Italian>Guida del BUG Mod non trovata</Italian>
 		<Spanish>Help File Not Found</Spanish>
 	</TEXT>
 	<TEXT>
@@ -39,7 +39,7 @@
 		<English>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</English>
 		<French>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</French>
 		<German>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</German>
-		<Italian>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</Italian>
+		<Italian>Impossibile trovare il file "The BUG Mod Help.chm" nei percorsi di ricerca. Vedi la tabella 'Config' nella Schermata di Opzioni del BUG Mod (Ctrl-Alt-O) per maggiori dettagli.</Italian>
 		<Spanish>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</Spanish>
 	</TEXT>
 
