@@ -11,12 +11,12 @@ class BugOptionsTab:
 	"BUG Options Screen screen"
 	
 	def __init__(self, name, title):
-		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 		self.name = name
 		self.tab = self.name + "Tab"
 		
 		self.title = title
 		self.translated = False
+		
 		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 
 	def getName (self):
