@@ -6,15 +6,11 @@ from CvPythonExtensions import *
 import CvUtil
 import BugScoreOptions
 
-BugOpt = BugScoreOptions.getOptions()
-
 # Globals
+BugOpt = BugScoreOptions.getOptions()
 gc = CyGlobalContext()
-ArtFileMgr = CyArtFileMgr()
-localText = CyTranslator()
 
 # Constants
-
 ICON_SIZE = 24
 ROW_HEIGHT = 22
 Z_DEPTH = -0.3
@@ -332,10 +328,3 @@ class Scoreboard:
 		screen.setPanelSize( "ScoreBackground", xResolution - 21 - totalWidth, y - (height * self.count) - 4, 
 							 totalWidth + 12, (height * self.count) + 8 )
 		screen.show( "ScoreBackground" )
-		
-		
-#	def set(self, ):
-#		self._set(, )
-#
-#	def set(self):
-#		self._set()
