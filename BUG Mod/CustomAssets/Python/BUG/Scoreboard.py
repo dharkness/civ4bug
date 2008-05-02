@@ -35,7 +35,8 @@ BORDERS = TRADE + 1
 PACT = BORDERS + 1
 RELIGION = PACT + 1
 ATTITUDE = RELIGION + 1
-WAITING = ATTITUDE + 1
+WORST_ENEMY = ATTITUDE + 1
+WAITING = WORST_ENEMY + 1
 NET_STATS = WAITING + 1
 OOS = NET_STATS + 1
 
@@ -51,7 +52,8 @@ bInitDone = False
 columns = []
 columnsByKey = {}
 ordered = [ SCORE, NOT_MET, WAR, ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
-			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WAITING, NET_STATS, OOS ]
+			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WORST_ENEMY, 
+			WAITING, NET_STATS, OOS ]
 ordered.reverse()
 
 def _init():
@@ -81,6 +83,7 @@ def _init():
 	columns.append(Column('D', PACT, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR)))
 	columns.append(Column('R', RELIGION, DYNAMIC))
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
+	columns.append(Column('H', WORST_ENEMY, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.ANGRY_POP_CHAR)))
 	columns.append(Column('*', WAITING, FIXED, u"<font=2>*</font>"))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
@@ -188,6 +191,9 @@ class Scoreboard:
 		
 	def setAttitude(self, value):
 		self._set(ATTITUDE, u"<font=2>%s</font>" % value)
+		
+	def setWorstEnemy(self):
+		self._set(WORST_ENEMY)
 		
 		
 	def setWaiting(self):

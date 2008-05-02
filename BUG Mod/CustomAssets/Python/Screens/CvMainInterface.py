@@ -4041,6 +4041,17 @@ class CvMainInterface:
 													scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
 
+# BUG - Worst Enemy - start
+										if (BugScore.isShowWorstEnemy()):
+											if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
+												szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
+												if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
+													cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+													szBuffer += cWorstEnemy
+													if (bAlignIcons):
+														scores.setWorstEnemy()
+# BUG - Worst Enemy - end
+
 										if (CyGame().isNetworkMultiPlayer()):
 											szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
 											szBuffer = szBuffer + szTempBuffer

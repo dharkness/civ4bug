@@ -36,6 +36,11 @@ class BugScoreOptions(OptionsFacade):
 							  "Attitude Icons",
 							  "When checked, shows faces depicting each AI's attitude toward you.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_WorstEnemy",
+							  "Scoreboard", "Worst Enemy Icons", True,
+							  "Worst Enemy Icons",
+							  "When checked, shows an angry person icon when you are an AI's worst enemy.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
 		self.addOption(Option("Scores_AlignIcons",
 							  "Scoreboard", "Align Icons", True,
@@ -59,6 +64,7 @@ B - You have an open borders agreement with the civ.\n\
 D - You have a defensive pact with the civ.\n\
 R - The civ's state religion.\n\
 A - The civ's attitude toward you.\n\
+H - You are the civ's worst enemy.\n\
 * - You are waiting for this civ to finish its turn.\n\
 L - Civ's network stats (ping).\n\
 O - The network player is out-of-sync.",
@@ -133,6 +139,9 @@ O - The network player is out-of-sync.",
 
 	def isShowAttitude(self):
 		return self.getBoolean("Scores_Attitude")
+
+	def isShowWorstEnemy(self):
+		return self.getBoolean("Scores_WorstEnemy")
 
 
 	def isAlignIcons(self):
