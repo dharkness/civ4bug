@@ -32,7 +32,7 @@
 		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP_HOVER</Tag>
 		<English>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</English>
 		<French>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</French>
-		<German>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</German>
+		<German>Öffnet die Hilfe-Datei der BUG Mod (Tastenkombination [SHIFT-F1] im Hauptbildschirm)</German>
 		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia Shift-F1 dall'interfaccia principale.</Italian>
 		<Spanish>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</Spanish>
 	</TEXT>
@@ -1897,7 +1897,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_WORSTENEMY_TEXT</Tag>
 		<English>Worst Enemy Icons</English>
 		<French>Worst Enemy Icons</French>
-		<German>Worst Enemy Icons</German>
+		<German>Schlimmster Feind (Symbol)</German>
 		<Italian>Worst Enemy Icons</Italian>
 		<Spanish>Worst Enemy Icons</Spanish>
 	</TEXT>
@@ -1906,7 +1906,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_WORSTENEMY_HOVER</Tag>
 		<English>When checked, shows an angry person icon when you are an AI's worst enemy.</English>
 		<French>When checked, shows an angry person icon when you are an AI's worst enemy.</French>
-		<German>When checked, shows an angry person icon when you are an AI's worst enemy.</German>
+		<German>Zeigt das Symbol eines wütenden Bürgers an, wenn ein Computerspieler der schlimmste Feind der eigenen Zivilisation ist.</German>
 		<Italian>When checked, shows an angry person icon when you are an AI's worst enemy.</Italian>
 		<Spanish>When checked, shows an angry person icon when you are an AI's worst enemy.</Spanish>
 	</TEXT>
