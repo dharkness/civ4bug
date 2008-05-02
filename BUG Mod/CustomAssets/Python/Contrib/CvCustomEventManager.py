@@ -29,6 +29,7 @@ import MoreCiv4lerts
 import UnitNameEventManager
 
 import BugOptionsEventManager
+import HelpEventManager
 
 
 ##-------------------------------------------------------------------
@@ -83,6 +84,7 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         UnitNameEventManager.UnitNameEventManager(self)
         
         BugOptionsEventManager.BugOptionsEventManager(self)
+        HelpEventManager.HelpEventManager(self)
 
     def addEventHandler(self, eventType, eventHandler):
         """Adds a handler for the given event type.
