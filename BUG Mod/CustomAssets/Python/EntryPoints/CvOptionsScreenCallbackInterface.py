@@ -74,6 +74,11 @@ def handleLanguagesDropdownBoxInput ( argsList ):
 	popup.setBodyString(localText.getText("TXT_KEY_FEAT_ACCOMPLISHED_OK", ()))
 	popup.launch()
 	
+# BUG - Options - start
+	g_options.clearAllTranslations()
+	getBugOptionsScreen().clearAllTranslations()
+# BUG - Options - end
+	
 	return 1
 	
 def handleGameReset ( argsList ):

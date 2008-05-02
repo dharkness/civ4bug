@@ -12,6 +12,15 @@
 <!-- Main Items -->
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TITLE</Tag>
+		<English>BUG Mod Options</English>
+		<French>BUG Mod Options</French>
+		<German>BUG Mod Optionen</German>
+		<Italian>BUG Mod Opzione</Italian>
+		<Spanish>BUG Mod Options</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP</Tag>
 		<English>Help</English>
 		<French>Aide</French>
@@ -1914,7 +1923,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ALIGNICONS_HOVER</Tag>
 		<English>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</English>
-		<French>En activant, le panneau des scores devient un tableau, et les options ci)-dessous l'affectent.</French>
+		<French>En activant, le panneau des scores devient un tableau, et les options dans cette colonne l'affectent.</French>
 		<German>Stellt die Wertungsanzeige als Raster dar, um die folgenden Optionen nutzen zu können</German>
 		<Italian>Quando è selezionato, il Pannello del Punteggio viene strutturato come griglia (vedi l'opzione seguente).</Italian>
 		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>

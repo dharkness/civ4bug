@@ -2,11 +2,12 @@
 ## Displays the BUG Options Screen
 ## BUG Mod - Copyright 2007
 
-# For Input see BugOptionsScreenCallbackInterface in Python\EntryPoints\
+# For input see CvOptionsScreenCallbackInterface in Python\EntryPoints\
 
 from CvPythonExtensions import *
 import BugInitOptions
 import BugOptions
+import BugUtil
 
 import BugGeneralOptionsTab
 import BugAdvisorOptionsTab
@@ -21,7 +22,7 @@ import BugCreditsOptionsTab
 import BugErrorOptionsTab
 
 class BugOptionsScreen:
-	"Options Screen"
+	"BUG Mod Options Screen"
 	
 	def __init__(self):
 		self.iScreenHeight = 50
@@ -54,7 +55,8 @@ class BugOptionsScreen:
 
 	def interfaceScreen(self):
 		"Initial creation of the screen"
-		self.pTabControl = CyGTabCtrl("BUG Mod Options", False, False)
+		title = BugUtil.getPlainText("TXT_KEY_BUG_OPT_TITLE", "BUG Mod Options")
+		self.pTabControl = CyGTabCtrl(title, False, False)
 		self.pTabControl.setModal(1)
 		self.pTabControl.setSize(850, 700)
 		self.pTabControl.setControlsExpanding(False)
@@ -65,3 +67,8 @@ class BugOptionsScreen:
 	def createTabs(self):
 		for tab in self.tabs:
 			tab.create(self.pTabControl)
+
+	def clearAllTranslations(self):
+		"Clear the translations of all tabs in response to the user choosing a language"
+		for tab in self.tabs:
+			tab.clearTranslation()

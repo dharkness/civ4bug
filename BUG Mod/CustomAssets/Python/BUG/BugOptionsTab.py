@@ -2,10 +2,8 @@
 ## Base class for all tabs in the BUG Options Screen
 ## BUG Mod - Copyright 2007
 
-from CvPythonExtensions import *
+import BugUtil
 import ColorUtil
-
-localText = CyTranslator()
 
 class BugOptionsTab:
 	"BUG Options Screen screen"
@@ -17,6 +15,7 @@ class BugOptionsTab:
 		self.title = title
 		self.translated = False
 		
+		# EF: Has to be this module. I tried splitting it out into a new module without success.
 		self.callbackIFace = "CvOptionsScreenCallbackInterface"
 
 	def getName (self):
@@ -29,15 +28,12 @@ class BugOptionsTab:
 	
 	def translate (self):
 		xmlKey = "TXT_KEY_BUG_OPTTAB_" + self.name.upper()
-		self.title = self.getText(xmlKey, self.title)
+		self.title = BugUtil.getPlainText(xmlKey, self.title)
 		self.translated = True
 	
-	def getText (self, key, default):
-		text = localText.getText(key, ())
-		if (text and text != key):
-			return text
-		else:
-			return default
+	def clearTranslation(self):
+		"Marks this tab so that it will be translated again the next time it is accessed"
+		self.translated = False
 
 
 	def setOptions (self, options):
@@ -83,15 +79,16 @@ class BugOptionsTab:
 		screen.setLayoutFlag(exitPanel, "LAYOUT_HCENTER")
 		
 		# Help button
+		title = BugUtil.getPlainText("TXT_KEY_BUG_OPTBUTTON_HELP", "Help")
 		helpButton = self.name + "Help"
-		self.addButton(screen, exitPanel, helpButton, "handleBugHelpButtonInput", "Help", "Opens the help file. You can hit Shift-F1 from the main interface.")
+		self.addButton(screen, exitPanel, helpButton, "handleBugHelpButtonInput", title, "Opens the help file. You can hit Shift-F1 from the main interface.")
 		
 		self.addSpacer(screen, exitPanel, exitPanel)
 		
 		# Exit button
-		szOptionDesc = localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ())
+		title = BugUtil.getPlainText("TXT_KEY_PEDIA_SCREEN_EXIT", "Exit")
 		exitButton = self.name + "Exit"
-		self.addButton(screen, exitPanel, exitButton, "handleBugExitButtonInput", szOptionDesc)
+		self.addButton(screen, exitPanel, exitButton, "handleBugExitButtonInput", title)
 		
 		return panel
 
@@ -173,8 +170,8 @@ class BugOptionsTab:
 
 	def addLabel (self, screen, panel, name, title=None, tooltip=None):
 		key = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
-		title = self.getText(key, title)
-		tooltip = self.getText(key + "_HOVER", tooltip)
+		title = BugUtil.getPlainText(key, title)
+		tooltip = BugUtil.getPlainText(key + "_HOVER", tooltip)
 		if (title):
 			label = name + "_Label"
 			screen.attachLabel(panel, label, title)
@@ -191,8 +188,8 @@ class BugOptionsTab:
 	
 	def addButton (self, screen, panel, name, callback, title=None, tooltip=None):
 		key = "TXT_KEY_BUG_OPTBUTTON_" + name.upper()
-		title = self.getText(key, title)
-		tooltip = self.getText(key + "_HOVER", tooltip)
+		title = BugUtil.getPlainText(key, title)
+		tooltip = BugUtil.getPlainText(key + "_HOVER", tooltip)
 		if (title):
 			button = name + "_Button"
 			screen.attachButton(panel, button, title, self.callbackIFace, callback, button)

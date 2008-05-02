@@ -4,13 +4,10 @@
 
 from BugPath import findMainModIniFile
 import BugConfigTracker
+import BugUtil
 from configobj import ConfigObj
-from CvPythonExtensions import *
-import CvUtil
 
 #__all__ = [ getOptions, Option, OptionList, OptionsFacade ]
-
-localText = CyTranslator()
 
 class BugOptions(object):
 	
@@ -125,22 +122,28 @@ class BugOptions(object):
 		except:
 			self.iniFile = None
 			self.config = None
-			CvUtil.pyPrint("Couldn't find INI file")
+			BugUtil.debug("Couldn't find INI file")
 
 	def write(self):
 		if (self.config):
 			try:
 				self.config.write()
 			except:
-				CvUtil.pyPrint("Failed writing to INI file")
+				BugUtil.debug("Failed writing to INI file")
 		else:
-			CvUtil.pyPrint("INI file wasn't read")
+			BugUtil.debug("INI file wasn't read")
 	
 	def isLoaded(self):
 		if (self.iniFile):
 			return True
 		else:
 			return False
+	
+	
+	def clearAllTranslations(self):
+		"Clear the translations of all options in response to the user choosing a language"
+		for option in self.options.itervalues():
+			option.clearTranslation()
 
 
 # The singleton BugOptions object
@@ -267,16 +270,13 @@ class Option(object):
 		return self.dirtyBit
 	
 	def translate(self):
-		self.title = self.getText(self.xmlKey + "_TEXT", self.title)
-		self.tooltip = self.getText(self.xmlKey + "_HOVER", self.tooltip)
+		self.title = BugUtil.getPlainText(self.xmlKey + "_TEXT", self.title)
+		self.tooltip = BugUtil.getPlainText(self.xmlKey + "_HOVER", self.tooltip)
 		self.translated = True
 	
-	def getText(self, key, default):
-		text = localText.getText(key, ())
-		if (text and text != key):
-			return text
-		else:
-			return default
+	def clearTranslation(self):
+		"Marks this option so that it will be translated again the next time it is accessed"
+		self.translated = False
 
 
 class OptionList(Option):
@@ -305,7 +305,7 @@ class OptionList(Option):
 		return self.displayValues
 	
 	def translate(self):
-		list = self.getText(self.xmlKey + "_LIST", None)
+		list = BugUtil.getPlainText(self.xmlKey + "_LIST")
 		if (list):
 			self.displayValues = []
 			for item in list.split("|"):
