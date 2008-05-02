@@ -11,6 +11,7 @@ UserProfile = CyUserProfile()
 import BugOptions
 import BugOptionsScreen
 import ColorUtil
+import BugHelp
 # BUG - Options - end
 
 #"""
@@ -507,9 +508,15 @@ def getBugOptionsTabControl():
 
 def handleBugExitButtonInput ( argsList ):
 	"Exits the screen after saving the options to disk"
-	szName = argsList
+	szName = argsList[0]
 	g_options.write()
 	getBugOptionsTabControl().destroy()
+	return 1
+		
+def handleBugHelpButtonInput ( argsList ):
+	"Opens the BUG help file"
+	szName = argsList[0]
+	BugHelp.launch()
 	return 1
 
 def handleBugCheckboxClicked ( argsList ): 

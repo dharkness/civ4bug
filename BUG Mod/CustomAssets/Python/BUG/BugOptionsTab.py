@@ -58,7 +58,7 @@ class BugOptionsTab:
 		return self.tab
 
 	def createMainPanel (self, screen):
-		"Creates and returns the options tab panel with Exit button"
+		"Creates and returns the options tab panel with Exit and Help buttons"
 		# VBox with two blocks: scrolling control panel and Exit button with separator
 		vbox = self.name + "VBox"
 		screen.attachVBox(self.tab, vbox)		
@@ -76,17 +76,22 @@ class BugOptionsTab:
 		screen.setLayoutFlag(panel, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 		screen.setLayoutFlag(panel, "LAYOUT_SIZE_VPREFERREDEXPANDING")
 		
-		# panel for Exit button
+		# panel for Help and Exit buttons
 		screen.attachHSeparator(vbox, "RM_ExitSeparator")
 		exitPanel = self.name + "ExitBox"
 		screen.attachHBox(vbox, exitPanel)
 		screen.setLayoutFlag(exitPanel, "LAYOUT_HCENTER")
 		
+		# Help button
+		helpButton = self.name + "Help"
+		self.addButton(screen, exitPanel, helpButton, "handleBugHelpButtonInput", "Help", "Opens the help file. You can hit Shift-F1 from the main interface.")
+		
+		self.addSpacer(screen, exitPanel, exitPanel)
+		
 		# Exit button
 		szOptionDesc = localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ())
-		exitButton = self.name + "ExitButton"
-		screen.attachButton(exitPanel, exitButton, szOptionDesc, self.callbackIFace, "handleBugExitButtonInput", exitButton)
-		screen.setLayoutFlag(exitButton, "LAYOUT_HCENTER")
+		exitButton = self.name + "Exit"
+		self.addButton(screen, exitPanel, exitButton, "handleBugExitButtonInput", szOptionDesc)
 		
 		return panel
 
@@ -183,6 +188,18 @@ class BugOptionsTab:
 		spacer = name + "_Spacer"
 		screen.attachLabel(panel, spacer, " ")
 		screen.setControlFlag(spacer, "CF_LABEL_DEFAULTSIZE")
+	
+	def addButton (self, screen, panel, name, callback, title=None, tooltip=None):
+		key = "TXT_KEY_BUG_OPTBUTTON_" + name.upper()
+		title = self.getText(key, title)
+		tooltip = self.getText(key + "_HOVER", tooltip)
+		if (title):
+			button = name + "_Button"
+			screen.attachButton(panel, button, title, self.callbackIFace, callback, button)
+			if (tooltip):
+				screen.setToolTip(button, tooltip)
+			return button
+		return None
 
 	def addCheckbox (self, screen, panel, name):
 		option = self.getOption(name)

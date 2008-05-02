@@ -9,6 +9,25 @@
 
 <Civ4GameText xmlns="http://www.firaxis.com">
 
+<!-- Main Items -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP</Tag>
+		<English>Help</English>
+		<French>Aide</French>
+		<German>Hilfe</German>
+		<Italian>Aiuto</Italian>
+		<Spanish>Ayuda</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP_HOVER</Tag>
+		<English>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</English>
+		<French>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</French>
+		<German>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</German>
+		<Italian>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</Italian>
+		<Spanish>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</Spanish>
+	</TEXT>
+
 <!-- Option Titles and Hovers -->
 
 	<TEXT>

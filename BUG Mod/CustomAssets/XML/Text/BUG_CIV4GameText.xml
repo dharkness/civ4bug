@@ -11,11 +11,36 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
-		<English>Press Ctrl-Alt-O to customize BUG Mod</English>
+		<English>Press Ctrl-Alt-O to customize the BUG Mod</English>
 		<French>Poussez sur Ctrl-Alt-O pour configurer le BUG Mod</French>
 		<German>Drücken Sie [STRG-ALT-O], um die BUG Mod anzupassen</German>
 		<Italian>Premi Ctrl-Alt-O per personalizzare il BUG Mod</Italian>
 		<Spanish>Press Ctrl-Alt-O to customize BUG Mod</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
+		<English>Opening the BUG Mod help file...</English>
+		<French>Opening the BUG Mod help file...</French>
+		<German>Opening the BUG Mod help file...</German>
+		<Italian>Opening the BUG Mod help file...</Italian>
+		<Spanish>Opening the BUG Mod help file...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_MISSING_TITLE</Tag>
+		<English>Help File Not Found</English>
+		<French>Help File Not Found</French>
+		<German>Help File Not Found</German>
+		<Italian>Help File Not Found</Italian>
+		<Spanish>Help File Not Found</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_MISSING_BODY</Tag>
+		<English>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</English>
+		<French>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</French>
+		<German>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</German>
+		<Italian>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</Italian>
+		<Spanish>Could not find the file "The BUG Mod Help.chm" in the search paths. See the Config tab on the BUG Options screen (Ctrl-Alt-O) for details.</Spanish>
 	</TEXT>
 
 	<!-- Great Person / General Bars -->
