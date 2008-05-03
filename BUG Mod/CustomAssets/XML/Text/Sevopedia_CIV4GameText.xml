@@ -15,15 +15,15 @@
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
 		<English>Unit Upgrades</English>
-		<French>Unit Upgrades</French>
-		<German>Einheitenbeförderungen</German>
+		<French>Promotions des Unités</French>
+		<German>Einheitenmodernisierungen</German>
 		<Italian>Miglioramenti Unità</Italian>
 		<Spanish>Unit Upgrades</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_PROMOTION_TREE</Tag>
 		<English>Promotion Tree</English>
-		<French>Promotion Tree</French>
+		<French>Arborescence des Promotions</French>
 		<German>Beförderungsbaum</German>
 		<Italian>Albero delle Promozioni</Italian>
 		<Spanish>Promotion Tree</Spanish>
@@ -31,7 +31,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_NATIONAL_WONDERS</Tag>
 		<English>National Wonders</English>
-		<French>National Wonders</French>
+		<French>Merveilles Nationales</French>
 		<German>Nationalwunder</German>
 		<Italian>Meraviglie Nazionali</Italian>
 		<Spanish>National Wonders</Spanish>
@@ -39,7 +39,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_GREAT_WONDERS</Tag>
 		<English>Great Wonders</English>
-		<French>Great Wonders</French>
+		<French>Merveilles Mondiales</French>
 		<German>Weltwunder</German>
 		<Italian>Grandi Meraviglie</Italian>
 		<Spanish>Great Wonders</Spanish>
@@ -47,24 +47,24 @@
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW</Tag>
 		<English>BTS Concepts</English>
-		<French>BTS Concepts</French>
-		<German>BTS -Konzepte</German>
+		<French>Conceptes BTS</French>
+		<German>Beyond the Sword-Konzepte</German>
 		<Italian>Concetti di BTS</Italian>
 		<Spanish>BTS Concepts</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIQUE_BUILDINGS</Tag>
-		<English>Unique Building</English>
-		<French>Unique Building</French>
-		<German>Einzigartige Stadteinrichtungen</German>
+		<English>Unique Buildings</English>
+		<French>Bâtiments Uniques</French>
+		<German>Spezialeinrichtungen</German>
 		<Italian>Edifici Unici</Italian>
-		<Spanish>Unique Building</Spanish>
+		<Spanish>Unique Buildings</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_FAV_CIVIC</Tag>
 		<English>Favorite Civic and Religion</English>
 		<French>Doctrines pr&#233;f&#233;r&#233;es - la Religion</French>
-		<German>Bevorzugte Staatsformen - Religion</German>
+		<German>Bevorzugte Staatsform / Religion</German>
 		<Italian>Forme di governo preferite - Religione</Italian>
 		<Spanish>Principios favoritos - religi&#243;n</Spanish>
 	</TEXT>

@@ -1123,7 +1123,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_TEXT</Tag>
 		<English>Raw Commerce / Production</English>
 		<French>Commerce Pur / Production</French>
-		<German>Wirtschaftskraft / Produktion</German>
+		<German>Wirtschaftseinkommen / Produktion</German>
 		<Italian>Commercio e Produzione grezzi</Italian>
 		<Spanish>Raw Commerce / Production</Spanish>
 	</TEXT>
@@ -1132,7 +1132,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_HOVER</Tag>
 		<English>When checked, the raw commerce and production are displayed above the trade routes.</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
-		<German>Zeigt die Wirtschaftskraft und die Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
+		<German>Zeigt die Wirtschaftseinkommen und die Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>Quando è selezionato, il Commercio e la Produzione grezzi vengono mostrati sopra alle vie commerciali.</Italian>
 		<Spanish>When checked, the raw commerce and production are displayed above the trade routes.</Spanish>
 	</TEXT>
@@ -1141,7 +1141,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
 		<French>Tours de Culture</French>
-		<German>Kulturanzeige (Runden)</German>
+		<German>Kulturanzeige (verbleibende Runden)</German>
 		<Italian>Turni per l'espansione culturale</Italian>
 		<Spanish>Culture Turns</Spanish>
 	</TEXT>
@@ -1159,7 +1159,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONTURNS_TEXT</Tag>
 		<English>Great Person Turns</English>
 		<French>Tours des Personnages Illustres</French>
-		<German>Große Persönlichkeit-Punkte (Runden)</German>
+		<German>Große Persönlichkeit-Punkte (verbleibende Runden)</German>
 		<Italian>Turni per la nascita di un Grande Personaggio</Italian>
 		<Spanish>Great Person Turns</Spanish>
 	</TEXT>
@@ -1177,7 +1177,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_GREATPERSONINFO_TEXT</Tag>
 		<English>Great Person Info</English>
 		<French>Info des Personnages Illustres</French>
-		<German>Große Persönlichkeiten (Informationen)</German>
+		<German>Informationen über Große Persönlichkeiten</German>
 		<Italian>Informazioni sui Grandi Personaggi</Italian>
 		<Spanish>Great Person Info</Spanish>
 	</TEXT>
@@ -1267,7 +1267,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_RATIOCOLOR_HOVER</Tag>
 		<English>Default color used for espionage ratios.</English>
 		<French>Couleur utilisée par défaut pour le pro rata d'espionnage.</French>
-		<German>Bestimmt die Standardfarbe für das Spionagepunktverhältnis</German>
+		<German>Bestimmt die Standardfarbe, in der das Spionagepunktverhältnis erscheint</German>
 		<Italian>Colore standard usato per i rapporti di spionaggio.</Italian>
 		<Spanish>Default color used for espionage ratios.</Spanish>
 	</TEXT>
@@ -1303,7 +1303,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_GOODCOLOR_HOVER</Tag>
 		<English>Color used for good espionage ratios.</English>
 		<French>Couleur utilisé pour les bons pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe für gute Spionagepunktverhältnisse</German>
+		<German>Bestimmt die Farbe, in der gute Spionagepunktverhältnisse erscheinen</German>
 		<Italian>Colore utilizzato per i rapporti di spionaggio positivi (in base al precedente livello).</Italian>
 		<Spanish>Color used for good espionage ratios.</Spanish>
 	</TEXT>
@@ -1339,7 +1339,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_BADCOLOR_HOVER</Tag>
 		<English>Color used for bad espionage ratios.</English>
 		<French>Couleur utilisé pour les mauvais pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe für schlechte Spionagepunktverhältnisse</German>
+		<German>Bestimmt die Farbe, in der schlechte Spionagepunktverhältnisse erscheinen</German>
 		<Italian>Colore utilizzato per i rapporti di spionaggio negativi (in base al precedente livello).</Italian>
 		<Spanish>Color used for bad espionage ratios.</Spanish>
 	</TEXT>
@@ -1357,7 +1357,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_POSSIBLECOLOR_HOVER</Tag>
 		<English>Color used for missions that you can perform now (you have enough EPs against the target).</English>
 		<French>Couleur pour les missions que vous pouvez entreprendre maintenant (vous avez assez de PE sur la victime).</French>
-		<German>Bestimmt die Farbe für sofort durchführbare Spionagemissionen (d.h. es sind genug Spionagepunkte investiert worden)</German>
+		<German>Bestimmt die Farbe, in der sofort durchführbare Spionagemissionen erscheinen (d.h. es sind genug Spionagepunkte investiert worden)</German>
 		<Italian>Colore utilizzato per le Missioni che puoi eseguire (perchè hai abbastanza Punti Spionaggio contro il bersaglio).</Italian>
 		<Spanish>Color used for missions that you can perform now (you have enough EPs against the target).</Spanish>
 	</TEXT>
@@ -1393,7 +1393,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_CLOSECOLOR_HOVER</Tag>
 		<English>Color used for missions that you can perform soon (you have close to enough EPs against the target).</English>
 		<French>Couleur utilisée pour indiquer les missions qui sont presque possibles (vous avez presque assez de PE).</French>
-		<German>Bestimmt die Farbe für bald durchführbare Spionagemissionen (d.h. es sind fast genug Spionagepunkte investiert worden)</German>
+		<German>Bestimmt die Farbe, in der bald durchführbare Spionagemissionen erscheinen (d.h. es sind fast genug Spionagepunkte investiert worden)</German>
 		<Italian>Colore utilizzato per le Missioni che potrai eseguire presto (perchè hai quasi abbastanza Punti Spionaggio contro il bersaglio).</Italian>
 		<Spanish>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Spanish>
 	</TEXT>
@@ -1465,7 +1465,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_ANCIENT_HOVER</Tag>
 		<English>Color to use for the Ancient era.</English>
 		<French>Couleur pour l'Antiquité.</French>
-		<German>Bestimmt die Farbe für die Epoche "Antike"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Antike" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Antica.</Italian>
 		<Spanish>Color to use for the Ancient era.</Spanish>
 	</TEXT>
@@ -1483,7 +1483,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_CLASSICAL_HOVER</Tag>
 		<English>Color to use for the Classical era.</English>
 		<French>Couleur pour l'Ere Classique.</French>
-		<German>Bestimmt die Farbe für die Epoche "Klassik"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Klassik" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Classica.</Italian>
 		<Spanish>Color to use for the Classical era.</Spanish>
 	</TEXT>
@@ -1501,7 +1501,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MEDIEVAL_HOVER</Tag>
 		<English>Color to use for the Medieval era.</English>
 		<French>Couleur pour le Moyen Age.</French>
-		<German>Bestimmt die Farbe für die Epoche "Mittelalter"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Mittelalter" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Medioevale.</Italian>
 		<Spanish>Color to use for the Medieval era.</Spanish>
 	</TEXT>
@@ -1519,7 +1519,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_RENAISSANCE_HOVER</Tag>
 		<English>Color to use for the Renaissance era.</English>
 		<French>Couleur pour la Renaissance.</French>
-		<German>Bestimmt die Farbe für die Epoche "Renaissance"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Renaissance" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Rinascimentale.</Italian>
 		<Spanish>Color to use for the Renaissance era.</Spanish>
 	</TEXT>
@@ -1537,7 +1537,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_INDUSTRIAL_HOVER</Tag>
 		<English>Color to use for the Industrial era.</English>
 		<French>Couleur pour l'Ere industrielle.</French>
-		<German>Bestimmt die Farbe für die Epoche "Industriezeitalter"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Industriezeitalter" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Industriale.</Italian>
 		<Spanish>Color to use for the Industrial era.</Spanish>
 	</TEXT>
@@ -1555,7 +1555,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_MODERN_HOVER</Tag>
 		<English>Color to use for the Modern era.</English>
 		<French>Couleur pour l'Ere Moderne.</French>
-		<German>Bestimmt die Farbe für die Epoche "Moderne"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Moderne" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Moderna.</Italian>
 		<Spanish>Color to use for the Modern era.</Spanish>
 	</TEXT>
@@ -1573,7 +1573,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_COLOR_ERA_FUTURE_HOVER</Tag>
 		<English>Color to use for the Future era.</English>
 		<French>Couleur pour les Temps Futurs.</French>
-		<German>Bestimmt die Farbe für die Epoche "Zukunft"</German>
+		<German>Bestimmt die Farbe, in der die Epoche "Zukunft" erscheint</German>
 		<Italian>Colore da utilizzare per l'Era Futura.</Italian>
 		<Spanish>Color to use for the Future era.</Spanish>
 	</TEXT>
@@ -1618,7 +1618,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTOTALTURNS_TEXT</Tag>
 		<English>Total Turns</English>
 		<French>Total des Tours</French>
-		<German>Gesamtrunden</German>
+		<German>Gesamtanzahl Runden</German>
 		<Italian>Turni Totali</Italian>
 		<Spanish>Total Turns</Spanish>
 	</TEXT>
@@ -1780,7 +1780,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTDATE_TEXT</Tag>
 		<English>Game Date and Golden Age Turns</English>
 		<French>Date du Jeu et Tours d'Age d'Or</French>
-		<German>Spieldatum und Goldenes Zeitalter (Runden)</German>
+		<German>Spieldatum / Runden eines Goldenen Zeitalters</German>
 		<Italian>Data del gioco e turni rimasti dell'Età dell'Oro</Italian>
 		<Spanish>Game Date and Golden Age Turns</Spanish>
 	</TEXT>
@@ -2014,7 +2014,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERCOLOR_HOVER</Tag>
 		<English>Color used by default for power ratios.</English>
 		<French>Couleur utilisaée par défaut pour les pro rata de pouvoir.</French>
-		<German>Bestimmt die Standardfarbe für das Punkteverhältnis</German>
+		<German>Bestimmt die Standardfarbe, in der das Punkteverhältnis erscheint</German>
 		<Italian>Colore predefinito per i Rapporti di Forza.</Italian>
 		<Spanish>Color used by default for power ratios.</Spanish>
 	</TEXT>
@@ -2050,7 +2050,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERGOODCOLOR_HOVER</Tag>
 		<English>Color used for good power ratios.</English>
 		<French>Couleur utilisé pour les bons pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe für gute Punkteverhältnisse</German>
+		<German>Bestimmt die Farbe, in der gute Punkteverhältnisse erscheinen</German>
 		<Italian>Colore utilizzato per i Rapporti di Forza positivi.</Italian>
 		<Spanish>Color used for good power ratios.</Spanish>
 	</TEXT>
@@ -2086,7 +2086,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_POWERBADCOLOR_HOVER</Tag>
 		<English>Color used for bad power ratios.</English>
 		<French>Couleur utilisé pour les mauvais pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe für schlechte Punkteverhältnisse</German>
+		<German>Bestimmt die Farbe, in der schlechte Punkteverhältnisse erscheinen</German>
 		<Italian>Colore utilizzato per i Rapporti di Forza negativi.</Italian>
 		<Spanish>Color used for bad power ratios.</Spanish>
 	</TEXT>
@@ -2095,7 +2095,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAIN_OPTIONSKEY_TEXT</Tag>
 		<English>Options Shortcut Reminder</English>
 		<French>Rappel du Raccourci des Options</French>
-		<German>Erinnerung für die BUG-Optionen</German>
+		<German>Erinnerung an die BUG-Optionen</German>
 		<Italian>Promemoria della combinazione per accedere alle Opzioni del</Italian>
 		<Spanish>Options Shortcut Reminder</Spanish>
 	</TEXT>
@@ -2320,7 +2320,7 @@
 		<Tag>TXT_KEY_BUG_OPT_TECH_GPPREFS_TEXT</Tag>
 		<English>Great Person Research</English>
 		<French>Recherche des Personnages Illustres</French>
-		<German>Große Persönlichkeiten (Forschung)</German>
+		<German>Forschung Großer Persönlichkeiten</German>
 		<Italian>Ricerche dei Grandi Personaggi</Italian>
 		<Spanish>Great Person Research</Spanish>
 	</TEXT>
@@ -2723,7 +2723,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHNOLOGY_ADVISOR</Tag>
 		<English>Technology (F6):</English>
 		<French>Technologie (F6):</French>
-		<German>Technologie [F6]:</German>
+		<German>Technologiebaum [F6]:</German>
 		<Italian>Tecnologico (F6):</Italian>
 		<Spanish>Technology (F6):</Spanish>
 	</TEXT>
@@ -2817,7 +2817,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_ORDER</Tag>
 		<English>Column Order:</English>
 		<French>Ordre des Colonnes:</French>
-		<German>Spaltenanordnung:</German>
+		<German>Spaltenreihenfolge:</German>
 		<Italian>Ordine delle colonne:</Italian>
 		<Spanish>Column Order:</Spanish>
 	</TEXT>
