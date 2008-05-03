@@ -174,7 +174,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		if (iPlayer == gc.getGame().getActivePlayer()):
 			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 
-	def CheckForAlerts(self, iPlayer, iActiveTeam, BeginTurn):
+	def CheckForAlerts(self, iActivePlayer, activeTeam, BeginTurn):
 	##Added "else: pass" code to diagnose strange results - might be related to indent issues
 		ourPop = 0
 		ourLand = 0
@@ -185,12 +185,13 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		DomVictory = 3
 		popGrowthCount = 0
 		currentTurn = gc.getGame().getGameTurn()
+		activePlayer = gc.getPlayer(iActivePlayer)
 
 		if (self.getCheckForDomPopVictory() or (BeginTurn and self.getCheckForCityBorderExpansion())):
 			# Check for cultural expansion and population growth
 			teamPlayerList = []
 			teamPlayerList = PyGame.getCivTeamList(PyGame.getActiveTeam())
-			teamPlayerList.append(PyPlayer(iPlayer))
+			teamPlayerList.append(PyPlayer(iActivePlayer))
 			for loopPlayer in range(len(teamPlayerList)):
 				lCity = []
 				lCity = PyPlayer(loopPlayer).getCityList()
@@ -208,7 +209,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 						else: pass #expand check
 					else: pass #message check
 				else: pass #end city loop
-			else: pass #end player loop
+			else: pass #end activePlayer loop
 		else: pass # end expansion check / pop count
 
 		# Check Domination Limit
@@ -220,7 +221,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				VictoryPopPercent = gc.getGame().getAdjustedPopulationPercent(DomVictory) * 1.0
 				totalPop = gc.getGame().getTotalPopulation()
 				LimitPop = int((totalPop * VictoryPopPercent) / 100.0)
-				ourPop = iActiveTeam.getTotalPopulation()
+				ourPop = activeTeam.getTotalPopulation()
 				if (totalPop > 0):
 					popPercent = (ourPop * 100.0) / totalPop
 					NextpopPercent = ((ourPop + popGrowthCount) * 100.0) / totalPop
@@ -233,23 +234,23 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 					if (popPercent >= VictoryPopPercent):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_POP_EXCEEDS_LIMIT",
 						   		(ourPop, (u"%.2f%%" % popPercent), LimitPop, (u"%.2f%%" % VictoryPopPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 
 					elif (popGrowthCount > 0 and NextpopPercent >= VictoryPopPercent):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_POP_GROWTH_EXCEEDS_LIMIT",
 						   		(ourPop, popGrowthCount, (u"%.2f%%" % NextpopPercent), LimitPop, (u"%.2f%%" % VictoryPopPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 
 					elif (popGrowthCount > 0 and (VictoryPopPercent - NextpopPercent < self.getPopThreshold())):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_POP_GROWTH_CLOSE_TO_LIMIT",
 						   		(ourPop, popGrowthCount, (u"%.2f%%" % NextpopPercent), LimitPop, (u"%.2f%%" % VictoryPopPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 
 ## .005 			elif (VictoryPopPercent - popPercent < self.getPopThreshold()):
 					elif (popGrowthCount > 0 and (VictoryPopPercent - popPercent < self.getPopThreshold())):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_POP_CLOSE_TO_LIMIT",
 						   		(ourPop, (u"%.2f%%" % popPercent), LimitPop, (u"%.2f%%" % VictoryPopPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 					else: pass #end elif
 				else: pass #end totalPop if
 			else: pass #end pop limit if
@@ -260,7 +261,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				VictoryLandPercent = gc.getGame().getAdjustedLandPercent(DomVictory) * 1.0
 				totalLand = gc.getMap().getLandPlots()
 				LimitLand = int((totalLand * VictoryLandPercent) / 100.0)
-				ourLand = iActiveTeam.getTotalLand()
+				ourLand = activeTeam.getTotalLand()
 				if (totalLand > 0):
 					landPercent = (ourLand * 100.0) / totalLand
 				else:
@@ -270,11 +271,11 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 					if (landPercent > VictoryLandPercent):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_LAND_EXCEEDS_LIMIT",
 								(ourLand, (u"%.2f%%" % landPercent), LimitLand, (u"%.2f%%" % VictoryLandPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 					elif (VictoryLandPercent - landPercent < self.getLandThreshold()):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_LAND_CLOSE_TO_LIMIT",
 								(ourLand, (u"%.2f%%" % landPercent), LimitLand, (u"%.2f%%" % VictoryLandPercent)))
-						self._addMessageNoIcon(iPlayer, message)
+						self._addMessageNoIcon(iActivePlayer, message)
 					else: pass #end elif
 				else: pass #end currentTurn if
 			else: pass #end land limit if
@@ -286,135 +287,93 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
 		# new trades
 		if (BeginTurn and self.getCheckForNewTrades()):
-			CurrTechCanTrade = []
-			PrevTechCanTrade = []
-			PlayerHasTech = ""
-
-			self.getTechForTrade(gc.getPlayer(iPlayer), iActiveTeam)
-			for iLoopPlayer, CurrTechCanTrade in self.CurrAvailTechTrades.iteritems():
+			researchTechs = set()
+			for iTech in range(gc.getNumTechInfos()):
+				if (activePlayer.canResearch(iTech, True)):
+					researchTechs.add(iTech)
+			techsByPlayer = self.getTechForTrade(activePlayer, activeTeam)
+			for iLoopPlayer, currentTechs in techsByPlayer.iteritems():
 
 				#Did he have trades avail last turn
 				if (self.PrevAvailTechTrades.has_key(iLoopPlayer)):
-					PrevTechCanTrade = []
-					PrevTechCanTrade = self.PrevAvailTechTrades.get(iLoopPlayer)
-					#Any trades this turn?
-					if (CurrTechCanTrade):
-						if (PrevTechCanTrade):
-							#compare this turn's vs last turn's trades
-							for iTech in CurrTechCanTrade:
-								if (iTech not in PrevTechCanTrade):
-									if (PlayerHasTech != ""):
-										PlayerHasTech = PlayerHasTech + ", "
-									else: pass
-									PlayerHasTech = PlayerHasTech + PyPlayer(iLoopPlayer).getName()
-									break
-								else: pass
-						else:
-							if (PlayerHasTech != ""):
-								PlayerHasTech = PlayerHasTech + ", "
-							else: pass
-							PlayerHasTech = PlayerHasTech + PyPlayer(iLoopPlayer).getName()
-					else: pass #end (no current trades)
-				#nothing last turn, how about this turn?
-				elif (CurrTechCanTrade):
-					if (PlayerHasTech != ""):
-						PlayerHasTech = PlayerHasTech + ", "
-					else: pass
-					PlayerHasTech = PlayerHasTech + PyPlayer(iLoopPlayer).getName()
-				else: pass #end elif
-			
-				#save curr trades for next time
-				self.PrevAvailTechTrades[iLoopPlayer] = CurrTechCanTrade
+					previousTechs = self.PrevAvailTechTrades[iLoopPlayer]
+				else:
+					previousTechs = set()
+					
+				#Determine new techs
+				newTechs = currentTechs.difference(previousTechs).intersection(researchTechs)
+				if (newTechs):
+					szNewTechs = self.buildTechString(newTechs)
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL",	
+												(gc.getPlayer(iLoopPlayer).getName(), szNewTechs))
+					self._addMessageNoIcon(iActivePlayer, message)
+				
+				#Determine removed techs
+				removedTechs = previousTechs.difference(currentTechs).intersection(researchTechs)
+				if (removedTechs):
+					szRemovedTechs = self.buildTechString(removedTechs)
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_TECH_NOT_AVAIL",	
+												(gc.getPlayer(iLoopPlayer).getName(), szRemovedTechs))
+					self._addMessageNoIcon(iActivePlayer, message)
+				
+			else: pass #end activePlayer loop
 
-			else: pass #end player loop
-
-			if (PlayerHasTech != ""):
-				message = localText.getText("TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL",	(PlayerHasTech,))
-				self._addMessageNoIcon(iPlayer, message)
-			else: pass
+			#save curr trades for next time
+			self.PrevAvailTechTrades = techsByPlayer
 
 		else: pass #end new trades if
 		
 		if (BeginTurn and self.getCheckForOpenBorders()):
-			currentTrades = self.getOpenBordersTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			currentTrades = self.getOpenBordersTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailOpenBordersTrades)
 			if (newTrades):
-				players = u""
-				bFirst = True
-				for iLoopPlayer in newTrades:
-					if (not bFirst):
-						players += u", "
-					else:
-						bFirst = False
-					players += PyPlayer(iLoopPlayer).getName()
+				players = buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_OPEN_BORDERS", (players,))
-				self._addMessageNoIcon(iPlayer, message)
+				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailOpenBordersTrades.update(newTrades)
 		
 		if (BeginTurn and self.getCheckForDefensivePact()):
-			currentTrades = self.getDefensivePactTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			currentTrades = self.getDefensivePactTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailDefensivePactTrades)
 			if (newTrades):
-				players = u""
-				bFirst = True
-				for iLoopPlayer in newTrades:
-					if (not bFirst):
-						players += u", "
-					else:
-						bFirst = False
-					players += PyPlayer(iLoopPlayer).getName()
+				players = buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT", (players,))
-				self._addMessageNoIcon(iPlayer, message)
+				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailDefensivePactTrades.update(newTrades)
 		
 		if (BeginTurn and self.getCheckForPermanentAlliance()):
-			currentTrades = self.getPermanentAllianceTrades(gc.getPlayer(iPlayer), iActiveTeam)
+			currentTrades = self.getPermanentAllianceTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailPermanentAllianceTrades)
 			if (newTrades):
-				players = u""
-				bFirst = True
-				for iLoopPlayer in newTrades:
-					if (not bFirst):
-						players += u", "
-					else:
-						bFirst = False
-					players += PyPlayer(iLoopPlayer).getName()
+				players = buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE", (players,))
-				self._addMessageNoIcon(iPlayer, message)
+				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailPermanentAllianceTrades.update(newTrades)
 
-
-	def getTechForTrade(self, iPlayer, iActiveTeam):
-		iActiveTeamID = iActiveTeam.getID()
+	def getTechForTrade(self, player, team):
+		iTeamID = team.getID()
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_TECHNOLOGIES
-		self.CurrAvailTechTrades.clear
-		TechCanTrade = []
+		techsByPlayer = {}
 
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			currentPlayer = gc.getPlayer(iLoopPlayer)
-			currentTeam = currentPlayer.getTeam()
+			loopPlayer = gc.getPlayer(iLoopPlayer)
+			loopTeam = gc.getTeam(loopPlayer.getTeam())
 
-			TechCanTrade = []
-			if (currentPlayer.isBarbarian()): continue
-			if (currentPlayer.isMinorCiv()): continue
-			if (iLoopPlayer != iPlayer.getID()):
-				if (gc.getTeam(currentTeam).isHasMet(iActiveTeamID)):
-					if (currentPlayer.isAlive()):
-						if (iActiveTeam.isTechTrading() or gc.getTeam(currentTeam).isTechTrading()):
-							for iLoopTech in range(gc.getNumTechInfos()):
-								tradeData.iData = iLoopTech
-								if (currentPlayer.canTradeItem(iPlayer.getID(), tradeData, False)):
-									if (currentPlayer.getTradeDenial(iPlayer.getID(), tradeData) == DenialTypes.NO_DENIAL): # will trade
-										TechCanTrade.append(iLoopTech)
-									else: pass
-								else: pass
-						else: pass
-						self.CurrAvailTechTrades[iLoopPlayer] = TechCanTrade
-					else: pass
-				else: pass
-			else: pass
-		return
+			if (loopPlayer.isBarbarian()): continue
+			if (loopPlayer.isMinorCiv()): continue
+			if (not loopPlayer.isAlive()): continue
+			if (iLoopPlayer != iPlayerID and loopTeam.isHasMet(iTeamID)):
+				if (team.isTechTrading() or loopTeam.isTechTrading()):
+					techsToTrade = set()
+					for iLoopTech in range(gc.getNumTechInfos()):
+						tradeData.iData = iLoopTech
+						if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+							if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+								techsToTrade.add(iLoopTech)
+					techsByPlayer[iLoopPlayer] = techsToTrade
+		return techsByPlayer
 
 	def getOpenBordersTrades(self, activePlayer, activeTeam):
 		iActivePlayerID = activePlayer.getID()
@@ -485,3 +444,20 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
 							currentTrades.add(iLoopPlayerID)
 		return currentTrades
+	
+	def buildTechString(self, techs):
+		szTechs = u""
+		for iTech in techs:
+			tech = gc.getTechInfo(iTech)
+			if (szTechs):
+				szTechs += u", "
+			szTechs += tech.getDescription()
+		return szTechs
+
+	def buildPlayerString(self, players):
+		szPlayers = u""
+		for iPlayer in players:
+			if (szPlayers):
+				szPlayers += u", "
+			szPlayers += PyPlayer(iPlayer).getName()
+		return szPlayers
