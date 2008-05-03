@@ -1106,7 +1106,7 @@
 		<English>Pillaging</English>
 		<French>Pillage</French>
 		<German>Plünderungen</German>
-		<Italian>Razzie</Italian>
+		<Italian>Saccheggi</Italian>
 		<Spanish>Pillaging</Spanish>
 	</TEXT>
 
@@ -1115,7 +1115,7 @@
 		<English>When checked, will log when you pillage or your improvements are pillaged.</English>
 		<French>En activant, vos pillages et ceux de vos améliorations seront notés dans le log.</French>
 		<German>Protokolliert die Plünderung eigener und feindlicher Modernisierungen</German>
-		<Italian>Quando è selezionato, il Registro Automatico registra le razzie effettuate da te o quando i tuoi miglioramenti vengono raziati.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra i saccheggi effettuate da te o quando i tuoi miglioramenti vengono saccheggiati.</Italian>
 		<Spanish>When checked, will log when you pillage or your improvements are pillaged.</Spanish>
 	</TEXT>
 
