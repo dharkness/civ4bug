@@ -14,7 +14,7 @@ p6
 I01
 sS'name'
 p7
-VCity Overview
+VCittà: Panoramica
 p8
 sS'columns'
 p9
@@ -131,7 +131,7 @@ p57
 I00
 sS'name'
 p58
-VCity Details
+VCittà: Dettagli
 p59
 sS'columns'
 p60
@@ -209,7 +209,7 @@ I00
 sg6
 I00
 sg7
-VCity Info
+VCittà: Informazioni
 p92
 sg9
 (lp93
@@ -334,7 +334,7 @@ I00
 sg6
 I00
 sg7
-S'Military Overview'
+VSituazione Militare
 p142
 sg9
 (lp143
@@ -410,7 +410,7 @@ p171
 I00
 sS'name'
 p172
-VMilitary & Espionage Buildings
+VEdifici Militari e di Spionaggio
 p173
 sS'columns'
 p174
@@ -586,7 +586,7 @@ p248
 I00
 sS'name'
 p249
-VEconomic Buildings
+VEdifici Economici
 p250
 sS'columns'
 p251
@@ -786,7 +786,7 @@ p331
 I00
 sS'name'
 p332
-VProduction & Power Buildings
+VEdifici Produttivi e Centrali Energetiche
 p333
 sS'columns'
 p334
@@ -918,7 +918,7 @@ I00
 sg331
 I00
 sg332
-VFood & Health Buildings
+VEdifici Alimentari e Sanitari
 p387
 sg334
 (lp388
@@ -1070,7 +1070,7 @@ p444
 I00
 sS'name'
 p445
-VHappiness Buildings
+VEdifici Ricreativi
 p446
 sS'columns'
 p447
@@ -1269,7 +1269,7 @@ p526
 I00
 sS'name'
 p527
-VResearch Buildings
+VEdifici Scientifici
 p528
 sS'columns'
 p529
@@ -1373,7 +1373,7 @@ I00
 sg444
 I00
 sg445
-VSpecialists Buildings
+VEdifici con Specialisti
 p569
 sg447
 (lp570
@@ -1593,7 +1593,7 @@ p655
 I00
 sS'name'
 p656
-VCulture & GP Buildings
+VEdifici Culturali e con Grandi Personaggi
 p657
 sS'columns'
 p658
@@ -1809,7 +1809,7 @@ p739
 I00
 sS'name'
 p740
-VWorld Wonders (more Culture & GP B.)
+VMeraviglie (altri Edifici Culturali e GP)
 p741
 sS'columns'
 p742
@@ -1994,7 +1994,7 @@ I00
 sg739
 I00
 sg740
-VReligious Buildings (more Culture B.)
+VEdifici Religiosi (altri Edifici Culturali)
 p812
 sg742
 (lp813
@@ -2161,7 +2161,7 @@ I00
 sg739
 I00
 sg740
-VResources
+VRisorse
 p868
 sg742
 (lp869
@@ -2353,7 +2353,7 @@ I00
 sg739
 I00
 sg740
-VResources - Strategic
+VRisorse Strategiche
 p943
 sg742
 (lp944
@@ -2433,7 +2433,7 @@ I00
 sg739
 I00
 sg740
-VResources - Happiness
+VRisorse di Lusso
 p972
 sg742
 (lp973
@@ -2532,7 +2532,7 @@ I00
 sg739
 I00
 sg740
-VResources - Health
+VRisorse Alimentari
 p1008
 sg742
 (lp1009
@@ -2631,7 +2631,7 @@ I00
 sg739
 I00
 sg740
-VAdvisors
+VConsiglieri
 p1041
 sg742
 (lp1042
