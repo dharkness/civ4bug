@@ -62,7 +62,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]%s1 hat neue Technologie(n) zum Handeln: %s2[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 commercerà %s2[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -70,7 +70,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_TECH_NOT_AVAIL</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]%s1 hat Technologie(n) vom Handel ausgeschlossen: %s2[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 non commercerà %s2[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</Spanish>
 	</TEXT>

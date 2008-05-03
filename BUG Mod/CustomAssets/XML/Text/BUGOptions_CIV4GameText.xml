@@ -529,7 +529,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_HOVER</Tag>
 		<English>When checked, the logger is automatically started with no in-game message.</English>
 		<French>En activant, Autolog est démarré automatiquement sans message à l'écran.</French>
-		<German>Startet das Protokoll automatisch, ohne eine Meldung im Spiel auszugeben</German>
+		<German>Startet das Protokoll automatisch, ohne nach einem Namen für die Protokolldatei zu fragen</German>
 		<Italian>Quando è selezionato, il Registro Automatico viene avviato automaticamente senza messaggi.</Italian>
 		<Spanish>When checked, the logger is automatically started with no in-game message.</Spanish>
 	</TEXT>
@@ -628,7 +628,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_COLORCODING_HOVER</Tag>
 		<English>When checked, comments are color-coded for forum posts.</English>
 		<French>En activant, les commentaires sont colorés pour les forums.</French>
-		<German>Hebt Kommentare farblich hervor, um sie in Forumsbeiträgen verwenden zu können</German>
+		<German>Hebt Kommentare und Ereignisse farblich hervor, um sie in Forumsbeiträgen schneller finden zu können</German>
 		<Italian>Quando è selezionato, viene applicato il codice cromatico per i post nel Forum.</Italian>
 		<Spanish>When checked, comments are color-coded for forum posts.</Spanish>
 	</TEXT>
@@ -664,7 +664,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_IBT_HOVER</Tag>
 		<English>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</English>
 		<French>En activant, Autolog insère IBT (in between turns = entre les tours) à la fin du tour du joueur.</French>
-		<German>Dem Protokoll wird am Ende einer Runde des Spielers die Abkürzung "IBT" ("in between turns", dt. "zwischen den Runden") angehängt</German>
+		<German>Fügt dem Protokoll die Ereignisse der anderen Zivilisationen hinzu, die zwischen den Runden (engl. "In Between Turns") geschehen</German>
 		<Italian>Quando è selezionato, il Registro Automatico inserisce IBT ("In Between Turns" = "Fra i turni") alla fine del turno del giocatore.</Italian>
 		<Spanish>When checked, the logger inserts IBT (in between turns) at the end of the player's turn.</Spanish>
 	</TEXT>
@@ -682,7 +682,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_HOVER</Tag>
 		<English>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</English>
 		<French>Utilisé comme préfixe avant les entrées manuelles (ALT-E) dans le log, p.ex. devant votre nom d'utilisateur.</French>
-		<German>Bestimmt das Präfix, das den Protokolleinträgen des Spielers vorangestellt wird (Tastenkombination [ALT-E]), z.B. der Spielername</German>
+		<German>Bestimmt das Präfix, das den Protokolleinträgen (Tastenkombination [ALT-E]) des Spielers vorangestellt wird, z.B. der Spielername</German>
 		<Italian>Questo prefisso viene immesso prima delle aggiunte manuali del giocatore (inserite mediante ALT-E) per distinguerle dagli eventi registrati automaticamente; può essere per esempio il nome o la sigla del giocatore.</Italian>
 		<Spanish>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Spanish>
 	</TEXT>
@@ -1195,7 +1195,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_ANGER_COUNTER_TEXT</Tag>
 		<English>Anger Counter</English>
 		<French>Compteur de Colère</French>
-		<German>Rundenzähler für Unruhen</German>
+		<German>Rundenzähler bei Unzufriedenheit</German>
 		<Italian>Contatore dell'Ira</Italian>
 		<Spanish>Anger Counter</Spanish>
 	</TEXT>
@@ -1204,7 +1204,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_ANGER_COUNTER_HOVER</Tag>
 		<English>When checked, puts anger countdown on city screen.</English>
 		<French>En activant, montre un compteur de colère sur l'écran de ville.</French>
-		<German>Zeigt einen Countdown für Unruhen im Stadt-Bildschirm an</German>
+		<German>Zeigt einen Rundenzähler im Stadt-Bildschirm an, der die Anzahl der Runden angibt, bis die Unzufriedenheit wegen einer Beschleunigung der Produktion durch Zwangsarbeit verflogen ist</German>
 		<Italian>Quando è selezionato, viene visualizzato un contatore dei turni di Ira nella schermata cittadina.</Italian>
 		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
 	</TEXT>
@@ -1654,7 +1654,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWDATE_TEXT</Tag>
 		<English>Game Date and Golden Age Turns</English>
 		<French>Date du Jeu et Tours d'Age d'Or</French>
-		<German>Spieldatum und Goldenes Zeitalter (Runden)</German>
+		<German>Spieldatum / Runden eines Goldenen Zeitalters</German>
 		<Italian>Data del gioco e turni rimasti dell'Età dell'Oro</Italian>
 		<Spanish>Game Date and Golden Age Turns</Spanish>
 	</TEXT>
@@ -1825,7 +1825,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
 		<French>En activant, les civilisations mortes seront marquées "Mort".</French>
-		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Dead" in der Wertungsanzeige, wenn die entsprechende Option gewählt wurde</German>
+		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Dead" in der Wertungsanzeige, wenn sie angezeigt werden sollen</German>
 		<Italian>Quando è selezionato, le Civiltà scomparse verranno marcate come "Dead" ("Morte") nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
 	</TEXT>
@@ -1933,7 +1933,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYORDER_TEXT</Tag>
 		<English>Display Order</English>
 		<French>Ordre d'Affichage</French>
-		<German>Anzeigereihenfolge</German>
+		<German>Reihenfolge der Spalten</German>
 		<Italian>Ordine di visualizzazione</Italian>
 		<Spanish>Display Order</Spanish>
 	</TEXT>
@@ -1978,7 +1978,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_RESEARCHICONS_HOVER</Tag>
 		<English>When checked, shows icons instead of names for civs whose research you can see.</English>
 		<French>En activant, montre des icônes au lieu des noms des technologies recherchées.</French>
-		<German>Zeigt die Symbole statt der Namen der Technologien, falls die Forschungsprojekte der Zivilisationen bekannt sind</German>
+		<German>Zeigt die Symbole statt der Namen der Technologien, die andere Zivilisationen momentan erforschen, falls diese bekannt sind</German>
 		<Italian>Quando è selezionato, nel Pannello del Punteggio vengono visualizzate le icone invece dei nomi delle Tecnologie ricercate dalle Civiltà (per cui ti è lecito conoscerle).</Italian>
 		<Spanish>When checked, shows icons instead of names for civs whose research you can see.</Spanish>
 	</TEXT>
@@ -2203,7 +2203,7 @@
 		<Tag>TXT_KEY_BUG_OPT_UNIT_PROMO_AVAILABLE_HOVER</Tag>
 		<English>When checked, puts blue border around units that have a promotion available.</English>
 		<French>En activant, un bord bleu sera mis autour des unités qui ont une promotion disponible.</French>
-		<German>Legt einen blauen Rahmen um das Einheitensymbol, wenn die Einheit befördert werden kann</German>
+		<German>Legt einen blauen Rahmen um das Einheitensymbol, wenn eine Einheit befördert werden kann</German>
 		<Italian>Quando è selezionato, visualizza dei bordi blu attorno alle Unità che hanno una promozione disponibile.</Italian>
 		<Spanish>When checked, puts blue border around units that have a promotion available.</Spanish>
 	</TEXT>
@@ -2293,7 +2293,7 @@
 		<Tag>TXT_KEY_BUG_OPT_EFA_GLANCE_SMILIES_HOVER</Tag>
 		<English>When checked, the 'Glance' tab shows Smilies (attitude icons).</English>
 		<French>En activant, la page 'Coup d'Oeuil' utilise des Smileys (icônes d'attitude).</French>
-		<German>Zeigt im Kurzüberblick Smilies (Beziehungssymbole) an</German>
+		<German>Zeigt im Kurzüberblick farbige Smilies an, die die Einstellung anderer Zivilisationen gegenüber der eigenen auf einen Blick darstellen</German>
 		<Italian>Quando è selezionato, visualizza le Emoticons di Atteggiamento nella tabella "Occhiata" del Consigliere Estero.</Italian>
 		<Spanish>When checked, the 'Glance' tab shows Smilies (attitude icons).</Spanish>
 	</TEXT>
@@ -2401,7 +2401,7 @@
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_HOVER</Tag>
 		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
 		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités. [NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
-		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Element (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Element[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt1[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfedatei)</German>
+		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Element (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Element[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt1[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
 		<Italian>Quando è selezionato, vengono utilizzati i formati in questa tabella e nel file 'Adv Unit Naming.ini' per denominare le Unità del giocatore. I nomi possono essere costruiti combinando testo semplice e codici (che devono essere posti fra accenti circonflessi: ^).[NEWLINE]  Ad esempio: "^cv^ ^ut^ di ^ct^" --> "Arciere Americano di Boston".</Italian>
 		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
 	</TEXT>
@@ -2437,7 +2437,7 @@
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_DEFAULT_HOVER</Tag>
 		<English>Enter the user defined naming convention (see help file for further information).</English>
 		<French>Entrez la convention des noms (voir le fichier d'aide pour plus d'information).</French>
-		<German>Eingabe der benutzerdefinierten Benennungsregel (siehe Hilfedatei für weitere Information)</German>
+		<German>Eingabe der benutzerdefinierten Benennungsregel (siehe Hilfe-Datei für weitere Information)</German>
 		<Italian>Inserisci la tua convenzione di denominazione personalizzata[NEWLINE]Codici generici:[NEWLINE] - civ4 - usa i nomi standard di Civ4:BtS;[NEWLINE] - rd - nome casuale[NEWLINE] - rc - nome casuale relativo alla Civiltà[NEWLINE]Codici informativi:[NEWLINE] - ct - Città dove l'Unità è stata costruita (ad es. Boston)[NEWLINE] - cv - aggettivo della Civiltà che ha costruito l'Unità (ad es. Americano)[NEWLINE] - ut - tipo di Unità (ad es. Arciere)[NEWLINE] - cb - tipologia di combattimento dell'Unità (ad es. A distanza)[NEWLINE] - dm - dominio dell'Unità (ad esempio Acqua)[NEWLINE] - ld - leader che ha costruito l'Unità (ad esempio Roosevelt)[NEWLINE]Codici di conteggio:[NEWLINE] - cnt[f] - conta su tutte le Unità[NEWLINE] - cntu[f] - conta su tutte le Unità dello stesso tipo[NEWLINE] - cntct[f] - conta su tutte le Unità prodotte nella stessa Città[NEWLINE] - cntuct[f] - conta su tutte le Unità dello stesso tipo e prodotte nella stessa Città[NEWLINE] - cntc[f] - conta su tutte le Unità della stessa tipologia di combattimento[NEWLINE] - cntd[f] - conta su tutte le Unità dello stesso dominio [NEWLINE] - tt1[f][x:y] - conta fino ad un numero casuale scelto fra x ed y[NEWLINE] - tt1[f][x] - conta a partire da x, incrementandosi di 1 ogni volta che il codice tt1 viene resettato[NEWLINE] * f in [f] è uno fra s (assente), A (lettera maiuscola), a (lettera minuscola), p (lettera fonetica), g (lettera greca), n (numero cardinale), o (numero ordinale), r (numero romano).[NEWLINE]Vedi il file di aiuto per maggiori dettagli.</Italian>
 		<Spanish>Enter the user defined naming convention (see help file for further information).</Spanish>
 	</TEXT>
