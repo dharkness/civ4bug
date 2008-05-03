@@ -69,6 +69,7 @@ class SevoPediaLeader:
 
 		self.placeHistory()
 		self.placeCivic()
+		self.placeReligion()
 		self.placeCiv()
 		self.placeTraits()
 
@@ -113,6 +114,16 @@ class SevoPediaLeader:
 			szCivicText = u"<link=literal>" + gc.getCivicInfo(iCivic).getDescription() + u"</link>"
 			listName = self.top.getNextWidgetName()
 			screen.addMultilineText(listName, szCivicText, self.X_CIVIC+5, self.Y_CIVIC+30, self.W_CIVIC-10, self.H_CIVIC-10, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+
+	def placeReligion(self):		
+		screen = self.top.getScreen()
+		panelName = self.top.getNextWidgetName()
+		iReligion = gc.getLeaderHeadInfo(self.iLeader).getFavoriteReligion()
+		if (-1 != iReligion):
+			szReligionText = u"<link=literal>" + gc.getReligionInfo(iReligion).getDescription() + u"</link>"
+			listName = self.top.getNextWidgetName()
+			screen.addMultilineText(listName, szReligionText, self.X_CIVIC+5, self.Y_CIVIC+50, self.W_CIVIC-10, self.H_CIVIC-10, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 
 
