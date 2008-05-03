@@ -3934,7 +3934,7 @@ class CvMainInterface:
 													
 										if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isShowDeadTag()):
 											# BUG-TODO: localize
-											szPlayerScore = "Dead"
+											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
 										else:
 											szPlayerScore = str(gc.getGame().getPlayerScore(ePlayer))
 										

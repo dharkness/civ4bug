@@ -85,6 +85,17 @@
 		<Italian>Generale (%d1)</Italian>
 		<Spanish>General (%d1)</Spanish>
 	</TEXT>
+	
+	<!-- Dead Civs -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_DEAD_CIV</Tag>
+		<English>Dead</English>
+		<French>Mort</French>
+		<German>Tot</German>
+		<Italian>Guasto</Italian>
+		<Spanish>Muerto</Spanish>
+	</TEXT>
 
 	<!-- Raw Production / Commerce -->
 	
