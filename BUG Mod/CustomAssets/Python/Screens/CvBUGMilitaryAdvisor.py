@@ -555,7 +555,7 @@ class CvMilitaryAdvisor:
 
 		# WHEOOH adjustment
 		if (self.bWHEOOH
-		and not self.bCurrentWar = True):
+		and not self.bCurrentWar):
 			fThreat = fThreat * 1.3
 
 		# reduce the thread if the current player is in a defensive pact with the active player
