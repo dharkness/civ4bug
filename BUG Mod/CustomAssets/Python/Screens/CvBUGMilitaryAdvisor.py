@@ -1215,8 +1215,15 @@ class CvMilitaryAdvisor:
 		# self.unitsList[iUnit][3] is the total number of those units seen by the active player (not only his own)
 		
 		if bReload:
-			for iUnit in range(gc.getNumUnitInfos()):
-				self.unitsList[iUnit] = (gc.getUnitInfo(iUnit).getUnitCombatType(), iUnit, [], 0)
+			NUM_UNIT_INFOS = gc.getNumUnitInfos()
+			GG_COMBAT_TYPE = 0
+			for iUnit in range(NUM_UNIT_INFOS):
+				iUnitCombat = gc.getUnitInfo(iUnit).getUnitCombatType()
+				if (iUnitCombat <= 0):
+					# non-combat type: 0 -> -1, -1 to -2 because lead-by-GG becomes 0
+					iUnitCombat -= 1
+				self.unitsList[iUnit] = (iUnitCombat, iUnit, [], 0)
+				self.unitsList[NUM_UNIT_INFOS + iUnit] = (GG_COMBAT_TYPE, iUnit, [], 0)
 
 			for iPlayer in range(gc.getMAX_PLAYERS()):			
 				player = PyPlayer(iPlayer)
@@ -1231,6 +1238,7 @@ class CvMilitaryAdvisor:
 							bVisible = plot.isVisible(gc.getPlayer(self.iActivePlayer).getTeam(), False) and not loopUnit.isInvisible(gc.getPlayer(self.iActivePlayer).getTeam(), False)
 
 						if unitType >= 0 and unitType < gc.getNumUnitInfos() and bVisible:
+							# unused
 							iNumUnits = self.unitsList[unitType][3]
 							if (iPlayer == self.iActivePlayer):
 								iNumUnits += 1
@@ -1257,19 +1265,25 @@ class CvMilitaryAdvisor:
 		iItem = 1
 		for iUnit in range(gc.getNumUnitInfos()):
 			if (len(self.unitsList[iUnit][2]) > 0):
-				if (iPrevUnitCombat != self.unitsList[iUnit][0] and self.unitsList[iUnit][0] != -1):
-					iPrevUnitCombat = self.unitsList[iUnit][0]
-					szDescription = gc.getUnitCombatInfo(self.unitsList[iUnit][0]).getDescription().upper()
-					if (self.UL_isSelectedGroup(self.unitsList[iUnit][0], False)):
+				iUnitCombat = self.unitsList[iUnit][0]
+				if (iPrevUnitCombat != iUnitCombat and iUnitCombat != -2):
+					iPrevUnitCombat = iUnitCombat
+					if (iUnitCombat == GG_COMBAT_TYPE):
+						szDescription = localText.getText("TXT_KEY_PROMOTION_GREAT_GENERAL", ()).upper()
+					elif (iUnitCombat < 0):
+						szDescription = gc.getUnitCombatInfo(iUnitCombat + 1).getDescription().upper()
+					else:
+						szDescription = gc.getUnitCombatInfo(iUnitCombat).getDescription().upper()
+					if (self.UL_isSelectedGroup(iUnitCombat, False)):
 						szDescription = u"   <u>" + szDescription + u"</u>"
 					else:
 						szDescription = u"   " + szDescription
-					if (self.UL_isSelectedGroup(self.unitsList[iUnit][0], True)):
+					if (self.UL_isSelectedGroup(iUnitCombat, True)):
 						szDescription = localText.changeTextColor(szDescription, gc.getInfoTypeForString("COLOR_YELLOW"))
 					if (bReload):
-						screen.appendListBoxString(self.UNIT_LIST_ID, szDescription, WidgetTypes.WIDGET_MINIMAP_HIGHLIGHT, 1, self.unitsList[iUnit][0] + gc.getNumUnitInfos(), CvUtil.FONT_LEFT_JUSTIFY)
+						screen.appendListBoxString(self.UNIT_LIST_ID, szDescription, WidgetTypes.WIDGET_MINIMAP_HIGHLIGHT, 1, iUnitCombat + gc.getNumUnitInfos(), CvUtil.FONT_LEFT_JUSTIFY)
 					else:
-						screen.setListBoxStringGFC(self.UNIT_LIST_ID, iItem, szDescription, WidgetTypes.WIDGET_MINIMAP_HIGHLIGHT, 1, self.unitsList[iUnit][0] + gc.getNumUnitInfos(), CvUtil.FONT_LEFT_JUSTIFY)
+						screen.setListBoxStringGFC(self.UNIT_LIST_ID, iItem, szDescription, WidgetTypes.WIDGET_MINIMAP_HIGHLIGHT, 1, iUnitCombat + gc.getNumUnitInfos(), CvUtil.FONT_LEFT_JUSTIFY)
 					iItem += 1
 				
 				szDescription = gc.getUnitInfo(self.unitsList[iUnit][1]).getDescription() + u" (" + unicode(len(self.unitsList[iUnit][2])) + u")"
