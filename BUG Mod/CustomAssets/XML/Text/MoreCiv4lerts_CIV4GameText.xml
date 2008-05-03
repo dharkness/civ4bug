@@ -5,7 +5,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND</Tag>
 		<English>[COLOR_CULTURE_RATE]%s1's cultural boundary is about to expand.[COLOR_REVERT]</English>
-		<French>[COLOR_CULTURE_RATE]La frontière culturelle de %s1's est sur le point d'augmenter.[COLOR_REVERT]</French>
+		<French>[COLOR_CULTURE_RATE]La frontière culturelle de %s1's est sur le point de s'étendre.[COLOR_REVERT]</French>
 		<German>[COLOR_CULTURE_RATE]Die Stadtgrenzen von %s1 werden sich erweitern.[COLOR_REVERT]</German>
 		<Italian>[COLOR_CULTURE_RATE]Il confine culturale di %s1 sta per espandersi.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_CULTURE_RATE]El límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
@@ -61,7 +61,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_NEW_TECH_AVAIL</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]%s1 veut échanger %s2[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]%s1 hat neue Technologie(n) zum Handeln: %s2[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 commercerà %s2[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 will trade %s2[COLOR_REVERT]</Spanish>
@@ -69,7 +69,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_TECH_NOT_AVAIL</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</French>
+		<French>[COLOR_TECH_TEXT]%s1 ne veut pas échanger %s2[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]%s1 hat Technologie(n) vom Handel ausgeschlossen: %s2[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 non commercerà %s2[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 won't trade %s2[COLOR_REVERT]</Spanish>
