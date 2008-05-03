@@ -102,7 +102,7 @@ class IconGrid_BUG:
 	
 		self.groupTitleHeight = 24
 		self.headerHeight = 24
-		self.iconColWidth = 68
+		self.iconColWidth = 50
 		self.rowHeight = 68
 		self.rowHeaderHeight = 17
 		self.scrollArrowSize = 24
@@ -272,11 +272,25 @@ class IconGrid_BUG:
 				
 				for offset in range(colGroup.length):
 					if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
-						iconData = rowData.cells[startIndex + offset].icons[0]
-						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-												  , iconData.image, currentX, currentY, 64, 64
-												  , iconData.widgetType, iconData.data, -1 )
-						currentX += self.iconColWidth + self.colSpace
+						bDataMissing = False
+						try:
+							iconData = rowData.cells[startIndex + offset].icons[0]
+						except:
+							bDataMissing = True
+
+						if not bDataMissing:		
+#							iconData = rowData.cells[startIndex + offset].icons[0]
+							self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
+													  , iconData.image, currentX, currentY, 64, 64
+													  , iconData.widgetType, iconData.data, -1 )
+							currentX += self.iconColWidth + self.colSpace
+
+
+#						iconData = rowData.cells[startIndex + offset].icons[0]
+#						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
+#												  , iconData.image, currentX, currentY, 64, 64
+#												  , iconData.widgetType, iconData.data, -1 )
+#						currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 						self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
@@ -296,27 +310,42 @@ class IconGrid_BUG:
 						currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
-						if (self.showRowHeader):
-							textY += self.rowHeaderHeight
+						bDataMissing = False
+						try:
+							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
+						except:
+							bDataMissing = True
 
-						stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
-						width = self.StackedBarColWidth[startIndex + offset] - 15
+						if not bDataMissing:		
+							textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
+							if (self.showRowHeader):
+								textY += self.rowHeaderHeight
 
-						if stackedbarData.text != "":
-							iSBarOffset_Y = 10
-						else:
-							iSBarOffset_Y = 0
+							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
+							width = self.StackedBarColWidth[startIndex + offset] - 15
 
-						szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
-						self.screen.addStackedBarGFCAt(szBar_ID, "", currentX + 6, textY + 20, width, 25,
-													   InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-						self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
-						self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+							if stackedbarData.text != "":
+								iSBarOffset_Y = 10
+							else:
+								iSBarOffset_Y = 0
 
-						szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
-						self.screen.setTextAt (szTxt_ID, "", stackedbarData.text, CvUtil.FONT_CENTER_JUSTIFY, currentX + 6 + width / 2, textY - 20, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-#						self.screen.setTextAt (szTxt_ID, "", stackedbarData.text, CvUtil.FONT_CENTER_JUSTIFY, currentX + 6, textY - iSBarOffset_Y, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
+							self.screen.addStackedBarGFC(szBar_ID, 
+														 currentX + 6, textY + iSBarOffset_Y, width, 25,
+														 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+
+							self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
+							self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+
+							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+							self.screen.setLabel (szTxt_ID, "",
+												  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
+												   currentX + 6 + width / 2, textY - iSBarOffset_Y,
+												   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+#							self.screen.setTextAt (szTxt_ID, "", "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY, currentX + 6 + width / 2, textY - 20, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+	#						self.screen.setTextAt (szTxt_ID, "", stackedbarData.text, CvUtil.FONT_CENTER_JUSTIFY, currentX + 6, textY - iSBarOffset_Y, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 
 
 
@@ -324,7 +353,7 @@ class IconGrid_BUG:
 
 
 
-						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+
 						
 				startIndex += colGroup.length
 				if (colGroup.label != ""):
@@ -332,11 +361,18 @@ class IconGrid_BUG:
 			
 			for offset in range(len(self.columns) - startIndex):
 				if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
-					iconData = rowData.cells[startIndex + offset].icons[0]
-					self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-											  , iconData.image, currentX, currentY, 64, 64
-											  , iconData.widgetType, iconData.data, -1 )
-					currentX += self.iconColWidth + self.colSpace
+					bDataMissing = False
+					try:
+						iconData = rowData.cells[startIndex + offset].icons[0]
+					except:
+						bDataMissing = True
+
+					if not bDataMissing:		
+#						iconData = rowData.cells[startIndex + offset].icons[0]
+						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
+												  , iconData.image, currentX, currentY, 64, 64
+												  , iconData.widgetType, iconData.data, -1 )
+						currentX += self.iconColWidth + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 					self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
@@ -354,30 +390,36 @@ class IconGrid_BUG:
 					currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-					textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
+					bDataMissing = False
+					try:
+						stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
+					except:
+						bDataMissing = True
 
-					stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
-					width = self.StackedBarColWidth[startIndex + offset] - 15
+					if not bDataMissing:		
+						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 
-					if stackedbarData.text != "":
-						iSBarOffset_Y = 10
-					else:
-						iSBarOffset_Y = 0
+						width = self.StackedBarColWidth[startIndex + offset] - 15
 
-					szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
-					self.screen.addStackedBarGFC(szBar_ID, 
-												 currentX + 6, textY + iSBarOffset_Y, width, 25,
-												 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
-					self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+						if stackedbarData.text != "":
+							iSBarOffset_Y = 10
+						else:
+							iSBarOffset_Y = 0
 
-					szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
-					self.screen.setLabel (szTxt_ID, "",
-										  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
-										   currentX + 6 + width / 2, textY - iSBarOffset_Y,
-										   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+						szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
+						self.screen.addStackedBarGFC(szBar_ID, 
+													 currentX + 6, textY + iSBarOffset_Y, width, 25,
+													 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+						self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
+						self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
 
-					currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+						szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+						self.screen.setLabel (szTxt_ID, "",
+											  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
+											   currentX + 6 + width / 2, textY - iSBarOffset_Y,
+											   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 			
 			if ( rowData.message == "" ):
 				self.screen.attachLabel(self.rowName + str(rowIndex), self.rowName + str(rowIndex) + "NotConnected", "")
