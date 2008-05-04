@@ -327,7 +327,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			currentTrades = self.getOpenBordersTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailOpenBordersTrades)
 			if (newTrades):
-				players = buildPlayerString(newTrades)
+				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_OPEN_BORDERS", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailOpenBordersTrades.update(newTrades)
@@ -336,7 +336,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			currentTrades = self.getDefensivePactTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailDefensivePactTrades)
 			if (newTrades):
-				players = buildPlayerString(newTrades)
+				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailDefensivePactTrades.update(newTrades)
@@ -345,7 +345,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			currentTrades = self.getPermanentAllianceTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailPermanentAllianceTrades)
 			if (newTrades):
-				players = buildPlayerString(newTrades)
+				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
 				self.PrevAvailPermanentAllianceTrades.update(newTrades)
