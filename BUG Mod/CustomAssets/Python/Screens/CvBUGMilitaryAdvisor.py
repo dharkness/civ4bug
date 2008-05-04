@@ -407,19 +407,33 @@ class CvMilitaryAdvisor:
 		self.Col_Vassals = 7
 		self.Col_DefPacks = 8
 
-		columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
-					IconGrid_BUG.GRID_TEXT_COLUMN,
-					IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
-					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
-					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
-					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
-					IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
-
-		if bVassals:
-			columns.append(IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
-
-		if bDefPacks:
-			columns.append(IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
+		if (not bVassals and not bDefPacks):
+			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
+						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
+		if (bVassals and bDefPacks):
+			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
+						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
+		else:
+			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
+						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+						IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
 
 		gridX = self.MIN_LEFT_RIGHT_SPACE + 10
 		gridY = self.MIN_TOP_BOTTOM_SPACE + self.SITREP_PANEL_SPACE + self.TABLE_CONTROL_HEIGHT + self.TITLE_HEIGHT + 10
@@ -443,10 +457,10 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.setHeader(self.Col_Leader, "")
 		self.SitRepGrid.setHeader(self.Col_WHEOOH, "")
 #		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()))
-		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAD_INDEX", ()))
+		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()))
 		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()))
-		self.SitRepGrid.setHeader(self.Col_StratResPos, "Advantage")
-		self.SitRepGrid.setHeader(self.Col_StratResNeg, "Disadvantage")
+		self.SitRepGrid.setHeader(self.Col_StratResPos, "Ours")
+		self.SitRepGrid.setHeader(self.Col_StratResNeg, "Theirs")
 		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
 
 		if bVassals:
@@ -458,7 +472,7 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
-		self.SitRepGrid.createColumnGroup("Strategic", 2)
+		self.SitRepGrid.createColumnGroup("Strategic Advantage", 2)
 
 		self.SitRepGrid.setTextColWidth(self.Col_WHEOOH, 25)
 		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 120)
@@ -527,6 +541,7 @@ class CvMilitaryAdvisor:
 			return
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
+			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "Vassal")
 			return
 
 		# initialize threat index
@@ -560,7 +575,7 @@ class CvMilitaryAdvisor:
 		and not self.bCurrentWar):
 			fThreat = fThreat * 1.3
 
-		# reduce the thread if the current player is in a defensive pact with the active player
+		# reduce the threat if the current player is in a defensive pact with the active player
 		if gc.getTeam(pPlayer.getTeam()).isDefensivePact(gc.getPlayer(self.iActivePlayer).getTeam()):
 			fThreat = fThreat * 0.2
 
@@ -807,7 +822,7 @@ class CvMilitaryAdvisor:
 
 		iUnits = []
 		for i in range (gc.getNumUnitClassInfos()):
-			iUnit = gc.getCivilizationInfo(pCity.getCivilizationType()).getCivilizationUnits(i)
+			iUnit = gc.getCivilizationInfo(pPlayer.getCivilizationType()).getCivilizationUnits(i)
 			if (gc.getUnitInfo(iUnit).getUnitCombatType() > 0 # ie, not settler, worker, missionary, etc
 			and pCity.canTrain(iUnit, False, False)):
 				iUnits.append(iUnit)
@@ -887,35 +902,6 @@ class CvMilitaryAdvisor:
 
 		return iLeaderWars
 
-
-		
-
-# code here to check if iLeader will trade war with iLoopLeader to iActiveLeader
-
-#		return sReturn
-
-#			if (iLeader.isAlive()
-#			and (gc.getTeam(iLeader.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-#			or gc.getGame().isDebugMode())
-#			and iLoopLeader != self.iActivePlayer
-#			and not iLeader.isBarbarian()
-#			and not iLeader.isMinorCiv()):
-
-
-
-
-
-#			loopLeader = gc.getPlayer(iLoopLeaderID)
-#			iLoopTeamID = loopPlayer.getTeam()
-#			loopTeam = gc.getTeam(iLoopTeamID)
-#			if (loopPlayer.isBarbarian()
-#			or loopPlayer.isMinorCiv()
-#			or not loopPlayer.isAlive()
-#			or ):
-#				continue
-	
-
-
 	def getWarDeclarationTrades(self, activePlayer, activeTeam):
 		iActivePlayerID = activePlayer.getID()
 		iActiveTeamID = activeTeam.getID()
@@ -930,135 +916,10 @@ class CvMilitaryAdvisor:
 			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
 				continue
 			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-#				if (activeTeam.isOpenBorders(iLoopTeamID) or loopTeam.isOpenBorders(iActiveTeamID)):
-#					continue
-#				if (activeTeam.isOpenBordersTrading() or loopTeam.isOpenBordersTrading()):
-#					#tradeData.iData = None
 				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
 					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
 						currentTrades.add(iLoopPlayerID)
 		return currentTrades
-
-
-		
-
-
-
-
-
-
-
-
-#		for iLoopPlayer in range(nCount + 1, 9):
-#			self.SR_drawLeaderRows(screen, szMainPanel_ID, -1, nCount)
-
-#		self.SR_drawLeaderRows(screen, szMainPanel_ID, iLoopPlayer)
-#		self.SR_drawLeaderRows(screen, szMainPanel_ID, iLoopPlayer)
-
-#		zsRowsPanel_ID = self.getNextWidgetName()
-#		screen.addPanel(zsRowsPanel_ID, "", "", True, True, 0, 104, self.W_SCREEN, self.H_SCREEN - 155, PanelStyles.PANEL_STYLE_MAIN)
-
-#		self.drawGlanceRows (screen, zsRowsPanel_ID, self.iSelectedLeader != self.iActivePlayer, self.iSelectedLeader)
-
-
-
-
-
-# HEADER
-# LEADER BARS [ICON, RELATIONSHIP (FROM GLANCE), THREAD INDEX, ACTIVE WARS (SMALL LEADER ICONS), STRATEGIC RESOURCES, WILL DECLARE WAR (PLUS REASON WHY NOT)]
-
-# REASONS WHY NOT ... http://civilization4.net/files/modding/PythonAPI/Types/DenialTypes.html
-# TRADABLE ITEMS ... http://civilization4.net/files/modding/PythonAPI/Types/TradeableItems.html
-# STRATEGIC RESOURCES ... copper, iron, aluminimium, oil, uranium
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	def SR_LRow_ThreatIndex(self, screen, sPanel, iLeader, nCount):
-
-		iThreatIndex = 20 + nCount * 15
-
-
-
-		if iThreatIndex <= 20:
-			szColor = "COLOR_GREEN"
-			szText = localText.getText("TXT_KEY_MILITARY_THREAD_INDEX_NIL", ())
-		elif iThreatIndex <= 40:
-			szColor = "COLOR_PLAYER_BROWN"
-			szText = localText.getText("TXT_KEY_MILITARY_THREAD_INDEX_LOW", ())
-		elif iThreatIndex <= 60:
-			szColor = "COLOR_YELLOW"
-			szText = localText.getText("TXT_KEY_MILITARY_THREAD_INDEX_MODERATE", ())
-		elif iThreatIndex <= 75:
-			szColor = "COLOR_PLAYER_ORANGE"
-			szText = localText.getText("TXT_KEY_MILITARY_THREAD_INDEX_HIGH", ())
-		else:
-			szColor = "COLOR_RED"
-			szText = localText.getText("TXT_KEY_MILITARY_THREAD_INDEX_EXTREME", ())
-
-
-		szBar_ID = self.getNextWidgetName()
-		screen.addStackedBarGFCAt(szBar_ID, sPanel, self.SitRep_X3, self.Y_Text_Offset + self.SitRep_Y_Offset - 3, 100, 26, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float( iThreatIndex ) / float( 100 ) )
-		screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szColor))
-		#screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-		#screen.show(szPanel_ID)
-
-		szTxt_ID = self.getNextWidgetName()
-		screen.setTextAt (szTxt_ID, sPanel, szText, CvUtil.FONT_CENTER_JUSTIFY, self.SitRep_X3+50, self.Y_Text_Offset + self.SitRep_Y_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-
-#		szText = "Threat"
-
-#		szPanel_ID = self.getNextWidgetName()
-#		screen.setTextAt (szPanel_ID, sPanel, szText, CvUtil.FONT_CENTER_JUSTIFY, self.SitRep_X3, self.Y_Text_Offset + self.SitRep_Y_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLeader, self.iActivePlayer)
-
-
-		#szBar_ID = self.getNextWidgetName()
-		#szTxt_ID = self.getNextWidgetName()
-
-#		screen.addStackedBarGFC(szGGBar_ID, self.X_GREAT_GENERAL_BAR, self.Y_GREAT_GENERAL_BAR, self.W_GREAT_GENERAL_BAR, self.H_GREAT_GENERAL_BAR,
-#								InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1)
-#		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED"))
-#		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE"))
-#		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY"))
-#		screen.setStackedBarColors(szGGBar_ID, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY"))
-#		screen.setBarPercentage(szGGBar_ID, InfoBarTypes.INFOBAR_STORED, float(iExperience) / float(gc.getPlayer(self.iActivePlayer).greatPeopleThreshold(true)))
-
-#		screen.setLabel(szGGTxt_ID, "", localText.getText("TXT_KEY_MISC_COMBAT_EXPERIENCE", ()), CvUtil.FONT_CENTER_JUSTIFY, self.X_GREAT_GENERAL_BAR + self.W_GREAT_GENERAL_BAR/2, self.Y_GREAT_GENERAL_BAR + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1)
-
-		#self.Z_CONTROLS = -6.3
-		#screen.addStackedBar(zsBar_ID, sPanel, 2, 2, 100, 30, self.Z_CONTROLS, 2, WidgetTypes.WIDGET_LEADERHEAD, -1, -1)
-		#screen.setStackedBarColors(zsBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED"))
-		#screen.setBarPercentage(zsBar_ID, InfoBarTypes.INFOBAR_STORED, float(45) / float(100))
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1417,6 +1278,7 @@ class CvMilitaryAdvisor:
 			if self.UL_isSelectedUnitType(unit.getUnitType(), True):
 				return True
 		return ((iPlayer, iUnitId) in self.selectedUnitList)
+
 
 
 

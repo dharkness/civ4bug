@@ -183,7 +183,7 @@
 		<Spanish>Worst Enemy</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_THREAD_INDEX</Tag>
+		<Tag>TXT_KEY_MILITARY_SITREP_THREAT_INDEX</Tag>
 		<English>Threat Index</English>
 		<French>Threat Index</French>
 		<German>Bedrohungsstufe</German>

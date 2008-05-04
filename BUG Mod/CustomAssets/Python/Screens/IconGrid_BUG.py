@@ -324,24 +324,26 @@ class IconGrid_BUG:
 							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 							width = self.StackedBarColWidth[startIndex + offset] - 15
 
-							if stackedbarData.text != "":
+							if stackedbarData.text != "" and stackedbarData.value > 0:
 								iSBarOffset_Y = 10
 							else:
 								iSBarOffset_Y = 0
 
-							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
-							self.screen.addStackedBarGFC(szBar_ID, 
-														 currentX + 6, textY + iSBarOffset_Y, width, 25,
-														 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+							if stackedbarData.value > 0:
+								szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
+								self.screen.addStackedBarGFC(szBar_ID, 
+															 currentX + 6, textY + iSBarOffset_Y, width, 25,
+															 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
-							self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
-							self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+								self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
+								self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
 
-							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
-							self.screen.setLabel (szTxt_ID, "",
-												  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
-												   currentX + 6 + width / 2, textY - iSBarOffset_Y,
-												   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+							if stackedbarData.text != "":
+								szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+								self.screen.setLabel (szTxt_ID, "",
+													  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
+													   currentX + 6 + width / 2, textY - iSBarOffset_Y,
+													   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #							self.screen.setTextAt (szTxt_ID, "", "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY, currentX + 6 + width / 2, textY - 20, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 	#						self.screen.setTextAt (szTxt_ID, "", stackedbarData.text, CvUtil.FONT_CENTER_JUSTIFY, currentX + 6, textY - iSBarOffset_Y, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
@@ -401,23 +403,25 @@ class IconGrid_BUG:
 
 						width = self.StackedBarColWidth[startIndex + offset] - 15
 
-						if stackedbarData.text != "":
+						if stackedbarData.text != "" and stackedbarData.value > 0:
 							iSBarOffset_Y = 10
 						else:
 							iSBarOffset_Y = 0
 
-						szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
-						self.screen.addStackedBarGFC(szBar_ID, 
-													 currentX + 6, textY + iSBarOffset_Y, width, 25,
-													 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-						self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
-						self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+						if stackedbarData.value > 0:
+							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
+							self.screen.addStackedBarGFC(szBar_ID, 
+														 currentX + 6, textY + iSBarOffset_Y, width, 25,
+														 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+							self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
+							self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
 
-						szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
-						self.screen.setLabel (szTxt_ID, "",
-											  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
-											   currentX + 6 + width / 2, textY - iSBarOffset_Y,
-											   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+						if stackedbarData.text != "":
+							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+							self.screen.setLabel (szTxt_ID, "",
+												  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
+												   currentX + 6 + width / 2, textY - iSBarOffset_Y,
+												   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 			
