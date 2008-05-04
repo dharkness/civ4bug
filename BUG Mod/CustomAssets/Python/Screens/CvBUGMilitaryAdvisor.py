@@ -788,11 +788,13 @@ class CvMilitaryAdvisor:
 		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer)
 
 		# remove units that the human does not know about
+		iUnitsToRemove = set()
 		for iUnit in iAIUnits:
 			iDiscoverTech = gc.getUnitInfo(iUnit).getPrereqAndTech()
 			if not (gc.getTeam(pActivePlayer.getTeam()).isHasTech(iDiscoverTech)
 			or  pActivePlayer.canResearch(iDiscoverTech, False)):
-				iAIUnits.remove(iUnit)
+				iUnitsToRemove.add(iUnit)
+		iAIUnits -= iUnitsToRemove
 
 		# determine units that human can build that the AI cannot
 		for iUnit in iHumanUnits:
@@ -855,14 +857,17 @@ class CvMilitaryAdvisor:
 
 	def getCanTrainUnits(self, iPlayer):
 		pPlayer = gc.getPlayer(iPlayer)
-		pCity = pPlayer.getCity(0)   # capital
+		civInfo = gc.getCivilizationInfo(pPlayer.getCivilizationType())
 
 		iUnits = set()
 		for i in range (gc.getNumUnitClassInfos()):
-			iUnit = gc.getCivilizationInfo(pPlayer.getCivilizationType()).getCivilizationUnits(i)
-			if (gc.getUnitInfo(iUnit).getUnitCombatType() > 0 # ie, not settler, worker, missionary, etc
-			and pCity.canTrain(iUnit, False, False)):
-				iUnits.add(iUnit)
+			iUnit = civInfo.getCivilizationUnits(i)
+			if gc.getUnitInfo(iUnit).getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
+				for c in range(pPlayer.getNumCities()):
+					pCity = pPlayer.getCity(c)
+					if pCity and not pCity.isNone() and pCity.canTrain(iUnit, False, False):
+						iUnits.add(iUnit)
+						break
 
 		return iUnits
 
@@ -1062,7 +1067,7 @@ class CvMilitaryAdvisor:
 		screen.updateMinimapColorFromMap(MinimapModeTypes.MINIMAPMODE_TERRITORY, 0.3)
 		screen.setMinimapMode(MinimapModeTypes.MINIMAPMODE_MILITARY)
 
-		self.UL_SetMinimapVisibility(screen, true)
+		self.UL_SetMinimapVisibility(screen, True)
 		screen.bringMinimapToFront()
 
 	def UL_SetMinimapVisibility(self, screen, bVisibile):
