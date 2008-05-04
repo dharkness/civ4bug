@@ -1816,7 +1816,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_TEXT</Tag>
 		<English>Tag as "Dead"</English>
 		<French>Marquer "Mort"</French>
-		<German>Mit "Dead" markieren</German>
+		<German>Mit "Tot" markieren</German>
 		<Italian>Marca come "Scomparse"</Italian>
 		<Spanish>Tag as "Dead"</Spanish>
 	</TEXT>
@@ -1825,7 +1825,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
 		<French>En activant, les civilisations mortes seront marquées "Mort".</French>
-		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Dead" in der Wertungsanzeige, wenn sie angezeigt werden sollen</German>
+		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Tot" in der Wertungsanzeige, wenn sie angezeigt werden sollen</German>
 		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come "Scomparsa" nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
 	</TEXT>

@@ -56,7 +56,7 @@
 		<Tag>TXT_KEY_UNIQUE_BUILDINGS</Tag>
 		<English>Unique Buildings</English>
 		<French>Bâtiments Uniques</French>
-		<German>Spezialeinrichtungen</German>
+		<German>Einzigartige Gebäude</German>
 		<Italian>Edifici Unici</Italian>
 		<Spanish>Unique Buildings</Spanish>
 	</TEXT>
@@ -64,7 +64,7 @@
 		<Tag>TXT_KEY_PEDIA_FAV_CIVIC</Tag>
 		<English>Favorite Civic and Religion</English>
 		<French>Doctrine et Religion Préférée</French>
-		<German>Bevorzugte Staatsform / Religion</German>
+		<German>Bevorzugte Staatsform und Religion</German>
 		<Italian>Forme di governo e Religioni preferite</Italian>
 		<Spanish>Principios favoritos - religi&#243;n</Spanish>
 	</TEXT>
