@@ -6,6 +6,16 @@ import ScreenInput
 import CvScreenEnums
 import CvEventInterface
 import time
+
+## 12monkeys - PlotList Button Enhancement  - begin 			
+import MonkeyTools as mt
+import string
+from AStarTools import *
+import CvConfigParser
+import PyHelpers 
+PyPlayer = PyHelpers.PyPlayer
+## 12monkeys - PlotList Button Enhancement  - end
+
 # BUG - Align Icons - start
 import Scoreboard
 # BUG - Align Icons - end
@@ -148,6 +158,1723 @@ g_pSelectedUnit = 0
 class CvMainInterface:
 	"Main Interface Screen"
 	
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+## 12monkeys - PlotList Button Enhancement  - begin
+	def __init__(self):
+	
+		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"		
+		self.PLOT_LIST_MINUS_NAME 		= "MyPlotListMinus"
+		self.PLOT_LIST_PLUS_NAME 		= "MyPlotListPlus"
+		self.PLOT_LIST_UP_NAME 			= "MyPlotListUp"
+		self.PLOT_LIST_DOWN_NAME 		= "MyPlotListDown"
+		self.PLOT_LIST_PROMO_NAME 		= "MyPlotListPromo"		
+		self.PLOT_LIST_UPGRADE_NAME 	= "MyPlotListUpgrade"		
+		
+		self.PLE_MODE_STANDARD 			= "PLE_MODE_STANDARD1"
+		self.PLE_MODE_MULTILINE 		= "PLE_MODE_MULTILINE1"
+		self.PLE_MODE_STACK_VERT 		= "PLE_MODE_STACK_VERT1"
+		self.PLE_MODE_STACK_HORIZ 		= "PLE_MODE_STACK_HORIZ1"
+		
+		self.PLE_FILTER_WOUND			= "PLE_FILTER_WOUND1"
+		self.PLE_FILTER_NOTWOUND		= "PLE_FILTER_NOTWOUND1"
+		self.PLE_FILTER_AIR				= "PLE_FILTER_AIR1"
+		self.PLE_FILTER_SEA				= "PLE_FILTER_SEA1"
+		self.PLE_FILTER_LAND			= "PLE_FILTER_LAND1"
+		self.PLE_FILTER_DOM				= "PLE_FILTER_DOM1"
+		self.PLE_FILTER_MIL				= "PLE_FILTER_MIL1"
+		self.PLE_FILTER_OWN				= "PLE_FILTER_OWN1"
+		self.PLE_FILTER_FOREIGN			= "PLE_FILTER_FOREIGN1"
+		
+		self.PLE_PROMO_BUTTONS_UNITINFO = "PLE_PROMO_BUTTONS_UNITINFO"
+
+		self.PLE_GRP_UNITTYPE			= "PLE_GRP_UNITTYPE1"
+		self.PLE_GRP_GROUPS				= "PLE_GRP_GROUPS1"
+		self.PLE_GRP_PROMO				= "PLE_GRP_PROMO1"
+		self.PLE_GRP_UPGRADE			= "PLE_GRP_UPGRADE1"
+
+		self.UNIT_INFO_PANE				= "PLE_UNIT_INFO_PANE_ID"
+		self.UNIT_INFO_TEXT				= "PLE_UNIT_INFO_TEXT_ID"
+		self.UNIT_INFO_TEXT_SHADOW		= "PLE_UNIT_INFO_TEXT_SHADOW_ID"
+		
+		# filter constants
+		self.nPLEFilterModeWound		= 1
+		self.nPLEFilterModeNotWound		= 2
+		self.nPLEFilterModeAir 			= 4
+		self.nPLEFilterModeSea 			= 8
+		self.nPLEFilterModeLand			= 16
+		self.nPLEFilterModeDom			= 32
+		self.nPLEFilterModeMil			= 64
+		self.nPLEFilterModeOwn			= 128
+		self.nPLEFilterModeForeign		= 256
+
+		# set all filters to active -> all units 
+		self.nPLEFilter 				= 0xFFFF
+			
+		self.MainInterfaceInputMap = {
+			self.PLOT_LIST_BUTTON_NAME		: self.getPlotListButtonName,
+			self.PLOT_LIST_MINUS_NAME		: self.getPlotListMinusName,
+			self.PLOT_LIST_PLUS_NAME		: self.getPlotListPlusName,
+			self.PLOT_LIST_UP_NAME 			: self.getPlotListUpName,
+			self.PLOT_LIST_DOWN_NAME 		: self.getPlotListDownName,
+			self.PLE_MODE_STANDARD			: self.setPLEModeStandard,
+			self.PLE_MODE_MULTILINE			: self.setPLEModeMultiline,
+			self.PLE_MODE_STACK_VERT		: self.setPLEModeStackVert,
+			self.PLE_MODE_STACK_HORIZ		: self.setPLEModeStackHoriz,
+			self.PLE_FILTER_WOUND			: self.setPLEFilterWound,
+			self.PLE_FILTER_NOTWOUND		: self.setPLEFilterNotWound,
+			self.PLE_FILTER_AIR				: self.setPLEFilterAir,
+			self.PLE_FILTER_SEA				: self.setPLEFilterSea,
+			self.PLE_FILTER_LAND			: self.setPLEFilterLand,
+			self.PLE_FILTER_DOM				: self.setPLEFilterDom,
+			self.PLE_FILTER_MIL				: self.setPLEFilterMil,
+			self.PLE_FILTER_OWN				: self.setPLEFilterOwn,
+			self.PLE_FILTER_FOREIGN			: self.setPLEFilterForeign,
+			self.PLE_GRP_UNITTYPE			: self.setPLEGrpUnittype,
+			self.PLE_GRP_GROUPS				: self.setPLEGrpGroups,
+			self.PLE_GRP_PROMO				: self.setPLEGrpPromo,
+			self.PLE_GRP_UPGRADE			: self.setPLEGrpUpgrade,
+			self.PLOT_LIST_PROMO_NAME		: self.unitPromotion,		
+			self.PLOT_LIST_UPGRADE_NAME		: self.unitUpgrade,
+		}		
+		
+		self.iColOffset 			= 0
+		self.iRowOffset 			= 0
+		self.iVisibleUnits 			= 0
+		self.pActPlot 				= 0
+		self.pOldPlot 				= self.pActPlot
+		self.sPLEMode 				= self.PLE_MODE_STANDARD
+		self.iMaxPlotListIcons 		= 0
+		self.nPLEGrpMode 			= self.PLE_GRP_UNITTYPE
+		self.pActPlotListUnit		= 0
+		self.iActPlotListGroup		= 0
+		self.pLastPlotListUnit		= 0
+		self.iLastPlotListGroup		= 0
+	
+		self.IDX_PLAYER				= 0
+		self.IDX_DOMAIN 			= 1
+		self.IDX_GROUPID			= 2
+		self.IDX_COMBAT				= 3
+		self.IDX_UNITTYPE			= 4
+		self.IDX_LEVEL				= 5
+		self.IDX_XP					= 6
+		self.IDX_TRANSPORTID		= 7
+		self.IDX_CARGOID			= 8
+		self.IDX_UNITID				= 9
+		self.IDX_UNIT				= 10
+		
+		self.lPLEUnitList 			= []
+		self.lPLEUnitListTempOK		= []
+		self.lPLEUnitListTempNOK	= []
+		self.dPLEUnitInfo 			= {}	
+		
+		self.iLoopCnt 				= 0
+		self.bPLEHide 				= false
+		self.bUpdatePLEUnitList 	= true
+		
+		self.dUnitPromoList			= {}
+		self.dUnitUpgradeList		= {}		
+		
+		self.bInit					= false
+		
+		self.ASMA 					= AStarMoveArea()
+		
+		self.CFG_MOVE_HIGHLIGHTER_ENABLED = true
+		
+		self.tLastMousePos			= (0,0)
+		self.bInfoPaneActive		= false
+		self.bUnitPromoButtonsActive = false
+		self.iMousePosTol			= 30
+		self.iInfoPaneCnt			= 0
+		self.iLastInfoPaneCnt		= -1
+
+		self.xResolution = 0
+		self.yResolution = 0
+
+############## input handlers functions ######################		
+		
+	# PLE Mode Switcher functions
+	def setPLEFilterWound(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeWound):
+				self.nPLEFilter -= self.nPLEFilterModeWound
+			else: 
+				self.nPLEFilter += self.nPLEFilterModeWound
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEFilterNotWound(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeNotWound):
+				self.nPLEFilter -= self.nPLEFilterModeNotWound
+			else: 
+				self.nPLEFilter += self.nPLEFilterModeNotWound
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+			
+	# PLE Mode Switcher functions
+	def setPLEFilterAir(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeAir):
+				self.nPLEFilter -= self.nPLEFilterModeAir
+			else:
+				self.nPLEFilter += self.nPLEFilterModeAir
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEFilterSea(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeSea):
+				self.nPLEFilter -= self.nPLEFilterModeSea
+			else:
+				self.nPLEFilter += self.nPLEFilterModeSea
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEFilterLand(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeLand):
+				self.nPLEFilter -= self.nPLEFilterModeLand
+			else:
+				self.nPLEFilter += self.nPLEFilterModeLand
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEFilterDom(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeDom):
+				self.nPLEFilter -= self.nPLEFilterModeDom
+			else:
+				self.nPLEFilter += self.nPLEFilterModeDom
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1		
+			
+	# PLE Mode Switcher functions
+	def setPLEFilterMil(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeMil):
+				self.nPLEFilter -= self.nPLEFilterModeMil
+			else:
+				self.nPLEFilter += self.nPLEFilterModeMil
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEFilterOwn(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeOwn):
+				self.nPLEFilter -= self.nPLEFilterModeOwn
+			else:
+				self.nPLEFilter += self.nPLEFilterModeOwn
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+			
+	# PLE Mode Switcher functions
+	def setPLEFilterForeign(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEFilter & self.nPLEFilterModeForeign):
+				self.nPLEFilter -= self.nPLEFilterModeForeign
+			else:
+				self.nPLEFilter += self.nPLEFilterModeForeign
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Grouping Mode switcher
+	def setPLEGrpUnittype(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEGrpMode != self.PLE_GRP_UNITTYPE):
+				self.nPLEGrpMode = self.PLE_GRP_UNITTYPE
+				self.bUpdatePLEUnitList = true
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Grouping Mode switcher
+	def setPLEGrpGroups(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEGrpMode != self.PLE_GRP_GROUPS):
+				self.nPLEGrpMode = self.PLE_GRP_GROUPS
+				self.bUpdatePLEUnitList = true
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+			
+	# PLE Grouping Mode switcher
+	def setPLEGrpPromo(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEGrpMode != self.PLE_GRP_PROMO):
+				self.nPLEGrpMode = self.PLE_GRP_PROMO
+				self.bUpdatePLEUnitList = true
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Grouping Mode switcher
+	def setPLEGrpUpgrade(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.nPLEGrpMode != self.PLE_GRP_UPGRADE):
+				self.nPLEGrpMode = self.PLE_GRP_UPGRADE
+				self.bUpdatePLEUnitList = true
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+			
+	# PLE Mode Switcher functions
+	def setPLEModeStandard(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.sPLEMode != self.PLE_MODE_STANDARD):
+				self.iRowOffset = 0
+				self.sPLEMode = self.PLE_MODE_STANDARD
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+				
+	# PLE Mode Switcher functions
+	def setPLEModeMultiline(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.sPLEMode != self.PLE_MODE_MULTILINE):
+				self.iRowOffset = 0
+				self.sPLEMode = self.PLE_MODE_MULTILINE
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEModeStackVert(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.sPLEMode != self.PLE_MODE_STACK_VERT):
+				self.iColOffset = 0
+				self.sPLEMode = self.PLE_MODE_STACK_VERT
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# PLE Mode Switcher functions
+	def setPLEModeStackHoriz(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.sPLEMode != self.PLE_MODE_STACK_HORIZ):
+				self.iRowOffset = 0
+				self.sPLEMode = self.PLE_MODE_STACK_HORIZ
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# handles the unit promotion button inputs
+	def unitPromotion(self, inputClass):
+		id = inputClass.getID()
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			if not CyInterface().isCityScreenUp():
+				self.showPromoInfoPane(id)
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hidePromoInfoPane()				
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.doPromotion(id)
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+
+	# Arrow Up
+	def getPlotListUpName(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.iRowOffset += 1
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+		return 0
+		
+	# Arrow Down
+	def getPlotListDownName(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.iRowOffset > 0):
+				self.iRowOffset -= 1
+				CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+				return 1
+		return 0
+		
+	# Arrow Left
+	def getPlotListMinusName(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if (self.iColOffset > 0):
+				self.iColOffset -= 1
+				CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+				return 1
+		return 0
+		
+	# Arrow Right
+	def getPlotListPlusName(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.iColOffset += 1
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+		return 0
+	
+	# determines the unit button
+	def getPlotListButtonName(self, inputClass):
+		id = inputClass.getID()
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			if not CyInterface().isCityScreenUp():
+				self.showUnitInfoPane(id)
+			if mt.bAlt():
+				self.highlightMoves(id)
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideUnitInfoPane()				
+			if mt.bAlt():
+				self.dehighlightMoves()
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			# mt.debug("id:%i;p:(%i;%i)"%(id, self.pActPlot.getX(), self.pActPlot.getY()))
+			if (id >= 0) and (id <= self.iMaxPlotListIcons):
+				self.selectGroup( id, mt.bShift(), mt.bCtrl(), mt.bAlt())
+				CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+				return 1
+		return 0
+
+	# handles the unit upgrade button inputs
+	def unitUpgrade(self, inputClass):
+		id = inputClass.getID()
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			if not CyInterface().isCityScreenUp():
+				self.showUpgradeInfoPane(id)
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideUpgradeInfoPane()				
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+#			mt.debug("upgrade id:"+str(id))
+			self.doUpgrade(id)
+			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+			return 1
+		
+############## base functions to calculate/transform the number of objects dependant on the screen resolution ######################
+
+	def getMaxCol(self):
+		return ((self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34)
+		
+	def getMaxRow(self):
+		return ((self.yResolution - 160) / self.CFG_VERTICAL_ITEM_SPACING) 
+		
+	def getRow(self, i):
+		return i / self.getMaxCol()
+
+	def getCol(self, i):
+		return i % self.getMaxCol()
+		
+	def getX(self, nCol):
+		return 315 + (nCol * self.CFG_HORIZONTAL_ITEM_SPACING)
+		
+	def getY(self, nRow):
+		return self.yResolution - 169 - (nRow * self.CFG_VERTICAL_ITEM_SPACING)
+		
+	def getI(self, nRow, nCol):
+		return ( nRow * self.getMaxCol() ) + ( nCol % self.getMaxCol() )
+
+############## functions for visual objects (show and hide) ######################
+		
+	# PLE Grouping Mode Switcher 
+	def setPLEGrpMode(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		if self.nPLEGrpMode == self.PLE_GRP_UNITTYPE:
+			screen.setState(self.PLE_GRP_UNITTYPE, True)
+			screen.setState(self.PLE_GRP_GROUPS, False)
+			screen.setState(self.PLE_GRP_PROMO, False)
+			screen.setState(self.PLE_GRP_UPGRADE, False)
+			return 1
+		elif self.nPLEGrpMode == self.PLE_GRP_GROUPS:
+			screen.setState(self.PLE_GRP_UNITTYPE, False)
+			screen.setState(self.PLE_GRP_GROUPS, True)
+			screen.setState(self.PLE_GRP_PROMO, False)
+			screen.setState(self.PLE_GRP_UPGRADE, False)
+			return 1
+		elif self.nPLEGrpMode == self.PLE_GRP_PROMO:
+			screen.setState(self.PLE_GRP_UNITTYPE, False)
+			screen.setState(self.PLE_GRP_GROUPS, False)
+			screen.setState(self.PLE_GRP_PROMO, True)
+			screen.setState(self.PLE_GRP_UPGRADE, False)
+			return 1
+		elif self.nPLEGrpMode == self.PLE_GRP_UPGRADE:
+			screen.setState(self.PLE_GRP_UNITTYPE, False)
+			screen.setState(self.PLE_GRP_GROUPS, False)
+			screen.setState(self.PLE_GRP_PROMO, False)
+			screen.setState(self.PLE_GRP_UPGRADE, True)
+			return 1
+		return 0
+		
+			
+	# PLE Mode Switcher functions
+	def setPLEMode(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		if self.sPLEMode == self.PLE_MODE_STANDARD:
+			screen.setState(self.PLE_MODE_STANDARD, True)
+			screen.setState(self.PLE_MODE_MULTILINE, False)
+			screen.setState(self.PLE_MODE_STACK_VERT, False)
+			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
+			return 1
+		elif self.sPLEMode == self.PLE_MODE_MULTILINE:
+			screen.setState(self.PLE_MODE_STANDARD, False)
+			screen.setState(self.PLE_MODE_MULTILINE, True)
+			screen.setState(self.PLE_MODE_STACK_VERT, False)
+			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
+			return 1
+		elif self.sPLEMode == self.PLE_MODE_STACK_VERT:
+			screen.setState(self.PLE_MODE_STANDARD, False)
+			screen.setState(self.PLE_MODE_MULTILINE, False)
+			screen.setState(self.PLE_MODE_STACK_VERT, True)
+			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
+			return 1
+		elif self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+			screen.setState(self.PLE_MODE_STANDARD, False)
+			screen.setState(self.PLE_MODE_MULTILINE, False)
+			screen.setState(self.PLE_MODE_STACK_VERT, False)
+			screen.setState(self.PLE_MODE_STACK_HORIZ, True)
+			return 1
+		return 0
+	
+	# PLE Mode Filter functions
+	def setPLEFilter(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		if (self.nPLEFilter & self.nPLEFilterModeWound):
+			screen.setState(self.PLE_FILTER_WOUND, false)
+		else:
+			screen.setState(self.PLE_FILTER_WOUND, true)
+		if (self.nPLEFilter & self.nPLEFilterModeNotWound):
+			screen.setState(self.PLE_FILTER_NOTWOUND, false)
+		else:
+			screen.setState(self.PLE_FILTER_NOTWOUND, true)
+		if (self.nPLEFilter & self.nPLEFilterModeAir):
+			screen.setState(self.PLE_FILTER_AIR, false)
+		else:
+			screen.setState(self.PLE_FILTER_AIR, true)
+		if (self.nPLEFilter & self.nPLEFilterModeSea):
+			screen.setState(self.PLE_FILTER_SEA, false)
+		else:
+			screen.setState(self.PLE_FILTER_SEA, true)
+		if (self.nPLEFilter & self.nPLEFilterModeLand):
+			screen.setState(self.PLE_FILTER_LAND, false)
+		else:
+			screen.setState(self.PLE_FILTER_LAND, true)
+		if (self.nPLEFilter & self.nPLEFilterModeDom):
+			screen.setState(self.PLE_FILTER_DOM, false)
+		else:
+			screen.setState(self.PLE_FILTER_DOM, true)
+		if (self.nPLEFilter & self.nPLEFilterModeMil):
+			screen.setState(self.PLE_FILTER_MIL, false)
+		else:
+			screen.setState(self.PLE_FILTER_MIL, true)
+		if (self.nPLEFilter & self.nPLEFilterModeOwn):
+			screen.setState(self.PLE_FILTER_OWN, false)
+		else:
+			screen.setState(self.PLE_FILTER_OWN, true)
+		if (self.nPLEFilter & self.nPLEFilterModeForeign):
+			screen.setState(self.PLE_FILTER_FOREIGN, false)
+		else:
+			screen.setState(self.PLE_FILTER_FOREIGN, true)
+		return 0
+
+	# displayes the plot list switches (views, filters, groupings)
+	def showPlotListButtonObjects(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		
+		# show PLE modes switches
+		self.setPLEMode()			
+		screen.show(self.PLE_MODE_STANDARD)
+		screen.show(self.PLE_MODE_MULTILINE)
+		screen.show(self.PLE_MODE_STACK_VERT)
+		screen.show(self.PLE_MODE_STACK_HORIZ)
+		
+		# show PLE filter switches
+		self.setPLEFilter()
+		screen.show(self.PLE_FILTER_WOUND)
+		screen.show(self.PLE_FILTER_NOTWOUND)
+		#
+		screen.show(self.PLE_FILTER_AIR)
+		screen.show(self.PLE_FILTER_SEA)
+		screen.show(self.PLE_FILTER_LAND)
+		#
+		screen.show(self.PLE_FILTER_DOM)
+		screen.show(self.PLE_FILTER_MIL)
+		#
+		screen.show(self.PLE_FILTER_OWN)
+		screen.show(self.PLE_FILTER_FOREIGN)
+		
+		# showPLE grouping switches
+		self.setPLEGrpMode()
+		screen.show(self.PLE_GRP_UNITTYPE)
+		screen.show(self.PLE_GRP_GROUPS)
+		screen.show(self.PLE_GRP_PROMO)
+		screen.show(self.PLE_GRP_UPGRADE)
+
+		self.bPLEHide = false
+
+
+	# hides all plot list switches (views, filters, groupings) and the all the other objects
+	def hidePlotListButtonObjects(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		
+		# hides all unit button objects
+		for i in range( self.iMaxPlotListIcons ):
+			# hide unit button
+			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
+			screen.hide( szString )
+			# hide colored spot
+			szStringIcon = szString+"Icon"
+			screen.hide( szStringIcon )
+			# hide health bar
+			szStringHealthBar = szString+"HealthBar"
+			screen.hide( szStringHealthBar )
+			# hide move bar
+			szStringMoveBar = szString+"MoveBar"
+			screen.hide( szStringMoveBar )
+			# hide promotion frame
+			szStringPromoFrame = szString+"PromoFrame"
+			screen.hide( szStringPromoFrame )
+			# hide mission info
+			szStringActionIcon = szString+"ActionIcon"
+			screen.hide( szStringActionIcon )			
+			# hide upgrade arrow
+			szStringUpgrade = szString+"Upgrade"
+			screen.hide( szStringUpgrade )			
+
+		# hides all promotion an upgrade button objects
+		for nCol in range(self.getMaxCol()+1):
+			for nRow in range(self.getMaxRow()+1):
+				# 
+				szStringUnitPromo = self.PLOT_LIST_PROMO_NAME + string.zfill(str(nRow), 2) + string.zfill(str(nCol), 2)
+				screen.hide( szStringUnitPromo )		
+				# 
+				szStringUnitUpgrade = self.PLOT_LIST_UPGRADE_NAME + string.zfill(str(nRow), 2) + string.zfill(str(nCol), 2)
+				screen.hide( szStringUnitUpgrade )				
+			
+		# hide PLE modes switches
+		screen.hide(self.PLE_MODE_STANDARD)
+		screen.hide(self.PLE_MODE_MULTILINE)
+		screen.hide(self.PLE_MODE_STACK_VERT)
+		screen.hide(self.PLE_MODE_STACK_HORIZ)
+		# hide horizontal scroll buttons
+		screen.hide( self.PLOT_LIST_MINUS_NAME )
+		screen.hide( self.PLOT_LIST_PLUS_NAME )
+		# hide vertical scroll buttons
+		screen.hide( self.PLOT_LIST_UP_NAME )
+		screen.hide( self.PLOT_LIST_DOWN_NAME )
+		# hide PLE filter switches
+		screen.hide(self.PLE_FILTER_WOUND)
+		screen.hide(self.PLE_FILTER_NOTWOUND)
+		screen.hide(self.PLE_FILTER_AIR)
+		screen.hide(self.PLE_FILTER_SEA)
+		screen.hide(self.PLE_FILTER_LAND)
+		screen.hide(self.PLE_FILTER_DOM)
+		screen.hide(self.PLE_FILTER_MIL)	
+		screen.hide(self.PLE_FILTER_OWN)	
+		screen.hide(self.PLE_FILTER_FOREIGN)	
+		# hide PLE group switches
+		screen.hide(self.PLE_GRP_UNITTYPE)	
+		screen.hide(self.PLE_GRP_GROUPS)	
+		screen.hide(self.PLE_GRP_PROMO)	
+		screen.hide(self.PLE_GRP_UPGRADE)	
+		
+		self.bPLEHide = true
+		
+	# prepares the display of the mode, view, grouping, filter  switches
+	def preparePlotListObjects(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+
+		xResolution = self.xResolution
+		yResolution = self.yResolution
+	
+		nYOff	= 130
+		nXOff	= 290
+		nDist	= 20
+		nSize	= 18
+		nNum	= 0
+		nBSize	= 18
+		
+		# place the PLE mode switches
+		nXOff += nDist
+		szString = self.PLE_MODE_STANDARD
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_MODE_MULTILINE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_MODE_STACK_VERT
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_MODE_STACK_HORIZ
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+
+		# place the PLE health filter switches
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_FILTER_WOUND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_WOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		nXOff += nDist
+		szString = self.PLE_FILTER_NOTWOUND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_NOTWOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		# place the PLE domain filter switches
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_FILTER_AIR
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_AIR").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		nXOff += nDist
+		szString = self.PLE_FILTER_SEA
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_SEA").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		nXOff += nDist
+		szString = self.PLE_FILTER_LAND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_LAND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		# place the PLE unittype filter switches
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_FILTER_DOM
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_DOM").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_FILTER_MIL
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_MIL").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+				
+		# place the PLE owner filter switches
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_FILTER_OWN
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_OWN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_FILTER_FOREIGN
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		# place the PLE grouping moed switches
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_GRP_UNITTYPE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		nXOff += nDist
+		szString = self.PLE_GRP_GROUPS
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		# place the promo and upgrades views
+		nXOff += int(nDist*1.5)
+		szString = self.PLE_GRP_PROMO
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_PROMO").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		nXOff += nDist
+		szString = self.PLE_GRP_UPGRADE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UPGRADE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+				
+################ functions for normal/shift/ctrl/alt unit selection within the plot list itself #################
+
+	# deselects all units in the plot list
+	def deselectAll(self):
+		for i in range(len(self.lPLEUnitList)):
+			pUnit = self.getInterfacePlotUnit(i)
+			if (pUnit.IsSelected()):
+				CyInterface().selectUnit(pUnit, false, true, false)	
+	
+	# function saves all units not matching actual filter criteria in a temp list by type
+	def saveFilteredUnitsByType(self, pCompareUnit, bShift):
+		self.lPLEUnitListTempOK = []
+		self.lPLEUnitListTempNOK = []
+		# save unit type for comparision
+		pCompareUnitType = pCompareUnit.getUnitType()
+		for i in range(len(self.lPLEUnitList)):
+			pLoopUnit = self.getInterfacePlotUnit(i)
+			# has the unit the correct type and does the unit NOT match the filter parameters
+			if (pLoopUnit.getUnitType() == pCompareUnitType) and (not (self.checkDisplayFilter(pLoopUnit))):
+				# unit has to be moved
+				self.lPLEUnitListTempNOK.append(pLoopUnit)
+			else:
+				# unit has to be displayed
+				self.lPLEUnitListTempOK.append(pLoopUnit)
+		# loop to find all the cargo of units in the OK list. They don't have to be moved away.
+		lTempNOK 	= self.lPLEUnitListTempNOK[:]
+		lTempOK 	= self.lPLEUnitListTempOK[:]
+		for pLoopUnitNOK in lTempNOK:
+			# check if unit is cargo
+			if pLoopUnitNOK.isCargo():
+				# check if the units transport unit is a to be displayed unit
+				for pLoopUnitOK in lTempOK:
+					if pLoopUnitOK.getID() == pLoopUnitNOK.getTransportUnit().getID():
+						# remove cargo unit from NOK array and append it to OK array
+						self.lPLEUnitListTempNOK.remove(pLoopUnitNOK)
+						self.lPLEUnitListTempOK.append(pLoopUnitNOK)
+		# if Shift is pressed, we also have to keep the already selected units 
+		if bShift:
+			lTempNOK 	= self.lPLEUnitListTempNOK[:]
+			lTempOK 	= self.lPLEUnitListTempOK[:]
+			for i in range(len(self.lPLEUnitList)):
+				pLoopUnit = self.getInterfacePlotUnit(i)
+				if (pLoopUnit.IsSelected()):
+					if pLoopUnit in lTempNOK:
+						self.lPLEUnitListTempNOK.remove(pLoopUnitNOK)
+						self.lPLEUnitListTempOK.append(pLoopUnitNOK)
+						
+					
+	# function saves all units not matching actual filter criteria in a temp list by domain
+	def saveFilteredUnitsByDomain(self, pCompareUnit):
+		self.lPLEUnitListTempOK = []
+		self.lPLEUnitListTempNOK = []
+		# save unit type for comparision
+		pUnitTypeInfo = gc.getUnitInfo(pCompareUnit.getUnitType())
+		eCompareDomain = pUnitTypeInfo.getDomainType()
+		for i in range(len(self.lPLEUnitList)):
+			pLoopUnit = self.getInterfacePlotUnit(i)
+			pUnitTypeInfo = gc.getUnitInfo(pLoopUnit.getUnitType())
+			eDomainType = pUnitTypeInfo.getDomainType()
+			# has the unit the correct domain and ismatching the current filter criteria
+			if (eDomainType == eCompareDomain) and (self.checkDisplayFilter(pLoopUnit)):					
+				# unit has to be displayed
+				self.lPLEUnitListTempOK.append(pLoopUnit)
+			else:
+				# unit has to be moved
+				self.lPLEUnitListTempNOK.append(pLoopUnit)
+		# loop to find all the cargo of units in the OK list. They don't have to be moved away.
+		lTempNOK 	= self.lPLEUnitListTempNOK[:]
+		lTempOK 	= self.lPLEUnitListTempOK[:]
+		for pLoopUnitNOK in lTempNOK:
+			# check if unit is cargo
+			if pLoopUnitNOK.isCargo():
+				# check if the units transport unit is a to be displayed unit
+				for pLoopUnitOK in lTempOK:
+					if pLoopUnitOK.getID() == pLoopUnitNOK.getTransportUnit().getID():
+						# remove cargo unit from NOK array and append it to OK array
+						self.lPLEUnitListTempNOK.remove(pLoopUnitNOK)
+						self.lPLEUnitListTempOK.append(pLoopUnitNOK)
+	
+	# finds plots where we can temprarily park some units.
+	# the "parking" is needed to avoid that the units are selected by the CyInterface.selectGroup() function.
+	def getTempPlot(self):
+		# first try : put them into another city
+		pPlayer = gc.getActivePlayer()
+		iPlayer = CyGame().getActivePlayer()
+		lCity = PyPlayer(iPlayer).getCityList()
+		pPlot = CyMap().plot(0,0)
+		dPlotList = {}
+		if not (self.pActPlot.isCity()):
+			# if actual plot is not a city -> use first available city to park units
+			pPlot = lCity[0].plot()
+			for d in range(DomainTypes.NUM_DOMAIN_TYPES):	
+				dPlotList[d] = pPlot
+		elif (pPlayer.getNumCities() > 1):
+			# if actual plot is a city -> use next available city to park units
+			for i in range(pPlayer.getNumCities()):
+				pPlot =  lCity[i].plot()
+				if (pPlot.getX() != self.pActPlot.getX()) or (pPlot.getY() != self.pActPlot.getY()):
+					break
+			for d in range(DomainTypes.NUM_DOMAIN_TYPES):	
+				dPlotList[d] = pPlot
+		else:
+			# no city available -> place units around the capital. There is the smallest chance to reveal a plot.
+			lList = []
+			pCapital = PyPlayer(iPlayer).getCapitalCity()
+			for dx in range(-1, 2):
+				for dy in range(-1, 2):
+					if dx != 0 and dy != 0:
+						pPlot = CyMap().plot(pCapital.getX()+dx, pCapital.getY()+dy)
+						lList.append(pPlot)
+			for d in range(DomainTypes.NUM_DOMAIN_TYPES):	
+				dPlotList[d] = lList[d]				
+		return dPlotList
+			
+	# temporariliy moves a unit away, so that the select group works well.
+	def tempMove(self, iMode):
+		if iMode == 0:
+			dTempPlots = self.getTempPlot()
+		for i in range(len(self.lPLEUnitListTempNOK)):
+			pLoopUnit = self.lPLEUnitListTempNOK[i]
+			eDomainType = gc.getUnitInfo(pLoopUnit.getUnitType()).getDomainType()
+			# move unit to temp plot. 
+			if iMode == 0:				
+				pTempPlot = dTempPlots[eDomainType]
+				pLoopUnit.setXY( pTempPlot.getX(), pTempPlot.getY())
+			else:
+				pLoopUnit.setXY( self.pActPlot.getX(), self.pActPlot.getY() )
+
+	# replacement of the civ 4 version
+	def selectGroup(self, iID, bShift, bCtrl, bAlt):
+		pUnit = self.listPLEButtons[iID][0]
+		# check if the unit has been selected from the city screen
+		bCityUp = CyInterface().isCityScreenUp()		
+		if not (self.pActPlotListUnit):
+			self.pActPlotListUnit = CyInterface().getHeadSelectedUnit()
+			self.pActPlotListGroup = self.pActPlotListUnit.getGroupID()
+		if (not (bShift or bCtrl or bAlt)):
+#			# save prev selections
+#			self.pLastPlotListUnit = self.pActPlotListUnit
+#			self.iLastPlotListGroup = self.pActPlotListUnit.getGroupID()
+			# save act selection
+			self.pActPlotListUnit = pUnit
+			self.iActPlotListGroup = pUnit.getGroupID()		
+			CyInterface().selectGroup( self.pActPlotListUnit, false, false, false )
+#			# check if the group has been changed 
+#			if (self.iLastPlotListGroup != self.iActPlotListGroup):
+#				self.deselectAll()
+#			# deselect last selected unit
+#			elif (self.pLastPlotListUnit):
+#				if (self.pLastPlotListUnit.IsSelected()):
+#					CyInterface().selectUnit(self.pLastPlotListUnit, false, true, false)
+#			# check if the group has not been changed and the unit is selected again -> deselect all other units of the group
+#			if (self.iLastPlotListGroup == self.iActPlotListGroup):
+#				CyInterface().selectUnit(self.pActPlotListUnit, true, true, true)
+#			else:
+#				CyInterface().selectUnit(self.pActPlotListUnit, false, true, true)
+		elif bShift and (not (bCtrl or bAlt)):
+			self.pActPlotListUnit = pUnit
+			self.iActPlotListGroup = pUnit.getGroupID()
+#			CyInterface().selectUnit(self.pActPlotListUnit, false, true, true)
+			CyInterface().selectGroup( self.pActPlotListUnit, true, false, false )
+		elif bCtrl and (not (bShift or bAlt)):
+			self.deselectAll()
+			self.pActPlotListUnit = pUnit
+			self.iActPlotListGroup = pUnit.getGroupID()
+			self.saveFilteredUnitsByType(self.pActPlotListUnit, false)
+			self.tempMove(0)
+			CyInterface().selectGroup( self.pActPlotListUnit, false, true, false )
+			self.tempMove(1)
+			self.bUpdatePLEUnitList = true
+		elif bCtrl and bShift and (not bAlt):
+#			# self.deselectAll()
+			self.pActPlotListUnit = pUnit
+			self.iActPlotListGroup = pUnit.getGroupID()
+			self.saveFilteredUnitsByType(self.pActPlotListUnit, true)
+			self.tempMove(0)
+			CyInterface().selectGroup( self.pActPlotListUnit, true, true, false )
+			self.tempMove(1)
+			self.bUpdatePLEUnitList = true
+		elif bAlt and (not (bCtrl or bShift)):
+			self.deselectAll()
+			self.pActPlotListUnit = pUnit
+			self.iActPlotListGroup = pUnit.getGroupID()
+			self.saveFilteredUnitsByDomain(self.pActPlotListUnit)
+			self.tempMove(0)
+			CyInterface().selectGroup( self.pActPlotListUnit, false, false, true )
+			self.tempMove(1)
+			self.bUpdatePLEUnitList = true		
+		# if we came from city screen -> focus view on the selected unit
+		if bCityUp:
+			CyCamera().JustLookAtPlot(self.pActPlot)
+
+################## general PLE functions ##################
+
+	# displays the units in the plot list with all the beloning objects
+	def displayUnitPlotListObjects( self, pLoopUnit, nRow, nCol ):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		
+		iCount = self.getI(nRow, nCol)	
+		self.listPLEButtons[iCount] = ( pLoopUnit, nRow, nCol )
+		self.bPLEHide = false
+		
+		# create the button name 
+		szString = self.PLOT_LIST_BUTTON_NAME + str(iCount)
+		
+		# set unit button image
+		screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
+		
+		# check if it is an player unit or not
+		if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
+			bEnable = True
+		else:
+			bEnable = False
+		# if player unit enable button (->visible, but not selectable)
+		screen.enable(szString, bEnable)
+		
+		# check if the units is selected
+		if (pLoopUnit.IsSelected()):
+			screen.setState(szString, True)
+		else:
+			screen.setState(szString, False)
+		# set select state of the unit button
+		screen.show( szString )
+		
+		# this if statement and everythign inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
+		# Wounded units will get a darker colored button.
+		if (pLoopUnit.isHurt()) and (self.CFG_WOUNDED_INDICATOR_ENABLED):
+			# wounded units -> darker button
+			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+				# fortified
+				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY_INJURED").getPath()								
+			elif (pLoopUnit.canMove()):
+				if (pLoopUnit.hasMoved()):
+					# unit moved, but some movement points are left
+					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED_INJURED").getPath()
+				else:
+					# unit did not move yet
+					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE_INJURED").getPath()
+			else:
+				# unit has no movement points left
+				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE_INJURED").getPath()
+		else:
+			# not wounded units -> default button
+			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+				# fortified
+				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()								
+			elif (pLoopUnit.canMove()):
+				if (pLoopUnit.hasMoved()):
+					# unit moved, but some movement points are left
+					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
+				else:
+					# unit did not move yet
+					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+			else:
+				# unit has no movement points left
+				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
+					
+		if (self.CFG_PROMO_INDICATOR_ENABLED):
+			# can unit be promoted ?
+			if (pLoopUnit.isPromotionReady()):
+				# place the promotion frame
+				szStringPromoFrame = szString+"PromoFrame"
+				screen.show( szStringPromoFrame )
+
+		x = self.getX( nCol )
+		y = self.getY( nRow )
+
+		if (self.CFG_UPGRADE_INDICATOR_ENABLED):
+			# can unit be upgraded ?
+			if (mt.checkAnyUpgrade(pLoopUnit)):
+				# place the upgrade arrow
+				szStringUpgrade = szString+"Upgrade"
+				szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
+				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.show( szStringUpgrade )
+		
+		if (self.CFG_HEALTH_BAR_ENABLED and (pLoopUnit.isFighting() == False or self.CFG_HIDE_HEALTH_BAR_WHILE_FIGHTING == False)):
+			# place the health bar
+			szStringHealthBar = szString+"HealthBar"
+			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
+			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )
+
+			if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+			elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+			else:
+				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
+													
+			screen.show( szStringHealthBar )
+
+		if (self.CFG_MOVE_BAR_ENABLED):
+			# place the move bar
+			fMaxMoves = float(pLoopUnit.baseMoves())
+			fCurrMoves = float(float(fMaxMoves)-float(pLoopUnit.getMoves()/60.0)+0.09) 
+			# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
+			szStringMoveBar = szString+"MoveBar"
+			if (fMaxMoves):
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, float( fCurrMoves ) / float( fMaxMoves ) )
+			else:
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, float(1.0) )
+			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )							
+			screen.show( szStringMoveBar )		
+		
+		# display the mission or activity info
+		if (self.CFG_MISSION_INFO_ENABLED): 
+			
+			# place the activity info below the unit icon.
+			szFileNameAction = ""						
+			eActivityType = pLoopUnit.getGroup().getActivityType()
+			eAutomationType = pLoopUnit.getGroup().getAutomateType()
+			
+			# is unit on air patrol/intercept mission
+			if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
+				# place "PAT" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
+				iOffset = 14
+			# is unit fortified for healing (wake up when healed)
+			elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
+				# place "HEAL" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
+				iOffset = 10
+			# is unit sentry (wake up when enemy in sight)
+			elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
+				# place "SEN" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
+				iOffset = 13
+			# is the turn for this unit skipped (wake up next turn)
+			elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
+				# place "SKIP" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
+				iOffset = 13
+			# has unit explaration mission
+			elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
+				# place "EXP" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
+				iOffset = 14
+			# is unit automated generally (only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
+				# place "AUT-B" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
+				iOffset = 8
+			# is unit automated for nearest city (only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
+				# place "AUT-C" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
+				iOffset = 8
+			# is unit automated for network(only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
+				# place "AUT-N" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
+				iOffset = 8
+			# has unit a mission
+			elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
+				# is the mission a "move to" mission
+				eMissionType = pLoopUnit.getGroup().getMissionType(0)
+				if ( (eMissionType == MissionTypes.MISSION_MOVE_TO) or \
+					 (eMissionType == MissionTypes.MISSION_MOVE_TO_UNIT) ):
+					# place "GOTO" icon
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
+					iOffset = 6
+			# if nothing of above, but unit is waiting -> unit is fortified
+			elif (pLoopUnit.isWaiting()):
+				# place "FORT" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
+				iOffset = 8
+						
+			# display the mission icon
+			if (szFileNameAction != ""):
+				szStringActionIcon = szString+"ActionIcon"
+				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+iOffset-3, y+29, 32, 8, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.show( szStringActionIcon )
+			
+		# display the colored spot icon
+		szStringIcon = szString+"Icon"
+#		screen.addDDSGFC( szStringIcon, szFileNameState, x-3, y-5, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		screen.addDDSGFC( szStringIcon, szFileNameState, x-3, y-7, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		screen.show( szStringIcon )
+	
+	# checks if the unit matches actual filter conditions
+	def checkDisplayFilter(self, pUnit):
+
+		# in case of Promotion or Upgrade Display 
+		if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+			# if unit is not promotion ready -> return
+			if not pUnit.isPromotionReady():
+				return false
+		elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
+			# if unit is not upgrade ready -> return
+			if not mt.checkAnyUpgrade(pUnit):
+				return false
+		elif pUnit.isCargo():
+			# in case the unit is a cargo unit, the decision is made by the tranporting unit. 
+			# that ensures, that cargo is always displayed or not displayed together with its tranporting unit
+			return self.checkDisplayFilter(pUnit.getTransportUnit())
+	
+		bFilterOK = false
+		# unit wounded and filter active
+		if (self.nPLEFilter & self.nPLEFilterModeWound):
+			if (pUnit.isHurt()):
+				bFilterOK = true
+
+		# unit not wounded and filter active
+		if (self.nPLEFilter & self.nPLEFilterModeNotWound):
+			if not (pUnit.isHurt()):
+				bFilterOK = true
+		
+		if bFilterOK:
+			bFilterOK = false
+			pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
+			
+			# is unit a air unit and filter active
+			if (self.nPLEFilter & self.nPLEFilterModeAir):
+				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_AIR):
+					bFilterOK = true
+			
+			# is unit a sea unit and filter active
+			if (self.nPLEFilter & self.nPLEFilterModeSea):
+				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_SEA):
+					bFilterOK = true
+
+			# is unit a land unit (or ICBM) and filter active
+			if (self.nPLEFilter & self.nPLEFilterModeLand):
+				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_LAND) or (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_IMMOBILE):
+					bFilterOK = true
+			
+			if bFilterOK:
+				bFilterOK = false
+				
+				# is unit a domestic unit and filter active (domestic means -> no Combat or AirCombat values!
+				if (self.nPLEFilter & self.nPLEFilterModeDom):
+					if ((pUnitTypeInfo.getCombat() == 0) and (pUnitTypeInfo.getAirCombat() == 0)):
+						bFilterOK = true
+
+				# is unit a combat unit and filter active (combat means -> Combat or AirCombat values > 0!
+				if (self.nPLEFilter & self.nPLEFilterModeMil):
+					if ((pUnitTypeInfo.getCombat() > 0) or (pUnitTypeInfo.getAirCombat() > 0)):
+						bFilterOK = true
+				
+				if bFilterOK:
+					bFilterOK = false
+				
+					# is the units owner the active player
+					if (self.nPLEFilter & self.nPLEFilterModeOwn):
+						if ( pUnit.getOwner() == gc.getGame().getActivePlayer() ):
+							bFilterOK = true
+						
+					# # is the units owner another player
+					if (self.nPLEFilter & self.nPLEFilterModeForeign):
+						if ( not ( pUnit.getOwner() == gc.getGame().getActivePlayer() )):
+							bFilterOK = true
+					
+					if bFilterOK:
+						return true
+						
+		return false
+		
+	# create an info set for each unit. This set is used to determine the order of the plot list buttons.
+	def getPLEUnitInfo(self, pUnit):
+		if pUnit.isCargo() and (self.nPLEGrpMode != self.PLE_GRP_PROMO) and (self.nPLEGrpMode != self.PLE_GRP_UPGRADE):
+			# if unit is cargo, we do retrieve the transport units characteristics to insert the cargo unit behind the tranport unit in the sort list.
+			pTransportUnit = pUnit.getTransportUnit()
+			setUnit = self.getPLEUnitInfo(pTransportUnit)
+			tReturn = (setUnit[self.IDX_PLAYER], setUnit[self.IDX_DOMAIN], setUnit[self.IDX_GROUPID], setUnit[self.IDX_COMBAT], setUnit[self.IDX_UNITTYPE], setUnit[self.IDX_LEVEL], setUnit[self.IDX_XP], pTransportUnit.getID(), pUnit.getID(), pUnit.getID(), pUnit)
+			return tReturn
+		else:
+			# retrieve player info
+			iPlayer = pUnit.getOwner()
+			# get gproup id of the unit. only when display mode = group
+			if (self.nPLEGrpMode == self.PLE_GRP_GROUPS):
+				if (pUnit.getGroup().getNumUnits() > 1):
+					iGroupID = pUnit.getGroupID()
+				else:
+					iGroupID = 0
+			else:
+				iGroupID = 0
+			# retrieve domain info
+			pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
+			eDomainType = pUnitTypeInfo.getDomainType()
+			# retrieve combat strength :
+			# - baseCombat is only set for ground units
+			# - airBaseCombat is set used for ait units
+			# - bombardRate is only set for Artillery 
+			# - bombRate is only set for Bombers
+			# the following calculation makes artillery/bombers listed before tanks/fighters
+			iCombatStr = pUnit.baseCombatStr() + 100 * pUnit.bombardRate() + pUnit.airBaseCombatStr() + 100 * pUnitTypeInfo.getBombRate()
+			# retrieve Unit type info
+			eUnitType = pUnit.getUnitType()
+			# retrieve unit level
+			iLevel = pUnit.getLevel()
+			# retrieve unit experience
+			iXP = pUnit.getExperience()	
+			# if unit has cargo...
+			if pUnit.cargoSpace() > 0:
+				iTransportUnit = pUnit.getID()
+			else:
+				iTransportUnit = 0
+			# in case of promotion view, do not consider combat strngth, unit level and unit experience. Otherise the sorting will change during promotion process
+			if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+				# return negatives for some elements for descending sorting of related column.			
+				tReturn = (iPlayer, eDomainType, -iGroupID, 0, -eUnitType, 0, 0, iTransportUnit, 0, pUnit.getID(), pUnit)
+			else:
+				# return negatives for some elements for descending sorting of related column.			
+				tReturn = (iPlayer, eDomainType, -iGroupID, -iCombatStr, -eUnitType, -iLevel, -iXP, iTransportUnit, 0, pUnit.getID(), pUnit)
+			return tReturn
+			
+	# creates a sorted unit list of the plot depending on the current grouping
+	def getUnitList(self, pPlot):
+		# local list to store unit order
+		self.lPLEUnitList = []
+		# loop for all units on the actual plot
+		for i in range(pPlot.getNumUnits()):
+			# retrieve single unit
+			pUnit = pPlot.getUnit(i)
+			# only units which are visible for the player 
+			if not pUnit.isInvisible(gc.getPlayer(gc.getGame().getActivePlayer()).getTeam(), true):
+				# check if the unit is loaded into any tranporter
+				# append empty list element. Each element stores the following information in given order :
+				lUnitInfo = self.getPLEUnitInfo(pUnit)
+				self.lPLEUnitList.append( lUnitInfo )
+				self.dPLEUnitInfo[ pUnit.getID() ] = lUnitInfo
+		# sort list
+		self.lPLEUnitList.sort()			
+		
+	# replaces the buggy civ 4 version.
+	def getInterfacePlotUnit(self, i):
+		return self.lPLEUnitList[i][self.IDX_UNIT]
+	
+	# displayes all the possible promotion buttons for a unit 
+	def displayUnitPromos(self, pUnit, nRow, nCol):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		lPromos = mt.getPossiblePromos(pUnit)
+		# remove the 'Lead by Warlord' promotion, if any
+		for i in range(len(lPromos)):
+			if (gc.getPromotionInfo(lPromos[i]).getType() == 'PROMOTION_LEADER'):
+				lPromos.pop(i)
+				break
+		# determine which dimension is the unit and which the promotion
+		if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+			iU = nRow
+		else:
+			iU = nCol
+		# display the promotions
+		for i in range(len(lPromos)):
+			if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+				nCol += 1
+			else:
+				nRow += 1
+			x = self.getX( nCol )
+			y = self.getY( nRow )
+			if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+				iP = nCol
+			else:
+				iP = nRow
+			iPromo = lPromos[i]
+			sID = string.zfill(str(iU), 2) + string.zfill(str(iP), 2)
+			szStringUnitPromo = self.PLOT_LIST_PROMO_NAME + sID
+			szFileNamePromo = gc.getPromotionInfo(iPromo).getButton()
+			screen.setImageButton( szStringUnitPromo, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, gc.getPromotionInfo(iPromo).getActionInfoIndex(), -1 )
+			screen.show( szStringUnitPromo )
+		self.dUnitPromoList[iU] = lPromos
+		return
+
+	# performs the units promotion
+	def doPromotion(self, id):
+		idPromo		= id % 100
+		idUnit		= id / 100
+		pUnit 		= self.listPLEButtons[idUnit][0]
+		iPromo		= self.dUnitPromoList[idUnit][idPromo-1]
+		pUnit.promote(iPromo, -1)
+		
+		
+	# displayes all the possible upgrade buttons for a unit 
+	def displayUnitUpgrades(self, pUnit, nRow, nCol):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )		
+		lUpgrades 	= []
+		lUnits		= []
+		
+		# reading all upgrades
+		lUpgrades = mt.getPossibleUpgrades(pUnit)
+		
+		# determine which dimension is the unit and which the upgrade
+		if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+			iU = nRow
+		else:
+			iU = nCol
+		
+		# displaying the results
+		for i in range(len(lUpgrades)):
+			if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+				nCol += 1
+			else:
+				nRow += 1
+			x = self.getX( nCol )
+			y = self.getY( nRow )
+			if (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+				iP = nCol
+			else:
+				iP = nRow
+			iUnitIndex = lUpgrades[i]
+			lUnits.append(iUnitIndex)
+			sID = string.zfill(str(iU), 2) + string.zfill(str(iP), 2)
+			szStringUnitUpgrade = self.PLOT_LIST_UPGRADE_NAME + sID
+			szFileNameUpgrade = gc.getUnitInfo(iUnitIndex).getButton()
+			screen.setImageButton( szStringUnitUpgrade, szFileNameUpgrade, x, y, 34, 34, WidgetTypes.WIDGET_GENERAL, iUnitIndex, -1 )
+			if pUnit.canUpgrade(iUnitIndex, false):
+				screen.enable(szStringUnitUpgrade, true)
+			else:
+				screen.enable(szStringUnitUpgrade, false)
+			screen.show( szStringUnitUpgrade )
+		self.dUnitUpgradeList[iU] = lUnits
+		return
+			
+	# performs the unit upgrades
+	def doUpgrade(self, id):
+		idUpgrade		= id % 100
+		idUnit			= id / 100
+		pUnit 			= self.listPLEButtons[idUnit][0]
+		iUnitType		= self.dUnitUpgradeList[idUnit][idUpgrade-1]		
+		if mt.bCtrl():
+			pPlot = pUnit.plot()
+			iCompUnitType = pUnit.getUnitType()
+			for i in range(pPlot.getNumUnits()):
+				pLoopUnit = pPlot.getUnit(i)
+				if (pLoopUnit.getUnitType() == iCompUnitType):
+					pLoopUnit.doCommand(CommandTypes.COMMAND_UPGRADE, iUnitType, 0)
+		elif mt.bAlt():
+			pActPlayer = gc.getActivePlayer()
+			iCompUnitType = pUnit.getUnitType()
+			for i in range(pActPlayer.getNumUnits()):
+				pLoopUnit = pActPlayer.getUnit(i)
+				if (pLoopUnit.getUnitType() == iCompUnitType):
+					pLoopUnit.doCommand(CommandTypes.COMMAND_UPGRADE, iUnitType, 0)
+		else:
+			pUnit.doCommand(CommandTypes.COMMAND_UPGRADE, iUnitType, 0)		
+
+##################### info pane (mouse over) functions ########################
+		
+	# handles display of the promotion bottun info pane
+	def showPromoInfoPane(self, id):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		idPromo		= id % 100
+		idUnit		= id / 100
+		pUnit 		= self.listPLEButtons[idUnit][0]
+		iPromo		= self.dUnitPromoList[idUnit][idPromo-1]
+		
+		# promo info
+		szPromoInfo = u"<font=2>" + mt.removeLinks(CyGameTextMgr().getPromotionHelp(iPromo, false)) + u"</font>\n"
+		
+		# unit level 
+		iLevel = pUnit.getLevel()
+		iMaxLevel = mt.GetPossiblePromotions(pUnit.experienceNeeded(), pUnit.getExperience())
+		if iMaxLevel <> iLevel:
+			# actual / available (= number of possible promotions)
+			szLevel = u"<font=2>" + localText.getText("INTERFACE_PANE_LEVEL", ()) + u"%i / %i" % (iLevel, (iMaxLevel+iLevel)) + u"</font>\n"
+		else:
+			# actual 
+			szLevel = u"<font=2>" + localText.getText("INTERFACE_PANE_LEVEL", ()) + u"%i" % iLevel + u"</font>\n"
+
+		# unit experience (actual / needed)
+		iExperience = pUnit.getExperience()
+		if (iExperience > 0):
+			szExperience = u"<font=2>" + localText.getText("INTERFACE_PANE_EXPERIENCE", ()) + u": %i / %i" %(iExperience, pUnit.experienceNeeded()) + u"</font>\n"
+		else:
+			szExperience = u""
+			
+		szText = szPromoInfo + szLevel + szExperience
+			
+		# display the info pane
+		self.displayInfoPane(szText)
+		
+	def hidePromoInfoPane(self):
+		self.hideInfoPane()
+
+	# handles display of the promotion bottun info pane
+	def showUpgradeInfoPane(self, id):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		idUpgrade		= id % 100
+		idUnit			= id / 100
+		pUnit 			= self.listPLEButtons[idUnit][0]
+		iUnitType		= self.dUnitUpgradeList[idUnit][idUpgrade-1]		
+		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)		
+		
+		# reading attributes
+		szUnitName 		= localText.changeTextColor(pUnitTypeInfo.getDescription(), gc.getInfoTypeForString(self.CFG_INFOPANE_COLOR_UNIT_COL)) + u"\n"
+		if pUnitTypeInfo.getUnitCombatType() != -1:
+			szCombatType	= gc.getUnitCombatInfo(pUnitTypeInfo.getUnitCombatType()).getDescription() + u"\n"
+		else:
+			szCombatType = u""
+		if (pUnitTypeInfo.getAirCombat() > 0):
+			iStrength = pUnitTypeInfo.getAirCombat()
+		else:
+			iStrength = pUnitTypeInfo.getCombat()
+		szStrength = u"%i "%iStrength + u"%c" % CyGame().getSymbolID( FontSymbols.STRENGTH_CHAR )
+		szMovement = u", %i "%pUnitTypeInfo.getMoves()+ u"%c" % CyGame().getSymbolID(FontSymbols.MOVES_CHAR)
+		if (pUnitTypeInfo.getAirRange() > 0):
+			szRange = u", " + localText.getText("TXT_KEY_UNIT_AIR_RANGE", ( pUnitTypeInfo.getAirRange(), ) ) + u"\n"
+		else:
+			szRange = u"\n"
+		szSpecialText = mt.removeLinks(CyGameTextMgr().getUnitHelp( iUnitType, True, False, False, None )[1:]) + "\n"
+			
+		# determining the unit upgrade price
+		iUpgradePriceSingle 	= mt.getUpgradePrice(pUnit, iUnitType, 0)
+#		iUpgradePriceGrp 		= mt.getUpgradePrice(pUnit, iUnitType, 1)
+		iUpgradePricePlot 		= mt.getUpgradePrice(pUnit, iUnitType, 2)
+		iUpgradePriceAll 		= mt.getUpgradePrice(pUnit, iUnitType, 3)
+		
+		iGold = gc.getActivePlayer().getGold()	
+		if iUpgradePriceSingle > iGold:
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+		else:
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+		if iUpgradePricePlot > iGold:
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+		else:
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+		if iUpgradePriceAll > iGold:
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+		else:
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+		
+		szUpgradePrice = szUpgradePriceSingle + u" / " + szUpgradePricePlot + u" / " + szUpgradePriceAll+ u" %c" %  gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar() + u"\n"
+		
+		szUpgradeHelp = localText.getText("TXT_KEY_PLE_UPGRADE_HELP", () )		
+
+		szText 		= u"<font=2>" + szUnitName + \
+						szCombatType  + \
+						szStrength  + \
+						szMovement + \
+						szRange  + \
+						szSpecialText + \
+						szUpgradePrice + \
+						szUpgradeHelp + \
+					u"</font>"
+					
+		# display the info pane
+		self.displayInfoPane(szText)
+				
+	def hideUpgradeInfoPane(self):
+		self.hideInfoPane()
+				
+	# handles the diaplay of the units info pane
+	def showUnitInfoPane(self, id):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+
+		pUnit 			= self.listPLEButtons[id][0]
+		iUnitType 		= pUnit.getUnitType()
+		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)
+		eUnitDomain 	= pUnitTypeInfo.getDomainType()
+	
+		#mt.debug("id:%i; iUnit:%i"%(id, iUnit))
+		
+		# get units owner name if its not a player unit
+		if (pUnit.getOwner() != gc.getGame().getActivePlayer()):
+			pOwner = gc.getPlayer(pUnit.getOwner())
+			szOwner = u"<font=2> [" + localText.changeTextColor(pOwner.getName(), pOwner.getPlayerColor()) + u"]</font>"
+		else:
+			szOwner = u""
+				
+		# unit type description + unit name (if given)
+		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), gc.getInfoTypeForString(self.CFG_INFOPANE_COLOR_UNIT_COL)) + szOwner + u"</font>\n"
+			
+		# strength 
+		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
+			fCurrStrength 	= float(pUnit.airCurrCombatStr()*0.01)
+			fMaxStrength 	= float(pUnit.airMaxCombatStr()*0.01)
+		else:
+			fCurrStrength 	= float(pUnit.baseCombatStr())*float(1.0-pUnit.getDamage()*0.01)
+			fMaxStrength 	= float(pUnit.baseCombatStr())
+		if fCurrStrength != fMaxStrength:
+			if float(fMaxStrength*float(mt.getPlotHealFactor(pUnit))*0.01) == 0:
+				iTurnsToHeal = 999
+			else:
+				iTurnsToHeal 		= int((fMaxStrength-fCurrStrength)/float(fMaxStrength*float(mt.getPlotHealFactor(pUnit))*0.01)+0.999) # force to round upwards
+			szCurrStrength 		= u" %.1f" % fCurrStrength
+			szMaxStrength 		= u" / %i" % fMaxStrength
+			if mt.getPlotHealFactor(pUnit) != 0:
+				szTurnsToHeal 		= u" (%i)" % iTurnsToHeal
+			else:
+				szTurnsToHeal = u" (Not Healing)"
+		else: 
+			iTurnsToHeal 		= 0
+			szCurrStrength 		= u" %i" % fCurrStrength
+			szMaxStrength 		= u""		
+			szTurnsToHeal 		= u""
+		szStrength = u"<font=2>" + szCurrStrength + szMaxStrength + szTurnsToHeal + u"%c" % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR) + u"</font>\n" 
+			
+		# movement
+		fMaxMoves = float(pUnit.baseMoves())
+		fCurrMoves = (float(fMaxMoves)-float(pUnit.getMoves()/60.0))
+		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
+			szAirRange 		= u", " + localText.getText("TXT_KEY_UNIT_AIR_RANGE", ( pUnit.airRange(), ) ) 
+		else:
+			szAirRange 		= u""
+		if fCurrMoves != 0:
+			szCurrMoves = u" %.1f" % fCurrMoves
+			szMaxMoves 	= u" / %i" % fMaxMoves
+		else:
+			szCurrMoves = u" %i" % fMaxMoves
+			szMaxMoves 	= u""
+		szMovement = u"<font=2>" + szCurrMoves + szMaxMoves + u"%c"%(CyGame().getSymbolID(FontSymbols.MOVES_CHAR)) + szAirRange + u"</font>\n"
+
+		# compressed display for standard display
+		szStrengthMovement = u"<font=2>" + szCurrStrength + szMaxStrength + szTurnsToHeal + u"%c" % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR) + ", " + \
+							szCurrMoves + szMaxMoves + u"%c"%(CyGame().getSymbolID(FontSymbols.MOVES_CHAR)) + szAirRange + u"</font>\n"
+							
+		# civilization type
+		szCiv = u""
+#		iCiv = pUnit.getCivilizationType()
+#		for i in range(gc.getMAX_PLAYERS()):
+#			pLoopPlayer = gc.getPlayer(i)
+#			if pLoopPlayer.getCivilizationType() == iCiv:
+#				break
+#		szCiv = u"<font=2>100% " + localText.changeTextColor(pLoopPlayer.getCivilizationAdjective(0), pLoopPlayer.getPlayerColor()) + u"</font>\n"
+	
+		# unit level
+		iLevel = pUnit.getLevel()
+		iMaxLevel = mt.GetPossiblePromotions(pUnit.experienceNeeded(), pUnit.getExperience())
+		if (iMaxLevel > 0) or (iLevel > 1):
+			if iMaxLevel <> iLevel:
+				szLevel = u"<font=2>" + localText.getText("INTERFACE_PANE_LEVEL", ()) + u" %i / %i" % (iLevel, (iMaxLevel+iLevel)) + u"</font>\n"
+			else:
+				szLevel = u"<font=2>" + localText.getText("INTERFACE_PANE_LEVEL", ()) + u" %i" % iLevel + u"</font>\n"
+		else:
+			szLevel = u""
+
+		# unit experience (actual / needed (possible promos))
+		iExperience = pUnit.getExperience()
+		if (iExperience > 0):
+			szExperience = u"<font=2>" + localText.getText("INTERFACE_PANE_EXPERIENCE", ()) + u": %i / %i" %(iExperience, pUnit.experienceNeeded()) + u"</font>\n"
+		else:
+			szExperience = u""
+
+		# cargo space
+		iCargoSpace = pUnit.cargoSpace()
+		if iCargoSpace > 0:
+			iCargo = pUnit.getCargo()
+			szCargo = u"<font=2>" + localText.getText("TXT_KEY_UNIT_HELP_CARGO_SPACE", (iCargo, iCargoSpace ) ) + u"</font>\n"
+		else:
+			szCargo = u""
+				
+		# fortify bonus
+		szFortifyBonus = u"" 
+		iFortifyBonus = pUnit.fortifyModifier()
+		if iFortifyBonus > 0:
+			szFortifyBonus = u"<font=2>" + localText.getText("TXT_KEY_UNIT_HELP_FORTIFY_BONUS", (iFortifyBonus, )) + u"\n" + u"</font>"
+	
+		# unit type specialities 
+		szSpecialText 	= u"<font=2>" + localText.getText("TXT_KEY_PEDIA_SPECIAL_ABILITIES", ()) + u":\n" + CyGameTextMgr().getUnitHelp( iUnitType, true, false, false, None )[1:] + u"</font>"
+		szSpecialText = localText.changeTextColor(szSpecialText, gc.getInfoTypeForString(self.CFG_INFOPANE_UNITTYPE_SPECS_COL))
+		
+		if iLevel > 1:
+			szSpecialText += "\n" + localText.changeTextColor(mt.getPromotionInfoText(pUnit), gc.getInfoTypeForString(self.CFG_INFOPANE_PROMO_SPECS_COL))
+		szSpecialText = mt.removeLinks(szSpecialText)
+
+		# count the promotions
+		szPromotion = u""
+		iPromotionCount = 0
+		for i in range(gc.getNumPromotionInfos()):
+			if pUnit.isHasPromotion(i):
+				iPromotionCount += 1
+		if iPromotionCount > 0:
+			szPromotion = u"\n"*((iPromotionCount/self.CFG_INFOPANE_BUTTON_PER_LINE)+1)
+
+		# build text
+		szText 	= szUnitName + \
+				szPromotion + \
+				szStrengthMovement + \
+				szLevel + \
+				szExperience + \
+				szCargo + \
+				szCiv + \
+				szFortifyBonus + \
+				szSpecialText
+
+		# display the info pane
+		dy = self.displayInfoPane(szText)
+					
+		# show promotion buttons
+		iTemp = 0
+		for i in range(gc.getNumPromotionInfos()):
+			if pUnit.isHasPromotion(i):
+				szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
+				self.displayUnitInfoPromoButtonPos( szName, iTemp, dy-1*self.CFG_INFOPANE_PIX_PER_LINE_1 )
+				screen.show( szName )
+				iTemp += 1
+							
+	def hideUnitInfoPane(self):
+		self.hideUnitInfoPromoButtons()
+		self.hideInfoPane()
+		
+	def hideUnitInfoPromoButtons(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		for i in range(gc.getNumPromotionInfos()):
+			szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
+			screen.hide( szName )
+		self.bUnitPromoButtonsActive = false
+			
+	# displayes the units promotion buttons in the info pane. They are not part of the info pane.
+	def displayUnitInfoPromoButtonPos( self, szName, iPromotionCount, yOffset ):
+		self.bUnitPromoButtonsActive = true
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
+			y = self.CFG_INFOPANE_Y
+		else:
+			y = self.CFG_INFOPANE_Y2
+		screen.moveItem( szName, self.CFG_INFOPANE_X + 4 + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount % self.CFG_INFOPANE_BUTTON_PER_LINE)), \
+								 y + 4 - yOffset + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount / self.CFG_INFOPANE_BUTTON_PER_LINE)), -0.3 )
+		screen.moveToFront( szName )
+
+	# calculates the height of a text in pixels
+	def getTextLines(self, szText):
+		szText = mt.removeFonts(szText)
+		szText = mt.removeColor(szText)
+		szText = mt.removeLinks(szText)
+		iNormalLines = 0
+		iBulletLines = 0
+		lChapters = szText.split('\n')
+		sComp = u"%c"%CyGame().getSymbolID(FontSymbols.BULLET_CHAR)
+		for i in range(len(lChapters)):
+			iLen = len(lChapters[i])
+			iWidth = CyInterface().determineWidth(lChapters[i])/(self.CFG_INFOPANE_DX-3)+1
+			if (lChapters[i].find(sComp) != -1):
+				iBulletLines += iWidth
+			else:
+				iNormalLines += iWidth
+		dy = iNormalLines*self.CFG_INFOPANE_PIX_PER_LINE_1 + (iBulletLines)*self.CFG_INFOPANE_PIX_PER_LINE_2 + 20
+		return dy
+		
+	# base function to display a self sizing info pane
+	def displayInfoPane(self, szText):
+
+		self.bInfoPaneActive 	= true
+		self.iInfoPaneCnt  		+= 1
+		self.tLastMousePos 		= (CyInterface().getMousePos().x, CyInterface().getMousePos().y)
+
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		
+		# calculate text size
+		dy = self.getTextLines(szText)
+		
+		# draw panel
+		if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
+			y = self.CFG_INFOPANE_Y
+		else:
+			y = self.CFG_INFOPANE_Y2
+		screen.addPanel( self.UNIT_INFO_PANE, u"", u"", True, True, \
+						self.CFG_INFOPANE_X, y - dy, self.CFG_INFOPANE_DX, dy, \
+						PanelStyles.PANEL_STYLE_HUD_HELP )
+		
+		# create shadow text
+		szTextBlack = localText.changeTextColor(mt.removeColor(szText), gc.getInfoTypeForString("COLOR_BLACK"))
+		
+		# display shadow text
+		screen.addMultilineText( self.UNIT_INFO_TEXT_SHADOW, szTextBlack, \
+								self.CFG_INFOPANE_X + 5, y - dy + 5, \
+								self.CFG_INFOPANE_DX - 3, dy - 3, \
+								WidgetTypes.WIDGET_GENERAL, -1, -1, \
+								CvUtil.FONT_LEFT_JUSTIFY)
+		# display text
+		screen.addMultilineText( self.UNIT_INFO_TEXT, szText, \
+								self.CFG_INFOPANE_X + 4, y - dy + 4, \
+								self.CFG_INFOPANE_DX - 3, dy - 3, \
+								WidgetTypes.WIDGET_GENERAL, -1, -1, \
+								CvUtil.FONT_LEFT_JUSTIFY)
+					
+		return dy
+	
+	# hides the info pane
+	def hideInfoPane(self):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		screen.hide(self.UNIT_INFO_TEXT)
+		screen.hide(self.UNIT_INFO_TEXT_SHADOW)
+		screen.hide(self.UNIT_INFO_PANE)
+		self.bInfoPaneActive = false
+		self.iLastInfoPaneCnt = self.iInfoPaneCnt
+
+#################### functions for a units move area #######################
+		
+	# highlights the move area
+	def highlightMoves(self, id):
+		if self.CFG_MOVE_HIGHLIGHTER_ENABLED:
+			pUnit = self.listPLEButtons[id][0]
+			self.ASMA.highlightMoveArea(pUnit)
+
+	# hides the move area
+	def dehighlightMoves(self):
+		if self.CFG_MOVE_HIGHLIGHTER_ENABLED:
+			self.ASMA.dehighlightMoveArea()
+		
+## 12monkeys - PlotList Button Enhancement - end
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+
 	def numPlotListButtons(self):
 		return self.m_iNumPlotListButtons
 
@@ -177,11 +1904,57 @@ class CvMainInterface:
 		screen.setForcedRedraw(True)
 
 		# Find out our resolution
-		xResolution = screen.getXResolution()
-		yResolution = screen.getYResolution()
-		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
+## 12monkeys - PlotList Button Enhancement - begin
+#		xResolution = screen.getXResolution()
+#		yResolution = screen.getYResolution()
+#		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
+#		
+#		screen.setDimensions(0, 0, xResolution, yResolution)
+
+		self.pOldPlot = 0
+
+		self.xResolution = screen.getXResolution()
+		self.yResolution = screen.getYResolution()
 		
-		screen.setDimensions(0, 0, xResolution, yResolution)
+		# this is only to prevent changing all variables in the code. 
+		xResolution = self.xResolution
+		yResolution = self.yResolution
+		self.m_iNumPlotListButtons = (self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
+		screen.setDimensions(0, 0, self.xResolution, self.yResolution)
+		
+		config = CvConfigParser.CvConfigParser("PlotListEnhancements.ini")		
+		if (config != None):
+			self.CFG_MOVE_HIGHLIGHTER_ENABLED			= config.getboolean( "General", 		"Move Highlighter Enabled", 			true )
+			self.CFG_MISSION_INFO_ENABLED				= config.getboolean( "General", 		"Mission Info Enabled", 			true )
+			self.CFG_HEALTH_BAR_ENABLED				= config.getboolean( "General", 		"Health Bar Enabled", 				true )
+			self.CFG_HIDE_HEALTH_BAR_WHILE_FIGHTING			= config.getboolean( "General", 		"Hide Health Bar While Fighting",		true )
+			self.CFG_MOVE_BAR_ENABLED				= config.getboolean( "General", 		"Move Bar Enabled", 				true )
+			self.CFG_UPGRADE_INDICATOR_ENABLED			= config.getboolean( "General", 		"Upgrade Indicator Enabled",			true )
+			self.CFG_PROMO_INDICATOR_ENABLED			= config.getboolean( "General", 		"Promotion Indicator Enabled",			true )
+			self.CFG_WOUNDED_INDICATOR_ENABLED			= config.getboolean( "General", 		"Wounded Indicator Enabled",			true )
+			self.CFG_VERTICAL_ITEM_SPACING 				= config.getint( "Item Spacing", 		"Vertical Item Spacing", 			42 )
+			self.CFG_HORIZONTAL_ITEM_SPACING 			= config.getint( "Item Spacing", 		"Horizontal Item Spacing", 			34 )
+			self.CFG_INFOPANE_PIX_PER_LINE_1 			= config.getint( "Info Pane", 			"Pixel Per Line Type 1", 			24 )
+			self.CFG_INFOPANE_PIX_PER_LINE_2 			= config.getint( "Info Pane", 			"Pixel Per Line Type 2", 			19 )
+			self.CFG_INFOPANE_X 					= config.getint( "Info Pane", 			"X Position", 					5 )
+			self.CFG_INFOPANE_Y 					= config.getint( "Info Pane", 			"Y Position", 					160 )
+			self.CFG_INFOPANE_DX 					= config.getint( "Info Pane", 			"X Size", 					290 )
+			self.CFG_INFOPANE_COLOR_UNIT_COL			= config.get( "Info Pane Colors", 		"Unit Name Color", 				"COLOR_YELLOW" )
+			self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL			= config.get( "Info Pane Colors", 		"Upgrade Possible Color",			"COLOR_GREEN" )
+			self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL		= config.get( "Info Pane Colors", 		"Upgrade Not Possible Color", 			"COLOR_RED" )
+			self.CFG_INFOPANE_PROMO_SPECS_COL			= config.get( "Info Pane Colors", 		"Promotion Specialties Color",			"COLOR_LIGHT_GREY" )
+			self.CFG_INFOPANE_UNITTYPE_SPECS_COL			= config.get( "Info Pane Colors", 		"Unit Type Specialties Color",			"COLOR_WHITE" )
+			self.CFG_STACKEDBAR_HEALTH_COL				= config.get( "Stacked Bar Colors", 		"Health Color",					"COLOR_GREEN" )
+			self.CFG_STACKEDBAR_WOUNDED_COL				= config.get( "Stacked Bar Colors", 		"Wounded Color",				"COLOR_RED" )
+			self.CFG_STACKEDBAR_MOVE_COL				= config.get( "Stacked Bar Colors", 		"Movement Color",				"COLOR_BLUE" )
+			self.CFG_STACKEDBAR_NOMOVE_COL				= config.get( "Stacked Bar Colors", 		"No Movement Color",				"COLOR_YELLOW" )
+			
+		self.CFG_INFOPANE_Y		 			= yResolution - self.CFG_INFOPANE_Y
+		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1-2
+		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
+		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
+				
+## 12monkeys - PlotList Button Enhancement - end
 
 		# Set up our global variables...
 		g_NumEmphasizeInfos = gc.getNumEmphasizeInfos()
@@ -389,48 +2162,71 @@ class CvMainInterface:
 		# PLOT LIST BUTTONS
 		# *********************************************************************************
 
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
-			yPixel = yResolution - 169 + yRow - 3
-			xPixel = 315 - 3
-			xWidth = self.numPlotListButtons() * 34 + 3
-			yHeight = 32 + 3
-		
-			szStringPanel = "PlotListPanel" + str(j)
-			screen.addPanel(szStringPanel, u"", u"", True, False, xPixel, yPixel, xWidth, yHeight, PanelStyles.PANEL_STYLE_EMPTY)
+## 12monkeys - PlotList Button Enhancement - begin
+#		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
+#			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+#			yPixel = yResolution - 169 + yRow - 3
+#			xPixel = 315 - 3
+#			xWidth = self.numPlotListButtons() * 34 + 3
+#			yHeight = 32 + 3
+#		
+#			szStringPanel = "PlotListPanel" + str(j)
+#			screen.addPanel(szStringPanel, u"", u"", True, False, xPixel, yPixel, xWidth, yHeight, PanelStyles.PANEL_STYLE_EMPTY)
+#
+#			for i in range(self.numPlotListButtons()):
+#				k = j*self.numPlotListButtons()+i
+#				
+#				xOffset = i * 34
+#				
+#				szString = "PlotListButton" + str(k)
+#				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
+#				screen.hide( szString )
+#				
+#				szStringHealth = szString + "Health"
+#				screen.addStackedBarGFCAt( szStringHealth, szStringPanel, xOffset + 3, 26, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, k, -1 )
+#				screen.hide( szStringHealth )
+#				
+#				szStringIcon = szString + "Icon"
+#				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+#				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+#				screen.hide( szStringIcon )
 
-			for i in range(self.numPlotListButtons()):
-				k = j*self.numPlotListButtons()+i
+		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
+		for i in range( self.iMaxPlotListIcons ):		
+			# create button name
+			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
 				
-				xOffset = i * 34
-				
-				szString = "PlotListButton" + str(k)
+			x = self.getX( self.getCol( i ) )
+			y = self.getY( self.getRow( i ) )
+			
+			# place/init the promotion frame. Important to have it at first place within the for loop.
+			szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
+			szStringPromoFrame = szString+"PromoFrame"
+			screen.addDDSGFC( szStringPromoFrame, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, -1, -1 )
+			screen.hide( szStringPromoFrame )
 
-# BUG - plot list - start
-				szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
-				szStringPromoFrame  = szString + "PromoFrame"
-				screen.addDDSGFCAt( szStringPromoFrame , szStringPanel, szFileNamePromo, xOffset +  2,  2, 34, 34, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.hide( szStringPromoFrame  )
-# BUG - plot list - end
+			# place the plot list unit button
+			screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+			screen.hide( szString )
+	
+			# place/init the health bar. Important to have it at last place within the for loop.
+			szStringHealthBar = szString+"HealthBar"
+#			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(self.CFG_STACKEDBAR_HEALTH_COL) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(self.CFG_STACKEDBAR_WOUNDED_COL) )
+			screen.hide( szStringHealthBar )
 
-				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
-				screen.hide( szString )
-				
-				szStringHealth = szString + "Health"
-				screen.addStackedBarGFCAt( szStringHealth, szStringPanel, xOffset + 3, 26, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, k, -1 )
-				screen.hide( szStringHealth )
-				
-				szStringIcon = szString + "Icon"
-				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.hide( szStringIcon )
+			# place/init the movement bar. Important to have it at last place within the for loop.
+			szStringMoveBar = szString+"MoveBar"
+			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(self.CFG_STACKEDBAR_MOVE_COL) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(self.CFG_STACKEDBAR_NOMOVE_COL) )
+			screen.hide( szStringMoveBar )
 
-# BUG - plot list - start
-				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
-				szStringGreatGeneral  = szString + "GreatGeneral"
-				screen.addDDSGFCAt( szStringGreatGeneral , szStringPanel, szFileName, xOffset +  8,  0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-				screen.hide( szStringGreatGeneral  )
-# BUG - plot list - end
+		self.preparePlotListObjects()
+## 12monkeys - PlotList Button Enhancement  - end
+
 
 		# End Turn Text		
 		screen.setLabel( "EndTurnText", "Background", u"", CvUtil.FONT_CENTER_JUSTIFY, 0, yResolution - 188, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
@@ -651,11 +2447,24 @@ class CvMainInterface:
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
 
-		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
-		screen.hide( "PlotListMinus" )
+## 12monkeys - PlotList Button Enhancement - begin
+#		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
+#		screen.hide( "PlotListMinus" )
+#
+#		screen.setButtonGFC( "PlotListPlus", u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
+#		screen.hide( "PlotListPlus" )
+		
+		screen.setButtonGFC( self.PLOT_LIST_MINUS_NAME, u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
+		screen.hide( self.PLOT_LIST_MINUS_NAME )
+		screen.setButtonGFC( self.PLOT_LIST_PLUS_NAME, u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
+		screen.hide( self.PLOT_LIST_PLUS_NAME )
 
-		screen.setButtonGFC( "PlotListPlus", u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
-		screen.hide( "PlotListPlus" )
+		screen.setImageButton( self.PLOT_LIST_UP_NAME, ArtFileMgr.getInterfaceArtInfo("PLE_ARROW_UP").getPath(), 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ) + 5, yResolution - 171 + 5, 20, 20, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.hide( self.PLOT_LIST_UP_NAME )
+		screen.setImageButton( self.PLOT_LIST_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("PLE_ARROW_DOWN").getPath(), 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ) + 5, yResolution - 171 + 5, 20, 20, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.hide( self.PLOT_LIST_DOWN_NAME )
+
+## 12monkeys - PlotList Button Enhancement - end
 
 # BUG - Raw Commerce - start
 		iRawCommerceTop = 154
@@ -695,6 +2504,15 @@ class CvMainInterface:
 			szName = "PromotionButton" + str(i)
 			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), 180, yResolution - 18, 24, 24, WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
 			screen.hide( szName )
+
+## 12monkeys - PlotList Button Enhancement - begin
+			szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
+			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), \
+								180, yResolution - 18, \
+								self.CFG_INFOPANE_BUTTON_SIZE, self.CFG_INFOPANE_BUTTON_SIZE, \
+								WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
+			screen.hide( szName )
+## 12monkeys - PlotList Button Enhancement - end
 			
 		# *********************************************************************************
 		# SCORES
@@ -869,6 +2687,20 @@ class CvMainInterface:
 			screen.hide( "TimeText" )
 			screen.hide( "EraText" )
 # BUG - NJAGC - end
+
+## 12monkeys - PlotList Button Enhancement  - begin 			
+		# this ensures that the info pane is closed after a greater mouse pos change
+		if self.bInfoPaneActive and (self.iInfoPaneCnt == (self.iLastInfoPaneCnt+1)): 
+			tMousePos = CyInterface().getMousePos()
+			if (tMousePos.x < self.tLastMousePos[0]-self.iMousePosTol) or \
+				(tMousePos.x > self.tLastMousePos[0]+self.iMousePosTol) or \
+				(tMousePos.y < self.tLastMousePos[1]-self.iMousePosTol) or \
+				(tMousePos.y > self.tLastMousePos[1]+self.iMousePosTol):
+				self.hideInfoPane()
+				if self.bUnitPromoButtonsActive:
+					self.hideUnitInfoPromoButtons()
+
+## 12monkeys - PlotList Button Enhancement  - end
 
 		return 0
 
@@ -1254,8 +3086,16 @@ class CvMainInterface:
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-		xResolution = screen.getXResolution()
-		yResolution = screen.getYResolution()
+## 12monkeys - PlotList Button Enhancement - begin
+##		xResolution = screen.getXResolution()
+##		yResolution = screen.getYResolution()
+
+		self.xResolution = screen.getXResolution()
+		self.yResolution = screen.getYResolution()
+		
+		xResolution = self.xResolution
+		yResolution = self.yResolution
+## 12monkeys - PlotList Button Enhancement - end
 
 		bHandled = False
 		if ( CyInterface().shouldDisplayUnitModel() and CyEngine().isGlobeviewUp() == false and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
@@ -1297,214 +3137,350 @@ class CvMainInterface:
 		else:
 			screen.hide( "InterfaceUnitModel" )
 			
-		pPlot = CyInterface().getSelectionPlot()
+## 12monkeys - PlotList Button Enhancement - begin
+#		pPlot = CyInterface().getSelectionPlot()
+		
+		self.iLoopCnt += 1
+		
+		self.pActPlot = CyInterface().getSelectionPlot()
+		# if the plot change, reset plot list offset
+		if (self.pOldPlot):
+			# check if plot has changed
+			if (self.pOldPlot.getX() != self.pActPlot.getX()) or (self.pOldPlot.getY() != self.pActPlot.getY()):
+				self.pOldPlot = self.pActPlot
+				self.iColOffset = 0		
+				self.iRowOffset = 0		
+				self.bUpdatePLEUnitList = true
+				# mt.debug("update plot:"+str(self.iLoopCnt))
+		else:
+			# initialization
+			self.pOldPlot = self.pActPlot
+			self.bUpdatePLEUnitList = true
+			# mt.debug("update init:"+str(self.iLoopCnt))
+
+			
+		# check if the current unit has changed (eg. when it is unloaded). 
+		# if so, do a reinit PLE Unit List
+		pHeadSelectedUnit = CyInterface().getHeadSelectedUnit()
+		try:
+			id = pHeadSelectedUnit.getID()
+			# mt.debug("Sel Unit:"+str(id))
+			if (id in self.dPLEUnitInfo):
+				lActUnitInfo = self.getPLEUnitInfo( pHeadSelectedUnit ) 	
+				if (lActUnitInfo <> self.dPLEUnitInfo[ id ]):
+					self.bUpdatePLEUnitList = true
+					# mt.debug("update unload:"+str(self.iLoopCnt))
+		except:
+			# mt.debug("Sel Unit: <fail>")
+			pass
+
+		if (self.bUpdatePLEUnitList):
+			self.getUnitList(self.pActPlot)
+			self.bUpdatePLEUnitList = false
+			# mt.debug("Sel Unit: UPDATE!")
+
+		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
+			
+## 12monkeys - PlotList Button Enhancement - end
 
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
 		
-		screen.hide( "PlotListMinus" )
-		screen.hide( "PlotListPlus" )
-		
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			#szStringPanel = "PlotListPanel" + str(j)
-			#screen.hide(szStringPanel)
+## 12monkeys - PlotList Button Enhancement - begin
+#		screen.hide( "PlotListMinus" )
+#		screen.hide( "PlotListPlus" )
+#		
+#		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
+#			#szStringPanel = "PlotListPanel" + str(j)
+#			#screen.hide(szStringPanel)
+#			
+#			for i in range(self.numPlotListButtons()):
+#				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
+#				screen.hide( szString )
+#				
+#				szStringHealth = szString + "Health"
+#				screen.hide( szStringHealth )
+#
+#				szStringIcon = szString + "Icon"
+#				screen.hide( szStringIcon )
+#
+#		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
+#
+#			iVisibleUnits = CyInterface().getNumVisibleUnits()
+#			iCount = -(CyInterface().getPlotListColumn())
+
+		# hide all buttons
+		if (not self.bPLEHide):
+			self.hidePlotListButtonObjects()		
+				
+		if ( self.pActPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
+
+			nRow = 0
+			nCol = 0		
+			self.iVisibleUnits = CyInterface().getNumVisibleUnits()
 			
-			for i in range(self.numPlotListButtons()):
-				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
-				screen.hide( szString )
-
-# BUG - plot list - start
-				# hide promo frame
-				szStringPromoFrame  = szString+"PromoFrame"
-				screen.hide( szStringPromoFrame )
-
-				# hide mission info
-				szStringActionIcon = szString+"ActionIcon"
-				screen.hide( szStringActionIcon )			
-
-				# hide GG info
-				szStringGreatGeneral = szString+"GreatGeneral"
-				screen.hide( szStringGreatGeneral )			
-# BUG - plot list - end
+			if self.sPLEMode == self.PLE_MODE_STANDARD:
+				iCount = -self.iColOffset
+				nNumUnits = self.getMaxCol()
+			elif self.sPLEMode == self.PLE_MODE_MULTILINE:
+				iCount = 0
+				nNumUnits = self.iVisibleUnits
+			elif self.sPLEMode == self.PLE_MODE_STACK_VERT:
+				iCount = 0
+				nCol = -self.iColOffset
+				nNumUnits = self.iVisibleUnits
+			elif self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+				iCount = 0
+				nRow = -self.iRowOffset
+				nNumUnits = self.iVisibleUnits
 				
-				szStringHealth = szString + "Health"
-				screen.hide( szStringHealth )
-
-				szStringIcon = szString + "Icon"
-				screen.hide( szStringIcon )
-
-		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
-
-			iVisibleUnits = CyInterface().getNumVisibleUnits()
-			iCount = -(CyInterface().getPlotListColumn())
-				
+			bUpArrow = False
+			bDownArrow = False
+			bFirstLoop = true
+			
+## 12monkeys - PlotList Button Enhancement  - end
 
 			bLeftArrow = False
 			bRightArrow = False
 			
-			if (CyInterface().isCityScreenUp()):
-				iMaxRows = 1
-				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
-				iCount += iSkipped
-			else:
-				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
-				iCount += CyInterface().getPlotListOffset()
-				iSkipped = 0
-
-			CyInterface().cacheInterfacePlotUnits(pPlot)
-			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
-				pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
+## 12monkeys - PlotList Button Enhancement  - begin 			
+#			if (CyInterface().isCityScreenUp()):
+#				iMaxRows = 1
+#				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
+#				iCount += iSkipped
+#			else:
+#				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
+#				iCount += CyInterface().getPlotListOffset()
+#				iSkipped = 0
+#
+#			CyInterface().cacheInterfacePlotUnits(pPlot)
+#			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
+#				pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
+#				if (pLoopUnit):
+#
+#					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
+#						bLeftArrow = True
+#					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
+#						bRightArrow = True
+#						
+#					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
+#						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
+#							
+#						elif (pLoopUnit.canMove()):
+#							if (pLoopUnit.hasMoved()):
+#								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
+#							else:
+#								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+#						else:
+#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
+#
+#						szString = "PlotListButton" + str(iCount)
+#						screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
+#						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
+#							bEnable = True
+#						else:
+#							bEnable = False
+#						screen.enable(szString, bEnable)
+#
+#						if (pLoopUnit.IsSelected()):
+#							screen.setState(szString, True)
+#						else:
+#							screen.setState(szString, False)
+#						screen.show( szString )
+#						
+#						# place the health bar
+#						if (pLoopUnit.isFighting()):
+#							bShowHealth = False
+#						elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
+#							bShowHealth = pLoopUnit.canAirAttack()
+#						else:
+#							bShowHealth = pLoopUnit.canFight()
+#						
+#						if bShowHealth:
+#							szStringHealth = szString + "Health"
+#							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
+#							if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+#							elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+#							else:
+#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
+#							screen.show( szStringHealth )
+#						
+#						# Adds the overlay first
+#						szStringIcon = szString + "Icon"
+#						screen.changeDDSGFC( szStringIcon, szFileName )
+#						screen.show( szStringIcon )
+#
+#					iCount = iCount + 1
+#
+#			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
+#				screen.enable("PlotListMinus", bLeftArrow)
+#				screen.show( "PlotListMinus" )
+#	
+#				screen.enable("PlotListPlus", bRightArrow)
+#				screen.show( "PlotListPlus" )
+			
+			iLastUnitType = UnitTypes.NO_UNIT
+			iLastGroupID  = 0
+			# loop for all units on the plot
+			for i in range(len(self.lPLEUnitList)):
+			
+				pLoopUnit = self.getInterfacePlotUnit(i)
+				
 				if (pLoopUnit):
-
-					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
-						bLeftArrow = True
-					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
-						bRightArrow = True
-						
-					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
-						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
+					
+					# checks if the units matches actual filters
+					if (self.checkDisplayFilter(pLoopUnit)):
+													
+						if not pLoopUnit.isCargo():
+							iActUnitType = pLoopUnit.getUnitType()
+							iActGroupID  = pLoopUnit.getGroupID()
 							
-						elif (pLoopUnit.canMove()):
-							if (pLoopUnit.hasMoved()):
-								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
-							else:
-								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-						else:
-							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
-
-						szString = "PlotListButton" + str(iCount)
-						screen.changeImageButton( szString, pLoopUnit.getButton() )
-						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
-							bEnable = True
-						else:
-							bEnable = False
-						screen.enable(szString, bEnable)
-
-						if (pLoopUnit.IsSelected()):
-							screen.setState(szString, True)
-						else:
-							screen.setState(szString, False)
-						screen.show( szString )
-
-# BUG - plot list - start
-						if (BugScreens.isShowUnitPromo()
-						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()							
-						and pLoopUnit.isPromotionReady()):
-							szStringPromoFrame = szString+"PromoFrame"
-							screen.show( szStringPromoFrame )
-
-						iGreatGeneral = gc.getInfoTypeForString('PROMOTION_LEADER')
-						if (BugScreens.isShowGreatGeneral()
-						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()
-						and pLoopUnit.isHasPromotion(iGreatGeneral)):
-							szStringGreatGeneral = szString+"GreatGeneral"
-							screen.show( szStringGreatGeneral )
-
-						if (BugScreens.isShowUnitActions()
-						and pLoopUnit.getOwner() == gc.getGame().getActivePlayer()):
-							# place the activity info below the unit icon.
-							szFileNameAction = ""						
-							eActivityType = pLoopUnit.getGroup().getActivityType()
-							eAutomationType = pLoopUnit.getGroup().getAutomateType()
-
-							# is unit on air patrol/intercept mission
-							if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
-								# place "PAT" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
-								iOffset = 14
-							# is unit fortified for healing (wake up when healed)
-							elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
-								# place "HEAL" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
-								iOffset = 10
-							# is unit sentry (wake up when enemy in sight)
-							elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
-								# place "SEN" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
-								iOffset = 13
-							# is the turn for this unit skipped (wake up next turn)
-							elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
-								# place "SKIP" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
-								iOffset = 13
-							# has unit explaration mission
-							elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
-								# place "EXP" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
-								iOffset = 14
-							# is unit automated generally (only worker units)
-							elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
-								# place "AUT-B" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
-								iOffset = 8
-							# is unit automated for nearest city (only worker units)
-							elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
-								# place "AUT-C" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
-								iOffset = 8
-							# is unit automated for network(only worker units)
-							elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
-								# place "AUT-N" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
-								iOffset = 8
-							# has unit a mission
-							elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
-								# is the mission a "move to" mission
-								eMissionType = pLoopUnit.getGroup().getMissionType(0)
-								if ( (eMissionType == MissionTypes.MISSION_MOVE_TO) or \
-									 (eMissionType == MissionTypes.MISSION_MOVE_TO_UNIT) ):
-									# place "GOTO" icon
-									szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
-									iOffset = 6
-							# if nothing of above, but unit is waiting -> unit is fortified
-							elif (pLoopUnit.isWaiting()):
-								# place "FORT" icon
-								szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
-								iOffset = 8
-										
-							# display the mission icon
-							if (szFileNameAction != ""):
-								x = 315 + ((iCount % self.numPlotListButtons()) * 34)
-								y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
-								szStringActionIcon = szString+"ActionIcon"
-								screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+iOffset-3, y+29, 32, 8, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-								screen.show( szStringActionIcon )
-# BUG - plot list - end
-
-						# place the health bar
-						if (pLoopUnit.isFighting()):
-							bShowHealth = False
-						elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
-							bShowHealth = pLoopUnit.canAirAttack()
-						else:
-							bShowHealth = pLoopUnit.canFight()
-
-						if bShowHealth:
-							szStringHealth = szString + "Health"
-							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
-							if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-							elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
-							else:
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
-							screen.show( szStringHealth )
+						# standard view with scroll arrows
+						if (self.sPLEMode == self.PLE_MODE_STANDARD):
 						
-						# Adds the overlay first
-						szStringIcon = szString + "Icon"
-						screen.changeDDSGFC( szStringIcon, szFileName )
-						screen.show( szStringIcon )
+							if (self.iColOffset > 0):
+								bLeftArrow = True
+							if ((self.iVisibleUnits - self.getMaxCol() - self.iColOffset) > 0):
+								bRightArrow = True
+								
+							if ((iCount >= 0) and (iCount < nNumUnits )):
+								nCol = iCount
+								nRow = 0
+								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
 
-					iCount = iCount + 1
+						# multiline view
+						elif (self.sPLEMode == self.PLE_MODE_MULTILINE):						
 
-			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
-				screen.enable("PlotListMinus", bLeftArrow)
-				screen.show( "PlotListMinus" )
-	
-				screen.enable("PlotListPlus", bRightArrow)
-				screen.show( "PlotListPlus" )
+							if (self.iRowOffset > 0):
+								bDownArrow = True
+							if ((nRow >= self.getMaxRow()) > 0):
+								bUpArrow = True
+								
+							nCol = self.getCol( iCount ) 
+							nRow = self.getRow( iCount ) - self.iRowOffset
+							if ((nRow >= 0) and (iCount < nNumUnits ) and (nRow < self.getMaxRow())):
+								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								
+						# vertical stack view
+						elif (self.sPLEMode == self.PLE_MODE_STACK_VERT):
+
+							if (self.iColOffset > 0):
+								bLeftArrow = True
+							if (nCol >= self.getMaxCol()):
+								bRightArrow = True
+								
+							if (self.nPLEGrpMode == self.PLE_GRP_UNITTYPE):				
+								if (iLastUnitType != UnitTypes.NO_UNIT):
+									if (iActUnitType != iLastUnitType):
+										nCol += 1
+										nRow = 0
+									else:
+										nRow += 1
+										if (nRow >= self.getMaxRow()):										
+											nRow = 0
+											nCol += 1								
+							elif (self.nPLEGrpMode == self.PLE_GRP_GROUPS):
+								if (iLastGroupID != 0):
+									if (iActGroupID != iLastGroupID):
+										nCol += 1
+										nRow = 0
+									else:
+										nRow += 1
+										if (nRow >= self.getMaxRow()):										
+											nRow = 0
+											nCol += 1								
+							elif (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+								nRow = 0
+								if not bFirstLoop:
+									nCol += 1
+							elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
+								nRow = 0
+								if not bFirstLoop:
+									nCol += 1
+
+							if ((nCol >= 0) and (iCount < nNumUnits ) and (nCol < self.getMaxCol())):
+								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+									self.displayUnitPromos(pLoopUnit, nRow, nCol)
+								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
+									self.displayUnitUpgrades(pLoopUnit, nRow, nCol)
+
+						# horizontal stack view
+						elif (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
+
+							if (self.iRowOffset > 0):
+								bDownArrow = True
+							if ((nRow >= self.getMaxRow()) > 0):
+								bUpArrow = True
+								
+							if (self.nPLEGrpMode == self.PLE_GRP_UNITTYPE):
+								if ((iLastUnitType != UnitTypes.NO_UNIT)):
+									if (iActUnitType != iLastUnitType):
+										nRow += 1
+										nCol = 0
+									else:
+										nCol += 1
+										if (nCol >= self.getMaxCol()):										
+											nCol = 0
+											nRow += 1
+							elif (self.nPLEGrpMode == self.PLE_GRP_GROUPS):
+								if (iLastGroupID != 0):
+									if (iActGroupID != iLastGroupID):
+										nRow += 1
+										nCol = 0
+									else:
+										nCol += 1
+										if (nCol >= self.getMaxCol()):										
+											nCol = 0
+											nRow += 1
+							elif (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+								nCol= 0
+								if not bFirstLoop:
+									nRow += 1
+							elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
+								nCol= 0
+								if not bFirstLoop:
+									nRow += 1
+
+							if ((nRow >= 0) and (iCount < nNumUnits ) and (nRow < self.getMaxRow())):
+								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
+									self.displayUnitPromos(pLoopUnit, nRow, nCol)
+								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
+									self.displayUnitUpgrades(pLoopUnit, nRow, nCol)
+
+						iCount += 1
+						
+						iLastUnitType 	= iActUnitType
+						iLastGroupID  	= iActGroupID
+						bFirstLoop 		= false
+
+			# left/right scroll buttons
+			if 	( ( self.sPLEMode == self.PLE_MODE_STANDARD ) and ( self.iVisibleUnits > self.getMaxCol() ) ) or \
+				( ( self.sPLEMode == self.PLE_MODE_STACK_VERT ) and ( ( nCol >= self.getMaxCol() or ( self.iColOffset > 0 ) ) ) ):
+				screen.enable( self.PLOT_LIST_MINUS_NAME, bLeftArrow )
+				screen.show( self.PLOT_LIST_MINUS_NAME )
+				screen.enable( self.PLOT_LIST_PLUS_NAME, bRightArrow )
+				screen.show( self.PLOT_LIST_PLUS_NAME )
+				
+			# up/Down scroll buttons
+			if 	( ( self.sPLEMode == self.PLE_MODE_MULTILINE ) and ( ( nRow >= self.getMaxRow() or ( self.iRowOffset > 0 ) ) ) ) or \
+				( ( self.sPLEMode == self.PLE_MODE_STACK_HORIZ ) and ( ( nRow >= self.getMaxRow() or ( self.iRowOffset > 0 ) ) ) ):
+				screen.enable(self.PLOT_LIST_UP_NAME, bUpArrow )
+				screen.show( self.PLOT_LIST_UP_NAME )
+				screen.enable( self.PLOT_LIST_DOWN_NAME, bDownArrow )
+				screen.show( self.PLOT_LIST_DOWN_NAME )
+				
+			self.showPlotListButtonObjects()
+			
+		else:
+			if (not self.bPLEHide):
+				self.hidePlotListButtonObjects()		
+## 12monkeys - PlotList Button Enhancement  - end
 
 		return 0
 		
@@ -4381,6 +6357,21 @@ class CvMainInterface:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
+## 12monkeys - PlotList Button Enhancement  - begin
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON and inputClass.getFunctionName().startswith("PLE")):
+			self.showPLEInfoPane(inputClass.getFunctionName())
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF and inputClass.getFunctionName().startswith("PLE")):
+			self.hidePLEInfoPane()
+
+		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
+			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
+			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
+			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName())):	
+				return self.MainInterfaceInputMap.get(inputClass.getFunctionName())(inputClass)
+			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName() + "1")):	
+				return self.MainInterfaceInputMap.get(inputClass.getFunctionName() + "1")(inputClass)
+## 12monkeys - PlotList Button Enhancement  - end
+
 # BUG - Raw Commerce - start
 		global g_iYieldType
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
