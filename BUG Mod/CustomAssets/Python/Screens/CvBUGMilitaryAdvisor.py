@@ -94,7 +94,8 @@ class CvMilitaryAdvisor:
 		self.iPlayerPower = 0
 		self.iDemographicsMission = -1
 
-
+		# dict for upgrade units
+		self.FutureUnitsByUnitClass = {}
 
 
 
@@ -255,6 +256,12 @@ class CvMilitaryAdvisor:
 		self.deleteAllWidgets()
 		screen = self.getScreen()
 
+		#self.PrintUpgrades()
+		# build the future upgrade path array / list / dict - whatever!
+		if len(self.FutureUnitsByUnitClass) == 0:
+			self.buildFutureUnitsByUnitClass()
+
+		
 		# get Player arrays
 		iVassals = [[]] * gc.getMAX_PLAYERS()
 		iDefPacks = [[]] * gc.getMAX_PLAYERS()
@@ -741,31 +748,61 @@ class CvMilitaryAdvisor:
 
 
 
+	def PrintUpgrades(self):
+
+		for u in (self.FutureUnitsByUnitClass):
+			sDummy = "Unit Upgrade (%s): " % (gc.getUnitInfo(u).getDescription())
+
+			upgrades = self.FutureUnitsByUnitClass[u]
+			for k in upgrades:
+				sDummy += " %s" % (gc.getUnitInfo(k).getDescription())
+		
+			print sDummy
+		return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	def Grid_Strategic_Resources(self, iRow, iPlayer):
 		pPlayer = gc.getPlayer(iPlayer)
 		pActivePlayer = gc.getPlayer(self.iActivePlayer)
 
-		iPlayerUnits = self.getCanTrainUnits(iPlayer)
-		iActiveUnits = self.getCanTrainUnits(self.iActivePlayer)
+		iAIUnits = self.getCanTrainUnits(iPlayer)
+		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer)
 
-		# remove units that the active player does not know about
-		for iUnit in iPlayerUnits:
+		# remove units that the human does not know about
+		for iUnit in iAIUnits:
 			iDiscoverTech = gc.getUnitInfo(iUnit).getPrereqAndTech()
 			if not (gc.getTeam(pActivePlayer.getTeam()).isHasTech(iDiscoverTech)
 			or  pActivePlayer.canResearch(iDiscoverTech, False)):
-				iPlayerUnits.remove(iUnit)
+				iAIUnits.remove(iUnit)
 
-		# determine units that active player can build that player cannot
-		for iUnit in iActiveUnits:
-			if (iUnit not in iPlayerUnits):
+		# determine units that human can build that the AI cannot
+		for iUnit in iHumanUnits:
+			if self.isUnitUnique(iUnit, iAIUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
 				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, WidgetTypes.WIDGET_GENERAL, -1)
 
-		# determine units that player can build that active player cannot
-		for iUnit in iPlayerUnits:
-			if (iUnit not in iActiveUnits):
+		# determine units that AI can build that the human cannot
+		for iUnit in iAIUnits:
+			if self.isUnitUnique(iUnit, iHumanUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
 				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, WidgetTypes.WIDGET_GENERAL, -1)
 
@@ -820,15 +857,52 @@ class CvMilitaryAdvisor:
 		pPlayer = gc.getPlayer(iPlayer)
 		pCity = pPlayer.getCity(0)   # capital
 
-		iUnits = []
+		iUnits = set()
 		for i in range (gc.getNumUnitClassInfos()):
 			iUnit = gc.getCivilizationInfo(pPlayer.getCivilizationType()).getCivilizationUnits(i)
 			if (gc.getUnitInfo(iUnit).getUnitCombatType() > 0 # ie, not settler, worker, missionary, etc
 			and pCity.canTrain(iUnit, False, False)):
-				iUnits.append(iUnit)
+				iUnits.add(iUnit)
 
 		return iUnits
 
+	def buildFutureUnitsByUnitClass(self):
+		NUM_UNITS = gc.getNumUnitInfos()
+		
+		# Create graph of single-step upgrades (Swordsman to Maceman)
+		self.FutureUnitsByUnitClass = {}
+		self.UnitsAlreadyMapped = set()
+		for iUnitA in range(NUM_UNITS):
+			infoA = gc.getUnitInfo(iUnitA)
+			upgrades = set()
+			self.FutureUnitsByUnitClass[iUnitA] = upgrades  # <-- creates a link between these two items
+			for iUnitB in range(NUM_UNITS):
+				infoB = gc.getUnitInfo(iUnitB)
+				if infoA.getUpgradeUnitClass(infoB.getUnitClassType()):
+					upgrades.add(iUnitB)   # also adds iUnitB to FutureUnitsByUnitClass array
+		
+		# Now add all transitive upgrades (Swordsman to Rifleman)
+		for iUnit in self.FutureUnitsByUnitClass.iterkeys():
+			self.buildFutureArray_Closure(iUnit)   # just starting the recursive call
+
+	def buildFutureArray_Closure(self, iUnit):
+		upgrades = self.FutureUnitsByUnitClass[iUnit]
+		if iUnit not in self.UnitsAlreadyMapped:
+			nextUpgrades = set()
+			for iNextUnit in upgrades:
+				nextUpgrades |= self.buildFutureArray_Closure(iNextUnit)  # note recursive call
+			upgrades |= nextUpgrades
+			self.UnitsAlreadyMapped.add(iUnit)
+		return upgrades 
+
+	def isUnitUnique(self, iUnit, enemyUnits):
+		# check if the unit is in the array of enemyunts
+		if (iUnit in enemyUnits):
+			return False
+
+		# check if the enemy has any of the upgrades to this unit
+		upgrades = self.FutureUnitsByUnitClass[iUnit]
+		return len(upgrades & enemyUnits) == 0 
 
 
 
