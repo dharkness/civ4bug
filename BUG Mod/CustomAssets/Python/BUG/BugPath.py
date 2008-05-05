@@ -29,8 +29,10 @@
 #
 #     1. <user-dir>\<mod-name>
 #     2. <user-dir>\<app-name>\Mods\<mod-name>
+#     3. <user-dir>\<app-name>\<mod-name>
 #     3. <user-dir>\<app-name>
 #     4. <root-dir>\<app-name>\Mods\<mod-name>
+#     5. <root-dir>\<app-name>\<mod-name>
 #     5. <root-dir>\<app-name>
 #
 # mainModIniDir
@@ -93,10 +95,12 @@ if (userDir):
 	if (modName):
 		addIniFileSearchPath(os.path.join(userDir, modName))
 		addIniFileSearchPath(os.path.join(userDir, appName, "Mods", modName))
+		addIniFileSearchPath(os.path.join(userDir, appName, modName))
 	addIniFileSearchPath(os.path.join(userDir, appName))
 if (rootDir):
 	if (modName):
 		addIniFileSearchPath(os.path.join(rootDir, "Mods", modName))
+		addIniFileSearchPath(os.path.join(rootDir, modName))
 	addIniFileSearchPath(os.path.join(rootDir))
 
 if (iniFileSearchPaths):
