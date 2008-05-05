@@ -16,7 +16,7 @@ import BugScoreOptionsTab
 import BugAlertsOptionsTab
 import BugAutologOptionsTab
 import BugUnitNameOptionsTab
-import BUGPlotListTab
+import BugPlotListOptionsTab
 import BugConfigTrackerTab
 import BugCreditsOptionsTab
 

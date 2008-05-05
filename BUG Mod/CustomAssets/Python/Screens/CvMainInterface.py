@@ -11,7 +11,7 @@ import time
 import MonkeyTools as mt
 import string
 from AStarTools import *
-import CvConfigParser
+from ConfigObj import ConfigObj
 import PyHelpers 
 PyPlayer = PyHelpers.PyPlayer
 ## 12monkeys - PlotList Button Enhancement  - end
