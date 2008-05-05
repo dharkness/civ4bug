@@ -14,7 +14,7 @@
 		<Tag>TXT_KEY_PLE_UPGRADE_HELP</Tag>
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
 		<French>(CTRL: units on this plot.[NEWLINE]ALT: all units)</French>
-		<German>(STRG: Einheiten auf diesem Punkt.[NEWLINE]ALT: alle Einheiten)</German>
+		<German>(STRG: Einheiten auf diesem Feld.[NEWLINE]ALT: alle Einheiten)</German>
 		<Italian>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Italian>
 		<Spanish>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Spanish>
 	</TEXT>
@@ -22,7 +22,7 @@
 		<Tag>TXT_KEY_PLE_MODE_STANDARD</Tag>
 		<English>View unit buttons in the standard format</English>
 		<French>Voir les unités de manière standard</French>
-		<German>Zeige Einheitenschaltflächen im Standardformat</German>
+		<German>Einheitenschaltflächen im Standardformat</German>
 		<Italian>View unit buttons in the standard format</Italian>
 		<Spanish>View unit buttons in the standard format</Spanish>
 	</TEXT>
@@ -30,7 +30,7 @@
 		<Tag>TXT_KEY_PLE_MODE_MULTILINE</Tag>
 		<English>View unit buttons in a multiline format</English>
 		<French>Voir les unités en format multiligne</French>
-		<German>Zeige Einheitenschaltflächen in Reihen an</German>
+		<German>Einheitenschaltflächen mehrzeilig anordnen</German>
 		<Italian>View unit buttons in a multiline format</Italian>
 		<Spanish>View unit buttons in a multiline format</Spanish>
 	</TEXT>
@@ -38,7 +38,7 @@
 		<Tag>TXT_KEY_PLE_MODE_STACK_VERT</Tag>
 		<English>View unit buttons sorted vertically</English>
 		<French>Voir les unités triées verticalement</French>
-		<German>Zeige Einheitenschaltflächen senkrecht sortiert</German>
+		<German>Einheitenschaltflächen senkrecht anordnen</German>
 		<Italian>View unit buttons sorted vertically</Italian>
 		<Spanish>View unit buttons sorted vertically</Spanish>
 	</TEXT>
@@ -46,7 +46,7 @@
 		<Tag>TXT_KEY_PLE_MODE_STACK_HORIZ</Tag>
 		<English>View unit buttons sorted horizonially</English>
 		<French>Voir les unités triées horizontalement</French>
-		<German>Zeige Einheitenschaltflächen waagerecht sortiert</German>
+		<German>Einheitenschaltflächen waagerecht anordnen</German>
 		<Italian>View unit buttons sorted horizonially</Italian>
 		<Spanish>View unit buttons sorted horizonially</Spanish>
 	</TEXT>
@@ -54,7 +54,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_WOUND</Tag>
 		<English>Don't display wounded units</English>
 		<French>Ne pas afficher les unités blessées</French>
-		<German>Verberge verwundete Einheiten</German>
+		<German>Verwundete Einheiten ausblenden</German>
 		<Italian>Don't display wounded units</Italian>
 		<Spanish>Don't display wounded units</Spanish>
 	</TEXT>
@@ -62,7 +62,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_NOTWOUND</Tag>
 		<English>Don't display unwounded units</English>
 		<French>Ne pas afficher les unités saines</French>
-		<German>Verberge unverwundete Einheiten</German>
+		<German>Unverwundete Einheiten ausblenden</German>
 		<Italian>Don't display unwounded units</Italian>
 		<Spanish>Don't display unwounded units</Spanish>
 	</TEXT>
@@ -70,7 +70,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_AIR</Tag>
 		<English>Don't display air units</English>
 		<French>Ne pas afficher les unités aériennes</French>
-		<German>Don't display air units</German>
+		<German>Luft-Einheiten ausblenden</German>
 		<Italian>Don't display air units</Italian>
 		<Spanish>Don't display air units</Spanish>
 	</TEXT>
@@ -78,7 +78,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_SEA</Tag>
 		<English>Don't display naval units</English>
 		<French>Ne pas afficher les unités navales</French>
-		<German>Don't display naval units</German>
+		<German>Marine-Einheiten ausblenden</German>
 		<Italian>Don't display naval units</Italian>
 		<Spanish>Don't display naval units</Spanish>
 	</TEXT>
@@ -86,7 +86,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_LAND</Tag>
 		<English>Don't display land units</English>
 		<French>Ne pas afficher les unités terrestres</French>
-		<German>Don't display land units</German>
+		<German>Land-Einheiten ausblenden</German>
 		<Italian>Don't display land units</Italian>
 		<Spanish>Don't display land units</Spanish>
 	</TEXT>
@@ -94,7 +94,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_DOM</Tag>
 		<English>Don't display domestic units</English>
 		<French>Ne pas afficher les unités domestiques</French>
-		<German>Verberge inländische Einheiten</German>
+		<German>Einheimische Einheiten ausblenden</German>
 		<Italian>Don't display domestic units</Italian>
 		<Spanish>Don't display domestic units</Spanish>
 	</TEXT>
@@ -102,57 +102,57 @@
 		<Tag>TXT_KEY_PLE_FILTER_MIL</Tag>
 		<English>Don't display military units</English>
 		<French>Ne pas afficher les unités militaires</French>
-		<German>Verberge militärische Einheiten</German>
+		<German>Militärische Einheiten ausblenden</German>
 		<Italian>Don't display military units</Italian>
 		<Spanish>Don't display military units</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_OWN</Tag>
-		<English>Don't display unit's you own</English>
+		<English>Don't display units you own</English>
 		<French>Ne pas afficher les unités que vous possédez</French>
-		<German>Verberge eigene Einheiten</German>
-		<Italian>Don't display unit's you own</Italian>
-		<Spanish>Don't display unit's you own</Spanish>
+		<German>Eigene Einheiten ausblenden</German>
+		<Italian>Don't display units you own</Italian>
+		<Spanish>Don't display units you own</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_FOREIGN</Tag>
-		<English>Don't display unit's other players own</English>
+		<English>Don't display units other players own</English>
 		<French>Ne pas afficher les unités qui ne vous appartiennent pas</French>
-		<German>Verberge Einheiten anderer Spieler</German>
-		<Italian>Don't display unit's other players own</Italian>
-		<Spanish>Don't display unit's other players own</Spanish>
+		<German>Einheiten anderer Spieler ausblenden</German>
+		<Italian>Don't display units other players own</Italian>
+		<Spanish>Don't display units other players own</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UNITTYPE</Tag>
-		<English>Select unit's by unit type</English>
+		<English>Select units by unit type</English>
 		<French>Sélectionner les unités par types d'unité</French>
-		<German>Wähle Einheiten nach Typus</German>
-		<Italian>Select unit's by unit type</Italian>
-		<Spanish>Select unit's by unit type</Spanish>
+		<German>Einheiten des gleichen Typs aktivieren</German>
+		<Italian>Select units by unit type</Italian>
+		<Spanish>Select units by unit type</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_GROUPS</Tag>
-		<English>Select unit's by group</English>
+		<English>Select units by group</English>
 		<French>Sélectionner les unités par groupe</French>
-		<German>Wähle Einheiten nach Gruppen</German>
-		<Italian>Select unit's by group</Italian>
-		<Spanish>Select unit's by group</Spanish>
+		<German>Einheiten der gleichen Klasse aktivieren</German>
+		<Italian>Select units by group</Italian>
+		<Spanish>Select units by group</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_PROMO</Tag>
-		<English>Select unit's available for promotion</English>
+		<English>Select units available for promotion</English>
 		<French>Sélectionner les unités en attente de promotion</French>
-		<German>Wähle Einheiten für Beförderung</German>
-		<Italian>Select unit's available for promotion</Italian>
-		<Spanish>Select unit's available for promotion</Spanish>
+		<German>Nur beförderbare Einheiten aktivieren</German>
+		<Italian>Select units available for promotion</Italian>
+		<Spanish>Select units available for promotion</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UPGRADE</Tag>
-		<English>Select unit's available for upgrade</English>
+		<English>Select units available for upgrade</English>
 		<French>Sélectionner les unités pouvant être améliorées</French>
-		<German>Wähle modernisierbare Einheiten</German>
-		<Italian>Select unit's available for upgrade</Italian>
-		<Spanish>Select unit's available for upgrade</Spanish>
+		<German>Nur modernisierbare Einheiten aktivieren</German>
+		<Italian>Select units available for upgrade</Italian>
+		<Spanish>Select units available for upgrade</Spanish>
 	</TEXT>
 
 </Civ4GameText>
