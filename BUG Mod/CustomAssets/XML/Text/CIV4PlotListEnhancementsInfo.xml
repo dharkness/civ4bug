@@ -15,7 +15,7 @@
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
 		<French>(CTRL: units on this plot.[NEWLINE]ALT: all units)</French>
 		<German>(STRG: Einheiten auf diesem Feld.[NEWLINE]ALT: alle Einheiten)</German>
-		<Italian>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Italian>
+		<Italian>(CTRL: unità in questa casella.[NEWLINE]ALT: tutte le unità)</Italian>
 		<Spanish>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Spanish>
 	</TEXT>
 	<TEXT>
@@ -23,7 +23,7 @@
 		<English>View unit buttons in the standard format</English>
 		<French>Voir les unités de manière standard</French>
 		<German>Einheitenschaltflächen im Standardformat</German>
-		<Italian>View unit buttons in the standard format</Italian>
+		<Italian>Visualizza i bottoni delle Unità nel formato standard.</Italian>
 		<Spanish>View unit buttons in the standard format</Spanish>
 	</TEXT>
 	<TEXT>
@@ -31,7 +31,7 @@
 		<English>View unit buttons in a multiline format</English>
 		<French>Voir les unités en format multiligne</French>
 		<German>Einheitenschaltflächen mehrzeilig anordnen</German>
-		<Italian>View unit buttons in a multiline format</Italian>
+		<Italian>Visualizza i bottoni delle Unità nel formato multilinea.</Italian>
 		<Spanish>View unit buttons in a multiline format</Spanish>
 	</TEXT>
 	<TEXT>
@@ -39,7 +39,7 @@
 		<English>View unit buttons sorted vertically</English>
 		<French>Voir les unités triées verticalement</French>
 		<German>Einheitenschaltflächen senkrecht anordnen</German>
-		<Italian>View unit buttons sorted vertically</Italian>
+		<Italian>Visualizza i bottoni delle Unità ordinati verticalmente.</Italian>
 		<Spanish>View unit buttons sorted vertically</Spanish>
 	</TEXT>
 	<TEXT>
@@ -47,7 +47,7 @@
 		<English>View unit buttons sorted horizonially</English>
 		<French>Voir les unités triées horizontalement</French>
 		<German>Einheitenschaltflächen waagerecht anordnen</German>
-		<Italian>View unit buttons sorted horizonially</Italian>
+		<Italian>Visualizza i bottoni delle Unità ordinati orizzontalmente.</Italian>
 		<Spanish>View unit buttons sorted horizonially</Spanish>
 	</TEXT>
 	<TEXT>
@@ -55,7 +55,7 @@
 		<English>Don't display wounded units</English>
 		<French>Ne pas afficher les unités blessées</French>
 		<German>Verwundete Einheiten ausblenden</German>
-		<Italian>Don't display wounded units</Italian>
+		<Italian>Non mostrare le Unità ferite.</Italian>
 		<Spanish>Don't display wounded units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -63,7 +63,7 @@
 		<English>Don't display unwounded units</English>
 		<French>Ne pas afficher les unités saines</French>
 		<German>Unverwundete Einheiten ausblenden</German>
-		<Italian>Don't display unwounded units</Italian>
+		<Italian>Non mostrare le Unità sane.</Italian>
 		<Spanish>Don't display unwounded units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -71,7 +71,7 @@
 		<English>Don't display air units</English>
 		<French>Ne pas afficher les unités aériennes</French>
 		<German>Luft-Einheiten ausblenden</German>
-		<Italian>Don't display air units</Italian>
+		<Italian>Non mostrare le Unità aeree.</Italian>
 		<Spanish>Don't display air units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -79,7 +79,7 @@
 		<English>Don't display naval units</English>
 		<French>Ne pas afficher les unités navales</French>
 		<German>Marine-Einheiten ausblenden</German>
-		<Italian>Don't display naval units</Italian>
+		<Italian>Non mostrare le Unità navali.</Italian>
 		<Spanish>Don't display naval units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -87,7 +87,7 @@
 		<English>Don't display land units</English>
 		<French>Ne pas afficher les unités terrestres</French>
 		<German>Land-Einheiten ausblenden</German>
-		<Italian>Don't display land units</Italian>
+		<Italian>Non mostrare le Unità terrestri.</Italian>
 		<Spanish>Don't display land units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -95,7 +95,7 @@
 		<English>Don't display domestic units</English>
 		<French>Ne pas afficher les unités domestiques</French>
 		<German>Einheimische Einheiten ausblenden</German>
-		<Italian>Don't display domestic units</Italian>
+		<Italian>Non mostrare le Unità non militari.</Italian>
 		<Spanish>Don't display domestic units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -103,7 +103,7 @@
 		<English>Don't display military units</English>
 		<French>Ne pas afficher les unités militaires</French>
 		<German>Militärische Einheiten ausblenden</German>
-		<Italian>Don't display military units</Italian>
+		<Italian>Non mostrare le Unità militari.</Italian>
 		<Spanish>Don't display military units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -111,7 +111,7 @@
 		<English>Don't display units you own</English>
 		<French>Ne pas afficher les unités que vous possédez</French>
 		<German>Eigene Einheiten ausblenden</German>
-		<Italian>Don't display units you own</Italian>
+		<Italian>Non mostrare le tue Unità.</Italian>
 		<Spanish>Don't display units you own</Spanish>
 	</TEXT>
 	<TEXT>
@@ -119,7 +119,7 @@
 		<English>Don't display units other players own</English>
 		<French>Ne pas afficher les unités qui ne vous appartiennent pas</French>
 		<German>Einheiten anderer Spieler ausblenden</German>
-		<Italian>Don't display units other players own</Italian>
+		<Italian>Non mostrare le Unità altrui.</Italian>
 		<Spanish>Don't display units other players own</Spanish>
 	</TEXT>
 	<TEXT>
@@ -127,7 +127,7 @@
 		<English>Select units by unit type</English>
 		<French>Sélectionner les unités par types d'unité</French>
 		<German>Einheiten des gleichen Typs aktivieren</German>
-		<Italian>Select units by unit type</Italian>
+		<Italian>Seleziona le Unità per tipo.</Italian>
 		<Spanish>Select units by unit type</Spanish>
 	</TEXT>
 	<TEXT>
@@ -135,7 +135,7 @@
 		<English>Select units by group</English>
 		<French>Sélectionner les unités par groupe</French>
 		<German>Einheiten der gleichen Klasse aktivieren</German>
-		<Italian>Select units by group</Italian>
+		<Italian>Seleziona le Unità per gruppo.</Italian>
 		<Spanish>Select units by group</Spanish>
 	</TEXT>
 	<TEXT>
@@ -143,7 +143,7 @@
 		<English>Select units available for promotion</English>
 		<French>Sélectionner les unités en attente de promotion</French>
 		<German>Nur beförderbare Einheiten aktivieren</German>
-		<Italian>Select units available for promotion</Italian>
+		<Italian>Seleziona le Unità con possibilità di promozione.</Italian>
 		<Spanish>Select units available for promotion</Spanish>
 	</TEXT>
 	<TEXT>
@@ -151,7 +151,7 @@
 		<English>Select units available for upgrade</English>
 		<French>Sélectionner les unités pouvant être améliorées</French>
 		<German>Nur modernisierbare Einheiten aktivieren</German>
-		<Italian>Select units available for upgrade</Italian>
+		<Italian>Seleziona le Unità con possibilità di avanzamento.</Italian>
 		<Spanish>Select units available for upgrade</Spanish>
 	</TEXT>
 
