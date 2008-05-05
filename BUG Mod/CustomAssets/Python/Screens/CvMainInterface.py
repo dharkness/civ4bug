@@ -550,7 +550,7 @@ class CvMainInterface:
 		return ((self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34)
 		
 	def getMaxRow(self):
-		return ((self.yResolution - 160) / BugPle.isShowMoveHighlighter()) 
+		return ((self.yResolution - 160) / BugPle.getVerticalSpacing()) 
 		
 	def getRow(self, i):
 		return i / self.getMaxCol()
@@ -562,7 +562,7 @@ class CvMainInterface:
 		return 315 + (nCol * BugPle.getHoriztonalSpacing())
 		
 	def getY(self, nRow):
-		return self.yResolution - 169 - (nRow * BugPle.isShowMoveHighlighter())
+		return self.yResolution - 169 - (nRow * BugPle.getVerticalSpacing())
 		
 	def getI(self, nRow, nCol):
 		return ( nRow * self.getMaxCol() ) + ( nCol % self.getMaxCol() )
@@ -1105,7 +1105,7 @@ class CvMainInterface:
 		
 		# this if statement and everythign inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
 		# Wounded units will get a darker colored button.
-		if (pLoopUnit.isHurt()) and (BugPle.isShowWoundedIndicator()):
+		if (pLoopUnit.isHurt()) and (self.bShowWoundedIndicator):
 			# wounded units -> darker button
 			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
 				# fortified
@@ -1136,7 +1136,7 @@ class CvMainInterface:
 				# unit has no movement points left
 				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
 					
-		if (BugPle.isShowPromotionIndicator()):
+		if (self.bShowPromotionIndicator):
 			# can unit be promoted ?
 			if (pLoopUnit.isPromotionReady()):
 				# place the promotion frame
@@ -1146,7 +1146,7 @@ class CvMainInterface:
 		x = self.getX( nCol )
 		y = self.getY( nRow )
 
-		if (BugPle.isShowUpgradeIndicator()):
+		if (self.bShowUpgradeIndicator):
 			# can unit be upgraded ?
 			if (mt.checkAnyUpgrade(pLoopUnit)):
 				# place the upgrade arrow
@@ -1155,7 +1155,7 @@ class CvMainInterface:
 				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringUpgrade )
 		
-		if (BugPle.isShowHealthBar() and (pLoopUnit.isFighting() == False or BugPle.isShowHideHealthFighting() == False)):
+		if (self.bShowHealthBar and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
 			# place the health bar
 			szStringHealthBar = szString+"HealthBar"
 			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
@@ -1170,7 +1170,7 @@ class CvMainInterface:
 													
 			screen.show( szStringHealthBar )
 
-		if (BugPle.isShowMoveBar()):
+		if (self.bShowMoveBar):
 			# place the move bar
 			fMaxMoves = float(pLoopUnit.baseMoves())
 			fCurrMoves = float(float(fMaxMoves)-float(pLoopUnit.getMoves()/60.0)+0.09) 
@@ -1184,7 +1184,7 @@ class CvMainInterface:
 			screen.show( szStringMoveBar )		
 		
 		# display the mission or activity info
-		if (BugPle.isShowMissionInfo()): 
+		if (self.bShowMissionInfo): 
 			
 			# place the activity info below the unit icon.
 			szFileNameAction = ""						
@@ -2169,6 +2169,10 @@ class CvMainInterface:
 #				screen.hide( szStringIcon )
 
 		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
+		szHealthyColor = BugPle.getHealthyColor()
+		szWoundedColor = BugPle.getWoundedColor()
+		szMovementColor = BugPle.getFullMovementColor()
+		szNoMovementColor = BugPle.getHasMovedColor()
 		for i in range( self.iMaxPlotListIcons ):		
 			# create button name
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
@@ -2190,15 +2194,15 @@ class CvMainInterface:
 			szStringHealthBar = szString+"HealthBar"
 #			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(BugPle.getHealthyColor()) )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(BugPle.getWoundedColor()) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szHealthyColor) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szWoundedColor) )
 			screen.hide( szStringHealthBar )
 
 			# place/init the movement bar. Important to have it at last place within the for loop.
 			szStringMoveBar = szString+"MoveBar"
 			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(BugPle.getFullMovementColor()) )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(BugPle.getHasMovedColor()) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szMovementColor) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szNoMovementColor) )
 			screen.hide( szStringMoveBar )
 
 		self.preparePlotListObjects()
@@ -3069,6 +3073,15 @@ class CvMainInterface:
 
 		self.xResolution = screen.getXResolution()
 		self.yResolution = screen.getYResolution()
+		
+		# Capture these for looping over the plot's units
+		self.bShowWoundedIndicator = BugPle.isShowWoundedIndicator()
+		self.bShowPromotionIndicator = BugPle.isShowPromotionIndicator()
+		self.bShowUpgradeIndicator = BugPle.isShowUpgradeIndicator()
+		self.bShowHealthBar = BugPle.isShowHealthBar()
+		self.bHideHealthBarWhileFighting = BugPle.isHideHealthFighting()
+		self.bShowMoveBar = BugPle.isShowMoveBar()
+		self.bShowMissionInfo = BugPle.isShowMissionInfo()
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
