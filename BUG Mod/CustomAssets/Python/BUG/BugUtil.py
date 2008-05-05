@@ -4,6 +4,7 @@
 ## Copyright (c) 2008 The BUG Mod.
 
 from CvPythonExtensions import *
+import CvUtil
 
 localText = CyTranslator()
 
