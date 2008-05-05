@@ -5,12 +5,10 @@
 ## date     : 10.03.2006
 ## version  : 1.1
 ##
+## Modified for The BUG Mod by EmperorFool.
 
 
 from CvPythonExtensions import *
-import sys
-import CvConfigParser
-# import SdToolKit as sd
 
 gc = CyGlobalContext()
 
@@ -386,17 +384,15 @@ class AStarMoveArea:
 		
 		# color values
 		self.COL_NO						= "COLOR_CLEAR"
-
-		config = CvConfigParser.CvConfigParser("PlotListEnhancements.ini")		
-		if (config != None):
-			self.COL_IMPASSABLE 			= config.get( "AStarTools", "Color Impassable Terrain", 			"COLOR_CLEAR" )
-			self.COL_PASSABLE 				= config.get( "AStarTools", "Color Passable Terrain", 			 	"COLOR_WHITE" )
-			self.COL_TERRITORY_NEUTRAL 		= config.get( "AStarTools", "Color Passable Neutral Territory",	 	"COLOR_PLAYER_DARK_YELLOW" )
-			self.COL_TERRITORY_ENEMY 		= config.get( "AStarTools", "Color Passable Enemy Territory", 	 	"COLOR_PLAYER_DARK_RED" )
-			self.COL_TERRITORY_BARBARIAN 	= config.get( "AStarTools", "Color Passable Barbarian Territory", 	"COLOR_PLAYER_DARK_CYAN" )
-			self.COL_UNIT_NEUTRAL 			= config.get( "AStarTools", "Color Neutral Unit", 				 	"COLOR_YELLOW" )
-			self.COL_UNIT_ENEMY 			= config.get( "AStarTools", "Color Enemy Unit", 					"COLOR_RED" )
-			self.COL_UNIT_BARBARIAN 		= config.get( "AStarTools", "Color Barbarian Unit", 				"COLOR_CYAN" )			
+		
+		self.COL_IMPASSABLE 			= "COLOR_CLEAR"
+		self.COL_PASSABLE 				= "COLOR_WHITE"
+		self.COL_TERRITORY_NEUTRAL 		= "COLOR_PLAYER_DARK_YELLOW"
+		self.COL_TERRITORY_ENEMY 		= "COLOR_PLAYER_DARK_RED"
+		self.COL_TERRITORY_BARBARIAN 	= "COLOR_PLAYER_DARK_CYAN"
+		self.COL_UNIT_NEUTRAL 			= "COLOR_YELLOW"
+		self.COL_UNIT_ENEMY 			= "COLOR_RED"
+		self.COL_UNIT_BARBARIAN 		= "COLOR_CYAN"
 		
 	# converts a CyPlot into a tuple (x,y)
 	def getPlotXY(self, pPlot):
