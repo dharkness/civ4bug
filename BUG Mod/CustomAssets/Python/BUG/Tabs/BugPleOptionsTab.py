@@ -4,11 +4,11 @@
 
 import BugOptionsTab
 
-class BugPlotListTab(BugOptionsTab.BugOptionsTab):
+class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
     "Plot List Enhancement Tab"
     
     def __init__(self, screen):
-        BugOptionsTab.BugOptionsTab.__init__(self, "PLE", "PlotList")
+        BugOptionsTab.BugOptionsTab.__init__(self, "PLE", "Plot List")
 
     def create(self, screen):
         tab = self.createTab(screen)

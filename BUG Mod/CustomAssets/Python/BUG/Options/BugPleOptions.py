@@ -1,11 +1,11 @@
-## PlotListOptions
-## Facade for accessing PlotList options
+## BugPleOptions
+## Facade for accessing PLE options
 ## BUG Mod - Copyright 2008
 
 from CvPythonExtensions import *
 from BugOptions import OptionsFacade, Option, OptionList
 
-class PlotListOptions(OptionsFacade):
+class BugPleOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
@@ -162,30 +162,34 @@ class PlotListOptions(OptionsFacade):
 
 	
 
-	def IsShowHighlighter(self):
+	def isShowMoveHighlighter(self):
 		return self.getBoolean('PLE_Highlighter')
-	def IsShowMissionInfo(self):
+	
+	def isShowMissionInfo(self):
 		return self.getBoolean('PLE_Mission_Info')
-	def IsShowHealthBar(self):
+	def isShowHealthBar(self):
 		return self.getBoolean('PLE_Health_Bar')
-	def IsShowHideHealthFighting(self):
+	def isShowHideHealthFighting(self):
 		return self.getBoolean('PLE_Hide_Health_Fighting')
-	def IsShowMoveBar(self):
+	def isShowMoveBar(self):
 		return self.getBoolean('PLE_Move_Bar')
-	def IsShowUpgradeIndicator(self):
+	def isShowUpgradeIndicator(self):
 		return self.getBoolean('PLE_Upgrade_Indicator')
-	def IsShowPromotionIndicator(self):
+	def isShowPromotionIndicator(self):
 		return self.getBoolean('PLE_Promotion_Indicator')
-	def IsShowWoundedIndicator(self):
+	def isShowWoundedIndicator(self):
 		return self.getBoolean('PLE_Wounded_Indicator')
+	
 	def getVerticalSpacing(self):
 		return self.getInt('PLE_Vertical_Spacing')
 	def getHoriztonalSpacing(self):
 		return self.getInt('PLE_Horiztonal_Spacing')
+	
 	def getInfoPaneX(self):
 		return self.getInt('PLE_Info_Pane_X')
 	def getInfoPaneY(self):
 		return self.getInt('PLE_Info_Pane_Y')
+	
 	def getUnitNameColor(self):
 		return self.getString('PLE_Unit_Name_Color')
 	def getUpgradePossibleColor(self):
@@ -196,6 +200,7 @@ class PlotListOptions(OptionsFacade):
 		return self.getString('PLE_Promotion_Specialties_Color')
 	def getUnitTypeSpecialtiesColor(self):
 		return self.getString('PLE_Unit_Type_Specialties_Color')
+	
 	def getHealthyColor(self):
 		return self.getString('PLE_Healthy_Color')
 	def getWoundedColor(self):
@@ -206,26 +211,27 @@ class PlotListOptions(OptionsFacade):
 		return self.getString('PLE_Has_Moved_Color')
 	def getNoMovementColor(self):
 		return self.getString('PLE_No_Movement_Color')
-	def getColorImpassableTerrain(self):
-		return self.getString('PLE_MH_Color_Impassable_Terrain')
-	def getColorPassableTerrain(self):
-		return self.getString('PLE_MH_Color_Passable_Terrain')
-	def getColorPassableNeutralTerritory(self):
-		return self.getString('PLE_MH_Color_Passable_Neutral_Territory')
-	def getColorPassableEnemyTerritory(self):
-		return self.getString('PLE_MH_Color_Passable_Enemy_Territory')
-	def getColorPassableBarbarianTerritory(self):
-		return self.getString('PLE_MH_Color_Passable_Barbarian_Territory')
-	def getColorNeutralUnit(self):
-		return self.getString('PLE_MH_Color_Neutral_Unit')
-	def getColorEnemyUnit(self):
-		return self.getString('PLE_MH_Color_Enemy_Unit')
-	def getColorBarbarianUnit(self):
-		return self.getString('PLE_MH_Color_Barbarian_Unit')
 	
-# The singleton PlotListOptions object
+	def getImpassableTerrainColor(self):
+		return self.getString('PLE_MH_Color_Impassable_Terrain')
+	def getPassableTerrainColor(self):
+		return self.getString('PLE_MH_Color_Passable_Terrain')
+	def getNeutralTerritoryColor(self):
+		return self.getString('PLE_MH_Color_Passable_Neutral_Territory')
+	def getEnemyTerritoryColor(self):
+		return self.getString('PLE_MH_Color_Passable_Enemy_Territory')
+	def getBarbarianTerritoryColor(self):
+		return self.getString('PLE_MH_Color_Passable_Barbarian_Territory')
+	def getNeutralUnitColor(self):
+		return self.getString('PLE_MH_Color_Neutral_Unit')
+	def getEnemyUnitColor(self):
+		return self.getString('PLE_MH_Color_Enemy_Unit')
+	def getBarbarianUnitColor(self):
+		return self.getString('PLE_MH_Color_Barbarian_Unit')
 
-__g_options = PlotListOptions()
+# The singleton BugPleOptions object
+
+__g_options = BugPleOptions()
 def getOptions():
 	return __g_options
 

@@ -12,10 +12,9 @@ import BugEspionageOptions
 
 import BugNJAGCOptions
 import BugScoreOptions
+import BugPleOptions
 
 import BugAlertsOptions
 import BugAutologOptions
 
 import BugUnitNameOptions
-
-import PlotListOptions

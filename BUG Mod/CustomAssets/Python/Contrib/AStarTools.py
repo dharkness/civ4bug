@@ -10,6 +10,9 @@
 
 from CvPythonExtensions import *
 
+import BugPleOptions
+BugPle = BugPleOptions.getOptions()
+
 gc = CyGlobalContext()
 
 		
@@ -385,15 +388,6 @@ class AStarMoveArea:
 		# color values
 		self.COL_NO						= "COLOR_CLEAR"
 		
-		self.COL_IMPASSABLE 			= "COLOR_CLEAR"
-		self.COL_PASSABLE 				= "COLOR_WHITE"
-		self.COL_TERRITORY_NEUTRAL 		= "COLOR_PLAYER_DARK_YELLOW"
-		self.COL_TERRITORY_ENEMY 		= "COLOR_PLAYER_DARK_RED"
-		self.COL_TERRITORY_BARBARIAN 	= "COLOR_PLAYER_DARK_CYAN"
-		self.COL_UNIT_NEUTRAL 			= "COLOR_YELLOW"
-		self.COL_UNIT_ENEMY 			= "COLOR_RED"
-		self.COL_UNIT_BARBARIAN 		= "COLOR_CYAN"
-		
 	# converts a CyPlot into a tuple (x,y)
 	def getPlotXY(self, pPlot):
 		return (pPlot.getX(), pPlot.getY())
@@ -418,12 +412,12 @@ class AStarMoveArea:
 					else:
 						bNeutral = true
 		if bEnemy:
-			return self.COL_UNIT_ENEMY
+			return BugPle.getEnemyUnitColor()
 		elif bBarbarian:
-			return self.COL_UNIT_BARBARIAN
+			return BugPle.getBarbarianUnitColor()
 		elif bNeutral:
-			return self.COL_UNIT_NEUTRAL
-		return self.COL_PASSABLE
+			return BugPle.getNeutralUnitColor()
+		return BugPle.getPassableTerrainColor()
 
 	# checks if there forwign territory on the plot and returns the corresponding color
 	def checkTerritory(self, pPlot):
@@ -433,13 +427,13 @@ class AStarMoveArea:
 		pTeam = gc.getTeam(iTeam)
 		if pPlot.isRevealedGoody(iTeam):
 			if (pPlot.getImprovementType() == 3):#ImprovementTypes.IMPROVEMENT_GOODY_HUT):
-				return self.COL_TERRITORY_BARBARIAN
+				return BugPle.getBarbarianTerritoryColor()
 		elif (iPlayer == PlayerTypes.NO_PLAYER) or (iPlayer == self.iActivePlayer):
-			return self.COL_PASSABLE
+			return BugPle.getPassableTerrainColor()
 		elif pTeam.isAtWar(self.iActivePlayerTeam):
-			return self.COL_TERRITORY_ENEMY
+			return BugPle.getEnemyTerritoryColor()
 		else:
-			return self.COL_TERRITORY_NEUTRAL			
+			return BugPle.getNeutralTerritoryColor()			
 	
 	# checks if there are revelaed plots adjacent to the given plot
 	def checkAdjacentRevealed(self, pPlot):
@@ -458,7 +452,7 @@ class AStarMoveArea:
 		# check impassable
 		if iCosts == -1:
 			if (pPlot.isWater() and (self.eDomain == DomainTypes.DOMAIN_SEA)) or ((not pPlot.isWater()) and (self.eDomain == DomainTypes.DOMAIN_LAND)):
-				self.dPlotList[tPlot] = self.COL_IMPASSABLE
+				self.dPlotList[tPlot] = BugPle.getImpassableTerrainColor()
 		# check if plot is reachable
 		elif iCosts <= self.iMovesLeft:
 			# check if the plot is reavealed
@@ -471,10 +465,10 @@ class AStarMoveArea:
 					self.dPlotList[tPlot] = self.checkTerritory(pPlot)
 				# nothing special with that plot
 				else:
-					self.dPlotList[tPlot] = self.COL_PASSABLE
+					self.dPlotList[tPlot] = BugPle.getPassableTerrainColor()
 			else:
 				if self.checkAdjacentRevealed(pPlot):
-					self.dPlotList[tPlot] = self.COL_PASSABLE
+					self.dPlotList[tPlot] = BugPle.getPassableTerrainColor()
 				else:
 					self.dPlotList[tPlot] = self.COL_NO		
 	

@@ -11,9 +11,11 @@ import time
 import MonkeyTools as mt
 import string
 from AStarTools import *
-from ConfigObj import ConfigObj
 import PyHelpers 
 PyPlayer = PyHelpers.PyPlayer
+
+import BugPleOptions
+BugPle = BugPleOptions.getOptions()
 ## 12monkeys - PlotList Button Enhancement  - end
 
 # BUG - Align Icons - start
@@ -280,8 +282,6 @@ class CvMainInterface:
 		self.bInit					= false
 		
 		self.ASMA 					= AStarMoveArea()
-		
-		self.CFG_MOVE_HIGHLIGHTER_ENABLED = true
 		
 		self.tLastMousePos			= (0,0)
 		self.bInfoPaneActive		= false
@@ -550,7 +550,7 @@ class CvMainInterface:
 		return ((self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34)
 		
 	def getMaxRow(self):
-		return ((self.yResolution - 160) / self.CFG_VERTICAL_ITEM_SPACING) 
+		return ((self.yResolution - 160) / BugPle.isShowMoveHighlighter()) 
 		
 	def getRow(self, i):
 		return i / self.getMaxCol()
@@ -559,10 +559,10 @@ class CvMainInterface:
 		return i % self.getMaxCol()
 		
 	def getX(self, nCol):
-		return 315 + (nCol * self.CFG_HORIZONTAL_ITEM_SPACING)
+		return 315 + (nCol * BugPle.getHoriztonalSpacing())
 		
 	def getY(self, nRow):
-		return self.yResolution - 169 - (nRow * self.CFG_VERTICAL_ITEM_SPACING)
+		return self.yResolution - 169 - (nRow * BugPle.isShowMoveHighlighter())
 		
 	def getI(self, nRow, nCol):
 		return ( nRow * self.getMaxCol() ) + ( nCol % self.getMaxCol() )
@@ -1105,7 +1105,7 @@ class CvMainInterface:
 		
 		# this if statement and everythign inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
 		# Wounded units will get a darker colored button.
-		if (pLoopUnit.isHurt()) and (self.CFG_WOUNDED_INDICATOR_ENABLED):
+		if (pLoopUnit.isHurt()) and (BugPle.isShowWoundedIndicator()):
 			# wounded units -> darker button
 			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
 				# fortified
@@ -1136,7 +1136,7 @@ class CvMainInterface:
 				# unit has no movement points left
 				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
 					
-		if (self.CFG_PROMO_INDICATOR_ENABLED):
+		if (BugPle.isShowPromotionIndicator()):
 			# can unit be promoted ?
 			if (pLoopUnit.isPromotionReady()):
 				# place the promotion frame
@@ -1146,7 +1146,7 @@ class CvMainInterface:
 		x = self.getX( nCol )
 		y = self.getY( nRow )
 
-		if (self.CFG_UPGRADE_INDICATOR_ENABLED):
+		if (BugPle.isShowUpgradeIndicator()):
 			# can unit be upgraded ?
 			if (mt.checkAnyUpgrade(pLoopUnit)):
 				# place the upgrade arrow
@@ -1155,7 +1155,7 @@ class CvMainInterface:
 				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringUpgrade )
 		
-		if (self.CFG_HEALTH_BAR_ENABLED and (pLoopUnit.isFighting() == False or self.CFG_HIDE_HEALTH_BAR_WHILE_FIGHTING == False)):
+		if (BugPle.isShowHealthBar() and (pLoopUnit.isFighting() == False or BugPle.isShowHideHealthFighting() == False)):
 			# place the health bar
 			szStringHealthBar = szString+"HealthBar"
 			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
@@ -1170,7 +1170,7 @@ class CvMainInterface:
 													
 			screen.show( szStringHealthBar )
 
-		if (self.CFG_MOVE_BAR_ENABLED):
+		if (BugPle.isShowMoveBar()):
 			# place the move bar
 			fMaxMoves = float(pLoopUnit.baseMoves())
 			fCurrMoves = float(float(fMaxMoves)-float(pLoopUnit.getMoves()/60.0)+0.09) 
@@ -1184,7 +1184,7 @@ class CvMainInterface:
 			screen.show( szStringMoveBar )		
 		
 		# display the mission or activity info
-		if (self.CFG_MISSION_INFO_ENABLED): 
+		if (BugPle.isShowMissionInfo()): 
 			
 			# place the activity info below the unit icon.
 			szFileNameAction = ""						
@@ -1563,7 +1563,7 @@ class CvMainInterface:
 		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)		
 		
 		# reading attributes
-		szUnitName 		= localText.changeTextColor(pUnitTypeInfo.getDescription(), gc.getInfoTypeForString(self.CFG_INFOPANE_COLOR_UNIT_COL)) + u"\n"
+		szUnitName 		= localText.changeTextColor(pUnitTypeInfo.getDescription(), gc.getInfoTypeForString(BugPle.getUnitNameColor())) + u"\n"
 		if pUnitTypeInfo.getUnitCombatType() != -1:
 			szCombatType	= gc.getUnitCombatInfo(pUnitTypeInfo.getUnitCombatType()).getDescription() + u"\n"
 		else:
@@ -1588,17 +1588,17 @@ class CvMainInterface:
 		
 		iGold = gc.getActivePlayer().getGold()	
 		if iUpgradePriceSingle > iGold:
-			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
 		else:
-			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
 		if iUpgradePricePlot > iGold:
-			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
 		else:
-			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
 		if iUpgradePriceAll > iGold:
-			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL))
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
 		else:
-			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL))
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
 		
 		szUpgradePrice = szUpgradePriceSingle + u" / " + szUpgradePricePlot + u" / " + szUpgradePriceAll+ u" %c" %  gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar() + u"\n"
 		
@@ -1639,7 +1639,7 @@ class CvMainInterface:
 			szOwner = u""
 				
 		# unit type description + unit name (if given)
-		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), gc.getInfoTypeForString(self.CFG_INFOPANE_COLOR_UNIT_COL)) + szOwner + u"</font>\n"
+		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), gc.getInfoTypeForString(BugPle.getUnitNameColor())) + szOwner + u"</font>\n"
 			
 		# strength 
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
@@ -1728,10 +1728,10 @@ class CvMainInterface:
 	
 		# unit type specialities 
 		szSpecialText 	= u"<font=2>" + localText.getText("TXT_KEY_PEDIA_SPECIAL_ABILITIES", ()) + u":\n" + CyGameTextMgr().getUnitHelp( iUnitType, true, false, false, None )[1:] + u"</font>"
-		szSpecialText = localText.changeTextColor(szSpecialText, gc.getInfoTypeForString(self.CFG_INFOPANE_UNITTYPE_SPECS_COL))
+		szSpecialText = localText.changeTextColor(szSpecialText, gc.getInfoTypeForString(BugPle.getUnitTypeSpecialtiesColor()))
 		
 		if iLevel > 1:
-			szSpecialText += "\n" + localText.changeTextColor(mt.getPromotionInfoText(pUnit), gc.getInfoTypeForString(self.CFG_INFOPANE_PROMO_SPECS_COL))
+			szSpecialText += "\n" + localText.changeTextColor(mt.getPromotionInfoText(pUnit), gc.getInfoTypeForString(BugPle.getPromotionSpecialtiesColor()))
 		szSpecialText = mt.removeLinks(szSpecialText)
 
 		# count the promotions
@@ -1785,7 +1785,7 @@ class CvMainInterface:
 			y = self.CFG_INFOPANE_Y
 		else:
 			y = self.CFG_INFOPANE_Y2
-		screen.moveItem( szName, self.CFG_INFOPANE_X + 4 + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount % self.CFG_INFOPANE_BUTTON_PER_LINE)), \
+		screen.moveItem( szName, BugPle.getInfoPaneX() + 4 + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount % self.CFG_INFOPANE_BUTTON_PER_LINE)), \
 								 y + 4 - yOffset + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount / self.CFG_INFOPANE_BUTTON_PER_LINE)), -0.3 )
 		screen.moveToFront( szName )
 
@@ -1826,7 +1826,7 @@ class CvMainInterface:
 		else:
 			y = self.CFG_INFOPANE_Y2
 		screen.addPanel( self.UNIT_INFO_PANE, u"", u"", True, True, \
-						self.CFG_INFOPANE_X, y - dy, self.CFG_INFOPANE_DX, dy, \
+						BugPle.getInfoPaneX(), y - dy, self.CFG_INFOPANE_DX, dy, \
 						PanelStyles.PANEL_STYLE_HUD_HELP )
 		
 		# create shadow text
@@ -1834,13 +1834,13 @@ class CvMainInterface:
 		
 		# display shadow text
 		screen.addMultilineText( self.UNIT_INFO_TEXT_SHADOW, szTextBlack, \
-								self.CFG_INFOPANE_X + 5, y - dy + 5, \
+								BugPle.getInfoPaneX() + 5, y - dy + 5, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
 		# display text
 		screen.addMultilineText( self.UNIT_INFO_TEXT, szText, \
-								self.CFG_INFOPANE_X + 4, y - dy + 4, \
+								BugPle.getInfoPaneX() + 4, y - dy + 4, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
@@ -1860,13 +1860,13 @@ class CvMainInterface:
 		
 	# highlights the move area
 	def highlightMoves(self, id):
-		if self.CFG_MOVE_HIGHLIGHTER_ENABLED:
+		if BugPle.isShowMoveHighlighter():
 			pUnit = self.listPLEButtons[id][0]
 			self.ASMA.highlightMoveArea(pUnit)
 
 	# hides the move area
 	def dehighlightMoves(self):
-		if self.CFG_MOVE_HIGHLIGHTER_ENABLED:
+		if BugPle.isShowMoveHighlighter():
 			self.ASMA.dehighlightMoveArea()
 		
 ## 12monkeys - PlotList Button Enhancement - end
@@ -1922,35 +1922,12 @@ class CvMainInterface:
 		self.m_iNumPlotListButtons = (self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
 		screen.setDimensions(0, 0, self.xResolution, self.yResolution)
 		
-		config = CvConfigParser.CvConfigParser("PlotListEnhancements.ini")		
-		if (config != None):
-			self.CFG_MOVE_HIGHLIGHTER_ENABLED			= config.getboolean( "General", 		"Move Highlighter Enabled", 			true )
-			self.CFG_MISSION_INFO_ENABLED				= config.getboolean( "General", 		"Mission Info Enabled", 			true )
-			self.CFG_HEALTH_BAR_ENABLED				= config.getboolean( "General", 		"Health Bar Enabled", 				true )
-			self.CFG_HIDE_HEALTH_BAR_WHILE_FIGHTING			= config.getboolean( "General", 		"Hide Health Bar While Fighting",		true )
-			self.CFG_MOVE_BAR_ENABLED				= config.getboolean( "General", 		"Move Bar Enabled", 				true )
-			self.CFG_UPGRADE_INDICATOR_ENABLED			= config.getboolean( "General", 		"Upgrade Indicator Enabled",			true )
-			self.CFG_PROMO_INDICATOR_ENABLED			= config.getboolean( "General", 		"Promotion Indicator Enabled",			true )
-			self.CFG_WOUNDED_INDICATOR_ENABLED			= config.getboolean( "General", 		"Wounded Indicator Enabled",			true )
-			self.CFG_VERTICAL_ITEM_SPACING 				= config.getint( "Item Spacing", 		"Vertical Item Spacing", 			42 )
-			self.CFG_HORIZONTAL_ITEM_SPACING 			= config.getint( "Item Spacing", 		"Horizontal Item Spacing", 			34 )
-			self.CFG_INFOPANE_PIX_PER_LINE_1 			= config.getint( "Info Pane", 			"Pixel Per Line Type 1", 			24 )
-			self.CFG_INFOPANE_PIX_PER_LINE_2 			= config.getint( "Info Pane", 			"Pixel Per Line Type 2", 			19 )
-			self.CFG_INFOPANE_X 					= config.getint( "Info Pane", 			"X Position", 					5 )
-			self.CFG_INFOPANE_Y 					= config.getint( "Info Pane", 			"Y Position", 					160 )
-			self.CFG_INFOPANE_DX 					= config.getint( "Info Pane", 			"X Size", 					290 )
-			self.CFG_INFOPANE_COLOR_UNIT_COL			= config.get( "Info Pane Colors", 		"Unit Name Color", 				"COLOR_YELLOW" )
-			self.CFG_INFOPANE_UPGRADE_POSSIBLE_COL			= config.get( "Info Pane Colors", 		"Upgrade Possible Color",			"COLOR_GREEN" )
-			self.CFG_INFOPANE_UPGRADE_NOT_POSSIBLE_COL		= config.get( "Info Pane Colors", 		"Upgrade Not Possible Color", 			"COLOR_RED" )
-			self.CFG_INFOPANE_PROMO_SPECS_COL			= config.get( "Info Pane Colors", 		"Promotion Specialties Color",			"COLOR_LIGHT_GREY" )
-			self.CFG_INFOPANE_UNITTYPE_SPECS_COL			= config.get( "Info Pane Colors", 		"Unit Type Specialties Color",			"COLOR_WHITE" )
-			self.CFG_STACKEDBAR_HEALTH_COL				= config.get( "Stacked Bar Colors", 		"Health Color",					"COLOR_GREEN" )
-			self.CFG_STACKEDBAR_WOUNDED_COL				= config.get( "Stacked Bar Colors", 		"Wounded Color",				"COLOR_RED" )
-			self.CFG_STACKEDBAR_MOVE_COL				= config.get( "Stacked Bar Colors", 		"Movement Color",				"COLOR_BLUE" )
-			self.CFG_STACKEDBAR_NOMOVE_COL				= config.get( "Stacked Bar Colors", 		"No Movement Color",				"COLOR_YELLOW" )
-			
-		self.CFG_INFOPANE_Y		 			= yResolution - self.CFG_INFOPANE_Y
-		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1-2
+		self.CFG_INFOPANE_PIX_PER_LINE_1 			= 24
+		self.CFG_INFOPANE_PIX_PER_LINE_2 			= 19
+		self.CFG_INFOPANE_DX 					    = 290
+		
+		self.CFG_INFOPANE_Y		 			= yResolution - BugPle.getInfoPaneY()
+		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1 - 2
 		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
 		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
 				
@@ -2213,15 +2190,15 @@ class CvMainInterface:
 			szStringHealthBar = szString+"HealthBar"
 #			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(self.CFG_STACKEDBAR_HEALTH_COL) )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(self.CFG_STACKEDBAR_WOUNDED_COL) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(BugPle.getHealthyColor()) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(BugPle.getWoundedColor()) )
 			screen.hide( szStringHealthBar )
 
 			# place/init the movement bar. Important to have it at last place within the for loop.
 			szStringMoveBar = szString+"MoveBar"
 			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(self.CFG_STACKEDBAR_MOVE_COL) )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(self.CFG_STACKEDBAR_NOMOVE_COL) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(BugPle.getFullMovementColor()) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(BugPle.getHasMovedColor()) )
 			screen.hide( szStringMoveBar )
 
 		self.preparePlotListObjects()
@@ -6358,10 +6335,10 @@ class CvMainInterface:
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
 ## 12monkeys - PlotList Button Enhancement  - begin
-		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON and inputClass.getFunctionName().startswith("PLE")):
-			self.showPLEInfoPane(inputClass.getFunctionName())
-		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF and inputClass.getFunctionName().startswith("PLE")):
-			self.hidePLEInfoPane()
+#		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON and inputClass.getFunctionName().startswith("PLE")):
+#			self.showPLEInfoPane(inputClass.getFunctionName())
+#		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF and inputClass.getFunctionName().startswith("PLE")):
+#			self.hidePLEInfoPane()
 
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
