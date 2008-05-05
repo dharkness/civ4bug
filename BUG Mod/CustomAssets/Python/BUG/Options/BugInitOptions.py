@@ -17,3 +17,5 @@ import BugAlertsOptions
 import BugAutologOptions
 
 import BugUnitNameOptions
+
+import PlotListOptions
