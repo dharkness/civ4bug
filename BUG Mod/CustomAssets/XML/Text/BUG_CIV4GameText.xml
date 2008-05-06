@@ -232,11 +232,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACKS</Tag>
-		<English>Def Packs</English>
-		<French>Def Packs</French>
-		<German>Def Packs</German>
-		<Italian>Def Packs</Italian>
-		<Spanish>Def Packs</Spanish>
+		<English>Def Pacts</English>
+		<French>Def Pacts</French>
+		<German>Def Pacts</German>
+		<Italian>Patti Difensivi</Italian>
+		<Spanish>Def Pacts</Spanish>
 	</TEXT>
 
 	<!-- Reminders -->
