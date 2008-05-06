@@ -2299,21 +2299,21 @@
 	</TEXT>
 
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_TEXT</Tag>
-		<English>Sit Rep Tab</English>
-		<French>Page Rap Sit</French>
-		<German>Situationsbericht</German>
-		<Italian>Tabella "Rapporti"</Italian>
-		<Spanish>Sit Rep Tab</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_BMA_ENABLED_TEXT</Tag>
+		<English>BUG Militiary Adviser</English>
+		<French>BUG Militiary Adviser</French>
+		<German>BUG Militiary Adviser</German>
+		<Italian>BUG Militiary Adviser</Italian>
+		<Spanish>BUG Militiary Adviser</Spanish>
 	</TEXT>
 
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_BMA_SIT_REP_HOVER</Tag>
-		<English>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</English>
-		<French>En activant, montre la page 'Rapport de Situation' sur la page de l'Adviseur Militaire.</French>
-		<German>Zeigt einen Situationsbericht im Bildschirm des Militärberaters an</German>
-		<Italian>Quando è selezionato, visualizza la tabella "Rapporti" nella schermata del Consigliere Militare.</Italian>
-		<Spanish>When checked, displays the 'Sit Rep' tab on the Military Advisor screen.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_BMA_ENABLED_HOVER</Tag>
+		<English>When checked, uses teh BUG Militiary Adviser (requires restart).</English>
+		<French>When checked, uses teh BUG Militiary Adviser (requires restart).</French>
+		<German>When checked, uses teh BUG Militiary Adviser (requires restart).</German>
+		<Italian>When checked, uses teh BUG Militiary Adviser (requires restart).</Italian>
+		<Spanish>When checked, uses teh BUG Militiary Adviser (requires restart).</Spanish>
 	</TEXT>
 
 	<TEXT>

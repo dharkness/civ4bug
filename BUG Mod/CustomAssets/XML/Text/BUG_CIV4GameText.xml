@@ -167,14 +167,6 @@
 		<Spanish>Sit-Rep</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_RELATIONSHIP</Tag>
-		<English>Relationship</English>
-		<French>Relation</French>
-		<German>Beziehung</German>
-		<Italian>Relazioni</Italian>
-		<Spanish>Relationship</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
 		<English>Worst Enemy</English>
 		<French>Ennemi n° 1</French>
@@ -200,27 +192,51 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
-		<English>Strat. Res</English>
-		<French>Ressources Stratégiques</French>
-		<German>Strat. Res.</German>
-		<Italian>Risorse</Italian>
-		<Spanish>Strat. Res</Spanish>
+		<English>Strategic Advantages</English>
+		<French>Stratégiques Advantages</French>
+		<German>Strategic Advantages</German>
+		<Italian>Strategic Advantages</Italian>
+		<Spanish>Strategic Advantages</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
-		<English>Will Declare On</English>
+		<English>Will Declare?</English>
 		<French>Déclarera en?</French>
 		<German>Kriegserkl&#228;rung an</German>
 		<Italian>Dichiarerà</Italian>
-		<Spanish>Will Declare On</Spanish>
+		<Spanish>Will Declare?</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_WAR_DENIAL</Tag>
-		<English>War Denial</English>
-		<French>War Denial</French>
-		<German>Kriegsgrund</German>
-		<Italian>No guerra</Italian>
-		<Spanish>War Denial</Spanish>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS</Tag>
+		<English>Ours</English>
+		<French>Ours</French>
+		<German>Ours</German>
+		<Italian>Ours</Italian>
+		<Spanish>Ours</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS</Tag>
+		<English>Theirs</English>
+		<French>Theirs</French>
+		<German>Theirs</German>
+		<Italian>Theirs</Italian>
+		<Spanish>Theirs</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_VASSALS</Tag>
+		<English>Vassals</English>
+		<French>Vassals</French>
+		<German>Vassals</German>
+		<Italian>Vassals</Italian>
+		<Spanish>Vassals</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACKS</Tag>
+		<English>Def Packs</English>
+		<French>Def Packs</French>
+		<German>Def Packs</German>
+		<Italian>Def Packs</Italian>
+		<Spanish>Def Packs</Spanish>
 	</TEXT>
 
 	<!-- Reminders -->

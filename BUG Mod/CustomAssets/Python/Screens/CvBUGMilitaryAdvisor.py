@@ -208,11 +208,6 @@ class CvMilitaryAdvisor:
 		if self.iScreen == -1:
 			self.iScreen = UNIT_LOCATION_SCREEN
 
-# BUG - optional sit rep - start
-#		if not BugScreens.isShowSitRep():
-#			self.iScreen = UNIT_LOCATION_SCREEN
-# BUG - optional sit rep - end
-
 		# Set the background widget and exit button
 		screen.addDDSGFC(self.BACKGROUND_ID, ArtFileMgr.getInterfaceArtInfo("MAINMENU_SLIDESHOW_LOAD").getPath(), 0, 0, self.W_SCREEN, self.H_SCREEN, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_TOPBAR )
@@ -243,14 +238,11 @@ class CvMilitaryAdvisor:
 			screen.setText(self.UNIT_LOC_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_UNIT_LOCATION", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		xLink += self.DX_LINK
 
-# BUG - optional sit rep - start
-		if BugScreens.isShowSitRep():
-# BUG - optional sit rep - end, next 5 lines indented once
-			if (self.iScreen != SITUATION_REPORT_SCREEN):
-				screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MILITARY_SITUATION_REPORT", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-			else:
-				screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_SITUATION_REPORT", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-			xLink += self.DX_LINK
+		if (self.iScreen != SITUATION_REPORT_SCREEN):
+			screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MILITARY_SITUATION_REPORT", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		else:
+			screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_SITUATION_REPORT", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		xLink += self.DX_LINK
 
 # dev using icongrid
 	def showSituationReport(self):
@@ -468,20 +460,20 @@ class CvMilitaryAdvisor:
 #		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()))
 		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()))
 		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()))
-		self.SitRepGrid.setHeader(self.Col_StratResPos, "Ours")
-		self.SitRepGrid.setHeader(self.Col_StratResNeg, "Theirs")
+		self.SitRepGrid.setHeader(self.Col_StratResPos, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS", ()))
+		self.SitRepGrid.setHeader(self.Col_StratResNeg, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS", ()))
 		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
 
 		if bVassals:
-			self.SitRepGrid.setHeader(self.Col_Vassals, "Vassals")
+			self.SitRepGrid.setHeader(self.Col_Vassals, localText.getText("TXT_KEY_MILITARY_SITREP_VASSALS", ()))
 
 		if bDefPacks:
-			self.SitRepGrid.setHeader(self.Col_DefPacks, "DefPacks")
+			self.SitRepGrid.setHeader(self.Col_DefPacks, localText.getText("TXT_KEY_MILITARY_SITREP_DEFPACKS", ()))
 
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
-		self.SitRepGrid.createColumnGroup("Strategic Advantage", 2)
+		self.SitRepGrid.createColumnGroup(localText.getText("TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES", ()), 2)
 
 		self.SitRepGrid.setTextColWidth(self.Col_WHEOOH, 25)
 		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 120)
