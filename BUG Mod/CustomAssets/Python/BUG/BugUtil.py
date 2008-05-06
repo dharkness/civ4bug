@@ -25,7 +25,7 @@ def getText(key, values, default=None):
 		return text
 	else:
 		msg = "XML key %s not found" % key
-		debug(msg)
+		#debug(msg)
 		if default:
 			return default
 		else:
