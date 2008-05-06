@@ -183,7 +183,7 @@ class BugPleOptions(OptionsFacade):
 	def getVerticalSpacing(self):
 		return self.getInt('PLE_Vertical_Spacing')
 	def getHoriztonalSpacing(self):
-		return self.getInt('PLE_Horiztonal_Spacing')
+		return self.getInt('PLE_Horizontal_Spacing')
 	
 	def getInfoPaneX(self):
 		return self.getInt('PLE_Info_Pane_X')
