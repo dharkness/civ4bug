@@ -15,7 +15,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
         panel = self.createMainPanel(screen)
         left, center = self.addTwoColumnLayout(screen, panel, panel, True)
         
-        self.addCheckbox(screen, left, "PLE_Mission_info")
+        self.addCheckbox(screen, left, "PLE_Mission_Info")
         self.addSpacer(screen,left,"PLE_Movement")
         
         self.addCheckbox(screen, left, "PLE_Move_Bar")
