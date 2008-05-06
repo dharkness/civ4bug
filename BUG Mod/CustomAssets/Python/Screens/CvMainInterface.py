@@ -4411,6 +4411,7 @@ class CvMainInterface:
 					szText = localText.getText("INTERFACE_ANARCHY", (gc.getPlayer(ePlayer).getAnarchyTurns(), ))
 					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
 # BUG - Bars on single line for higher resolution screens - end
+
 					if ( gc.getPlayer(ePlayer).getCurrentResearch() != -1 ):
 						screen.show( "ResearchText" )
 					else:
@@ -6102,8 +6103,19 @@ class CvMainInterface:
 		
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		xResolution = screen.getXResolution()
-		screen.moveItem( szButtonID, 264 + ( ( xResolution - 1024 ) / 2 ) + ( 34 * ( iCount % 15 ) ), 0 + ( 34 * ( iCount / 15 ) ), -0.3 )
-							
+
+# BUG - Bars on single line for higher resolution screens - start
+		if (xResolution >= 1440
+		and (BugScreens.isShowCombatCounter() or BugScreens.isShowGPProgressBar())):
+			xCoord = 268 + (xResolution - 1440) / 2
+			xCoord += 6 + 84
+			screen.moveItem( szButtonID, 264 + ( ( xResolution - 1024 ) / 2 ) + ( 34 * ( iCount % 15 ) ), 0 + ( 34 * ( iCount / 15 ) ), -0.3 )
+		else:
+			xCoord = 264 + ( ( xResolution - 1024 ) / 2 )
+
+		screen.moveItem( szButtonID, xCoord + ( 34 * ( iCount % 15 ) ), 0 + ( 34 * ( iCount / 15 ) ), -0.3 )
+# BUG - Bars on single line for higher resolution screens - end
+
 	# Will set the selection button position
 	def setScoreTextPosition( self, szButtonID, iWhichLine ):
 		
