@@ -22,12 +22,14 @@ def getText(key, values, default=None):
 	"""
 	text = localText.getText(key, values)
 	if (text and text != key):
+		return text
+	else:
+		msg = "XML key %s not found" % key
+		debug(msg)
 		if default:
 			return default
 		else:
-			return "XML key %s not found" % key
-	else:
-		return default
+			return msg
 
 def debug(message):
 	"""
