@@ -29,7 +29,9 @@ class BugOptions(object):
 	def getOption(self, name):
 		if (name in self.options):
 			return self.options[name]
-		return None
+		else:
+			BugUtil.debug("Missing option: %s" % name)
+			return None
 
 	def addOption(self, option):
 		self.options[option.getName()] = option
