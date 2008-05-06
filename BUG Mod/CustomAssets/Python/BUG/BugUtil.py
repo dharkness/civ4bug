@@ -13,11 +13,7 @@ def getPlainText(key, default=None):
 	Looks up a translated message in XML without any replacement parameters.
 	If the key isn't found, the default is returned.
 	"""
-	text = localText.getText(key, ())
-	if (text and text != key):
-		return text
-	else:
-		return default
+	return getText(key, (), default)
 
 def getText(key, values, default=None):
 	"""
@@ -26,7 +22,10 @@ def getText(key, values, default=None):
 	"""
 	text = localText.getText(key, values)
 	if (text and text != key):
-		return text
+		if default:
+			return default
+		else:
+			return "XML key %s not found" % key
 	else:
 		return default
 
