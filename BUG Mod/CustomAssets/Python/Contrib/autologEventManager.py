@@ -464,6 +464,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		iNumUnits = argsList[2]
 		listUnitIds = argsList[3]
 
+#		print eOwner, eMission, iNumUnits, listUnitIds
+
 		if self.WdlDefender == None: return
 
 		if (BugAutolog.isLogCombat()
@@ -583,11 +585,26 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				Logger.writeLog(message, vColor="Brown")
 
 	def onTechAcquired(self, argsList):
+		if gc.getGame().getGameTurn() == 0:
+			return
+		
 		if (BugAutolog.isLogTechnology()):
 			iTechType, iTeam, iPlayer, bAnnounce = argsList
-			if (iPlayer == CyGame().getActivePlayer()
-			and gc.getGame().getGameTurn() > 0):
-				message = "Tech learned: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+
+			bWrite = False
+			if iPlayer == CyGame().getActivePlayer():
+				bWrite = True
+				if self.bCurrPlayerHuman:
+					message = "Tech acquired (trade, lightbulb, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+				else:
+					message = "Tech discovered: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+			else:
+				if self.bCurrPlayerHuman:
+					bWrite = True
+					zsCiv = gc.getPlayer(iPlayer).getName() + "(" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0) + ")"
+					message = "Tech traded to %s: %s"%(zsCiv, PyInfo.TechnologyInfo(iTechType).getDescription())
+
+			if bWrite:
 				Logger.writeLog(message, vColor="Green")
 
 	def onTechSelected(self, argsList):
