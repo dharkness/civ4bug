@@ -468,7 +468,7 @@ class CvMilitaryAdvisor:
 			self.SitRepGrid.setHeader(self.Col_Vassals, localText.getText("TXT_KEY_MILITARY_SITREP_VASSALS", ()))
 
 		if bDefPacks:
-			self.SitRepGrid.setHeader(self.Col_DefPacks, localText.getText("TXT_KEY_MILITARY_SITREP_DEFPACKS", ()))
+			self.SitRepGrid.setHeader(self.Col_DefPacks, localText.getText("TXT_KEY_MILITARY_SITREP_DEFPACTS", ()))
 
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
@@ -542,7 +542,7 @@ class CvMilitaryAdvisor:
 			return
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
-			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "Vassal")
+			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ())
 			return
 
 		# initialize threat index
@@ -585,19 +585,19 @@ class CvMilitaryAdvisor:
 		
 		if fThreat < 15:
 			sColour = "COLOR_PLAYER_GREEN"
-			sThreat = "Low"
+			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_LOW", ())
 		elif  fThreat < 35:
 			sColour = "COLOR_PLAYER_BLUE"
-			sThreat = "Guarded"
+			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_GUARDED", ())
 		elif  fThreat < 55:
 			sColour = "COLOR_PLAYER_YELLOW"
-			sThreat = "Elevated"
+			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_ELEVATED", ())
 		elif  fThreat < 75:
 			sColour = "COLOR_PLAYER_ORANGE"
-			sThreat = "High"
+			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_HIGH", ())
 		else:
 			sColour = "COLOR_PLAYER_RED"
-			sThreat = "Severe"
+			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_SEVERE", ())
 
 		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat)
 

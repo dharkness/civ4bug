@@ -231,12 +231,60 @@
 		<Spanish>Vassals</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACKS</Tag>
+		<Tag>TXT_KEY_MILITARY_SITREP_VASSAL</Tag>
+		<English>Vassal</English>
+		<French>Vassal</French>
+		<German>Vassal</German>
+		<Italian>Vassalli</Italian>
+		<Spanish>Vassal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACTS</Tag>
 		<English>Def Pacts</English>
 		<French>Def Pacts</French>
 		<German>Def Pacts</German>
 		<Italian>Patti Difensivi</Italian>
 		<Spanish>Def Pacts</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_LOW</Tag>
+		<English>Low</English>
+		<French>Low</French>
+		<German>Low</German>
+		<Italian>Low</Italian>
+		<Spanish>Low</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_GUARDED</Tag>
+		<English>Guarded</English>
+		<French>Guarded</French>
+		<German>Guarded</German>
+		<Italian>Guarded</Italian>
+		<Spanish>Guarded</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_ELEVATED</Tag>
+		<English>Elevated</English>
+		<French>Elevated</French>
+		<German>Elevated</German>
+		<Italian>Elevated</Italian>
+		<Spanish>Elevated</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_HIGH</Tag>
+		<English>High</English>
+		<French>High</French>
+		<German>High</German>
+		<Italian>High</Italian>
+		<Spanish>High</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_SEVERE</Tag>
+		<English>Severe</English>
+		<French>Severe</French>
+		<German>Severe</German>
+		<Italian>Severe</Italian>
+		<Spanish>Severe</Spanish>
 	</TEXT>
 
 	<!-- Reminders -->
