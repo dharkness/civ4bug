@@ -320,6 +320,8 @@ class CvMilitaryAdvisor:
 
 				self.SitRepGrid.appendRow(pPlayer.getName(), "")
 
+				#print "Player: %i %s" % (iLoopPlayer, pPlayer.getName())
+
 				# add leaderhead icon
 				self.SitRepGrid.addIcon( iRow, self.Col_Leader
 										, gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton()
@@ -542,7 +544,7 @@ class CvMilitaryAdvisor:
 			return
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
-			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ())
+			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ()))
 			return
 
 		# initialize threat index
@@ -781,6 +783,9 @@ class CvMilitaryAdvisor:
 		iAIUnits = self.getCanTrainUnits(iPlayer)
 		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer)
 
+		#print iAIUnits
+		#print iHumanUnits
+		
 		# remove units that the human does not know about
 		iUnitsToRemove = set()
 		for iUnit in iAIUnits:
