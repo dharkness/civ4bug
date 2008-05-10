@@ -30,11 +30,6 @@ UNIT_LOCATION_SCREEN = 0
 SITUATION_REPORT_SCREEN = 1
 #PLACE_HOLDER = 2
 
-# Debugging help
-def BUGPrint (stuff):
-	stuff = "BUG_MAdv: " + stuff
-	CvUtil.pyPrint (stuff)
-
 class CvMilitaryAdvisor:
 	"Shows the BUG Version of the Military Advisor"
 
@@ -258,9 +253,9 @@ class CvMilitaryAdvisor:
 		
 		# get Player arrays
 		iVassals = [[]] * gc.getMAX_PLAYERS()
-		iDefPacks = [[]] * gc.getMAX_PLAYERS()
+		iDefPacts = [[]] * gc.getMAX_PLAYERS()
 		bVassals = False
-		bDefPacks = False
+		bDefPacts = False
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
 			pPlayer = gc.getPlayer(iLoopPlayer)
 
@@ -271,35 +266,25 @@ class CvMilitaryAdvisor:
 			and not pPlayer.isBarbarian()
 			and not pPlayer.isMinorCiv()):
 				iVassals[iLoopPlayer] = self.getVassals(iLoopPlayer)
-				iDefPacks[iLoopPlayer] = self.getDefPacks(iLoopPlayer)
+				iDefPacts[iLoopPlayer] = self.getDefPacts(iLoopPlayer)
 
 				if len(iVassals[iLoopPlayer]) > 0:
 					bVassals = True
 
-				if len(iDefPacks[iLoopPlayer]) > 0:
-					bDefPacks = True
+				if len(iDefPacts[iLoopPlayer]) > 0:
+					bDefPacts = True
 
-		self.initGrid(screen, bVassals, bDefPacks)
+		self.initGrid(screen, bVassals, bDefPacts)
 		self.initPower()
 		
 		activePlayer = gc.getPlayer(self.iActivePlayer)		
 
 		
 		# Assemble the panel
-#		iPANEL_X = self.SITREP_LEFT_RIGHT_SPACE
-#		iPANEL_Y = self.SITREP_TOP_BOTTOM_SPACE
-#		iPANEL_WIDTH = self.W_SCREEN - 2 * self.SITREP_LEFT_RIGHT_SPACE
-#		iPANEL_HEIGHT = self.H_SCREEN - 2 * self.SITREP_TOP_BOTTOM_SPACE
-
 		iPANEL_X = 5
 		iPANEL_Y = 60
 		iPANEL_WIDTH = self.W_SCREEN - 20
 		iPANEL_HEIGHT = self.H_SCREEN - 120
-
-		#self.X_SCREEN = 500
-		#s#elf.Y_SCREEN = 396
-		#self.W_SCREEN = 1024
-		#self.H_SCREEN = 768
 
 		self.tradePanel = self.getNextWidgetName()
 		screen.addPanel(self.tradePanel, "", "", True, True, iPANEL_X, iPANEL_Y, iPANEL_WIDTH, iPANEL_HEIGHT, PanelStyles.PANEL_STYLE_MAIN )
@@ -318,14 +303,12 @@ class CvMilitaryAdvisor:
 			and not pPlayer.isBarbarian()
 			and not pPlayer.isMinorCiv()):
 
-				self.SitRepGrid.appendRow(pPlayer.getName(), "")
-
-				#print "Player: %i %s" % (iLoopPlayer, pPlayer.getName())
+				self.SitRepGrid.appendRow(pPlayer.getName(), "", 3)
 
 				# add leaderhead icon
-				self.SitRepGrid.addIcon( iRow, self.Col_Leader
-										, gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton()
-										, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
+				self.SitRepGrid.addIcon(iRow, self.Col_Leader,
+										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(),
+										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
 				# add worst enemy
 #				self.Grid_WorstEnemy(iRow, iLoopLeader)
@@ -352,9 +335,9 @@ class CvMilitaryAdvisor:
 												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 
 				# show defensive packs
-				if bDefPacks:
-					for iLoopPlayer2 in iDefPacks[iLoopPlayer]:
-						self.SitRepGrid.addIcon(iRow, self.Col_DefPacks, 
+				if bDefPacts:
+					for iLoopPlayer2 in iDefPacts[iLoopPlayer]:
+						self.SitRepGrid.addIcon(iRow, self.Col_DefPacts, 
 												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 
 												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 
@@ -371,7 +354,7 @@ class CvMilitaryAdvisor:
 				else:
 					sWHEOOH = ""
 
-				self.SitRepGrid.setText(iRow, self.Col_WHEOOH, sWHEOOH)
+				self.SitRepGrid.addText(iRow, self.Col_WHEOOH, sWHEOOH, 3)
 
 				# add the threat index
 				self.Grid_ThreatIndex(iRow, iLoopPlayer)
@@ -384,21 +367,7 @@ class CvMilitaryAdvisor:
 
 		return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	def initGrid(self, screen, bVassals, bDefPacks):
+	def initGrid(self, screen, bVassals, bDefPacts):
 		
 		self.Col_Leader = 0
 		self.Col_WHEOOH = 1
@@ -408,9 +377,9 @@ class CvMilitaryAdvisor:
 		self.Col_StratResNeg = 4
 		self.Col_WillDeclareOn = 5
 		self.Col_Vassals = 7
-		self.Col_DefPacks = 8
+		self.Col_DefPacts = 8
 
-		if (not bVassals and not bDefPacks):
+		if (not bVassals and not bDefPacts):
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
 						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
@@ -418,7 +387,7 @@ class CvMilitaryAdvisor:
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN)
-		if (bVassals and bDefPacks):
+		if (bVassals and bDefPacts):
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
 						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
@@ -457,20 +426,20 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.setMinRowSpace(self.MIN_ROW_SPACE)
 
 		# set headings
-		self.SitRepGrid.setHeader(self.Col_Leader, "")
-		self.SitRepGrid.setHeader(self.Col_WHEOOH, "")
-#		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()))
-		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()))
-		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()))
-		self.SitRepGrid.setHeader(self.Col_StratResPos, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS", ()))
-		self.SitRepGrid.setHeader(self.Col_StratResNeg, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS", ()))
-		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()))
+		self.SitRepGrid.setHeader(self.Col_Leader, "", 3)
+		self.SitRepGrid.setHeader(self.Col_WHEOOH, "", 3)
+#		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_StratResPos, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_StratResNeg, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()), 3)
 
 		if bVassals:
-			self.SitRepGrid.setHeader(self.Col_Vassals, localText.getText("TXT_KEY_MILITARY_SITREP_VASSALS", ()))
+			self.SitRepGrid.setHeader(self.Col_Vassals, localText.getText("TXT_KEY_MILITARY_SITREP_VASSALS", ()), 3)
 
-		if bDefPacks:
-			self.SitRepGrid.setHeader(self.Col_DefPacks, localText.getText("TXT_KEY_MILITARY_SITREP_DEFPACTS", ()))
+		if bDefPacts:
+			self.SitRepGrid.setHeader(self.Col_DefPacts, localText.getText("TXT_KEY_MILITARY_SITREP_DEFPACTS", ()), 3)
 
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
@@ -506,45 +475,17 @@ class CvMilitaryAdvisor:
 
 		return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	def Grid_ThreatIndex(self, iRow, iPlayer):
 
 		pPlayer = gc.getPlayer(iPlayer)
 
 		# no threat index if active player cannot see the demographics
 		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
+			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "n/a", 3)
 			return
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
-			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ()))
+			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ()), 3)
 			return
 
 		# initialize threat index
@@ -582,9 +523,6 @@ class CvMilitaryAdvisor:
 		if gc.getTeam(pPlayer.getTeam()).isDefensivePact(gc.getPlayer(self.iActivePlayer).getTeam()):
 			fThreat = fThreat * 0.2
 
-#		if gc.getTeam(pLoopPlayer.getTeam()).isDefensivePact(iPlayer.getTeam()):
-
-		
 		if fThreat < 15:
 			sColour = "COLOR_PLAYER_GREEN"
 			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_LOW", ())
@@ -601,114 +539,60 @@ class CvMilitaryAdvisor:
 			sColour = "COLOR_PLAYER_RED"
 			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_SEVERE", ())
 
-		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat)
+		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat, 3)
 
 	def calculateRelations (self, nPlayer, nTarget):
 		if (nPlayer != nTarget
 		and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
 			nAttitude = 0
 			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-#			ExoticForPrint (("%d toward %d" % (nPlayer, nTarget)) + str(szAttitude))
+			print szAttitude
 			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
-#			ExoticForPrint ("Length: %d" % len (ltPlusAndMinuses))
 			for i in range (len (ltPlusAndMinuses)):
 				nAttitude += int (ltPlusAndMinuses[i])
-#			ExoticForPrint ("Attitude: %d" % nAttitude)
 		else:
 			return None
 		return nAttitude
-
-	def getAttitudeText (self, nAttitude, nPlayer, nTarget):
-		szText = str (nAttitude)
-		szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-		if nAttitude > 0:
-			szText = "+" + szText
-
-		if BugScreens.isShowGlanceSmilies():
-			szText = "[" + szText + "]"
-		else:
-			szText = "<font=3>   " + szText + "</font>"
-
-#		ExoticForPrint ("Attitude String = %s" % szAttitude)
-		for szColor, szSearchString in self.ATTITUDE_DICT.items():
-			if re.search (szSearchString, szAttitude):
-				color = gc.getInfoTypeForString(szColor)
-				szText = localText.changeTextColor (szText, color)
-
-		if BugScreens.isShowGlanceSmilies():
-			iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
-			szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-			szText = szSmilie + " " + szText
-		
-		if gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isAtWar(gc.getPlayer(nTarget).getTeam()):
-			szText += u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
-
-		return szText
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	def Grid_WorstEnemy(self, iRow, iLeader):
 		szWEnemyName = gc.getPlayer(iLeader).getWorstEnemyName()
 
-		if szWEnemyName == "":
-			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(),
-									WidgetTypes.WIDGET_LEADERHEAD, -1)
-		else:
-			for iLoopEnemy in range(gc.getMAX_PLAYERS()):
-				if gc.getPlayer(iLoopEnemy).getName() == szWEnemyName:
-					iWEnemy = iLoopEnemy
-					break
+#		if szWEnemyName == "":
+#			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
+#									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(),
+#									WidgetTypes.WIDGET_LEADERHEAD, -1)
+#		else:
+		for iLoopEnemy in range(gc.getMAX_PLAYERS()):
+			if gc.getPlayer(iLoopEnemy).getName() == szWEnemyName:
+				iWEnemy = iLoopEnemy
+				break
 
+		pWEPlayer = gc.getPlayer(iWEnemy)
+		if (pWEPlayer.isAlive()
+		and (gc.getTeam(pWEPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
+		or gc.getGame().isDebugMode())
+		and not pWEPlayer.isBarbarian()
+		and not pWEPlayer.isMinorCiv()):
 			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-									gc.getLeaderHeadInfo(gc.getPlayer(iWEnemy).getLeaderType()).getButton(), 
+									gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 
 									WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
 		return
 
 	def GetActiveWars(self, iRow, iLeader):
-		iLeaderWars = []
+		iWars = []
 
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			gcLoopLeader = gc.getPlayer(iLoopPlayer)
-			if (gcLoopLeader.isAlive()
-			and (gc.getTeam(gcLoopLeader.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
+			pLoopPlayer = gc.getPlayer(iLoopPlayer)
+			if (pLoopPlayer.isAlive()
+			and (gc.getTeam(pLoopPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
 			or gc.getGame().isDebugMode())
-			and not gcLoopLeader.isBarbarian()
-			and not gcLoopLeader.isMinorCiv()):
-				if gc.getTeam(gc.getPlayer(iLeader).getTeam()).isAtWar(gcLoopLeader.getTeam()):
-					iLeaderWars.append(iLoopPlayer)
+			and not pLoopPlayer.isBarbarian()
+			and not pLoopPlayer.isMinorCiv()):
+				if gc.getTeam(gc.getPlayer(iLeader).getTeam()).isAtWar(pLoopPlayer.getTeam()):
+					iWars.append(iLoopPlayer)
 
-		return iLeaderWars
+		return iWars
 
 	def getVassals(self, iPlayer):
 		iVassals = []
@@ -726,8 +610,8 @@ class CvMilitaryAdvisor:
 					iVassals.append(iLoopPlayer)
 		return iVassals
 
-	def getDefPacks(self, iPlayer):
-		iDefPacks = []
+	def getDefPacts(self, iPlayer):
+		iDefPacts = []
 		pPlayer = gc.getPlayer(iPlayer)
 
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
@@ -739,8 +623,8 @@ class CvMilitaryAdvisor:
 			and not pLoopPlayer.isMinorCiv()
 			and iPlayer != iLoopPlayer):
 				if gc.getTeam(pLoopPlayer.getTeam()).isDefensivePact(pPlayer.getTeam()):
-					iDefPacks.append(iLoopPlayer)
-		return iDefPacks
+					iDefPacts.append(iLoopPlayer)
+		return iDefPacts
 
 
 
@@ -756,36 +640,22 @@ class CvMilitaryAdvisor:
 			print sDummy
 		return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	def Grid_Strategic_Resources(self, iRow, iPlayer):
+		
 		pPlayer = gc.getPlayer(iPlayer)
 		pActivePlayer = gc.getPlayer(self.iActivePlayer)
+
+		if (not pActivePlayer.canTradeNetworkWith(iPlayer)
+		or (not gc.getTeam(pActivePlayer.getTeam()).isTechTrading()
+		and not gc.getTeam(pPlayer.getTeam()).isTechTrading())):
+			szButton = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath()
+			self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, WidgetTypes.WIDGET_GENERAL, -1)
+			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, WidgetTypes.WIDGET_GENERAL, -1)
+			return
 
 		iAIUnits = self.getCanTrainUnits(iPlayer)
 		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer)
 
-		#print iAIUnits
-		#print iHumanUnits
-		
 		# remove units that the human does not know about
 		iUnitsToRemove = set()
 		for iUnit in iAIUnits:

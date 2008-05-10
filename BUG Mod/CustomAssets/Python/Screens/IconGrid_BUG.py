@@ -20,10 +20,11 @@ class IconData:
 	
 class StackedBarData:
 
-	def __init__(self, fValue, sColor, sText):
+	def __init__(self, fValue, sColor, sText, iFont):
 		self.value = fValue
 		self.color = sColor
 		self.text = sText
+		self.font = iFont
 
 class CellData:
 
@@ -35,19 +36,21 @@ class CellData:
 	def addIcon(self, sImage, widgetType, iData):
 		self.icons.append(IconData(sImage, widgetType, iData))
 	
-	def setText(self, sText):
+	def addText(self, sText, iFont):
 		self.text = sText
+		self.font = iFont
 	
-	def addStackedBar(self, fValue, sColor, sText):
-		self.stackedbar.append(StackedBarData(fValue, sColor, sText))
+	def addStackedBar(self, fValue, sColor, sText, iFont):
+		self.stackedbar.append(StackedBarData(fValue, sColor, sText, iFont))
 	
 	
 	
 class RowData:
 
-	def __init__(self, sRowHeader, sMessage, iNumColumns):
+	def __init__(self, sRowHeader, sMessage, iFont, iNumColumns):
 		self.rowHeader = sRowHeader
 		self.message = sMessage
+		self.font = iFont
 		self.cells = []
 		for i in range(iNumColumns):
 			self.cells.append(CellData())
@@ -55,11 +58,11 @@ class RowData:
 	def addIcon(self, iColumnIndex, sImage, widgetType, iData):
 		self.cells[iColumnIndex].addIcon(sImage, widgetType, iData)
 	
-	def setText(self, iColumnIndex, sText):
-		self.cells[iColumnIndex].setText(sText)
+	def addText(self, iColumnIndex, sText, iFont):
+		self.cells[iColumnIndex].addText(sText, iFont)
 
-	def addStackedBar(self, iColumnIndex, fValue, sColor, sText):
-		self.cells[iColumnIndex].addStackedBar(fValue, sColor, sText)
+	def addStackedBar(self, iColumnIndex, fValue, sColor, sText, iFont):
+		self.cells[iColumnIndex].addStackedBar(fValue, sColor, sText, iFont)
 	
 	
 	
@@ -92,6 +95,7 @@ class IconGrid_BUG:
 		self.showRowBorder = bShowRowBorder
 		self.columnGroups = []
 		self.header = []
+		self.headerFont = []
 		self.data = []
 		self.scrollPosition = 0
 		self.textColWidth = {}
@@ -99,6 +103,7 @@ class IconGrid_BUG:
 		
 		for i in range(len(self.columns)):
 			self.header.append("")
+			self.headerFont.append(3)
 	
 		self.groupTitleHeight = 24
 		self.headerHeight = 24
@@ -181,8 +186,9 @@ class IconGrid_BUG:
 			return initHeight + self.headerHeight
 	
 	
-	def setHeader(self, iCol, sLabel):
+	def setHeader(self, iCol, sLabel, iFont):
 		self.header[iCol] = sLabel
+		self.headerFont[iCol] = iFont
 		
 		
 	def setTextColWidth(self, iCol, iWidth):
@@ -204,17 +210,17 @@ class IconGrid_BUG:
 		self.hideControls()
 
 
-	def appendRow(self, sRowHeader, sMessage):
-		self.data.append(RowData(sRowHeader, sMessage, len(self.columns)))
+	def appendRow(self, sRowHeader, sMessage, iFont):
+		self.data.append(RowData(sRowHeader, sMessage, iFont, len(self.columns)))
 
  	def addIcon(self, iRowIndex, iColumnIndex, sImage, widgetType, iData):
  		self.data[iRowIndex].addIcon(iColumnIndex, sImage, widgetType, iData)
 
- 	def setText(self, iRowIndex, iColumnIndex, sText):
- 		self.data[iRowIndex].setText(iColumnIndex, sText)
+ 	def addText(self, iRowIndex, iColumnIndex, sText, iFont):
+ 		self.data[iRowIndex].addText(iColumnIndex, sText, iFont)
 
- 	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText):
- 		self.data[iRowIndex].addStackedBar(iColumnIndex, fValue, sColor, sText)
+ 	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText, iFont):
+ 		self.data[iRowIndex].addStackedBar(iColumnIndex, fValue, sColor, sText, iFont)
 
 	def clearData(self):
 		self.scrollPosition = 0
@@ -259,64 +265,58 @@ class IconGrid_BUG:
 				currentY += self.rowBorderWidth + 1
 			if (self.showRowHeader):
 				currentY += self.rowHeaderHeight
-				self.screen.setLabel( self.rowName + str(rowIndex) + "name", ""
-									, "<font=3>" + rowData.rowHeader + "</font>", CvUtil.FONT_LEFT_JUSTIFY
-									, self.xStart + 5, self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex - 3
-									, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				text = "<font=%i>%s</font>" % (rowData.font, rowData.rowHeader)
+				self.screen.setLabel(self.rowName + str(rowIndex) + "name", "",
+									 text, CvUtil.FONT_LEFT_JUSTIFY,
+									 self.xStart + 5, self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex - 3,
+									 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			
 			startIndex = 0
 			for groupIndex in range(len(self.columnGroups)):
 				colGroup = self.columnGroups[groupIndex]
 				if (colGroup.label != ""):
 					currentX += self.groupBorder
-				
+
+				# put info in grouped columns
 				for offset in range(colGroup.length):
 					if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
-						bDataMissing = False
+						bDataFound = True
 						try:
 							iconData = rowData.cells[startIndex + offset].icons[0]
 						except:
-							bDataMissing = True
+							bDataFound = False
 
-						if not bDataMissing:		
-#							iconData = rowData.cells[startIndex + offset].icons[0]
-							self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-													  , iconData.image, currentX, currentY, 64, 64
-													  , iconData.widgetType, iconData.data, -1 )
+						if bDataFound:		
+							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
+													   iconData.image, currentX, currentY, 64, 64,
+													   iconData.widgetType, iconData.data, -1)
 							currentX += self.iconColWidth + self.colSpace
-
-
-#						iconData = rowData.cells[startIndex + offset].icons[0]
-#						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-#												  , iconData.image, currentX, currentY, 64, 64
-#												  , iconData.widgetType, iconData.data, -1 )
-#						currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 						self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
 						for icon in rowData.cells[startIndex + offset].icons:
-							self.screen.appendMultiListButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-															 , icon.image, 0, icon.widgetType, icon.data, -1, False )
+							self.screen.appendMultiListButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
+															  icon.image, 0, icon.widgetType, icon.data, -1, False)
 						currentX += self.multiListColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
 						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 28
 						if (self.showRowHeader):
 							textY += self.rowHeaderHeight
-						text = rowData.cells[startIndex + offset].text
+						text = "<font=%i>%s</font>" % (rowData.cells[startIndex + offset].font, rowData.cells[startIndex + offset].text)
 						self.screen.setLabel( self.rowName + str(rowIndex) + "_" + str(startIndex + offset), ""
-											, "<font=3>" + text + "</font>", CvUtil.FONT_LEFT_JUSTIFY
+											, text, CvUtil.FONT_LEFT_JUSTIFY
 											, currentX + 6, textY, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 						currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-						bDataMissing = False
+						bDataFound = True
 						try:
 							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 						except:
-							bDataMissing = True
+							bDataFound = False
 
-						if not bDataMissing:		
+						if not bDataFound:		
 							textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 							if (self.showRowHeader):
 								textY += self.rowHeaderHeight
@@ -340,37 +340,28 @@ class IconGrid_BUG:
 
 							if stackedbarData.text != "":
 								szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+								text = "<font=%i>%s</font>" % (stackedbarData.font, stackedbarData.text)
 								self.screen.setLabel (szTxt_ID, "",
-													  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
-													   currentX + 6 + width / 2, textY - iSBarOffset_Y,
-													   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-#							self.screen.setTextAt (szTxt_ID, "", "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY, currentX + 6 + width / 2, textY - 20, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-	#						self.screen.setTextAt (szTxt_ID, "", stackedbarData.text, CvUtil.FONT_CENTER_JUSTIFY, currentX + 6, textY - iSBarOffset_Y, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+													  text, CvUtil.FONT_CENTER_JUSTIFY,
+													  currentX + 6 + width / 2, textY - iSBarOffset_Y,
+													  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 
-
-
-
-
-
-
-
-						
 				startIndex += colGroup.length
 				if (colGroup.label != ""):
 					currentX += self.groupBorder		
 			
+			# put info in non grouped columns
 			for offset in range(len(self.columns) - startIndex):
 				if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
-					bDataMissing = False
+					bDataFound = True
 					try:
 						iconData = rowData.cells[startIndex + offset].icons[0]
 					except:
-						bDataMissing = True
+						bDataFound = False
 
-					if not bDataMissing:		
-#						iconData = rowData.cells[startIndex + offset].icons[0]
+					if not bDataFound:		
 						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
 												  , iconData.image, currentX, currentY, 64, 64
 												  , iconData.widgetType, iconData.data, -1 )
@@ -384,21 +375,21 @@ class IconGrid_BUG:
 					currentX += self.multiListColWidth + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
-					text = rowData.cells[startIndex + offset].text
-					self.screen.setLabel( self.rowName + str(rowIndex) + "_" + str(startIndex + offset), ""
-										, "<font=3>" + text + "</font>", CvUtil.FONT_LEFT_JUSTIFY
-										, currentX + 6, self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 28
-										, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					text = "<font=%i>%s</font>" % (rowData.cells[startIndex + offset].font, rowData.cells[startIndex + offset].text)
+					self.screen.setLabel(self.rowName + str(rowIndex) + "_" + str(startIndex + offset), "", 
+										 text, CvUtil.FONT_LEFT_JUSTIFY, 
+										 currentX + 6, self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 28, 
+										 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-					bDataMissing = False
+					bDataFound = True
 					try:
 						stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 					except:
-						bDataMissing = True
+						bDataFound = False
 
-					if not bDataMissing:		
+					if not bDataFound:		
 						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 
 						width = self.StackedBarColWidth[startIndex + offset] - 15
@@ -418,19 +409,21 @@ class IconGrid_BUG:
 
 						if stackedbarData.text != "":
 							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
+							text = "<font=%i>%s</font>" % (stackedbarData.font, stackedbarData.text)
 							self.screen.setLabel (szTxt_ID, "",
-												  "<font=3>" + stackedbarData.text + "</font>", CvUtil.FONT_CENTER_JUSTIFY,
-												   currentX + 6 + width / 2, textY - iSBarOffset_Y,
-												   -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+												  text, CvUtil.FONT_CENTER_JUSTIFY,
+												  currentX + 6 + width / 2, textY - iSBarOffset_Y,
+												  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 			
 			if ( rowData.message == "" ):
 				self.screen.attachLabel(self.rowName + str(rowIndex), self.rowName + str(rowIndex) + "NotConnected", "")
 			else:
-				self.screen.attachLabel( self.rowName + str(rowIndex)
-									   , self.rowName + str(rowIndex) + "NotConnected"
-									   , "<font=3>                              " + rowData.message + "</font>" )
+				text = "<font=%i>                              %s</font>" % (rowData.font, rowData.message)
+				self.screen.attachLabel(self.rowName + str(rowIndex),
+										self.rowName + str(rowIndex) + "NotConnected",
+										text)
 
 		
 		
@@ -600,9 +593,9 @@ class IconGrid_BUG:
 						headerWidth += self.groupBorder
 
 				self.screen.setTableColumnHeader( self.headerName, startIndex + offset, "", headerWidth )
-				self.screen.setTableText( self.headerName, startIndex + offset, 0
-										, "<font=3>" + self.header[startIndex + offset] + "</font>"
-										, "", WidgetTypes.WIDGET_GENERAL, -1, -1, 0 )
+				text = "<font=%i>%s</font>" % (self.headerFont[startIndex + offset], self.header[startIndex + offset])
+				self.screen.setTableText(self.headerName, startIndex + offset, 0,
+										 text, "", WidgetTypes.WIDGET_GENERAL, -1, -1, 0 )
 			startIndex += colGroup.length
 		
 		for offset in range(len(self.columns) - startIndex):
@@ -616,9 +609,9 @@ class IconGrid_BUG:
 				headerWidth = self.StackedBarColWidth[startIndex + offset] + self.colSpace
 
 			self.screen.setTableColumnHeader( self.headerName, startIndex + offset, "", headerWidth )
-			self.screen.setTableText( self.headerName, startIndex + offset, 0
-									, "<font=3>" + self.header[startIndex + offset] + "</font>"
-									, "", WidgetTypes.WIDGET_GENERAL, -1, -1, 0 )
+			text = "<font=%i>%s</font>" % (self.headerFont[startIndex + offset], self.header[startIndex + offset])
+			self.screen.setTableText(self.headerName, startIndex + offset, 0,
+									 text, "", WidgetTypes.WIDGET_GENERAL, -1, -1, 0 )
 
 	
 	
