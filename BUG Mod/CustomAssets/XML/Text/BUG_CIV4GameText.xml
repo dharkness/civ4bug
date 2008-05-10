@@ -235,7 +235,7 @@
 		<English>Vassal</English>
 		<French>Vassal</French>
 		<German>Vasall</German>
-		<Italian>Vassalli</Italian>
+		<Italian>Vassallo</Italian>
 		<Spanish>Vassal</Spanish>
 	</TEXT>
 	<TEXT>
@@ -251,7 +251,7 @@
 		<English>Low</English>
 		<French>Low</French>
 		<German>Gering</German>
-		<Italian>Low</Italian>
+		<Italian>Rischio Basso</Italian>
 		<Spanish>Low</Spanish>
 	</TEXT>
 	<TEXT>
@@ -259,7 +259,7 @@
 		<English>Guarded</English>
 		<French>Guarded</French>
 		<German>Erhöht</German>
-		<Italian>Guarded</Italian>
+		<Italian>Prudenza</Italian>
 		<Spanish>Guarded</Spanish>
 	</TEXT>
 	<TEXT>
@@ -267,7 +267,7 @@
 		<English>Elevated</English>
 		<French>Elevated</French>
 		<German>Angespannt</German>
-		<Italian>Elevated</Italian>
+		<Italian>Rischio Notevole</Italian>
 		<Spanish>Elevated</Spanish>
 	</TEXT>
 	<TEXT>
@@ -275,7 +275,7 @@
 		<English>High</English>
 		<French>High</French>
 		<German>Ernst</German>
-		<Italian>High</Italian>
+		<Italian>Allarme</Italian>
 		<Spanish>High</Spanish>
 	</TEXT>
 	<TEXT>
@@ -283,7 +283,7 @@
 		<English>Severe</English>
 		<French>Severe</French>
 		<German>Hoch</German>
-		<Italian>Severe</Italian>
+		<Italian>Grave allarme</Italian>
 		<Spanish>Severe</Spanish>
 	</TEXT>
 
