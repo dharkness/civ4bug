@@ -274,7 +274,7 @@
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_HIGH</Tag>
 		<English>High</English>
 		<French>High</French>
-		<German>Ernst</German>
+		<German>Alarmierend</German>
 		<Italian>Allarme</Italian>
 		<Spanish>High</Spanish>
 	</TEXT>
@@ -282,7 +282,7 @@
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_SEVERE</Tag>
 		<English>Severe</English>
 		<French>Severe</French>
-		<German>Hoch</German>
+		<German>Akut</German>
 		<Italian>Grave allarme</Italian>
 		<Spanish>Severe</Spanish>
 	</TEXT>
