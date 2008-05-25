@@ -432,7 +432,7 @@ def getPlotHealFactor(pUnit):
 			# loop for all buldings
 			for iBuilding in range(gc.getNumBuildingClassInfos()):
 				# check if city has that building
-				if pCity.hasBuilding(iBuilding):
+				if pCity.isHasBuilding(iBuilding):
 					# sum up all heal rates 
 					iBuildingHealFactor += gc.getBuildingInfo(iBuilding).getHealRateChange()
 
