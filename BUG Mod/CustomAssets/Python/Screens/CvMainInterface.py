@@ -4231,7 +4231,7 @@ class CvMainInterface:
 						szName = "FreeSpecialist" + str(iCount)
 						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
 						screen.show( szName )
-						bHandled = true
+						bHandled = True
 
 					iCount = iCount + 1
 
