@@ -428,13 +428,14 @@ def getPlotHealFactor(pUnit):
 	# calculate the heal factor by city buildings
 	if pPlot.isCity():
 		if (pPlot.getTeam() == iActivePlayerTeam):
+			# EF: should probably allow friendly healing too, but this doesn't
 			pCity = pPlot.getPlotCity()
 			# loop for all buldings
-			for iBuilding in range(gc.getNumBuildingClassInfos()):
+			for iBuilding in range(gc.getNumBuildingInfos()):
 				# check if city has that building
-				if pCity.isHasBuilding(iBuilding):
+				if pCity.getNumActiveBuilding(iBuilding) > 0:
 					# sum up all heal rates 
-					iBuildingHealFactor += gc.getBuildingInfo(iBuilding).getHealRateChange()
+					iBuildingHealFactor += gc.getBuildingInfo(iBuilding).getHealRateChange() * pCity.getNumActiveBuilding(iBuilding)
 
 	# return the sum of all heal factors
 	return iTileHealFactor + iBuildingHealFactor + iSelfHealFactor + iPromotionHealFactor	
