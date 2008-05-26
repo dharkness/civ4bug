@@ -24,16 +24,32 @@ def getText(key, values, default=None):
 	if (text and text != key):
 		return text
 	else:
-		msg = "XML key %s not found" % key
-		#debug(msg)
 		if default:
 			return default
 		else:
-			return msg
+			return "XML key %s not found" % key
+
+def readDebugOptions():
+	"""
+	Pulls the debug options from BugOptions and stores into local copies.
+	Done this way to avoid hitting the options in tight loops using debug().
+	"""
+	import BugOptions
+	BugOpt = BugOptions.getOptions()
+	global printToScreen, printToFile
+	printToScreen = BugOpt.isDebugToScreen()
+	printToFile = BugOpt.isDebugToFile()
 
 def debug(message):
 	"""
-	Displays a simple message on-screen with no sound.
+	Logs a message on-screen and to a file, both optionally.
 	"""
-	CyInterface().addImmediateMessage(message, "")
-	CvUtil.pyPrint(message)
+	if printToScreen:
+		CyInterface().addImmediateMessage(message, "")
+	if printToFile:
+		CvUtil.pyPrint(message)
+
+# Hold current values of debug options, and read them upon loading this module
+printToScreen = False
+printToFile = False
+#readDebugOptions()
