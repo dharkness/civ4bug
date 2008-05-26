@@ -80,15 +80,17 @@ class BugOptionsTab:
 		
 		# Help button
 		title = BugUtil.getPlainText("TXT_KEY_BUG_OPTBUTTON_HELP", "Help")
+		hover = BugUtil.getPlainText("TXT_KEY_BUG_OPTBUTTON_HELP_HOVER", "Opens the help file. You can hit Shift-F1 from the main interface.")
 		helpButton = self.name + "Help"
-		self.addButton(screen, exitPanel, helpButton, "handleBugHelpButtonInput", title, "Opens the help file. You can hit Shift-F1 from the main interface.")
+		self.addButton(screen, exitPanel, helpButton, "handleBugHelpButtonInput", title, hover)
 		
 		self.addSpacer(screen, exitPanel, exitPanel)
 		
 		# Exit button
 		title = BugUtil.getPlainText("TXT_KEY_PEDIA_SCREEN_EXIT", "Exit")
+		hover = BugUtil.getPlainText("TXT_KEY_BUG_OPTBUTTON_EXIT_HOVER", "Exits the BUG Options screen.")
 		exitButton = self.name + "Exit"
-		self.addButton(screen, exitPanel, exitButton, "handleBugExitButtonInput", title)
+		self.addButton(screen, exitPanel, exitButton, "handleBugExitButtonInput", title, hover)
 		
 		return panel
 
