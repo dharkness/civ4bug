@@ -12,7 +12,7 @@ import BugPath
 import BugConfigTracker
 import BugAutologOptions
 
-BugAutolog = BugAutologOptions.BugAutologOptions()
+BugAutolog = BugAutologOptions.getOptions()
 
 class autologInstance:
 
@@ -21,6 +21,9 @@ class autologInstance:
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
 		BugAutolog.write()
+		
+	def isLogging(self):
+		return BugAutolog.isLoggingOn()
 
 	def writeLog(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
 		self.openLog()

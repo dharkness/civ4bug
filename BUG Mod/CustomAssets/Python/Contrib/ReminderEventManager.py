@@ -12,6 +12,7 @@
 from CvPythonExtensions import *
 import CvUtil
 import Popup as PyPopup
+import BugUtil
 import SdToolKit
 
 import BugAlertsOptions
@@ -21,7 +22,6 @@ import autolog
 g_autolog = autolog.autologInstance()
 
 gc = CyGlobalContext()
-localText = CyTranslator()
 
 SD_MOD_ID = "Reminders"
 SD_QUEUE_ID = "queue"
@@ -48,10 +48,10 @@ class ReminderEventManager:
 		eventManager.Events.update(moreEvents)
 
 	def __eventReminderStoreBegin(self, argsList):
-		header = localText.getText("TXT_KEY_REMINDER_HEADER", ())
-		prompt = localText.getText("TXT_KEY_REMINDER_PROMPT", ())
-		ok = localText.getText("TXT_KEY_MAIN_MENU_OK", ())
-		cancel = localText.getText("TXT_KEY_POPUP_CANCEL", ())
+		header = BugUtil.getPlainText("TXT_KEY_REMINDER_HEADER")
+		prompt = BugUtil.getPlainText("TXT_KEY_REMINDER_PROMPT")
+		ok = BugUtil.getPlainText("TXT_KEY_MAIN_MENU_OK")
+		cancel = BugUtil.getPlainText("TXT_KEY_POPUP_CANCEL")
 		popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
@@ -67,7 +67,7 @@ class ReminderEventManager:
 			reminderText = popupReturn.getEditBoxString(1)
 			reminder = Reminder(reminderTurn, reminderText)
 			self.reminders.push(reminder)
-			if (g_autolog.Enabled() and BugAlerts.isLogReminders()):
+			if (g_autolog.isLogging() and BugAlerts.isLogReminders()):
 				g_autolog.writeLog("Reminder: On Turn %d, %s" % (reminderTurn, reminderText))
 
 	def __eventReminderRecallBegin(self, argsList):
@@ -95,18 +95,18 @@ class ReminderEventManager:
 		thisTurn = gc.getGame().getGameTurn() + 1
 		if (endOfTurn):
 			queue = self.endOfTurnReminders
-			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
+			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
 			eventId = CvUtil.EventReminderRecallAgain
 		else:
 			g_turnReminderTexts = ""
 			queue = self.reminders
 			# endTurnReady isn't firing :(
-#			prompt = localText.getText("TXT_KEY_REMIND_END_TURN_PROMPT", ())
+#			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_END_TURN_PROMPT")
 #			eventId = CvUtil.EventReminderRecall
-			prompt = localText.getText("TXT_KEY_REMIND_NEXT_TURN_PROMPT", ())
+			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
 			eventId = CvUtil.EventReminderRecallAgain
-		yes = localText.getText("TXT_KEY_POPUP_YES", ())
-		no = localText.getText("TXT_KEY_POPUP_NO", ())
+		yes = BugUtil.getPlainText("TXT_KEY_POPUP_YES")
+		no = BugUtil.getPlainText("TXT_KEY_POPUP_NO")
 		while (not queue.isEmpty()):
 			nextTurn = queue.nextTurn()
 			if (nextTurn > thisTurn):
@@ -116,7 +116,7 @@ class ReminderEventManager:
 				queue.pop()
 			else:
 				self.reminder = queue.pop()
-				if (g_autolog.Enabled() and BugAlerts.isLogReminders()):
+				if (g_autolog.isLogging() and BugAlerts.isLogReminders()):
 					g_autolog.writeLog("Reminder: %s" % self.reminder.message)
 				if (not endOfTurn):
 					if (g_turnReminderTexts):
@@ -167,8 +167,9 @@ class ReminderEvent(AbstractReminderEvent):
 		eventType,key,mx,my,px,py = argsList
 		if ( eventType == self.eventMgr.EventKeyDown ):
 			theKey=int(key)
-			'Check if ALT + M was hit == show dialog box to set up reminder'
-			if (theKey == int(InputTypes.KB_M) and self.eventMgr.bAlt):
+			# If ALT + M or CTRL + ALT + R was hit, show dialog box to set up reminder
+			if ((theKey == int(InputTypes.KB_M) and self.eventMgr.bAlt)
+			or (theKey == int(InputTypes.KB_R) and self.eventMgr.bAlt and self.eventMgr.bCtrl)):
 				if (BugAlerts.isShowReminders()):
 					self.eventMgr.beginEvent(CvUtil.EventReminderStore)
 					return 1
