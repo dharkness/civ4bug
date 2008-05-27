@@ -42,7 +42,7 @@
 		<English>Exits the BUG Options screen.</English>
 		<French>Exits the BUG Options screen.</French>
 		<German>Exits the BUG Options screen</German>
-		<Italian>Exits the BUG Options screen.</Italian>
+		<Italian>Esci dalla schermata delle Opzioni del BUG Mod.</Italian>
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
 
@@ -1919,7 +1919,7 @@
 		<English>Worst Enemy Icons</English>
 		<French>Icône Plus Grand Ennemi</French>
 		<German>Schlimmster Feind (Symbol)</German>
-		<Italian>Worst Enemy Icons</Italian>
+		<Italian>Icone del Peggior Nemico</Italian>
 		<Spanish>Worst Enemy Icons</Spanish>
 	</TEXT>
 
@@ -1928,7 +1928,7 @@
 		<English>When checked, shows an angry person icon when you are an AI's worst enemy.</English>
 		<French>En activant, une icône de citoyen faché démontrera quand vous êtes le plus grand ennemi d'une IA.</French>
 		<German>Zeigt das Symbol eines wütenden Bürgers an, wenn ein Computerspieler der schlimmste Feind der eigenen Zivilisation ist</German>
-		<Italian>When checked, shows an angry person icon when you are an AI's worst enemy.</Italian>
+		<Italian>Quando è selezionato, mostra un'apposita icona quando sei il Peggior Nemico di quella Civiltà.</Italian>
 		<Spanish>When checked, shows an angry person icon when you are an AI's worst enemy.</Spanish>
 	</TEXT>
 
@@ -2119,7 +2119,7 @@
 		<English>Enabled</English>
 		<French>Enabled</French>
 		<German>Enabled</German>
-		<Italian>Enabled</Italian>
+		<Italian>Abilitato</Italian>
 		<Spanish>Enabled</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2127,7 +2127,7 @@
 		<English>Enables the Plot List Enhancements mod and the rest of the options on this tab.</English>
 		<French>Enables the Plot List Enhancements mod and the rest of the options on this tab.</French>
 		<German>Enables the Plot List Enhancements mod and the rest of the options on this tab.</German>
-		<Italian>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Italian>
+		<Italian>Abilita il mod 'Plot List Enhancements' (PLE) e le altre opzioni in questa pagina.</Italian>
 		<Spanish>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2135,7 +2135,7 @@
 		<English>Default View</English>
 		<French>Default View</French>
 		<German>Default View</German>
-		<Italian>Default View</Italian>
+		<Italian>Visualizzazione predefinita</Italian>
 		<Spanish>Default View</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2143,7 +2143,7 @@
 		<English>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</English>
 		<French>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</French>
 		<German>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</German>
-		<Italian>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</Italian>
+		<Italian>Determina la modalità di visualizzazione utilizzata all'avvio del gioco.[NEWLINE]- Riga singola: visualizzazione originale di Civ4[NEWLINE]- Righe multiple: visualizzazione originale di Civ4:BtS[NEWLINE]- Gruppi verticali: Le Unità vengono raggruppate per colonna[NEWLINE]- Gruppi orizzontali: le Unità vengono raggruppate per riga.</Italian>
 		<Spanish>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2151,7 +2151,7 @@
 		<English>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</English>
 		<French>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</French>
 		<German>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</German>
-		<Italian>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</Italian>
+		<Italian>Riga singola|Righe multiple|Gruppi verticali|Gruppi orizzontali</Italian>
 		<Spanish>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2159,7 +2159,7 @@
 		<English>Default Grouping</English>
 		<French>Default Grouping</French>
 		<German>Default Grouping</German>
-		<Italian>Default Grouping</Italian>
+		<Italian>Raggruppamento predefinito</Italian>
 		<Spanish>Default Grouping</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2167,7 +2167,7 @@
 		<English>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</English>
 		<French>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</French>
 		<German>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</German>
-		<Italian>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Italian>
+		<Italian>Determina la modalità di raggruppamento utilizzata all'avvio del gioco. Modifica il raggruppamento delle Unità nelle diverse modalità di visualizzazione.[NEWLINE]- Tipo di Unità: le Unità vengono raggruppate per tipo (Arciere, Cocchio, Carrarmato, ecc.)[NEWLINE]- Gruppo di selezione: le Unità vengono raggruppate in base al gruppo di selezione (1, 2, 3, ecc.) in cui si trovano.</Italian>
 		<Spanish>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2175,7 +2175,7 @@
 		<English>Unit Type|Selection Group</English>
 		<French>Unit Type|Selection Group</French>
 		<German>Unit Type|Selection Group</German>
-		<Italian>Unit Type|Selection Group</Italian>
+		<Italian>Tipo di Unità|Gruppo di selezione</Italian>
 		<Spanish>Unit Type|Selection Group</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2183,7 +2183,7 @@
 		<English>Negative Filters</English>
 		<French>Negative Filters</French>
 		<German>Negative Filters</German>
-		<Italian>Negative Filters</Italian>
+		<Italian>Filtri negativi</Italian>
 		<Spanish>Negative Filters</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2191,7 +2191,7 @@
 		<English>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</English>
 		<French>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</French>
 		<German>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</German>
-		<Italian>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</Italian>
+		<Italian>Quando selezionato, i pulsanti di filtraggio nascondono le Unità corrispondenti (comportamento standard del mod PLE).</Italian>
 		<Spanish>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</Spanish>
 	</TEXT>
 	
@@ -2200,7 +2200,7 @@
 		<English>Health Bar</English>
 		<French>Health Bar</French>
 		<German>Health Bar</German>
-		<Italian>Health Bar</Italian>
+		<Italian>Barra della salute</Italian>
 		<Spanish>Health Bar</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2208,7 +2208,7 @@
 		<English>Shows a bar above the unit icon displaying the unit's health and damage.</English>
 		<French>Shows a bar above the unit icon displaying the unit's health and damage.</French>
 		<German>Shows a bar above the unit icon displaying the unit's health and damage.</German>
-		<Italian>Shows a bar above the unit icon displaying the unit's health and damage.</Italian>
+		<Italian>Mostra una barra sopra l'icona dell'Unità che rappresenta la salute ed i danni subiti dall'Unità.</Italian>
 		<Spanish>Shows a bar above the unit icon displaying the unit's health and damage.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2216,7 +2216,7 @@
 		<English>Hide During Combat</English>
 		<French>Hide During Combat</French>
 		<German>Hide During Combat</German>
-		<Italian>Hide During Combat</Italian>
+		<Italian>Nascondi durante il combattimento</Italian>
 		<Spanish>Hide During Combat</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2224,7 +2224,7 @@
 		<English>Hides the Health Bar when a unit is in combat.</English>
 		<French>Hides the Health Bar when a unit is in combat.</French>
 		<German>Hides the Health Bar when a unit is in combat.</German>
-		<Italian>Hides the Health Bar when a unit is in combat.</Italian>
+		<Italian>Nasconde la Barra della salute quando un'Unità è in combattimento.</Italian>
 		<Spanish>Hides the Health Bar when a unit is in combat.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2232,7 +2232,7 @@
 		<English>Healthy</English>
 		<French>Healthy</French>
 		<German>Healthy</German>
-		<Italian>Healthy</Italian>
+		<Italian>In salute</Italian>
 		<Spanish>Healthy</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2240,7 +2240,7 @@
 		<English>The color to use for the healthy portion of the bar.</English>
 		<French>The color to use for the healthy portion of the bar.</French>
 		<German>The color to use for the healthy portion of the bar.</German>
-		<Italian>The color to use for the healthy portion of the bar.</Italian>
+		<Italian>Il colore da utilizzare per la barra corrispondente ad una Unità in salute.</Italian>
 		<Spanish>The color to use for the healthy portion of the bar.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2248,7 +2248,7 @@
 		<English>Wounded</English>
 		<French>Wounded</French>
 		<German>Wounded</German>
-		<Italian>Wounded</Italian>
+		<Italian>Ferita</Italian>
 		<Spanish>Wounded</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2256,7 +2256,7 @@
 		<English>The color to use for the wounded portion of the bar.</English>
 		<French>The color to use for the wounded portion of the bar.</French>
 		<German>The color to use for the wounded portion of the bar.</German>
-		<Italian>The color to use for the wounded portion of the bar.</Italian>
+		<Italian>Il colore da utilizzare per la barra corrispondente ad una Unità ferita.</Italian>
 		<Spanish>The color to use for the wounded portion of the bar.</Spanish>
 	</TEXT>
 	
@@ -2265,7 +2265,7 @@
 		<English>Movement Bar</English>
 		<French>Movement Bar</French>
 		<German>Movement Bar</German>
-		<Italian>Movement Bar</Italian>
+		<Italian>Barra di movimento</Italian>
 		<Spanish>Movement Bar</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2273,7 +2273,7 @@
 		<English>Shows a bar above the unit icon displaying the unit's movement points.</English>
 		<French>Shows a bar above the unit icon displaying the unit's movement points.</French>
 		<German>Shows a bar above the unit icon displaying the unit's movement points.</German>
-		<Italian>Shows a bar above the unit icon displaying the unit's movement points.</Italian>
+		<Italian>Mostra una barra sopra l'icona dell'Unità che rappresenta i punti di movimento dell'Unità.</Italian>
 		<Spanish>Shows a bar above the unit icon displaying the unit's movement points.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2281,7 +2281,7 @@
 		<English>Available</English>
 		<French>Available</French>
 		<German>Available</German>
-		<Italian>Available</Italian>
+		<Italian>Disponibili</Italian>
 		<Spanish>Available</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2289,7 +2289,7 @@
 		<English>The color to use for the available movement portion of the bar.</English>
 		<French>The color to use for the available movement portion of the bar.</French>
 		<German>The color to use for the available movement portion of the bar.</German>
-		<Italian>The color to use for the available movement portion of the bar.</Italian>
+		<Italian>Il colore da utilizzare per la porzione della barra corrispondente ai punti-movimento ancora disponibili.</Italian>
 		<Spanish>The color to use for the available movement portion of the bar.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2297,7 +2297,7 @@
 		<English>Used</English>
 		<French>Used</French>
 		<German>Used</German>
-		<Italian>Used</Italian>
+		<Italian>Utilizzati</Italian>
 		<Spanish>Used</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2305,7 +2305,7 @@
 		<English>The color to use for the used movement portion of the bar.</English>
 		<French>The color to use for the used movement portion of the bar.</French>
 		<German>The color to use for the used movement portion of the bar.</German>
-		<Italian>The color to use for the used movement portion of the bar.</Italian>
+		<Italian>Il colore da utilizzare per la porzione della barra corrispondente ai punti-movimento utilizzati.</Italian>
 		<Spanish>The color to use for the used movement portion of the bar.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2313,7 +2313,7 @@
 		<English>Cannot Move</English>
 		<French>Cannot Move</French>
 		<German>Cannot Move</German>
-		<Italian>Cannot Move</Italian>
+		<Italian>Immobile</Italian>
 		<Spanish>Cannot Move</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2321,7 +2321,7 @@
 		<English>The color to use for the whole bar when the unit cannot move anymore.</English>
 		<French>The color to use for the whole bar when the unit cannot move anymore.</French>
 		<German>The color to use for the whole bar when the unit cannot move anymore.</German>
-		<Italian>The color to use for the whole bar when the unit cannot move anymore.</Italian>
+		<Italian>Il colore da utilizzare per l'intera barra corrispondente ad una Unità che non può più muoversi.</Italian>
 		<Spanish>The color to use for the whole bar when the unit cannot move anymore.</Spanish>
 	</TEXT>
 
@@ -2330,7 +2330,7 @@
 		<English>Wounded Dot</English>
 		<French>Wounded Dot</French>
 		<German>Wounded Dot</German>
-		<Italian>Wounded Dot</Italian>
+		<Italian>Disco delle ferite</Italian>
 		<Spanish>Wounded Dot</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2338,7 +2338,7 @@
 		<English>Darkens the dot in the upper-left corner of units that are wounded.</English>
 		<French>Darkens the dot in the upper-left corner of units that are wounded.</French>
 		<German>Darkens the dot in the upper-left corner of units that are wounded.</German>
-		<Italian>Darkens the dot in the upper-left corner of units that are wounded.</Italian>
+		<Italian>Rende più scuro il dischetto nell'angolo superiore sinistro per le Unità non in piena salute.</Italian>
 		<Spanish>Darkens the dot in the upper-left corner of units that are wounded.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2378,7 +2378,7 @@
 		<English>Upgrade Available</English>
 		<French>Upgrade Available</French>
 		<German>Upgrade Available</German>
-		<Italian>Upgrade Available</Italian>
+		<Italian>Avanzamento disponibile</Italian>
 		<Spanish>Upgrade Available</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2386,7 +2386,7 @@
 		<English>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</English>
 		<French>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</French>
 		<German>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</German>
-		<Italian>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</Italian>
+		<Italian>Visualizza una freccia arancio nell'angolo inferiore destro delle Unità che possono godere di un avanzamento (non tenendo conto del costo dell'avanzamento).</Italian>
 		<Spanish>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2411,7 +2411,7 @@
 		<English>Horizontal Spacing</English>
 		<French>Horizontal Spacing</French>
 		<German>Horizontal Spacing</German>
-		<Italian>Horizontal Spacing</Italian>
+		<Italian>Spaziatura orizzontale</Italian>
 		<Spanish>Horizontal Spacing</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2419,7 +2419,7 @@
 		<English>Specifies the horizontal spacing between icons (default value is 34).</English>
 		<French>Specifies the horizontal spacing between icons (default value is 34).</French>
 		<German>Specifies the horizontal spacing between icons (default value is 34).</German>
-		<Italian>Specifies the horizontal spacing between icons (default value is 34).</Italian>
+		<Italian>Indica la spaziatura orizzontale fra le icone (il valore predefinito è '34').</Italian>
 		<Spanish>Specifies the horizontal spacing between icons (default value is 34).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2427,7 +2427,7 @@
 		<English>Vertical Spacing</English>
 		<French>Vertical Spacing</French>
 		<German>Vertical Spacing</German>
-		<Italian>Vertical Spacing</Italian>
+		<Italian>Spaziatura verticale</Italian>
 		<Spanish>Vertical Spacing</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2435,7 +2435,7 @@
 		<English>Specifies the vertical spacing between icons (default value is 42).</English>
 		<French>Specifies the vertical spacing between icons (default value is 42).</French>
 		<German>Specifies the vertical spacing between icons (default value is 42).</German>
-		<Italian>Specifies the vertical spacing between icons (default value is 42).</Italian>
+		<Italian>Indica la spaziatura orizzontale fra le icone (il valore predefinito è '42').</Italian>
 		<Spanish>Specifies the vertical spacing between icons (default value is 42).</Spanish>
 	</TEXT>
 	
@@ -2444,7 +2444,7 @@
 		<English>Unit Info Hover</English>
 		<French>Unit Info Hover</French>
 		<German>Unit Info Hover</German>
-		<Italian>Unit Info Hover</Italian>
+		<Italian>Informazioni sulle Unità</Italian>
 		<Spanish>Unit Info Hover</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2452,7 +2452,7 @@
 		<English>Replaces the default Unit Info displayed when you hover over a unit.</English>
 		<French>Replaces the default Unit Info displayed when you hover over a unit.</French>
 		<German>Replaces the default Unit Info displayed when you hover over a unit.</German>
-		<Italian>Replaces the default Unit Info displayed when you hover over a unit.</Italian>
+		<Italian>Sostituisce le informazioni sulle Unità normalmente visualizzate quando si mantiene il cursore su una Unità.</Italian>
 		<Spanish>Replaces the default Unit Info displayed when you hover over a unit.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2460,7 +2460,7 @@
 		<English>Horizontal Position</English>
 		<French>Horizontal Position</French>
 		<German>Horizontal Position</German>
-		<Italian>Horizontal Position</Italian>
+		<Italian>Posizione orizzontale</Italian>
 		<Spanish>Horizontal Position</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2468,7 +2468,7 @@
 		<English>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</English>
 		<French>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</French>
 		<German>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</German>
-		<Italian>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</Italian>
+		<Italian>Indica la posizione orizzontale del Pannello di Informazioni sulle Unità (il valore predefinito è '5').</Italian>
 		<Spanish>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2476,7 +2476,7 @@
 		<English>Vertical Position</English>
 		<French>Vertical Position</French>
 		<German>Vertical Position</German>
-		<Italian>Vertical Position</Italian>
+		<Italian>Posizione  verticale</Italian>
 		<Spanish>Vertical Position</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2484,7 +2484,7 @@
 		<English>Specifies the vertical position of the Unit Info hover pane (default value is 160).</English>
 		<French>Specifies the vertical position of the Unit Info hover pane (default value is 160).</French>
 		<German>Specifies the vertical position of the Unit Info hover pane (default value is 160).</German>
-		<Italian>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Italian>
+		<Italian>Indica la posizione orizzontale del Pannello di Informazioni sulle Unità (il valore predefinito è '160').</Italian>
 		<Spanish>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Spanish>
 	</TEXT>
 
@@ -2650,7 +2650,7 @@
 		<English>BUG Military Adviser</English>
 		<French>BUG Military Adviser</French>
 		<German>BUG Militärberater</German>
-		<Italian>BUG Military Adviser</Italian>
+		<Italian>Consigliere Militare del BUG Mod</Italian>
 		<Spanish>BUG Military Adviser</Spanish>
 	</TEXT>
 
@@ -2659,7 +2659,7 @@
 		<English>When checked, uses the BUG Militiary Adviser (requires restart).</English>
 		<French>When checked, uses the BUG Militiary Adviser (requires restart).</French>
 		<German>Aktiviert den verbesserten Militärberater der BUG Mod (erfordert Neustart)</German>
-		<Italian>Quando è selezionato, visualizza la tabella "Rapporti" nella schermata del Consigliere Militare.</Italian>
+		<Italian>Quando è selezionato, utilizza il Consigliere Militare del BUG Mod ( perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, uses the BUG Militiary Adviser (requires restart).</Spanish>
 	</TEXT>
 
@@ -2695,7 +2695,7 @@
 		<English>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</English>
 		<French>En activant, la largeur de l'écran de technologie dépendra de votre résolution d'écran (requièrt un redémarrage).</French>
 		<German>Koppelt die Breite des Technologiebaums an die Bildschirmauflösung (erfordert Neustart)</German>
-		<Italian>Quando è selezionato, la larghezza della schermata del Consigliere Tecnologico è legata alla risoluzione dello schermo (è richiesto un riavvio perchè il cambio abbia effetto).</Italian>
+		<Italian>Quando è selezionato, la larghezza della schermata del Consigliere Tecnologico è legata alla risoluzione dello schermo (è richiesto un riavvio perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</Spanish>
 	</TEXT>
 
@@ -2713,7 +2713,7 @@
 		<English>When checked, uses the Sevopedia (requires restart).</English>
 		<French>En activant, utilise le Sevopedia (requièrt un redémarrage).</French>
 		<German>Aktiviert die "Sevopedia" (erfordert Neustart)</German>
-		<Italian>Quando è selezionato, viene utilizzata la Sevopedia invecec della Civilopedia (è richiesto un riavvio perchè il cambio abbia effetto).</Italian>
+		<Italian>Quando è selezionato, viene utilizzata la Sevopedia invece della Civilopedia (è richiesto un riavvio perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, uses the Sevopedia (requires restart).</Spanish>
 	</TEXT>
 
@@ -3170,7 +3170,7 @@
 		<English>Unit Icons</English>
 		<French>Unit Icons</French>
 		<German>Unit Icons</German>
-		<Italian>Unit Icons</Italian>
+		<Italian>Icone delle Unità</Italian>
 		<Spanish>Unit Icons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3178,7 +3178,7 @@
 		<English>Indicators:</English>
 		<French>Indicators:</French>
 		<German>Indicators:</German>
-		<Italian>Indicators:</Italian>
+		<Italian>Indicatori:</Italian>
 		<Spanish>Indicators:</Spanish>
 	</TEXT>
 
