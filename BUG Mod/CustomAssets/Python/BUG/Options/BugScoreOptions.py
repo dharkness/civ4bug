@@ -26,7 +26,7 @@ class BugScoreOptions(OptionsFacade):
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
 		self.addOption(OptionList("Scores_DisplayName",
-								  "Scoreboard", "Display Name", False,
+								  "Scoreboard", "Display Name", 0,
 								  "Display Name",
 								  "Determines how civilizations are labeled on the scoreboard.",
 								  ['Leader', 'Civilization', 'Both'], None,
