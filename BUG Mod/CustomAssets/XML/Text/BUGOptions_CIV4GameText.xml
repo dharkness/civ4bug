@@ -36,8 +36,19 @@
 		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia Shift-F1 dall'interfaccia principale.</Italian>
 		<Spanish>Opens the BUG Mod help file. You can hit Shift-F1 from the main interface.</Spanish>
 	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTBUTTON_EXIT_HOVER</Tag>
+		<English>Exits the BUG Options screen.</English>
+		<French>Exits the BUG Options screen.</French>
+		<German>Exits the BUG Options screen</German>
+		<Italian>Exits the BUG Options screen.</Italian>
+		<Spanish>Exits the BUG Options screen.</Spanish>
+	</TEXT>
 
 <!-- Option Titles and Hovers -->
+
+	<!-- Alerts -->
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
@@ -497,6 +508,8 @@
 		<Italian>Livello limite di popolazione per una Vittoria di Dominazione.</Italian>
 		<Spanish>Land threshold for Domination victory.</Spanish>
 	</TEXT>
+
+	<!-- Autolog -->
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_ENABLED_TEXT</Tag>
@@ -1119,6 +1132,8 @@
 		<Spanish>When checked, will log when you pillage or your improvements are pillaged.</Spanish>
 	</TEXT>
 
+	<!-- City Screen -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_TEXT</Tag>
 		<English>Raw Commerce / Production</English>
@@ -1236,6 +1251,8 @@
 		<Spanish>Default|Stacker|Chevron</Spanish>
 	</TEXT>
 	
+	<!-- Better Espionage -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ESPIONAGE_ENABLED_TEXT</Tag>
 		<English>Better Espionage Screen</English>
@@ -1397,6 +1414,8 @@
 		<Italian>Colore utilizzato per le Missioni che potrai eseguire presto (perchè hai quasi abbastanza Punti Spionaggio contro il bersaglio).</Italian>
 		<Spanish>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Spanish>
 	</TEXT>
+
+	<!-- NJAGCM -->
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_ENABLED_TEXT</Tag>
@@ -1794,6 +1813,8 @@
 		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
 	</TEXT>
 
+	<!-- Scoreboard -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_SHOWDEAD_TEXT</Tag>
 		<English>Show</English>
@@ -2091,6 +2112,401 @@
 		<Spanish>Color used for bad power ratios.</Spanish>
 	</TEXT>
 
+	<!-- Plot List Enhancements -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT__TEXT</Tag>
+		<English></English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT__HOVER</Tag>
+		<English>.</English>
+		<French>.</French>
+		<German>.</German>
+		<Italian>.</Italian>
+		<Spanish>.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_ENABLED_TEXT</Tag>
+		<English>Enabled</English>
+		<French>Enabled</French>
+		<German>Enabled</German>
+		<Italian>Enabled</Italian>
+		<Spanish>Enabled</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_ENABLED_HOVER</Tag>
+		<English>Enables the Plot List Enhancements mod and the rest of the options on this tab.</English>
+		<French>Enables the Plot List Enhancements mod and the rest of the options on this tab.</French>
+		<German>Enables the Plot List Enhancements mod and the rest of the options on this tab.</German>
+		<Italian>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Italian>
+		<Spanish>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_VIEW_MODE_TEXT</Tag>
+		<English>Default View</English>
+		<French>Default View</French>
+		<German>Default View</German>
+		<Italian>Default View</Italian>
+		<Spanish>Default View</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_VIEW_MODE_HOVER</Tag>
+		<English>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</English>
+		<French>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</French>
+		<German>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</German>
+		<Italian>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</Italian>
+		<Spanish>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_VIEW_MODE_LIST</Tag>
+		<English>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</English>
+		<French>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</French>
+		<German>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</German>
+		<Italian>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</Italian>
+		<Spanish>Single Row|Multiple Rows|Vertical Groups|Horizontal Groups</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_GROUP_MODE_TEXT</Tag>
+		<English>Default Grouping</English>
+		<French>Default Grouping</French>
+		<German>Default Grouping</German>
+		<Italian>Default Grouping</Italian>
+		<Spanish>Default Grouping</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_GROUP_MODE_HOVER</Tag>
+		<English>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</English>
+		<French>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</French>
+		<German>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</German>
+		<Italian>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Italian>
+		<Spanish>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_GROUP_MODE_LIST</Tag>
+		<English>Unit Type|Selection Group</English>
+		<French>Unit Type|Selection Group</French>
+		<German>Unit Type|Selection Group</German>
+		<Italian>Unit Type|Selection Group</Italian>
+		<Spanish>Unit Type|Selection Group</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_NEGATIVE_FILTERS_TEXT</Tag>
+		<English>Negative Filters</English>
+		<French>Negative Filters</French>
+		<German>Negative Filters</German>
+		<Italian>Negative Filters</Italian>
+		<Spanish>Negative Filters</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_NEGATIVE_FILTERS_HOVER</Tag>
+		<English>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</English>
+		<French>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</French>
+		<German>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</German>
+		<Italian>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</Italian>
+		<Spanish>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HEALTH_BAR_TEXT</Tag>
+		<English>Health Bar</English>
+		<French>Health Bar</French>
+		<German>Health Bar</German>
+		<Italian>Health Bar</Italian>
+		<Spanish>Health Bar</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HEALTH_BAR_HOVER</Tag>
+		<English>Shows a bar above the unit icon displaying the unit's health and damage.</English>
+		<French>Shows a bar above the unit icon displaying the unit's health and damage.</French>
+		<German>Shows a bar above the unit icon displaying the unit's health and damage.</German>
+		<Italian>Shows a bar above the unit icon displaying the unit's health and damage.</Italian>
+		<Spanish>Shows a bar above the unit icon displaying the unit's health and damage.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HIDE_HEALTH_FIGHTING_TEXT</Tag>
+		<English>Hide During Combat</English>
+		<French>Hide During Combat</French>
+		<German>Hide During Combat</German>
+		<Italian>Hide During Combat</Italian>
+		<Spanish>Hide During Combat</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HIDE_HEALTH_FIGHTING_HOVER</Tag>
+		<English>Hides the Health Bar when a unit is in combat.</English>
+		<French>Hides the Health Bar when a unit is in combat.</French>
+		<German>Hides the Health Bar when a unit is in combat.</German>
+		<Italian>Hides the Health Bar when a unit is in combat.</Italian>
+		<Spanish>Hides the Health Bar when a unit is in combat.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HEALTHY_COLOR_TEXT</Tag>
+		<English>Healthy</English>
+		<French>Healthy</French>
+		<German>Healthy</German>
+		<Italian>Healthy</Italian>
+		<Spanish>Healthy</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HEALTHY_COLOR_HOVER</Tag>
+		<English>The color to use for the healthy portion of the bar.</English>
+		<French>The color to use for the healthy portion of the bar.</French>
+		<German>The color to use for the healthy portion of the bar.</German>
+		<Italian>The color to use for the healthy portion of the bar.</Italian>
+		<Spanish>The color to use for the healthy portion of the bar.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_WOUNDED_COLOR_TEXT</Tag>
+		<English>Wounded</English>
+		<French>Wounded</French>
+		<German>Wounded</German>
+		<Italian>Wounded</Italian>
+		<Spanish>Wounded</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_WOUNDED_COLOR_HOVER</Tag>
+		<English>The color to use for the wounded portion of the bar.</English>
+		<French>The color to use for the wounded portion of the bar.</French>
+		<German>The color to use for the wounded portion of the bar.</German>
+		<Italian>The color to use for the wounded portion of the bar.</Italian>
+		<Spanish>The color to use for the wounded portion of the bar.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MOVE_BAR_TEXT</Tag>
+		<English>Movement Bar</English>
+		<French>Movement Bar</French>
+		<German>Movement Bar</German>
+		<Italian>Movement Bar</Italian>
+		<Spanish>Movement Bar</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MOVE_BAR_HOVER</Tag>
+		<English>Shows a bar above the unit icon displaying the unit's movement points.</English>
+		<French>Shows a bar above the unit icon displaying the unit's movement points.</French>
+		<German>Shows a bar above the unit icon displaying the unit's movement points.</German>
+		<Italian>Shows a bar above the unit icon displaying the unit's movement points.</Italian>
+		<Spanish>Shows a bar above the unit icon displaying the unit's movement points.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_FULL_MOVEMENT_COLOR_TEXT</Tag>
+		<English>Available</English>
+		<French>Available</French>
+		<German>Available</German>
+		<Italian>Available</Italian>
+		<Spanish>Available</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_FULL_MOVEMENT_COLOR_HOVER</Tag>
+		<English>The color to use for the available movement portion of the bar.</English>
+		<French>The color to use for the available movement portion of the bar.</French>
+		<German>The color to use for the available movement portion of the bar.</German>
+		<Italian>The color to use for the available movement portion of the bar.</Italian>
+		<Spanish>The color to use for the available movement portion of the bar.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HAS_MOVED_COLOR_TEXT</Tag>
+		<English>Used</English>
+		<French>Used</French>
+		<German>Used</German>
+		<Italian>Used</Italian>
+		<Spanish>Used</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HAS_MOVED_COLOR_HOVER</Tag>
+		<English>The color to use for the used movement portion of the bar.</English>
+		<French>The color to use for the used movement portion of the bar.</French>
+		<German>The color to use for the used movement portion of the bar.</German>
+		<Italian>The color to use for the used movement portion of the bar.</Italian>
+		<Spanish>The color to use for the used movement portion of the bar.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_NO_MOVEMENT_COLOR_TEXT</Tag>
+		<English>Cannot Move</English>
+		<French>Cannot Move</French>
+		<German>Cannot Move</German>
+		<Italian>Cannot Move</Italian>
+		<Spanish>Cannot Move</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_NO_MOVEMENT_COLOR_HOVER</Tag>
+		<English>The color to use for the whole bar when the unit cannot move anymore.</English>
+		<French>The color to use for the whole bar when the unit cannot move anymore.</French>
+		<German>The color to use for the whole bar when the unit cannot move anymore.</German>
+		<Italian>The color to use for the whole bar when the unit cannot move anymore.</Italian>
+		<Spanish>The color to use for the whole bar when the unit cannot move anymore.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_WOUNDED_INDICATOR_TEXT</Tag>
+		<English>Wounded Dot</English>
+		<French>Wounded Dot</French>
+		<German>Wounded Dot</German>
+		<Italian>Wounded Dot</Italian>
+		<Spanish>Wounded Dot</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_WOUNDED_INDICATOR_HOVER</Tag>
+		<English>Darkens the dot in the upper-left corner of units that are wounded.</English>
+		<French>Darkens the dot in the upper-left corner of units that are wounded.</French>
+		<German>Darkens the dot in the upper-left corner of units that are wounded.</German>
+		<Italian>Darkens the dot in the upper-left corner of units that are wounded.</Italian>
+		<Spanish>Darkens the dot in the upper-left corner of units that are wounded.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_GREAT_GENERAL_TEXT</Tag>
+		<English>Great General</English>
+		<French>Général Illustre</French>
+		<German>Großer General</German>
+		<Italian>Grande Generale</Italian>
+		<Spanish>Great General</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_GREAT_GENERAL_HOVER</Tag>
+		<English>Places a star on units that are lead by a Great General.</English>
+		<French>Une étoile dorée indiquera une unité qui contient un Général Illustre.</French>
+		<German>Fügt den Einheitensymbolen von Einheiten, die von Großen Generälen geführt werden, einen kleinen goldenen Stern hinzu</German>
+		<Italian>Visualizza una piccola stella dorata sulle Unità guidate da un Grande Generale.</Italian>
+		<Spanish>Places a star on units that are lead by a Great General.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_INDICATOR_TEXT</Tag>
+		<English>Promotion Available</English>
+		<French>Promotion Disponible</French>
+		<German>Beförderung verfügbar</German>
+		<Italian>Promozione disponibile</Italian>
+		<Spanish>Promotion Available</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_INDICATOR_HOVER</Tag>
+		<English>Places a light blue border around units that can be promoted.</English>
+		<French>Un bord bleu sera mis autour des unités qui ont une promotion disponible.</French>
+		<German>Legt einen blauen Rahmen um das Einheitensymbol, wenn eine Einheit befördert werden kann</German>
+		<Italian>Visualizza dei bordi blu attorno alle Unità che hanno una promozione disponibile.</Italian>
+		<Spanish>Places a light blue border around units that can be promoted.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_INDICATOR_TEXT</Tag>
+		<English>Upgrade Available</English>
+		<French>Upgrade Available</French>
+		<German>Upgrade Available</German>
+		<Italian>Upgrade Available</Italian>
+		<Spanish>Upgrade Available</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_INDICATOR_HOVER</Tag>
+		<English>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</English>
+		<French>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</French>
+		<German>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</German>
+		<Italian>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</Italian>
+		<Spanish>Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MISSION_INFO_TEXT</Tag>
+		<English>Mission Tag</English>
+		<French>Actions d'Unité</French>
+		<German>Einheitenaktionen</German>
+		<Italian>Azioni delle Unità</Italian>
+		<Spanish>Mission Tag</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MISSION_INFO_HOVER</Tag>
+		<English>Places a tag below units showing their current mission (action).</English>
+		<French>Le texte des actions des unités est ajoutée à leur icône.</French>
+		<German>Fügt den Einheitensymbolen die gerade ausgeführte Aktion als Text hinzu</German>
+		<Italian>Visualizza le azioni delle Unità sulle loro icone.</Italian>
+		<Spanish>Places a tag below units showing their current mission (action).</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HORIZONTAL_SPACING_TEXT</Tag>
+		<English>Horizontal Spacing</English>
+		<French>Horizontal Spacing</French>
+		<German>Horizontal Spacing</German>
+		<Italian>Horizontal Spacing</Italian>
+		<Spanish>Horizontal Spacing</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_HORIZONTAL_SPACING_HOVER</Tag>
+		<English>Specifies the horizontal spacing between icons (default value is 34).</English>
+		<French>Specifies the horizontal spacing between icons (default value is 34).</French>
+		<German>Specifies the horizontal spacing between icons (default value is 34).</German>
+		<Italian>Specifies the horizontal spacing between icons (default value is 34).</Italian>
+		<Spanish>Specifies the horizontal spacing between icons (default value is 34).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_VERTICAL_SPACING_TEXT</Tag>
+		<English>Vertical Spacing</English>
+		<French>Vertical Spacing</French>
+		<German>Vertical Spacing</German>
+		<Italian>Vertical Spacing</Italian>
+		<Spanish>Vertical Spacing</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_VERTICAL_SPACING_HOVER</Tag>
+		<English>Specifies the vertical spacing between icons (default value is 42).</English>
+		<French>Specifies the vertical spacing between icons (default value is 42).</French>
+		<German>Specifies the vertical spacing between icons (default value is 42).</German>
+		<Italian>Specifies the vertical spacing between icons (default value is 42).</Italian>
+		<Spanish>Specifies the vertical spacing between icons (default value is 42).</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_TEXT</Tag>
+		<English>Unit Info Hover</English>
+		<French>Unit Info Hover</French>
+		<German>Unit Info Hover</German>
+		<Italian>Unit Info Hover</Italian>
+		<Spanish>Unit Info Hover</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_HOVER</Tag>
+		<English>Replaces the default Unit Info displayed when you hover over a unit.</English>
+		<French>Replaces the default Unit Info displayed when you hover over a unit.</French>
+		<German>Replaces the default Unit Info displayed when you hover over a unit.</German>
+		<Italian>Replaces the default Unit Info displayed when you hover over a unit.</Italian>
+		<Spanish>Replaces the default Unit Info displayed when you hover over a unit.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_X_TEXT</Tag>
+		<English>Horizontal Position</English>
+		<French>Horizontal Position</French>
+		<German>Horizontal Position</German>
+		<Italian>Horizontal Position</Italian>
+		<Spanish>Horizontal Position</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_X_HOVER</Tag>
+		<English>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</English>
+		<French>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</French>
+		<German>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</German>
+		<Italian>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</Italian>
+		<Spanish>Specifies the horizontal position of the Unit Info hover pane (default value is 5).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_Y_TEXT</Tag>
+		<English>Vertical Position</English>
+		<French>Vertical Position</French>
+		<German>Vertical Position</German>
+		<Italian>Vertical Position</Italian>
+		<Spanish>Vertical Position</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_Y_HOVER</Tag>
+		<English>Specifies the vertical position of the Unit Info hover pane (default value is 160).</English>
+		<French>Specifies the vertical position of the Unit Info hover pane (default value is 160).</French>
+		<German>Specifies the vertical position of the Unit Info hover pane (default value is 160).</German>
+		<Italian>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Italian>
+		<Spanish>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Spanish>
+	</TEXT>
+
+	<!-- Main Interface -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAIN_OPTIONSKEY_TEXT</Tag>
 		<English>Options Shortcut Reminder</English>
@@ -2190,59 +2606,7 @@
 		<Spanish>When checked, displays arrows to cycle through cities above your civ's flag.</Spanish>
 	</TEXT>
 
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_PROMO_AVAILABLE_TEXT</Tag>
-		<English>Promotion Available</English>
-		<French>Promotion Disponible</French>
-		<German>Beförderung verfügbar</German>
-		<Italian>Promozione disponibile</Italian>
-		<Spanish>Promotion Available</Spanish>
-	</TEXT>
-
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_PROMO_AVAILABLE_HOVER</Tag>
-		<English>When checked, puts blue border around units that have a promotion available.</English>
-		<French>En activant, un bord bleu sera mis autour des unités qui ont une promotion disponible.</French>
-		<German>Legt einen blauen Rahmen um das Einheitensymbol, wenn eine Einheit befördert werden kann</German>
-		<Italian>Quando è selezionato, visualizza dei bordi blu attorno alle Unità che hanno una promozione disponibile.</Italian>
-		<Spanish>When checked, puts blue border around units that have a promotion available.</Spanish>
-	</TEXT>
-
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_ACTIONS_TEXT</Tag>
-		<English>Unit Actions</English>
-		<French>Actions d'Unité</French>
-		<German>Einheitenaktionen</German>
-		<Italian>Azioni delle Unità</Italian>
-		<Spanish>Unit Actions</Spanish>
-	</TEXT>
-
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_ACTIONS_HOVER</Tag>
-		<English>When checked, puts unit actions text on unit icons.</English>
-		<French>En activant, le texte des actions des unités est ajoutée à leur icône.</French>
-		<German>Fügt den Einheitensymbolen die gerade ausgeführte Aktion als Text hinzu</German>
-		<Italian>Quando è selezionato, visualizza le azioni delle Unità sulle loro icone.</Italian>
-		<Spanish>When checked, puts unit actions text on unit icons.</Spanish>
-	</TEXT>
-
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_TEXT</Tag>
-		<English>Great General</English>
-		<French>Général Illustre</French>
-		<German>Großer General</German>
-		<Italian>Grande Generale</Italian>
-		<Spanish>Great General</Spanish>
-	</TEXT>
-
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_UNIT_GREAT_GENERAL_HOVER</Tag>
-		<English>When checked, puts a little gold star on units lead by a Great General.</English>
-		<French>En activant, une étoile dorée indiquera une unité qui contient un Général Illustre.</French>
-		<German>Fügt den Einheitensymbolen von Einheiten, die von Großen Generälen geführt werden, einen kleinen goldenen Stern hinzu</German>
-		<Italian>Quando è selezionato, visualizza una piccola stella dorata sulle Unità guidate da un Grande Generale.</Italian>
-		<Spanish>When checked, puts a little gold star on units lead by a Great General.</Spanish>
-	</TEXT>
+	<!-- Advisors -->
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CDA_ENABLED_TEXT</Tag>
@@ -2387,6 +2751,8 @@
 		<Italian>Quando è selezionato, le liste di Unità, Edifici, Tecnologie ecc. sono ordinate.</Italian>
 		<Spanish>When checked, the lists of units, buildings, technologies, etc. are sorted.</Spanish>
 	</TEXT>
+
+	<!-- Unit Naming -->
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_TEXT</Tag>
@@ -2661,14 +3027,6 @@
 		<Spanish>Main Interface:</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_PLOTLIST</Tag>
-		<English>Unit Icons (Plot List):</English>
-		<French>Icônes des Unités (Plot List):</French>
-		<German>Einheitensymbole (grafische Ergänzungen):</German>
-		<Italian>Icone delle Unità:</Italian>
-		<Spanish>Unit Icons (Plot List):</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>
 		<English>City Screen:</English>
 		<French>Ecran de Ville:</French>
@@ -2820,6 +3178,25 @@
 		<German>Spaltenreihenfolge:</German>
 		<Italian>Ordine delle colonne:</Italian>
 		<Spanish>Column Order:</Spanish>
+	</TEXT>
+	
+	<!-- PLE Tab -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_PLE</Tag>
+		<English>Unit Icons</English>
+		<French>Unit Icons</French>
+		<German>Unit Icons</German>
+		<Italian>Unit Icons</Italian>
+		<Spanish>Unit Icons</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PLE_INDICATORS</Tag>
+		<English>Indicators:</English>
+		<French>Indicators:</French>
+		<German>Indicators:</German>
+		<Italian>Indicators:</Italian>
+		<Spanish>Indicators:</Spanish>
 	</TEXT>
 
 	<!-- Alerts Tab -->

@@ -9,182 +9,266 @@ class BugPleOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
-		self.addOption(Option("PLE_Highlighter",
-							  "PlotList", "Move Highlighter", True,
-							  "Move Highlighter",
-							  "Highlights the moves a unit can make when you hover the mouse over the units icon, while holding the Alt-key.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Mission_Info",
-							  "PlotList", "Mission Info", True,
-							  "Mission Info",
-							  "Shows what the units current mission is.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Enabled",
+							  "PlotList", "Enabled", True,
+							  "Enabled",
+							  "Enables the Plot List Enhancements mod and the rest of the options on this tab.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Modes and Filters
+		self.addOption(OptionList("PLE_Default_View_Mode",
+							 	 "PlotList", "Default View Mode", 0,
+								  "Default View",
+								  "Sets the view mode used when you start Civ IV.",
+								  ['Single Row', 'Multiple Rows', 'Vertical Groups', 'Horizontal Groups'], None,
+								  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(OptionList("PLE_Default_Group_Mode",
+							 	 "PlotList", "Default Grouping Mode", 0,
+								  "Default Grouping",
+								  "Sets the grouping mode used when you start Civ IV.",
+								  ['Unit Type', 'Selection Group'], None,
+								  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Negative_Filters",
+							  "PlotList", "Negative Filters", True,
+							  "Negative Filters",
+							  "When checked, the filter buttons remove the units that they match from view (default PLE behavior).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Health Bar
 		self.addOption(Option("PLE_Health_Bar",
 							  "PlotList", "Health Bar", True,
 							  "Health Bar",
-							  "Show the Health Bar below the unit icon.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Shows a bar above the unit icon displaying the unit's health and damage.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Hide_Health_Fighting",
 							  "PlotList", "Hide Health bar while fighting", True,
-							  "Hide Health Bar during Battle",
-							  "Hides the extra Health Bar when your unit is in combat.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Hide During Combat",
+							  "Hides the Health Bar when a unit is in combat.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Healthy_Color",
+							  "PlotList", "Healthy Color", "COLOR_GREEN",
+							  "Healthy",
+							  "The color to use for the healthy portion of the bar.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Wounded_Color",
+							  "PlotList", "Wounded Color", "COLOR_RED",
+							  "Wounded",
+							  "The color to use for the wounded portion of the bar.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Move Bar
 		self.addOption(Option("PLE_Move_Bar",
 							  "PlotList", "Move Bar", True,
-							  "Show Movement Bar",
-							  "s a bar below the units health bar, ing how much movement is left.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Upgrade_Indicator",
-							  "PlotList", "Upgrade Indicator", True,
-							  "Upgrade Indicator",
-							  "s an Orange Up-Arrow when a unit can be upgrade, regardless if you can afford to upgrade.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Promotion_Indicator",
-							  "PlotList", "Promotion Indicator", True,
-							  "Promotion Indicator",
-							  "Highlights a unit that can be promoted with a light blue border.",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Movement Bar",
+							  "Shows a bar above the unit icon displaying the unit's movement points.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Full_Movement_Color",
+							  "PlotList", "Full Movement Color", "COLOR_BLUE",
+							  "Available",
+							  "The color to use for the available movement portion of the bar.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Has_Moved_Color",
+							  "PlotList", "Has Moved Color", "COLOR_YELLOW",
+							  "Used",
+							  "The color to use for the used movement portion of the bar.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_No_Movement_Color",
+							  "PlotList", "No Movement Color", "COLOR_BLACK",
+							  "Cannot Move",
+							  "The color to use for the whole bar when the unit cannot move anymore.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Indicators
 		self.addOption(Option("PLE_Wounded_Indicator",
 							  "PlotList", "Wounded Indicator", True,
-							  "Wounded Indicator",
-							  "Changes",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Vertical_Spacing",
-							  "PlotList", "Vertical Item Spacing", 42,
-							  "Vertical Spacing",
-							  "Specify the vertical spacing between icons (default value is 42).",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Wounded Dot",
+							  "Darkens the dot in the upper-left corner of units that are wounded.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Lead_By_GG_Indicator",
+							  "PlotList", "Great General Indicator", True,
+							  "Great General",
+							  "Places a star on units that are lead by a Great General.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Promotion_Indicator",
+							  "PlotList", "Promotion Indicator", True,
+							  "Promotion Available",
+							  "Places a light blue border around units that can be promoted.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Upgrade_Indicator",
+							  "PlotList", "Upgrade Indicator", True,
+							  "Upgrade Available",
+							  "Places an orange up arrow on the lower-right corner of units that can be upgraded, ignoring cost.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Mission_Info",
+							  "PlotList", "Mission Info", True,
+							  "Mission Tag",
+							  "Places a tag below units showing their current mission (action).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Button Spacing
 		self.addOption(Option("PLE_Horizontal_Spacing",
 							  "PlotList", "Horizontal Item Spacing", 34,
 							  "Horizontal Spacing",
-							  "Specify the horizontal spacing between icons (default value is 34).",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Specifies the horizontal spacing between icons (default value is 34).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Vertical_Spacing",
+							  "PlotList", "Vertical Item Spacing", 42,
+							  "Vertical Spacing",
+							  "Specifies the vertical spacing between icons (default value is 42).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Unit Info Hover Pane
+		self.addOption(Option("PLE_Info_Pane",
+							  "PlotList", "Unit Info Hover", True,
+							  "Unit Info Hover",
+							  "Replaces the default Unit Info displayed when you hover over a unit.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Info_Pane_X",
 							  "PlotList", "Info Pane X Position", 5,
-							  "Info Pane X",
-							  "(default 5)",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Horizontal Position",
+							  "Specifies the horizontal position of the Unit Info hover pane (default value is 5).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Info_Pane_Y",
 							  "PlotList", "Info Pane Y Position", 160,
-							  "Info Pane Y",
-							  "(default 160)",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  "Vertical Position",
+							  "Specifies the vertical position of the Unit Info hover pane (default value is 160).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
 		self.addOption(Option("PLE_Unit_Name_Color",
 							  "PlotList", "Unit Name Color", "COLOR_YELLOW",
-							  "Unit Name Color",
+							  "Unit Name",
 							  "Default COLOR_YELLOW",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Upgrade_Possible_Color",
 							  "PlotList", "Upgrade Possible Color", "COLOR_GREEN",
-							  "Can Upgrade Unit Color",
+							  "Can Upgrade",
 							  "Default COLOR_GREEN",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Upgrade_Not_Possible_Color",
 							  "PlotList", "Upgrade Not Possible Color", "COLOR_RED",
-							  "Can't Upgrade Unit Color",
+							  "Can't Upgrade",
 							  "Default COLOR_RED",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Promotion_Specialties_Color",
-							  "PlotList", "Promotion Specialties Color", "COLOR_LIGHT_GREY",
-							  "Promotion Specialties Color",
-							  "Default COLOR_LIGHT_GREY",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Unit_Type_Specialties_Color",
 							  "PlotList", "Unit Type Specialties Color", "COLOR_WHITE",
-							  "Unit Type Specialties Color",
+							  "Unit Type Specialties",
 							  "Default COLOR_WHITE",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Healthy_Color",
-							  "PlotList", "Healthy Color", "COLOR_GREEN",
-							  "Healthy Color",
-							  "Default COLOR_GREEN",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Wounded_Color",
-							  "PlotList", "Wounded Color", "COLOR_RED",
-							  "Wounded Color",
-							  "Default COLOR_RED",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Full_Movement_Color",
-							  "PlotList", "Full Movement Color", "COLOR_BLUE",
-							  "Full Movement Color",
-							  "Default COLOR_BLUE",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Has_Moved_Color",
-							  "PlotList", "Has Moved Color", "COLOR_YELLOW",
-							  "Has Moved Color",
-							  "Default COLOR_YELLOW",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_No_Movement_Color",
-							  "PlotList", "No Movement Color", "COLOR_BLACK",
-							  "No Movement Color",
-							  "Default COLOR_BLACK",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Promotion_Specialties_Color",
+							  "PlotList", "Promotion Specialties Color", "COLOR_LIGHT_GREY",
+							  "Promotion Specialties",
+							  "Default COLOR_LIGHT_GREY",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
+		# Move Highlighter
+		self.addOption(Option("PLE_Move_Highlighter",
+							  "PlotList", "Move Highlighter", True,
+							  "Move Highlighter",
+							  "Highlights the moves a unit can make when you hover the mouse over the units icon, while holding the Alt-key.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		
 		self.addOption(Option("PLE_MH_Color_Impassable_Terrain",
 							  "PlotList", "Color Impassable Terrain", "COLOR_CLEAR",
-							  "Color Impassable Terrain",
+							  "Impassable Terrain",
 							  "Default COLOR_CLEAR",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Passable_Terrain",
 							  "PlotList", "Color Passable Terrain", "COLOR_WHITE",
-							  "Color Passable Terrain",
+							  "Passable Terrain",
 							  "Default COLOR_WHITE",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Passable_Neutral_Territory",
 							  "PlotList", "Color Passable Neutral Territory", "COLOR_PLAYER_DARK_YELLOW",
-							  "Color Passable Neutral Territory",
+							  "Passable Neutral Territory",
 							  "Default COLOR_PLAYER_DARK_YELLOW",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Passable_Enemy_Territory",
 							  "PlotList", "Color Passable Enemy Territory", "COLOR_PLAYER_DARK_RED",
-							  "Color Passable Enemy Territory",
+							  "Passable Enemy Territory",
 							  "Default COLOR_PLAYER_DARK_RED",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Passable_Barbarian_Territory",
 							  "PlotList", "Color Passable Barbarian Territory", "COLOR_PLAYER_DARK_CYAN",
-							  "Color Passable Barbarian Territory",
+							  "Passable Barbarian Territory",
 							  "Default COLOR_PLAYER_DARK_CYAN",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Neutral_Unit",
 							  "PlotList", "Color Neutral Unit", "COLOR_YELLOW",
-							  "Color Neutral Unit",
+							  "Neutral Unit",
 							  "Default COLOR_YELLOW",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Enemy_Unit",
 							  "PlotList", "Color Enemy Unit", "COLOR_RED",
-							  "Color Enemy Unit",
+							  "Enemy Unit",
 							  "Default COLOR_RED",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_MH_Color_Barbarian_Unit",
 							  "PlotList", "Color Barbarian Unit", "COLOR_CYAN",
-							  "Color Barbarian Unit",
+							  "Barbarian Unit",
 							  "Default COLOR_CYAN",
-							   InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 
-	
 
-	def isShowMoveHighlighter(self):
-		return self.getBoolean('PLE_Highlighter')
+	# Master Switch
 	
-	def isShowMissionInfo(self):
-		return self.getBoolean('PLE_Mission_Info')
+	def isEnabled(self):
+		return self.getBoolean('PLE_Enabled')  # not yet
+	
+	# Modes and Filters
+	
+	def getDefaultViewMode(self):
+		return self.getInt('PLE_Default_View_Mode')  # not yet
+	def getDefaultGroupMode(self):
+		return self.getInt('PLE_Default_Group_Mode')  # not yet
+	def isNegativeFilters(self):
+		return self.getBoolean('PLE_Negative_Filters')  # not yet
+	
+	# Health Bar
+	
 	def isShowHealthBar(self):
 		return self.getBoolean('PLE_Health_Bar')
 	def isHideHealthFighting(self):
 		return self.getBoolean('PLE_Hide_Health_Fighting')
+	def getHealthyColor(self):
+		return self.getString('PLE_Healthy_Color')
+	def getWoundedColor(self):
+		return self.getString('PLE_Wounded_Color')
+	
+	# Move Bar
+	
 	def isShowMoveBar(self):
 		return self.getBoolean('PLE_Move_Bar')
-	def isShowUpgradeIndicator(self):
-		return self.getBoolean('PLE_Upgrade_Indicator')
-	def isShowPromotionIndicator(self):
-		return self.getBoolean('PLE_Promotion_Indicator')
+	def getFullMovementColor(self):
+		return self.getString('PLE_Full_Movement_Color')
+	def getHasMovedColor(self):
+		return self.getString('PLE_Has_Moved_Color')
+	def getNoMovementColor(self):
+		return self.getString('PLE_No_Movement_Color')  # not yet
+	
+	# Indicators
+	
 	def isShowWoundedIndicator(self):
 		return self.getBoolean('PLE_Wounded_Indicator')
+	def isShowGreatGeneralIndicator(self):
+		return self.getBoolean('PLE_Lead_By_GG_Indicator')  # not yet
+	def isShowPromotionIndicator(self):
+		return self.getBoolean('PLE_Promotion_Indicator')
+	def isShowUpgradeIndicator(self):
+		return self.getBoolean('PLE_Upgrade_Indicator')
+	def isShowMissionInfo(self):
+		return self.getBoolean('PLE_Mission_Info')
 	
-	def getVerticalSpacing(self):
-		return self.getInt('PLE_Vertical_Spacing')
+	# Button Spacing
+	
 	def getHoriztonalSpacing(self):
 		return self.getInt('PLE_Horizontal_Spacing')
+	def getVerticalSpacing(self):
+		return self.getInt('PLE_Vertical_Spacing')
 	
+	# Unit Info Hover Pane
+	
+	def isShowInfoPane(self):
+		return self.getBoolean('PLE_Info_Pane')  # not yet
 	def getInfoPaneX(self):
 		return self.getInt('PLE_Info_Pane_X')
 	def getInfoPaneY(self):
@@ -196,21 +280,15 @@ class BugPleOptions(OptionsFacade):
 		return self.getString('PLE_Upgrade_Possible_Color')
 	def getUpgradeNotPossibleColor(self):
 		return self.getString('PLE_Upgrade_Not_Possible_Color')
-	def getPromotionSpecialtiesColor(self):
-		return self.getString('PLE_Promotion_Specialties_Color')
 	def getUnitTypeSpecialtiesColor(self):
 		return self.getString('PLE_Unit_Type_Specialties_Color')
+	def getPromotionSpecialtiesColor(self):
+		return self.getString('PLE_Promotion_Specialties_Color')
 	
-	def getHealthyColor(self):
-		return self.getString('PLE_Healthy_Color')
-	def getWoundedColor(self):
-		return self.getString('PLE_Wounded_Color')
-	def getFullMovementColor(self):
-		return self.getString('PLE_Full_Movement_Color')
-	def getHasMovedColor(self):
-		return self.getString('PLE_Has_Moved_Color')
-	def getNoMovementColor(self):
-		return self.getString('PLE_No_Movement_Color')
+	# Move Highlighter
+	
+	def isShowMoveHighlighter(self):
+		return self.getBoolean('PLE_Move_Highlighter')
 	
 	def getImpassableTerrainColor(self):
 		return self.getString('PLE_MH_Color_Impassable_Terrain')
