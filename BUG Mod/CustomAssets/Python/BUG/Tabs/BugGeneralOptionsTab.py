@@ -23,17 +23,13 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextDropdown(screen, left, left, "Main_GPBar_Types")
 		self.addCheckbox(screen, left, "Main_Combat_Counter")
 		self.addCheckbox(screen, left, "Main_CityArrows")
-		self.addLabel(screen, left, "PlotList", "Unit Icons (Plot List):")
-		self.addCheckbox(screen, left, "Unit_Promo_Available")
-		self.addCheckbox(screen, left, "Unit_Actions")
-		self.addCheckbox(screen, left, "Unit_Great_General")
 
 		self.addLabel(screen, right, "CityScreen", "City Screen:")
 		self.addCheckbox(screen, right, "City_RawCommerce")
+		self.addCheckbox(screen, right, "City_Anger_Counter")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonInfo")
-		self.addCheckbox(screen, right, "City_Anger_Counter")
 		self.addTextDropdown(screen, right, right, "City_Specialists")
 
 		screen.attachHSeparator(column, column + "Sep")

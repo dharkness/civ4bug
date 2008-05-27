@@ -37,22 +37,6 @@ class BugScreensOptions(OptionsFacade):
 							  "When checked, displays arrows to cycle through cities above your civ's flag.",
 							  InterfaceDirtyBits.MiscButtons_DIRTY_BIT))
 
-		self.addOption(Option("Unit_Promo_Available",
-							  "PlotList", "Promo Available", True,
-							  "Promotion Available",
-							  "When checked, puts blue border around units that have a promotion available.",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("Unit_Actions",
-							  "PlotList", "Unit Actions", True,
-							  "Unit Actions",
-							  "When checked, puts unit actions text on unit icons.",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("Unit_Great_General",
-							  "PlotList", "Great General", True,
-							  "Great General",
-							  "When checked, puts a little gold star on units lead by a Great General.",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-
 		self.addOption(Option("CDA_Enabled",
 							  "Screens", "CustDomAdv", True,
 							  "Customizable",
@@ -114,16 +98,6 @@ class BugScreensOptions(OptionsFacade):
 
 	def isShowCityCycleArrows(self):
 		return self.getBoolean('Main_CityArrows')
-	
-
-	def isShowUnitPromo(self):
-		return self.getBoolean('Unit_Promo_Available')
-
-	def isShowUnitActions(self):
-		return self.getBoolean('Unit_Actions')
-
-	def isShowGreatGeneral(self):
-		return self.getBoolean('Great_General')
 
 
 	def isCustDomAdv(self):
