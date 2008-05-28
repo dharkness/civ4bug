@@ -1017,7 +1017,6 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					PEDIA_RELIGION : pediaMainScreen,
 					PEDIA_CORPORATION : pediaMainScreen,
 					PEDIA_HISTORY : pediaMainScreen,
-					PEDIA_SHORTCUTS : pediaMainScreen,
 					
 # BUG - Sevopedia - start
 
@@ -1078,7 +1077,6 @@ HandleNavigationMap = {
 					PEDIA_HISTORY : pediaMainScreen,
 					PEDIA_RELIGION : pediaMainScreen,
 					PEDIA_CORPORATION : pediaMainScreen,
-					PEDIA_SHORTCUTS : pediaMainScreen,
 
 # BUG - Sevopedia - start
 
