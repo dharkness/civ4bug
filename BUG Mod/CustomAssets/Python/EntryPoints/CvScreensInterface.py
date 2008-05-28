@@ -1017,6 +1017,7 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					PEDIA_RELIGION : pediaMainScreen,
 					PEDIA_CORPORATION : pediaMainScreen,
 					PEDIA_HISTORY : pediaMainScreen,
+					PEDIA_SHORTCUTS : pediaMainScreen,
 					
 # BUG - Sevopedia - start
 
@@ -1044,6 +1045,7 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
 					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
 					
 # BUG - Sevopedia - end
 
@@ -1076,6 +1078,7 @@ HandleNavigationMap = {
 					PEDIA_HISTORY : pediaMainScreen,
 					PEDIA_RELIGION : pediaMainScreen,
 					PEDIA_CORPORATION : pediaMainScreen,
+					PEDIA_SHORTCUTS : pediaMainScreen,
 
 # BUG - Sevopedia - start
 
@@ -1102,7 +1105,8 @@ HandleNavigationMap = {
 					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
 					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen
+					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
 				
 # BUG - Sevopedia - end
 
