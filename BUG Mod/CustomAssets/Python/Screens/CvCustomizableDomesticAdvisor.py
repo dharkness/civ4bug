@@ -689,6 +689,7 @@ class CvCustomizableDomesticAdvisor:
 				3 : self.researchIcon, # Scientist
 				4 : self.goldIcon, # Merchant
 				5 : self.hammerIcon, # Engineer
+				6 : self.espionageIcon, # Engineer
 				}
 
 		if self.AUTOMATION_ICON_DICT == None:
