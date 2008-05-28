@@ -464,7 +464,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def getNewConceptInfo(self, id):
 		info = gc.getNewConceptInfo(id)
-		if info.getType().find("SHORTCUTS") == -1:
+		if not self.isShortcutInfo(info):
 			return info
 		return None
 
@@ -474,9 +474,12 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def getShortcutInfo(self, id):
 		info = gc.getNewConceptInfo(id)
-		if info.getType().find("SHORTCUTS") != -1:
+		if self.isShortcutInfo(info):
 			return info
 		return None
+	
+	def isShortcutInfo(self, info):
+		return info.getType().find("SHORTCUTS") != -1
 
 
 	def placeItems(self, widget, info):
