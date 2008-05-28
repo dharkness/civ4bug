@@ -17,7 +17,7 @@ class BugPleOptions(OptionsFacade):
 		
 		# Modes and Filters
 		self.addOption(OptionList("PLE_Default_View_Mode",
-							 	 "PlotList", "Default View Mode", 0,
+							 	 "PlotList", "Default View Mode", 1,
 								  "Default View",
 								  "Sets the view mode used when you start Civ IV.",
 								  ['Single Row', 'Multiple Rows', 'Vertical Groups', 'Horizontal Groups'], None,
@@ -41,7 +41,7 @@ class BugPleOptions(OptionsFacade):
 							  "Shows a bar above the unit icon displaying the unit's health and damage.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Hide_Health_Fighting",
-							  "PlotList", "Hide Health bar while fighting", True,
+							  "PlotList", "Hide Health Bar While Fighting", True,
 							  "Hide During Combat",
 							  "Hides the Health Bar when a unit is in combat.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
@@ -109,12 +109,12 @@ class BugPleOptions(OptionsFacade):
 		self.addOption(Option("PLE_Horizontal_Spacing",
 							  "PlotList", "Horizontal Item Spacing", 34,
 							  "Horizontal Spacing",
-							  "Specifies the horizontal spacing between icons (default value is 34).",
+							  "Specifies the horizontal spacing between icons (default:  34).",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Vertical_Spacing",
 							  "PlotList", "Vertical Item Spacing", 42,
 							  "Vertical Spacing",
-							  "Specifies the vertical spacing between icons (default value is 42).",
+							  "Specifies the vertical spacing between icons (default:  42).",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		
 		# Unit Info Hover Pane
@@ -126,12 +126,27 @@ class BugPleOptions(OptionsFacade):
 		self.addOption(Option("PLE_Info_Pane_X",
 							  "PlotList", "Info Pane X Position", 5,
 							  "Horizontal Position",
-							  "Specifies the horizontal position of the Unit Info hover pane (default value is 5).",
+							  "Specifies the horizontal position of the Unit Info hover pane (default:  5).",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Info_Pane_Y",
 							  "PlotList", "Info Pane Y Position", 160,
 							  "Vertical Position",
-							  "Specifies the vertical position of the Unit Info hover pane (default value is 160).",
+							  "Specifies the vertical position of the Unit Info hover pane (default:  160).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Info_Pane_Width",
+							  "PlotList", "Info Pane X Size", 5,
+							  "Width",
+							  "Specifies the width of the Unit Info hover pane (default:  290).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Info_Pane_Standard_Line_Height",
+							  "PlotList", "Pixel Per Line Type 1", 24,
+							  "Standard Line Height",
+							  "Specifies the height of a standard line of text (default:  24).",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+		self.addOption(Option("PLE_Info_Pane_Bulleted_Line_Height",
+							  "PlotList", "Pixel Per Line Type 2", 19,
+							  "Bulleted Line Height",
+							  "Specifies the height of a bulleted line of text (default:  19).",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		
 		self.addOption(Option("PLE_Unit_Name_Color",
@@ -273,6 +288,12 @@ class BugPleOptions(OptionsFacade):
 		return self.getInt('PLE_Info_Pane_X')
 	def getInfoPaneY(self):
 		return self.getInt('PLE_Info_Pane_Y')
+	def getInfoPaneWidth(self):
+		return self.getInt('PLE_Info_Pane_Width')
+	def getInfoPaneStandardLineHeight(self):
+		return self.getInt('PLE_Info_Pane_Standard_Line_Height')
+	def getInfoPaneBulletedLineHeight(self):
+		return self.getInt('PLE_Info_Pane_Bulleted_Line_Height')
 	
 	def getUnitNameColor(self):
 		return self.getString('PLE_Unit_Name_Color')
