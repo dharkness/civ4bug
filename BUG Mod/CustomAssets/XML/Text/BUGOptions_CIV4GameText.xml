@@ -2127,7 +2127,7 @@
 		<English>Enables the Plot List Enhancements mod and the rest of the options on this tab.</English>
 		<French>Active le mod Plot List Enhancements ainsi que le reste des options sur cet onglet.</French>
 		<German>Aktiviert die grafischen Ergänzungen der Einheitenliste am unteren Bildschirmrand (verwendet 12monkeys' "Plot List Enhancements" Mod)</German>
-		<Italian>Abilita il mod 'Plot List Enhancements' (PLE) e le altre opzioni in questa pagina.</Italian>
+		<Italian>Abilita il mod 'Plot List Enhancements' (PLE, Icone delle Unità Avanzate) e le altre opzioni in questa pagina.</Italian>
 		<Spanish>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2216,7 +2216,7 @@
 		<English>Hide During Combat</English>
 		<French>Caché pendant le combat</French>
 		<German>Bei Kämpfen ausblenden</German>
-		<Italian>Nascondi durante il combattimento</Italian>
+		<Italian>Nascondi durante combattimento</Italian>
 		<Spanish>Hide During Combat</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3170,7 +3170,7 @@
 		<English>Unit Icons</English>
 		<French>Unit Icons</French>
 		<German>Einheitenliste</German>
-		<Italian>Icone delle Unità</Italian>
+		<Italian>Icone Unità</Italian>
 		<Spanish>Unit Icons</Spanish>
 	</TEXT>
 	<TEXT>
