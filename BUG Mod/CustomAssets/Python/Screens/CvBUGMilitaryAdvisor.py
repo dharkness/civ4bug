@@ -30,6 +30,11 @@ UNIT_LOCATION_SCREEN = 0
 SITUATION_REPORT_SCREEN = 1
 #PLACE_HOLDER = 2
 
+def BUGPrint (stuff):
+#	stuff = "BUG_MAdv: " + stuff
+#	print stuff
+	return
+
 class CvMilitaryAdvisor:
 	"Shows the BUG Version of the Military Advisor"
 
@@ -303,6 +308,11 @@ class CvMilitaryAdvisor:
 			and not pPlayer.isBarbarian()
 			and not pPlayer.isMinorCiv()):
 
+
+				szPlayerName = pPlayer.getName() + "/" + pPlayer.getCivilizationShortDescription(0)
+				BUGPrint("Grid_ThreatIndex - Start %i %s" % (iLoopPlayer, szPlayerName))
+#				BUGPrint("Grid_ThreatIndex - Start %i" % (iLoopPlayer))
+
 				self.SitRepGrid.appendRow(pPlayer.getName(), "", 3)
 
 				# add leaderhead icon
@@ -479,13 +489,11 @@ class CvMilitaryAdvisor:
 
 		pPlayer = gc.getPlayer(iPlayer)
 
-		# no threat index if active player cannot see the demographics
-		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
-			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "n/a", 3)
-			return
+		BUGPrint("Grid_ThreatIndex - Start")
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
 			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ()), 3)
+			BUGPrint("Grid_ThreatIndex - is vassal")
 			return
 
 		# initialize threat index
@@ -499,6 +507,8 @@ class CvMilitaryAdvisor:
 		elif fRel_Threat > 38:
 			fRel_Threat = 38.0
 
+		BUGPrint("Grid_ThreatIndex - relationships")
+
 		# calculate the power threat value
 		fPwr_Threat = 0
 		iPower = pPlayer.getPower()
@@ -510,6 +520,17 @@ class CvMilitaryAdvisor:
 			elif fPwr_Threat > 38:
 				fPwr_Threat = 38.0
 
+		# set power thread to 75% of max if active player cannot see the demographics
+		bCannotSeeDemographics = False
+		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
+			bCannotSeeDemographics = True
+			fPwr_Threat = 38.0 * 0.75
+#			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "n/a", 3)
+#			BUGPrint("Grid_ThreatIndex - not enough spy points")
+#			return
+
+
+		BUGPrint("Grid_ThreatIndex - power")
 
 		# total threat, pre WHEOOH adjustment
 		fThreat = fRel_Threat + fPwr_Threat
@@ -522,6 +543,8 @@ class CvMilitaryAdvisor:
 		# reduce the threat if the current player is in a defensive pact with the active player
 		if gc.getTeam(pPlayer.getTeam()).isDefensivePact(gc.getPlayer(self.iActivePlayer).getTeam()):
 			fThreat = fThreat * 0.2
+
+		BUGPrint("Grid_ThreatIndex - thread adjustments - thread index %i" % int(fThreat))
 
 		if fThreat < 15:
 			sColour = "COLOR_PLAYER_GREEN"
@@ -539,14 +562,19 @@ class CvMilitaryAdvisor:
 			sColour = "COLOR_PLAYER_RED"
 			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_SEVERE", ())
 
+		if bCannotSeeDemographics:
+			sThreat += "*"
+
 		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat, 3)
+		BUGPrint("Grid_ThreatIndex - bar placed")
+		return
 
 	def calculateRelations (self, nPlayer, nTarget):
 		if (nPlayer != nTarget
 		and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
 			nAttitude = 0
 			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-			print szAttitude
+#			print szAttitude
 			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
 			for i in range (len (ltPlusAndMinuses)):
 				nAttitude += int (ltPlusAndMinuses[i])

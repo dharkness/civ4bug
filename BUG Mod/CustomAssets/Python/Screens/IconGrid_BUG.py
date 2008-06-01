@@ -11,6 +11,11 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
+def BUGPrint (stuff):
+#	stuff = "BUG_IconGrid: " + stuff
+#	print stuff
+	return
+
 class IconData:
 
 	def __init__(self, sImage, widgetType, iData):
@@ -219,8 +224,9 @@ class IconGrid_BUG:
  	def addText(self, iRowIndex, iColumnIndex, sText, iFont):
  		self.data[iRowIndex].addText(iColumnIndex, sText, iFont)
 
- 	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText, iFont):
- 		self.data[iRowIndex].addStackedBar(iColumnIndex, fValue, sColor, sText, iFont)
+	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText, iFont):
+		BUGPrint("addStackedbar %i %i %s %s %i" % (iColumnIndex, fValue, sColor, sText, iFont))
+		self.data[iRowIndex].addStackedBar(iColumnIndex, fValue, sColor, sText, iFont)
 
 	def clearData(self):
 		self.scrollPosition = 0
@@ -279,6 +285,7 @@ class IconGrid_BUG:
 
 				# put info in grouped columns
 				for offset in range(colGroup.length):
+					BUGPrint("Grouped Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
 					if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
 						bDataFound = True
 						try:
@@ -286,7 +293,7 @@ class IconGrid_BUG:
 						except:
 							bDataFound = False
 
-						if bDataFound:		
+						bDataFound:
 							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
 													   iconData.image, currentX, currentY, 64, 64,
 													   iconData.widgetType, iconData.data, -1)
@@ -310,18 +317,22 @@ class IconGrid_BUG:
 						currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
+						BUGPrint("Stacked Bar Start A")
+
 						bDataFound = True
 						try:
+							BUGPrint("Stacked Bar try")
 							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 						except:
 							bDataFound = False
 
-						if not bDataFound:		
+						BUGPrint("Stacked Bar data found? %s" % (bDataFound))
+						if bDataFound:		
+							BUGPrint("Stacked Bar found!")
 							textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 							if (self.showRowHeader):
 								textY += self.rowHeaderHeight
 
-							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 							width = self.StackedBarColWidth[startIndex + offset] - 15
 
 							if stackedbarData.text != "" and stackedbarData.value > 0:
@@ -329,6 +340,7 @@ class IconGrid_BUG:
 							else:
 								iSBarOffset_Y = 0
 
+							BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
 							if stackedbarData.value > 0:
 								szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 								self.screen.addStackedBarGFC(szBar_ID, 
@@ -347,6 +359,7 @@ class IconGrid_BUG:
 													  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+							BUGPrint("Stacked Bar done")
 
 				startIndex += colGroup.length
 				if (colGroup.label != ""):
@@ -354,6 +367,7 @@ class IconGrid_BUG:
 			
 			# put info in non grouped columns
 			for offset in range(len(self.columns) - startIndex):
+				BUGPrint("Single Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
 				if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
 					bDataFound = True
 					try:
@@ -361,7 +375,7 @@ class IconGrid_BUG:
 					except:
 						bDataFound = False
 
-					if not bDataFound:		
+					if bDataFound:		
 						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
 												  , iconData.image, currentX, currentY, 64, 64
 												  , iconData.widgetType, iconData.data, -1 )
@@ -383,13 +397,14 @@ class IconGrid_BUG:
 					currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
+					BUGPrint("Stacked Bar Start B")
 					bDataFound = True
 					try:
 						stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 					except:
 						bDataFound = False
 
-					if not bDataFound:		
+					if bDataFound:		
 						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 
 						width = self.StackedBarColWidth[startIndex + offset] - 15
@@ -399,6 +414,7 @@ class IconGrid_BUG:
 						else:
 							iSBarOffset_Y = 0
 
+						BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
 						if stackedbarData.value > 0:
 							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 							self.screen.addStackedBarGFC(szBar_ID, 
@@ -416,6 +432,7 @@ class IconGrid_BUG:
 												  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+						BUGPrint("Stacked Bar done")
 			
 			if ( rowData.message == "" ):
 				self.screen.attachLabel(self.rowName + str(rowIndex), self.rowName + str(rowIndex) + "NotConnected", "")

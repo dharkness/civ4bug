@@ -269,6 +269,15 @@ class AutoLogEvent(AbstractAutoLogEvent):
 #				self.storeStuff()
 #				return 1
 
+			'Check if ALT + T was hit == testing!'
+			if (theKey == int(InputTypes.KB_T)
+			and self.eventMgr.bAlt):
+				for i in range(0, 126):   #range(0,1000000):
+					ci = gc.getColorInfo(i)
+					ci2 = "XML Val %i %s" % (i, ci.getXmlVal())
+					print ci2
+
+
 	def onLoadGame(self, argsList):
 		self.bCurrPlayerHuman = true	
 		if (BugAutolog.isEnabled()
@@ -595,9 +604,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if iPlayer == CyGame().getActivePlayer():
 				bWrite = True
 				if self.bCurrPlayerHuman:
-					message = "Tech acquired (trade, lightbulb, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+					message = "Tech acquired (trade, lightbulb, hut, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
 				else:
-					message = "Tech discovered: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+					message = "Tech researched finished: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
 			else:
 				if self.bCurrPlayerHuman:
 					bWrite = True
