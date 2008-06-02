@@ -309,8 +309,8 @@ class CvMilitaryAdvisor:
 			and not pPlayer.isMinorCiv()):
 
 
-				szPlayerName = pPlayer.getName() + "/" + pPlayer.getCivilizationShortDescription(0)
-				BUGPrint("Grid_ThreatIndex - Start %i %s" % (iLoopPlayer, szPlayerName))
+#				szPlayerName = pPlayer.getName() + "/" + pPlayer.getCivilizationShortDescription(0)
+#				BUGPrint("Grid_ThreatIndex - Start %i %s" % (iLoopPlayer, szPlayerName))
 #				BUGPrint("Grid_ThreatIndex - Start %i" % (iLoopPlayer))
 
 				self.SitRepGrid.appendRow(pPlayer.getName(), "", 3)

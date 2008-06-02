@@ -293,7 +293,7 @@ class IconGrid_BUG:
 						except:
 							bDataFound = False
 
-						bDataFound:
+						if bDataFound:
 							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
 													   iconData.image, currentX, currentY, 64, 64,
 													   iconData.widgetType, iconData.data, -1)
@@ -328,7 +328,6 @@ class IconGrid_BUG:
 
 						BUGPrint("Stacked Bar data found? %s" % (bDataFound))
 						if bDataFound:		
-							BUGPrint("Stacked Bar found!")
 							textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 							if (self.showRowHeader):
 								textY += self.rowHeaderHeight
