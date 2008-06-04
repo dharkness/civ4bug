@@ -1,5 +1,5 @@
 ## BugOptionsEventManager
-## Displays BUG Mod Options Screen in response to CTRL-ALT-O and ALT-J.
+## Displays BUG Mod Options Screen in response to Alt + Ctrl + O and Alt + J.
 ## BUG Mod - Copyright 2007
 
 from CvPythonExtensions import *
@@ -29,7 +29,7 @@ class BugOptionsEvent(AbstractBugOptionsEvent):
 		eventType, key, mx, my, px, py = argsList
 		if ( eventType == self.eventMgr.EventKeyDown ):
 			theKey = int(key)
-			# Check if CTRL-ALT-O or ALT-J were hit (the latter for Ruff's users).
+			# Check if Alt + Ctrl + O or ALT-J were hit (the latter for Ruff's users).
 			if ((theKey == int(InputTypes.KB_O) and self.eventMgr.bAlt and self.eventMgr.bCtrl)
 			or (theKey == int(InputTypes.KB_J) and self.eventMgr.bAlt)):
 				CvScreensInterface.showBugOptionsScreen()

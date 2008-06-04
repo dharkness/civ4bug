@@ -167,7 +167,7 @@ class ReminderEvent(AbstractReminderEvent):
 		eventType,key,mx,my,px,py = argsList
 		if ( eventType == self.eventMgr.EventKeyDown ):
 			theKey=int(key)
-			# If ALT + M or CTRL + ALT + R was hit, show dialog box to set up reminder
+			# If ALT + M or ALT + CTRL + R was hit, show dialog box to set up reminder
 			if ((theKey == int(InputTypes.KB_M) and self.eventMgr.bAlt)
 			or (theKey == int(InputTypes.KB_R) and self.eventMgr.bAlt and self.eventMgr.bCtrl)):
 				if (BugAlerts.isShowReminders()):

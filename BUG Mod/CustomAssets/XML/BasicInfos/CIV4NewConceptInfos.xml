@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by lcollins (Firaxis Games) -->
 <!-- Sid Meier's Civilization 4 -->
 <!-- Copyright Firaxis Games 2005 -->
@@ -113,11 +114,6 @@
 		</NewConceptInfo>
 		<!-- Shortcut Infos -->
 		<NewConceptInfo>
-			<Type>CONCEPT_SHORTCUTS_GENERAL</Type>
-			<Description>TXT_KEY_SHORTCUTS_GENERAL</Description>
-			<Civilopedia>TXT_KEY_SHORTCUTS_GENERAL_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_SHORTCUTS_ADVISORS</Type>
 			<Description>TXT_KEY_SHORTCUTS_ADVISORS</Description>
 			<Civilopedia>TXT_KEY_SHORTCUTS_ADVISORS_PEDIA</Civilopedia>
@@ -141,6 +137,26 @@
 			<Type>CONCEPT_SHORTCUTS_BUG</Type>
 			<Description>TXT_KEY_SHORTCUTS_BUG</Description>
 			<Civilopedia>TXT_KEY_SHORTCUTS_BUG_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_SHORTCUTS_MAP</Type>
+			<Description>TXT_KEY_SHORTCUTS_MAP</Description>
+			<Civilopedia>TXT_KEY_SHORTCUTS_MAP_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_SHORTCUTS_GAME</Type>
+			<Description>TXT_KEY_SHORTCUTS_GAME</Description>
+			<Civilopedia>TXT_KEY_SHORTCUTS_GAME_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_SHORTCUTS_CAMERA</Type>
+			<Description>TXT_KEY_SHORTCUTS_CAMERA</Description>
+			<Civilopedia>TXT_KEY_SHORTCUTS_CAMERA_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_SHORTCUTS_MP</Type>
+			<Description>TXT_KEY_SHORTCUTS_MP</Description>
+			<Civilopedia>TXT_KEY_SHORTCUTS_MP_PEDIA</Civilopedia>
 		</NewConceptInfo>
 	</NewConceptInfos>
 </Civ4NewConceptInfos>

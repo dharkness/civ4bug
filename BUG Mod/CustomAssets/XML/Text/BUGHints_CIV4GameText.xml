@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!-- BUG Hints -->
 <!-- Copyright (c) 2007, BUG Mod -->
 <Civ4GameText xmlns="http://www.firaxis.com">
@@ -7,7 +8,7 @@
 		<English>*BUG Hint*: Press [ALT + CTRL + O] to enter The BUG Mod Options Screen.</English>
 		<French>*Conseils de BUG*: Pressez [ALT + CTRL + O] pour accèder aux écrans d'options du BUG Mod.</French>
 		<German>*BUG Tipp*: Mit der Tastenkombination [ALT + STRG + O] lässt sich das Optionsmenü der BUG Mod aufrufen.</German>
-		<Italian>*Suggerimento del BUG Team*: Premi [CTRL + ALT + O] per accedere alla schermata di configurazione del BUG Mod.</Italian>
+		<Italian>*Suggerimento del BUG Team*: Premi [ALT + CTRL + O] per accedere alla schermata di configurazione del BUG Mod.</Italian>
 		<Spanish>*BUG Hint*: Press [ALT + CTRL + O] to enter The BUG Mod Options Screen.</Spanish>
 	</TEXT>
 	<TEXT>

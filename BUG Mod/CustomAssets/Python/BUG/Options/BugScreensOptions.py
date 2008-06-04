@@ -12,7 +12,7 @@ class BugScreensOptions(OptionsFacade):
 		self.addOption(Option("Main_OptionsKey",
 							  "Screens", "Options Shortcut Reminder", True,
 							  "Options Shortcut Reminder",
-							  "When checked, displays a message about Ctrl-Alt-O when a game is started or loaded.",
+							  "When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.",
 							  InterfaceDirtyBits.GameData_DIRTY_BIT))
 		self.addOption(Option("Main_GPBar",
 							  "Screens", "GP Progress Bar", True,
