@@ -2503,7 +2503,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAIN_OPTIONSKEY_HOVER</Tag>
 		<English>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</English>
 		<French>En activant, en rappel sur l'utilisation de Alt + Ctrl + O est montré quand un jeu démarre ou est chargé.</French>
-		<German>Zeigt nach dem Spielstart oder dem Laden eines Spielstands eine Meldung, die an die Tastenkombination [STRG-ALT-O] erinnert, mit der man die Optionen der "BUG Mod" aufrufen kann</German>
+		<German>Zeigt nach dem Spielstart oder dem Laden eines Spielstands eine Meldung, die an die Tastenkombination [STRG + ALT + O] erinnert, mit der man die Optionen der "BUG Mod" aufrufen kann</German>
 		<Italian>Quando è selezionato, mostra un messaggio che ricorda la combinazione di tasti per accedere al Menù delle Opzioni del BUG Mod quando un gioco viene iniziato o caricato .</Italian>
 		<Spanish>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</Spanish>
 	</TEXT>
