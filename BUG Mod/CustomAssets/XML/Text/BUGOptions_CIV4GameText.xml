@@ -54,7 +54,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
 		<English>Enable Reminders (Alt-M)</English>
 		<French>Activer les Rappels (Alt-M)</French>
-		<German>Erinnerungen aktivieren [ALT-M]</German>
+		<German>Erinnerungen aktivieren</German>
 		<Italian>Abilita i Promemoria (Alt-M)</Italian>
 		<Spanish>Enable Reminders (Alt-M)</Spanish>
 	</TEXT>
@@ -450,7 +450,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMPOP_HOVER</Tag>
 		<English>When checked, displays an alert when your population is close to or exceeds the limit for a Domination victory.</English>
 		<French>When checked, displays an alert when your population is close to or exceeds the limit for a Domination victory.</French>
-		<German>Lässt eine Warnung erscheinen, wenn sich die eigene Bevölkerungszahl dem Grenzbereich für einen Vorherrschafts-Sieg nähert oder ihn überschreitet</German>
+		<German>Lässt eine Warnung erscheinen, wenn sich die eigene Bevölkerungszahl dem Grenzbereich für einen Herrschaftssieg nähert oder ihn überschreitet</German>
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando la tua Popolazione è vicina al limite (o oltre) per una Vittoria di Dominazione.</Italian>
 		<Spanish>When checked, displays an alert when your population is close to or exceeds the limit for a Domination victory.</Spanish>
 	</TEXT>
@@ -468,7 +468,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMPOPTHRESH_HOVER</Tag>
 		<English>Population threshold for Domination victory.</English>
 		<French>Seuil de Population pour une Victoire par Domination.</French>
-		<German>Bestimmt den Grenzbereich für die Bevölkerungszahl, ab dem eine Warnung vor einem Vorherrschafts-Sieg erscheint</German>
+		<German>Bestimmt den Grenzbereich für die Bevölkerungszahl, ab dem eine Warnung vor einem Herrschaftssieg erscheint</German>
 		<Italian>Livello limite di popolazione per una Vittoria di Dominazione.</Italian>
 		<Spanish>Population threshold for Domination victory.</Spanish>
 	</TEXT>
@@ -486,7 +486,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMLAND_HOVER</Tag>
 		<English>When checked, displays an alert when your land area is close to or exceeds the limit for a Domination victory.</English>
 		<French>When checked, displays an alert when your land area is close to or exceeds the limit for a Domination victory.</French>
-		<German>Lässt eine Warnung erscheinen, wenn sich die eigene Landmasse dem Grenzbereich für einen Vorherrschafts-Sieg nähert oder ihn überschreitet</German>
+		<German>Lässt eine Warnung erscheinen, wenn sich die eigene Landmasse dem Grenzbereich für einen Herrschaftssieg nähert oder ihn überschreitet</German>
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando il tuo Territorio è vicino al limite (o oltre) per una Vittoria di Dominazione.</Italian>
 		<Spanish>When checked, displays an alert when your land area is close to or exceeds the limit for a Domination victory.</Spanish>
 	</TEXT>
@@ -504,7 +504,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_DOMLANDTHRESH_HOVER</Tag>
 		<English>Land threshold for Domination victory.</English>
 		<French>Seuil de Territoire pour une Victoire par Domination.</French>
-		<German>Bestimmt den Grenzbereich für die Größe der Landmasse, ab dem eine Warnung vor einem Vorherrschafts-Sieg erscheint</German>
+		<German>Bestimmt den Grenzbereich für die Größe der Landmasse, ab dem eine Warnung vor einem Herrschaftssieg erscheint</German>
 		<Italian>Livello limite di popolazione per una Vittoria di Dominazione.</Italian>
 		<Spanish>Land threshold for Domination victory.</Spanish>
 	</TEXT>
@@ -695,7 +695,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_HOVER</Tag>
 		<English>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</English>
 		<French>Utilisé comme préfixe avant les entrées manuelles (ALT-E) dans le log, p.ex. devant votre nom d'utilisateur.</French>
-		<German>Bestimmt das Präfix, das den Protokolleinträgen (Tastenkombination [ALT-E]) des Spielers vorangestellt wird, z.B. der Spielername</German>
+		<German>Bestimmt das Präfix, das den Protokolleinträgen des Spielers (Tastenkombination [ALT-E]) vorangestellt wird, z.B. der Spielername</German>
 		<Italian>Questo prefisso viene immesso prima delle aggiunte manuali del giocatore (inserite mediante ALT-E) per distinguerle dagli eventi registrati automaticamente; può essere per esempio il nome o la sigla del giocatore.</Italian>
 		<Spanish>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Spanish>
 	</TEXT>
@@ -1646,7 +1646,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWTOTALTURNS_HOVER</Tag>
 		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
 		<French>En activant, le nombre total de tours pour une Victoire de Temps est montré.</French>
-		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Wertungs-Sieg" aktiviert ist</German>
+		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Punktsieg" aktiviert ist</German>
 		<Italian>Quando è selezionato, viene visualizzato il numero di turni totali (se la Vittoria a Tempo è abilitata).</Italian>
 		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
 	</TEXT>
@@ -1664,7 +1664,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWCOMPLETEDPERCENT_HOVER</Tag>
 		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
 		<French>En activant, le pourcentage complété pour une Victoire de Temps est montré.</French>
-		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Wertungs-Sieg" aktiviert ist</German>
+		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Punktsieg" aktiviert ist</German>
 		<Italian>Quando è selezionato, viene visualizzata la percentuale di turni completati (se la Vittoria a Tempo è abilitata).</Italian>
 		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
 	</TEXT>
@@ -1772,7 +1772,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTTOTALTURNS_HOVER</Tag>
 		<English>When checked, the total turns in the game is displayed if Time Victory is enabled.</English>
 		<French>En activant, le nombre total de tours pour une Victoire de Temps est montré.</French>
-		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Wertungs-Sieg" aktiviert ist</German>
+		<German>Zeigt die Anzahl der insgesamt verfügbaren Runden einer Partie an, falls "Punktsieg" aktiviert ist</German>
 		<Italian>Quando è selezionato, viene visualizzato il numero di turni totali (se la Vittoria a Tempo è abilitata).</Italian>
 		<Spanish>When checked, the total turns in the game is displayed if Time Victory is enabled.</Spanish>
 	</TEXT>
@@ -1790,7 +1790,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGCM_SHOWALTCOMPLETEDPERCENT_HOVER</Tag>
 		<English>When checked, the completed percentage is displayed if Time Victory is enabled.</English>
 		<French>En activant, le pourcentage complété pour une Victoire de Temps est montré.</French>
-		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Wertungs-Sieg" aktiviert ist</German>
+		<German>Zeigt die verstrichenen Runden als Prozentsatz der Gesamtrunden an, falls "Punktsieg" aktiviert ist</German>
 		<Italian>Quando è selezionato, viene visualizzata la percentuale di turni completati (se la Vittoria a Tempo è abilitata).</Italian>
 		<Spanish>When checked, the completed percentage is displayed if Time Victory is enabled.</Spanish>
 	</TEXT>
@@ -1828,7 +1828,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_SHOWDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will remain on the scoreboard.</English>
 		<French>En activant, les civilisations mortes resteront sur le panneau des scores.</French>
-		<German>Lässt ausgelöschte Zivilisationen weiter in der Wertungsanzeige erscheinen</German>
+		<German>Lässt ausgelöschte Zivilisationen weiter in der Punkteanzeige erscheinen</German>
 		<Italian>Quando è selezionato, le Civiltà scomparse rimarranno nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will remain on the scoreboard.</Spanish>
 	</TEXT>
@@ -1846,7 +1846,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_TAGDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
 		<French>En activant, les civilisations mortes seront marquées "Mort".</French>
-		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Tot" in der Wertungsanzeige, wenn sie angezeigt werden sollen</German>
+		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Tot" in der Punkteanzeige, wenn sie angezeigt werden sollen</German>
 		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come "Scomparsa" nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
 	</TEXT>
@@ -1882,7 +1882,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_HOVER</Tag>
 		<English>Determines how civilizations are labeled on the scoreboard.</English>
 		<French>Determine comment les civilisations sont affichées sur le panneau des scores.</French>
-		<German>Bestimmt den Namen, mit dem Zivilisationen in der Wertungsanzeige angezeigt werden</German>
+		<German>Bestimmt den Namen, mit dem Zivilisationen in der Punkteanzeige angezeigt werden</German>
 		<Italian>Determina come le Civiltà vengono identificate nel Pannello del Punteggio.</Italian>
 		<Spanish>Determines how civilizations are labeled on the scoreboard.</Spanish>
 	</TEXT>
@@ -1945,7 +1945,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_ALIGNICONS_HOVER</Tag>
 		<English>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</English>
 		<French>En activant, le panneau des scores devient un tableau, et les options dans cette colonne l'affectent.</French>
-		<German>Stellt die Wertungsanzeige als Raster dar, um die folgenden Optionen nutzen zu können</German>
+		<German>Stellt die Punkteanzeige als Raster dar, um die folgenden Optionen nutzen zu können</German>
 		<Italian>Quando è selezionato, il Pannello del Punteggio viene strutturato come griglia (vedi l'opzione seguente).</Italian>
 		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>
 	</TEXT>
@@ -1963,7 +1963,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYORDER_HOVER</Tag>
 		<English>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</English>
 		<French>Ceci détermine l'ordre dans lequel les colonnes apparaissent.[NEWLINE]S - Score de la civilisation.[NEWLINE]C - Nom de la civilisation et/ou du dirigeant.[NEWLINE]? - Vous n'avez pas encore rencontré cette civilisation.[NEWLINE]W - Vous êtes en guerre contre cette civilisation.[NEWLINE]E - Votre pro rata d'espionnage avec cette civilisation est bon.[NEWLINE]P - Pro rata du pouvoir de cette civilisation comparé à vous.[NEWLINE]T - La technologie que la civilisation recherche (vassaux, équipe et espionnage).[NEWLINE]U - Le nombre de tours qui restent à la recherche.[NEWLINE]N - Cette civilisation est connectée à votre réseau de commerce.[NEWLINE]B - Vous avez une accord de frontières ouvertes avec cette civilisation.[NEWLINE]D - Vous avez un pacte défensif avec cette civilisation.[NEWLINE]R - La religion nationale de cette civilisation.[NEWLINE]A - L'attitude de cette civilisation envers vous.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]* - Vous attendez que cette civilisation finisse son tour.[NEWLINE]L - Statistique de Réseau (ping).[NEWLINE]O - Le joueur est out-of-sync.</French>
-		<German>Bestimmt die Reihenfolge, in der die Spalten der Wertungsanzeige angeordnet werden:[NEWLINE]S - Wertung der Zivilisation[NEWLINE]C - Name der Zivilisation/des Oberhaupts[NEWLINE]? - Zivilisation noch nicht kontaktiert[NEWLINE]W - Kriegszustand[NEWLINE]E - Gutes Spionagepunktverhältnis gegenüber der Zivilisation[NEWLINE]P - Machtverhältnis zwischen der eigenen und der gegnerischen Zivilisation[NEWLINE]T - Derzeitiges Forschungsprojekt der Zivilisation (gilt für Vasallen, Verbündete und durch Spionage erlangt)[NEWLINE]U - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE]N - Handelsverbindungen mit der Zivilisation[NEWLINE]B - "Offene Grenzen" mit der Zivilisation[NEWLINE]D - "Verteidigungsbündis" mit der Zivilisation[NEWLINE]R - Staatsreligion der Zivilisation[NEWLINE]A - Einstellung der Zivilisation gegenüber der eigenen[NEWLINE]H - Schlimmster Feind der eigenen Zivilisation[NEWLINE]* - Warten auf den Zug der Zivilisation[NEWLINE]L - Netzwerkstatistik der Zivilisation (Ping)[NEWLINE]O - Verbundener Spieler ist "out-of-sync"</German>
+		<German>Bestimmt die Reihenfolge, in der die Spalten der Punkteanzeige angeordnet werden:[NEWLINE]S - Wertung der Zivilisation[NEWLINE]C - Name der Zivilisation/des Oberhaupts[NEWLINE]? - Zivilisation noch nicht kontaktiert[NEWLINE]W - Kriegszustand[NEWLINE]E - Gutes Spionagepunktverhältnis gegenüber der Zivilisation[NEWLINE]P - Machtverhältnis zwischen der eigenen und der gegnerischen Zivilisation[NEWLINE]T - Derzeitiges Forschungsprojekt der Zivilisation (gilt für Vasallen, Verbündete und durch Spionage erlangt)[NEWLINE]U - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE]N - Handelsverbindungen mit der Zivilisation[NEWLINE]B - "Offene Grenzen" mit der Zivilisation[NEWLINE]D - "Verteidigungsbündis" mit der Zivilisation[NEWLINE]R - Staatsreligion der Zivilisation[NEWLINE]A - Einstellung der Zivilisation gegenüber der eigenen[NEWLINE]H - Schlimmster Feind der eigenen Zivilisation[NEWLINE]* - Warten auf den Zug der Zivilisation[NEWLINE]L - Netzwerkstatistik der Zivilisation (Ping)[NEWLINE]O - Verbundener Spieler ist "out-of-sync"</German>
 		<Italian>Determina l'ordine in base al quale vengono visualizzate le colonne del Pannello del Punteggio.[NEWLINE]S - Il Punteggio della Civiltà.[NEWLINE]C - il Nome della Civiltà/del Leader della Civiltà.[NEWLINE]? - Non hai ancora incontrato questa Civiltà.[NEWLINE]W - Sei in guerra con la Civiltà.[NEWLINE]E - Hai un Rapporto di Spionaggio positivo verso la Civiltà.[NEWLINE]P - La Potenza della Civiltà rispetto alla tua.[NEWLINE]T - La Tecnologia che la Civiltà sta ricercando (nota per Vassalli e Alleati o mediante Spionaggio).[NEWLINE]U - Il numero di Turni di Ricerca rimasti alla Civiltà.[NEWLINE]N - La Civiltà è connessa alla tua rete commerciale.[NEWLINE]B - Hai un accordo di Libero Scambio con la Civiltà.[NEWLINE]D - Hai un Patto Difensivo con la Civiltà.[NEWLINE]R - La Religione di Stato della Civiltà.[NEWLINE]A - L'atteggiamento della Civiltà verso di te.[NEWLINE]H - Siete il Peggior Nemico della Civiltà.[NEWLINE]* - Sei in attesa che questa Civiltà finisca il suo turno.[NEWLINE]L - Le statistiche di connessione del giocatore della Civiltà (ping).[NEWLINE]O - Il giocatore di questa Civiltà è "out-of-sync".</Italian>
 		<Spanish>This determines the order in which the score columns appear.[NEWLINE]S - The civ's score.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]W - You are at war with the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]* - You are waiting for this civ to finish its turn.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</Spanish>
 	</TEXT>
@@ -3134,7 +3134,7 @@
 		<Tag>TXT_KEY_BUG_OPTTAB_SCORES</Tag>
 		<English>Scoreboard</English>
 		<French>Scores</French>
-		<German>Wertungsanzeige</German>
+		<German>Punkteanzeige</German>
 		<Italian>Punteggio</Italian>
 		<Spanish>Scoreboard</Spanish>
 	</TEXT>
@@ -3220,7 +3220,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_ALERT_VICTORY</Tag>
 		<English>Victory:</English>
 		<French>Victoire:</French>
-		<German>Vorherrschafts-Sieg:</German>
+		<German>Herrschaftssieg:</German>
 		<Italian>Vittoria:</Italian>
 		<Spanish>Victory:</Spanish>
 	</TEXT>
