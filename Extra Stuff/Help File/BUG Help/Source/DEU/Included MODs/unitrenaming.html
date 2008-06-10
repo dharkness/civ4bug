@@ -3,175 +3,187 @@
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
 	<TITLE>Unit Naming</TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.3  (Win32)">
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
 	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGEDBY" CONTENT="Jason Cole">
-	<META NAME="CHANGED" CONTENT="20080106;1070448">
+	<META NAME="CHANGED" CONTENT="20080610;19304096">
 	<STYLE TYPE="text/css">
 	<!--
+		@page { size: 21cm 29.7cm }
 		P.style8 { color: #0000ff; font-size: 14pt; font-weight: bold }
-		P.style10 { color: #0000ff; font-size: 12pt }
+		P.style10 { color: #0000ff }
 	-->
 	</STYLE>
 </HEAD>
-<BODY LANG="en-US" DIR="LTR">
+<BODY LANG="de-DE" DIR="LTR">
 <P><FONT COLOR="#0000ff"><FONT SIZE=4 STYLE="font-size: 16pt"><I><B>Unit
-Naming</B></I></FONT></FONT><FONT COLOR="#0000ff"> </FONT><FONT COLOR="#0000ff"><FONT SIZE=3><I><B>by
-ruff_hi </B></I></FONT></FONT>
+Naming</B></I></FONT></FONT><FONT COLOR="#0000ff"> </FONT><FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: medium">von</SPAN></SPAN></FONT></FONT><FONT COLOR="#000000">
+</FONT><FONT COLOR="#000000"><FONT SIZE=3><I><B>ruff_hi</B></I></FONT></FONT><FONT COLOR="#0000ff">
+</FONT>
 </P>
 <OL TYPE=I>
-	<LI><P CLASS="style8" ALIGN=LEFT><!-- @page { size: 8.5in 11in; margin: 0.79in }  		P { margin-bottom: 0.17in; line-height: 180%; text-align: justify }  		P.table-text { margin-top: 0.08in; margin-bottom: 0.08in; line-height: 120%; text-align: left }  		P.table-title { margin-top: 0.08in; margin-bottom: 0.08in; font-size: 14pt; font-weight: bold; line-height: 120%; text-align: center }  	-->Overview</P>
+	<LI><P CLASS="style8" ALIGN=LEFT>&Uuml;berblick</P>
 </OL>
-<P>This document explains the unit naming convention used in the BUG
-Mod. It documents what is <EM>meant</EM> to happen, not necessarily
-what actually happens. If you find a situation where this document
-differs from the unit name actually generated within the game, then
-please report it as a bug.</P>
+<P>Dieses Dokument erkl&auml;rt die Benennungsregeln f&uuml;r
+Einheiten, die in der BUG Mod verwendet werden. Hier soll gezeigt
+werden, wie die Regeln funktionieren <I><SPAN STYLE="font-weight: medium">sollen</SPAN></I>,
+nicht unbedingt, was sie dann tats&auml;chlich tun. Falls eine
+Situation auftritt, in der die Beschreibung in diesem Dokument vom im
+Spiel generierten Einheitennamen abweicht, dann sollte dies als Bug
+im entsprechenden Forum gemeldet werden.</P>
 <OL TYPE=I START=2>
-	<LI><P CLASS="style8" ALIGN=LEFT><STRONG>Unit Naming Convention</STRONG></P>
+	<LI><P CLASS="style8" ALIGN=LEFT><STRONG>Regeln f&uuml;r die
+	Einheitenbenennung</STRONG></P>
 </OL>
-<P>The following is the code that controls the name that your unit
-will have.</P>
+<P>Die folgenden Code-Elemente kontrollieren den Namen, den eine
+Einheit erh&auml;lt.</P>
 <UL>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^civ4^</FONT></FONT>
-	- no naming convention, uses standard civ4</P>
+	- keine Benennungsregel, Standard Civ4-Namen verwenden</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^rd^</FONT></FONT>
-	- random name</P>
+	- Zuf&auml;lliger Name</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^rc^</FONT></FONT>
-	- random civ related name</P>
+	- Zuf&auml;lliger zivilisationsbezogener Name</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^ct^</FONT></FONT>
-	- City</P>
+	- Stadt, die die Einheit aufgestellt hat</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cv^</FONT></FONT>
-	- Civilization</P>
-	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3><SPAN LANG="fr-FR">^ut^</SPAN></FONT></FONT>
-	<SPAN LANG="fr-FR">- unit (eg Archer)</SPAN></P>
+	- Adjektiv der Zivilisation, die die Einheit aufgestellt hat</P>
+	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^ut^</FONT></FONT>
+	- Einheitentyp (z.B. Bogensch&uuml;tze)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cb^ </FONT></FONT>-
-	combat type (Melee)</P>
+	Einheitenklasse (z.B. Nahkampf)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^dm^</FONT></FONT>
-	- domain (Water)</P>
+	- Element der Einheit (z.B. Wasser)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^ld^</FONT></FONT>
-	- leader</P>
+	- Oberhaupt, das die Einheit aufgestellt hat</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cnt[f]^</FONT></FONT>
-	- count across all units (increments based on unit)</P>
+	- Nummerierung &uuml;ber alle Einheiten (Zuwachs abh&auml;ngig von
+	Einheit)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cntu[f]^</FONT></FONT>
-	- count across same unit (increments based on unit)</P>
+	- Nummerierung &uuml;ber alle Einheiten gleichen Typs (Zuwachs
+	abh&auml;ngig von Einheit)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cntct[f]^</FONT></FONT>
-	- count across same city (increments based on unit)</P>
+	- Nummerierung pro Stadt (Zuwachs abh&auml;ngig von Einheit)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cntuct[f]^</FONT></FONT>
-	- count across same unit / city (increments based on unit)</P>
+	- Nummerierung pro Einheitentyp/Stadt in Kombination (Zuwachs
+	abh&auml;ngig von Einheit)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cntc[f]^</FONT></FONT>
-	- count across same combat type (increments based on combat type)</P>
+	- Nummerierung pro Einheitenklasse (Zuwachs abh&auml;ngig von
+	Einheitenklasse)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^cntd[f]^</FONT></FONT>
-	- count across same domain (increments based on domain)</P>
+	- Nummerierung pro Element der Einheit (Zuwachs abh&auml;ngig vom
+	Element der Einheit)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^tt1[f][x:y]^</FONT></FONT>
-	- total where the total is a random number between x and y (number)</P>
+	- Nummerierung mit einer festgelegten Zahl zwischen x und y (Zahl)</P>
 	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>^tt2[f][x]^</FONT></FONT>
-	- total count (starts at x, incremented by 1 each time ^tt is reset
-	to 1)</P>
+	- Gesamtanzahl (Nummerierung beginnt mit x und w&auml;chst jedes Mal
+	an, wenn der Code tt auf 1 zur&uuml;ckgesetzt wird)</P>
 </UL>
 <P><BR><BR>
 </P>
-<P>There are a number of number formats, as follows:</P>
+<P>Nachfolgend finden Sie einige Formate f&uuml;r die Nummerierung:</P>
 <UL>
-	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff">[f]</FONT> can be either
-	's', 'A', 'a', 'p', 'g', 'n', 'o' or 'r' for ... 
+	<LI><P ALIGN=LEFT><FONT COLOR="#0000ff">[f]</FONT> kann eins der
+	folgenden Elemente sein: 's', 'A', 'a', 'p', 'g', 'n', 'o' oder 'r',
+	wobei... 
 	</P>
 	<UL>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>s</FONT></FONT>
-		- silent (not shown)</P>
+		- stumm (wird nicht angezeigt)</P>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>A</FONT></FONT>
-		- upper case alpha (A, B, C, D, ...)</P>
+		- Gro&szlig;buchstaben (A, B, C, D, ...)</P>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>a</FONT></FONT>
-		- lower case alpha (a, b, c, d, ...)</P>
+		- Kleinbuchstaben (a, b, c, d, ...)</P>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>p</FONT></FONT>
-		- phonetic (alpha, bravo, Charlie, delta, echo, ...)</P>
-		<LI><P LANG="it-IT" ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>g</FONT></FONT>
-		- greek (alpha, beta, gamma, delta, epsilon, ...)</P>
+		- Phonetisch (alpha, bravo, Charlie, delta, echo, ...)</P>
+		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>g</FONT></FONT>
+		- Griechisch (alpha, beta, gamma, delta, epsilon, ...)</P>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>n</FONT></FONT>
-		- number</P>
+		- Zahl</P>
 		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>o</FONT></FONT>
-		- ordinal (1st, 2nd, 3rd, 4th, ...)</P>
-		<LI><P LANG="da-DK" ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>r</FONT></FONT>
-		- roman (I, IV, V, X, ...)</P>
+		- Ordinal (1st, 2nd, 3rd, 4th, ...)</P>
+		<LI><P ALIGN=LEFT><FONT COLOR="#0000ff"><FONT SIZE=3>r</FONT></FONT>
+		- lateinisch (I, IV, V, X, ...)</P>
 	</UL>
 </UL>
-<P LANG="da-DK">Some number formats have a built in max (i.e. alpha).
-In these situations, the numbering loops back to the start. For
-example, if you pass the number &lsquo;30&rsquo; and ask for the
-number to be formatted with an &lsquo;A&rsquo; (upper case alpha)
-then it will return &lsquo;D&rsquo;.</P>
+<P>Einige Formate f&uuml;r die Nummerierung haben eine eingebaute
+H&ouml;chstgrenze (z.B. alpha). Wenn die Nummerierung diese Grenze
+erreicht, springt sie zur&uuml;ck zum Anfang. Zum Beispiel, falls die
+Zahl '30' &uuml;berschritten wird und diese nun mit 'A'
+(Gro&szlig;buchstaben) formatiert werden soll, dann wird ein 'D'
+ausgegeben.</P>
 <OL TYPE=I START=3>
-	<LI><P CLASS="style8" ALIGN=LEFT><STRONG>Sample Units</STRONG></P>
+	<LI><P CLASS="style8" ALIGN=LEFT><STRONG>Beispiele</STRONG></P>
 </OL>
-<P>The best way to illustrate the naming convention is to work
-through some examples. I shall use the following units to set through
-these examples.</P>
+<P>Am einfachsten ist es, die Benennungsregeln an einigen Beispielen
+zu erl&auml;utern. Folgende Einheiten werden in den Beispielen
+verwendet werden:</P>
 <UL>
-	<LI><P ALIGN=LEFT>Scout built in Moscow</P>
-	<LI><P ALIGN=LEFT>Worker built in Moscow</P>
-	<LI><P ALIGN=LEFT>Galley built in Leeds</P>
-	<LI><P ALIGN=LEFT>Bomber built in Leeds</P>
-	<LI><P ALIGN=LEFT>Axeman built in Moscow</P>
-	<LI><P ALIGN=LEFT>Swordsman built in Moscow</P>
+	<LI><P ALIGN=LEFT>Sp&auml;her, aufgestellt in Teheran</P>
+	<LI><P ALIGN=LEFT>Arbeitstrupp, aufgestellt in Rom</P>
+	<LI><P ALIGN=LEFT>Triere, aufgestellt in Leeds</P>
+	<LI><P ALIGN=LEFT>Bomber, aufgestellt in Moskau</P>
+	<LI><P ALIGN=LEFT>Axtk&auml;mpfer, aufgestellt in Moskau</P>
+	<LI><P ALIGN=LEFT>Schwertk&auml;mpfer, aufgestellt in Athen</P>
 </UL>
 <P><BR><BR>
 </P>
-<P CLASS="style10" ALIGN=LEFT><STRONG>^civ4^ of ^ct^</STRONG></P>
-<P>This naming convention over-rides all other naming conventions
-because it includes the key ^civ4^. This signifies that the normal
-Civ4 name should be used. In other words, the unit&rsquo;s name is
-not changed. Note, the &ldquo;of ^ct^&rdquo; part is ignored.</P>
+<P CLASS="style10" ALIGN=LEFT><STRONG>^civ4^ aus ^ct^</STRONG></P>
+<P>Diese Benennungsregel hebt alle anderen verwendeten Regeln auf,
+weil der Code ^civ4^ verwendet wird. So wird signalisiert, dass der
+Standard Civ4-Namen verwendet werden soll. In anderen Worten, der
+Name der Einheit wird nicht ver&auml;ndert. Auch der Codeteil &quot;aus
+^ct^&quot; wird ignoriert.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
-		<COL WIDTH=88>
+		<COL WIDTH=89>
 		<COL WIDTH=20>
 		<COL WIDTH=343>
 		<THEAD>
 			<TR>
 				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
-					<P CLASS="style10">^civ4^ of ^ct^</P>
+					<P CLASS="style10">^civ4^ aus ^ct^</P>
 				</TD>
 			</TR>
 		</THEAD>
 		<TBODY>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
-					<P>Scout</P>
+				<TD WIDTH=89>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
-					<P>Worker</P>
+				<TD WIDTH=89>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
-					<P>Galley</P>
+				<TD WIDTH=89>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
+				<TD WIDTH=89>
 					<P>Bomber</P>
 				</TD>
 				<TD WIDTH=20>
@@ -183,27 +195,27 @@ not changed. Note, the &ldquo;of ^ct^&rdquo; part is ignored.</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
-					<P>Axeman</P>
+				<TD WIDTH=89>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
-				<TD WIDTH=88>
-					<P>Swordsman</P>
+				<TD WIDTH=89>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -211,12 +223,13 @@ not changed. Note, the &ldquo;of ^ct^&rdquo; part is ignored.</P>
 </CENTER>
 <P><BR><BR>
 </P>
-<P CLASS="style10" ALIGN=LEFT><STRONG>^rd^ ^cv^ Army </STRONG>
+<P CLASS="style10" ALIGN=LEFT><STRONG>^rd^ ^cv^ Armee </STRONG>
 </P>
-<P>This naming convention over-rides nearly all other naming
-conventions except the ^civ4^ naming convention because it includes
-the key ^rd^. This signifies that the unit should be given a totally
-random name. Note, the &ldquo;^cv^ Army&rdquo; part is ignored.</P>
+<P>Diese Benennungsregel hebt fast alle anderen verwendeten Regeln
+auf, au&szlig;er der Regel ^civ4^, weil der Codeteil ^rd^ verwendet
+wird. So wird signalisiert, dass der Einheit ein vollkommen
+zuf&auml;lliger Name gegeben werden soll. Der Codeteil &quot;^cv^
+Armee&quot; wird ignoriert.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -225,45 +238,45 @@ random name. Note, the &ldquo;^cv^ Army&rdquo; part is ignored.</P>
 		<THEAD>
 			<TR>
 				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
-					<P CLASS="style10">^rd^ ^cv^ Army</P>
+					<P CLASS="style10">^rd^ ^cv^ Armee</P>
 				</TD>
 			</TR>
 		</THEAD>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -275,31 +288,31 @@ random name. Note, the &ldquo;^cv^ Army&rdquo; part is ignored.</P>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -308,10 +321,11 @@ random name. Note, the &ldquo;^cv^ Army&rdquo; part is ignored.</P>
 <P><BR><BR>
 </P>
 <P CLASS="style10" ALIGN=LEFT><STRONG>^rc^</STRONG></P>
-<P>This naming convention over-rides nearly all other naming
-conventions except the ^civ4^ and ^rd^ naming convention because it
-includes the key ^rc^. This signifies that the unit should be given a
-totally random name that is civilization related.</P>
+<P>Diese Benennungsregel hebt fast alle anderen verwendeten Regeln
+auf, au&szlig;er den Regeln ^civ4^ und ^rd^, weil der Codeteil ^rc^
+verwendet wird. So wird signalisiert, dass der Einheit ein vollkommen
+zuf&auml;lliger, aber zivilisationsbezogener Name gegeben werden
+soll.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -327,38 +341,38 @@ totally random name that is civilization related.</P>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -370,31 +384,31 @@ totally random name that is civilization related.</P>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Who knows, it is random</P>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -403,9 +417,9 @@ totally random name that is civilization related.</P>
 <P><BR><BR>
 </P>
 <P CLASS="style10" ALIGN=LEFT><STRONG>^ut^ [^cv^]</STRONG></P>
-<P>This naming convention is a straight swapping code. The ^cv^ is
-replaced by the civilization short description while the ^ut^ is
-replaced by the unit type.</P>
+<P>Diese Benennungsregel ist ein einfacher Austauschcode. Der
+Codeteil ^cv^ wird durch das Adjektiv der Zivilisation ersetzt,
+w&auml;hrend der Codeteil ^ut^ den Einheitentyp ausgibt.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -421,38 +435,38 @@ replaced by the unit type.</P>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Scout [Persian]</P>
+					<P>Sp&auml;her [persisch]</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Worker [Roman]</P>
+					<P>Arbeitstrupp [r&ouml;misch]</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Galley [English]</P>
+					<P>Triere [englisch]</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -464,31 +478,31 @@ replaced by the unit type.</P>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Bomber [Russian]</P>
+					<P>Bomber [russisch]</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Axeman [Russian]</P>
+					<P>Axtk&auml;mpfer [russisch]</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Swordsman [Greek]</P>
+					<P>Schwertk&auml;mpfer [griechisch]</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -497,9 +511,10 @@ replaced by the unit type.</P>
 <P><BR><BR>
 </P>
 <P CLASS="style10" ALIGN=LEFT><STRONG>^ut^ ^cnt[r]^</STRONG></P>
-<P>This naming convention is the first example of a count. It
-includes the unit type and a count that is never reset. The count is
-shown in the roman format.</P>
+<P>Diese Benennungsregel ist das erste Beispiel f&uuml;r eine
+Nummerierung. Hier wird der Einheitentyp zusammen mit einer
+Nummerierung ausgegeben, die nicht zur&uuml;ckgesetzt wird. Die
+Nummerierung wird in lateinischen Ziffern angezeigt.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -515,38 +530,38 @@ shown in the roman format.</P>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Scout I</P>
+					<P>Sp&auml;her I</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Worker II</P>
+					<P>Arbeitstrupp II</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Galley III</P>
+					<P>Triere III</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -563,26 +578,26 @@ shown in the roman format.</P>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Axeman V</P>
+					<P>Axtk&auml;mpfer V</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Swordsman VI</P>
+					<P>Schwertk&auml;mpfer VI</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -590,10 +605,10 @@ shown in the roman format.</P>
 </CENTER>
 <P><BR><BR>
 </P>
-<P CLASS="style10" ALIGN=LEFT><STRONG>^cnt[A]^ Troop ^tt1[s][5:5]^</STRONG></P>
-<P>This naming convention illustrates a counting convention that
-resets. It also includes the &lsquo;[s]&rsquo; format which hides the
-total.</P>
+<P CLASS="style10" ALIGN=LEFT><STRONG>^cnt[A]^ Trupp ^tt1[s][5:5]^</STRONG></P>
+<P>Diese Benennungsregel stellt eine Nummerierungsregel dar, die sich
+selbst zur&uuml;cksetzt. Hier wird auch die Formatierung '[s]'
+verwendet, die die Gesamtanzahl verbirgt.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -602,45 +617,45 @@ total.</P>
 		<THEAD>
 			<TR>
 				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
-					<P CLASS="style10">^cnt[A]^ Troop ^tt1[s][5:5]^</P>
+					<P CLASS="style10">^cnt[A]^ Trupp ^tt1[s][5:5]^</P>
 				</TD>
 			</TR>
 		</THEAD>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>A Troop</P>
+					<P>A Trupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>B Troop</P>
+					<P>B Trupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>C Troop</P>
+					<P>C Trupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -652,31 +667,31 @@ total.</P>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>D Troop</P>
+					<P>D Trupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>F Troop</P>
+					<P>F Trupp</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>A Troop</P>
+					<P>A Trupp</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -684,11 +699,12 @@ total.</P>
 </CENTER>
 <P><BR><BR>
 </P>
-<P CLASS="style10" ALIGN=LEFT><STRONG>^cntc[p]^ Force ^tt1[o][5:5]^
-Company, ^tt2[o][101]^ Div</STRONG></P>
-<P>A more complicated naming convention that illustrates a counting
-convention over combat type. It also includes the phonetic and
-ordinal number formats.</P>
+<P CLASS="style10" ALIGN=LEFT><STRONG>^cntc[p]^ Zug ^tt1[o][5:5]^
+Kompanie, ^tt2[o][101]^ Div</STRONG></P>
+<P>Eine komplexere Benennungsregel, die als Beispiel f&uuml;r eine
+Nummerierungsregel nach Einheitenklasse dienen soll. Au&szlig;erdem
+werden phonetische und ordinale Formate f&uuml;r die Nummerierung
+eingesetzt.</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -697,7 +713,7 @@ ordinal number formats.</P>
 		<THEAD>
 			<TR>
 				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
-					<P CLASS="style10">^cntc[p]^ Force ^tt1[o][5:5]^ Company,
+					<P CLASS="style10">^cntc[p]^ Zug ^tt1[o][5:5]^ Kompanie,
 					^tt2[o][101]^ Div</P>
 				</TD>
 			</TR>
@@ -705,38 +721,38 @@ ordinal number formats.</P>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Alpha Force 1st Company, 101st Div</P>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Beta Force 1st Company, 101st Div</P>
+					<P>Beta Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Alpha Force 1st Company, 101st Div</P>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
@@ -748,31 +764,31 @@ ordinal number formats.</P>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Alpha Force 1st Company, 101st Div</P>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Alpha Force 1st Company, 101st Div</P>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
 					</P>
 				</TD>
 				<TD WIDTH=343>
-					<P>Beta Force 1st Company, 101st Div</P>
+					<P>Beta Zug 1st Kompanie, 101st Div</P>
 				</TD>
 			</TR>
 		</TBODY>
@@ -782,7 +798,7 @@ ordinal number formats.</P>
 </P>
 <P CLASS="style10" ALIGN=LEFT><STRONG>^cnt[f]^ of ^tt1[f][6:10]^,
 Unimatrix ^tt2[f][1]^</STRONG></P>
-<P>Just for fun!</P>
+<P>Nur zum Spa&szlig;!</P>
 <CENTER>
 	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
 		<COL WIDTH=88>
@@ -799,7 +815,7 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 		<TBODY>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Scout</P>
+					<P ALIGN=LEFT>Sp&auml;her</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
@@ -811,7 +827,7 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Worker</P>
+					<P ALIGN=LEFT>Arbeitstrupp</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
@@ -823,7 +839,7 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Galley</P>
+					<P ALIGN=LEFT>Triere</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
@@ -847,7 +863,7 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Axeman</P>
+					<P ALIGN=LEFT>Axtk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
@@ -859,7 +875,7 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 			</TR>
 			<TR VALIGN=TOP>
 				<TD WIDTH=88>
-					<P>Swordsman</P>
+					<P ALIGN=LEFT>Schwertk&auml;mpfer</P>
 				</TD>
 				<TD WIDTH=20>
 					<P><BR>
@@ -877,32 +893,30 @@ Unimatrix ^tt2[f][1]^</STRONG></P>
 <OL TYPE=I START=4>
 	<LI><P CLASS="style8" ALIGN=LEFT><STRONG>FAQ</STRONG></P>
 </OL>
-<P>Q: What is the code if I just want to count all of my units (eg
-&ldquo;Warrior 1&rdquo;)?</P>
+<P>Q: Mit welchem Code werden Einheiten einfach nur durchnummeriert
+(z.B. &quot;Krieger 1&quot;)?</P>
 <P>A:<FONT COLOR="#0000ff"> </FONT><FONT COLOR="#0000ff"><FONT SIZE=3>^ut^
 ^cnt[n]^</FONT></FONT></P>
 <P>&nbsp;</P>
-<P>Q: What is the code if I just want to count all of my units coming
-from each city but I don&rsquo;t want the city name shown (eg
-&ldquo;Warrior 1&rdquo;)?</P>
+<P>Q: Mit welchem Code werden Einheiten aus einer Stadt einfach nur
+durchnummeriert, ohne dass der Name der Stadt im Namen angezeigt wird
+(z.B. &quot;Krieger 1&quot;)?</P>
 <P>A:<FONT COLOR="#0000ff"> </FONT><FONT COLOR="#0000ff"><FONT SIZE=3>^ut^
 ^cntct[n]^</FONT></FONT></P>
 <P>&nbsp;</P>
-<P>Q: What is the code if I just want to count my units by combat
-type?</P>
+<P>Q: Mit welchem Code werden Einheiten je nach Einheitenklasse
+einfach nur durchnummeriert?</P>
 <P>A: <FONT COLOR="#0000ff"><FONT SIZE=3>^ut^ ^cntc[n]^</FONT></FONT></P>
 <P>&nbsp;</P>
-<P>Q: I really like Nexus&rsquo; army naming convention (1st army 2nd
-corp 8th div). Why haven&rsquo;t you included this in your naming
-pack?</P>
-<P>A: We don&rsquo;t need to. Use this code instead &hellip;</P>
-<P LANG="pt-BR" CLASS="style10">^cnt[o]^ Army ^tt1[o][5:5]^ Corp
-^tt2[o][1]^ Div</P>
-<P CLASS="style10">&nbsp;</P>
-<P CLASS="style10">&nbsp;</P>
-<P CLASS="style8">Credits</P>
+<P>Q: Nexus' Armee-Benennungsregel (1st Armee 2nd Corp 8th Div) ist
+ziemlich cool. Wieso ist sie nicht in dieser Mod enthalten?</P>
+<P>A: Muss sie nicht, weil stattdessen einfach der folgende Code
+verwendet werden kann&hellip;</P>
+<P CLASS="style10">^cnt[o]^ Armee ^tt1[o][5:5]^ Corp ^tt2[o][1]^ Div</P>
+<P>&nbsp;</P>
+<P CLASS="style8"><I>Credits</I></P>
 <P>Forum: <A HREF="http://forums.civfanatics.com/forumdisplay.php?f=268">http://forums.civfanatics.com/forumdisplay.php?f=268</A></P>
-<P>Author: <FONT COLOR="#0000ff"><FONT SIZE=3>ruff_hi</FONT></FONT> 
+<P>Autor: <FONT COLOR="#0000ff"><FONT SIZE=3><I><B>ruff_hi</B></I></FONT></FONT>
 </P>
 </BODY>
 </HTML>
