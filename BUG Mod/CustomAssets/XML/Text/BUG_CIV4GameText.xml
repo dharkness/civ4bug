@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!--
   Copyright (c) 2007, BUG Mod.
 
   This file is part of Civilization IV BUG Mod.
   -->
-
 <Civ4GameText xmlns="http://www.firaxis.com">
-
 	<!-- BUG -->
-	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
 		<English>Press [BOLD]Alt + Ctrl +O[\BOLD] to customize the BUG Mod</English>
@@ -17,7 +15,6 @@
 		<Italian>Premi [BOLD]Alt + Ctrl +O[\BOLD] per personalizzare il BUG Mod</Italian>
 		<Spanish>Press [BOLD]Alt + Ctrl +O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
-	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
 		<English>Opening the BUG Mod help file...</English>
@@ -42,9 +39,7 @@
 		<Italian>Impossibile trovare il file "%s1" nei percorsi di ricerca. Vedi la tabella 'Config' nella Schermata di Opzioni del BUG Mod (Alt + Ctrl + O) per maggiori dettagli.</Italian>
 		<Spanish>Could not find the file "%s1" in the search paths. See the Config tab on the BUG Options screen (Alt + Ctrl + O) for details.</Spanish>
 	</TEXT>
-
 	<!-- Great Person / General Bars -->
-	
 	<TEXT>
 		<Tag>INTERFACE_GREAT_PERSON_NONE</Tag>
 		<English>%s1: None</English>
@@ -85,9 +80,7 @@
 		<Italian>Generale (%d1)</Italian>
 		<Spanish>General (%d1)</Spanish>
 	</TEXT>
-	
 	<!-- Dead Civs -->
-	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_DEAD_CIV</Tag>
 		<English>Dead</English>
@@ -96,9 +89,7 @@
 		<Italian>Scomparsa</Italian>
 		<Spanish>Muerto</Spanish>
 	</TEXT>
-
 	<!-- Raw Production / Commerce -->
-	
 	<TEXT>
 		<Tag>TXT_KEY_RAW_PRODCOM_TILES</Tag>
 		<English>Worked Tiles</English>
@@ -147,9 +138,7 @@
 		<Italian>Totale</Italian>
 		<Spanish>Total</Spanish>
 	</TEXT>
-
 	<!-- Military Adviser -->
-
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
 		<English>Deployment</English>
@@ -286,9 +275,7 @@
 		<Italian>Grave allarme</Italian>
 		<Spanish>Severe</Spanish>
 	</TEXT>
-
 	<!-- Reminders -->
-	
 	<TEXT>
 		<Tag>TXT_KEY_REMINDER_HEADER</Tag>
 		<English>Create Reminder</English>
@@ -321,9 +308,7 @@
 		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
-	
-    <!-- Colors -->
-    
+	<!-- Colors -->
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>
@@ -411,5 +396,14 @@
 		<German>Schwarz</German>
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
+	</TEXT>
+	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
+	<TEXT>
+		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
+		<English>Info</English>
+		<French>Infos</French>
+		<German>Info</German>
+		<Italian>Info</Italian>
+		<Spanish>Info.</Spanish>
 	</TEXT>
 </Civ4GameText>
