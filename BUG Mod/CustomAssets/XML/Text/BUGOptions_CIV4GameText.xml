@@ -82,7 +82,7 @@
 		<English>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</English>
 		<French>Determine comment les rappels vous sont montrés.[NEWLINE]- Un message qui s'affich à l'écran plus entrée dans le log[NEWLINE]- Popup modal avec l'option de le faire réapparaître le tour suivant[NEWLINE]- Les deux</French>
 		<German>Bestimmt die Anzeigemethode für Erinnerungen:[NEWLINE]- Meldung: einfache Meldung mit einem Eintrag im Log[NEWLINE]- Popup: Dialogfenster mit der Möglichkeit, die Meldung in der nächsten Runde erneut anzeigen zu lassen[NEWLINE]- Beides</German>
-		<Italian>Determina come i Promemoria verranno visualizzati:[NEWLINE]- un messaggio sullo schermo e una nota nel registro[NEWLINE]- un messaggio interattivo con l'opzione di rimandare l'evento al turno successivo[NEWLINE]- entrambi</Italian>
+		<Italian>Determina come i Promemoria verranno visualizzati:[NEWLINE]- un messaggio sullo schermo e una nota nel registro[NEWLINE]- un messaggio interattivo con l'opzione di ripetere il promemoria al turno successivo[NEWLINE]- entrambi</Italian>
 		<Spanish>Determines how reminders are displayed to you:[NEWLINE]- On-screen message with entry in the log[NEWLINE]- A modal popup message with the option to retrigger the event next turn[NEWLINE]- Both</Spanish>
 	</TEXT>
 	
