@@ -93,7 +93,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_RAW_PRODCOM_TILES</Tag>
 		<English>Worked Tiles</English>
-		<French>Tuiles Travaillées</French>
+		<French>Cases Travaillées</French>
 		<German>Bearbeitete Geländefelder</German>
 		<Italian>Caselle lavorate</Italian>
 		<Spanish>Azulejos Trabajados</Spanish>
@@ -166,7 +166,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_THREAT_INDEX</Tag>
 		<English>Threat Index</English>
-		<French>Threat Index</French>
+		<French>Index de Menace</French>
 		<German>Bedrohungslage</German>
 		<Italian>Rischio</Italian>
 		<Spanish>Threat Index</Spanish>
@@ -182,7 +182,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
 		<English>Strategic Advantages</English>
-		<French>Stratégiques Advantages</French>
+		<French>Avantages Stratégiques</French>
 		<German>Strategische Vorteile</German>
 		<Italian>Vantaggi Strategici</Italian>
 		<Spanish>Strategic Advantages</Spanish>
@@ -190,7 +190,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
 		<English>Will Declare?</English>
-		<French>Déclarera en?</French>
+		<French>Déclarera?</French>
 		<German>Kriegserkl&#228;rung an</German>
 		<Italian>Dichiarerà</Italian>
 		<Spanish>Will Declare?</Spanish>
@@ -198,7 +198,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS</Tag>
 		<English>Ours</English>
-		<French>Ours</French>
+		<French>Nous</French>
 		<German>Eigene</German>
 		<Italian>Propri</Italian>
 		<Spanish>Ours</Spanish>
@@ -206,7 +206,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS</Tag>
 		<English>Theirs</English>
-		<French>Theirs</French>
+		<French>Eux</French>
 		<German>Gegnerische</German>
 		<Italian>Altrui</Italian>
 		<Spanish>Theirs</Spanish>
@@ -214,7 +214,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_VASSALS</Tag>
 		<English>Vassals</English>
-		<French>Vassals</French>
+		<French>Vassaux</French>
 		<German>Vasallen</German>
 		<Italian>Vassalli</Italian>
 		<Spanish>Vassals</Spanish>
@@ -230,7 +230,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACTS</Tag>
 		<English>Def Pacts</English>
-		<French>Def Pacts</French>
+		<French>Pactes Défensifs</French>
 		<German>Vert.bünd.</German>
 		<Italian>Patti Difensivi</Italian>
 		<Spanish>Def Pacts</Spanish>
@@ -238,7 +238,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_LOW</Tag>
 		<English>Low</English>
-		<French>Low</French>
+		<French>Bas</French>
 		<German>Gering</German>
 		<Italian>Rischio Basso</Italian>
 		<Spanish>Low</Spanish>
@@ -246,7 +246,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_GUARDED</Tag>
 		<English>Guarded</English>
-		<French>Guarded</French>
+		<French>En garde</French>
 		<German>Erhöht</German>
 		<Italian>Prudenza</Italian>
 		<Spanish>Guarded</Spanish>
@@ -254,7 +254,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_ELEVATED</Tag>
 		<English>Elevated</English>
-		<French>Elevated</French>
+		<French>Elevé</French>
 		<German>Angespannt</German>
 		<Italian>Rischio Notevole</Italian>
 		<Spanish>Elevated</Spanish>
@@ -262,7 +262,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_HIGH</Tag>
 		<English>High</English>
-		<French>High</French>
+		<French>Haut</French>
 		<German>Alarmierend</German>
 		<Italian>Allarme</Italian>
 		<Spanish>High</Spanish>
@@ -270,7 +270,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_SEVERE</Tag>
 		<English>Severe</English>
-		<French>Severe</French>
+		<French>Sévère</French>
 		<German>Akut</German>
 		<Italian>Grave allarme</Italian>
 		<Spanish>Severe</Spanish>
@@ -287,7 +287,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_REMINDER_PROMPT</Tag>
 		<English>Enter the number of turns until the reminder goes off and the message to display.</English>
-		<French>Entrez le nombre de tours jusqu'à l'apparition du rappel et le message montrer.</French>
+		<French>Entrez le nombre de tours jusqu'à l'apparition du rappel et le message à montrer.</French>
 		<German>Geben Sie die Anzahl der Runden an, bis die Erinnerung angezeigt werden soll.</German>
 		<Italian>Inserisci il numero di turni che devono passare prima che il promemoria scada ed il messaggio venga visualizzato.</Italian>
 		<Spanish>Enter the number of turns until the reminder goes off and the message to display.</Spanish>

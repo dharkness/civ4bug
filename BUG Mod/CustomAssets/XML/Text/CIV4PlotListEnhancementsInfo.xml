@@ -13,7 +13,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_PLE_UPGRADE_HELP</Tag>
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
-		<French>(CTRL: units on this plot.[NEWLINE]ALT: all units)</French>
+		<French>(CTRL: unités sur cette case.[NEWLINE]ALT: toutes les unités.)</French>
 		<German>(STRG: Einheiten auf diesem Feld.[NEWLINE]ALT: alle Einheiten)</German>
 		<Italian>(CTRL: unità in questa casella.[NEWLINE]ALT: tutte le unità)</Italian>
 		<Spanish>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Spanish>
