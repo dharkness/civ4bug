@@ -144,6 +144,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_BTS_CONCEPTS	: self.placeBTSConcepts,
 			SevoScreenEnums.PEDIA_HINTS		: self.placeHints,
 			SevoScreenEnums.PEDIA_SHORTCUTS  	: self.placeShortcuts,
+			SevoScreenEnums.PEDIA_STRATEGY  	: self.placeStrategy,
 			}
 
 		self.mapScreenFunctions = {
@@ -168,6 +169,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_CONCEPTS		: SevoPediaHistory.SevoPediaHistory(self),
 			SevoScreenEnums.PEDIA_BTS_CONCEPTS	: SevoPediaHistory.SevoPediaHistory(self),
 			SevoScreenEnums.PEDIA_SHORTCUTS  	: SevoPediaHistory.SevoPediaHistory(self),
+			SevoScreenEnums.PEDIA_STRATEGY  	: SevoPediaHistory.SevoPediaHistory(self),
 			}
 
 		self.pediaBuilding	= SevoPediaBuilding.SevoPediaBuilding(self)
@@ -268,7 +270,8 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.szCategoryConceptsNew	= localText.getText("TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW", ())
 		self.szCategoryHints		= localText.getText("TXT_KEY_PEDIA_CATEGORY_HINTS", ())
 		self.szCategoryShortcuts	= localText.getText("TXT_KEY_PEDIA_CATEGORY_SHORTCUTS", ())
-
+		self.szCategoryStrategy   	= localText.getText("TXT_KEY_PEDIA_CATEGORY_STRATEGY", ())
+		
 		self.categoryList = [
 			["TECHS",	self.szCategoryTechs],
 			["UNITS",	self.szCategoryUnits],
@@ -294,6 +297,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			["HINTS",	self.szCategoryConceptsNew],
 			["HINTS",	self.szCategoryHints],
 			["HINTS",	self.szCategoryShortcuts],
+			["HINTS",	self.szCategoryStrategy],
 			]
 
 		self.categoryGraphics = {
@@ -464,7 +468,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def getNewConceptInfo(self, id):
 		info = gc.getNewConceptInfo(id)
-		if not self.isShortcutInfo(info):
+		if not self.isShortcutInfo(info) and not self.isStrategyInfo(info):
 			return info
 		return None
 
@@ -481,7 +485,19 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def isShortcutInfo(self, info):
 		return info.getType().find("SHORTCUTS") != -1
 
+	def placeStrategy(self):
+		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getStrategyInfo)
+		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, self.getStrategyInfo)
 
+	def getStrategyInfo(self, id):
+		info = gc.getNewConceptInfo(id)
+		if self.isStrategyInfo(info):
+			return info
+		return None
+	
+	def isStrategyInfo(self, info):
+		return info.getType().find("STRATEGY") != -1
+	
 	def placeItems(self, widget, info):
 		screen = self.getScreen()
 		screen.clearListBoxGFC(self.ITEM_LIST_ID)
@@ -500,6 +516,9 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
 				data2 = item[1]
 			elif (info == self.getShortcutInfo):
+				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
+				data2 = item[1]
+			elif (info == self.getStrategyInfo):
 				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
 				data2 = item[1]
 			else:
@@ -580,6 +599,8 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_HINTS, True, True)
 		elif (szLink == "PEDIA_MAIN_SHORTCUTS"):
 			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_SHORTCUTS, True, True)
+		elif (szLink == "PEDIA_MAIN_STRATEGY"):
+			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_STRATEGY, True, True)
 
 		for i in range(gc.getNumTechInfos()):
 			if (gc.getTechInfo(i).isMatchForLink(szLink, False)):
