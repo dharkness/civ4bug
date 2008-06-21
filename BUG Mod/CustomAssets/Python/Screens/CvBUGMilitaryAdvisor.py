@@ -321,7 +321,7 @@ class CvMilitaryAdvisor:
 										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
 				# add worst enemy
-#				self.Grid_WorstEnemy(iRow, iLoopLeader)
+				self.Grid_WorstEnemy(iRow, iLoopPlayer)
 
 				# add strategic differences
 				self.Grid_Strategic_Resources(iRow, iLoopPlayer)
@@ -381,17 +381,19 @@ class CvMilitaryAdvisor:
 		
 		self.Col_Leader = 0
 		self.Col_WHEOOH = 1
-		self.Col_Threat = 2
-		self.Col_Curr_Wars = 6
-		self.Col_StratResPos = 3
-		self.Col_StratResNeg = 4
-		self.Col_WillDeclareOn = 5
-		self.Col_Vassals = 7
-		self.Col_DefPacts = 8
+		self.Col_WEnemy = 2
+		self.Col_Threat = 3
+		self.Col_StratResPos = 4
+		self.Col_StratResNeg = 5
+		self.Col_WillDeclareOn = 6
+		self.Col_Curr_Wars = 7
+		self.Col_Vassals = 8
+		self.Col_DefPacts = 9
 
 		if (not bVassals and not bDefPacts):
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
@@ -400,6 +402,7 @@ class CvMilitaryAdvisor:
 		if (bVassals and bDefPacts):
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
@@ -410,6 +413,7 @@ class CvMilitaryAdvisor:
 		else:
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
+						IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_STACKEDBAR_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 						IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
@@ -438,7 +442,7 @@ class CvMilitaryAdvisor:
 		# set headings
 		self.SitRepGrid.setHeader(self.Col_Leader, "", 3)
 		self.SitRepGrid.setHeader(self.Col_WHEOOH, "", 3)
-#		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_StratResPos, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS", ()), 3)
@@ -586,25 +590,25 @@ class CvMilitaryAdvisor:
 	def Grid_WorstEnemy(self, iRow, iLeader):
 		szWEnemyName = gc.getPlayer(iLeader).getWorstEnemyName()
 
-#		if szWEnemyName == "":
-#			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-#									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(),
-#									WidgetTypes.WIDGET_LEADERHEAD, -1)
-#		else:
-		for iLoopEnemy in range(gc.getMAX_PLAYERS()):
-			if gc.getPlayer(iLoopEnemy).getName() == szWEnemyName:
-				iWEnemy = iLoopEnemy
-				break
-
-		pWEPlayer = gc.getPlayer(iWEnemy)
-		if (pWEPlayer.isAlive()
-		and (gc.getTeam(pWEPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-		or gc.getGame().isDebugMode())
-		and not pWEPlayer.isBarbarian()
-		and not pWEPlayer.isMinorCiv()):
+		if szWEnemyName == "":
 			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-									gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 
-									WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
+									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(),
+									WidgetTypes.WIDGET_LEADERHEAD, -1)
+		else:
+			for iLoopEnemy in range(gc.getMAX_PLAYERS()):
+				if gc.getPlayer(iLoopEnemy).getName() == szWEnemyName:
+					iWEnemy = iLoopEnemy
+					break
+
+			pWEPlayer = gc.getPlayer(iWEnemy)
+			if (pWEPlayer.isAlive()
+			and (gc.getTeam(pWEPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
+			or gc.getGame().isDebugMode())
+			and not pWEPlayer.isBarbarian()
+			and not pWEPlayer.isMinorCiv()):
+				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
+										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 
+										WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
 		return
 
 	def GetActiveWars(self, iRow, iLeader):
