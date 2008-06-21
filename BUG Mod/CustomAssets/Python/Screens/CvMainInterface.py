@@ -572,140 +572,98 @@ class CvMainInterface:
 	# PLE Grouping Mode Switcher 
 	def setPLEGrpMode(self):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		if self.nPLEGrpMode == self.PLE_GRP_UNITTYPE:
-			screen.setState(self.PLE_GRP_UNITTYPE, True)
-			screen.setState(self.PLE_GRP_GROUPS, False)
-			screen.setState(self.PLE_GRP_PROMO, False)
-			screen.setState(self.PLE_GRP_UPGRADE, False)
-			return 1
-		elif self.nPLEGrpMode == self.PLE_GRP_GROUPS:
-			screen.setState(self.PLE_GRP_UNITTYPE, False)
-			screen.setState(self.PLE_GRP_GROUPS, True)
-			screen.setState(self.PLE_GRP_PROMO, False)
-			screen.setState(self.PLE_GRP_UPGRADE, False)
-			return 1
-		elif self.nPLEGrpMode == self.PLE_GRP_PROMO:
-			screen.setState(self.PLE_GRP_UNITTYPE, False)
-			screen.setState(self.PLE_GRP_GROUPS, False)
-			screen.setState(self.PLE_GRP_PROMO, True)
-			screen.setState(self.PLE_GRP_UPGRADE, False)
-			return 1
-		elif self.nPLEGrpMode == self.PLE_GRP_UPGRADE:
-			screen.setState(self.PLE_GRP_UNITTYPE, False)
-			screen.setState(self.PLE_GRP_GROUPS, False)
-			screen.setState(self.PLE_GRP_PROMO, False)
-			screen.setState(self.PLE_GRP_UPGRADE, True)
-			return 1
-		return 0
+		screen.setState(self.PLE_GRP_UNITTYPE, self.nPLEGrpMode == self.PLE_GRP_UNITTYPE)
+		screen.setState(self.PLE_GRP_GROUPS, self.nPLEGrpMode == self.PLE_GRP_GROUPS)
+		screen.setState(self.PLE_GRP_PROMO, self.nPLEGrpMode == self.PLE_GRP_PROMO)
+		screen.setState(self.PLE_GRP_UPGRADE, self.nPLEGrpMode == self.PLE_GRP_UPGRADE)
 		
-			
-	# PLE Mode Switcher functions
+	# PLE View Mode Switcher
 	def setPLEMode(self):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		if self.sPLEMode == self.PLE_MODE_STANDARD:
-			screen.setState(self.PLE_MODE_STANDARD, True)
-			screen.setState(self.PLE_MODE_MULTILINE, False)
-			screen.setState(self.PLE_MODE_STACK_VERT, False)
-			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
-			return 1
-		elif self.sPLEMode == self.PLE_MODE_MULTILINE:
-			screen.setState(self.PLE_MODE_STANDARD, False)
-			screen.setState(self.PLE_MODE_MULTILINE, True)
-			screen.setState(self.PLE_MODE_STACK_VERT, False)
-			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
-			return 1
-		elif self.sPLEMode == self.PLE_MODE_STACK_VERT:
-			screen.setState(self.PLE_MODE_STANDARD, False)
-			screen.setState(self.PLE_MODE_MULTILINE, False)
-			screen.setState(self.PLE_MODE_STACK_VERT, True)
-			screen.setState(self.PLE_MODE_STACK_HORIZ, False)
-			return 1
-		elif self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
-			screen.setState(self.PLE_MODE_STANDARD, False)
-			screen.setState(self.PLE_MODE_MULTILINE, False)
-			screen.setState(self.PLE_MODE_STACK_VERT, False)
-			screen.setState(self.PLE_MODE_STACK_HORIZ, True)
-			return 1
-		return 0
+		screen.setState(self.PLE_MODE_STANDARD, self.sPLEMode == self.PLE_MODE_STANDARD)
+		screen.setState(self.PLE_MODE_MULTILINE, self.sPLEMode == self.PLE_MODE_MULTILINE)
+		screen.setState(self.PLE_MODE_STACK_VERT, self.sPLEMode == self.PLE_MODE_STACK_VERT)
+		screen.setState(self.PLE_MODE_STACK_HORIZ, self.sPLEMode == self.PLE_MODE_STACK_HORIZ)
 	
-	# PLE Mode Filter functions
+	# PLE Filters
 	def setPLEFilter(self):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		if (self.nPLEFilter & self.nPLEFilterModeWound):
-			screen.setState(self.PLE_FILTER_WOUND, false)
+			screen.setState(self.PLE_FILTER_WOUND, False)
 		else:
-			screen.setState(self.PLE_FILTER_WOUND, true)
+			screen.setState(self.PLE_FILTER_WOUND, True)
 		if (self.nPLEFilter & self.nPLEFilterModeNotWound):
-			screen.setState(self.PLE_FILTER_NOTWOUND, false)
+			screen.setState(self.PLE_FILTER_NOTWOUND, False)
 		else:
-			screen.setState(self.PLE_FILTER_NOTWOUND, true)
+			screen.setState(self.PLE_FILTER_NOTWOUND, True)
 		if (self.nPLEFilter & self.nPLEFilterModeAir):
-			screen.setState(self.PLE_FILTER_AIR, false)
+			screen.setState(self.PLE_FILTER_AIR, False)
 		else:
-			screen.setState(self.PLE_FILTER_AIR, true)
+			screen.setState(self.PLE_FILTER_AIR, True)
 		if (self.nPLEFilter & self.nPLEFilterModeSea):
-			screen.setState(self.PLE_FILTER_SEA, false)
+			screen.setState(self.PLE_FILTER_SEA, False)
 		else:
-			screen.setState(self.PLE_FILTER_SEA, true)
+			screen.setState(self.PLE_FILTER_SEA, True)
 		if (self.nPLEFilter & self.nPLEFilterModeLand):
-			screen.setState(self.PLE_FILTER_LAND, false)
+			screen.setState(self.PLE_FILTER_LAND, False)
 		else:
-			screen.setState(self.PLE_FILTER_LAND, true)
+			screen.setState(self.PLE_FILTER_LAND, True)
 		if (self.nPLEFilter & self.nPLEFilterModeDom):
-			screen.setState(self.PLE_FILTER_DOM, false)
+			screen.setState(self.PLE_FILTER_DOM, False)
 		else:
-			screen.setState(self.PLE_FILTER_DOM, true)
+			screen.setState(self.PLE_FILTER_DOM, True)
 		if (self.nPLEFilter & self.nPLEFilterModeMil):
-			screen.setState(self.PLE_FILTER_MIL, false)
+			screen.setState(self.PLE_FILTER_MIL, False)
 		else:
-			screen.setState(self.PLE_FILTER_MIL, true)
+			screen.setState(self.PLE_FILTER_MIL, True)
 		if (self.nPLEFilter & self.nPLEFilterModeOwn):
-			screen.setState(self.PLE_FILTER_OWN, false)
+			screen.setState(self.PLE_FILTER_OWN, False)
 		else:
-			screen.setState(self.PLE_FILTER_OWN, true)
+			screen.setState(self.PLE_FILTER_OWN, True)
 		if (self.nPLEFilter & self.nPLEFilterModeForeign):
-			screen.setState(self.PLE_FILTER_FOREIGN, false)
+			screen.setState(self.PLE_FILTER_FOREIGN, False)
 		else:
-			screen.setState(self.PLE_FILTER_FOREIGN, true)
+			screen.setState(self.PLE_FILTER_FOREIGN, True)
 		return 0
 
-	# displayes the plot list switches (views, filters, groupings)
+	# Displays the plot list switches (views, filters, groupings)
 	def showPlotListButtonObjects(self):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
-		# show PLE modes switches
-		self.setPLEMode()			
-		screen.show(self.PLE_MODE_STANDARD)
-		screen.show(self.PLE_MODE_MULTILINE)
-		screen.show(self.PLE_MODE_STACK_VERT)
-		screen.show(self.PLE_MODE_STACK_HORIZ)
-		
-		# show PLE filter switches
-		self.setPLEFilter()
-		screen.show(self.PLE_FILTER_WOUND)
-		screen.show(self.PLE_FILTER_NOTWOUND)
-		#
-		screen.show(self.PLE_FILTER_AIR)
-		screen.show(self.PLE_FILTER_SEA)
-		screen.show(self.PLE_FILTER_LAND)
-		#
-		screen.show(self.PLE_FILTER_DOM)
-		screen.show(self.PLE_FILTER_MIL)
-		#
-		screen.show(self.PLE_FILTER_OWN)
-		screen.show(self.PLE_FILTER_FOREIGN)
-		
-		# showPLE grouping switches
-		self.setPLEGrpMode()
-		screen.show(self.PLE_GRP_UNITTYPE)
-		screen.show(self.PLE_GRP_GROUPS)
-		screen.show(self.PLE_GRP_PROMO)
-		screen.show(self.PLE_GRP_UPGRADE)
+		if ( CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START ):
+			# show PLE modes switches
+			self.setPLEMode()			
+			screen.show(self.PLE_MODE_STANDARD)
+			screen.show(self.PLE_MODE_MULTILINE)
+			screen.show(self.PLE_MODE_STACK_VERT)
+			screen.show(self.PLE_MODE_STACK_HORIZ)
+			
+			# show PLE filter switches
+			self.setPLEFilter()
+			screen.show(self.PLE_FILTER_WOUND)
+			screen.show(self.PLE_FILTER_NOTWOUND)
+			#
+			screen.show(self.PLE_FILTER_AIR)
+			screen.show(self.PLE_FILTER_SEA)
+			screen.show(self.PLE_FILTER_LAND)
+			#
+			screen.show(self.PLE_FILTER_DOM)
+			screen.show(self.PLE_FILTER_MIL)
+			#
+			screen.show(self.PLE_FILTER_OWN)
+			screen.show(self.PLE_FILTER_FOREIGN)
+			
+			# show PLE grouping switches
+			self.setPLEGrpMode()
+			screen.show(self.PLE_GRP_UNITTYPE)
+			screen.show(self.PLE_GRP_GROUPS)
+			screen.show(self.PLE_GRP_PROMO)
+			screen.show(self.PLE_GRP_UPGRADE)
+	
+			self.bPLEHide = False
 
-		self.bPLEHide = false
 
-
-	# hides all plot list switches (views, filters, groupings) and the all the other objects
+	# hides all plot list switches (views, filters, groupings) and all the other objects
 	def hidePlotListButtonObjects(self):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
@@ -728,12 +686,15 @@ class CvMainInterface:
 			screen.hide( szStringPromoFrame )
 			# hide mission info
 			szStringActionIcon = szString+"ActionIcon"
-			screen.hide( szStringActionIcon )			
+			screen.hide( szStringActionIcon )
 			# hide upgrade arrow
 			szStringUpgrade = szString+"Upgrade"
-			screen.hide( szStringUpgrade )			
+			screen.hide( szStringUpgrade )
+			# hide GG star
+			szStringUpgrade = szString+"GreatGeneral"
+			screen.hide( szStringUpgrade )
 
-		# hides all promotion an upgrade button objects
+		# hides all promotion and upgrade button objects
 		for nCol in range(self.getMaxCol()+1):
 			for nRow in range(self.getMaxRow()+1):
 				# 
@@ -742,7 +703,7 @@ class CvMainInterface:
 				# 
 				szStringUnitUpgrade = self.PLOT_LIST_UPGRADE_NAME + string.zfill(str(nRow), 2) + string.zfill(str(nCol), 2)
 				screen.hide( szStringUnitUpgrade )				
-			
+		
 		# hide PLE modes switches
 		screen.hide(self.PLE_MODE_STANDARD)
 		screen.hide(self.PLE_MODE_MULTILINE)
@@ -1073,7 +1034,7 @@ class CvMainInterface:
 
 ################## general PLE functions ##################
 
-	# displays the units in the plot list with all the beloning objects
+	# displays the units in the plot list with all the belonging objects
 	def displayUnitPlotListObjects( self, pLoopUnit, nRow, nCol ):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
@@ -1103,7 +1064,7 @@ class CvMainInterface:
 		# set select state of the unit button
 		screen.show( szString )
 		
-		# this if statement and everythign inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
+		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
 		# Wounded units will get a darker colored button.
 		if (pLoopUnit.isHurt()) and (self.bShowWoundedIndicator):
 			# wounded units -> darker button
@@ -1152,8 +1113,18 @@ class CvMainInterface:
 				# place the upgrade arrow
 				szStringUpgrade = szString+"Upgrade"
 				szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
-				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
 				screen.show( szStringUpgrade )
+
+		if (self.bShowGreatGeneralIndicator):
+			# is unit lead by a GG?
+			iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
+			if (pLoopUnit.isHasPromotion(iLeaderPromo)):
+				# place the GG star
+				szStringGreatGeneral = szString+"GreatGeneral"
+				szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()	
+				screen.addDDSGFC( szStringGreatGeneral, szFileNameGreatGeneral, x+8, y, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
+				screen.show( szStringGreatGeneral )
 		
 		if (self.bShowHealthBar and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
 			# place the health bar
@@ -1407,7 +1378,7 @@ class CvMainInterface:
 	def getInterfacePlotUnit(self, i):
 		return self.lPLEUnitList[i][self.IDX_UNIT]
 	
-	# displayes all the possible promotion buttons for a unit 
+	# displays all the possible promotion buttons for a unit 
 	def displayUnitPromos(self, pUnit, nRow, nCol):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		lPromos = mt.getPossiblePromos(pUnit)
@@ -1451,7 +1422,7 @@ class CvMainInterface:
 		pUnit.promote(iPromo, -1)
 		
 		
-	# displayes all the possible upgrade buttons for a unit 
+	# displays all the possible upgrade buttons for a unit 
 	def displayUnitUpgrades(self, pUnit, nRow, nCol):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )		
 		lUpgrades 	= []
@@ -1517,7 +1488,7 @@ class CvMainInterface:
 
 ##################### info pane (mouse over) functions ########################
 		
-	# handles display of the promotion bottun info pane
+	# handles display of the promotion button info pane
 	def showPromoInfoPane(self, id):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		idPromo		= id % 100
@@ -1620,7 +1591,7 @@ class CvMainInterface:
 	def hideUpgradeInfoPane(self):
 		self.hideInfoPane()
 				
-	# handles the diaplay of the units info pane
+	# handles the display of the unit's info pane
 	def showUnitInfoPane(self, id):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
@@ -1776,8 +1747,8 @@ class CvMainInterface:
 			szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
 			screen.hide( szName )
 		self.bUnitPromoButtonsActive = false
-			
-	# displayes the units promotion buttons in the info pane. They are not part of the info pane.
+	
+	# displays the unit's promotion buttons in the info pane. They are not part of the info pane.
 	def displayUnitInfoPromoButtonPos( self, szName, iPromotionCount, yOffset ):
 		self.bUnitPromoButtonsActive = true
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -2173,6 +2144,11 @@ class CvMainInterface:
 		szWoundedColor = BugPle.getWoundedColor()
 		szMovementColor = BugPle.getFullMovementColor()
 		szNoMovementColor = BugPle.getHasMovedColor()
+		
+		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
+		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
+		szFileNameHilite = ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath()
+		szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
 		for i in range( self.iMaxPlotListIcons ):		
 			# create button name
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
@@ -2181,13 +2157,12 @@ class CvMainInterface:
 			y = self.getY( self.getRow( i ) )
 			
 			# place/init the promotion frame. Important to have it at first place within the for loop.
-			szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 			szStringPromoFrame = szString+"PromoFrame"
 			screen.addDDSGFC( szStringPromoFrame, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, -1, -1 )
 			screen.hide( szStringPromoFrame )
 
 			# place the plot list unit button
-			screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+			screen.addCheckBoxGFC( szString, szFileNameGovernor, szFileNameHilite, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 			screen.hide( szString )
 	
 			# place/init the health bar. Important to have it at last place within the for loop.
@@ -3076,12 +3051,14 @@ class CvMainInterface:
 		
 		# Capture these for looping over the plot's units
 		self.bShowWoundedIndicator = BugPle.isShowWoundedIndicator()
+		self.bShowGreatGeneralIndicator = BugPle.isShowGreatGeneralIndicator()
 		self.bShowPromotionIndicator = BugPle.isShowPromotionIndicator()
 		self.bShowUpgradeIndicator = BugPle.isShowUpgradeIndicator()
+		self.bShowMissionInfo = BugPle.isShowMissionInfo()
+		
 		self.bShowHealthBar = BugPle.isShowHealthBar()
 		self.bHideHealthBarWhileFighting = BugPle.isHideHealthFighting()
 		self.bShowMoveBar = BugPle.isShowMoveBar()
-		self.bShowMissionInfo = BugPle.isShowMissionInfo()
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
@@ -3133,19 +3110,19 @@ class CvMainInterface:
 		self.iLoopCnt += 1
 		
 		self.pActPlot = CyInterface().getSelectionPlot()
-		# if the plot change, reset plot list offset
+		# if the plot changed, reset plot list offset
 		if (self.pOldPlot):
 			# check if plot has changed
 			if (self.pOldPlot.getX() != self.pActPlot.getX()) or (self.pOldPlot.getY() != self.pActPlot.getY()):
 				self.pOldPlot = self.pActPlot
 				self.iColOffset = 0		
 				self.iRowOffset = 0		
-				self.bUpdatePLEUnitList = true
+				self.bUpdatePLEUnitList = True
 				# mt.debug("update plot:"+str(self.iLoopCnt))
 		else:
 			# initialization
 			self.pOldPlot = self.pActPlot
-			self.bUpdatePLEUnitList = true
+			self.bUpdatePLEUnitList = True
 			# mt.debug("update init:"+str(self.iLoopCnt))
 
 			
@@ -3158,7 +3135,7 @@ class CvMainInterface:
 			if (id in self.dPLEUnitInfo):
 				lActUnitInfo = self.getPLEUnitInfo( pHeadSelectedUnit ) 	
 				if (lActUnitInfo <> self.dPLEUnitInfo[ id ]):
-					self.bUpdatePLEUnitList = true
+					self.bUpdatePLEUnitList = True
 					# mt.debug("update unload:"+str(self.iLoopCnt))
 		except:
 			# mt.debug("Sel Unit: <fail>")
@@ -3166,7 +3143,7 @@ class CvMainInterface:
 
 		if (self.bUpdatePLEUnitList):
 			self.getUnitList(self.pActPlot)
-			self.bUpdatePLEUnitList = false
+			self.bUpdatePLEUnitList = False
 			# mt.debug("Sel Unit: UPDATE!")
 
 		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
@@ -3227,7 +3204,7 @@ class CvMainInterface:
 				
 			bUpArrow = False
 			bDownArrow = False
-			bFirstLoop = true
+			bFirstLoop = True
 			
 ## 12monkeys - PlotList Button Enhancement  - end
 
@@ -5797,6 +5774,15 @@ class CvMainInterface:
 
 		return 0
 		
+# BUG - 3.17 No Espionage - start
+	def isNoEspionage(self):
+		"Returns True if the 3.17 option 'No Espionage' is enabled"
+		try:
+			return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
+		except:
+			return False
+# BUG - 3.17 No Espionage - end
+
 	# Will update the scores
 	def updateScoreStrings( self ):
 	
@@ -5831,6 +5817,10 @@ class CvMainInterface:
 					scores = Scoreboard.Scoreboard()
 # BUG - Align Icons - end
 
+# BUG - 3.17 No Espionage - start
+				bNoEspionage = self.isNoEspionage()
+# BUG - 3.17 No Espionage - end
+
 # BUG - Power Rating - start
 				bShowPower = BugScore.isShowPower()
 				if (bShowPower):
@@ -5844,14 +5834,15 @@ class CvMainInterface:
 					szPowerColor = BugScore.getBadPowerColor()
 					if (szPowerColor):
 						iBadPowerColor = gc.getInfoTypeForString(szPowerColor)
-							
-					iDemographicsMission = -1
-					for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
-						if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
-							iDemographicsMission = iMissionLoop
-							break
-					if (iDemographicsMission == -1):
-						bShowPower = False
+					
+					if (not bNoEspionage):
+						iDemographicsMission = -1
+						for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
+							if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
+								iDemographicsMission = iMissionLoop
+								break
+						if (iDemographicsMission == -1):
+							bShowPower = False
 # BUG - Power Rating - end
 
 				i = gc.getMAX_CIV_TEAMS() - 1
@@ -5891,10 +5882,9 @@ class CvMainInterface:
 											szPlayerName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
 									
 #BUG - Scoreboard (AIMackey Multiplayer Fix) - Start
-
 										if (gc.getGame().isGameMultiPlayer()):
-											if (not (gc.getPlayer(ePlayer).isTurnActive())):
-												szPlayerName = "*"+szPlayerName	
+											if (not gc.getPlayer(ePlayer).isTurnActive()):
+												szPlayerName = "*" + szPlayerName	
 												if (bAlignIcons):
 													scores.setActive()
 #BUG - Scoreboard (AIMackey Multiplayer Fix) - End
@@ -5963,10 +5953,11 @@ class CvMainInterface:
 														scores.setEspionage()
 											
 											bEspionageCanSeeResearch = False
-											for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
-												if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
-													bEspionageCanSeeResearch = gc.getPlayer(gc.getGame().getActivePlayer()).canDoEspionageMission(iMissionLoop, ePlayer, None, -1)
-													break
+											if (not bNoEspionage):
+												for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
+													if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
+														bEspionageCanSeeResearch = gc.getActivePlayer().canDoEspionageMission(iMissionLoop, ePlayer, None, -1)
+														break
 											
 											if (((gc.getPlayer(ePlayer).getTeam() == gc.getGame().getActiveTeam()) and (gc.getTeam(gc.getGame().getActiveTeam()).getNumMembers() > 1)) or (gc.getTeam(gc.getPlayer(ePlayer).getTeam()).isVassal(gc.getGame().getActiveTeam())) or gc.getGame().isDebugMode() or bEspionageCanSeeResearch):
 												if (gc.getPlayer(ePlayer).getCurrentResearch() != -1):
@@ -5979,7 +5970,7 @@ class CvMainInterface:
 											# if on, show according to espionage "see demographics" mission
 											if (bShowPower 
 												and (gc.getGame().getActivePlayer() != ePlayer
-													 and gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1))):
+													 and (bNoEspionage or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1)))):
 												iPower = gc.getPlayer(ePlayer).getPower()
 												if (iPower > 0): # avoid divide by zero
 													fPowerRatio = float(iPlayerPower) / float(iPower)
