@@ -6,6 +6,7 @@
 from CvPythonExtensions import *
 import CvUtil
 
+gc = CyGlobalContext()
 localText = CyTranslator()
 
 def getPlainText(key, default=None):
@@ -28,6 +29,7 @@ def getText(key, values, default=None):
 			return default
 		else:
 			return "XML key %s not found" % key
+
 
 def readDebugOptions():
 	"""
@@ -53,3 +55,11 @@ def debug(message):
 printToScreen = False
 printToFile = False
 #readDebugOptions()
+
+
+def isNoEspionage():
+	"Returns True if using at least 3.17 and the option 'No Espionage' is enabled"
+	try:
+		return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
+	except:
+		return False

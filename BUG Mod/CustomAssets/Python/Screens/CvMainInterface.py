@@ -41,6 +41,10 @@ import BugCityScreenOptions
 BugCityScreen = BugCityScreenOptions.getOptions()
 # BUG - Options - end
 
+# BUG - 3.17 No Espionage - start
+import BugUtil
+# BUG - 3.17 No Espionage - end
+
 # BUG - Reminders - start
 import ReminderEventManager
 # BUG - Reminders - end
@@ -2057,10 +2061,13 @@ class CvMainInterface:
 		screen.setStyle( "InfoAdvisorButton", "Button_HUDAdvisorRecord_Style" )
 		screen.hide( "InfoAdvisorButton" )
 
-		iBtnX += iBtnAdvance
-		screen.setImageButton( "EspionageAdvisorButton", "", iBtnX, iBtnY, iBtnWidth, iBtnWidth, WidgetTypes.WIDGET_ACTION, gc.getControlInfo(ControlTypes.CONTROL_ESPIONAGE_SCREEN).getActionInfoIndex(), -1 )
-		screen.setStyle( "EspionageAdvisorButton", "Button_HUDAdvisorEspionage_Style" )
-		screen.hide( "EspionageAdvisorButton" )
+# BUG - 3.17 No Espionage - start
+		if not BugUtil.isNoEspionage():
+			iBtnX += iBtnAdvance
+			screen.setImageButton( "EspionageAdvisorButton", "", iBtnX, iBtnY, iBtnWidth, iBtnWidth, WidgetTypes.WIDGET_ACTION, gc.getControlInfo(ControlTypes.CONTROL_ESPIONAGE_SCREEN).getActionInfoIndex(), -1 )
+			screen.setStyle( "EspionageAdvisorButton", "Button_HUDAdvisorEspionage_Style" )
+			screen.hide( "EspionageAdvisorButton" )
+# BUG - 3.17 No Espionage - end
 		
 		# City Tabs
 		iBtnX = xResolution - 324
@@ -5775,15 +5782,6 @@ class CvMainInterface:
 
 		return 0
 		
-# BUG - 3.17 No Espionage - start
-	def isNoEspionage(self):
-		"Returns True if the 3.17 option 'No Espionage' is enabled"
-		try:
-			return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
-		except:
-			return False
-# BUG - 3.17 No Espionage - end
-
 	# Will update the scores
 	def updateScoreStrings( self ):
 	
@@ -5819,7 +5817,7 @@ class CvMainInterface:
 # BUG - Align Icons - end
 
 # BUG - 3.17 No Espionage - start
-				bNoEspionage = self.isNoEspionage()
+				bNoEspionage = BugUtil.isNoEspionage()
 # BUG - 3.17 No Espionage - end
 
 # BUG - Power Rating - start

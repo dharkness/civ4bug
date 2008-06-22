@@ -13,6 +13,10 @@ import time
 
 from PyHelpers import PyPlayer
 
+# BUG - 3.17 No Espionage - start
+import BugUtil
+# BUG - 3.17 No Espionage - end
+
 # globals
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
@@ -477,15 +481,6 @@ class CvInfoScreen:
 	def getLastTurn(self):
 		return (gc.getGame().getReplayMessageTurn(gc.getGame().getNumReplayMessages()-1))
 
-# BUG - 3.17 No Espionage - start
-	def isNoEspionage(self):
-		"Returns True if the 3.17 option 'No Espionage' is enabled"
-		try:
-			return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
-		except:
-			return False
-# BUG - 3.17 No Espionage - end
-
 	# Screen construction function
 	def showScreen(self, iTurn, iTabID, iEndGame):
 
@@ -548,7 +543,7 @@ class CvInfoScreen:
 		# Always show graph if espionage is disabled
 		iDemographicsMission = -1
 		# See if Espionage allows graph to be shown for each player
-		if (not self.isNoEspionage()):
+		if (not BugUtil.isNoEspionage()):
 			for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 				if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
 					iDemographicsMission = iMissionLoop
@@ -671,7 +666,7 @@ class CvInfoScreen:
 	    screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_POWER, 4, 4, False )
 	    screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_CULTURE, 5, 5, False )
 # BUG - 3.17 No Espionage - start
-	    if (not self.isNoEspionage()):
+	    if (not BugUtil.isNoEspionage()):
 	    	screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_ESPIONAGE, 6, 6, False )
 # BUG - 3.17 No Espionage - end
 
