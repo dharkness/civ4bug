@@ -1,6 +1,6 @@
 ## BugScoresOptionsTab
-## Tab for the BUG Scoreboard Options
-## BUG Mod - Copyright 2007
+## Tab for the BUG PLE Options
+## BUG Mod - Copyright 2008
 
 import BugOptionsTab
 
@@ -16,15 +16,15 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 		
 		#self.addCheckbox(screen, left, "PLE_Enabled")
-		#self.addTextDropdown(screen, left, left, "PLE_Default_View_Mode")
-		#self.addTextDropdown(screen, left, left, "PLE_Default_Group_Mode")
-		#self.addCheckbox(screen, left, "PLE_Negative_Filters")
+		self.addTextDropdown(screen, left, left, "PLE_Default_View_Mode")
+		self.addTextDropdown(screen, left, left, "PLE_Default_Group_Mode")
+		self.addTextDropdown(screen, left, left, "PLE_Filter_Behavior")
 		self.addCheckbox(screen, left, "PLE_Move_Highlighter")
 		
 		self.addSpacer(screen, left, "PLE_Indicators")
 		self.addLabel(screen, left, "PLE_Indicators")
 		self.addCheckbox(screen, left, "PLE_Wounded_Indicator")
-		#self.addCheckbox(screen, left, "PLE_Lead_By_GG_Indicator")
+		self.addCheckbox(screen, left, "PLE_Lead_By_GG_Indicator")
 		self.addCheckbox(screen, left, "PLE_Promotion_Indicator")
 		self.addCheckbox(screen, left, "PLE_Upgrade_Indicator")
 		self.addCheckbox(screen, left, "PLE_Mission_Info")

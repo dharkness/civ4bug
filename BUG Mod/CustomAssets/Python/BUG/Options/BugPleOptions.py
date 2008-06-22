@@ -21,18 +21,19 @@ class BugPleOptions(OptionsFacade):
 								  "Default View",
 								  "Sets the view mode used when you start Civ IV.",
 								  ['Single Row', 'Multiple Rows', 'Vertical Groups', 'Horizontal Groups'], None,
-								  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+								  None))
 		self.addOption(OptionList("PLE_Default_Group_Mode",
 							 	 "PlotList", "Default Grouping Mode", 0,
 								  "Default Grouping",
 								  "Sets the grouping mode used when you start Civ IV.",
 								  ['Unit Type', 'Selection Group'], None,
+								  None))
+		self.addOption(OptionList("PLE_Filter_Behavior",
+							 	 "PlotList", "Filter Behavior", 1,
+								  "Filter Behavior",
+								  "Sets the filter behavior.",
+								  ['PLE', 'BUG'], None,
 								  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
-		self.addOption(Option("PLE_Negative_Filters",
-							  "PlotList", "Negative Filters", True,
-							  "Negative Filters",
-							  "When checked, the filter buttons remove the units that they match from view (default PLE behavior).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		
 		# Health Bar
 		self.addOption(Option("PLE_Health_Bar",
@@ -44,7 +45,7 @@ class BugPleOptions(OptionsFacade):
 							  "PlotList", "Hide Health Bar While Fighting", True,
 							  "Hide During Combat",
 							  "Hides the Health Bar when a unit is in combat.",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Healthy_Color",
 							  "PlotList", "Healthy Color", "COLOR_GREEN",
 							  "Healthy",
@@ -127,101 +128,101 @@ class BugPleOptions(OptionsFacade):
 							  "PlotList", "Info Pane X Position", 5,
 							  "Horizontal Position",
 							  "Specifies the horizontal position of the Unit Info hover pane (default:  5).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Info_Pane_Y",
 							  "PlotList", "Info Pane Y Position", 160,
 							  "Vertical Position",
 							  "Specifies the vertical position of the Unit Info hover pane (default:  160).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Info_Pane_Width",
 							  "PlotList", "Info Pane X Size", 5,
 							  "Width",
 							  "Specifies the width of the Unit Info hover pane (default:  290).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Info_Pane_Standard_Line_Height",
 							  "PlotList", "Pixel Per Line Type 1", 24,
 							  "Standard Line Height",
 							  "Specifies the height of a standard line of text (default:  24).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Info_Pane_Bulleted_Line_Height",
 							  "PlotList", "Pixel Per Line Type 2", 19,
 							  "Bulleted Line Height",
 							  "Specifies the height of a bulleted line of text (default:  19).",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		
 		self.addOption(Option("PLE_Unit_Name_Color",
 							  "PlotList", "Unit Name Color", "COLOR_YELLOW",
 							  "Unit Name",
 							  "Default COLOR_YELLOW",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Upgrade_Possible_Color",
 							  "PlotList", "Upgrade Possible Color", "COLOR_GREEN",
 							  "Can Upgrade",
 							  "Default COLOR_GREEN",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Upgrade_Not_Possible_Color",
 							  "PlotList", "Upgrade Not Possible Color", "COLOR_RED",
 							  "Can't Upgrade",
 							  "Default COLOR_RED",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Unit_Type_Specialties_Color",
 							  "PlotList", "Unit Type Specialties Color", "COLOR_WHITE",
 							  "Unit Type Specialties",
 							  "Default COLOR_WHITE",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_Promotion_Specialties_Color",
 							  "PlotList", "Promotion Specialties Color", "COLOR_LIGHT_GREY",
 							  "Promotion Specialties",
 							  "Default COLOR_LIGHT_GREY",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		
 		# Move Highlighter
 		self.addOption(Option("PLE_Move_Highlighter",
 							  "PlotList", "Move Highlighter", True,
 							  "Move Highlighter",
 							  "Highlights the moves a unit can make when you hover the mouse over the units icon, while holding the Alt-key.",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		
 		self.addOption(Option("PLE_MH_Color_Impassable_Terrain",
 							  "PlotList", "Color Impassable Terrain", "COLOR_CLEAR",
 							  "Impassable Terrain",
 							  "Default COLOR_CLEAR",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Passable_Terrain",
 							  "PlotList", "Color Passable Terrain", "COLOR_WHITE",
 							  "Passable Terrain",
 							  "Default COLOR_WHITE",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Passable_Neutral_Territory",
 							  "PlotList", "Color Passable Neutral Territory", "COLOR_PLAYER_DARK_YELLOW",
 							  "Passable Neutral Territory",
 							  "Default COLOR_PLAYER_DARK_YELLOW",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Passable_Enemy_Territory",
 							  "PlotList", "Color Passable Enemy Territory", "COLOR_PLAYER_DARK_RED",
 							  "Passable Enemy Territory",
 							  "Default COLOR_PLAYER_DARK_RED",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Passable_Barbarian_Territory",
 							  "PlotList", "Color Passable Barbarian Territory", "COLOR_PLAYER_DARK_CYAN",
 							  "Passable Barbarian Territory",
 							  "Default COLOR_PLAYER_DARK_CYAN",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Neutral_Unit",
 							  "PlotList", "Color Neutral Unit", "COLOR_YELLOW",
 							  "Neutral Unit",
 							  "Default COLOR_YELLOW",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Enemy_Unit",
 							  "PlotList", "Color Enemy Unit", "COLOR_RED",
 							  "Enemy Unit",
 							  "Default COLOR_RED",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 		self.addOption(Option("PLE_MH_Color_Barbarian_Unit",
 							  "PlotList", "Color Barbarian Unit", "COLOR_CYAN",
 							  "Barbarian Unit",
 							  "Default COLOR_CYAN",
-							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
+							  None))
 
 
 	# Master Switch
@@ -232,11 +233,15 @@ class BugPleOptions(OptionsFacade):
 	# Modes and Filters
 	
 	def getDefaultViewMode(self):
-		return self.getInt('PLE_Default_View_Mode')  # not yet
+		return self.getInt('PLE_Default_View_Mode')
 	def getDefaultGroupMode(self):
-		return self.getInt('PLE_Default_Group_Mode')  # not yet
-	def isNegativeFilters(self):
-		return self.getBoolean('PLE_Negative_Filters')  # not yet
+		return self.getInt('PLE_Default_Group_Mode')
+	def getFilterBehavior(self):
+		return self.getInt('PLE_Filter_Behavior')
+	def isPleFilterBehavior(self):
+		return self.getFilterBehavior() == 0
+	def isBugFilterBehavior(self):
+		return self.getFilterBehavior() == 1
 	
 	# Health Bar
 	
@@ -265,7 +270,7 @@ class BugPleOptions(OptionsFacade):
 	def isShowWoundedIndicator(self):
 		return self.getBoolean('PLE_Wounded_Indicator')
 	def isShowGreatGeneralIndicator(self):
-		return self.getBoolean('PLE_Lead_By_GG_Indicator')  # not yet
+		return self.getBoolean('PLE_Lead_By_GG_Indicator')
 	def isShowPromotionIndicator(self):
 		return self.getBoolean('PLE_Promotion_Indicator')
 	def isShowUpgradeIndicator(self):

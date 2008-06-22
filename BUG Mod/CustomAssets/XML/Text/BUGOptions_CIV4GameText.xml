@@ -2179,20 +2179,28 @@
 		<Spanish>Unit Type|Selection Group</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_PLE_NEGATIVE_FILTERS_TEXT</Tag>
-		<English>Negative Filters</English>
-		<French>Filtres Négatifs</French>
-		<German>Negativfilter</German>
-		<Italian>Filtri negativi</Italian>
-		<Spanish>Negative Filters</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_TEXT</Tag>
+		<English>Filter Behavior</English>
+		<French>Filter Behavior</French>
+		<German>Filter Behavior</German>
+		<Italian>Filter Behavior</Italian>
+		<Spanish>Filter Behavior</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_PLE_NEGATIVE_FILTERS_HOVER</Tag>
-		<English>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</English>
-		<French>En activant, les boutons filtres enlèvent les unités correspondantes de vue (comportement PLE par défaut).</French>
-		<German>Die Filterschaltflächen blenden die Typen von Einheiten aus, deren Symbol sie repräsentieren (Standardverhalten der PLE Mod)</German>
-		<Italian>Quando selezionato, i pulsanti di filtraggio nascondono le Unità corrispondenti (comportamento standard del mod PLE).</Italian>
-		<Spanish>When checked, the filter buttons remove the units that they match from view (default PLE behavior).</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_HOVER</Tag>
+		<English>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</English>
+		<French>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</French>
+		<German>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</German>
+		<Italian>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Italian>
+		<Spanish>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_LIST</Tag>
+		<English>PLE|BUG</English>
+		<French>PLE|BUG</French>
+		<German>PLE|BUG</German>
+		<Italian>PLE|BUG</Italian>
+		<Spanish>PLE|BUG</Spanish>
 	</TEXT>
 	
 	<TEXT>
