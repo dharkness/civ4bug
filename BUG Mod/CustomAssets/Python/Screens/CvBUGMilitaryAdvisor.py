@@ -458,6 +458,7 @@ class CvMilitaryAdvisor:
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
+		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup(localText.getText("TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES", ()), 2)
 
 		self.SitRepGrid.setTextColWidth(self.Col_WHEOOH, 25)
