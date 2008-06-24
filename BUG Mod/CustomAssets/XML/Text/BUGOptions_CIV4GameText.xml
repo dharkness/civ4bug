@@ -2179,6 +2179,22 @@
 		<Spanish>Unit Type|Selection Group</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_SHOW_BUTTONS_TEXT</Tag>
+		<English>Show Mode/Filter Buttons</English>
+		<French>Show Mode/Filter Buttons</French>
+		<German>Show Mode/Filter Buttons</German>
+		<Italian>Show Mode/Filter Buttons</Italian>
+		<Spanish>Show Mode/Filter Buttons</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_SHOW_BUTTONS_HOVER</Tag>
+		<English>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</English>
+		<French>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</French>
+		<German>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</German>
+		<Italian>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Italian>
+		<Spanish>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_TEXT</Tag>
 		<English>Filter Behavior</English>
 		<French>Filter Behavior</French>

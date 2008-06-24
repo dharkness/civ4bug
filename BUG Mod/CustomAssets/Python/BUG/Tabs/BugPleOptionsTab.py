@@ -16,6 +16,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 		
 		#self.addCheckbox(screen, left, "PLE_Enabled")
+		self.addCheckbox(screen, left, "PLE_Show_Buttons")
 		self.addTextDropdown(screen, left, left, "PLE_Default_View_Mode")
 		self.addTextDropdown(screen, left, left, "PLE_Default_Group_Mode")
 		self.addTextDropdown(screen, left, left, "PLE_Filter_Behavior")

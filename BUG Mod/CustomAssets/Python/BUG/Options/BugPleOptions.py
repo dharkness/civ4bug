@@ -16,6 +16,11 @@ class BugPleOptions(OptionsFacade):
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		
 		# Modes and Filters
+		self.addOption(Option("PLE_Show_Buttons",
+							  "PlotList", "Show Buttons", True,
+							  "Show Buttons",
+							  "When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.",
+							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(OptionList("PLE_Default_View_Mode",
 							 	 "PlotList", "Default View Mode", 1,
 								  "Default View",
@@ -232,6 +237,8 @@ class BugPleOptions(OptionsFacade):
 	
 	# Modes and Filters
 	
+	def isShowButtons(self):
+		return self.getBoolean('PLE_Show_Buttons')
 	def getDefaultViewMode(self):
 		return self.getInt('PLE_Default_View_Mode')
 	def getDefaultGroupMode(self):
