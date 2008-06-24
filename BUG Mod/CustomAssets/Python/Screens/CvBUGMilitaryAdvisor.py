@@ -527,7 +527,7 @@ class CvMilitaryAdvisor:
 
 		# set power thread to 75% of max if active player cannot see the demographics
 		bCannotSeeDemographics = False
-		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
+		if not (BugUtil.isNoEspionage() or gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1)):
 			bCannotSeeDemographics = True
 			fPwr_Threat = 38.0 * 0.75
 #			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "n/a", 3)
