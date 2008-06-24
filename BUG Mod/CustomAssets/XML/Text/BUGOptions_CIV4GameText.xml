@@ -1138,7 +1138,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_TEXT</Tag>
 		<English>Raw Commerce / Production</English>
 		<French>Commerce Pur / Production</French>
-		<German>Wirtschaftseinkommen / Produktion</German>
+		<German>Aufschlüsselung von Wirtschaft / Produktion</German>
 		<Italian>Commercio e Produzione grezzi</Italian>
 		<Spanish>Raw Commerce / Production</Spanish>
 	</TEXT>
@@ -1147,7 +1147,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_HOVER</Tag>
 		<English>When checked, the raw commerce and production are displayed above the trade routes.</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
-		<German>Zeigt die Wirtschaftseinkommen und die Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
+		<German>Zeigt eine Aufschlüsselung des Wirtschaftseinkommens und der Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>Quando è selezionato, il Commercio e la Produzione grezzi vengono mostrati sopra alle vie commerciali.</Italian>
 		<Spanish>When checked, the raw commerce and production are displayed above the trade routes.</Spanish>
 	</TEXT>
@@ -1999,7 +1999,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES_RESEARCHICONS_HOVER</Tag>
 		<English>When checked, shows icons instead of names for civs whose research you can see.</English>
 		<French>En activant, montre des icônes au lieu des noms des technologies recherchées.</French>
-		<German>Zeigt die Symbole statt der Namen der Technologien, die andere Zivilisationen momentan erforschen, falls diese bekannt sind</German>
+		<German>Zeigt die Symbole statt der Namen der Technologien an, die andere Zivilisationen momentan erforschen, falls diese bekannt sind</German>
 		<Italian>Quando è selezionato, nel Pannello del Punteggio vengono visualizzate le icone invece dei nomi delle Tecnologie ricercate dalle Civiltà (per cui ti è lecito conoscerle).</Italian>
 		<Spanish>When checked, shows icons instead of names for civs whose research you can see.</Spanish>
 	</TEXT>
@@ -2126,7 +2126,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_ENABLED_HOVER</Tag>
 		<English>Enables the Plot List Enhancements mod and the rest of the options on this tab.</English>
 		<French>Active le mod Plot List Enhancements ainsi que le reste des options sur cet onglet.</French>
-		<German>Aktiviert die grafischen Ergänzungen der Einheitenliste am unteren Bildschirmrand (verwendet 12monkeys' "Plot List Enhancements" Mod)</German>
+		<German>Aktiviert die Verbesserungen der Einheitenliste am unteren Bildschirmrand (verwendet 12monkeys' "Plot List Enhancements" Mod)</German>
 		<Italian>Abilita il mod 'Plot List Enhancements' (PLE, Icone delle Unità Avanzate) e le altre opzioni in questa pagina.</Italian>
 		<Spanish>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Spanish>
 	</TEXT>
@@ -2182,7 +2182,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_SHOW_BUTTONS_TEXT</Tag>
 		<English>Show Mode/Filter Buttons</English>
 		<French>Show Mode/Filter Buttons</French>
-		<German>Show Mode/Filter Buttons</German>
+		<German>Filterschaltflächen</German>
 		<Italian>Show Mode/Filter Buttons</Italian>
 		<Spanish>Show Mode/Filter Buttons</Spanish>
 	</TEXT>
@@ -2190,7 +2190,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_SHOW_BUTTONS_HOVER</Tag>
 		<English>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</English>
 		<French>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</French>
-		<German>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</German>
+		<German>Zeigt unter der Einheitenliste Schaltflächen für die Veränderung der Listenanzeige, die Gruppierung von Einheiten und die Einheitenfilter an</German>
 		<Italian>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Italian>
 		<Spanish>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Spanish>
 	</TEXT>
@@ -2198,7 +2198,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_TEXT</Tag>
 		<English>Filter Behavior</English>
 		<French>Filter Behavior</French>
-		<German>Filter Behavior</German>
+		<German>Filterfunktion</German>
 		<Italian>Filter Behavior</Italian>
 		<Spanish>Filter Behavior</Spanish>
 	</TEXT>
@@ -2206,7 +2206,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_FILTER_BEHAVIOR_HOVER</Tag>
 		<English>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</English>
 		<French>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</French>
-		<German>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</German>
+		<German>Bestimmt, wie die Schaltflächen der Einheitenfilter funktionieren:[NEWLINE]- PLE: Ausgewählte Filter blenden übereinstimmende Einheiten aus und verwandte Filter funktionieren unabhängig voneinander (d.h. es ist möglich, sowohl den Filter für verwundete als auch für unverwundete Einheiten auszuwählen, so dass in der Einheitenliste nichts angezeigt wird)[NEWLINE]- BUG: Ausgewählte Filter blenden nicht-übereinstimmende Einheiten aus und verwandte Filter schließen sich gegenseitig aus (d.h. bei Auswahl des Filters für verwundete Einheiten wird jener für unverwundete Einheiten abgewählt, bei Auswahl des Filters für Luft-Einheiten werden jene für Land- und Marine-Einheiten abgewählt)</German>
 		<Italian>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Italian>
 		<Spanish>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Spanish>
 	</TEXT>
@@ -2774,7 +2774,7 @@
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_HOVER</Tag>
 		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
 		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités. [NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
-		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Element (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Element[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt1[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
+		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Element der Einheit (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Element der Einheit[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt2[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt auf 1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
 		<Italian>Quando è selezionato, vengono utilizzati i formati in questa tabella e nel file 'Adv Unit Naming.ini' per denominare le Unità del giocatore. I nomi possono essere costruiti combinando testo semplice e codici (che devono essere posti fra accenti circonflessi: ^).[NEWLINE]  Ad esempio: "^cv^ ^ut^ di ^ct^" --> "Arciere Americano di Boston".</Italian>
 		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
 	</TEXT>
