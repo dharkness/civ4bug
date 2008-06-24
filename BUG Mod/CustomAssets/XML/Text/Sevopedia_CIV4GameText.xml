@@ -61,11 +61,11 @@
 		<Spanish>Unique Buildings</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_PEDIA_FAV_CIVIC</Tag>
+		<Tag>TXT_KEY_PEDIA_FAV_CIVIC_AND_RELIGION</Tag>
 		<English>Favorite Civic and Religion</English>
 		<French>Doctrine et Religion Préférée</French>
 		<German>Bevorzugte Staatsform und Religion</German>
 		<Italian>Forme di governo e Religioni preferite</Italian>
-		<Spanish>Principios favoritos - religi&#243;n</Spanish>
+		<Spanish>Principio y religi&#243;n favoritos</Spanish>
 	</TEXT>
 </Civ4GameText>

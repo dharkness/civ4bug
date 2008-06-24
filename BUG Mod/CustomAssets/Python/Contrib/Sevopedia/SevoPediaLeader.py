@@ -108,7 +108,7 @@ class SevoPediaLeader:
 	def placeCivic(self):		
 		screen = self.top.getScreen()
 		panelName = self.top.getNextWidgetName()
-		screen.addPanel(panelName, localText.getText("TXT_KEY_PEDIA_FAV_CIVIC", ()), "", True, True, self.X_CIVIC, self.Y_CIVIC, self.W_CIVIC, self.H_CIVIC, PanelStyles.PANEL_STYLE_BLUE50)
+		screen.addPanel(panelName, localText.getText("TXT_KEY_PEDIA_FAV_CIVIC_AND_RELIGION", ()), "", True, True, self.X_CIVIC, self.Y_CIVIC, self.W_CIVIC, self.H_CIVIC, PanelStyles.PANEL_STYLE_BLUE50)
 		iCivic = gc.getLeaderHeadInfo(self.iLeader).getFavoriteCivic()
 		if (-1 != iCivic):
 			szCivicText = u"<link=literal>" + gc.getCivicInfo(iCivic).getDescription() + u"</link>"
