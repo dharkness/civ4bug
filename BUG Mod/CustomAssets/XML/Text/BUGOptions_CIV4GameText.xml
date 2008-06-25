@@ -3330,6 +3330,14 @@
 		<Spanish>Search Paths:</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ASSET_SEARCH_PATHS</Tag>
+		<English>Asset Search Paths:</English>
+		<French>Asset Search Paths:</French>
+		<German>Asset Search Paths:</German>
+		<Italian>Asset Search Paths:</Italian>
+		<Spanish>Asset Search Paths:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_MOD_CONFIG</Tag>
 		<English>BUG Mod Options File:</English>
 		<French>Fichier d'Options du BUG Mod:</French>

@@ -156,3 +156,36 @@ def findOrMakeDir(name):
 	if (not dir):
 		dir = makeDir(name)
 	return dir
+
+
+# Create an ordered list of paths which are searched for asset files.
+assetFileSearchPaths = []
+def addAssetFileSearchPath(path):
+	"Adds the given path to the search list if it is a directory."
+	if (os.path.isdir(path)):
+		assetFileSearchPaths.append(path)
+
+if (userDir):
+	addAssetFileSearchPath(os.path.join(userDir, appName, "CustomAssets"))
+	if (modName):
+		addAssetFileSearchPath(os.path.join(userDir, appName, "Mods", modName, "Assets"))
+if (rootDir):
+	if (modName):
+		addAssetFileSearchPath(os.path.join(rootDir, "Mods", modName, "Assets"))
+	addAssetFileSearchPath(os.path.join(rootDir, "Assets"))
+
+if (assetFileSearchPaths):
+	BugConfigTracker.add("Asset_Search_Paths", assetFileSearchPaths)
+else:
+	pass
+
+def findAssetFile(name, subdir=None):
+	"Locates the named asset file using the search paths above."
+	for dir in assetFileSearchPaths:
+		if (subdir):
+			path = os.path.join(dir, subdir, name)
+		else:
+			path = os.path.join(dir, name)
+		if (os.path.isfile(path)):
+			return path
+	return None
