@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Jesse Smith (Firaxis Games) -->
 <!-- Sid Meier's Civilization 4 -->
 <!-- Copyright Firaxis Games 2005 -->
 <!-- -->
 <!-- Game Text Infos -->
 <Civ4GameText xmlns="http://www.firaxis.com">
-
-<!-- ###################################################  -->
-<!-- 				Texts  for the PlotList Enhancements -->
-<!-- ###################################################  -->
-
+	<!-- ###################################################  -->
+	<!-- 				Texts  for the PlotList Enhancements -->
+	<!-- ###################################################  -->
 	<TEXT>
 		<Tag>TXT_KEY_PLE_UPGRADE_HELP</Tag>
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
@@ -59,8 +58,24 @@
 		<Spanish>Don't display wounded units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_WOUND</Tag>
+		<English>Display wounded units</English>
+		<French>Ne pas afficher les unités blessées</French>
+		<German>Verwundete Einheiten ausblenden</German>
+		<Italian>Non mostrare le Unità ferite.</Italian>
+		<Spanish>Don't display wounded units</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_NOTWOUND</Tag>
 		<English>Don't display unwounded units</English>
+		<French>Ne pas afficher les unités saines</French>
+		<German>Unverwundete Einheiten ausblenden</German>
+		<Italian>Non mostrare le Unità sane.</Italian>
+		<Spanish>Don't display unwounded units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_NOTWOUND</Tag>
+		<English>Display healthy units</English>
 		<French>Ne pas afficher les unités saines</French>
 		<German>Unverwundete Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità sane.</Italian>
@@ -154,5 +169,4 @@
 		<Italian>Seleziona le Unità con possibilità di avanzamento.</Italian>
 		<Spanish>Select units available for upgrade</Spanish>
 	</TEXT>
-
 </Civ4GameText>

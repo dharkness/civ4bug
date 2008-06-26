@@ -1754,7 +1754,7 @@ class CvCustomizableDomesticAdvisor:
 					elif type == "Spaceship":
 						if not city.isPower():
 							if info.isPower():
-								value = getBaseYieldRate(YieldTypes.YIELD_PRODUCTION) / float(info.getProductionCost())
+								value = city.getBaseYieldRate(YieldTypes.YIELD_PRODUCTION) / float(info.getProductionCost())
 								if value > bestData:
 									bestOrder = bldg
 									bestData = value
