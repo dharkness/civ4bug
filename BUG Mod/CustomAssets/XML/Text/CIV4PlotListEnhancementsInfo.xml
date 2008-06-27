@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
-<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Jesse Smith (Firaxis Games) -->
-<!-- Sid Meier's Civilization 4 -->
-<!-- Copyright Firaxis Games 2005 -->
+<!-- BUG Mod - Plot List Enhancements -->
 <!-- -->
 <!-- Game Text Infos -->
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- ###################################################  -->
-	<!-- 				Texts  for the PlotList Enhancements -->
-	<!-- ###################################################  -->
 	<TEXT>
 		<Tag>TXT_KEY_PLE_UPGRADE_HELP</Tag>
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
@@ -18,8 +12,19 @@
 		<Spanish>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_CURRENT_MODE</Tag>
+		<English>This is the current mode</English>
+		<French>This is the current mode</French>
+		<German>This is the current mode</German>
+		<Italian>This is the current mode</Italian>
+		<Spanish>This is the current mode</Spanish>
+	</TEXT>
+	
+	<!-- View Modes -->
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_MODE_STANDARD</Tag>
-		<English>View unit buttons in the standard format</English>
+		<English>View unit buttons in a single row</English>
 		<French>Voir les unités de manière standard</French>
 		<German>Einheitenschaltflächen im Standardformat</German>
 		<Italian>Visualizza i bottoni delle Unità nel formato standard.</Italian>
@@ -27,7 +32,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_MODE_MULTILINE</Tag>
-		<English>View unit buttons in a multiline format</English>
+		<English>View unit buttons in multiple rows</English>
 		<French>Voir les unités en format multiligne</French>
 		<German>Einheitenschaltflächen mehrzeilig anordnen</German>
 		<Italian>Visualizza i bottoni delle Unità nel formato multilinea.</Italian>
@@ -35,7 +40,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_MODE_STACK_VERT</Tag>
-		<English>View unit buttons sorted vertically</English>
+		<English>View unit buttons grouped into columns</English>
 		<French>Voir les unités triées verticalement</French>
 		<German>Einheitenschaltflächen senkrecht anordnen</German>
 		<Italian>Visualizza i bottoni delle Unità ordinati verticalmente.</Italian>
@@ -43,130 +48,353 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_MODE_STACK_HORIZ</Tag>
-		<English>View unit buttons sorted horizonially</English>
+		<English>View unit buttons grouped into rows</English>
 		<French>Voir les unités triées horizontalement</French>
 		<German>Einheitenschaltflächen waagerecht anordnen</German>
 		<Italian>Visualizza i bottoni delle Unità ordinati orizzontalmente.</Italian>
 		<Spanish>View unit buttons sorted horizonially</Spanish>
 	</TEXT>
+	
+	<!-- Healthiness Filters -->
+	
 	<TEXT>
-		<Tag>TXT_KEY_PLE_FILTER_WOUND</Tag>
-		<English>Don't display wounded units</English>
+		<Tag>TXT_KEY_PLE_FILTER_WOUNDED</Tag>
+		<English>Hide wounded units</English>
 		<French>Ne pas afficher les unités blessées</French>
 		<German>Verwundete Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità ferite.</Italian>
-		<Spanish>Don't display wounded units</Spanish>
+		<Spanish>Hide wounded units</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_PLE_FILTER_BUG_WOUND</Tag>
-		<English>Display wounded units</English>
-		<French>Ne pas afficher les unités blessées</French>
-		<German>Verwundete Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità ferite.</Italian>
-		<Spanish>Don't display wounded units</Spanish>
+		<Tag>TXT_KEY_PLE_FILTER_WOUNDED_ON</Tag>
+		<English>Show wounded units</English>
+		<French>Show wounded units</French>
+		<German>Show wounded units</German>
+		<Italian>Show wounded units</Italian>
+		<Spanish>Show wounded units</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_PLE_FILTER_NOTWOUND</Tag>
-		<English>Don't display unwounded units</English>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_WOUNDED</Tag>
+		<English>Show only wounded units</English>
+		<French>Show only wounded units</French>
+		<German>Show only wounded units</German>
+		<Italian>Show only wounded units</Italian>
+		<Spanish>Show only wounded units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_WOUNDED_ON</Tag>
+		<English>Show wounded and healthy units</English>
+		<French>Show wounded and healthy units</French>
+		<German>Show wounded and healthy units</German>
+		<Italian>Show wounded and healthy units</Italian>
+		<Spanish>Show wounded and healthy units</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_HEALTHY</Tag>
+		<English>Hide healthy units</English>
 		<French>Ne pas afficher les unités saines</French>
 		<German>Unverwundete Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità sane.</Italian>
-		<Spanish>Don't display unwounded units</Spanish>
+		<Spanish>Hide healthy units</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_PLE_FILTER_BUG_NOTWOUND</Tag>
-		<English>Display healthy units</English>
-		<French>Ne pas afficher les unités saines</French>
-		<German>Unverwundete Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità sane.</Italian>
-		<Spanish>Don't display unwounded units</Spanish>
+		<Tag>TXT_KEY_PLE_FILTER_HEALTHY_ON</Tag>
+		<English>Show healthy units</English>
+		<French>Show healthy units</French>
+		<German>Show healthy units</German>
+		<Italian>Show healthy units</Italian>
+		<Spanish>Show healthy units</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_HEALTHY</Tag>
+		<English>Show only healthy units</English>
+		<French>Show only healthy units</French>
+		<German>Show only healthy units</German>
+		<Italian>Show only healthy units</Italian>
+		<Spanish>Show only healthy units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_HEALTHY_ON</Tag>
+		<English>Show wounded and healthy units</English>
+		<French>Show wounded and healthy units</French>
+		<German>Show wounded and healthy units</German>
+		<Italian>Show wounded and healthy units</Italian>
+		<Spanish>Show wounded and healthy units</Spanish>
+	</TEXT>
+	
+	<!-- Domain Filters -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_AIR</Tag>
-		<English>Don't display air units</English>
+		<English>Hide air units</English>
 		<French>Ne pas afficher les unités aériennes</French>
 		<German>Luft-Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità aeree.</Italian>
-		<Spanish>Don't display air units</Spanish>
+		<Spanish>Hide air units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_AIR_ON</Tag>
+		<English>Show air units</English>
+		<French>Show air units</French>
+		<German>Show air units</German>
+		<Italian>Show air units</Italian>
+		<Spanish>Show air units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_AIR</Tag>
+		<English>Show only air units</English>
+		<French>Show only air units</French>
+		<German>Show only air units</German>
+		<Italian>Show only air units</Italian>
+		<Spanish>Show only air units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_AIR_ON</Tag>
+		<English>Show land, naval and air units</English>
+		<French>Show land, naval and air units</French>
+		<German>Show land, naval and air units</German>
+		<Italian>Show land, naval and air units</Italian>
+		<Spanish>Show land, naval and air units</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_SEA</Tag>
-		<English>Don't display naval units</English>
+		<English>Hide naval units</English>
 		<French>Ne pas afficher les unités navales</French>
 		<German>Marine-Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità navali.</Italian>
-		<Spanish>Don't display naval units</Spanish>
+		<Spanish>Hide naval units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_SEA_ON</Tag>
+		<English>Show naval units</English>
+		<French>Show naval units</French>
+		<German>Show naval units</German>
+		<Italian>Show naval units</Italian>
+		<Spanish>Show naval units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_SEA</Tag>
+		<English>Show only naval units</English>
+		<French>Show only naval units</French>
+		<German>Show only naval units</German>
+		<Italian>Show only naval units</Italian>
+		<Spanish>Show only naval units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_SEA_ON</Tag>
+		<English>Show land, naval and air units</English>
+		<French>Show land, naval and air units</French>
+		<German>Show land, naval and air units</German>
+		<Italian>Show land, naval and air units</Italian>
+		<Spanish>Show land, naval and air units</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_LAND</Tag>
-		<English>Don't display land units</English>
+		<English>Hide land units</English>
 		<French>Ne pas afficher les unités terrestres</French>
 		<German>Land-Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità terrestri.</Italian>
-		<Spanish>Don't display land units</Spanish>
+		<Spanish>Hide land units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_LAND_ON</Tag>
+		<English>Show land units</English>
+		<French>Show land units</French>
+		<German>Show land units</German>
+		<Italian>Show land units</Italian>
+		<Spanish>Show land units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_LAND</Tag>
+		<English>Show only land units</English>
+		<French>Show only land units</French>
+		<German>Show only land units</German>
+		<Italian>Show only land units</Italian>
+		<Spanish>Show only land units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_LAND_ON</Tag>
+		<English>Show land, naval and air units</English>
+		<French>Show land, naval and air units</French>
+		<German>Show land, naval and air units</German>
+		<Italian>Show land, naval and air units</Italian>
+		<Spanish>Show land, naval and air units</Spanish>
+	</TEXT>
+	
+	<!-- Civilian/Military Filters -->
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_DOM</Tag>
-		<English>Don't display domestic units</English>
+		<English>Hide civilian units</English>
 		<French>Ne pas afficher les unités domestiques</French>
 		<German>Einheimische Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità non militari.</Italian>
-		<Spanish>Don't display domestic units</Spanish>
+		<Spanish>Hide civilian units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_DOM_ON</Tag>
+		<English>Show civilian units</English>
+		<French>Show civilian units</French>
+		<German>Show civilian units</German>
+		<Italian>Show civilian units</Italian>
+		<Spanish>Show civilian units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_DOM</Tag>
+		<English>Show only civilian units</English>
+		<French>Show only civilian units</French>
+		<German>Show only civilian units</German>
+		<Italian>Show only civilian units</Italian>
+		<Spanish>Show only civilian units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_DOM_ON</Tag>
+		<English>Show civilian and military units</English>
+		<French>Show civilian and military units</French>
+		<German>Show civilian and military units</German>
+		<Italian>Show civilian and military units</Italian>
+		<Spanish>Show civilian and military units</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_MIL</Tag>
-		<English>Don't display military units</English>
+		<English>Hide military units</English>
 		<French>Ne pas afficher les unités militaires</French>
 		<German>Militärische Einheiten ausblenden</German>
 		<Italian>Non mostrare le Unità militari.</Italian>
-		<Spanish>Don't display military units</Spanish>
+		<Spanish>Hide military units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_MIL_ON</Tag>
+		<English>Show military units</English>
+		<French>Show military units</French>
+		<German>Show military units</German>
+		<Italian>Show military units</Italian>
+		<Spanish>Show military units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_MIL</Tag>
+		<English>Show only military units</English>
+		<French>Show only military units</French>
+		<German>Show only military units</German>
+		<Italian>Show only military units</Italian>
+		<Spanish>Show only military units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_MIL_ON</Tag>
+		<English>Show civilian and military units</English>
+		<French>Show civilian and military units</French>
+		<German>Show civilian and military units</German>
+		<Italian>Show civilian and military units</Italian>
+		<Spanish>Show civilian and military units</Spanish>
+	</TEXT>
+	
+	<!-- Foreign/Domestic Filters -->
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_OWN</Tag>
-		<English>Don't display units you own</English>
+		<English>Hide domestic units</English>
 		<French>Ne pas afficher les unités que vous possédez</French>
 		<German>Eigene Einheiten ausblenden</German>
 		<Italian>Non mostrare le tue Unità.</Italian>
-		<Spanish>Don't display units you own</Spanish>
+		<Spanish>Hide domestic units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_OWN_ON</Tag>
+		<English>Show domestic units</English>
+		<French>Show domestic units</French>
+		<German>Show domestic units</German>
+		<Italian>Show domestic units</Italian>
+		<Spanish>Show domestic units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_OWN</Tag>
+		<English>Show only domestic units</English>
+		<French>Show only domestic units</French>
+		<German>Show only domestic units</German>
+		<Italian>Show only domestic units</Italian>
+		<Spanish>Show only domestic units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_OWN_ON</Tag>
+		<English>Show foreign and domestic units</English>
+		<French>Show foreign and domestic units</French>
+		<German>Show foreign and domestic units</German>
+		<Italian>Show foreign and domestic units</Italian>
+		<Spanish>Show foreign and domestic units</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_FILTER_FOREIGN</Tag>
-		<English>Don't display units other players own</English>
+		<English>Hide foreign units</English>
 		<French>Ne pas afficher les unités qui ne vous appartiennent pas</French>
 		<German>Einheiten anderer Spieler ausblenden</German>
 		<Italian>Non mostrare le Unità altrui.</Italian>
-		<Spanish>Don't display units other players own</Spanish>
+		<Spanish>Hide foreign units</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_FOREIGN_ON</Tag>
+		<English>Show foreign units</English>
+		<French>Show foreign units</French>
+		<German>Show foreign units</German>
+		<Italian>Show foreign units</Italian>
+		<Spanish>Show foreign units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_FOREIGN</Tag>
+		<English>Show only foreign units</English>
+		<French>Show only foreign units</French>
+		<German>Show only foreign units</German>
+		<Italian>Show only foreign units</Italian>
+		<Spanish>Show only foreign units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PLE_FILTER_BUG_FOREIGN_ON</Tag>
+		<English>Show foreign and domestic units</English>
+		<French>Show foreign and domestic units</French>
+		<German>Show foreign and domestic units</German>
+		<Italian>Show foreign and domestic units</Italian>
+		<Spanish>Show foreign and domestic units</Spanish>
+	</TEXT>
+	
+	<!-- Grouping Modes -->
+	
+	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UNITTYPE</Tag>
-		<English>Select units by unit type</English>
+		<English>Group units by unit type for Vertical/Horizontal Groups view mode</English>
 		<French>Sélectionner les unités par types d'unité</French>
 		<German>Einheiten des gleichen Typs aktivieren</German>
 		<Italian>Seleziona le Unità per tipo.</Italian>
-		<Spanish>Select units by unit type</Spanish>
+		<Spanish>Group units by unit type for Vertical/Horizontal Groups view mode</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_GROUPS</Tag>
-		<English>Select units by group</English>
+		<English>Group units by selection group for Vertical/Horizontal Groups view mode</English>
 		<French>Sélectionner les unités par groupe</French>
 		<German>Einheiten der gleichen Klasse aktivieren</German>
 		<Italian>Seleziona le Unità per gruppo.</Italian>
-		<Spanish>Select units by group</Spanish>
+		<Spanish>Group units by selection group for Vertical/Horizontal Groups view mode</Spanish>
 	</TEXT>
+	
+	<!-- Promotion and Upgrade Modes -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_PROMO</Tag>
-		<English>Select units available for promotion</English>
+		<English>View units available for promotion along with the promotions they may receive</English>
 		<French>Sélectionner les unités en attente de promotion</French>
 		<German>Nur beförderbare Einheiten aktivieren</German>
 		<Italian>Seleziona le Unità con possibilità di promozione.</Italian>
-		<Spanish>Select units available for promotion</Spanish>
+		<Spanish>View units available for promotion along with the promotions they may receive</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UPGRADE</Tag>
-		<English>Select units available for upgrade</English>
+		<English>View units available for upgrade along with the units to which they may advance</English>
 		<French>Sélectionner les unités pouvant être améliorées</French>
 		<German>Nur modernisierbare Einheiten aktivieren</German>
 		<Italian>Seleziona le Unità con possibilità di avanzamento.</Italian>
-		<Spanish>Select units available for upgrade</Spanish>
+		<Spanish>View units available for upgrade along with the units to which they may advance</Spanish>
 	</TEXT>
 </Civ4GameText>

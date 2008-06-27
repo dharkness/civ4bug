@@ -324,6 +324,7 @@ class CvMainInterface:
 		else:
 			# Toggle the specified mode
 			self.nPLEFilter ^= nFilter
+		self.hideInfoPane()
 		CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 	# Sets the grouping mode (includes upgrade and promotion modes)
@@ -331,6 +332,7 @@ class CvMainInterface:
 		if (self.nPLEGrpMode != nGroupingMode):
 			self.nPLEGrpMode = nGroupingMode
 			self.bUpdatePLEUnitList = True
+			self.hideInfoPane()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 	# Sets the view mode
@@ -339,63 +341,127 @@ class CvMainInterface:
 			self.iRowOffset = 0
 			self.iColOffset = 0
 			self.sPLEMode = nViewMode
+			self.hideInfoPane()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
-############## input handlers functions ######################		
-		
+############## input handlers functions ######################
+
+	def handleHoverPLEFilter(self, inputClass, sKey, nFilter):
+		"Shows or hides the correct hover text for the given filter."
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			sFullKey = "TXT_KEY_PLE_FILTER_"
+			if ( BugPle.isBugFilterBehavior() ):
+				sFullKey += "BUG_"
+			sFullKey += sKey
+			bSelected = not (self.nPLEFilter & nFilter)
+			if ( bSelected ):
+				sFullKey += "_ON"
+			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideInfoPane()
+			return 1
+		return 0
+
+	def handleHoverPLEViewMode(self, inputClass, sKey, nViewMode):
+		"Shows or hides the hover text for the given view mode."
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			sFullKey = "TXT_KEY_PLE_MODE_" + sKey
+			bSelected = self.sPLEMode == nViewMode
+			#if ( bSelected ):
+			#	sFullKey += "_ON"
+			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideInfoPane()
+			return 1
+		return 0
+
+	def handleHoverPLEGrpMode(self, inputClass, sKey, nGrpMode):
+		"Shows or hides the hover text for the given view mode."
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			sFullKey = "TXT_KEY_PLE_GRP_" + sKey
+			bSelected = self.nPLEGrpMode == nGrpMode
+			#if ( bSelected ):
+			#	sFullKey += "_ON"
+			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideInfoPane()
+			return 1
+		return 0
+
 	# PLE Mode Switcher functions
 	def onClickPLEFilterWound(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeWound, self.nPLEFilterGroupHealth)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "WOUNDED", self.nPLEFilterModeWound)
 
 	# PLE Mode Switcher functions
 	def onClickPLEFilterNotWound(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeNotWound, self.nPLEFilterGroupHealth)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "HEALTHY", self.nPLEFilterModeNotWound)
 			
 	# PLE Mode Switcher functions
 	def onClickPLEFilterAir(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeAir, self.nPLEFilterGroupDomain)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "AIR", self.nPLEFilterModeAir)
 
 	# PLE Mode Switcher functions
 	def onClickPLEFilterSea(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeSea, self.nPLEFilterGroupDomain)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "SEA", self.nPLEFilterModeSea)
 
 	# PLE Mode Switcher functions
 	def onClickPLEFilterLand(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeLand, self.nPLEFilterGroupDomain)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "LAND", self.nPLEFilterModeLand)
 
 	# PLE Mode Switcher functions
 	def onClickPLEFilterDom(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeDom, self.nPLEFilterGroupType)
-			return 1		
+			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "DOM", self.nPLEFilterModeDom)
 			
 	# PLE Mode Switcher functions
 	def onClickPLEFilterMil(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeMil, self.nPLEFilterGroupType)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "MIL", self.nPLEFilterModeMil)
 
 	# PLE Mode Switcher functions
 	def onClickPLEFilterOwn(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeOwn, self.nPLEFilterGroupOwner)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "OWN", self.nPLEFilterModeOwn)
 			
 	# PLE Mode Switcher functions
 	def onClickPLEFilterForeign(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeForeign, self.nPLEFilterGroupOwner)
 			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "FOREIGN", self.nPLEFilterModeForeign)
 
 
 	# PLE Grouping Mode switcher
@@ -403,24 +469,32 @@ class CvMainInterface:
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEGroupMode(self.PLE_GRP_UNITTYPE)
 			return 1
+		else:
+			return self.handleHoverPLEGrpMode(inputClass, "UNITTYPE", self.PLE_GRP_UNITTYPE)
 
 	# PLE Grouping Mode switcher
 	def onClickPLEGrpGroups(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEGroupMode(self.PLE_GRP_GROUPS)
 			return 1
-			
+		else:
+			return self.handleHoverPLEGrpMode(inputClass, "GROUPS", self.PLE_GRP_GROUPS)
+
 	# PLE Grouping Mode switcher
 	def onClickPLEGrpPromo(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEGroupMode(self.PLE_GRP_PROMO)
 			return 1
+		else:
+			return self.handleHoverPLEGrpMode(inputClass, "PROMO", self.PLE_GRP_PROMO)
 
 	# PLE Grouping Mode switcher
 	def onClickPLEGrpUpgrade(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEGroupMode(self.PLE_GRP_UPGRADE)
 			return 1
+		else:
+			return self.handleHoverPLEGrpMode(inputClass, "UPGRADE", self.PLE_GRP_UPGRADE)
 
 
 	# PLE Mode Switcher functions
@@ -428,24 +502,33 @@ class CvMainInterface:
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STANDARD)
 			return 1
+		else:
+			return self.handleHoverPLEViewMode(inputClass, "STANDARD", self.PLE_MODE_STANDARD)
 				
 	# PLE Mode Switcher functions
 	def onClickPLEModeMultiline(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_MULTILINE)
 			return 1
+		else:
+			return self.handleHoverPLEViewMode(inputClass, "MULTILINE", self.PLE_MODE_MULTILINE)
 
 	# PLE Mode Switcher functions
 	def onClickPLEModeStackVert(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STACK_VERT)
 			return 1
+		else:
+			return self.handleHoverPLEViewMode(inputClass, "STACK_VERT", self.PLE_MODE_STACK_VERT)
 
 	# PLE Mode Switcher functions
 	def onClickPLEModeStackHoriz(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STACK_HORIZ)
 			return 1
+		else:
+			return self.handleHoverPLEViewMode(inputClass, "STACK_HORIZ", self.PLE_MODE_STACK_HORIZ)
+
 
 	# handles the unit promotion button inputs
 	def unitPromotion(self, inputClass):
@@ -1286,14 +1369,15 @@ class CvMainInterface:
 				if (pUnit.isHurt()):
 					return False
 			
+			pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
 			if (not self.nPLEFilter & self.nPLEFilterModeAir):
-				if (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_AIR):
+				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_AIR):
 					return False
 			elif (not self.nPLEFilter & self.nPLEFilterModeSea):
-				if (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_SEA):
+				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_SEA):
 					return False
 			elif (not self.nPLEFilter & self.nPLEFilterModeLand):
-				if (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_LAND) and (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_IMMOBILE):
+				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_LAND) and (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_IMMOBILE):
 					return False
 			
 			if (not self.nPLEFilter & self.nPLEFilterModeDom):
@@ -1787,7 +1871,7 @@ class CvMainInterface:
 	# base function to display a self sizing info pane
 	def displayInfoPane(self, szText):
 
-		self.bInfoPaneActive 	= true
+		self.bInfoPaneActive 	= True
 		self.iInfoPaneCnt  		+= 1
 		self.tLastMousePos 		= (CyInterface().getMousePos().x, CyInterface().getMousePos().y)
 
@@ -1829,7 +1913,7 @@ class CvMainInterface:
 		screen.hide(self.UNIT_INFO_TEXT)
 		screen.hide(self.UNIT_INFO_TEXT_SHADOW)
 		screen.hide(self.UNIT_INFO_PANE)
-		self.bInfoPaneActive = false
+		self.bInfoPaneActive = False
 		self.iLastInfoPaneCnt = self.iInfoPaneCnt
 
 #################### functions for a units move area #######################
@@ -2663,7 +2747,6 @@ class CvMainInterface:
 				self.hideInfoPane()
 				if self.bUnitPromoButtonsActive:
 					self.hideUnitInfoPromoButtons()
-
 ## 12monkeys - PlotList Button Enhancement  - end
 
 		return 0
