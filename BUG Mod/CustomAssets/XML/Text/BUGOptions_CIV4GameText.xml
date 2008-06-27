@@ -3325,7 +3325,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_CONFIG_SEARCH_PATHS</Tag>
 		<English>Search Paths:</English>
 		<French>Chemins de Recherche:</French>
-		<German>Erkannte Pfade:</German>
+		<German>Erkannte Verzeichnispfade:</German>
 		<Italian>Percorsi di ricerca:</Italian>
 		<Spanish>Search Paths:</Spanish>
 	</TEXT>
@@ -3333,7 +3333,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_ASSET_SEARCH_PATHS</Tag>
 		<English>Asset Search Paths:</English>
 		<French>Asset Search Paths:</French>
-		<German>Asset Search Paths:</German>
+		<German>"Assets"-Verzeichnisse:</German>
 		<Italian>Asset Search Paths:</Italian>
 		<Spanish>Asset Search Paths:</Spanish>
 	</TEXT>
@@ -3341,7 +3341,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_MOD_CONFIG</Tag>
 		<English>BUG Mod Options File:</English>
 		<French>Fichier d'Options du BUG Mod:</French>
-		<German>"BUG Mod" Optionsdatei:</German>
+		<German>"BUG Mod"-Optionsdatei:</German>
 		<Italian>File delle opzioni del BUG Mod:</Italian>
 		<Spanish>BUG Mod Options File:</Spanish>
 	</TEXT>
@@ -3349,7 +3349,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_CDA_CONFIG</Tag>
 		<English>CDA Pages File:</English>
 		<French>Fichiers des Pages CDA:</French>
-		<German>"CDA" Optionsdatei:</German>
+		<German>"CDA"-Optionsdatei:</German>
 		<Italian>File di personalizzazione del CDA:</Italian>
 		<Spanish>CDA Pages File:</Spanish>
 	</TEXT>
@@ -3357,7 +3357,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_UNITNAMING_CONFIG</Tag>
 		<English>Advanced Unit Naming Options File:</English>
 		<French>Fichier d'options Advanced Unit Naming:</French>
-		<German>"Advanced Unit Naming" Optionsdatei:</German>
+		<German>"Advanced Unit Naming"-Optionsdatei:</German>
 		<Italian>File per la Denominazione avanzata delle Unità:</Italian>
 		<Spanish>Advanced Unit Naming Options File:</Spanish>
 	</TEXT>
@@ -3365,7 +3365,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_LOG</Tag>
 		<English>Autolog File:</English>
 		<French>Fichier Autolog:</French>
-		<German>"Autolog" Protokolldatei:</German>
+		<German>"Autolog"-Protokolldatei:</German>
 		<Italian>File del Registro Automatico:</Italian>
 		<Spanish>Autolog File:</Spanish>
 	</TEXT>
