@@ -9,11 +9,11 @@
 	<!-- BUG -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
-		<English>Press [BOLD]Alt + Ctrl +O[\BOLD] to customize the BUG Mod</English>
-		<French>Poussez sur [BOLD]Alt + Ctrl +O[\BOLD] pour configurer le BUG Mod</French>
+		<English>Press [BOLD]Alt + Ctrl + O[\BOLD] to customize the BUG Mod</English>
+		<French>Poussez sur [BOLD]Alt + Ctrl + O[\BOLD] pour configurer le BUG Mod</French>
 		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
-		<Italian>Premi [BOLD]Alt + Ctrl +O[\BOLD] per personalizzare il BUG Mod</Italian>
-		<Spanish>Press [BOLD]Alt + Ctrl +O[\BOLD] to customize the BUG Mod</Spanish>
+		<Italian>Premi [BOLD]Alt + Ctrl + O[\BOLD] per personalizzare il BUG Mod</Italian>
+		<Spanish>Press [BOLD]Alt + Ctrl + O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
@@ -137,6 +137,15 @@
 		<German>Summe</German>
 		<Italian>Totale</Italian>
 		<Spanish>Total</Spanish>
+	</TEXT>
+	<!-- Unit Grouper -->
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_GROUPER_LEVEL_GROUP</Tag>
+		<English>Level %s1</English>
+		<French>Niveau %s1</French>
+		<German>Stufe %s1</German>
+		<Italian>Livello %s1</Italian>
+		<Spanish>Nivel %s1</Spanish>
 	</TEXT>
 	<!-- Military Adviser -->
 	<TEXT>
