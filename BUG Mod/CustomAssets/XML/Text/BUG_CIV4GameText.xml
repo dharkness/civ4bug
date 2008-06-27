@@ -9,11 +9,11 @@
 	<!-- BUG -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
-		<English>Press [BOLD]Alt + Ctrl + O[\BOLD] to customize the BUG Mod</English>
-		<French>Poussez sur [BOLD]Alt + Ctrl + O[\BOLD] pour configurer le BUG Mod</French>
+		<English>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</English>
+		<French>Poussez sur [BOLD]ALT + CTRL + O[\BOLD] pour configurer le BUG Mod</French>
 		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
-		<Italian>Premi [BOLD]Alt + Ctrl + O[\BOLD] per personalizzare il BUG Mod</Italian>
-		<Spanish>Press [BOLD]Alt + Ctrl + O[\BOLD] to customize the BUG Mod</Spanish>
+		<Italian>Premi [BOLD]ALT + CTRL + O[\BOLD] per personalizzare il BUG Mod</Italian>
+		<Spanish>Press [BOLDALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
