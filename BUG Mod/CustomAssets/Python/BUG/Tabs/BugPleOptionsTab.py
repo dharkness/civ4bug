@@ -57,6 +57,6 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addColorDropdown(screen, right, right, "PLE_Upgrade_Not_Possible_Color")
 		
 		self.addSpacer(screen, right, "PLE_Specialties")
-		self.addColorDropdown(screen, right, right, "PLE_Promotion_Specialties_Color")
 		self.addColorDropdown(screen, right, right, "PLE_Unit_Type_Specialties_Color")
+		self.addColorDropdown(screen, right, right, "PLE_Promotion_Specialties_Color")
  

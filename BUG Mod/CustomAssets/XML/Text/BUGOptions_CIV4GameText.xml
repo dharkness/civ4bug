@@ -52,20 +52,20 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
-		<English>Enable Reminders (Alt-M)</English>
-		<French>Activer les Rappels (Alt-M)</French>
+		<English>Enable Reminders [ALT + M]</English>
+		<French>Activer les Rappels [ALT + M]</French>
 		<German>Erinnerungen aktivieren</German>
-		<Italian>Abilita i Promemoria (Alt-M)</Italian>
-		<Spanish>Enable Reminders (Alt-M)</Spanish>
+		<Italian>Abilita i Promemoria [ALT + M]</Italian>
+		<Spanish>Enable Reminders [ALT + M]</Spanish>
 	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_HOVER</Tag>
-		<English>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</English>
-		<French>En activant, vous pourrez créer des messages avec Alt-M qui réapparaîtront un nombre de tours spécifiés plus tard, grâce au mod Reminders de eotinb.</French>
-		<German>Ermöglicht das Schreiben von Erinnerungsmeldungen (Tastenkombination [ALT-M]), die nach einer bestimmten Anzahl Runden wieder erscheinen (verwendet "eotinbs Reminders" Mod)</German>
-		<Italian>Quando è selezionato, usando Alt-M durante il gioco potrai creare messaggi che appariranno dopo un numero definito di turni (utilizzando il Reminders Mod di Eotinb).</Italian>
-		<Spanish>When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod.</Spanish>
+		<English>When checked, you can create messages using [ALT + M] that pop up in a specified number of turns using eotinb's Reminders mod.</English>
+		<French>En activant, vous pourrez créer des messages avec [ALT + M] qui réapparaîtront un nombre de tours spécifiés plus tard, grâce au mod Reminders de eotinb.</French>
+		<German>Ermöglicht das Schreiben von Erinnerungsmeldungen (Tastenkombination [ALT + M]), die nach einer bestimmten Anzahl Runden wieder erscheinen (verwendet "eotinbs Reminders" Mod)</German>
+		<Italian>Quando è selezionato, usando [ALT + M] durante il gioco potrai creare messaggi che appariranno dopo un numero definito di turni (utilizzando il Reminders Mod di Eotinb).</Italian>
+		<Spanish>When checked, you can create messages using [ALT + M] that pop up in a specified number of turns using eotinb's Reminders mod.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -684,20 +684,20 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_TEXT</Tag>
-		<English>Prefix</English>
+		<English>Custom Entry Prefix</English>
 		<French>Préfixe</French>
 		<German>Präfix</German>
 		<Italian>Prefisso</Italian>
-		<Spanish>Prefix</Spanish>
+		<Spanish>Custom Entry Prefix</Spanish>
 	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_PREFIX_HOVER</Tag>
-		<English>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</English>
-		<French>Utilisé comme préfixe avant les entrées manuelles (ALT-E) dans le log, p.ex. devant votre nom d'utilisateur.</French>
-		<German>Bestimmt das Präfix, das den Protokolleinträgen des Spielers (Tastenkombination [ALT-E]) vorangestellt wird, z.B. der Spielername</German>
-		<Italian>Questo prefisso viene immesso prima delle aggiunte manuali del giocatore (inserite mediante ALT-E) per distinguerle dagli eventi registrati automaticamente; può essere per esempio il nome o la sigla del giocatore.</Italian>
-		<Spanish>Used as a prefix before user entries in the log (use ALT-E), e.g. your nick.</Spanish>
+		<English>Used as a prefix before custom entries in the log (use [ALT + E]), e.g. your nick.</English>
+		<French>Utilisé comme préfixe avant les entrées manuelles [ALT + E] dans le log, p.ex. devant votre nom d'utilisateur.</French>
+		<German>Bestimmt das Präfix, das den Protokolleinträgen des Spielers (Tastenkombination [ALT + E]) vorangestellt wird, z.B. der Spielername</German>
+		<Italian>Questo prefisso viene immesso prima delle aggiunte manuali del giocatore (inserite mediante [ALT + E]) per distinguerle dagli eventi registrati automaticamente; può essere per esempio il nome o la sigla del giocatore.</Italian>
+		<Spanish>Used as a prefix before custom entries in the log (use [ALT + E]), e.g. your nick.</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -2465,11 +2465,11 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_TEXT</Tag>
-		<English>Unit Info Hover</English>
+		<English>Unit Info Tooltip</English>
 		<French>Infobulle d'Info d'Unité</French>
 		<German>Info-Tooltip</German>
 		<Italian>Informazioni sulle Unità</Italian>
-		<Spanish>Unit Info Hover</Spanish>
+		<Spanish>Unit Info Tooltip</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_HOVER</Tag>
@@ -2510,6 +2510,103 @@
 		<German>Bestimmt die vertikale Position des neuen Info-Tooltips für Einheiten (der Standardwert ist 160)</German>
 		<Italian>Indica la posizione orizzontale del Pannello di Informazioni sulle Unità (il valore predefinito è '160').</Italian>
 		<Spanish>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_NAME_COLOR_TEXT</Tag>
+		<English>Unit Name</English>
+		<French>Unit Name</French>
+		<German>Unit Name</German>
+		<Italian>Unit Name</Italian>
+		<Spanish>Unit Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_NAME_COLOR_HOVER</Tag>
+		<English>Color of the unit's name.</English>
+		<French>Color of the unit's name.</French>
+		<German>Color of the unit's name.</German>
+		<Italian>Color of the unit's name.</Italian>
+		<Spanish>Color of the unit's name.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_POSSIBLE_COLOR_TEXT</Tag>
+		<English>Can Upgrade</English>
+		<French>Can Upgrade</French>
+		<German>Can Upgrade</German>
+		<Italian>Can Upgrade</Italian>
+		<Spanish>Can Upgrade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_POSSIBLE_COLOR_HOVER</Tag>
+		<English>Color of the upgrade cost when you can afford to upgrade the unit.</English>
+		<French>Color of the upgrade cost when you can afford to upgrade the unit.</French>
+		<German>Color of the upgrade cost when you can afford to upgrade the unit.</German>
+		<Italian>Color of the upgrade cost when you can afford to upgrade the unit.</Italian>
+		<Spanish>Color of the upgrade cost when you can afford to upgrade the unit.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_NOT_POSSIBLE_COLOR_TEXT</Tag>
+		<English>Cannot Upgrade</English>
+		<French>Cannot Upgrade</French>
+		<German>Cannot Upgrade</German>
+		<Italian>Cannot Upgrade</Italian>
+		<Spanish>Cannot Upgrade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_NOT_POSSIBLE_COLOR_HOVER</Tag>
+		<English>Color of the upgrade cost when you cannot afford to upgrade the unit.</English>
+		<French>Color of the upgrade cost when you cannot afford to upgrade the unit.</French>
+		<German>Color of the upgrade cost when you cannot afford to upgrade the unit.</German>
+		<Italian>Color of the upgrade cost when you cannot afford to upgrade the unit.</Italian>
+		<Spanish>Color of the upgrade cost when you cannot afford to upgrade the unit.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_TYPE_SPECIALTIES_COLOR_TEXT</Tag>
+		<English>Unit Type Specialties</English>
+		<French>Unit Type Specialties</French>
+		<German>Unit Type Specialties</German>
+		<Italian>Unit Type Specialties</Italian>
+		<Spanish>Unit Type Specialties</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_TYPE_SPECIALTIES_COLOR_HOVER</Tag>
+		<English>Color of the specialties a unit has due to its type.</English>
+		<French>Color of the specialties a unit has due to its type.</French>
+		<German>Color of the specialties a unit has due to its type.</German>
+		<Italian>Color of the specialties a unit has due to its type.</Italian>
+		<Spanish>Color of the specialties a unit has due to its type.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_SPECIALTIES_COLOR_TEXT</Tag>
+		<English>Promotion Specialties</English>
+		<French>Promotion Specialties</French>
+		<German>Promotion Specialties</German>
+		<Italian>Promotion Specialties</Italian>
+		<Spanish>Promotion Specialties</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_SPECIALTIES_COLOR_HOVER</Tag>
+		<English>Color of the specialties a unit has due to its promotions.</English>
+		<French>Color of the specialties a unit has due to its promotions.</French>
+		<German>Color of the specialties a unit has due to its promotions.</German>
+		<Italian>Color of the specialties a unit has due to its promotions.</Italian>
+		<Spanish>Color of the specialties a unit has due to its promotions.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MOVE_HIGHLIGHTER_TEXT</Tag>
+		<English>Move Highlighter</English>
+		<French>Move Highlighter</French>
+		<German>Move Highlighter</German>
+		<Italian>Move Highlighter</Italian>
+		<Spanish>Move Highlighter</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE_MOVE_HIGHLIGHTER_HOVER</Tag>
+		<English>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</English>
+		<French>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</French>
+		<German>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</German>
+		<Italian>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</Italian>
+		<Spanish>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</Spanish>
 	</TEXT>
 
 	<!-- Main Interface -->
@@ -2716,11 +2813,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHSCREEN_WIDE_HOVER</Tag>
-		<English>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</English>
+		<English>When checked, the width of the tech screen will be linked to your screen resolution (requires restart).</English>
 		<French>En activant, la largeur de l'écran de technologie dépendra de votre résolution d'écran (requièrt un redémarrage).</French>
 		<German>Koppelt die Breite des Technologiebaums an die Bildschirmauflösung (erfordert Neustart)</German>
 		<Italian>Quando è selezionato, la larghezza della schermata del Consigliere Tecnologico è legata alla risoluzione dello schermo (è richiesto un riavvio perchè il cambiamento abbia effetto).</Italian>
-		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires reload to take effect).</Spanish>
+		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires restart).</Spanish>
 	</TEXT>
 
 	<TEXT>
@@ -3062,51 +3159,51 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_DOMESTIC_ADVISOR</Tag>
-		<English>Domestic (F1):</English>
-		<French>Domestique (F1):</French>
+		<English>Domestic [F1]:</English>
+		<French>Domestique [F1]:</French>
 		<German>Inland [F1]:</German>
-		<Italian>Interno (F1):</Italian>
-		<Spanish>Domestic (F1):</Spanish>
+		<Italian>Interno [F1]:</Italian>
+		<Spanish>Domestic [F1]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_FOREIGN_ADVISOR</Tag>
-		<English>Foreign (F4):</English>
-		<French>Etranger (F4):</French>
+		<English>Foreign [F4]:</English>
+		<French>Etranger [F4]:</French>
 		<German>Ausland [F4]:</German>
-		<Italian>Estero (F4):</Italian>
-		<Spanish>Foreign (F4):</Spanish>
+		<Italian>Estero [F4]:</Italian>
+		<Spanish>Foreign [F4]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MILITARY_ADVISOR</Tag>
-		<English>Military (F5):</English>
-		<French>Militaire (F5):</French>
+		<English>Military [F5]:</English>
+		<French>Militaire [F5]:</French>
 		<German>Militär [F5]:</German>
-		<Italian>Militare (F5):</Italian>
-		<Spanish>Military (F5):</Spanish>
+		<Italian>Militare [F5]:</Italian>
+		<Spanish>Military [F5]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHNOLOGY_ADVISOR</Tag>
-		<English>Technology (F6):</English>
-		<French>Technologie (F6):</French>
+		<English>Technology [F6]:</English>
+		<French>Technologie [F6]:</French>
 		<German>Technologiebaum [F6]:</German>
-		<Italian>Tecnologico (F6):</Italian>
-		<Spanish>Technology (F6):</Spanish>
+		<Italian>Tecnologico [F6]:</Italian>
+		<Spanish>Technology [F6]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SEVOPEDIA</Tag>
-		<English>Sevopedia (F12):</English>
-		<French>Sevopedia (F12):</French>
+		<English>Sevopedia [F12]:</English>
+		<French>Sevopedia [F12]:</French>
 		<German>Sevopedia [F12]:</German>
-		<Italian>Sevopedia (F12):</Italian>
-		<Spanish>Sevopedia (F12):</Spanish>
+		<Italian>Sevopedia [F12]:</Italian>
+		<Spanish>Sevopedia [F12]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_SCREEN</Tag>
-		<English>Espionage (Ctrl-E):</English>
-		<French>Espionnage (Ctrl-E):</French>
+		<English>Espionage [CTRL + E]:</English>
+		<French>Espionnage [CTRL + E]:</French>
 		<German>Spionage [STRG-E]:</German>
-		<Italian>Spionaggio (Ctrl-E):</Italian>
-		<Spanish>Espionage (Ctrl-E):</Spanish>
+		<Italian>Spionaggio [CTRL + E]:</Italian>
+		<Spanish>Espionage [CTRL + E]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ESPIONAGE_RATIO</Tag>

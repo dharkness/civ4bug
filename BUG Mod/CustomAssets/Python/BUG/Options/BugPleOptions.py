@@ -126,7 +126,7 @@ class BugPleOptions(OptionsFacade):
 		# Unit Info Hover Pane
 		self.addOption(Option("PLE_Info_Pane",
 							  "PlotList", "Unit Info Hover", True,
-							  "Unit Info Hover",
+							  "Unit Info Tooltip",
 							  "Replaces the default Unit Info displayed when you hover over a unit.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Info_Pane_X",
@@ -185,7 +185,7 @@ class BugPleOptions(OptionsFacade):
 		self.addOption(Option("PLE_Move_Highlighter",
 							  "PlotList", "Move Highlighter", True,
 							  "Move Highlighter",
-							  "Highlights the moves a unit can make when you hover the mouse over the units icon, while holding the Alt-key.",
+							  "Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].",
 							  None))
 		
 		self.addOption(Option("PLE_MH_Color_Impassable_Terrain",
