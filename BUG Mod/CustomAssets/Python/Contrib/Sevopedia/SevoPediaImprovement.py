@@ -159,7 +159,8 @@ class SevoPediaImprovement:
 				iYieldChange = info.getImprovementBonusYield(j, k)
 				if (iYieldChange != 0):
 					bEffect = True
-					iYieldChange += info.getYieldChange(k)
+					# Uncomment for 3.13 behavior. Note that Uranium shows incorrect hammer yield (should be +2)
+					#iYieldChange += info.getYieldChange(k)
 					if (bFirst):
 						bFirst = False
 					else:
