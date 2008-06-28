@@ -2366,7 +2366,7 @@
 		<Spanish>Darkens the dot in the upper-left corner of units that are wounded.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_PLE_GREAT_GENERAL_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_PLE_LEAD_BY_GG_INDICATOR_TEXT</Tag>
 		<English>Great General</English>
 		<French>Général Illustre</French>
 		<German>Großer General</German>
@@ -2374,7 +2374,7 @@
 		<Spanish>Great General</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_PLE_GREAT_GENERAL_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_PLE_LEAD_BY_GG_INDICATOR_HOVER</Tag>
 		<English>Places a star on units that are lead by a Great General.</English>
 		<French>Une étoile dorée indiquera une unité qui contient un Général Illustre.</French>
 		<German>Fügt den Einheitensymbolen von Einheiten, die von Großen Generälen geführt werden, einen kleinen goldenen Stern hinzu</German>
