@@ -16,7 +16,7 @@
 		<English>This is the current mode</English>
 		<French>This is the current mode</French>
 		<German>Dies ist der derzeitge Anzeigemodus</German>
-		<Italian>This is the current mode</Italian>
+		<Italian>Questa è la modalità corrente</Italian>
 		<Spanish>This is the current mode</Spanish>
 	</TEXT>
 	
@@ -27,7 +27,7 @@
 		<English>View unit buttons in a single row</English>
 		<French>Voir les unités de manière standard</French>
 		<German>Einheitensymbole einzeilig anordnen</German>
-		<Italian>Visualizza i bottoni delle Unità nel formato standard.</Italian>
+		<Italian>Visualizza i bottoni delle Unità nel formato standard (a riga singola)</Italian>
 		<Spanish>View unit buttons in a single row</Spanish>
 	</TEXT>
 	<TEXT>
@@ -35,7 +35,7 @@
 		<English>View unit buttons in multiple rows</English>
 		<French>Voir les unités en format multiligne</French>
 		<German>Einheitensymbole mehrzeilig anordnen</German>
-		<Italian>Visualizza i bottoni delle Unità nel formato multilinea.</Italian>
+		<Italian>Visualizza i bottoni delle Unità nel formato multilinea</Italian>
 		<Spanish>View unit buttons in multiple rows</Spanish>
 	</TEXT>
 	<TEXT>
@@ -43,7 +43,7 @@
 		<English>View unit buttons grouped into columns</English>
 		<French>Voir les unités triées verticalement</French>
 		<German>Einheitensymbole in Spalten gruppieren</German>
-		<Italian>Visualizza i bottoni delle Unità ordinati verticalmente.</Italian>
+		<Italian>Visualizza i bottoni delle Unità in raggruppati verticalmente</Italian>
 		<Spanish>View unit buttons grouped into columns</Spanish>
 	</TEXT>
 	<TEXT>
@@ -51,7 +51,7 @@
 		<English>View unit buttons grouped into rows</English>
 		<French>Voir les unités triées horizontalement</French>
 		<German>Einheitensymbole in Zeilen gruppieren</German>
-		<Italian>Visualizza i bottoni delle Unità ordinati orizzontalmente.</Italian>
+		<Italian>Visualizza i bottoni delle Unità in raggruppati orizzontalmente</Italian>
 		<Spanish>View unit buttons grouped into rows</Spanish>
 	</TEXT>
 	
@@ -62,7 +62,7 @@
 		<English>Hide wounded units</English>
 		<French>Ne pas afficher les unités blessées</French>
 		<German>Verwundete Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità ferite.</Italian>
+		<Italian>Non mostrare le Unità ferite</Italian>
 		<Spanish>Hide wounded units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -70,7 +70,7 @@
 		<English>Show wounded units</English>
 		<French>Show wounded units</French>
 		<German>Verwundete Einheiten einblenden</German>
-		<Italian>Show wounded units</Italian>
+		<Italian>Mostra le Unità ferite</Italian>
 		<Spanish>Show wounded units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -78,7 +78,7 @@
 		<English>Show only wounded units</English>
 		<French>Show only wounded units</French>
 		<German>Nur verwundete Einheiten anzeigen</German>
-		<Italian>Show only wounded units</Italian>
+		<Italian>Mostra solo le Unità ferite</Italian>
 		<Spanish>Show only wounded units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -86,7 +86,7 @@
 		<English>Show wounded and healthy units</English>
 		<French>Show wounded and healthy units</French>
 		<German>Verwundete und unverwundete Einheiten anzeigen</German>
-		<Italian>Show wounded and healthy units</Italian>
+		<Italian>Mostra le Unità ferite e le Unità sane</Italian>
 		<Spanish>Show wounded and healthy units</Spanish>
 	</TEXT>
 	
@@ -95,7 +95,7 @@
 		<English>Hide healthy units</English>
 		<French>Ne pas afficher les unités saines</French>
 		<German>Unverwundete Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità sane.</Italian>
+		<Italian>Non mostrare le Unità sane</Italian>
 		<Spanish>Hide healthy units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -103,7 +103,7 @@
 		<English>Show healthy units</English>
 		<French>Show healthy units</French>
 		<German>Unverwundete Einheiten einblenden</German>
-		<Italian>Show healthy units</Italian>
+		<Italian>Mostra le Unità sane</Italian>
 		<Spanish>Show healthy units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -111,7 +111,7 @@
 		<English>Show only healthy units</English>
 		<French>Show only healthy units</French>
 		<German>Nur unverwundete Einheiten anzeigen</German>
-		<Italian>Show only healthy units</Italian>
+		<Italian>Mostra solo le Unità sane</Italian>
 		<Spanish>Show only healthy units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -119,7 +119,7 @@
 		<English>Show wounded and healthy units</English>
 		<French>Show wounded and healthy units</French>
 		<German>Verwundete und unverwundete Einheiten anzeigen</German>
-		<Italian>Show wounded and healthy units</Italian>
+		<Italian>Mostra le Unità ferite e le Unità sane</Italian>
 		<Spanish>Show wounded and healthy units</Spanish>
 	</TEXT>
 	
@@ -130,7 +130,7 @@
 		<English>Hide air units</English>
 		<French>Ne pas afficher les unités aériennes</French>
 		<German>Luft-Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità aeree.</Italian>
+		<Italian>Non mostrare le Unità aeree</Italian>
 		<Spanish>Hide air units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -138,7 +138,7 @@
 		<English>Show air units</English>
 		<French>Show air units</French>
 		<German>Luft-Einheiten einblenden</German>
-		<Italian>Show air units</Italian>
+		<Italian>Mostra le Unità aeree</Italian>
 		<Spanish>Show air units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -146,7 +146,7 @@
 		<English>Show only air units</English>
 		<French>Show only air units</French>
 		<German>Nur Luft-Einheiten anzeigen</German>
-		<Italian>Show only air units</Italian>
+		<Italian>Mostra solo le Unità aeree</Italian>
 		<Spanish>Show only air units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -154,7 +154,7 @@
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
 		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
-		<Italian>Show land, naval and air units</Italian>
+		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
 	
@@ -163,7 +163,7 @@
 		<English>Hide naval units</English>
 		<French>Ne pas afficher les unités navales</French>
 		<German>Marine-Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità navali.</Italian>
+		<Italian>Non mostrare le Unità navali</Italian>
 		<Spanish>Hide naval units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -171,7 +171,7 @@
 		<English>Show naval units</English>
 		<French>Show naval units</French>
 		<German>Marine-Einheiten einblenden</German>
-		<Italian>Show naval units</Italian>
+		<Italian>Mostra le Unità navali</Italian>
 		<Spanish>Show naval units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -179,7 +179,7 @@
 		<English>Show only naval units</English>
 		<French>Show only naval units</French>
 		<German>Nur Marine-Einheiten anzeigen</German>
-		<Italian>Show only naval units</Italian>
+		<Italian>Mostra solo le Unità navali</Italian>
 		<Spanish>Show only naval units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -187,7 +187,7 @@
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
 		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
-		<Italian>Show land, naval and air units</Italian>
+		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
 	
@@ -196,7 +196,7 @@
 		<English>Hide land units</English>
 		<French>Ne pas afficher les unités terrestres</French>
 		<German>Land-Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità terrestri.</Italian>
+		<Italian>Non mostrare le Unità terrestri</Italian>
 		<Spanish>Hide land units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -204,7 +204,7 @@
 		<English>Show land units</English>
 		<French>Show land units</French>
 		<German>Land-Einheiten einblenden</German>
-		<Italian>Show land units</Italian>
+		<Italian>Mostra le Unità terrestri</Italian>
 		<Spanish>Show land units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -212,7 +212,7 @@
 		<English>Show only land units</English>
 		<French>Show only land units</French>
 		<German>Nur Land-Einheiten anzeigen</German>
-		<Italian>Show only land units</Italian>
+		<Italian>Mostra solo le Unità terrestri</Italian>
 		<Spanish>Show only land units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -220,7 +220,7 @@
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
 		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
-		<Italian>Show land, naval and air units</Italian>
+		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
 	
@@ -231,7 +231,7 @@
 		<English>Hide civilian units</English>
 		<French>Ne pas afficher les unités domestiques</French>
 		<German>Zivile Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità non militari.</Italian>
+		<Italian>Non mostrare le Unità civili</Italian>
 		<Spanish>Hide civilian units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -239,7 +239,7 @@
 		<English>Show civilian units</English>
 		<French>Show civilian units</French>
 		<German>Zivile Einheiten einblenden</German>
-		<Italian>Show civilian units</Italian>
+		<Italian>Mostra le Unità civili</Italian>
 		<Spanish>Show civilian units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -247,7 +247,7 @@
 		<English>Show only civilian units</English>
 		<French>Show only civilian units</French>
 		<German>Nur zivile Einheiten anzeigen</German>
-		<Italian>Show only civilian units</Italian>
+		<Italian>Mostra solo le Unità civili</Italian>
 		<Spanish>Show only civilian units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -255,7 +255,7 @@
 		<English>Show civilian and military units</English>
 		<French>Show civilian and military units</French>
 		<German>Zivile und militärische Einheiten anzeigen</German>
-		<Italian>Show civilian and military units</Italian>
+		<Italian>Mostra le Unità civili e militari</Italian>
 		<Spanish>Show civilian and military units</Spanish>
 	</TEXT>
 	
@@ -264,7 +264,7 @@
 		<English>Hide military units</English>
 		<French>Ne pas afficher les unités militaires</French>
 		<German>Militärische Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità militari.</Italian>
+		<Italian>Non mostrare le Unità militari</Italian>
 		<Spanish>Hide military units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -272,7 +272,7 @@
 		<English>Show military units</English>
 		<French>Show military units</French>
 		<German>Militärische Einheiten einblenden</German>
-		<Italian>Show military units</Italian>
+		<Italian>Mostra le Unità militari</Italian>
 		<Spanish>Show military units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -280,7 +280,7 @@
 		<English>Show only military units</English>
 		<French>Show only military units</French>
 		<German>Nur militärische Einheiten anzeigen</German>
-		<Italian>Show only military units</Italian>
+		<Italian>Mostra solo le Unità militari</Italian>
 		<Spanish>Show only military units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -288,7 +288,7 @@
 		<English>Show civilian and military units</English>
 		<French>Show civilian and military units</French>
 		<German>Zivile und militärische Einheiten anzeigen</German>
-		<Italian>Show civilian and military units</Italian>
+		<Italian>Mostra le Unità civili e militari</Italian>
 		<Spanish>Show civilian and military units</Spanish>
 	</TEXT>
 	
@@ -299,7 +299,7 @@
 		<English>Hide domestic units</English>
 		<French>Ne pas afficher les unités que vous possédez</French>
 		<German>Eigene Einheiten ausblenden</German>
-		<Italian>Non mostrare le tue Unità.</Italian>
+		<Italian>Non mostrare le proprie Unità</Italian>
 		<Spanish>Hide domestic units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -307,7 +307,7 @@
 		<English>Show domestic units</English>
 		<French>Show domestic units</French>
 		<German>Eigene Einheiten einblenden</German>
-		<Italian>Show domestic units</Italian>
+		<Italian>Mostra le proprie Unità</Italian>
 		<Spanish>Show domestic units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -315,7 +315,7 @@
 		<English>Show only domestic units</English>
 		<French>Show only domestic units</French>
 		<German>Nur eigene Einheiten anzeigen</German>
-		<Italian>Show only domestic units</Italian>
+		<Italian>Mostra solo le proprie Unità</Italian>
 		<Spanish>Show only domestic units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -323,7 +323,7 @@
 		<English>Show foreign and domestic units</English>
 		<French>Show foreign and domestic units</French>
 		<German>Eigene und gegnerische Einheiten anzeigen</German>
-		<Italian>Show foreign and domestic units</Italian>
+		<Italian>Mostra le proprie Unità e quelle altrui</Italian>
 		<Spanish>Show foreign and domestic units</Spanish>
 	</TEXT>
 	
@@ -332,7 +332,7 @@
 		<English>Hide foreign units</English>
 		<French>Ne pas afficher les unités qui ne vous appartiennent pas</French>
 		<German>Gegnerische Einheiten ausblenden</German>
-		<Italian>Non mostrare le Unità altrui.</Italian>
+		<Italian>Non mostrare le Unità altrui</Italian>
 		<Spanish>Hide foreign units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -340,7 +340,7 @@
 		<English>Show foreign units</English>
 		<French>Show foreign units</French>
 		<German>Gegnerische Einheiten einblenden</German>
-		<Italian>Show foreign units</Italian>
+		<Italian>Mostra le Unità altrui</Italian>
 		<Spanish>Show foreign units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -348,7 +348,7 @@
 		<English>Show only foreign units</English>
 		<French>Show only foreign units</French>
 		<German>Nur gegnerische Einheiten anzeigen</German>
-		<Italian>Show only foreign units</Italian>
+		<Italian>Mostra solo le Unità altrui</Italian>
 		<Spanish>Show only foreign units</Spanish>
 	</TEXT>
 	<TEXT>
@@ -356,7 +356,7 @@
 		<English>Show foreign and domestic units</English>
 		<French>Show foreign and domestic units</French>
 		<German>Eigene und gegnerische Einheiten anzeigen</German>
-		<Italian>Show foreign and domestic units</Italian>
+		<Italian>Mostra le proprie Unità e quelle altrui</Italian>
 		<Spanish>Show foreign and domestic units</Spanish>
 	</TEXT>
 	
@@ -367,7 +367,7 @@
 		<English>Group units by unit type for Vertical/Horizontal Groups view mode</English>
 		<French>Sélectionner les unités par types d'unité</French>
 		<German>Einheiten nach Typen zusammenfassen (bei Anzeige der Einheitensymbole in Spalten/Zeilen)</German>
-		<Italian>Seleziona le Unità per tipo.</Italian>
+		<Italian>Raggruppa le Unità per tipo (per la visualizzazione a gruppi verticali o orizzontali)</Italian>
 		<Spanish>Group units by unit type for Vertical/Horizontal Groups view mode</Spanish>
 	</TEXT>
 	<TEXT>
@@ -375,7 +375,7 @@
 		<English>Group units by selection group for Vertical/Horizontal Groups view mode</English>
 		<French>Sélectionner les unités par groupe</French>
 		<German>Einheiten nach Gruppen zusammenfassen (bei Anzeige der Einheitensymbole in Spalten/Zeilen)</German>
-		<Italian>Seleziona le Unità per gruppo.</Italian>
+		<Italian>Raggruppa le Unità per gruppo di selezione (per la visualizzazione a gruppi verticali o orizzontali)</Italian>
 		<Spanish>Group units by selection group for Vertical/Horizontal Groups view mode</Spanish>
 	</TEXT>
 	
@@ -386,7 +386,7 @@
 		<English>View units available for promotion along with the promotions they may receive</English>
 		<French>Sélectionner les unités en attente de promotion</French>
 		<German>Beförderbare Einheiten und die jeweils verfügbaren Beförderungen anzeigen</German>
-		<Italian>Seleziona le Unità con possibilità di promozione.</Italian>
+		<Italian>Visualizza solo le Unità con possibilità di promozione (e le promozioni che possono ricevere).</Italian>
 		<Spanish>View units available for promotion along with the promotions they may receive</Spanish>
 	</TEXT>
 	<TEXT>
@@ -394,7 +394,7 @@
 		<English>View units available for upgrade along with the units to which they may advance</English>
 		<French>Sélectionner les unités pouvant être améliorées</French>
 		<German>Modernisierbare Einheiten und die jeweils verfügbaren Einheiten, zu denen sie modernisiert werden können, anzeigen</German>
-		<Italian>Seleziona le Unità con possibilità di avanzamento.</Italian>
+		<Italian>Visualizza solo le Unità con possibilità di avanzamento (e le Unità a cui possono avanzare).</Italian>
 		<Spanish>View units available for upgrade along with the units to which they may advance</Spanish>
 	</TEXT>
 </Civ4GameText>

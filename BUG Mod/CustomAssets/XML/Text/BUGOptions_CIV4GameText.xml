@@ -2183,7 +2183,7 @@
 		<English>Show Mode/Filter Buttons</English>
 		<French>Show Mode/Filter Buttons</French>
 		<German>Filterschaltflächen</German>
-		<Italian>Show Mode/Filter Buttons</Italian>
+		<Italian>Mostra i pulsanti per i raggruppamenti ed i filtri</Italian>
 		<Spanish>Show Mode/Filter Buttons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2191,7 +2191,7 @@
 		<English>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</English>
 		<French>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</French>
 		<German>Zeigt unter der Einheitenliste Schaltflächen für die Veränderung der Listenanzeige, die Gruppierung von Einheiten und die Einheitenfilter an</German>
-		<Italian>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Italian>
+		<Italian>Quando è selezionato, mostra al di sopra dei pulsanti di azione i pulsanti per modificare i raggruppamenti ed i filtri.</Italian>
 		<Spanish>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2199,7 +2199,7 @@
 		<English>Filter Behavior</English>
 		<French>Filter Behavior</French>
 		<German>Filterfunktion</German>
-		<Italian>Filter Behavior</Italian>
+		<Italian>Funzionamento dei filtri</Italian>
 		<Spanish>Filter Behavior</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2207,7 +2207,7 @@
 		<English>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</English>
 		<French>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</French>
 		<German>Bestimmt, wie die Schaltflächen der Einheitenfilter funktionieren:[NEWLINE]- PLE: Ausgewählte Filter blenden übereinstimmende Einheiten aus und verwandte Filter funktionieren unabhängig voneinander (d.h. es ist möglich, sowohl den Filter für verwundete als auch für unverwundete Einheiten auszuwählen, so dass in der Einheitenliste nichts angezeigt wird)[NEWLINE]- BUG: Ausgewählte Filter blenden nicht-übereinstimmende Einheiten aus und verwandte Filter schließen sich gegenseitig aus (d.h. bei Auswahl des Filters für verwundete Einheiten wird jener für unverwundete Einheiten abgewählt, bei Auswahl des Filters für Luft-Einheiten werden jene für Land- und Marine-Einheiten abgewählt)</German>
-		<Italian>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Italian>
+		<Italian>Determina il comportamento dei pulsanti di filtro.[NEWLINE]- PLE: I pulsanti selezionati nascondono le icone delle Unità corrispondenti al filtro in questione; i filtri corrispondenti funzionano indipendentemente (per esempio è possibile selezionare sia il filtro per le unità ferite che quello per le unità sane, il che fornisce ovviamente una selezione vuota)[NEWLINE]- BUG: I pulsanti selezionati nascondono le icone delle Unità NON corrispondenti al filtro in questione; ; i filtri corrispondenti funzionano in modo mutuamente esclusivo (la selezione del filtro per le unità ferite comporta la deselezione automatica di quello per le unità sane)</Italian>
 		<Spanish>Sets how the filter buttons behave.[NEWLINE]- PLE: Selected filters remove the units they match from view, and related filters operate independently from each other (you can select both wounded and healthy, resulting in an empty view)[NEWLINE]- BUG: Selected filters remove non-matching units from view, and related filters are exclusive (selecting wounded deselects healthy, selecting air deselects both land and sea)</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2500,7 +2500,7 @@
 		<English>Vertical Position</English>
 		<French>Position Verticale</French>
 		<German>Vertikale Position</German>
-		<Italian>Posizione  verticale</Italian>
+		<Italian>Posizione verticale</Italian>
 		<Spanish>Vertical Position</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2516,7 +2516,7 @@
 		<English>Unit Name</English>
 		<French>Unit Name</French>
 		<German>Unit Name</German>
-		<Italian>Unit Name</Italian>
+		<Italian>Nome dell'Unità</Italian>
 		<Spanish>Unit Name</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2524,7 +2524,7 @@
 		<English>Color of the unit's name.</English>
 		<French>Color of the unit's name.</French>
 		<German>Color of the unit's name.</German>
-		<Italian>Color of the unit's name.</Italian>
+		<Italian>Colore del nome dell'Unità.</Italian>
 		<Spanish>Color of the unit's name.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2532,7 +2532,7 @@
 		<English>Can Upgrade</English>
 		<French>Can Upgrade</French>
 		<German>Can Upgrade</German>
-		<Italian>Can Upgrade</Italian>
+		<Italian>Può essere migliorata</Italian>
 		<Spanish>Can Upgrade</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2540,7 +2540,7 @@
 		<English>Color of the upgrade cost when you can afford to upgrade the unit.</English>
 		<French>Color of the upgrade cost when you can afford to upgrade the unit.</French>
 		<German>Color of the upgrade cost when you can afford to upgrade the unit.</German>
-		<Italian>Color of the upgrade cost when you can afford to upgrade the unit.</Italian>
+		<Italian>Colore del costo di avanzamento quando ce lo si può permettere.</Italian>
 		<Spanish>Color of the upgrade cost when you can afford to upgrade the unit.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2548,7 +2548,7 @@
 		<English>Cannot Upgrade</English>
 		<French>Cannot Upgrade</French>
 		<German>Cannot Upgrade</German>
-		<Italian>Cannot Upgrade</Italian>
+		<Italian>Non può essere migliorata</Italian>
 		<Spanish>Cannot Upgrade</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2556,7 +2556,7 @@
 		<English>Color of the upgrade cost when you cannot afford to upgrade the unit.</English>
 		<French>Color of the upgrade cost when you cannot afford to upgrade the unit.</French>
 		<German>Color of the upgrade cost when you cannot afford to upgrade the unit.</German>
-		<Italian>Color of the upgrade cost when you cannot afford to upgrade the unit.</Italian>
+		<Italian>Colore del costo di avanzamento quando non ce lo si può permettere.</Italian>
 		<Spanish>Color of the upgrade cost when you cannot afford to upgrade the unit.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2564,7 +2564,7 @@
 		<English>Unit Type Specialties</English>
 		<French>Unit Type Specialties</French>
 		<German>Unit Type Specialties</German>
-		<Italian>Unit Type Specialties</Italian>
+		<Italian>Caratteristiche dovute al Tipo</Italian>
 		<Spanish>Unit Type Specialties</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2572,7 +2572,7 @@
 		<English>Color of the specialties a unit has due to its type.</English>
 		<French>Color of the specialties a unit has due to its type.</French>
 		<German>Color of the specialties a unit has due to its type.</German>
-		<Italian>Color of the specialties a unit has due to its type.</Italian>
+		<Italian>Colore delle caratteristiche di una unità dovute al suo Tipo.</Italian>
 		<Spanish>Color of the specialties a unit has due to its type.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2580,7 +2580,7 @@
 		<English>Promotion Specialties</English>
 		<French>Promotion Specialties</French>
 		<German>Promotion Specialties</German>
-		<Italian>Promotion Specialties</Italian>
+		<Italian>Caratteristiche dovute alle Promozioni</Italian>
 		<Spanish>Promotion Specialties</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2588,7 +2588,7 @@
 		<English>Color of the specialties a unit has due to its promotions.</English>
 		<French>Color of the specialties a unit has due to its promotions.</French>
 		<German>Color of the specialties a unit has due to its promotions.</German>
-		<Italian>Color of the specialties a unit has due to its promotions.</Italian>
+		<Italian>Colore delle caratteristiche di una unità dovute alle sue Promozioni.</Italian>
 		<Spanish>Color of the specialties a unit has due to its promotions.</Spanish>
 	</TEXT>
 	
@@ -2597,7 +2597,7 @@
 		<English>Move Highlighter</English>
 		<French>Move Highlighter</French>
 		<German>Move Highlighter</German>
-		<Italian>Move Highlighter</Italian>
+		<Italian>Visualizzatore di movimento</Italian>
 		<Spanish>Move Highlighter</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2605,7 +2605,7 @@
 		<English>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</English>
 		<French>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</French>
 		<German>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</German>
-		<Italian>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</Italian>
+		<Italian>Visualizza il movmento disponibile per una Unità quando premete il tasto [ALT] e posizionate il mouse sull'icona di tale Unità.</Italian>
 		<Spanish>Highlights the moves a unit can make when you hover the mouse over the units icon while holding [ALT].</Spanish>
 	</TEXT>
 
@@ -3431,7 +3431,7 @@
 		<English>Asset Search Paths:</English>
 		<French>Asset Search Paths:</French>
 		<German>"Assets"-Verzeichnisse:</German>
-		<Italian>Asset Search Paths:</Italian>
+		<Italian>Percorsi di ricerca di 'Assets':</Italian>
 		<Spanish>Asset Search Paths:</Spanish>
 	</TEXT>
 	<TEXT>
