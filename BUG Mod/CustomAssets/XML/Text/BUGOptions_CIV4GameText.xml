@@ -2465,11 +2465,11 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_TEXT</Tag>
-		<English>Unit Info Tooltip</English>
-		<French>Infobulle d'Info d'Unité</French>
-		<German>Info-Tooltip</German>
-		<Italian>Informazioni sulle Unità</Italian>
-		<Spanish>Unit Info Tooltip</Spanish>
+		<English>Enabled</English>
+		<French>Activé</French>
+		<German>Aktivieren</German>
+		<Italian>Attivato</Italian>
+		<Spanish>Enabled</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_INFO_PANE_HOVER</Tag>
@@ -2529,11 +2529,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_POSSIBLE_COLOR_TEXT</Tag>
-		<English>Can Upgrade</English>
-		<French>Can Upgrade</French>
-		<German>Can Upgrade</German>
-		<Italian>Può essere migliorata</Italian>
-		<Spanish>Can Upgrade</Spanish>
+		<English>Can Afford</English>
+		<French>Can Afford</French>
+		<German>Kann sich leisten</German>
+		<Italian>Può permettersi</Italian>
+		<Spanish>Can Afford</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_POSSIBLE_COLOR_HOVER</Tag>
@@ -2545,11 +2545,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_NOT_POSSIBLE_COLOR_TEXT</Tag>
-		<English>Cannot Upgrade</English>
-		<French>Cannot Upgrade</French>
-		<German>Cannot Upgrade</German>
-		<Italian>Non può essere migliorata</Italian>
-		<Spanish>Cannot Upgrade</Spanish>
+		<English>Cannot Afford</English>
+		<French>Cannot Afford</French>
+		<German>Kann nicht sich leisten</German>
+		<Italian>Non può permettersi</Italian>
+		<Spanish>Cannot Afford</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UPGRADE_NOT_POSSIBLE_COLOR_HOVER</Tag>
@@ -3301,6 +3301,30 @@
 		<German>Zusätzliche Anzeigen:</German>
 		<Italian>Indicatori:</Italian>
 		<Spanish>Indicators:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PLE_UNIT_INFO_TOOLTIP</Tag>
+		<English>Unit Info Tooltip:</English>
+		<French>Infobulle d'Info d'Unité:</French>
+		<German>Info-Tooltip:</German>
+		<Italian>Informazioni sulle Unità:</Italian>
+		<Spanish>Unit Info Tooltip:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PLE_UPGRADE_COST</Tag>
+		<English>Upgrade Cost:</English>
+		<French>Upgrade Cost:</French>
+		<German>Upgrade Cost:</German>
+		<Italian>Upgrade Cost:</Italian>
+		<Spanish>Upgrade Cost:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PLE_SPECIALTIES</Tag>
+		<English>Unit Specialties:</English>
+		<French>Unit Specialties:</French>
+		<German>Unit Specialties:</German>
+		<Italian>Unit Specialties:</Italian>
+		<Spanish>Unit Specialties:</Spanish>
 	</TEXT>
 
 	<!-- Alerts Tab -->

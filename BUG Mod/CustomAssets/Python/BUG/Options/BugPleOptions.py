@@ -126,8 +126,8 @@ class BugPleOptions(OptionsFacade):
 		# Unit Info Hover Pane
 		self.addOption(Option("PLE_Info_Pane",
 							  "PlotList", "Unit Info Hover", True,
-							  "Unit Info Tooltip",
-							  "Replaces the default Unit Info displayed when you hover over a unit.",
+							  "Enabled",
+							  "Replaces the standard Unit Info displayed when you hover over a unit's icon.",
 							  InterfaceDirtyBits.PlotListButtons_DIRTY_BIT))
 		self.addOption(Option("PLE_Info_Pane_X",
 							  "PlotList", "Info Pane X Position", 5,

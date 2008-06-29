@@ -47,16 +47,17 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		#self.addColorDropdown(screen, center, center, "PLE_No_Movement_Color")
 		
 		
+		self.addLabel(screen, right, "PLE_Unit_Info_Tooltip")
 		self.addCheckbox(screen, right, "PLE_Info_Pane")
 		#self.addTextEdit(screen, right, right, "PLE_Info_Pane_X")
 		#self.addTextEdit(screen, right, right, "PLE_Info_Pane_Y")
 		self.addColorDropdown(screen, right, right, "PLE_Unit_Name_Color")
 		
-		self.addSpacer(screen, right, "PLE_Upgrade")
+		self.addLabel(screen, right, "PLE_Upgrade_Cost")
 		self.addColorDropdown(screen, right, right, "PLE_Upgrade_Possible_Color")
 		self.addColorDropdown(screen, right, right, "PLE_Upgrade_Not_Possible_Color")
 		
-		self.addSpacer(screen, right, "PLE_Specialties")
+		self.addLabel(screen, right, "PLE_Specialties")
 		self.addColorDropdown(screen, right, right, "PLE_Unit_Type_Specialties_Color")
 		self.addColorDropdown(screen, right, right, "PLE_Promotion_Specialties_Color")
  
