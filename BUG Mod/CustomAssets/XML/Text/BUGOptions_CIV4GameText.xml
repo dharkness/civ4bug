@@ -2135,7 +2135,7 @@
 		<English>Default View</English>
 		<French>Vue par défaut</French>
 		<German>Anzeigemethode</German>
-		<Italian>Visualizzazione predefinita</Italian>
+		<Italian>Visualizzazione</Italian>
 		<Spanish>Default View</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2159,7 +2159,7 @@
 		<English>Default Grouping</English>
 		<French>Groupement par Défaut</French>
 		<German>Gruppierungsschema</German>
-		<Italian>Raggruppamento predefinito</Italian>
+		<Italian>Raggruppamento</Italian>
 		<Spanish>Default Grouping</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2167,7 +2167,7 @@
 		<English>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</English>
 		<French>Détermine le groupement quand vous démarrez Civ IV. Ceci influence comment les groupes sont montrés dans les différents modes de vue.[NEWLINE]- Type d'Unité: Les Unités sont groupées par type (Archer, Chariot, Char, etc)[NEWLINE]- Groupe de Sélection: Les Unités sont groupées basé sur leur groupe de sélection</French>
 		<German>Bestimmt, wie Einheiten in der Einheitenliste bei den verschiedenen Anzeigemethoden gruppiert werden:[NEWLINE]- Einheitentyp: Einheiten werden nach Typ zusammengefasst (Bogenschützen, Streitwagen, Panzer etc.)[NEWLINE]- Truppenverband: Einheiten werden in den vom Spieler definierten Gruppen zusammengefasst</German>
-		<Italian>Determina la modalità di raggruppamento utilizzata all'avvio del gioco. Modifica il raggruppamento delle Unità nelle diverse modalità di visualizzazione.[NEWLINE]- Tipo di Unità: le Unità vengono raggruppate per tipo (Arciere, Cocchio, Carrarmato, ecc.)[NEWLINE]- Gruppo di selezione: le Unità vengono raggruppate in base al gruppo di selezione (1, 2, 3, ecc.) in cui si trovano.</Italian>
+		<Italian>Determina la modalità di raggruppamento utilizzata all'avvio del gioco. Modifica il raggruppamento delle Unità nelle diverse modalità di visualizzazione.[NEWLINE]- Tipo Unità: le Unità vengono raggruppate per tipo (Arciere, Cocchio, Carrarmato, ecc.)[NEWLINE]- Gruppo selezione: le Unità vengono raggruppate in base al gruppo di selezione (1, 2, 3, ecc.) in cui si trovano.</Italian>
 		<Spanish>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2175,7 +2175,7 @@
 		<English>Unit Type|Selection Group</English>
 		<French>Type d'Unité|Groupe de Sélection</French>
 		<German>Einheitentyp|Truppenverband</German>
-		<Italian>Tipo di Unità|Gruppo di selezione</Italian>
+		<Italian>Tipo Unità|Gruppo selezione</Italian>
 		<Spanish>Unit Type|Selection Group</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2183,7 +2183,7 @@
 		<English>Show Mode/Filter Buttons</English>
 		<French>Show Mode/Filter Buttons</French>
 		<German>Filterschaltflächen</German>
-		<Italian>Mostra i pulsanti per i raggruppamenti ed i filtri</Italian>
+		<Italian>Pulsanti per raggruppamenti e filtri</Italian>
 		<Spanish>Show Mode/Filter Buttons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2240,7 +2240,7 @@
 		<English>Hide During Combat</English>
 		<French>Caché pendant le combat</French>
 		<German>Bei Kämpfen ausblenden</German>
-		<Italian>Nascondi durante combattimento</Italian>
+		<Italian>Nascondi in battaglia</Italian>
 		<Spanish>Hide During Combat</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2516,7 +2516,7 @@
 		<English>Unit Name</English>
 		<French>Unit Name</French>
 		<German>Unit Name</German>
-		<Italian>Nome dell'Unità</Italian>
+		<Italian>Nome</Italian>
 		<Spanish>Unit Name</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2532,7 +2532,7 @@
 		<English>Can Afford</English>
 		<French>Can Afford</French>
 		<German>Kann sich leisten</German>
-		<Italian>Può permettersi</Italian>
+		<Italian>Possibile</Italian>
 		<Spanish>Can Afford</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2540,7 +2540,7 @@
 		<English>Color of the upgrade cost when you can afford to upgrade the unit.</English>
 		<French>Color of the upgrade cost when you can afford to upgrade the unit.</French>
 		<German>Color of the upgrade cost when you can afford to upgrade the unit.</German>
-		<Italian>Colore del costo di avanzamento quando ce lo si può permettere.</Italian>
+		<Italian>Colore del costo di avanzamento quando ce lo si può permettere economicamente.</Italian>
 		<Spanish>Color of the upgrade cost when you can afford to upgrade the unit.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2548,7 +2548,7 @@
 		<English>Cannot Afford</English>
 		<French>Cannot Afford</French>
 		<German>Kann nicht sich leisten</German>
-		<Italian>Non può permettersi</Italian>
+		<Italian>Non possibile</Italian>
 		<Spanish>Cannot Afford</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2556,7 +2556,7 @@
 		<English>Color of the upgrade cost when you cannot afford to upgrade the unit.</English>
 		<French>Color of the upgrade cost when you cannot afford to upgrade the unit.</French>
 		<German>Color of the upgrade cost when you cannot afford to upgrade the unit.</German>
-		<Italian>Colore del costo di avanzamento quando non ce lo si può permettere.</Italian>
+		<Italian>Colore del costo di avanzamento quando non ce lo si può permettere economicamente.</Italian>
 		<Spanish>Color of the upgrade cost when you cannot afford to upgrade the unit.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3315,7 +3315,7 @@
 		<English>Upgrade Cost:</English>
 		<French>Upgrade Cost:</French>
 		<German>Upgrade Cost:</German>
-		<Italian>Upgrade Cost:</Italian>
+		<Italian>Costo di avanzamento:</Italian>
 		<Spanish>Upgrade Cost:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3323,7 +3323,7 @@
 		<English>Unit Specialties:</English>
 		<French>Unit Specialties:</French>
 		<German>Unit Specialties:</German>
-		<Italian>Unit Specialties:</Italian>
+		<Italian>Caratteristiche:</Italian>
 		<Spanish>Unit Specialties:</Spanish>
 	</TEXT>
 
