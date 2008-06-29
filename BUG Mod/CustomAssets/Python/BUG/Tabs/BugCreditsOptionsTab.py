@@ -41,7 +41,7 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "Cammagno - Italian (Game and Documentation)",
 		    "Falc - French (Game)",
 		    "Ludwig II - German (Documentation)",
-		    "The Doc - German (Game)",
+		    "The Doc - German (Game and Documentation)",
 
 		    ]
 
