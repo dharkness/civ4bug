@@ -48,7 +48,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		
 		self.addLabel(screen, right, "PLE_Unit_Info_Tooltip")
-		self.addCheckbox(screen, right, "PLE_Info_Pane")
+		#self.addCheckbox(screen, right, "PLE_Info_Pane")  # EF: Can't get it to work
 		#self.addTextEdit(screen, right, right, "PLE_Info_Pane_X")
 		#self.addTextEdit(screen, right, right, "PLE_Info_Pane_Y")
 		self.addColorDropdown(screen, right, right, "PLE_Unit_Name_Color")
