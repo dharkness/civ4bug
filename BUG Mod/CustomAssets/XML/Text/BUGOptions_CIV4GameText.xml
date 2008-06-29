@@ -2561,11 +2561,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_TYPE_SPECIALTIES_COLOR_TEXT</Tag>
-		<English>Unit Type Specialties</English>
-		<French>Unit Type Specialties</French>
-		<German>Unit Type Specialties</German>
-		<Italian>Caratteristiche dovute al Tipo</Italian>
-		<Spanish>Unit Type Specialties</Spanish>
+		<English>Unit Type</English>
+		<French>Unit Type</French>
+		<German>Unit Type</German>
+		<Italian>Tipo</Italian>
+		<Spanish>Unit Type</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_UNIT_TYPE_SPECIALTIES_COLOR_HOVER</Tag>
@@ -2577,11 +2577,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_SPECIALTIES_COLOR_TEXT</Tag>
-		<English>Promotion Specialties</English>
-		<French>Promotion Specialties</French>
-		<German>Promotion Specialties</German>
-		<Italian>Caratteristiche dovute alle Promozioni</Italian>
-		<Spanish>Promotion Specialties</Spanish>
+		<English>Promotion</English>
+		<French>Promotion</French>
+		<German>Promotion</German>
+		<Italian>Promozioni</Italian>
+		<Spanish>Promotion</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE_PROMOTION_SPECIALTIES_COLOR_HOVER</Tag>
