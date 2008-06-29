@@ -364,19 +364,19 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UNITTYPE</Tag>
-		<English>Group units by unit type for Vertical/Horizontal Groups view mode</English>
+		<English>Group units by unit type</English>
 		<French>Sélectionner les unités par types d'unité</French>
-		<German>Einheiten nach Typen zusammenfassen (bei Anzeige der Einheitensymbole in Spalten/Zeilen)</German>
-		<Italian>Raggruppa le Unità per tipo (per la visualizzazione a gruppi verticali o orizzontali)</Italian>
-		<Spanish>Group units by unit type for Vertical/Horizontal Groups view mode</Spanish>
+		<German>Einheiten nach Typen zusammenfassen</German>
+		<Italian>Raggruppa le Unità per tipo</Italian>
+		<Spanish>Group units by unit type</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_GROUPS</Tag>
-		<English>Group units by selection group for Vertical/Horizontal Groups view mode</English>
+		<English>Group units by selection group</English>
 		<French>Sélectionner les unités par groupe</French>
-		<German>Einheiten nach Gruppen zusammenfassen (bei Anzeige der Einheitensymbole in Spalten/Zeilen)</German>
-		<Italian>Raggruppa le Unità per gruppo di selezione (per la visualizzazione a gruppi verticali o orizzontali)</Italian>
-		<Spanish>Group units by selection group for Vertical/Horizontal Groups view mode</Spanish>
+		<German>Einheiten nach Gruppen zusammenfassen</German>
+		<Italian>Raggruppa le Unità per gruppo di selezione</Italian>
+		<Spanish>Group units by selection group</Spanish>
 	</TEXT>
 	
 	<!-- Promotion and Upgrade Modes -->
@@ -391,10 +391,10 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PLE_GRP_UPGRADE</Tag>
-		<English>View units available for upgrade along with the units to which they may advance</English>
+		<English>View units available for upgrade along with the units they may become</English>
 		<French>Sélectionner les unités pouvant être améliorées</French>
 		<German>Modernisierbare Einheiten und die jeweils verfügbaren Einheiten, zu denen sie modernisiert werden können, anzeigen</German>
 		<Italian>Visualizza solo le Unità con possibilità di avanzamento (e le Unità a cui possono avanzare).</Italian>
-		<Spanish>View units available for upgrade along with the units to which they may advance</Spanish>
+		<Spanish>View units available for upgrade along with the units they may become</Spanish>
 	</TEXT>
 </Civ4GameText>
