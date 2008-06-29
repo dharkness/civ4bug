@@ -7,7 +7,7 @@
 		<Tag>TXT_KEY_PLE_UPGRADE_HELP</Tag>
 		<English>(CTRL: units on this plot.[NEWLINE]ALT: all units)</English>
 		<French>(CTRL: unités sur cette case.[NEWLINE]ALT: toutes les unités.)</French>
-		<German>(STRG: Einheiten auf diesem Feld.[NEWLINE]ALT: alle Einheiten)</German>
+		<German>(STRG: Einheiten auf diesem Geländefeld[NEWLINE]ALT: alle Einheiten)</German>
 		<Italian>(CTRL: unità in questa casella.[NEWLINE]ALT: tutte le unità)</Italian>
 		<Spanish>(CTRL: units on this plot.[NEWLINE]ALT: all units)</Spanish>
 	</TEXT>
@@ -129,7 +129,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_AIR</Tag>
 		<English>Hide air units</English>
 		<French>Ne pas afficher les unités aériennes</French>
-		<German>Luft-Einheiten ausblenden</German>
+		<German>Lufteinheiten ausblenden</German>
 		<Italian>Non mostrare le Unità aeree</Italian>
 		<Spanish>Hide air units</Spanish>
 	</TEXT>
@@ -137,7 +137,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_AIR_ON</Tag>
 		<English>Show air units</English>
 		<French>Show air units</French>
-		<German>Luft-Einheiten einblenden</German>
+		<German>Lufteinheiten einblenden</German>
 		<Italian>Mostra le Unità aeree</Italian>
 		<Spanish>Show air units</Spanish>
 	</TEXT>
@@ -145,7 +145,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_AIR</Tag>
 		<English>Show only air units</English>
 		<French>Show only air units</French>
-		<German>Nur Luft-Einheiten anzeigen</German>
+		<German>Nur Lufteinheiten anzeigen</German>
 		<Italian>Mostra solo le Unità aeree</Italian>
 		<Spanish>Show only air units</Spanish>
 	</TEXT>
@@ -153,7 +153,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_AIR_ON</Tag>
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
-		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
+		<German>Land-, Marine- und Lufteinheiten anzeigen</German>
 		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
@@ -162,7 +162,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_SEA</Tag>
 		<English>Hide naval units</English>
 		<French>Ne pas afficher les unités navales</French>
-		<German>Marine-Einheiten ausblenden</German>
+		<German>Marineeinheiten ausblenden</German>
 		<Italian>Non mostrare le Unità navali</Italian>
 		<Spanish>Hide naval units</Spanish>
 	</TEXT>
@@ -170,7 +170,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_SEA_ON</Tag>
 		<English>Show naval units</English>
 		<French>Show naval units</French>
-		<German>Marine-Einheiten einblenden</German>
+		<German>Marineeinheiten einblenden</German>
 		<Italian>Mostra le Unità navali</Italian>
 		<Spanish>Show naval units</Spanish>
 	</TEXT>
@@ -178,7 +178,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_SEA</Tag>
 		<English>Show only naval units</English>
 		<French>Show only naval units</French>
-		<German>Nur Marine-Einheiten anzeigen</German>
+		<German>Nur Marineeinheiten anzeigen</German>
 		<Italian>Mostra solo le Unità navali</Italian>
 		<Spanish>Show only naval units</Spanish>
 	</TEXT>
@@ -186,7 +186,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_SEA_ON</Tag>
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
-		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
+		<German>Land-, Marine- und Lufteinheiten anzeigen</German>
 		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
@@ -195,7 +195,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_LAND</Tag>
 		<English>Hide land units</English>
 		<French>Ne pas afficher les unités terrestres</French>
-		<German>Land-Einheiten ausblenden</German>
+		<German>Landeinheiten ausblenden</German>
 		<Italian>Non mostrare le Unità terrestri</Italian>
 		<Spanish>Hide land units</Spanish>
 	</TEXT>
@@ -203,7 +203,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_LAND_ON</Tag>
 		<English>Show land units</English>
 		<French>Show land units</French>
-		<German>Land-Einheiten einblenden</German>
+		<German>Landeinheiten einblenden</German>
 		<Italian>Mostra le Unità terrestri</Italian>
 		<Spanish>Show land units</Spanish>
 	</TEXT>
@@ -211,7 +211,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_LAND</Tag>
 		<English>Show only land units</English>
 		<French>Show only land units</French>
-		<German>Nur Land-Einheiten anzeigen</German>
+		<German>Nur Landeinheiten anzeigen</German>
 		<Italian>Mostra solo le Unità terrestri</Italian>
 		<Spanish>Show only land units</Spanish>
 	</TEXT>
@@ -219,7 +219,7 @@
 		<Tag>TXT_KEY_PLE_FILTER_BUG_LAND_ON</Tag>
 		<English>Show land, naval and air units</English>
 		<French>Show land, naval and air units</French>
-		<German>Land-, Marine- und Luft-Einheiten anzeigen</German>
+		<German>Land-, Marine- und Lufteinheiten anzeigen</German>
 		<Italian>Mostra le Unità aeree, navali e terrestri</Italian>
 		<Spanish>Show land, naval and air units</Spanish>
 	</TEXT>
