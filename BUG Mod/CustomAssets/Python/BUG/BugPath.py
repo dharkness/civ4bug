@@ -94,13 +94,13 @@ def addIniFileSearchPath(path):
 if (userDir):
 	if (modName):
 		addIniFileSearchPath(os.path.join(userDir, modName))
-		addIniFileSearchPath(os.path.join(userDir, appName, "Mods", modName))
 		addIniFileSearchPath(os.path.join(userDir, appName, modName))
+		addIniFileSearchPath(os.path.join(userDir, appName, "Mods", modName))
 	addIniFileSearchPath(os.path.join(userDir, appName))
 if (rootDir):
 	if (modName):
-		addIniFileSearchPath(os.path.join(rootDir, "Mods", modName))
 		addIniFileSearchPath(os.path.join(rootDir, modName))
+		addIniFileSearchPath(os.path.join(rootDir, "Mods", modName))
 	addIniFileSearchPath(os.path.join(rootDir))
 
 if (iniFileSearchPaths):
