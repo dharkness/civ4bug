@@ -44,7 +44,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "PLE_Move_Bar")
 		self.addColorDropdown(screen, center, center, "PLE_Full_Movement_Color")
 		self.addColorDropdown(screen, center, center, "PLE_Has_Moved_Color")
-		#self.addColorDropdown(screen, center, center, "PLE_No_Movement_Color")
+		self.addColorDropdown(screen, center, center, "PLE_No_Movement_Color")
 		
 		
 		self.addLabel(screen, right, "PLE_Unit_Info_Tooltip")

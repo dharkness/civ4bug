@@ -314,6 +314,7 @@ class CvMainInterface:
 
 	# Sets or toggles a specific filter button (wounded, air, etc) based on the PLE/BUG mode
 	def setPLEFilter(self, nFilter, nFilterGroup):
+		self.hideInfoPane()
 		if (BugPle.isBugFilterBehavior()):
 			bWasSelected = not (self.nPLEFilter & nFilter)
 			# Clear all filters in group
@@ -324,24 +325,23 @@ class CvMainInterface:
 		else:
 			# Toggle the specified mode
 			self.nPLEFilter ^= nFilter
-		self.hideInfoPane()
 		CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 	# Sets the grouping mode (includes upgrade and promotion modes)
 	def setPLEGroupMode(self, nGroupingMode):
+		self.hideInfoPane()
 		if (self.nPLEGrpMode != nGroupingMode):
 			self.nPLEGrpMode = nGroupingMode
 			self.bUpdatePLEUnitList = True
-			self.hideInfoPane()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 	# Sets the view mode
 	def setPLEViewMode(self, nViewMode):
+		self.hideInfoPane()
 		if (self.sPLEMode != nViewMode):
 			self.iRowOffset = 0
 			self.iColOffset = 0
 			self.sPLEMode = nViewMode
-			self.hideInfoPane()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 ############## input handlers functions ######################
@@ -705,7 +705,7 @@ class CvMainInterface:
 		
 		if ( BugPle.isShowButtons() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START ):
 			# show PLE modes switches
-			self.setupPLEViewModeButtons()			
+			self.setupPLEViewModeButtons()
 			screen.show(self.PLE_MODE_STANDARD)
 			screen.show(self.PLE_MODE_MULTILINE)
 			screen.show(self.PLE_MODE_STACK_VERT)
@@ -813,104 +813,103 @@ class CvMainInterface:
 		xResolution = self.xResolution
 		yResolution = self.yResolution
 	
-		nYOff	= 130
-		nXOff	= 290
-		nDist	= 20
-		nSize	= 18
+		nYOff	= 130 + 4
+		nXOff	= 290 - 13
+		nSize	= 24
+		nDist	= 22
+		nGap    = 8
 		nNum	= 0
-		nBSize	= 18
 		
 		# place the PLE mode switches
 		nXOff += nDist
 		szString = self.PLE_MODE_STANDARD
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
 		szString = self.PLE_MODE_MULTILINE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
 		szString = self.PLE_MODE_STACK_VERT
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
 		szString = self.PLE_MODE_STACK_HORIZ
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
-
 		# place the PLE health filter switches
-		nXOff += int(nDist*1.5)
-		szString = self.PLE_FILTER_WOUND
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_WOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		nXOff += nDist + nGap
+		szString = self.PLE_FILTER_NOTWOUND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_NOTWOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		nXOff += nDist
-		szString = self.PLE_FILTER_NOTWOUND
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_NOTWOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_FILTER_WOUND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_WOUND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		# place the PLE domain filter switches
-		nXOff += int(nDist*1.5)
-		szString = self.PLE_FILTER_AIR
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_AIR").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		nXOff += nDist + nGap
+		szString = self.PLE_FILTER_LAND
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_LAND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		nXOff += nDist
 		szString = self.PLE_FILTER_SEA
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_SEA").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_SEA").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		nXOff += nDist
-		szString = self.PLE_FILTER_LAND
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_LAND").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_FILTER_AIR
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_AIR").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		# place the PLE unittype filter switches
-		nXOff += int(nDist*1.5)
-		szString = self.PLE_FILTER_DOM
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_DOM").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		nXOff += nDist + nGap
+		szString = self.PLE_FILTER_MIL
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_MIL").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
-		szString = self.PLE_FILTER_MIL
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_MIL").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_FILTER_DOM
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_DOM").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 				
 		# place the PLE owner filter switches
-		nXOff += int(nDist*1.5)
+		nXOff += nDist + nGap
 		szString = self.PLE_FILTER_OWN
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_OWN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_OWN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
 		szString = self.PLE_FILTER_FOREIGN
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_FILTER").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
-		# place the PLE grouping moed switches
-		nXOff += int(nDist*1.5)
+		# place the PLE grouping mode switches
+		nXOff += nDist + nGap
 		szString = self.PLE_GRP_UNITTYPE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
 		szString = self.PLE_GRP_GROUPS
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
-		# place the promo and upgrades views
-		nXOff += int(nDist*1.5)
+		# place the promotion and upgrades view switches
+		nXOff += nDist + nGap
 		szString = self.PLE_GRP_PROMO
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_PROMO").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_PROMO").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		nXOff += nDist
 		szString = self.PLE_GRP_UPGRADE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UPGRADE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nBSize, nBSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UPGRADE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 				
 ################ functions for normal/shift/ctrl/alt unit selection within the plot list itself #################
@@ -1107,13 +1106,11 @@ class CvMainInterface:
 
 ################## general PLE functions ##################
 
-	# displays the units in the plot list with all the belonging objects
-	def displayUnitPlotListObjects( self, pLoopUnit, nRow, nCol ):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		
+	# displays a single unit icon in the plot list with all its decorations
+	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 		iCount = self.getI(nRow, nCol)	
 		self.listPLEButtons[iCount] = ( pLoopUnit, nRow, nCol )
-		self.bPLEHide = false
+		self.bPLEHide = False
 		
 		# create the button name 
 		szString = self.PLOT_LIST_BUTTON_NAME + str(iCount)
@@ -1199,33 +1196,41 @@ class CvMainInterface:
 				screen.addDDSGFC( szStringGreatGeneral, szFileNameGreatGeneral, x+8, y, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
 				screen.show( szStringGreatGeneral )
 		
-		if (self.bShowHealthBar and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
+		if (self.bShowHealthBar and pLoopUnit.maxHitPoints() and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
 			# place the health bar
 			szStringHealthBar = szString+"HealthBar"
 			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
 			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )
 
-			if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
-				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-			elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
-				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
-			else:
-				screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
+			# EF: Colors are set by user instead
+			#if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+			#elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+			#else:
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
 													
 			screen.show( szStringHealthBar )
 
 		if (self.bShowMoveBar):
 			# place the move bar
-			fMaxMoves = float(pLoopUnit.baseMoves())
-			fCurrMoves = float(float(fMaxMoves)-float(pLoopUnit.getMoves()/60.0)+0.09) 
-			# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
 			szStringMoveBar = szString+"MoveBar"
-			if (fMaxMoves):
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, float( fCurrMoves ) / float( fMaxMoves ) )
+			if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 0.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 0.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
 			else:
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, float(1.0) )
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )							
-			screen.show( szStringMoveBar )		
+				fMaxMoves = float(pLoopUnit.baseMoves())
+				#fCurrMoves = fMaxMoves - (pLoopUnit.getMoves() / float(gc.getMOVE_DENOMINATOR())) 
+				fCurrMoves = float(pLoopUnit.movesLeft()) / float(gc.getMOVE_DENOMINATOR()) 
+				# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
+				if (fMaxMoves):
+					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, fCurrMoves / fMaxMoves )
+				else:
+					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 1.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 1.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
+			screen.show( szStringMoveBar )
 		
 		# display the mission or activity info
 		if (self.bShowMissionInfo): 
@@ -2235,7 +2240,8 @@ class CvMainInterface:
 		szHealthyColor = BugPle.getHealthyColor()
 		szWoundedColor = BugPle.getWoundedColor()
 		szMovementColor = BugPle.getFullMovementColor()
-		szNoMovementColor = BugPle.getHasMovedColor()
+		szHasMovedColor = BugPle.getHasMovedColor()
+		szNoMovementColor = BugPle.getNoMovementColor()
 		
 		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
@@ -2249,8 +2255,8 @@ class CvMainInterface:
 			y = self.getY( self.getRow( i ) )
 			
 			# place/init the promotion frame. Important to have it at first place within the for loop.
-			szStringPromoFrame = szString+"PromoFrame"
-			screen.addDDSGFC( szStringPromoFrame, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, -1, -1 )
+			szStringPromoFrame = szString + "PromoFrame"
+			screen.addDDSGFC( szStringPromoFrame, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1 )
 			screen.hide( szStringPromoFrame )
 
 			# place the plot list unit button
@@ -2258,18 +2264,19 @@ class CvMainInterface:
 			screen.hide( szString )
 	
 			# place/init the health bar. Important to have it at last place within the for loop.
-			szStringHealthBar = szString+"HealthBar"
+			szStringHealthBar = szString + "HealthBar"
 #			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, i, -1 )
 			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szHealthyColor) )
 			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szWoundedColor) )
 			screen.hide( szStringHealthBar )
 
 			# place/init the movement bar. Important to have it at last place within the for loop.
-			szStringMoveBar = szString+"MoveBar"
-			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			szStringMoveBar = szString + "MoveBar"
+			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, i, -1 )
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szMovementColor) )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szNoMovementColor) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szHasMovedColor) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString(szNoMovementColor) )
 			screen.hide( szStringMoveBar )
 
 		self.preparePlotListObjects()
@@ -3137,6 +3144,7 @@ class CvMainInterface:
 ##		xResolution = screen.getXResolution()
 ##		yResolution = screen.getYResolution()
 
+		self.hideInfoPane()
 		self.xResolution = screen.getXResolution()
 		self.yResolution = screen.getYResolution()
 		
@@ -3156,7 +3164,7 @@ class CvMainInterface:
 ## 12monkeys - PlotList Button Enhancement - end
 
 		bHandled = False
-		if ( CyInterface().shouldDisplayUnitModel() and CyEngine().isGlobeviewUp() == false and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
+		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
 			if ( CyInterface().isCitySelection() ):
 
 				iOrders = CyInterface().getNumOrdersQueued()
@@ -3408,7 +3416,7 @@ class CvMainInterface:
 							if ((iCount >= 0) and (iCount < nNumUnits )):
 								nCol = iCount
 								nRow = 0
-								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 
 						# multiline view
 						elif (self.sPLEMode == self.PLE_MODE_MULTILINE):						
@@ -3421,7 +3429,7 @@ class CvMainInterface:
 							nCol = self.getCol( iCount ) 
 							nRow = self.getRow( iCount ) - self.iRowOffset
 							if ((nRow >= 0) and (iCount < nNumUnits ) and (nRow < self.getMaxRow())):
-								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 								
 						# vertical stack view
 						elif (self.sPLEMode == self.PLE_MODE_STACK_VERT):
@@ -3461,7 +3469,7 @@ class CvMainInterface:
 									nCol += 1
 
 							if ((nCol >= 0) and (iCount < nNumUnits ) and (nCol < self.getMaxCol())):
-								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
 									self.displayUnitPromos(pLoopUnit, nRow, nCol)
 								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
@@ -3505,7 +3513,7 @@ class CvMainInterface:
 									nRow += 1
 
 							if ((nRow >= 0) and (iCount < nNumUnits ) and (nRow < self.getMaxRow())):
-								self.displayUnitPlotListObjects(pLoopUnit, nRow, nCol)
+								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
 									self.displayUnitPromos(pLoopUnit, nRow, nCol)
 								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):

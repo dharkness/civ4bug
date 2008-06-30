@@ -3525,5 +3525,13 @@
 		<Italian>Traduttori</Italian>
 		<Spanish>Translators</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_THANKS</Tag>
+		<English>Special Thanks</English>
+		<French>Special Thanks</French>
+		<German>Special Thanks</German>
+		<Italian>Special Thanks</Italian>
+		<Spanish>Special Thanks</Spanish>
+	</TEXT>
 	
 </Civ4GameText>

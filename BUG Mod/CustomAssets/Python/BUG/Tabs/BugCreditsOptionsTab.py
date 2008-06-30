@@ -1,15 +1,14 @@
 ## BugCreditsOptionsTab
-## Tab for the BUG Scoreboard Options
+## Tab for the BUG Credits
 ## BUG Mod - Copyright 2007
 
 import BugOptionsTab
 
 credits = [ "BUG_TEAM|BUG Team",
-		    "Alerum68 - Release, Testing, Documentation, Coding",
-		    "EmperorFool - Coding",
+		    "Alerum68 - Release, Documentation",
+		    "EmperorFool - Coding, Testing",
 		    "Cammagno - Documentation",
 		    "Ruff_Hi - Coding, Testing",
-		    "Balderstrom - Coding, Testing",
 		    "-",
 		    "MOD_AUTHORS|Mod Authors",
 		    "12monkeys - Plot List Enhancements",
@@ -23,7 +22,7 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "Ekmek - Shortcuts in Civilopedia",
 		    "EmperorFool - Advanced Scoreboard, GP Tech Prefs, Options Core, Power Ratio, Raw Production",
 		    " -    Deployment in Military Adviser",
-		    " -    (extended BES, Civ4lerts, CDA, GP Progress Bar, Raw Commerce, Reminders)",
+		    " -    (extended BES, Civ4lerts, CDA, GP Progress Bar, Raw Commerce, Reminders, PLE)",
 		    "Eotinb - Autolog, Reminders",
 		    "Impaler[WrG] - Great Person Progress Bar",
 		    "NeverMind - Great General Combat Experience Counter",
@@ -32,7 +31,7 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "Ruff_Hi - Generic Unit Naming, Sit-Rep in Military Adviser",
 		    " -    (extended AutoLog, Reminders, Promo/Actions in PLE, Smilies in EFA)",
 		    "Sevo - Raw Commerce, Sevopedia",
-		    "SimCutie - Attitudes in Score, City Cycle Arrows",
+		    "SimCutie - Attitudes in Scoreboard, City Cycle Arrows",
 		    "Taelis - Customizable Domestic Advisor",
 		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
 		    "turlute - (ported PLE to BtS)",
@@ -40,8 +39,10 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "TRANSLATORS|Translators",
 		    "Cammagno - Italian (Game and Documentation)",
 		    "Falc - French (Game)",
-		    "Ludwig II - German (Documentation)",
 		    "The Doc - German (Game and Documentation)",
+		    "-",
+		    "THANKS|Special Thanks",
+		    "NikNaks - BUG Icon, PLE Buttons",
 
 		    ]
 
