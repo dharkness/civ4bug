@@ -442,7 +442,7 @@
 		<English>Domination: Population</English>
 		<French>Domination: Population</French>
 		<German>Bevölkerung</German>
-		<Italian>Dominio Populazione</Italian>
+		<Italian>Populazione</Italian>
 		<Spanish>Domination: Population</Spanish>
 	</TEXT>
 
@@ -478,7 +478,7 @@
 		<English>Domination: Land</English>
 		<French>Domination: Territoire</French>
 		<German>Landmasse</German>
-		<Italian>Dominio Territorio</Italian>
+		<Italian>Territorio</Italian>
 		<Spanish>Domination: Land</Spanish>
 	</TEXT>
 
@@ -3366,7 +3366,7 @@
 		<English>Victory:</English>
 		<French>Victoire:</French>
 		<German>Herrschaftssieg:</German>
-		<Italian>Vittoria:</Italian>
+		<Italian>Vittoria di Dominazione:</Italian>
 		<Spanish>Victory:</Spanish>
 	</TEXT>
 
