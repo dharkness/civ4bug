@@ -3,6 +3,7 @@
 ## Copyright (c) 2008 The BUG Mod.
 
 from CvPythonExtensions import *
+import BugUtil
 
 # globals
 gc = CyGlobalContext()
@@ -44,7 +45,7 @@ class Grouping:
 	def _addGroup(self, group):
 		self.groups[group.key] = group
 	
-	def calcGroupKey(self, unit, player, team):
+	def calcGroupKeys(self, unit, player, team):
 		return None
 
 class Group:
@@ -78,8 +79,8 @@ class UnitTypeGrouping(Grouping):
 			if info:
 				self._addGroup(Group(self, i, info.getDescription()))
 	
-	def calcGroupKey(self, unit, player, team):
-		return unit.getUnitType()
+	def calcGroupKeys(self, unit, player, team):
+		return (unit.getUnitType(),)
 
 class UnitCombatGrouping(Grouping):
 	"""
@@ -96,8 +97,24 @@ class UnitCombatGrouping(Grouping):
 			if info:
 				self._addGroup(Group(self, i + 1, info.getDescription()))
 	
-	def calcGroupKey(self, unit, player, team):
-		return gc.getUnitInfo(unit.getUnitType()).getUnitCombatType() + 1
+	def calcGroupKeys(self, unit, player, team):
+		return (gc.getUnitInfo(unit.getUnitType()).getUnitCombatType() + 1,)
+
+class LevelGrouping(Grouping):
+	"""
+	Groups units by their level, 1 to MAX_LEVEL (30).
+	Units over level MAX_LEVEL are put into the MAX_LEVEL group.
+	"""
+	def __init__(self):
+		Grouping.__init__(self, "level", "Level")
+		
+		self.MAX_LEVEL = 30
+		for i in range(self.MAX_LEVEL):
+			self._addGroup(Group(self, i, BugUtil.getText("TXT_KEY_UNIT_GROUPER_LEVEL_GROUP", (str(i),))))
+		self._addGroup(Group(self, self.MAX_LEVEL, BugUtil.getText("TXT_KEY_UNIT_GROUPER_LEVEL_GROUP", ("%d+" % self.MAX_LEVEL,))))
+	
+	def calcGroupKeys(self, unit, player, team):
+		return (max(0, min(unit.getLevel(), self.MAX_LEVEL)),)
 
 class PromotionGrouping(Grouping):
 	"""
@@ -106,20 +123,22 @@ class PromotionGrouping(Grouping):
 	"""
 	def __init__(self):
 		Grouping.__init__(self, "promo", "Promotion")
-		self.NONE = 0
 		
-		self._addGroup(Group(self, 0, "None"))
+		self.NONE = 0
+		self._addGroup(Group(self, self.NONE, "None"))
 		for i in range(gc.getNumPromotionInfos()):
 			info = gc.getPromotionInfo(i)
 			if info:
 				self._addGroup(Group(self, i + 1, info.getDescription()))
 	
-	def calcGroupKey(self, unit, player, team):
-		# Find first promo until we have multi-select groupings
+	def calcGroupKeys(self, unit, player, team):
+		promos = []
 		for iPromo in range(gc.getNumPromotionInfos()):
 			if unit.isHasPromotion(iPromo):
-				return iPromo + 1
-		return self.NONE
+				promos.append(iPromo + 1)
+		if not promos:
+			promos = (self.NONE,)
+		return promos
 
 class LocationGrouping(Grouping):
 	"""
@@ -148,36 +167,36 @@ class LocationGrouping(Grouping):
 		self._addGroup(Group(self, self.ENEMY_TERRITORY, "Enemy Territory"))
 		self._addGroup(Group(self, self.BARBARIAN_TERRITORY, "Barbarian Territory"))
 	
-	def calcGroupKey(self, unit, player, team):
+	def calcGroupKeys(self, unit, player, team):
 		plot = unit.plot()
 		if not plot or plot.isNone():
 			return None
 		if plot.isBarbarian():
-			return self.BARBARIAN_TERRITORY
+			return (self.BARBARIAN_TERRITORY,)
 		teamId = team.getID()
 		ownerId = plot.getRevealedOwner(teamId, False)
 		if ownerId == -1:
-			return self.NEUTRAL_TERRITORY
+			return (self.NEUTRAL_TERRITORY,)
 		elif ownerId == player.getID():
 			if plot.isCity():
-				return self.DOMESTIC_CITY
+				return (self.DOMESTIC_CITY,)
 			else:
-				return self.DOMESTIC_TERRITORY
+				return (self.DOMESTIC_TERRITORY,)
 		else:
 			owner = gc.getPlayer(ownerId)
 			ownerTeamId = owner.getTeam()
 			if ownerTeamId == teamId:
 				if plot.isCity():
-					return self.TEAM_CITY
+					return (self.TEAM_CITY,)
 				else:
-					return self.TEAM_TERRITORY
+					return (self.TEAM_TERRITORY,)
 			elif team.isAtWar(ownerTeamId):
-				return self.ENEMY_TERRITORY
+				return (self.ENEMY_TERRITORY,)
 			else:
 				if plot.isCity():
-					return self.FRIENDLY_CITY
+					return (self.FRIENDLY_CITY,)
 				else:
-					return self.FRIENDLY_TERRITORY
+					return (self.FRIENDLY_TERRITORY,)
 
 class StandardGrouper(Grouper):
 	def __init__(self):
@@ -185,6 +204,7 @@ class StandardGrouper(Grouper):
 		
 		self._addGrouping(UnitTypeGrouping())
 		self._addGrouping(UnitCombatGrouping())
+		self._addGrouping(LevelGrouping())
 		self._addGrouping(PromotionGrouping())
 		self._addGrouping(LocationGrouping())
 
@@ -235,8 +255,8 @@ class GroupingStats:
 		self.groups[group.group.key] = group
 	
 	def _processUnit(self, player, team, unitStats):
-		key = self.grouping.calcGroupKey(unitStats.unit, player, team)
-		if key is not None:
+		keys = self.grouping.calcGroupKeys(unitStats.unit, player, team)
+		for key in keys:
 			self.groups[key]._addUnit(unitStats)
 	
 	def itergroups(self):
