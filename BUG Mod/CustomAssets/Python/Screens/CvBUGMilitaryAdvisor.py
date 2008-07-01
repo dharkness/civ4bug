@@ -83,14 +83,14 @@ class CvMilitaryAdvisor:
 		self.LEADER_BUTTON_ID = "MilitaryAdvisorLeaderButton-BUG"
 		self.MINIMAP_PANEL = "MilitaryMiniMapPanel-BUG"
 
-		self.SitRep_Y = 55
-		self.SitRep_Y_Offset = 10
-		self.SitRep_X1 = 90
-		self.SitRep_X2 = self.SitRep_X1 + 100
-		self.SitRep_X3 = self.SitRep_X2 + 100
-		self.SitRep_X4 = self.SitRep_X3 + 100
-		self.SitRep_X5 = self.SitRep_X4 + 100
-		self.SitRep_X6 = self.SitRep_X5 + 100
+#		self.SitRep_Y = 55
+#		self.SitRep_Y_Offset = 10
+#		self.SitRep_X1 = 90
+#		self.SitRep_X2 = self.SitRep_X1 + 100
+#		self.SitRep_X3 = self.SitRep_X2 + 100
+#		self.SitRep_X4 = self.SitRep_X3 + 100
+#		self.SitRep_X5 = self.SitRep_X4 + 100
+#		self.SitRep_X6 = self.SitRep_X5 + 100
 
 
 		self.iPlayerPower = 0
@@ -125,7 +125,7 @@ class CvMilitaryAdvisor:
 		self.W_SCREEN = 1024
 		self.H_SCREEN = 768
 		self.Y_TITLE = 12
-		
+
 		self.X_EXIT = 994
 		self.Y_EXIT = 726
 		
@@ -201,6 +201,13 @@ class CvMilitaryAdvisor:
 		screen = self.getScreen()
 		if screen.isActive():
 			return
+
+		# over-ride screen width, height
+		self.W_SCREEN = screen.getXResolution() - 40
+		self.X_EXIT = self.W_SCREEN - 30
+		#self.Y_EXIT = 726
+		#self.H_SCREEN = screen.getYResolution()
+			
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
 
@@ -213,7 +220,8 @@ class CvMilitaryAdvisor:
 		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_TOPBAR )
 		screen.addPanel( "TechBottomPanel", u"", u"", True, False, 0, 713, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
 		screen.showWindowBackground( False )
-		screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		#screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		screen.setDimensions(20, screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
 		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
 		# Header...
@@ -317,7 +325,7 @@ class CvMilitaryAdvisor:
 
 				# add leaderhead icon
 				self.SitRepGrid.addIcon(iRow, self.Col_Leader,
-										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(),
+										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(), 64, 
 										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
 
 				# add worst enemy
@@ -334,21 +342,21 @@ class CvMilitaryAdvisor:
 					
 				for iLoopPlayer2 in iActiveWars:
 					self.SitRepGrid.addIcon(iRow, self.Col_Curr_Wars, 
-											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 
+											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
 											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 
 				# show vassals
 				if bVassals:
 					for iLoopPlayer2 in iVassals[iLoopPlayer]:
 						self.SitRepGrid.addIcon(iRow, self.Col_Vassals, 
-												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 
+												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
 												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 
 				# show defensive packs
 				if bDefPacts:
 					for iLoopPlayer2 in iDefPacts[iLoopPlayer]:
 						self.SitRepGrid.addIcon(iRow, self.Col_DefPacts, 
-												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 
+												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
 												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 
 				# show players that the current player will declare on
@@ -356,7 +364,7 @@ class CvMilitaryAdvisor:
 				iActiveWars = self.GetDeclareWar(iRow, iLoopPlayer)
 				for iLoopPlayer2 in iActiveWars:
 					self.SitRepGrid.addIcon(iRow, self.Col_WillDeclareOn, 
-											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 
+											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
 											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
 				# WHEOOH
 				if self.bWHEOOH:
@@ -385,8 +393,8 @@ class CvMilitaryAdvisor:
 		self.Col_Threat = 3
 		self.Col_StratResPos = 4
 		self.Col_StratResNeg = 5
-		self.Col_WillDeclareOn = 6
-		self.Col_Curr_Wars = 7
+		self.Col_WillDeclareOn = 7
+		self.Col_Curr_Wars = 6
 		self.Col_Vassals = 8
 		self.Col_DefPacts = 9
 
@@ -442,12 +450,12 @@ class CvMilitaryAdvisor:
 		# set headings
 		self.SitRepGrid.setHeader(self.Col_Leader, "", 3)
 		self.SitRepGrid.setHeader(self.Col_WHEOOH, "", 3)
-		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_WORSE_ENEMY", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_WEnemy, localText.getText("TXT_KEY_MILITARY_SITREP_ENEMY", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_Threat, localText.getText("TXT_KEY_MILITARY_SITREP_THREAT_INDEX", ()), 3)
-		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_ACTIVE_WARS", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_Curr_Wars, localText.getText("TXT_KEY_MILITARY_SITREP_WARS_ACTIVE", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_StratResPos, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS", ()), 3)
 		self.SitRepGrid.setHeader(self.Col_StratResNeg, localText.getText("TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS", ()), 3)
-		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WILL_DECLARE", ()), 3)
+		self.SitRepGrid.setHeader(self.Col_WillDeclareOn, localText.getText("TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL", ()), 3)
 
 		if bVassals:
 			self.SitRepGrid.setHeader(self.Col_Vassals, localText.getText("TXT_KEY_MILITARY_SITREP_VASSALS", ()), 3)
@@ -457,9 +465,10 @@ class CvMilitaryAdvisor:
 
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup("", 1)
-		self.SitRepGrid.createColumnGroup("", 1)
+		self.SitRepGrid.createColumnGroup(localText.getText("TXT_KEY_MILITARY_SITREP_WORST", ()), 1)
 		self.SitRepGrid.createColumnGroup("", 1)
 		self.SitRepGrid.createColumnGroup(localText.getText("TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES", ()), 2)
+		self.SitRepGrid.createColumnGroup(localText.getText("TXT_KEY_MILITARY_SITREP_WARS", ()), 2)
 
 		self.SitRepGrid.setTextColWidth(self.Col_WHEOOH, 25)
 		self.SitRepGrid.setStackedBarColWidth(self.Col_Threat, 120)
@@ -494,11 +503,11 @@ class CvMilitaryAdvisor:
 
 		pPlayer = gc.getPlayer(iPlayer)
 
-		BUGPrint("Grid_ThreatIndex - Start")
+#		BUGPrint("Grid_ThreatIndex - Start")
 
 		if gc.getTeam(pPlayer.getTeam()).isAVassal():
 			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", localText.getText("TXT_KEY_MILITARY_SITREP_VASSAL", ()), 3)
-			BUGPrint("Grid_ThreatIndex - is vassal")
+#			BUGPrint("Grid_ThreatIndex - is vassal")
 			return
 
 		# initialize threat index
@@ -512,7 +521,7 @@ class CvMilitaryAdvisor:
 		elif fRel_Threat > 38:
 			fRel_Threat = 38.0
 
-		BUGPrint("Grid_ThreatIndex - relationships")
+#		BUGPrint("Grid_ThreatIndex - relationships")
 
 		# calculate the power threat value
 		fPwr_Threat = 0
@@ -527,7 +536,7 @@ class CvMilitaryAdvisor:
 
 		# set power thread to 75% of max if active player cannot see the demographics
 		bCannotSeeDemographics = False
-		if not (BugUtil.isNoEspionage() or gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1)):
+		if not gc.getActivePlayer().canDoEspionageMission(self.iDemographicsMission, iPlayer, None, -1):
 			bCannotSeeDemographics = True
 			fPwr_Threat = 38.0 * 0.75
 #			self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, -1, "", "n/a", 3)
@@ -535,7 +544,7 @@ class CvMilitaryAdvisor:
 #			return
 
 
-		BUGPrint("Grid_ThreatIndex - power")
+#		BUGPrint("Grid_ThreatIndex - power")
 
 		# total threat, pre WHEOOH adjustment
 		fThreat = fRel_Threat + fPwr_Threat
@@ -568,10 +577,10 @@ class CvMilitaryAdvisor:
 			sThreat = localText.getText("TXT_KEY_MILITARY_THREAT_INDEX_SEVERE", ())
 
 		if bCannotSeeDemographics:
-			sThreat += "*"
+			sThreat += " (est)"
 
 		self.SitRepGrid.addStackedBar(iRow, self.Col_Threat, fThreat, sColour, sThreat, 3)
-		BUGPrint("Grid_ThreatIndex - bar placed")
+#		BUGPrint("Grid_ThreatIndex - bar placed")
 		return
 
 	def calculateRelations (self, nPlayer, nTarget):
@@ -593,7 +602,7 @@ class CvMilitaryAdvisor:
 
 		if szWEnemyName == "":
 			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(),
+									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 45, 
 									WidgetTypes.WIDGET_LEADERHEAD, -1)
 		else:
 			for iLoopEnemy in range(gc.getMAX_PLAYERS()):
@@ -608,7 +617,7 @@ class CvMilitaryAdvisor:
 			and not pWEPlayer.isBarbarian()
 			and not pWEPlayer.isMinorCiv()):
 				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 
+										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 32, 
 										WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
 		return
 
@@ -682,8 +691,8 @@ class CvMilitaryAdvisor:
 		or (not gc.getTeam(pActivePlayer.getTeam()).isTechTrading()
 		and not gc.getTeam(pPlayer.getTeam()).isTechTrading())):
 			szButton = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath()
-			self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, WidgetTypes.WIDGET_GENERAL, -1)
-			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, WidgetTypes.WIDGET_GENERAL, -1)
+			self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 			return
 
 		iAIUnits = self.getCanTrainUnits(iPlayer)
@@ -702,13 +711,13 @@ class CvMilitaryAdvisor:
 		for iUnit in iHumanUnits:
 			if self.isUnitUnique(iUnit, iAIUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
-				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, WidgetTypes.WIDGET_GENERAL, -1)
+				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 
 		# determine units that AI can build that the human cannot
 		for iUnit in iAIUnits:
 			if self.isUnitUnique(iUnit, iHumanUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
-				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, WidgetTypes.WIDGET_GENERAL, -1)
+				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 
 
 

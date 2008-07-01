@@ -165,12 +165,20 @@
 		<Spanish>Sit-Rep</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_WORSE_ENEMY</Tag>
-		<English>Worst Enemy</English>
-		<French>Ennemi n° 1</French>
-		<German>Schlimmster Feind</German>
-		<Italian>Nemesi</Italian>
-		<Spanish>Worst Enemy</Spanish>
+		<Tag>TXT_KEY_MILITARY_SITREP_WORST</Tag>
+		<English>Worst</English>
+		<French>Worst</French>
+		<German>Worst</German>
+		<Italian>Worst</Italian>
+		<Spanish>Worst</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_ENEMY</Tag>
+		<English>Enemy</English>
+		<French>Enemy</French>
+		<German>Enemy</German>
+		<Italian>Enemy</Italian>
+		<Spanish>Enemy</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_THREAT_INDEX</Tag>
@@ -181,12 +189,28 @@
 		<Spanish>Threat Index</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_ACTIVE_WARS</Tag>
-		<English>Active Wars</English>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS</Tag>
+		<English>Wars</English>
+		<French>Wars</French>
+		<German>Wars</German>
+		<Italian>Wars</Italian>
+		<Spanish>Wars</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS_ACTIVE</Tag>
+		<English>Active</English>
 		<French>Guerres Actives</French>
 		<German>Aktive Kriege</German>
 		<Italian>In Guerra</Italian>
-		<Spanish>Active Wars</Spanish>
+		<Spanish>Active</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL</Tag>
+		<English>Optional</English>
+		<French>Déclarera?</French>
+		<German>Kriegserkl&#228;rung an</German>
+		<Italian>Dichiarerà</Italian>
+		<Spanish>Optional</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
@@ -195,14 +219,6 @@
 		<German>Strategische Vorteile</German>
 		<Italian>Vantaggi Strategici</Italian>
 		<Spanish>Strategic Advantages</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_WILL_DECLARE</Tag>
-		<English>Will Declare?</English>
-		<French>Déclarera?</French>
-		<German>Kriegserkl&#228;rung an</German>
-		<Italian>Dichiarerà</Italian>
-		<Spanish>Will Declare?</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS</Tag>
