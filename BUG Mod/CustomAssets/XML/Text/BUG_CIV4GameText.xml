@@ -169,7 +169,7 @@
 		<English>Worst</English>
 		<French>Worst</French>
 		<German>Worst</German>
-		<Italian>Worst</Italian>
+		<Italian>Peggior</Italian>
 		<Spanish>Worst</Spanish>
 	</TEXT>
 	<TEXT>
@@ -177,7 +177,7 @@
 		<English>Enemy</English>
 		<French>Enemy</French>
 		<German>Enemy</German>
-		<Italian>Enemy</Italian>
+		<Italian>Nemico</Italian>
 		<Spanish>Enemy</Spanish>
 	</TEXT>
 	<TEXT>
@@ -193,7 +193,7 @@
 		<English>Wars</English>
 		<French>Wars</French>
 		<German>Wars</German>
-		<Italian>Wars</Italian>
+		<Italian>Guerre</Italian>
 		<Spanish>Wars</Spanish>
 	</TEXT>
 	<TEXT>
@@ -201,7 +201,7 @@
 		<English>Active</English>
 		<French>Guerres Actives</French>
 		<German>Aktive Kriege</German>
-		<Italian>In Guerra</Italian>
+		<Italian>In corso</Italian>
 		<Spanish>Active</Spanish>
 	</TEXT>
 	<TEXT>
@@ -209,7 +209,7 @@
 		<English>Optional</English>
 		<French>Déclarera?</French>
 		<German>Kriegserkl&#228;rung an</German>
-		<Italian>Dichiarerà</Italian>
+		<Italian>Potenziali</Italian>
 		<Spanish>Optional</Spanish>
 	</TEXT>
 	<TEXT>
@@ -422,7 +422,7 @@
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
-	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
+	<!--Fix for Overlap in Foreign Advisor Tab in Translation-->
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
 		<English>Info</English>
