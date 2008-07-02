@@ -6012,6 +6012,9 @@ class CvMainInterface:
 													szBuffer = szBuffer + "("  + localText.getColorText("TXT_KEY_CONCEPT_WAR", (), gc.getInfoTypeForString("COLOR_RED")).upper() + ")"
 													if (bAlignIcons):
 														scores.setWar()
+												elif (gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(eTeam)):
+													if (bAlignIcons):
+														scores.setPeace()
 												if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 													szBuffer = szBuffer + szTempBuffer

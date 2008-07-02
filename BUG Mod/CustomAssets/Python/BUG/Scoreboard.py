@@ -61,7 +61,7 @@ def _init():
 	if (bInitDone):
 		return
 	
-	global parts
+	global columns
 	game = CyGame()
 	
 	columns.append(Column('', ALIVE))
@@ -69,7 +69,7 @@ def _init():
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
-	columns.append(Column('W', WAR, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
+	columns.append(Column('W', WAR, DYNAMIC))
 	columns.append(Column('P', POWER, DYNAMIC))
 	columns.append(Column('T', RESEARCH, SPECIAL))
 	columns.append(Column('U', RESEARCH_TURNS, DYNAMIC))
@@ -83,6 +83,10 @@ def _init():
 	columns.append(Column('*', WAITING, FIXED, u"<font=2>*</font>"))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
+	
+	global WAR_ICON, PEACE_ICON
+	WAR_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
+	PEACE_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
 	
 	bInitDone = True
 
@@ -158,7 +162,10 @@ class Scoreboard:
 		self._set(NOT_MET)
 		
 	def setWar(self):
-		self._set(WAR)
+		self._set(WAR, WAR_ICON)
+		
+	def setPeace(self):
+		self._set(WAR, PEACE_ICON)
 		
 	def setPower(self, value):
 		self._set(POWER, u"<font=2>%s</font>" % value)
