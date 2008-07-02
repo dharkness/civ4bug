@@ -165,11 +165,6 @@
 			<Civilopedia>TXT_KEY_STRATEGY_INTRO_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_SISIUTIL</Type>
-			<Description>TXT_KEY_STRATEGY_SISIUTIL</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_SISIUTIL_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_WK</Type>
 			<Description>TXT_KEY_STRATEGY_WK</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_WK_PEDIA</Civilopedia>
@@ -198,16 +193,6 @@
 			<Type>CONCEPT_STRATEGY_GROWTH_WAR</Type>
 			<Description>TXT_KEY_STRATEGY_GROWTH_WAR</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_GROWTH_WAR_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_AZTEC</Type>
-			<Description>TXT_KEY_STRATEGY_AZTEC</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_AZTEC_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_INCA</Type>
-			<Description>TXT_KEY_STRATEGY_INCA</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_INCA_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_MONGOL</Type>
@@ -240,16 +225,6 @@
 			<Civilopedia>TXT_KEY_STRATEGY_GODOTNUT_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_OCC_DEITY</Type>
-			<Description>TXT_KEY_STRATEGY_OCC_DEITY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_OCC_DEITY_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_SISIUTIL_INT</Type>
-			<Description>TXT_KEY_STRATEGY_SISIUTIL_INT</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_SISIUTIL_INT_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_UB</Type>
 			<Description>TXT_KEY_STRATEGY_UB</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_UB_PEDIA</Civilopedia>
@@ -280,29 +255,9 @@
 			<Civilopedia>TXT_KEY_STRATEGY_CITY_SPECALIZATION_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_MICRO</Type>
-			<Description>TXT_KEY_STRATEGY_MICRO</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_MICRO_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_CITY_LAND</Type>
-			<Description>TXT_KEY_STRATEGY_CITY_LAND</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_CITY_LAND_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_TRIANGLE</Type>
 			<Description>TXT_KEY_STRATEGY_TRIANGLE</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_TRIANGLE_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_THE_WHIP</Type>
-			<Description>TXT_KEY_STRATEGY_THE_WHIP</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_THE_WHIP_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_WAYS_HAPPY</Type>
-			<Description>TXT_KEY_STRATEGY_WAYS_HAPPY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_WAYS_HAPPY_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_WAYS_HEALTHY</Type>
@@ -325,11 +280,6 @@
 			<Civilopedia>TXT_KEY_STRATEGY_UNIT_MAINT_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_COMBAT_MECHS</Type>
-			<Description>TXT_KEY_STRATEGY_COMBAT_MECHS</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_COMBAT_MECHS_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_CITY_GROWTH</Type>
 			<Description>TXT_KEY_STRATEGY_CITY_GROWTH</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_CITY_GROWTH_PEDIA</Civilopedia>
@@ -348,11 +298,6 @@
 			<Type>CONCEPT_STRATEGY_CORP_MAINT</Type>
 			<Description>TXT_KEY_STRATEGY_CORP_MAINT</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_CORP_MAINT_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_CORP_SUSHI</Type>
-			<Description>TXT_KEY_STRATEGY_CORP_SUSHI</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_CORP_SUSHI_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_CULTURAL_MECHS</Type>
@@ -385,19 +330,9 @@
 			<Civilopedia>TXT_KEY_STRATEGY_TRADING_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_HAMMER_OF</Type>
-			<Description>TXT_KEY_STRATEGY_HAMMER_OF</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_HAMMER_OF_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_RESEARCH_MECHS</Type>
 			<Description>TXT_KEY_STRATEGY_RESEARCH_MECHS</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_RESEARCH_MECHS_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_POPULATION_MECHS</Type>
-			<Description>TXT_KEY_STRATEGY_POPULATION_MECHS</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_POPULATION_MECHS_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_DEMOGRAPHICS_MECHS</Type>
@@ -405,29 +340,9 @@
 			<Civilopedia>TXT_KEY_STRATEGY_DEMOGRAPHICS_MECHS_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_CONQUEST_VICTORY</Type>
-			<Description>TXT_KEY_STRATEGY_CONQUEST_VICTORY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_CONQUEST_VICTORY_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_CULTURAL_VICTORY</Type>
 			<Description>TXT_KEY_STRATEGY_CULTURAL_VICTORY</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_CULTURAL_VICTORY_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_DIPLOMATIC_VICTORY</Type>
-			<Description>TXT_KEY_STRATEGY_DIPLOMATIC_VICTORY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_DIPLOMATIC_VICTORY_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_DOMINATION_VICTORY</Type>
-			<Description>TXT_KEY_STRATEGY_DOMINATION_VICTORY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_DOMINATION_VICTORY_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_SPACE_VICTORY</Type>
-			<Description>TXT_KEY_STRATEGY_SPACE_VICTORY</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_SPACE_VICTORY_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_OCC</Type>
@@ -443,21 +358,6 @@
 			<Type>CONCEPT_STRATEGY_CONQUEST_DIPLO</Type>
 			<Description>TXT_KEY_STRATEGY_CONQUEST_DIPLO</Description>
 			<Civilopedia>TXT_KEY_STRATEGY_CONQUEST_DIPLO_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_EARLY_RUSH</Type>
-			<Description>TXT_KEY_STRATEGY_EARLY_RUSH</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_EARLY_RUSH_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_USING_UNITS</Type>
-			<Description>TXT_KEY_STRATEGY_USING_UNITS</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_USING_UNITS_PEDIA</Civilopedia>
-		</NewConceptInfo>
-		<NewConceptInfo>
-			<Type>CONCEPT_STRATEGY_SOD</Type>
-			<Description>TXT_KEY_STRATEGY_SOD</Description>
-			<Civilopedia>TXT_KEY_STRATEGY_SOD_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
 			<Type>CONCEPT_STRATEGY_HEALING</Type>
