@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!--
   Copyright (c) 2007, BUG Mod.
@@ -168,7 +168,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WORST</Tag>
 		<English>Worst</English>
 		<French>Worst</French>
-		<German>Worst</German>
+		<German>Schlimmster</German>
 		<Italian>Peggior</Italian>
 		<Spanish>Worst</Spanish>
 	</TEXT>
@@ -176,7 +176,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_ENEMY</Tag>
 		<English>Enemy</English>
 		<French>Enemy</French>
-		<German>Enemy</German>
+		<German>Feind</German>
 		<Italian>Nemico</Italian>
 		<Spanish>Enemy</Spanish>
 	</TEXT>
@@ -192,7 +192,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS</Tag>
 		<English>Wars</English>
 		<French>Wars</French>
-		<German>Wars</German>
+		<German>Kriege</German>
 		<Italian>Guerre</Italian>
 		<Spanish>Wars</Spanish>
 	</TEXT>
@@ -200,7 +200,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS_ACTIVE</Tag>
 		<English>Active</English>
 		<French>Guerres Actives</French>
-		<German>Aktive Kriege</German>
+		<German>Im Gange</German>
 		<Italian>In corso</Italian>
 		<Spanish>Active</Spanish>
 	</TEXT>
@@ -208,7 +208,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL</Tag>
 		<English>Optional</English>
 		<French>Déclarera?</French>
-		<German>Kriegserkl&#228;rung an</German>
+		<German>Möglich</German>
 		<Italian>Potenziali</Italian>
 		<Spanish>Optional</Spanish>
 	</TEXT>
@@ -333,7 +333,7 @@
 		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
-	<!-- Colors -->
+    <!-- Colors -->
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>
@@ -422,7 +422,7 @@
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
-	<!--Fix for Overlap in Foreign Advisor Tab in Translation-->
+	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
 		<English>Info</English>
