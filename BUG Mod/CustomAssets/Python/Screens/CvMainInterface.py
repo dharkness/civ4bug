@@ -1167,7 +1167,7 @@ class CvMainInterface:
 				# unit has no movement points left
 				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
 					
-		if (self.bShowPromotionIndicator):
+		if (bEnable and self.bShowPromotionIndicator):
 			# can unit be promoted ?
 			if (pLoopUnit.isPromotionReady()):
 				# place the promotion frame
@@ -1177,7 +1177,7 @@ class CvMainInterface:
 		x = self.getX( nCol )
 		y = self.getY( nRow )
 
-		if (self.bShowUpgradeIndicator):
+		if (bEnable and self.bShowUpgradeIndicator):
 			# can unit be upgraded ?
 			if (mt.checkAnyUpgrade(pLoopUnit)):
 				# place the upgrade arrow
@@ -1212,7 +1212,7 @@ class CvMainInterface:
 													
 			screen.show( szStringHealthBar )
 
-		if (self.bShowMoveBar):
+		if (bEnable and self.bShowMoveBar):
 			# place the move bar
 			szStringMoveBar = szString+"MoveBar"
 			if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
@@ -6015,6 +6015,12 @@ class CvMainInterface:
 												elif (gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(eTeam)):
 													if (bAlignIcons):
 														scores.setPeace()
+												elif (gc.getTeam(eTeam).isAVassal()):
+													for iOwnerTeam in range(gc.getMAX_TEAMS()):
+														if (gc.getTeam(eTeam).isVassal(iOwnerTeam) and gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(iOwnerTeam)):
+															if (bAlignIcons):
+																scores.setPeace()
+															break
 												if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 													szBuffer = szBuffer + szTempBuffer
