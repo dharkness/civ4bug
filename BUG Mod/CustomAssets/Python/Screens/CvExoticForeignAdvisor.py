@@ -535,9 +535,9 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			szText = "+" + szText
 
 		if BugScreens.isShowGlanceSmilies():
-			szText = "[" + szText + "]"
+			szText = "[" + szText + "] "
 		else:
-			szText = "<font=3>   " + szText + "</font>"
+			szText = "<font=3>   " + szText + "</font> "
 
 #		ExoticForPrint ("Attitude String = %s" % szAttitude)
 		for szColor, szSearchString in self.ATTITUDE_DICT.items():
@@ -545,13 +545,34 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				color = gc.getInfoTypeForString(szColor)
 				szText = localText.changeTextColor (szText, color)
 
+		pPlayer = gc.getPlayer(nPlayer)
+		pTarget = gc.getPlayer(nTarget)
 		if BugScreens.isShowGlanceSmilies():
-			iAtt = gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
-			szSmilie =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+			iAtt = pPlayer.AI_getAttitude(nTarget)
+			szSmilie = unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
 			szText = szSmilie + " " + szText
 		
-		if gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isAtWar(gc.getPlayer(nTarget).getTeam()):
-			szText += u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
+		szWorstEnemy = pPlayer.getWorstEnemyName()
+		if szWorstEnemy and pTarget.getName() == szWorstEnemy:
+			szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+		
+		nTeam = pPlayer.getTeam()
+		pTeam = gc.getTeam(nTeam)
+		nTargetTeam = pTarget.getTeam()
+		pTargetTeam = gc.getTeam(nTargetTeam)
+		if pTeam.isAtWar(nTargetTeam):
+			szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
+		elif gc.getGame().getActiveTeam() in (nTeam, nTargetTeam):
+			bPeace = False
+			if pTeam.isForcePeace(nTargetTeam):
+				bPeace = True
+			elif pTargetTeam.isAVassal():
+				for nOwnerTeam in range(gc.getMAX_TEAMS()):
+					if pTargetTeam.isVassal(nOwnerTeam) and pTeam.isForcePeace(nOwnerTeam):
+						bPeace = True
+						break
+			if bPeace:
+				szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
 
 		return szText
 
