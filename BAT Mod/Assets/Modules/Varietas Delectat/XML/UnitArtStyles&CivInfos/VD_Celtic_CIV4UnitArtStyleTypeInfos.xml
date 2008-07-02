@@ -71,7 +71,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_EUROPEAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-<StyleUnit>
+
+         <StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
@@ -176,9 +177,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_MACEMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MACEMAN_EUROPEAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MACEMAN_EUROPEAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MACEMAN_EUROPEAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_CELTIC</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_CELTIC</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_CELTIC</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -190,6 +191,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_EUROPEAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_HORSE_ARCHER</UnitType>
 					<UnitMeshGroup>
@@ -225,7 +227,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_RIFLEMAN</UnitType>
 					<UnitMeshGroup>
@@ -233,7 +235,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_RIFLEMAN_CELTIC</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_RIFLEMAN_CELTIC</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_GRENADIER</UnitType>
@@ -252,16 +254,16 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
-					<UnitType>UNIT_TANK</UnitType>
+					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_R35_TANK</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_R35_TANK</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_R35_TANK</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
@@ -269,7 +271,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_VAB_MECH_INF</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_VAB_MECH_INF</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>			
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_FRIGATE</UnitType>
@@ -279,7 +281,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHEBEQUE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
 					<UnitMeshGroup>
@@ -288,7 +290,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_DUNKERQUE_BATTLESHIP</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -296,8 +298,10 @@
 						<LateArtDefineTag>ART_DEF_UNIT_DASSAULT_RAFALE_A</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_DASSAULT_RAFALE_A</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

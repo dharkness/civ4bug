@@ -289,8 +289,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MARINE_RUSSIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_RUSSIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>			
-				
+				</StyleUnit>				
+							
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
@@ -298,7 +298,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_T34</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_T34</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>	
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -307,7 +307,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_T90</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_T90</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
+				</StyleUnit>	
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -316,16 +316,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_BMP3</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_BMP3</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>														
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_SUBMARINE</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_TYPHOON_SUBMARINE</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_TYPHOON_SUBMARINE</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_TYPHOON_SUBMARINE</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SHCHUKA_SUBMARINE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SHCHUKA_SUBMARINE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SHCHUKA_SUBMARINE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_ATTACK_SUBMARINE</UnitType>
@@ -334,16 +334,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_AKULA_SUBMARINE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_AKULA_SUBMARINE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
-				
-				<StyleUnit>
-					<UnitType>UNIT_DESTROYER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>			
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
@@ -353,7 +344,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_OKTYABRSKAYA_REVOLUTSIYA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
+				
 				<StyleUnit>
 					<UnitType>UNIT_CARRIER</UnitType>
 					<UnitMeshGroup>
@@ -364,13 +355,22 @@
 				</StyleUnit>
 				
 				<StyleUnit>
+					<UnitType>UNIT_MISSILE_CRUISER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KIROV_CORVETTE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_LA7_FIGHTER</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_LA7_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_LA7_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>																						
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -384,12 +384,12 @@
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SU47_JET_FIGHTER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SU47_JET_FIGHTER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SU47_JET_FIGHTER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-
+				</StyleUnit>
+				
 				<StyleUnit>
 					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -407,7 +407,9 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KA50_HOKUM</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

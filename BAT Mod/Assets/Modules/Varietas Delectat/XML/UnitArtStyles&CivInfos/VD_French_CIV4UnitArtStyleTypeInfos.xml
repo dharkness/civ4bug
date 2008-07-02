@@ -71,7 +71,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_EUROPEAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
@@ -227,7 +227,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_FRENCH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -235,7 +235,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_FRENCH</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_FRENCH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -299,25 +299,16 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_FRENCH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
-				<StyleUnit>
-					<UnitType>UNIT_TANK</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CHAR_BIS</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CHAR_BIS</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CHAR_BIS</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>	
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
@@ -325,8 +316,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_VAB_MECH_INF</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_VAB_MECH_INF</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>									
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEON</UnitType>
 					<UnitMeshGroup>
@@ -335,7 +326,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_GALLEON_FRENCH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
 					<UnitMeshGroup>
@@ -352,7 +343,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_D520_FIGHTER_FRANCE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_D520_FIGHTER_FRANCE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -362,7 +353,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_AMIOT350_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -371,8 +362,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_DASSAULT_RAFALE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
-				<StyleUnit> 
+
+				<StyleUnit>
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
@@ -380,7 +371,8 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MED_FRENCH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-					
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

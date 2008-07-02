@@ -71,7 +71,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
@@ -270,13 +270,22 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_INFANTRY_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
+				
 				<StyleUnit>
 					<UnitType>UNIT_SAM_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_ITALY</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_ITALY</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_ITALY</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				
@@ -296,7 +305,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER_CAMO</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_CAMO</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>							
+				</StyleUnit>
 								
 				<StyleUnit>
 					<UnitType>UNIT_TRIREME</UnitType>
@@ -323,7 +332,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_FIAT_CR42_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_FIAT_CR42_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -341,9 +350,9 @@
 						<LateArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
-	<StyleUnit> 
+				<StyleUnit> 
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_ROMAN</EarlyArtDefineTag>
@@ -351,6 +360,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MED_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
 
 
 			</StyleUnits>

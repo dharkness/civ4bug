@@ -79,12 +79,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
-	<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
 					</UnitMeshGroup>
-	<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_MIDDLE_EAST</MiddleArtDefineTag>
@@ -292,6 +292,15 @@
 				</StyleUnit>
 				
 				<StyleUnit>
+					<UnitType>UNIT_TANK</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_MERKAVA_ARMOR</EarlyArtDefineTag>
@@ -307,7 +316,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER_DESERT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_DESERT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_FRIGATE</UnitType>
@@ -317,7 +326,9 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHEBEQUE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

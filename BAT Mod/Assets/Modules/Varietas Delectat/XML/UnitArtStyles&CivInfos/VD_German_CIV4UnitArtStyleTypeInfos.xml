@@ -75,12 +75,12 @@
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_GERMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_GERMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
 					<UnitMeshGroup>
@@ -227,7 +227,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -235,7 +235,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_GERMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -245,7 +245,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CANNON</UnitType>
 					<UnitMeshGroup>
@@ -253,7 +253,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CANNON_GERMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CANNON_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MUSKETMAN</UnitType>
@@ -308,7 +308,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_PARATROOPER</UnitType>
 					<UnitMeshGroup>
@@ -316,7 +316,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_FALLSCHIRMJAGER_GERMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_FALLSCHIRMJAGER_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
@@ -328,32 +328,32 @@
 				</StyleUnit>
 
 				<StyleUnit>
-					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_STRYKER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_STRYKER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
-				
-				<StyleUnit>
 					<UnitType>UNIT_GERMAN_PANZER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_TIGER_TANK</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_TIGER_TANK</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TIGER_TANK</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5_GERMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5_GERMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_DESTROYER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_Z_CLASS_DESTROYER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_Z_CLASS_DESTROYER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_Z_CLASS_DESTROYER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
 					<UnitMeshGroup>
@@ -362,7 +362,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_BATTLESHIP_BISMARK</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_SUBMARINE</UnitType>
 					<UnitMeshGroup>
@@ -370,17 +370,17 @@
 						<LateArtDefineTag>ART_DEF_UNIT_VICC_UBOAT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_VICC_UBOAT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
-					<UnitType>UNIT_CARRIER</UnitType>
+					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_GRAF_ZEPPELIN_CARRIER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_GRAF_ZEPPELIN_CARRIER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_GRAF_ZEPPELIN_CARRIER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_STRYKER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_STRYKER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -388,8 +388,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_BF109_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_BF109_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -397,7 +397,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_HE111F_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_HE111F_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>										
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
@@ -406,9 +406,9 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TORNADO_JET_FIGHTER_GERMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TORNADO_JET_FIGHTER_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
+				</StyleUnit>
 
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
@@ -416,6 +416,8 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MED_GERMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

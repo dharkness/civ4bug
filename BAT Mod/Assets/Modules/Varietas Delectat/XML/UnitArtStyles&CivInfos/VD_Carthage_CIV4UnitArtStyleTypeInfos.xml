@@ -77,12 +77,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-			<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-			<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
@@ -227,13 +227,31 @@
 				</StyleUnit>
 				
 				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_CARTHAGE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_CARTHAGE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_CARTHAGE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_MERKAVA_ARMOR</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_MERKAVA_ARMOR</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MERKAVA_ARMOR</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_TANK</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -262,15 +280,9 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 				
-				<StyleUnit>
-					<UnitType>UNIT_JET_FIGHTER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_F4_PHANTOM</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_F4_PHANTOM</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_F4_PHANTOM</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>					
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

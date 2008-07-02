@@ -312,12 +312,12 @@
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_T26</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_T26</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_T26</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T34_76</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T34_76</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T34_76</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>
-								
+				</StyleUnit>	
+				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
@@ -325,7 +325,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_T72_DESERT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_T72_DESERT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>																	
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -344,6 +344,15 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHEBEQUE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_CARRIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>											
 				
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
@@ -366,11 +375,11 @@
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MIG21_JET_EGYPTIAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
@@ -389,7 +398,9 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-								
+				
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 

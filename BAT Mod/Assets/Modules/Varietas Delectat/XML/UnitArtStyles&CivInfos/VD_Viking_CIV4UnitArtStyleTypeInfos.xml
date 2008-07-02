@@ -72,7 +72,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-<StyleUnit>
+        <StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
@@ -127,7 +127,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_PIKEMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_ARCHER</UnitType>
 					<UnitMeshGroup>
@@ -136,7 +136,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_ARCHER_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_LONGBOWMAN</UnitType>
 					<UnitMeshGroup>
@@ -144,8 +144,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>												
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_CROSSBOWMAN</UnitType>
 					<UnitMeshGroup>
@@ -153,8 +153,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>										
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
 					<UnitMeshGroup>
@@ -172,8 +172,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_AXEMAN</UnitType>
 					<UnitMeshGroup>
@@ -181,7 +181,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_AXEMAN_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_AXEMAN_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>							
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CHARIOT</UnitType>
@@ -209,7 +209,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_KNIGHT</UnitType>
 					<UnitMeshGroup>
@@ -217,7 +217,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_KNIGHT_VIKING</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -245,16 +245,16 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_STRYKER_OLIVE</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_STRYKER_OLIVE</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_OLIVE</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_CV9040</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_CV9040</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_CV9040</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
 					<UnitMeshGroup>
@@ -263,7 +263,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_GALLEY_VIKING</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -271,7 +271,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_FFVSJ22_HOLLAND</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_FFVSJ22_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -280,8 +280,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SAAB18_SWEDISH</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAAB18_SWEDISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -289,8 +289,10 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SAAB_37_VIGGEN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAAB_37_VIGGEN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-								
+				</StyleUnit>
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

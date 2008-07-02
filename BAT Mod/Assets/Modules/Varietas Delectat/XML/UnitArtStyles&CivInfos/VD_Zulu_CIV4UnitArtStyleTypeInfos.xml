@@ -70,8 +70,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SCOUT_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
@@ -79,7 +79,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_AFRICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_WARRIOR</UnitType>
@@ -118,7 +118,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_PIKEMAN</UnitType>
 					<UnitMeshGroup>
@@ -126,8 +126,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_PIKEMAN_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_PIKEMAN_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_ARCHER</UnitType>
 					<UnitMeshGroup>
@@ -136,7 +136,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_JAVELIN_THROWER_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_LONGBOWMAN</UnitType>
 					<UnitMeshGroup>
@@ -153,8 +153,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CROSSBOWMAN_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>											
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_AXEMAN</UnitType>
 					<UnitMeshGroup>
@@ -163,7 +163,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_AXEMAN_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
 					<UnitMeshGroup>
@@ -190,8 +190,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MACEMAN_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MACEMAN_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_CHARIOT</UnitType>
 					<UnitMeshGroup>
@@ -199,7 +199,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CHARIOT_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHARIOT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>							
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_HORSE_ARCHER</UnitType>
@@ -227,7 +227,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -244,7 +244,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CAVALRY_AFRICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CAVALRY_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CANNON</UnitType>
@@ -254,7 +254,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CANNON_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 
 				<StyleUnit>
 					<UnitType>UNIT_MUSKETMAN</UnitType>
@@ -263,7 +263,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MUSKETMAN_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MUSKETMAN_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_RIFLEMAN</UnitType>
@@ -318,7 +318,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_AT_INFANTRY</UnitType>
 					<UnitMeshGroup>
@@ -327,7 +327,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_PARATROOPER</UnitType>
 					<UnitMeshGroup>
@@ -336,8 +336,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_PARATROOPER_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-									
-				<StyleUnit> 
+
+				<StyleUnit>
 					<UnitType>UNIT_JEWISH_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_JEWISH_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -345,7 +345,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_JEWISH_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_CHRISTIAN_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CHRISTIAN_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -353,7 +353,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CHRISTIAN_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_TAOIST_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_TAOIST_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -361,7 +361,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_TAOIST_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_BUDDHIST_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_BUDDHIST_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -369,7 +369,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_BUDDHIST_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_HINDU_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_HINDU_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -377,7 +377,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_HINDU_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_ISLAMIC_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ISLAMIC_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -385,7 +385,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ISLAMIC_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_CONFUCIAN_MISSIONARY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CONFUCIAN_MISSIONARY_JT_ZULU</EarlyArtDefineTag>
@@ -393,7 +393,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CONFUCIAN_MISSIONARY_JT_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_SPY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ANCIENT_SPY_JT_AFRICA</EarlyArtDefineTag>
@@ -401,7 +401,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ANCIENT_SPY_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_PROPHET</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_JT_AFRICA</EarlyArtDefineTag>
@@ -409,7 +409,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_ARTIST</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST_AFRICAN</EarlyArtDefineTag>
@@ -417,7 +417,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ARTIST_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_MERCHANT</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_MERCHANT_JT_AFRICA</EarlyArtDefineTag>
@@ -425,7 +425,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_MERCHANT_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_SCIENTIST</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_SCIENTIST_JT_AFRICA</EarlyArtDefineTag>
@@ -433,7 +433,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_SCIENTIST_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_ENGINEER</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ENGINEER_JT_AFRICA</EarlyArtDefineTag>
@@ -441,7 +441,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ENGINEER_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_AFRICAN</EarlyArtDefineTag>
@@ -449,7 +449,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_AFRICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_GREAT_SPY</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ANCIENT_GREAT_SPY</EarlyArtDefineTag>
@@ -457,7 +457,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ANCIENT_GREAT_SPY</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_1</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_1_JT_AFRICA</EarlyArtDefineTag>
@@ -465,7 +465,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_1_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_2</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_2_JT_AFRICA</EarlyArtDefineTag>
@@ -473,7 +473,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_2_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_3</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_3_JT_AFRICA</EarlyArtDefineTag>
@@ -481,7 +481,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_3_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_4</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_4_JT_AFRICA</EarlyArtDefineTag>
@@ -489,7 +489,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_4_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_5</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_5_JT_AFRICA</EarlyArtDefineTag>
@@ -497,7 +497,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_5_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_6</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_6_JT_AFRICA</EarlyArtDefineTag>
@@ -505,24 +505,24 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_6_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				<StyleUnit> 
+				<StyleUnit>
 					<UnitType>UNIT_EXECUTIVE_7</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_CEO_7_JT_AFRICA</EarlyArtDefineTag>
 					<LateArtDefineTag>ART_DEF_UNIT_CEO_7_JT_AFRICA</LateArtDefineTag>
 					<MiddleArtDefineTag>ART_DEF_UNIT_CEO_7_JT_AFRICA</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T34_76</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T34_76</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T34_76</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-								
+
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
@@ -530,17 +530,17 @@
 						<LateArtDefineTag>ART_DEF_UNIT_T72_DESERT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_T72_DESERT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>															
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_TECHNICAL_AFRICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_TECHNICAL_AFRICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_TECHNICAL_AFRICAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_BTR70</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_BTR70</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_BTR70</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>						
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
 					<UnitMeshGroup>
@@ -548,7 +548,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_GALLEY_ZULU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_GALLEY_ZULU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_DESTROYER</UnitType>
@@ -558,7 +558,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_LIGHT_CRUISER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
 					<UnitMeshGroup>
@@ -566,8 +566,17 @@
 						<LateArtDefineTag>ART_DEF_UNIT_BATTLESHIP_DREADNOUGHT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_BATTLESHIP_DREADNOUGHT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
-				
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_CARRIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -575,8 +584,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -584,8 +593,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>																										
-							
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -593,8 +602,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -602,8 +611,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>											
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GUNSHIP</UnitType>
 					<UnitMeshGroup>
@@ -614,7 +623,8 @@
 				</StyleUnit>
 
 
-																		
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 

@@ -276,27 +276,37 @@
 				<StyleUnit>
 					<UnitType>UNIT_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_ASKARI_MIDDLE_EAST</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_ASKARI_MIDDLE_EAST</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_ASKARI_MIDDLE_EAST</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_INFANTRY_BABYLONIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_INFANTRY_BABYLONIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_INFANTRY_BABYLONIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MACHINE_GUN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_AFRICAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_BABYLONIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_BABYLONIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_BABYLONIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
 
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_MIDDLE_EAST</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_BABYLONIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_BABYLONIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_BABYLONIAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_TANK</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK_DESERT</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				
@@ -327,6 +337,8 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 				
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 

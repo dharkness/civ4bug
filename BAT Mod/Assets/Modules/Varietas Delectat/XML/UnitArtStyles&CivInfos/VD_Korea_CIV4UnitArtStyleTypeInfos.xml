@@ -88,12 +88,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
@@ -299,24 +299,24 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
+				
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_M16</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_M16</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_M16</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MODERN_INF_KOREAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MODERN_INF_KOREAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MODERN_INF_KOREAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>				
 				
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_T26</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_T26</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_T26</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T34_76</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T34_76</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T34_76</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -325,7 +325,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>																							
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -334,7 +334,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_BTR80</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_BTR80</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CARAVEL</UnitType>
@@ -416,7 +416,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-<StyleUnit> 
+				
+				<StyleUnit> 
 					<UnitType>UNIT_PROPHET</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</EarlyArtDefineTag>
@@ -424,7 +425,9 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

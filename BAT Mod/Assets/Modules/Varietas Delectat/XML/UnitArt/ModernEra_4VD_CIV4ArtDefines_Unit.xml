@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Firaxis Games (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Unit art path information -->
+<Civ4ArtDefines xmlns="x-schema:VD_CIV4ArtDefinesSchema.xml">
+	<UnitArtInfos>
+	
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_FT17</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ft17.dds</Button>			
+			<fScale>0.48</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Early]/Renault_FT_17/Renault FT17.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Early]/Renault_FT_17/Renault FT17.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Early]/Renault_FT_17/Renault FT17.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_FT17</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_FT17</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_LIGHT_TANK</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/T26.dds</Button>
+			<fScale>0.51</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/T-26/T-26.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/T-26/T-26.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/T-26/T-26.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.1</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>					
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_KV2</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/kv2.dds</Button>
+			<fScale>0.45</fScale>
+			<fInterfaceScale>0.85</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/KV_2/KV-2.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/KV_2/KV-2.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/KV_2/KV-2.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>				
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_HEAVY_TANK</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/M26.dds</Button>
+			<fScale>0.41</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Heavy]/M26/M26.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Heavy]/M26/M26.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Heavy]/M26/M26_FX.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>						
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_TANK_DESTROYER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ArcherMG.dds</Button>			
+			<fScale>0.60</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Tank Destroyer]/ArcherMG/Archer.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Tank Destroyer]/ArcherMG/Archer.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Tank Destroyer]/ArcherMG/Archer.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_ASSAULT_GUN</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/M7B1.dds</Button>			
+			<fScale>0.49</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/M7B1/M7B1.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/M7B1/M7B1.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/M7B1/M7B1.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>										
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_STUG_ASSAULT_GUN</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/StugIII.dds</Button>
+			<fScale>0.50</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/Sturmgeschutz_III_Ausf_E/Sturmgeschutz_III_Ausf_E.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/Sturmgeschutz_III_Ausf_E/Sturmgeschutz_III_Ausf_E.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Assault Gun]/Sturmgeschutz_III_Ausf_E/Sturmgeschutz_III_Ausf_E.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_MECH_INFANTRY</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/M3HT.dds</Button>			
+			<fScale>0.47</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Mech Inf]/M3HT/M3HT.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Mech Inf]/M3HT/M3HT.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Mech Inf]/M3HT/M3HT_FX.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>1</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>							
+
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_IRONCLAD_CRUISER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/IroncladCruiser.dds</Button>
+			<fScale>0.18</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/HMS Warrior/HMS_Warrior_teamcolor.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/HMS Warrior/Ironclad.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/HMS Warrior/HMS_Warrior_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/DestroyerShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_IRONCLAD</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_IRONCLAD</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_IRONCLAD_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_IRONCLAD_FORT</ActionSound>
+		</UnitArtInfo>			
+
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_IRONCLAD_BATTLESHIP</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/IroncladBattleship.dds</Button>
+			<fScale>0.21</fScale>
+			<fInterfaceScale>0.92</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Ironclad Battleship/ironcladbattleship_teamcolor.nif</NIF>
+			<KFM>Art/Units/Frigate/Frigate.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Ironclad Battleship/ironcladbattleship_teamcolor.nif</SHADERNIF>			
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_DESTROYER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/EarlyDestroyer.dds</Button>
+			<fScale>0.29</fScale>
+			<fInterfaceScale>0.75</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Early Destroyer/ww1_dd_teamcolor.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Early Destroyer/ww1_dd_fr.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Early Destroyer/ww1_dd_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>				
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_CRUISER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Cruiser.dds</Button>
+			<fScale>0.32</fScale>
+			<fInterfaceScale>0.85</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Early Cruiser/ww1_cr_teamcolor.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Early Cruiser/ww1_cr_fr.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Early Cruiser/ww1_cr_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_PROTECTED_CRUISER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ProtCruis.dds</Button>
+			<fScale>0.68</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/ProtCruiser/ww1_cr_us.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/ProtCruiser/ww1_cr_us.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/ProtCruiser/ww1_cr_us.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_PRE-DREADNOUGHT</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Pre-dreadnought.dds</Button>
+			<fScale>0.61</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Pre-Dreadnought/ww1_bb_teamcolor.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Pre-Dreadnought/ww1_bb_fr.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Pre-Dreadnought/ww1_bb_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_DREADNOUGHT</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Dreadnought.dds</Button>
+			<fScale>0.95</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Dreadnought/Dreadnought.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Dreadnought/Dreadnought.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Dreadnought/Dreadnought.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_CARRIER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/EarlyCarrier.dds</Button>
+			<fScale>1.1</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Carrier Avanger/carrier.nif</NIF>
+			<KFM>Art/Units/Carrier/Carrier.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Carrier Avanger/carrier.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/CarrierShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.8</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>							
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_BRONENOSETS_RUSSIAN</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Bronenosets.dds</Button>
+			<fScale>1.25</fScale>
+			<fInterfaceScale>0.95</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Bronenosets/Bronenosets.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Bronenosets/Bronenosets.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Bronenosets/Bronenosets_FX.nif</SHADERNIF>			
+			<ShadowDef>
+					<ShadowNIF>Art/Units/01_UnitShadows/FrigateShadow.nif</ShadowNIF>
+					<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+					<fShadowScale>0.26</fShadowScale> 
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_IRONCLAD</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_IRONCLAD</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_IRONCLAD_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_IRONCLAD_FORT</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_FIGHTER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Nieuport11.dds</Button>
+			<fScale>0.46</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/Nieuport11/Nieuport11_teamcolor.nif</NIF>
+			<KFM>Art/Units/Fighter/Fighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/Nieuport11/Nieuport11_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/FighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_SPAD_XIII</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/SPADXIII Button.dds</Button>
+			<fScale>0.5</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/SPADXIII/SPADXIII_teamcolor.nif</NIF>
+			<KFM>Art/Units/Fighter/Fighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/SPADXIII/SPADXIII_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/FighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>													
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_BOMBER</Type>
+			<Button>Modules/Varietas Delectat/Art/Units/[air]/[Early]/HandleyPageO100/HPO100 Button.dds</Button>
+			<fScale>0.34</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/HandleyPageO100/HPO100_teamcolor.nif</NIF>
+			<KFM>Art/Units/Bomber/Bomber.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/HandleyPageO100/HPO100_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>
+	
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_CAPRONI_CA3</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/CaproniCa3 Button.dds</Button>
+			<fScale>0.33</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/CaproniCa3/CaproniCa3_teamcolor.nif</NIF>
+			<KFM>Art/Units/Bomber/Bomber.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Early]/CaproniCa3/CaproniCa3_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_LIGHT_BOMBER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ju87.dds</Button>
+			<fScale>0.56</fScale>
+			<fInterfaceScale>1.3</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[bomber]/Ju-87 Stuka/ju87.nif</NIF>
+			<KFM>Art/Units/Fighter/Fighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[bomber]/Ju-87 Stuka/ju87.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>			
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_JET_FIGHTER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/gloster_meteor.dds</Button>			
+			<fScale>0.5</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Early Jet]/Gloster Meteor/Gloster_Meteor.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Early Jet]/Gloster Meteor/Gloster_Meteor_FX.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/JetFighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>							
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_EARLY_TANK</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/markv.dds</Button>
+			<fScale>0.44</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/Mark V Tank/markvtank.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/Mark V Tank/markvtank.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/Mark V Tank/markvtank_fx.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_ARMOURED_CAR</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/RollsRoyce.dds</Button>
+			<fScale>0.33</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/RollsRoyce ArmoredCar/RollsRoyce.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/RollsRoyce ArmoredCar/RollsRoyce.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/RollsRoyce ArmoredCar/RollsRoyce_FX.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_MOD_ARMOUR</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_MOD_ARMOUR</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>		
+					
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_RECONNAISSANCE_CAR</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/M8ReconCar.dds</Button>
+			<fScale>0.39</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/M8 Recon Car/M8.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/M8 Recon Car/M8.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/M8 Recon Car/M8_FX.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_ERHARDT</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_ERHARDT</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_BA64B_COMMAND_CAR</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/M8ReconCar.dds</Button>
+			<fScale>0.44</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/BA-64B/BA_64B.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/BA-64B/BA_64B.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/BA-64B/BA_64B.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_ERHARDT</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_ERHARDT</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>
+								
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_F4_PHANTOM_FIGHTER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/F4Phantom.dds</Button>
+			<fScale>0.50</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/F-4 Phantom II/F4.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/F-4 Phantom II/F4.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/JetFighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_CLOSE_AIR_SUPPORT</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/A10.dds</Button>			
+			<fScale>0.52</fScale>
+			<fInterfaceScale>1.2</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Jet]/A10/A10.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Jet]/A10/A10.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/StealthBomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.7</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>				
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_SU25_CLOSE_AIR_SUPPORT</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Su25.dds</Button>			
+			<fScale>0.44</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[Jet]/Su25/Su25.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[Jet]/Su25/Su25.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/StealthBomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.7</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_F22_ATF</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/F22.dds</Button>
+			<fScale>0.48</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/F-22/F-22.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/F-22/F-22.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/JetFighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>		
+			<Type>ART_DEF_UNIT_MARINE_WW2</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ww2marines.dds</Button>
+			<fScale>0.44</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[inf]/Marine/marines.nif</NIF>
+			<KFM>Art/Units/Marine/Marines.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[inf]/Marine/marines_fx.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/UnitShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.05</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+		</UnitArtInfo>								
+		
+		<UnitArtInfo>		
+			<Type>ART_DEF_UNIT_MODERN_INFANTRY</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/ModernInfantry.dds</Button>
+			<fScale>0.44</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[inf]/Commando/Commando.nif</NIF>
+			<KFM>Art/Units/Marine/Marines.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[inf]/Commando/Commando.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/UnitShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.05</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_MODERN_CRUISER</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Brooklyn.dds</Button>			
+			<fScale>1.02</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>			
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Brooklyn Cruiser/Brooklyn_teamcolor.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[naval]/Brooklyn Cruiser/Brooklyn.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Brooklyn Cruiser/Brooklyn_teamcolor.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BattleshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_DESTOYER</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_DESTROYER</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_DESTROYER_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_DESTROYER_FORT</ActionSound>
+		</UnitArtInfo>		
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_HUMVEE</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Humvee.dds</Button>					
+			<fScale>0.42</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>				
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/HUMVEE/HUMVEE.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/HUMVEE/HUMVEE.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[Recon]/HUMVEE/HUMVEE.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>1.0</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_MAIN_BATTLE_TANK</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/CenturionTank.dds</Button>
+			<fScale>0.46</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[tanks]/[MBT]/Centurion MBT/centurion.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[tanks]/[MBT]/Centurion MBT/centurion.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[tanks]/[MBT]/Centurion MBT/centurion.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/ModernArmorShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.1</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_MOD_ARMOUR</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_MOD_ARMOUR</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_MOD_ARMOUR_HEAL</SelectionSound>
+			<ActionSound>AS3D_UN_MOD_ARMOUR_HEAL</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_CHINOOK_HEAVY_LIFT_HELI</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Chinook.dds</Button>
+			<fScale>0.42</fScale>
+			<fInterfaceScale>0.7</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Chinook/chinook.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Chinook/chinook.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Chinook/chinook_fx.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/GunshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>1.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_GUNSHIP</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_GUNSHIP</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_GUNSHIP_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_GUNSHIP_FORT</ActionSound>
+		</UnitArtInfo>
+
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_SIKORSKY_H5</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/sikorsky-h5.dds</Button>
+			<fScale>0.42</fScale>
+			<fInterfaceScale>0.7</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Sikorsky H5 Generic/Sikorsky_h_5_generic.nif</NIF>
+			<KFM>Art/Units/Gunship/GunShip.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Sikorsky H5 Generic/Sikorsky_h_5_generic.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/GunshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>1.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_GUNSHIP</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_GUNSHIP</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_GUNSHIP_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_GUNSHIP_FORT</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_MIL_MI_1</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Mil-Mi1.dds</Button>
+			<fScale>0.44</fScale>
+			<fInterfaceScale>0.7</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Mil Mi 1/mi1.nif</NIF>
+			<KFM>Art/Units/Gunship/GunShip.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[heli]/Mil Mi 1/mi1.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/GunshipShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>1.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_GUNSHIP</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_GUNSHIP</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_GUNSHIP_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_GUNSHIP_FORT</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_GALLEAS</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Galleas.dds</Button>
+			<fScale>0.115</fScale>
+			<fInterfaceScale>0.6</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[naval]/Galleas/Galley.nif</NIF>
+			<KFM>Art/Units/Galleon/Galleon.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[naval]/Galleas/Galley_fx.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/IroncladShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>4.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/water_ship_wake.dds</Texture>
+				<fWidth>1</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>1</fTaper>
+				<fFadeStartTime>.2</fFadeStartTime>
+				<fFadeFalloff>0.4</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>.2</fBankRate>
+			<fExchangeAngle>25.0</fExchangeAngle>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_OCEAN1</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_OCEAN1</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_OCEAN_END1</SelectionSound>
+			<ActionSound>AS3D_UN_OCEAN_END1</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_JET_BOMBER_VULCAN</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/JetBomber.dds</Button>
+			<fScale>0.49</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[air]/[bomber]/Avro Vulcan/AvroVulcan.nif</NIF>
+			<KFM>Art/Units/StealthBomber/StealthBomber.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[air]/[bomber]/Avro Vulcan/AvroVulcan.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/StealthBomberShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.5</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>			
+
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_YF_23_PROTO</Type>
+			<Button>Modules/Varietas Delectat/Art/Units/[proto]/Northrop YF-23/YF23button.dds</Button>
+			<fScale>0.5</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[proto]/Northrop YF-23/YF23.nif</NIF>
+			<KFM>Art/Units/JetFighter/JetFighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[proto]/Northrop YF-23/YF23.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/JetFighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIQUE_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_JET_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_JET_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_JET_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_MAUS_PROTO</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/Maus.dds</Button>
+			<fScale>0.47</fScale>
+			<fInterfaceScale>0.9</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[proto]/Panzer VIII Maus/Maus.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[proto]/Panzer VIII Maus/Maus.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[proto]/Panzer VIII Maus/Maus.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/TankShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>1.0</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<TrailDefinition>
+				<Texture>Art/Shared/tanktread.dds</Texture>
+				<fWidth>0.8</fWidth>
+				<fLength>180.0</fLength>
+				<fTaper>0.0</fTaper>
+				<fFadeStartTime>0.2</fFadeStartTime>
+				<fFadeFalloff>0.35</fFadeFalloff>
+			</TrailDefinition>
+			<fBattleDistance>0.5</fBattleDistance>
+			<fRangedDeathTime>0.12</fRangedDeathTime>
+			<bActAsRanged>1</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop>LOOPSTEP_TANK</AudioRunTypeLoop>
+				<AudioRunTypeEnd>ENDSTEP_TANK</AudioRunTypeEnd>
+			</AudioRunSounds>
+			<SelectionSound>AS3D_UN_TANK_FORT</SelectionSound>
+			<ActionSound>AS3D_UN_TANK_FORT</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_FOKKER_DR1_PROTO</Type>
+			<Button>Modules/Varietas Delectat/Art/Units/[proto]/fokkerdr1/fokkerdr1_button.dds</Button>
+			<fScale>0.66</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[proto]/fokkerdr1/fokkerdr1.nif</NIF>
+			<KFM>Art/Units/Fighter/Fighter.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[proto]/fokkerdr1/fokkerdr1.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/FighterShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.75</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.35</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop/>
+				<AudioRunTypeEnd/>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_FIGHTER_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_FIGHTER_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>	
+		
+		<UnitArtInfo>
+			<Type>ART_DEF_UNIT_AIRSHIP_PROTO</Type>
+			<Button>Modules/Varietas Delectat/Art/Buttons/Units/AirShipProto.dds</Button>
+			<fScale>0.46</fScale>
+			<fInterfaceScale>1.0</fInterfaceScale>
+			<bActAsLand>0</bActAsLand>
+			<bActAsAir>0</bActAsAir>
+			<NIF>Modules/Varietas Delectat/Art/Units/[proto]/Airship/Airship.nif</NIF>
+			<KFM>Modules/Varietas Delectat/Art/Units/[proto]/Airship/Airship.kfm</KFM>
+			<SHADERNIF>Modules/Varietas Delectat/Art/Units/[proto]/Airship/Airship.nif</SHADERNIF>
+			<ShadowDef>
+				<ShadowNIF>Art/Units/01_UnitShadows/BearShadow.nif</ShadowNIF>
+				<ShadowAttachNode>BIP Pelvis</ShadowAttachNode>
+				<fShadowScale>0.65</fShadowScale>
+			</ShadowDef>
+			<iDamageStates>4</iDamageStates>
+			<fBattleDistance>0.55</fBattleDistance>
+			<fRangedDeathTime>0.31</fRangedDeathTime>
+			<bSmoothMove>1</bSmoothMove>
+			<fAngleInterpRate>720.0</fAngleInterpRate>
+			<fBankRate>0.35</fBankRate>
+			<bActAsRanged>0</bActAsRanged>
+			<TrainSound>AS2D_UNIT_BUILD_UNIT</TrainSound>
+			<AudioRunSounds>
+				<AudioRunTypeLoop> </AudioRunTypeLoop>
+				<AudioRunTypeEnd> </AudioRunTypeEnd>
+			</AudioRunSounds>
+			<PatrolSound>AS3D_UN_AIRSHIP_PATROL</PatrolSound>
+			<SelectionSound>AS3D_UN_AIRSHIP_COMMAND_PATROL</SelectionSound>
+			<ActionSound>AS3D_UN_AIRSHIP_COMMAND_PATROL</ActionSound>
+		</UnitArtInfo>						
+		
+	</UnitArtInfos>
+</Civ4ArtDefines>

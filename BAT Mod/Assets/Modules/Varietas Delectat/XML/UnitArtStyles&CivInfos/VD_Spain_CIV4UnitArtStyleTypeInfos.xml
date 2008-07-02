@@ -13,7 +13,7 @@
 		<UnitArtStyleTypeInfo>
 			<Type>UNIT_ARTSTYLE_SPAIN</Type>
 			<StyleUnits>
-			
+
 				<StyleUnit>
 					<UnitType>UNIT_SETTLER</UnitType>
 					<UnitMeshGroup>
@@ -51,7 +51,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SETTLER_MODERN_CHILD</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SETTLER_CHILD_EUROPEAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>			
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_WORKER</UnitType>
@@ -78,12 +78,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-	<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-	<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_GRECO_ROMAN</MiddleArtDefineTag>
@@ -190,7 +190,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CARTHAGE_WAR_ELEPHANT</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -198,7 +198,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_SPANISH</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_SPANISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -217,7 +217,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_SPANISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_PARATROOPER</UnitType>
 					<UnitMeshGroup>
@@ -225,8 +225,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_PARATROOPER_SPANISH</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_PARATROOPER_SPANISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
 					<UnitMeshGroup>
@@ -234,8 +234,17 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MARINE_SPANISH</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_SPANISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MODERN_ARMOR</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LECLERC_ARMOR</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEON</UnitType>
 					<UnitMeshGroup>
@@ -244,7 +253,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_GALLEON_SPAIN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -252,8 +261,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_HAWKER_FURY_SPAIN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_HAWKER_FURY_SPAIN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>						
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -261,7 +270,9 @@
 						<LateArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

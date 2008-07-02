@@ -272,7 +272,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_INFANTRY_NATIVE_AMERICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-								
+
 				<StyleUnit>
 					<UnitType>UNIT_MACHINE_GUN</UnitType>
 					<UnitMeshGroup>
@@ -280,7 +280,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_NATIVE_AMERICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_NATIVE_AMERICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
@@ -303,20 +303,11 @@
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_BTR80</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_BTR80</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_BTR80</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>						
-				
-				<StyleUnit>
-					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
-					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_STRYKER_DESERT</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER_DESERT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_DESERT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>										
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
@@ -343,8 +334,10 @@
 						<LateArtDefineTag>ART_DEF_UNIT_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
-				
+				</StyleUnit>
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 

@@ -71,7 +71,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
@@ -88,12 +88,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_ASIAN</MiddleArtDefineTag>
@@ -218,7 +218,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_KHMER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -226,7 +226,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_ASIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -292,23 +292,14 @@
 				</StyleUnit>
 
 				<StyleUnit>
-					<UnitType>UNIT_MARINE</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
-				
-				<StyleUnit>
 					<UnitType>UNIT_SAM_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_KHMER</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_KHMER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_KHMER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_AT_INFANTRY</UnitType>
 					<UnitMeshGroup>
@@ -317,7 +308,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_KHMER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_PARATROOPER</UnitType>
 					<UnitMeshGroup>
@@ -325,17 +316,26 @@
 						<LateArtDefineTag>ART_DEF_UNIT_PARATROOPER_KHMER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_PARATROOPER_KHMER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>						
-								
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_KHMER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_T26</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_T26</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_T26</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T34_76</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T34_76</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T34_76</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-								
+
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
@@ -348,11 +348,11 @@
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_BTR80</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_BTR80</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_BTR80</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_BTR70</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_BTR70</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_BTR70</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CARAVEL</UnitType>
@@ -362,7 +362,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_CARAVEL_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
 					<UnitMeshGroup>
@@ -370,8 +370,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_ASIAN_GALLEY</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_ASIAN_GALLEY</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_FRIGATE</UnitType>
 					<UnitMeshGroup>
@@ -380,7 +380,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_FRIGATE_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_GALLEON</UnitType>
 					<UnitMeshGroup>
@@ -388,8 +388,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_ASIAN_GALLEON</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_ASIAN_GALLEON</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_SHIP_OF_THE_LINE</UnitType>
 					<UnitMeshGroup>
@@ -398,7 +398,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SHIP_OF_THE_LINE_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -406,8 +406,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_IL2_SHTURMOVIK</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -415,8 +415,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>						
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -424,8 +424,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
 					<UnitMeshGroup>
@@ -433,8 +433,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>													
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_GUNSHIP</UnitType>
 					<UnitMeshGroup>
@@ -443,7 +443,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-<StyleUnit> 
+
+				<StyleUnit>
 					<UnitType>UNIT_PROPHET</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</EarlyArtDefineTag>
@@ -451,7 +452,9 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

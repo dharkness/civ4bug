@@ -103,9 +103,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_LONGBOWMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_MIDDLE_EAST</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_MIDDLE_EAST</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_MIDDLE_EAST</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_ARABIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_ARABIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_ARABIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -140,9 +140,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_PIKEMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_PIKEMAN_MIDDLE_EAST</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_PIKEMAN_MIDDLE_EAST</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_PIKEMAN_MIDDLE_EAST</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_PIKEMAN_ARABIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_PIKEMAN_ARABIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_PIKEMAN_ARABIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -303,12 +303,12 @@
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_T26</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_T26</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_T26</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_T34_76</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_T34_76</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_T34_76</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>
-								
+				</StyleUnit>	
+				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
 					<UnitMeshGroup>
@@ -334,7 +334,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CHEBEQUE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CHEBEQUE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>		
+				
+				<StyleUnit>
+					<UnitType>UNIT_CARRIER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_KUZNETSOV_CARRIER</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
@@ -352,16 +361,16 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU_TB3_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>					
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MIG21_JET_ARABIAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MIG21_JET_ARABIAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MIG21_JET_ARABIAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29_RUSSIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
+				</StyleUnit>				
 				
 				<StyleUnit>
 					<UnitType>UNIT_STEALTH_BOMBER</UnitType>
@@ -370,7 +379,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TU22M_STEALTH_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>		
 				
 				<StyleUnit>
 					<UnitType>UNIT_GUNSHIP</UnitType>
@@ -392,6 +401,8 @@
 				
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
+
+
 <!--________________________________________________________________________________________________________________________________________________-->
 <!--                                                                                                                                                -->
 <!-- VD mod END Arabian ArtStyle                                                                                                                    -->

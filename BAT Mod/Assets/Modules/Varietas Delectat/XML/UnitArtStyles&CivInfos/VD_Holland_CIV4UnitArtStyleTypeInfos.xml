@@ -71,7 +71,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SCOUT_EUROPEAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
@@ -126,7 +126,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_LONGBOWMAN_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CROSSBOWMAN</UnitType>
 					<UnitMeshGroup>
@@ -190,7 +190,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_HORSEMAN_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_WAR_ELEPHANT</UnitType>
 					<UnitMeshGroup>
@@ -198,7 +198,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EU</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WAR_ELEPHANT_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_KNIGHT</UnitType>
@@ -208,7 +208,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_KNIGHT_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
 				<StyleUnit>
 					<UnitType>UNIT_CUIRASSIER</UnitType>
 					<UnitMeshGroup>
@@ -216,7 +216,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_CUIRASSIER_HOLLAND</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_CUIRASSIER_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CAVALRY</UnitType>
@@ -235,7 +235,16 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MODERN_INF_HOLLAND</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MODERN_INF_HOLLAND</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MODERN_INF_HOLLAND</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
@@ -243,8 +252,26 @@
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>	
-				
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MODERN_ARMOR</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LEOPARD_2A5</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SUBMARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ORZEL_SUBMARINE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ORZEL_SUBMARINE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ORZEL_SUBMARINE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -252,7 +279,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_FOKKERDXXI_HOLLAND</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_FOKKERDXXI_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -261,8 +288,8 @@
 						<LateArtDefineTag>ART_DEF_UNIT_FOKKERG1_HOLLAND</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_FOKKERG1_HOLLAND</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
+				</StyleUnit>
+
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -270,8 +297,10 @@
 						<LateArtDefineTag>ART_DEF_UNIT_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>													
-				
+				</StyleUnit>
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

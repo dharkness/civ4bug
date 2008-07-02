@@ -75,9 +75,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_EXPLORER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_EURO</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_ENGLISH</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_ENGLISH</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_ENGLISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -282,22 +282,13 @@
 				</StyleUnit>	
 				
 				<StyleUnit>
-					<UnitType>UNIT_MODERN_ARMOR</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>	
-				
-				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_M2_BRADLEY_MECH_INF</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_M2_BRADLEY_MECH_INF</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_M2_BRADLEY_MECH_INF</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>													
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_GALLEON</UnitType>
@@ -329,11 +320,20 @@
 				<StyleUnit>
 					<UnitType>UNIT_CARRIER</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_HMS_AVENGER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_HMS_AVENGER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_HMS_AVENGER</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ILLUSTRIOUS_ENGLISH</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ILLUSTRIOUS_ENGLISH</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ILLUSTRIOUS_ENGLISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>															
+				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_ATTACK_SUBMARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ASTUTE_SUBMARINE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ASTUTE_SUBMARINE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ASTUTE_SUBMARINE</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>				
 
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
@@ -342,7 +342,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SPITFIRE_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SPITFIRE_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -352,7 +352,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_LANCASTER_BOMBER_ENGLISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-							
+				
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -361,7 +361,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_TORNADO_JET_FIGHTER_ENGLISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>	
-<StyleUnit> 
+				
+				<StyleUnit> 
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
@@ -369,6 +370,8 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MED_ENGLISH</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

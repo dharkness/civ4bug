@@ -273,7 +273,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_INFANTRY_MEXICAN</EarlyArtDefineTag>
@@ -282,7 +282,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_MACHINE_GUN</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_MEXICAN</EarlyArtDefineTag>
@@ -291,13 +291,21 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_AT_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SAM_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -309,15 +317,6 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_MEXICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
-			<StyleUnit>
-					<UnitType>UNIT_SAM_INFANTRY</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -326,7 +325,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_BTR80</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_BTR80</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>						
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -335,7 +334,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>													
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
@@ -353,9 +352,9 @@
 						<LateArtDefineTag>ART_DEF_UNIT_TRIREME_AZTEC</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_TRIREME_AZTEC</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
+				</StyleUnit>
 
-	<StyleUnit> 
+				<StyleUnit> 
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_GREAT_GENERAL_MAYAN</EarlyArtDefineTag>
@@ -364,7 +363,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>			
 
-	<StyleUnit> 
+				<StyleUnit> 
 					<UnitType>UNIT_ARTIST</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST_MESO</EarlyArtDefineTag>
@@ -372,7 +371,8 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_ARTIST_MESO</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-		<StyleUnit> 
+				
+				<StyleUnit> 
 					<UnitType>UNIT_PROPHET</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</EarlyArtDefineTag>
@@ -380,7 +380,8 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-			
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

@@ -273,7 +273,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_INFANTRY_MEXICAN</EarlyArtDefineTag>
@@ -282,7 +282,7 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_MACHINE_GUN</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_MEXICAN</EarlyArtDefineTag>
@@ -291,13 +291,21 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 
-
-		<StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_AT_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_AT_INFANTRY_MEXICAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_SAM_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -309,15 +317,6 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_MEXICAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
-			<StyleUnit>
-					<UnitType>UNIT_SAM_INFANTRY</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SAM_INFANTRY_MEXICAN</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -326,7 +325,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_M1A1_ABRAMS</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>												
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
@@ -335,8 +334,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER_CAMO</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_CAMO</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>									
-								
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_GALLEY</UnitType>
@@ -363,7 +361,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MIG29UB_JET_FIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>		
+				</StyleUnit>
 
 				<StyleUnit> 
 					<UnitType>UNIT_GREAT_GENERAL</UnitType>
@@ -391,6 +389,7 @@
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_MESO</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
 
 
 			</StyleUnits>

@@ -74,12 +74,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK</MiddleArtDefineTag>
 					</UnitMeshGroup>
-<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK_2</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK_2</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK_2</MiddleArtDefineTag>
 					</UnitMeshGroup>
-<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_TURK</MiddleArtDefineTag>
@@ -89,19 +89,19 @@
 				<StyleUnit>
 					<UnitType>UNIT_SPEARMAN</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_BLUE_OTTOMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_BLUE_OTTOMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_BLUE_OTTOMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEN_OTTOMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEN_OTTOMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEN_OTTOMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_OTTOMAN</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_RED_OTTOMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_RED_OTTOMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_RED_OTTOMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 
@@ -267,15 +267,6 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MACHINE_GUN_OTTOMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-
-				<StyleUnit>
-					<UnitType>UNIT_MARINE</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_SAM_INFANTRY</UnitType>
@@ -293,16 +284,25 @@
 						<LateArtDefineTag>ART_DEF_UNIT_PARATROOPER_OTTOMAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_PARATROOPER_OTTOMAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>												
+				</StyleUnit>
+
+				<StyleUnit>
+					<UnitType>UNIT_MARINE</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_OTTOMAN</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARK_V_TANK</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK_TEAMCOLOR</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -321,6 +321,8 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER_OLIVE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

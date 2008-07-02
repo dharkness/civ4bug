@@ -70,12 +70,12 @@
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-		<UnitMeshGroup>
+				<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_WARRIOR_INDIAN</MiddleArtDefineTag>
@@ -292,15 +292,6 @@
 				</StyleUnit>	
 				
 				<StyleUnit>
-					<UnitType>UNIT_MODERN_ARMOR</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_CENTURION_ARMOR</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>	
-				
-				<StyleUnit>
 					<UnitType>UNIT_MECHANIZED_INFANTRY</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_STRYKER_CAMO</EarlyArtDefineTag>
@@ -310,15 +301,6 @@
 				</StyleUnit>	
 				
 				<StyleUnit>
-					<UnitType>UNIT_JET_FIGHTER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MIG21_JET_INDIAN</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MIG21_JET_INDIAN</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MIG21_JET_INDIAN</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>												
-				
-				<StyleUnit>
 					<UnitType>UNIT_GUNSHIP</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_MI24_HIND</EarlyArtDefineTag>
@@ -326,7 +308,9 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_MI24_HIND</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-				
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

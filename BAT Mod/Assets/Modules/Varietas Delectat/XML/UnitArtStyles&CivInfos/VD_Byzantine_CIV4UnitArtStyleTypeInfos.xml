@@ -270,7 +270,9 @@
 						<LateArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_EUROFIGHTER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>											
+				</StyleUnit>	
+				
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>

@@ -61,6 +61,15 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_WORKERMEDIEVAL_EU</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
+				
+				<StyleUnit>
+					<UnitType>UNIT_EXPLORER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_EXPLORER_USA</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_EXPLORER_USA</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_EXPLORER_USA</MiddleArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_MUSKETMAN</UnitType>
@@ -110,11 +119,11 @@
 				<StyleUnit>
 					<UnitType>UNIT_TANK</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_M4A3_TANK_USA</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_M4A3_TANK_USA</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_M4A3_TANK_USA</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>	
 				
 				<StyleUnit>
 					<UnitType>UNIT_MODERN_ARMOR</UnitType>
@@ -132,7 +141,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_MECHANIZED_INFANTRY</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MECHANIZED_INFANTRY</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>													
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_IRONCLAD</UnitType>
@@ -140,15 +149,6 @@
 						<EarlyArtDefineTag>ART_DEF_UNIT_MONITOR</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_MONITOR</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_MONITOR</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>				
-
-				<StyleUnit>
-					<UnitType>UNIT_DESTROYER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_BROOKLYN_USA</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_BROOKLYN_USA</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_BROOKLYN_USA</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				
@@ -159,16 +159,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_IOWA_BATTLESHIP_USA</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_IOWA_BATTLESHIP_USA</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
-				
-				<StyleUnit>
-					<UnitType>UNIT_CARRIER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_ESSEX_CARRIER</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>		
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_TRANSPORT</UnitType>
@@ -177,7 +168,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_SAN_ANTONIO_TRANSPORT</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SAN_ANTONIO_TRANSPORT</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
@@ -186,7 +177,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_P40_FIGHTER_USA</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_P40_FIGHTER_USA</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>				
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_BOMBER</UnitType>
@@ -196,7 +187,7 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_B17G_BOMBER</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
-							
+				
 				<StyleUnit>
 					<UnitType>UNIT_JET_FIGHTER</UnitType>
 					<UnitMeshGroup>
@@ -213,8 +204,10 @@
 						<LateArtDefineTag>ART_DEF_UNIT_AH64_APACHE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_AH64_APACHE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>												
-								
+				</StyleUnit>
+
+
+
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
 <!--________________________________________________________________________________________________________________________________________________-->

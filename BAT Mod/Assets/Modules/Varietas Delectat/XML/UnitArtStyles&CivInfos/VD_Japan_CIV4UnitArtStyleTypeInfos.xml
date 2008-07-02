@@ -312,9 +312,9 @@
 				<StyleUnit>
 					<UnitType>UNIT_MARINE</UnitType>
 					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_MARINE_M16</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_MARINE_M16</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_MARINE_M16</MiddleArtDefineTag>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MODERN_INF_JAPANESE</EarlyArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MODERN_INF_JAPANESE</LateArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MODERN_INF_JAPANESE</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				
@@ -334,7 +334,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_STRYKER</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_STRYKER</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>								
+				</StyleUnit>
 
 				<StyleUnit>
 					<UnitType>UNIT_CARAVEL</UnitType>
@@ -388,7 +388,7 @@
 						<LateArtDefineTag>ART_DEF_UNIT_I_400_SUBMARINE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_I_400_SUBMARINE</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>									
+				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_BATTLESHIP</UnitType>
@@ -398,15 +398,6 @@
 						<MiddleArtDefineTag>ART_DEF_UNIT_BATTLESHIP_YAMATO</MiddleArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>	
-				
-				<StyleUnit>
-					<UnitType>UNIT_CARRIER</UnitType>
-					<UnitMeshGroup>
-						<EarlyArtDefineTag>ART_DEF_UNIT_ZUIKAKU</EarlyArtDefineTag>
-						<LateArtDefineTag>ART_DEF_UNIT_ZUIKAKU</LateArtDefineTag>
-						<MiddleArtDefineTag>ART_DEF_UNIT_ZUIKAKU</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>
 				
 				<StyleUnit>
 					<UnitType>UNIT_FIGHTER</UnitType>
@@ -423,16 +414,19 @@
 						<EarlyArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</EarlyArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</LateArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_KI21_BOMBER_JAPANESE</MiddleArtDefineTag>
-					</UnitMeshGroup>
-				</StyleUnit>		
-<StyleUnit> 
+					</UnitMeshGroup>						
+				</StyleUnit>	
+				
+				<StyleUnit> 
 					<UnitType>UNIT_PROPHET</UnitType>
 					<UnitMeshGroup>
 					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</EarlyArtDefineTag>
 					<LateArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</LateArtDefineTag>
 					<MiddleArtDefineTag>ART_DEF_UNIT_PROPHET_ASIAN</MiddleArtDefineTag>
 					</UnitMeshGroup>
-				</StyleUnit>														
+				</StyleUnit>
+
+
 
 			</StyleUnits>
 		</UnitArtStyleTypeInfo>
