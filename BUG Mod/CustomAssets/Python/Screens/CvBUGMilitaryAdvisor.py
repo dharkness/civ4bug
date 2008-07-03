@@ -125,6 +125,7 @@ class CvMilitaryAdvisor:
 		self.W_SCREEN = 1024
 		self.H_SCREEN = 768
 		self.Y_TITLE = 12
+		self.L_SCREEN = 20
 
 		self.X_EXIT = 994
 		self.Y_EXIT = 726
@@ -204,6 +205,13 @@ class CvMilitaryAdvisor:
 
 		# over-ride screen width, height
 		self.W_SCREEN = screen.getXResolution() - 40
+		self.X_SCREEN = (screen.getXResolution() - 24) / 2
+		self.L_SCREEN = 20
+
+		if self.W_SCREEN < 1024:
+			self.W_SCREEN = 1024
+			self.L_SCREEN = 0
+		
 		self.X_EXIT = self.W_SCREEN - 30
 		#self.Y_EXIT = 726
 		#self.H_SCREEN = screen.getYResolution()
@@ -221,7 +229,7 @@ class CvMilitaryAdvisor:
 		screen.addPanel( "TechBottomPanel", u"", u"", True, False, 0, 713, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
 		screen.showWindowBackground( False )
 		#screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
-		screen.setDimensions(20, screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		screen.setDimensions(self.L_SCREEN, screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
 		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
 		# Header...
