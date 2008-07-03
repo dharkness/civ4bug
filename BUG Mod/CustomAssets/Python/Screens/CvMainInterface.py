@@ -1291,7 +1291,7 @@ class CvMainInterface:
 				# place the upgrade arrow
 				szStringUpgrade = szString+"Upgrade"
 				szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
-				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
+				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringUpgrade )
 
 		if (self.bShowHealthBar and pLoopUnit.maxHitPoints() and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
