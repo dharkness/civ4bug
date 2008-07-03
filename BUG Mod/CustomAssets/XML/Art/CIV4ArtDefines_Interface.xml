@@ -7,10 +7,12 @@
 <Civ4ArtDefines xmlns="x-schema:CIV4ArtDefinesSchema.xml">
 	<InterfaceArtInfos>
 <!-- BUG - PLE - start -->
+		<!-- General -->
 		<InterfaceArtInfo>
 			<Type>PLE_BUTTON_HILITE</Type>
 			<Path>Art/PlotListEnhancements/PLE_button_select.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Group Modes -->
 		<InterfaceArtInfo>
 			<Type>PLE_GRP_UPGRADE</Type>
 			<Path>Art/PlotListEnhancements/PLE_GRP_UPGRADE_32.dds</Path>
@@ -27,6 +29,7 @@
 			<Type>PLE_GRP_UNITTYPE</Type>
 			<Path>Art/PlotListEnhancements/PLE_GRP_UNITTYPE_32.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Filters -->
 		<InterfaceArtInfo>
 			<Type>PLE_RESET_FILTERS</Type>
 			<Path>Art/PlotListEnhancements/PLE_RESET_FILTERS.dds</Path>
@@ -75,6 +78,7 @@
 			<Type>PLE_FILTER_CANTMOVE</Type>
 			<Path>Art/PlotListEnhancements/PLE_FILTER_CANTMOVE_32.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Arrows -->
 		<InterfaceArtInfo>
 			<Type>PLE_ARROW_DOWN</Type>
 			<Path>Art/PlotListEnhancements/arrowdown.dds</Path>
@@ -83,6 +87,7 @@
 			<Type>PLE_ARROW_UP</Type>
 			<Path>Art/PlotListEnhancements/arrowup.dds</Path>
 		</InterfaceArtInfo>
+		<!-- View Modes -->
 		<InterfaceArtInfo>
 			<Type>PLE_MODE_STACK_VERT</Type>
 			<Path>Art/PlotListEnhancements/PLE_MODE_STACK_VERT.dds</Path>
@@ -99,6 +104,7 @@
 			<Type>PLE_MODE_MULTILINE</Type>
 			<Path>Art/PlotListEnhancements/PLE_MODE_MULTILINE.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Icon Adornments -->
 		<InterfaceArtInfo>
 			<Type>OVERLAY_PROMOTION_FRAME</Type>
 			<Path>Art/PlotListEnhancements/frame_promo.dds</Path>
@@ -107,6 +113,7 @@
 			<Type>OVERLAY_UPGRADE</Type>
 			<Path>Art/PlotListEnhancements/PLE_overlay_upgrade.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Mission Tags -->
 		<InterfaceArtInfo>
 			<Type>OVERLAY_ACTION_SKIP</Type>
 			<Path>Art/PlotListEnhancements/medallion_action_skip.dds</Path>
@@ -147,6 +154,7 @@
 			<Type>OVERLAY_ACTION_PATROL</Type>
 			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
 		</InterfaceArtInfo>
+		<!-- Movement Dots -->
 		<InterfaceArtInfo>
 			<Type>OVERLAY_MOVE_INJURED</Type>
 			<Path>Art/PlotListEnhancements/Medallion_canmove_injured.dds</Path>
@@ -162,6 +170,38 @@
 		<InterfaceArtInfo>
 			<Type>OVERLAY_FORTIFY_INJURED</Type>
 			<Path>Art/PlotListEnhancements/medallion_fortify_injured.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_MOVE_GG</Type>
+			<Path>Art/PlotListEnhancements/Medallion_canmove_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_HASMOVED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_hasmoved_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_NOMOVE_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_cantmove_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_FORTIFY_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_fortify_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_MOVE_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/Medallion_canmove_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_HASMOVED_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_hasmoved_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_NOMOVE_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_cantmove_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_FORTIFY_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_fortify_injured_GG.dds</Path>
 		</InterfaceArtInfo>
 <!-- BUG - PLE - end -->	
 		<InterfaceArtInfo>

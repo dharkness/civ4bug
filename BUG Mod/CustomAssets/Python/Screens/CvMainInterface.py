@@ -1239,39 +1239,42 @@ class CvMainInterface:
 		# set select state of the unit button
 		screen.show( szString )
 		
-		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon. 
-		# Wounded units will get a darker colored button.
-		if (pLoopUnit.isHurt()) and (self.bShowWoundedIndicator):
-			# wounded units -> darker button
-			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-				# fortified
-				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY_INJURED").getPath()								
-			elif (pLoopUnit.canMove()):
-				if (pLoopUnit.hasMoved()):
-					# unit moved, but some movement points are left
-					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED_INJURED").getPath()
-				else:
-					# unit did not move yet
-					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE_INJURED").getPath()
+		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon.
+		xSize = 12
+		ySize = 12
+		xOffset = 0
+		yOffset = 0
+		if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+			# fortified
+			szDotState = "OVERLAY_FORTIFY"								
+		elif (pLoopUnit.canMove()):
+			if (pLoopUnit.hasMoved()):
+				# unit moved, but some movement points are left
+				szDotState = "OVERLAY_HASMOVED"
 			else:
-				# unit has no movement points left
-				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE_INJURED").getPath()
+				# unit did not move yet
+				szDotState = "OVERLAY_MOVE"
 		else:
-			# not wounded units -> default button
-			if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-				# fortified
-				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()								
-			elif (pLoopUnit.canMove()):
-				if (pLoopUnit.hasMoved()):
-					# unit moved, but some movement points are left
-					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
-				else:
-					# unit did not move yet
-					szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-			else:
-				# unit has no movement points left
-				szFileNameState = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
-					
+			# unit has no movement points left
+			szDotState = "OVERLAY_NOMOVE"
+		
+		# Wounded units will get a darker colored button.
+		if (self.bShowWoundedIndicator) and (pLoopUnit.isHurt()):
+			szDotState += "_INJURED"
+		
+		# Units lead by a GG will get a star instead of a dot.
+		if (self.bShowGreatGeneralIndicator):
+			# is unit lead by a GG?
+			iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
+			if (iLeaderPromo != -1 and pLoopUnit.isHasPromotion(iLeaderPromo)):
+				szDotState += "_GG"
+				xSize = 16
+				ySize = 16
+				xOffset = -3
+				yOffset = -3
+		
+		szFileNameState = ArtFileMgr.getInterfaceArtInfo(szDotState).getPath()
+		
 		if (bEnable and self.bShowPromotionIndicator):
 			# can unit be promoted ?
 			if (pLoopUnit.isPromotionReady()):
@@ -1291,16 +1294,6 @@ class CvMainInterface:
 				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x-6, y+21, 14, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
 				screen.show( szStringUpgrade )
 
-		if (self.bShowGreatGeneralIndicator):
-			# is unit lead by a GG?
-			iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
-			if (pLoopUnit.isHasPromotion(iLeaderPromo)):
-				# place the GG star
-				szStringGreatGeneral = szString+"GreatGeneral"
-				szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()	
-				screen.addDDSGFC( szStringGreatGeneral, szFileNameGreatGeneral, x+8, y, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, iCount, -1 )
-				screen.show( szStringGreatGeneral )
-		
 		if (self.bShowHealthBar and pLoopUnit.maxHitPoints() and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
 			# place the health bar
 			szStringHealthBar = szString+"HealthBar"
@@ -1408,8 +1401,7 @@ class CvMainInterface:
 			
 		# display the colored spot icon
 		szStringIcon = szString+"Icon"
-#		screen.addDDSGFC( szStringIcon, szFileNameState, x-3, y-5, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-		screen.addDDSGFC( szStringIcon, szFileNameState, x-3, y-7, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		screen.addDDSGFC( szStringIcon, szFileNameState, x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 		screen.show( szStringIcon )
 	
 	# checks if the unit matches actual filter conditions
