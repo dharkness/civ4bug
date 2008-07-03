@@ -377,6 +377,11 @@ class CvMainInterface:
 
 ############## input handlers functions ######################
 
+	# Makes the text size small to avoid a scrollbar and displays the help text
+	def displayHelpHover(self, sKey):
+		sText = u"<font=2>%s</font>" % BugUtil.getPlainText(sKey)
+		self.displayInfoPane(sText)
+
 	def handleHoverPLEFilter(self, inputClass, sKey, nFilter):
 		"Shows or hides the correct hover text for the given filter."
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
@@ -387,7 +392,7 @@ class CvMainInterface:
 			bSelected = self.isPLEFilter(nFilter)
 			if ( bSelected ):
 				sFullKey += "_ON"
-			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			self.displayHelpHover(sFullKey)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
 			self.hideInfoPane()
@@ -401,7 +406,7 @@ class CvMainInterface:
 			bSelected = self.sPLEMode == nViewMode
 			#if ( bSelected ):
 			#	sFullKey += "_ON"
-			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			self.displayHelpHover(sFullKey)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
 			self.hideInfoPane()
@@ -420,7 +425,7 @@ class CvMainInterface:
 				bSelected = self.nPLEGrpMode == self.PLE_GRP_UPGRADE
 			if ( bSelected ):
 				sFullKey += "_ON"
-			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			self.displayHelpHover(sFullKey)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
 			self.hideInfoPane()
@@ -438,7 +443,7 @@ class CvMainInterface:
 			bSelected = self.isPLEFilter(self.nPLEAllFilters)
 			if ( bSelected ):
 				sFullKey += "_ON"
-			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			self.displayHelpHover(sFullKey)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
 			self.hideInfoPane()
@@ -586,7 +591,7 @@ class CvMainInterface:
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
 			sFullKey = "TXT_KEY_PLE_VIEW_MODE"
-			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			self.displayHelpHover(sFullKey)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
 			self.hideInfoPane()
