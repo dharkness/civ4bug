@@ -7,7 +7,7 @@ import CvScreenEnums
 import CvEventInterface
 import time
 
-## 12monkeys - PlotList Button Enhancement  - begin 			
+# BUG - PLE - start 			
 import MonkeyTools as mt
 import string
 from AStarTools import *
@@ -16,7 +16,7 @@ PyPlayer = PyHelpers.PyPlayer
 
 import BugPleOptions
 BugPle = BugPleOptions.getOptions()
-## 12monkeys - PlotList Button Enhancement  - end
+# BUG - PLE - end
 
 # BUG - Align Icons - start
 import Scoreboard
@@ -168,7 +168,7 @@ class CvMainInterface:
 #########################################################################################
 #########################################################################################
 #########################################################################################
-## 12monkeys - PlotList Button Enhancement  - begin
+# BUG - PLE - start
 	def __init__(self):
 	
 		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"		
@@ -179,6 +179,7 @@ class CvMainInterface:
 		self.PLOT_LIST_PROMO_NAME 		= "MyPlotListPromo"		
 		self.PLOT_LIST_UPGRADE_NAME 	= "MyPlotListUpgrade"		
 		
+		self.PLE_VIEW_MODE 		 	   	= "PLE_VIEW_MODE1"
 		self.PLE_MODE_STANDARD 			= "PLE_MODE_STANDARD1"
 		self.PLE_MODE_MULTILINE 		= "PLE_MODE_MULTILINE1"
 		self.PLE_MODE_STACK_VERT 		= "PLE_MODE_STACK_VERT1"
@@ -187,16 +188,27 @@ class CvMainInterface:
 							    self.PLE_MODE_MULTILINE,
 							    self.PLE_MODE_STACK_VERT,
 							    self.PLE_MODE_STACK_HORIZ )
+		self.PLE_VIEW_MODE_CYCLE = { self.PLE_MODE_STANDARD : self.PLE_MODE_MULTILINE,
+									 self.PLE_MODE_MULTILINE : self.PLE_MODE_STACK_VERT,
+									 self.PLE_MODE_STACK_VERT : self.PLE_MODE_STACK_HORIZ,
+									 self.PLE_MODE_STACK_HORIZ : self.PLE_MODE_STANDARD }
+		self.PLE_VIEW_MODE_ART = { self.PLE_MODE_STANDARD : "PLE_MODE_STANDARD",
+									 self.PLE_MODE_MULTILINE : "PLE_MODE_MULTILINE",
+									 self.PLE_MODE_STACK_VERT : "PLE_MODE_STACK_VERT",
+									 self.PLE_MODE_STACK_HORIZ : "PLE_MODE_STACK_HORIZ" }
 		
-		self.PLE_FILTER_WOUND			= "PLE_FILTER_WOUND1"
+		self.PLE_RESET_FILTERS			= "PLE_RESET_FILTERS1"
 		self.PLE_FILTER_NOTWOUND		= "PLE_FILTER_NOTWOUND1"
-		self.PLE_FILTER_AIR				= "PLE_FILTER_AIR1"
-		self.PLE_FILTER_SEA				= "PLE_FILTER_SEA1"
+		self.PLE_FILTER_WOUND			= "PLE_FILTER_WOUND1"
 		self.PLE_FILTER_LAND			= "PLE_FILTER_LAND1"
-		self.PLE_FILTER_DOM				= "PLE_FILTER_DOM1"
+		self.PLE_FILTER_SEA				= "PLE_FILTER_SEA1"
+		self.PLE_FILTER_AIR				= "PLE_FILTER_AIR1"
 		self.PLE_FILTER_MIL				= "PLE_FILTER_MIL1"
+		self.PLE_FILTER_DOM				= "PLE_FILTER_DOM1"
 		self.PLE_FILTER_OWN				= "PLE_FILTER_OWN1"
 		self.PLE_FILTER_FOREIGN			= "PLE_FILTER_FOREIGN1"
+		self.PLE_FILTER_CANMOVE			= "PLE_FILTER_CANMOVE1"
+		self.PLE_FILTER_CANTMOVE		= "PLE_FILTER_CANTMOVE1"
 		
 		self.PLE_PROMO_BUTTONS_UNITINFO = "PLE_PROMO_BUTTONS_UNITINFO"
 
@@ -214,41 +226,50 @@ class CvMainInterface:
 		self.UNIT_INFO_TEXT_SHADOW		= "PLE_UNIT_INFO_TEXT_SHADOW_ID"
 		
 		# filter constants
-		self.nPLEFilterModeWound		= 1
-		self.nPLEFilterModeNotWound		= 2
-		self.nPLEFilterModeAir 			= 4
-		self.nPLEFilterModeSea 			= 8
-		self.nPLEFilterModeLand			= 16
-		self.nPLEFilterModeDom			= 32
-		self.nPLEFilterModeMil			= 64
-		self.nPLEFilterModeOwn			= 128
-		self.nPLEFilterModeForeign		= 256
+		self.nPLEFilterModeCanMove		= 0x0001
+		self.nPLEFilterModeCantMove		= 0x0002
+		self.nPLEFilterModeWound		= 0x0004
+		self.nPLEFilterModeNotWound		= 0x0008
+		self.nPLEFilterModeAir 			= 0x0010
+		self.nPLEFilterModeSea 			= 0x0020
+		self.nPLEFilterModeLand			= 0x0040
+		self.nPLEFilterModeDom			= 0x0080
+		self.nPLEFilterModeMil			= 0x0100
+		self.nPLEFilterModeOwn			= 0x0200
+		self.nPLEFilterModeForeign		= 0x0400
 		
 		self.nPLEFilterGroupHealth	    = self.nPLEFilterModeWound | self.nPLEFilterModeNotWound
 		self.nPLEFilterGroupDomain	   	= self.nPLEFilterModeAir | self.nPLEFilterModeSea | self.nPLEFilterModeLand
 		self.nPLEFilterGroupType        = self.nPLEFilterModeDom | self.nPLEFilterModeMil
 		self.nPLEFilterGroupOwner       = self.nPLEFilterModeOwn | self.nPLEFilterModeForeign
+		self.nPLEFilterGroupMove  	    = self.nPLEFilterModeCanMove | self.nPLEFilterModeCantMove
+		
+		self.nPLEAllFilters = self.nPLEFilterGroupHealth | self.nPLEFilterGroupDomain | self.nPLEFilterGroupType | self.nPLEFilterGroupOwner | self.nPLEFilterGroupMove
 
 		# set all filters to active -> all units 
-		self.nPLEFilter 				= 0xFFFF
-			
+		self.nPLEFilter 				= self.nPLEAllFilters
+		
 		self.MainInterfaceInputMap = {
 			self.PLOT_LIST_BUTTON_NAME		: self.getPlotListButtonName,
 			self.PLOT_LIST_MINUS_NAME		: self.getPlotListMinusName,
 			self.PLOT_LIST_PLUS_NAME		: self.getPlotListPlusName,
 			self.PLOT_LIST_UP_NAME 			: self.getPlotListUpName,
 			self.PLOT_LIST_DOWN_NAME 		: self.getPlotListDownName,
+			self.PLE_VIEW_MODE   	   	    : self.onClickPLEViewMode,
 			self.PLE_MODE_STANDARD			: self.onClickPLEModeStandard,
 			self.PLE_MODE_MULTILINE			: self.onClickPLEModeMultiline,
 			self.PLE_MODE_STACK_VERT		: self.onClickPLEModeStackVert,
 			self.PLE_MODE_STACK_HORIZ		: self.onClickPLEModeStackHoriz,
-			self.PLE_FILTER_WOUND			: self.onClickPLEFilterWound,
+			self.PLE_RESET_FILTERS   	    : self.onClickPLEResetFilters,
+			self.PLE_FILTER_CANMOVE			: self.onClickPLEFilterCanMove,
+			self.PLE_FILTER_CANTMOVE		: self.onClickPLEFilterCantMove,
 			self.PLE_FILTER_NOTWOUND		: self.onClickPLEFilterNotWound,
-			self.PLE_FILTER_AIR				: self.onClickPLEFilterAir,
-			self.PLE_FILTER_SEA				: self.onClickPLEFilterSea,
+			self.PLE_FILTER_WOUND			: self.onClickPLEFilterWound,
 			self.PLE_FILTER_LAND			: self.onClickPLEFilterLand,
-			self.PLE_FILTER_DOM				: self.onClickPLEFilterDom,
+			self.PLE_FILTER_SEA				: self.onClickPLEFilterSea,
+			self.PLE_FILTER_AIR				: self.onClickPLEFilterAir,
 			self.PLE_FILTER_MIL				: self.onClickPLEFilterMil,
+			self.PLE_FILTER_DOM				: self.onClickPLEFilterDom,
 			self.PLE_FILTER_OWN				: self.onClickPLEFilterOwn,
 			self.PLE_FILTER_FOREIGN			: self.onClickPLEFilterForeign,
 			self.PLE_GRP_UNITTYPE			: self.onClickPLEGrpUnittype,
@@ -267,6 +288,7 @@ class CvMainInterface:
 		self.sPLEMode 				= self.PLE_VIEW_MODES[BugPle.getDefaultViewMode()]
 		self.iMaxPlotListIcons 		= 0
 		self.nPLEGrpMode 			= self.PLE_GROUP_MODES[BugPle.getDefaultGroupMode()]
+		self.nPLELastGrpMode  	    = self.nPLEGrpMode
 		self.pActPlotListUnit		= 0
 		self.iActPlotListGroup		= 0
 		self.pLastPlotListUnit		= 0
@@ -290,19 +312,19 @@ class CvMainInterface:
 		self.dPLEUnitInfo 			= {}	
 		
 		self.iLoopCnt 				= 0
-		self.bPLEHide 				= false
-		self.bUpdatePLEUnitList 	= true
+		self.bPLEHide 				= False
+		self.bUpdatePLEUnitList 	= True
 		
 		self.dUnitPromoList			= {}
 		self.dUnitUpgradeList		= {}		
 		
-		self.bInit					= false
+		self.bInit					= False
 		
 		self.ASMA 					= AStarMoveArea()
 		
 		self.tLastMousePos			= (0,0)
-		self.bInfoPaneActive		= false
-		self.bUnitPromoButtonsActive = false
+		self.bInfoPaneActive		= False
+		self.bUnitPromoButtonsActive = False
 		self.iMousePosTol			= 30
 		self.iInfoPaneCnt			= 0
 		self.iLastInfoPaneCnt		= -1
@@ -312,11 +334,16 @@ class CvMainInterface:
 
 ############## Basic operational functions ###################
 
+	# Returns True if the given filter is active
+	# You can pass in a filter group to see if any of its filters is active
+	def isPLEFilter(self, nFilter):
+		return self.nPLEFilter & nFilter != nFilter
+
 	# Sets or toggles a specific filter button (wounded, air, etc) based on the PLE/BUG mode
 	def setPLEFilter(self, nFilter, nFilterGroup):
 		self.hideInfoPane()
 		if (BugPle.isBugFilterBehavior()):
-			bWasSelected = not (self.nPLEFilter & nFilter)
+			bWasSelected = self.isPLEFilter(nFilter)
 			# Clear all filters in group
 			self.nPLEFilter |= nFilterGroup
 			if (not bWasSelected):
@@ -325,6 +352,10 @@ class CvMainInterface:
 		else:
 			# Toggle the specified mode
 			self.nPLEFilter ^= nFilter
+		CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
+	
+	def resetPLEFilters(self):
+		self.nPLEFilter = self.nPLEAllFilters
 		CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, True)
 
 	# Sets the grouping mode (includes upgrade and promotion modes)
@@ -353,7 +384,7 @@ class CvMainInterface:
 			if ( BugPle.isBugFilterBehavior() ):
 				sFullKey += "BUG_"
 			sFullKey += sKey
-			bSelected = not (self.nPLEFilter & nFilter)
+			bSelected = self.isPLEFilter(nFilter)
 			if ( bSelected ):
 				sFullKey += "_ON"
 			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
@@ -381,9 +412,14 @@ class CvMainInterface:
 		"Shows or hides the hover text for the given view mode."
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
 			sFullKey = "TXT_KEY_PLE_GRP_" + sKey
-			bSelected = self.nPLEGrpMode == nGrpMode
-			#if ( bSelected ):
-			#	sFullKey += "_ON"
+			if ( sKey == "STANDARD" ):
+				bSelected = self.nPLEGrpMode in (self.PLE_GRP_UNITTYPE, self.PLE_GRP_GROUPS)
+			elif ( sKey == "PROMO" ):
+				bSelected = self.nPLEGrpMode == self.PLE_GRP_PROMO
+			elif ( sKey == "UPGRADE" ):
+				bSelected = self.nPLEGrpMode == self.PLE_GRP_UPGRADE
+			if ( bSelected ):
+				sFullKey += "_ON"
 			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
@@ -391,15 +427,42 @@ class CvMainInterface:
 			return 1
 		return 0
 
-	# PLE Mode Switcher functions
-	def onClickPLEFilterWound(self, inputClass):
-		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEFilter(self.nPLEFilterModeWound, self.nPLEFilterGroupHealth)
-			return 1
-		else:
-			return self.handleHoverPLEFilter(inputClass, "WOUNDED", self.nPLEFilterModeWound)
 
 	# PLE Mode Switcher functions
+	def onClickPLEResetFilters(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.resetPLEFilters()
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			sFullKey = "TXT_KEY_PLE_RESET_FILTERS"
+			bSelected = self.isPLEFilter(self.nPLEAllFilters)
+			if ( bSelected ):
+				sFullKey += "_ON"
+			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideInfoPane()
+			return 1
+		return 0
+
+
+	# PLE Movement Filters
+	def onClickPLEFilterCanMove(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.setPLEFilter(self.nPLEFilterModeCanMove, self.nPLEFilterGroupMove)
+			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "CANMOVE", self.nPLEFilterModeCanMove)
+
+	def onClickPLEFilterCantMove(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.setPLEFilter(self.nPLEFilterModeCantMove, self.nPLEFilterGroupMove)
+			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "CANTMOVE", self.nPLEFilterModeCantMove)
+	
+	
+	# PLE Health Filters
 	def onClickPLEFilterNotWound(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeNotWound, self.nPLEFilterGroupHealth)
@@ -407,23 +470,15 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEFilter(inputClass, "HEALTHY", self.nPLEFilterModeNotWound)
 			
-	# PLE Mode Switcher functions
-	def onClickPLEFilterAir(self, inputClass):
+	def onClickPLEFilterWound(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEFilter(self.nPLEFilterModeAir, self.nPLEFilterGroupDomain)
+			self.setPLEFilter(self.nPLEFilterModeWound, self.nPLEFilterGroupHealth)
 			return 1
 		else:
-			return self.handleHoverPLEFilter(inputClass, "AIR", self.nPLEFilterModeAir)
+			return self.handleHoverPLEFilter(inputClass, "WOUNDED", self.nPLEFilterModeWound)
 
-	# PLE Mode Switcher functions
-	def onClickPLEFilterSea(self, inputClass):
-		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEFilter(self.nPLEFilterModeSea, self.nPLEFilterGroupDomain)
-			return 1
-		else:
-			return self.handleHoverPLEFilter(inputClass, "SEA", self.nPLEFilterModeSea)
 
-	# PLE Mode Switcher functions
+	# PLE Domain Filters
 	def onClickPLEFilterLand(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeLand, self.nPLEFilterGroupDomain)
@@ -431,15 +486,22 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEFilter(inputClass, "LAND", self.nPLEFilterModeLand)
 
-	# PLE Mode Switcher functions
-	def onClickPLEFilterDom(self, inputClass):
+	def onClickPLEFilterSea(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEFilter(self.nPLEFilterModeDom, self.nPLEFilterGroupType)
+			self.setPLEFilter(self.nPLEFilterModeSea, self.nPLEFilterGroupDomain)
 			return 1
 		else:
-			return self.handleHoverPLEFilter(inputClass, "DOM", self.nPLEFilterModeDom)
-			
-	# PLE Mode Switcher functions
+			return self.handleHoverPLEFilter(inputClass, "SEA", self.nPLEFilterModeSea)
+
+	def onClickPLEFilterAir(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.setPLEFilter(self.nPLEFilterModeAir, self.nPLEFilterGroupDomain)
+			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "AIR", self.nPLEFilterModeAir)
+
+
+	# PLE Domain Filters
 	def onClickPLEFilterMil(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeMil, self.nPLEFilterGroupType)
@@ -447,7 +509,15 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEFilter(inputClass, "MIL", self.nPLEFilterModeMil)
 
-	# PLE Mode Switcher functions
+	def onClickPLEFilterDom(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			self.setPLEFilter(self.nPLEFilterModeDom, self.nPLEFilterGroupType)
+			return 1
+		else:
+			return self.handleHoverPLEFilter(inputClass, "DOM", self.nPLEFilterModeDom)
+			
+	
+	# PLE Ownership Filters
 	def onClickPLEFilterOwn(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeOwn, self.nPLEFilterGroupOwner)
@@ -455,7 +525,6 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEFilter(inputClass, "OWN", self.nPLEFilterModeOwn)
 			
-	# PLE Mode Switcher functions
 	def onClickPLEFilterForeign(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEFilter(self.nPLEFilterModeForeign, self.nPLEFilterGroupOwner)
@@ -464,15 +533,21 @@ class CvMainInterface:
 			return self.handleHoverPLEFilter(inputClass, "FOREIGN", self.nPLEFilterModeForeign)
 
 
-	# PLE Grouping Mode switcher
+	# PLE Grouping Modes
 	def onClickPLEGrpUnittype(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEGroupMode(self.PLE_GRP_UNITTYPE)
+			if (self.nPLEGrpMode == self.PLE_GRP_UNITTYPE):
+				self.setPLEGroupMode(self.PLE_GRP_GROUPS)
+				self.nPLELastGrpMode = self.PLE_GRP_GROUPS
+			elif (self.nPLEGrpMode == self.PLE_GRP_GROUPS):
+				self.setPLEGroupMode(self.PLE_GRP_UNITTYPE)
+				self.nPLELastGrpMode = self.PLE_GRP_UNITTYPE
+			else:
+				self.setPLEGroupMode(self.nPLELastGrpMode)
 			return 1
 		else:
-			return self.handleHoverPLEGrpMode(inputClass, "UNITTYPE", self.PLE_GRP_UNITTYPE)
+			return self.handleHoverPLEGrpMode(inputClass, "STANDARD", self.PLE_GRP_UNITTYPE)
 
-	# PLE Grouping Mode switcher
 	def onClickPLEGrpGroups(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEGroupMode(self.PLE_GRP_GROUPS)
@@ -480,24 +555,44 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEGrpMode(inputClass, "GROUPS", self.PLE_GRP_GROUPS)
 
-	# PLE Grouping Mode switcher
 	def onClickPLEGrpPromo(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEGroupMode(self.PLE_GRP_PROMO)
+			if ( self.nPLEGrpMode == self.PLE_GRP_PROMO ):
+				self.setPLEGroupMode(self.nPLELastGrpMode)
+			else:
+				self.setPLEGroupMode(self.PLE_GRP_PROMO)
 			return 1
 		else:
 			return self.handleHoverPLEGrpMode(inputClass, "PROMO", self.PLE_GRP_PROMO)
 
-	# PLE Grouping Mode switcher
 	def onClickPLEGrpUpgrade(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
-			self.setPLEGroupMode(self.PLE_GRP_UPGRADE)
+			if ( self.nPLEGrpMode == self.PLE_GRP_UPGRADE ):
+				self.setPLEGroupMode(self.nPLELastGrpMode)
+			else:
+				self.setPLEGroupMode(self.PLE_GRP_UPGRADE)
 			return 1
 		else:
 			return self.handleHoverPLEGrpMode(inputClass, "UPGRADE", self.PLE_GRP_UPGRADE)
 
 
-	# PLE Mode Switcher functions
+	# PLE View Modes
+	def onClickPLEViewMode(self, inputClass):
+		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
+			if ( self.sPLEMode in self.PLE_VIEW_MODE_CYCLE ):
+				self.setPLEViewMode(self.PLE_VIEW_MODE_CYCLE[self.sPLEMode])
+			else:
+				self.setPLEViewMode(BugPle.getDefaultViewMode())
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
+			sFullKey = "TXT_KEY_PLE_VIEW_MODE"
+			self.displayInfoPane(BugUtil.getPlainText(sFullKey))
+			return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
+			self.hideInfoPane()
+			return 1
+		return 0
+				
 	def onClickPLEModeStandard(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STANDARD)
@@ -505,7 +600,6 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEViewMode(inputClass, "STANDARD", self.PLE_MODE_STANDARD)
 				
-	# PLE Mode Switcher functions
 	def onClickPLEModeMultiline(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_MULTILINE)
@@ -513,7 +607,6 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEViewMode(inputClass, "MULTILINE", self.PLE_MODE_MULTILINE)
 
-	# PLE Mode Switcher functions
 	def onClickPLEModeStackVert(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STACK_VERT)
@@ -521,7 +614,6 @@ class CvMainInterface:
 		else:
 			return self.handleHoverPLEViewMode(inputClass, "STACK_VERT", self.PLE_MODE_STACK_VERT)
 
-	# PLE Mode Switcher functions
 	def onClickPLEModeStackHoriz(self, inputClass):
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED ):
 			self.setPLEViewMode(self.PLE_MODE_STACK_HORIZ)
@@ -643,91 +735,81 @@ class CvMainInterface:
 ############## functions for visual objects (show and hide) ######################
 		
 	# PLE Grouping Mode Switcher 
-	def setupPLEGroupModeButtons(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		screen.setState(self.PLE_GRP_UNITTYPE, self.nPLEGrpMode == self.PLE_GRP_UNITTYPE)
-		screen.setState(self.PLE_GRP_GROUPS, self.nPLEGrpMode == self.PLE_GRP_GROUPS)
+	def setupPLEGroupModeButtons(self, screen):
+		if (self.nPLEGrpMode == self.PLE_GRP_UNITTYPE):
+			screen.changeImageButton(self.PLE_GRP_UNITTYPE, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath())
+			screen.setState(self.PLE_GRP_UNITTYPE, True)
+		elif (self.nPLEGrpMode == self.PLE_GRP_GROUPS):
+			screen.changeImageButton(self.PLE_GRP_UNITTYPE, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath())
+			screen.setState(self.PLE_GRP_UNITTYPE, True)
+		else:
+			screen.setState(self.PLE_GRP_UNITTYPE, False)
+		#screen.setState(self.PLE_GRP_UNITTYPE, self.nPLEGrpMode == self.PLE_GRP_UNITTYPE or self.nPLEGrpMode == self.PLE_GRP_GROUPS)
+		#screen.setState(self.PLE_GRP_GROUPS, self.nPLEGrpMode == self.PLE_GRP_GROUPS)
 		screen.setState(self.PLE_GRP_PROMO, self.nPLEGrpMode == self.PLE_GRP_PROMO)
 		screen.setState(self.PLE_GRP_UPGRADE, self.nPLEGrpMode == self.PLE_GRP_UPGRADE)
 		
 	# PLE View Mode Switcher
-	def setupPLEViewModeButtons(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		screen.setState(self.PLE_MODE_STANDARD, self.sPLEMode == self.PLE_MODE_STANDARD)
-		screen.setState(self.PLE_MODE_MULTILINE, self.sPLEMode == self.PLE_MODE_MULTILINE)
-		screen.setState(self.PLE_MODE_STACK_VERT, self.sPLEMode == self.PLE_MODE_STACK_VERT)
-		screen.setState(self.PLE_MODE_STACK_HORIZ, self.sPLEMode == self.PLE_MODE_STACK_HORIZ)
+	def setupPLEViewModeButtons(self, screen):
+		screen.changeImageButton(self.PLE_VIEW_MODE, ArtFileMgr.getInterfaceArtInfo(self.PLE_VIEW_MODE_ART[self.sPLEMode]).getPath())
+#		screen.setState(self.PLE_MODE_STANDARD, self.sPLEMode == self.PLE_MODE_STANDARD)
+#		screen.setState(self.PLE_MODE_MULTILINE, self.sPLEMode == self.PLE_MODE_MULTILINE)
+#		screen.setState(self.PLE_MODE_STACK_VERT, self.sPLEMode == self.PLE_MODE_STACK_VERT)
+#		screen.setState(self.PLE_MODE_STACK_HORIZ, self.sPLEMode == self.PLE_MODE_STACK_HORIZ)
 	
 	# PLE Filters
-	def setupPLEFilterButtons(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		if (self.nPLEFilter & self.nPLEFilterModeWound):
-			screen.setState(self.PLE_FILTER_WOUND, False)
-		else:
-			screen.setState(self.PLE_FILTER_WOUND, True)
-		if (self.nPLEFilter & self.nPLEFilterModeNotWound):
-			screen.setState(self.PLE_FILTER_NOTWOUND, False)
-		else:
-			screen.setState(self.PLE_FILTER_NOTWOUND, True)
-		if (self.nPLEFilter & self.nPLEFilterModeAir):
-			screen.setState(self.PLE_FILTER_AIR, False)
-		else:
-			screen.setState(self.PLE_FILTER_AIR, True)
-		if (self.nPLEFilter & self.nPLEFilterModeSea):
-			screen.setState(self.PLE_FILTER_SEA, False)
-		else:
-			screen.setState(self.PLE_FILTER_SEA, True)
-		if (self.nPLEFilter & self.nPLEFilterModeLand):
-			screen.setState(self.PLE_FILTER_LAND, False)
-		else:
-			screen.setState(self.PLE_FILTER_LAND, True)
-		if (self.nPLEFilter & self.nPLEFilterModeDom):
-			screen.setState(self.PLE_FILTER_DOM, False)
-		else:
-			screen.setState(self.PLE_FILTER_DOM, True)
-		if (self.nPLEFilter & self.nPLEFilterModeMil):
-			screen.setState(self.PLE_FILTER_MIL, False)
-		else:
-			screen.setState(self.PLE_FILTER_MIL, True)
-		if (self.nPLEFilter & self.nPLEFilterModeOwn):
-			screen.setState(self.PLE_FILTER_OWN, False)
-		else:
-			screen.setState(self.PLE_FILTER_OWN, True)
-		if (self.nPLEFilter & self.nPLEFilterModeForeign):
-			screen.setState(self.PLE_FILTER_FOREIGN, False)
-		else:
-			screen.setState(self.PLE_FILTER_FOREIGN, True)
+	def setupPLEFilterButtons(self, screen):
+		screen.setState(self.PLE_FILTER_CANMOVE, self.isPLEFilter(self.nPLEFilterModeCanMove))
+		screen.setState(self.PLE_FILTER_CANTMOVE, self.isPLEFilter(self.nPLEFilterModeCantMove))
+		
+		screen.setState(self.PLE_FILTER_NOTWOUND, self.isPLEFilter(self.nPLEFilterModeNotWound))
+		screen.setState(self.PLE_FILTER_WOUND, self.isPLEFilter(self.nPLEFilterModeWound))
+		
+		screen.setState(self.PLE_FILTER_LAND, self.isPLEFilter(self.nPLEFilterModeLand))
+		screen.setState(self.PLE_FILTER_SEA, self.isPLEFilter(self.nPLEFilterModeSea))
+		screen.setState(self.PLE_FILTER_AIR, self.isPLEFilter(self.nPLEFilterModeAir))
+
+		screen.setState(self.PLE_FILTER_MIL, self.isPLEFilter(self.nPLEFilterModeMil))
+		screen.setState(self.PLE_FILTER_DOM, self.isPLEFilter(self.nPLEFilterModeDom))
+		
+		screen.setState(self.PLE_FILTER_OWN, self.isPLEFilter(self.nPLEFilterModeOwn))
+		screen.setState(self.PLE_FILTER_FOREIGN, self.isPLEFilter(self.nPLEFilterModeForeign))
+		
 		return 0
 
 	# Displays the plot list switches (views, filters, groupings)
-	def showPlotListButtonObjects(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		
+	def showPlotListButtonObjects(self, screen):
 		if ( BugPle.isShowButtons() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START ):
 			# show PLE modes switches
-			self.setupPLEViewModeButtons()
-			screen.show(self.PLE_MODE_STANDARD)
-			screen.show(self.PLE_MODE_MULTILINE)
-			screen.show(self.PLE_MODE_STACK_VERT)
-			screen.show(self.PLE_MODE_STACK_HORIZ)
+			self.setupPLEViewModeButtons(screen)
+			screen.show(self.PLE_VIEW_MODE)
+#			screen.show(self.PLE_MODE_STANDARD)
+#			screen.show(self.PLE_MODE_MULTILINE)
+#			screen.show(self.PLE_MODE_STACK_VERT)
+#			screen.show(self.PLE_MODE_STACK_HORIZ)
 			
 			# show PLE filter switches
-			self.setupPLEFilterButtons()
-			screen.show(self.PLE_FILTER_WOUND)
+			screen.show(self.PLE_RESET_FILTERS)
+			
+			self.setupPLEFilterButtons(screen)
+			screen.show(self.PLE_FILTER_CANMOVE)
+			screen.show(self.PLE_FILTER_CANTMOVE)
+			
 			screen.show(self.PLE_FILTER_NOTWOUND)
-			#
-			screen.show(self.PLE_FILTER_AIR)
-			screen.show(self.PLE_FILTER_SEA)
+			screen.show(self.PLE_FILTER_WOUND)
+			
 			screen.show(self.PLE_FILTER_LAND)
-			#
-			screen.show(self.PLE_FILTER_DOM)
+			screen.show(self.PLE_FILTER_SEA)
+			screen.show(self.PLE_FILTER_AIR)
+			
 			screen.show(self.PLE_FILTER_MIL)
-			#
+			screen.show(self.PLE_FILTER_DOM)
+			
 			screen.show(self.PLE_FILTER_OWN)
 			screen.show(self.PLE_FILTER_FOREIGN)
 			
 			# show PLE grouping switches
-			self.setupPLEGroupModeButtons()
+			self.setupPLEGroupModeButtons(screen)
 			screen.show(self.PLE_GRP_UNITTYPE)
 			screen.show(self.PLE_GRP_GROUPS)
 			screen.show(self.PLE_GRP_PROMO)
@@ -737,9 +819,7 @@ class CvMainInterface:
 
 
 	# hides all plot list switches (views, filters, groupings) and all the other objects
-	def hidePlotListButtonObjects(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		
+	def hidePlotListButtonObjects(self, screen):
 		# hides all unit button objects
 		for i in range( self.iMaxPlotListIcons ):
 			# hide unit button
@@ -778,24 +858,29 @@ class CvMainInterface:
 				screen.hide( szStringUnitUpgrade )				
 		
 		# hide PLE modes switches
-		screen.hide(self.PLE_MODE_STANDARD)
-		screen.hide(self.PLE_MODE_MULTILINE)
-		screen.hide(self.PLE_MODE_STACK_VERT)
-		screen.hide(self.PLE_MODE_STACK_HORIZ)
+		screen.hide(self.PLE_VIEW_MODE)
+#		screen.hide(self.PLE_MODE_STANDARD)
+#		screen.hide(self.PLE_MODE_MULTILINE)
+#		screen.hide(self.PLE_MODE_STACK_VERT)
+#		screen.hide(self.PLE_MODE_STACK_HORIZ)
 		# hide horizontal scroll buttons
 		screen.hide( self.PLOT_LIST_MINUS_NAME )
 		screen.hide( self.PLOT_LIST_PLUS_NAME )
 		# hide vertical scroll buttons
 		screen.hide( self.PLOT_LIST_UP_NAME )
 		screen.hide( self.PLOT_LIST_DOWN_NAME )
+		# hide reset all filters button
+		screen.hide(self.PLE_RESET_FILTERS)
 		# hide PLE filter switches
-		screen.hide(self.PLE_FILTER_WOUND)
+		screen.hide(self.PLE_FILTER_CANMOVE)
+		screen.hide(self.PLE_FILTER_CANTMOVE)
 		screen.hide(self.PLE_FILTER_NOTWOUND)
-		screen.hide(self.PLE_FILTER_AIR)
-		screen.hide(self.PLE_FILTER_SEA)
+		screen.hide(self.PLE_FILTER_WOUND)
 		screen.hide(self.PLE_FILTER_LAND)
-		screen.hide(self.PLE_FILTER_DOM)
+		screen.hide(self.PLE_FILTER_SEA)
+		screen.hide(self.PLE_FILTER_AIR)
 		screen.hide(self.PLE_FILTER_MIL)	
+		screen.hide(self.PLE_FILTER_DOM)
 		screen.hide(self.PLE_FILTER_OWN)	
 		screen.hide(self.PLE_FILTER_FOREIGN)	
 		# hide PLE group switches
@@ -804,41 +889,83 @@ class CvMainInterface:
 		screen.hide(self.PLE_GRP_PROMO)	
 		screen.hide(self.PLE_GRP_UPGRADE)	
 		
-		self.bPLEHide = true
+		self.bPLEHide = True
 		
 	# prepares the display of the mode, view, grouping, filter  switches
-	def preparePlotListObjects(self):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-
+	def preparePlotListObjects(self, screen):
 		xResolution = self.xResolution
 		yResolution = self.yResolution
 	
 		nYOff	= 130 + 4
-		nXOff	= 290 - 13
+		nXOff	= 290 - 12
 		nSize	= 24
 		nDist	= 22
-		nGap    = 8
+		nGap    = 10
 		nNum	= 0
 		
 		# place the PLE mode switches
 		nXOff += nDist
-		szString = self.PLE_MODE_STANDARD
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_VIEW_MODE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), "", nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+#		nXOff += nDist
+#		szString = self.PLE_MODE_STANDARD
+#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+#		screen.hide( szString )
+#		
+#		nXOff += nDist
+#		szString = self.PLE_MODE_MULTILINE
+#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+#		screen.hide( szString )
+#		
+#		nXOff += nDist
+#		szString = self.PLE_MODE_STACK_VERT
+#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+#		screen.hide( szString )
+#		
+#		nXOff += nDist
+#		szString = self.PLE_MODE_STACK_HORIZ
+#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+#		screen.hide( szString )
+		
+		# place the PLE grouping mode switches
+		nXOff += nDist + nGap
+		szString = self.PLE_GRP_UNITTYPE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+#		nXOff += nDist
+#		szString = self.PLE_GRP_GROUPS
+#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+#		screen.hide( szString )
+		
+		# place the promotion and upgrades mode switches
+		nXOff += nDist
+		szString = self.PLE_GRP_PROMO
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_PROMO").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
-		szString = self.PLE_MODE_MULTILINE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_GRP_UPGRADE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UPGRADE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+		
+		# place the PLE reset filter button
+		nXOff += nDist + nGap
+		szString = self.PLE_RESET_FILTERS
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_RESET_FILTERS").getPath(), "", nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide( szString )
+
+		# place the PLE movement filter switches
+		nXOff += nDist + nGap
+		szString = self.PLE_FILTER_CANMOVE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_CANMOVE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
 		nXOff += nDist
-		szString = self.PLE_MODE_STACK_VERT
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide( szString )
-		
-		nXOff += nDist
-		szString = self.PLE_MODE_STACK_HORIZ
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		szString = self.PLE_FILTER_CANTMOVE
+		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_CANTMOVE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
 		# place the PLE health filter switches
@@ -868,7 +995,7 @@ class CvMainInterface:
 		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_AIR").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 
-		# place the PLE unittype filter switches
+		# place the PLE civilian/military filter switches
 		nXOff += nDist + nGap
 		szString = self.PLE_FILTER_MIL
 		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_MIL").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
@@ -889,28 +1016,6 @@ class CvMainInterface:
 		szString = self.PLE_FILTER_FOREIGN
 		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_FILTER_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
-
-		# place the PLE grouping mode switches
-		nXOff += nDist + nGap
-		szString = self.PLE_GRP_UNITTYPE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide( szString )
-		
-		nXOff += nDist
-		szString = self.PLE_GRP_GROUPS
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide( szString )
-		
-		# place the promotion and upgrades view switches
-		nXOff += nDist + nGap
-		szString = self.PLE_GRP_PROMO
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_PROMO").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide( szString )
-
-		nXOff += nDist
-		szString = self.PLE_GRP_UPGRADE
-		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UPGRADE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide( szString )
 				
 ################ functions for normal/shift/ctrl/alt unit selection within the plot list itself #################
 
@@ -919,7 +1024,7 @@ class CvMainInterface:
 		for i in range(len(self.lPLEUnitList)):
 			pUnit = self.getInterfacePlotUnit(i)
 			if (pUnit.IsSelected()):
-				CyInterface().selectUnit(pUnit, false, true, false)	
+				CyInterface().selectUnit(pUnit, False, True, False)	
 	
 	# function saves all units not matching actual filter criteria in a temp list by type
 	def saveFilteredUnitsByType(self, pCompareUnit, bShift):
@@ -991,7 +1096,7 @@ class CvMainInterface:
 						self.lPLEUnitListTempNOK.remove(pLoopUnitNOK)
 						self.lPLEUnitListTempOK.append(pLoopUnitNOK)
 	
-	# finds plots where we can temprarily park some units.
+	# finds plots where we can temporarily park some units.
 	# the "parking" is needed to avoid that the units are selected by the CyInterface.selectGroup() function.
 	def getTempPlot(self):
 		# first try : put them into another city
@@ -1026,7 +1131,7 @@ class CvMainInterface:
 				dPlotList[d] = lList[d]				
 		return dPlotList
 			
-	# temporariliy moves a unit away, so that the select group works well.
+	# temporarily moves a unit away, so that the select group works well.
 	def tempMove(self, iMode):
 		if iMode == 0:
 			dTempPlots = self.getTempPlot()
@@ -1324,80 +1429,98 @@ class CvMainInterface:
 			# that ensures, that cargo is always displayed or not displayed together with its tranporting unit
 			return self.checkDisplayFilter(pUnit.getTransportUnit())
 		
-		if (BugPle.isPleFilterBehavior()):
-			# unit wounded and filter active
-			if (not self.nPLEFilter & self.nPLEFilterModeWound):
-				if (pUnit.isHurt()):
-					return False
-			# unit not wounded and filter active
-			if (not self.nPLEFilter & self.nPLEFilterModeNotWound):
-				if (not pUnit.isHurt()):
-					return False
-			
-			pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
-			# is unit a air unit and filter active
-			if (not self.nPLEFilter & self.nPLEFilterModeAir):
-				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_AIR):
-					return False
-			# is unit a sea unit and filter active
-			if (not self.nPLEFilter & self.nPLEFilterModeSea):
-				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_SEA):
-					return False
-			# is unit a land unit (or ICBM) and filter active
-			if (not self.nPLEFilter & self.nPLEFilterModeLand):
-				if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_LAND) or (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_IMMOBILE):
-					return False
-			
-			# is unit a domestic unit and filter active (domestic means -> no Combat or AirCombat values!
-			if (not self.nPLEFilter & self.nPLEFilterModeDom):
-				if ((pUnitTypeInfo.getCombat() == 0) and (pUnitTypeInfo.getAirCombat() == 0)):
-					return False
-			# is unit a combat unit and filter active (combat means -> Combat or AirCombat values > 0!
-			if (not self.nPLEFilter & self.nPLEFilterModeMil):
-				if ((pUnitTypeInfo.getCombat() > 0) or (pUnitTypeInfo.getAirCombat() > 0)):
-					return False
-			
-			# is the units owner the active player
-			if (not self.nPLEFilter & self.nPLEFilterModeOwn):
-				if ( pUnit.getOwner() == gc.getGame().getActivePlayer() ):
-					return False
-			# # is the units owner another player
-			if (not self.nPLEFilter & self.nPLEFilterModeForeign):
-				if ( not ( pUnit.getOwner() == gc.getGame().getActivePlayer() )):
-					return False
-		else:
-			# BUG Filter Mode
-			if (not self.nPLEFilter & self.nPLEFilterModeWound):
-				if (not pUnit.isHurt()):
-					return False
-			elif (not self.nPLEFilter & self.nPLEFilterModeNotWound):
-				if (pUnit.isHurt()):
-					return False
-			
-			pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
-			if (not self.nPLEFilter & self.nPLEFilterModeAir):
-				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_AIR):
-					return False
-			elif (not self.nPLEFilter & self.nPLEFilterModeSea):
-				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_SEA):
-					return False
-			elif (not self.nPLEFilter & self.nPLEFilterModeLand):
-				if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_LAND) and (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_IMMOBILE):
-					return False
-			
-			if (not self.nPLEFilter & self.nPLEFilterModeDom):
-				if ((pUnitTypeInfo.getCombat() > 0) or (pUnitTypeInfo.getAirCombat() > 0)):
-					return False
-			elif (not self.nPLEFilter & self.nPLEFilterModeMil):
-				if ((pUnitTypeInfo.getCombat() == 0) and (pUnitTypeInfo.getAirCombat() == 0)):
-					return False
-			
-			if (not self.nPLEFilter & self.nPLEFilterModeOwn):
-				if ( pUnit.getOwner() != gc.getGame().getActivePlayer() ):
-					return False
-			elif (not self.nPLEFilter & self.nPLEFilterModeForeign):
-				if ( pUnit.getOwner() == gc.getGame().getActivePlayer() ):
-					return False
+		if (self.isPLEFilter(self.nPLEAllFilters)):
+			# At least one filter is active
+			if (BugPle.isPleFilterBehavior()):
+				# unit can move and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeCanMove)):
+					if (pUnit.movesLeft()):
+						return False
+				# unit cannot move and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeCantMove)):
+					if (not pUnit.movesLeft()):
+						return False
+				
+				# unit not wounded and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeNotWound)):
+					if (not pUnit.isHurt()):
+						return False
+				# unit wounded and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeWound)):
+					if (pUnit.isHurt()):
+						return False
+				
+				pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
+				# is unit a land unit (or ICBM) and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeLand)):
+					if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_LAND) or (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_IMMOBILE):
+						return False
+				# is unit a sea unit and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeSea)):
+					if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_SEA):
+						return False
+				# is unit a air unit and filter active
+				if (self.isPLEFilter(self.nPLEFilterModeAir)):
+					if (pUnitTypeInfo.getDomainType() == DomainTypes.DOMAIN_AIR):
+						return False
+				
+				# is unit a combat unit and filter active (combat means -> Combat or AirCombat values > 0!
+				if (self.isPLEFilter(self.nPLEFilterModeMil)):
+					if ((pUnitTypeInfo.getCombat() > 0) or (pUnitTypeInfo.getAirCombat() > 0)):
+						return False
+				# is unit a domestic unit and filter active (domestic means -> no Combat or AirCombat values!
+				if (self.isPLEFilter(self.nPLEFilterModeDom)):
+					if ((pUnitTypeInfo.getCombat() == 0) and (pUnitTypeInfo.getAirCombat() == 0)):
+						return False
+				
+				# is the units owner the active player
+				if (self.isPLEFilter(self.nPLEFilterModeOwn)):
+					if ( pUnit.getOwner() == gc.getGame().getActivePlayer() ):
+						return False
+				# # is the units owner another player
+				if (self.isPLEFilter(self.nPLEFilterModeForeign)):
+					if ( not ( pUnit.getOwner() == gc.getGame().getActivePlayer() )):
+						return False
+			else:
+				# BUG Filter Mode
+				if (self.isPLEFilter(self.nPLEFilterModeCanMove)):
+					if (not pUnit.movesLeft()):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeCantMove)):
+					if (pUnit.movesLeft()):
+						return False
+				
+				if (self.isPLEFilter(self.nPLEFilterModeNotWound)):
+					if (pUnit.isHurt()):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeWound)):
+					if (not pUnit.isHurt()):
+						return False
+				
+				pUnitTypeInfo = gc.getUnitInfo(pUnit.getUnitType())
+				if (self.isPLEFilter(self.nPLEFilterModeLand)):
+					if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_LAND) and (gc.getUnitInfo(pUnit.getUnitType()).getDomainType() != DomainTypes.DOMAIN_IMMOBILE):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeSea)):
+					if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_SEA):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeAir)):
+					if (pUnitTypeInfo.getDomainType() != DomainTypes.DOMAIN_AIR):
+						return False
+				
+				if (self.isPLEFilter(self.nPLEFilterModeMil)):
+					if ((pUnitTypeInfo.getCombat() == 0) and (pUnitTypeInfo.getAirCombat() == 0)):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeDom)):
+					if ((pUnitTypeInfo.getCombat() > 0) or (pUnitTypeInfo.getAirCombat() > 0)):
+						return False
+				
+				if (self.isPLEFilter(self.nPLEFilterModeOwn)):
+					if ( pUnit.getOwner() != gc.getGame().getActivePlayer() ):
+						return False
+				elif (self.isPLEFilter(self.nPLEFilterModeForeign)):
+					if ( pUnit.getOwner() == gc.getGame().getActivePlayer() ):
+						return False
 		
 		return True
 		
@@ -1473,8 +1596,7 @@ class CvMainInterface:
 		return self.lPLEUnitList[i][self.IDX_UNIT]
 	
 	# displays all the possible promotion buttons for a unit 
-	def displayUnitPromos(self, pUnit, nRow, nCol):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+	def displayUnitPromos(self, screen, pUnit, nRow, nCol):
 		lPromos = mt.getPossiblePromos(pUnit)
 		# remove the 'Lead by Warlord' promotion, if any
 		for i in range(len(lPromos)):
@@ -1517,8 +1639,7 @@ class CvMainInterface:
 		
 		
 	# displays all the possible upgrade buttons for a unit 
-	def displayUnitUpgrades(self, pUnit, nRow, nCol):
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )		
+	def displayUnitUpgrades(self, screen, pUnit, nRow, nCol):
 		lUpgrades 	= []
 		lUnits		= []
 		
@@ -1934,7 +2055,7 @@ class CvMainInterface:
 		if BugPle.isShowMoveHighlighter():
 			self.ASMA.dehighlightMoveArea()
 		
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 #########################################################################################
 #########################################################################################
 #########################################################################################
@@ -1969,7 +2090,7 @@ class CvMainInterface:
 		screen.setForcedRedraw(True)
 
 		# Find out our resolution
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 #		xResolution = screen.getXResolution()
 #		yResolution = screen.getYResolution()
 #		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
@@ -1996,7 +2117,7 @@ class CvMainInterface:
 		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
 		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
 				
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 
 		# Set up our global variables...
 		g_NumEmphasizeInfos = gc.getNumEmphasizeInfos()
@@ -2207,7 +2328,7 @@ class CvMainInterface:
 		# PLOT LIST BUTTONS
 		# *********************************************************************************
 
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 #		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
 #			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
 #			yPixel = yResolution - 169 + yRow - 3
@@ -2279,8 +2400,8 @@ class CvMainInterface:
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString(szNoMovementColor) )
 			screen.hide( szStringMoveBar )
 
-		self.preparePlotListObjects()
-## 12monkeys - PlotList Button Enhancement  - end
+		self.preparePlotListObjects(screen)
+# BUG - PLE - end
 
 
 		# End Turn Text		
@@ -2502,7 +2623,7 @@ class CvMainInterface:
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
 
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 #		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 #		screen.hide( "PlotListMinus" )
 #
@@ -2519,7 +2640,7 @@ class CvMainInterface:
 		screen.setImageButton( self.PLOT_LIST_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("PLE_ARROW_DOWN").getPath(), 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ) + 5, yResolution - 171 + 5, 20, 20, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.hide( self.PLOT_LIST_DOWN_NAME )
 
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 
 # BUG - Raw Commerce - start
 		iRawCommerceTop = 154
@@ -2560,14 +2681,14 @@ class CvMainInterface:
 			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), 180, yResolution - 18, 24, 24, WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
 			screen.hide( szName )
 
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 			szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
 			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), \
 								180, yResolution - 18, \
 								self.CFG_INFOPANE_BUTTON_SIZE, self.CFG_INFOPANE_BUTTON_SIZE, \
 								WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
 			screen.hide( szName )
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 			
 		# *********************************************************************************
 		# SCORES
@@ -2743,7 +2864,7 @@ class CvMainInterface:
 			screen.hide( "EraText" )
 # BUG - NJAGC - end
 
-## 12monkeys - PlotList Button Enhancement  - begin 			
+# BUG - PLE - start 			
 		# this ensures that the info pane is closed after a greater mouse pos change
 		if self.bInfoPaneActive and (self.iInfoPaneCnt == (self.iLastInfoPaneCnt+1)): 
 			tMousePos = CyInterface().getMousePos()
@@ -2754,7 +2875,7 @@ class CvMainInterface:
 				self.hideInfoPane()
 				if self.bUnitPromoButtonsActive:
 					self.hideUnitInfoPromoButtons()
-## 12monkeys - PlotList Button Enhancement  - end
+# BUG - PLE - end
 
 		return 0
 
@@ -3140,7 +3261,7 @@ class CvMainInterface:
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 ##		xResolution = screen.getXResolution()
 ##		yResolution = screen.getYResolution()
 
@@ -3161,7 +3282,7 @@ class CvMainInterface:
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 
 		bHandled = False
 		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
@@ -3203,7 +3324,7 @@ class CvMainInterface:
 		else:
 			screen.hide( "InterfaceUnitModel" )
 			
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 #		pPlot = CyInterface().getSelectionPlot()
 		
 		self.iLoopCnt += 1
@@ -3247,13 +3368,13 @@ class CvMainInterface:
 
 		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
 			
-## 12monkeys - PlotList Button Enhancement - end
+# BUG - PLE- end
 
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
 		
-## 12monkeys - PlotList Button Enhancement - begin
+# BUG - PLE- begin
 #		screen.hide( "PlotListMinus" )
 #		screen.hide( "PlotListPlus" )
 #		
@@ -3278,7 +3399,7 @@ class CvMainInterface:
 
 		# hide all buttons
 		if (not self.bPLEHide):
-			self.hidePlotListButtonObjects()		
+			self.hidePlotListButtonObjects(screen)		
 				
 		if ( self.pActPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
@@ -3305,12 +3426,12 @@ class CvMainInterface:
 			bDownArrow = False
 			bFirstLoop = True
 			
-## 12monkeys - PlotList Button Enhancement  - end
+# BUG - PLE - end
 
 			bLeftArrow = False
 			bRightArrow = False
 			
-## 12monkeys - PlotList Button Enhancement  - begin 			
+# BUG - PLE - start 			
 #			if (CyInterface().isCityScreenUp()):
 #				iMaxRows = 1
 #				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
@@ -3471,9 +3592,9 @@ class CvMainInterface:
 							if ((nCol >= 0) and (iCount < nNumUnits ) and (nCol < self.getMaxCol())):
 								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
-									self.displayUnitPromos(pLoopUnit, nRow, nCol)
+									self.displayUnitPromos(screen, pLoopUnit, nRow, nCol)
 								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
-									self.displayUnitUpgrades(pLoopUnit, nRow, nCol)
+									self.displayUnitUpgrades(screen, pLoopUnit, nRow, nCol)
 
 						# horizontal stack view
 						elif (self.sPLEMode == self.PLE_MODE_STACK_HORIZ):
@@ -3515,9 +3636,9 @@ class CvMainInterface:
 							if ((nRow >= 0) and (iCount < nNumUnits ) and (nRow < self.getMaxRow())):
 								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 								if (self.nPLEGrpMode == self.PLE_GRP_PROMO):
-									self.displayUnitPromos(pLoopUnit, nRow, nCol)
+									self.displayUnitPromos(screen, pLoopUnit, nRow, nCol)
 								elif (self.nPLEGrpMode == self.PLE_GRP_UPGRADE):
-									self.displayUnitUpgrades(pLoopUnit, nRow, nCol)
+									self.displayUnitUpgrades(screen, pLoopUnit, nRow, nCol)
 
 						iCount += 1
 						
@@ -3541,12 +3662,12 @@ class CvMainInterface:
 				screen.enable( self.PLOT_LIST_DOWN_NAME, bDownArrow )
 				screen.show( self.PLOT_LIST_DOWN_NAME )
 				
-			self.showPlotListButtonObjects()
+			self.showPlotListButtonObjects(screen)
 			
 		else:
 			if (not self.bPLEHide):
-				self.hidePlotListButtonObjects()		
-## 12monkeys - PlotList Button Enhancement  - end
+				self.hidePlotListButtonObjects(screen)		
+# BUG - PLE - end
 
 		return 0
 		
@@ -6449,12 +6570,7 @@ class CvMainInterface:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
-## 12monkeys - PlotList Button Enhancement  - begin
-#		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON and inputClass.getFunctionName().startswith("PLE")):
-#			self.showPLEInfoPane(inputClass.getFunctionName())
-#		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF and inputClass.getFunctionName().startswith("PLE")):
-#			self.hidePLEInfoPane()
-
+# BUG - PLE - start
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
@@ -6462,12 +6578,12 @@ class CvMainInterface:
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName())(inputClass)
 			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName() + "1")):	
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName() + "1")(inputClass)
-## 12monkeys - PlotList Button Enhancement  - end
+# BUG - PLE - end
 
 # BUG - Raw Commerce - start
-		global g_iYieldType
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if (inputClass.getFunctionName() == "RawToggleButton"):
+				global g_iYieldType
 				if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
 					g_iYieldType = YieldTypes.YIELD_PRODUCTION
 				else:

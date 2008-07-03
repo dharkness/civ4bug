@@ -6,11 +6,7 @@
 <!-- Interface art path information -->
 <Civ4ArtDefines xmlns="x-schema:CIV4ArtDefinesSchema.xml">
 	<InterfaceArtInfos>
-<!-- ## 12monkeys - PlotList Button Enhancement  - begin  -->
-		<InterfaceArtInfo>
-			<Type>PLE_BUTTON_FILTER</Type>
-			<Path>Art/PlotListEnhancements/PLE_button_filter.dds</Path>
-		</InterfaceArtInfo>
+<!-- BUG - PLE - start -->
 		<InterfaceArtInfo>
 			<Type>PLE_BUTTON_HILITE</Type>
 			<Path>Art/PlotListEnhancements/PLE_button_select.dds</Path>
@@ -30,6 +26,10 @@
 		<InterfaceArtInfo>
 			<Type>PLE_GRP_UNITTYPE</Type>
 			<Path>Art/PlotListEnhancements/PLE_GRP_UNITTYPE_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_RESET_FILTERS</Type>
+			<Path>Art/PlotListEnhancements/PLE_RESET_FILTERS.dds</Path>
 		</InterfaceArtInfo>
 		<InterfaceArtInfo>
 			<Type>PLE_FILTER_FOREIGN</Type>
@@ -66,6 +66,14 @@
 		<InterfaceArtInfo>
 			<Type>PLE_FILTER_SEA</Type>
 			<Path>Art/PlotListEnhancements/PLE_FILTER_SEA_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_CANMOVE</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_CANMOVE_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_CANTMOVE</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_CANTMOVE_32.dds</Path>
 		</InterfaceArtInfo>
 		<InterfaceArtInfo>
 			<Type>PLE_ARROW_DOWN</Type>
@@ -155,7 +163,7 @@
 			<Type>OVERLAY_FORTIFY_INJURED</Type>
 			<Path>Art/PlotListEnhancements/medallion_fortify_injured.dds</Path>
 		</InterfaceArtInfo>
-<!-- ## 12monkeys - PlotList Button Enhancement  - end  -->	
+<!-- BUG - PLE - end -->	
 		<InterfaceArtInfo>
 			<Type>ARROW_HEAD</Type>
 			<Path>art/interface/screens/TechTree/Head.dds</Path>
