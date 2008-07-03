@@ -1338,65 +1338,57 @@ class CvMainInterface:
 			eActivityType = pLoopUnit.getGroup().getActivityType()
 			eAutomationType = pLoopUnit.getGroup().getAutomateType()
 			
-			# is unit on air patrol/intercept mission
+			# is unit on air intercept mission
 			if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
-				# place "PAT" icon
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_INTERCEPT").getPath()
+			# is unit on boat patrol coast mission
+			elif (eActivityType == ActivityTypes.ACTIVITY_PATROL):
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
-				iOffset = 14
+			# is unit on boat blockade mission
+			elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PLUNDER").getPath()
 			# is unit fortified for healing (wake up when healed)
 			elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
-				# place "HEAL" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
-				iOffset = 10
 			# is unit sentry (wake up when enemy in sight)
 			elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
-				# place "SEN" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
-				iOffset = 13
 			# is the turn for this unit skipped (wake up next turn)
 			elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
-				# place "SKIP" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
-				iOffset = 13
-			# has unit explaration mission
+			# has unit exploration mission
 			elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
-				# place "EXP" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
-				iOffset = 14
 			# is unit automated generally (only worker units)
 			elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
-				# place "AUT-B" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
-				iOffset = 8
 			# is unit automated for nearest city (only worker units)
 			elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
-				# place "AUT-C" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
-				iOffset = 8
-			# is unit automated for network(only worker units)
+			# is unit automated for network (only worker units)
 			elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
-				# place "AUT-N" icon
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
-				iOffset = 8
+			# is unit automated spread religion (only missionary units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_RELIGION):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_RELIGION").getPath()
 			# has unit a mission
 			elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
 				# is the mission a "move to" mission
 				eMissionType = pLoopUnit.getGroup().getMissionType(0)
 				if ( (eMissionType == MissionTypes.MISSION_MOVE_TO) or \
 					 (eMissionType == MissionTypes.MISSION_MOVE_TO_UNIT) ):
-					# place "GOTO" icon
 					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
-					iOffset = 6
 			# if nothing of above, but unit is waiting -> unit is fortified
 			elif (pLoopUnit.isWaiting()):
-				# place "FORT" icon
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
-				iOffset = 8
+				if (pLoopUnit.isFortifyable()):
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
+				else:
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SLEEP").getPath()
 						
 			# display the mission icon
 			if (szFileNameAction != ""):
 				szStringActionIcon = szString+"ActionIcon"
-				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+iOffset-3, y+29, 32, 8, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, 16, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringActionIcon )
 			
 		# display the colored spot icon
@@ -2359,7 +2351,6 @@ class CvMainInterface:
 		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
 		szFileNameHilite = ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath()
-		szFileNameGreatGeneral = ArtFileMgr.getInterfaceArtInfo("OVERLAY_GREATGENERAL").getPath()
 		for i in range( self.iMaxPlotListIcons ):		
 			# create button name
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)

@@ -6,204 +6,6 @@
 <!-- Interface art path information -->
 <Civ4ArtDefines xmlns="x-schema:CIV4ArtDefinesSchema.xml">
 	<InterfaceArtInfos>
-<!-- BUG - PLE - start -->
-		<!-- General -->
-		<InterfaceArtInfo>
-			<Type>PLE_BUTTON_HILITE</Type>
-			<Path>Art/PlotListEnhancements/PLE_button_select.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Group Modes -->
-		<InterfaceArtInfo>
-			<Type>PLE_GRP_UPGRADE</Type>
-			<Path>Art/PlotListEnhancements/PLE_GRP_UPGRADE_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_GRP_PROMO</Type>
-			<Path>Art/PlotListEnhancements/PLE_GRP_PROMO_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_GRP_GROUPS</Type>
-			<Path>Art/PlotListEnhancements/PLE_GRP_GROUPS_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_GRP_UNITTYPE</Type>
-			<Path>Art/PlotListEnhancements/PLE_GRP_UNITTYPE_32.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Filters -->
-		<InterfaceArtInfo>
-			<Type>PLE_RESET_FILTERS</Type>
-			<Path>Art/PlotListEnhancements/PLE_RESET_FILTERS.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_FOREIGN</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_FOREIGN_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_OWN</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_OWN_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_NOTWOUND</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_NOTWOUND_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_WOUND</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_WOUND_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_MIL</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_MIL_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_DOM</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_DOMESTIC_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_LAND</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_LAND_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_AIR</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_AIR_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_SEA</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_SEA_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_CANMOVE</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_CANMOVE_32.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_FILTER_CANTMOVE</Type>
-			<Path>Art/PlotListEnhancements/PLE_FILTER_CANTMOVE_32.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Arrows -->
-		<InterfaceArtInfo>
-			<Type>PLE_ARROW_DOWN</Type>
-			<Path>Art/PlotListEnhancements/arrowdown.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_ARROW_UP</Type>
-			<Path>Art/PlotListEnhancements/arrowup.dds</Path>
-		</InterfaceArtInfo>
-		<!-- View Modes -->
-		<InterfaceArtInfo>
-			<Type>PLE_MODE_STACK_VERT</Type>
-			<Path>Art/PlotListEnhancements/PLE_MODE_STACK_VERT.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_MODE_STACK_HORIZ</Type>
-			<Path>Art/PlotListEnhancements/PLE_MODE_STACK_HORIZ.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_MODE_STANDARD</Type>
-			<Path>Art/PlotListEnhancements/PLE_MODE_STANDARD.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>PLE_MODE_MULTILINE</Type>
-			<Path>Art/PlotListEnhancements/PLE_MODE_MULTILINE.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Icon Adornments -->
-		<InterfaceArtInfo>
-			<Type>OVERLAY_PROMOTION_FRAME</Type>
-			<Path>Art/PlotListEnhancements/frame_promo.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_UPGRADE</Type>
-			<Path>Art/PlotListEnhancements/PLE_overlay_upgrade.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Mission Tags -->
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_SKIP</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_skip.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_GOTO</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_goto.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_FORTIFY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_fortify.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_SENTRY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_sentry.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_HEAL</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_BUILD</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_build.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_CITY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_city.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_NETWORK</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_network.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_EXPLORE</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_explore.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_PATROL</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
-		</InterfaceArtInfo>
-		<!-- Movement Dots -->
-		<InterfaceArtInfo>
-			<Type>OVERLAY_MOVE_INJURED</Type>
-			<Path>Art/PlotListEnhancements/Medallion_canmove_injured.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_HASMOVED_INJURED</Type>
-			<Path>Art/PlotListEnhancements/medallion_hasmoved_injured.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_NOMOVE_INJURED</Type>
-			<Path>Art/PlotListEnhancements/medallion_cantmove_injured.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_FORTIFY_INJURED</Type>
-			<Path>Art/PlotListEnhancements/medallion_fortify_injured.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_MOVE_GG</Type>
-			<Path>Art/PlotListEnhancements/Medallion_canmove_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_HASMOVED_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_hasmoved_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_NOMOVE_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_cantmove_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_FORTIFY_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_fortify_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_MOVE_INJURED_GG</Type>
-			<Path>Art/PlotListEnhancements/Medallion_canmove_injured_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_HASMOVED_INJURED_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_hasmoved_injured_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_NOMOVE_INJURED_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_cantmove_injured_GG.dds</Path>
-		</InterfaceArtInfo>
-		<InterfaceArtInfo>
-			<Type>OVERLAY_FORTIFY_INJURED_GG</Type>
-			<Path>Art/PlotListEnhancements/medallion_fortify_injured_GG.dds</Path>
-		</InterfaceArtInfo>
-<!-- BUG - PLE - end -->	
 		<InterfaceArtInfo>
 			<Type>ARROW_HEAD</Type>
 			<Path>art/interface/screens/TechTree/Head.dds</Path>
@@ -1499,6 +1301,238 @@
 			<Path>Art/Interface/Buttons/Actions/Automate.dds</Path>
 		</InterfaceArtInfo>
 
+<!-- BUG - PLE - start -->
+
+		<!-- General -->
+
+		<InterfaceArtInfo>
+			<Type>PLE_BUTTON_HILITE</Type>
+			<Path>Art/PlotListEnhancements/PLE_button_select.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Group Modes -->
+
+		<InterfaceArtInfo>
+			<Type>PLE_GRP_UPGRADE</Type>
+			<Path>Art/PlotListEnhancements/PLE_GRP_UPGRADE_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_GRP_PROMO</Type>
+			<Path>Art/PlotListEnhancements/PLE_GRP_PROMO_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_GRP_GROUPS</Type>
+			<Path>Art/PlotListEnhancements/PLE_GRP_GROUPS_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_GRP_UNITTYPE</Type>
+			<Path>Art/PlotListEnhancements/PLE_GRP_UNITTYPE_32.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Filters -->
+
+		<InterfaceArtInfo>
+			<Type>PLE_RESET_FILTERS</Type>
+			<Path>Art/PlotListEnhancements/PLE_RESET_FILTERS.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_FOREIGN</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_FOREIGN_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_OWN</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_OWN_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_NOTWOUND</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_NOTWOUND_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_WOUND</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_WOUND_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_MIL</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_MIL_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_DOM</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_DOMESTIC_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_LAND</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_LAND_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_AIR</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_AIR_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_SEA</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_SEA_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_CANMOVE</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_CANMOVE_32.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_FILTER_CANTMOVE</Type>
+			<Path>Art/PlotListEnhancements/PLE_FILTER_CANTMOVE_32.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Arrows -->
+
+		<InterfaceArtInfo>
+			<Type>PLE_ARROW_DOWN</Type>
+			<Path>Art/PlotListEnhancements/arrowdown.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_ARROW_UP</Type>
+			<Path>Art/PlotListEnhancements/arrowup.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- View Modes -->
+
+		<InterfaceArtInfo>
+			<Type>PLE_MODE_STACK_VERT</Type>
+			<Path>Art/PlotListEnhancements/PLE_MODE_STACK_VERT.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_MODE_STACK_HORIZ</Type>
+			<Path>Art/PlotListEnhancements/PLE_MODE_STACK_HORIZ.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_MODE_STANDARD</Type>
+			<Path>Art/PlotListEnhancements/PLE_MODE_STANDARD.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>PLE_MODE_MULTILINE</Type>
+			<Path>Art/PlotListEnhancements/PLE_MODE_MULTILINE.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Icon Adornments -->
+
+		<InterfaceArtInfo>
+			<Type>OVERLAY_PROMOTION_FRAME</Type>
+			<Path>Art/PlotListEnhancements/frame_promo.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_UPGRADE</Type>
+			<Path>Art/PlotListEnhancements/PLE_overlay_upgrade.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Mission Tags -->
+
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_SKIP</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_skip.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_SLEEP</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_sleep.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_GOTO</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_goto.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_FORTIFY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_fortify.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_SENTRY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_sentry.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_HEAL</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_BUILD</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_build.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_CITY</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_city.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_NETWORK</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_network.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_AUTO_RELIGION</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_auto_religion.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_EXPLORE</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_explore.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_INTERCEPT</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_intercept.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_PATROL</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_PLUNDER</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_blockade.dds</Path>
+		</InterfaceArtInfo>
+
+		<!-- Movement Dots -->
+
+		<InterfaceArtInfo>
+			<Type>OVERLAY_MOVE_INJURED</Type>
+			<Path>Art/PlotListEnhancements/Medallion_canmove_injured.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_HASMOVED_INJURED</Type>
+			<Path>Art/PlotListEnhancements/medallion_hasmoved_injured.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_NOMOVE_INJURED</Type>
+			<Path>Art/PlotListEnhancements/medallion_cantmove_injured.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_FORTIFY_INJURED</Type>
+			<Path>Art/PlotListEnhancements/medallion_fortify_injured.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_MOVE_GG</Type>
+			<Path>Art/PlotListEnhancements/Medallion_canmove_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_HASMOVED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_hasmoved_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_NOMOVE_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_cantmove_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_FORTIFY_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_fortify_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_MOVE_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/Medallion_canmove_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_HASMOVED_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_hasmoved_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_NOMOVE_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_cantmove_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>OVERLAY_FORTIFY_INJURED_GG</Type>
+			<Path>Art/PlotListEnhancements/medallion_fortify_injured_GG.dds</Path>
+		</InterfaceArtInfo>
+
+<!-- BUG - PLE - end -->	
+
 <!-- BUG - Sevopedia - start -->
 
 		<InterfaceArtInfo>
@@ -1520,64 +1554,7 @@
 
 <!-- BUG - Sevopedia - end -->
 
-<!-- ## BUG - PlotList Button Enhancement  - start  -->	
-
-		<InterfaceArtInfo>
-			<Type>OVERLAY_PROMOTION_FRAME</Type>
-			<Path>Art/PlotListEnhancements/frame_promo.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_SKIP</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_skip.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_GOTO</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_goto.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_FORTIFY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_fortify.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_SENTRY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_sentry.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_BLOCKADE</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_blockade.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_HEAL</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_BUILD</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_build.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_CITY</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_city.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_AUTO_NETWORK</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_auto_network.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_EXPLORE</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_explore.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_ACTION_PATROL</Type>
-			<Path>Art/PlotListEnhancements/medallion_action_patrol.dds</Path>
-		</InterfaceArtInfo>	
-		<InterfaceArtInfo>
-			<Type>OVERLAY_GREATGENERAL</Type>
-			<Path>Art/PlotListEnhancements/medallion_GG.dds</Path>
-		</InterfaceArtInfo>	
-
-<!-- ## BUG - PlotList Button Enhancement  - end  -->					
-
-<!-- ## BUG - specialists  - start  -->
+<!-- BUG - specialists  - start  -->
 
 		<InterfaceArtInfo>
 			<Type>OVERLAY_CHEVRON5</Type>
@@ -1592,7 +1569,7 @@
 			<Path>Art/Interface/screens/medallion_Chevron20.dds</Path>
 		</InterfaceArtInfo>	
 
-<!-- ## BUG - specialists  - end  -->					
+<!-- BUG - specialists  - end  -->					
 
 	</InterfaceArtInfos>
 </Civ4ArtDefines>
