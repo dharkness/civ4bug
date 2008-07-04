@@ -341,22 +341,26 @@ class IconGrid_BUG:
 								iSBarOffset_Y = 0
 
 #							BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
+							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 							if stackedbarData.value > 0:
-								szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 								self.screen.addStackedBarGFC(szBar_ID, 
 															 currentX + 6, textY + iSBarOffset_Y, width, 25,
 															 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 								self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
 								self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+							else:
+								self.screen.deleteWidget(szBar_ID)
 
+							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
 							if stackedbarData.text != "":
-								szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
 								text = "<font=%i>%s</font>" % (stackedbarData.font, stackedbarData.text)
 								self.screen.setLabel (szTxt_ID, "",
 													  text, CvUtil.FONT_CENTER_JUSTIFY,
 													  currentX + 6 + width / 2, textY - iSBarOffset_Y,
 													  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+							else:
+								self.screen.deleteWidget(szTxt_ID)
 
 							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 #							BUGPrint("Stacked Bar done")
@@ -415,6 +419,7 @@ class IconGrid_BUG:
 							iSBarOffset_Y = 0
 
 #						BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
+						szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 						if stackedbarData.value > 0:
 							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 							self.screen.addStackedBarGFC(szBar_ID, 
@@ -422,14 +427,18 @@ class IconGrid_BUG:
 														 InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 							self.screen.setBarPercentage(szBar_ID, InfoBarTypes.INFOBAR_STORED, float(stackedbarData.value) / float(100))
 							self.screen.setStackedBarColors(szBar_ID, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(stackedbarData.color))
+						else:
+							self.screen.deleteWidget(szBar_ID)
 
+						szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
 						if stackedbarData.text != "":
-							szTxt_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T"
 							text = "<font=%i>%s</font>" % (stackedbarData.font, stackedbarData.text)
 							self.screen.setLabel (szTxt_ID, "",
 												  text, CvUtil.FONT_CENTER_JUSTIFY,
 												  currentX + 6 + width / 2, textY - iSBarOffset_Y,
 												  -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+						else:
+							self.screen.deleteWidget(szTxt_ID)
 
 						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
 #						BUGPrint("Stacked Bar done")

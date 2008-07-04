@@ -627,6 +627,10 @@ class CvMilitaryAdvisor:
 				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
 										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 32, 
 										WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
+			else:
+				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
+										ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 45, 
+										WidgetTypes.WIDGET_LEADERHEAD, -1)
 		return
 
 	def GetActiveWars(self, iRow, iLeader):
