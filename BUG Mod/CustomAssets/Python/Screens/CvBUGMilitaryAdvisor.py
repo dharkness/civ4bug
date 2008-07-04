@@ -719,13 +719,17 @@ class CvMilitaryAdvisor:
 		for iUnit in iHumanUnits:
 			if self.isUnitUnique(iUnit, iAIUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
-				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+				# RJG Start - following line deleted, next added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
+#				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnit)
 
 		# determine units that AI can build that the human cannot
 		for iUnit in iAIUnits:
 			if self.isUnitUnique(iUnit, iHumanUnits):
 				szButton = gc.getUnitInfo(iUnit).getButton()
-				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+				# RJG Start - following line deleted, next added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
+#				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnit)
 
 
 
@@ -1340,6 +1344,16 @@ class CvMilitaryAdvisor:
 			elif (inputClass.getFunctionName() == self.UNIT_BUTTON_ID):
 				self.bUnitDetails = not self.bUnitDetails
 				self.UL_refreshUnitSelection(True, True)
+
+			# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
+			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
+#				if (inputClass.getFlags() & MouseFlags.MOUSE_LBUTTONUP):
+#					self.iSelectedLeader = inputClass.getData1()
+#					self.drawContents(False)
+				if (inputClass.getFlags() & MouseFlags.MOUSE_RBUTTONUP):
+					if (self.iActivePlayer != inputClass.getData1()):
+						self.getScreen().hideScreen()
+			# RJG End
 
 			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
 				if (inputClass.getData1() == self.SCROLL_TABLE_UP):

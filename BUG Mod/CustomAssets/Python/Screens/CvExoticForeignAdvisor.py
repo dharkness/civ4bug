@@ -227,7 +227,23 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 ############################################
 		#self.W_SCREEN = screen.getXResolution()
 		#self.H_SCREEN = screen.getYResolution()
-		self.X_EXIT = self.W_SCREEN - 10
+
+		# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6996936&postcount=15)
+		# FROM BUG MA Widescreen START
+		# over-ride screen width, height
+		self.W_SCREEN = screen.getXResolution() - 40
+		self.X_SCREEN = (screen.getXResolution() - 24) / 2
+		self.L_SCREEN = 20
+
+		if self.W_SCREEN < 1024:
+			self.W_SCREEN = 1024
+			self.L_SCREEN = 0
+		
+		self.X_EXIT = self.W_SCREEN - 30
+		# FROM BUG MA Widescreen END
+		
+		#self.X_EXIT = self.W_SCREEN - 10
+		# RJG End
 		self.DX_LINK = (self.X_EXIT - self.X_LINK) / (len (self.SCREEN_DICT) + 1)
 
 		self.Y_EXIT = self.H_SCREEN - 42
@@ -244,7 +260,10 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 ##########################################
 
 		# Set the background and exit button, and show the screen
-		screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6996936&postcount=15)
+#		screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		screen.setDimensions(self.L_SCREEN, screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
+		# RJG end
 		screen.showWindowBackground(False)
 		screen.setText(self.EXIT_ID, "", self.EXIT_TEXT, CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
