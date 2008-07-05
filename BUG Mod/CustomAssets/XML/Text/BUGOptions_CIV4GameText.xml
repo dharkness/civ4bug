@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!--
 	BUG Option Screen Text
@@ -8,7 +8,7 @@
 	This file is part of Civilization IV BUG Mod.
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- Main Items -->
+<!-- Main Items -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TITLE</Tag>
 		<English>BUG Mod Options</English>
@@ -27,11 +27,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP_HOVER</Tag>
-		<English>Opens the BUG Mod help file. You can hit [SHIFT]-F1 from the main interface.</English>
-		<French>Ouvre le fichier d'aide du BUG Mod. Vous pouvez aussi utiliser [SHIFT]-F1 dans l'écran principal du jeu.</French>
-		<German>Öffnet die Hilfe-Datei der BUG Mod (Tastenkombination [SHIFT-F1] im Hauptbildschirm)</German>
-		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia [SHIFT]-F1 dall'interfaccia principale.</Italian>
-		<Spanish>Opens the BUG Mod help file. You can hit [SHIFT]-F1 from the main interface.</Spanish>
+		<English>Opens the BUG Mod help file. You can hit [SHIFT + F1] from the main interface.</English>
+		<French>Ouvre le fichier d'aide du BUG Mod. Vous pouvez aussi utiliser [SHIFT + F1] dans l'écran principal du jeu.</French>
+		<German>Öffnet die Hilfe-Datei der BUG Mod (Tastenkombination [Umschalt + F1] im Hauptbildschirm)</German>
+		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia [SHIFT + F1] dall'interfaccia principale.</Italian>
+		<Spanish>Opens the BUG Mod help file. You can hit [SHIFT + F1] from the main interface.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTBUTTON_EXIT_HOVER</Tag>
@@ -41,7 +41,7 @@
 		<Italian>Esci dalla schermata delle Opzioni del BUG Mod.</Italian>
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
-	<!-- Option Titles and Hovers -->
+<!-- Option Titles and Hovers -->
 	<!-- Alerts -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
@@ -1009,7 +1009,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_TEXT</Tag>
 		<English>Raw Yields</English>
 		<French>Commerce Pur / Production</French>
-		<German>Aufschlüsselung von Wirtschaft / Produktion</German>
+		<German>Anzeige der Roherträge</German>
 		<Italian>Valori grezzi</Italian>
 		<Spanish>Raw Yields</Spanish>
 	</TEXT>
@@ -1017,7 +1017,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_HOVER</Tag>
 		<English>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
-		<German>Zeigt eine Aufschlüsselung des Wirtschaftseinkommens und der Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
+		<German>Zeigt eine Aufschlüsselung der Erträge von Nahrung, Produktion und Wirtschaft im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>Quando è selezionato, i valori grezzi di Cibo, Produzione e Commerci) vengono mostrati nel pannello delle vie commerciali.</Italian>
 		<Spanish>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</Spanish>
 	</TEXT>
@@ -2592,7 +2592,7 @@
 		<Tag>TXT_KEY_BUG_OPT_UNITNAME_ENABLED_HOVER</Tag>
 		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
 		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités. [NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
-		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Stadt, die die Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv einer Zivilisation, die die Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Einsatzgebiet einer Einheit (z.B. Wasser)[NEWLINE]- ld - Oberhaupt, das die Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Einsatzgebiet einer Einheit[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt2[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt auf 1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
+		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Name der Stadt, die eine Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die eine Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Einsatzgebiet einer Einheit (z.B. Wasser)[NEWLINE]- ld - Name des Oberhaupts, das eine Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Einsatzgebiet einer Einheit[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt2[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt auf 1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
 		<Italian>Quando è selezionato, vengono utilizzati i formati in questa tabella e nel file 'Adv Unit Naming.ini' per denominare le Unità del giocatore. I nomi possono essere costruiti combinando testo semplice e codici (che devono essere posti fra accenti circonflessi: ^).[NEWLINE]  Ad esempio: "^cv^ ^ut^ di ^ct^" --> "Arciere Americano di Boston".</Italian>
 		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
 	</TEXT>
@@ -2804,7 +2804,7 @@
 		<Italian>Inserisci la tua convenzione di denominazione personalizzata per le Unità di Combattimento da Assedio ('Combat[SIEGE]').</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
 	</TEXT>
-	<!-- Tabs and Labels -->
+<!-- Tabs and Labels -->
 	<!-- General Tab -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_GENERAL</Tag>
