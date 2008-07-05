@@ -5,7 +5,7 @@
 	<TITLE>SevoPedia</TITLE>
 	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
 	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGED" CONTENT="20080610;19140800">
+	<META NAME="CHANGED" CONTENT="20080705;12200268">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { size: 21cm 29.7cm }
@@ -15,7 +15,7 @@
 	</STYLE>
 </HEAD>
 <BODY LANG="de-DE" DIR="LTR">
-<P CLASS="style2">Sevopedia <FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: medium">von</SPAN></SPAN></FONT></FONT><FONT COLOR="#000000">
+<P CLASS="style2">Sevopedia 2.3 <FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: medium">von</SPAN></SPAN></FONT></FONT><FONT COLOR="#000000">
 </FONT><FONT COLOR="#000000"><FONT SIZE=3>Sevo</FONT></FONT></P>
 <P ALIGN=JUSTIFY>&nbsp;</P>
 <P CLASS="style4" ALIGN=LEFT><I><B>&Uuml;ber Sevopedia</B></I></P>
@@ -66,252 +66,11 @@ benutzerfreundliche, einfach zu bedienende Informationsquelle. - Sevo
 <P ALIGN=JUSTIFY>&nbsp;</P>
 <P><FONT COLOR="#0000ff"><FONT SIZE=4><I><B>Credits</B></I></FONT></FONT></P>
 <P>Forum: <A HREF="http://forums.civfanatics.com/showthread.php?t=198522">http://forums.civfanatics.com/showthread.php?t=198522</A></P>
-<P>Author: <FONT COLOR="#0000ff"><I><B>Sevo</B></I></FONT></P>
+<P>Autor: <FONT COLOR="#0000ff"><I><B>Sevo</B></I></FONT></P>
 <P ALIGN=JUSTIFY><FONT COLOR="#000000">&nbsp;</FONT></P>
 <P><FONT COLOR="#0000ff"><FONT SIZE=4><I><B>Danksagungen des Autors</B></I></FONT></FONT></P>
 <P>Grafik der Einheitenmodernisierungen von: <FONT COLOR="#0000ff"><I><B>Vovan</B></I></FONT></P>
 <P ALIGN=LEFT>Grafik der Einheitenbef&ouml;rderungen: <FONT COLOR="#0000ff"><I><B>Progor</B></I></FONT></P>
 <P ALIGN=LEFT>Civilopedia Index von: <FONT COLOR="#0000ff"><I><B>Fitchn</B></I></FONT></P>
-<P ALIGN=JUSTIFY><FONT COLOR="#000000">&nbsp;</FONT></P>
-<P CLASS="style4" ALIGN=LEFT><I><B>Versionsgeschichte</B></I></P>
-<UL>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.3.2 (by BUG Mod)
-	changed messed up leader heads. </FONT>
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.3.1 (by
-	LunarMongoose)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed bug with
-	Building links, which resulted from my trying to do something clever
-	at the last minute that didn't work</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed bug with
-	Improvement links, which resulted from a simple typo in the code</FONT>
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed Back/Forward
-	history omitter to not omit category selections with no item list
-	(ie Unit Upgrades, Promotion Tree, and Hints)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed the item list
-	so it has the correct item selected when jumping to something via a
-	button link, jumping to something via a text link, using the
-	Back/Forward buttons, and opening/closing the Pedia. This was an
-	unsolved problem until now; Gaurav's solution had been to use a
-	ListBox instead of a Table, but that prevents the display of icons
-	in the item list (which I really want to have). Note: It still
-	doesn't work when using a button link within the same category (e.g.
-	viewing a tech and clicking its &quot;Leads To:&quot; tech button).
-	This can only be fixed with some SDK tweaking (to the Widget
-	functions), and while I know how to do it I'm not going to bother
-	due to the pain of distributing SDK components.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Went ahead and added
-	the Promotion Tree page</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added two icons from
-	v.2.2 to the category list, for Promotions and Civs/Leaders</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added a
-	self.bSortLists flag to the top of CvPediaMain.py, for alphabetical
-	sorting of the item lists. The default value is True. Not quite a
-	configurable option yet, but you only have to edit the files in one
-	place to change it now, rather than two</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.3 (by
-	LunarMongoose)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Beyond the Sword
-	version</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Mostly rewritten from
-	scratch based on v1.93, may run a little faster</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Does not include most
-	v2.2 features, or Fitchn's Index, or any customizability or options</FONT>
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Does not include a
-	Promotion Upgrades page, would be easy to add but I don't use it
-	myself and was pressed for time</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Individual panes now
-	follow my own consistent GUI layout and look much better than v1.93
-	and vanilla</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Wonders are now
-	separated into National Wonder and Great Wonder pages, with code to
-	handle linking correctly</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Back/Forward history
-	now omits category-only selections that don't show an entry in the
-	main area, for faster/better history navigation</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Keeps the
-	Back/Forward buttons along the bottom as in vanilla, and the title
-	bar is no longer overridden to show selection names</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.2 (by Gaurav)</FONT>
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>New Option: Show Civ
-	Names For Unique (Enabled by Default)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>New Option: Skip
-	Blank Page (Disabled by Default)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>New Option: Show
-	Graphical Only (Disabled by Default)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>New Option: Hide
-	Identical (Disabled by Default)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>All options enabled /
-	disabled from CvGlobalDefinesAlt.xml</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Python editing no
-	longer required just to set options.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Incorporated
-	&quot;Replaced by Mod&quot; by TheLopez, but rewritten in Python.</FONT>
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>No DLL required to
-	have this feature.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Better support for
-	mods which set default units/buildings to NONE.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Unique units and
-	buildings will still be identified as such.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Civilization screen
-	layout redesign to accommodate more unique units/buildings.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Era type shown on
-	tech page.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Wonder class (World
-	Wonder, Team Wonder, National Wonder) identified on Wonders page.</FONT>
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Miscellaneous layout
-	improvements.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Support for
-	&lt;bGraphicalOnly&gt; xml tag to hide arbitrary entries.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Sample
-	Civ4UnitSchema.xml provided, all other schemas would have to be
-	written.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Python hook to add
-	new custom filter options.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.1a (by Gaurav) Fix
-	for promotion graph so that the new prerequisite types in Warlords
-	to be displayed correctly.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.1 (by Gaurav)
-	Compatible with Warlords 2.08</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Based on Progor's
-	2.03 version.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Included all changes
-	made by Ket in his forked version.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Upgraded to include
-	all Warlords 2.08 upgrades</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Upgraded to include
-	all Warlords 2.00 upgrades (Ket did not do this).</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed bugs related to
-	redrawing subcategory list.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed bugs related to
-	scrolling.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed missing text
-	keys.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Got leaderhead
-	animations working again.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added icon to top of
-	unit category table.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Various improvements
-	to tech page based on Roamty's Techwindow.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Miscellaneous layout
-	improvements.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>[Forked version] (by
-	Ket) Updated version 1.93 for Warlords compatibility</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Note: Progor did not
-	use these version numbers. I use these version numbers to keep them
-	straight myself.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.03 (by Progor)
-	Removed dependency to DiGraph library.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.02 (by Progor)
-	Included Air Unit Fix (by Gaurav)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.01 (by Progor)
-	Fixed issues with updating categories.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added Fitchn's
-	Civilopedia index.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>2.0 (by Progor)
-	Improved unit upgrades graph.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added unit promotions
-	graph.</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.93 Fixed error on
-	text page. (Thanks Impaler, Exavier!)</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed Promotion
-	Scroll problem</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.92 Added History
-	directly to Units Page</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.91 Fixed minor Enum
-	error in CvPediaMain.py</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.9 Fixed in-game
-	load error</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Unit Chart now allows
-	jump-to unit</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.8 Compatible with
-	cIV 1.52</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Upgraded to include
-	all vanilla 1.52 page upgrades</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added icons to
-	sub-list</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Added group icons to
-	main list and re-ordered</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Included Vovan's Unit
-	Upgrades Chart</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>Fixed Selection
-	errors; fixed re-load 'pedia errors</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.2 Allowed for
-	disabling of animations in pedia screens</FONT> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=1>1.1 Fixed 1st item
-	select bug, ? fixed history select bug</FONT> 
-	</P>
-	<LI><P><FONT SIZE=1>1.0 Original release</FONT> 
-	</P>
-</UL>
 </BODY>
 </HTML>
