@@ -175,7 +175,7 @@ class Tracker:
 			iSubtotal = iTotal
 		
 		# Subtotal and Production Modifiers
-		if self.iProductionModifier != 0:
+		if eYield == YieldTypes.YIELD_PRODUCTION and self.iProductionModifier != 0:
 			# Subtotal
 			self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iSubtotal)
 			# Total
