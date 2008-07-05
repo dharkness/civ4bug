@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!--
   Copyright (c) 2007, BUG Mod.
@@ -22,6 +22,14 @@
 		<German>Öffnen der BUG Mod Hilfe-Datei...</German>
 		<Italian>Apertura della Guida del BUG Mod in corso...</Italian>
 		<Spanish>Opening the BUG Mod help file...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_LANGUAGE</Tag>
+		<English>BUG Mod Help - ENG.chm</English>
+		<French>BUG Mod Help - FRA.chm</French>
+		<German>BUG Mod Help - DEU.chm</German>
+		<Italian>BUG Mod Help - ITA.chm</Italian>
+		<Spanish>BUG Mod Help - ESP.chm</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_MISSING_TITLE</Tag>
@@ -333,7 +341,7 @@
 		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
-    <!-- Colors -->
+	<!-- Colors -->
 	<TEXT>
 		<Tag>TXT_KEY_COLOR_RED</Tag>
 		<English>Red</English>
