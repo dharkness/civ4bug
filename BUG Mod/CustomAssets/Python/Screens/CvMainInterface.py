@@ -153,10 +153,13 @@ g_bShowTimeTextAlt = False
 g_iTimeTextCounter = -1
 # BUG - NJAGC - end
 
-# BUG - Raw Commerce - start
+# BUG - Raw Yields - start
+import RawYields
 g_bRawShowing = False
-g_iYieldType = YieldTypes.YIELD_COMMERCE
-# BUG - Raw Commerce - end
+g_bYieldView = False
+g_iYieldType = YieldTypes.YIELD_PRODUCTION
+g_iYieldTiles = RawYields.WORKED_TILES
+# BUG - Raw Yields - end
 
 g_pSelectedUnit = 0
 
@@ -2044,7 +2047,7 @@ class CvMainInterface:
 		if BugPle.isShowMoveHighlighter():
 			self.ASMA.dehighlightMoveArea()
 		
-# BUG - PLE- end
+# BUG - PLE - end
 #########################################################################################
 #########################################################################################
 #########################################################################################
@@ -2079,7 +2082,7 @@ class CvMainInterface:
 		screen.setForcedRedraw(True)
 
 		# Find out our resolution
-# BUG - PLE- begin
+# BUG - PLE - begin
 #		xResolution = screen.getXResolution()
 #		yResolution = screen.getYResolution()
 #		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
@@ -2106,7 +2109,7 @@ class CvMainInterface:
 		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
 		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
 				
-# BUG - PLE- end
+# BUG - PLE - end
 
 		# Set up our global variables...
 		g_NumEmphasizeInfos = gc.getNumEmphasizeInfos()
@@ -2317,7 +2320,7 @@ class CvMainInterface:
 		# PLOT LIST BUTTONS
 		# *********************************************************************************
 
-# BUG - PLE- begin
+# BUG - PLE - begin
 #		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
 #			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
 #			yPixel = yResolution - 169 + yRow - 3
@@ -2611,7 +2614,7 @@ class CvMainInterface:
 		screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end		
 
-# BUG - PLE- begin
+# BUG - PLE - begin
 #		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 #		screen.hide( "PlotListMinus" )
 #
@@ -2627,37 +2630,56 @@ class CvMainInterface:
 		screen.hide( self.PLOT_LIST_UP_NAME )
 		screen.setImageButton( self.PLOT_LIST_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("PLE_ARROW_DOWN").getPath(), 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ) + 5, yResolution - 171 + 5, 20, 20, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.hide( self.PLOT_LIST_DOWN_NAME )
+# BUG - PLE - end
 
-# BUG - PLE- end
-
-# BUG - Raw Commerce - start
-		iRawCommerceTop = 154
-		iRawCommerceHeight = 90
-		screen.addPanel( "RawCommercePanel", u"", u"", True, False, 10, iRawCommerceTop, 238, iRawCommerceHeight, PanelStyles.PANEL_STYLE_STANDARD )
-		screen.setStyle( "RawCommercePanel", "Panel_City_Info_Style" )
-		screen.hide( "RawCommercePanel" )
-
-		if (BugCityScreen.isShowRawCommerce()):
-			iTradeRouteListTop = iRawCommerceTop + iRawCommerceHeight + 5
-			iBuildingListTop = iTradeRouteListTop + 130
-		else:
-			iTradeRouteListTop = 157
-			iBuildingListTop = 287
-
-		screen.addPanel( "TradeRouteListBackground", u"", u"", True, False, 10, iTradeRouteListTop, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
+		screen.addPanel( "TradeRouteListBackground", u"", u"", True, False, 10, 157, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
 		screen.setStyle( "TradeRouteListBackground", "Panel_City_Header_Style" )
 		screen.hide( "TradeRouteListBackground" )
 
-		screen.setLabel( "TradeRouteListLabel", "Background", localText.getText("TXT_KEY_HEADING_TRADEROUTE_LIST", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, iTradeRouteListTop + 8, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setLabel( "TradeRouteListLabel", "Background", localText.getText("TXT_KEY_HEADING_TRADEROUTE_LIST", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, 165, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.hide( "TradeRouteListLabel" )
+		
+# BUG - Raw Yields - start
+		nX = 10 + 24
+		nY = 157 + 5
+		nSize = 24
+		nDist = 24
+		nGap = 10
+		szHighlightButton = ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_HIGHLIGHT").getPath()
+		
+		# Trade
+		screen.addCheckBoxGFC( "RawYieldsTrade", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_TRADE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 0, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsTrade")
+		
+		# Yields
+		nX += nDist + nGap
+		screen.addCheckBoxGFC( "RawYieldsFood", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_FOOD").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsFood")
+		nX += nDist
+		screen.addCheckBoxGFC( "RawYieldsProduction", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_PRODUCTION").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsProduction")
+		nX += nDist
+		screen.addCheckBoxGFC( "RawYieldsCommerce", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_COMMERCE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsCommerce")
+		
+		# Tile Selection
+		nX += nDist + nGap
+		screen.addCheckBoxGFC( "RawYieldsWorkedTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_WORKED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsWorkedTiles")
+		nX += nDist
+		screen.addCheckBoxGFC( "RawYieldsCityTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_CITY_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 5, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsCityTiles")
+		nX += nDist
+		screen.addCheckBoxGFC( "RawYieldsOwnedTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_OWNED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 6, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsOwnedTiles")
+# BUG - Raw Yields - end
 
-		screen.addPanel( "BuildingListBackground", u"", u"", True, False, 10, iBuildingListTop, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
+		screen.addPanel( "BuildingListBackground", u"", u"", True, False, 10, 287, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
 		screen.setStyle( "BuildingListBackground", "Panel_City_Header_Style" )
 		screen.hide( "BuildingListBackground" )
 
-		screen.setLabel( "BuildingListLabel", "Background", localText.getText("TXT_KEY_CONCEPT_BUILDINGS", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, iBuildingListTop + 8, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setLabel( "BuildingListLabel", "Background", localText.getText("TXT_KEY_CONCEPT_BUILDINGS", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, 295, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.hide( "BuildingListLabel" )
-# BUG - Raw Commerce - end
 
 		# *********************************************************************************
 		# UNIT INFO ELEMENTS
@@ -2669,14 +2691,14 @@ class CvMainInterface:
 			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), 180, yResolution - 18, 24, 24, WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
 			screen.hide( szName )
 
-# BUG - PLE- begin
+# BUG - PLE - begin
 			szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
 			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), \
 								180, yResolution - 18, \
 								self.CFG_INFOPANE_BUTTON_SIZE, self.CFG_INFOPANE_BUTTON_SIZE, \
 								WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
 			screen.hide( szName )
-# BUG - PLE- end
+# BUG - PLE - end
 			
 		# *********************************************************************************
 		# SCORES
@@ -3249,7 +3271,7 @@ class CvMainInterface:
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-# BUG - PLE- begin
+# BUG - PLE - begin
 ##		xResolution = screen.getXResolution()
 ##		yResolution = screen.getYResolution()
 
@@ -3270,7 +3292,7 @@ class CvMainInterface:
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
-# BUG - PLE- end
+# BUG - PLE - end
 
 		bHandled = False
 		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
@@ -3312,7 +3334,7 @@ class CvMainInterface:
 		else:
 			screen.hide( "InterfaceUnitModel" )
 			
-# BUG - PLE- begin
+# BUG - PLE - begin
 #		pPlot = CyInterface().getSelectionPlot()
 		
 		self.iLoopCnt += 1
@@ -3356,13 +3378,13 @@ class CvMainInterface:
 
 		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
 			
-# BUG - PLE- end
+# BUG - PLE - end
 
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
 		
-# BUG - PLE- begin
+# BUG - PLE - begin
 #		screen.hide( "PlotListMinus" )
 #		screen.hide( "PlotListPlus" )
 #		
@@ -4839,15 +4861,13 @@ class CvMainInterface:
 		screen.hide( "MaintenanceAmountText" )
 		
 # BUG - Raw Commerce - start
-		screen.hide( "RawWorkedPlotsLabel" )
-		screen.hide( "RawTradeRoutesSpecsLabel" )
-		screen.hide( "RawBuildingsLabel" )
-		screen.hide( "RawTotalLabel" )
-		screen.hide( "RawToggleButton" )
-		screen.hide( "RawWorkedPlotsText" )
-		screen.hide( "RawTradeRoutesSpecsText" )
-		screen.hide( "RawBuildingsText" )
-		screen.hide( "RawTotalText" )
+		screen.hide("RawYieldsTrade")
+		screen.hide("RawYieldsFood")
+		screen.hide("RawYieldsProduction")
+		screen.hide("RawYieldsCommerce")
+		screen.hide("RawYieldsWorkedTiles")
+		screen.hide("RawYieldsCityTiles")
+		screen.hide("RawYieldsOwnedTiles")
 # BUG - Raw Commerce - end
 		
 		screen.hide( "NationalityText" )
@@ -5042,8 +5062,6 @@ class CvMainInterface:
 					
 				screen.show( "PopulationBar" )
 
-# BUG - Whip Assist - start
-
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
 					if (pHeadSelectedCity.isProductionProcess()):
 						szBuffer = pHeadSelectedCity.getProductionName()
@@ -5141,24 +5159,10 @@ class CvMainInterface:
 
 				iCount = 0
 
-# BUG - Raw Commerce - start
-				iLabelHeight = 30
-				bShowRawCommerce = BugCityScreen.isShowRawCommerce()
-				if (bShowRawCommerce):
-					screen.show( "RawCommercePanel" )
-					iRawCommerceTop = 154 # from above
-					iRawCommerceHeight = 90
-					iTradeRouteTableTop = iRawCommerceTop + iRawCommerceHeight + 5 + iLabelHeight
-					iBuildingListTableTop = iTradeRouteTableTop + 130
-				else:
-					iTradeRouteTableTop = 157 + iLabelHeight
-					iBuildingListTableTop = 287 + iLabelHeight
-					
-				screen.addTableControlGFC( "TradeRouteTable", 3, 10, iTradeRouteTableTop, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+				screen.addTableControlGFC( "TradeRouteTable", 3, 10, 187, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
 				screen.setStyle( "TradeRouteTable", "Table_City_Style" )
-				screen.addTableControlGFC( "BuildingListTable", 3, 10, iBuildingListTableTop, 238, yResolution - iBuildingListTableTop - 214, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+				screen.addTableControlGFC( "BuildingListTable", 3, 10, 317, 238, yResolution - 541, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
 				screen.setStyle( "BuildingListTable", "Table_City_Style" )
-# BUG - Raw Commerce - end
 				
 				screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 108 )
 				screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 118 )
@@ -5170,32 +5174,32 @@ class CvMainInterface:
 				screen.setTableColumnHeader( "BuildingListTable", 2, u"", 10 )
 				screen.setTableColumnRightJustify( "BuildingListTable", 1 )
 
-# BUG - Raw Commerce - start
-				iRawCommerceTop = 154
-				iRawCommerceHeight = 90
-
-				if (bShowRawCommerce):
-					iTradeRouteListTop = iRawCommerceTop + iRawCommerceHeight + 5
-					iBuildingListTop = iTradeRouteListTop + 130
-				else:
-					iTradeRouteListTop = 157
-					iBuildingListTop = 287
-
-				screen.addPanel( "TradeRouteListBackground", u"", u"", True, False, 10, iTradeRouteListTop, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
-				screen.setStyle( "TradeRouteListBackground", "Panel_City_Header_Style" )
-
-				screen.setLabel( "TradeRouteListLabel", "Background", localText.getText("TXT_KEY_HEADING_TRADEROUTE_LIST", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, iTradeRouteListTop + 8, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-
-				screen.addPanel( "BuildingListBackground", u"", u"", True, False, 10, iBuildingListTop, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
-				screen.setStyle( "BuildingListBackground", "Panel_City_Header_Style" )
-
-				screen.setLabel( "BuildingListLabel", "Background", localText.getText("TXT_KEY_CONCEPT_BUILDINGS", ()), CvUtil.FONT_CENTER_JUSTIFY, 129, iBuildingListTop + 8, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-# BUG - Raw Commerce - end
-
 				screen.show( "BuildingListBackground" )
 				screen.show( "TradeRouteListBackground" )
 				screen.show( "BuildingListLabel" )
-				screen.show( "TradeRouteListLabel" )
+				
+# BUG - Raw Yields - start
+				bShowRawYields = g_bYieldView and BugCityScreen.isShowRawYields()
+				if (BugCityScreen.isShowRawYields()):
+					screen.setState("RawYieldsTrade", not g_bYieldView)
+					screen.show("RawYieldsTrade")
+					
+					screen.setState("RawYieldsFood", g_bYieldView and g_iYieldType == YieldTypes.YIELD_FOOD)
+					screen.show("RawYieldsFood")
+					screen.setState("RawYieldsProduction", g_bYieldView and g_iYieldType == YieldTypes.YIELD_PRODUCTION)
+					screen.show("RawYieldsProduction")
+					screen.setState("RawYieldsCommerce", g_bYieldView and g_iYieldType == YieldTypes.YIELD_COMMERCE)
+					screen.show("RawYieldsCommerce")
+					
+					screen.setState("RawYieldsWorkedTiles", g_iYieldTiles == RawYields.WORKED_TILES)
+					screen.show("RawYieldsWorkedTiles")
+					screen.setState("RawYieldsCityTiles", g_iYieldTiles == RawYields.CITY_TILES)
+					screen.show("RawYieldsCityTiles")
+					screen.setState("RawYieldsOwnedTiles", g_iYieldTiles == RawYields.OWNED_TILES)
+					screen.show("RawYieldsOwnedTiles")
+				else:
+					screen.show( "TradeRouteListLabel" )
+# BUG - Raw Yields - end
 				
 				for i in range( 3 ):
 					szName = "BonusPane" + str(i)
@@ -5205,10 +5209,9 @@ class CvMainInterface:
 
 				i = 0
 				iNumBuildings = 0
-# BUG - Raw Commerce - start
-				iBuildingsYield = 0
-				iBuildingsProdYield = 0
-# BUG - Raw Commerce - end
+# BUG - Raw Yields - start
+				self.yields = RawYields.Tracker()
+# BUG - Raw Yields - end
 				for i in range( gc.getNumBuildingInfos() ):
 					if (pHeadSelectedCity.getNumBuilding(i) > 0):
 
@@ -5265,12 +5268,9 @@ class CvMainInterface:
 											szTempBuffer = u"%s%d%c" %( "", iYield, gc.getYieldInfo(j).getChar() )
 											szRightBuffer = szRightBuffer + szTempBuffer
 										
-# BUG - Raw Commerce - start
-										if (j == YieldTypes.YIELD_COMMERCE):
-											iBuildingsYield += iYield
-										elif (j == YieldTypes.YIELD_PRODUCTION):
-											iBuildingsProdYield += iYield
-# BUG - Raw Commerce - end
+# BUG - Raw Yields - start
+										self.yields.addBuilding(j, iYield)
+# BUG - Raw Yields - end
 
 							for j in range(CommerceTypes.NUM_COMMERCE_TYPES):
 								iCommerce = pHeadSelectedCity.getBuildingCommerceByBuilding(j, i) / pHeadSelectedCity.getNumBuilding(i)
@@ -5300,9 +5300,6 @@ class CvMainInterface:
 					g_iNumBuildings = iNumBuildings
 					
 				iNumTradeRoutes = 0
-# BUG - Raw Commerce - start
-				iNetTradeYield = 0
-# BUG - Raw Commerce - end
 				
 				for i in range(gc.getDefineINT("MAX_TRADE_ROUTES")):
 					pLoopCity = pHeadSelectedCity.getTradeCity(i)
@@ -5322,15 +5319,17 @@ class CvMainInterface:
 								else:
 									szTempBuffer = u"%s%d%c" %( "", iTradeProfit, gc.getYieldInfo(j).getChar() )
 									szRightBuffer = szRightBuffer + szTempBuffer
+# BUG - Raw Yields - start
+								if (j == YieldTypes.YIELD_COMMERCE):
+									self.yields.addTrade(iTradeProfit)
+# BUG - Raw Yields - end
 
-						screen.appendTableRow( "TradeRouteTable" )
-						screen.setTableText( "TradeRouteTable", 0, iNumTradeRoutes, "<font=1>" + szLeftBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_LEFT_JUSTIFY )
-						screen.setTableText( "TradeRouteTable", 1, iNumTradeRoutes, "<font=1>" + szRightBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_RIGHT_JUSTIFY )
+						if (not bShowRawYields):
+							screen.appendTableRow( "TradeRouteTable" )
+							screen.setTableText( "TradeRouteTable", 0, iNumTradeRoutes, "<font=1>" + szLeftBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_LEFT_JUSTIFY )
+							screen.setTableText( "TradeRouteTable", 1, iNumTradeRoutes, "<font=1>" + szRightBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_RIGHT_JUSTIFY )
 						
 						iNumTradeRoutes = iNumTradeRoutes + 1
-# BUG - Raw Commerce - start
-						iNetTradeYield += iTradeProfit
-# BUG - Raw Commerce - end
 						
 				if ( iNumTradeRoutes > g_iNumTradeRoutes ):
 					g_iNumTradeRoutes = iNumTradeRoutes
@@ -5417,112 +5416,11 @@ class CvMainInterface:
 				screen.setLabel( "MaintenanceAmountText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 220, 125, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_HELP_MAINTENANCE, -1, -1 )
 				screen.show( "MaintenanceAmountText" )
 				
-# BUG - Raw Commerce - start
-				if (bShowRawCommerce):
-					PRODUCTION_CHAR = gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
-					COMMERCE_CHAR = gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar()
-					
-					if (g_iYieldType == YieldTypes.YIELD_PRODUCTION):
-						lYieldLabels = [ localText.getText("TXT_KEY_RAW_PRODCOM_TILES", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_SPECIALISTS", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_BUILDINGS_CORPS", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TOTAL", ()) ]
-						cYieldChar = PRODUCTION_CHAR
-					else:
-						lYieldLabels = [ localText.getText("TXT_KEY_RAW_PRODCOM_TILES", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TRADE", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_BUILDINGS", ()),
-									   	 localText.getText("TXT_KEY_RAW_PRODCOM_TOTAL", ()) ]
-						cYieldChar = COMMERCE_CHAR
-					
-					iSpecialistsYield = 0
-					for iSpec in range(gc.getNumSpecialistInfos()):
-						iSpecialistsYield += gc.getActivePlayer().specialistYield(iSpec, g_iYieldType) * (pHeadSelectedCity.getSpecialistCount(iSpec) + pHeadSelectedCity.getFreeSpecialistCount(iSpec))
-					
-					iCorporationsYield = 0
-					for iCorp in range(gc.getNumCorporationInfos()):
-						if (pHeadSelectedCity.isHasCorporation(iCorp)):
-							iCorporationsYield += pHeadSelectedCity.getCorporationYieldByCorporation(g_iYieldType, iCorp)
-					
-					iCityBaseYield = pHeadSelectedCity.getBaseYieldRate(g_iYieldType)
-					iCityTotalYield = pHeadSelectedCity.getYieldRate(g_iYieldType)
-					
-					# Labels
-					szBuffer = lYieldLabels[0] #"Worked Tiles:"
-					screen.setLabel( "RawWorkedPlotsLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 15, 160, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawWorkedPlotsLabel" )
-					
-					szBuffer = lYieldLabels[1] #"Trade Routes:"
-					screen.setLabel( "RawTradeRoutesSpecsLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 15, 180, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawTradeRoutesSpecsLabel" )
-					
-					szBuffer = lYieldLabels[2] #"Buildings and Specialists:"
-					screen.setLabel( "RawBuildingsLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 15, 200, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawBuildingsLabel" )
-					
-					# Include modifier in total
-					#   (+50% for Capital) 69C
-					# Show added amount instead of percentage?
-					#   (+23C for Capital) 69C
-					# Remove from total?
-					#   (+50% for Capital) 46C
-					#   (+23C for Capital) 46C
-					
-					# Percentage, included
-					#iYieldRateModifier = pHeadSelectedCity.getBaseYieldRateModifier(YieldTypes.YIELD_COMMERCE, 0)
-					#if (iYieldRateModifier != 100):
-					#	szBuffer = u"<color=205,180,55,255>Total (%+d%% for Capital):</color>" %(iYieldRateModifier - 100)
-					
-					# Commerce, not included
-					iCityYieldDelta = iCityTotalYield - iCityBaseYield
-#					if (iCityYieldDelta != 0):
-#						szBuffer = u"<color=205,180,55,255>Total (%+d %c for Capital):</color>" %(iCityYieldDelta, COMMERCE_CHAR)
-#					else:
-					szBuffer = "<color=205,180,55,255>" + lYieldLabels[3] + "</color>"
-					screen.setLabel( "RawTotalLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 15, 220, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawTotalLabel" )
-					
-					# Values
-					# Worked Plots
-					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"%d%c" %( iCityBaseYield - iBuildingsYield - iSpecialistsYield - iNetTradeYield, cYieldChar )
-					else:
-						szBuffer = u"%d%c" %( iCityBaseYield - iSpecialistsYield - iBuildingsProdYield - iCorporationsYield, cYieldChar )
-					screen.setLabel( "RawWorkedPlotsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 160, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawWorkedPlotsText" )
-					
-					# Trade Routes / Specialists
-					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"%d%c" %( iNetTradeYield, cYieldChar )
-					else:
-						szBuffer = u"%d%c" %( iSpecialistsYield, cYieldChar )
-					screen.setLabel( "RawTradeRoutesSpecsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 180, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawTradeRoutesSpecsText" )
-					
-					# Buildings
-					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"%d%c" %( iBuildingsYield + iSpecialistsYield, cYieldChar )
-					else:
-						szBuffer = u"%d%c" %( iBuildingsProdYield + iCorporationsYield, cYieldChar )
-					screen.setLabel( "RawBuildingsText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 200, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawBuildingsText" )
-					
-					# Base Commerce (excludes modifiers like +50% Capital)
-					if (iCityYieldDelta != 0):
-						szBuffer = u"<color=205,180,55,255>%d%c + %d%c = %d%c</color>" %( iCityBaseYield, cYieldChar, iCityYieldDelta, cYieldChar, iCityTotalYield, cYieldChar )
-					else:
-						szBuffer = u"<color=205,180,55,255>%d</color>%c" %( iCityBaseYield, cYieldChar )
-					screen.setLabel( "RawTotalText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, 240, 220, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "RawTotalText" )
-					
-					# Toggle Button
-					if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-						szBuffer = u"<font=2>%c</font><font=3>%c</font>" %( PRODUCTION_CHAR, COMMERCE_CHAR )
-					else:
-						szBuffer = u"<font=3>%c</font><font=2>%c</font>" %( PRODUCTION_CHAR, COMMERCE_CHAR )
-					screen.setText( "RawToggleButton", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, 165, 168, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, g_iYieldType, -1 )
-					screen.show( "RawToggleButton" )
-# BUG - Raw Commerce - end
+# BUG - Raw Yields - start
+				if (bShowRawYields):
+					self.yields.processCity(pHeadSelectedCity)
+					self.yields.fillTable(screen, "TradeRouteTable", g_iYieldType, g_iYieldTiles)
+# BUG - Raw Yields - end
 
 				szBuffer = u""
 
@@ -5730,9 +5628,6 @@ class CvMainInterface:
 			screen.hide( "TopCityPanelLeft" )
 			screen.hide( "TopCityPanelRight" )
 			screen.hide( "CityScreenAdjustPanel" )
-# BUG - Raw Commerce - start
-			screen.hide( "RawCommercePanel" )
-# BUG - Raw Commerce - end
 			screen.hide( "InterfaceCenterRightBackgroundWidget" )
 			
 			if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
@@ -6568,31 +6463,44 @@ class CvMainInterface:
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName() + "1")(inputClass)
 # BUG - PLE - end
 
-# BUG - Raw Commerce - start
-		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
-			if (inputClass.getFunctionName() == "RawToggleButton"):
-				global g_iYieldType
-				if (g_iYieldType == YieldTypes.YIELD_COMMERCE):
-					g_iYieldType = YieldTypes.YIELD_PRODUCTION
-				else:
-					g_iYieldType = YieldTypes.YIELD_COMMERCE
-				CyInterface().setDirty(InterfaceDirtyBits.CityScreen_DIRTY_BIT, True)
-				return 1
-# BUG - Raw Commerce - end
+# BUG - Raw Yields - start
+		if (inputClass.getFunctionName().startswith("RawYields")):
+			return self.handleRawYieldsButtons(inputClass)
+# BUG - Raw Yields - end
 		
 # BUG - Great Person Bar - start
-			elif (inputClass.getFunctionName() == "GreatPersonBar" or inputClass.getFunctionName() == "GreatPersonBarText"):
-				# Zoom to next GP city
-				iCity = inputClass.getData1()
-				if (iCity == -1):
-					pCity, _ = GPUtil.findNextCity()
-				else:
-					pCity = gc.getActivePlayer().getCity(iCity)
-				CyInterface().selectCity(pCity, False)
-				return 1
+		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED and inputClass.getFunctionName().startswith("GreatPersonBar")):
+			# Zoom to next GP city
+			iCity = inputClass.getData1()
+			if (iCity == -1):
+				pCity, _ = GPUtil.findNextCity()
+			else:
+				pCity = gc.getActivePlayer().getCity(iCity)
+			CyInterface().selectCity(pCity, False)
+			return 1
 # BUG - Great Person Bar - end
 		
 		return 0
+	
+# BUG - Raw Yields - start
+	def handleRawYieldsButtons(self, inputClass):
+		global g_bYieldView
+		global g_iYieldType
+		global g_iYieldTiles
+		iButton = inputClass.getData1()
+		if iButton == 0:
+			g_bYieldView = False
+		elif iButton in (1, 2, 3):
+			g_bYieldView = True
+			g_iYieldType = RawYields.YIELDS[iButton - 1]
+		elif iButton in (4, 5, 6):
+			g_bYieldView = True
+			g_iYieldTiles = RawYields.TILES[iButton - 4]
+		else:
+			return 0
+		CyInterface().setDirty(InterfaceDirtyBits.CityScreen_DIRTY_BIT, True)
+		return 1
+# BUG - Raw Yields - end
 	
 	def update(self, fDelta):
 		return

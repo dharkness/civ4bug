@@ -25,7 +25,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Main_CityArrows")
 
 		self.addLabel(screen, right, "CityScreen", "City Screen:")
-		self.addCheckbox(screen, right, "City_RawCommerce")
+		self.addCheckbox(screen, right, "City_RawYields")
 		self.addCheckbox(screen, right, "City_Anger_Counter")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")

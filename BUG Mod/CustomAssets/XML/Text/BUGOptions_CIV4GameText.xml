@@ -1006,20 +1006,20 @@
 	</TEXT>
 	<!-- City Screen -->
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_TEXT</Tag>
-		<English>Raw Commerce / Production</English>
+		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_TEXT</Tag>
+		<English>Raw Yields</English>
 		<French>Commerce Pur / Production</French>
 		<German>Aufschlüsselung von Wirtschaft / Produktion</German>
 		<Italian>Commercio e Produzione grezzi</Italian>
-		<Spanish>Raw Commerce / Production</Spanish>
+		<Spanish>Raw Yields</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY_RAWCOMMERCE_HOVER</Tag>
-		<English>When checked, the raw commerce and production are displayed above the trade routes.</English>
+		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_HOVER</Tag>
+		<English>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
 		<German>Zeigt eine Aufschlüsselung des Wirtschaftseinkommens und der Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>Quando è selezionato, il Commercio e la Produzione grezzi vengono mostrati sopra alle vie commerciali.</Italian>
-		<Spanish>When checked, the raw commerce and production are displayed above the trade routes.</Spanish>
+		<Spanish>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_TEXT</Tag>

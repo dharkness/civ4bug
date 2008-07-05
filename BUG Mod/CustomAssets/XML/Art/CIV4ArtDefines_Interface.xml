@@ -1569,7 +1569,48 @@
 			<Path>Art/Interface/screens/medallion_Chevron20.dds</Path>
 		</InterfaceArtInfo>	
 
-<!-- BUG - specialists  - end  -->					
+<!-- BUG - specialists  - end  -->		
+
+<!-- BUG - Raw Yields - start -->
+
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_TRADE</Type>
+			<Path>Art/Interface/RawYields/button_trade.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_FOOD</Type>
+			<Path>Art/Interface/RawYields/button_food.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_PRODUCTION</Type>
+			<Path>Art/Interface/RawYields/button_production.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_COMMERCE</Type>
+			<Path>Art/Interface/RawYields/button_commerce.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_WORKED_TILES</Type>
+			<Path>Art/Interface/RawYields/button_worked_tiles.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_CITY_TILES</Type>
+			<Path>Art/Interface/RawYields/button_city_tiles.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_OWNED_TILES</Type>
+			<Path>Art/Interface/RawYields/button_all_tiles.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_ALL_TILES</Type>
+			<Path>Art/Interface/RawYields/button_all_tiles.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>RAW_YIELDS_HIGHLIGHT</Type>
+			<Path>Art/Interface/RawYields/button_highlight.dds</Path>
+		</InterfaceArtInfo>
+
+<!-- BUG - Raw Yields - end -->			
 
 	</InterfaceArtInfos>
 </Civ4ArtDefines>

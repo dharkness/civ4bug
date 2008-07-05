@@ -9,10 +9,10 @@ class BugCityScreenOptions(OptionsFacade):
 
 	def __init__(self):
 		OptionsFacade.__init__(self)
-		self.addOption(Option("City_RawCommerce",
-							  "City Screen", "Raw Commerce", False,
-							  "Raw Commerce / Production",
-							  "When checked, the raw commerce and production are displayed above the trade routes.",
+		self.addOption(Option("City_RawYields",
+							  "City Screen", "Raw Yields", True,
+							  "Raw Yields",
+							  "When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 		self.addOption(Option("City_CultureTurns",
 							  "City Screen", "Culture Turns", False,
@@ -46,8 +46,8 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 							  "When checked, puts anger countdown on city screen.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 
-	def isShowRawCommerce(self):
-		return self.getBoolean('City_RawCommerce')
+	def isShowRawYields(self):
+		return self.getBoolean('City_RawYields')
 
 	def isShowCultureTurns(self):
 		return self.getBoolean('City_CultureTurns')
