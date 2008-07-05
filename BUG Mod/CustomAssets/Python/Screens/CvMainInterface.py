@@ -159,6 +159,14 @@ g_bRawShowing = False
 g_bYieldView = False
 g_iYieldType = YieldTypes.YIELD_PRODUCTION
 g_iYieldTiles = RawYields.WORKED_TILES
+RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
+				   "TXT_KEY_RAW_YIELD_VIEW_FOOD",
+				   "TXT_KEY_RAW_YIELD_VIEW_PRODUCTION",
+				   "TXT_KEY_RAW_YIELD_VIEW_COMMERCE",
+				   "TXT_KEY_RAW_YIELD_TILES_WORKED",
+				   "TXT_KEY_RAW_YIELD_TILES_CITY",
+				   "TXT_KEY_RAW_YIELD_TILES_OWNED",
+				   "TXT_KEY_RAW_YIELD_TILES_ALL" )
 # BUG - Raw Yields - end
 
 g_pSelectedUnit = 0
@@ -2003,8 +2011,12 @@ class CvMainInterface:
 			y = self.CFG_INFOPANE_Y
 		else:
 			y = self.CFG_INFOPANE_Y2
+		dx = 0
+		if ( CyInterface().isCityScreenUp()):
+			dx = 260
+		
 		screen.addPanel( self.UNIT_INFO_PANE, u"", u"", True, True, \
-						BugPle.getInfoPaneX(), y - dy, self.CFG_INFOPANE_DX, dy, \
+						BugPle.getInfoPaneX() + dx, y - dy, self.CFG_INFOPANE_DX, dy, \
 						PanelStyles.PANEL_STYLE_HUD_HELP )
 		
 		# create shadow text
@@ -2012,13 +2024,13 @@ class CvMainInterface:
 		
 		# display shadow text
 		screen.addMultilineText( self.UNIT_INFO_TEXT_SHADOW, szTextBlack, \
-								BugPle.getInfoPaneX() + 5, y - dy + 5, \
+								BugPle.getInfoPaneX() + dx + 5, y - dy + 5, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
 		# display text
 		screen.addMultilineText( self.UNIT_INFO_TEXT, szText, \
-								BugPle.getInfoPaneX() + 4, y - dy + 4, \
+								BugPle.getInfoPaneX() + dx + 4, y - dy + 4, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
@@ -2648,30 +2660,30 @@ class CvMainInterface:
 		szHighlightButton = ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_HIGHLIGHT").getPath()
 		
 		# Trade
-		screen.addCheckBoxGFC( "RawYieldsTrade", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_TRADE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 0, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsTrade")
+		screen.addCheckBoxGFC( "RawYieldsTrade0", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_TRADE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 0, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsTrade0")
 		
 		# Yields
 		nX += nDist + nGap
-		screen.addCheckBoxGFC( "RawYieldsFood", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_FOOD").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsFood")
+		screen.addCheckBoxGFC( "RawYieldsFood1", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_FOOD").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsFood1")
 		nX += nDist
-		screen.addCheckBoxGFC( "RawYieldsProduction", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_PRODUCTION").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsProduction")
+		screen.addCheckBoxGFC( "RawYieldsProduction2", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_PRODUCTION").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsProduction2")
 		nX += nDist
-		screen.addCheckBoxGFC( "RawYieldsCommerce", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_COMMERCE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsCommerce")
+		screen.addCheckBoxGFC( "RawYieldsCommerce3", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_COMMERCE").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsCommerce3")
 		
 		# Tile Selection
 		nX += nDist + nGap
-		screen.addCheckBoxGFC( "RawYieldsWorkedTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_WORKED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsWorkedTiles")
+		screen.addCheckBoxGFC( "RawYieldsWorkedTiles4", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_WORKED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsWorkedTiles4")
 		nX += nDist
-		screen.addCheckBoxGFC( "RawYieldsCityTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_CITY_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 5, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsCityTiles")
+		screen.addCheckBoxGFC( "RawYieldsCityTiles5", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_CITY_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 5, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsCityTiles5")
 		nX += nDist
-		screen.addCheckBoxGFC( "RawYieldsOwnedTiles", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_OWNED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 6, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-		screen.hide("RawYieldsOwnedTiles")
+		screen.addCheckBoxGFC( "RawYieldsOwnedTiles6", ArtFileMgr.getInterfaceArtInfo("RAW_YIELDS_OWNED_TILES").getPath(), szHighlightButton, nX, nY, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 6, -1, ButtonStyles.BUTTON_STYLE_LABEL )
+		screen.hide("RawYieldsOwnedTiles6")
 # BUG - Raw Yields - end
 
 		screen.addPanel( "BuildingListBackground", u"", u"", True, False, 10, 287, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
@@ -4861,13 +4873,13 @@ class CvMainInterface:
 		screen.hide( "MaintenanceAmountText" )
 		
 # BUG - Raw Commerce - start
-		screen.hide("RawYieldsTrade")
-		screen.hide("RawYieldsFood")
-		screen.hide("RawYieldsProduction")
-		screen.hide("RawYieldsCommerce")
-		screen.hide("RawYieldsWorkedTiles")
-		screen.hide("RawYieldsCityTiles")
-		screen.hide("RawYieldsOwnedTiles")
+		screen.hide("RawYieldsTrade0")
+		screen.hide("RawYieldsFood1")
+		screen.hide("RawYieldsProduction2")
+		screen.hide("RawYieldsCommerce3")
+		screen.hide("RawYieldsWorkedTiles4")
+		screen.hide("RawYieldsCityTiles5")
+		screen.hide("RawYieldsOwnedTiles6")
 # BUG - Raw Commerce - end
 		
 		screen.hide( "NationalityText" )
@@ -5181,22 +5193,22 @@ class CvMainInterface:
 # BUG - Raw Yields - start
 				bShowRawYields = g_bYieldView and BugCityScreen.isShowRawYields()
 				if (BugCityScreen.isShowRawYields()):
-					screen.setState("RawYieldsTrade", not g_bYieldView)
-					screen.show("RawYieldsTrade")
+					screen.setState("RawYieldsTrade0", not g_bYieldView)
+					screen.show("RawYieldsTrade0")
 					
-					screen.setState("RawYieldsFood", g_bYieldView and g_iYieldType == YieldTypes.YIELD_FOOD)
-					screen.show("RawYieldsFood")
-					screen.setState("RawYieldsProduction", g_bYieldView and g_iYieldType == YieldTypes.YIELD_PRODUCTION)
-					screen.show("RawYieldsProduction")
-					screen.setState("RawYieldsCommerce", g_bYieldView and g_iYieldType == YieldTypes.YIELD_COMMERCE)
-					screen.show("RawYieldsCommerce")
+					screen.setState("RawYieldsFood1", g_bYieldView and g_iYieldType == YieldTypes.YIELD_FOOD)
+					screen.show("RawYieldsFood1")
+					screen.setState("RawYieldsProduction2", g_bYieldView and g_iYieldType == YieldTypes.YIELD_PRODUCTION)
+					screen.show("RawYieldsProduction2")
+					screen.setState("RawYieldsCommerce3", g_bYieldView and g_iYieldType == YieldTypes.YIELD_COMMERCE)
+					screen.show("RawYieldsCommerce3")
 					
-					screen.setState("RawYieldsWorkedTiles", g_iYieldTiles == RawYields.WORKED_TILES)
-					screen.show("RawYieldsWorkedTiles")
-					screen.setState("RawYieldsCityTiles", g_iYieldTiles == RawYields.CITY_TILES)
-					screen.show("RawYieldsCityTiles")
-					screen.setState("RawYieldsOwnedTiles", g_iYieldTiles == RawYields.OWNED_TILES)
-					screen.show("RawYieldsOwnedTiles")
+					screen.setState("RawYieldsWorkedTiles4", g_iYieldTiles == RawYields.WORKED_TILES)
+					screen.show("RawYieldsWorkedTiles4")
+					screen.setState("RawYieldsCityTiles5", g_iYieldTiles == RawYields.CITY_TILES)
+					screen.show("RawYieldsCityTiles5")
+					screen.setState("RawYieldsOwnedTiles6", g_iYieldTiles == RawYields.OWNED_TILES)
+					screen.show("RawYieldsOwnedTiles6")
 				else:
 					screen.show( "TradeRouteListLabel" )
 # BUG - Raw Yields - end
@@ -6453,6 +6465,7 @@ class CvMainInterface:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
+		#BugUtil.debugEvent(inputClass)
 # BUG - PLE - start
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
@@ -6484,22 +6497,28 @@ class CvMainInterface:
 	
 # BUG - Raw Yields - start
 	def handleRawYieldsButtons(self, inputClass):
-		global g_bYieldView
-		global g_iYieldType
-		global g_iYieldTiles
-		iButton = inputClass.getData1()
-		if iButton == 0:
-			g_bYieldView = False
-		elif iButton in (1, 2, 3):
-			g_bYieldView = True
-			g_iYieldType = RawYields.YIELDS[iButton - 1]
-		elif iButton in (4, 5, 6):
-			g_bYieldView = True
-			g_iYieldTiles = RawYields.TILES[iButton - 4]
-		else:
-			return 0
-		CyInterface().setDirty(InterfaceDirtyBits.CityScreen_DIRTY_BIT, True)
-		return 1
+		iButton = inputClass.getID()
+		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON):
+			self.displayHelpHover(RAW_YIELD_HELP[iButton])
+		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF):
+			self.hideInfoPane()
+		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
+			global g_bYieldView
+			global g_iYieldType
+			global g_iYieldTiles
+			if iButton == 0:
+				g_bYieldView = False
+			elif iButton in (1, 2, 3):
+				g_bYieldView = True
+				g_iYieldType = RawYields.YIELDS[iButton - 1]
+			elif iButton in (4, 5, 6):
+				g_bYieldView = True
+				g_iYieldTiles = RawYields.TILES[iButton - 4]
+			else:
+				return 0
+			CyInterface().setDirty(InterfaceDirtyBits.CityScreen_DIRTY_BIT, True)
+			return 1
+		return 0
 # BUG - Raw Yields - end
 	
 	def update(self, fDelta):
