@@ -1010,7 +1010,7 @@
 		<English>Raw Yields</English>
 		<French>Commerce Pur / Production</French>
 		<German>Aufschlüsselung von Wirtschaft / Produktion</German>
-		<Italian>Commercio e Produzione grezzi</Italian>
+		<Italian>Valori grezzi</Italian>
 		<Spanish>Raw Yields</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1018,7 +1018,7 @@
 		<English>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
 		<German>Zeigt eine Aufschlüsselung des Wirtschaftseinkommens und der Produktionsleistung im Stadt-Bildschirm über dem Handelseinkommen an</German>
-		<Italian>Quando è selezionato, il Commercio e la Produzione grezzi vengono mostrati sopra alle vie commerciali.</Italian>
+		<Italian>Quando è selezionato, i valori grezzi di Cibo, Produzione e Commerci) vengono mostrati nel pannello delle vie commerciali.</Italian>
 		<Spanish>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</Spanish>
 	</TEXT>
 	<TEXT>
