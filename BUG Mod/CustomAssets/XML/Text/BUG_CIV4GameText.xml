@@ -97,9 +97,9 @@
 		<Italian>Scomparsa</Italian>
 		<Spanish>Muerto</Spanish>
 	</TEXT>
-	<!-- Raw Production / Commerce -->
+	<!-- Raw Yields -->
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_TILES</Tag>
+		<Tag>TXT_KEY_CONCEPT_WORKED_TILES</Tag>
 		<English>Worked Tiles</English>
 		<French>Cases Travaillées</French>
 		<German>Bearbeitete Geländefelder</German>
@@ -107,39 +107,57 @@
 		<Spanish>Azulejos Trabajados</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_SPECIALISTS</Tag>
-		<English>Specialists</English>
-		<French>Sp&#233;cialistes</French>
-		<German>Spezialisten</German>
-		<Italian>Specialisti</Italian>
-		<Spanish>Especialistas</Spanish>
+		<Tag>TXT_KEY_CONCEPT_CITY_TILES</Tag>
+		<English>City's Tiles</English>
+		<French>City's Tiles</French>
+		<German>City's Tiles</German>
+		<Italian>City's Tiles</Italian>
+		<Spanish>City's Tiles</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_TRADE</Tag>
-		<English>Trade Routes</English>
-		<French>Routes Commerciales</French>
-		<German>Handelswege</German>
-		<Italian>Rotte Commerciali</Italian>
-		<Spanish>Rutas Comerciales</Spanish>
+		<Tag>TXT_KEY_CONCEPT_OWNED_TILES</Tag>
+		<English>Owned Tiles</English>
+		<French>Owned Tiles</French>
+		<German>Owned Tiles</German>
+		<Italian>Owned Tiles</Italian>
+		<Spanish>Owned Tiles</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_BUILDINGS</Tag>
-		<English>Buildings</English>
-		<French>B&#226;timents</French>
-		<German>Geb&#228;ude</German>
-		<Italian>Edifici</Italian>
-		<Spanish>Edificios</Spanish>
+		<Tag>TXT_KEY_CONCEPT_ALL_TILES</Tag>
+		<English>All Tiles</English>
+		<French>All Tiles</French>
+		<German>All Tiles</German>
+		<Italian>All Tiles</Italian>
+		<Spanish>All Tiles</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_BUILDINGS_CORPS</Tag>
-		<English>Buildings &amp; Corporations</English>
-		<French>B&#226;timents &amp; Soci&#233;t&#233;s</French>
-		<German>Geb&#228;ude &amp; Kapitalgesellschaften</German>
-		<Italian>Edifici &amp; Corporazioni</Italian>
-		<Spanish>Edificios &amp; Corporaciones</Spanish>
+		<Tag>TXT_KEY_CONCEPT_BASE_MODIFIER</Tag>
+		<!-- Bureaucracy, Forge, Factory, Power, Ironworks -->
+		<English>Modifiers (%D1%%)</English>
+		<French>Modifiers (%D1%%)</French>
+		<German>Modifiers (%D1%%)</German>
+		<Italian>Modifiers (%D1%%)</Italian>
+		<Spanish>Modifiers (%D1%%)</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_PRODCOM_TOTAL</Tag>
+		<Tag>TXT_KEY_CONCEPT_PRODUCTION_MODIFIER</Tag>
+		<!-- Heroic Epic, Military Academy, Drydock, Police State, Organized Religion, Traits, Resources -->
+		<English>%s1 (%D2%%)</English>
+		<French>%s1 (%D2%%)</French>
+		<German>%s1 (%D2%%)</German>
+		<Italian>%s1 (%D2%%)</Italian>
+		<Spanish>%s1 (%D2%%)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_SUBTOTAL</Tag>
+		<English>Subtotal</English>
+		<French>Total Partiel</French>
+		<German>Teilsumme</German>
+		<Italian>Totale Parziale</Italian>
+		<Spanish>Subtotal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_TOTAL</Tag>
 		<English>Total</English>
 		<French>Total</French>
 		<German>Summe</German>
@@ -199,7 +217,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS</Tag>
 		<English>Wars</English>
-		<French>Wars</French>
+		<French>Guerres</French>
 		<German>Kriege</German>
 		<Italian>Guerre</Italian>
 		<Spanish>Wars</Spanish>
@@ -207,7 +225,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS_ACTIVE</Tag>
 		<English>Active</English>
-		<French>Guerres Actives</French>
+		<French>Actives</French>
 		<German>Im Gange</German>
 		<Italian>In corso</Italian>
 		<Spanish>Active</Spanish>

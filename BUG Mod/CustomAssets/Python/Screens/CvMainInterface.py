@@ -5164,8 +5164,8 @@ class CvMainInterface:
 				screen.addTableControlGFC( "BuildingListTable", 3, 10, 317, 238, yResolution - 541, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
 				screen.setStyle( "BuildingListTable", "Table_City_Style" )
 				
-				screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 108 )
-				screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 118 )
+				screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 158 )
+				screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 68 )
 				screen.setTableColumnHeader( "TradeRouteTable", 2, u"", 10 )
 				screen.setTableColumnRightJustify( "TradeRouteTable", 1 )
 

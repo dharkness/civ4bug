@@ -7,9 +7,9 @@
 
 from CvPythonExtensions import *
 import CvUtil
+import BugUtil
 
 gc = CyGlobalContext()
-localText = CyTranslator()
 
 # Types
 WORKED_TILES = 0
@@ -17,13 +17,38 @@ CITY_TILES = 1
 OWNED_TILES = 2
 ALL_TILES = 3
 
-BUILDINGS = 4
-TRADE = 5
-SPECIALISTS = 6
-CORPORATIONS = 7
-MULTIPLIERS = 8    # Holds the percent, not the yield value
+TRADE = 4
+BUILDINGS = 5
+CORPORATIONS = 6
+SPECIALISTS = 7
 
-NUM_TYPES = 9
+# Hold the percents, not the actual yield values
+BASE_MODIFIER = 8
+PRODUCTION_MODIFIER = 9
+
+NUM_TYPES = 10
+
+# Leave these for later when we have icons for each
+#DOMAIN_MODIFIER
+#MILITARY_MODIFIER
+#TRAIT_MODIFIER
+#CIVIC_MODIFIER
+#RELIGION_MODIFIER
+#BONUS_MODIFIER
+#WONDER_MODIFIER
+#...
+
+# Labels
+LABEL_KEYS = ("TXT_KEY_CONCEPT_WORKED_TILES",
+			  "TXT_KEY_CONCEPT_CITY_TILES",
+			  "TXT_KEY_CONCEPT_OWNED_TILES",
+			  "TXT_KEY_CONCEPT_ALL_TILES",
+			  "TXT_KEY_HEADING_TRADEROUTE_LIST",
+			  "TXT_KEY_CONCEPT_BUILDINGS",
+			  "TXT_KEY_CONCEPT_CORPORATIONS",
+			  "TXT_KEY_CONCEPT_SPECIALISTS",
+			  "TXT_KEY_CONCEPT_BASE_MODIFIER",
+			  "TXT_KEY_CONCEPT_PRODUCTION_MODIFIER")
 
 # Yields
 YIELDS = (YieldTypes.YIELD_FOOD, YieldTypes.YIELD_PRODUCTION, YieldTypes.YIELD_COMMERCE)
@@ -68,7 +93,7 @@ class Tracker:
 		self.calculateTiles(pCity)
 		self.calculateSpecialists(pCity)
 		self.calculateCorporations(pCity)
-		self.calculateMultipliers(pCity)
+		self.calculateModifiers(pCity)
 	
 	def calculateTiles(self, pCity):
 		"Calculates the yields for all tiles of the given CyCity."
@@ -112,13 +137,15 @@ class Tracker:
 	def addCorporation(self, eYield, iValue):
 		self._addYield(eYield, CORPORATIONS, iValue)
 	
-	def calculateMultipliers(self, pCity):
+	def calculateModifiers(self, pCity):
 		for eYield in range(YieldTypes.NUM_YIELD_TYPES):
-			iValue = pCity.getBaseYieldRateModifier(eYield, 0)
-			self.addMultiplier(eYield, iValue)
-	
-	def addMultiplier(self, eYield, iPercent):
-		self._addYield(eYield, MULTIPLIERS, iPercent)
+			iValue = pCity.getBaseYieldRateModifier(eYield, 0) - 100
+			self._addYield(eYield, BASE_MODIFIER, iValue)
+		
+		# Depends on the item being built
+		self.iProductionModifier = pCity.getProductionModifier()
+		if self.iProductionModifier != 0:
+			self.sModifierDetail = pCity.getProductionName()
 	
 	
 	def fillTable(self, screen, table, eYield, eTileType):
@@ -126,27 +153,41 @@ class Tracker:
 		self.iRow = 0
 		# Tiles
 		iTotal = self.getYield(eYield, eTileType)
-		self.appendTable(screen, table, False, "Tiles", eYield, iTotal)
+		self.appendTable(screen, table, False, BugUtil.getPlainText(LABEL_KEYS[eTileType]), eYield, iTotal)
 		
 		# Other types
-		for eType in range(BUILDINGS, MULTIPLIERS):
+		for eType in (TRADE, BUILDINGS, CORPORATIONS, SPECIALISTS):
 			iValue = self.getYield(eYield, eType)
 			if iValue != 0:
 				iTotal += iValue
-				self.appendTable(screen, table, False, "Value", eYield, iValue)
+				self.appendTable(screen, table, False, BugUtil.getPlainText(LABEL_KEYS[eType]), eYield, iValue)
 		
-		# Subtotal and Multipliers if not 100%
-		iPercent = self.getYield(eYield, MULTIPLIERS)
-		if iPercent > 100:
+		# Subtotal and Base Modifiers
+		iModifier = self.getYield(eYield, BASE_MODIFIER)
+		if iModifier != 0:
 			# Subtotal
-			self.appendTable(screen, table, True, "Subtotal", eYield, iTotal)
-			# Multipliers
-			iMultipliers = (iTotal * iPercent // 100) - iTotal
-			iTotal += iMultipliers
-			self.appendTable(screen, table, False, "Multipliers", eYield, iMultipliers)
+			self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iTotal)
+			# Modifier
+			iValue = (iTotal * (iModifier + 100) // 100) - iTotal
+			iSubtotal = iTotal + iValue
+			self.appendTable(screen, table, False, BugUtil.getText("TXT_KEY_CONCEPT_BASE_MODIFIER", (iModifier,)), eYield, iValue)
+		else:
+			iSubtotal = iTotal
+		
+		# Subtotal and Production Modifiers
+		if self.iProductionModifier != 0:
+			# Subtotal
+			self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iSubtotal)
+			# Total
+			iTotal = iTotal * (iModifier + self.iProductionModifier + 100) // 100
+			# Modifier
+			iValue = iTotal - iSubtotal
+			self.appendTable(screen, table, False, BugUtil.getText("TXT_KEY_CONCEPT_PRODUCTION_MODIFIER", (self.sModifierDetail, self.iProductionModifier)), eYield, iValue)
+		else:
+			iTotal = iSubtotal
 		
 		# Total
-		self.appendTable(screen, table, True, "Total", eYield, iTotal)
+		self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_TOTAL"), eYield, iTotal)
 	
 	def appendTable(self, screen, table, bTotal, heading, eYield, iValue):
 		"""
