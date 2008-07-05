@@ -785,7 +785,7 @@
 		<English>City Whip</English>
 		<French>Le Fouet</French>
 		<German>Zwangsarbeit</German>
-		<Italian>Repressione</Italian>
+		<Italian>Sacrifici</Italian>
 		<Spanish>City Whip</Spanish>
 	</TEXT>
 	<TEXT>
@@ -793,7 +793,7 @@
 		<English>When checked, will log when you whip a city or when the whip anger decreases in a city.</English>
 		<French>En activant, l'utilisation du fouet dans vos villes sera noté dans le log, ainsi que le décroissement de la colère.</French>
 		<German>Protokolliert die Opferung von Bevölkerung zur Beschleunigung der Produktion oder das Abklingen der Unzufriedenheit darüber</German>
-		<Italian>Quando è selezionato, il Registro Automatico registra quando reprimi una tua Città o quando la rabbia da repressione diminuisce in una tua Città.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra quando compi Sacrifici in una tua Città o quando la rabbia da Sacrifici diminuisce in una tua Città.</Italian>
 		<Spanish>When checked, will log when you whip a city or when the whip anger decreases in a city.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1074,7 +1074,7 @@
 		<English>Anger Counter</English>
 		<French>Compteur de Colère</French>
 		<German>Rundenzähler bei Unzufriedenheit</German>
-		<Italian>Contatore dell'Ira</Italian>
+		<Italian>Infelicità da sacrifici</Italian>
 		<Spanish>Anger Counter</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1082,7 +1082,7 @@
 		<English>When checked, puts anger countdown on city screen.</English>
 		<French>En activant, montre un compteur de colère sur l'écran de ville.</French>
 		<German>Zeigt einen Rundenzähler im Stadt-Bildschirm an, der die Anzahl der Runden angibt, bis die Unzufriedenheit wegen einer Beschleunigung der Produktion durch Zwangsarbeit verflogen ist</German>
-		<Italian>Quando è selezionato, viene visualizzato un contatore dei turni di Ira nella schermata cittadina.</Italian>
+		<Italian>Quando è selezionato, nella Schermata Cittadina viene visualizzato un contatore dei turni di Infelicità da sacrifici.</Italian>
 		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
 	</TEXT>
 	<TEXT>
