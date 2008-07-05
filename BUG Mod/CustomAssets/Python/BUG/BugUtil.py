@@ -57,6 +57,21 @@ printToFile = False
 #readDebugOptions()
 
 
+EVENT_CODES = { NotifyCode.NOTIFY_CURSOR_MOVE_ON  : "Mouse Enter", 
+			 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF : "Mouse Leave", 
+			    NotifyCode.NOTIFY_CLICKED         : "Click", 
+			  }
+def debugEvent(inputClass):
+	"Prints a debug message detailing the given event."
+	if (inputClass.getNotifyCode() in EVENT_CODES):
+		debug("Event: %s for %s #%d (%d/%d)" % 
+			  (EVENT_CODES[inputClass.getNotifyCode()], 
+			   inputClass.getFunctionName(),
+			   inputClass.getID(), 
+			   inputClass.getData1(),
+			   inputClass.getData2()))
+
+
 def isNoEspionage():
 	"Returns True if using at least 3.17 and the option 'No Espionage' is enabled"
 	try:
