@@ -1,8 +1,8 @@
 [GENERAL]
 Title=Guida del BUG Mod
-RootDir=
+RootDir=Source\
 DefaultTopic=ITA\WhatIs.html
-CompiledFile=BUG Mod Help.chm
+CompiledFile=C:\Users\Jason\Eclipse\BUG Project\Extra Stuff\Help File\BUG Help\BUG Mod Help - ITA.chm
 CustomTemplate=
 DefaultTemplate=1
 Encoding=Windows-1252
@@ -66,7 +66,7 @@ Jump2=0
 AutoShowHide=0
 AutoSync=1
 Content=1
-Index=1
+Index=0
 Search=1
 Favorite=1
 UseFolder=0
@@ -76,7 +76,7 @@ PlusMinus=1
 ShowSelection=1
 ShowRoot=1
 DrawLines=1
-AutoExpand=0
+AutoExpand=1
 RightToLeft=0
 LeftScroll=0
 Border=0
@@ -86,10 +86,10 @@ SunkenEdge=0
 SavePosition=0
 ContentsFont=,8,0
 IndexFont=,8,0
-Title=
-Language=
+Title=Guida del BUG Mod
+Language=0x0409
 Font=
-DefaultTopic=
+DefaultTopic=ITA/WhatIs.html
 
 [TOPICS]
 TitleList=39

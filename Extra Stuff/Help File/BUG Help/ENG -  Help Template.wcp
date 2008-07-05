@@ -1,8 +1,8 @@
 [GENERAL]
 Title=BUG Mod Help
-RootDir=C:\Users\Jason\Documents\BUG Web Site\BUGModHelp\ENG\
+RootDir=Source\
 DefaultTopic=ENG\whatis.html
-CompiledFile=BUG Mod Help.chm
+CompiledFile=C:\Users\Jason\Eclipse\BUG Project\Extra Stuff\Help File\BUG Help\BUG Mod Help - ENG.chm
 CustomTemplate=
 DefaultTemplate=1
 Encoding=Windows-1252
@@ -66,7 +66,7 @@ Jump2=0
 AutoShowHide=0
 AutoSync=1
 Content=1
-Index=1
+Index=0
 Search=1
 Favorite=1
 UseFolder=0
