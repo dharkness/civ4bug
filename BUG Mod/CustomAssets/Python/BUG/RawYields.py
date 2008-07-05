@@ -69,6 +69,7 @@ class Tracker:
 			self.values[eYield] = {}
 			for eType in range(NUM_TYPES):
 				self.values[eYield][eType] = 0
+		self.tileCounts = [0, 0, 0, 0]
 	
 	
 	def getYield(self, eYield, eType):
@@ -114,6 +115,8 @@ class Tracker:
 			iValue = pPlot.getYield(eYield)
 			for eType in range(eFirstTileType, ALL_TILES + 1):
 				self._addYield(eYield, eType, iValue)
+		for eType in range(eFirstTileType, ALL_TILES + 1):
+			self.tileCounts[eType] += 1
 	
 	def calculateSpecialists(self, pCity):
 		pPlayer = gc.getPlayer(pCity.getOwner())
@@ -153,7 +156,7 @@ class Tracker:
 		self.iRow = 0
 		# Tiles
 		iTotal = self.getYield(eYield, eTileType)
-		self.appendTable(screen, table, False, BugUtil.getPlainText(LABEL_KEYS[eTileType]), eYield, iTotal)
+		self.appendTable(screen, table, False, BugUtil.getText(LABEL_KEYS[eTileType], (self.tileCounts[eTileType],)), eYield, iTotal)
 		
 		# Other types
 		for eType in (TRADE, BUILDINGS, CORPORATIONS, SPECIALISTS):
