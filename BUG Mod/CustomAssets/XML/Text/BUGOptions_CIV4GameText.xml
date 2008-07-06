@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
 <!--
 	BUG Option Screen Text
@@ -8,7 +8,7 @@
 	This file is part of Civilization IV BUG Mod.
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- Main Items -->
+<!-- Main Items -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TITLE</Tag>
 		<English>BUG Mod Options</English>
@@ -27,11 +27,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTBUTTON_HELP_HOVER</Tag>
-		<English>Opens the BUG Mod help file. You can hit [ALT] + [CTRL] + F1 from the main interface.</English>
-		<French>Ouvre le fichier d'aide du BUG Mod. Vous pouvez aussi utiliser [ALT] + [CTRL] + F1 dans l'écran principal du jeu.</French>
-		<German>Öffnet die Hilfe-Datei der BUG Mod (Tastenkombination [ALT] + [CTRL] + F1 im Hauptbildschirm)</German>
-		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia [ALT] + [CTRL] + F1 dall'interfaccia principale.</Italian>
-		<Spanish>Opens the BUG Mod help file. You can hit [ALT] + [CTRL] + F1 from the main interface.</Spanish>
+		<English>Opens the BUG Mod help file. You can hit [ALT + CTRL + F1] from the main interface.</English>
+		<French>Ouvre le fichier d'aide du BUG Mod. Vous pouvez aussi utiliser [ALT + CTRL + F1] dans l'écran principal du jeu.</French>
+		<German>Öffnet die Hilfe-Datei der BUG Mod (Tastenkombination [STRG + ALT + F1] im Hauptbildschirm)</German>
+		<Italian>Apre il file della Guida del BUG Mod. Puoi utilizzare la scorciatoia [ALT + CTRL + F1] dall'interfaccia principale.</Italian>
+		<Spanish>Opens the BUG Mod help file. You can hit [ALT + CTRL + F1] from the main interface.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTBUTTON_EXIT_HOVER</Tag>
@@ -41,7 +41,7 @@
 		<Italian>Esci dalla schermata delle Opzioni del BUG Mod.</Italian>
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
-	<!-- Option Titles and Hovers -->
+<!-- Option Titles and Hovers -->
 	<!-- Alerts -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ALERT_REMINDERS_TEXT</Tag>
@@ -2804,7 +2804,7 @@
 		<Italian>Inserisci la tua convenzione di denominazione personalizzata per le Unità di Combattimento da Assedio ('Combat[SIEGE]').</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
 	</TEXT>
-	<!-- Tabs and Labels -->
+<!-- Tabs and Labels -->
 	<!-- General Tab -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_GENERAL</Tag>
