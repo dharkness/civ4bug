@@ -165,7 +165,7 @@
 		<Spanish>Total</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_RAW_YIELD_VIEW_ROUTE</Tag>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_TRADE</Tag>
 		<English>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</English>
 		<French>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</French>
 		<German>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</German>
