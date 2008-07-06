@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
+<!--
+  Copyright (c) 2007, BUG Mod.
+
+  This file is part of Civilization IV BUG Mod.
+  -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<!-- BUG -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
+		<English>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</English>
+		<French>Poussez sur [BOLD]ALT + CTRL + O[\BOLD] pour configurer le BUG Mod</French>
+		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
+		<Italian>Premi [BOLD]ALT + CTRL + O[\BOLD] per personalizzare il BUG Mod</Italian>
+		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
+		<English>Opening the BUG Mod help file...</English>
+		<French>Ouverture du fichier d'aide du BUG Mod...</French>
+		<German>Öffnen der Hilfe-Datei der BUG Mod...</German>
+		<Italian>Apertura della Guida del BUG Mod in corso...</Italian>
+		<Spanish>Opening the BUG Mod help file...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_LANGUAGE</Tag>
+		<English>BUG Mod Help - ENG.chm</English>
+		<French>BUG Mod Help - FRA.chm</French>
+		<German>BUG Mod Help - DEU.chm</German>
+		<Italian>BUG Mod Help - ITA.chm</Italian>
+		<Spanish>BUG Mod Help - ESP.chm</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_MISSING_TITLE</Tag>
+		<English>Help File Not Found</English>
+		<French>Fichier d'Aide Non Trouvé</French>
+		<German>Hilfe-Datei nicht gefunden</German>
+		<Italian>Guida del BUG Mod non trovata</Italian>
+		<Spanish>Help File Not Found</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HELP_MISSING_BODY</Tag>
+		<English>Could not find the file "%s1" in the search paths. See the Config tab on the BUG Options screen (Alt + Ctrl + O) for details.</English>
+		<French>Impossible de trouver le fichier "%s1" dans les chemins recherchés. Voir l'onglet Config dans l'écran d'options du BUG Mod (Alt + Ctrl + O) pour les détails.</French>
+		<German>Die Datei "%s1" konnte innerhalb der erkannten Pfade nicht gefunden werden. Details finden Sie im Reiter "System" im Optionsbildschirm der BuG Mod (Tastenkombination [STRG + ALT + O]).</German>
+		<Italian>Impossibile trovare il file "%s1" nei percorsi di ricerca. Vedi la tabella 'Config' nella Schermata di Opzioni del BUG Mod (Alt + Ctrl + O) per maggiori dettagli.</Italian>
+		<Spanish>Could not find the file "%s1" in the search paths. See the Config tab on the BUG Options screen (Alt + Ctrl + O) for details.</Spanish>
+	</TEXT>
+	<!-- Great Person / General Bars -->
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_NONE</Tag>
+		<English>%s1: None</English>
+		<French>%s1: Aucun</French>
+		<German>%s1: Keine</German>
+		<Italian>%s1: Nessuno</Italian>
+		<Spanish>%s1: Ninguno</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_CITY</Tag>
+		<English>%s1: %s2</English>
+		<French>%s1: %s2</French>
+		<German>%s1: %s2</German>
+		<Italian>%s1: %s2</Italian>
+		<Spanish>%s1: %s2</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_TURNS</Tag>
+		<English>%s1: (%d2)</English>
+		<French>%s1: (%d2)</French>
+		<German>%s1: (%d2)</German>
+		<Italian>%s1: (%d2)</Italian>
+		<Spanish>%s1: (%d2)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_GREAT_PERSON_CITY_TURNS</Tag>
+		<English>%s1: %s2 (%d3)</English>
+		<French>%s1: %s2 (%d3)</French>
+		<German>%s1: %s2 (%d3)</German>
+		<Italian>%s1: %s2 (%d3)</Italian>
+		<Spanish>%s1: %s2 (%d3)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_NEXT_GREAT_GENERAL_XP</Tag>
+		<English>General (%d1)</English>
+		<French>G&#233;n&#233;ral (%d1)</French>
+		<German>General (%d1)</German>
+		<Italian>Generale (%d1)</Italian>
+		<Spanish>General (%d1)</Spanish>
+	</TEXT>
+	<!-- Dead Civs -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_DEAD_CIV</Tag>
+		<English>Dead</English>
+		<French>Mort</French>
+		<German>Tot</German>
+		<Italian>Scomparsa</Italian>
+		<Spanish>Muerto</Spanish>
+	</TEXT>
+	<!-- Raw Yields -->
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_WORKED_TILES</Tag>
+		<English>Worked Tiles (%d1)</English>
+		<French>Cases Travaillées (%d1)</French>
+		<German>Bearbeitete Geländefelder (%d1)</German>
+		<Italian>Caselle lavorate (%d1)</Italian>
+		<Spanish>Azulejos Trabajados (%d1)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_CITY_TILES</Tag>
+		<English>City's Tiles (%d1)</English>
+		<French>City's Tiles (%d1)</French>
+		<German>Stadtgeländefelder (%d1)</German>
+		<Italian>Caselle della Città (%d1)</Italian>
+		<Spanish>City's Tiles (%d1)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_OWNED_TILES</Tag>
+		<English>Owned Tiles (%d1)</English>
+		<French>Owned Tiles (%d1)</French>
+		<German>Geländefelder in Besitz (%d1)</German>
+		<Italian>Caselle possedute (%d1)</Italian>
+		<Spanish>Owned Tiles (%d1)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_ALL_TILES</Tag>
+		<English>All Tiles (%d1)</English>
+		<French>All Tiles (%d1)</French>
+		<German>Alle Geländefelder (%d1)</German>
+		<Italian>Tutte le caselle (%d1)</Italian>
+		<Spanish>All Tiles (%d1)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_BASE_MODIFIER</Tag>
+		<!-- Bureaucracy, Forge, Factory, Power, Ironworks -->
+		<English>Modifiers (%D1%%)</English>
+		<French>Modifiers (%D1%%)</French>
+		<German>Modifikatoren (%D1%%)</German>
+		<Italian>Modificatori (%D1%%)</Italian>
+		<Spanish>Modifiers (%D1%%)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_PRODUCTION_MODIFIER</Tag>
+		<!-- Heroic Epic, Military Academy, Drydock, Police State, Organized Religion, Traits, Resources -->
+		<English>%s1 (%D2%%)</English>
+		<French>%s1 (%D2%%)</French>
+		<German>%s1 (%D2%%)</German>
+		<Italian>%s1 (%D2%%)</Italian>
+		<Spanish>%s1 (%D2%%)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_SUBTOTAL</Tag>
+		<English>Subtotal</English>
+		<French>Total Partiel</French>
+		<German>Zwischensumme</German>
+		<Italian>Totale Parziale</Italian>
+		<Spanish>Subtotal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_TOTAL</Tag>
+		<English>Total</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_TRADE</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Handelsverbindungen[COLOR_REVERT][NEWLINE]Anzeige der Handelsverbindungen dieser Stadt</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Rotte Commericali[COLOR_REVERT][NEWLINE]Visualizza le Rotte Commericali pr questa Città.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_FOOD</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Roherträge aus Nahrung[COLOR_REVERT][NEWLINE]Aufschlüsselung aller [ICON_FOOD]-Erträge</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Fonti di Cibo[COLOR_REVERT][NEWLINE]Visualizza un riassunto di tutte le fonti di [ICON_FOOD].</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_PRODUCTION</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Roherträge aus Produktion[COLOR_REVERT][NEWLINE]Aufschlüsselung aller [ICON_PRODUCTION]-Erträge mit deren Modifikatoren</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Fonti di Produzione[COLOR_REVERT][NEWLINE]Visualizza un riassunto di tutte le fonti di [ICON_PRODUCTION] ed i modificatori relativi.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_COMMERCE</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Roherträge aus Wirtschaft[COLOR_REVERT][NEWLINE]Aufschlüsselung aller [ICON_COMMERCE]-Erträge mit deren Modifikatoren</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Fonti di Commercio[COLOR_REVERT][NEWLINE]Visualizza un riassunto di tutte le fonti di [ICON_COMMERCE] ed i modificatori relativi.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_WORKED</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Nur Bearbeitete Geländefelder[COLOR_REVERT][NEWLINE]Zur Berechnung der Roherträge werden alle Geländefelder, die von der Stadt derzeit bearbeitet werden, herangezogen</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Caselle lavorate[COLOR_REVERT][NEWLINE]Considera solo le caselle della Città attualmente lavorate.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_CITY</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Nur Stadtgeländefelder[COLOR_REVERT][NEWLINE]Zur Berechnung der Roherträge werden alle Geländefelder, die von der Stadt derzeit kontrolliert werden, herangezogen</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Caselle della Città[COLOR_REVERT][NEWLINE]Considera le caselle attualmente controllate dalla Città.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_OWNED</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Nur Geländefelder in Besitz[COLOR_REVERT][NEWLINE]Zur Berechnung der Roherträge werden alle Geländefelder, die sich im Einzugsgebiet der Stadt befinden und zur eigenen Zivilisation gehören, herangezogen</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Caselle possedute[COLOR_REVERT][NEWLINE]Considera le caselle nel raggio cittadino attualmente possedute dalla Civiltà.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_ALL</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Alle Geländefelder[COLOR_REVERT][NEWLINE]Zur Berechnung der Roherträge werden alle Geländefelder, die sich im Einzugsgebiet der Stadt befinden, unabhängig davon, welcher Zivilisation sie gehören, herangezogen</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Tutte le caselle[COLOR_REVERT][NEWLINE]Considera tutte le caselle nel raggio cittadino indipendentemente dal proprietario.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
+	</TEXT>
+	<!-- Unit Grouper -->
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_GROUPER_LEVEL_GROUP</Tag>
+		<English>Level %s1</English>
+		<French>Niveau %s1</French>
+		<German>Stufe %s1</German>
+		<Italian>Livello %s1</Italian>
+		<Spanish>Nivel %s1</Spanish>
+	</TEXT>
+	<!-- Military Adviser -->
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
+		<English>Deployment</English>
+		<French>Deploiement</French>
+		<German>Aufstellung</German>
+		<Italian>Dispiegamento</Italian>
+		<Spanish>Deployment</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
+		<English>Sit-Rep</English>
+		<French>Rapport de Situation</French>
+		<German>Situationsbericht</German>
+		<Italian>Rapporti</Italian>
+		<Spanish>Sit-Rep</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WORST</Tag>
+		<English>Worst</English>
+		<French>Worst</French>
+		<German>Schlimmster</German>
+		<Italian>Peggior</Italian>
+		<Spanish>Worst</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_ENEMY</Tag>
+		<English>Enemy</English>
+		<French>Enemy</French>
+		<German>Feind</German>
+		<Italian>Nemico</Italian>
+		<Spanish>Enemy</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_THREAT_INDEX</Tag>
+		<English>Threat Index</English>
+		<French>Index de Menace</French>
+		<German>Bedrohungslage</German>
+		<Italian>Rischio</Italian>
+		<Spanish>Threat Index</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS</Tag>
+		<English>Wars</English>
+		<French>Guerres</French>
+		<German>Kriege</German>
+		<Italian>Guerre</Italian>
+		<Spanish>Wars</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS_ACTIVE</Tag>
+		<English>Active</English>
+		<French>Actives</French>
+		<German>Im Gange</German>
+		<Italian>In corso</Italian>
+		<Spanish>Active</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL</Tag>
+		<English>Optional</English>
+		<French>Déclarera?</French>
+		<German>Möglich</German>
+		<Italian>Potenziali</Italian>
+		<Spanish>Optional</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
+		<English>Strategic Advantages</English>
+		<French>Avantages Stratégiques</French>
+		<German>Strategische Vorteile</German>
+		<Italian>Vantaggi Strategici</Italian>
+		<Spanish>Strategic Advantages</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS</Tag>
+		<English>Ours</English>
+		<French>Nous</French>
+		<German>Eigene</German>
+		<Italian>Propri</Italian>
+		<Spanish>Ours</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS</Tag>
+		<English>Theirs</English>
+		<French>Eux</French>
+		<German>Gegnerische</German>
+		<Italian>Altrui</Italian>
+		<Spanish>Theirs</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_VASSALS</Tag>
+		<English>Vassals</English>
+		<French>Vassaux</French>
+		<German>Vasallen</German>
+		<Italian>Vassalli</Italian>
+		<Spanish>Vassals</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_VASSAL</Tag>
+		<English>Vassal</English>
+		<French>Vassal</French>
+		<German>Vasall</German>
+		<Italian>Vassallo</Italian>
+		<Spanish>Vassal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_SITREP_DEFPACTS</Tag>
+		<English>Def Pacts</English>
+		<French>Pactes Défensifs</French>
+		<German>Vert.bünd.</German>
+		<Italian>Patti Difensivi</Italian>
+		<Spanish>Def Pacts</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_LOW</Tag>
+		<English>Low</English>
+		<French>Bas</French>
+		<German>Gering</German>
+		<Italian>Rischio Basso</Italian>
+		<Spanish>Low</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_GUARDED</Tag>
+		<English>Guarded</English>
+		<French>En garde</French>
+		<German>Erhöht</German>
+		<Italian>Prudenza</Italian>
+		<Spanish>Guarded</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_ELEVATED</Tag>
+		<English>Elevated</English>
+		<French>Elevé</French>
+		<German>Angespannt</German>
+		<Italian>Rischio Notevole</Italian>
+		<Spanish>Elevated</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_HIGH</Tag>
+		<English>High</English>
+		<French>Haut</French>
+		<German>Alarmierend</German>
+		<Italian>Allarme</Italian>
+		<Spanish>High</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_THREAT_INDEX_SEVERE</Tag>
+		<English>Severe</English>
+		<French>Sévère</French>
+		<German>Akut</German>
+		<Italian>Grave allarme</Italian>
+		<Spanish>Severe</Spanish>
+	</TEXT>
+	<!-- Reminders -->
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_HEADER</Tag>
+		<English>Create Reminder</English>
+		<French>Créez un Rappel</French>
+		<German>Erinnerung schreiben</German>
+		<Italian>Crea un Promemoria</Italian>
+		<Spanish>Create Reminder</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMINDER_PROMPT</Tag>
+		<English>Enter the number of turns until the reminder goes off and the message to display.</English>
+		<French>Entrez le nombre de tours jusqu'à l'apparition du rappel et le message à montrer.</French>
+		<German>Geben Sie die Anzahl der Runden an, bis die Erinnerung angezeigt werden soll.</German>
+		<Italian>Inserisci il numero di turni che devono passare prima che il promemoria scada ed il messaggio venga visualizzato.</Italian>
+		<Spanish>Enter the number of turns until the reminder goes off and the message to display.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMIND_END_TURN_PROMPT</Tag>
+		<English>Show reminder again at the end of this turn?</English>
+		<French>Remontrer le rappel à la fin de ce tour?</French>
+		<German>Erinnerung am Ende dieser Runde erneut anzeigen?</German>
+		<Italian>Mostrare nuovamente il promemoria alla fine del turno?</Italian>
+		<Spanish>Show reminder again at the end of this turn?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_REMIND_NEXT_TURN_PROMPT</Tag>
+		<English>Show reminder again next turn?</English>
+		<French>Remontrer le rappel au prochain tour?</French>
+		<German>Erinnerung n&#228;chste Runde erneut anzeigen?</German>
+		<Italian>Mostrare nuovamente il promemoria il prossimo turno?</Italian>
+		<Spanish>Show reminder again next turn?</Spanish>
+	</TEXT>
+    <!-- Colors -->
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_RED</Tag>
+		<English>Red</English>
+		<French>Rouge</French>
+		<German>Rot</German>
+		<Italian>Rosso</Italian>
+		<Spanish>Rojo</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_YELLOW</Tag>
+		<English>Yellow</English>
+		<French>Jaune</French>
+		<German>Gelb</German>
+		<Italian>Giallo</Italian>
+		<Spanish>Amarillo</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_GREEN</Tag>
+		<English>Green</English>
+		<French>Vert</French>
+		<German>Grün</German>
+		<Italian>Verde</Italian>
+		<Spanish>Verde</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_CYAN</Tag>
+		<English>Cyan</English>
+		<French>Cyan</French>
+		<German>Türkis</German>
+		<Italian>Azzurro</Italian>
+		<Spanish>Ci&#225;nico</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_BLUE</Tag>
+		<English>Blue</English>
+		<French>Bleu</French>
+		<German>Blau</German>
+		<Italian>Blu</Italian>
+		<Spanish>Azul</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_MAGENTA</Tag>
+		<English>Magenta</English>
+		<French>Magenta</French>
+		<German>Magenta</German>
+		<Italian>Magenta</Italian>
+		<Spanish>Magenta</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_WHITE</Tag>
+		<English>White</English>
+		<French>Blanc</French>
+		<German>Weiß</German>
+		<Italian>Bianco</Italian>
+		<Spanish>Blanco</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_LIGHT_GREY</Tag>
+		<English>Light Grey</English>
+		<French>Gris Pâle</French>
+		<German>Hellgrau</German>
+		<Italian>Grigio Chiaro</Italian>
+		<Spanish>Gris Ligero</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_GREY</Tag>
+		<English>Grey</English>
+		<French>Gris</French>
+		<German>Grau</German>
+		<Italian>Grigio</Italian>
+		<Spanish>Gris</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_DARK_GREY</Tag>
+		<English>Dark Grey</English>
+		<French>Gris Foncé</French>
+		<German>Dunkelgrau</German>
+		<Italian>Grigio Scuro</Italian>
+		<Spanish>Gris Oscuro</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_COLOR_BLACK</Tag>
+		<English>Black</English>
+		<French>Noir</French>
+		<German>Schwarz</German>
+		<Italian>Nero</Italian>
+		<Spanish>Negro</Spanish>
+	</TEXT>
+	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
+	<TEXT>
+		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
+		<English>Info</English>
+		<French>Infos</French>
+		<German>Info</German>
+		<Italian>Info</Italian>
+		<Spanish>Info.</Spanish>
+	</TEXT>
+</Civ4GameText>
