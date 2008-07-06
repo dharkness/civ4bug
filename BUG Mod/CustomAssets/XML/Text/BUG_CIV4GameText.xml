@@ -164,6 +164,64 @@
 		<Italian>Totale</Italian>
 		<Spanish>Total</Spanish>
 	</TEXT>
+<<<<<<< .mine
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_ROUTE</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_FOOD</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_PRODUCTION</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_VIEW_COMMERCE</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_WORKED</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_CITY</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_OWNED</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</English>
+		<French>Total</French>
+		<German>Summe</German>
+		<Italian>Totale</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+=======
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_VIEW_TRADE</Tag>
 		<English>[COLOR_HIGHLIGHT_TEXT]Trade Route View[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</English>
@@ -228,6 +286,7 @@
 		<Italian>[COLOR_HIGHLIGHT_TEXT]All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Italian>
 		<Spanish>[COLOR_HIGHLIGHT_TEXT]All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
 	</TEXT>
+>>>>>>> .r925
 	<!-- Unit Grouper -->
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_LEVEL_GROUP</Tag>
