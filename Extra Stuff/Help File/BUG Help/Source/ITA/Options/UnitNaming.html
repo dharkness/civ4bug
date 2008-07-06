@@ -14,6 +14,7 @@
 <BODY LANG="it-IT" DIR="LTR">
 <P CLASS="style1">Nomi Unità</P>
 <br>
+<P>Questa scheda contiene le opzioni di configurazione relative alla denominazione delle Unità.</P>
 <P CLASS="style2">Attivato</P>
 <P>Abilita/disabilita il mod <A HREF="../Included MODs/Unitrenaming.html">Unit Naming (Denominazione delle Unità)</A></P>
 <P CLASS="style2">Usa le convenzioni di denominazione avanzate per le varie Ere</P>
@@ -24,9 +25,41 @@ ed ovviamente (quando presenti ed abilitate) prevalgono su quelle più generali.<
 <P>Nella prima casella di testo (<span color="#0000ff"><b>Generale</b></span>) è possibile impostare la convenzione di denominazione predefinita.<br>
 Nelle caselle di testo successive, è possibile impostare delle convenzioni di denominazione specifiche per i vari tipi di Unità che, ovviamente,  
 se impostate prevalgono su quella predefinita (così come quelle specifiche per le ere, se presenti ed impostate, prevalgono su di esse); 
-per utilizzare l'impostazione predefinita, immettere nel campo la parola <i>"DEFAULT"</i>.</P>
-<P CLASS="style3">Nota</P>
-<P>Per i codici da utilizzare nelle convenzioni di denominazione e per alcuni esempi pratici del loro utilizzo, consultare la pagina relativa 
+per utilizzare l'impostazione predefinita, immettere nel campo la parola <i>"DEFAULT"</i>.<br>
+<P>Le convenzioni di denominazione utilizzano i seguenti codici:</P>
+<UL>
+	<LI><SPAN style="color: #0000ff;">^civ4^</SPAN> nessuna denominazione, utilizza i nomi standard di Civ4</LI>
+	<LI><SPAN style="color: #0000ff;">^rd^</SPAN> nome random</LI>
+	<LI><SPAN style="color: #0000ff;">^rc^</SPAN> nome random relativo alla Civiltà</LI>
+	<LI><SPAN style="color: #0000ff;">^ut^</SPAN> tipo di Unità (ad esempio &ldquo;arciere&rdquo;)</LI>
+	<LI><SPAN style="color: #0000ff;">^cb^</SPAN> tipo di combattimento (ad esempio &ldquo;corpo a corpo&rdquo;)</LI>
+	<LI><SPAN style="color: #0000ff;">^ld^</SPAN> leader</LI>
+	<LI><SPAN style="color: #0000ff;">^ct^</SPAN> Città</LI>
+	<LI><SPAN style="color: #0000ff;">^cv^</SPAN> Civiltà</LI>
+	<LI><SPAN style="color: #0000ff;">^dm^</SPAN> ambiente (ad esempio &ldquo;acqua&rdquo;)</LI>
+	<LI><SPAN style="color: #0000ff;">^cnt[f]^</SPAN> conteggia su tutte le Unità</LI>
+	<LI><SPAN style="color: #0000ff;">^cntu[f]^</SPAN> conteggia su tutte le Unità dello stesso tipo</LI>
+	<LI><SPAN style="color: #0000ff;">^cntct[f]^</SPAN> conteggia su tutte le Unità della stessa Città</LI>
+	<LI><SPAN style="color: #0000ff;">^cntuct[f]^</SPAN> conteggia su tutte le Unità dello stesso tipo e Città</LI>
+	<LI><SPAN style="color: #0000ff;">^cntc[f]^</SPAN> conteggia su tutte le Unità dello stesso tipo di combattimento</LI>
+	<LI><SPAN style="color: #0000ff;">^cntd[f]^</SPAN> conteggia su tutte le Unità dello stesso ambiente</LI>
+	<LI><SPAN style="color: #0000ff;">^tt1[f][x:y]^</SPAN> totale del conteggio, dove il totale è un numero random fra x e y  (vale x se y=x)</LI>
+	<LI><SPAN style="color: #0000ff;">^tt2[f][x]^</SPAN> totale del conteggio (parte da x, incrementato di 1 ogni volta che <b>tt1</b> torna a 1)</LI>
+</UL>
+<P>Sono possibili diversi formati numerici; [f] può essere:</P>
+<UL>
+	<LI><SPAN style="color: #0000ff;">s</SPAN> silente (non mostrato)</LI>
+	<LI><SPAN style="color: #0000ff;">A</SPAN> lettere maiuscole (A, B, C, D&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">a</SPAN> lettere minuscole (a, b, c, d&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">g</SPAN> lettere greche (alpha, beta, gamma, delta&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">p</SPAN> lettere fonetiche (alpha, bravo, charlie, delta&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">n</SPAN> numeri cardinali (1, 2, 3, 4&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">o</SPAN> numeri ordinali (1st, 2nd, 3rd, 4th&hellip;)</LI>
+	<LI><SPAN style="color: #0000ff;">r</SPAN> numeri romani (I, II, III, IV&hellip;)</LI>
+</UL>
+Alcuni formati (A, a, g, p) prevedono un massimo: quando viene raggiunto, la numerazione riprende dall'inizio. 
+Per esempio, se  scegliete il formato <strong>A</strong>, la trentesima unità sarà  indicata con &ldquo;D&rdquo;.<br>
+<P>Per alcuni esempi pratici dell'utilizzo di questi codici, consultare la pagina relativa 
 al mod <A HREF="../Included MODs/Unitrenaming.html">Unit Naming (Denominazione delle Unità)</A>.</P>
 
 </BODY>
