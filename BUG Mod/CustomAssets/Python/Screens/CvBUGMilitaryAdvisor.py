@@ -610,7 +610,7 @@ class CvMilitaryAdvisor:
 
 		if szWEnemyName == "":
 			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 45, 
+									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
 									WidgetTypes.WIDGET_LEADERHEAD, -1)
 		else:
 			for iLoopEnemy in range(gc.getMAX_PLAYERS()):
@@ -625,11 +625,11 @@ class CvMilitaryAdvisor:
 			and not pWEPlayer.isBarbarian()
 			and not pWEPlayer.isMinorCiv()):
 				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 32, 
+										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 45, 
 										WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
 			else:
 				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-										ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 45, 
+										ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
 										WidgetTypes.WIDGET_LEADERHEAD, -1)
 		return
 

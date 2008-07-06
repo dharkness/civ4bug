@@ -113,13 +113,15 @@ class IconGrid_BUG:
 	
 		self.groupTitleHeight = 24
 		self.headerHeight = 24
-		self.iconColWidth = 55
 		self.rowHeight = 68
 		self.rowHeaderHeight = 17
 		self.scrollArrowSize = 24
 		self.rowBorderWidth = 3
 		self.scrollSpace = 3
-		
+
+		iTemp = [0, 0, 35, 30, 0]
+		self.iconColWidth = 55 + iTemp[CyGame().getCurrentLanguage()]
+
 		self.groupBorder = 10
 		self.groupLabelOffset = "  "
 		self.minColSpace = 3
