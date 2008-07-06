@@ -12,7 +12,8 @@ import os
 
 def launch():
 	"Opens the mod's help file externally if it can be found or displays an error alert"
-	name = "%s Help.chm" % CvModName.getName()
+	sLang = ["Eng", "Fre", "Ger", "Ita", "Spa"]
+	name = "%s Help-%s.chm" % (CvModName.getName(), sLang[CyGame().getCurrentLanguage()])
 	file = findIniFile(name)
 	if file:
 		message = BugUtil.getPlainText("TXT_KEY_BUG_HELP_OPENING")

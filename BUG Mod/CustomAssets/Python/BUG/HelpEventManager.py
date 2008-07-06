@@ -16,8 +16,8 @@ class HelpEventManager:
 		eventType, key, mx, my, px, py = argsList
 		if eventType == self.eventMgr.EventKeyDown:
 			theKey = int(key)
-			# Check if Shift + F1 was hit
-			if (theKey == int(InputTypes.KB_F1) and self.eventMgr.bShift):
+			# Check if Alt + Ctrl + F1 were hit
+			if (theKey == int(InputTypes.KB_F1) and self.eventMgr.bAlt and self.eventMgr.bCtrl):
 				BugHelp.launch()
 				return 1
 		return 0
