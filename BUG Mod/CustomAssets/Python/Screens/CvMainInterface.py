@@ -5171,15 +5171,28 @@ class CvMainInterface:
 
 				iCount = 0
 
-				screen.addTableControlGFC( "TradeRouteTable", 3, 10, 187, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
-				screen.setStyle( "TradeRouteTable", "Table_City_Style" )
 				screen.addTableControlGFC( "BuildingListTable", 3, 10, 317, 238, yResolution - 541, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
 				screen.setStyle( "BuildingListTable", "Table_City_Style" )
 				
-				screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 158 )
-				screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 68 )
-				screen.setTableColumnHeader( "TradeRouteTable", 2, u"", 10 )
-				screen.setTableColumnRightJustify( "TradeRouteTable", 1 )
+# BUG - Raw Yields - start
+				bShowRawYields = g_bYieldView and BugCityScreen.isShowRawYields()
+				if (bShowRawYields):
+					screen.addTableControlGFC( "TradeRouteTable", 4, 10, 187, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+					screen.setStyle( "TradeRouteTable", "Table_City_Style" )
+					screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 111 )
+					screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 60 )
+					screen.setTableColumnHeader( "TradeRouteTable", 2, u"", 55 )
+					screen.setTableColumnHeader( "TradeRouteTable", 3, u"", 10 )
+					screen.setTableColumnRightJustify( "TradeRouteTable", 1 )
+					screen.setTableColumnRightJustify( "TradeRouteTable", 2 )
+				else:
+					screen.addTableControlGFC( "TradeRouteTable", 3, 10, 187, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
+					screen.setStyle( "TradeRouteTable", "Table_City_Style" )
+					screen.setTableColumnHeader( "TradeRouteTable", 0, u"", 158 )
+					screen.setTableColumnHeader( "TradeRouteTable", 1, u"", 68 )
+					screen.setTableColumnHeader( "TradeRouteTable", 2, u"", 10 )
+					screen.setTableColumnRightJustify( "TradeRouteTable", 1 )
+# BUG - Raw Yields - end
 
 				screen.setTableColumnHeader( "BuildingListTable", 0, u"", 108 )
 				screen.setTableColumnHeader( "BuildingListTable", 1, u"", 118 )
@@ -5191,7 +5204,6 @@ class CvMainInterface:
 				screen.show( "BuildingListLabel" )
 				
 # BUG - Raw Yields - start
-				bShowRawYields = g_bYieldView and BugCityScreen.isShowRawYields()
 				if (BugCityScreen.isShowRawYields()):
 					screen.setState("RawYieldsTrade0", not g_bYieldView)
 					screen.show("RawYieldsTrade0")

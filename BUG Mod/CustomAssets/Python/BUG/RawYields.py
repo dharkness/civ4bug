@@ -59,6 +59,7 @@ TILES = (WORKED_TILES, CITY_TILES, OWNED_TILES, ALL_TILES)
 # Table
 HEADING_COLUMN = 0
 VALUE_COLUMN = 1
+TOTAL_COLUMN = 2
 
 class Tracker:
 	
@@ -169,7 +170,8 @@ class Tracker:
 		iModifier = self.getYield(eYield, BASE_MODIFIER)
 		if iModifier != 0:
 			# Subtotal
-			self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iTotal)
+			self.appendTableTotal(screen, table, eYield, iTotal)
+			#self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iTotal)
 			# Modifier
 			iValue = (iTotal * (iModifier + 100) // 100) - iTotal
 			iSubtotal = iTotal + iValue
@@ -180,7 +182,8 @@ class Tracker:
 		# Subtotal and Production Modifiers
 		if eYield == YieldTypes.YIELD_PRODUCTION and self.iProductionModifier != 0:
 			# Subtotal
-			self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iSubtotal)
+			self.appendTableTotal(screen, table, eYield, iSubtotal)
+			#self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_SUBTOTAL"), eYield, iSubtotal)
 			# Total
 			iTotal = iTotal * (iModifier + self.iProductionModifier + 100) // 100
 			# Modifier
@@ -190,7 +193,8 @@ class Tracker:
 			iTotal = iSubtotal
 		
 		# Total
-		self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_TOTAL"), eYield, iTotal)
+		self.appendTableTotal(screen, table, eYield, iTotal)
+		#self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_TOTAL"), eYield, iTotal)
 	
 	def appendTable(self, screen, table, bTotal, heading, eYield, iValue):
 		"""
@@ -207,3 +211,12 @@ class Tracker:
 		screen.setTableText(table, HEADING_COLUMN, self.iRow, u"<font=1>%s</font>" % (heading), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 		screen.setTableText(table, VALUE_COLUMN, self.iRow, u"<font=1>%s%c</font>" % (value, cYield), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 		self.iRow += 1
+
+	def appendTableTotal(self, screen, table, eYield, iValue):
+		"""
+		Appends the given yield total to the table control's 3rd running total column.
+		"""
+		if self.iRow > 0:
+			cYield = gc.getYieldInfo(eYield).getChar()
+			value = u"<color=205,180,55,255>%d</color>" % iValue
+			screen.setTableText(table, TOTAL_COLUMN, self.iRow - 1, u"<font=1>%s%c</font>" % (value, cYield), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)

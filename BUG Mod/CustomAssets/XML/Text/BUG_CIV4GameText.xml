@@ -100,35 +100,35 @@
 	<!-- Raw Yields -->
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_WORKED_TILES</Tag>
-		<English>Worked Tiles</English>
-		<French>Cases Travaillées</French>
-		<German>Bearbeitete Geländefelder</German>
-		<Italian>Caselle lavorate</Italian>
-		<Spanish>Azulejos Trabajados</Spanish>
+		<English>Worked Tiles (%d1)</English>
+		<French>Cases Travaillées (%d1)</French>
+		<German>Bearbeitete Geländefelder (%d1)</German>
+		<Italian>Caselle lavorate (%d1)</Italian>
+		<Spanish>Azulejos Trabajados (%d1)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_CITY_TILES</Tag>
-		<English>City's Tiles</English>
-		<French>City's Tiles</French>
-		<German>City's Tiles</German>
-		<Italian>City's Tiles</Italian>
-		<Spanish>City's Tiles</Spanish>
+		<English>City's Tiles (%d1)</English>
+		<French>City's Tiles (%d1)</French>
+		<German>City's Tiles (%d1)</German>
+		<Italian>City's Tiles (%d1)</Italian>
+		<Spanish>City's Tiles (%d1)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_OWNED_TILES</Tag>
-		<English>Owned Tiles</English>
-		<French>Owned Tiles</French>
-		<German>Owned Tiles</German>
-		<Italian>Owned Tiles</Italian>
-		<Spanish>Owned Tiles</Spanish>
+		<English>Owned Tiles (%d1)</English>
+		<French>Owned Tiles (%d1)</French>
+		<German>Owned Tiles (%d1)</German>
+		<Italian>Owned Tiles (%d1)</Italian>
+		<Spanish>Owned Tiles (%d1)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_ALL_TILES</Tag>
-		<English>All Tiles</English>
-		<French>All Tiles</French>
-		<German>All Tiles</German>
-		<Italian>All Tiles</Italian>
-		<Spanish>All Tiles</Spanish>
+		<English>All Tiles (%d1)</English>
+		<French>All Tiles (%d1)</French>
+		<German>All Tiles (%d1)</German>
+		<Italian>All Tiles (%d1)</Italian>
+		<Spanish>All Tiles (%d1)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_BASE_MODIFIER</Tag>
@@ -166,59 +166,67 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_VIEW_TRADE</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Trade Route View[COLOR_REVERT][NEWLINE]Displays the default Trade Route View.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Trade Routes[COLOR_REVERT][NEWLINE]Displays the Trade Routes for this city.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_VIEW_FOOD</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Food View[COLOR_REVERT][NEWLINE]Displays information about the Cities Food supplies.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Food[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_FOOD] sources.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_VIEW_PRODUCTION</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Production View[COLOR_REVERT][NEWLINE]Displays information about the Cities Hammer Production.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Production[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_PRODUCTION] sources and modifiers.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_VIEW_COMMERCE</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Commerce View[COLOR_REVERT][NEWLINE]Displays information about the Cities Commerce.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]View Raw Commerce[COLOR_REVERT][NEWLINE]Displays a breakdown of all [ICON_COMMERCE] sources and modifiers.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_TILES_WORKED</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Tiles Worked[COLOR_REVERT][NEWLINE]Only display information about the Cities current Worked Tiles.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count Worked Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city is currently working.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_TILES_CITY</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] City Tiles[COLOR_REVERT][NEWLINE]Displays information about all tiles within the City radius.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count City's Tiles[COLOR_REVERT][NEWLINE]Counts the tiles the city controls.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_RAW_YIELD_TILES_OWNED</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</English>
-		<French>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</French>
-		<German>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT] Owned Tiles[COLOR_REVERT][NEWLINE]Displays information about tiles that belong to your city, and not worked by another.</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count Owned Tiles[COLOR_REVERT][NEWLINE]Counts the tiles in the city radius owned by your civilization.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_RAW_YIELD_TILES_ALL</Tag>
+		<English>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
 	</TEXT>
 	<!-- Unit Grouper -->
 	<TEXT>
