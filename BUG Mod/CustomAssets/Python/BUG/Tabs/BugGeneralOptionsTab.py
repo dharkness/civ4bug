@@ -38,4 +38,4 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.setLayoutFlag(right, "LAYOUT_RIGHT")
 		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 		self.addLabel(screen, right, "Version", 
-					  CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
+					  CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
