@@ -12,7 +12,7 @@ import os
 
 def launch():
 	"Opens the mod's help file externally if it can be found or displays an error alert"
-	sLang = ["Eng", "Fre", "Ger", "Ita", "Spa"]
+	sLang = ["ENG", "FRA", "DEU", "ITA", "ESP"]
 	name = "BUG Mod Help-%s.chm" % (sLang[CyGame().getCurrentLanguage()])
 	file = findIniFile(name)
 	if file:
