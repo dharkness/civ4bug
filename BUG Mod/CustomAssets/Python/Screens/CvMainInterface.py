@@ -1739,7 +1739,7 @@ class CvMainInterface:
 	def hidePromoInfoPane(self):
 		self.hideInfoPane()
 
-	# handles display of the promotion bottun info pane
+	# handles display of the promotion button info pane
 	def showUpgradeInfoPane(self, id):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		idUpgrade		= id % 100
@@ -3287,7 +3287,7 @@ class CvMainInterface:
 ##		xResolution = screen.getXResolution()
 ##		yResolution = screen.getYResolution()
 
-		self.hideInfoPane()
+		self.hideUnitInfoPane()
 		self.xResolution = screen.getXResolution()
 		self.yResolution = screen.getYResolution()
 		
