@@ -42,6 +42,14 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "Taelis - Customizable Domestic Advisor",
 		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
 		    "turlute - (ported PLE to BtS)",
+		    "-",
+		    "MAP_SCRIPTS|Map Scripts",
+		    "Sto - Full of Resources",
+		    "low - lowRandom",
+		    "Ruff_Hi - Ring World",
+		    "Nercury - Planet Generator",
+		    "Doug McCreary - SmartMap",
+		    "LDiCesare - Tectonics",
 
 		    ]
 

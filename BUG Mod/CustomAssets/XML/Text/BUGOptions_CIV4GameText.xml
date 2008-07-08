@@ -3192,6 +3192,14 @@
 		<Spanish>Mod Authors</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MAP_SCRIPTS</Tag>
+		<English>Map Scripts</English>
+		<French>Map Scripts</French>
+		<German>Map Scripts</German>
+		<Italian>Map Scripts</Italian>
+		<Spanish>Map Scripts</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TRANSLATORS</Tag>
 		<English>Translators</English>
 		<French>Traducteurs</French>
