@@ -6073,7 +6073,7 @@ class CvMainInterface:
 													if (bAlignIcons):
 														scores.setReligion(szTempBuffer)
 												
-												if (gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
+												if (not bNoEspionage and gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
 													szTempBuffer = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 													szBuffer = szBuffer + szTempBuffer
 													if (bAlignIcons):
