@@ -87,7 +87,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ALERT_LOGREMINDERS_TEXT</Tag>
 		<English>Log w. Autolog</English>
 		<French>Log avec Autolog</French>
-		<German>Autolog aktivieren</German>
+		<German>Mit Autolog protokollieren</German>
 		<Italian>Registra con Autolog</Italian>
 		<Spanish>Log w. Autolog</Spanish>
 	</TEXT>
@@ -1893,7 +1893,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_VIEW_MODE_TEXT</Tag>
 		<English>Default View</English>
 		<French>Vue par défaut</French>
-		<German>Anzeigemethode</German>
+		<German>Standardansicht</German>
 		<Italian>Visualizzazione</Italian>
 		<Spanish>Default View</Spanish>
 	</TEXT>
@@ -1901,7 +1901,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_DEFAULT_VIEW_MODE_HOVER</Tag>
 		<English>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</English>
 		<French>Détermine le mode de vue quand vous démarrez Civ IV.[NEWLINE]- Une Ligne: Vue par défaut de Civ IV[NEWLINE]- Plusieures Lignes: Vue par défaut de Beyond the Sword[NEWLINE]- Groupes Verticaux: Les Unités sont groupées en colonnes[NEWLINE]- Groupes Horizontaux: Les Unités sont groupées en rangées</French>
-		<German>Bestimmt die Anzeigemethode für die Einheitenliste:[NEWLINE]- Einzeilig: Einheiten werden wie in "Civilization 4" (Hauptspiel) angeordnet[NEWLINE]- Mehrzeilig: Einheiten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Spalten: Einheiten werden in Spalten gruppiert angeordnet[NEWLINE]- Zeilen: Einheiten werden in Zeilen gruppiert angeordnet</German>
+		<German>Bestimmt die Standardansicht für die Einheitenliste:[NEWLINE]- Einzeilig: Einheiten werden wie in "Civilization 4" (Hauptspiel) angeordnet[NEWLINE]- Mehrzeilig: Einheiten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Spalten: Einheiten werden in Spalten gruppiert angeordnet[NEWLINE]- Zeilen: Einheiten werden in Zeilen gruppiert angeordnet</German>
 		<Italian>Determina la modalità di visualizzazione utilizzata all'avvio del gioco.[NEWLINE]- Riga singola: visualizzazione originale di Civ4[NEWLINE]- Righe multiple: visualizzazione originale di Civ4:BtS[NEWLINE]- Gruppi verticali: Le Unità vengono raggruppate per colonna[NEWLINE]- Gruppi orizzontali: le Unità vengono raggruppate per riga.</Italian>
 		<Spanish>Sets the view mode used when you start Civ IV.[NEWLINE]- Single Row: Original Civ IV view[NEWLINE]- Multiple Rows: Standard Beyond the Sword view[NEWLINE]- Vertical Groups: Units are grouped together in columns[NEWLINE]- Horizontal Groups: Units are grouped together in rows</Spanish>
 	</TEXT>
@@ -2181,7 +2181,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE_MISSION_INFO_HOVER</Tag>
 		<English>Places a tag below units showing their current mission (action).</English>
 		<French>Le texte des actions des unités est ajoutée à leur icône.</French>
-		<German>Fügt den Einheitensymbolen die gerade ausgeführte Aktion als Text hinzu</German>
+		<German>Fügt den Einheitensymbolen die gerade ausgeführte Aktion als Symbol hinzu</German>
 		<Italian>Visualizza le azioni delle Unità sulle loro icone.</Italian>
 		<Spanish>Places a tag below units showing their current mission (action).</Spanish>
 	</TEXT>
