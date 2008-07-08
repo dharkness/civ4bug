@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1163.1273"
+   height="1163.1526"
+   id="svg3148"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   version="1.0"
+   sodipodi:docbase="C:\Documents and Settings\Games\My Documents\My Pictures\PLE"
+   sodipodi:docname="PLEring.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\Documents and Settings\Games\My Documents\My Pictures\PLEring3.png"
+   inkscape:export-xdpi="2.6475804"
+   inkscape:export-ydpi="2.6475804"
+   sodipodi:modified="TRUE">
+  <defs
+     id="defs3150">
+    <linearGradient
+       id="linearGradient3340">
+      <stop
+         style="stop-color:#1fd800;stop-opacity:1;"
+         offset="0"
+         id="stop3342" />
+      <stop
+         style="stop-color:#17a300;stop-opacity:1;"
+         offset="1"
+         id="stop3344" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3158">
+      <stop
+         style="stop-color:#f8eac7;stop-opacity:1"
+         offset="0"
+         id="stop3160" />
+      <stop
+         style="stop-color:#897864;stop-opacity:1;"
+         offset="1"
+         id="stop3162" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3158"
+       id="linearGradient3164"
+       x1="647.14288"
+       y1="451.33795"
+       x2="647.14288"
+       y2="1001.439"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3340"
+       id="linearGradient3346"
+       x1="133.30823"
+       y1="508.57144"
+       x2="849.54901"
+       y2="508.57144"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3340"
+       id="linearGradient3348"
+       gradientUnits="userSpaceOnUse"
+       x1="541.88922"
+       y1="565.10468"
+       x2="713.35535"
+       y2="729.56494" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3340"
+       id="linearGradient3350"
+       gradientUnits="userSpaceOnUse"
+       x1="508.57147"
+       y1="-491.42862"
+       x2="741.62195"
+       y2="-740.29871" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3340"
+       id="linearGradient3358"
+       x1="509.44141"
+       y1="530.38885"
+       x2="745.1759"
+       y2="735.96423"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9965022,0,0,1,1.3978067,0)" />
+    <filter
+       inkscape:collect="always"
+       id="filter3156">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="24.172124"
+         id="feGaussianBlur3158" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.13758592"
+     inkscape:cx="-27.075083"
+     inkscape:cy="708.41559"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     width="1000px"
+     height="1000px"
+     inkscape:window-width="744"
+     inkscape:window-height="573"
+     inkscape:window-x="173"
+     inkscape:window-y="74" />
+  <metadata
+     id="metadata3153">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(1453.746,170.28668)">
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.88333333;fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:114.28265804;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3156)"
+       id="path3365"
+       sodipodi:cx="501.50479"
+       sodipodi:cy="491.22702"
+       sodipodi:rx="581.45483"
+       sodipodi:ry="581.45483"
+       d="M 284.71779,1030.7575 A 581.45483,581.45483 0 1 1 287.05723,1031.6916"
+       sodipodi:start="1.9528593"
+       sodipodi:end="8.2317123"
+       sodipodi:open="true"
+       transform="matrix(0.8750234,0,0,0.8750234,-1311.0107,-18.556572)"
+       inkscape:export-filename="C:\Documents and Settings\Games\My Documents\My Pictures\PLE\ring4.png"
+       inkscape:export-xdpi="2.5765226"
+       inkscape:export-ydpi="2.5765226" />
+  </g>
+</svg>
