@@ -707,8 +707,8 @@ class CvMilitaryAdvisor:
 			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 			return
 
-		iAIUnits = self.getCanTrainUnits(iPlayer)
-		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer)
+		iAIUnits = self.getCanTrainUnits(iPlayer, self.iActivePlayer)
+		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer, self.iActivePlayer)
 
 		# remove units that the human does not know about
 		iUnitsToRemove = set()
@@ -782,17 +782,23 @@ class CvMilitaryAdvisor:
 		return
 
 
-	def getCanTrainUnits(self, iPlayer):
+	def getCanTrainUnits(self, iPlayer, iCheckingPlayer):
 		pPlayer = gc.getPlayer(iPlayer)
+		pCheckingPlayer = gc.getPlayer(iCheckingPlayer)
 		civInfo = gc.getCivilizationInfo(pPlayer.getCivilizationType())
 
 		iUnits = set()
 		for i in range (gc.getNumUnitClassInfos()):
 			iUnit = civInfo.getCivilizationUnits(i)
-			if gc.getUnitInfo(iUnit).getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
+			pUnitInfo = gc.getUnitInfo(iUnit)
+			if pUnitInfo.getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
 				for c in range(pPlayer.getNumCities()):
 					pCity = pPlayer.getCity(c)
 					if pCity and not pCity.isNone() and pCity.canTrain(iUnit, False, False):
+						if pUnitInfo.getDomainType() == DomainTypes.DOMAIN_SEA and not pCity.isRevealed(pCheckingPlayer.getTeam(), False):
+							# Skip water units if the checking player doesn't know about this city
+							BugUtil.debug("%s can build %s, but %s cannot see the city" % (pCity.getName(), pUnitInfo.getDescription(), pCheckingPlayer.getName()))
+							continue
 						iUnits.add(iUnit)
 						break
 
