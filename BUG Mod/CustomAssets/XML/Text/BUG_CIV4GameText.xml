@@ -258,7 +258,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_WORST</Tag>
 		<English>Worst</English>
 		<French>Worst</French>
-		<German>Schlimmster</German>
+		<German></German>
 		<Italian>Peggior</Italian>
 		<Spanish>Worst</Spanish>
 	</TEXT>
@@ -266,7 +266,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_ENEMY</Tag>
 		<English>Enemy</English>
 		<French>Enemy</French>
-		<German>Feind</German>
+		<German>Erzfeind</German>
 		<Italian>Nemico</Italian>
 		<Spanish>Enemy</Spanish>
 	</TEXT>
