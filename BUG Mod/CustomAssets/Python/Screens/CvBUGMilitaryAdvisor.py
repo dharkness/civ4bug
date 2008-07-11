@@ -404,8 +404,11 @@ class CvMilitaryAdvisor:
 		self.Col_WillDeclareOn = 7
 		self.Col_Curr_Wars = 6
 		self.Col_Vassals = 8
-		self.Col_DefPacts = 9
-
+		self.Col_DefPacts = 8
+		if (bVassals):
+			# shift over 1 to make room for vassals column
+			self.Col_DefPacts += 1
+		
 		if (not bVassals and not bDefPacts):
 			columns = ( IconGrid_BUG.GRID_ICON_COLUMN,
 						IconGrid_BUG.GRID_TEXT_COLUMN,
