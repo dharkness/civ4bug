@@ -4650,7 +4650,7 @@ class CvMainInterface:
 						xCoord = screen.centerX(512)
 
 					yCoord = 3
-					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, gc.getPlayer(ePlayer).getCurrentResearch(), -1 )
+					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
 					screen.show( "ResearchText" )
 # BUG - Bars on single line for higher resolution screens - end
 
