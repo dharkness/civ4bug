@@ -769,7 +769,7 @@
 		<English>City Razed</English>
 		<French>Démolition</French>
 		<German>Zerstörungen</German>
-		<Italian>Città Raziate</Italian>
+		<Italian>Città Razziate</Italian>
 		<Spanish>City Razed</Spanish>
 	</TEXT>
 	<TEXT>
@@ -777,7 +777,7 @@
 		<English>When checked, will log when you raze another civ's city or one of your cities is razed.</English>
 		<French>En activant, la démolition d'une ville par vos troupes et la démolition de vos villes sera noté dans le log.</French>
 		<German>Protokolliert die Zerstörung eigener und feindlicher Städte</German>
-		<Italian>Quando è selezionato, il Registro Automatico registra quando tu razi una Città altrui o quando una delle tue Città viene raziata.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra quando tu saccheggi una Città altrui o quando una delle tue Città viene razziata.</Italian>
 		<Spanish>When checked, will log when you raze another civ's city or one of your cities is razed.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1010,7 +1010,7 @@
 		<English>Raw Yields</English>
 		<French>Commerce Pur / Production</French>
 		<German>Anzeige der Roherträge</German>
-		<Italian>Valori grezzi</Italian>
+		<Italian>Prodotti grezzi</Italian>
 		<Spanish>Raw Yields</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2504,7 +2504,7 @@
 		<English>BUG Military Adviser</English>
 		<French>BUG Military Adviser</French>
 		<German>BUG Militärberater</German>
-		<Italian>Consigliere Militare del BUG Mod</Italian>
+		<Italian>Consigliere Militare evoluto</Italian>
 		<Spanish>BUG Military Adviser</Spanish>
 	</TEXT>
 	<TEXT>
