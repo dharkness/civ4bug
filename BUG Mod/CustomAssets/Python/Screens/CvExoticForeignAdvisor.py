@@ -323,6 +323,15 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 	def drawActive (self, bInitial):
 		CvForeignAdvisor.CvForeignAdvisor.drawActive (self)
 
+#	RJG Start
+	def drawRelations (self, bInitial):
+		screen = self.getScreen()
+		self.W_SCREEN = screen.getXResolution() - 40
+		self.X_SCREEN = (screen.getXResolution() - 24) / 2
+		self.X_LEADER_CIRCLE_TOP = self.X_SCREEN
+		CvForeignAdvisor.CvForeignAdvisor.drawRelations (self, bInitial)
+#	RJG End
+		
 	def drawInfo (self, bInitial):
 #		ExoticForPrint ("Entered drawInfo")
 
