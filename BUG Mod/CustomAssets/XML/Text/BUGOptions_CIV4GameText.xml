@@ -473,15 +473,15 @@
 		<English>Silent Start</English>
 		<French>Démarrage Silencieux</French>
 		<German>Stummer Start</German>
-		<Italian>Avvio silenzioso</Italian>
+		<Italian>Avvio automatico</Italian>
 		<Spanish>Silent Start</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_HOVER</Tag>
-		<English>When checked, the logger is automatically started with no in-game message.</English>
+		<English>When checked, the logger is automatically started; when it is not checked, the logger can be started (or stopped) using the <b>[Alt+L]</b> command.</English>
 		<French>En activant, Autolog est démarré automatiquement sans message à l'écran.</French>
 		<German>Startet das Protokoll automatisch, ohne nach einem Namen für die Protokolldatei zu fragen</German>
-		<Italian>Quando è selezionato, il Registro Automatico viene avviato automaticamente senza messaggi.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico viene avviato automaticamente; quando non è selezionato, il Registro Automatico deve essere avviato (ed eventualmente arrestato) utilizzando il comando <b>[Alt+L]</b>.</Italian>
 		<Spanish>When checked, the logger is automatically started with no in-game message.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1026,7 +1026,7 @@
 		<English>Whip Assist</English>
 		<French>Whip Assist</French>
 		<German>Whip Assist</German>
-		<Italian>Whip Assist</Italian>
+		<Italian>Barra dell'accelerazione</Italian>
 		<Spanish>Whip Assist</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1034,7 +1034,7 @@
 		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
 		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
 		<German>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</German>
-		<Italian>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Italian>
+		<Italian>Quando è selezionato, una nuova barra nella Schermata Cittadina mostra il costo in popolazione ed il surplus di produzione per l'accelerazione di produzione mediante sacrifici e il costo in oro per l'accelerazione di produzione mediante pagamenti relativi all'oggetto attualmente costruito.</Italian>
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
 	<TEXT>
