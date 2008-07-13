@@ -1022,6 +1022,22 @@
 		<Spanish>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_TEXT</Tag>
+		<English>Whip Assist</English>
+		<French>Whip Assist</French>
+		<German>Whip Assist</German>
+		<Italian>Whip Assist</Italian>
+		<Spanish>Whip Assist</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_HOVER</Tag>
+		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
+		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
+		<German>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</German>
+		<Italian>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Italian>
+		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
 		<French>Tours de Culture</French>

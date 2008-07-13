@@ -14,6 +14,11 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Raw Yields",
 							  "When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+		self.addOption(Option("City_WhipAssist",
+							  "City Screen", "Whip Assist", True,
+							  "Whip Assist",
+							  "When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.",
+							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 		self.addOption(Option("City_CultureTurns",
 							  "City Screen", "Culture Turns", False,
 							  "Culture Turns",
@@ -48,6 +53,9 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 
 	def isShowRawYields(self):
 		return self.getBoolean('City_RawYields')
+
+	def isShowWhipAssist(self):
+		return self.getBoolean('City_WhipAssist')
 
 	def isShowCultureTurns(self):
 		return self.getBoolean('City_CultureTurns')

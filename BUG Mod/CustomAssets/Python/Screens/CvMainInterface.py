@@ -5077,8 +5077,20 @@ class CvMainInterface:
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
 					if (pHeadSelectedCity.isProductionProcess()):
 						szBuffer = pHeadSelectedCity.getProductionName()
+# BUG - Whip Assist - start
 					else:
-						szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft()))
+						HURRY_WHIP = gc.getInfoTypeForString("HURRY_POPULATION")
+						HURRY_BUY = gc.getInfoTypeForString("HURRY_GOLD")
+						if (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_WHIP, False)):
+							iHurryPop = pHeadSelectedCity.hurryPopulation(HURRY_WHIP)
+							iHurryOverflow = pHeadSelectedCity.hurryProduction(HURRY_WHIP) - (pHeadSelectedCity.getProductionNeeded() - pHeadSelectedCity.getProduction())
+							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow))
+						elif (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_BUY, False)):
+							iHurryCost = pHeadSelectedCity.hurryGold(HURRY_BUY)
+							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_BUY", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryCost))
+						else:
+							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft()))
+# BUG - Whip Assist - end
 
 					screen.setLabel( "ProductionText", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, screen.centerX(512), iCityCenterRow2Y, -1.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.setHitTest( "ProductionText", HitTestTypes.HITTEST_NOHIT )

@@ -228,6 +228,23 @@
 		<Italian>[COLOR_HIGHLIGHT_TEXT]Tutte le caselle[COLOR_REVERT][NEWLINE]Considera tutte le caselle nel raggio cittadino indipendentemente dal proprietario.</Italian>
 		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
 	</TEXT>
+	<!-- Whip Assist -->
+	<TEXT>
+		<Tag>INTERFACE_CITY_PRODUCTION_WHIP</Tag>
+		<English>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</English>
+		<French>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</French>
+		<German>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</German>
+		<Italian>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</Italian>
+		<Spanish>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_CITY_PRODUCTION_BUY</Tag>
+		<English>%s1 (%d2)   %d3[ICON_GOLD]</English>
+		<French>%s1 (%d2)   %d3[ICON_GOLD]</French>
+		<German>%s1 (%d2)   %d3[ICON_GOLD]</German>
+		<Italian>%s1 (%d2)   %d3[ICON_GOLD]</Italian>
+		<Spanish>%s1 (%d2)   %d3[ICON_GOLD]</Spanish>
+	</TEXT>
 	<!-- Unit Grouper -->
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_LEVEL_GROUP</Tag>
