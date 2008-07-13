@@ -27,6 +27,7 @@ import autologEventManager
 import Civ4lerts
 import MoreCiv4lerts
 import UnitNameEventManager
+import CvGreatPersonModEventManager
 
 import BugOptionsEventManager
 import HelpEventManager
@@ -68,10 +69,17 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
     this event manager handles invocation of the base class handler function,
     additional handlers should not also call the base class function themselves.
 
+	EF: Added three new custom events that get triggered by CvMainInterface:
+	    - onBeginActivePlayerTurn
+	    - onEndActivePlayerTurn
+
     """
 
     def __init__(self, *args, **kwargs):
         super(CvCustomEventManager, self).__init__(*args, **kwargs)
+        # add the new events from BUG
+        self.addBuiltinEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
+        #self.addBuiltinEventHandler("EndActivePlayerTurn", self.onEndActivePlayerTurn)
         # map the initial EventHandlerMap values into the new data structure
         for eventType, eventHandler in self.EventHandlerMap.iteritems():
             self.setEventHandler(eventType, eventHandler)
@@ -82,17 +90,26 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         MoreCiv4lerts.MoreCiv4lerts(self)
         ReminderEventManager.ReminderEventManager(self)
         UnitNameEventManager.UnitNameEventManager(self)
+        CvGreatPersonModEventManager.CvGreatPersonModEventManager(self)
         
         BugOptionsEventManager.BugOptionsEventManager(self)
         HelpEventManager.HelpEventManager(self)
+    
+    def addBuiltinEventHandler(self, eventType, eventHandler):
+    	"Adds a handler to CvEventManager's map."
+    	self.EventHandlerMap[eventType] = eventHandler
 
     def addEventHandler(self, eventType, eventHandler):
         """Adds a handler for the given event type.
         
         A list of supported event types can be found in the initialization 
         of EventHandlerMap in the CvEventManager class.
+        
+        Throws LookupError if the eventType is not valid.
 
         """
+        if eventType not in self.EventHandlerMap:
+            raise LookupError(eventType)
         self.EventHandlerMap[eventType].append(eventHandler)
 
     def removeEventHandler(self, eventType, eventHandler):
@@ -101,21 +118,49 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
         A list of supported event types can be found in the initialization 
         of EventHandlerMap in the CvEventManager class.  It is an error if 
         the given handler is not found in the list of installed handlers.
+        
+        Throws LookupError if the eventType is not valid.
 
         """
+        if eventType not in self.EventHandlerMap:
+            raise LookupError(eventType)
         self.EventHandlerMap[eventType].remove(eventHandler)
     
     def setEventHandler(self, eventType, eventHandler):
         """Removes all previously installed event handlers for the given 
-        event type and installs a new handler .
+        event type and installs a new handler.
         
         A list of supported event types can be found in the initialization 
         of EventHandlerMap in the CvEventManager class.  This method is 
         primarily useful for overriding, rather than extending, the default 
         event handler functionality.
+        
+        Throws LookupError if the eventType is not valid.
 
         """
+        if eventType not in self.EventHandlerMap:
+            raise LookupError(eventType)
         self.EventHandlerMap[eventType] = [eventHandler]
+    
+    def setPopupHandler(self, eventType, popupHandler):
+        """Removes all previously installed popup handlers for the given 
+        event type and installs a new handler.
+        
+        The eventType should be an integer.  It must be unique with respect
+        to the integers assigned to built in events.  The popupHandler should
+        be a list made up of (name, beginFunction, applyFunction).  The name
+        is used in debugging output.  The begin and apply functions are invoked
+        by beginEvent and applyEvent, respectively, to manage a popup dialog
+        in response to the event.
+
+        """
+        self.Events[eventType] = popupHandler
+    
+    def fireEvent(self, eventType, *args):
+        argsList = [eventType]
+        argsList.extend(args)
+        argsList.extend([False, False, False, False, False, False])
+        self.handleEvent(argsList)
 
     def handleEvent(self, argsList):
         """Handles events by calling all installed handlers."""
@@ -169,3 +214,11 @@ class CvCustomEventManager(CvEventManager.CvEventManager, object):
     def _handleOnLoadEvent(self, eventType, argsList):
         """Handles OnLoad events."""
         return self._handleDefaultEvent(eventType, argsList)
+
+    def onBeginActivePlayerTurn(self, argsList):
+        "Called when the active player can start making their moves."
+        pass
+
+#    def onEndActivePlayerTurn(self, argsList):
+#        "Called when the End Turn button is first available."
+#        pass

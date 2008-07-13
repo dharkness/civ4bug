@@ -92,7 +92,7 @@ class ReminderEventManager:
 
 	def showReminders(self, endOfTurn):
 		global g_turnReminderTexts
-		thisTurn = gc.getGame().getGameTurn() + 1
+		thisTurn = gc.getGame().getGameTurn()
 		if (endOfTurn):
 			queue = self.endOfTurnReminders
 			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
@@ -101,10 +101,10 @@ class ReminderEventManager:
 			g_turnReminderTexts = ""
 			queue = self.reminders
 			# endTurnReady isn't firing :(
-#			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_END_TURN_PROMPT")
-#			eventId = CvUtil.EventReminderRecall
-			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
-			eventId = CvUtil.EventReminderRecallAgain
+			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_END_TURN_PROMPT")
+			eventId = CvUtil.EventReminderRecall
+#			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
+#			eventId = CvUtil.EventReminderRecallAgain
 		yes = BugUtil.getPlainText("TXT_KEY_POPUP_YES")
 		no = BugUtil.getPlainText("TXT_KEY_POPUP_NO")
 		while (not queue.isEmpty()):
@@ -154,7 +154,7 @@ class ReminderEvent(AbstractReminderEvent):
 		super(ReminderEvent, self).__init__(eventManager, *args, **kwargs)
 
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
-		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
@@ -175,8 +175,8 @@ class ReminderEvent(AbstractReminderEvent):
 					return 1
 		return 0
 
-	def onEndGameTurn(self, argsList):
-		'Called at the end of the end of each full game turn'
+	def onBeginActivePlayerTurn(self, argsList):
+		"Called at the start of the active player's turn."
 		iGameTurn = argsList[0]
 
 		g_turnReminderTexts = None
@@ -186,10 +186,9 @@ class ReminderEvent(AbstractReminderEvent):
 	def onEndTurnReady(self, argsList):
 		iGameTurn = argsList[0]
 		
-		if (gc.getPlayer(iPlayer).isHuman()):
-			if (BugAlerts.isShowReminders()):
-				self.eventMgr.beginEvent(CvUtil.EventReminderRecallAgain)
-#				return 1
+		if (BugAlerts.isShowReminders()):
+			self.eventMgr.beginEvent(CvUtil.EventReminderRecallAgain)
+#			return 1
 
 	def onGameStart(self, argsList):
 		'Called when a new game is started'

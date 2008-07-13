@@ -70,13 +70,15 @@ __version__ = "$Revision: 1.2 $"
 class Civ4lerts:
 
 	def __init__(self, eventManager):
-		cityEvent = EndGameTurnCityAlertManager(eventManager)
-		cityEvent.add(CityPendingGrowth(eventManager))
+		cityEvent = BeginActivePlayerTurnCityAlertManager(eventManager)
 		cityEvent.add(CityGrowth(eventManager))
 		cityEvent.add(CityHealthiness(eventManager))
 		cityEvent.add(CityHappiness(eventManager))
 		cityEvent.add(CanHurryPopulation(eventManager))
 		cityEvent.add(CanHurryGold(eventManager))
+		
+		cityEvent = EndTurnReadyCityAlertManager(eventManager)
+		cityEvent.add(CityPendingGrowth(eventManager))
 		
 		GoldTrade(eventManager)
 		GoldPerTurnTrade(eventManager)
@@ -152,13 +154,10 @@ class AbstractStatefulAlert:
 		"Resets the state for this alert."
 		pass
 
-class EndGameTurnCityAlertManager(AbstractStatefulAlert):
+class AbstractCityAlertManager(AbstractStatefulAlert):
 	"""
-	Triggered at the end of each game turn, this event loops over all of the
-	active player's cities, passing each off to a set of alert checkers.
-	
-	This is like a mini event manager that triggers an EndGameTurn event
-	for each city of the active player.
+	Triggered when cities are acquired or lost, this event manager passes 
+	each off to a set of alert checkers.
 	
 	All of the alerts are reset when the game is loaded or started.
 	"""
@@ -166,7 +165,6 @@ class EndGameTurnCityAlertManager(AbstractStatefulAlert):
 		AbstractStatefulAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("cityAcquiredAndKept", self.onCityAcquiredAndKept)
 		eventManager.addEventHandler("cityLost", self.onCityLost)
-		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
 		self.alerts = []
 
 	def add(self, alert):
@@ -181,20 +179,8 @@ class EndGameTurnCityAlertManager(AbstractStatefulAlert):
 		'City Lost'
 		city = argsList[0]
 		iPlayer = gc.getGame().getActivePlayer()
-		if (iPlayer == gc.getGame().getActivePlayer()):
+		if (iPlayer == city.getOwner()):
 			self._discardCity(city)
-	
-	def onEndGameTurn(self, argsList):
-		"Loops over active player's cities, telling each to perform its check."
-		iTurn = argsList[0]
-		iPlayer = gc.getGame().getActivePlayer()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (city and not city.isNone()):
-				for alert in self.alerts:
-					iCityID = city.getID()
-					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
 
 	def _init(self):
 		"Initializes each alert."
@@ -215,6 +201,49 @@ class EndGameTurnCityAlertManager(AbstractStatefulAlert):
 		"tells each alert to discard the state of the given city."
 		for alert in self.alerts:
 			alert.discardCity(city)
+
+class BeginActivePlayerTurnCityAlertManager(AbstractCityAlertManager):
+	"""
+	Extends AbstractCityAlertManager to loop over all of the active player's
+	cities at the start of their turn.
+	"""
+	def __init__(self, eventManager):
+		AbstractCityAlertManager.__init__(self, eventManager)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
+	
+	def onBeginActivePlayerTurn(self, argsList):
+		"Loops over active player's cities, telling each to perform its check."
+		iTurn = argsList[0]
+		iPlayer = gc.getGame().getActivePlayer()
+		player = gc.getActivePlayer()
+		for iCity in range(player.getNumCities()):
+			city = player.getCity(iCity)
+			if (city and not city.isNone()):
+				for alert in self.alerts:
+					iCityID = city.getID()
+					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
+
+class EndTurnReadyCityAlertManager(AbstractCityAlertManager):
+	"""
+	Extends AbstractCityAlertManager to loop over all of the active player's
+	cities at the end of their turn (the moment the End Turn button turns red).
+	"""
+	def __init__(self, eventManager):
+		AbstractCityAlertManager.__init__(self, eventManager)
+		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
+	
+	def onEndTurnReady(self, argsList):
+		"Loops over active player's cities, telling each to perform its check."
+		iTurn = argsList[0]
+		iPlayer = gc.getGame().getActivePlayer()
+		player = gc.getActivePlayer()
+		for iCity in range(player.getNumCities()):
+			city = player.getCity(iCity)
+			if (city and not city.isNone()):
+				for alert in self.alerts:
+					iCityID = city.getID()
+					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
+
 
 class AbstractCityAlert:
 	"""
@@ -596,8 +625,6 @@ class CanHurryPopulation(AbstractCanHurry):
 	
 	def init(self):
 		AbstractCanHurry.init(self, "HURRY_POPULATION")
-		self.kszPopIcon = u"%c" % gc.getGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR)
-		self.kszHammerIcon = u"%c" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
 
 	def _isShowAlert(self, passes):
 		return passes and BugAlerts.isShowCityCanHurryPopAlert()
@@ -605,9 +632,9 @@ class CanHurryPopulation(AbstractCanHurry):
 	def _getAlertMessage(self, city, info):
 		iPop = city.hurryPopulation(self.keHurryType)
 		iOverflow = city.hurryProduction(self.keHurryType) - (city.getProductionNeeded() - city.getProduction())
+		iAnger = city.getHurryAngerTimer() + city.flatHurryAngerLength()
 		return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
-								 (city.getName(), info.getDescription(), 
-								  iPop, self.kszPopIcon, iOverflow, self.kszHammerIcon))
+								 (city.getName(), info.getDescription(), iPop, iOverflow, iAnger))
 
 class CanHurryGold(AbstractCanHurry):
 #   Displays an alert when a city can hurry using gold.
@@ -617,7 +644,6 @@ class CanHurryGold(AbstractCanHurry):
 
 	def init(self):
 		AbstractCanHurry.init(self, "HURRY_GOLD")
-		self.kszGoldIcon = u"%c" % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar()
 
 	def _isShowAlert(self, passes):
 		return passes and BugAlerts.isShowCityCanHurryGoldAlert()
@@ -625,8 +651,7 @@ class CanHurryGold(AbstractCanHurry):
 	def _getAlertMessage(self, city, info):
 		iGold = city.hurryGold(self.keHurryType)
 		return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD", 
-								 (city.getName(), info.getDescription(), 
-								  iGold, self.kszGoldIcon))
+								 (city.getName(), info.getDescription(), iGold))
 
 
 ### Trading Gold
@@ -637,12 +662,12 @@ class GoldTrade(AbstractStatefulAlert):
 
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
-		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 
-	def onEndGameTurn(self, argsList):
+	def onBeginActivePlayerTurn(self, argsList):
 		if (not BugAlerts.isShowGoldTradeAlert()):
 			return
-
+		
 		turn = argsList[0]
 		player = gc.getGame().getActivePlayer()
 		team = gc.getTeam(gc.getPlayer(player).getTeam())
@@ -686,12 +711,12 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
-		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 
-	def onEndGameTurn(self, argsList):
+	def onBeginActivePlayerTurn(self, argsList):
 		if (not BugAlerts.isShowGoldPerTurnTradeAlert()):
 			return
-
+		
 		turn = argsList[0]
 		player = gc.getGame().getActivePlayer()
 		team = gc.getTeam(gc.getPlayer(player).getTeam())
