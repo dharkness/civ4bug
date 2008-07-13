@@ -169,6 +169,10 @@ RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 				   "TXT_KEY_RAW_YIELD_TILES_ALL" )
 # BUG - Raw Yields - end
 
+# BUG - Event Manager - start
+g_iActiveTurn = -1
+# BUG - Event Manager - end
+
 g_pSelectedUnit = 0
 
 
@@ -2760,6 +2764,15 @@ class CvMainInterface:
 		global g_bShowTimeTextAlt
 # BUG - NJAGC - end
 
+# BUG - Event Manager - start
+		global g_iActiveTurn
+		global g_bEndTurnFired
+		if g_iActiveTurn != gc.getGame().getGameTurn():
+			g_iActiveTurn = gc.getGame().getGameTurn()
+			g_bEndTurnFired = False
+			CvEventInterface.getEventManager().fireEvent("BeginActivePlayerTurn", g_iActiveTurn)
+# BUG - Event Manager - end
+
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
 		# Find out our resolution
@@ -2815,6 +2828,9 @@ class CvMainInterface:
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
 				elif ( CyInterface().shouldDisplayEndTurn() ):
+					if ( not g_bEndTurnFired ):
+						g_bEndTurnFired = True
+						CvEventInterface.getEventManager().fireEvent("endTurnReady", g_iActiveTurn)
 # BUG - Reminders - start
 					if ( ReminderEventManager.g_turnReminderTexts ):
 						acOutput = u"%s" % ReminderEventManager.g_turnReminderTexts
