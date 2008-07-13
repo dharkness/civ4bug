@@ -44,12 +44,12 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "turlute - (ported PLE to BtS)",
 		    "-",
 		    "MAP_SCRIPTS|Map Scripts",
-		    "Sto - Full of Resources",
-		    "low - lowRandom",
-		    "Ruff_Hi - Ring World",
-		    "Nercury - Planet Generator",
 		    "Doug McCreary - SmartMap",
 		    "LDiCesare - Tectonics",
+		    "low - Random Map",
+		    "Nercury - Planet Generator",
+		    "Ruff_Hi - Ring World",
+		    "Sto - Full of Resources",
 
 		    ]
 
