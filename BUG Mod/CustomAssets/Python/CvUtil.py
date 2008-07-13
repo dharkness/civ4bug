@@ -76,8 +76,12 @@ EventForward=5
 EventKeyDown=6
 EventKeyUp=7
 
+# BUG - Events - start
 # List of unreported Events
-SilentEvents = [EventEditCityName, EventEditUnitName]
+SilentEvents = [EventEditCityName, EventEditUnitName, 
+				EventLogOpen, EventCustomLogEntry, 
+				EventReminderStore, EventReminderRecall, EventReminderRecallAgain]
+# BUG - Events - end
 
 # Popup defines (TODO: Expose these from C++)
 FONT_CENTER_JUSTIFY=1<<2
