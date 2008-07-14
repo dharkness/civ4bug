@@ -470,19 +470,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_TEXT</Tag>
-		<English>Silent Start</English>
+		<English>Automatic Start</English>
 		<French>Démarrage Silencieux</French>
-		<German>Stummer Start</German>
+		<German>Automatischer Start</German>
 		<Italian>Avvio automatico</Italian>
-		<Spanish>Silent Start</Spanish>
+		<Spanish>Automatic Start</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_SILENT_HOVER</Tag>
-		<English>When checked, the logger is automatically started; when it is not checked, the logger can be started (or stopped) using the <b>[Alt+L]</b> command.</English>
+		<English>When checked, the logger is automatically started and doesn't wait for the manual start (or stop) command which can be issued by using [Alt + L].</English>
 		<French>En activant, Autolog est démarré automatiquement sans message à l'écran.</French>
-		<German>Startet das Protokoll automatisch, ohne nach einem Namen für die Protokolldatei zu fragen</German>
-		<Italian>Quando è selezionato, il Registro Automatico viene avviato automaticamente; quando non è selezionato, il Registro Automatico deve essere avviato (ed eventualmente arrestato) utilizzando il comando <b>[Alt+L]</b>.</Italian>
-		<Spanish>When checked, the logger is automatically started with no in-game message.</Spanish>
+		<German>Startet die Protokollierung automatisch, ohne darauf zu warten, dass diese mit der Tastenkombination [ALT + L] gestartet oder gestoppt wird</German>
+		<Italian>Quando è selezionato, il Registro Automatico viene avviato automaticamente; quando non è selezionato, il Registro Automatico deve essere avviato (ed eventualmente arrestato) utilizzando il comando [Alt + L].</Italian>
+		<Spanish>When checked, the logger is automatically started and doesn't wait for the manual start (or stop) command which can be issued by using [Alt + L].</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG_DEFAULTFILENAME_TEXT</Tag>
@@ -1025,7 +1025,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_VIEW_TEXT</Tag>
 		<English>Default View</English>
 		<French>Default View</French>
-		<German>Default View</German>
+		<German>Standardanzeige</German>
 		<Italian>Default View</Italian>
 		<Spanish>Default View</Spanish>
 	</TEXT>
@@ -1033,7 +1033,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_VIEW_HOVER</Tag>
 		<English>Determines the Raw Yields view used when Civ is started.</English>
 		<French>Determines the Raw Yields view used when Civ is started.</French>
-		<German>Determines the Raw Yields view used when Civ is started.</German>
+		<German>Bestimmt, welche Erträge standardmäßig angezeigt werden sollen</German>
 		<Italian>Determines the Raw Yields view used when Civ is started.</Italian>
 		<Spanish>Determines the Raw Yields view used when Civ is started.</Spanish>
 	</TEXT>
@@ -1041,7 +1041,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_RAWYIELDS_VIEW_LIST</Tag>
 		<English>Trade Routes|Food|Production|Commerce</English>
 		<French>Trade Routes|Food|Production|Commerce</French>
-		<German>Trade Routes|Food|Production|Commerce</German>
+		<German>Handelsverbindungen|Nahrung|Produktion|Wirtschaft</German>
 		<Italian>Trade Routes|Food|Production|Commerce</Italian>
 		<Spanish>Trade Routes|Food|Production|Commerce</Spanish>
 	</TEXT>
@@ -1049,7 +1049,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_TEXT</Tag>
 		<English>Whip Assist</English>
 		<French>Whip Assist</French>
-		<German>Whip Assist</German>
+		<German>Anzeige für die Beschleunigung der Produktion</German>
 		<Italian>Barra di produzione con accelerazione</Italian>
 		<Spanish>Whip Assist</Spanish>
 	</TEXT>
@@ -1057,7 +1057,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_HOVER</Tag>
 		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
 		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
-		<German>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</German>
+		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion an sowie die Kosten, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden soll</German>
 		<Italian>Quando è selezionato, la Barra della Pruduzione della Schermata Cittadina mostra il costo in popolazione ed il surplus di produzione per l'accelerazione di produzione mediante sacrifici e il costo in oro per l'accelerazione di produzione mediante pagamenti relativi all'oggetto attualmente costruito.</Italian>
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
