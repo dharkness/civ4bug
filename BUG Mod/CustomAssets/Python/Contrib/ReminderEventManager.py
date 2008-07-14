@@ -55,7 +55,7 @@ class ReminderEventManager:
 		popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
-		popup.createSpinBox(0, "", 1, 1, 100, 0)
+		popup.createSpinBox(0, "", 1, 1, 1500, 0)
 		popup.createEditBox("", 1)
 		popup.addButton(ok)
 		popup.addButton(cancel)
