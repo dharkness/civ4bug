@@ -61,6 +61,16 @@ HEADING_COLUMN = 0
 VALUE_COLUMN = 1
 TOTAL_COLUMN = 2
 
+def getViewAndType(iView):
+	"Returns the view boolean and YieldTypes enum given the give number 0-3."
+	if iView == 0:
+		return (False, YieldTypes.YIELD_FOOD)
+	elif iView in (1, 2, 3):
+		return (True, YIELDS[iView - 1])
+	else:
+		BugUtil.debug("RawYields.getViewAndType - Invalid view number: %d" % iView)
+		return (False, YieldTypes.YIELD_FOOD)
+
 class Tracker:
 	
 	def __init__(self):

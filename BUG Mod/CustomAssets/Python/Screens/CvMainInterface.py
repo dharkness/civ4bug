@@ -156,8 +156,7 @@ g_iTimeTextCounter = -1
 # BUG - Raw Yields - start
 import RawYields
 g_bRawShowing = False
-g_bYieldView = False
-g_iYieldType = YieldTypes.YIELD_PRODUCTION
+g_bYieldView, g_iYieldType = RawYields.getViewAndType(BugCityScreen.getRawYieldsDefaultView())
 g_iYieldTiles = RawYields.WORKED_TILES
 RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 				   "TXT_KEY_RAW_YIELD_VIEW_FOOD",

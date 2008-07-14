@@ -14,6 +14,13 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Raw Yields",
 							  "When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+		self.addOption(OptionList("City_RawYields_View",
+								  "City Screen", "Raw Yields View", 0,
+								  "Default View",
+								  "Determines the Raw Yields view used when Civ is started.",
+								  ['Trade Routes', 'Food', 'Production', 'Commerce'], None,
+								  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+		
 		self.addOption(Option("City_WhipAssist",
 							  "City Screen", "Whip Assist", True,
 							  "Whip Assist",
@@ -53,6 +60,8 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 
 	def isShowRawYields(self):
 		return self.getBoolean('City_RawYields')
+	def getRawYieldsDefaultView(self):
+		return self.getInt('City_RawYields_View')
 
 	def isShowWhipAssist(self):
 		return self.getBoolean('City_WhipAssist')
@@ -62,7 +71,6 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 
 	def isShowGreatPersonTurns(self):
 		return self.getBoolean('City_GreatPersonTurns')
-
 	def isShowCityGreatPersonInfo(self):
 		return self.getBoolean('City_GreatPersonInfo')
 
