@@ -1026,7 +1026,7 @@
 		<English>Default View</English>
 		<French>Default View</French>
 		<German>Standardanzeige</German>
-		<Italian>Default View</Italian>
+		<Italian>Vista predefinita</Italian>
 		<Spanish>Default View</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1034,7 +1034,7 @@
 		<English>Determines the Raw Yields view used when Civ is started.</English>
 		<French>Determines the Raw Yields view used when Civ is started.</French>
 		<German>Bestimmt, welche Ertr‰ge standardm‰ﬂig angezeigt werden sollen</German>
-		<Italian>Determines the Raw Yields view used when Civ is started.</Italian>
+		<Italian>Determina la vista predefinita alla partenza di Civ4 per il pannello dei Prodotti Grezzi: Rotte Commerciali, Cibo, Produzione o Commercio.</Italian>
 		<Spanish>Determines the Raw Yields view used when Civ is started.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1042,7 +1042,7 @@
 		<English>Trade Routes|Food|Production|Commerce</English>
 		<French>Trade Routes|Food|Production|Commerce</French>
 		<German>Handelsverbindungen|Nahrung|Produktion|Wirtschaft</German>
-		<Italian>Trade Routes|Food|Production|Commerce</Italian>
+		<Italian>Rotte Commerciali|Cibo|Produzione|Commercio</Italian>
 		<Spanish>Trade Routes|Food|Production|Commerce</Spanish>
 	</TEXT>
 	<TEXT>
