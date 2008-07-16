@@ -210,4 +210,12 @@
 		<Italian>*Suggerimento del BUG Team*: A volte è meglio fermare un Esploratore su una casella di collina, foresta o giungla e perdere il movimento extra in favore della prudenza.</Italian>
 		<Spanish>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HINT_20</Tag>
+		<English>*BUG Hint*: Never go up against a Sicilian when death is on the line.</English>
+		<French>*BUG Hint*: Never go up against a Sicilian when death is on the line.</French>
+		<German>*BUG Hint*: Never go up against a Sicilian when death is on the line.</German>
+		<Italian>*BUG Hint*: Never go up against a Sicilian when death is on the line.</Italian>
+		<Spanish>*BUG Hint*: Never go up against a Sicilian when death is on the line.</Spanish>
+	</TEXT>
 </Civ4GameText>

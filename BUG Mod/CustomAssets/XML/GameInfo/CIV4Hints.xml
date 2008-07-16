@@ -511,5 +511,8 @@
 		<HintInfo>
 			<Description>TXT_KEY_BUG_HINT_19</Description>
 		</HintInfo>
+		<HintInfo>
+			<Description>TXT_KEY_BUG_HINT_20</Description>
+		</HintInfo>
 	</HintInfos>
 </Civ4Hints>
