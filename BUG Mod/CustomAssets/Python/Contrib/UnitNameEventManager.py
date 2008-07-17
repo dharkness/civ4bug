@@ -135,16 +135,26 @@ class UnitNameEventManager:
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
 		popup.createPythonEditBox(self.UnitNameConv, "Enter the unit name convention that you want to test.", 0)
-		popup.addButton(ok)
+#		popup.createPythonCheckBoxes(1, 0)
+#		popup.setPythonCheckBoxText(0, "Check to increment counters", "Note: if checked, units named in-game commence from counter used in testing.", 0)
+		popup.addButton("Ok, don't increment counter")
+		popup.addButton("Ok, increment counter")
 		popup.addButton(cancel)
 		popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
+
+#				popup.createPythonCheckBoxes(3, 0)
+#				for i in range(3):
+#					strCheckboxText = "Checkbox " + str(i)
+#					strCheckBoxHelp = "Checkbox Help Text " + str(i)
+#					# set checkbox text of button i, group 0 to strCheckboxText
+#					popup.setPythonCheckBoxText(i, strCheckboxText, strCheckBoxHelp, 0)
 
 	def __eventUnitRenameApply(self, playerID, userData, popupReturn):
 		self.testUnitNameConv(popupReturn)
 
 	def testUnitNameConv(self, popupReturn):
 
-		if (popupReturn.getButtonClicked() == 1):
+		if (popupReturn.getButtonClicked() == 2):
 			return
 
 		pPlayer = gc.getActivePlayer()
@@ -164,7 +174,7 @@ class UnitNameEventManager:
 		zsUnitNameConv = popupReturn.getEditBoxString(0)
 		self.UnitNameConv = zsUnitNameConv
 
-		zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity)
+		zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, popupReturn.getButtonClicked() == 1)
 
 		self.Prompt = "Using the convention\n   '%s'\ngenerated the unit name\n   '%s'\n\nEnter another rename convention" % (zsUnitNameConv, zsUnitName)
 
@@ -235,7 +245,7 @@ class BuildUnitName(AbstractBuildUnitName):
 #		BUGPrint("Class(%s)" % (zsUnitClass))
 
 		zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
-		zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity)
+		zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, True)
 
 #		BUGPrint("onUnitBuild-D")
 
@@ -251,7 +261,7 @@ class BuildUnitName(AbstractBuildUnitName):
 
 class UnitReName(object):
 
-	def getUnitName(self, sUnitNameConv, pUnit, pCity):
+	def getUnitName(self, sUnitNameConv, pUnit, pCity, bIncrementCounter):
 
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
@@ -348,12 +358,13 @@ class UnitReName(object):
 #		BUGPrint("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]")
 
 #		increment count, adjust totals if required
-		ziCnt = ziCnt + 1
-		if (ziCnt > ziTT1
-		and ziTT1 > 0):
-			ziCnt = 1
-			ziTT1 = self.getTotal1(zsName)
-			ziTT2 = ziTT2 + 1
+		if bIncrementCounter:
+			ziCnt = ziCnt + 1
+			if (ziCnt > ziTT1
+			and ziTT1 > 0):
+				ziCnt = 1
+				ziTT1 = self.getTotal1(zsName)
+				ziTT2 = ziTT2 + 1
 
 #		store the new values
 		sdSetVal(sdGroup, zsSDKey, "cnt", ziCnt)
