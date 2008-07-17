@@ -16,7 +16,9 @@ BugAutolog = BugAutologOptions.getOptions()
 
 class autologInstance:
 
-#	def __init__(self):
+
+	def __init__(self):
+		self.MsgStore = []
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
@@ -26,8 +28,41 @@ class autologInstance:
 		return BugAutolog.isLoggingOn()
 
 	def writeLog(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
-		self.openLog()
 
+		if len(self.MsgStore) > 0:
+			self.openLog()
+			for sMsg in self.MsgStore:
+				self.log.write(sMsg)
+			self.closeLog()
+			self.writeLog_pending_flush()
+
+		zMsg = self.buildMsg(vMsg, vColor, vBold, vUnderline, vPrefix)
+
+		self.openLog()
+		self.log.write(zMsg)
+		self.closeLog()
+
+	def writeLog_pending(self, vMsg, vColor = "Black", vBold = False, vUnderline = False, vPrefix = ""):
+		zMsg = self.buildMsg(vMsg, vColor, vBold, vUnderline, vPrefix)
+		self.MsgStore.append (zMsg)
+
+	def writeLog_pending_flush(self):
+		self.MsgStore = []
+
+	def openLog(self):
+		szPath = BugAutolog.getFilePath()
+		if (not szPath or szPath == "Default"):
+			szPath = BugPath.findOrMakeDir("Autolog")
+		if (not os.path.isdir(szPath)):
+			os.makedirs(szPath)
+		szFile = os.path.join(szPath, BugAutolog.getFileName())
+		self.log = codecs.open(szFile, 'a', 'utf-8')
+		BugConfigTracker.add("Autolog_Log", szFile)
+
+	def closeLog(self):
+		self.log.close()
+
+	def buildMsg(self, vMsg, vColor, vBold, vUnderline, vPrefix):
 		if vPrefix != "":
 			zMsg = "%s %s" % (vPrefix, vMsg)
 		else:
@@ -64,24 +99,8 @@ class autologInstance:
 				else:  # color coding without "
 					zMsg = "[color=%s]%s[/color]" % (vColor, zMsg)
 
-		zMsg = "%s\r\n" % (zMsg)
-
-		self.log.write(zMsg)
-		self.closeLog()
-
-	def openLog(self):
-		szPath = BugAutolog.getFilePath()
-		if (not szPath or szPath == "Default"):
-			szPath = BugPath.findOrMakeDir("Autolog")
-		if (not os.path.isdir(szPath)):
-			os.makedirs(szPath)
-		szFile = os.path.join(szPath, BugAutolog.getFileName())
-		self.log = codecs.open(szFile, 'a', 'utf-8')
-		BugConfigTracker.add("Autolog_Log", szFile)
-
-	def closeLog(self):
-		self.log.close()
-
+		return "%s\r\n" % (zMsg)
+		
 class autologRetain:
 
 	def __init__(self):

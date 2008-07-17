@@ -185,7 +185,6 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		eventManager.addEventHandler("selectionGroupPushMission", self.onSelectionGroupPushMission)
 
 		self.eventMgr = eventManager
-		self.bCurrPlayerHuman = false
 		self.fOdds = 0.0
 		self.iBattleWonDefending = 0
 		self.iBattleLostDefending = 0
@@ -193,6 +192,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.iBattleLostAttacking = 0
 		self.iBattleWdlAttacking = 0
 		self.iBattleEscAttacking = 0
+
+		self.bHumanPlaying = False
+		self.bHumanEndTurn = False
+		self.bAIsTurn = False
 
 		self.UnitKilled = 0
 		self.WonLastRound = 0
@@ -279,7 +282,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 
 	def onLoadGame(self, argsList):
-		self.bCurrPlayerHuman = true	
+		self.bHumanPlaying = True
+		self.bHumanEndTurn = False
+		self.bAIsTurn = False
+
 		if (BugAutolog.isEnabled()
 		and BugAutolog.isSilent()):
 			BugAutolog.setLoggingOn(True)
@@ -293,7 +299,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		self.storeWhip()
 
 	def onGameStart(self, argsList):
-		self.bCurrPlayerHuman = true	
+		self.bHumanPlaying = True
+		self.bHumanEndTurn = False
+		self.bAIsTurn = False
+
 		if (BugAutolog.isEnabled()
 		and BugAutolog.isSilent()):
 			BugAutolog.setLoggingOn(True)
@@ -317,8 +326,6 @@ class AutoLogEvent(AbstractAutoLogEvent):
 #			self.dumpStuff()
 			self.storeStuff()
 
-			Logger.writeLog("")
-
 			zcurrturn = gc.getGame().getElapsedGameTurns() + 1 + BugAutolog.get4000BCTurn()
 			zmaxturn = gc.getGame().getMaxTurns()
 			zturn = gc.getGame().getGameTurn() + 1
@@ -335,21 +342,34 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
 				
 			message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
-			Logger.writeLog(message, vBold=True, vUnderline=True)
 
-			self.bCurrPlayerHuman = true	
+			Logger.writeLog_pending_flush()
+			Logger.writeLog_pending("")
+			Logger.writeLog_pending(message, vBold=True, vUnderline=True)
+
+		self.bHumanPlaying = True
+		self.bHumanEndTurn = False
+		self.bAIsTurn = False
 
 	def onBeginPlayerTurn(self, argsList):
 		'Called at the beginning of a players turn'
 		iGameTurn, iPlayer = argsList
 
-		if (self.bCurrPlayerHuman
-		and BugAutolog.isShowIBT()):
-			Logger.writeLog("")
-			Logger.writeLog("After End Turn:", vBold=True)
+		if iPlayer == CyGame().getActivePlayer():
+			self.bHumanPlaying = False
+			self.bHumanEndTurn = True
+			self.bAIsTurn = False
 
-		if (self.bCurrPlayerHuman
-		and BugAutolog.isLogCityWhipStatus()):
+		if not self.bHumanEndTurn:
+			return
+
+		if BugAutolog.isShowIBT():
+#			Logger.writeLog_pending_flush()
+			Logger.writeLog_pending("")
+			Logger.writeLog_pending("After End Turn:", vBold=True)
+#			Logger.writeLog("After End Turn-:", vBold=True)
+
+		if BugAutolog.isLogCityWhipStatus():
 			iPlayer = gc.getActivePlayer()
 			for i in range(0, iPlayer.getNumCities(), 1):
 				iCity = iPlayer.getCity(i)
@@ -386,12 +406,17 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		'Called at the end of a players turn'
 		iGameTurn, iPlayer = argsList
 
-		if (self.bCurrPlayerHuman
+		if (self.bHumanEndTurn
 		and BugAutolog.isShowIBT()):
-			Logger.writeLog("")
-			Logger.writeLog("Other Player Actions:", vBold=True)
+			Logger.writeLog_pending_flush()
+			Logger.writeLog_pending("")
+			Logger.writeLog_pending("Other Player Actions:", vBold=True)
+#			Logger.writeLog("Other Player Actions-:", vBold=True)
 
-			self.bCurrPlayerHuman = false
+		if iPlayer == CyGame().getActivePlayer():
+			self.bHumanPlaying = False
+			self.bHumanEndTurn = False
+			self.bAIsTurn = True
 
 	def onFirstContact(self, argsList):
 		if (BugAutolog.isLogContact()):
@@ -428,7 +453,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				zsBattleLocn = self.getUnitLocation(pWinner)
 
 				if (pWinner.getOwner() == CyGame().getActivePlayer()):
-					if (self.bCurrPlayerHuman):
+					if (self.bHumanPlaying):
 						message = "While attacking %s, %s (%.2f/%i) defeats %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
 						self.iBattleWonAttacking = self.iBattleWonAttacking + 1
 					else:
@@ -439,7 +464,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					Logger.writeLog(message, vColor="DarkRed")
 
 				else:
-					if (self.bCurrPlayerHuman):
+					if (self.bHumanPlaying):
 						message = "While attacking %s, %s loses to %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
 						self.iBattleLostAttacking = self.iBattleLostAttacking + 1
 					else:
@@ -603,12 +628,13 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			bWrite = False
 			if iPlayer == CyGame().getActivePlayer():
 				bWrite = True
-				if self.bCurrPlayerHuman:
-					message = "Tech acquired (trade, lightbulb, hut, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+
+				if self.bHumanEndTurn:
+					message = "Tech research finished: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
 				else:
-					message = "Tech researched finished: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+					message = "Tech acquired (trade, lightbulb, hut, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
 			else:
-				if self.bCurrPlayerHuman:
+				if self.bHumanPlaying:
 					bWrite = True
 					zsCiv = gc.getPlayer(iPlayer).getName() + "(" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0) + ")"
 					message = "Tech traded to %s: %s"%(zsCiv, PyInfo.TechnologyInfo(iTechType).getDescription())
@@ -901,7 +927,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			message = message + zsLocn
 			message = message + " was destroyed by %s %s" %(PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName())
 
-			if self.bCurrPlayerHuman:
+			if self.bHumanPlaying:
 				Logger.writeLog(message, vColor="DarkRed")
 			else:
 				Logger.writeLog(message, vColor="Red")
