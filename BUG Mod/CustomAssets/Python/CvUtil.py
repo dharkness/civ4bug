@@ -66,6 +66,8 @@ EventReminderStore = 5060
 EventReminderRecall = 5061
 EventReminderRecallAgain = 5062
 
+# unit renamer addition 1/1
+EventUnitRename = 5070
 # BUG - Events - end
 
 EventLButtonDown=1
