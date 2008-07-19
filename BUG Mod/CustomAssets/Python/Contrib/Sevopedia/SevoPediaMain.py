@@ -30,6 +30,7 @@ import SevoPediaImprovement
 import SevoPediaCivic
 import SevoPediaCivilization
 import SevoPediaLeader
+import SevoPediaTrait
 import SevoPediaSpecialist
 import SevoPediaHistory
 import SevoPediaProject
@@ -37,6 +38,7 @@ import SevoPediaReligion
 import SevoPediaCorporation
 
 import UnitUpgradesGraph
+import TraitUtil
 
 import BugScreensOptions
 BugScreens = BugScreensOptions.getOptions()
@@ -137,6 +139,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_IMPROVEMENTS	: self.placeImprovements,
 			SevoScreenEnums.PEDIA_CIVS		: self.placeCivs,
 			SevoScreenEnums.PEDIA_LEADERS		: self.placeLeaders,
+			SevoScreenEnums.PEDIA_TRAITS		: self.placeTraits,
 			SevoScreenEnums.PEDIA_CIVICS		: self.placeCivics,
 			SevoScreenEnums.PEDIA_RELIGIONS		: self.placeReligions,
 			SevoScreenEnums.PEDIA_CORPORATIONS	: self.placeCorporations,
@@ -163,6 +166,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_IMPROVEMENTS	: SevoPediaImprovement.SevoPediaImprovement(self),
 			SevoScreenEnums.PEDIA_CIVS		: SevoPediaCivilization.SevoPediaCivilization(self),
 			SevoScreenEnums.PEDIA_LEADERS		: SevoPediaLeader.SevoPediaLeader(self),
+			SevoScreenEnums.PEDIA_TRAITS		: SevoPediaTrait.SevoPediaTrait(self),
 			SevoScreenEnums.PEDIA_CIVICS		: SevoPediaCivic.SevoPediaCivic(self),
 			SevoScreenEnums.PEDIA_RELIGIONS		: SevoPediaReligion.SevoPediaReligion(self),
 			SevoScreenEnums.PEDIA_CORPORATIONS	: SevoPediaCorporation.SevoPediaCorporation(self),
@@ -263,6 +267,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.szCategoryImprovements	= localText.getText("TXT_KEY_PEDIA_CATEGORY_IMPROVEMENT", ())
 		self.szCategoryCivs		= localText.getText("TXT_KEY_PEDIA_CATEGORY_CIV", ())
 		self.szCategoryLeaders		= localText.getText("TXT_KEY_PEDIA_CATEGORY_LEADER", ())
+		self.szCategoryTraits		= localText.getText("TXT_KEY_PEDIA_TRAITS", ())
 		self.szCategoryCivics		= localText.getText("TXT_KEY_PEDIA_CATEGORY_CIVIC", ())
 		self.szCategoryReligions	= localText.getText("TXT_KEY_PEDIA_CATEGORY_RELIGION", ())
 		self.szCategoryCorporations	= localText.getText("TXT_KEY_CONCEPT_CORPORATIONS", ())
@@ -290,6 +295,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			["TERRAINS",	self.szCategoryImprovements],
 			["CIVS",	self.szCategoryCivs],
 			["CIVS",	self.szCategoryLeaders],
+			["CIVS",	self.szCategoryTraits],
 			["CIVICS",	self.szCategoryCivics],
 			["CIVICS",	self.szCategoryReligions],
 			["CIVICS",	self.szCategoryCorporations],
@@ -442,6 +448,33 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_LEADER, gc.getLeaderHeadInfo)
 
 
+	def placeTraits(self):
+		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getTraitInfo, True)
+		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, self.getTraitInfo)
+
+	def getTraitInfo(self, id):
+		info = gc.getNewConceptInfo(id)
+		if self.isTraitInfo(info):
+			
+			class TraitInfo:
+				def __init__(self, conceptInfo):
+					self.conceptInfo = conceptInfo
+					sKey = conceptInfo.getType()
+					sKey = sKey[sKey.find("TRAIT_"):]
+					self.eTrait = gc.getInfoTypeForString(sKey)
+					self.traitInfo = gc.getTraitInfo(self.eTrait)
+				def getDescription(self):
+					return u"%c %s" % (TraitUtil.getIcon(self.eTrait), self.traitInfo.getDescription())
+				def getButton(self):
+					return self.traitInfo.getButton()
+			
+			return TraitInfo(info)
+		return None
+	
+	def isTraitInfo(self, info):
+		return info.getType().find("_TRAIT_") != -1
+
+
 	def placeCivics(self):
 		self.list = self.getSortedList(gc.getNumCivicInfos(), gc.getCivicInfo)
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIVIC, gc.getCivicInfo)
@@ -468,9 +501,24 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def getNewConceptInfo(self, id):
 		info = gc.getNewConceptInfo(id)
-		if not self.isShortcutInfo(info) and not self.isStrategyInfo(info):
+		if not self.isShortcutInfo(info) and not self.isStrategyInfo(info) and not self.isTraitInfo(info):
 			return info
 		return None
+
+
+	def placeHints(self):
+		screen = self.getScreen()
+		self.getScreen().deleteWidget("PediaMainItemList")
+		szHintBox = self.getNextWidgetName()
+		screen.addListBoxGFC(szHintBox, "", self.X_ITEMS, self.Y_PEDIA_PAGE - 10, self.W_SCREEN - self.X_ITEMS, self.H_PEDIA_PAGE + 23, TableStyles.TABLE_STYLE_STANDARD)
+		screen.enableSelect(szHintBox, False)
+		szHintsText = CyGameTextMgr().buildHintsList()
+		hintText = string.split(szHintsText, "\n")
+		for hint in hintText:
+			if len(hint) != 0:
+				screen.appendListBoxStringNoUpdate(szHintBox, hint, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+		screen.updateListBox(szHintBox)
+
 
 	def placeShortcuts(self):
 		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getShortcutInfo)
@@ -485,6 +533,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def isShortcutInfo(self, info):
 		return info.getType().find("SHORTCUTS") != -1
 
+
 	def placeStrategy(self):
 		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getStrategyInfo)
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, self.getStrategyInfo)
@@ -497,6 +546,8 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	
 	def isStrategyInfo(self, info):
 		return info.getType().find("STRATEGY") != -1
+	
+	
 	
 	def placeItems(self, widget, info):
 		screen = self.getScreen()
@@ -521,6 +572,9 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			elif (info == self.getStrategyInfo):
 				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
 				data2 = item[1]
+			elif (info == self.getTraitInfo):
+				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
+				data2 = item[1]
 			else:
 				data1 = item[1]
 				data2 = 1
@@ -528,20 +582,6 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			screen.setTableText(self.ITEM_LIST_ID, 0, i, u"<font=3>" + item[0] + u"</font>", info(item[1]).getButton(), widget, data1, data2, CvUtil.FONT_LEFT_JUSTIFY)
 			i += 1
 		screen.updateListBox(self.ITEM_LIST_ID)
-
-
-	def placeHints(self):
-		screen = self.getScreen()
-		self.getScreen().deleteWidget("PediaMainItemList")
-		szHintBox = self.getNextWidgetName()
-		screen.addListBoxGFC(szHintBox, "", self.X_ITEMS, self.Y_PEDIA_PAGE - 10, self.W_SCREEN - self.X_ITEMS, self.H_PEDIA_PAGE + 23, TableStyles.TABLE_STYLE_STANDARD)
-		screen.enableSelect(szHintBox, False)
-		szHintsText = CyGameTextMgr().buildHintsList()
-		hintText = string.split(szHintsText, "\n")
-		for hint in hintText:
-			if len(hint) != 0:
-				screen.appendListBoxStringNoUpdate(szHintBox, hint, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-		screen.updateListBox(szHintBox)
 
 
 
@@ -589,6 +629,8 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVS, True, True)
 		elif (szLink == "PEDIA_MAIN_LEADER"):
 			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_LEADERS, True, True)
+		elif (szLink == "PEDIA_MAIN_TRAIT"):
+			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TRAITS, True, True)
 		elif (szLink == "PEDIA_MAIN_CIVIC"):
 			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVICS, True, True)
 		elif (szLink == "PEDIA_MAIN_RELIGION"):

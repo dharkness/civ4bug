@@ -112,6 +112,63 @@
 			<Description>TXT_KEY_CONCEPT_LIBERATION</Description>
 			<Civilopedia>TXT_KEY_CONCEPT_LIBERATION_PEDIA</Civilopedia>
 		</NewConceptInfo>
+		<!-- Traits Infos -->
+		<!-- Modders: These must be kept in sync and sorted if you add/remove any traits -->
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_AGGRESSIVE</Type>
+			<Description>TXT_KEY_TRAIT_AGGRESSIVE</Description>
+			<Civilopedia>TXT_KEY_TRAIT_AGGRESSIVE_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_CHARISMATIC</Type>
+			<Description>TXT_KEY_TRAIT_CHARISMATIC</Description>
+			<Civilopedia>TXT_KEY_TRAIT_CHARISMATIC_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_CREATIVE</Type>
+			<Description>TXT_KEY_TRAIT_CREATIVE</Description>
+			<Civilopedia>TXT_KEY_TRAIT_CREATIVE_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_EXPANSIVE</Type>
+			<Description>TXT_KEY_TRAIT_EXPANSIVE</Description>
+			<Civilopedia>TXT_KEY_TRAIT_EXPANSIVE_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_FINANCIAL</Type>
+			<Description>TXT_KEY_TRAIT_FINANCIAL</Description>
+			<Civilopedia>TXT_KEY_TRAIT_FINANCIAL_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_IMPERIALIST</Type>
+			<Description>TXT_KEY_TRAIT_IMPERIALIST</Description>
+			<Civilopedia>TXT_KEY_TRAIT_IMPERIALIST_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_INDUSTRIOUS</Type>
+			<Description>TXT_KEY_TRAIT_INDUSTRIOUS</Description>
+			<Civilopedia>TXT_KEY_TRAIT_INDUSTRIOUS_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_ORGANIZED</Type>
+			<Description>TXT_KEY_TRAIT_ORGANIZED</Description>
+			<Civilopedia>TXT_KEY_TRAIT_ORGANIZED_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_PHILOSOPHICAL</Type>
+			<Description>TXT_KEY_TRAIT_PHILOSOPHICAL</Description>
+			<Civilopedia>TXT_KEY_TRAIT_PHILOSOPHICAL_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_PROTECTIVE</Type>
+			<Description>TXT_KEY_TRAIT_PROTECTIVE</Description>
+			<Civilopedia>TXT_KEY_TRAIT_PROTECTIVE_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_TRAIT_SPIRITUAL</Type>
+			<Description>TXT_KEY_TRAIT_SPIRITUAL</Description>
+			<Civilopedia>TXT_KEY_TRAIT_SPIRITUAL_PEDIA</Civilopedia>
+		</NewConceptInfo>
 		<!-- Shortcut Infos -->
 		<NewConceptInfo>
 			<Type>CONCEPT_SHORTCUTS_ADVISORS</Type>
