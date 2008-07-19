@@ -1,0 +1,43 @@
+[TAB]Charismatic was introduced with the Warlords expansion pack (along with Imperialistic and Protective) and is definitely the best of the three new traits. It is clearly a warmonger’s trait, mainly because of the reduced XP requirement for each promotion. By warring early, you can amass a force of highly-promoted veteran units which you can keep upgrading as the game progresses.
+[TAB]The extra happiness from the trait and two buildings also helps with warmongering, since it reduces war weariness. It should also help you financially; whether you run a CE or SE or a hybrid, more population because of an elevated happiness cap always means a stronger economy.
+
+*** High-Priority Technologies
+
+-t- MYSTICISM: Mysticism
+-t- AGRICULTURE: Agriculture
+-t- ANIMAL_HUSBANDRY: Animal Husbandry
+-t- RADIO: Radio
+-t- MASS_MEDIA: Mass Media
+
+*** Useful Wonders
+
+-b- STONEHENGE: Stonehenge
+-b- HEROIC_EPIC: Heroic Epic
+-b- WEST_POINT: West Point
+-b- EIFFEL_TOWER: The Eiffel Tower
+-b- PENTAGON: The Pentagon
+
+*** Best Buildings
+
+-b- MONUMENT: Monument
+-b- BARRACKS: Barracks
+-b- STABLE: Stable
+-b- DRYDOCKS: Drydocks
+-b- BROADCAST_TOWER: Broadcast Tower
+
+*** Useful Civics
+
+-c- VASSALAGE: Vassalage
+-c- THEOCRACY: Theocracy
+
+*** How to Use It
+
+When you’re Charismatic, go to war early to collect those promotions and build your army of veterans. Playing with barbs, even raging barbs, turned on allows you to amass more promotions faster, so you will likely have a powerful army by the time you’ve dealt with the barbarians and are ready to turn on your neighbours.
+[TAB]Also be sure to take advantage of the elevated happiness cap. Prioritize growth in the early game: ensure each city has good food resources, bee-line to Pottery so you can build Granaries, and build Workers so you can ensure all your extra citizens have improved tiles to work. Chop Workers and Settlers as much as possible to hurry their builds and get your cities back to growing their populations.
+[TAB]Mysticism and Mass Media are obvious tech targets in order to enable the happiness-increasing buildings (which are, unfortunately, not made cheaper by the trait; Charismatic is one of the few traits without a cheap building). Alternatively, you may bee-line to Radio and build the Eiffel Tower, which gives you a free broadcast tower in every one of your cities.
+[TAB]Stonehenge is also an attractive wonder, since it gives you a free monument in each city. However, remember that those monuments magically disappear once you discover Calendar (Astronomy in BtS). Broadcast Towers and the Eiffel Tower, in contrast, never become obsolete. Also, any monument you build directly stays put to produce culture, and the culture doubles after 1000 years.
+
+*** The Downside
+
+As mentioned above, while Charismatic enhances the effects of two buildings, it has no cheap building, a limitation it shares only with the Financial and Imperialistic traits.
+[TAB]Balancing early growth with the need to have a large number of Workers to ensure those extra citizens have improved tiles to work can be tricky. In addition to ensuring each city has at least one food resource, also try to ensure it has forests for chop-rushing Workers.

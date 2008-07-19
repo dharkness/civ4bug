@@ -1,0 +1,40 @@
+[TAB]Although Organized has a direct economic benefit—reducing the overhead of civics—it isn’t nearly as big a boost in that regard as Financial. Nevertheless, saved GPT is saved GPT and is nothing to sneeze at.
+
+*** High-Priority Technologies
+
+-t- MONOTHEISM: Monotheism
+-t- CODE_OF_LAWS: Code of Laws
+-t- SAILING: Sailing
+-t- ASSEMBLY_LINE: Assembly Line
+
+*** Useful Wonders
+
+-b- GREAT_LIGHTHOUSE: The Great Lighthouse
+-b- FORBIDDEN_PALACE: The Forbidden Palace
+-b- CRISTO_REDENTOR: Cristo Redentor
+
+*** Best Buildings
+
+-b- COURTHOUSE: Courthouse
+-b- LIGHTHOUSE: Lighthouse
+-b- FACTORY: Factory
+
+*** Useful Civics
+
+-c- SLAVERY: Slavery
+-c- ORGANIZED_RELIGION: Organized Religion
+-c- CIVIL_SERVICE: Civil Service
+-c- POLICE_STATE: Police State
+-c- STATE_PROPERTY: State Property
+
+*** How to Use It
+
+Similar to Spiritual, technologies that enable civics—especially higher cost civics—are priorities. Unlike Spiritual, however, switching civics is not something to do constantly (unless you’re Asoka, who has the best of both worlds in this regard). Also remember to choose a civic because you’ll benefit from it, not just because it’s available or because Organized will make it cheaper.
+[TAB]The big benefits from Organized, however, are the cheap buildings—three of the best in the game. To leverage the lighthouses, try to build several coastal cities. Cheap courthouses make new cities cheaper, so you can employ this into a REX strategy or into warmongering or both.
+[TAB]In fact, I tend to consider Organized to be a warmonger’s trait (especially for Hammurabi, Julius Caesar, and Napoleon, whose companion traits are also warmonger-friendly). This is because my first build in a conquered city is a courthouse to reduce its maintenance cost, and Organized makes those courthouses cheaper to build—or whip.
+[TAB]Finally, factories are one of the best late-game buildings, and the 2.08 patch has made them cheap for Organized.
+[TAB]Technology priorities are obviously Sailing, Code of Laws, and Assembly Line for the cheap buildings. Other tech targets are those that enable some of the more useful but expensive civics, especially Civil Service for the powerful Bureaucracy civic. Its high upkeep cost will be cut in half for an Organized leader, increasing its utility. The same goes for Organized Religion (enabled by Monotheism) and Police State (enabled by Fascism).
+
+*** The Downside
+
+Like many traits, as the game progresses, Organized gets weaker. Your economy grows and high-upkeep civics gradually become more affordable. As a result, the addition of a late cheap building (factories) in the 2.08 patch was a welcome late-game boost to Organized. Nevertheless, the best period for Organized is definitely the mid-game when you’re probably running Bureaucracy and Organized Religion and are still building your economy.

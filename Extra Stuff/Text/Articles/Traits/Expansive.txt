@@ -1,0 +1,38 @@
+[TAB]Expansive doesn’t look that great at first glance. In fact, it first appears to belong in the category of “weak” traits, like Protective. After all, health is not a big problem; it’s happiness that cramps your growth early in the game. And once you get used to those sickly green tendrils floating around your city, you realize that its effects aren’t usually that bad. Health problems just slow growth a little.
+[TAB]But hang on. Granaries--cheap for Expansive leaders--are one of the most useful buildings in the game. With grains, they provide additional health. But more importantly, they allow you to leverage slavery by growing your sacrificed population back faster.
+[TAB]And with the Warlords 2.08 patch, Expansive got a needed boost thanks to slightly cheaper workers. You can always use more workers, especially early in the game.
+
+*** High-Priority Technologies
+
+-t- POTTERY: Pottery
+-t- COMPASS: Compass
+-t- BRONZE_WORKING: Bronze Working
+-t- MATHEMATICS: Mathematics
+
+*** Useful Wonders
+
+-b- HANGING_GARDEN: The Hanging Gardens
+-b- NOTRE_DAME: Notre Dame
+
+*** Best Buildings
+
+-b- GRANARY: Granary
+-b- HARBOR: Harbor
+
+*** Useful Civics
+
+-c- SLAVERY: Slavery
+
+*** How to Use It
+
+Bee-line to Pottery. Build (or whip) your cheap granaries. Whip some more and keep whipping.
+[TAB]Read up on how to best leverage the slavery civic in order to maximize hammer overflow from whipping, making both the build you whip and the following build cheaper. Thanks to the granary, the population will grow back faster, allowing you to whip them again.
+[TAB]Obviously, build more Workers since they’re cheaper for you, and put them to work. Get your tiles improved and your resources connected faster. Just remember that the +25% for Worker builds is accelerated by hammers, not by food, so you’ll need to improve some tiles with good production and work them while the Worker is being built to take advantage of this. Since harbours are cheap, try to claim several coastal cities so you can leverage the advantages of that cheap building.
+[TAB]Also look for opportunities to leverage that +2 health. Early on, you can place a city smack-dab in the jungle, for example, or surrounded by flood plains. In addition, you can construct healthreducing buildings like forges and factories with less concern for their impact on health. You can chop more forests because you don’t need their health benefits (hence the attractiveness of the Bronze Working and Mathematics techs). Just keep in mind that the trait does not make your cities invincible, and you will have to concern yourself with their health—just later rather than sooner.
+[TAB]The Hanging Gardens is an attractive wonder for Expansive. It might not seem so at first—I already have a health boost, why do I need more? Because you’re pursuing a strategy that pushes the envelope of your cities’ health, that’s why. I’m fond of wonders and buildings that further enhance a trait’s benefits (which is why I like to try to build the Parthenon when I’m playing as a Philosophical leader, for example). The Hanging Gardens also provides more citizens to whip away. And hey—GPP towards a Great Engineer! You gotta like that.
+[TAB]Notre Dame can also be handy. If you’re whipping ’til your hands bleed, the big cathedral’s happy boost may be very welcome indeed.
+
+*** The Downside
+
+Like many other traits such as Creative, the effects of Expansive diminish as the game goes on. Other means of increasing health appear, the cheap buildings are early ones, and by the end of the game, once your railroad network is complete, your plentiful, cheap workers start to become idle. You may also switch away from the Slavery civic, losing one of the principal benefits of the cheap granaries.
+[TAB]And as with most other traits, Expansive does not provide any direct economic benefits.

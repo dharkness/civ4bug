@@ -1,0 +1,47 @@
+[TAB]This is a warmonger’s trait. You get a free promotion for most of your units (the best units in the game, really—melee and gunpowder) and cheap barracks and drydocks to provide additional promotions. If you don’t go to war when you’re Aggressive, you’re wasting the trait.
+
+*** High-Priority Technologies
+
+-t- BRONZE_WORKING: Bronze Working
+-t- IRON_WORKING: Iron Working
+-t- CIVIL_SERVICE: Civil Service
+-t- MACHINERY: Machinery
+-t- GUNPOWDER: Gunpowder
+-t- CHEMISTRY: Chemistry
+-t- RIFLING: Rifling
+-t- STEEL: Steel
+-t- ASSEMBLY_LINE: Assembly Line
+
+*** Useful Wonders
+
+-b- HEROIC_EPIC: Heroic Epic
+-b- WEST_POINT: West Point
+-b- RED_CROSS: Red Cross
+-b- PENTAGON: The Pentagon
+-b- STATUE_OF_ZEUS: Statue of Zeus
+
+*** Best Buildings
+
+-b- BARRACK: Barracks
+-b- DRYDOCKS: Drydocks
+-b- STABLES: Stables
+
+*** Useful Civics
+
+-c- VASSALAGE: Vassalage
+-c- THEOCRACY: Theocracy
+-c- NATIONHOOD: Nationhood
+-c- POLICE_STATE: Police State
+-c- STATE_PROPERTY: State Property
+
+*** How to Use It
+
+How to use this trait? War. Duh. Am I not making myself clear, here? Put together a horde and go kill somebody already.
+You’ll want your forces to mostly be composed of units that benefit from the trait: Melee units (Warriors, Axemen, Swordsmen, Spearmen, Macemen, Pikemen), Gunpowder units
+(Musketmen, Riflemen, Grenadiers, Infantry, SAM Infantry, Marines, Mechanized Infantry) and their UU variants. Drydocks make Steel a priority technology; likewise with technologies that enable one of the aforementioned units. Note that some of the Aggressive leaders have a UU that benefit from the trait (Montezuma, Alexander, Tokugawa, Ragnar, Shaka) and some do not (Genghis, Kublai, Stalin). The latter do benefit from the cheap barracks, however. Also, remember that you’ll need more units than just melee and gunpowder—siege weapons and mounted may not receive Aggressive’s free Combat I, but they’re still essential.
+The Statue of Zeus world wonder is very good to have--mainly so that someone you're attacking doesn't have it. War weariness is bad enough as it is; having it doubled will definitely put a crimp in your world domination plans.
+
+*** The Downside
+
+Aggressive in and of itself has no economic advantages and may, in fact, over-encourage you to accrue too many economic liabilities. Every unit has a maintenance cost, remember, and that cost goes up when the unit leaves home turf. In addition, every conquered city has maintenance costs. Over-conquering, especially early in the game, can be just as bad as over-expanding.
+On the plus side, since Aggressive should mean you have better units, hopefully you’ll need fewer of them.

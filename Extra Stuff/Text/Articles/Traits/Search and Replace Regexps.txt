@@ -1,0 +1,32 @@
+*** (.*)
+
+[H1]$1[\H1]
+
+
+--- (.*)
+
+[TAB][ICON_BULLET] [LINK=TECH_$1]$1[\\LINK]
+[TAB][ICON_BULLET] [LINK=BUILDING_$1]$1[\\LINK]
+[TAB][ICON_BULLET] [LINK=CIVIC_$1]$1[\\LINK]
+
+	* First one in list gets no [TAB]
+
+
+\r\n\r\n
+
+[PARAGRAPH:1]
+
+
+[PARAGRAPH:1][TAB]
+
+[PARAGRAPH:1]
+
+
+\r\n
+
+[NEWLINE]
+
+
+—     “ ”   ‘ ’   …
+
+--    "     '      . . .

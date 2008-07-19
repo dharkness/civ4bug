@@ -1,0 +1,34 @@
+[TAB]If Aggressive is the warmonger’s trait, Industrious is the builder’s trait. Wonders are cheaper, enhancing their “ooo—shiny” appeal and giving you a leg up in the competitions to get them built. In addition, forges, a building that makes other buildings faster to build, is, well, faster to build.
+[TAB]As of the Beyond the Sword expansion pack, this is now Civilization IV's most exclusive club, though not by much. All the other traits have 9 or 10 leaders who possess them, while Industrious is shared by only 8 leaders. And no, there's still no Industrious/Philosophical trait combination; it's obviously regarded by the game designers as overpowered.
+
+*** High-Priority Technologies
+
+-t- MASONRY: Masonry
+-t- MONOTHEISM: Monotheism
+-t- METAL_CASTING: Metal Casting
+-t- ASSEMBLY_LINE: Assembly Line
+
+*** Useful Wonders
+
+-b- Er… pretty much all of them. Well, maybe except for Chichen Itza.
+
+*** Best Buildings
+
+-b- FORGE: Forge
+-b- FACTORY: Factory
+
+*** Useful Civics
+
+-c- ORGANIZED_RELIGION: Organized Religion
+-c- STATE_PROPERTY: State Property
+-c- CASTE_SYSTEM: Caste System
+-c- ENVIRONMENTALISM: Environmentalism
+
+*** How to Use It
+
+Build wonders, of course. Build them and leverage them and keep them out of the AI’s grubby little hands. Also look for and claim the wonder-hurrying resources such as copper, iron, marble, and stone. Remember that the accelerated wonder production applies to the national wonders as well.
+[TAB]Also, prioritize the Metal Casting tech in order to access your cheap building. A tactic with a great deal of synergy for Industrious leaders is to build the Oracle (a wonder, so it’s cheaper) and select Metal Casting as your free technology. Then go build forges. Remember forges are also required for additional wonders like the Ironworks, the Colossus, the Eiffel Tower, and the Statue of Liberty. Since Metal Casting enables it, the Colossus is usually built right after its future city’s forge is finished.
+
+*** The Downside
+
+When you’re playing as an Industrious leader, the siren-like allure of being a “buildaholic” is even greater. Even though wonders are cheaper, they’re still not dirt cheap. They require a considerable investment of hammers that could be put to better uses. As always, make sure the wonders you choose to build fit into your strategy and the circumstances of the game.

@@ -1,0 +1,41 @@
+[TAB]After several off-line games as Julius Caesar, my opinion of this trait has improved. I originally included it in the “Weak” category, but now feel it belongs in “Medium”—if it’s used properly.
+[TAB]Imperialistic supports aggressive expansion in two ways. First of all, Settlers are cheaper to build, allowing you to perform a faster land-grab early in the game. Second, to take advantage of the increased Great General emergence, you’re encouraged to expand through aggression.
+
+*** High-Priority Technologies
+
+-t- BRONZE_WORKING: Bronze Working
+-t- MASONRY: Masonry
+-t- MATHEMATICS: Mathematics
+-t- CODE_OF_LAWS: Code of Laws
+-t- FASCISM: Fascism
+-t- All military technologies
+
+*** Useful Wonders
+
+-b- GREAT_WALL: The Great Wall
+-b- MT_RUSHMORE: Mount Rushmore
+
+*** Best Buildings
+
+-b- BARRACKS: Barracks
+
+*** Useful Civics
+
+-c- VASSALAGE: Vassalage
+-c- THEOCRACY: Theocracy
+-c- POLICE_STATE: Police State
+
+*** How to Use It
+
+Obviously, pursue a REX (Rapid EXpansion) strategy in the early game, and follow this up with an aggressive, warmonger’s expansion policy once your core cities are established. This especially suits Catherine the Great of Russia, since her Creative trait has definite synergy with an early game land-grabbing strategy.
+[TAB]Keep in mind that the increased Settler production comes from hammers, not food. This means you’ll want to focus as much on mines as farms and pastures when improving tiles in the early game. Chopping and whipping contribute hammers, so those get multiplied by the trait as well—hence the attraction of Bronze Working and Mathematics.
+[TAB]You can enhance the increased GG emergence further by building the Great Wall. In addition to keeping barbs away, that wonder also provides +100% Great General emergence from battles that take place within your cultural borders, resulting in a +200% GG boost with the trait when defending within your own territory. Masonry, therefore, and a source of stone are likely to be priorities when playing as a leader with this trait.
+[TAB]The chief way to take advantage of the Imperialistic trait once the original period of REX is over is simple: war. War early and war often. It’s the only way to generate Great Generals (and remember that battling barbs earns you XPs, but not points towards a Great General.) Great Generals are actually one of the most useful Great People in the game, even if they lack some of the uses of other GPs (such as lightbulbing technologies or starting a Golden Age). You can attach them to units to uber-promote them, put them in cities to provide additional XPs or boost unit production with a military academy. Just remember to prioritize Code of Laws and courthouses to keep your ever-expanding empire economically viable.
+[TAB]Many players favour combining the first Great General with a unit and giving it the Medic I, II, and III promotions. This medic unit will heal your stacks faster, allowing them to return to the fray much sooner. You can also use a GG to give a unit the Leadership promotion, which creates synergy with the Imperialistic trait because the promotion results in double XPs for that unit from every battle it survives, and those double XPs are doubled again in their count towards your next Great General. You can also combine the GG with a Caravel to give it Flanking I, Navigtion I, and Navigation II in order to practically guarantee winning the circumnavigation bonus.
+[TAB]Since you’re going after several Great Generals (and likely basing much of your strategy on their benefits), you’ll want to snag the free one that you get from researching Fascism first. With all the warmongering you’ll be doing, you’re going to want to build Mount Rushmore and run Police State to alleviate some of the War Weariness anyway.
+
+*** The Downside
+
+Well, for starters, there’s no cheap building and no economic advantage. It seems logical that Imperialistic should have cheap courthouses, but Organized has those, and shifting them away would seriously weaken that trait. Perhaps jails would have been a good cheap building for Imperialistic. If Civ IV had useful forts, faster build times of those would have been logical for this trait as well.
+[TAB]Instead of a cheap building, however, there’s a cheap unit. But Imperialistic’s boost to Settler builds comes from hammers, not food. This means you need to work at cross-purposes in the early game, building mines to ensure your Settler builds take advantage of the trait. If food also boosted the Setter’s build time, this would be a much stronger trait.
+[TAB]The biggest weakness of the trait, however, is that it locks you into a specific strategy. You don’t have to play as a warmonger with the Aggressive trait; you could leverage it to build a strong army and military infrastructure (the cheap barracks and drydocks count towards your power rating, after all) so you’re left alone to build. With Imperialistic, however, you have to warmonger. There’s no other way to earn those Great Generals except by fighting other civs. Don’t play with this trait unless you’re in the mood to knock heads, or you’re wasting it.
