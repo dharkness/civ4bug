@@ -2541,19 +2541,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BMA_ENABLED_TEXT</Tag>
-		<English>BUG Military Adviser</English>
-		<French>BUG Military Adviser</French>
+		<English>BUG Military Advisor</English>
+		<French>BUG Military Advisor</French>
 		<German>BUG Militärberater</German>
 		<Italian>Consigliere Militare evoluto</Italian>
-		<Spanish>BUG Military Adviser</Spanish>
+		<Spanish>BUG Military Advisor</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BMA_ENABLED_HOVER</Tag>
-		<English>When checked, uses the BUG Militiary Adviser (requires restart).</English>
-		<French>When checked, uses the BUG Militiary Adviser (requires restart).</French>
+		<English>When checked, uses the BUG Militiary Advisor (requires restart).</English>
+		<French>When checked, uses the BUG Militiary Advisor (requires restart).</French>
 		<German>Aktiviert den verbesserten Militärberater der BUG Mod (erfordert Neustart)</German>
 		<Italian>Quando è selezionato, utilizza il Consigliere Militare del BUG Mod ( perchè il cambiamento abbia effetto).</Italian>
-		<Spanish>When checked, uses the BUG Militiary Adviser (requires restart).</Spanish>
+		<Spanish>When checked, uses the BUG Militiary Advisor (requires restart).</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECH_GPPREFS_TEXT</Tag>

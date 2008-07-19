@@ -43,9 +43,9 @@ class BugScreensOptions(OptionsFacade):
 							  "When checked, uses the Customizable Domestic Advisor (requires restart)."))
 
 		self.addOption(Option("BMA_Enabled",
-							  "Screens", "BUGMilitaryAdviser", True,
-							  "BUG Military Adviser",
-							  "When checked, uses the BUG Militiary Adviser (requires restart)."))
+							  "Screens", "BugMilitaryAdvisor", True,
+							  "BUG Military Advisor",
+							  "When checked, uses the BUG Military Advisor (requires restart)."))
 
 		self.addOption(Option("EFA_Glance",
 							  "Screens", "EFA Glance", True,
