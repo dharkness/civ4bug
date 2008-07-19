@@ -16,12 +16,19 @@
 <P CLASS="style3">di ruff_hi</P>
 <br>
 <P>Questo documento spiega la convenzione per la denominazione delle Unità utilizzata dal <b>BUG Mod</b>.<br>
-Se trovate un caso in cui questo documento differisce da quello che avviene realmente nel gioco, per piacere riferitecelo.<br>
-E' possibile denominare le unità in una gran varietà di modi, utilizzando le convenzioni spiegate di seguito.</P>
-<br>
+Se trovate un caso in cui questo documento differisce da quello che avviene realmente nel gioco, per piacere riferitecelo.<br><br>
+E' possibile denominare le Unità in una gran varietà di modi, utilizzando le convenzioni spiegate di seguito. <br><br>
+Digitando <b>Ctrl+Alt+N</b> si apre una finestrella di test, dove potete immettere una convenzione di denominazione e vedere visualizzato 
+il risultato, applicato alla prima Unità che avete costruito ed alla prima Città che avete fondato 
+(ragione per cui se non avete ancora fondato una Città o costruito una Unità, la finestrella non funzionerà). 
+Nella finestrella sono presenti due distinti pulsanti di<i>"OK"</i>, uno dei quali attiva l'incremento del contatore mentre l'altro no: 
+la ragione di ciò è che se si attiva l'incremento del contatore, i numeri utilizzati nella finestra di test non saranno più disponibili nel gioco 
+per quella specifica Unità (a meno di non ricaricare la partita una volta conclusi i test, ovviamente); 
+d'altra parte, soprattutto per testare denominazioni complesse, può essere utile avere un contatore attivo.</P>
 
 <P CLASS="style1">Istruzioni</P>
-<P>E' possibile configurare questo mod nella scheda <i>"Nomi unità"</i> della <b><i>Schermata delle Opzioni del Bug Mod</i></b> (<b>Ctrl-Alt-O</b>).<br>
+<P>E' possibile configurare questo mod nella scheda <A HREF="../Options/UnitNaming.html">Nomi Unità</A> 
+della <b><i>Schermata delle Opzioni del Bug Mod</i></b> (<b>Ctrl-Alt-O</b>).<br>
 Per prima cosa è necessario abilitare il mod selezionando la casella di spunta <i>'Abilitato'</i>.<br>
 A questo punto è possibile inserire una convenzione di denominazione generale nella casella di testo <i>'generale (DEFAULT)'</i> e 
 convenzioni di denominazioni differenti per specifici tipi di Unità nelle caselle di testo sottostanti; 
@@ -32,7 +39,7 @@ per abilitare l'utilizzo delle convenzioni di denominazione specifiche per le va
 ed ovviamente (quando presenti ed abilitate) prevalgono su quelle più generali.</P>
 <P>Le convenzioni di denominazione utilizzano i seguenti codici:</P>
 <UL>
-	<LI><SPAN style="color: #0000ff;">^civ4^</SPAN> nessuna denominazione, utilizza i nomi standard di Civ4</LI>
+	<LI><SPAN style="color: #0000ff;">^civ4^</SPAN> nessuna denominazione, utilizza i nomi standard di <i>Civ4</i></LI>
 	<LI><SPAN style="color: #0000ff;">^rd^</SPAN> nome random</LI>
 	<LI><SPAN style="color: #0000ff;">^rc^</SPAN> nome random relativo alla Civiltà</LI>
 	<LI><SPAN style="color: #0000ff;">^ut^</SPAN> tipo di Unità (ad esempio &ldquo;arciere&rdquo;)</LI>
@@ -87,16 +94,16 @@ Per esempio, se  scegliete il formato <strong>A</strong>, la trentesima unità sa
 <P>Vediamo ora alcuni esempi chiarificatori:</P>
 <UL>
 	<LI><b>^ut^ (^cv^)</b>, se applicata ad un arciere romano, fornirà come risultato <em>&ldquo;Arciere (Roma)&rdquo;</em>.</LI>
-	<LI><b>^ut^ cnt[r]</b>, se applicata alle prime due unità prodotte, un arciere ed un guerriero, fornirà come risultato 
+	<LI><b>^ut^ cnt[r]</b>, se applicata alle prime due Unità prodotte, un arciere ed un guerriero, fornirà come risultato 
 		<em>&ldquo;Arciere I&rdquo;</em> e <em>&ldquo;Guerriero II&rdquo;</em>; in questo caso, il conteggio prosegue all'infinito senza reset.</LI>
-	<LI><b>Armata ^cnt[A]^ ^tt1[s][2:2]^</b>, se applicata alle prime tre unità prodotte, un arciere, un guerriero ed uno scout, 
+	<LI><b>Armata ^cnt[A]^ ^tt1[s][2:2]^</b>, se applicata alle prime tre Unità prodotte, un arciere, un guerriero ed uno scout, 
 		fornirà come risultato <em>&ldquo;Armata A&rdquo;</em>, <em>&ldquo;Armata B&rdquo;</em> e <em>&ldquo;Armata A&rdquo;</em>; 
 		in questo caso, il conteggio non prosegue all'infinito, ma si resetta quando viene raggiunto il massimo indicato da <em>tt1</em>, 
 		che in questo caso non è un numero random ma vale 2 (perchè	x=y=2) e non viene mostrato (a causa del formato numerico <em>s</em>).</LI>
 	<LI><b>^cntc[n]^ di ^tt1[n][6:10]^, Unimatrice ^tt2[n][1]^</b>, formulazione più complessa (non per niente è quella utilizzata dai Borg ^_-), 
-		che conteggia le Unità dello stesso tipo di combattimento, fino ad un totale (determinato da <em>tt1</em>) 
+		che conteggia le Unità dello stesso tipo di combattimento, fino ad un totale (determinato da <em><b>tt1</b></em>) 
 		dato da un numero casuale compreso fra 6 e 10; ogni volta che il contatore si resetta per aver raggiunto tale massimo, 
-		il numero indicato da <em>tt2</em> sale di una unità (partendo da 1). 
+		il numero indicato da <em><b>tt2</b></em> sale di una unità (partendo da 1). 
 		Il risultato fornito sarà qualcosa del tipo: &nbsp; 
 		&hellip;, <i>&ldquo;6 di 7, Unimatrice 1&rdquo;</i>, <i>&ldquo;7 di 7, Unimatrice 1&rdquo;</i>, <i>&ldquo;1 di 9, Unimatrice 2&rdquo;</i>, &hellip;
 	</LI>
