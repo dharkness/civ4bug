@@ -1057,7 +1057,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_HOVER</Tag>
 		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
 		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
-		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion an sowie die Kosten, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden soll</German>
+		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion an sowie die Kosten, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden kann</German>
 		<Italian>Quando è selezionato, la Barra della Pruduzione della Schermata Cittadina mostra il costo in popolazione ed il surplus di produzione per l'accelerazione di produzione mediante sacrifici e il costo in oro per l'accelerazione di produzione mediante pagamenti relativi all'oggetto attualmente costruito.</Italian>
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
