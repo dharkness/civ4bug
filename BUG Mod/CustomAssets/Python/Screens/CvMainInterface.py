@@ -4621,7 +4621,7 @@ class CvMainInterface:
 				if (BugNJAGC.isEnabled()
 				and BugNJAGC.isShowEra()):
 					# BUG-TODO: Create text key for "Era"
-					szText = gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getDescription() + " Era"
+					szText = localText.getText("TXT_KEY_BUG_ERA", (gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getDescription(), ))
 					if(BugNJAGC.isUseEraColor()):
 						eraColor = BugNJAGC.getEraColor(gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getType())
 						if (eraColor):

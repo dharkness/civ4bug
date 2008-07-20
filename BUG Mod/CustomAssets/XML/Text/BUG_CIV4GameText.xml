@@ -47,6 +47,15 @@
 		<Italian>Impossibile trovare il file "%s1" nei percorsi di ricerca. Vedi la tabella 'Config' nella Schermata di Opzioni del BUG Mod (Alt + Ctrl + O) per maggiori dettagli.</Italian>
 		<Spanish>Could not find the file "%s1" in the search paths. See the Config tab on the BUG Options screen (Alt + Ctrl + O) for details.</Spanish>
 	</TEXT>
+	<!-- Main Interface -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_ERA</Tag>
+		<English>%s1 Era</English>
+		<French>%s1 Era</French>
+		<German>%s1</German>
+		<Italian>%s1 Era</Italian>
+		<Spanish>%s1 Era</Spanish>
+	</TEXT>
 	<!-- Great Person / General Bars -->
 	<TEXT>
 		<Tag>INTERFACE_GREAT_PERSON_NONE</Tag>
