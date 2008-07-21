@@ -1722,11 +1722,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DELTAINCLUDECURRENT_HOVER</Tag>
-		<English>When checked, includes the current turn's change in the score.</English>
-		<French>When checked, includes the current turn's change in the score.</French>
-		<German>When checked, includes the current turn's change in the score.</German>
-		<Italian>Quando è selezionato, include la variazione di punteggio relativa al turno corrente nel punteggio.</Italian>
-		<Spanish>When checked, includes the current turn's change in the score.</Spanish>
+		<English>When checked, includes the current turn's change in the score change.</English>
+		<French>When checked, includes the current turn's change in the score change.</French>
+		<German>When checked, includes the current turn's change in the score change.</German>
+		<Italian>Quando è selezionato, include anche la variazione di punteggio relativa al turno corrente.</Italian>
+		<Spanish>When checked, includes the current turn's change in the score change.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES_DISPLAYNAME_TEXT</Tag>
