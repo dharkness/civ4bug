@@ -79,7 +79,7 @@ def getUnitIcon(iUnit):
 	return g_unitIcons[iUnit]
 
 def findNextCity():
-	iMinTurns = 10000000
+	iMinTurns = None
 	iTurns = 0
 	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
 	iThreshold = pPlayer.greatPeopleThreshold(False)
@@ -92,7 +92,7 @@ def findNextCity():
 			if (iRate > 0):
 				iProgress = pCity.getGreatPeopleProgress()
 				iTurns = (iThreshold - iProgress + iRate - 1) / iRate
-				if (iTurns < iMinTurns):
+				if (iMinTurns is None or iTurns < iMinTurns):
 					iMinTurns = iTurns
 					pBestCity = pCity
 	return (pBestCity, iMinTurns)
@@ -187,7 +187,10 @@ def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarType
 				else:
 					szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 			else:
-				szText = localText.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
+				if (bIncludeCityName):
+					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+				else:
+					szText = sGreatPeopleChar
 		else:
 			lPercents.sort(reverse=True)
 			if (bGPBarTypesOne or len(lPercents) == 1):
