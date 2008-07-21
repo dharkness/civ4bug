@@ -25,6 +25,17 @@ class BugScoreOptions(OptionsFacade):
 							  "When checked, dead civilizations will be greyed out when not shown.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
 		
+		self.addOption(Option("Scores_Delta",
+							  "Scoreboard", "Delta", True,
+							  "Score Delta",
+							  "When checked, shows the change in score since the previous turn.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		self.addOption(Option("Scores_DeltaIncludeCurrent",
+							  "Scoreboard", "Delta Includes Current Turn", True,
+							  "Include Current Turn",
+							  "When checked, includes the current turn's change in the score change.",
+							  InterfaceDirtyBits.Score_DIRTY_BIT))
+		
 		self.addOption(OptionList("Scores_DisplayName",
 								  "Scoreboard", "Display Name", 0,
 								  "Display Name",
@@ -52,9 +63,10 @@ class BugScoreOptions(OptionsFacade):
 							  "Display Order",
 							  "This determines the order in which the score columns appear.\n\
 S - The civ's score.\n\
+Z - The change in the civ's score since previous turn.\n\
 C - The civ's/leader's name.\n\
 ? - You have not yet met the civ.\n\
-W - You are at war with the civ.\n\
+W - You are at war or have a peace treaty with the civ.\n\
 E - You have a positive espionage point ratio against the civ.\n\
 P - The civ's power ratio compared to you.\n\
 T - The tech the civ is researching (vassals, teammates and espionage).\n\
@@ -65,7 +77,7 @@ D - You have a defensive pact with the civ.\n\
 R - The civ's state religion.\n\
 A - The civ's attitude toward you.\n\
 H - You are the civ's worst enemy.\n\
-* - You are waiting for this civ to finish its turn.\n\
+* - This civ is waiting for you to finish your turn in multiplayer.\n\
 L - Civ's network stats (ping).\n\
 O - The network player is out-of-sync.",
 							  InterfaceDirtyBits.Score_DIRTY_BIT))
@@ -122,6 +134,13 @@ O - The network player is out-of-sync.",
 
 	def isGreyOutDeadCivs(self):
 		return self.getBoolean("Scores_GreyDead")
+	
+	
+	def isShowScoreDelta(self):
+		return self.getBoolean("Scores_Delta")
+	
+	def isScoreDeltaIncludeCurrentTurn(self):
+		return self.getBoolean("Scores_DeltaIncludeCurrent")
 
 
 	def getShowNameEnum(self):

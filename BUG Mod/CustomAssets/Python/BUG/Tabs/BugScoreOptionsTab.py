@@ -15,6 +15,8 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
         panel = self.createMainPanel(screen)
         left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
         
+        self.addCheckbox(screen, left, "Scores_Delta")
+        self.addCheckbox(screen, left, "Scores_DeltaIncludeCurrent")
         self.addTextDropdown(screen, left, left, "Scores_DisplayName")
         self.addCheckbox(screen, left, "Scores_Attitude")
         self.addCheckbox(screen, left, "Scores_WorstEnemy")

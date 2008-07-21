@@ -5994,7 +5994,7 @@ class CvMainInterface:
 				while (i > -1):
 					eTeam = gc.getGame().getRankTeam(i)
 
-					if (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam) or gc.getTeam(eTeam).isHuman() or gc.getGame().isDebugMode()):
+					if (True or gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam) or gc.getTeam(eTeam).isHuman() or gc.getGame().isDebugMode()):
 						j = gc.getMAX_CIV_PLAYERS() - 1
 						while (j > -1):
 							ePlayer = gc.getGame().getRankPlayer(j)
@@ -6029,8 +6029,39 @@ class CvMainInterface:
 										if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isShowDeadTag()):
 											# BUG-TODO: localize
 											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
+											if (bAlignIcons):
+												scores.setScore(szPlayerScore + u" ")
 										else:
-											szPlayerScore = str(gc.getGame().getPlayerScore(ePlayer))
+											iScore = gc.getGame().getPlayerScore(ePlayer)
+											szPlayerScore = u"%d" % iScore
+											if (bAlignIcons):
+												scores.setScore(szPlayerScore + u" ")
+# BUG - Score Delta - start
+											if (BugScore.isShowScoreDelta()):
+												iGameTurn = gc.getGame().getGameTurn()
+												if (ePlayer >= gc.getGame().getActivePlayer()):
+													iGameTurn -= 1
+												if (BugScore.isScoreDeltaIncludeCurrentTurn()):
+													iScoreDelta = iScore
+												elif (iGameTurn >= 0):
+													iScoreDelta = gc.getPlayer(ePlayer).getScoreHistory(iGameTurn)
+												else:
+													iScoreDelta = 0
+												iPrevGameTurn = iGameTurn - 1
+												if (iPrevGameTurn >= 0):
+													iScoreDelta -= gc.getPlayer(ePlayer).getScoreHistory(iPrevGameTurn)
+												if (iScoreDelta != 0):
+													if (iScoreDelta > 0):
+														iColorType = gc.getInfoTypeForString("COLOR_GREEN")
+													elif (iScoreDelta < 0):
+														iColorType = gc.getInfoTypeForString("COLOR_RED")
+													szScoreDelta = "%+d" % iScoreDelta
+													if (iColorType >= 0):
+														szScoreDelta = localText.changeTextColor(szScoreDelta, iColorType)
+													szPlayerScore += szScoreDelta + u" "
+													if (bAlignIcons):
+														scores.setScoreDelta(szScoreDelta)
+# BUG - Score Delta - end
 										
 										if (not CyInterface().isFlashingPlayer(ePlayer) or CyInterface().shouldFlash(ePlayer)):
 											if (ePlayer == gc.getGame().getActivePlayer()):
@@ -6043,7 +6074,6 @@ class CvMainInterface:
 										szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
 										szBuffer = szBuffer + szTempBuffer
 										if (bAlignIcons):
-											scores.setScore(szPlayerScore + u" ")
 											scores.setName(szPlayerName + u" ")
 										
 										if (gc.getPlayer(ePlayer).isAlive()):
