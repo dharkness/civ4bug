@@ -19,7 +19,8 @@ Z_DEPTH = -0.3
 ALIVE = 0
 PLAYER = ALIVE + 1
 SCORE = PLAYER + 1
-NAME = SCORE + 1
+SCORE_DELTA = SCORE + 1
+NAME = SCORE_DELTA + 1
 NOT_MET = NAME + 1
 WAR = NOT_MET + 1
 POWER = WAR + 1
@@ -47,7 +48,8 @@ SPECIAL = 3
 bInitDone = False
 columns = []
 columnsByKey = {}
-ordered = [ SCORE, NOT_MET, WAR, ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
+ordered = [ SCORE, SCORE_DELTA, NOT_MET, WAR, 
+			ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
 			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WORST_ENEMY, 
 			WAITING, NET_STATS, OOS ]
 ordered.reverse()
@@ -64,9 +66,13 @@ def _init():
 	global columns
 	game = CyGame()
 	
+	# Used keys:
+	# ABCDEHLNOPRSTUWZ*?
+	# FGIJKMQVXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('', PLAYER))
 	columns.append(Column('S', SCORE, DYNAMIC))
+	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
 	columns.append(Column('W', WAR, DYNAMIC))
@@ -154,6 +160,9 @@ class Scoreboard:
 		
 	def setScore(self, value):
 		self._set(SCORE, u"<font=2>%s</font>" % value)
+		
+	def setScoreDelta(self, value):
+		self._set(SCORE_DELTA, u"<font=2>%s</font>" % value)
 		
 	def setName(self, value):
 		self._set(NAME, u"<font=2>%s</font>" % value)

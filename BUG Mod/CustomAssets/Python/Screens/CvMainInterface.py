@@ -5994,7 +5994,7 @@ class CvMainInterface:
 				while (i > -1):
 					eTeam = gc.getGame().getRankTeam(i)
 
-					if (True or gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam) or gc.getTeam(eTeam).isHuman() or gc.getGame().isDebugMode()):
+					if (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam) or gc.getTeam(eTeam).isHuman() or gc.getGame().isDebugMode()):
 						j = gc.getMAX_CIV_PLAYERS() - 1
 						while (j > -1):
 							ePlayer = gc.getGame().getRankPlayer(j)
