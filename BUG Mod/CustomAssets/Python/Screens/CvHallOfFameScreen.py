@@ -6,6 +6,8 @@
 ## Revised due to Pounder's discovery 10-NOV-2005 Shelly Crawford (Fallblau on CFC/Apolyton)
 ## Revised due to Moxx's discovery 11-NOV-2005 Shelly Crawford (Fallblau on CFC/Apolyton)
 ## Declared Version 1.00 FINAL by Fallblau 29-NOV-2005
+## Modified by Alerum of the BUG Team to bring up to latest revision of Civilization 4: Patch 1.74.
+
 from CvPythonExtensions import *
 import CvUtil
 import ScreenInput
@@ -82,7 +84,7 @@ class CvHallOfFameScreen:
 			return
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
-		screen.setPersistent(True)
+		screen.setAlwaysShown(True)
 	
 		self.bAllowReplay = bAllowReplay
 		self.iLeaderFilter = -1
@@ -93,7 +95,10 @@ class CvHallOfFameScreen:
 		self.iEraFilter = -1
 		self.iSpeedFilter = -1
 		self.iVictoryFilter = -1
-		self.iMultiplayerFilter = 0
+		if gc.getGame().isGameMultiPlayer():
+			self.iMultiplayerFilter = 1
+		else:
+			self.iMultiplayerFilter = 0
 		self.iSortBy = SORT_BY_NORMALIZED_SCORE
 
 		self.EXIT_TEXT = u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + u"</font>"
@@ -204,14 +209,18 @@ class CvHallOfFameScreen:
 
 		# Multiplayer dropdown initialization
 		screen.addDropDownBoxGFC(self.MULTIPLAYER_DROPDOWN_ID, xDropDown, yDropDown, self.DROPDOWN_WIDTH, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
-		screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_SINGLE_PLAYER", ()), 0, 0, True)
-		screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_MULTIPLAYER", ()), 1, 1, False)
+		if self.iMultiplayerFilter == 1:
+			screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_MULTIPLAYER", ()), 1, 1, True)
+			screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_SINGLE_PLAYER", ()), 0, 0, False)
+		else:
+			screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_SINGLE_PLAYER", ()), 0, 0, True)
+			screen.addPullDownString(self.MULTIPLAYER_DROPDOWN_ID, localText.getText("TXT_KEY_MAIN_MENU_MULTIPLAYER", ()), 1, 1, False)
 		iNumDropDowns += 1
 			
 		yDropDown = self.DROPDOWN_SPACING_Y * (iNumDropDowns % 2) + self.DROPDOWN_Y
 		xDropDown = (self.DROPDOWN_WIDTH  + self.DROPDOWN_SPACING_X) * (iNumDropDowns / 2) + self.DROPDOWN_SPACING_X
 
-		# Multiplayer dropdown initialization
+		# Score dropdown initialization
 		screen.addDropDownBoxGFC(self.SORT_DROPDOWN_ID, xDropDown, yDropDown, self.DROPDOWN_WIDTH, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
 		screen.addPullDownString(self.SORT_DROPDOWN_ID, localText.getText("TXT_KEY_HALL_OF_FAME_SORT_BY_NORMALIZED_SCORE", ()), SORT_BY_NORMALIZED_SCORE, SORT_BY_NORMALIZED_SCORE, True)
 		screen.addPullDownString(self.SORT_DROPDOWN_ID, localText.getText("TXT_KEY_HALL_OF_FAME_SORT_BY_DATE", ()), SORT_BY_FINISH_DATE, SORT_BY_FINISH_DATE, False)
@@ -219,6 +228,18 @@ class CvHallOfFameScreen:
 		iNumDropDowns += 1
 
 		self.drawContents()
+		
+	def isDisplayed(self, replayInfo):
+		return ((self.iLeaderFilter == -1 or self.iLeaderFilter == replayInfo.getLeader(replayInfo.getActivePlayer())) 
+			and (self.iHandicapFilter == -1 or self.iHandicapFilter == replayInfo.getDifficulty()) 
+			and (self.iWorldFilter == -1 or self.iWorldFilter == replayInfo.getWorldSize()) 
+			and (self.iClimateFilter == -1 or self.iClimateFilter == replayInfo.getClimate()) 
+			and (self.iSeaLevelFilter == -1 or self.iSeaLevelFilter == replayInfo.getSeaLevel()) 
+			and (self.iEraFilter == -1 or self.iEraFilter == replayInfo.getEra()) 
+			and (self.iSpeedFilter == -1 or self.iSpeedFilter == replayInfo.getGameSpeed()) 
+			and (self.iVictoryFilter == -1 or self.iVictoryFilter == replayInfo.getVictoryType()) 
+			and ((self.iMultiplayerFilter == 1) == replayInfo.isMultiplayer()))
+		
 		
 	def drawContents(self):
 				
@@ -228,23 +249,30 @@ class CvHallOfFameScreen:
 		screen.enableSelect(self.TABLE_ID, False)
 		screen.enableSort(self.TABLE_ID)
 		screen.setTableColumnHeader(self.TABLE_ID, 0, "", 20)
-		screen.setTableColumnHeader(self.TABLE_ID, 1, localText.getText("TXT_KEY_PITBOSS_LEADER", ()), 200)
-		screen.setTableColumnHeader(self.TABLE_ID, 2, localText.getText("TXT_KEY_NORMALIZED_SCORE", ()), 85)
-		screen.setTableColumnHeader(self.TABLE_ID, 3, localText.getText("TXT_KEY_HALL_OF_FAME_SORT_BY_DATE", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 1, localText.getText("TXT_KEY_PITBOSS_LEADER", ()), 202)
+		screen.setTableColumnHeader(self.TABLE_ID, 2, localText.getText("TXT_KEY_NORMALIZED_SCORE", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 3, localText.getText("TXT_KEY_HALL_OF_FAME_SORT_BY_DATE", ()), 88)
 		screen.setTableColumnHeader(self.TABLE_ID, 4, localText.getText("TXT_KEY_GAME_SCORE", ()), 100)
-		screen.setTableColumnHeader(self.TABLE_ID, 5, localText.getText("TXT_KEY_CONCEPT_VICTORY", ()), 102)
-		screen.setTableColumnHeader(self.TABLE_ID, 6, localText.getText("TXT_KEY_PITBOSS_DIFFICULTY", ()), 102)
-		screen.setTableColumnHeader(self.TABLE_ID, 7, localText.getText("TXT_KEY_SETTINGS_MAP_SIZE", (u"", )), 102)
-#		screen.setTableColumnHeader(self.TABLE_ID, , localText.getText("TXT_KEY_SETTINGS_CLIMATE", (u"", )), 102)
-#		screen.setTableColumnHeader(self.TABLE_ID, , localText.getText("TXT_KEY_SETTINGS_SEA_LEVEL", (u"", )), 102)
-		screen.setTableColumnHeader(self.TABLE_ID, 8, localText.getText("TXT_KEY_SETTINGS_STARTING_ERA", (u"", )), 102)
-		screen.setTableColumnHeader(self.TABLE_ID, 9, localText.getText("TXT_KEY_SETTINGS_GAME_SPEED", (u"", )), 102)
+		screen.setTableColumnHeader(self.TABLE_ID, 5, localText.getText("TXT_KEY_CONCEPT_VICTORY", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 6, localText.getText("TXT_KEY_PITBOSS_DIFFICULTY", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 7, localText.getText("TXT_KEY_HOF_SCREEN_SIZE", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 8, localText.getText("TXT_KEY_HOF_SCREEN_STARTING_ERA", ()), 100)
+		screen.setTableColumnHeader(self.TABLE_ID, 9, localText.getText("TXT_KEY_HOF_SCREEN_GAME_SPEED", ()), 105)
 #		screen.setTableColumnHeader(self.TABLE_ID, , "", 73)
-		
-		self.infoList = [(-1,"",-1,"",-1,"","","","","",0)] * self.hallOfFame.getNumGames()
+
+		# count the filtered replays
+		iNumGames = 0
 		for i in range(self.hallOfFame.getNumGames()):
 			replayInfo = self.hallOfFame.getReplayInfo(i)
-			if ((self.iLeaderFilter == -1 or self.iLeaderFilter == replayInfo.getLeader(replayInfo.getActivePlayer())) and (self.iHandicapFilter == -1 or self.iHandicapFilter == replayInfo.getDifficulty()) and (self.iWorldFilter == -1 or self.iWorldFilter == replayInfo.getWorldSize()) and (self.iClimateFilter == -1 or self.iClimateFilter == replayInfo.getClimate()) and (self.iSeaLevelFilter == -1 or self.iSeaLevelFilter == replayInfo.getSeaLevel()) and (self.iEraFilter == -1 or self.iEraFilter == replayInfo.getEra()) and (self.iSpeedFilter == -1 or self.iSpeedFilter == replayInfo.getGameSpeed()) and (self.iVictoryFilter == -1 or self.iVictoryFilter == replayInfo.getVictoryType()) and ((self.iMultiplayerFilter == 1) == replayInfo.isMultiplayer())):
+			if self.isDisplayed(replayInfo):
+				iNumGames += 1
+		
+		
+		self.infoList = [(-1,"",-1,"",-1,"","","","","",0)] * iNumGames
+		iItem = 0
+		for i in range(self.hallOfFame.getNumGames()):
+			replayInfo = self.hallOfFame.getReplayInfo(i)
+			if self.isDisplayed(replayInfo):
 				szVictory = u""
 				if replayInfo.getVictoryType() <= 0:
 					szVictory = localText.getText("TXT_KEY_NONE", ())
@@ -329,7 +357,7 @@ class CvHallOfFameScreen:
 				elif self.iSortBy == SORT_BY_GAME_SCORE:
 					iValue = -replayInfo.getFinalScore()
 
-				self.infoList[i] = (iValue,
+				self.infoList[iItem] = (iValue,
 						localText.getText("TXT_KEY_LEADER_CIV_DESCRIPTION", (replayInfo.getLeaderName(), replayInfo.getShortCivDescription())),
 						replayInfo.getNormalizedScore(),
 						replayInfo.getFinalDate(),
@@ -342,6 +370,7 @@ class CvHallOfFameScreen:
 						gc.getEraInfo(replayInfo.getEra()).getDescription(),
 						gc.getGameSpeedInfo(replayInfo.getGameSpeed()).getDescription(),
 						i)
+				iItem += 1
 		self.infoList.sort()
 						
 		for i in range(len(self.infoList)):
@@ -354,7 +383,7 @@ class CvHallOfFameScreen:
 			screen.setTableText(self.TABLE_ID, 1, i, self.infoList[i][1], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			if self.infoList[i][2] >= 0:
 				screen.setTableInt(self.TABLE_ID, 2, i, u"%d" % self.infoList[i][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
-			screen.setTableText(self.TABLE_ID, 3, i, self.infoList[i][3], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableDate(self.TABLE_ID, 3, i, self.infoList[i][3], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			if self.infoList[i][4] >= 0:
 				screen.setTableInt(self.TABLE_ID, 4, i, u"%d" % self.infoList[i][4], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 			screen.setTableText(self.TABLE_ID, 5, i, self.infoList[i][5], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
