@@ -2583,14 +2583,14 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ProductionBar" )
 		
-		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 180, 194, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
+		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "GreatPeopleBar" )
 		
-		screen.addStackedBarGFC( "CultureBar", 16, yResolution - 188, 220, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_CULTURE, -1, -1 )
+		screen.addStackedBarGFC( "CultureBar", 6, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_CULTURE, -1, -1 )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_CULTURE_STORED") )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_CULTURE_RATE") )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -2612,7 +2612,7 @@ class CvMainInterface:
 			screen.addDDSGFC( szName, ArtFileMgr.getInterfaceArtInfo("INTERFACE_HOLYCITY_OVERLAY").getPath(), xCoord, yCoord, 24, 24, WidgetTypes.WIDGET_HELP_CORPORATION_CITY, i, -1 )
 			screen.hide( szName )
 
-		screen.addStackedBarGFC( "NationalityBar", 16, yResolution - 214, 220, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_NATIONALITY, -1, -1 )
+		screen.addStackedBarGFC( "NationalityBar", 6, yResolution - 214, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_NATIONALITY, -1, -1 )
 		screen.hide( "NationalityBar" )
 
 		screen.setButtonGFC( "CityScrollMinus", u"", "", 274, 32, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
@@ -4201,7 +4201,7 @@ class CvMainInterface:
 				if (pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
 					if (iCount < MAX_CITIZEN_BUTTONS):
 						szName = "FreeSpecialist" + str(iCount)
-						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 214, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
 						screen.show( szName )
 						bHandled = true
 					iCount += 1
@@ -4211,7 +4211,7 @@ class CvMainInterface:
 				for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
 					if (iCount < MAX_CITIZEN_BUTTONS):
 						szName = "FreeSpecialist" + str(iCount)
-						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 214, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
 						screen.show( szName )
 						bHandled = true
 
@@ -4453,7 +4453,7 @@ class CvMainInterface:
 				if (pHeadSelectedCity.getFreeSpecialistCount(i) > 0):
 					if (iCount < MAX_CITIZEN_BUTTONS):
 						szName = "FreeSpecialist" + str(iCount)
-						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 214, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, 1 )
 						screen.show( szName )
 						bHandled = True
 					iCount += 1
@@ -4463,7 +4463,7 @@ class CvMainInterface:
 				for j in range( pHeadSelectedCity.getFreeSpecialistCount(i) ):
 					if (iCount < MAX_CITIZEN_BUTTONS):
 						szName = "FreeSpecialist" + str(iCount)
-						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 206, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
+						screen.setImageButton( szName, gc.getSpecialistInfo(i).getTexture(), (xResolution - 74  - (26 * iCount)), yResolution - 214, 24, 24, WidgetTypes.WIDGET_FREE_CITIZEN, i, -1 )
 						screen.show( szName )
 						bHandled = True
 
@@ -5635,7 +5635,7 @@ class CvMainInterface:
 					iRate = pHeadSelectedCity.getGreatPeopleRate()
 					if BugCityScreen.isShowCityGreatPersonInfo():
 						iGPTurns = GPUtil.getCityTurns(pHeadSelectedCity)
-						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, iGPTurns, 194, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), False)
+						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, iGPTurns, 230, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), False)
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_GREATPEOPLE_RATE", (CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pHeadSelectedCity.getGreatPeopleRate()))
 						if BugCityScreen.isShowGreatPersonTurns() and iRate > 0:
@@ -5643,7 +5643,7 @@ class CvMainInterface:
 							szBuffer += u" " + localText.getText("INTERFACE_CITY_TURNS", (iGPTurns, ))
 # BUG - Great Person Turns - end
 
-					screen.setLabel( "GreatPeopleText", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, xResolution - 146, yResolution - 176, -1.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+					screen.setLabel( "GreatPeopleText", "Background", szBuffer, CvUtil.FONT_CENTER_JUSTIFY, xResolution - 126, yResolution - 182, -1.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.setHitTest( "GreatPeopleText", HitTestTypes.HITTEST_NOHIT )
 					screen.show( "GreatPeopleText" )
 
