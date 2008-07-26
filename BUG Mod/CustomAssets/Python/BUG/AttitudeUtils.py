@@ -97,9 +97,6 @@ def getAttitudeText (nPlayer, nTarget, vOnlyNumbers = True):
     if nAttitude > 0:
         szText = "+" + szText
 
-    if vOnlyNumbers:
-        return szText
-
     if BugScreens.isShowGlanceSmilies():
         szText = "[" + szText + "] "
     else:
@@ -115,6 +112,9 @@ def getAttitudeText (nPlayer, nTarget, vOnlyNumbers = True):
         szSmilie = unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
         szText = szSmilie + " " + szText
     
+    if vOnlyNumbers:
+        return szText
+
     szWorstEnemy = pPlayer.getWorstEnemyName()
     if szWorstEnemy and pTarget.getName() == szWorstEnemy:
         szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))

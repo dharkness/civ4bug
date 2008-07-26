@@ -538,6 +538,14 @@
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
+		<English>Non Member</English>
+		<French>Non Membres</French>
+		<German>Nicht-Mitglied</German>
+		<Italian>Non Membri</Italian>
+		<Spanish>No Miembro</Spanish>
+	</TEXT>
 	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
