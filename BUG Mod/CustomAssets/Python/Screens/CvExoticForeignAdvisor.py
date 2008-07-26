@@ -22,6 +22,7 @@ import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
 import re
+import Attitude
 
 # BUG - Options - start
 import BugScreensOptions
@@ -463,7 +464,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					or gc.getGame().isDebugMode())
 					and not gc.getPlayer(nHost).isBarbarian()
 					and not gc.getPlayer(nHost).isMinorCiv()):
-						nRelation = self.calculateRelations (nHost, iLoopPlayer)
+						nRelation = AttitudeUtils.getAttitudeCount(nHost, iLoopPlayer)
 						self.ltPlayerRelations [iLoopPlayer][nHost] = nRelation
 
 				# Player panel
@@ -475,20 +476,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		self.Y_Spread = (self.H_SCREEN - 50) / (self.nCount + 2)
 		self.Y_Text_Offset = (self.Y_Spread - 36) / 2
 		if self.Y_Text_Offset < 0: self.Y_Text_Offset = 0
-
-	def calculateRelations (self, nPlayer, nTarget):
-		if (nPlayer != nTarget and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
-			nAttitude = 0
-			szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-#			ExoticForPrint (("%d toward %d" % (nPlayer, nTarget)) + str(szAttitude))
-			ltPlusAndMinuses = re.findall ("[-+][0-9]+", szAttitude)
-#			ExoticForPrint ("Length: %d" % len (ltPlusAndMinuses))
-			for i in range (len (ltPlusAndMinuses)):
-				nAttitude += int (ltPlusAndMinuses[i])
-#			ExoticForPrint ("Attitude: %d" % nAttitude)
-		else:
-			return None
-		return nAttitude
 
 	def drawGlanceHeader (self, screen, panelName):
 		nCount = 0
@@ -535,7 +522,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						szName = self.getNextWidgetName()
 						nAttitude = self.ltPlayerRelations[iLoopPlayer][j]
 						if nAttitude != None:
-							szText = self.getAttitudeText (nAttitude, j, iLoopPlayer)
+							szText = AttitudeUtils.getAttitudeText (j, iLoopPlayer, vOnlyNumbers = False)
 						else:
 							szText = ""
 
@@ -555,54 +542,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 #				ExoticForPrint ("player met = %d; nCount = %d" % (i, nCount))
 				ltTarget[nCount] = (ltPlayers[i][nCol], i)
 				nCount += 1
-
-	def getAttitudeText (self, nAttitude, nPlayer, nTarget):
-		szText = str (nAttitude)
-		szAttitude = CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
-		if nAttitude > 0:
-			szText = "+" + szText
-
-		if BugScreens.isShowGlanceSmilies():
-			szText = "[" + szText + "] "
-		else:
-			szText = "<font=3>   " + szText + "</font> "
-
-#		ExoticForPrint ("Attitude String = %s" % szAttitude)
-		for szColor, szSearchString in self.ATTITUDE_DICT.items():
-			if re.search (szSearchString, szAttitude):
-				color = gc.getInfoTypeForString(szColor)
-				szText = localText.changeTextColor (szText, color)
-
-		pPlayer = gc.getPlayer(nPlayer)
-		pTarget = gc.getPlayer(nTarget)
-		if BugScreens.isShowGlanceSmilies():
-			iAtt = pPlayer.AI_getAttitude(nTarget)
-			szSmilie = unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-			szText = szSmilie + " " + szText
-		
-		szWorstEnemy = pPlayer.getWorstEnemyName()
-		if szWorstEnemy and pTarget.getName() == szWorstEnemy:
-			szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
-		
-		nTeam = pPlayer.getTeam()
-		pTeam = gc.getTeam(nTeam)
-		nTargetTeam = pTarget.getTeam()
-		pTargetTeam = gc.getTeam(nTargetTeam)
-		if pTeam.isAtWar(nTargetTeam):
-			szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
-		elif gc.getGame().getActiveTeam() in (nTeam, nTargetTeam):
-			bPeace = False
-			if pTeam.isForcePeace(nTargetTeam):
-				bPeace = True
-			elif pTargetTeam.isAVassal():
-				for nOwnerTeam in range(gc.getMAX_TEAMS()):
-					if pTargetTeam.isVassal(nOwnerTeam) and pTeam.isForcePeace(nOwnerTeam):
-						bPeace = True
-						break
-			if bPeace:
-				szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
-
-		return szText
 
 	def handlePlusMinusToggle (self):
 #		ExoticForPrint ("Entered handlePlusMinusToggle")
