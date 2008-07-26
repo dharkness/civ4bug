@@ -22,7 +22,7 @@ import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
 import re
-import Attitude
+import AttitudeUtils
 
 # BUG - Options - start
 import BugScreensOptions
