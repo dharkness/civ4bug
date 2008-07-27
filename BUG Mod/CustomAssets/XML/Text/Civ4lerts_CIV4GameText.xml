@@ -149,7 +149,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3[ICON_ANGRYPOP] with %d4[ICON_PRODUCTION] overflow and +1[ICON_UNHAPPY] for %d5 turns.[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]%s1 peut précipiter %s2 pour %d3[ICON_ANGRYPOP] avec %d4[ICON_PRODUCTION] de débordement et +1[ICON_UNHAPPY] por %d5 tour.[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]%s1 kann %s2 für %d3[ICON_ANGRYPOP] beschleunigen (Überschuss: %d4[ICON_PRODUCTION]), wobei für %d5 Runden +1[ICON_UNHAPPY] in der Stadt verursacht wird.[COLOR_REVERT]</German>
+		<German>[COLOR_YIELD_FOOD]%s1 kann das Bauprojekt "%s2" unter Einsatz von %d3[ICON_ANGRYPOP] beschleunigen (Überschuss: %d4[ICON_PRODUCTION]), wobei für %d5 Runden +1[ICON_UNHAPPY] in der Stadt verursacht wird.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 può accelerare %s2 per %d3[ICON_ANGRYPOP] con un surplus di %d4[ICON_PRODUCTION] e 1[ICON_UNHAPPY] per %d5 turni.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]%s1 puede acelerar %s2 para %d3[ICON_ANGRYPOP] con %d4[ICON_PRODUCTION] de desbordamiento y +1[ICON_UNHAPPY] para %d5 turnos.[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -157,7 +157,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_GOLD</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3[ICON_GOLD].[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]%s1 peut précipiter %s2 pour %d3[ICON_GOLD].[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]%s1 kann %s2 für %d3[ICON_GOLD] beschleunigen.[COLOR_REVERT]</German>
+		<German>[COLOR_YIELD_FOOD]%s1 kann das Bauprojekt "%s2" unter Einsatz von %d3[ICON_GOLD] beschleunigen.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 può essere accelerare %s2 per %d3[ICON_GOLD].[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]%s1 puede acelerar %s2 para %d3[ICON_GOLD].[COLOR_REVERT]</Spanish>
 	</TEXT>
