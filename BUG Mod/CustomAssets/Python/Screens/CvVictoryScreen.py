@@ -278,17 +278,19 @@ class CvVictoryScreen:
 # BUG Additions Start
 				lMembers = []
 				for j in range(gc.getMAX_PLAYERS()):
-					if gc.getPlayer(j).isAlive() and not gc.getPlayer(j).isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(gc.getPlayer(j).getTeam()):
+#tjp
+					pPlayer = gc.getPlayer(j)
+					if pPlayer.isAlive() and not pPlayer.isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(pPlayer.getTeam()):
 						iPlayer = j
-						lPlayerName = gc.getPlayer(j).getName()
-						lPlayerVotes = 10000 - gc.getPlayer(j).getVotes(iSecretaryGeneralVote, i)   # so that it sorts from most votes to least
-						if (gc.getGame().canHaveSecretaryGeneral(i) and gc.getGame().getSecretaryGeneral(i) == gc.getPlayer(j).getTeam()):
+						lPlayerName = pPlayer.getName()
+						lPlayerVotes = 10000 - pPlayer.getVotes(iSecretaryGeneralVote, i)   # so that it sorts from most votes to least
+						if (gc.getGame().canHaveSecretaryGeneral(i) and gc.getGame().getSecretaryGeneral(i) == pPlayer.getTeam()):
 							lPlayerStatus = 0
 							lPlayerLabel = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
-						elif (gc.getPlayer(j).isFullMember(i)):
+						elif (pPlayer.isFullMember(i)):
 							lPlayerStatus = 1
 							lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ())
-						elif (gc.getPlayer(j).isVotingMember(i)):
+						elif (pPlayer.isVotingMember(i)):
 							lPlayerStatus = 2
 							lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ())
 						else:
@@ -312,11 +314,11 @@ class CvVictoryScreen:
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
-					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate1, vOnlyNumbers = True)
+					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate1, False, True, False, False)
 					if szText != None:
 						screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate1, CvUtil.FONT_LEFT_JUSTIFY)
 
-					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate2, vOnlyNumbers = True)
+					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate2, False, True, False, False)
 					if szText != None:
 						screen.setTableText(szTable, 2, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_LEFT_JUSTIFY)
 
@@ -552,7 +554,30 @@ class CvVictoryScreen:
 					aiVoteBuildingClass.append((gc.getBuildingInfo(i).getBuildingClassType(), iUNTeam, bUnknown))
 
 		self.bVoteTab = (len(aiVoteBuildingClass) > 0)
-		
+
+# BUG Additions Start
+		# check if anyone has built the apollo project (PROJECT_APOLLO_PROGRAM)
+#		bApollo = False
+#		for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
+#			if (gc.getTeam(iLoopTeam).isAlive()
+#			and not gc.getTeam(iLoopTeam).isMinorCiv()
+#			and not gc.getTeam(iLoopTeam).isBarbarian()):
+#				if iLoopTeam == iActiveTeam:
+#					bContact = True
+#				elif (activePlayer.getTeam().isHasMet(iLoopTeam)
+#				or gc.getGame().isDebugMode()):
+#					bContact = True
+#				else:
+#					bContact = False
+
+#				if bContact:
+#					for i in range(gc.getNumProjectInfos()):
+#						if (gc.getProjectInfo(i).getXmlVal() == "PROJECT_APOLLO_PROGRAM"):
+#						if (gc.getProjectInfo(i).getType() == ProjectTypes.PROJECT_APOLLO_PROGRAM):
+#							if gc.getTeam(iLoopTeam).getProjectCount(i) > 0:
+#								bApollo = True
+# BUG Additions End
+
 		self.deleteAllWidgets()	
 		screen = self.getScreen()
 														
@@ -735,9 +760,13 @@ class CvVictoryScreen:
 							iHasTechColor = ColorUtil.keyToType("COLOR_GREEN")
 
 						if iHasTechColor > 0:
-							sSSPart = localText.changeTextColor(sSSPart, iHasTechColor)
 							sSSPlayer = localText.changeTextColor(activePlayer.getTeam().getName() + ":", iHasTechColor)
 							sSSCount = localText.changeTextColor(str(activePlayer.getTeam().getProjectCount(i)), iHasTechColor)
+							sSSPlayer = str(gc.getProjectInfo(i).getProjectsNeeded(iLoopVC))
+
+						pPlayer = activePlayer.CyGet()
+						sSSPlayer = "%s" % (pPlayer.canCreate(i, True, True))  # ignores apollo project status
+						sSSPlayer = "%s" % (pPlayer.canCreate(i, True, False)) # requires apollo project to be built
 
 						screen.setTableText(szTable, 0, iRow, sSSPart, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -887,6 +916,20 @@ class CvVictoryScreen:
 				listCultureCities.reverse()
 				return listCultureCities
 		return []					
+
+
+
+	def canBuildSSComponent(self, vTeam, vComponent):
+		if(not vTeam.isHasTech(vComponent.getTechPrereq())):
+			return False
+		else:
+			for j in range(gc.getNumProjectInfos()):
+				if(vTeam.getProjectCount(j) < vComponent.getProjectsNeeded(j)):
+					return False
+		return True
+							
+
+
 				
 										
 	# returns a unique ID for a widget in this screen
