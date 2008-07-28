@@ -359,7 +359,10 @@ def pediaJumpToCorporation(argsList):
 
 def pediaShowHistorical(argsList):
 	if (bUsingSevopedia):
-		pediaMainScreen.pediaJump(pediaMainScreen.iCategory, argsList[1], True, False)
+		if (argsList[0] == CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW):
+			pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_BTS_CONCEPTS, argsList[1], True, False)
+		else:
+			pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_CONCEPTS, argsList[1], True, False)
 	else:
 		iEntryId = pediaMainScreen.pediaHistorical.getIdFromEntryInfo(argsList[0], argsList[1])
 		pediaMainScreen.pediaJump(PEDIA_HISTORY, iEntryId, True)
@@ -1098,6 +1101,7 @@ HandleNavigationMap = {
 					SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
 					SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
+					SevoScreenEnums.PEDIA_TRAITS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
 					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
