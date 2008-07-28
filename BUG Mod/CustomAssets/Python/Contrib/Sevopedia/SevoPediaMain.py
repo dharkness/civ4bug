@@ -36,9 +36,11 @@ import SevoPediaHistory
 import SevoPediaProject
 import SevoPediaReligion
 import SevoPediaCorporation
+import SevoPediaIndex
 
 import UnitUpgradesGraph
 import TraitUtil
+import BugUtil
 
 import BugScreensOptions
 BugScreens = BugScreensOptions.getOptions()
@@ -52,12 +54,17 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def __init__(self):
 		self.PEDIA_MAIN_SCREEN	= "PediaMainScreen"
 		self.INTERFACE_ART_INFO	= "SCREEN_BG_OPAQUE"
+		
+		self.TAB_TOC   = "Contents"
+		self.TAB_INDEX = "Index"
 
 		self.WIDGET_ID		= "PediaMainWidget"
 		self.BACKGROUND_ID	= "PediaMainBackground"
 		self.TOP_PANEL_ID	= "PediaMainTopPanel"
 		self.BOT_PANEL_ID	= "PediaMainBottomPanel"
 		self.HEAD_ID		= "PediaMainHeader"
+		self.TOC_ID			= "PediaMainContents"
+		self.INDEX_ID		= "PediaMainIndex"
 		self.BACK_ID		= "PediaMainBack"
 		self.NEXT_ID		= "PediaMainForward"
 		self.EXIT_ID		= "PediaMainExit"
@@ -105,19 +112,26 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 		self.X_TITLE = self.X_SCREEN
 		self.Y_TITLE = 8
-		self.X_BACK = 75
+		self.X_TOC = 75
+		self.Y_TOC = 730
+		self.X_INDEX = 210
+		self.Y_INDEX = 730
+		self.X_BACK = 510
 		self.Y_BACK = 730
-		self.X_NEXT = 210
+		self.X_NEXT = 645
 		self.Y_NEXT = 730
 		self.X_EXIT = 994
 		self.Y_EXIT = 730
 
+		self.tab = None
 		self.iActivePlayer = -1
 		self.nWidgetCount = 0
 
 		self.categoryList = []
 		self.categoryGraphics = []
 		self.iCategory = -1
+		self.iItem = -1
+		self.iItemIndex = -1
 		self.pediaHistory = []
 		self.pediaFuture = []
 
@@ -150,12 +164,16 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_STRATEGY  	: self.placeStrategy,
 			}
 
+		self.pediaBuilding	= SevoPediaBuilding.SevoPediaBuilding(self)
+		self.pediaLeader	= SevoPediaLeader.SevoPediaLeader(self)
+		self.pediaIndex     = SevoPediaIndex.SevoPediaIndex(self)
+
 		self.mapScreenFunctions = {
 			SevoScreenEnums.PEDIA_TECHS		: SevoPediaTech.SevoPediaTech(self),
 			SevoScreenEnums.PEDIA_UNITS		: SevoPediaUnit.SevoPediaUnit(self),
 			SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: SevoPediaUnitChart.SevoPediaUnitChart(self),
 			SevoScreenEnums.PEDIA_PROMOTIONS		: SevoPediaPromotion.SevoPediaPromotion(self),
-			SevoScreenEnums.PEDIA_BUILDINGS		: SevoPediaBuilding.SevoPediaBuilding(self),
+			SevoScreenEnums.PEDIA_BUILDINGS		: self.pediaBuilding,
 			SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: SevoPediaBuilding.SevoPediaBuilding(self),
 			SevoScreenEnums.PEDIA_GREAT_WONDERS	: SevoPediaBuilding.SevoPediaBuilding(self),
 			SevoScreenEnums.PEDIA_PROJECTS		: SevoPediaProject.SevoPediaProject(self),
@@ -165,7 +183,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_BONUSES		: SevoPediaBonus.SevoPediaBonus(self),
 			SevoScreenEnums.PEDIA_IMPROVEMENTS	: SevoPediaImprovement.SevoPediaImprovement(self),
 			SevoScreenEnums.PEDIA_CIVS		: SevoPediaCivilization.SevoPediaCivilization(self),
-			SevoScreenEnums.PEDIA_LEADERS		: SevoPediaLeader.SevoPediaLeader(self),
+			SevoScreenEnums.PEDIA_LEADERS		: self.pediaLeader,
 			SevoScreenEnums.PEDIA_TRAITS		: SevoPediaTrait.SevoPediaTrait(self),
 			SevoScreenEnums.PEDIA_CIVICS		: SevoPediaCivic.SevoPediaCivic(self),
 			SevoScreenEnums.PEDIA_RELIGIONS		: SevoPediaReligion.SevoPediaReligion(self),
@@ -176,15 +194,17 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_STRATEGY  	: SevoPediaHistory.SevoPediaHistory(self),
 			}
 
-		self.pediaBuilding	= SevoPediaBuilding.SevoPediaBuilding(self)
-		self.pediaLeader	= SevoPediaLeader.SevoPediaLeader(self)
-
 
 
 	def getScreen(self):
 		return CyGInterfaceScreen(self.PEDIA_MAIN_SCREEN, SevoScreenEnums.PEDIA_MAIN)
 
-
+	def createScreen(self, screen):
+		if screen.isActive(): return
+		BugUtil.debug("Creating screen")
+		self.iCategory = -1
+		self.tab = None
+		self.setPediaCommonWidgets()
 
 	def pediaShow(self):
 		self.iActivePlayer = gc.getGame().getActivePlayer()
@@ -199,56 +219,115 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def pediaJump(self, iCategory, iItem, bRemoveFwdList, bIsLink):
-		if (self.pediaHistory == [] or iCategory != SevoScreenEnums.PEDIA_MAIN or iItem == SevoScreenEnums.PEDIA_UNIT_UPGRADES or iItem == SevoScreenEnums.PEDIA_PROMOTION_TREE or iItem == SevoScreenEnums.PEDIA_HINTS):
+		bAddToHistory = False
+		if (not self.pediaHistory):
+			bAddToHistory = True
+		elif (iCategory != SevoScreenEnums.PEDIA_MAIN or iItem == SevoScreenEnums.PEDIA_UNIT_UPGRADES or iItem == SevoScreenEnums.PEDIA_PROMOTION_TREE or iItem == SevoScreenEnums.PEDIA_HINTS):
+			prev = self.pediaHistory[0]
+			if (prev[0] != iCategory or prev[1] != iItem):
+				bAddToHistory = True
+		if (bAddToHistory):
 			self.pediaHistory.append((iCategory, iItem))
 		if (bRemoveFwdList):
 			self.pediaFuture = []
 
 		screen = self.getScreen()
 		if not screen.isActive():
-			self.deleteAllWidgets()
-			self.setPediaCommonWidgets()
-			self.placeCategories()
+			self.createScreen(screen)
 
 		if (iCategory == SevoScreenEnums.PEDIA_MAIN):
+			BugUtil.debug("Main link %d" % iItem)
+			self.showContents(bIsLink, iItem)
 			screen.setSelectedListBoxStringGFC(self.CATEGORY_LIST_ID, iItem - (SevoScreenEnums.PEDIA_MAIN + 1))
-			self.deleteAllWidgets()
-			self.mapListGenerators.get(iItem)()
-			self.iCategory = iItem
+			#self.iCategory = iItem
 			return
 
 		if (iCategory == SevoScreenEnums.PEDIA_BUILDINGS):
-			iCategory = iCategory + self.pediaBuilding.getBuildingType(iItem)
-
-		if (iCategory != self.iCategory):
-			screen.setSelectedListBoxStringGFC(self.CATEGORY_LIST_ID, iCategory - (SevoScreenEnums.PEDIA_MAIN + 1))
-
-		if (iCategory != self.iCategory or bIsLink):
-			self.mapListGenerators.get(iCategory)()
-
-		if (iCategory != SevoScreenEnums.PEDIA_UNIT_UPGRADES and iCategory != SevoScreenEnums.PEDIA_PROMOTION_TREE and iCategory != SevoScreenEnums.PEDIA_HINTS):
+			iCategory += self.pediaBuilding.getBuildingType(iItem)
+		elif (iCategory == SevoScreenEnums.PEDIA_BTS_CONCEPTS):
+			iCategory = self.determineNewConceptSubCategory(iItem)
+			BugUtil.debug("Switching to category %d" % iCategory)
+		self.showContents(bIsLink, iCategory)
+		screen.setSelectedListBoxStringGFC(self.CATEGORY_LIST_ID, iCategory - (SevoScreenEnums.PEDIA_MAIN + 1))
+		if (iCategory not in (SevoScreenEnums.PEDIA_UNIT_UPGRADES, SevoScreenEnums.PEDIA_PROMOTION_TREE, SevoScreenEnums.PEDIA_HINTS)):
 			screen.enableSelect(self.ITEM_LIST_ID, True)
-			if (iCategory != self.iCategory or bIsLink):
-				i = 0
-				for item in self.list:
-					if (item[1] == iItem):
-						screen.selectRow(self.ITEM_LIST_ID, i, True)
-					i += 1
+			if (self.iItemIndex != -1):
+				BugUtil.debug("Deselecting item %d" % self.iItemIndex)
+				screen.selectRow(self.ITEM_LIST_ID, self.iItemIndex, False)
+			BugUtil.debug("Selecting item %d" % iItem)
+			self.iItem = iItem
+			for i, item in enumerate(self.list):
+				if (item[1] == iItem):
+					BugUtil.debug("Selecting %dth item %d" % (i, iItem))
+					#screen.setSelectedListBoxStringGFC(self.ITEM_LIST_ID, i)
+					screen.selectRow(self.ITEM_LIST_ID, i, True)
+					self.iItemIndex = i
+					#break
 
-		if (iCategory != self.iCategory):
-			self.iCategory = iCategory
-
+		#self.iCategory = iCategory
+		BugUtil.debug("Drawing screen %d item %d" % (iCategory, iItem))
 		self.deleteAllWidgets()
 		func = self.mapScreenFunctions.get(iCategory)
 		func.interfaceScreen(iItem)
 
+	def determineNewConceptSubCategory(self, iItem):
+		info = gc.getNewConceptInfo(iItem)
+		BugUtil.debug("NewConcept itme %d is %s" % (iItem, info.getDescription()))
+		if (self.isTraitInfo(info)):
+			return SevoScreenEnums.PEDIA_TRAITS
+		if (self.isStrategyInfo(info)):
+			return SevoScreenEnums.PEDIA_STRATEGY
+		if (self.isShortcutInfo(info)):
+			return SevoScreenEnums.PEDIA_SHORTCUTS
+		return SevoScreenEnums.PEDIA_BTS_CONCEPTS
 
+	def isContentsShowing(self):
+		return self.tab == self.TAB_TOC
+	
+	def showContents(self, bForce=False, iCategory=SevoScreenEnums.PEDIA_TECHS):
+		self.deleteAllWidgets()
+		if not self.isContentsShowing():
+			BugUtil.debug("Drawing category list")
+			self.placeCategories(iCategory)
+			screen = self.getScreen()
+			screen.setText(self.TOC_ID, "Background", self.TOC_ACTIVE_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+			screen.setText(self.INDEX_ID, "Background", self.INDEX_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+		if not self.isContentsShowing() or self.iCategory != iCategory or bForce:
+			BugUtil.debug("Drawing item list %d" % iCategory)
+			self.mapListGenerators.get(iCategory)()
+			self.iCategory = iCategory
+			self.iItem = -1
+			self.iItemIndex = -1
+		self.tab = self.TAB_TOC
+
+	def isIndexShowing(self):
+		return self.tab == self.TAB_INDEX
+	
+	def showIndex(self):
+		if self.isIndexShowing(): return
+		self.deleteAllWidgets()
+		self.deleteListWidgets()
+		screen = self.getScreen()
+		screen.setText(self.TOC_ID, "Background", self.TOC_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+		screen.setText(self.INDEX_ID, "Background", self.INDEX_ACTIVE_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+		self.pediaIndex.interfaceScreen()
+		self.tab = self.TAB_INDEX
+	
+	def setContentsIndexButtons(self):
+		screen.setText(self.TOC_ID, "Background", self.TOC_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+		screen.setText(self.INDEX_ID, "Background", self.INDEX_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
 
 	def setPediaCommonWidgets(self):
 		self.HEAD_TEXT = u"<font=4b>" + localText.getText("TXT_KEY_SEVOPEDIA_TITLE",      ())         + u"</font>"
 		self.BACK_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_BACK",    ()).upper() + u"</font>"
 		self.NEXT_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_FORWARD", ()).upper() + u"</font>"
 		self.EXIT_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT",    ()).upper() + u"</font>"
+		
+		self.TOC_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_CONTENTS", ()).upper() + u"</font>"
+		self.INDEX_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_INDEX",  ()).upper() + u"</font>"
+		eYellow = gc.getInfoTypeForString("COLOR_YELLOW")
+		self.TOC_ACTIVE_TEXT = u"<font=4>"  + localText.getColorText("TXT_KEY_PEDIA_SCREEN_CONTENTS", (), eYellow).upper() + u"</font>"
+		self.INDEX_ACTIVE_TEXT = u"<font=4>"  + localText.getColorText("TXT_KEY_PEDIA_SCREEN_INDEX",  (), eYellow).upper() + u"</font>"
 
 		self.szCategoryTechs		= localText.getText("TXT_KEY_PEDIA_CATEGORY_TECH", ())
 		self.szCategoryUnits		= localText.getText("TXT_KEY_PEDIA_CATEGORY_UNIT", ())
@@ -265,7 +344,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.szCategoryFeatures		= localText.getText("TXT_KEY_PEDIA_CATEGORY_FEATURE", ())
 		self.szCategoryBonuses		= localText.getText("TXT_KEY_PEDIA_CATEGORY_BONUS", ())
 		self.szCategoryImprovements	= localText.getText("TXT_KEY_PEDIA_CATEGORY_IMPROVEMENT", ())
-		self.szCategoryCivs		= localText.getText("TXT_KEY_PEDIA_CATEGORY_CIV", ())
+		self.szCategoryCivs			= localText.getText("TXT_KEY_PEDIA_CATEGORY_CIV", ())
 		self.szCategoryLeaders		= localText.getText("TXT_KEY_PEDIA_CATEGORY_LEADER", ())
 		self.szCategoryTraits		= localText.getText("TXT_KEY_PEDIA_TRAITS", ())
 		self.szCategoryCivics		= localText.getText("TXT_KEY_PEDIA_CATEGORY_CIVIC", ())
@@ -333,32 +412,35 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		screen.setText(self.NEXT_ID, "Background", self.NEXT_TEXT, CvUtil.FONT_LEFT_JUSTIFY,   self.X_NEXT,  self.Y_NEXT,  0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_PEDIA_FORWARD, 1, -1)
 		screen.setText(self.EXIT_ID, "Background", self.EXIT_TEXT, CvUtil.FONT_RIGHT_JUSTIFY,  self.X_EXIT,  self.Y_EXIT,  0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1)
 
+
+
+	def placeCategories(self, iCategory=None):
+		screen = self.getScreen()
 		screen.addListBoxGFC(self.CATEGORY_LIST_ID, "", self.X_CATEGORIES, self.Y_CATEGORIES, self.W_CATEGORIES, self.H_CATEGORIES, TableStyles.TABLE_STYLE_STANDARD)
 		screen.enableSelect(self.CATEGORY_LIST_ID, True)
 		screen.setStyle(self.CATEGORY_LIST_ID, "Table_StandardCiv_Style")
-
-
-
-	def placeCategories(self):
-		screen = self.getScreen()
 		screen.clearListBoxGFC(self.CATEGORY_LIST_ID)
-		i = 1
-		for category in self.categoryList:
+		for i, category in enumerate(self.categoryList):
 			graphic = self.categoryGraphics[category[0]]
-			screen.appendListBoxStringNoUpdate(self.CATEGORY_LIST_ID, graphic + category[1], WidgetTypes.WIDGET_PEDIA_MAIN, SevoScreenEnums.PEDIA_MAIN + i, 0, CvUtil.FONT_LEFT_JUSTIFY)
-			i += 1
+			screen.appendListBoxStringNoUpdate(self.CATEGORY_LIST_ID, graphic + category[1], WidgetTypes.WIDGET_PEDIA_MAIN, SevoScreenEnums.PEDIA_MAIN + i + 1, 0, CvUtil.FONT_LEFT_JUSTIFY)
 		screen.updateListBox(self.CATEGORY_LIST_ID)
 
 
 
 	def placeTechs(self):
-		self.list = self.getSortedList(gc.getNumTechInfos(), gc.getTechInfo)
+		self.list = self.getTechList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, gc.getTechInfo)
+	
+	def getTechList(self):
+		return self.getSortedList(gc.getNumTechInfos(), gc.getTechInfo)
 
 
 	def placeUnits(self):
-		self.list = self.getSortedList(gc.getNumUnitInfos(), gc.getUnitInfo)
+		self.list = self.getUnitList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, gc.getUnitInfo)
+	
+	def getUnitList(self):
+		return self.getSortedList(gc.getNumUnitInfos(), gc.getUnitInfo)
 
 
 	def placeUnitUpgrades(self):
@@ -373,13 +455,19 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def placeUnitCategories(self):
-		self.list = self.getSortedList(gc.getNumUnitCombatInfos(), gc.getUnitCombatInfo)
+		self.list = self.getUnitCategoryList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT_COMBAT, gc.getUnitCombatInfo)
+	
+	def getUnitCategoryList(self):
+		return self.getSortedList(gc.getNumUnitCombatInfos(), gc.getUnitCombatInfo)
 
 
 	def placePromotions(self):
-		self.list = self.getSortedList(gc.getNumPromotionInfos(), gc.getPromotionInfo)
+		self.list = self.getPromotionList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, gc.getPromotionInfo)
+	
+	def getPromotionList(self):
+		return self.getSortedList(gc.getNumPromotionInfos(), gc.getPromotionInfo)
 
 
 	def placePromotionTree(self):
@@ -394,63 +482,99 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def placeBuildings(self):
-		self.list = self.pediaBuilding.getBuildingSortedList(0)
+		self.list = self.getBuildingList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, gc.getBuildingInfo)
+	
+	def getBuildingList(self):
+		return self.pediaBuilding.getBuildingSortedList(0)
 
 
 	def placeNationalWonders(self):
-		self.list = self.pediaBuilding.getBuildingSortedList(1)
+		self.list = self.getNationalWonderList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, gc.getBuildingInfo)
+	
+	def getNationalWonderList(self):
+		return self.pediaBuilding.getBuildingSortedList(1)
 
 
 	def placeGreatWonders(self):
-		self.list = self.pediaBuilding.getBuildingSortedList(2)
+		self.list = self.getGreatWonderList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, gc.getBuildingInfo)
+	
+	def getGreatWonderList(self):
+		return self.pediaBuilding.getBuildingSortedList(2)
 
 
 	def placeProjects(self):
-		self.list = self.getSortedList(gc.getNumProjectInfos(), gc.getProjectInfo)
+		self.list = self.getProjectList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROJECT, gc.getProjectInfo)
+	
+	def getProjectList(self):
+		return self.getSortedList(gc.getNumProjectInfos(), gc.getProjectInfo)
 
 
 	def placeSpecialists(self):
-		self.list = self.getSortedList(gc.getNumSpecialistInfos(), gc.getSpecialistInfo)
+		self.list = self.getSpecialistList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_SPECIALIST, gc.getSpecialistInfo)
+	
+	def getSpecialistList(self):
+		return self.getSortedList(gc.getNumSpecialistInfos(), gc.getSpecialistInfo)
 
 
 	def placeTerrains(self):
-		self.list = self.getSortedList(gc.getNumTerrainInfos(), gc.getTerrainInfo)
+		self.list = self.getTerrainList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_TERRAIN, gc.getTerrainInfo)
+	
+	def getTerrainList(self):
+		return self.getSortedList(gc.getNumTerrainInfos(), gc.getTerrainInfo)
 
 
 	def placeFeatures(self):
-		self.list = self.getSortedList(gc.getNumFeatureInfos(), gc.getFeatureInfo)
+		self.list = self.getFeatureList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_FEATURE, gc.getFeatureInfo)
+	
+	def getFeatureList(self):
+		return self.getSortedList(gc.getNumFeatureInfos(), gc.getFeatureInfo)
 
 
 	def placeBonuses(self):
-		self.list = self.getSortedList(gc.getNumBonusInfos(), gc.getBonusInfo)
+		self.list = self.getBonusList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, gc.getBonusInfo)
+	
+	def getBonusList(self):
+		return self.getSortedList(gc.getNumBonusInfos(), gc.getBonusInfo)
 
 
 	def placeImprovements(self):
-		self.list = self.getSortedList(gc.getNumImprovementInfos(), gc.getImprovementInfo)
+		self.list = self.getImprovementList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_IMPROVEMENT, gc.getImprovementInfo)
+	
+	def getImprovementList(self):
+		return self.getSortedList(gc.getNumImprovementInfos(), gc.getImprovementInfo)
 
 
 	def placeCivs(self):
-		self.list = self.getSortedList(gc.getNumCivilizationInfos(), gc.getCivilizationInfo)
+		self.list = self.getCivilizationList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIV, gc.getCivilizationInfo)
+	
+	def getCivilizationList(self):
+		return self.getSortedList(gc.getNumCivilizationInfos(), gc.getCivilizationInfo)
 
 
 	def placeLeaders(self):
-		self.list = self.getSortedList(gc.getNumLeaderHeadInfos(), gc.getLeaderHeadInfo)
+		self.list = self.getLeaderList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_LEADER, gc.getLeaderHeadInfo)
+	
+	def getLeaderList(self):
+		return self.getSortedList(gc.getNumLeaderHeadInfos(), gc.getLeaderHeadInfo)
 
 
 	def placeTraits(self):
-		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getTraitInfo, True)
+		self.list = self.getTraitList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, self.getTraitInfo)
+	
+	def getTraitList(self):
+		return self.getSortedList(gc.getNumNewConceptInfos(), self.getTraitInfo, True)
 
 	def getTraitInfo(self, id):
 		info = gc.getNewConceptInfo(id)
@@ -476,28 +600,43 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def placeCivics(self):
-		self.list = self.getSortedList(gc.getNumCivicInfos(), gc.getCivicInfo)
+		self.list = self.getCivicList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIVIC, gc.getCivicInfo)
+	
+	def getCivicList(self):
+		return self.getSortedList(gc.getNumCivicInfos(), gc.getCivicInfo)
 
 
 	def placeReligions(self):
-		self.list = self.getSortedList(gc.getNumReligionInfos(), gc.getReligionInfo)
+		self.list = self.getReligionList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_RELIGION, gc.getReligionInfo)
+	
+	def getReligionList(self):
+		return self.getSortedList(gc.getNumReligionInfos(), gc.getReligionInfo)
 
 
 	def placeCorporations(self):
-		self.list = self.getSortedList(gc.getNumCorporationInfos(), gc.getCorporationInfo)
+		self.list = self.getCorporationList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_JUMP_TO_CORPORATION, gc.getCorporationInfo)
+	
+	def getCorporationList(self):
+		return self.getSortedList(gc.getNumCorporationInfos(), gc.getCorporationInfo)
 
 
 	def placeConcepts(self):
-		self.list = self.getSortedList(gc.getNumConceptInfos(), gc.getConceptInfo)
+		self.list = self.getConceptList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, gc.getConceptInfo)
+	
+	def getConceptList(self):
+		return self.getSortedList(gc.getNumConceptInfos(), gc.getConceptInfo)
 
 
 	def placeBTSConcepts(self):
-		self.list = self.getSortedList(gc.getNumNewConceptInfos(), self.getNewConceptInfo)
+		self.list = self.getNewConceptList()
 		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, self.getNewConceptInfo)
+	
+	def getNewConceptList(self):
+		return self.getSortedList(gc.getNumNewConceptInfos(), self.getNewConceptInfo)
 
 	def getNewConceptInfo(self, id):
 		info = gc.getNewConceptInfo(id)
@@ -581,7 +720,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			screen.appendTableRow(self.ITEM_LIST_ID)
 			screen.setTableText(self.ITEM_LIST_ID, 0, i, u"<font=3>" + item[0] + u"</font>", info(item[1]).getButton(), widget, data1, data2, CvUtil.FONT_LEFT_JUSTIFY)
 			i += 1
-		screen.updateListBox(self.ITEM_LIST_ID)
+		#screen.updateListBox(self.ITEM_LIST_ID)
 
 
 
@@ -604,45 +743,45 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def link(self, szLink):
 		if (szLink == "PEDIA_MAIN_TECH"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TECHS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TECHS, True, True)
 		elif (szLink == "PEDIA_MAIN_UNIT"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_UNITS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_UNITS, True, True)
 		elif (szLink == "PEDIA_MAIN_UNIT_GROUP"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_UNIT_CATEGORIES, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_UNIT_CATEGORIES, True, True)
 		elif (szLink == "PEDIA_MAIN_PROMOTION"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_PROMOTIONS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_PROMOTIONS, True, True)
 		elif (szLink == "PEDIA_MAIN_BUILDING"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_BUILDINGS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_BUILDINGS, True, True)
 		elif (szLink == "PEDIA_MAIN_PROJECT"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_PROJECTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_PROJECTS, True, True)
 		elif (szLink == "PEDIA_MAIN_SPECIALIST"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_SPECIALISTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_SPECIALISTS, True, True)
 		elif (szLink == "PEDIA_MAIN_TERRAIN"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TERRAINS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TERRAINS, True, True)
 		elif (szLink == "PEDIA_MAIN_FEATURE"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_FEATURES, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_FEATURES, True, True)
 		elif (szLink == "PEDIA_MAIN_BONUS"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_BONUSES, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_BONUSES, True, True)
 		elif (szLink == "PEDIA_MAIN_IMPROVEMENT"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_IMPROVEMENTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_IMPROVEMENTS, True, True)
 		elif (szLink == "PEDIA_MAIN_CIV"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVS, True, True)
 		elif (szLink == "PEDIA_MAIN_LEADER"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_LEADERS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_LEADERS, True, True)
 		elif (szLink == "PEDIA_MAIN_TRAIT"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TRAITS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_TRAITS, True, True)
 		elif (szLink == "PEDIA_MAIN_CIVIC"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVICS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CIVICS, True, True)
 		elif (szLink == "PEDIA_MAIN_RELIGION"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_RELIGIONS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_RELIGIONS, True, True)
 		elif (szLink == "PEDIA_MAIN_CONCEPT"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CONCEPTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CONCEPTS, True, True)
 		elif (szLink == "PEDIA_MAIN_HINTS"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_HINTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_HINTS, True, True)
 		elif (szLink == "PEDIA_MAIN_SHORTCUTS"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_SHORTCUTS, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_SHORTCUTS, True, True)
 		elif (szLink == "PEDIA_MAIN_STRATEGY"):
-			self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_STRATEGY, True, True)
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_STRATEGY, True, True)
 
 		for i in range(gc.getNumTechInfos()):
 			if (gc.getTechInfo(i).isMatchForLink(szLink, False)):
@@ -704,6 +843,12 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def handleInput (self, inputClass):
 		if (inputClass.getPythonFile() == SevoScreenEnums.PEDIA_LEADERS):
 			return self.pediaLeader.handleInput(inputClass)
+		if (inputClass.getFunctionName() == self.TOC_ID):
+			self.showContents()
+			return 1
+		if (inputClass.getFunctionName() == self.INDEX_ID):
+			self.showIndex()
+			return 1
 		return 0
 
 
@@ -716,6 +861,10 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			screen.deleteWidget(self.getNextWidgetName())
 		self.nWidgetCount = 0
 
+	def deleteListWidgets(self):
+		screen = self.getScreen()
+		screen.deleteWidget("PediaMainCategoryList")
+		screen.deleteWidget("PediaMainItemList")
 
 	def getNextWidgetName(self):
 		szName = self.WIDGET_ID + str(self.nWidgetCount)

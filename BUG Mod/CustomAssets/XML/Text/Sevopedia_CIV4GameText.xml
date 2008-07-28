@@ -13,6 +13,22 @@
 		<Spanish>SEVOPEDIA 2.3.1</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_PEDIA_SCREEN_INDEX</Tag>
+		<English>Index</English>
+		<French>Index</French>
+		<German>Index</German>
+		<Italian>Indice</Italian>
+		<Spanish>Indice</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_SCREEN_CONTENTS</Tag>
+		<English>Contents</English>
+		<French>Matières</French>
+		<German>Inhalts</German>
+		<Italian>Soddisfare</Italian>
+		<Spanish>Contenido</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
 		<English>Unit Upgrades</English>
 		<French>Améliorations des Unités</French>
