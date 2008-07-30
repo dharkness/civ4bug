@@ -81,8 +81,12 @@ EventKeyUp=7
 # BUG - Events - start
 # List of unreported Events
 SilentEvents = [EventEditCityName, EventEditUnitName, 
+# Logger
 				EventLogOpen, EventCustomLogEntry, 
-				EventReminderStore, EventReminderRecall, EventReminderRecallAgain]
+# Reminders
+				EventReminderStore, EventReminderRecall, EventReminderRecallAgain,
+# Unit Renamer
+				EventUnitRename]
 # BUG - Events - end
 
 # Popup defines (TODO: Expose these from C++)
