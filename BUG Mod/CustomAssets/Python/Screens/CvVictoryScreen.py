@@ -68,12 +68,13 @@ class CvVictoryScreen:
 		self.TABLE2_WIDTH_1 = 265
 
 # BUG Additions Start
-		self.TABLE3_WIDTH_0 = 600
-		self.TABLE3_WIDTH_1 = 100
-		self.TABLE3_WIDTH_2 = 100
-		self.TABLE3_WIDTH_3 = 200
+		self.TABLE3_WIDTH_0 = 450
+		self.TABLE3_WIDTH_1 = 80
+		self.TABLE3_WIDTH_2 = 80
+		self.TABLE3_WIDTH_3 = 80
+		self.TABLE3_WIDTH_4 = 80
+		self.TABLE3_WIDTH_5 = 200
 # BUG Additions End
-
 
 		self.X_LINK = 100
 		self.DX_LINK = 220
@@ -241,28 +242,30 @@ class CvVictoryScreen:
 
 		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
 		szTable = self.getNextWidgetName()
-		screen.addTableControlGFC(szTable, 4, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
 		screen.enableSelect(szTable, False)		
-#		screen.setTableColumnHeader(szTable, 0, "", self.TABLE2_WIDTH_0)
-#		screen.setTableColumnHeader(szTable, 1, "", self.TABLE2_WIDTH_1)
 
 # BUG Additions Start
 		screen.setTableColumnHeader(szTable, 0, "", self.TABLE3_WIDTH_0)
 		screen.setTableColumnHeader(szTable, 1, "", self.TABLE3_WIDTH_1)
 		screen.setTableColumnHeader(szTable, 2, "", self.TABLE3_WIDTH_2)
 		screen.setTableColumnHeader(szTable, 3, "", self.TABLE3_WIDTH_3)
+		screen.setTableColumnHeader(szTable, 4, "", self.TABLE3_WIDTH_4)
+		screen.setTableColumnHeader(szTable, 5, "", self.TABLE3_WIDTH_5)
 # BUG Additions End
 
 		for i in range(gc.getNumVoteSourceInfos()):
 			if gc.getGame().isDiploVote(i):
 				kVoteSource = gc.getVoteSourceInfo(i)
 				iRow = screen.appendTableRow(szTable)
+# BUG Additions Start
 				sTableHeader = u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>"
 				if (gc.getGame().getVoteSourceReligion(i) != -1):
 					screen.setTableText(szTable, 2, iRow, gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					sTableHeader += " (" + gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription() + ")"
 				screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					
+# BUG Additions End
+
 				iSecretaryGeneralVote = -1
 				if (gc.getGame().canHaveSecretaryGeneral(i) and -1 != gc.getGame().getSecretaryGeneral(i)):		
 					for j in range(gc.getNumVoteInfos()):
@@ -278,7 +281,6 @@ class CvVictoryScreen:
 # BUG Additions Start
 				lMembers = []
 				for j in range(gc.getMAX_PLAYERS()):
-#tjp
 					pPlayer = gc.getPlayer(j)
 					if pPlayer.isAlive() and not pPlayer.isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(pPlayer.getTeam()):
 						iPlayer = j
@@ -304,8 +306,12 @@ class CvVictoryScreen:
 				# determine the two candidates, add to header
 				iCandidate1 = lMembers[0][4]
 				iCandidate2 = lMembers[1][4]
-				screen.setTableText(szTable, 1, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-				screen.setTableText(szTable, 2, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+				iVote1 = 0
+				iVote2 = 0
+				screen.setTableText(szTable, 1, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+				screen.setTableText(szTable, 2, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+				screen.setTableText(szTable, 3, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+				screen.setTableText(szTable, 4, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 				for lMember in lMembers:
 					szPlayerText = lMember[2]
@@ -314,41 +320,34 @@ class CvVictoryScreen:
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
-					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate1, False, True, False, False)
-					if szText != None:
-						screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate1, CvUtil.FONT_LEFT_JUSTIFY)
+					if lMember[4] != activePlayer:
+						szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate1, True, True, False, False)
+						if szText != None:
+							screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate1, CvUtil.FONT_CENTER_JUSTIFY)
 
-					szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate2, False, True, False, False)
-					if szText != None:
-						screen.setTableText(szTable, 2, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_LEFT_JUSTIFY)
+						szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate2, True, True, False, False)
+						if szText != None:
+							screen.setTableText(szTable, 2, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
-#					szText = gc.getPlayer(iCandidate2).getName()   #AttitudeUtils.getAttitudeText (iCandidate1, lMember[4], vOnlyNumbers = False)
-#					screen.setTableText(szTable, 2, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#					screen.setTableText(szTable, 1, iRow, "GG", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], activePlayer, CvUtil.FONT_LEFT_JUSTIFY)
+					iVote = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2)
+					if iVote == -1: #abstain
+						screen.setTableText(szTable, 3, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+						screen.setTableText(szTable, 4, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+					elif iVote == 1: #votes for candidate 1
+						iVote1 += 10000 - lMember[1]
+						screen.setTableText(szTable, 3, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+					else: # votes for candidate 2
+						iVote2 += 10000 - lMember[1]
+						screen.setTableText(szTable, 4, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
-#						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET - 2 + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + self.Y_Text_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
+					screen.setTableText(szTable, 5, iRow, lMember[3], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 
-
-					screen.setTableText(szTable, 3, iRow, lMember[3], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+				iRow = screen.appendTableRow(szTable)
+				sTableHeader = u"<font=3b>Total</font>"
+				screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+				screen.setTableText(szTable, 3, iRow, str(iVote1), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+				screen.setTableText(szTable, 4, iRow, str(iVote2), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 # BUG Additions End
-
-#				for j in range(gc.getMAX_PLAYERS()):
-#					if gc.getPlayer(j).isAlive() and not gc.getPlayer(j).isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(gc.getPlayer(j).getTeam()):
-#						szPlayerText = gc.getPlayer(j).getName()
-#						if (-1 != iSecretaryGeneralVote):
-#							szPlayerText += localText.getText("TXT_KEY_VICTORY_SCREEN_PLAYER_VOTES", (gc.getPlayer(j).getVotes(iSecretaryGeneralVote, i), )) 
-#						if (gc.getGame().canHaveSecretaryGeneral(i) and gc.getGame().getSecretaryGeneral(i) == gc.getPlayer(j).getTeam()):
-#							iRow = screen.appendTableRow(szTable)
-#							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#							screen.setTableText(szTable, 1, iRow, gc.getVoteSourceInfo(i).getSecretaryGeneralText(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#						elif (gc.getPlayer(j).isFullMember(i)):
-#							iRow = screen.appendTableRow(szTable)
-#							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#						elif (gc.getPlayer(j).isVotingMember(i)):
-#							iRow = screen.appendTableRow(szTable)
-#							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 		self.drawTabs()
 
@@ -555,29 +554,6 @@ class CvVictoryScreen:
 
 		self.bVoteTab = (len(aiVoteBuildingClass) > 0)
 
-# BUG Additions Start
-		# check if anyone has built the apollo project (PROJECT_APOLLO_PROGRAM)
-#		bApollo = False
-#		for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
-#			if (gc.getTeam(iLoopTeam).isAlive()
-#			and not gc.getTeam(iLoopTeam).isMinorCiv()
-#			and not gc.getTeam(iLoopTeam).isBarbarian()):
-#				if iLoopTeam == iActiveTeam:
-#					bContact = True
-#				elif (activePlayer.getTeam().isHasMet(iLoopTeam)
-#				or gc.getGame().isDebugMode()):
-#					bContact = True
-#				else:
-#					bContact = False
-
-#				if bContact:
-#					for i in range(gc.getNumProjectInfos()):
-#						if (gc.getProjectInfo(i).getXmlVal() == "PROJECT_APOLLO_PROGRAM"):
-#						if (gc.getProjectInfo(i).getType() == ProjectTypes.PROJECT_APOLLO_PROGRAM):
-#							if gc.getTeam(iLoopTeam).getProjectCount(i) > 0:
-#								bApollo = True
-# BUG Additions End
-
 		self.deleteAllWidgets()	
 		screen = self.getScreen()
 														
@@ -730,58 +706,63 @@ class CvVictoryScreen:
 									teamProject += gc.getTeam(iLoopTeam).getProjectCount(i)
 							if (teamProject > bestProject):
 								bestProject = teamProject
-								iBestProjectTeam = iLoopTeam					
-					
+								iBestProjectTeam = iLoopTeam
+
+# BUG Additions Start
+				bApolloShown = False
 				for i in range(gc.getNumProjectInfos()):
 					if (gc.getProjectInfo(i).getVictoryThreshold(iLoopVC) > 0):
-						iRow = screen.appendTableRow(szTable)
-						if (gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC)):
-							szNumber = unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
+						if not self.isApolloBuilt():
+							iRow = screen.appendTableRow(szTable)
+							screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_PROJECT_APOLLO_PROGRAM", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 3, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_NOT_BUILT", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							bEntriesFound = True
+							break
 						else:
-							szNumber = unicode(gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC)) + u"-" + unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
-# BUG Additions Start
-#BUG
-#gc.getProjectInfo(i).getTechPrereq()
-#gc.getTeam(gc.getPlayer(self.iCivSelected).getTeam()).isHasTech(i)
-#COLOR_GREEN
-#										szCost = localText.changeTextColor(szCost, iPossibleColor)
-						iReqTech = gc.getProjectInfo(i).getTechPrereq()
-						bHasTech = gc.getTeam(iActiveTeam).isHasTech(iReqTech)
-						sSSPart = localText.getText("TXT_KEY_VICTORY_SCREEN_BUILDING", (szNumber, gc.getProjectInfo(i).getTextKey()))
-						sSSPlayer = activePlayer.getTeam().getName() + ":"
-						sSSCount = str(activePlayer.getTeam().getProjectCount(i))
+							if not bApolloShown:
+								bApolloShown = True
+								iRow = screen.appendTableRow(szTable)
+								screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_PROJECT_APOLLO_PROGRAM", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+								screen.setTableText(szTable, 2, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_BUILT", (activePlayer.getTeam().getName(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+								if (iBestProjectTeam != -1):
+									screen.setTableText(szTable, 4, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_BUILT", (gc.getTeam(iBestProjectTeam).getName(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
-						iHasTechColor = -1
-						if bHasTech:
-							iHasTechColor = ColorUtil.keyToType("COLOR_YELLOW")
-						elif activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
-							iHasTechColor = ColorUtil.keyToType("COLOR_BLUE")
-						elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
-							iHasTechColor = ColorUtil.keyToType("COLOR_GREEN")
+							iRow = screen.appendTableRow(szTable)
+							if (gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC)):
+								szNumber = unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
+							else:
+								szNumber = unicode(gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC)) + u"-" + unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
 
-						if iHasTechColor > 0:
-							sSSPlayer = localText.changeTextColor(activePlayer.getTeam().getName() + ":", iHasTechColor)
-							sSSCount = localText.changeTextColor(str(activePlayer.getTeam().getProjectCount(i)), iHasTechColor)
-							sSSPlayer = str(gc.getProjectInfo(i).getProjectsNeeded(iLoopVC))
+							iReqTech = gc.getProjectInfo(i).getTechPrereq()
+							bHasTech = gc.getTeam(iActiveTeam).isHasTech(iReqTech)
+							sSSPart = localText.getText("TXT_KEY_VICTORY_SCREEN_BUILDING", (szNumber, gc.getProjectInfo(i).getTextKey()))
+							sSSPlayer = activePlayer.getTeam().getName() + ":"
+							sSSCount = "%i (%i)" % (activePlayer.getTeam().getProjectCount(i), activePlayer.getTeam().getProjectMaking(i))
 
-						pPlayer = activePlayer.CyGet()
-						sSSPlayer = "%s" % (pPlayer.canCreate(i, True, True))  # ignores apollo project status
-						sSSPlayer = "%s" % (pPlayer.canCreate(i, True, False)) # requires apollo project to be built
+							iHasTechColor = -1
+							if activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
+								iSSColor = ColorUtil.keyToType("COLOR_GREEN")
+							elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
+								iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
 
-						screen.setTableText(szTable, 0, iRow, sSSPart, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							if iSSColor > 0:
+								sSSPlayer = localText.changeTextColor(activePlayer.getTeam().getName() + ":", iSSColor)
+								sSSCount = localText.changeTextColor(str(activePlayer.getTeam().getProjectCount(i)), iSSColor)
+
+							screen.setTableText(szTable, 0, iRow, sSSPart, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							if bHasTech:
+								screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							
 # BUG Additions End
-						
-						#check if spaceship
-						#if (gc.getProjectInfo(i).isSpaceship() and (activePlayer.getTeam().getProjectCount(i) > 0)):
-						if (gc.getProjectInfo(i).isSpaceship()):
-							bSpaceshipFound = True
-						
-						if (iBestProjectTeam != -1):
-							screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestProjectTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-							screen.setTableText(szTable, 5, iRow, unicode(gc.getTeam(iBestProjectTeam).getProjectCount(i)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						bEntriesFound = True
+							if (gc.getProjectInfo(i).isSpaceship()):
+								bSpaceshipFound = True
+							
+							if (iBestProjectTeam != -1):
+								screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestProjectTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+								screen.setTableText(szTable, 5, iRow, unicode(gc.getTeam(iBestProjectTeam).getProjectCount(i)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							bEntriesFound = True
 						
 				#add spaceship button
 				if (bSpaceshipFound):
@@ -848,11 +829,13 @@ class CvVictoryScreen:
 								sString = "%i (-)" % (ourBestCities[i][0])
 							elif ourBestCities[i][2] > 100:
 								sString = "%i (100+)" % (ourBestCities[i][0])
+							elif ourBestCities[i][2] < 1:
+								sString = "%i (L)" % (ourBestCities[i][0])
 							else:
 								sString = "%i (%i)" % (ourBestCities[i][0], ourBestCities[i][2])
 							screen.setTableText(szTable, 3, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#							screen.setTableText(szTable, 3, iRow, str(ourBestCities[i][0]), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions End
+
 						if (len(theirBestCities) > i):
 							screen.setTableText(szTable, 4, iRow, theirBestCities[i][1].getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
@@ -861,11 +844,13 @@ class CvVictoryScreen:
 								sString = "%i (-)" % (theirBestCities[i][0])
 							elif theirBestCities[i][2] > 100:
 								sString = "%i (100+)" % (theirBestCities[i][0])
+							elif theirBestCities[i][2] < 1:
+								sString = "%i (L)" % (theirBestCities[i][0])
 							else:
 								sString = "%i (%i)" % (theirBestCities[i][0], theirBestCities[i][2])
 							screen.setTableText(szTable, 5, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-#							screen.setTableText(szTable, 5, iRow, unicode(theirBestCities[i][0]), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions End
+
 						if (i < victory.getNumCultureCities()-1):
 							iRow = screen.appendTableRow(szTable)
 					bEntriesFound = True
@@ -917,7 +902,73 @@ class CvVictoryScreen:
 				return listCultureCities
 		return []					
 
+# BUG Additions Start
+	def getVotesForWhichCandidate(self, iPlayer, iCand1, iCand2):
+		# returns are 1 = vote for candidate 1
+		#             2 = vote for candidate 2
+		#            -1 = abstain
 
+		# * AI votes for itself if it can
+		# * AI votes for a team member if it can
+		# * AI votes for its master, if it is a vassal
+		# * if the AI attitude to one of the candidates is 'friendly' and the other is 'pleased' or less, AI votes for 'friend'
+		# * if both candidates are at 'friendly' status, votes for one with highest attitude
+		# * if neither candidate is at 'friendly', abstains
+
+		# * AI votes for itself if it can
+		if iPlayer == iCand1:
+			return 1
+		if iPlayer == iCand2:
+			return 2
+
+		# if player is human, votes for self or abstains
+		if iPlayer == self.iActivePlayer:
+			return -1
+
+		iPTeam = gc.getPlayer(iPlayer).getTeam()
+		iC1Team = gc.getPlayer(iCand1).getTeam()
+		iC2Team = gc.getPlayer(iCand2).getTeam()
+
+		# * AI votes for a team member if it can
+		# * AI votes for its master, if it is a vassal
+		if (gc.getTeam(iC1Team).isVassal(iPTeam)
+		or  iC1Team == iPTeam):
+			return 1
+
+		if (gc.getTeam(iC2Team).isVassal(iPTeam)
+		or  iC2Team == iPTeam):
+			return 2
+
+		# get player category (friendly) to candidates
+		iC1Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand1)
+		iC2Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand2)
+
+		# * if neither candidate is at 'friendly', abstains
+		# assumes friendly = 4, pleased = 3, etc
+		if (iC1Cat < 4
+		and iC2Cat < 4):
+			return -1
+
+		# * if the AI attitude to one of the candidates is 'friendly' and the other is 'pleased' or less, AI votes for 'friend'
+		if (iC1Cat == 4
+		and iC2Cat < 4):
+			return 1
+
+		if (iC1Cat < 4
+		and iC2Cat == 4):
+			return 2
+
+		# get player attitude to candidates
+		iC1Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand1)
+		iC2Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand2)
+
+		# * if both candidates are at 'friendly' status, votes for one with highest attitude
+		if iC2Att > iC1Att: # ties go to Candidate #1
+			return 1
+		else:
+			return 2
+
+		return -1
 
 	def canBuildSSComponent(self, vTeam, vComponent):
 		if(not vTeam.isHasTech(vComponent.getTechPrereq())):
@@ -927,11 +978,45 @@ class CvVictoryScreen:
 				if(vTeam.getProjectCount(j) < vComponent.getProjectsNeeded(j)):
 					return False
 		return True
-							
 
+	def isApolloBuilt(self):
+		activePlayer = gc.getPlayer(self.iActivePlayer)
+		iActiveTeam = activePlayer.getTeam()
 
-				
-										
+		# check if anyone has built the apollo project (PROJECT_APOLLO_PROGRAM)
+		for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
+			pLoopTeam = gc.getTeam(iLoopTeam)
+			if (pLoopTeam.isAlive()
+			and not pLoopTeam.isMinorCiv()
+			and not pLoopTeam.isBarbarian()):
+				if iLoopTeam == iActiveTeam:
+					bContact = True
+				elif (gc.getTeam(iActiveTeam).isHasMet(iLoopTeam)
+				or gc.getGame().isDebugMode()):
+					bContact = True
+				else:
+					bContact = False
+
+				if bContact:
+					if self.isApolloBuiltbyTeam(pLoopTeam):
+						return True
+		return False
+
+	def isApolloBuiltbyTeam(self, vTeam):
+		for i in range(gc.getNumProjectInfos()):
+			component = gc.getProjectInfo(i)
+			if (component.isSpaceship()):
+				bApollo = True
+				for j in range(gc.getNumProjectInfos()):
+					if(vTeam.getProjectCount(j) < component.getProjectsNeeded(j)):
+						bApollo = False
+				if bApollo:
+					return True
+				break
+
+		return False
+# BUG Additions End
+
 	# returns a unique ID for a widget in this screen
 	def getNextWidgetName(self):
 		szName = self.WIDGET_ID + str(self.nWidgetCount)
