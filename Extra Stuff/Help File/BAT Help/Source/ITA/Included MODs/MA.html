@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Military Advisor</TITLE>
+	<STYLE TYPE="text/css">
+	<!--
+		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 16pt; font-style: italic; font-weight: bold }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="it-IT" DIR="LTR">
+<P CLASS="style1">Military Advisor (Consigliere Militare Evoluto)</P>
+<P CLASS="style3">di Ruff_hi &amp; EmperorFool</P>
+<br>
+<P>Il Consigliere Militare Evoluto è ora diviso in due sezioni, <b>'Spiegamento'</b> e <b>'Rapporti'</b>.<br>
+La scheda <b>'Spiegamento'</b> rende più facile il ritrovamento delle Unità raggruppandole per locazione e per tipo.<br>
+La scheda <b>'Rapporti'</b> è il luogo ove trovare informazioni relative ai rapporti con le altre Civiltà in ottica militare.</P>
+<P>La scheda <b>'Rapporti'</b> mostra le segenti informazioni (in ordine da sinistra a destra) per ogni Civiltà conosciuta:
+<ul>
+  <li>l'icona del leader della Civiltà</li>
+  <li>eventualmente l'icona del pugno per indicare che le Civiltà in questione sono impegnate a pianificare una guerra o a combatterla</li>
+  <li>l'icona del leader considerato il 'Peggior Nemico' dalla Civiltà</li>
+  <li>il Livello di Rischio, che fornisce una idea approssimativa del livello di minaccia che quella Civiltà costituisce per il giocatore</li>
+  <li>i Vantaggi Strategici, sia per il giocatore nei confronti della civiltà, che della civiltà nei confronti del giocatore</li>
+  <li>le icone dei leader con cui la Civiltà è in guerra e quelle dei leader a cui potrebbe dichiararla entro breve</li>
+  <li>eventualmente, un'indicatore della condizione di Vassallaggio della Civiltà nei confronti di un'altra Civiltà</li>
+  <li>eventualmente, un'indicatore dell'esistenza di un Patto difensivo della Civiltà con un'altra Civiltà</li>
+</ul>
+
+<p><b>Livello di Rischio</b><br><br>
+Il Livello di Rischio è un indicatore a cinque stati che varia in base ad un <b>Indice di Minaccia</b> percentuale, nel modo seguente:
+<UL>
+	<LI><FONT COLOR="#0000ff">Rischio Basso</FONT> Indice di Minaccia inferiore al 15% 
+	<LI><FONT COLOR="#0000ff">Prudenza</FONT> Indice di Minaccia superiore o uguale al 15% ma inferiore al 35%
+	<LI><FONT COLOR="#0000ff">Rischio Notevole</FONT> Indice di Minaccia superiore o uguale al 35% ma inferiore al 55%
+	<LI><FONT COLOR="#0000ff">Allarme</FONT> Indice di Minaccia superiore o uguale al 55% ma inferiore al 75%
+	<LI><FONT COLOR="#0000ff">Grave Allarme</FONT> Indice di Minaccia superiore o uguale al 75%
+</UL>
+L'Indice di Minaccia è basato su due componenti principali e su alcuni aggiustamenti.<br>
+Il primo componente è quello delle <b>Relazioni</b>, che contribuisce all'Indice di Minaccia con un numero di punti variabile fra 0 e 38. 
+E' basato sulle attitudini positive e negative della civiltà nei confronti del giocatore e varia linearmente fra i valori limite di -15 e +15.<br>
+Il secondo componente è quello della <b>Potenza</b>, che contribuisce all'Indice di Minaccia  con un numero di punti variabile fra 0 e 38. 
+E' basato sul Rapporto di Forza (calcolato da <i>Civ4</i>) fra la Civiltà e il giocatore e varia linearmente fra i valori limite di 0.5 e 1.5.  
+Se il Rapporto di Forza della Civiltà non è noto (per insufficienza di Punti Spionaggio), viene prudenzialmente stimato in 28.5% (38 * 0.75) e 
+al Livello di Rischio viene aggiunta l'etichetta <b>"est"</b> ("stimato").<br>
+Per quanto riguarda gli <b>Aggiustamenti</b>, 
+se il giocatore ha in vigore un Patto Difensivo con la Civiltà, l'Indice di Minaccia viene moltiplicato per 0.2;
+se la Civiltà è impegnata a pianificare una guerra, l'Indice di Minaccia viene moltiplicato per 1.3.
+<br><br>
+<p><b>Vantaggi strategici</b><br><br>
+Ogni Unità militare che il giocatore è in grado di costruire (per Tecnologia e Risorse) ma la Civiltà no (prendendo in considerazione 
+anche i possibili Avanzamenti) costituisce un Vantaggio Strategico per il giocatore, e viceversa 
+ogni Unità militare che la Civiltà è in grado di costruire ma il giocatore no costituisce un Vantaggio Strategico per la Civiltà.<br>
+Per esempio se il giocatore puù costruire i Cavalieri e la Civiltà può costruire gli Arcieri a Cavallo, 
+il giocatore ha un Vantaggio strategico nei Cavalieri, mentre la Civiltà non ne ha 
+(i Cavalieri del giocatore annullano gli Arcieri a Cavallo della civiltà anche se il giocatore non può produrli, 
+perchè i Cavalieri sono un avanzamento degli Arcieri a Cavallo).<br>
+Si noti che i Vantaggi Strategici prendono in considerazione solo le Unità militari: 
+Lavoratori, Coloni, Missionari, Agenti corporativi, Spie e simili non vengono considerati.
+Inoltre, i Vantaggi Strategici, per essere visualizzati, necessitano che siate a conoscenza delle tercnologie e dell'accesso alle Risorse 
+della Civiltà, altrimenti viene visualizzata una icona di divieto. 
+Le Unità Uniche costituiscono un Vantaggio Strategico che non viene annullato dall'accesso alle corrispondenti Unità standard. 
+
+
+
+
+
+
+
+
+<br>
+<P CLASS="style1">Istruzioni</P>
+<P>Il Consigliere Militare Evoluto può essere abilitato/disabilitato nella <b><i>Schermata delle Opzioni del BUG Mod</i></b> (<b>Ctrl+Alt+O</b>), 
+semplicemente selezionando/deselezionando la casella di spunta <i>'Consigliere Militare evoluto'</i> nella scheda <A HREF="../Options/Advisors.html">Consiglieri</A>.<br>
+<br>
+<P CLASS="style1">Crediti</P>
+<P>Forum: <a href="http://forums.civfanatics.com/showthread.php?t=270962" target="_blank">http://forums.civfanatics.com/showthread.php?t=270962</a></P>
+<P>Autore: <FONT COLOR="#0000ff"><I><B>Ruff_hi</B></I></FONT> &amp; <FONT COLOR="#0000ff"><I><B>EmperorFool</B></I></FONT></P>
+<br>
+
+</BODY>
+</HTML>
