@@ -7,6 +7,7 @@ import PyHelpers
 import time
 import ColorUtil
 import AttitudeUtils
+import TechUtil
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -709,10 +710,12 @@ class CvVictoryScreen:
 						bEntriesFound = True
 						
 				iBestProjectTeam = -1
-				bestProject = 0
+				bestProject = -1
 				for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
 					if (gc.getTeam(iLoopTeam).isAlive() and not gc.getTeam(iLoopTeam).isMinorCiv() and not gc.getTeam(iLoopTeam).isBarbarian()):
-						if (iLoopTeam != iActiveTeam and (activePlayer.getTeam().isHasMet(iLoopTeam) or gc.getGame().isDebugMode())):
+						if (iLoopTeam != iActiveTeam
+						and (activePlayer.getTeam().isHasMet(iLoopTeam) or gc.getGame().isDebugMode())
+						and self.isApolloBuiltbyTeam(gc.getTeam(iLoopTeam))):
 							teamProject = 0
 							for i in range(gc.getNumProjectInfos()):
 								if (gc.getProjectInfo(i).getVictoryThreshold(iLoopVC) > 0):					
@@ -756,27 +759,51 @@ class CvVictoryScreen:
 							iHasTechColor = -1
 							iSSColor = 0
 							if activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
+								sSSCount = "%i" % (activePlayer.getTeam().getProjectCount(i))
 								iSSColor = ColorUtil.keyToType("COLOR_GREEN")
 							elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
 								iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
 
 							if iSSColor > 0:
-								sSSPlayer = localText.changeTextColor(activePlayer.getTeam().getName() + ":", iSSColor)
-								sSSCount = localText.changeTextColor(str(activePlayer.getTeam().getProjectCount(i)), iSSColor)
+								sSSPlayer = localText.changeTextColor(sSSPlayer, iSSColor)
+								sSSCount = localText.changeTextColor(sSSCount, iSSColor)
 
 							screen.setTableText(szTable, 0, iRow, sSSPart, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 							screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 							if bHasTech:
 								screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 							
-# BUG Additions End
 							if (gc.getProjectInfo(i).isSpaceship()):
 								bSpaceshipFound = True
-							
+
+							# add AI space ship info
 							if (iBestProjectTeam != -1):
-								screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestProjectTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szTable, 5, iRow, unicode(gc.getTeam(iBestProjectTeam).getProjectCount(i)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+								pTeam = gc.getTeam(iBestProjectTeam)
+								sSSPlayer = gc.getTeam(iBestProjectTeam).getName() + ":"
+								sSSCount = "%i" % (pTeam.getProjectCount(i))
+								bHasTech = pTeam.isHasTech(iReqTech)
+
+								Techs = TechUtil.getVisibleKnownTechs(pTeam.getLeaderID(), self.iActivePlayer)
+								bHasTech = iReqTech in Techs
+
+								iHasTechColor = -1
+								iSSColor = 0
+								if pTeam.getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
+									sSSCount = "%i" % (pTeam.getProjectCount(i))
+									iSSColor = ColorUtil.keyToType("COLOR_GREEN")
+								elif pTeam.getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
+									iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
+
+								if iSSColor > 0:
+									sSSPlayer = localText.changeTextColor(sSSPlayer, iSSColor)
+									sSSCount = localText.changeTextColor(sSSCount, iSSColor)
+
+								screen.setTableText(szTable, 4, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+								if bHasTech:
+									screen.setTableText(szTable, 5, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 							bEntriesFound = True
+# BUG Additions End
 						
 				#add spaceship button
 				if (bSpaceshipFound):
