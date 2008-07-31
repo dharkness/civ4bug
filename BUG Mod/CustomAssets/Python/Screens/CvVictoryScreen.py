@@ -261,7 +261,7 @@ class CvVictoryScreen:
 # BUG Additions Start
 				sTableHeader = u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>"
 				if (gc.getGame().getVoteSourceReligion(i) != -1):
-					screen.setTableText(szTable, 2, iRow, gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+#					screen.setTableText(szTable, 2, iRow, gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					sTableHeader += " (" + gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription() + ")"
 				screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions End
@@ -309,9 +309,7 @@ class CvVictoryScreen:
 				iVote1 = 0
 				iVote2 = 0
 				screen.setTableText(szTable, 1, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-#				screen.setTableText(szTable, 2, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-				screen.setTableText(szTable, 3, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-#				screen.setTableText(szTable, 4, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+				screen.setTableText(szTable, 3, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 				for lMember in lMembers:
 					szPlayerText = lMember[2]
@@ -320,7 +318,7 @@ class CvVictoryScreen:
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
-					if lMember[4] != activePlayer:
+					if lMember[4] != self.iActivePlayer:
 						szText = AttitudeUtils.getAttitudeText (lMember[4], iCandidate1, True, True, False, False)
 						if szText != None:
 							screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate1, CvUtil.FONT_CENTER_JUSTIFY)
@@ -347,6 +345,21 @@ class CvVictoryScreen:
 				screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 				screen.setTableText(szTable, 2, iRow, str(iVote1), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 				screen.setTableText(szTable, 4, iRow, str(iVote2), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+				iRow = screen.appendTableRow(szTable)
+				iRow = screen.appendTableRow(szTable)
+				if iVote1 > iVote2:
+					sWin = lMembers[0][2]
+					sLose = lMembers[1][2]
+					nMargin = iVote1 - iVote2
+				else:
+					sWin = lMembers[1][2]
+					sLose = lMembers[0][2]
+					nMargin = iVote2 - iVote1
+
+				sTableHeader = "The latest BUG poll has %s leading %s by %i votes." % (sWin, sLose, nMargin)  #(iVotelMembers[0][1], , gc.getGame().countPossibleVote(iLoop, i))
+				screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 # BUG Additions End
 
 		self.drawTabs()
@@ -358,7 +371,7 @@ class CvVictoryScreen:
 		screen = self.getScreen()
 				
 
-		activePlayer = gc.getPlayer(self.iActivePlayer)		
+		activePlayer = gc.getPlayer(self.iActivePlayer)
 
 		szSettingsPanel = self.getNextWidgetName()
 		screen.addPanel(szSettingsPanel, localText.getText("TXT_KEY_MAIN_MENU_SETTINGS", ()).upper(), "", True, True, self.SETTINGS_PANEL_X1, self.SETTINGS_PANEL_Y - 10, self.SETTINGS_PANEL_WIDTH, self.SETTINGS_PANEL_HEIGHT, PanelStyles.PANEL_STYLE_MAIN)
@@ -741,6 +754,7 @@ class CvVictoryScreen:
 							sSSCount = "%i (%i)" % (activePlayer.getTeam().getProjectCount(i), activePlayer.getTeam().getProjectMaking(i))
 
 							iHasTechColor = -1
+							iSSColor = 0
 							if activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
 								iSSColor = ColorUtil.keyToType("COLOR_GREEN")
 							elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
