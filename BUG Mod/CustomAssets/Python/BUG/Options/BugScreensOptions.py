@@ -56,6 +56,15 @@ class BugScreensOptions(OptionsFacade):
 							  "Glance Tab Smilies",
 							  "When checked, the 'Glance' tab shows Smilies (attitude icons)."))
 
+		self.addOption(Option("Victories_Enabled",
+							  "Screens", "Victories", True,
+							  "Victories Tab",
+							  "When checked, BUG 'Victories' tab options are shown."))
+		self.addOption(Option("Members_Enabled",
+							  "Screens", "Members", True,
+							  "Members Tab",
+							  "When checked, BUG 'Members' tab options are shown."))
+
 		self.addOption(Option("Tech_GPPrefs",
 							  "Screens", "GP Tech Prefs", True,
 							  "Great Person Research",
@@ -114,6 +123,12 @@ class BugScreensOptions(OptionsFacade):
 	def isBUG_MA(self):
 		return self.getBoolean("BMA_Enabled")
 
+
+	def isVictories(self):
+		return self.getBoolean("Victories_Enabled")
+
+	def isMembers(self):
+		return self.getBoolean("Members_Enabled")
 
 	def isShowGPTechPrefs(self):
 		return self.getBoolean("Tech_GPPrefs")

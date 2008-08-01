@@ -34,7 +34,11 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, leftPanel, "Sevopedia", "Sevopdia (F12):")
 		self.addCheckbox(screen, leftPanel, "Sevopedia_Enabled")
 		self.addCheckbox(screen, leftPanel, "Sevopedia_Sort")
-		
+
+		self.addLabel(screen, leftPanel, "Victory_Conditions", "Victory:")
+		self.addCheckbox(screen, leftPanel, "Victories_Enabled")
+		self.addCheckbox(screen, leftPanel, "Members_Enabled")
+
 		self.addLabel(screen, rightPanel, "Espionage_Screen", "Espionage (Ctrl-E):")
 		self.addCheckbox(screen, rightPanel, "Espionage_Enabled")
 		
