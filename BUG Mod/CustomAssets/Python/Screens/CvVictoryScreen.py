@@ -97,7 +97,10 @@ class CvVictoryScreen:
 		self.bVoteTab = False
 
 		self.iScreen = VICTORY_CONDITION_SCREEN
-						
+
+		self.ApolloTeamsChecked = set()
+		self.ApolloTeamCheckResult = {}
+
 	def getScreen(self):
 		return CyGInterfaceScreen(self.SCREEN_NAME, self.screenId)
 
@@ -282,14 +285,14 @@ class CvVictoryScreen:
 				iSecretaryGeneralVote = -1
 				if (gc.getGame().canHaveSecretaryGeneral(i) and -1 != gc.getGame().getSecretaryGeneral(i)):		
 					for j in range(gc.getNumVoteInfos()):
-						print j
+#						print j
 						if gc.getVoteInfo(j).isVoteSourceType(i):
-							print "votesource"
+#							print "votesource"
 							if gc.getVoteInfo(j).isSecretaryGeneral():
-								print "secgen"
+#								print "secgen"
 								iSecretaryGeneralVote = j
 								break
-				print iSecretaryGeneralVote
+#				print iSecretaryGeneralVote
 								
 # BUG Additions Start
 				if BugScreens.isMembers():
@@ -320,8 +323,10 @@ class CvVictoryScreen:
 					# determine the two candidates, add to header
 					iCandidate1 = lMembers[0][4]
 					iCandidate2 = lMembers[1][4]
-					iVote1 = 0
-					iVote2 = 0
+					iVote1_Diplo = 0
+					iVote2_Diplo = 0
+					iVote1_SecGen = 0
+					iVote2_SecGen = 0
 					screen.setTableText(szTable, 1, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 					screen.setTableText(szTable, 3, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
@@ -341,37 +346,84 @@ class CvVictoryScreen:
 							if szText != None:
 								screen.setTableText(szTable, 3, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
-						iVote = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2)
-						if iVote == -1: #abstain
-							screen.setTableText(szTable, 2, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
-							screen.setTableText(szTable, 4, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
-						elif iVote == 1: #votes for candidate 1
-							iVote1 += 10000 - lMember[1]
-							screen.setTableText(szTable, 2, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
-						else: # votes for candidate 2
-							iVote2 += 10000 - lMember[1]
-							screen.setTableText(szTable, 4, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+						iVote_SecGen = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2, 1)
+						iVote_Diplo = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2, 2)
+
+						iVote_Column = -1
+						if iVote_SecGen == -1:
+							sVote = "-"
+						else:
+							sVote = str(10000 - lMember[1])
+							if iVote_SecGen == 1:
+								iVote_Column = 2
+								iVote1_SecGen += 10000 - lMember[1]
+							else:
+								iVote_Column = 4
+								iVote2_SecGen += 10000 - lMember[1]
+
+						if iVote_Diplo == -1:
+							sVote += " / " + "-"
+						else:
+							sVote += " / " + str(10000 - lMember[1])
+							if iVote_Diplo == 1:
+								iVote1_Diplo += 10000 - lMember[1]
+							else:
+								iVote2_Diplo += 10000 - lMember[1]
+
+						if iVote_Column != -1:
+							screen.setTableText(szTable, iVote_Column, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+#						if iVote == -1: #abstain
+#							screen.setTableText(szTable, 2, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+#							screen.setTableText(szTable, 4, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+#						elif iVote == 1: #votes for candidate 1
+#							iVote1 += 10000 - lMember[1]
+#							screen.setTableText(szTable, 2, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
+#						else: # votes for candidate 2
+#							iVote2 += 10000 - lMember[1]
+#							screen.setTableText(szTable, 4, iRow, str(10000 - lMember[1]), "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
 						screen.setTableText(szTable, 5, iRow, lMember[3], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
 					sTableHeader = u"<font=3b>Total</font>"
+					sVote1 = "%i / %i" %(iVote1_SecGen, iVote1_Diplo)
+					sVote2 = "%i / %i" %(iVote2_SecGen, iVote2_Diplo)
 					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					screen.setTableText(szTable, 2, iRow, str(iVote1), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-					screen.setTableText(szTable, 4, iRow, str(iVote2), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+					screen.setTableText(szTable, 2, iRow, sVote1, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+					screen.setTableText(szTable, 4, iRow, sVote2, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
+
+					# SecGen vote prediction
 					iRow = screen.appendTableRow(szTable)
-					if iVote1 > iVote2:
+					if iVote1_SecGen > iVote2_SecGen:
 						sWin = lMembers[0][2]
 						sLose = lMembers[1][2]
-						nMargin = iVote1 - iVote2
+						nMargin = iVote1_SecGen - iVote2_SecGen
 					else:
 						sWin = lMembers[1][2]
 						sLose = lMembers[0][2]
-						nMargin = iVote2 - iVote1
+						nMargin = iVote2_SecGen - iVote1_SecGen
 
-					sTableHeader = "The latest BUG poll has %s leading %s by %i votes." % (sWin, sLose, nMargin)  #(iVotelMembers[0][1], , gc.getGame().countPossibleVote(iLoop, i))
+#For Diplo-victory, the BUG poll has x leading y by z1 votes.
+#For Diplo-leader, the BUG poll has x leading y by z2 votes.
+
+					sTableHeader = "For Diplo-Leader, the BUG poll has %s leading by %i votes." % (sWin, nMargin)
+					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+					# Diplo Victory vote prediction
+					iRow = screen.appendTableRow(szTable)
+					if iVote1_Diplo > iVote2_Diplo:
+						sWin = lMembers[0][2]
+						sLose = lMembers[1][2]
+						nMargin = iVote1_Diplo - iVote2_Diplo
+					else:
+						sWin = lMembers[1][2]
+						sLose = lMembers[0][2]
+						nMargin = iVote2_Diplo - iVote1_Diplo
+
+					sTableHeader = "For Diplo-Victory, the BUG poll has %s leading by %i votes." % (sWin, nMargin)
 					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
@@ -486,7 +538,11 @@ class CvVictoryScreen:
 					
 		activePlayer = PyHelpers.PyPlayer(self.iActivePlayer)
 		iActiveTeam = gc.getPlayer(self.iActivePlayer).getTeam()
-		
+
+		# checking if apollo has been built - clear arrays / lists / whatever they are called
+		self.ApolloTeamsChecked = set()
+		self.ApolloTeamCheckResult = {}
+
 		# Conquest
 		nRivals = -1
 # BUG Additions Start
@@ -780,45 +836,54 @@ class CvVictoryScreen:
 									bApolloShown = True
 									iRow = screen.appendTableRow(szTable)
 									screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_PROJECT_APOLLO_PROGRAM", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-									screen.setTableText(szTable, 2, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_BUILT", (activePlayer.getTeam().getName(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+									if self.isApolloBuiltbyTeam(activePlayer.getTeam()):
+										screen.setTableText(szTable, 2, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_BUILT", (activePlayer.getTeam().getName(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+									else:
+										screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+										screen.setTableText(szTable, 3, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_NOT_BUILT", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 									if (iBestProjectTeam != -1):
 										screen.setTableText(szTable, 4, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_BUILT", (gc.getTeam(iBestProjectTeam).getName(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 								iRow = screen.appendTableRow(szTable)
+								iReqTech = gc.getProjectInfo(i).getTechPrereq()
+
 								if (gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC)):
 									szNumber = unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
 								else:
 									szNumber = unicode(gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC)) + u"-" + unicode(gc.getProjectInfo(i).getVictoryThreshold(iLoopVC))
 
-								iReqTech = gc.getProjectInfo(i).getTechPrereq()
-								bHasTech = gc.getTeam(iActiveTeam).isHasTech(iReqTech)
 								sSSPart = localText.getText("TXT_KEY_VICTORY_SCREEN_BUILDING", (szNumber, gc.getProjectInfo(i).getTextKey()))
-								sSSPlayer = activePlayer.getTeam().getName() + ":"
-								sSSCount = "%i (%i)" % (activePlayer.getTeam().getProjectCount(i), activePlayer.getTeam().getProjectMaking(i))
-
-								iHasTechColor = -1
-								iSSColor = 0
-								if activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
-									sSSCount = "%i" % (activePlayer.getTeam().getProjectCount(i))
-									iSSColor = ColorUtil.keyToType("COLOR_GREEN")
-								elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
-									iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
-
-								if iSSColor > 0:
-									sSSPlayer = localText.changeTextColor(sSSPlayer, iSSColor)
-									sSSCount = localText.changeTextColor(sSSCount, iSSColor)
-
 								screen.setTableText(szTable, 0, iRow, sSSPart, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								if bHasTech:
-									screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+								if self.isApolloBuiltbyTeam(activePlayer.getTeam()):
+
+									bHasTech = gc.getTeam(iActiveTeam).isHasTech(iReqTech)
+									sSSPlayer = activePlayer.getTeam().getName() + ":"
+									sSSCount = "%i [+%i]" % (activePlayer.getTeam().getProjectCount(i), activePlayer.getTeam().getProjectMaking(i))
+
+									iHasTechColor = -1
+									iSSColor = 0
+									if activePlayer.getTeam().getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
+										sSSCount = "%i" % (activePlayer.getTeam().getProjectCount(i))
+										iSSColor = ColorUtil.keyToType("COLOR_GREEN")
+									elif activePlayer.getTeam().getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
+										iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
+
+									if iSSColor > 0:
+										sSSPlayer = localText.changeTextColor(sSSPlayer, iSSColor)
+										sSSCount = localText.changeTextColor(sSSCount, iSSColor)
+
+									screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+									if bHasTech:
+										screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 								
 								# add AI space ship info
 								if (iBestProjectTeam != -1):
 									pTeam = gc.getTeam(iBestProjectTeam)
 									sSSPlayer = gc.getTeam(iBestProjectTeam).getName() + ":"
 									sSSCount = "%i" % (pTeam.getProjectCount(i))
-									bHasTech = pTeam.isHasTech(iReqTech)
 
 									Techs = TechUtil.getVisibleKnownTechs(pTeam.getLeaderID(), self.iActivePlayer)
 									bHasTech = iReqTech in Techs
@@ -826,18 +891,18 @@ class CvVictoryScreen:
 									iHasTechColor = -1
 									iSSColor = 0
 									if pTeam.getProjectCount(i) == gc.getProjectInfo(i).getVictoryThreshold(iLoopVC):
-										sSSCount = "%i" % (pTeam.getProjectCount(i))
 										iSSColor = ColorUtil.keyToType("COLOR_GREEN")
 									elif pTeam.getProjectCount(i) >= gc.getProjectInfo(i).getVictoryMinThreshold(iLoopVC):
 										iSSColor = ColorUtil.keyToType("COLOR_YELLOW")
+									elif bHasTech:
+										iSSColor = ColorUtil.keyToType("COLOR_PLAYER_ORANGE")
 
 									if iSSColor > 0:
 										sSSPlayer = localText.changeTextColor(sSSPlayer, iSSColor)
 										sSSCount = localText.changeTextColor(sSSCount, iSSColor)
 
 									screen.setTableText(szTable, 4, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-									if bHasTech:
-										screen.setTableText(szTable, 5, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+									screen.setTableText(szTable, 5, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 								bEntriesFound = True
 
@@ -1012,10 +1077,13 @@ class CvVictoryScreen:
 		return []					
 
 # BUG Additions Start
-	def getVotesForWhichCandidate(self, iPlayer, iCand1, iCand2):
+	def getVotesForWhichCandidate(self, iPlayer, iCand1, iCand2, iVote):
 		# returns are 1 = vote for candidate 1
 		#             2 = vote for candidate 2
 		#            -1 = abstain
+
+		# iVote = 1 means vote for SecGen or Pope
+		# iVote = 2 means vote for diplomatic victory
 
 		# * AI votes for itself if it can
 		# * AI votes for a team member if it can
@@ -1040,11 +1108,13 @@ class CvVictoryScreen:
 
 		# * AI votes for a team member if it can
 		# * AI votes for its master, if it is a vassal
-		if (gc.getTeam(iC1Team).isVassal(iPTeam)
+#		if (gc.getTeam(iC1Team).isVassal(iPTeam)
+		if (gc.getTeam(iPTeam).isVassal(iC1Team)
 		or  iC1Team == iPTeam):
 			return 1
 
-		if (gc.getTeam(iC2Team).isVassal(iPTeam)
+#		if (gc.getTeam(iC2Team).isVassal(iPTeam)
+		if (gc.getTeam(iPTeam).isVassal(iC2Team)
 		or  iC2Team == iPTeam):
 			return 2
 
@@ -1052,27 +1122,38 @@ class CvVictoryScreen:
 		iC1Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand1)
 		iC2Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand2)
 
+		# the cut-off for SecGen votes is pleased (3)
+		# the cut-off for Diplo victory votes is friendly (4)
+		if iVote == 1:
+			iCutOff = 3
+		else:
+			iCutOff = 4
+
 		# * if neither candidate is at 'friendly', abstains
 		# assumes friendly = 4, pleased = 3, etc
-		if (iC1Cat < 4
-		and iC2Cat < 4):
+		if (iC1Cat < iCutOff
+		and iC2Cat < iCutOff):
 			return -1
 
 		# * if the AI attitude to one of the candidates is 'friendly' and the other is 'pleased' or less, AI votes for 'friend'
-		if (iC1Cat == 4
-		and iC2Cat < 4):
+		if (iC1Cat >= iCutOff
+		and iC1Cat > iC2Cat):
 			return 1
 
-		if (iC1Cat < 4
-		and iC2Cat == 4):
+		if (iC2Cat >= iCutOff
+		and iC2Cat > iC1Cat):
 			return 2
+
+		# if the code gets to here, then both candidates are at or above the cutoff
+		# and they are both at the same category (ie both friendly)
+		# need to decide on straight attitude (visible only)
 
 		# get player attitude to candidates
 		iC1Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand1)
 		iC2Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand2)
 
 		# * if both candidates are at 'friendly' status, votes for one with highest attitude
-		if iC2Att > iC1Att: # ties go to Candidate #1
+		if iC2Att < iC1Att: # ties go to Candidate #1
 			return 1
 		else:
 			return 2
@@ -1112,6 +1193,14 @@ class CvVictoryScreen:
 		return False
 
 	def isApolloBuiltbyTeam(self, vTeam):
+		iTeam = vTeam.getID()
+#		print vTeam.getName()
+
+		if iTeam in self.ApolloTeamsChecked:
+			sString = "1: %s" % (self.ApolloTeamCheckResult[iTeam])
+#			print sString
+#			return self.ApolloTeamCheckResult[iTeam]
+
 		for i in range(gc.getNumProjectInfos()):
 			component = gc.getProjectInfo(i)
 			if (component.isSpaceship()):
@@ -1119,11 +1208,32 @@ class CvVictoryScreen:
 				for j in range(gc.getNumProjectInfos()):
 					if(vTeam.getProjectCount(j) < component.getProjectsNeeded(j)):
 						bApollo = False
+#					sString = "2: %s %s %i %i %s" % (component.getDescription(), gc.getProjectInfo(j).getDescription(), vTeam.getProjectCount(j), component.getProjectsNeeded(j), bApollo)
+#					print sString
+
+#				sString = "2: %s %s" % (component.getDescription(), bApollo)
+#				print sString
 				if bApollo:
+					self.ApolloTeamCheckResult[iTeam] = True
+					self.ApolloTeamsChecked.add(iTeam)
 					return True
 				break
 
+		self.ApolloTeamCheckResult[iTeam] = False
+		self.ApolloTeamsChecked.add(iTeam)
 		return False
+
+#		self.ApolloTeamChecked = set()
+#		self.ApolloTeamCheckResult = {}
+#self.ApolloTeamsChecked
+#		if iUnit not in self.UnitsAlreadyMapped:
+#			nextUpgrades = set()
+#			for iNextUnit in upgrades:
+#				nextUpgrades |= self.buildFutureArray_Closure(iNextUnit)  # note recursive call
+#			upgrades |= nextUpgrades
+#			self.UnitsAlreadyMapped.add(iUnit)
+
+
 # BUG Additions End
 
 	# returns a unique ID for a widget in this screen
