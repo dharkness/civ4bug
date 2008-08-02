@@ -80,8 +80,8 @@ class CvVictoryScreen:
 		self.TABLE3_WIDTH_5 = 200
 
 		self.Vote_Toggle_ID = "BUGVoteToggle"
-		self.VoteToggle_X = self.X_AREA + self.H_AREA - 10
-		self.VoteToggle_Y = self.Y_AREA + self.W_AREA - 100
+		self.VoteToggle_X = 944
+		self.VoteToggle_Y = 688
 		self.VoteToggle = 0
 # BUG Additions End
 
@@ -267,11 +267,8 @@ class CvVictoryScreen:
 			screen.setTableColumnHeader(szTable, 4, "", self.TABLE3_WIDTH_4)
 			screen.setTableColumnHeader(szTable, 5, "", self.TABLE3_WIDTH_5)
 
-			sVoteToggle = "Toggle Votes"
-#			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.VoteToggle_X, self.VoteToggle_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.X_EXIT-50, self.Y_EXIT-38, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-
-#			screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
+			screen.setText(self.Vote_Toggle_ID, "", localText.getText("TXT_KEY_BUG_VICTORY_TOGGLE_VOTES", ()), CvUtil.FONT_CENTER_JUSTIFY, self.VoteToggle_X, self.VoteToggle_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+#			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.X_EXIT-50, self.Y_EXIT-38, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		else:
 			screen.setTableColumnHeader(szTable, 0, "", self.TABLE2_WIDTH_0)
 			screen.setTableColumnHeader(szTable, 1, "", self.TABLE2_WIDTH_1)
@@ -416,16 +413,16 @@ class CvVictoryScreen:
 						rVotePercent = float(iVoteTotal[1]) / iMaxVotes * 100
 
 					if self.VoteToggle == 0:
-						sTableHeader = gc.getVoteSourceInfo(i).getSecretaryGeneralText() + ": "
+						sString = gc.getVoteSourceInfo(i).getSecretaryGeneralText() + ": "
 					else:
-						sTableHeader = "Diplomatic Victory: "
+						sString = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
 
-					sTableHeader += "%s (%.1f%%) leads by %.1f%%." % (sWin, rVotePercent, rMargin)
-					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+					sString += localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, rVotePercent, rMargin, ))
+					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
-					sTableHeader = "Source: Recent BUG Poll, statistical margin of error %.1f%%." % (3.5 + float(gc.getASyncRand().get(10, "")) / 10)
-					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+					sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (3.5 + float(gc.getASyncRand().get(10, "")) / 10, ))
+					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
 
@@ -727,10 +724,10 @@ class CvVictoryScreen:
 # BUG Additions Start
 					if BugScreens.isVictories():
 						if nVassaled != 0:
-							sString = "%i vassaled" % (nVassaled)
+							sString = localText.getText("TXT_KEY_BUG_VICTORY_VASSALED", (nVassaled, ))
 							screen.setTableText(szTable, 4, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						if nRivals - nknown != 0:
-							sString = "%i unknown" % (nRivals - nknown)
+							sString = localText.getText("TXT_KEY_BUG_VICTORY_UNKNOWN", (nRivals - nknown, ))
 							screen.setTableText(szTable, 5, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions End
 
@@ -878,6 +875,10 @@ class CvVictoryScreen:
 									screen.setTableText(szTable, 2, iRow, sSSPlayer, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 									if bHasTech:
 										screen.setTableText(szTable, 3, iRow, sSSCount, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+									#check if spaceship
+									if (gc.getProjectInfo(i).isSpaceship()):
+										bSpaceshipFound = True
 								
 								# add AI space ship info
 								if (iBestProjectTeam != -1):
@@ -919,10 +920,9 @@ class CvVictoryScreen:
 							screen.setTableText(szTable, 3, iRow, str(activePlayer.getTeam().getProjectCount(i)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 							
 							#check if spaceship
-							#if (gc.getProjectInfo(i).isSpaceship() and (activePlayer.getTeam().getProjectCount(i) > 0)):
 							if (gc.getProjectInfo(i).isSpaceship()):
 								bSpaceshipFound = True
-							
+
 							if (iBestProjectTeam != -1):
 								screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestProjectTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 								screen.setTableText(szTable, 5, iRow, unicode(gc.getTeam(iBestProjectTeam).getProjectCount(i)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)

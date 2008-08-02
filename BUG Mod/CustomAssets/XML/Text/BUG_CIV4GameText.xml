@@ -538,14 +538,6 @@
 		<Italian>Nero</Italian>
 		<Spanish>Negro</Spanish>
 	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
-		<English>Non Member</English>
-		<French>Non Membres</French>
-		<German>Nichtmitglied</German>
-		<Italian>Non Membri</Italian>
-		<Spanish>No Miembro</Spanish>
-	</TEXT>
 	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
@@ -554,5 +546,62 @@
 		<German>Info</German>
 		<Italian>Info</Italian>
 		<Spanish>Info.</Spanish>
+	</TEXT>
+	<!-- Victory Screen -->
+	<TEXT>
+		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
+		<English>Non Member</English>
+		<French>Non Membres</French>
+		<German>Nichtmitglied</German>
+		<Italian>Non Membri</Italian>
+		<Spanish>No Miembro</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_TOGGLE_VOTES</Tag>
+		<English>Toggle Votes</English>
+		<French>Alterner Voix</French>
+		<German>Toggle Stimmen</German>
+		<Italian>Alternare Voti</Italian>
+		<Spanish>Alternar Votos</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_VASSALED</Tag>
+		<English>%i1 vassaled</English>
+		<French>%i vassaled</French>
+		<German>%i vassaled</German>
+		<Italian>%i vassaled</Italian>
+		<Spanish>%i vassaled</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_UNKNOWN</Tag>
+		<English>%i1 unknown</English>
+		<French>%i unknown</French>
+		<German>%i unknown</German>
+		<Italian>%i unknown</Italian>
+		<Spanish>%i unknown</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_DIPLOMATIC</Tag>
+		<English>Diplomatic Victory</English>
+		<French>Victoire diplomatique</French>
+		<German>Diplomatische Victory</German>
+		<Italian>La vittoria diplomatica</Italian>
+		<Spanish>La victoria diplomática</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
+		<English>%s1 (%.1f2%%) leads by %.1f3%%.</English>
+		<French>%s (%.1f%%) conduit par %.1f%%.</French>
+		<German>%s (%.1f%%) leads by %.1f%%.</German>
+		<Italian>%s (%.1f%%) porta di %.1f%%.</Italian>
+		<Spanish>%s (%.1f%%) conduce de %.1f%%.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR</Tag>
+		<English>Source: Recent BUG Poll, statistical margin of error %.1f1%%.</English>
+		<French>Source: Sondage BUG récents, marge d'erreur %.1f%%.</French>
+		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %.1f%%.</German>
+		<Italian>Fonte: BUG recente sondaggio, statistica margine di errore %.1f%%.</Italian>
+		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %.1f%%.</Spanish>
 	</TEXT>
 </Civ4GameText>
