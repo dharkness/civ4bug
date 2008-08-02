@@ -78,6 +78,11 @@ class CvVictoryScreen:
 		self.TABLE3_WIDTH_3 = 80
 		self.TABLE3_WIDTH_4 = 80
 		self.TABLE3_WIDTH_5 = 200
+
+		self.Vote_Toggle_ID = "BUGVoteToggle"
+		self.VoteToggle_X = self.X_AREA + self.H_AREA - 10
+		self.VoteToggle_Y = self.Y_AREA + self.W_AREA - 100
+		self.VoteToggle = 0
 # BUG Additions End
 
 		self.X_LINK = 100
@@ -249,7 +254,8 @@ class CvVictoryScreen:
 
 		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
 		szTable = self.getNextWidgetName()
-		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+#		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA-20, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
 		screen.enableSelect(szTable, False)		
 
 # BUG Additions Start
@@ -260,6 +266,12 @@ class CvVictoryScreen:
 			screen.setTableColumnHeader(szTable, 3, "", self.TABLE3_WIDTH_3)
 			screen.setTableColumnHeader(szTable, 4, "", self.TABLE3_WIDTH_4)
 			screen.setTableColumnHeader(szTable, 5, "", self.TABLE3_WIDTH_5)
+
+			sVoteToggle = "Toggle Votes"
+#			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.VoteToggle_X, self.VoteToggle_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.X_EXIT-50, self.Y_EXIT-38, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+#			screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 		else:
 			screen.setTableColumnHeader(szTable, 0, "", self.TABLE2_WIDTH_0)
 			screen.setTableColumnHeader(szTable, 1, "", self.TABLE2_WIDTH_1)
@@ -323,10 +335,7 @@ class CvVictoryScreen:
 					# determine the two candidates, add to header
 					iCandidate1 = lMembers[0][4]
 					iCandidate2 = lMembers[1][4]
-					iVote1_Diplo = 0
-					iVote2_Diplo = 0
-					iVote1_SecGen = 0
-					iVote2_SecGen = 0
+					iVoteTotal = [0] * 2
 					screen.setTableText(szTable, 1, iRow, lMembers[0][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 					screen.setTableText(szTable, 3, iRow, lMembers[1][2], "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
@@ -346,32 +355,26 @@ class CvVictoryScreen:
 							if szText != None:
 								screen.setTableText(szTable, 3, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
-						iVote_SecGen = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2, 1)
-						iVote_Diplo = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2, 2)
-
+						iVote = self.getVotesForWhichCandidate(lMember[4], iCandidate1, iCandidate2, self.VoteToggle)
 						iVote_Column = -1
-						if iVote_SecGen == -1:
+
+						if iVote == -1:
 							sVote = "-"
 						else:
 							sVote = str(10000 - lMember[1])
-							if iVote_SecGen == 1:
-								iVote_Column = 2
-								iVote1_SecGen += 10000 - lMember[1]
-							else:
-								iVote_Column = 4
-								iVote2_SecGen += 10000 - lMember[1]
+							iVoteTotal[iVote - 1] += 10000 - lMember[1]
+							iVote_Column = iVote * 2
+							
+#							if iVote == 1:
+#								iVote_Column = 2
+#								iVote1 += 10000 - lMember[1]
+#							else:
+#								iVote_Column = 4
+#								iVote2 += 10000 - lMember[1]
 
-						if iVote_Diplo == -1:
-							sVote += " / " + "-"
-						else:
-							sVote += " / " + str(10000 - lMember[1])
-							if iVote_Diplo == 1:
-								iVote1_Diplo += 10000 - lMember[1]
-							else:
-								iVote2_Diplo += 10000 - lMember[1]
-
-						if iVote_Column != -1:
-							screen.setTableText(szTable, iVote_Column, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+						if (iVote_Column != -1
+						and 10000 - lMember[1] > 0):
+							screen.setTableText(szTable, iVote_Column, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 #						if iVote == -1: #abstain
 #							screen.setTableText(szTable, 2, iRow, "-", "", WidgetTypes.WIDGET_LEADERHEAD, lMember[4], iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
@@ -387,46 +390,43 @@ class CvVictoryScreen:
 
 					iRow = screen.appendTableRow(szTable)
 					sTableHeader = u"<font=3b>Total</font>"
-					sVote1 = "%i / %i" %(iVote1_SecGen, iVote1_Diplo)
-					sVote2 = "%i / %i" %(iVote2_SecGen, iVote2_Diplo)
 					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					screen.setTableText(szTable, 2, iRow, sVote1, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-					screen.setTableText(szTable, 4, iRow, sVote2, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+					screen.setTableText(szTable, 2, iRow, str(iVoteTotal[0]), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+					screen.setTableText(szTable, 4, iRow, str(iVoteTotal[1]), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
+
+					iMaxVotes = 0
+					for iLoop in range(gc.getNumVoteInfos()):
+						if gc.getGame().countPossibleVote(iLoop, i) > 0:
+							iMaxVotes = gc.getGame().countPossibleVote(iLoop, i)
+							break
 
 					# SecGen vote prediction
 					iRow = screen.appendTableRow(szTable)
-					if iVote1_SecGen > iVote2_SecGen:
+					if iVoteTotal[0] > iVoteTotal[1]:
 						sWin = lMembers[0][2]
 						sLose = lMembers[1][2]
-						nMargin = iVote1_SecGen - iVote2_SecGen
+						rMargin = (float(iVoteTotal[0]) - iVoteTotal[1]) / iMaxVotes * 100
+						rVotePercent = float(iVoteTotal[0]) / iMaxVotes * 100
 					else:
 						sWin = lMembers[1][2]
 						sLose = lMembers[0][2]
-						nMargin = iVote2_SecGen - iVote1_SecGen
+						rMargin = (float(iVoteTotal[1]) - iVoteTotal[0]) / iMaxVotes * 100
+						rVotePercent = float(iVoteTotal[1]) / iMaxVotes * 100
 
-#For Diplo-victory, the BUG poll has x leading y by z1 votes.
-#For Diplo-leader, the BUG poll has x leading y by z2 votes.
-
-					sTableHeader = "For Diplo-Leader, the BUG poll has %s leading by %i votes." % (sWin, nMargin)
-					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-					# Diplo Victory vote prediction
-					iRow = screen.appendTableRow(szTable)
-					if iVote1_Diplo > iVote2_Diplo:
-						sWin = lMembers[0][2]
-						sLose = lMembers[1][2]
-						nMargin = iVote1_Diplo - iVote2_Diplo
+					if self.VoteToggle == 0:
+						sTableHeader = gc.getVoteSourceInfo(i).getSecretaryGeneralText() + ": "
 					else:
-						sWin = lMembers[1][2]
-						sLose = lMembers[0][2]
-						nMargin = iVote2_Diplo - iVote1_Diplo
+						sTableHeader = "Diplomatic Victory: "
 
-					sTableHeader = "For Diplo-Victory, the BUG poll has %s leading by %i votes." % (sWin, nMargin)
+					sTableHeader += "%s (%.1f%%) leads by %.1f%%." % (sWin, rVotePercent, rMargin)
 					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
+					sTableHeader = "Source: Recent BUG Poll, statistical margin of error %.1f%%." % (3.5 + float(gc.getASyncRand().get(10, "")) / 10)
+					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 					iRow = screen.appendTableRow(szTable)
 
 				else: # following is vanilla BtS code
@@ -1082,8 +1082,8 @@ class CvVictoryScreen:
 		#             2 = vote for candidate 2
 		#            -1 = abstain
 
-		# iVote = 1 means vote for SecGen or Pope
-		# iVote = 2 means vote for diplomatic victory
+		# iVote = 0 means vote for SecGen or Pope
+		# iVote = 1 means vote for diplomatic victory
 
 		# * AI votes for itself if it can
 		# * AI votes for a team member if it can
@@ -1124,7 +1124,7 @@ class CvVictoryScreen:
 
 		# the cut-off for SecGen votes is pleased (3)
 		# the cut-off for Diplo victory votes is friendly (4)
-		if iVote == 1:
+		if iVote == 0:
 			iCutOff = 3
 		else:
 			iCutOff = 4
@@ -1252,6 +1252,7 @@ class CvVictoryScreen:
 
 		self.nWidgetCount = 0		
 
+		screen.deleteWidget(self.Vote_Toggle_ID)
 																				
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
@@ -1273,6 +1274,10 @@ class CvVictoryScreen:
 				self.iScreen = UN_RESOLUTION_SCREEN
 				self.showVotingScreen()
 			elif (inputClass.getFunctionName() == self.UN_MEMBERS_TAB_ID):
+				self.iScreen = UN_MEMBERS_SCREEN
+				self.showMembersScreen()
+			elif (inputClass.getFunctionName() == self.Vote_Toggle_ID):
+				self.VoteToggle = (self.VoteToggle + 1) % 2
 				self.iScreen = UN_MEMBERS_SCREEN
 				self.showMembersScreen()
 			elif (inputClass.getData1() == self.SPACESHIP_SCREEN_BUTTON):
