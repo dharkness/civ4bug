@@ -561,7 +561,7 @@
 		<English>Toggle Votes</English>
 		<French>Alterner Voix</French>
 		<German>Toggle Stimmen</German>
-		<Italian>Alternare Voti</Italian>
+		<Italian>Alterna Voti</Italian>
 		<Spanish>Alternar Votos</Spanish>
 	</TEXT>
 	<TEXT>
@@ -569,7 +569,7 @@
 		<English>%d1 vassaled</English>
 		<French>%d1 vassaled</French>
 		<German>%d1 vassaled</German>
-		<Italian>%d1 vassaled</Italian>
+		<Italian>%d1 vassallo</Italian>
 		<Spanish>%d1 vassaled</Spanish>
 	</TEXT>
 	<TEXT>
@@ -577,7 +577,7 @@
 		<English>%d1 unknown</English>
 		<French>%d1 unknown</French>
 		<German>%d1 unknown</German>
-		<Italian>%d1 unknown</Italian>
+		<Italian>%d1 sconosciuto</Italian>
 		<Spanish>%d1 unknown</Spanish>
 	</TEXT>
 	<TEXT>
@@ -585,7 +585,7 @@
 		<English>Diplomatic Victory</English>
 		<French>Victoire diplomatique</French>
 		<German>Diplomatische Victory</German>
-		<Italian>La vittoria diplomatica</Italian>
+		<Italian>vittoria diplomatica</Italian>
 		<Spanish>La victoria diplomática</Spanish>
 	</TEXT>
 	<TEXT>
@@ -593,7 +593,7 @@
 		<English>%s1 (%s2) leads by %s3.</English>
 		<French>%s (%.1f%%) conduit par %.1f%%.</French>
 		<German>%s (%.1f%%) leads by %.1f%%.</German>
-		<Italian>%s (%.1f%%) porta di %.1f%%.</Italian>
+		<Italian>%s (%.1f%%) in testa di %.1f%%.</Italian>
 		<Spanish>%s (%.1f%%) conduce de %.1f%%.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -601,7 +601,7 @@
 		<English>Source: Recent BUG Poll, statistical margin of error %s1.</English>
 		<French>Source: Sondage BUG récents, marge d'erreur %.1f%%.</French>
 		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %.1f%%.</German>
-		<Italian>Fonte: BUG recente sondaggio, statistica margine di errore %.1f%%.</Italian>
+		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %.1f%%.</Italian>
 		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %.1f%%.</Spanish>
 	</TEXT>
 </Civ4GameText>
