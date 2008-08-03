@@ -591,17 +591,17 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
 		<English>%s1 (%s2) leads by %s3.</English>
-		<French>%s (%.1f%%) conduit par %.1f%%.</French>
-		<German>%s (%.1f%%) leads by %.1f%%.</German>
-		<Italian>%s (%.1f%%) in testa di %.1f%%.</Italian>
-		<Spanish>%s (%.1f%%) conduce de %.1f%%.</Spanish>
+		<French>%s1 (%s2) conduit par %s3.</French>
+		<German>%s1 (%s2) leads by %s3.</German>
+		<Italian>%s1 (%s2) in testa di %s3.</Italian>
+		<Spanish>%s1 (%s2) conduce por %s3.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR</Tag>
 		<English>Source: Recent BUG Poll, statistical margin of error %s1.</English>
-		<French>Source: Sondage BUG récents, marge d'erreur %.1f%%.</French>
-		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %.1f%%.</German>
-		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %.1f%%.</Italian>
-		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %.1f%%.</Spanish>
+		<French>Source: Sondage BUG récents, marge d'erreur %s2.</French>
+		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %s2.</German>
+		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %s2.</Italian>
+		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s2.</Spanish>
 	</TEXT>
 </Civ4GameText>
