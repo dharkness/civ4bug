@@ -402,26 +402,26 @@ class CvVictoryScreen:
 					# SecGen vote prediction
 					iRow = screen.appendTableRow(szTable)
 					if iVoteTotal[0] > iVoteTotal[1]:
-						sWin = lMembers[0][2]
-						sLose = lMembers[1][2]
-						rMargin = (float(iVoteTotal[0]) - iVoteTotal[1]) / iMaxVotes * 100
-						rVotePercent = float(iVoteTotal[0]) / iMaxVotes * 100
+						iWinner = 0
 					else:
-						sWin = lMembers[1][2]
-						sLose = lMembers[0][2]
-						rMargin = (float(iVoteTotal[1]) - iVoteTotal[0]) / iMaxVotes * 100
-						rVotePercent = float(iVoteTotal[1]) / iMaxVotes * 100
-
+						iWinner = 1
+					iLoser = 1 - iWinner
+					sWin = lMembers[iWinner][2]
+					sLose = lMembers[iLoser][2]
+					fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
+					fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
+					
 					if self.VoteToggle == 0:
 						sString = gc.getVoteSourceInfo(i).getSecretaryGeneralText() + ": "
 					else:
 						sString = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
 
-					sString += localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, rVotePercent, rMargin, ))
+					formatPercent = lambda f: "%.1f%%" % f
+					sString += localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, formatPercent(fVotePercent), formatPercent(fMargin)))
 					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
-					sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (3.5 + float(gc.getASyncRand().get(10, "")) / 10, ))
+					sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (formatPercent(3.5 + gc.getASyncRand().get(10, "") / 10.0), ))
 					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)

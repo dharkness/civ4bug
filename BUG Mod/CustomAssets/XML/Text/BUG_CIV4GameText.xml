@@ -566,19 +566,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_VASSALED</Tag>
-		<English>%i1 vassaled</English>
-		<French>%i vassaled</French>
-		<German>%i vassaled</German>
-		<Italian>%i vassaled</Italian>
-		<Spanish>%i vassaled</Spanish>
+		<English>%d1 vassaled</English>
+		<French>%d1 vassaled</French>
+		<German>%d1 vassaled</German>
+		<Italian>%d1 vassaled</Italian>
+		<Spanish>%d1 vassaled</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_UNKNOWN</Tag>
-		<English>%i1 unknown</English>
-		<French>%i unknown</French>
-		<German>%i unknown</German>
-		<Italian>%i unknown</Italian>
-		<Spanish>%i unknown</Spanish>
+		<English>%d1 unknown</English>
+		<French>%d1 unknown</French>
+		<German>%d1 unknown</German>
+		<Italian>%d1 unknown</Italian>
+		<Spanish>%d1 unknown</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_DIPLOMATIC</Tag>
@@ -590,7 +590,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
-		<English>%s1 (%.1f2%%) leads by %.1f3%%.</English>
+		<English>%s1 (%s2) leads by %s3.</English>
 		<French>%s (%.1f%%) conduit par %.1f%%.</French>
 		<German>%s (%.1f%%) leads by %.1f%%.</German>
 		<Italian>%s (%.1f%%) porta di %.1f%%.</Italian>
@@ -598,7 +598,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR</Tag>
-		<English>Source: Recent BUG Poll, statistical margin of error %.1f1%%.</English>
+		<English>Source: Recent BUG Poll, statistical margin of error %s1.</English>
 		<French>Source: Sondage BUG récents, marge d'erreur %.1f%%.</French>
 		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %.1f%%.</German>
 		<Italian>Fonte: BUG recente sondaggio, statistica margine di errore %.1f%%.</Italian>
