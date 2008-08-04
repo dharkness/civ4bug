@@ -20,6 +20,7 @@ import PyHelpers
 import autolog
 import time
 import BugAutologOptions
+import BugUtil
 import CvModName
 
 BugAutolog = BugAutologOptions.BugAutologOptions()
@@ -69,7 +70,8 @@ def StartLogger(vsFileName):
 	else:
 		zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
 				
-	message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
+	message = BugUtil.getText("TXT_KEY_AUTOLOG_TURN", (zsTurn, zyear, zCurrDateTime))
+	
 	Logger.writeLog(message, vBold=True, vUnderline=True)
 
 	if (not BugAutolog.isSilent()):
@@ -239,17 +241,17 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			and BugAutolog.isLoggingOn()):
 				Logger.writeLog("")
 				Logger.writeLog("Battle Stats:", vBold=True)
-				message = "Units victorious while attacking : %i" %(self.iBattleWonAttacking)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING", (self.iBattleWonAttacking, ))
 				Logger.writeLog(message, vColor="DarkRed")
-				message = "Units victorious while defending : %i" %(self.iBattleWonDefending)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_DEFENDING", (self.iBattleWonDefending, ))
 				Logger.writeLog(message, vColor="DarkRed")
-				message = "Units withdrawing while attacking: %i" %(self.iBattleWdlAttacking)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_WITHDRAWING_ATTACKING", (self.iBattleWdlAttacking, ))
 				Logger.writeLog(message, vColor="DarkRed")
-				message = "Units defeated while attacking : %i" %(self.iBattleLostAttacking)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_DEFEATED_ATTACKING", (self.iBattleLostAttacking, ))
 				Logger.writeLog(message, vColor="Red")
-				message = "Units defeated while defending : %i" %(self.iBattleLostDefending)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_DEFEATED_DEFENDING", (self.iBattleLostDefending, ))
 				Logger.writeLog(message, vColor="Red")
-				message = "Units escaping while attacking : %i" %(self.iBattleEscAttacking)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_ESCAPING_ATTACKING", (self.iBattleEscAttacking, ))
 				Logger.writeLog(message, vColor="Red")
 
 				self.iBattleWonDefending = 0
@@ -341,7 +343,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
 				
-			message = "Turn %s (%s) [%s]" % (zsTurn, zyear, zCurrDateTime)
+			message = BugUtil.getText("TXT_KEY_AUTOLOG_TURN", (zsTurn, zyear, zCurrDateTime))
 
 			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
@@ -381,23 +383,23 @@ class AutoLogEvent(AbstractAutoLogEvent):
 #				Logger.writeLog(message)
 
 				if iCurrentWhipCounter > self.CityWhipCounter[i]:
-					message = "The whip was applied in %s" % (iCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_WHIP_APPLIED", (iCity.getName(), ))
 					Logger.writeLog(message, vColor="Red")
 
 				if iCurrentConstrictCounter > self.CityConscriptCounter[i]:
-					message = "A %s was drafted in %s" % (gc.getUnitInfo(iCity.getConscriptUnit()).getDescription(), iCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CONSCRIPT", (gc.getUnitInfo(iCity.getConscriptUnit()).getDescription(), iCity.getName()))
 					Logger.writeLog(message, vColor="Red")
 
 				if (self.CityWhipCounter[i] != 0
 				and iCurrentWhipCounter < self.CityWhipCounter[i]
 				and iCurrentWhipCounter % iCity.flatHurryAngerLength() == 0):
-					message = "Whip anger has decreased in %s" % (iCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_WHIP_ANGER_DECREASED", (iCity.getName(), ))
 					Logger.writeLog(message, vColor="DarkRed")
 
 				if (self.CityConscriptCounter[i] != 0
 				and iCurrentConstrictCounter < self.CityConscriptCounter[i]
 				and iCurrentConstrictCounter % iCity.flatConscriptAngerLength() == 0):
-					message = "Draft anger has decreased in %s" % (iCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_DRAFT_ANGER_DECREASED", (iCity.getName(), ))
 					Logger.writeLog(message, vColor="DarkRed")
 
 			self.storeWhip()
@@ -424,7 +426,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (iTeamX == 0
 			and gc.getGame().getGameTurn() > 0):
 					civMet = PyPlayer(gc.getTeam(iHasMetTeamY).getLeaderID())
-					message = "Contact made: %s" % (civMet.getCivilizationName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT", (civMet.getCivilizationName(), ))
 					Logger.writeLog(message, vColor="Brown")
 
 	def onCombatLogCalc(self, argsList):
@@ -451,25 +453,27 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				playerY = PyPlayer(pLoser.getOwner())
 				winnerHealth = float(pWinner.baseCombatStr()) * float(pWinner.currHitPoints()) / float(pWinner.maxHitPoints())
 				zsBattleLocn = self.getUnitLocation(pWinner)
+				text1 = "%.2f" % winnerHealth
+				text2 = "%.1f" % self.fOdds
 
 				if (pWinner.getOwner() == CyGame().getActivePlayer()):
 					if (self.bHumanPlaying):
-						message = "While attacking %s, %s (%.2f/%i) defeats %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS", (zsBattleLocn, pWinner.getName(), text1, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), text2, lPercent))
 						self.iBattleWonAttacking = self.iBattleWonAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = "While defending %s, %s (%.2f/%i) defeats %s %s (Prob Victory: %.1f%s)" %(zsBattleLocn, pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), self.fOdds, lPercent)
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS", (zsBattleLocn, pWinner.getName(), text1, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), text2, lPercent))
 						self.iBattleWonDefending = self.iBattleWonDefending + 1
 
 					Logger.writeLog(message, vColor="DarkRed")
 
 				else:
 					if (self.bHumanPlaying):
-						message = "While attacking %s, %s loses to %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), text1, pWinner.baseCombatStr(), text2, lPercent))
 						self.iBattleLostAttacking = self.iBattleLostAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = "While defending %s, %s loses to %s %s (%.2f/%i) (Prob Victory: %.1f%s)" %(zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), winnerHealth, pWinner.baseCombatStr(), self.fOdds, lPercent)
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), text1, pWinner.baseCombatStr(), text2, lPercent))
 						self.iBattleLostDefending = self.iBattleLostDefending + 1
 
 					Logger.writeLog(message, vColor="Red")

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by Hazem Shams al'Din (Baraka Designs) -->
+<!--
+    BUG Option Screen Text
+
+    Copyright (c) 2007, BUG Mod.
+
+    This file is part of Civilization IV BUG Mod.
+-->
+<Civ4GameText xmlns="http://www.firaxis.com">
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_TURN</Tag>
+        <English>Turn %s1 (%s2) [%s3]</English>
+        <French>Turn %s1 (%s2) [%s3]</French>
+        <German>Turn %s1 (%s2) [%s3]</German>
+        <Italian>Turno %s1 (%s2) [%s3]</Italian>
+        <Spanish>Turn %s1 (%s2) [%s3]</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING</Tag>
+        <English>Units victorious while attacking: %d1</English>
+        <French>Units victorious while attacking: %d1</French>
+        <German>Units victorious while attacking: %d1</German>
+        <Italian>Unità vittoriose in attacco: %d1</Italian>
+        <Spanish>Units victorious while attacking: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_DEFENDING</Tag>
+        <English>Units victorious while defending: %d1</English>
+        <French>Units victorious while defending: %d1</French>
+        <German>Units victorious while defending: %d1</German>
+        <Italian>Unità vittoriose in difesa: %d1</Italian>
+        <Spanish>Units victorious while defending: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_WITHDRAWING_ATTACKING</Tag>
+        <English>Units withdrawing while attacking: %d1</English>
+        <French>Units withdrawing while attacking: %d1</French>
+        <German>Units withdrawing while attacking: %d1</German>
+        <Italian>Unità in ritirata: %d1</Italian>
+        <Spanish>Units withdrawing while attacking: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_DEFEATED_ATTACKING</Tag>
+        <English>Units defeated while attacking: %d1</English>
+        <French>Units defeated while attacking: %d1</French>
+        <German>Units defeated while attacking: %d1</German>
+        <Italian>Unità sconfitte in attacco: %d1</Italian>
+        <Spanish>Units defeated while attacking: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_DEFEATED_DEFENDING</Tag>
+        <English>Units defeated while defending: %d1</English>
+        <French>Units defeated while defending: %d1</French>
+        <German>Units defeated while defending: %d1</German>
+        <Italian>Unità sconfitte in difesa: %d1</Italian>
+        <Spanish>Units defeated while defending: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_UNITS_ESCAPING_ATTACKING</Tag>
+        <English>Units escaping while attacking: %d1</English>
+        <French>Units escaping while attacking: %d1</French>
+        <German>Units escaping while attacking: %d1</German>
+        <Italian>Unità in fuga: %d1</Italian>
+        <Spanish>Units escaping while attacking: %d1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHIP_APPLIED</Tag>
+        <English>The whip was applied in %s1</English>
+        <French>The whip was applied in %s1</French>
+        <German>The whip was applied in %s1</German>
+        <Italian>Produzione accelerata a %s1</Italian>
+        <Spanish>The whip was applied in %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CONSCRIPT</Tag>
+        <English>A %s1 was drafted in %s2</English>
+        <French>A %s1 was drafted in %s2</French>
+        <German>A %s1 was drafted in %s2</German>
+        <Italian>Un'unità %s1 è stata coscritta a %s2</Italian>
+        <Spanish>A %s1 was drafted in %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHIP_ANGER_DECREASED</Tag>
+        <English>Whip anger has decreased in %s1</English>
+        <French>Whip anger has decreased in %s1</French>
+        <German>Whip anger has decreased in %s1</German>
+        <Italian>L'infelicità da sacrifici è diminuita a %s1</Italian>
+        <Spanish>Whip anger has decreased in %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_DRAFT_ANGER_DECREASED</Tag>
+        <English>Draft anger has decreased in %s1</English>
+        <French>Draft anger has decreased in %s1</French>
+        <German>Draft anger has decreased in %s1</German>
+        <Italian>L'infelicità da coscrizione è diminuita a %s1</Italian>
+        <Spanish>Draft anger has decreased in %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT</Tag>
+        <English>Contact made: %s1 </English>
+        <French>Contact made: %s1</French>
+        <German>Contact made: %s1</German>
+        <Italian>Civiltà contattata: %s1</Italian>
+        <Spanish>Contact made: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS</Tag>
+        <English>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</English>
+        <French>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</French>
+        <German>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</German>
+        <Italian>Attaccando %s1, l'unità %s2 (%s3/%d4) ha sconfitto %s6 %s5 (probabilità di vittoria: %s7 %s8)</Italian>
+        <Spanish>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS</Tag>
+        <English>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</English>
+        <French>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</French>
+        <German>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</German>
+        <Italian>Difendendo %s1, l'unità %s2 (%s3/%d4) ha sconfitto %s6 %s5 (probabilità di sconfitta: %s7 %s8)</Italian>
+        <Spanish>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES</Tag>
+        <English>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</English>
+        <French>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</French>
+        <German>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</German>
+        <Italian>Attaccando %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di vittoria: %s7 %s8)</Italian>
+        <Spanish>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES</Tag>
+        <English>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</English>
+        <French>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</French>
+        <German>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</German>
+        <Italian>Difendendo %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di sconfitta: %s7 %s8)</Italian>
+        <Spanish>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</Spanish>
+    </TEXT> 
+   
+</Civ4GameText>
