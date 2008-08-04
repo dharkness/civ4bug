@@ -560,7 +560,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_TOGGLE_VOTES</Tag>
 		<English>Toggle Votes</English>
 		<French>Alterner Voix</French>
-		<German>Toggle Stimmen</German>
+		<German>Stimmen umschalten</German>
 		<Italian>Alterna Voti</Italian>
 		<Spanish>Alternar Votos</Spanish>
 	</TEXT>
@@ -568,7 +568,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_VASSALED</Tag>
 		<English>%d1 vassaled</English>
 		<French>%d1 vassaled</French>
-		<German>%d1 vassaled</German>
+		<German>%d1 Vasallen</German>
 		<Italian>%d1 vassallo</Italian>
 		<Spanish>%d1 vassaled</Spanish>
 	</TEXT>
@@ -576,7 +576,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_UNKNOWN</Tag>
 		<English>%d1 unknown</English>
 		<French>%d1 unknown</French>
-		<German>%d1 unknown</German>
+		<German>%d1 unbekannt</German>
 		<Italian>%d1 sconosciuto</Italian>
 		<Spanish>%d1 unknown</Spanish>
 	</TEXT>
@@ -584,7 +584,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_DIPLOMATIC</Tag>
 		<English>Diplomatic Victory</English>
 		<French>Victoire diplomatique</French>
-		<German>Diplomatische Victory</German>
+		<German>Diplomatischer Sieg</German>
 		<Italian>vittoria diplomatica</Italian>
 		<Spanish>La victoria diplomática</Spanish>
 	</TEXT>
@@ -592,16 +592,16 @@
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
 		<English>%s1 (%s2) leads by %s3.</English>
 		<French>%s1 (%s2) conduit par %s3.</French>
-		<German>%s1 (%s2) leads by %s3.</German>
+		<German>%s1 (%s2 der Stimmen) führt mit %s3 Abstand.</German>
 		<Italian>%s1 (%s2) in testa di %s3.</Italian>
 		<Spanish>%s1 (%s2) conduce por %s3.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR</Tag>
 		<English>Source: Recent BUG Poll, statistical margin of error %s1.</English>
-		<French>Source: Sondage BUG récents, marge d'erreur %s2.</French>
-		<German>Quelle: BUG jüngsten Umfrage, die statistische Fehlerspanne %s2.</German>
-		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %s2.</Italian>
-		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s2.</Spanish>
+		<French>Source: Sondage BUG récents, marge d'erreur %s1.</French>
+		<German>Quelle: Neueste BUG-Umfrage, die statistische Fehlerquote beträgt %s1.</German>
+		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %s1.</Italian>
+		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s1.</Spanish>
 	</TEXT>
 </Civ4GameText>

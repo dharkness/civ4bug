@@ -24,7 +24,7 @@
 		<Tag>TXT_KEY_PEDIA_SCREEN_CONTENTS</Tag>
 		<English>Contents</English>
 		<French>Matières</French>
-		<German>Inhalts</German>
+		<German>Inhalt</German>
 		<Italian>Contenuto</Italian>
 		<Spanish>Contenido</Spanish>
 	</TEXT>
@@ -32,7 +32,7 @@
 		<Tag>TXT_KEY_PEDIA_CATEGORY_UNIT_UPGRADES</Tag>
 		<English>Unit Upgrades</English>
 		<French>Améliorations des Unités</French>
-		<German>Modernisierungsbaum</German>
+		<German>Modernisierungen</German>
 		<Italian>Miglioramenti Unità</Italian>
 		<Spanish>Unit Upgrades</Spanish>
 	</TEXT>
