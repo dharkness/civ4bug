@@ -5,6 +5,7 @@
 
 from CvPythonExtensions import *
 import CvUtil
+import sys
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -30,6 +31,12 @@ def getText(key, values, default=None):
 		else:
 			return "XML key %s not found" % key
 
+def formatFloat(value, decimals=None):
+	if decimals is None:
+		return "%f" % value
+	else:
+		return ("%." + str(decimals) + "f") % value
+
 
 def readDebugOptions():
 	"""
@@ -49,7 +56,7 @@ def debug(message):
 	if printToScreen:
 		CyInterface().addImmediateMessage(message, "")
 	if printToFile:
-		CvUtil.pyPrint(message)
+		sys.stdout.write(message + "\n")
 
 # Hold current values of debug options, and read them upon loading this module
 printToScreen = False
@@ -57,9 +64,10 @@ printToFile = False
 #readDebugOptions()
 
 
-EVENT_CODES = { NotifyCode.NOTIFY_CURSOR_MOVE_ON  : "Mouse Enter", 
-			 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF : "Mouse Leave", 
-			    NotifyCode.NOTIFY_CLICKED         : "Click", 
+EVENT_CODES = { NotifyCode.NOTIFY_CURSOR_MOVE_ON        : "Mouse Enter", 
+			 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF       : "Mouse Leave", 
+			    NotifyCode.NOTIFY_CLICKED               : "Click",
+			    NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED : "List Select",
 			  }
 def debugEvent(inputClass):
 	"Prints a debug message detailing the given event."
