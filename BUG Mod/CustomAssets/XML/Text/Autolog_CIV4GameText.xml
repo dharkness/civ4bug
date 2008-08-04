@@ -117,7 +117,7 @@
         <English>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</English>
         <French>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</French>
         <German>Bei der Verteidigung von %s1 besieg[NUM1:t:en] [NUM1:ein:eine:ein:einige:einige:einige] %s2 (%s3/%d4) [NUM1:einen:eine:ein:einige:einige:einige] %s5 %s6 (Siegwahrscheinlichkeit: %s7 %s8)</German>
-        <Italian>Difendendo %s1, l'unità %s2 (%s3/%d4) ha sconfitto %s6 %s5 (probabilità di sconfitta: %s7 %s8)</Italian>
+        <Italian>Difendendo %s1, l'unità %s2 (%s3/%d4) ha sconfitto %s6 %s5 (probabilità di vittoria: %s7 %s8)</Italian>
         <Spanish>While defending %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7 %s8)</Spanish>
     </TEXT> 
     <TEXT>
@@ -133,7 +133,93 @@
         <English>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7 %s8)</English>
         <French>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7 %s8)</French>
         <German>Bei der Verteidigung von %s1 [NUM1:wird:werden] [NUM1:ein:eine:ein:einige:einige:einige] %s2 von [NUM1:einem:einer:einem:einigen:einigen:einigen] %s3 %s4 (%s5/%d6) besiegt (Siegwahrscheinlichkeit: %s7 %s8)</German>
-        <Italian>Difendendo %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di sconfitta: %s7 %s8)</Italian>
+        <Italian>Difendendo %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di vittoria: %s7 %s8)</Italian>
         <Spanish>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7 %s8)</Spanish>
-    </TEXT>   
+    </TEXT>  
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_ESCAPES</Tag>
+        <English>While attacking, %s1 escapes from %s2 %s3 (Prob Victory: %s4%s5)</English>
+        <French>While attacking, %s1 escapes from %s2 %s3 (Prob Victory: %s4%s5)</French>
+        <German>While attacking, %s1 escapes from %s2 %s3 (Prob Victory: %s4%s5)</German>
+        <Italian>Attaccando, l'unità %s1 si è ritirata davanti all'unità %s3 %s2 (probabilità di vittoria: %s4 %s5)</Italian>
+        <Spanish>While attacking, %s1 escapes from %s2 %s3 (Prob Victory: %s4%s5)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_DECIMATES</Tag>
+        <English>While attacking, %s1 decimates %s2 %s3 (Prob Victory: %s4%s5)</English>
+        <French>While attacking, %s1 decimates %s2 %s3 (Prob Victory: %s4%s5)</French>
+        <German>While attacking, %s1 decimates %s2 %s3 (Prob Victory: %s4%s5)</German>
+        <Italian>Attaccando, l'unità %s1 ha decimato l'unità %s3 %s2 (probabilità di vittoria: %s4 %s5)</Italian>
+        <Spanish>While attacking, %s1 decimates %s2 %s3 (Prob Victory: %s4%s5)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ON_A_LAKE</Tag>
+        <English>on a lake</English>
+        <French>on a lake</French>
+        <German>on a lake</German>
+        <Italian>sul lago</Italian>
+        <Spanish>on a lake</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_JUST_OFF_SHORE</Tag>
+        <English>just off shore</English>
+        <French>just off shore</French>
+        <German>just off shore</German>
+        <Italian>sulla costa</Italian>
+        <Spanish>just off shore</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ON_THE_HIGH_SEAS</Tag>
+        <English>on the high seas</English>
+        <French>on the high seas</French>
+        <German>on the high seas</German>
+        <Italian>in alto mare</Italian>
+        <Spanish>on the high seas</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IN_THE_WILD</Tag>
+        <English>in the wild</English>
+        <French>in the wild</French>
+        <German>in the wild</German>
+        <Italian>in territorio selvaggio</Italian>
+        <Spanish>in the wild</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IN_TERRITORY</Tag>
+        <English>in %s1 territory</English>
+        <French>in %s1 territory</French>
+        <German>in %s1 territory</German>
+        <Italian>in territorio %s1</Italian>
+        <Spanish>in %s1 territory</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IN_TERRITORY_AT</Tag>
+        <English>%s1 at %s2</English>
+        <French>%s1 at %s2</French>
+        <German>%s1 at %s2</German>
+        <Italian>%s1, a %s2</Italian>
+        <Spanish>%s1 at %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IN_TERRITORY_NEAR</Tag>
+        <English>%s1 near %s2</English>
+        <French>%s1 near %s2</French>
+        <German>%s1 near %s2</German>
+        <Italian>%s1, presso %s2</Italian>
+        <Spanish>%s1 near %s2</Spanish>
+    </TEXT> 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </Civ4GameText>

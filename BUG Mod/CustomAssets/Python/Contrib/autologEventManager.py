@@ -453,27 +453,25 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				playerY = PyPlayer(pLoser.getOwner())
 				winnerHealth = float(pWinner.baseCombatStr()) * float(pWinner.currHitPoints()) / float(pWinner.maxHitPoints())
 				zsBattleLocn = self.getUnitLocation(pWinner)
-				text1 = "%.2f" % winnerHealth
-				text2 = "%.1f" % self.fOdds
 
 				if (pWinner.getOwner() == CyGame().getActivePlayer()):
 					if (self.bHumanPlaying):
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS", (zsBattleLocn, pWinner.getName(), text1, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), text2, lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS", (zsBattleLocn, pWinner.getName(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleWonAttacking = self.iBattleWonAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS", (zsBattleLocn, pWinner.getName(), text1, pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), text2, lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS", (zsBattleLocn, pWinner.getName(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getName(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleWonDefending = self.iBattleWonDefending + 1
 
 					Logger.writeLog(message, vColor="DarkRed")
 
 				else:
 					if (self.bHumanPlaying):
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), text1, pWinner.baseCombatStr(), text2, lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleLostAttacking = self.iBattleLostAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), text1, pWinner.baseCombatStr(), text2, lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES", (zsBattleLocn, pLoser.getName(), playerX.getCivilizationAdjective(), pWinner.getName(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleLostDefending = self.iBattleLostDefending + 1
 
 					Logger.writeLog(message, vColor="Red")
@@ -514,13 +512,11 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			if self.UnitKilled == 0:
 				if self.WonLastRound == 1:
-					sAction = "escapes from"
-					message = "While attacking, %s %s %s %s (Prob Victory: %.1f%s)" %(self.WdlAttacker.sUnitName, sAction, defCivName, self.WdlDefender.sUnitName, self.fOdds, lPercent)
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_ESCAPES", (self.WdlAttacker.sUnitName, defCivName, self.WdlDefender.sUnitName, BugUtil.formatFloat(self.fOdds, 1), lPercent))
 					Logger.writeLog(message, vColor="Red")
 					self.iBattleEscAttacking = self.iBattleEscAttacking + 1
 				else:
-					sAction = "decimates"
-					message = "While attacking, %s %s %s %s (Prob Victory: %.1f%s)" %(self.WdlAttacker.sUnitName, sAction, defCivName, self.WdlDefender.sUnitName, self.fOdds, lPercent)
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DECIMATES", (self.WdlAttacker.sUnitName, defCivName, self.WdlDefender.sUnitName, BugUtil.formatFloat(self.fOdds, 1), lPercent))
 					Logger.writeLog(message, vColor="DarkRed")
 					self.iBattleWdlAttacking = self.iBattleWdlAttacking + 1
 
@@ -534,30 +530,30 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if (zOwner == -1):
 			if (pPlot.isWater()):
 				if (pPlot.isLake()):
-					zsLocn1 = "on a lake"
+					zsLocn1 = BugUtil.getPlainText("TXT_KEY_AUTOLOG_ON_A_LAKE")
 				elif (pPlot.isAdjacentToLand()):
-					zsLocn1 = "just off shore"
+					zsLocn1 = BugUtil.getPlainText("TXT_KEY_AUTOLOG_JUST_OFF_SHORE")
 				else:
-					zsLocn1 = "on the high seas"
+					zsLocn1 = BugUtil.getPlainText("TXT_KEY_AUTOLOG_ON_THE_HIGH_SEAS")
 			else:
-				zsLocn1 = "in the wild"
+				zsLocn1 = BugUtil.getPlainText("TXT_KEY_AUTOLOG_IN_THE_WILD")
 		else:
 			playerX = PyPlayer(zOwner)
-			zsLocn1 = "in %s territory" %(playerX.getCivilizationAdjective())
+			zsLocn1 = BugUtil.getText("TXT_KEY_AUTOLOG_IN_TERRITORY", (playerX.getCivilizationAdjective(), ))
 
 		for iiX in range(iX-1, iX+2, 1):
 			for iiY in range(iY-1, iY+2, 1):
 				pPlot = CyMap().plot(iiX,iiY)
 				if (pPlot.isCity()):
 					zsCity = pPlot.getPlotCity()
-					return "%s at %s" % (zsLocn1, zsCity.getName())
+					return BugUtil.getText("TXT_KEY_AUTOLOG_IN_TERRITORY_AT", (zsLocn1, zsCity.getName()))
 
 		for iiX in range(iX-4, iX+5, 1):
 			for iiY in range(iY-4, iY+5, 1):
 				pPlot = CyMap().plot(iiX,iiY)
 				if (pPlot.isCity()):
 					zsCity = pPlot.getPlotCity()
-					return "%s near %s" % (zsLocn1, zsCity.getName())
+					return BugUtil.getText("TXT_KEY_AUTOLOG_IN_TERRITORY_NEAR", (zsLocn1, zsCity.getName()))
 
 		return zsLocn1
 
