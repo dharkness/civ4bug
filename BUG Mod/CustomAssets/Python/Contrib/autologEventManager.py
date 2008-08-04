@@ -545,24 +545,21 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			playerX = PyPlayer(zOwner)
 			zsLocn1 = "in %s territory" %(playerX.getCivilizationAdjective())
 
-		zsLocn2 = ""
 		for iiX in range(iX-1, iX+2, 1):
 			for iiY in range(iY-1, iY+2, 1):
 				pPlot = CyMap().plot(iiX,iiY)
 				if (pPlot.isCity()):
 					zsCity = pPlot.getPlotCity()
-					zsLocn2 = " at %s" % (zsCity.getName())
+					return "%s at %s" % (zsLocn1, zsCity.getName())
 
-		if zsLocn2 == "":
-			for iiX in range(iX-4, iX+5, 1):
-				for iiY in range(iY-4, iY+5, 1):
-					pPlot = CyMap().plot(iiX,iiY)
-					if (pPlot.isCity()):
-						zsCity = pPlot.getPlotCity()
-						zsLocn2 = " near %s" % (zsCity.getName())
+		for iiX in range(iX-4, iX+5, 1):
+			for iiY in range(iY-4, iY+5, 1):
+				pPlot = CyMap().plot(iiX,iiY)
+				if (pPlot.isCity()):
+					zsCity = pPlot.getPlotCity()
+					return "%s near %s" % (zsLocn1, zsCity.getName())
 
-		zsLocn = zsLocn1 + zsLocn2
-		return zsLocn
+		return zsLocn1
 
 	def onBuildingBuilt(self, argsList):
 		if (BugAutolog.isLogBuildCompleted()):
