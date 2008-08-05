@@ -9,12 +9,84 @@
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
     <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_BC</Tag>
+        <English> BC</English>
+        <French> BC</French>
+        <German> BC</German>
+        <Italian> a.C.</Italian>
+        <Spanish> BC</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_AD</Tag>
+        <English> AD</English>
+        <French> AD</French>
+        <German> AD</German>
+        <Italian> d.C.</Italian>
+        <Spanish> AD</Spanish>
+    </TEXT> 
+    <TEXT>
         <Tag>TXT_KEY_AUTOLOG_TURN</Tag>
         <English>Turn %s1 (%s2) [%s3]</English>
         <French>Turn %s1 (%s2) [%s3]</French>
         <German>Runde %s1 (%s2) [%s3]</German>
         <Italian>Turno %s1 (%s2) [%s3]</Italian>
         <Spanish>Turn %s1 (%s2) [%s3]</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_LOGGING_GAME</Tag>
+        <English>Logging Game to File: %s1</English>
+        <French>Logging Game to File: %s1</French>
+        <German>Logging Game to File: %s1</German>
+        <Italian>Partita registrata nel file: %s1</Italian>
+        <Spanish>Logging Game to File: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_POPUP_QUESTION</Tag>
+        <English>Do you want to log this game?</English>
+        <French>Do you want to log this game?</French>
+        <German>Do you want to log this game?</German>
+        <Italian>Vuoi registrare questa partita?</Italian>
+        <Spanish>Do you want to log this game?</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_POPUP_ANSWERS</Tag>
+        <English>OK for YES, Cancel for NO?</English>
+        <French>OK for YES, Cancel for NO?</French>
+        <German>OK for YES, Cancel for NO?</German>
+        <Italian>Clicca su OK se la risposta è SI, su Cancel se è NO</Italian>
+        <Spanish>OK for YES, Cancel for NO?</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ENTER_LOG_NAME</Tag>
+        <English>Enter new or existing log file name</English>
+        <French>Enter new or existing log file name</French>
+        <German>Enter new or existing log file name</German>
+        <Italian>Inserisci il nome di un file (nuovo o già esistente) per il Registro</Italian>
+        <Spanish>Enter new or existing log file name</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_NO_LOGGING</Tag>
+        <English>No Logging of this Game</English>
+        <French>No Logging of this Game</French>
+        <German>No Logging of this Game</German>
+        <Italian>Questa partita non viene registrata</Italian>
+        <Spanish>No Logging of this Game</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CUSTOM_ENTRY</Tag>
+        <English>Enter custom log entry</English>
+        <French>Enter custom log entry</French>
+        <German>Enter custom log entry</German>
+        <Italian>Inserisci una nota personalizzata nel Registro</Italian>
+        <Spanish>Enter custom log entry</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_BATTLE_STATS</Tag>
+        <English>Battle Stats:</English>
+        <French>Battle Stats:</French>
+        <German>Battle Stats:</German>
+        <Italian>Statistiche di combattimento:</Italian>
+        <Spanish>Battle Stats:</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING</Tag>
@@ -65,6 +137,22 @@
         <Spanish>Units escaping while attacking: %d1</Spanish>
     </TEXT> 
     <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_BATTLE_STATS_WRITTEN</Tag>
+        <English>Battle stats written to log and reset</English>
+        <French>Battle stats written to log and reset</French>
+        <German>Battle stats written to log and reset</German>
+        <Italian>Statistiche di combattimento scritte nel Registro</Italian>
+        <Spanish>Battle stats written to log and reset</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_AFTER_END_TURN</Tag>
+        <English>After End Turn:</English>
+        <French>After End Turn:</French>
+        <German>After End Turn:</German>
+        <Italian>Dopo la fine del turno:</Italian>
+        <Spanish>After End Turn:</Spanish>
+    </TEXT> 
+    <TEXT>
         <Tag>TXT_KEY_AUTOLOG_WHIP_APPLIED</Tag>
         <English>The whip was applied in %s1</English>
         <French>The whip was applied in %s1</French>
@@ -95,6 +183,14 @@
         <German>Unzufriedenheit über Zwangsrekrutierung in %s1 hat sich verringert</German>
         <Italian>L'infelicità da coscrizione è diminuita a %s1</Italian>
         <Spanish>Draft anger has decreased in %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_OTHER_PLAYER_ACTIONS</Tag>
+        <English>Other Player Actions:</English>
+        <French>Other Player Actions:</French>
+        <German>Other Player Actions:</German>
+        <Italian>Altre azioni del giocatore:</Italian>
+        <Spanish>Other Player Actions:</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT</Tag>

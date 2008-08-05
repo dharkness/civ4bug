@@ -60,9 +60,9 @@ def StartLogger(vsFileName):
 	zmaxturn = gc.getGame().getMaxTurns()
 	zyear = gc.getGame().getGameTurnYear()
 	if (zyear < 0):
-		zyear = str(-zyear) + " BC"
+		zyear = str(-zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_BC")
 	else:
-		zyear = str(zyear) + " AD"
+		zyear = str(zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_AD")
 	zCurrDateTime = time.strftime("%d-%b-%Y %H:%M:%S")
 
 	if (zmaxturn == 0):
@@ -75,7 +75,7 @@ def StartLogger(vsFileName):
 	Logger.writeLog(message, vBold=True, vUnderline=True)
 
 	if (not BugAutolog.isSilent()):
-		message = "Logging Game to File: %s" % (szfileName)
+		message = BugUtil.getText("TXT_KEY_AUTOLOG_LOGGING_GAME", (szfileName, ))
 		CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
 
 class autologEventManager:
@@ -95,10 +95,10 @@ class autologEventManager:
 		popup = PyPopup.PyPopup(CvUtil.EventLogOpen, EventContextTypes.EVENTCONTEXT_SELF)
 
 		if (BugAutolog.isUseDefaultFileName()):
-			popup.setHeaderString("Do you want to log this game?")
-			popup.setBodyString("OK for YES, Cancel for NO")
+			popup.setHeaderString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_POPUP_QUESTION"))
+			popup.setBodyString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_POPUP_ANSWERS"))
 		else:
-			popup.setHeaderString("Enter new or existing log file name")
+			popup.setHeaderString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_ENTER_LOG_NAME"))
 			popup.createEditBox(BugAutolog.getFileName())
 			popup.setEditBoxMaxCharCount( 30 )
 
@@ -112,13 +112,13 @@ class autologEventManager:
 			StartLogger(popupReturn.getEditBoxString(0))
 		else:
 			BugAutolog.setLoggingOn(False)
-			message = "No Logging of this Game"
+			message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_NO_LOGGING")
 			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
 
 	def __eventCustomLogEntryBegin(self, argsList):
 		if BugAutolog.isLoggingOn():
 			popup = PyPopup.PyPopup(CvUtil.EventCustomLogEntry, EventContextTypes.EVENTCONTEXT_SELF)
-			popup.setHeaderString("Enter custom log entry")
+			popup.setHeaderString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_CUSTOM_ENTRY"))
 			popup.createEditBox("")
 			popup.addButton("OK")
 			popup.addButton("Cancel")
@@ -240,7 +240,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			and BugAutolog.isEnabled()
 			and BugAutolog.isLoggingOn()):
 				Logger.writeLog("")
-				Logger.writeLog("Battle Stats:", vBold=True)
+				Logger.writeLog(BugUtil.getPlainText("TXT_KEY_AUTOLOG_BATTLE_STATS"), vBold=True)
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING", (self.iBattleWonAttacking, ))
 				Logger.writeLog(message, vColor="DarkRed")
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_DEFENDING", (self.iBattleWonDefending, ))
@@ -261,7 +261,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				self.iBattleWdlAttacking = 0
 				self.iBattleEscAttacking = 0
 
-				message = "Battle stats written to log & reset"
+				message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_BATTLE_STATS_WRITTEN")
 				CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
 				return 1
 
@@ -333,9 +333,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			zturn = gc.getGame().getGameTurn() + 1
 			zyear = gc.getGame().getTurnYear(zturn)
 			if (zyear < 0):
-				zyear = str(-zyear) + " BC"
+				zyear = str(-zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_BC")
 			else:
-				zyear = str(zyear) + " AD"
+				zyear = str(zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_AD")
 			zCurrDateTime = time.strftime("%d-%b-%Y %H:%M:%S")
 
 			if (zmaxturn == 0):
@@ -368,7 +368,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if BugAutolog.isShowIBT():
 #			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
-			Logger.writeLog_pending("After End Turn:", vBold=True)
+			Logger.writeLog_pending(BugUtil.getPlainText("TXT_KEY_AUTOLOG_AFTER_END_TURN"), vBold=True)
 #			Logger.writeLog("After End Turn-:", vBold=True)
 
 		if BugAutolog.isLogCityWhipStatus():
@@ -412,7 +412,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		and BugAutolog.isShowIBT()):
 			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
-			Logger.writeLog_pending("Other Player Actions:", vBold=True)
+			Logger.writeLog_pending(BugUtil.getPlainText("TXT_KEY_AUTOLOG_OTHER_PLAYER_ACTIONS"), vBold=True)
 #			Logger.writeLog("Other Player Actions-:", vBold=True)
 
 		if iPlayer == CyGame().getActivePlayer():
