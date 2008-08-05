@@ -826,8 +826,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer = argsList[1]
 			#CvUtil.pyPrint("%s has grown to size %i" %(pCity.getName(),pCity.getPopulation()))
 			if pCity.getOwner() == CyGame().getActivePlayer():
-				message = "grows"
-				message = "%s %s to size %i" %(pCity.getName(), message, pCity.getPopulation())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_GROWS", (pCity.getName(), pCity.getPopulation()))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityBuildingUnit(self, argsList):
@@ -836,7 +835,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iUnitType = argsList[1]
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				zTurns = pCity.getUnitProductionTurnsLeft(iUnitType, 1)
-				message = "%s begins: %s (%i turns)" %(pCity.getName(),gc.getUnitInfo(iUnitType).getDescription(), zTurns)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_PRODUCES_UNIT", (pCity.getName(),gc.getUnitInfo(iUnitType).getDescription(), zTurns))
 				Logger.writeLog(message, vColor="Purple")
 
 	def onCityBuildingBuilding(self, argsList):
@@ -845,7 +844,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iBuildingType = argsList[1]
 			if pCity.getOwner() == CyGame().getActivePlayer():
 				zTurns = pCity.getBuildingProductionTurnsLeft(iBuildingType, 1)
-				message = "%s begins: %s (%i turns)" %(pCity.getName(),gc.getBuildingInfo(iBuildingType).getDescription(), zTurns)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_PRODUCES_BUILDING", (pCity.getName(),gc.getBuildingInfo(iBuildingType).getDescription(), zTurns))
 				Logger.writeLog(message, vColor="Purple")
 
 	def onImprovementBuilt(self, argsList):
@@ -860,14 +859,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (BugAutolog.isLogImprovements()
 		and pPlot.getOwner() == CyGame().getActivePlayer()):
-			message = "A %s was built" % (PyInfo.ImprovementInfo(iImprovement).getDescription())
+			message = BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_BUILT", (PyInfo.ImprovementInfo(iImprovement).getDescription(), ))
 			zsLocn = ""
 			for iiX in range(iX-2, iX+3, 1):
 				for iiY in range(iY-2, iY+3, 1):
 					pPlot = CyMap().plot(iiX,iiY)
 					if (pPlot.isCity()):
 						zsCity = pPlot.getPlotCity()
-						zsLocn = " near %s" % (zsCity.getName())
+						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
 			message = message + zsLocn
 			Logger.writeLog(message, vColor="RoyalBlue")
@@ -884,14 +883,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (BugAutolog.isLogImprovements()
 		and pPlot.getOwner() == CyGame().getActivePlayer()):
-			message = "A %s was destroyed" % (PyInfo.ImprovementInfo(iImprovement).getDescription())
+			message = BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED", (PyInfo.ImprovementInfo(iImprovement).getDescription(), ))
 			zsLocn = ""
 			for iiX in range(iX-2, iX+3, 1):
 				for iiY in range(iY-2, iY+3, 1):
 					pPlot = CyMap().plot(iiX,iiY)
 					if (pPlot.isCity()):
 						zsCity = pPlot.getPlotCity()
-						zsLocn = " near %s" % (zsCity.getName())
+						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
 			message = message + zsLocn
 			Logger.writeLog(message, vColor="RoyalBlue")
@@ -907,21 +906,21 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		and (pPlot.getOwner() == CyGame().getActivePlayer()
 		or   pUnit.getOwner() == CyGame().getActivePlayer())):
 			if (iImprovement != -1):
-				message = "A %s" % (gc.getImprovementInfo(iImprovement).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT", (gc.getImprovementInfo(iImprovement).getDescription(), ))
 			elif (iRoute != -1):
-				message = "A %s" % (gc.getRouteInfo(iRoute).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_ROUTE", (gc.getRouteInfo(iRoute).getDescription(), ))
 			else:
-				message = "An improvement"
+				message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_IMPROVEMENT_UNKNOWN")
 			zsLocn = ""
 			for iiX in range(iX-2, iX+3, 1):
 				for iiY in range(iY-2, iY+3, 1):
 					pPlot = CyMap().plot(iiX,iiY)
 					if (pPlot.isCity()):
 						zsCity = pPlot.getPlotCity()
-						zsLocn = " near %s" % (zsCity.getName())
+						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
 			message = message + zsLocn
-			message = message + " was destroyed by %s %s" %(PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName())
+			message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
 
 			if self.bHumanPlaying:
 				Logger.writeLog(message, vColor="DarkRed")
@@ -940,9 +939,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			zsVassal = gc.getTeam(iVassal).getName()
 
 			if (bVassal):
-				message = "%s becomes a Vassal State of %s" % (zsVassal, zsMaster)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_VASSAL_BECOMES", (zsVassal, zsMaster))
 			else:
-				message = "%s revolts and is no longer a Vassal State of %s" % (zsVassal, zsMaster)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_VASSAL_REVOLTS", (zsVassal, zsMaster))
 
 			Logger.writeLog(message, vColor="Red")
 
@@ -999,16 +998,16 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				if (gc.getTeam(gc.getPlayer(iCiv).getTeam()).isHasMet(gc.getActivePlayer().getTeam())
 				and self.CIVReligion[iCiv] != gc.getPlayer(iCiv).getStateReligion()
 				and PyPlayer(iCiv).isAlive()):
-					zsCiv = gc.getPlayer(iCiv).getName() + "(" + gc.getPlayer(iCiv).getCivilizationShortDescription(0) + ")"
+					zsCiv = gc.getPlayer(iCiv).getName() + " (" + gc.getPlayer(iCiv).getCivilizationShortDescription(0) + ")"
 					if self.CIVReligion[iCiv] == -1:
-						zsOldRel = "no State Religion"
+						zsOldRel = BugUtil.getPlainText("TXT_KEY_AUTOLOG_NO_STATE_RELIGION")
 					else:
 						zsOldRel = gc.getReligionInfo(self.CIVReligion[iCiv]).getDescription()
 					if gc.getPlayer(iCiv).getStateReligion() == -1:
-						zsNewRel = "no State Religion"
+						zsNewRel = BugUtil.getPlainText("TXT_KEY_AUTOLOG_NO_STATE_RELIGION")
 					else:
 						zsNewRel = gc.getReligionInfo(gc.getPlayer(iCiv).getStateReligion()).getDescription()
-					message = "State Religion Change: %s from '%s' to '%s'" % (zsCiv, zsOldRel, zsNewRel)
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_CHANGE", (zsCiv, zsOldRel, zsNewRel))
 					Logger.writeLog(message, vColor="DarkOrange")
 
 		# check if the attitude has changed
@@ -1024,9 +1023,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 					and iCiv1 != gc.getGame().getActivePlayer()
 					and PyPlayer(iCiv1).isAlive()
 					and PyPlayer(iCiv2).isAlive()):
-						zsCiv1 = gc.getPlayer(iCiv1).getName() + "(" + gc.getPlayer(iCiv1).getCivilizationShortDescription(0) + ")"
-						zsCiv2 = gc.getPlayer(iCiv2).getName() + "(" + gc.getPlayer(iCiv2).getCivilizationShortDescription(0) + ")"
-						message = "Attitude Change: %s towards %s, from '%s' to '%s'" % (zsCiv1, zsCiv2, self.CIVAttitude[zKey], zsNewAttitude)
+						zsCiv1 = gc.getPlayer(iCiv1).getName() + " (" + gc.getPlayer(iCiv1).getCivilizationShortDescription(0) + ")"
+						zsCiv2 = gc.getPlayer(iCiv2).getName() + " (" + gc.getPlayer(iCiv2).getCivilizationShortDescription(0) + ")"
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_ATTITUDE_CHANGE", (zsCiv1, zsCiv2, self.CIVAttitude[zKey], zsNewAttitude))
 						Logger.writeLog(message, vColor="Blue")
 
 		# check if the civ's civics have changed
@@ -1040,7 +1039,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						if (self.CIVCivics[zKey] != gc.getPlayer(iCiv).getCivics(iCivic)):
 							zsOldCiv = gc.getCivicInfo(self.CIVCivics[zKey]).getDescription()
 							zsNewCiv = gc.getCivicInfo(gc.getPlayer(iCiv).getCivics(iCivic)).getDescription()
-							message = "Civics Change: %s from '%s' to '%s'" % (zsCiv, zsOldCiv, zsNewCiv)
+							message = BugUtil.getText("TXT_KEY_AUTOLOG_CIVIC_CHANGE", (zsCiv, zsOldCiv, zsNewCiv))
 							Logger.writeLog(message, vColor="SeaGreen")
 		return 0
 

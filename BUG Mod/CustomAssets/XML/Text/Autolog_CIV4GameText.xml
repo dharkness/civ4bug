@@ -477,7 +477,7 @@
         <English>Tech traded to %s1: %s2</English>
         <French>Tech traded to %s1: %s2</French>
         <German>Tech traded to %s1: %s2</German>
-        <Italian>La tecnologia %s2 è stata commerciata con %s1</Italian>
+        <Italian>La tecnologia %s2 è stata venduta a %s1</Italian>
         <Spanish>Tech traded to %s1: %s2</Spanish>
     </TEXT> 
     <TEXT>
@@ -688,5 +688,133 @@
         <Italian>I confini culturali della città di %s1 si sono espansi</Italian>
         <Spanish>%s1's borders expand</Spanish>
     </TEXT> 
-    
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_GROWS</Tag>
+        <English>%s1 grows to size %d2</English>
+        <French>%s1 grows to size %d2</French>
+        <German>%s1 grows to size %d2</German>
+        <Italian>La città di %s1 è cresciuta a dimensione %d2</Italian>
+        <Spanish>%s1 grows to size %d2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_PRODUCES_UNIT</Tag>
+        <English>%s1 begins: %s2 (%d3 turns)</English>
+        <French>%s1 begins: %s2 (%d3 turns)</French>
+        <German>%s1 begins: %s2 (%d3 turns)</German>
+        <Italian>La città di %s1 ha iniziato a produrre l'unità %s2 (necessari %d3 turni)</Italian>
+        <Spanish>%s1 begins: %s2 (%d3 turns)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_PRODUCES_BUILDING</Tag>
+        <English>%s1 begins: %s2 (%d3 turns)</English>
+        <French>%s1 begins: %s2 (%d3 turns)</French>
+        <German>%s1 begins: %s2 (%d3 turns)</German>
+        <Italian>La città di %s1 ha iniziato a produrre l'edificio %s2 (necessari %d3 turni)</Italian>
+        <Spanish>%s1 begins: %s2 (%d3 turns)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_BUILT</Tag>
+        <English>A %s1 was built</English>
+        <French>A %s1 was built</French>
+        <German>A %s1 was built</German>
+        <Italian>E' stato costruito un miglioramento %s1</Italian>
+        <Spanish>A %s1 was built</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_NEAR</Tag>
+        <English>[SPACE]near %s1</English>
+        <French>[SPACE]near %s1</French>
+        <German>[SPACE]near %s1</German>
+        <Italian>[SPACE]presso %s1</Italian>
+        <Spanish>[SPACE]near %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED</Tag>
+        <English>A %s1 was destroyed</English>
+        <French>A %s1 was destroyed</French>
+        <German>A %s1 was destroyed</German>
+        <Italian>E' stato distrutto un miglioramento %s1</Italian>
+        <Spanish>A %s1 was destroyed</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT</Tag>
+        <English>A %s1</English>
+        <French>A %s1</French>
+        <German>A %s1</German>
+        <Italian>Un miglioramento %s1</Italian>
+        <Spanish>A %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ROUTE</Tag>
+        <English>A %s1</English>
+        <French>A %s1</French>
+        <German>A %s1</German>
+        <Italian>Una %s1</Italian>
+        <Spanish>A %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_UNKNOWN</Tag>
+        <English>An improvement</English>
+        <French>An improvement</French>
+        <German>An improvement</German>
+        <Italian>Un miglioramento</Italian>
+        <Spanish>An improvement</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY</Tag>
+        <English>[SPACE]was destroyed by %s1 %s2</English>
+        <French>[SPACE]was destroyed by %s1 %s2</French>
+        <German>[SPACE]was destroyed by %s1 %s2</German>
+        <Italian>[SPACE]è stato distrutto da %s2 %s1</Italian>
+        <Spanish>[SPACE]was destroyed by %s1 %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VASSAL_BECOMES</Tag>
+        <English>%s1 becomes a Vassal State of %s2</English>
+        <French>%s1 becomes a Vassal State of %s2</French>
+        <German>%s1 becomes a Vassal State of %s2</German>
+        <Italian>%s1 è divenuto vassallo di %s2</Italian>
+        <Spanish>%s1 becomes a Vassal State of %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VASSAL_REVOLTS</Tag>
+        <English>%s1 revolts and is no longer a Vassal State of %s2</English>
+        <French>%s1 revolts and is no longer a Vassal State of %s2</French>
+        <German>%s1 revolts and is no longer a Vassal State of %s2</German>
+        <Italian>%s1 si è rivoltato e non è più un vassallo di %s2</Italian>
+        <Spanish>%s1 revolts and is no longer a Vassal State of %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_NO_STATE_RELIGION</Tag>
+        <English>no State Religion</English>
+        <French>no State Religion</French>
+        <German>no State Religion</German>
+        <Italian>nessuna Religione di Stato</Italian>
+        <Spanish>no State Religion</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_CHANGE</Tag>
+        <English>State Religion Change: %s1 from '%s2' to '%s3'</English>
+        <French>State Religion Change: %s1 from '%s2' to '%s3'</French>
+        <German>State Religion Change: %s1 from '%s2' to '%s3'</German>
+        <Italian>%s1 ha cambiato la Religione di Stato da '%s2' a '%s3'</Italian>
+        <Spanish>State Religion Change: %s1 from '%s2' to '%s3'</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ATTITUDE_CHANGE</Tag>
+        <English>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</English>
+        <French>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</French>
+        <German>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</German>
+        <Italian>%s1 ha mutato il suo atteggiamento nei confronti di %s2 da '%s3' a '%s4'</Italian>
+        <Spanish>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CIVIC_CHANGE</Tag>
+        <English>Civics Change: %s1 from '%s2' to '%s3'</English>
+        <French>Civics Change: %s1 from '%s2' to '%s3'</French>
+        <German>Civics Change: %s1 from '%s2' to '%s3'</German>
+        <Italian>%s1 ha cambiato la Forma di Governo da '%s2' a '%s3'</Italian>
+        <Spanish>Civics Change: %s1 from '%s2' to '%s3'</Spanish>
+    </TEXT> 
+  
 </Civ4GameText>
