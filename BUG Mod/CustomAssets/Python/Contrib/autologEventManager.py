@@ -561,14 +561,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if (BugAutolog.isLogBuildCompleted()):
 			pCity, iBuildingType = argsList
 			if pCity.getOwner() == CyGame().getActivePlayer():
-				message = "%s finishes: %s"%(pCity.getName(),gc.getBuildingInfo(iBuildingType).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_FINISH_BUILDING", (pCity.getName(), gc.getBuildingInfo(iBuildingType).getDescription()))
 				Logger.writeLog(message, vColor="Purple")
 
 	def onProjectBuilt(self, argsList):
 		if (BugAutolog.isLogBuildCompleted()):
 			pCity, iProjectType = argsList
 			if pCity.getOwner() == CyGame().getActivePlayer():
-				message = "%s finishes: %s"%(pCity.getName(),gc.getProjectInfo(iProjectType).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_FINISH_PROJECT", (pCity.getName(), gc.getProjectInfo(iProjectType).getDescription()))
 				Logger.writeLog(message, vColor="Purple")
 
 	def onUnitBuilt(self, argsList):
@@ -576,14 +576,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			city = argsList[0]
 			unit = argsList[1]
 			if city.getOwner() == CyGame().getActivePlayer():
-				message = "%s finishes: %s"%(city.getName(),gc.getUnitInfo(unit.getUnitType()).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_FINISH_UNIT", (pCity.getName(), gc.getUnitInfo(unit.getUnitType()).getDescription()))
 				Logger.writeLog(message, vColor="Purple")
 
 	def onUnitPromoted(self, argsList):
 		if (BugAutolog.isLogPromotion()):
 			pUnit, iPromotion = argsList
 			if pUnit.getOwner() == CyGame().getActivePlayer():
-				message = "%s promoted: %s" % (pUnit.getName(), PyInfo.PromotionInfo(iPromotion).getDescription())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_PROMOTION", (pUnit.getName(), PyInfo.PromotionInfo(iPromotion).getDescription()))
 				Logger.writeLog(message, vColor="DarkOrange")
 
 	def onGoodyReceived(self, argsList):
@@ -591,28 +591,28 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iPlayer, pPlot, pUnit, iGoodyType = argsList
 			if iPlayer == CyGame().getActivePlayer():
 				GoodyTypeMap = {
-						-1: 'nothing',
-						0:	'a little gold',
-						1:	'lots of gold',
-						2:	'map',
-						3:	'settler',
-						4:	'warrior',
-						5:	'scout',
-						6:	'worker',
-						7:	'experience',
-						8:	'healing',
-						9:	'technology',
-						10:	'weak hostiles',
-						11: 'strong hostiles'
+						-1: BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_NOTHING"),
+						0:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_LITTLEGOLD"),
+						1:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_LOTSOFGOLD"),
+						2:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_MAP"),
+						3:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_SETTLER"),
+						4:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_WARRIOR"),
+						5:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_SCOUT"),
+						6:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_WORKER"),
+						7:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_XP"),
+						8:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_HEALING"),
+						9:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_TECH"),
+						10:	BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_WEAKHOSTILES"),
+						11: BugUtil.getPlainText("TXT_KEY_AUTOLOG_VILLAGE_RESULT_STRONGHOSTILES")
 					}
-				message = "Tribal village results: %s" % (GoodyTypeMap[iGoodyType])
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_VILLAGE_RESULT", (GoodyTypeMap[iGoodyType], ))
 				Logger.writeLog(message, vColor="Brown")
 
 	def onGreatPersonBorn(self, argsList):
 		if (BugAutolog.isLogGreatPeople()):
 			pUnit, iPlayer, pCity = argsList
 			if iPlayer == CyGame().getActivePlayer():
-				message = "%s born in %s" % (pUnit.getName(), pCity.getName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_GP_BORN", (pUnit.getName(), pCity.getName()))
 				Logger.writeLog(message, vColor="Brown")
 
 	def onTechAcquired(self, argsList):
@@ -627,14 +627,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				bWrite = True
 
 				if self.bHumanEndTurn:
-					message = "Tech research finished: %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_TECH_RESEARCHED", (PyInfo.TechnologyInfo(iTechType).getDescription(), ))
 				else:
-					message = "Tech acquired (trade, lightbulb, hut, espionage): %s"%(PyInfo.TechnologyInfo(iTechType).getDescription())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_TECH_ACQUIRED", (PyInfo.TechnologyInfo(iTechType).getDescription(), ))
 			else:
 				if self.bHumanPlaying:
 					bWrite = True
-					zsCiv = gc.getPlayer(iPlayer).getName() + "(" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0) + ")"
-					message = "Tech traded to %s: %s"%(zsCiv, PyInfo.TechnologyInfo(iTechType).getDescription())
+					zsCiv = gc.getPlayer(iPlayer).getName() + " (" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0) + ")"
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_TECH_TRADED", (zsCiv, PyInfo.TechnologyInfo(iTechType).getDescription()))
 
 			if bWrite:
 				Logger.writeLog(message, vColor="Green")
@@ -648,8 +648,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				researchCost = gc.getTeam(gc.getPlayer(iPlayer).getTeam()).getResearchCost(gc.getPlayer(iPlayer).getCurrentResearch())
 				researchRate = gc.getPlayer(iPlayer).calculateResearchRate(-1)
 				zTurns = (researchCost - researchProgress - overflowResearch) / researchRate + 1
-
-				message = "Research begun: %s (%i Turns)" %(PyInfo.TechnologyInfo(iTechType).getDescription(), zTurns)
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_RESEARCH_BEGUN", (PyInfo.TechnologyInfo(iTechType).getDescription(), zTurns))
 				Logger.writeLog(message, vColor="Green")
 
 	def onReligionFounded(self, argsList):

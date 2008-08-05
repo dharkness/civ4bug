@@ -10,19 +10,19 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_BC</Tag>
-        <English> BC</English>
-        <French> BC</French>
-        <German> BC</German>
-        <Italian> a.C.</Italian>
-        <Spanish> BC</Spanish>
+        <English>[SPACE]BC</English>
+        <French>[SPACE]BC</French>
+        <German>[SPACE]BC</German>
+        <Italian>[SPACE]a.C.</Italian>
+        <Spanish>[SPACE]BC</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_AD</Tag>
-        <English> AD</English>
-        <French> AD</French>
-        <German> AD</German>
-        <Italian> d.C.</Italian>
-        <Spanish> AD</Spanish>
+        <English>[SPACE]AD</English>
+        <French>[SPACE]AD</French>
+        <German>[SPACE]AD</German>
+        <Italian>[SPACE]d.C.</Italian>
+        <Spanish>[SPACE]AD</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_TURN</Tag>
@@ -304,16 +304,190 @@
         <Italian>%s1, presso %s2</Italian>
         <Spanish>%s1 near %s2</Spanish>
     </TEXT> 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FINISH_BUILDING</Tag>
+        <English>%s1 finishes: %s2</English>
+        <French>%s1 finishes: %s2</French>
+        <German>%s1 finishes: %s2</German>
+        <Italian>%s1 ha completato l'edificio %s2</Italian>
+        <Spanish>%s1 finishes: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FINISH_PROJECT</Tag>
+        <English>%s1 finishes: %s2</English>
+        <French>%s1 finishes: %s2</French>
+        <German>%s1 finishes: %s2</German>
+        <Italian>%s1 ha completato il progetto %s2</Italian>
+        <Spanish>%s1 finishes: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FINISH_UNIT</Tag>
+        <English>%s1 finishes: %s2</English>
+        <French>%s1 finishes: %s2</French>
+        <German>%s1 finishes: %s2</German>
+        <Italian>%s1 ha completato l'unità %s2</Italian>
+        <Spanish>%s1 finishes: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_PROMOTION</Tag>
+        <English>%s1 promoted: %s2</English>
+        <French>%s1 promoted: %s2</French>
+        <German>%s1 promoted: %s2</German>
+        <Italian>L'unità %s1 è stata promossa (%s2)</Italian>
+        <Spanish>%s1 promoted: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT</Tag>
+        <English>Tribal village results: %s1</English>
+        <French>Tribal village results: %s1</French>
+        <German>Tribal village results: %s1</German>
+        <Italian>Scoperto un villaggio tribale: %s1</Italian>
+        <Spanish>Tribal village results: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_NOTHING</Tag>
+        <English>nothing</English>
+        <French>nothing</French>
+        <German>nothing</German>
+        <Italian>nessun beneficio ricevuto</Italian>
+        <Spanish>nothing</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_LITTLEGOLD</Tag>
+        <English>a little gold</English>
+        <French>a little gold</French>
+        <German>a little gold</German>
+        <Italian>ricevuta una piccola quantità d'oro</Italian>
+        <Spanish>a little gold</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_LOTSOFGOLD</Tag>
+        <English>lots of gold</English>
+        <French>lots of gold</French>
+        <German>lots of gold</German>
+        <Italian>ricevuta una grossa quantità d'oro</Italian>
+        <Spanish>lots of gold</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_MAP</Tag>
+        <English>map</English>
+        <French>map</French>
+        <German>map</German>
+        <Italian>ricevuta una mappa locale</Italian>
+        <Spanish>map</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_SETTLER</Tag>
+        <English>settler</English>
+        <French>settler</French>
+        <German>settler</German>
+        <Italian>ricevuto un Colono</Italian>
+        <Spanish>settler</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_WARRIOR</Tag>
+        <English>warrior</English>
+        <French>warrior</French>
+        <German>warrior</German>
+        <Italian>ricevuto un Guerriero</Italian>
+        <Spanish>warrior</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_SCOUT</Tag>
+        <English>scout</English>
+        <French>scout</French>
+        <German>scout</German>
+        <Italian>ricevuto uno Scout</Italian>
+        <Spanish>scout</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_WORKER</Tag>
+        <English>worker</English>
+        <French>worker</French>
+        <German>worker</German>
+        <Italian>ricevuto uno Lavoratore</Italian>
+        <Spanish>worker</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_XP</Tag>
+        <English>experience</English>
+        <French>experience</French>
+        <German>experience</German>
+        <Italian>l'unità ha guadagnato esperienza</Italian>
+        <Spanish>experience</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_HEALING</Tag>
+        <English>healing</English>
+        <French>healing</French>
+        <German>healing</German>
+        <Italian>l'unità è stata curata</Italian>
+        <Spanish>healing</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_TECH</Tag>
+        <English>technology</English>
+        <French>technology</French>
+        <German>technology</German>
+        <Italian>ricevuta una Tecnologia</Italian>
+        <Spanish>technology</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_WEAKHOSTILES</Tag>
+        <English>weak hostiles</English>
+        <French>weak hostiles</French>
+        <German>weak hostiles</German>
+        <Italian>alcuni abitanti si sono rivelati ostili</Italian>
+        <Spanish>weak hostiles</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_STRONGHOSTILES</Tag>
+        <English>strong hostiles</English>
+        <French>strong hostiles</French>
+        <German>strong hostiles</German>
+        <Italian>molti abitanti si sono rivelati ostili</Italian>
+        <Spanish>strong hostiles</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_GP_BORN</Tag>
+        <English>%s1 born in %s2</English>
+        <French>%s1 born in %s2</French>
+        <German>%s1 born in %s2</German>
+        <Italian>%s1 è nato a %s2</Italian>
+        <Spanish>%s1 born in %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_TECH_RESEARCHED</Tag>
+        <English>Tech research finished: %s1</English>
+        <French>Tech research finished: %s1</French>
+        <German>Tech research finished: %s1</German>
+        <Italian>Ricerca della tecnologia %s1 completata</Italian>
+        <Spanish>Tech research finished: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_TECH_ACQUIRED</Tag>
+        <English>Tech acquired (trade, lightbulb, hut, espionage): %s1</English>
+        <French>Tech acquired (trade, lightbulb, hut, espionage): %s1</French>
+        <German>Tech acquired (trade, lightbulb, hut, espionage): %s1</German>
+        <Italian>E' stata acquisita la tecnologia %s1</Italian>
+        <Spanish>Tech acquired (trade, lightbulb, hut, espionage): %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_TECH_TRADED</Tag>
+        <English>Tech traded to %s1: %s2</English>
+        <French>Tech traded to %s1: %s2</French>
+        <German>Tech traded to %s1: %s2</German>
+        <Italian>La tecnologia %s2 è stata commerciata con %s1</Italian>
+        <Spanish>Tech traded to %s1: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RESEARCH_BEGUN</Tag>
+        <English>Research begun: %s1 (%d2 Turns)</English>
+        <French>Research begun: %s1 (%d2 Turns)</French>
+        <German>Research begun: %s1 (%d2 Turns)</German>
+        <Italian>Ricerca della tecnologia %s1 iniziata (necessari %d2 turni)</Italian>
+        <Spanish>Research begun: %s1 (%d2 Turns)</Spanish>
+    </TEXT> 
     
     
     
