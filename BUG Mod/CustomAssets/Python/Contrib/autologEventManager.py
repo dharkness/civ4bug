@@ -659,8 +659,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (player.getTeamID() == 0):
 				messageEnd = gc.getPlayer(iFounder).getCity(iCityId).getName()
 			else:
-				messageEnd = "a distant land"
-			message = "%s founded in %s" % (gc.getReligionInfo(iReligion).getDescription(), messageEnd)
+				messageEnd = BugUtil.getPlainText("TXT_KEY_AUTOLOG_DISTANT_LAND")
+			message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_FOUNDED", (gc.getReligionInfo(iReligion).getDescription(), messageEnd))
 			Logger.writeLog(message, vColor="DarkOrange")
 
 	def onReligionSpread(self, argsList):
@@ -670,9 +670,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			if gc.getGame().getHolyCity(iReligion).getOwner() == CyGame().getActivePlayer() or pSpreadCity.getOwner() == CyGame().getActivePlayer():
 				if (pSpreadCity.getOwner() == CyGame().getActivePlayer()):
-					message = "%s has spread: %s" % (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_SPREAD_IN", (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName()))
 				else:
-					message = "%s has spread: %s (%s)" % (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName(), player.getCivilizationName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_SPREAD_OUT", (gc.getReligionInfo(iReligion).getDescription(), pSpreadCity.getName(), player.getCivilizationName()))
 				Logger.writeLog(message, vColor="DarkOrange")
 
 	def onReligionRemove(self, argsList):
@@ -682,9 +682,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			if gc.getGame().getHolyCity(iReligion).getOwner() == CyGame().getActivePlayer() or pRemoveCity.getOwner() == CyGame().getActivePlayer():
 				if (pRemoveCity.getOwner() == CyGame().getActivePlayer()):
-					message = "%s has been removed: %s" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_REMOVED_IN", (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName()))
 				else:
-					message = "%s has been removed: %s (%s)" % (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_RELIGION_REMOVED_OUT", (gc.getReligionInfo(iReligion).getDescription(), pRemoveCity.getName(), player.getCivilizationName()))
 				Logger.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationFounded(self, argsList):
@@ -695,8 +695,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (player.getTeamID() == 0):
 				messageEnd = gc.getPlayer(iFounder).getCity(iCityId).getName()
 			else:
-				messageEnd = "a distant land"
-			message = "%s founded in %s" % (gc.getCorporationInfo(iCorporation).getDescription(), messageEnd)
+				messageEnd = BugUtil.getPlainText("TXT_KEY_AUTOLOG_DISTANT_LAND")
+			message = BugUtil.getText("TXT_KEY_AUTOLOG_CORP_FOUNDED", (gc.getCorporationInfo(iCorporation).getDescription(), messageEnd))
 			Logger.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationSpread(self, argsList):
@@ -706,9 +706,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			if gc.getGame().getHeadquarters(iCorporation).getOwner() == CyGame().getActivePlayer() or pSpreadCity.getOwner() == CyGame().getActivePlayer():
 				if (pSpreadCity.getOwner() == CyGame().getActivePlayer()):
-					message = "%s has spread: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CORP_SPREAD_IN", (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName()))
 				else:
-					message = "%s has spread: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName(), player.getCivilizationName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CORP_SPREAD_OUT", (gc.getCorporationInfo(iCorporation).getDescription(), pSpreadCity.getName(), player.getCivilizationName()))
 				Logger.writeLog(message, vColor="DarkOrange")
 
 	def onCorporationRemove(self, argsList):
@@ -718,23 +718,23 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			if gc.getGame().getHeadquarters(iCorporation).getOwner() == CyGame().getActivePlayer() or pRemoveCity.getOwner() == CyGame().getActivePlayer():
 				if (pRemoveCity.getOwner() == CyGame().getActivePlayer()):
-					message = "%s has been removed: %s" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CORP_REMOVED_IN", (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName()))
 				else:
-					message = "%s has been removed: %s (%s)" % (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName(), player.getCivilizationName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CORP_REMOVED_OUT", (gc.getCorporationInfo(iCorporation).getDescription(), pRemoveCity.getName(), player.getCivilizationName()))
 				Logger.writeLog(message, vColor="DarkOrange")
 
 	def onGoldenAge(self, argsList):
 		if (BugAutolog.isLogGoldenAge()):
 			iPlayer = argsList[0]
 			if iPlayer == CyGame().getActivePlayer():
-				message = "Golden Age begins"
+				message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_GOLDENAGE_BEGINS")
 				Logger.writeLog(message, vColor="Brown")
 
 	def onEndGoldenAge(self, argsList):
 		if (BugAutolog.isLogGoldenAge()):
 			iPlayer = argsList[0]
 			if iPlayer == CyGame().getActivePlayer():
-				message = "Golden Age ends"
+				message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_GOLDENAGE_ENDS")
 				Logger.writeLog(message, vColor="Brown")
 
 	def onChangeWar(self, argsList):
@@ -748,16 +748,16 @@ class AutoLogEvent(AbstractAutoLogEvent):
 #			Civ1 declares war on Civ2
 			iCiv1 = iPlayer
 			iCiv2 = gc.getTeam(iRivalTeam).getLeaderID()
-			zsCiv1 = gc.getPlayer(iCiv1).getName() + "(" + gc.getPlayer(iCiv1).getCivilizationShortDescription(0) + ")"
-			zsCiv2 = gc.getPlayer(iCiv2).getName() + "(" + gc.getPlayer(iCiv2).getCivilizationShortDescription(0) + ")"
+			zsCiv1 = gc.getPlayer(iCiv1).getName() + " (" + gc.getPlayer(iCiv1).getCivilizationShortDescription(0) + ")"
+			zsCiv2 = gc.getPlayer(iCiv2).getName() + " (" + gc.getPlayer(iCiv2).getCivilizationShortDescription(0) + ")"
 
 			if (gc.getTeam(gc.getPlayer(iCiv1).getTeam()).isHasMet(gc.getActivePlayer().getTeam())
 			and gc.getTeam(gc.getPlayer(iCiv2).getTeam()).isHasMet(gc.getActivePlayer().getTeam())):
 				if (bIsWar):
-					message = "%s declares war on %s" % (zsCiv1, zsCiv2)
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_DECLARES_WAR", (zsCiv1, zsCiv2))
 					Logger.writeLog(message, vColor="Red")
 				else:
-					message = "%s and %s have signed a peace treaty" % (zsCiv1, zsCiv2)
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_PEACE_TREATY", (zsCiv1, zsCiv2))
 					Logger.writeLog(message, vColor="DarkRed")
 
 	def onSetPlayerAlive(self, argsList):
@@ -766,9 +766,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			bNewValue = argsList[1]
 			if not (bNewValue):
 				if (gc.getTeam(gc.getPlayer(iPlayerID).getTeam()).isHasMet(gc.getActivePlayer().getTeam())):
-					message = "%s has been eliminated" % (PyPlayer(iPlayerID).getCivDescription())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CIV_ELIMINATED", (PyPlayer(iPlayerID).getCivDescription(), ))
 				else:
-					message = "Another civilization has been eliminated"
+					message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_ANOTHER_CIV_ELIMINATED")
 
 				Logger.writeLog(message, vColor="Red")
 
@@ -776,7 +776,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if (BugAutolog.isLogCityFounded()):
 			city = argsList[0]
 			if city.getOwner() == CyGame().getActivePlayer():
-				message = "%s founded"%(city.getName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FOUNDED", (city.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityRazed(self, argsList):
@@ -785,11 +785,11 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			owner = PyPlayer(city.getOwner())
 			razor = PyPlayer(iPlayer)
 			if (iPlayer == CyGame().getActivePlayer()):
-				message = "Razed %s" % (city.getName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_RAZED", (city.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 			elif (city.getOwner() == CyGame().getActivePlayer()):
-				message = "%s razed by %s" % (city.getName(), razor.getCivilizationName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_RAZED_BY", (city.getName(), razor.getCivilizationName()))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityAcquired(self, argsList):
@@ -797,11 +797,11 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			owner,playerType,city,bConquest,bTrade = argsList
 			if city.getOwner() == CyGame().getActivePlayer():
 				if (bConquest):
-					message = "Captured %s (%s)" % (city.getName(), PyPlayer(owner).getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_CAPTURED", (city.getName(), PyPlayer(owner).getName()))
 				elif (bTrade): ## city trade not tested
-					message = "Traded for %s (%s)" % (city.getName(), PyPlayer(owner).getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_TRADED", (city.getName(), PyPlayer(owner).getName()))
 				else:
-					message = "%s (%s) culture flips" % (city.getName(), PyPlayer(owner).getName())
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FLIPPED", (city.getName(), PyPlayer(owner).getName()))
 
 				Logger.writeLog(message, vColor="RoyalBlue")
 
@@ -809,7 +809,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if (BugAutolog.isLogCityOwner()):
 			city = argsList[0]
 			if city.getOwner() == CyGame().getActivePlayer():
-				message = "%s lost" % (city.getName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_LOST", (city.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCultureExpansion(self, argsList):
@@ -817,7 +817,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			pCity = argsList[0]
 			iPlayer = argsList[1]
 			if pCity.getOwner() == CyGame().getActivePlayer():
-				message = "%s's borders expand" % (pCity.getName())
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_EXPANDED", (pCity.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityGrowth(self, argsList):

@@ -488,8 +488,205 @@
         <Italian>Ricerca della tecnologia %s1 iniziata (necessari %d2 turni)</Italian>
         <Spanish>Research begun: %s1 (%d2 Turns)</Spanish>
     </TEXT> 
-    
-    
-    
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_DISTANT_LAND</Tag>
+        <English>a distant land</English>
+        <French>a distant land</French>
+        <German>a distant land</German>
+        <Italian>una terra lontana</Italian>
+        <Spanish>a distant land</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_FOUNDED</Tag>
+        <English>%s1 founded in %s2</English>
+        <French>%s1 founded in %s2</French>
+        <German>%s1 founded in %s2</German>
+        <Italian>%s1 è stato fondato a %s2</Italian>
+        <Spanish>%s1 founded in %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_SPREAD_IN</Tag>
+        <English>%s1 has spread: %s2</English>
+        <French>%s1 has spread: %s2</French>
+        <German>%s1 has spread: %s2</German>
+        <Italian>%s1 si è diffuso a %s2</Italian>
+        <Spanish>%s1 has spread: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_SPREAD_OUT</Tag>
+        <English>%s1 has spread: %s2 (%s3)</English>
+        <French>%s1 has spread: %s2 (%s3)</French>
+        <German>%s1 has spread: %s2 (%s3)</German>
+        <Italian>%s1 si è diffuso a %s2 (%s3)</Italian>
+        <Spanish>%s1 has spread: %s2 (%s3)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_REMOVED_IN</Tag>
+        <English>%s1 has been removed: %s2</English>
+        <French>%s1 has been removed: %s2</French>
+        <German>%s1 has been removed: %s2</German>
+        <Italian>%s1 non è più presente a %s2</Italian>
+        <Spanish>%s1 has been removed: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_RELIGION_REMOVED_OUT</Tag>
+        <English>%s1 has been removed: %s2 (%s3)</English>
+        <French>%s1 has been removed: %s2 (%s3)</French>
+        <German>%s1 has been removed: %s2 (%s3)</German>
+        <Italian>%s1 non è più presente a %s2 (%s3)</Italian>
+        <Spanish>%s1 has been removed: %s2 (%s3)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CORP_FOUNDED</Tag>
+        <English>%s1 founded in %s2</English>
+        <French>%s1 founded in %s2</French>
+        <German>%s1 founded in %s2</German>
+        <Italian>La corporazione %s1 è stata costituita a %s2</Italian>
+        <Spanish>%s1 founded in %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CORP_SPREAD_IN</Tag>
+        <English>%s1 has spread: %s2</English>
+        <French>%s1 has spread: %s2</French>
+        <German>%s1 has spread: %s2</German>
+        <Italian>La corporazione %s1 ha aperto una filiale a %s2</Italian>
+        <Spanish>%s1 has spread: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CORP_SPREAD_OUT</Tag>
+        <English>%s1 has spread: %s2 (%s3)</English>
+        <French>%s1 has spread: %s2 (%s3)</French>
+        <German>%s1 has spread: %s2 (%s3)</German>
+        <Italian>La corporazione %s1 ha aperto una filiale a %s2 (%s3)</Italian>
+        <Spanish>%s1 has spread: %s2 (%s3)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CORP_REMOVED_IN</Tag>
+        <English>%s1 has been removed: %s2</English>
+        <French>%s1 has been removed: %s2</French>
+        <German>%s1 has been removed: %s2</German>
+        <Italian>La corporazione %s1 non è più presente a %s2</Italian>
+        <Spanish>%s1 has been removed: %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CORP_REMOVED_OUT</Tag>
+        <English>%s1 has been removed: %s2 (%s3)</English>
+        <French>%s1 has been removed: %s2 (%s3)</French>
+        <German>%s1 has been removed: %s2 (%s3)</German>
+        <Italian>La corporazione %s1 non è più presente a %s2 (%s3)</Italian>
+        <Spanish>%s1 has been removed: %s2 (%s3)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_GOLDENAGE_BEGINS</Tag>
+        <English>Golden Age begins</English>
+        <French>Golden Age begins</French>
+        <German>Golden Age begins</German>
+        <Italian>Inizio dell'Età dell'Oro</Italian>
+        <Spanish>Golden Age begins</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_GOLDENAGE_ENDS</Tag>
+        <English>Golden Age ends</English>
+        <French>Golden Age ends</French>
+        <German>Golden Age ends</German>
+        <Italian>Fine dell'Età dell'Oro</Italian>
+        <Spanish>Golden Age ends</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_DECLARES_WAR</Tag>
+        <English>%s1 declares war on %s2</English>
+        <French>%s1 declares war on %s2</French>
+        <German>%s1 declares war on %s2</German>
+        <Italian>%s1 ha dichiarato guerra a %s2</Italian>
+        <Spanish>%s1 declares war on %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_PEACE_TREATY</Tag>
+        <English>%s1 and %s2 have signed a peace treaty</English>
+        <French>%s1 and %s2 have signed a peace treaty</French>
+        <German>%s1 and %s2 have signed a peace treaty</German>
+        <Italian>%s1 e %s2 hanno siglato un trattato di pace</Italian>
+        <Spanish>%s1 and %s2 have signed a peace treaty</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CIV_ELIMINATED</Tag>
+        <English>%s1 has been eliminated</English>
+        <French>%s1 has been eliminated</French>
+        <German>%s1 has been eliminated</German>
+        <Italian>La civiltà %s1 è scomparsa</Italian>
+        <Spanish>%s1 has been eliminated</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_ANOTHER_CIV_ELIMINATED</Tag>
+        <English>Another civilization has been eliminated</English>
+        <French>Another civilization has been eliminated</French>
+        <German>Another civilization has been eliminated</German>
+        <Italian>Un'altra civiltà è scomparsa</Italian>
+        <Spanish>Another civilization has been eliminated</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_FOUNDED</Tag>
+        <English>%s1 founded</English>
+        <French>%s1 founded</French>
+        <German>%s1 founded</German>
+        <Italian>La città di %s1 è stata fondata</Italian>
+        <Spanish>%s1 founded</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_RAZED</Tag>
+        <English>Razed %s1</English>
+        <French>Razed %s1</French>
+        <German>Razed %s1</German>
+        <Italian>La città di %s1 è stata razziata</Italian>
+        <Spanish>Razed %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_RAZED_BY</Tag>
+        <English>%s1 razed by %s2</English>
+        <French>%s1 razed by %s2</French>
+        <German>%s1 razed by %s2</German>
+        <Italian>La città di %s1 è stata razziata da %s2</Italian>
+        <Spanish>%s1 razed by %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_CAPTURED</Tag>
+        <English>Captured %s1 (%s2)</English>
+        <French>Captured %s1 (%s2)</French>
+        <German>Captured %s1 (%s2)</German>
+        <Italian>La città di %s1 (%s2) è stata conquistata militarmente</Italian>
+        <Spanish>Captured %s1 (%s2)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_TRADED</Tag>
+        <English>Traded for %s1 (%s2)</English>
+        <French>Traded for %s1 (%s2)</French>
+        <German>Traded for %s1 (%s2)</German>
+        <Italian>La città di %s1 (%s2) è stata ottenuta diplomaticamente</Italian>
+        <Spanish>Traded for %s1 (%s2)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_FLIPPED</Tag>
+        <English>%s1 (%s2) culture flips</English>
+        <French>%s1 (%s2) culture flips</French>
+        <German>%s1 (%s2) culture flips</German>
+        <Italian>La città di %s1 (%s2) è stata conquistata culturalmente</Italian>
+        <Spanish>%s1 (%s2) culture flips</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_LOST</Tag>
+        <English>%s1 lost</English>
+        <French>%s1 lost</French>
+        <German>%s1 lost</German>
+        <Italian>La città di %s1 è stata persa</Italian>
+        <Spanish>%s1 lost</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_CITY_EXPANDED</Tag>
+        <English>%s1's borders expand</English>
+        <French>%s1's borders expand</French>
+        <German>%s1's borders expand</German>
+        <Italian>I confini culturali della città di %s1 si sono espansi</Italian>
+        <Spanish>%s1's borders expand</Spanish>
+    </TEXT> 
     
 </Civ4GameText>
