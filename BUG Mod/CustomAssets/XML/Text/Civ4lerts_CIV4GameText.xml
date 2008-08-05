@@ -158,7 +158,7 @@
 		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3[ICON_GOLD].[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]%s1 peut précipiter %s2 pour %d3[ICON_GOLD].[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]%s1 kann das Bauprojekt "%s2" unter Einsatz von %d3[ICON_GOLD] beschleunigen.[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]%s1 può essere accelerare %s2 per %d3[ICON_GOLD].[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_YIELD_FOOD]%s1 può accelerare %s2 per %d3[ICON_GOLD].[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_FOOD]%s1 puede acelerar %s2 para %d3[ICON_GOLD].[COLOR_REVERT]</Spanish>
 	</TEXT>
 </Civ4GameText>
