@@ -412,16 +412,15 @@ class CvVictoryScreen:
 					fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
 					
 					if self.VoteToggle == 0:
-						sString = gc.getVoteSourceInfo(i).getSecretaryGeneralText() + ": "
+						sString = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
 					else:
 						sString = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
 
-					formatPercent = lambda f: "%.1f%%" % f
-					sString += localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, formatPercent(fVotePercent), formatPercent(fMargin)))
+					sString += ": " + localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, self.formatPercent(fVotePercent), self.formatPercent(fMargin)))
 					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
-					sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (formatPercent(3.5 + gc.getASyncRand().get(10, "") / 10.0), ))
+					sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (self.formatPercent(3.5 + gc.getASyncRand().get(10, "") / 10.0), ))
 					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 					iRow = screen.appendTableRow(szTable)
@@ -449,6 +448,9 @@ class CvVictoryScreen:
 # BUG Additions End
 
 		self.drawTabs()
+	
+	def formatPercent(self, f):
+		return "%.1f%%" % f
 
 
 	def showGameSettingsScreen(self):
