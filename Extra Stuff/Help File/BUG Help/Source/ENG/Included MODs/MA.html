@@ -3,35 +3,74 @@
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
 	<TITLE>Military Advisor</TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.3  (Win32)">
-	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGEDBY" CONTENT="Jason Cole">
-	<META NAME="CHANGED" CONTENT="20080106;594625">
 	<STYLE TYPE="text/css">
 	<!--
-		P.style8 { color: #0000ff; font-size: 14pt; font-style: italic; font-weight: bold }
+		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 16pt; font-style: italic; font-weight: bold }
 	-->
 	</STYLE>
 </HEAD>
 <BODY LANG="en-US" DIR="LTR">
-<P><FONT COLOR="#0000ff"><FONT SIZE=4 STYLE="font-size: 16pt"><I><B>BUG Military Advisor </B></I></FONT><FONT SIZE=3><I><B>by Ruff_hi </B></I></FONT></FONT>and<FONT COLOR="#0000ff"><FONT SIZE=3><I><B> EmperorFool</B></I></FONT></FONT></P>
-<P>&nbsp;</P>
-<P CLASS="style8">About the BUG Military Advisor<span class="style8"> </span></P>
-<P>The Military Advisor is now divided into two sections, Deployment, and the Sit-Rep (or Situation Report). </P>
-<P>The Deployment tab makes finding units easier by grouping units by location and unit type.</P>
-<P>The Sit-Rep tab is your all-in-one spot to find information related to your warmonging diplomacy. It displays the follow information:</P>
+<P CLASS="style1">Military Advisor</P>
+<P CLASS="style3">by Ruff_hi &amp; EmperorFool</P>
+<br>
+<P>The Military Advisor is now divided into two sections, <b>'Deployment'</b> and <b>'Sit-Rep'</b> (or <i>Situation Report</i>).<br>
+The <b>Deployment Tab</b> makes finding units easier by grouping units by location and unit type.<br>
+The <b>Sit-Rep Tab</b> is your all-in-one spot to find information related to your military diplomacy.</P>
+<P>This tab displays the follow information for each known Civ (from left to right):
 <ul>
-  <li>Icon for each Civilization in the game.</li>
-  <li>A fist indicating that the Civilization &quot;Has Enough on Their Hands&quot;, which usually means they are planning, or are engaged in a war that is taking all their resources. </li>
-  <li>An icon display who the Civilzations Worst Enemy is.</li>
-  <li>A Threat Indicator. This is not perfect, but gives you a rough idea what the threat level of attack from that civilization is towards you. </li>
-  <li>Columns showing Strategic Advantages, both yours and the other civlizations. This is useful so you don't go attacking rifles with swordsman!</li>
-  <li>An indicator for if that civilization is a vassal of another.</li>
-  <li>An indicator if the civilization has a defensive pact.  </li>
+  <li>the icon of the Civilization's Leader</li>
+  <li>a fist indicating that the Civilization &quot;Has Enough on Their Hands&quot;, 
+      which usually means they are planning, or are engaged in a war that is taking all their resources</li>
+  <li>the icon of the Civilzation's Worst Enemy</li>
+  <li>the Threat Indicator, which gives you a rough idea what the threat level of attack from that Civilization is towards you</li>
+  <li>Strategic Advantages, both yours and the other Civilizations: this is useful so you don't go attacking rifles with swordsman!</li>
+  <li>icons of Leaders which are at war (or will probably be at war soon) with that Civ</li>
+  <li>an indicator showing that the Civilization is a Vassal State of another Civ</li>
+  <li>an indicator showing that the Civilization has a Defensive Pact with another Civ</li>
 </ul>
-<P class="style8">&nbsp;</P>
-<P class="style8">Credits</P>
-<P>Forum: <a href="http://forums.civfanatics.com/forumdisplay.php?f=268">http://forums.civfanatics.com/forumdisplay.php?f=268</a></P>
-<P>Author: <FONT COLOR="#0000ff"><FONT SIZE=3><I><B>Ruff_hi &amp; EmperorFool</B></I></FONT></FONT></P>
+
+<p><b>Threat Indicator</b><br><br>
+The Threat Indicator is a crude, five-levels indicator based on a percentile <b>Threat Index</b> as follows:
+<UL>
+	<LI><FONT COLOR="#0000ff">Low Risk</FONT> Threat Index less than 15% 
+	<LI><FONT COLOR="#0000ff">Guarded Risk</FONT> Threat Index more than or equal to 15% but less than 35%
+	<LI><FONT COLOR="#0000ff">Elevated Risk</FONT> Threat Index more than or equal to 35% but less than 55%
+	<LI><FONT COLOR="#0000ff">High Risk</FONT> Threat Index more than or equal to 55% but less than 75%
+	<LI><FONT COLOR="#0000ff">Severe Risk</FONT> Threat Index more than or equal to 75%
+</UL>
+The Threat Index is made up of two major components with some adjustments.<br>
+The first component is the <b>Relationship</b>: it is based on the pluses and minuses from the AI attitude and is capped at -15 and +15; 
+there are 38 points which are allocated to this component with +15 attitude corresponding to 0 points and 
+-15 attitude corresponding to 38 points (linear between -15 to -15).<br>
+The second component is the <b>Power</b>: it is based on the power ratio (power from the demographic charts) 
+of our power divided by the AI power; it is capped at 0.5 and 1.5, so there are 38 points are allocated to this component 
+with 1.5 power ratio corresponding to 0 points and 0.5 power corresponding to 38 points (linear between 1.5 to 0.5).
+If the Civ's power is not know (i.e. because not enough espionage points), then this component is estimated at 28.5 (38 * 0.75) 
+and <b>"est"</b> is added to the Level.<br>
+About <b>Adjustments</b>, 
+if you have a Defensive Pact with the AI, then the Threat Index is multiplied by 0.2;
+if the AI is in WHEOOH mode and not at war (i.e. planning for war), then the Threat Index is multiplied by 1.3.
+<br><br>
+<p><b>Strategic Advantages</b><br><br>
+Any military unit that you can build (tech and required resource) and the AI cannot (including any possible upgrade) 
+is a strategic advantage to you; the same applies to the AI.<br>
+For example: If you can build knights and the AI can build horse archers, you have a strategic advantage (Knight) 
+and the AI doesn't (your knight cancels out the horse archer even though you cannot build it as the horse archer upgrades to a knight).<br>
+The strategic Advantage information is primarily non-domestic unit based 
+(workers, settlers, missionaries, corporate execs, spies, etc are excluded). 
+The information required is tech and resource knowledge; if you don't have this information, then the cancel icon is displayed. 
+Unique Units are a strategic advantage and are not canceled by the regular unit. 
+<br>
+<P CLASS="style1">Instructions</P>
+<P>The enhanced Military Advisor can be enabled in the <A HREF="../Options/Advisors.html">Advisors</A> tab of the <b><i>BUG Options Screen</i></b> 
+(<b>Alt+Ctrl+O</b>) by simple selection of the <i>'BUG Military Advisor'</i> checkbox.</P>
+<br>
+<P CLASS="style1">Credits</P>
+<P>Forum: <a href="http://forums.civfanatics.com/showthread.php?t=270962" target="_blank">http://forums.civfanatics.com/showthread.php?t=270962</a></P>
+<P>Author: <FONT COLOR="#0000ff"><I><B>Ruff_hi</B></I></FONT> &amp; <FONT COLOR="#0000ff"><I><B>EmperorFool</B></I></FONT></P>
+<br>
+
 </BODY>
 </HTML>
