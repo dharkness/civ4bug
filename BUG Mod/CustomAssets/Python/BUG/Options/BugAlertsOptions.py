@@ -10,8 +10,8 @@ class BugAlertsOptions(OptionsFacade):
 		OptionsFacade.__init__(self)
 		self.addOption(Option("Alert_Reminders",
 							  "CIV4LERTS", "Reminders", True,
-							  "Enable Reminders (Alt-M)",
-							  "When checked, you can create messages using Alt-M that pop up in a specified number of turns using eotinb's Reminders mod."))
+							  "Enable Reminders [ALT + M]",
+							  "When checked, you can create messages using [ALT + M] that are displayed in a specified number of turns using eotinb's Reminders mod."))
 		self.addOption(OptionList("Alert_RemindersMethod",
 								  "CIV4LERTS", "Reminder Display Method", 2,
 								  "Display Method",
