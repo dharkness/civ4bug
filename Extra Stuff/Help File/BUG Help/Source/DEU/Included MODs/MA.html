@@ -5,7 +5,7 @@
 	<TITLE>Military Advisor</TITLE>
 	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
 	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGED" CONTENT="20080705;15024325">
+	<META NAME="CHANGED" CONTENT="20080807;18120785">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { size: 21cm 29.7cm }
@@ -22,15 +22,14 @@ Military Advisor </B></I></FONT></FONT><FONT COLOR="#000000"><FONT SIZE=3><SPAN 
 <P>&nbsp;</P>
 <P CLASS="style8">&Uuml;ber BUG Military Advisor 
 </P>
-<P CLASS="style8" STYLE="font-style: normal; font-weight: medium"><FONT COLOR="#000000"><FONT SIZE=3>Diese
-Mod wurde entwickelt, um den Milit&auml;rberater zu erweitern. Die
-Anzeige der Einheiten wurde verbessert, indem mehr M&ouml;glichkeiten,
-diese zu sortieren, hinzugef&uuml;gt wurden. Au&szlig;erdem wurde ein
-neuer Punkt &quot;Situationsbericht&quot; (engl. &quot;Sit-Rep&quot;,
-Abk. f&uuml;r &quot;Situation Report&quot;) eingebaut wurde, der
-verschiedene milit&auml;rische Informationen &uuml;ber andere
-Zivilisationen &uuml;bersichtlich darstellt. Dar&uuml;ber hinaus
-nutzt der Milit&auml;rberater nun Widescreen-Aufl&ouml;sungen. </FONT></FONT>
+<P>Diese Mod wurde entwickelt, um den Milit&auml;rberater zu
+erweitern. Die Anzeige der Einheiten wurde verbessert, indem mehr
+M&ouml;glichkeiten, diese zu sortieren, hinzugef&uuml;gt wurden.
+Au&szlig;erdem wurde ein neuer Punkt &quot;Situationsbericht&quot;
+(engl. &quot;Sit-Rep&quot;, Abk. f&uuml;r &quot;Situation Report&quot;)
+eingebaut wurde, der verschiedene milit&auml;rische Informationen
+&uuml;ber andere Zivilisationen &uuml;bersichtlich darstellt. Dar&uuml;ber
+hinaus nutzt der Milit&auml;rberater nun Widescreen-Aufl&ouml;sungen.
 </P>
 <P>&nbsp;</P>
 <P CLASS="style8">Anleitung</P>
@@ -54,8 +53,8 @@ angezeigt:</P>
 	(auch als engl. &quot;we have enough on our hands&quot; oder
 	&quot;WHEOOH&quot; bekannt). 
 	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Ein Symbol f&uuml;r den
-	Erzfeind der eigenen Zivilisation. 
+	<LI><P STYLE="margin-bottom: 0cm">Ein Symbol f&uuml;r den Erzfeind
+	der eigenen Zivilisation. 
 	</P>
 	<LI><P STYLE="margin-bottom: 0cm">Eine Anzeige der Bedrohungslage
 	(noch nicht perfekt, gibt aber einen groben Eindruck von der Gefahr
@@ -74,6 +73,82 @@ angezeigt:</P>
 	Verteidigungsb&uuml;ndnis geschlossen haben. 
 	</P>
 </UL>
+<P><FONT COLOR="#0000ff"><B>Bedrohungslage</B></FONT></P>
+<P>Die Bedrohungslage ist ein grobes Ma&szlig; f&uuml;r die ungef&auml;hre
+Bedrohungslage der eigenen Zivilisation. Sie ist folgenderma&szlig;en
+aufgebaut: 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff">Gering:</FONT>
+	Index der Bedrohungslage unter 15% 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff">Erh&ouml;ht:</FONT>
+	Index der Bedrohungslage zwischen 15% und 35% 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff">Angespannt:</FONT>
+	Index der Bedrohungslage zwischen 35% und 55% 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff">Alarmierend:</FONT>
+	Index der Bedrohungslage zwischen 55% und 75% 
+	</P>
+	<LI><P><FONT COLOR="#0000ff">Akut:</FONT> Index der Bedrohungslage
+	&uuml;ber 75% 
+	</P>
+</UL>
+<P>Die Bedrohungslage errechnet sich aus zwei Hauptelementen, die je
+nach Lage leicht angepasst werden. Das erste Element sind die
+<B>diplomatischen Beziehungen</B>: sie basieren auf den Einstellungen
+der Zivilisationen gegen&uuml;ber der eigenen und kann Werte zwischen
+-15 und +15 annehmen. Dieses Element geht mit 38 Punkten in die
+Bewertung der Lage ein, wobei eine Einstellung von +15 einen Wert von
+0 ergibt, w&auml;hrend eine Einstellung von -15 38 Punkte bedeuten
+(lineare Verteilung zwischen -15 und +15).</P>
+<P>Das zweite Element ist <B>Macht</B>: sie basiert auf der
+Machtverteilung (siehe Demographie-Diagramme), wobei der Quotient der
+eigenen Macht und der Macht der anderen Zivilisationen verwendet
+wird. Dieser Quotient kann Werte zwischen 0,5 und 1,5 annehmen und
+geht ebenfalls mit 38 Punkten in die Bewertung der Lage ein, wobei
+ein Machtverh&auml;ltnis von 1,5 einen Wert von 0 ergibt, w&auml;hrend
+ein Machtverh&auml;ltnis von 0.5 38 bedeuten (lineare Verteilung
+zwischen 0,5 und 1,5). Falls die Macht einer Zivilisation nicht
+bekannt ist (d.h. es wurden zu wenige Spionagepunkte investiert),
+wird dieses Element mit der Formel 28,5 (38 * 0,75) gesch&auml;tzt
+und das K&uuml;rzel <SPAN STYLE="font-weight: medium">&quot;</SPAN><B>est</B><SPAN STYLE="font-weight: medium">&quot;
+(engl. &quot;estimated&quot;) erscheint hinter der Lage</SPAN>. 
+</P>
+<P>&Uuml;ber <B>Anpassungen</B><SPAN STYLE="font-weight: medium">:</SPAN>
+Falls ein Verteidigungsb&uuml;ndnis mit einer anderen Zivilisation
+besteht, wird die normale Berechnung der Bedrohungslage mit 0,2
+multipliziert. Falls eine Zivilisation sich in den Planungen f&uuml;r
+einen Krieg befindet, wird die normale Berechnung der Bedrohungslage
+mit 1,3 multipliziert. 
+</P>
+<P><FONT COLOR="#0000ff"><B>Strategische Vorteile</B></FONT></P>
+<P>Jede Milit&auml;reinheit, die die eigene Zivilisation aufstellen
+kann (falls die Technologie und die ben&ouml;tigten Ressourcen
+verf&uuml;gbar sind) und ein Gegner nicht (einschlie&szlig;lich aller
+m&ouml;glichen Modernisierungen), ist ein strategischer Vorteil. Das
+Gleiche gilt f&uuml;r gegnerische Zivilisationen.</P>
+<P>Ein Beispiel: Falls die eigene Zivilisation &quot;Ritter&quot;
+aufstellen kann und ein Gegner &quot;Berittene Bogensch&uuml;tzen&quot;,
+hat die eigenen Zivilisation einen strategischen Vorteil, da ein
+&quot;Ritter&quot; einem &quot;Berittenen Bogensch&uuml;tzen&quot;
+&uuml;berlegen ist, obwohl vielleicht noch gar keine Ritter
+tats&auml;chlich in der Partie sind (die eigenen Berittenen
+Bogensch&uuml;tzen m&uuml;ssen vielleicht erst noch modernisiert
+werden).</P>
+<P>Die Informationen &uuml;ber strategische Vorteile basieren vor
+allem auf Erkenntnissen &uuml;ber gegnerische Einheiten
+(Arbeitstrupps, Siedler, Missionare, Vorst&auml;nde, Spione usw. sind
+davon ausgenommen), wof&uuml;r auch Informationen &uuml;ber
+Technologien und Ressourcen ben&ouml;tigt werden. Falls diese
+Informationen nicht vorhanden sind, wird das &quot;Abbrechen&quot;-Symbol
+angezeigt. Spezialeinheiten sind immer ein strategischer Vorteil und
+werden nicht von der regul&auml;ren Einheit verdr&auml;ngt. 
+</P>
+<P>Der erweiterte Milit&auml;rberater kann im Optionsbildschirm der
+BUG Mod unter &quot;<A HREF="../Options/Advisors.html">Berater</A>&quot;
+an- oder abgeschaltet werden.</P>
 <P>&nbsp;</P>
 <P CLASS="style8">Credits</P>
 <P>Forum: <A HREF="http://forums.civfanatics.com/forumdisplay.php?f=268">http://forums.civfanatics.com/forumdisplay.php?f=268</A></P>
