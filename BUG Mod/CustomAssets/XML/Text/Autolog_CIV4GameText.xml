@@ -220,7 +220,7 @@
         <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES</Tag>
         <English>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</English>
         <French>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</French>
-        <German>[NUM2:Angreifender:Angreifende:Angreifendes:Angreifende:Angreifende:Angreifende] %s2:1_UnitName %s1 von %[s3_civ_adjective][NUM4:em:er:em:en:en:en] %s4:3_EnUName (%s5/%d6) besiegt (Erfolgsaussicht: %s7%s8)</German>
+        <German>[NUM2:Angreifender:Angreifende:Angreifendes:Angreifende:Angreifende:Angreifende] %s2:1_UnitName [NUM2:wurde:wurden] %s1 von %[s3_civ_adjective][NUM4:em:er:em:en:en:en] %s4:3_EnUName (%s5/%d6) besiegt (Erfolgsaussicht: %s7%s8)</German>
         <Italian>Attaccando %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di vittoria: %s7%s8)</Italian>
         <Spanish>While attacking %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</Spanish>
     </TEXT> 
@@ -228,7 +228,7 @@
         <Tag>TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES</Tag>
         <English>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</English>
         <French>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</French>
-        <German>[NUM2:Verteidigender:Verteidigende:Verteidigendes:Verteidigende:Verteidigenden:Verteidigende] %s2:1_UnitName %s1 von %[s3_civ_adjective][NUM4:em:er:em:en:en:en] %s4:3_EnUName (%s5/%d6) besiegt (Erfolgsaussicht: %s7%s8)</German>
+        <German>[NUM2:Verteidigender:Verteidigende:Verteidigendes:Verteidigende:Verteidigenden:Verteidigende] %s2:1_UnitName [NUM2:wurde:wurden] %s1 von %[s3_civ_adjective][NUM4:em:er:em:en:en:en] %s4:3_EnUName (%s5/%d6) besiegt (Erfolgsaussicht: %s7%s8)</German>
         <Italian>Difendendo %s1, l'unità %s2 è stata sconfitta da %s4 %s3 (%s5/%d6) (probabilità di vittoria: %s7%s8)</Italian>
         <Spanish>While defending %s1, %s2 loses to %s3 %s4 (%s5/%d6) (Prob Victory: %s7%s8)</Spanish>
     </TEXT>   
@@ -308,7 +308,7 @@
         <Tag>TXT_KEY_AUTOLOG_FINISH_BUILDING</Tag>
         <English>%s1 finishes: %s2</English>
         <French>%s1 finishes: %s2</French>
-        <German>%s1 errichtet: %s2</German>
+        <German>%s1 hat errichtet: %s2</German>
         <Italian>%s1 ha completato l'edificio %s2</Italian>
         <Spanish>%s1 finishes: %s2</Spanish>
     </TEXT> 
@@ -316,7 +316,7 @@
         <Tag>TXT_KEY_AUTOLOG_FINISH_PROJECT</Tag>
         <English>%s1 finishes: %s2</English>
         <French>%s1 finishes: %s2</French>
-        <German>%s1 errichtet: %s2</German>
+        <German>%s1 hat errichtet: %s2</German>
         <Italian>%s1 ha completato il progetto %s2</Italian>
         <Spanish>%s1 finishes: %s2</Spanish>
     </TEXT> 
@@ -324,7 +324,7 @@
         <Tag>TXT_KEY_AUTOLOG_FINISH_UNIT</Tag>
         <English>%s1 finishes: %s2</English>
         <French>%s1 finishes: %s2</French>
-        <German>%s1 stellt auf: %s2</German>
+        <German>%s1 hat aufgestellt: %s2</German>
         <Italian>%s1 ha completato l'unità %s2</Italian>
         <Spanish>%s1 finishes: %s2</Spanish>
     </TEXT> 
@@ -340,7 +340,7 @@
         <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT</Tag>
         <English>Tribal village results: %s1</English>
         <French>Tribal village results: %s1</French>
-        <German>Eingeborenendorf gewährt: %s1</German>
+        <German>Eingeborenendorf hat gewährt: %s1</German>
         <Italian>Scoperto un villaggio tribale: %s1</Italian>
         <Spanish>Tribal village results: %s1</Spanish>
     </TEXT> 
@@ -660,7 +660,7 @@
         <Tag>TXT_KEY_AUTOLOG_CITY_TRADED</Tag>
         <English>Traded for %s1 (%s2)</English>
         <French>Traded for %s1 (%s2)</French>
-        <German>%s1 (%s2) wurde eingetauscht</German>
+        <German>%s1 (%s2) wurde durch Handel eingetauscht</German>
         <Italian>La città di %s1 (%s2) è stata ottenuta diplomaticamente</Italian>
         <Spanish>Traded for %s1 (%s2)</Spanish>
     </TEXT> 
@@ -764,7 +764,7 @@
         <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY</Tag>
         <English>[SPACE]was destroyed by %s1 %s2</English>
         <French>[SPACE]was destroyed by %s1 %s2</French>
-        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective][NUM4:en:en:en:en:en:en] %s2:3:UnitName</German>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective][NUM4:en:en:en:en:en:en] %s2:3:UnitName zerstört</German>
         <Italian>[SPACE]è stato distrutto da %s2 %s1</Italian>
         <Spanish>[SPACE]was destroyed by %s1 %s2</Spanish>
     </TEXT> 
@@ -780,7 +780,7 @@
         <Tag>TXT_KEY_AUTOLOG_VASSAL_REVOLTS</Tag>
         <English>%s1 revolts and is no longer a Vassal State of %s2</English>
         <French>%s1 revolts and is no longer a Vassal State of %s2</French>
-        <German>%s1 rebellierte und ist nun kein Vasall von %s2 mehr</German>
+        <German>%s1 rebellierte und ist nicht länger ein Vasall von %s2</German>
         <Italian>%s1 si è rivoltato e non è più un vassallo di %s2</Italian>
         <Spanish>%s1 revolts and is no longer a Vassal State of %s2</Spanish>
     </TEXT> 
@@ -804,7 +804,7 @@
         <Tag>TXT_KEY_AUTOLOG_ATTITUDE_CHANGE</Tag>
         <English>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</English>
         <French>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</French>
-        <German>Veränderung der Einstellung: %s1 gegenüber %s2, verändert sich von '%s3' zu '%s4'</German>
+        <German>Veränderung der Einstellung von %s1 gegenüber %s2: von '%s3' zu '%s4'</German>
         <Italian>%s1 ha mutato il suo atteggiamento nei confronti di %s2 da '%s3' a '%s4'</Italian>
         <Spanish>Attitude Change: %s1 towards %s2, from '%s3' to '%s4'</Spanish>
     </TEXT> 
