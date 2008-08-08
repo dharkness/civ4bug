@@ -1,73 +1,98 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
-	<TITLE>Logging Options</TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.3  (Win32)">
-	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGEDBY" CONTENT="Jason Cole">
-	<META NAME="CHANGED" CONTENT="20080106;444994">
+	<TITLE>Logging</TITLE>
 	<STYLE TYPE="text/css">
 	<!--
-		P.style2 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 14pt; font-style: italic; font-weight: bold }
 	-->
 	</STYLE>
 </HEAD>
+
 <BODY LANG="en-US" DIR="LTR">
-<P CLASS="style2">Logging Options</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Enable Logging</FONT></FONT>:</P>
-<P>Will turn on the Auto logging system.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Silent Start</FONT></FONT>:</P>
-<P>Will start logging without a pop-up asking for name of the log
-file.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Color Coding</FONT></FONT>:</P>
-<P>Will color code the log file to make it easier to find key events.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>4000BC is Turn</FONT></FONT>:</P>
-<P>Default is 0. Will fix the problem with the game thinking your
-pre-turn is the first turn. Can be set to 1 for game default. This
-will not add a turn to the game, just logs it properly.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Show IBT</FONT></FONT>:</P>
-<P>Log what occurs In Between Turns with the other civilizations in
-the game.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Use Default File Name</FONT></FONT>:</P>
-<P>Path: Default is My Docs\My Games\Beyond the Sword\Autolog. You
-can change this to any directory you'd like.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>File</FONT></FONT>: 
-</P>
-<P>This will use the Name you selected for yourself within
-Civilization, as the default file name.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Prefix</FONT></FONT>:</P>
-<P>This will be used when you use the Alt + E command to enter your
-own Entries within the autologger. For example, using your nickname
-on a forum will cause all Alt + E Entries to have your nickname
-before it.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Format Style</FONT></FONT>:</P>
-<P>Will put the logger into preset configurations. The options are:</P>
+<P CLASS="style1">Logging</P>
+<P>This tab include all the configuration options for auto logging.</P>
+<br> 
+<P CLASS="style2">Enable Logging</P>
+<P>Enables the <A HREF="../Included%20MODs/Autolog.html">Autolog</A> mod, which will log all the game events.</P>
+<P CLASS="style2">Automatic Start</P>
+<P>Enables the automatic start of logging: 
+if it is selected, logging starts automatically at the beginning of the game; 
+if it is not selected, logging doesn't start automatically at the beginning of the game, 
+but has to be started with the <b>[Alt+L]</b> command (which can also be pressed again to stop the logger).</P>
+<P CLASS="style2">Use Default File Name</P>
+<P>Uses the default name and path for the log file.</P>
+<P CLASS="style2">Path</P>
+<P>Default path is <i>...\My Docs\My Games\Beyond the Sword\Autolog</i>. You can change this to any directory you'd like.</P>
+<P CLASS="style2">File</P>
+<P>Default name uses the Name you selected for yourself within Civilization. You can change this as you like.</P>
+<P CLASS="style2">Color Coding</P>
+<P>Enables color coding of the log file to make it easier to find key events.</P>
+<P CLASS="style2">4000BC is Turn</P>
+<P>This option will fix the problem with the game thinking your pre-turn is the first turn.
+Default is 0, can be set to 1 for game default. This will not add a turn to the game, just logs it properly.</P>
+<P CLASS="style2">Show IBT</P>
+<P>Enables logging of what occurs <i>"In Between Turns"</i> with the other civilizations in the game.</P>
+<P CLASS="style2">Prefix</P>
+<P>Allows you to use a customized prefix (for example your nickname on a forum) for your own entries in the log 
+(the ones made using the <b>Alt+E</b> command).</P>
+<P CLASS="style2">Format Style</P>
+<P>Puts the logger into preset configurations; the options are: 
 <UL>
-	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><FONT SIZE=3>Plain</FONT></FONT>
-	- Will format the logger into a plain .txt format. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><FONT SIZE=3>HTML
-	Tags</FONT></FONT> - Will format the logger to use HTML code for the
-	log entries. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><FONT SIZE=3>Forum
-	Tags, With &quot; around color codes</FONT></FONT> - Will format the
-	logger to make it easier to post on forums that require &quot; &quot;
-	around color codes. 
-	</P>
-	<LI><P><FONT COLOR="#0000ff"><FONT SIZE=3>Forum Tags, No &quot;
-	around color codes</FONT></FONT> - Will format the logger to make it
-	easier to post on forums that do not require &quot; &quot; around
-	color codes. 
-	</P>
+	<LI><b>plain</b> will format the logger into a plain .txt format
+	<LI><b>HTML</b> will format the logger to use HTML code for the log entries
+	<LI><b>Forum Tags, With &quot; around color codes</b> 
+		will format the logger to make it easier to post on forums that require &quot;quotes&quot; around color codes
+	<LI><b>Forum Tags, No &quot; around color codes</b> 
+		will format the logger to make it easier to post on forums that do not require &quot;quotes&quot; around color codes
 </UL>
-<P><EM>** Please see the <A HREF="../Included%20MODs/autolog.html">Autologger</A>
-section of this help file for details on what you can log or not log.
-** </EM>
 </P>
+<br><br>
+
+<P>Logging of following events may be enabled by simple selection of the corresponding checkboxes:</P>
+<P CLASS="style3">Research and Builds</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">Technologies</FONT> will log Technologies acquired and researches started by the player 
+	<LI><FONT COLOR="#0000ff">Builds Started</FONT> will log city productions started by the player 
+	<LI><FONT COLOR="#0000ff">Builds Completed</FONT> will log city productions completed by the player 
+	<LI><FONT COLOR="#0000ff">Projects Completed</FONT> will log projects completed by the player 
+	<LI><FONT COLOR="#0000ff">Improvements</FONT> will log improvements build or destroyed by the player 
+</UL>
+<P CLASS="style3">Cities</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">City Founded</FONT> will log cities founded by the player 
+	<LI><FONT COLOR="#0000ff">City Growth</FONT> will log growth and shrink of player's cities 
+	<LI><FONT COLOR="#0000ff">City Borders</FONT> will log border expansion of player's cities 
+	<LI><FONT COLOR="#0000ff">City Ownership</FONT> will log cities acquired (by trade or conquest) by the player 
+	<LI><FONT COLOR="#0000ff">City Razed</FONT> will log razed player's cities and enemy cities razed by the player 
+	<LI><FONT COLOR="#0000ff">City Whip</FONT> will log whip and decrease of whip anger in player's cities 
+</UL>
+<P CLASS="style3">Events</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">Tribal Villages</FONT> will log Tribal Villages finds by the player and their consequences 
+	<LI><FONT COLOR="#0000ff">Religions</FONT> will log Religions founded by the player, spread of Religions to player's cities 
+		and spread to other cities of Religions whose Holy City is controlled by the player 
+	<LI><FONT COLOR="#0000ff">Corporations</FONT> will log Corporations founded by the player, spread of Corporations to player's cities 
+		and spread to other cities of Corporations whose Headquarters are controlled by the player 
+	<LI><FONT COLOR="#0000ff">Great People</FONT> will log GP birth in player's cities 
+	<LI><FONT COLOR="#0000ff">Golden Age</FONT> will log start and end of player's Golden Ages 
+</UL>
+<P CLASS="style3">Diplomacy</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">Contact</FONT>will log player's first contact with other Civilizations 
+	<LI><FONT COLOR="#0000ff">Attitude</FONT> will log changes in attitude between Civilizations known to the player 
+	<LI><FONT COLOR="#0000ff">War</FONT> will log start and end of wars between Civilizations known to the player 
+	<LI><FONT COLOR="#0000ff">Vassal States</FONT> will log when any Civilization becomes a Vassal State of another or frees itself from it 
+	<LI><FONT COLOR="#0000ff">Civics</FONT> will log changes in Civics between Civilizations known to the player 
+</UL>
+<P CLASS="style3">Combat</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">Combat</FONT> will log battles involving player's units 
+	<LI><FONT COLOR="#0000ff">Promotions</FONT> will log promotions of player's units 
+	<LI><FONT COLOR="#0000ff">Pillaging</FONT> will log pillaging of player's improvements and when player pillages enemy improvements 
+</UL>
+
 </BODY>
 </HTML>
