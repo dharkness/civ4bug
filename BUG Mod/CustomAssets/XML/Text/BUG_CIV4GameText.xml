@@ -589,12 +589,20 @@
 		<Spanish>La victoria diplomática</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_VOTES_TOTAL</Tag>
+		<English>Total</English>
+		<French>Total</French>
+		<German>Total</German>
+		<Italian>Total</Italian>
+		<Spanish>Total</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_VOTES_REQUIRED</Tag>
-		<English>%s1 votes required.</English>
-		<French>%s1 votes required.</French>
-		<German>%s1 votes required.</German>
-		<Italian>%s1 votes required.</Italian>
-		<Spanish>%s1 votes required.</Spanish>
+		<English>  (%s1 votes required)</English>
+		<French>  (%s1 votes required)</French>
+		<German>  (%s1 votes required)</German>
+		<Italian>  (%s1 votes required)</Italian>
+		<Spanish>  (%s1 votes required)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
