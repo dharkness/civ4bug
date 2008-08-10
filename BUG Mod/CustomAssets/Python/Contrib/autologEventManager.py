@@ -573,9 +573,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onUnitBuilt(self, argsList):
 		if (BugAutolog.isLogBuildCompleted()):
-			city = argsList[0]
+			pCity = argsList[0]
 			unit = argsList[1]
-			if city.getOwner() == CyGame().getActivePlayer():
+			if pCity.getOwner() == CyGame().getActivePlayer():
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_FINISH_UNIT", (pCity.getName(), gc.getUnitInfo(unit.getUnitType()).getDescription()))
 				Logger.writeLog(message, vColor="Purple")
 
@@ -774,9 +774,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onCityBuilt(self, argsList):
 		if (BugAutolog.isLogCityFounded()):
-			city = argsList[0]
-			if city.getOwner() == CyGame().getActivePlayer():
-				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FOUNDED", (city.getName(), ))
+			pCity = argsList[0]
+			if pCity.getOwner() == CyGame().getActivePlayer():
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FOUNDED", (pCity.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityRazed(self, argsList):
@@ -794,22 +794,22 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onCityAcquired(self, argsList):
 		if (BugAutolog.isLogCityOwner()):
-			owner,playerType,city,bConquest,bTrade = argsList
-			if city.getOwner() == CyGame().getActivePlayer():
+			owner,playerType,pCity,bConquest,bTrade = argsList
+			if pCity.getOwner() == CyGame().getActivePlayer():
 				if (bConquest):
-					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_CAPTURED", (city.getName(), PyPlayer(owner).getName()))
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_CAPTURED", (pCity.getName(), PyPlayer(owner).getName()))
 				elif (bTrade): ## city trade not tested
-					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_TRADED", (city.getName(), PyPlayer(owner).getName()))
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_TRADED", (pCity.getName(), PyPlayer(owner).getName()))
 				else:
-					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FLIPPED", (city.getName(), PyPlayer(owner).getName()))
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_FLIPPED", (pCity.getName(), PyPlayer(owner).getName()))
 
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCityLost(self, argsList):
 		if (BugAutolog.isLogCityOwner()):
-			city = argsList[0]
-			if city.getOwner() == CyGame().getActivePlayer():
-				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_LOST", (city.getName(), ))
+			pCity = argsList[0]
+			if pCity.getOwner() == CyGame().getActivePlayer():
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_CITY_LOST", (pCity.getName(), ))
 				Logger.writeLog(message, vColor="RoyalBlue")
 
 	def onCultureExpansion(self, argsList):
