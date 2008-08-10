@@ -589,6 +589,14 @@
 		<Spanish>La victoria diplomática</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_VOTES_REQUIRED</Tag>
+		<English>%s1 votes required.</English>
+		<French>%s1 votes required.</French>
+		<German>%s1 votes required.</German>
+		<Italian>%s1 votes required.</Italian>
+		<Spanish>%s1 votes required.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
 		<English>%s1 (%s2) leads by %s3.</English>
 		<French>%s1 (%s2) conduit par %s3.</French>
