@@ -1160,9 +1160,9 @@ class CvMainInterface:
 			# move unit to temp plot. 
 			if iMode == 0:				
 				pTempPlot = dTempPlots[eDomainType]
-				pLoopUnit.setXY( pTempPlot.getX(), pTempPlot.getY())
+				pLoopUnit.setXY( pTempPlot.getX(), pTempPlot.getY(), False, True, False )
 			else:
-				pLoopUnit.setXY( self.pActPlot.getX(), self.pActPlot.getY() )
+				pLoopUnit.setXY( self.pActPlot.getX(), self.pActPlot.getY(), False, True, False )
 
 	# replacement of the civ 4 version
 	def selectGroup(self, iID, bShift, bCtrl, bAlt):
