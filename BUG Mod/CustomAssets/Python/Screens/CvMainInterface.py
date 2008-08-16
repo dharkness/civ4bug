@@ -1832,7 +1832,7 @@ class CvMainInterface:
 			
 		# strength 
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
-			fCurrStrength 	= float(float(pHeadSelectedUnit.airBaseCombatStr() * pHeadSelectedUnit.currHitPoints()) / pHeadSelectedUnit.maxHitPoints())
+			fCurrStrength 	= float(pUnit.airBaseCombatStr() * pUnit.currHitPoints()) / pUnit.maxHitPoints()
 			fMaxStrength 	= float(pUnit.airBaseCombatStr())
 		else:
 			fCurrStrength 	= float(pUnit.baseCombatStr())*float(1.0-pUnit.getDamage()*0.01)
