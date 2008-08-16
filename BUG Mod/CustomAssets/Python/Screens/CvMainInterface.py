@@ -1856,15 +1856,18 @@ class CvMainInterface:
 		szStrength = u"<font=2>" + szCurrStrength + szMaxStrength + szTurnsToHeal + u"%c" % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR) + u"</font>\n" 
 			
 		# movement
-		fMaxMoves = float(pUnit.baseMoves())
-		fCurrMoves = (float(fMaxMoves)-float(pUnit.getMoves()/60.0))
+		iCurrMoves = pUnit.movesLeft() / gc.getMOVE_DENOMINATOR()
+		if ( pUnit.movesLeft() % gc.getMOVE_DENOMINATOR() > 0 ):
+			iCurrMoves += 1
+		iMaxMoves = pUnit.baseMoves()
+		fCurrMoves = iMaxMoves - pUnit.getMoves() / gc.getMOVE_DENOMINATOR()
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
 			szAirRange 		= u", " + localText.getText("TXT_KEY_UNIT_AIR_RANGE", ( pUnit.airRange(), ) ) 
 		else:
 			szAirRange 		= u""
-		if fCurrMoves != 0:
+		if ( iCurrMoves != iMaxMoves ):
 			szCurrMoves = u" %.1f" % fCurrMoves
-			szMaxMoves 	= u" / %i" % fMaxMoves
+			szMaxMoves 	= u" / %d" % iMaxMoves
 		else:
 			szCurrMoves = u" %i" % fMaxMoves
 			szMaxMoves 	= u""
