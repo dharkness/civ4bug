@@ -1857,19 +1857,16 @@ class CvMainInterface:
 			
 		# movement
 		iCurrMoves = pUnit.movesLeft() / gc.getMOVE_DENOMINATOR()
-		if ( pUnit.movesLeft() % gc.getMOVE_DENOMINATOR() > 0 ):
-			iCurrMoves += 1
 		iMaxMoves = pUnit.baseMoves()
-		fCurrMoves = iMaxMoves - pUnit.getMoves() / gc.getMOVE_DENOMINATOR()
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
 			szAirRange 		= u", " + localText.getText("TXT_KEY_UNIT_AIR_RANGE", ( pUnit.airRange(), ) ) 
 		else:
 			szAirRange 		= u""
 		if ( iCurrMoves != iMaxMoves ):
-			szCurrMoves = u" %.1f" % fCurrMoves
+			szCurrMoves = u" %.1f" % float(iCurrMoves)
 			szMaxMoves 	= u" / %d" % iMaxMoves
 		else:
-			szCurrMoves = u" %i" % fMaxMoves
+			szCurrMoves = u" %d" % iMaxMoves
 			szMaxMoves 	= u""
 		szMovement = u"<font=2>" + szCurrMoves + szMaxMoves + u"%c"%(CyGame().getSymbolID(FontSymbols.MOVES_CHAR)) + szAirRange + u"</font>\n"
 
