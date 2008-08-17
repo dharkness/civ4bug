@@ -1047,11 +1047,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_TEXT</Tag>
-		<English>Whip Assist</English>
-		<French>Whip Assist</French>
+		<English>Whip Assistant</English>
+		<French>Whip Assistant</French>
 		<German>Anzeige für die Beschleunigung der Produktion</German>
 		<Italian>Barra di produzione con accelerazione</Italian>
-		<Spanish>Whip Assist</Spanish>
+		<Spanish>Whip Assistant</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_WHIPASSIST_HOVER</Tag>
