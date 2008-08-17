@@ -1066,7 +1066,7 @@
 		<English>Overflow Counts Current Production</English>
 		<French>Overflow Counts Current Production</French>
 		<German>Overflow Counts Current Production</German>
-		<Italian>Overflow Counts Current Production</Italian>
+		<Italian>Surplus comprendente produzione corrente</Italian>
 		<Spanish>Overflow Counts Current Production</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1074,7 +1074,7 @@
 		<English>When checked, production overflow estimates will include the city's current production amount.</English>
 		<French>When checked, production overflow estimates will include the city's current production amount.</French>
 		<German>When checked, production overflow estimates will include the city's current production amount.</German>
-		<Italian>When checked, production overflow estimates will include the city's current production amount.</Italian>
+		<Italian>Quando è selezionato, la stima del surplus di produzione include la produzione corrente della Città.</Italian>
 		<Spanish>When checked, production overflow estimates will include the city's current production amount.</Spanish>
 	</TEXT>
 	<TEXT>
