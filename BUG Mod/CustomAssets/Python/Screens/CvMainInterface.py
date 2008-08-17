@@ -5098,8 +5098,16 @@ class CvMainInterface:
 						HURRY_BUY = gc.getInfoTypeForString("HURRY_GOLD")
 						if (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_WHIP, False)):
 							iHurryPop = pHeadSelectedCity.hurryPopulation(HURRY_WHIP)
-							iHurryOverflow = pHeadSelectedCity.hurryProduction(HURRY_WHIP) - (pHeadSelectedCity.getProductionNeeded() - pHeadSelectedCity.getProduction())
-							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow))
+							iHurryOverflow = pHeadSelectedCity.hurryProduction(HURRY_WHIP) - pHeadSelectedCity.productionLeft()
+							if BugCityScreen.isOverflowCountCurrentProduction():
+								iHurryOverflow = iHurryOverflow + pHeadSelectedCity.getCurrentProductionDifference(True, False)
+							iMaxOverflow = min(pHeadSelectedCity.getProductionNeeded(), iHurryOverflow)
+							iOverflowGold = max(0, iHurryOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100
+							iHurryOverflow =  100 * iMaxOverflow / pHeadSelectedCity.getBaseYieldRateModifier(gc.getInfoTypeForString("YIELD_PRODUCTION"), pHeadSelectedCity.getProductionModifier())
+							if (iOverflowGold > 0):
+								szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP_PLUS_GOLD", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow, iOverflowGold))
+							else:
+								szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow))
 						elif (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_BUY, False)):
 							iHurryCost = pHeadSelectedCity.hurryGold(HURRY_BUY)
 							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_BUY", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryCost))

@@ -247,12 +247,20 @@
 		<Spanish>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION]</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>INTERFACE_CITY_PRODUCTION_WHIP_PLUS_GOLD</Tag>
+		<English>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION] %d5[ICON_GOLD]</English>
+		<French>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION] %d5[ICON_GOLD]</French>
+		<German>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION] %d5[ICON_GOLD]</German>
+		<Italian>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION] %d5[ICON_GOLD]</Italian>
+		<Spanish>%s1 (%d2)   %d3[ICON_ANGRYPOP] %d4[ICON_PRODUCTION] %d5[ICON_GOLD]</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>INTERFACE_CITY_PRODUCTION_BUY</Tag>
-		<English>%s1 (%d2)   %d3[ICON_GOLD]</English>
-		<French>%s1 (%d2)   %d3[ICON_GOLD]</French>
-		<German>%s1 (%d2)   %d3[ICON_GOLD]</German>
-		<Italian>%s1 (%d2)   %d3[ICON_GOLD]</Italian>
-		<Spanish>%s1 (%d2)   %d3[ICON_GOLD]</Spanish>
+		<English>%s1 (%d2)   -%d3[ICON_GOLD]</English>
+		<French>%s1 (%d2)   -%d3[ICON_GOLD]</French>
+		<German>%s1 (%d2)   -%d3[ICON_GOLD]</German>
+		<Italian>%s1 (%d2)   -%d3[ICON_GOLD]</Italian>
+		<Spanish>%s1 (%d2)   -%d3[ICON_GOLD]</Spanish>
 	</TEXT>
 	<!-- Unit Grouper -->
 	<TEXT>

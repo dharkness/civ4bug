@@ -88,6 +88,9 @@ from CvPythonExtensions import *
 # BUG - Options - start
 import BugAlertsOptions
 BugAlerts = BugAlertsOptions.getOptions()
+
+import BugCityScreenOptions
+BugCityScreen = BugCityScreenOptions.getOptions()
 # BUG - Options - end
 
 
@@ -631,10 +634,18 @@ class CanHurryPopulation(AbstractCanHurry):
 	
 	def _getAlertMessage(self, city, info):
 		iPop = city.hurryPopulation(self.keHurryType)
-		iOverflow = city.hurryProduction(self.keHurryType) - (city.getProductionNeeded() - city.getProduction())
+		iOverflow = city.hurryProduction(self.keHurryType) - city.productionLeft()
+		if BugCityScreen.isOverflowCountCurrentProduction():
+			iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
 		iAnger = city.getHurryAngerTimer() + city.flatHurryAngerLength()
-		return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", 
-								 (city.getName(), info.getDescription(), iPop, iOverflow, iAnger))
+		iMaxOverflow = min(city.getProductionNeeded(), iOverflow)
+		iOverflowGold = max(0, iOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100
+		iOverflow =  100 * iMaxOverflow / city.getBaseYieldRateModifier(gc.getInfoTypeForString("YIELD_PRODUCTION"), city.getProductionModifier())
+		if (iOverflowGold > 0):
+			return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP_PLUS_GOLD", (city.getName(), info.getDescription(), iPop, iOverflow, iAnger, iOverflowGold))
+
+		else:
+			return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", (city.getName(), info.getDescription(), iPop, iOverflow, iAnger))
 
 class CanHurryGold(AbstractCanHurry):
 #   Displays an alert when a city can hurry using gold.

@@ -81,6 +81,8 @@ PyPlayer = PyHelpers.PyPlayer
 # BUG - Options - start
 #import BugScreensOptions
 #BugScreens = BugScreensOptions.getOptions()
+import BugCityScreenOptions
+BugCityScreen = BugCityScreenOptions.getOptions()
 # BUG - Options - end
 
 # Needed to save changes
@@ -305,11 +307,12 @@ class CvCustomizableDomesticAdvisor:
 				("HEALTH",					30,		"int",	None,					None,					0,									self.calculateNetHealth,				None,						"self.healthIcon"),
 				("HURRY_GOLD",				38,		"int",	None,					None,					0,									self.calculateHurryGoldCost,			None,						"u\"H\" + self.goldIcon"),
 				("HURRY_POP",				38,		"int",	None,					None,					0,									self.calculateWhipPopulation,			None,						"u\"H\" + self.angryIcon"),
-				("HURRY_POP_EXTRA",			38,		"int",	None,					None,					0,									self.calculateWhipOverflow,				None,						"u\"H\" + self.hammerIcon"),
+				("HURRY_POP_EXTRA",			38,		"int",	None,					None,					0,									self.calculateWhipOverflowProduction,	None,						"u\"H\" + self.hammerIcon"),
+				("HURRY_POP_GOLD",			38,		"int",	None,					None,					0,									self.calculateWhipOverflowGold,			None,						"u\"H\" + self.goldIcon"),
 				("LIBERATE",				35,		"int",	None,					None,					0,									self.canLiberate,						None,						"self.fistIcon"),
 				("LOCATION_X",				50,		"int",	CyCity.getX,			None,					0,									None,									None,						"u\"X\""),
 				("LOCATION_Y",				50,		"int",	CyCity.getY,			None,					0,									None,									None,						"u\"Y\""),
-				("MAINTENANCE",				30,		"int",	CyCity.getMaintenance,	None,					0,									None,									None,						"u\"%c\" % CyGame().getSymbolID(FontSymbols.BAD_GOLD_CHAR)"),
+				("MAINTENANCE",				30,		"int",	CyCity.getMaintenance,	None,					0,									None,									None,						"self.redGoldIcon"),
 				("NRANK_BASE_COMMERCE",		42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,	None,									None,						"u\"B\" + self.commerceIcon + u\"n\""),
 				("NRANK_BASE_FOOD",			42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_FOOD,		None,									None,						"u\"B\" + self.foodIcon + u\"n\""),
 				("NRANK_BASE_PRODUCTION",	42,		"int",	None,					CyCity.findBaseYieldRateRank, YieldTypes.YIELD_PRODUCTION,	None,									None,						"u\"B\" + self.hammerIcon + u\"n\""),
@@ -452,6 +455,7 @@ class CvCustomizableDomesticAdvisor:
 		self.fistIcon = u"%c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
 		self.foodIcon = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar())
 		self.goldIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
+		self.redGoldIcon = u"%c" % CyGame().getSymbolID(FontSymbols.BAD_GOLD_CHAR)
 		self.figureheadIcon = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
 		self.hammerIcon = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar())
 		self.happyIcon = u"%c" % CyGame().getSymbolID(FontSymbols.HAPPY_CHAR)
@@ -1269,13 +1273,26 @@ class CvCustomizableDomesticAdvisor:
 		else:
 			return self.objectNotPossible
 
+	def calculateWhipOverflowProduction (self, city, szKey, arg):
+		
+		return self.calculateWhipOverflow(city, szKey, arg)[0]
+
+	def calculateWhipOverflowGold (self, city, szKey, arg):
+		
+		return self.calculateWhipOverflow(city, szKey, arg)[1]
+
 	def calculateWhipOverflow (self, city, szKey, arg):
 		
 		if (city.canHurry(self.HURRY_TYPE_POP, False)):
-			return unicode(city.hurryProduction(self.HURRY_TYPE_POP) - 
-						   (city.getProductionNeeded() - city.getProduction()))
+			iOverflow = city.hurryProduction(self.HURRY_TYPE_POP) - city.productionLeft()
+			if BugCityScreen.isOverflowCountCurrentProduction():
+				iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
+			iMaxOverflow = min(city.getProductionNeeded(), iOverflow)
+			iOverflowGold = max(0, iOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100
+			iOverflow =  100 * iMaxOverflow / city.getBaseYieldRateModifier(gc.getInfoTypeForString("YIELD_PRODUCTION"), city.getProductionModifier())
+			return unicode(iOverflow), unicode(iOverflowGold)
 		else:
-			return self.objectNotPossible
+			return self.objectNotPossible, self.objectNotPossible
 
 	def calculateHurryGoldCost (self, city, szKey, arg):
 		

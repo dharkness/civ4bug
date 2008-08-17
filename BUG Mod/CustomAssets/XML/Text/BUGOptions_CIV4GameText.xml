@@ -1062,6 +1062,22 @@
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITY_OVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
+		<English>Overflow Counts Current Production</English>
+		<French>Overflow Counts Current Production</French>
+		<German>Overflow Counts Current Production</German>
+		<Italian>Overflow Counts Current Production</Italian>
+		<Spanish>Overflow Counts Current Production</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITY_OVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>
+		<English>When checked, production overflow estimates will include the city's current production amount.</English>
+		<French>When checked, production overflow estimates will include the city's current production amount.</French>
+		<German>When checked, production overflow estimates will include the city's current production amount.</German>
+		<Italian>When checked, production overflow estimates will include the city's current production amount.</Italian>
+		<Spanish>When checked, production overflow estimates will include the city's current production amount.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITY_CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
 		<French>Tours de Culture</French>

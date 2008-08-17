@@ -28,6 +28,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "City_RawYields")
 		self.addTextDropdown(screen, right, right, "City_RawYields_View")
 		self.addCheckbox(screen, right, "City_WhipAssist")
+		self.addCheckbox(screen, right, "City_OverflowCountCurrentProduction")
 		self.addCheckbox(screen, right, "City_Anger_Counter")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")

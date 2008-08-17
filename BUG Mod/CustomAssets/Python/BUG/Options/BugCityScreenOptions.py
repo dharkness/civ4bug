@@ -26,6 +26,10 @@ class BugCityScreenOptions(OptionsFacade):
 							  "Whip Assist",
 							  "When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.",
 							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
+		self.addOption(Option("City_OverflowCountCurrentProduction",
+							  "City Screen", "Overflow Count Current Production", True,
+							  None, None, 
+							  InterfaceDirtyBits.CityScreen_DIRTY_BIT))
 		self.addOption(Option("City_CultureTurns",
 							  "City Screen", "Culture Turns", False,
 							  "Culture Turns",
@@ -65,6 +69,8 @@ The \"Chevron\" setting shows the specialists grouped into 5 (single cheron), 10
 
 	def isShowWhipAssist(self):
 		return self.getBoolean('City_WhipAssist')
+	def isOverflowCountCurrentProduction(self):
+		return self.getBoolean('City_OverflowCountCurrentProduction')
 
 	def isShowCultureTurns(self):
 		return self.getBoolean('City_CultureTurns')
