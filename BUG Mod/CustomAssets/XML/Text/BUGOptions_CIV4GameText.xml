@@ -1065,7 +1065,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_OVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
 		<English>Overflow Counts Current Production</English>
 		<French>Overflow Counts Current Production</French>
-		<German>Overflow Counts Current Production</German>
+		<German>Produktionsüberschuss der aktuellen Runde einbeziehen</German>
 		<Italian>Surplus comprendente produzione corrente</Italian>
 		<Spanish>Overflow Counts Current Production</Spanish>
 	</TEXT>
@@ -1073,7 +1073,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITY_OVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>
 		<English>When checked, production overflow estimates will include the city's current production amount.</English>
 		<French>When checked, production overflow estimates will include the city's current production amount.</French>
-		<German>When checked, production overflow estimates will include the city's current production amount.</German>
+		<German>Bezieht die Produktion einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ein</German>
 		<Italian>Quando è selezionato, la stima del surplus di produzione include la produzione corrente della Città.</Italian>
 		<Spanish>When checked, production overflow estimates will include the city's current production amount.</Spanish>
 	</TEXT>
