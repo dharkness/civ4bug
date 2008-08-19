@@ -40,12 +40,6 @@ FLAVORS = [ TechPrefs.FLAVOR_PRODUCTION, TechPrefs.FLAVOR_GOLD, TechPrefs.FLAVOR
 UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIST",
 				 "UNITCLASS_ARTIST", "UNITCLASS_PROPHET" ]
 
-class FakeBugOptions:
-	def isWideTechScreen(self):
-		return False
-	def isShowGPTechPrefs(self):
-		return False
-
 # BUG - GP Tech Prefs - end
 
 class CvTechChooser:
@@ -81,12 +75,7 @@ class CvTechChooser:
 			return
 
 		global BugOpt
-		try:
-			BugOpt = BugOptions.getOptions().getAdvisors()
-		except AttributeError:
-			import BugUtil
-			BugUtil.debug("TechChooser - using fake Advisors options")
-			BugOpt = FakeBugOptions()
+		BugOpt = BugOptions.getOptions().getAdvisors()
 		
 		# Create a new screen, called TechChooser, using the file CvTechChooser.py for input
 		screen = CyGInterfaceScreen( "TechChooser", CvScreenEnums.TECH_CHOOSER )
