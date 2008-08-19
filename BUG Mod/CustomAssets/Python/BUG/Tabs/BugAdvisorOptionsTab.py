@@ -13,43 +13,46 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 	def create(self, screen):
 		tab = self.createTab(screen)
 		panel = self.createMainPanel(screen)
-		column = self.addOneColumnLayout(screen, panel)
+		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 		
-		leftPanel, rightPanel = self.addTwoColumnLayout(screen, column, column, True)
+		self.addLabel(screen, left, "Domestic_Advisor", "Domestic (F1):")
+		self.addCheckbox(screen, left, "CDA_Enabled")
+
+		self.addSpacer(screen, left, "Foreign_Advisor")
+		self.addSpacer(screen, left, "Foreign_Advisor")
+		self.addLabel(screen, left, "Foreign_Advisor", "Foreign (F4):")
+		self.addCheckbox(screen, left, "EFA_Glance")
+		self.addCheckbox(screen, left, "EFA_Glance_Smilies")
 		
-		self.addLabel(screen, leftPanel, "Domestic_Advisor", "Domestic (F1):")
-		self.addCheckbox(screen, leftPanel, "CDA_Enabled")
+		self.addSpacer(screen, left, "Military_Advisor")
+		self.addLabel(screen, left, "Military_Advisor", "Military (F5):")
+		self.addCheckbox(screen, left, "BMA_Enabled")
 
-		self.addLabel(screen, leftPanel, "Foreign_Advisor", "Foreign (F4):")
-		self.addCheckbox(screen, leftPanel, "EFA_Glance")
-		self.addCheckbox(screen, leftPanel, "EFA_Glance_Smilies")
+		self.addLabel(screen, center, "Technology_Advisor", "Technology (F6):")
+		self.addCheckbox(screen, center, "Tech_GPPrefs")
+		self.addCheckbox(screen, center, "TechScreen_Wide")
+
+		self.addSpacer(screen, center, "Victory_Conditions")
+		self.addLabel(screen, center, "Victory_Conditions", "Victory:")
+		self.addCheckbox(screen, center, "Victories_Enabled")
+		self.addCheckbox(screen, center, "Members_Enabled")
+
+		self.addSpacer(screen, center, "Sevopedia")
+		self.addLabel(screen, center, "Sevopedia", "Sevopdia (F12):")
+		self.addCheckbox(screen, center, "Sevopedia_Enabled")
+		self.addCheckbox(screen, center, "Sevopedia_Sort")
+
+		self.addLabel(screen, right, "Espionage_Screen", "Espionage (Ctrl-E):")
+		self.addCheckbox(screen, right, "Espionage_Enabled")
 		
-		self.addLabel(screen, leftPanel, "Military_Advisor", "Military (F5):")
-		self.addCheckbox(screen, leftPanel, "BMA_Enabled")
-
-		self.addLabel(screen, leftPanel, "Technology_Advisor", "Technology (F6):")
-		self.addCheckbox(screen, leftPanel, "Tech_GPPrefs")
-		self.addCheckbox(screen, leftPanel, "TechScreen_Wide")
-
-		self.addLabel(screen, leftPanel, "Sevopedia", "Sevopdia (F12):")
-		self.addCheckbox(screen, leftPanel, "Sevopedia_Enabled")
-		self.addCheckbox(screen, leftPanel, "Sevopedia_Sort")
-
-		self.addLabel(screen, leftPanel, "Victory_Conditions", "Victory:")
-		self.addCheckbox(screen, leftPanel, "Victories_Enabled")
-		self.addCheckbox(screen, leftPanel, "Members_Enabled")
-
-		self.addLabel(screen, rightPanel, "Espionage_Screen", "Espionage (Ctrl-E):")
-		self.addCheckbox(screen, rightPanel, "Espionage_Enabled")
+		self.addLabel(screen, right, "Espionage_Ratio", "Ratio:")
+		self.addColorDropdown(screen, right, right, "Espionage_RatioColor", True)
+		self.addFloatDropdown(screen, right, right, "Espionage_GoodRatio", True)
+		self.addColorDropdown(screen, right, right, "Espionage_GoodColor", True)
+		self.addFloatDropdown(screen, right, right, "Espionage_BadRatio", True)
+		self.addColorDropdown(screen, right, right, "Espionage_BadColor", True)
 		
-		self.addLabel(screen, rightPanel, "Espionage_Ratio", "Ratio:")
-		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_RatioColor", True)
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_GoodRatio", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_GoodColor", True)
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_BadRatio", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_BadColor", True)
-		
-		self.addLabel(screen, rightPanel, "Espionage_Missions", "Missions:")
-		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_PossibleColor", True)
-		self.addFloatDropdown(screen, rightPanel, rightPanel, "Espionage_ClosePercent", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "Espionage_CloseColor", True)
+		self.addLabel(screen, right, "Espionage_Missions", "Missions:")
+		self.addColorDropdown(screen, right, right, "Espionage_PossibleColor", True)
+		self.addFloatDropdown(screen, right, right, "Espionage_ClosePercent", True)
+		self.addColorDropdown(screen, right, right, "Espionage_CloseColor", True)

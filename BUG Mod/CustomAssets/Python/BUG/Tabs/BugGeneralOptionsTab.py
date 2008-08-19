@@ -21,15 +21,23 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Main_Interface", "Main Interface:")
 		self.addCheckbox(screen, left, "Main_GPBar")
 		self.addTextDropdown(screen, left, left, "Main_GPBar_Types")
+		
+		self.addSpacer(screen, left, "Main_Combat_Counter")
 		self.addCheckbox(screen, left, "Main_Combat_Counter")
+		
+		self.addSpacer(screen, left, "Main_CityArrows")
 		self.addCheckbox(screen, left, "Main_CityArrows")
 
 		self.addLabel(screen, right, "CityScreen", "City Screen:")
 		self.addCheckbox(screen, right, "City_RawYields")
 		self.addTextDropdown(screen, right, right, "City_RawYields_View")
+		
+		self.addSpacer(screen, right, "City_WhipAssist")
 		self.addCheckbox(screen, right, "City_WhipAssist")
 		self.addCheckbox(screen, right, "City_OverflowCountCurrentProduction")
 		self.addCheckbox(screen, right, "City_Anger_Counter")
+		
+		self.addSpacer(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_CultureTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonTurns")
 		self.addCheckbox(screen, right, "City_GreatPersonInfo")
