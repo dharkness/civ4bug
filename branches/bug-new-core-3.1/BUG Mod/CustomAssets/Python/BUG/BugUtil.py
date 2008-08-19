@@ -11,6 +11,8 @@
 
 from CvPythonExtensions import *
 import sys
+import types
+import ColorUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -45,7 +47,7 @@ def getText(key, values, default=None):
 
 def colorText(text, color):
 	if text is not None and color is not None:
-		if isinstance(color, StringTypes):
+		if isinstance(color, types.StringTypes):
 			color = ColorUtil.keyToType(color)
 		if color >= 0:
 			return localText.changeTextColor(text, color)
