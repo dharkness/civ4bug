@@ -6,18 +6,18 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_KEY_SEVOPEDIA_TITLE</Tag>
-		<English>SEVOPEDIA 2.3.1</English>
-		<French>SEVOPEDIA 2.3.1</French>
-		<German>SEVOPEDIA 2.3.1</German>
+		<English>SEVOPEDIA</English>
+		<French>SEVOPEDIA</French>
+		<German>SEVOPEDIA</German>
 		<Italian>SEVOPEDIA</Italian>
-		<Spanish>SEVOPEDIA 2.3.1</Spanish>
+		<Spanish>SEVOPEDIA</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_SCREEN_INDEX</Tag>
 		<English>Index</English>
 		<French>Index</French>
 		<German>Index</German>
-		<Italian>Indice</Italian>
+		<Italian>[SPACE][SPACE][SPACE][SPACE][SPACE]Indice</Italian>
 		<Spanish>Indice</Spanish>
 	</TEXT>
 	<TEXT>
@@ -33,7 +33,7 @@
 		<English>Unit Upgrades</English>
 		<French>Améliorations des Unités</French>
 		<German>Modernisierungen</German>
-		<Italian>Miglioramenti Unità</Italian>
+		<Italian>Avanzamenti</Italian>
 		<Spanish>Unit Upgrades</Spanish>
 	</TEXT>
 	<TEXT>
@@ -41,7 +41,7 @@
 		<English>Promotion Tree</English>
 		<French>Arborescence des Promotions</French>
 		<German>Beförderungsbaum</German>
-		<Italian>Albero Promozioni</Italian>
+		<Italian>Albero Promoz.</Italian>
 		<Spanish>Promotion Tree</Spanish>
 	</TEXT>
 	<TEXT>
@@ -49,7 +49,7 @@
 		<English>National Wonders</English>
 		<French>Merveilles Nationales</French>
 		<German>Nationalwunder</German>
-		<Italian>Meraviglie Nazionali</Italian>
+		<Italian>Merav. Naz.</Italian>
 		<Spanish>National Wonders</Spanish>
 	</TEXT>
 	<TEXT>
@@ -57,7 +57,7 @@
 		<English>Great Wonders</English>
 		<French>Merveilles Mondiales</French>
 		<German>Weltwunder</German>
-		<Italian>Grandi Meraviglie</Italian>
+		<Italian>Grandi Merav.</Italian>
 		<Spanish>Great Wonders</Spanish>
 	</TEXT>
 	<TEXT>
