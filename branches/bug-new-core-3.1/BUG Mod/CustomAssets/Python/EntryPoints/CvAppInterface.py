@@ -58,6 +58,11 @@ def onLoad(argsList):
 def preGameStart():
 	import CvScreensInterface
 	
+# BUG - core - start
+	import CvEventInterface
+	CvEventInterface.getEventManager().fireEvent("PreGameStart")
+# BUG - core - end
+	
 	if not CyGame().isPitbossHost():
 		NiTextOut("Initializing font icons")
 		# Load dynamic font icons into the icon map

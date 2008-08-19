@@ -7,6 +7,7 @@
 ##
 ## Author: EmperorFool
 
+import CvUtil
 import BugConfig
 import BugOptions
 import BugPath
@@ -29,8 +30,8 @@ def init():
 		return
 	g_initRunning = True
 	
-	#loadMods()
 	BugUtil.debug("BUG: initializing...")
+	CvUtil.initDynamicFontIcons()
 	loadMod("init")
 	BugOptions.read()
 	callInits()
@@ -70,4 +71,15 @@ def callInits():
 	BugUtil.debug("BUG: calling init functions...")
 	while g_initQueue:
 		name, func = g_initQueue.pop(0)
-		func()
+		try:
+			func()
+#		except BugUtil.ConfigError, e:
+#			# TODO: register with ConfigTracker
+#			BugUtil.debug("ERROR: init for module '%s' failed: %s" % (name, e))
+		except:
+			import sys
+			info = sys.exc_info()
+			# TODO: register with ConfigTracker
+			BugUtil.debug("ERROR: init for module '%s' failed: %s" % (name, info[1]))
+			import traceback
+			traceback.print_exc()

@@ -19,7 +19,7 @@
 ##   - LanguageChanged 
 ##       called from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
 ##
-## * Calls BugInit.init() once before "OnLoad" or "GameStart" events are handled
+## * Calls BugInit.init() once before "OnLoad" or "PreGameStart" events are handled
 ##   because CyGlobalContext is not ready during "Init" event.
 ##
 ## Copyright (c) 2008 The BUG Mod.
@@ -231,16 +231,16 @@ EVENT_FUNCTION_MAP = {
 	"kbdEvent": BugEventManager._handleConsumableEvent,
 	"mouseEvent": BugEventManager._handleConsumableEvent,
 	"OnSave": BugEventManager._handleOnSaveEvent,
-	#"OnLoad": BugEventManager._handleInitBugEvent,
-	#"PreGameStart": BugEventManager._handleInitBugEvent,
+	"OnLoad": BugEventManager._handleInitBugEvent,
+	"PreGameStart": BugEventManager._handleInitBugEvent,
 	#"GameStart": BugEventManager._handleInitBugEvent,
-	"windowActivation": BugEventManager._handleInitBugEvent,
+	#"windowActivation": BugEventManager._handleInitBugEvent,
 }
 
 
 g_initDone = False
 def initBug():
-	"""Called when Civ starts or loads a game."""
+	"""Called once after Civ has initialized its data structures."""
 	global g_initDone
 	if not g_initDone:
 		import BugInit
