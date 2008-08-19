@@ -2,112 +2,96 @@
 <HTML>
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
-	<TITLE>Scoreboard Options</TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.3  (Win32)">
-	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGEDBY" CONTENT="Jason Cole">
-	<META NAME="CHANGED" CONTENT="20080106;435848">
+	<TITLE>Scoreboard</TITLE>
 	<STYLE TYPE="text/css">
 	<!--
 		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 14pt; font-style: italic; font-weight: bold }
 	-->
 	</STYLE>
 </HEAD>
 <BODY LANG="en-US" DIR="LTR">
-<P CLASS="style1">Scoreboard<FONT COLOR="#0000ff"> </FONT><FONT COLOR="#0000ff"><FONT SIZE=4 STYLE="font-size: 16pt">Options</FONT></FONT></P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Display Name</FONT></FONT>:</P>
-<P>You can toggle between what name is displayed in the scored.
-Either the Leader's name, the Civilization's name, or both the Leader
-and the Civilizations name.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Attitude Icons</FONT></FONT>:</P>
-<P>Will toggle between Attitude Icons being displayed or not.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Dead Civilizations</FONT></FONT>:</P>
-<P>You can show Civilizations that have been destroyed in different
-ways. You can either show them or remove them. You can add a tag to
-their name saying they are &quot;Dead&quot;, or you can gray out the
-name. You can use any combination of these thee options you'd like.</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Power Ratio</FONT></FONT>:</P>
-<P>This will display the Power Ratio in the Score.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Default Color</FONT></FONT>:</P>
-<P>The color to display when your power ratio is even with another
-civilization. 
-</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Good Ratio Cutoff</FONT></FONT>:</P>
-<P>The point at which the ratio changes from even to good. 
-</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Good Color</FONT></FONT>:</P>
-<P>The color to display when your power ratio is stronger then
-another civilization. 
-</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Bad Ration Cutoff</FONT></FONT>:</P>
-<P>The point at which the ratio changes from even to bad. 
-</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Bad Color</FONT></FONT>:</P>
-<P>The color to display when your power ratio is weaker then another
-civilization. 
-</P>
-<P>&nbsp;</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Advanced Layout</FONT></FONT>: 
-</P>
-<P>This will give you more options to change the layout of the
-Scoreboard. Select the Enabled Box to turn these extra options on.</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Column Order</FONT></FONT>:</P>
-<P>This will give you complete control over what is, or isn't
-displayed in the score. You can also change the order of what is
-displayed here as well. The items you can display in the Scoreboard
-are:</P>
+<P CLASS="style1">Scoreboard</P>
+<P>This tab include all the configuration options for the <A HREF="../Included%20MODs/Scoreboard.html">Advanced Scoreboard</A> mod.</P>
+<br> 
+
+<P CLASS="style2">Score Delta</P>
+<P>Enables display of the score variation towards previous turn.</P>
+<P CLASS="style2">Score Delta: Include Current Turn</P>
+<P>Enables the inclusion of the current turn in the score variation calculation.</P>
+<P CLASS="style2">Display Name</P>
+<P>Selects what name is displayed in the scoreboard: either the Leader's name, the Civilization's name, or both.</P>
+<P CLASS="style2">Attitude Icons</P>
+<P>Toggles between Attitude Icons being displayed or not.</P>
+<P CLASS="style2">Worst Enemy Icons</P>
+<P>Enables display of the Worst Enemy Icon for the Civilizations that consider the player as their Worst Enemy.</P>
+<br>
+
+<P CLASS="style2">Dead Civilizations: Show</P>
+<P>Enables display in Scoreboard of dead Civilizations.<P>
+<P CLASS="style2">Dead Civilizations: Tag as 'Dead'</P>
+<P>Enables display in Scoreboard of the 'Dead' label for dead Civilizations.<P>
+<P CLASS="style2">Civiltà Scomparse: Use Grey Color</P>
+<P>Enables use of grey color for displaying dead Civilizations in Scoreboard.<P>
+<br>
+
+<P CLASS="style2">Power Ratio</P>
+<P>Enables display in Scoreboard of the Power Ratio.<P>
+<P CLASS="style2">Power Ratio: Default Color</P>
+<P>Selects the color to display when your power ratio is even with another Civilization.<P>
+<P CLASS="style2">Power Ratio: Good Ratio Cutoff</P>
+<P>Sets the point at which the ratio changes from even to good.<P>
+<P CLASS="style2">Power Ratio: Good Color</P>
+<P>Selects the color to display when your power ratio is stronger then another Civilization.<P>
+<P CLASS="style2">Power Ratio: Bad Ration Cutoff</P>
+<P>Sets the point at which the ratio changes from even to bad.<P>
+<P CLASS="style2">Power Ratio: Bad Color</P>
+<P>Selects the color to display when your power ratio is weaker then another Civilization.<P>
+<br>
+
+<P CLASS="style2">Advanced Layout: Enabled</P>
+<P>Enables advanced layout for Scoreboard, which will provide more options to change the layout of the Scoreboard.<P>
+<P CLASS="style2">Advanced Layout: Column Order</P>
+<P>This will give you complete control over what is or isn't displayed in the Scoreboard; 
+you can also change the order of what is displayed here as well.<br>
+The codes that you can use in this box, to display the corresponding items, are the following 
+(note that the last 3 of them are displayed only for your opponents in a multiplayer game, 
+the first 4 of them are displayed even for your Civilization, while the other 11 are displayed only for your opponents):<P>
 <UL>
-	<LI><P STYLE="margin-bottom: 0in">S - The civ's score. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">C - The civ's/leader's name. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">? - You have not yet met the civ. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">W - You are at war with the civ. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">E - You have a positive espionage
-	point ratio against the civ. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">P - The civ's power ratio compared
-	to you. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">T - The tech the civ is
-	researching (vassals, teammates and espionage). 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">U - The number of research turns
-	left. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">N - The civ is connected to your
-	trade network. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">B - You have an open borders
-	agreement with the civ. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">D - You have a defensive pact with
-	the civ. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">R - The civ's state religion. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">A - The civ's attitude toward you.
-		</P>
-	<LI><P STYLE="margin-bottom: 0in">* - You are waiting for this civ
-	to finish its turn. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0in">L - civ's network stats (ping). 
-	</P>
-	<LI><P>O - The network player is out-of-sync. 
-	</P>
+	<LI><SPAN style="color: #0000ff;">S</SPAN> displays the civ's score
+	<LI><SPAN style="color: #0000ff;">Z</SPAN> displays the civ's score variation towards previous turn 
+		(if the <i>'Score Delta'</i> checkbox is selected and according to what is selected in the <i>'Include Current Turn' checkbox</i>) 
+	<LI><SPAN style="color: #0000ff;">C</SPAN> displays the civ's/leader's name 
+		(according to what is selected in the <i>'Display Name'</i> checkbox, and aligned 
+		according to what is selected in the <i>'Left-Align' checkbox</i>) 
+	<LI><SPAN style="color: #0000ff;">R</SPAN> displays the the civ's state religion 
+	<LI><SPAN style="color: #0000ff;">?</SPAN> displays a question mark if you have not yet met the civ 
+	<LI><SPAN style="color: #0000ff;">W</SPAN> displays a crossed swords icon if you are at war with the civ, 
+		or a peace symbol icon if you have signed a Peace Treaty with the civ 
+	<LI><SPAN style="color: #0000ff;">E</SPAN> displays a spy icon if you have a positive espionage	point ratio against the civ. 
+	<LI><SPAN style="color: #0000ff;">P</SPAN> displays the civ's power ratio compared to you 
+		(the higher is the number, the stronger you are compared with that civ) 
+	<LI><SPAN style="color: #0000ff;">T</SPAN> displays the tech the civ is researching, if it is known to you 
+		(as icon or name according to what is selected in the <i>'Research Icons'</i> checkbox) 
+	<LI><SPAN style="color: #0000ff;">U</SPAN> displays the number of research turns left, if it is known to you 
+		(for vassals, for team-mates or by espionage) 
+	<LI><SPAN style="color: #0000ff;">N</SPAN> displays a trade icon if the civ is connected to your trade network
+	<LI><SPAN style="color: #0000ff;">B</SPAN> displays a parchment icon if you have an Open Borders agreement with the civ 
+	<LI><SPAN style="color: #0000ff;">D</SPAN> displays a parchment icon (different from the previous one) if you 
+		have a Defensive Pact with the civ 
+	<LI><SPAN style="color: #0000ff;">A</SPAN> displays an icon showing the civ's attitude toward you 
+		(if the <i>'Attitude Icons'</i> checkbox is selected) 
+	<LI><SPAN style="color: #0000ff;">H</SPAN> displays an angry man icon if you are the Worst Enemy of the civ 
+		(if the <i>'Worst Enemy Icons'</i> checkbox is selected) 
+	<LI><SPAN style="color: #0000ff;">*</SPAN> displays an asterisk when you are waiting for this civ to finish its turn 
+	<LI><SPAN style="color: #0000ff;">L</SPAN> displays civ's network stats (ping) 
+	<LI><SPAN style="color: #0000ff;">O</SPAN> the network player is 'out-of-sync' 
 </UL>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Left Align Name</FONT></FONT>:</P>
-<P>This aligns the civilizations name so it is to the left, instead
-of the right. 
-</P>
-<P><FONT COLOR="#0000ff"><FONT SIZE=4>Research Icons</FONT></FONT>:</P>
-<P>This will display the icon of the technology the other
-civilization is researching instead of the name of the technology.</P>
+<P CLASS="style2">Advanced Layout: Left-Align Name</P>
+<P>Aligns the Civilization/Leader names to the left, instead of the right.<P>
+<P CLASS="style2">Advanced Layout: Research Icons</P>
+<P>Displays the icon of the technology the civ is researching instead of the name of the technology.<P>
+
 </BODY>
 </HTML>
