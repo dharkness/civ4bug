@@ -14,11 +14,6 @@ import IconGrid_BUG
 import BugUtil
 import UnitGrouper
 
-# BUG - Options - start
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
-# BUG - Options - end
-
 PyPlayer = PyHelpers.PyPlayer
 
 # globals
@@ -793,8 +788,12 @@ class CvMilitaryAdvisor:
 		iUnits = set()
 		for i in range (gc.getNumUnitClassInfos()):
 			iUnit = civInfo.getCivilizationUnits(i)
+			if iUnit == -1:
+				pUnitClassInfo = gc.getUnitClassInfo(i)
+				BugUtil.debug("%s doesn't have %s" % (civInfo.getDescription(), pUnitClassInfo.getDescription()))
+				iUnit = pUnitClassInfo.getDefaultUnitIndex()
 			pUnitInfo = gc.getUnitInfo(iUnit)
-			if pUnitInfo.getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
+			if pUnitInfo and pUnitInfo.getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
 				for c in range(pPlayer.getNumCities()):
 					pCity = pPlayer.getCity(c)
 					if pCity and not pCity.isNone() and pCity.canTrain(iUnit, False, False):
@@ -1169,6 +1168,9 @@ class CvMilitaryAdvisor:
 					bUnitSelected = self.isSelectedUnit(loopUnit.getOwner(), loopUnit.getID())
 					if (self.bUnitDetails):
 						szDescription = CyGameTextMgr().getSpecificUnitHelp(loopUnit, true, false)
+						imgs = re.findall("<img.*></img>", szDescription)
+						for img in imgs:
+							BugUtil.debug(u"Image: %s" % img)
 
 						listMatches = re.findall("<.*?color.*?>", szDescription)	
 						for szMatch in listMatches:

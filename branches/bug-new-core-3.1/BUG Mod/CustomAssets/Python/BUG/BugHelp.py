@@ -1,11 +1,13 @@
 ## BugHelp
+##
 ## Opens the mod's help file, "<mod> Help.chm".
 ##
 ## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 import Popup as PyPopup
-import CvModName
 from BugPath import findIniFile
 import BugUtil
 import os

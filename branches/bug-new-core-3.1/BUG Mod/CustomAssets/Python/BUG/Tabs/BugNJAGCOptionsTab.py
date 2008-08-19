@@ -1,14 +1,12 @@
 ## BugNJAGCOptionsTab
-## Tab for the BUG NJAGC Options
-## BUG Mod - Copyright 2007
+##
+## Tab for the BUG NJAGC Options.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
-from CvPythonExtensions import *
 import BugOptionsTab
-import BugNJAGCOptions
-
-gc = CyGlobalContext()
-localText = CyTranslator()
-BugNJAGC = BugNJAGCOptions.getOptions()
 
 class BugNJAGCOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG NJAGC Options Screen Tab"
@@ -23,33 +21,33 @@ class BugNJAGCOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		leftPanel, centerPanel, rightPanel = self.addThreeColumnLayout(screen, upperPanel, "EraColors")
 		
-		self.addCheckbox(screen, leftPanel, "NJAGCM_Enabled")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEra")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowEraColor")
-		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_ANCIENT", True)
-		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_CLASSICAL", True)
-		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_MEDIEVAL", True)
-		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGCM_Color_ERA_RENAISSANCE", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_INDUSTRIAL", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_MODERN", True)
-		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGCM_Color_ERA_FUTURE", True)
+		self.addCheckbox(screen, leftPanel, "NJAGC__Enabled")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowEra")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowEraColor")
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGC__Color_ERA_ANCIENT", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGC__Color_ERA_CLASSICAL", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGC__Color_ERA_MEDIEVAL", True)
+		self.addColorDropdown(screen, centerPanel, centerPanel, "NJAGC__Color_ERA_RENAISSANCE", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGC__Color_ERA_INDUSTRIAL", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGC__Color_ERA_MODERN", True)
+		self.addColorDropdown(screen, rightPanel, rightPanel, "NJAGC__Color_ERA_FUTURE", True)
 		
 		screen.attachHSeparator(upperPanel, upperPanel + "Sep")
 		leftPanel, rightPanel = self.addTwoColumnLayout(screen, upperPanel, "Views")
 		
-		self.addCheckbox(screen, leftPanel, "NJAGCM_AlternateText")
-		self.addIntDropdown(screen, rightPanel, rightPanel, "NJAGCM_AltTiming")
+		self.addCheckbox(screen, leftPanel, "NJAGC__AlternateText")
+		self.addIntDropdown(screen, rightPanel, rightPanel, "NJAGC__AltTiming")
 		
 		self.addLabel(screen, leftPanel, "NJAGC_Regular", "Standard View:")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowTime")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowCompletedTurns")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowTotalTurns")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowCompletedPercent")
-		self.addCheckbox(screen, leftPanel, "NJAGCM_ShowDate")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowTime")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowCompletedTurns")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowTotalTurns")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowCompletedPercent")
+		self.addCheckbox(screen, leftPanel, "NJAGC__ShowDate")
 		
 		self.addLabel(screen, rightPanel, "NJAGC_Alternate", "Alternate View:")
-		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltTime")
-		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltCompletedTurns")
-		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltTotalTurns")
-		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltCompletedPercent")
-		self.addCheckbox(screen, rightPanel, "NJAGCM_ShowAltDate")
+		self.addCheckbox(screen, rightPanel, "NJAGC__ShowAltTime")
+		self.addCheckbox(screen, rightPanel, "NJAGC__ShowAltCompletedTurns")
+		self.addCheckbox(screen, rightPanel, "NJAGC__ShowAltTotalTurns")
+		self.addCheckbox(screen, rightPanel, "NJAGC__ShowAltCompletedPercent")
+		self.addCheckbox(screen, rightPanel, "NJAGC__ShowAltDate")

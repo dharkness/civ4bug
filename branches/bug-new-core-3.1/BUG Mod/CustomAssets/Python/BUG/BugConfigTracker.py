@@ -3,7 +3,9 @@
 ## Tracks the active configuration items like directory search paths and locations
 ## of loaded files.
 ##
-## Copyright 2008 (c) BUG Mod
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 import types
 from CvPythonExtensions import *

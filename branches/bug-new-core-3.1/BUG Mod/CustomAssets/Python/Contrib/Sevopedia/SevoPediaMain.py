@@ -40,10 +40,8 @@ import SevoPediaIndex
 
 import UnitUpgradesGraph
 import TraitUtil
+import BugOptions
 import BugUtil
-
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
 
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
@@ -873,7 +871,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def isSortLists(self):
-		return BugScreens.isSortSevopedia()
+		return BugOptions.getOptions().getAdvisors().isSortSevopedia()
 
 	def getSortedList(self, numInfos, getInfo, noSort=False):
 		list = []

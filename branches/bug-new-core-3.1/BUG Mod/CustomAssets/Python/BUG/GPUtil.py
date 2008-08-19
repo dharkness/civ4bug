@@ -1,6 +1,13 @@
 ## GPUtil
-## Utilities for dealing with Great People
-## BUG Mod - Copyright 2007
+##
+## Utilities for dealing with Great People.
+##
+## Notes
+##   - Must be initialized externally by calling init()
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 
@@ -20,13 +27,14 @@ NUM_GP = GP_PROPHET + 1
 
 # List of GP to show in the GP Bars
 
-g_gpBarList = ( "UNIT_GREAT_SPY",
-				"UNIT_ENGINEER",
-				"UNIT_MERCHANT",
-				"UNIT_SCIENTIST",
-				"UNIT_ARTIST",
-				"UNIT_PROPHET"
-				)
+g_gpBarList = (
+	"UNIT_GREAT_SPY",
+	"UNIT_ENGINEER",
+	"UNIT_MERCHANT",
+	"UNIT_SCIENTIST",
+	"UNIT_ARTIST",
+	"UNIT_PROPHET"
+)
 
 # Maps GP type to unit ID and color to show in GP Bar (thus no GG here)
 
@@ -34,13 +42,7 @@ g_gpUnitTypes = None
 g_gpColors = None
 g_unitIcons = None
 
-g_initDone = False
-
 def init():
-	global g_initDone
-	if (g_initDone):
-		return
-	
 	global g_gpUnitTypes
 	g_gpUnitTypes = [None] * NUM_GP
 	for i, s in enumerate(g_gpBarList):
@@ -63,19 +65,14 @@ def init():
 	g_unitIcons[g_gpUnitTypes[GP_SCIENTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar())
 	g_unitIcons[g_gpUnitTypes[GP_ARTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar())
 	g_unitIcons[g_gpUnitTypes[GP_PROPHET]] = u"%c" % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR)
-	
-	g_initDone = True
 
 def getUnitType(gpType):
-	init()
 	return g_gpUnitTypes[gpType]
 
 def getColor(gpType):
-	init()
 	return g_gpColors[gpType]
 
 def getUnitIcon(iUnit):
-	init()
 	return g_unitIcons[iUnit]
 
 def findNextCity():
@@ -123,7 +120,6 @@ def getCityTurns(pCity):
 	return None
 
 def calcPercentages(pCity):
-	init()
 	# Calc total rate
 	iTotal = 0
 	for iUnit in g_gpUnitTypes:
@@ -227,5 +223,4 @@ def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarType
 					szTypes = szNewTypes
 				if (len(szTypes) > 0):
 					szText += u"<font=2> -%s</font>" % szTypes
-
 	return szText

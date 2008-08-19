@@ -14,8 +14,7 @@ from AStarTools import *
 import PyHelpers 
 PyPlayer = PyHelpers.PyPlayer
 
-import BugPleOptions
-BugPle = BugPleOptions.getOptions()
+PleOpt = None
 # BUG - PLE - end
 
 # BUG - Align Icons - start
@@ -28,17 +27,11 @@ ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
 # BUG - Options - start
-import BugNJAGCOptions
-BugNJAGC = BugNJAGCOptions.getOptions()
-
-import BugScoreOptions
-BugScore = BugScoreOptions.getOptions()
-
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
-
-import BugCityScreenOptions
-BugCityScreen = BugCityScreenOptions.getOptions()
+import BugOptions
+ClockOpt = None
+ScoreOpt = None
+MainOpt = None
+BugCityScreen = None
 # BUG - Options - end
 
 # BUG - 3.17 No Espionage - start
@@ -48,6 +41,10 @@ import BugUtil
 # BUG - Reminders - start
 import ReminderEventManager
 # BUG - Reminders - end
+
+# BUG - Great General Bar - start
+import GGUtil
+# BUG - Great General Bar - end
 
 # BUG - Great Person Bar - start
 import GPUtil
@@ -156,7 +153,7 @@ g_iTimeTextCounter = -1
 # BUG - Raw Yields - start
 import RawYields
 g_bRawShowing = False
-g_bYieldView, g_iYieldType = RawYields.getViewAndType(BugCityScreen.getRawYieldsDefaultView())
+g_bYieldView, g_iYieldType = RawYields.getViewAndType(0)
 g_iYieldTiles = RawYields.WORKED_TILES
 RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 				   "TXT_KEY_RAW_YIELD_VIEW_FOOD",
@@ -269,11 +266,16 @@ class CvMainInterface:
 			self.PLOT_LIST_PLUS_NAME		: self.getPlotListPlusName,
 			self.PLOT_LIST_UP_NAME 			: self.getPlotListUpName,
 			self.PLOT_LIST_DOWN_NAME 		: self.getPlotListDownName,
+			
 			self.PLE_VIEW_MODE   	   	    : self.onClickPLEViewMode,
 			self.PLE_MODE_STANDARD			: self.onClickPLEModeStandard,
 			self.PLE_MODE_MULTILINE			: self.onClickPLEModeMultiline,
 			self.PLE_MODE_STACK_VERT		: self.onClickPLEModeStackVert,
 			self.PLE_MODE_STACK_HORIZ		: self.onClickPLEModeStackHoriz,
+			
+			self.PLOT_LIST_PROMO_NAME		: self.unitPromotion,		
+			self.PLOT_LIST_UPGRADE_NAME		: self.unitUpgrade,
+			
 			self.PLE_RESET_FILTERS   	    : self.onClickPLEResetFilters,
 			self.PLE_FILTER_CANMOVE			: self.onClickPLEFilterCanMove,
 			self.PLE_FILTER_CANTMOVE		: self.onClickPLEFilterCantMove,
@@ -286,12 +288,11 @@ class CvMainInterface:
 			self.PLE_FILTER_DOM				: self.onClickPLEFilterDom,
 			self.PLE_FILTER_OWN				: self.onClickPLEFilterOwn,
 			self.PLE_FILTER_FOREIGN			: self.onClickPLEFilterForeign,
+			
 			self.PLE_GRP_UNITTYPE			: self.onClickPLEGrpUnittype,
 			self.PLE_GRP_GROUPS				: self.onClickPLEGrpGroups,
 			self.PLE_GRP_PROMO				: self.onClickPLEGrpPromo,
 			self.PLE_GRP_UPGRADE			: self.onClickPLEGrpUpgrade,
-			self.PLOT_LIST_PROMO_NAME		: self.unitPromotion,		
-			self.PLOT_LIST_UPGRADE_NAME		: self.unitUpgrade,
 		}		
 		
 		self.iColOffset 			= 0
@@ -299,9 +300,9 @@ class CvMainInterface:
 		self.iVisibleUnits 			= 0
 		self.pActPlot 				= 0
 		self.pOldPlot 				= self.pActPlot
-		self.sPLEMode 				= self.PLE_VIEW_MODES[BugPle.getDefaultViewMode()]
+		self.sPLEMode 				= self.PLE_MODE_MULTILINE
 		self.iMaxPlotListIcons 		= 0
-		self.nPLEGrpMode 			= self.PLE_GROUP_MODES[BugPle.getDefaultGroupMode()]
+		self.nPLEGrpMode 			= self.PLE_GRP_UNITTYPE
 		self.nPLELastGrpMode  	    = self.nPLEGrpMode
 		self.pActPlotListUnit		= 0
 		self.iActPlotListGroup		= 0
@@ -356,7 +357,7 @@ class CvMainInterface:
 	# Sets or toggles a specific filter button (wounded, air, etc) based on the PLE/BUG mode
 	def setPLEFilter(self, nFilter, nFilterGroup):
 		self.hideInfoPane()
-		if (BugPle.isBugFilterBehavior()):
+		if (PleOpt.isBugFilterBehavior()):
 			bWasSelected = self.isPLEFilter(nFilter)
 			# Clear all filters in group
 			self.nPLEFilter |= nFilterGroup
@@ -400,7 +401,7 @@ class CvMainInterface:
 		"Shows or hides the correct hover text for the given filter."
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
 			sFullKey = "TXT_KEY_PLE_FILTER_"
-			if ( BugPle.isBugFilterBehavior() ):
+			if ( PleOpt.isBugFilterBehavior() ):
 				sFullKey += "BUG_"
 			sFullKey += sKey
 			bSelected = self.isPLEFilter(nFilter)
@@ -601,7 +602,7 @@ class CvMainInterface:
 			if ( self.sPLEMode in self.PLE_VIEW_MODE_CYCLE ):
 				self.setPLEViewMode(self.PLE_VIEW_MODE_CYCLE[self.sPLEMode])
 			else:
-				self.setPLEViewMode(BugPle.getDefaultViewMode())
+				self.setPLEViewMode(PleOpt.getDefaultViewMode())
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON ):
 			sFullKey = "TXT_KEY_PLE_VIEW_MODE"
@@ -734,7 +735,7 @@ class CvMainInterface:
 		return ((self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34)
 		
 	def getMaxRow(self):
-		return ((self.yResolution - 160) / BugPle.getVerticalSpacing()) 
+		return ((self.yResolution - 160) / PleOpt.getVerticalSpacing()) 
 		
 	def getRow(self, i):
 		return i / self.getMaxCol()
@@ -743,10 +744,10 @@ class CvMainInterface:
 		return i % self.getMaxCol()
 		
 	def getX(self, nCol):
-		return 315 + (nCol * BugPle.getHoriztonalSpacing())
+		return 315 + (nCol * PleOpt.getHoriztonalSpacing())
 		
 	def getY(self, nRow):
-		return self.yResolution - 169 - (nRow * BugPle.getVerticalSpacing())
+		return self.yResolution - 169 - (nRow * PleOpt.getVerticalSpacing())
 		
 	def getI(self, nRow, nCol):
 		return ( nRow * self.getMaxCol() ) + ( nCol % self.getMaxCol() )
@@ -798,7 +799,7 @@ class CvMainInterface:
 
 	# Displays the plot list switches (views, filters, groupings)
 	def showPlotListButtonObjects(self, screen):
-		if ( BugPle.isShowButtons() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START ):
+		if ( PleOpt.isShowButtons() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START ):
 			# show PLE modes switches
 			self.setupPLEViewModeButtons(screen)
 			screen.show(self.PLE_VIEW_MODE)
@@ -928,36 +929,11 @@ class CvMainInterface:
 		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), "", nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
 		
-#		nXOff += nDist
-#		szString = self.PLE_MODE_STANDARD
-#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STANDARD").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#		screen.hide( szString )
-#		
-#		nXOff += nDist
-#		szString = self.PLE_MODE_MULTILINE
-#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_MULTILINE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 2, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#		screen.hide( szString )
-#		
-#		nXOff += nDist
-#		szString = self.PLE_MODE_STACK_VERT
-#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_VERT").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 3, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#		screen.hide( szString )
-#		
-#		nXOff += nDist
-#		szString = self.PLE_MODE_STACK_HORIZ
-#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_MODE_STACK_HORIZ").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 4, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#		screen.hide( szString )
-		
 		# place the PLE grouping mode switches
 		nXOff += nDist + nGap
 		szString = self.PLE_GRP_UNITTYPE
 		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_UNITTYPE").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		screen.hide( szString )
-		
-#		nXOff += nDist
-#		szString = self.PLE_GRP_GROUPS
-#		screen.addCheckBoxGFC( szString, ArtFileMgr.getInterfaceArtInfo("PLE_GRP_GROUPS").getPath(), ArtFileMgr.getInterfaceArtInfo("PLE_BUTTON_HILITE").getPath(), nXOff, yResolution - nYOff, nSize, nSize, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#		screen.hide( szString )
 		
 		# place the promotion and upgrades mode switches
 		nXOff += nDist
@@ -1230,6 +1206,28 @@ class CvMainInterface:
 
 ################## general PLE functions ##################
 
+	# resets the colors of the plot list stacked bars
+	def resetUnitPlotListStackedBarColors( self ):
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		iHealthyColor = PleOpt.getHealthyColor()
+		iWoundedColor = PleOpt.getWoundedColor()
+		iMovementColor = PleOpt.getFullMovementColor()
+		iHasMovedColor = PleOpt.getHasMovedColor()
+		iNoMovementColor = PleOpt.getNoMovementColor()
+		for i in range( self.iMaxPlotListIcons ):		
+			# create button name
+			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
+				
+			szStringHealthBar = szString + "HealthBar"
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, iHealthyColor )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, iWoundedColor )
+
+			# place/init the movement bar. Important to have it at last place within the for loop.
+			szStringMoveBar = szString + "MoveBar"
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, iMovementColor )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, iHasMovedColor )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, iNoMovementColor )
+	
 	# displays a single unit icon in the plot list with all its decorations
 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 		iCount = self.getI(nRow, nCol)	
@@ -1434,7 +1432,7 @@ class CvMainInterface:
 		
 		if (self.isPLEFilter(self.nPLEAllFilters)):
 			# At least one filter is active
-			if (BugPle.isPleFilterBehavior()):
+			if (PleOpt.isPleFilterBehavior()):
 				# unit can move and filter active
 				if (self.isPLEFilter(self.nPLEFilterModeCanMove)):
 					if (pUnit.movesLeft()):
@@ -1752,7 +1750,7 @@ class CvMainInterface:
 		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)		
 		
 		# reading attributes
-		szUnitName 		= localText.changeTextColor(pUnitTypeInfo.getDescription(), gc.getInfoTypeForString(BugPle.getUnitNameColor())) + u"\n"
+		szUnitName 		= localText.changeTextColor(pUnitTypeInfo.getDescription(), PleOpt.getUnitNameColor()) + u"\n"
 		if pUnitTypeInfo.getUnitCombatType() != -1:
 			szCombatType	= gc.getUnitCombatInfo(pUnitTypeInfo.getUnitCombatType()).getDescription() + u"\n"
 		else:
@@ -1777,17 +1775,17 @@ class CvMainInterface:
 		
 		iGold = gc.getActivePlayer().getGold()	
 		if iUpgradePriceSingle > iGold:
-			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, PleOpt.getUpgradeNotPossibleColor())
 		else:
-			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
+			szUpgradePriceSingle = localText.changeTextColor(u"%i"%iUpgradePriceSingle, PleOpt.getUpgradePossibleColor())
 		if iUpgradePricePlot > iGold:
-			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, PleOpt.getUpgradeNotPossibleColor())
 		else:
-			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
+			szUpgradePricePlot = localText.changeTextColor(u"%i"%iUpgradePricePlot, PleOpt.getUpgradePossibleColor())
 		if iUpgradePriceAll > iGold:
-			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(BugPle.getUpgradeNotPossibleColor()))
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, PleOpt.getUpgradeNotPossibleColor())
 		else:
-			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, gc.getInfoTypeForString(BugPle.getUpgradePossibleColor()))
+			szUpgradePriceAll = localText.changeTextColor(u"%i"%iUpgradePriceAll, PleOpt.getUpgradePossibleColor())
 		
 		szUpgradePrice = szUpgradePriceSingle + u" / " + szUpgradePricePlot + u" / " + szUpgradePriceAll+ u" %c" %  gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar() + u"\n"
 		
@@ -1828,7 +1826,7 @@ class CvMainInterface:
 			szOwner = u""
 				
 		# unit type description + unit name (if given)
-		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), gc.getInfoTypeForString(BugPle.getUnitNameColor())) + szOwner + u"</font>\n"
+		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), PleOpt.getUnitNameColor()) + szOwner + u"</font>\n"
 			
 		# strength 
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
@@ -1917,10 +1915,10 @@ class CvMainInterface:
 	
 		# unit type specialities 
 		szSpecialText 	= u"<font=2>" + localText.getText("TXT_KEY_PEDIA_SPECIAL_ABILITIES", ()) + u":\n" + CyGameTextMgr().getUnitHelp( iUnitType, true, false, false, None )[1:] + u"</font>"
-		szSpecialText = localText.changeTextColor(szSpecialText, gc.getInfoTypeForString(BugPle.getUnitTypeSpecialtiesColor()))
+		szSpecialText = localText.changeTextColor(szSpecialText, PleOpt.getUnitTypeSpecialtiesColor())
 		
 		if iLevel > 1:
-			szSpecialText += "\n" + localText.changeTextColor(mt.getPromotionInfoText(pUnit), gc.getInfoTypeForString(BugPle.getPromotionSpecialtiesColor()))
+			szSpecialText += "\n" + localText.changeTextColor(mt.getPromotionInfoText(pUnit), PleOpt.getPromotionSpecialtiesColor())
 		szSpecialText = mt.removeLinks(szSpecialText)
 
 		# count the promotions
@@ -1974,7 +1972,7 @@ class CvMainInterface:
 			y = self.CFG_INFOPANE_Y
 		else:
 			y = self.CFG_INFOPANE_Y2
-		screen.moveItem( szName, BugPle.getInfoPaneX() + 4 + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount % self.CFG_INFOPANE_BUTTON_PER_LINE)), \
+		screen.moveItem( szName, PleOpt.getInfoPaneX() + 4 + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount % self.CFG_INFOPANE_BUTTON_PER_LINE)), \
 								 y + 4 - yOffset + (self.CFG_INFOPANE_BUTTON_SIZE * (iPromotionCount / self.CFG_INFOPANE_BUTTON_PER_LINE)), -0.3 )
 		screen.moveToFront( szName )
 
@@ -2019,7 +2017,7 @@ class CvMainInterface:
 			dx = 260
 		
 		screen.addPanel( self.UNIT_INFO_PANE, u"", u"", True, True, \
-						BugPle.getInfoPaneX() + dx, y - dy, self.CFG_INFOPANE_DX, dy, \
+						PleOpt.getInfoPaneX() + dx, y - dy, self.CFG_INFOPANE_DX, dy, \
 						PanelStyles.PANEL_STYLE_HUD_HELP )
 		
 		# create shadow text
@@ -2027,13 +2025,13 @@ class CvMainInterface:
 		
 		# display shadow text
 		screen.addMultilineText( self.UNIT_INFO_TEXT_SHADOW, szTextBlack, \
-								BugPle.getInfoPaneX() + dx + 5, y - dy + 5, \
+								PleOpt.getInfoPaneX() + dx + 5, y - dy + 5, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
 		# display text
 		screen.addMultilineText( self.UNIT_INFO_TEXT, szText, \
-								BugPle.getInfoPaneX() + dx + 4, y - dy + 4, \
+								PleOpt.getInfoPaneX() + dx + 4, y - dy + 4, \
 								self.CFG_INFOPANE_DX - 3, dy - 3, \
 								WidgetTypes.WIDGET_GENERAL, -1, -1, \
 								CvUtil.FONT_LEFT_JUSTIFY)
@@ -2053,13 +2051,13 @@ class CvMainInterface:
 		
 	# highlights the move area
 	def highlightMoves(self, id):
-		if BugPle.isShowMoveHighlighter():
+		if PleOpt.isShowMoveHighlighter():
 			pUnit = self.listPLEButtons[id][0]
 			self.ASMA.highlightMoveArea(pUnit)
 
 	# hides the move area
 	def dehighlightMoves(self):
-		if BugPle.isShowMoveHighlighter():
+		if PleOpt.isShowMoveHighlighter():
 			self.ASMA.dehighlightMoveArea()
 		
 # BUG - PLE - end
@@ -2095,9 +2093,28 @@ class CvMainInterface:
 		# This is the main interface screen, create it as such
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		screen.setForcedRedraw(True)
+		
+# BUG - Options - begin
+		options = BugOptions.getOptions()
+		global ClockOpt
+		ClockOpt = options.getNJAGC()
+		global ScoreOpt
+		ScoreOpt = options.getScores()
+		global PleOpt
+		PleOpt = options.getPLE()
+		global MainOpt
+		MainOpt = options.getMain()
+		global BugCityScreen
+		BugCityScreen = options.getCity()
+		
+# BUG - Raw Yields - begin
+		global g_bYieldView
+		global g_iYieldType
+		g_bYieldView, g_iYieldType = RawYields.getViewAndType(BugCityScreen.getRawYieldsDefaultView())
+# BUG - Raw Yields - end
 
-		# Find out our resolution
 # BUG - PLE - begin
+#		# Find out our resolution
 #		xResolution = screen.getXResolution()
 #		yResolution = screen.getYResolution()
 #		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
@@ -2119,11 +2136,13 @@ class CvMainInterface:
 		self.CFG_INFOPANE_PIX_PER_LINE_2 			= 19
 		self.CFG_INFOPANE_DX 					    = 290
 		
-		self.CFG_INFOPANE_Y		 			= yResolution - BugPle.getInfoPaneY()
+		self.CFG_INFOPANE_Y		 			= yResolution - PleOpt.getInfoPaneY()
 		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1 - 2
 		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
 		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
-				
+		
+		self.sPLEMode = self.PLE_VIEW_MODES[PleOpt.getDefaultViewMode()]
+		self.nPLEGrpMode = self.PLE_GROUP_MODES[PleOpt.getDefaultGroupMode()]
 # BUG - PLE - end
 
 		# Set up our global variables...
@@ -2365,11 +2384,11 @@ class CvMainInterface:
 #				screen.hide( szStringIcon )
 
 		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
-		szHealthyColor = BugPle.getHealthyColor()
-		szWoundedColor = BugPle.getWoundedColor()
-		szMovementColor = BugPle.getFullMovementColor()
-		szHasMovedColor = BugPle.getHasMovedColor()
-		szNoMovementColor = BugPle.getNoMovementColor()
+		iHealthyColor = PleOpt.getHealthyColor()
+		iWoundedColor = PleOpt.getWoundedColor()
+		iMovementColor = PleOpt.getFullMovementColor()
+		iHasMovedColor = PleOpt.getHasMovedColor()
+		iNoMovementColor = PleOpt.getNoMovementColor()
 		
 		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
@@ -2394,16 +2413,16 @@ class CvMainInterface:
 			szStringHealthBar = szString + "HealthBar"
 #			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.addStackedBarGFC( szStringHealthBar, x+5, y-9, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, i, -1 )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szHealthyColor) )
-			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szWoundedColor) )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, iHealthyColor )
+			screen.setStackedBarColors( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, iWoundedColor )
 			screen.hide( szStringHealthBar )
 
 			# place/init the movement bar. Important to have it at last place within the for loop.
 			szStringMoveBar = szString + "MoveBar"
 			screen.addStackedBarGFC( szStringMoveBar, x+5, y-5, 29, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, i, -1 )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(szMovementColor) )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString(szHasMovedColor) )
-			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString(szNoMovementColor) )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, iMovementColor )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, iHasMovedColor )
+			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, iNoMovementColor )
 			screen.hide( szStringMoveBar )
 
 		self.preparePlotListObjects(screen)
@@ -2769,7 +2788,7 @@ class CvMainInterface:
 		if g_iActiveTurn != gc.getGame().getGameTurn():
 			g_iActiveTurn = gc.getGame().getGameTurn()
 			g_bEndTurnFired = False
-			CvEventInterface.getEventManager().fireEvent("BeginActivePlayerTurn", g_iActiveTurn)
+			CvEventInterface.getEventManager().fireEvent("BeginActivePlayerTurn", gc.getGame().getActivePlayer(), g_iActiveTurn)
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -2845,7 +2864,7 @@ class CvMainInterface:
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
 # BUG - Options - start
-				elif ( BugScreens.isShowOptionsKeyReminder() ):
+				elif ( MainOpt.isShowOptionsKeyReminder() ):
 					acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
@@ -2865,25 +2884,25 @@ class CvMainInterface:
 
 # BUG - NJAGC - start
 		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
-			if (BugNJAGC.isEnabled()):
-				if (BugNJAGC.isShowEra()):
+			if (ClockOpt.isEnabled()):
+				if (ClockOpt.isShowEra()):
 					screen.show( "EraText" )
 				else:
 					screen.hide( "EraText" )
 				
-				if (BugNJAGC.isAlternateTimeText()):
+				if (ClockOpt.isAlternateTimeText()):
 					#global g_iTimeTextCounter (already done above)
 					if (CyUserProfile().wasClockJustTurnedOn() or g_iTimeTextCounter <= 0):
 						# reset timer, display primary
 						g_bShowTimeTextAlt = False
-						g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
+						g_iTimeTextCounter = ClockOpt.getAlternatePeriod() * 1000
 						CyUserProfile().setClockJustTurnedOn(False)
 					else:
 						# countdown timer
 						g_iTimeTextCounter -= 250
 						if (g_iTimeTextCounter <= 0):
 							# timer elapsed, toggle between primary and alternate
-							g_iTimeTextCounter = BugNJAGC.getAlternatePeriod() * 1000
+							g_iTimeTextCounter = ClockOpt.getAlternatePeriod() * 1000
 							g_bShowTimeTextAlt = not g_bShowTimeTextAlt
 				else:
 					g_bShowTimeTextAlt = False
@@ -3268,7 +3287,7 @@ class CvMainInterface:
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
 # BUG - City Arrows - start
-			if (BugScreens.isShowCityCycleArrows()):
+			if (MainOpt.isShowCityCycleArrows()):
 				screen.show( "MainCityScrollMinus" )
 				screen.show( "MainCityScrollPlus" )
 			else:
@@ -3307,15 +3326,15 @@ class CvMainInterface:
 		self.yResolution = screen.getYResolution()
 		
 		# Capture these for looping over the plot's units
-		self.bShowWoundedIndicator = BugPle.isShowWoundedIndicator()
-		self.bShowGreatGeneralIndicator = BugPle.isShowGreatGeneralIndicator()
-		self.bShowPromotionIndicator = BugPle.isShowPromotionIndicator()
-		self.bShowUpgradeIndicator = BugPle.isShowUpgradeIndicator()
-		self.bShowMissionInfo = BugPle.isShowMissionInfo()
+		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
+		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
+		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
+		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
+		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
 		
-		self.bShowHealthBar = BugPle.isShowHealthBar()
-		self.bHideHealthBarWhileFighting = BugPle.isHideHealthFighting()
-		self.bShowMoveBar = BugPle.isShowMoveBar()
+		self.bShowHealthBar = PleOpt.isShowHealthBar()
+		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
+		self.bShowMoveBar = PleOpt.isShowMoveBar()
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
@@ -4618,16 +4637,13 @@ class CvMainInterface:
 					screen.show( "GoldText" )
 
 # BUG - NJAGC - start
-				if (BugNJAGC.isEnabled()
-				and BugNJAGC.isShowEra()):
-					# BUG-TODO: Create text key for "Era"
+				if (ClockOpt.isEnabled()
+				and ClockOpt.isShowEra()):
 					szText = localText.getText("TXT_KEY_BUG_ERA", (gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getDescription(), ))
-					if(BugNJAGC.isUseEraColor()):
-						eraColor = BugNJAGC.getEraColor(gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getType())
-						if (eraColor):
-							iColorType = gc.getInfoTypeForString(eraColor)
-							if (iColorType >= 0):
-								szText = localText.changeTextColor(szText, iColorType)
+					if(ClockOpt.isUseEraColor()):
+						iEraColor = ClockOpt.getEraColor(gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getType())
+						if (iEraColor >= 0):
+							szText = localText.changeTextColor(szText, iEraColor)
 					screen.setLabel( "EraText", "Background", szText, CvUtil.FONT_RIGHT_JUSTIFY, 250, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "EraText" )
 # BUG - NJAGC - emd
@@ -4636,7 +4652,7 @@ class CvMainInterface:
 				
 # BUG - Bars on single line for higher resolution screens - start
 					if (xResolution >= 1440
-					and (BugScreens.isShowCombatCounter() or BugScreens.isShowGPProgressBar())):
+					and (MainOpt.isShowGGProgressBar() or MainOpt.isShowGPProgressBar())):
 						xCoord = 268 + (xResolution - 1440) / 2 + 84 + 6 + 487 / 2
 					else:
 						xCoord = screen.centerX(512)
@@ -4657,7 +4673,7 @@ class CvMainInterface:
 
 # BUG - Bars on single line for higher resolution screens - start
 					if (xResolution >= 1440
-					and (BugScreens.isShowCombatCounter() or BugScreens.isShowGPProgressBar())):
+					and (MainOpt.isShowGGProgressBar() or MainOpt.isShowGPProgressBar())):
 						szResearchBar = "ResearchBar-w"
 						xCoord = 268 + (xResolution - 1440) / 2 + 84 + 6 + 487 / 2
 					else:
@@ -4695,16 +4711,16 @@ class CvMainInterface:
 		
 # BUG - Great Person Bar - start
 	def updateGreatPersonBar(self, screen):
-		if (not CyInterface().isCityScreenUp() and BugScreens.isShowGPProgressBar()):
+		if (not CyInterface().isCityScreenUp() and MainOpt.isShowGPProgressBar()):
 			pHeadSelectedCity = CyInterface().getHeadSelectedCity()
-			if (pHeadSelectedCity and pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer()):
+			if (pHeadSelectedCity and pHeadSelectedCity.getTeam() == gc.getGame().getActiveTeam()):
 				pGPCity = pHeadSelectedCity
 				iGPTurns = GPUtil.getCityTurns(pGPCity)
 			else:
 				pGPCity, iGPTurns = GPUtil.findNextCity()
 				if (not pGPCity):
 					pGPCity, iGPP = GPUtil.findMaxCity()
-			szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), True)
+			szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, MainOpt.isGPBarTypesNone(), MainOpt.isGPBarTypesOne(), True)
 			szText = u"<font=2>%s</font>" % (szText)
 			if (pGPCity):
 				iCityID = pGPCity.getID()
@@ -4747,15 +4763,14 @@ class CvMainInterface:
 
 # BUG - Great General Bar - start
 	def updateGreatGeneralBar(self, screen):
-		if (not CyInterface().isCityScreenUp() and BugScreens.isShowCombatCounter()):
-			ePlayer = gc.getGame().getActivePlayer()
-			iCombatExp = gc.getPlayer(ePlayer).getCombatExperience()
-			iThresholdExp = gc.getPlayer(ePlayer).greatPeopleThreshold(True)
+		if (not CyInterface().isCityScreenUp() and MainOpt.isShowGGProgressBar()):
+			pPlayer = gc.getActivePlayer()
+			iCombatExp = pPlayer.getCombatExperience()
+			iThresholdExp = pPlayer.greatPeopleThreshold(True)
 			iNeededExp = iThresholdExp - iCombatExp
 			
-			szText = localText.getText("INTERFACE_NEXT_GREAT_GENERAL_XP", (iNeededExp,))
-			szText = u"<font=2>%s</font>" %(szText)
-
+			szText = u"<font=2>%s</font>" %(GGUtil.getGreatGeneralText(iNeededExp))
+			
 # BUG - Bars on single line for higher resolution screens - start
 			xResolution = screen.getXResolution()
 			if (xResolution >= 1440):
@@ -4767,8 +4782,8 @@ class CvMainInterface:
 				xCoord = 268 + (xResolution - 1024) / 2 + 100 / 2
 				yCoord = 32
 
-			screen.show( "GreatGeneralBarText" )
 			screen.setLabel( "GreatGeneralBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
+			screen.show( "GreatGeneralBarText" )
 # BUG - Bars on single line for higher resolution screens - end
 
 			fProgress = float(iCombatExp) / float(iThresholdExp)
@@ -4783,24 +4798,24 @@ class CvMainInterface:
 		ePlayer = gc.getGame().getActivePlayer()
 		
 # BUG - NJAGC - start
-		if (BugNJAGC.isEnabled()):
+		if (ClockOpt.isEnabled()):
 			"""
 			Format: Time - GameTurn/Total Percent - GA (TurnsLeft) Date
 			
 			Ex: 10:37 - 220/660 33% - GA (3) 1925
 			"""
 			if (g_bShowTimeTextAlt):
-				bShowTime = BugNJAGC.isShowAltTime()
-				bShowGameTurn = BugNJAGC.isShowAltGameTurn()
-				bShowTotalTurns = BugNJAGC.isShowAltTotalTurns()
-				bShowPercentComplete = BugNJAGC.isShowAltPercentComplete()
-				bShowDateGA = BugNJAGC.isShowAltDateGA()
+				bShowTime = ClockOpt.isShowAltTime()
+				bShowGameTurn = ClockOpt.isShowAltGameTurn()
+				bShowTotalTurns = ClockOpt.isShowAltTotalTurns()
+				bShowPercentComplete = ClockOpt.isShowAltPercentComplete()
+				bShowDateGA = ClockOpt.isShowAltDateGA()
 			else:
-				bShowTime = BugNJAGC.isShowTime()
-				bShowGameTurn = BugNJAGC.isShowGameTurn()
-				bShowTotalTurns = BugNJAGC.isShowTotalTurns()
-				bShowPercentComplete = BugNJAGC.isShowPercentComplete()
-				bShowDateGA = BugNJAGC.isShowDateGA()
+				bShowTime = ClockOpt.isShowTime()
+				bShowGameTurn = ClockOpt.isShowGameTurn()
+				bShowTotalTurns = ClockOpt.isShowTotalTurns()
+				bShowPercentComplete = ClockOpt.isShowPercentComplete()
+				bShowDateGA = ClockOpt.isShowDateGA()
 			
 			if (not gc.getGame().getMaxTurns() > 0):
 				bShowTotalTurns = False
@@ -4838,12 +4853,10 @@ class CvMainInterface:
 				else:
 					g_szTimeText += u" - "
 				szDateGA = unicode(CyGameTextMgr().getInterfaceTimeStr(ePlayer))
-				if(BugNJAGC.isUseEraColor()):
-					eraColor = BugNJAGC.getEraColor(gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getType())
-					if (eraColor):
-						iColorType = gc.getInfoTypeForString(eraColor)
-						if (iColorType >= 0):
-							szDateGA = localText.changeTextColor(szDateGA, iColorType)
+				if(ClockOpt.isUseEraColor()):
+					iEraColor = ClockOpt.getEraColor(gc.getEraInfo(gc.getPlayer(ePlayer).getCurrentEra()).getType())
+					if (iEraColor >= 0):
+						szDateGA = localText.changeTextColor(szDateGA, iEraColor)
 				g_szTimeText += szDateGA
 		else:
 			"""
@@ -5099,7 +5112,7 @@ class CvMainInterface:
 						if (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_WHIP, False)):
 							iHurryPop = pHeadSelectedCity.hurryPopulation(HURRY_WHIP)
 							iHurryOverflow = pHeadSelectedCity.hurryProduction(HURRY_WHIP) - pHeadSelectedCity.productionLeft()
-							if BugCityScreen.isOverflowCountCurrentProduction():
+							if BugCityScreen.isWhipAssistOverflowCountCurrentProduction():
 								iHurryOverflow = iHurryOverflow + pHeadSelectedCity.getCurrentProductionDifference(True, False)
 							iMaxOverflow = min(pHeadSelectedCity.getProductionNeeded(), iHurryOverflow)
 							iOverflowGold = max(0, iHurryOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100
@@ -5643,7 +5656,7 @@ class CvMainInterface:
 					iRate = pHeadSelectedCity.getGreatPeopleRate()
 					if BugCityScreen.isShowCityGreatPersonInfo():
 						iGPTurns = GPUtil.getCityTurns(pHeadSelectedCity)
-						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, iGPTurns, 230, BugScreens.isGPBarTypesNone(), BugScreens.isGPBarTypesOne(), False)
+						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, iGPTurns, 230, MainOpt.isGPBarTypesNone(), MainOpt.isGPBarTypesOne(), False)
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_GREATPEOPLE_RATE", (CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pHeadSelectedCity.getGreatPeopleRate()))
 						if BugCityScreen.isShowGreatPersonTurns() and iRate > 0:
@@ -5965,7 +5978,7 @@ class CvMainInterface:
 			if (CyInterface().isScoresVisible() and not CyInterface().isCityScreenUp() and CyEngine().isGlobeviewUp() == false):
 
 # BUG - Align Icons - start
-				bAlignIcons = BugScore.isAlignIcons()
+				bAlignIcons = ScoreOpt.isAlignIcons()
 				if (bAlignIcons):
 					scores = Scoreboard.Scoreboard()
 # BUG - Align Icons - end
@@ -5975,18 +5988,12 @@ class CvMainInterface:
 # BUG - 3.17 No Espionage - end
 
 # BUG - Power Rating - start
-				bShowPower = BugScore.isShowPower()
+				bShowPower = ScoreOpt.isShowPower()
 				if (bShowPower):
 					iPlayerPower = gc.getActivePlayer().getPower()
-					szPowerColor = BugScore.getPowerColor()
-					if (szPowerColor):
-						iPowerColor = gc.getInfoTypeForString(szPowerColor)
-					szPowerColor = BugScore.getGoodPowerColor()
-					if (szPowerColor):
-						iGoodPowerColor = gc.getInfoTypeForString(szPowerColor)
-					szPowerColor = BugScore.getBadPowerColor()
-					if (szPowerColor):
-						iBadPowerColor = gc.getInfoTypeForString(szPowerColor)
+					iPowerColor = ScoreOpt.getPowerColor()
+					iGoodPowerColor = ScoreOpt.getGoodPowerColor()
+					iBadPowerColor = ScoreOpt.getBadPowerColor()
 					
 					if (not bNoEspionage):
 						iDemographicsMission = -1
@@ -6010,7 +6017,7 @@ class CvMainInterface:
 							if (not CyInterface().isScoresMinimized() or gc.getGame().getActivePlayer() == ePlayer):
 # BUG - Dead Civs - start
 								if (gc.getPlayer(ePlayer).isEverAlive() and not gc.getPlayer(ePlayer).isMinorCiv()
-									and (gc.getPlayer(ePlayer).isAlive() or BugScore.isShowDeadCivs())):
+									and (gc.getPlayer(ePlayer).isAlive() or ScoreOpt.isShowDeadCivs())):
 # BUG - Dead Civs - end
 									if (gc.getPlayer(ePlayer).getTeam() == eTeam):
 										szBuffer = u"<font=2>"
@@ -6027,15 +6034,14 @@ class CvMainInterface:
 													scores.setWaiting()
 
 # BUG - Dead Civs - start
-										if (BugScore.isShowBothNames()):
+										if (ScoreOpt.isShowBothNames()):
 											szPlayerName = gc.getPlayer(ePlayer).getName() + "/" + gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
-										elif (BugScore.isShowLeaderName()):
+										elif (ScoreOpt.isShowLeaderName()):
 											szPlayerName = gc.getPlayer(ePlayer).getName()
 										else:
 											szPlayerName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
 										
-										if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isShowDeadTag()):
-											# BUG-TODO: localize
+										if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):
 											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
 											if (bAlignIcons):
 												scores.setScore(szPlayerScore + u" ")
@@ -6045,11 +6051,11 @@ class CvMainInterface:
 											if (bAlignIcons):
 												scores.setScore(szPlayerScore + u" ")
 # BUG - Score Delta - start
-											if (BugScore.isShowScoreDelta()):
+											if (ScoreOpt.isShowScoreDelta()):
 												iGameTurn = gc.getGame().getGameTurn()
 												if (ePlayer >= gc.getGame().getActivePlayer()):
 													iGameTurn -= 1
-												if (BugScore.isScoreDeltaIncludeCurrentTurn()):
+												if (ScoreOpt.isScoreDeltaIncludeCurrentTurn()):
 													iScoreDelta = iScore
 												elif (iGameTurn >= 0):
 													iScoreDelta = gc.getPlayer(ePlayer).getScoreHistory(iGameTurn)
@@ -6075,7 +6081,7 @@ class CvMainInterface:
 											if (ePlayer == gc.getGame().getActivePlayer()):
 												szPlayerName = u"[<color=%d,%d,%d,%d>%s</color>]" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
 											else:
-												if (not gc.getPlayer(ePlayer).isAlive() and BugScore.isGreyOutDeadCivs()):
+												if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isGreyOutDeadCivs()):
 													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(175, 175, 175, gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
 												else:
 													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
@@ -6160,9 +6166,9 @@ class CvMainInterface:
 													fPowerRatio = float(iPlayerPower) / float(iPower)
 													cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
 													szTempBuffer = u"%.1f%c" %(fPowerRatio, cPower)
-													if (iGoodPowerColor >= 0 and fPowerRatio >= BugScore.getGoodPowerRatio()):
+													if (iGoodPowerColor >= 0 and fPowerRatio >= ScoreOpt.getGoodPowerRatio()):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
-													elif (iBadPowerColor >= 0 and fPowerRatio <= BugScore.getBadPowerRatio()):
+													elif (iBadPowerColor >= 0 and fPowerRatio <= ScoreOpt.getBadPowerRatio()):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
 													elif (iPowerColor >= 0):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
@@ -6174,7 +6180,7 @@ class CvMainInterface:
 # BUG - Dead Civs - end
 
 # BUG - Attitude Icons - start
-										if (BugScore.isShowAttitude()):
+										if (ScoreOpt.isShowAttitude()):
 											if (not gc.getPlayer(ePlayer).isHuman()):
 												iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
 												cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
@@ -6184,7 +6190,7 @@ class CvMainInterface:
 # BUG - Attitude Icons - end
 
 # BUG - Worst Enemy - start
-										if (BugScore.isShowWorstEnemy()):
+										if (ScoreOpt.isShowWorstEnemy()):
 											if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
 												szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
 												if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
@@ -6281,7 +6287,7 @@ class CvMainInterface:
 
 # BUG - Bars on single line for higher resolution screens - start
 		if (xResolution >= 1440
-		and (BugScreens.isShowCombatCounter() or BugScreens.isShowGPProgressBar())):
+		and (MainOpt.isShowGGProgressBar() or MainOpt.isShowGPProgressBar())):
 			xCoord = 268 + (xResolution - 1440) / 2
 			xCoord += 6 + 84
 			screen.moveItem( szButtonID, 264 + ( ( xResolution - 1024 ) / 2 ) + ( 34 * ( iCount % 15 ) ), 0 + ( 34 * ( iCount / 15 ) ), -0.3 )
@@ -6558,7 +6564,8 @@ class CvMainInterface:
 				pCity, _ = GPUtil.findNextCity()
 			else:
 				pCity = gc.getActivePlayer().getCity(iCity)
-			CyInterface().selectCity(pCity, False)
+			if pCity and not pCity.isNone():
+				CyInterface().selectCity(pCity, False)
 			return 1
 # BUG - Great Person Bar - end
 		

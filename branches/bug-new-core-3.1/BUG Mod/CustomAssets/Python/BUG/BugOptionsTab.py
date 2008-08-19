@@ -1,9 +1,16 @@
 ## BugOptionsTab
-## Base class for all tabs in the BUG Options Screen
-## BUG Mod - Copyright 2007
+##
+## Base class for all tabs in the BUG Options Screen.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
+import BugOptions
 import BugUtil
 import ColorUtil
+
+g_options = BugOptions.getOptions()
 
 class BugOptionsTab:
 	"BUG Options Screen screen"
@@ -40,7 +47,7 @@ class BugOptionsTab:
 		self.options = options
 
 	def getOption (self, name):
-		return self.options.getOption(name)
+		return g_options.getOption(name)
 
 
 	def create (self, screen):
@@ -202,9 +209,9 @@ class BugOptionsTab:
 
 	def addCheckbox (self, screen, panel, name):
 		option = self.getOption(name)
-		if (option):
+		if (option is not None):
 			control = name + "Check"
-			value = self.options.getBoolean(name)
+			value = option.getRealValue()
 			screen.attachCheckBox(panel, control, option.getTitle(), self.callbackIFace, "handleBugCheckboxClicked", name, value)
 			screen.setToolTip(control, option.getTooltip())
 			return control
@@ -213,7 +220,7 @@ class BugOptionsTab:
 
 	def addTextEdit (self, screen, labelPanel, controlPanel, name):
 		option = self.getOption(name)
-		if (option):
+		if (option is not None):
 			# create label
 			if (labelPanel == controlPanel):
 				box = name + "HBox"
@@ -227,7 +234,7 @@ class BugOptionsTab:
 			
 			# create textedit
 			control = name + "Edit"
-			value = self.options.getString(name)
+			value = option.getRealValue()
 			screen.attachEdit(controlPanel, control, value, self.callbackIFace, "handleBugTextEditChange", name)
 			screen.setToolTip(control, option.getTooltip())
 			screen.setLayoutFlag(control, "LAYOUT_SIZE_HPREFERREDEXPANDING")
@@ -237,7 +244,7 @@ class BugOptionsTab:
 
 	def addDropdown (self, screen, labelPanel, controlPanel, name, spacer, elements, index, callback):
 		option = self.getOption(name)
-		if (option):
+		if (option is not None):
 			# create label
 			if (labelPanel is not None):
 				if (labelPanel == controlPanel or spacer):
@@ -262,30 +269,18 @@ class BugOptionsTab:
 
 	def addTextDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
-		if (option):
-			value = self.options.getInt(name) # the actual index
-			values = option.getDisplayValues()
-			elements = ()
-			for v in values:
-				elements += (v,)
-			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, value, "handleBugDropdownChange")
+		if (option is not None):
+			index = option.getIndex()
+			elements = tuple(option.getDisplayValues())
+			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugDropdownChange")
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
 	def addIntDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
-		if (option):
-			value = self.options.getInt(name)
-			values = option.getValues()
-			elements = ()
-			index = -1
-			bestDelta = 100000
-			for i in range(len(values)):
-				elements += (str(values[i]),)
-				delta = abs(value - values[i])
-				if (delta < bestDelta):
-					index = i
-					bestDelta = delta
+		if (option is not None):
+			index = option.getIndex()
+			elements = tuple(option.getDisplayValues())
 			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugIntDropdownChange")
 			screen.setLayoutFlag(control, "LAYOUT_RIGHT")
 			return control
@@ -294,21 +289,9 @@ class BugOptionsTab:
 
 	def addFloatDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
-		if (option):
-			value = self.options.getFloat(name)
-			values = option.getValues()
-			format = option.getFormat()
-			if (format is None):
-				format = "%f"
-			elements = ()
-			index = -1
-			bestDelta = 100000
-			for i in range(len(values)):
-				elements += (format % values[i],)
-				delta = abs(value - values[i])
-				if (delta < bestDelta):
-					index = i
-					bestDelta = delta
+		if (option is not None):
+			index = option.getIndex()
+			elements = tuple(option.getDisplayValues())
 			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugFloatDropdownChange")
 			screen.setLayoutFlag(control, "LAYOUT_RIGHT")
 			return control
@@ -317,10 +300,9 @@ class BugOptionsTab:
 
 	def addColorDropdown (self, screen, labelPanel, controlPanel, name, spacer=False):
 		option = self.getOption(name)
-		if (option):
-			value = self.options.getString(name)
-			index = ColorUtil.keyToIndex(value)
-			elements = ColorUtil.getColorDisplayNames()
+		if (option is not None):
+			index = option.getIndex()
+			elements = tuple(option.getDisplayValues())
 			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, elements, index, "handleBugColorDropdownChange")
 		else:
 			self.addMissingOption(screen, controlPanel, name)
@@ -330,7 +312,7 @@ class BugOptionsTab:
 		"Adds a dropdown with a checkbox for a label."
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
-		if (checkOption and dropOption):
+		if (checkOption is not None and dropOption is not None):
 			# create checkbox
 			if (checkPanel == dropPanel):
 				box = checkPanel + "HBox"
@@ -346,78 +328,54 @@ class BugOptionsTab:
 			screen.setToolTip(dropControl, dropOption.getTooltip())
 			return checkControl, dropControl
 		else:
-			if (not checkOption):
+			if (checkOption is None):
 				self.addMissingOption(screen, controlPanel, checkOption)
-			if (not dropOption):
+			if (dropOption is None):
 				self.addMissingOption(screen, controlPanel, dropOption)
 
 	def addCheckboxTextDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
-		if (checkOption and dropOption):
-			value = self.options.getInt(name) # the actual index
-			values = option.getDisplayValues()
-			elements = ()
-			for v in values:
-				elements += (v,)
+		if (checkOption is not None and dropOption is not None):
+			index = dropOption.getIndex()
+			elements = tuple(dropOption.getDisplayValues())
 			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, value, "handleBugDropdownChange")
 			screen.setLayoutFlag(dropControl, "LAYOUT_RIGHT")
 			return checkControl, dropControl
 		else:
-			if (not checkOption):
+			if (checkOption is None):
 				self.addMissingOption(screen, checkPanel, checkOption)
-			if (not dropOption):
+			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
 	def addCheckboxIntDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
-		if (checkOption and dropOption):
-			value = self.options.getInt(dropName)
-			values = dropOption.getValues()
-			elements = ()
-			index = -1
-			bestDelta = 100000
-			for i in range(len(values)):
-				elements += (str(values[i]),)
-				delta = abs(value - values[i])
-				if (delta < bestDelta):
-					index = i
-					bestDelta = delta
+		if (checkOption is not None and dropOption is not None):
+			index = dropOption.getIndex()
+			elements = tuple(dropOption.getDisplayValues())
 			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, index, "handleBugIntDropdownChange")
 			screen.setLayoutFlag(dropControl, "LAYOUT_RIGHT")
 			return checkControl, dropControl
 		else:
-			if (not checkOption):
+			if (checkOption is None):
 				self.addMissingOption(screen, checkPanel, checkOption)
-			if (not dropOption):
+			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
 	def addCheckboxFloatDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
-		if (checkOption and dropOption):
-			value = self.options.getFloat(dropName)
-			values = dropOption.getValues()
-			format = dropOption.getFormat()
-			if (format is None):
-				format = "%f"
-			elements = ()
-			index = -1
-			bestDelta = 100000
-			for i in range(len(values)):
-				elements += (format % values[i],)
-				delta = abs(value - values[i])
-				if (delta < bestDelta):
-					index = i
-					bestDelta = delta
+		if (checkOption is not None and dropOption is not None):
+			index = dropOption.getIndex()
+			elements = tuple(dropOption.getDisplayValues())
 			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, index, "handleBugFloatDropdownChange")
 			screen.setLayoutFlag(dropControl, "LAYOUT_RIGHT")
 			return checkControl, dropControl
 		else:
-			if (not checkOption):
+			if (checkOption is None):
 				self.addMissingOption(screen, checkPanel, checkOption)
-			if (not dropOption):
+			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
 

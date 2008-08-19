@@ -2,13 +2,8 @@
 ## Modified from Ruff Mod 2w
 ## Modified from HOF MOD V1.61.001
 ## Modified from autolog by eotinb
-## autolog's subclass of CvEventManager
+## autolog's event handler
 ## by eotinb
-##-------------------------------------------------------------------
-## Reorganized to work via CvCustomEventManager
-## using Civ4lerts as template.
-## CvCustomEventManager & Civ4lerts by Gillmer J. Derge
-##-------------------------------------------------------------------
 ##
 ## TODO:
 ## - Use onPlayerChangeStateReligion event
@@ -19,18 +14,30 @@ import Popup as PyPopup
 import PyHelpers
 import autolog
 import time
-import BugAutologOptions
+import BugOptions
 import BugUtil
 import CvModName
 
-BugAutolog = BugAutologOptions.BugAutologOptions()
+OPEN_LOG_EVENT_ID = CvUtil.getNewEventID("Autolog.OpenLog")
+CUSTOM_ENTRY_EVENT_ID = CvUtil.getNewEventID("Autolog.CustomEntry")
 
 gc = CyGlobalContext()
 PyPlayer = PyHelpers.PyPlayer
 PyInfo = PyHelpers.PyInfo
 
-Logger = autolog.autologInstance()
+BugAutolog = None
+Logger = None
 lPercent = "%"
+
+bLoggingOn = False
+def isLoggingOn():
+	return bLoggingOn
+#	return BugAutolog.isLoggingOn()
+
+def setLoggingOn(value):
+	global bLoggingOn
+	bLoggingOn = value
+#	BugAutolog.setLoggingOn(value)
 
 def StartLogger(vsFileName):
 
@@ -82,17 +89,22 @@ class autologEventManager:
 
 	def __init__(self, eventManager):
 
+		global BugAutolog
+		BugAutolog = BugOptions.getOptions().getAutolog()
+		global Logger
+		Logger = autolog.autologInstance()
+		
 		AutoLogEvent(eventManager)
 
 		# additions to self.Events
 		moreEvents = {
-			CvUtil.EventLogOpen : ('LogOpenPopup', self.__eventLogOpenApply, self.__eventLogOpenBegin),
-			CvUtil.EventCustomLogEntry : ('', self.__eventCustomLogEntryApply, self.__eventCustomLogEntryBegin),
+			OPEN_LOG_EVENT_ID : ('LogOpenPopup', self.__OPEN_LOG_EVENT_IDApply, self.__OPEN_LOG_EVENT_IDBegin),
+			CUSTOM_ENTRY_EVENT_ID : ('', self.__CUSTOM_ENTRY_EVENT_IDApply, self.__CUSTOM_ENTRY_EVENT_IDBegin),
 		}
 		eventManager.Events.update(moreEvents)
 
-	def __eventLogOpenBegin(self, argsList):
-		popup = PyPopup.PyPopup(CvUtil.EventLogOpen, EventContextTypes.EVENTCONTEXT_SELF)
+	def __OPEN_LOG_EVENT_IDBegin(self, argsList):
+		popup = PyPopup.PyPopup(OPEN_LOG_EVENT_ID, EventContextTypes.EVENTCONTEXT_SELF)
 
 		if (BugAutolog.isUseDefaultFileName()):
 			popup.setHeaderString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_POPUP_QUESTION"))
@@ -106,26 +118,26 @@ class autologEventManager:
 		popup.addButton("Cancel")
 		popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
 
-	def __eventLogOpenApply(self, playerID, userData, popupReturn):
+	def __OPEN_LOG_EVENT_IDApply(self, playerID, userData, popupReturn):
 		if (popupReturn.getButtonClicked() != 1):
-			BugAutolog.setLoggingOn(True)
+			setLoggingOn(True)
 			StartLogger(popupReturn.getEditBoxString(0))
 		else:
-			BugAutolog.setLoggingOn(False)
+			setLoggingOn(False)
 			message = BugUtil.getPlainText("TXT_KEY_AUTOLOG_NO_LOGGING")
 			CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
 
-	def __eventCustomLogEntryBegin(self, argsList):
-		if BugAutolog.isLoggingOn():
-			popup = PyPopup.PyPopup(CvUtil.EventCustomLogEntry, EventContextTypes.EVENTCONTEXT_SELF)
+	def __CUSTOM_ENTRY_EVENT_IDBegin(self, argsList):
+		if isLoggingOn():
+			popup = PyPopup.PyPopup(CUSTOM_ENTRY_EVENT_ID, EventContextTypes.EVENTCONTEXT_SELF)
 			popup.setHeaderString(BugUtil.getPlainText("TXT_KEY_AUTOLOG_CUSTOM_ENTRY"))
 			popup.createEditBox("")
 			popup.addButton("OK")
 			popup.addButton("Cancel")
 			popup.launch(False, PopupStates.POPUPSTATE_IMMEDIATE)
 
-	def __eventCustomLogEntryApply(self, playerID, userData, popupReturn):
-		if BugAutolog.isLoggingOn():
+	def __CUSTOM_ENTRY_EVENT_IDApply(self, playerID, userData, popupReturn):
+		if isLoggingOn():
 			message = popupReturn.getEditBoxString(0)
 			if (popupReturn.getButtonClicked() != 1):
 				Logger.writeLog(message, vPrefix=BugAutolog.getPrefix())
@@ -218,8 +230,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (theKey == int(InputTypes.KB_E)
 			and self.eventMgr.bAlt
 			and BugAutolog.isEnabled()
-			and BugAutolog.isLoggingOn()):
-				self.eventMgr.beginEvent(CvUtil.EventCustomLogEntry)
+			and isLoggingOn()):
+				self.eventMgr.beginEvent(CUSTOM_ENTRY_EVENT_ID)
 				return 1
 
 			'Check if ALT + L was hit == open in-game log'
@@ -227,10 +239,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			and self.eventMgr.bAlt
 			and BugAutolog.isEnabled()):
 				if BugAutolog.isSilent():
-					BugAutolog.setLoggingOn(True)
+					setLoggingOn(True)
 					StartLogger("")
 				else:
-					self.eventMgr.beginEvent(CvUtil.EventLogOpen)
+					self.eventMgr.beginEvent(OPEN_LOG_EVENT_ID)
 
 				return 1
 
@@ -238,7 +250,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			if (theKey == int(InputTypes.KB_B)
 			and self.eventMgr.bAlt
 			and BugAutolog.isEnabled()
-			and BugAutolog.isLoggingOn()):
+			and isLoggingOn()):
 				Logger.writeLog("")
 				Logger.writeLog(BugUtil.getPlainText("TXT_KEY_AUTOLOG_BATTLE_STATS"), vBold=True)
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING", (self.iBattleWonAttacking, ))
@@ -290,10 +302,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (BugAutolog.isEnabled()
 		and BugAutolog.isSilent()):
-			BugAutolog.setLoggingOn(True)
+			setLoggingOn(True)
 			StartLogger("")
 		else:
-			BugAutolog.setLoggingOn(False)
+			setLoggingOn(False)
 
 		# initialize storage stuff
 		self.initStuff()
@@ -307,10 +319,10 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (BugAutolog.isEnabled()
 		and BugAutolog.isSilent()):
-			BugAutolog.setLoggingOn(True)
+			setLoggingOn(True)
 			StartLogger("")
 		else:
-			BugAutolog.setLoggingOn(False)
+			setLoggingOn(False)
 
 		# initialize storage stuff
 		self.initStuff()
@@ -323,7 +335,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	def onEndGameTurn(self, argsList):
 		iGameTurn = argsList[0]
 
-		if BugAutolog.isLoggingOn():
+		if isLoggingOn():
 			self.checkStuff()
 #			self.dumpStuff()
 			self.storeStuff()

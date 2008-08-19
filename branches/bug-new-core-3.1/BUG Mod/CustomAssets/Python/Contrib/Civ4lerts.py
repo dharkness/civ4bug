@@ -55,7 +55,7 @@ __version__ = "$Revision: 1.2 $"
 ## City specialists reassigned
 ## [*] City is about to grow
 ## City is about to starve
-## [*] City is about to grow into unhealthyness
+## [*] City is about to grow into unhealthiness
 ## [*] City is about to grow into anger
 ## City is in resistance
 ## [?] City is wasting food
@@ -67,9 +67,32 @@ __version__ = "$Revision: 1.2 $"
 ## City is under cultural pressure
 
 
+from CvPythonExtensions import *
+import BugOptions
+
+
+# Must set alerts to "not immediate" to have icons show up
+# Need a healthy person icon
+HEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
+UNHEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
+
+HAPPY_ICON = "Art/Interface/Buttons/General/happy_person.dds"
+UNHAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
+
+### Globals
+
+gc = CyGlobalContext()
+localText = CyTranslator()
+
+Civ4lertsOpt = None
+
+
 class Civ4lerts:
 
 	def __init__(self, eventManager):
+		global Civ4lertsOpt
+		Civ4lertsOpt = BugOptions.getOptions().getCiv4lerts()
+		
 		cityEvent = BeginActivePlayerTurnCityAlertManager(eventManager)
 		cityEvent.add(CityGrowth(eventManager))
 		cityEvent.add(CityHealthiness(eventManager))
@@ -82,30 +105,6 @@ class Civ4lerts:
 		
 		GoldTrade(eventManager)
 		GoldPerTurnTrade(eventManager)
-
-from CvPythonExtensions import *
-
-# BUG - Options - start
-import BugAlertsOptions
-BugAlerts = BugAlertsOptions.getOptions()
-
-import BugCityScreenOptions
-BugCityScreen = BugCityScreenOptions.getOptions()
-# BUG - Options - end
-
-
-### Globals
-
-gc = CyGlobalContext()
-localText = CyTranslator()
-
-# Must set alerts to "not immediate" to have icons show up
-HEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
-UNHEALTHY_ICON = "Art/Interface/Buttons/General/unhealthy_person.dds"
-
-HAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
-UNHAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
-
 
 ### Displaying alerts on-screen
 
@@ -123,6 +122,21 @@ def addMessageAtPlot(iPlayer, message, icon, plot):
 
 def addMessage(iPlayer, szString, szIcon, iFlashX, iFlashY):
 	"Displays an on-screen message."
+	"""
+	Make these alerts optionally show a delayable popup with various options.
+	a) show: 
+	
+	Happy: Zoom to City, Turn OFF avoid growth, Whip (maybe?), Ignore
+	Unhappy:  Zoom to City, Turn on Avoid Growth, Suggest cheapest military unit (with right civic), Open Resources screen in FA, Ignore. (for future = suggest building)
+	
+	Healthy: Zoom to City, Turn OFF avoid growth, Ignore
+	Unhealthy:  Zoom to City, Turn on Avoid Growth, Whip population, Open Resources screen in FA, Ignore. (for future = suggest building)
+	
+	Growth: Zoom to City, Turn on avoid Growth, Whip, Ignore
+	Starvation: Zoom to City, Turn on avoid Growth, Ignore
+	
+	Culture:  Zoom to City, Ignore
+	"""
 	eventMessageTimeLong = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 	CyInterface().addMessage(iPlayer, True, eventMessageTimeLong,
 							 szString, None, 0, szIcon, ColorTypes(-1),
@@ -172,6 +186,7 @@ class AbstractCityAlertManager(AbstractStatefulAlert):
 
 	def add(self, alert):
 		self.alerts.append(alert)
+		alert.init()
 	
 	def onCityAcquiredAndKept(self, argsList):
 		iPlayer, city = argsList
@@ -262,8 +277,8 @@ class AbstractCityAlert:
 		pass
 	
 	def init(self):
-		"Initializes globals that could not be done in __init__."
-		pass
+		"Initializes globals that could not be done in __init__ and resets the data."
+		self._beforeReset()
 	
 	def reset(self):
 		"Clears state kept for each city."
@@ -367,17 +382,8 @@ class CityPendingGrowth(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 	
-	def init(self):
-		return
-#		CyInterface().addImmediateMessage("5 / 4 = %d" % (5//-4), "")
-#		CyInterface().addImmediateMessage("4 / 4 = %d" % (4//-4), "")
-#		CyInterface().addImmediateMessage("3 / 4 = %d" % (3//-4), "")
-#		CyInterface().addImmediateMessage("2 / 4 = %d" % (2//-4), "")
-#		CyInterface().addImmediateMessage("1 / 4 = %d" % (1//-4), "")
-#		CyInterface().addImmediateMessage("0 / 4 = %d" % (0//-4), "")
-	
 	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
-		if (BugAlerts.isShowCityPendingGrowthAlert()):
+		if (Civ4lertsOpt.isShowCityPendingGrowthAlert()):
 			iFoodRate = city.foodDifference(True)
 			if (iFoodRate > 0 and city.getFoodTurnsLeft() == 1 
 			and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
@@ -411,13 +417,13 @@ class CityGrowth(AbstractCityAlert):
 			iOldWhipCounter = self.CityWhipCounter[iCityID]
 			iConscriptCounter = city.getConscriptAngerTimer()
 			iOldConscriptCounter = self.CityConscriptCounter[iCityID]
-
+			
 			bWhipOrDraft = False
 			if (iWhipCounter > iOldWhipCounter
 			or  iConscriptCounter > iOldConscriptCounter):
 				bWhipOrDraft = True
-
-			if (BugAlerts.isShowCityGrowthAlert()):
+			
+			if (Civ4lertsOpt.isShowCityGrowthAlert()):
 				if (iPop > iOldPop):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_CITY_GROWTH",
@@ -464,7 +470,7 @@ class CityHappiness(AbstractCityTestAlert):
 		AbstractCityTestAlert.__init__(self, eventManager)
 	
 	def init(self):
-		AbstractCityTestAlert.init(self)
+		AbstractCityAlert.init(self)
 		self.kiTempHappy = gc.getDefineINT("TEMP_HAPPY")
 	
 	def _passesTest(self, city):
@@ -499,7 +505,7 @@ class CityHappiness(AbstractCityTestAlert):
 		return iHappy < iUnhappy
 	
 	def _isShowAlert(self, passes):
-		return BugAlerts.isShowCityHappinessAlert()
+		return Civ4lertsOpt.isShowCityHappinessAlert()
 	
 	def _getAlertMessageIcon(self, city, passes):
 		if (passes):
@@ -510,7 +516,7 @@ class CityHappiness(AbstractCityTestAlert):
 					HAPPY_ICON)
 	
 	def _isShowPendingAlert(self, passes):
-		return BugAlerts.isShowCityPendingHappinessAlert()
+		return Civ4lertsOpt.isShowCityPendingHappinessAlert()
 
 	def _getPendingAlertMessageIcon(self, city, passes):
 		if (passes):
@@ -546,7 +552,7 @@ class CityHealthiness(AbstractCityTestAlert):
 		return iHealthRate < 0
 	
 	def _isShowAlert(self, passes):
-		return BugAlerts.isShowCityHealthinessAlert()
+		return Civ4lertsOpt.isShowCityHealthinessAlert()
 	
 	def _getAlertMessageIcon(self, city, passes):
 		if (passes):
@@ -557,7 +563,7 @@ class CityHealthiness(AbstractCityTestAlert):
 					HEALTHY_ICON)
 	
 	def _isShowPendingAlert(self, passes):
-		return BugAlerts.isShowCityPendingHealthinessAlert()
+		return Civ4lertsOpt.isShowCityPendingHealthinessAlert()
 
 	def _getPendingAlertMessageIcon(self, city, passes):
 		if (passes):
@@ -582,7 +588,7 @@ class AbstractCanHurry(AbstractCityTestAlert):
 		eventManager.addEventHandler("cityBuildingBuilding", self.onCityBuildingBuilding)
 	
 	def init(self, szHurryType):
-		AbstractCityTestAlert.init(self)
+		AbstractCityAlert.init(self)
 		self.keHurryType = gc.getInfoTypeForString(szHurryType)
 
 	def onCityBuildingUnit(self, argsList):
@@ -630,12 +636,12 @@ class CanHurryPopulation(AbstractCanHurry):
 		AbstractCanHurry.init(self, "HURRY_POPULATION")
 
 	def _isShowAlert(self, passes):
-		return passes and BugAlerts.isShowCityCanHurryPopAlert()
+		return passes and Civ4lertsOpt.isShowCityCanHurryPopAlert()
 	
 	def _getAlertMessage(self, city, info):
 		iPop = city.hurryPopulation(self.keHurryType)
 		iOverflow = city.hurryProduction(self.keHurryType) - city.productionLeft()
-		if BugCityScreen.isOverflowCountCurrentProduction():
+		if BugCityScreen.isWhipAssistOverflowCountCurrentProduction():
 			iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
 		iAnger = city.getHurryAngerTimer() + city.flatHurryAngerLength()
 		iMaxOverflow = min(city.getProductionNeeded(), iOverflow)
@@ -657,7 +663,7 @@ class CanHurryGold(AbstractCanHurry):
 		AbstractCanHurry.init(self, "HURRY_GOLD")
 
 	def _isShowAlert(self, passes):
-		return passes and BugAlerts.isShowCityCanHurryGoldAlert()
+		return passes and Civ4lertsOpt.isShowCityCanHurryGoldAlert()
 	
 	def _getAlertMessage(self, city, info):
 		iGold = city.hurryGold(self.keHurryType)
@@ -676,7 +682,7 @@ class GoldTrade(AbstractStatefulAlert):
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 
 	def onBeginActivePlayerTurn(self, argsList):
-		if (not BugAlerts.isShowGoldTradeAlert()):
+		if (not Civ4lertsOpt.isShowGoldTradeAlert()):
 			return
 		
 		turn = argsList[0]
@@ -692,7 +698,7 @@ class GoldTrade(AbstractStatefulAlert):
 				oldMaxGoldTrade = self._getMaxGoldTrade(player, rival)
 				newMaxGoldTrade = rivalPlayer.AI_maxGoldTrade(player)
 				deltaMaxGoldTrade = newMaxGoldTrade - oldMaxGoldTrade
-				if (deltaMaxGoldTrade >= BugAlerts.getGoldTradeThreshold()):
+				if (deltaMaxGoldTrade >= Civ4lertsOpt.getGoldTradeThreshold()):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_GOLD_TRADE",
 							(gc.getPlayer(rival).getName(),
@@ -725,7 +731,7 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 
 	def onBeginActivePlayerTurn(self, argsList):
-		if (not BugAlerts.isShowGoldPerTurnTradeAlert()):
+		if (not Civ4lertsOpt.isShowGoldPerTurnTradeAlert()):
 			return
 		
 		turn = argsList[0]
@@ -741,7 +747,7 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 				oldMaxGoldPerTurnTrade = self._getMaxGoldPerTurnTrade(player, rival)
 				newMaxGoldPerTurnTrade = rivalPlayer.AI_maxGoldPerTurnTrade(player)
 				deltaMaxGoldPerTurnTrade = newMaxGoldPerTurnTrade - oldMaxGoldPerTurnTrade
-				if (deltaMaxGoldPerTurnTrade >= BugAlerts.getGoldPerTurnTradeThreshold()):
+				if (deltaMaxGoldPerTurnTrade >= Civ4lertsOpt.getGoldPerTurnTradeThreshold()):
 					message = localText.getText(
 							"TXT_KEY_CIV4LERTS_ON_GOLD_PER_TURN_TRADE",
 							(gc.getPlayer(rival).getName(),

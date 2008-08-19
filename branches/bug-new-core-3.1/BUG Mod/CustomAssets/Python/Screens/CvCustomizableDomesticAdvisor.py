@@ -78,11 +78,10 @@ import os.path
 
 PyPlayer = PyHelpers.PyPlayer
 
+
 # BUG - Options - start
-#import BugScreensOptions
-#BugScreens = BugScreensOptions.getOptions()
-import BugCityScreenOptions
-BugCityScreen = BugCityScreenOptions.getOptions()
+import BugOptions
+BugCityScreen = None
 # BUG - Options - end
 
 # Needed to save changes
@@ -760,6 +759,11 @@ class CvCustomizableDomesticAdvisor:
 		This is the function that's called whenever F1 is pressed.
 		"""
 
+# BUG - Options - start
+		global BugCityScreen
+		BugCityScreen = BugOptions.getOptions().getCity()
+# BUG - Options - end
+		
 		# Initialize all the stuff we couldn't in the init function
 		self.createDictionaries()
 
@@ -1285,7 +1289,7 @@ class CvCustomizableDomesticAdvisor:
 		
 		if (city.canHurry(self.HURRY_TYPE_POP, False)):
 			iOverflow = city.hurryProduction(self.HURRY_TYPE_POP) - city.productionLeft()
-			if BugCityScreen.isOverflowCountCurrentProduction():
+			if BugCityScreen.isWhipAssistOverflowCountCurrentProduction():
 				iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
 			iMaxOverflow = min(city.getProductionNeeded(), iOverflow)
 			iOverflowGold = max(0, iOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100

@@ -70,7 +70,7 @@ import BugUtil
 import PyHelpers
 import BugPath
 import BugConfigTracker
-import BugUnitNameOptions
+import BugOptions
 from configobj import ConfigObj
 import Roman
 import RandomNameUtils
@@ -93,9 +93,12 @@ sdGroup			= "UnitCnt"
 
 ############################
 
+RENAME_EVENT_ID = CvUtil.getNewEventID("UnitNaming.Rename")
+
 gc = CyGlobalContext()
 PyInfo = PyHelpers.PyInfo
-BugUnitName = BugUnitNameOptions.getOptions()
+UnitNamingOpt = None
+AdvUnitNamingOpt = None
 
 phonetic_array = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike',
                   'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yankee', 'Zulu']
@@ -115,10 +118,16 @@ class UnitNameEventManager:
 	def __init__(self, eventManager):
 
 		BuildUnitName(eventManager)
+		
+		options = BugOptions.getOptions()
+		global UnitNamingOpt
+		UnitNamingOpt = options.getUnitNaming()
+		global AdvUnitNamingOpt
+		AdvUnitNamingOpt = options.getAdvUnitNaming()
 
 		# additions to self.Events
 		moreEvents = {
-			CvUtil.EventUnitRename : ('', self.__eventUnitRenameApply,  self.__eventUnitRenameBegin),
+			RENAME_EVENT_ID : ('', self.__eventUnitRenameApply,  self.__eventUnitRenameBegin),
 		}
 		eventManager.Events.update(moreEvents)
 		self.eventMgr = eventManager
@@ -131,7 +140,7 @@ class UnitNameEventManager:
 		prompt = self.Prompt   #"Enter a rename convention"   #BugUtil.getPlainText("TXT_KEY_REMINDER_PROMPT")
 		ok = BugUtil.getPlainText("TXT_KEY_MAIN_MENU_OK")
 		cancel = BugUtil.getPlainText("TXT_KEY_POPUP_CANCEL")
-		popup = PyPopup.PyPopup(CvUtil.EventUnitRename, EventContextTypes.EVENTCONTEXT_SELF)
+		popup = PyPopup.PyPopup(RENAME_EVENT_ID, EventContextTypes.EVENTCONTEXT_SELF)
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
 		popup.createPythonEditBox(self.UnitNameConv, "Enter the unit name convention that you want to test.", 0)
@@ -178,7 +187,7 @@ class UnitNameEventManager:
 
 		self.Prompt = "Using the convention\n   '%s'\ngenerated the unit name\n   '%s'\n\nEnter another rename convention" % (zsUnitNameConv, zsUnitName)
 
-		self.eventMgr.beginEvent(CvUtil.EventUnitRename)
+		self.eventMgr.beginEvent(RENAME_EVENT_ID)
 		return
 
 
@@ -208,8 +217,8 @@ class BuildUnitName(AbstractBuildUnitName):
 			and self.eventMgr.bCtrl
 			and self.eventMgr.bAlt):
 
-				if BugUnitName.isEnabled():
-					self.eventMgr.beginEvent(CvUtil.EventUnitRename)
+				if UnitNamingOpt.isEnabled():
+					self.eventMgr.beginEvent(RENAME_EVENT_ID)
 
 		return 0
 
@@ -228,10 +237,10 @@ class BuildUnitName(AbstractBuildUnitName):
 		or pUnit.isNone()):
 			return
 
-#		BUGPrint("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), BugUnitName.isEnabled()))
+#		BUGPrint("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), UnitNamingOpt.isEnabled()))
 
 		if not (iPlayer == CyGame().getActivePlayer()
-		and BugUnitName.isEnabled()):
+		and UnitNamingOpt.isEnabled()):
 			return
 
 #		BUGPrint("onUnitBuild-C")
@@ -377,34 +386,16 @@ class UnitReName(object):
 		zsName = self.swapCountCode(zsName, "^tt2", ziTT2)
 
 		return zsName
-
-
-	def loadIniFile(self):
-		if not self.config:
-			iniFile = BugPath.findIniFile("Adv Unit Naming.ini")
-			if iniFile:
-				try:
-					self.config = ConfigObj(iniFile)
-					BugConfigTracker.add("UnitNaming_Config", iniFile)
-				except:
-					self.config = None
-		if self.config:
-			return True
-		else:
-			return False
 	
 	def getUnitNameConvFromIniFile(self, Era, UnitClass, UnitCombat):
 ##    a. try to get the advanced naming convention
 ##    b. if it returns 'DEFAULT', then get the combat based naming convention
 ##    c. if naming convention is 'DEFAULT', get default naming convention
 
-		if BugUnitName.isAdvanced() and self.loadIniFile():
-			key = Era[4:] + "_" + UnitClass[10:]
-#			BUGPrint("UnitNameEM-ini [" + key + "]")
-			try:
-				zsUnitNameConv = self.config["UnitName"][key]
-			except:
-				zsUnitNameConv = "DEFAULT"
+		if UnitNamingOpt.isAdvanced():
+			era = Era[4:]
+			unitClass = UnitClass[10:]
+			zsUnitNameConv = AdvUnitNamingOpt.getByEraAndClass(era, unitClass)
 		else:
 			zsUnitNameConv = "DEFAULT"
 
@@ -413,7 +404,7 @@ class UnitReName(object):
 
 #		BUGPrint("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:])
 
-		zsUnitNameConv = BugUnitName.getCombat(UnitCombat[11:])
+		zsUnitNameConv = UnitNamingOpt.getByCombatType(UnitCombat[11:])
 
 #		BUGPrint("UnitNameEM-iniB [" + zsUnitNameConv + "]")
 
@@ -422,7 +413,7 @@ class UnitReName(object):
 
 #		BUGPrint("UnitNameEM-iniC [" + zsUnitNameConv + "]")
 
-		zsUnitNameConv = BugUnitName.getDefault()
+		zsUnitNameConv = UnitNamingOpt.getDefault()
 		return zsUnitNameConv
 
 

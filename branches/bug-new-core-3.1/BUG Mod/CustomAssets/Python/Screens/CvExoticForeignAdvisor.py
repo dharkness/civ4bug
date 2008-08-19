@@ -23,11 +23,7 @@ import DomPyHelpers
 import TechTree
 import re
 import AttitudeUtils
-
-# BUG - Options - start
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
-# BUG - Options - end
+import BugOptions
 
 # globals
 gc = CyGlobalContext()
@@ -311,7 +307,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 # BUG - optional glance - start
 			zbBuildScreen = True
 			if szScreen == "GLANCE":
-				zbBuildScreen = BugScreens.isShowGlance()
+				zbBuildScreen = BugOptions.getOptions().getAdvisors().isShowGlance()
 
 			if zbBuildScreen:				
 # BUG - optional glance - end, next 5 lines indented once
@@ -524,7 +520,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						szName = self.getNextWidgetName()
 						nAttitude = self.ltPlayerRelations[iLoopPlayer][j]
 						if nAttitude != None:
-							szText = AttitudeUtils.getAttitudeText(j, iLoopPlayer, True, BugScreens.isShowGlanceSmilies(), True, True)
+							szText = AttitudeUtils.getAttitudeText(j, iLoopPlayer, True, BugOptions.getOptions().getAdvisors().isShowGlanceSmilies(), True, True)
 						else:
 							szText = ""
 

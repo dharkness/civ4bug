@@ -30,8 +30,8 @@ localText = CyTranslator()
 # BUG - GP Tech Prefs - start
 
 import TechPrefs
-import BugScreensOptions
-BugOpt = BugScreensOptions.getOptions()
+import BugOptions
+BugOpt = None
 
 PREF_ICON_SIZE = 32
 PREF_ICON_TOP = 728
@@ -39,6 +39,12 @@ FLAVORS = [ TechPrefs.FLAVOR_PRODUCTION, TechPrefs.FLAVOR_GOLD, TechPrefs.FLAVOR
 			TechPrefs.FLAVOR_CULTURE, TechPrefs.FLAVOR_RELIGION ]
 UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIST",
 				 "UNITCLASS_ARTIST", "UNITCLASS_PROPHET" ]
+
+class FakeBugOptions:
+	def isWideTechScreen(self):
+		return False
+	def isShowGPTechPrefs(self):
+		return False
 
 # BUG - GP Tech Prefs - end
 
@@ -74,6 +80,14 @@ class CvTechChooser:
 		if ( CyGame().isPitbossHost() ):
 			return
 
+		global BugOpt
+		try:
+			BugOpt = BugOptions.getOptions().getAdvisors()
+		except AttributeError:
+			import BugUtil
+			BugUtil.debug("TechChooser - using fake Advisors options")
+			BugOpt = FakeBugOptions()
+		
 		# Create a new screen, called TechChooser, using the file CvTechChooser.py for input
 		screen = CyGInterfaceScreen( "TechChooser", CvScreenEnums.TECH_CHOOSER )
 		screen.setRenderInterfaceOnly(True)

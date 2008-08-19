@@ -245,6 +245,15 @@ class IconGrid_BUG:
 		self.scrollPosition = self.scrollPosition + 1
 		self.refresh()
 	
+
+	def pageUp(self):
+		self.scrollPosition = self.scrollPosition - self.numRows
+		self.refresh()
+	
+	
+	def pageDown(self):
+		self.scrollPosition = self.scrollPosition + self.numRows
+		self.refresh()
 	
 	
 	def refresh(self):

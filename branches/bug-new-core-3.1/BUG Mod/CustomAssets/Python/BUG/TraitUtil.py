@@ -1,14 +1,15 @@
 ## TraitUtil
 ##
-## Utilities for dealing with Traits and TraitInfos
+## Utilities for dealing with Traits and TraitInfos.
 ##
-## Copyright (c) 2008 BUG Mod.
+## Notes
+##   - Must be initialized externally by calling init()
+##
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
-
-gc = CyGlobalContext()
-
-bInitDone = False
 
 GENERIC_ICON = None
 TRAIT_ICONS = {}
@@ -16,11 +17,10 @@ TRAIT_ICONS = {}
 GENERIC_BUTTON = "Art/Interface/Buttons/TechTree/"
 TRAIT_BUTTONS = {}
 
+gc = CyGlobalContext()
+
 def init():
 	"Performs one-time initialization after the game starts up."
-	global bInitDone
-	if bInitDone: return
-	
 	game = gc.getGame()
 	global GENERIC_ICON
 	GENERIC_ICON = game.getSymbolID(FontSymbols.MAP_CHAR)
@@ -36,8 +36,6 @@ def init():
 	addTrait("PHILOSOPHICAL", game.getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), "Art/Interface/Buttons/TechTree/Philosophy.dds")
 	addTrait("PROTECTIVE", game.getSymbolID(FontSymbols.DEFENSE_CHAR), "Art/Interface/Buttons/Promotions/CityGarrison1.dds")
 	addTrait("SPIRITUAL", game.getSymbolID(FontSymbols.RELIGION_CHAR), "Art/Interface/Buttons/TechTree/Meditation.dds")
-	
-	bInitDone = True
 
 def addTrait(trait, icon, button):
 	eTrait = gc.getInfoTypeForString("TRAIT_" + trait)
@@ -49,14 +47,12 @@ def addTrait(trait, icon, button):
 
 
 def getIcon(eTrait):
-	init()
 	if eTrait in TRAIT_ICONS:
 		return TRAIT_ICONS[eTrait]
 	else:
 		return GENERIC_ICON
 
 def getButton(eTrait):
-	init()
 	if eTrait in TRAIT_BUTTONS:
 		return TRAIT_BUTTONS[eTrait]
 	else:

@@ -8,21 +8,23 @@ import codecs
 import os
 import os.path
 import string
+import BugOptions
 import BugPath
 import BugConfigTracker
-import BugAutologOptions
 
-BugAutolog = BugAutologOptions.getOptions()
+BugAutolog = None
 
 class autologInstance:
 
 
 	def __init__(self):
+		global BugAutolog
+		BugAutolog = BugOptions.getOptions().getAutolog()
 		self.MsgStore = []
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
-		BugAutolog.write()
+		BugOptions.write()
 		
 	def isLogging(self):
 		return BugAutolog.isLoggingOn()
@@ -100,7 +102,8 @@ class autologInstance:
 					zMsg = "[color=%s]%s[/color]" % (vColor, zMsg)
 
 		return "%s\r\n" % (zMsg)
-		
+
+# EF: What is this unused class for?
 class autologRetain:
 
 	def __init__(self):

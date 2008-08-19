@@ -12,28 +12,37 @@
 from CvPythonExtensions import *
 import CvUtil
 import Popup as PyPopup
+import BugOptions
 import BugUtil
+import InputUtil
 import SdToolKit
-
-import BugAlertsOptions
-BugAlerts = BugAlertsOptions.getOptions()
-
 import autolog
-g_autolog = autolog.autologInstance()
-
-gc = CyGlobalContext()
 
 SD_MOD_ID = "Reminders"
 SD_QUEUE_ID = "queue"
+
+STORE_EVENT_ID = CvUtil.getNewEventID("Reminder.Store")
+RECALL_EVENT_ID = CvUtil.getNewEventID("Reminder.Recall")
+RECALL_AGAIN_EVENT_ID = CvUtil.getNewEventID("Reminder.RecallAgain")
+
+gc = CyGlobalContext()
+
+ReminderOpt = None
+g_autolog = None
 
 # Used to display flashing end-of-turn text
 g_turnReminderTexts = None
 
 class ReminderEventManager:
 
-	def __init__(self, eventManager):
+	def __init__(self, eventManager, keys):
 
-		ReminderEvent(eventManager, self)
+		global ReminderOpt
+		ReminderOpt = BugOptions.getOptions().getReminder()
+		global g_autolog
+		g_autolog = autolog.autologInstance()
+		
+		ReminderEvent(eventManager, self, keys)
 
 		self.reminders = ReminderQueue()
 		self.endOfTurnReminders = ReminderQueue()
@@ -41,9 +50,9 @@ class ReminderEventManager:
 
 		# additions to self.Events
 		moreEvents = {
-			CvUtil.EventReminderStore       : ('', self.__eventReminderStoreApply,  self.__eventReminderStoreBegin),
-			CvUtil.EventReminderRecall      : ('', self.__eventReminderRecallApply, self.__eventReminderRecallBegin),
-			CvUtil.EventReminderRecallAgain : ('', self.__eventReminderRecallAgainApply, self.__eventReminderRecallAgainBegin),
+			STORE_EVENT_ID       : ('', self.__eventReminderStoreApply,  self.__eventReminderStoreBegin),
+			RECALL_EVENT_ID      : ('', self.__eventReminderRecallApply, self.__eventReminderRecallBegin),
+			RECALL_AGAIN_EVENT_ID : ('', self.__eventReminderRecallAgainApply, self.__eventReminderRecallAgainBegin),
 		}
 		eventManager.Events.update(moreEvents)
 
@@ -52,7 +61,7 @@ class ReminderEventManager:
 		prompt = BugUtil.getPlainText("TXT_KEY_REMINDER_PROMPT")
 		ok = BugUtil.getPlainText("TXT_KEY_MAIN_MENU_OK")
 		cancel = BugUtil.getPlainText("TXT_KEY_POPUP_CANCEL")
-		popup = PyPopup.PyPopup(CvUtil.EventReminderStore, EventContextTypes.EVENTCONTEXT_SELF)
+		popup = PyPopup.PyPopup(STORE_EVENT_ID, EventContextTypes.EVENTCONTEXT_SELF)
 		popup.setHeaderString(header)
 		popup.setBodyString(prompt)
 		popup.createSpinBox(0, "", 1, 1, 1500, 0)
@@ -67,7 +76,7 @@ class ReminderEventManager:
 			reminderText = popupReturn.getEditBoxString(1)
 			reminder = Reminder(reminderTurn, reminderText)
 			self.reminders.push(reminder)
-			if (g_autolog.isLogging() and BugAlerts.isLogReminders()):
+			if (g_autolog.isLogging() and ReminderOpt.isAutolog()):
 				g_autolog.writeLog("Reminder: On Turn %d, %s" % (reminderTurn, reminderText))
 
 	def __eventReminderRecallBegin(self, argsList):
@@ -96,15 +105,15 @@ class ReminderEventManager:
 		if (endOfTurn):
 			queue = self.endOfTurnReminders
 			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
-			eventId = CvUtil.EventReminderRecallAgain
+			eventId = RECALL_AGAIN_EVENT_ID
 		else:
 			g_turnReminderTexts = ""
 			queue = self.reminders
 			# endTurnReady isn't firing :(
 			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_END_TURN_PROMPT")
-			eventId = CvUtil.EventReminderRecall
+			eventId = RECALL_EVENT_ID
 #			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
-#			eventId = CvUtil.EventReminderRecallAgain
+#			eventId = RECALL_AGAIN_EVENT_ID
 		yes = BugUtil.getPlainText("TXT_KEY_POPUP_YES")
 		no = BugUtil.getPlainText("TXT_KEY_POPUP_NO")
 		while (not queue.isEmpty()):
@@ -116,16 +125,16 @@ class ReminderEventManager:
 				queue.pop()
 			else:
 				self.reminder = queue.pop()
-				if (g_autolog.isLogging() and BugAlerts.isLogReminders()):
+				if (g_autolog.isLogging() and ReminderOpt.isAutolog()):
 					g_autolog.writeLog("Reminder: %s" % self.reminder.message)
 				if (not endOfTurn):
 					if (g_turnReminderTexts):
 						g_turnReminderTexts += ", "
 					g_turnReminderTexts += self.reminder.message
-				if (BugAlerts.isShowRemindersLog()):
+				if (ReminderOpt.isShowMessage()):
 					CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
 											 None, 0, None, ColorTypes(8), 0, 0, False, False)
-				if (BugAlerts.isShowRemindersPopup()):
+				if (ReminderOpt.isShowPopup()):
 					popup = PyPopup.PyPopup(eventId, EventContextTypes.EVENTCONTEXT_SELF)
 					popup.setHeaderString(self.reminder.message)
 					popup.setBodyString(prompt)
@@ -143,16 +152,9 @@ class ReminderEventManager:
 		self.reminders = queue
 
 
-class AbstractReminderEvent(object):
+class ReminderEvent:
 
-	def __init__(self, eventManager, *args, **kwargs):
-		super(AbstractReminderEvent, self).__init__(*args, **kwargs)
-
-class ReminderEvent(AbstractReminderEvent):
-
-	def __init__(self, eventManager, reminderManager, *args, **kwargs):
-		super(ReminderEvent, self).__init__(eventManager, *args, **kwargs)
-
+	def __init__(self, eventManager, reminderManager, keys):
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
@@ -162,16 +164,15 @@ class ReminderEvent(AbstractReminderEvent):
 
 		self.eventMgr = eventManager
 		self.reminderManager = reminderManager
+		self.keys = keys
 
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
-		if ( eventType == self.eventMgr.EventKeyDown ):
-			theKey=int(key)
-			# If ALT + M or ALT + CTRL + R was hit, show dialog box to set up reminder
-			if ((theKey == int(InputTypes.KB_M) and self.eventMgr.bAlt)
-			or (theKey == int(InputTypes.KB_R) and self.eventMgr.bAlt and self.eventMgr.bCtrl)):
-				if (BugAlerts.isShowReminders()):
-					self.eventMgr.beginEvent(CvUtil.EventReminderStore)
+		if ( ReminderOpt.isEnabled() and eventType == self.eventMgr.EventKeyDown ):
+			if ( not InputUtil.isModifier(key) ):
+				stroke = InputUtil.Keystroke(key, self.eventMgr.bAlt, self.eventMgr.bCtrl, self.eventMgr.bShift)
+				if stroke in self.keys:
+					self.eventMgr.beginEvent(STORE_EVENT_ID)
 					return 1
 		return 0
 
@@ -180,14 +181,14 @@ class ReminderEvent(AbstractReminderEvent):
 		iGameTurn = argsList[0]
 
 		g_turnReminderTexts = None
-		if (BugAlerts.isShowReminders()):
-			self.eventMgr.beginEvent(CvUtil.EventReminderRecall)
+		if (ReminderOpt.isEnabled()):
+			self.eventMgr.beginEvent(RECALL_EVENT_ID)
 
 	def onEndTurnReady(self, argsList):
 		iGameTurn = argsList[0]
 		
-		if (BugAlerts.isShowReminders()):
-			self.eventMgr.beginEvent(CvUtil.EventReminderRecallAgain)
+		if (ReminderOpt.isEnabled()):
+			self.eventMgr.beginEvent(RECALL_AGAIN_EVENT_ID)
 #			return 1
 
 	def onGameStart(self, argsList):
@@ -201,7 +202,7 @@ class ReminderEvent(AbstractReminderEvent):
 		queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
 		if (queue):
 			self.reminderManager.setReminders(queue)
-			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, None)
+#			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, None)
 #		return 1
 
 	def onPreSave(self, argsList):

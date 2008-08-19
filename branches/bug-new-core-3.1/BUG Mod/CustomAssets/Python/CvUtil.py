@@ -55,21 +55,6 @@ EventWBScriptPopup = 5010
 EventWBStartYearPopup = 5011
 EventShowWonder = 5012
 
-# BUG - Events - start
-
-# autolog addition 1/1
-EventLogOpen = 5050
-EventCustomLogEntry = 5051
-
-# reminder addition 1/1
-EventReminderStore = 5060
-EventReminderRecall = 5061
-EventReminderRecallAgain = 5062
-
-# unit renamer addition 1/1
-EventUnitRename = 5070
-# BUG - Events - end
-
 EventLButtonDown=1
 EventLcButtonDblClick=2
 EventRButtonDown=3
@@ -78,16 +63,34 @@ EventForward=5
 EventKeyDown=6
 EventKeyUp=7
 
-# BUG - Events - start
 # List of unreported Events
-SilentEvents = [EventEditCityName, EventEditUnitName, 
-# Logger
-				EventLogOpen, EventCustomLogEntry, 
-# Reminders
-				EventReminderStore, EventReminderRecall, EventReminderRecallAgain,
-# Unit Renamer
-				EventUnitRename]
-# BUG - Events - end
+SilentEvents = [EventEditCityName, EventEditUnitName]
+
+# BUG - Core - start
+BUG_FIRST_EVENT = 5050
+g_nextEventID = BUG_FIRST_EVENT
+g_bugEvents = {}
+def getNewEventID(name=None, silent=True):
+	"""Defines a new event and returns its unique ID to be passed to 
+	BugEventManager.beginEvent(id).
+	If name is given, it is stored in a map for lookup by ID later for debugging.
+	"""
+	global g_nextEventID
+	id = g_nextEventID
+	g_nextEventID += 1
+	if name:
+		g_bugEvents[id] = name
+	if silent:
+		addSilentEvent(id)
+	return id
+
+def getEventName(id):
+	return g_bugEvents[id]
+
+def addSilentEvent(id):
+	if id not in SilentEvents:
+		SilentEvents.append(id)
+# BUG - Core - end
 
 # Popup defines (TODO: Expose these from C++)
 FONT_CENTER_JUSTIFY=1<<2

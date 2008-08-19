@@ -1,6 +1,10 @@
 ## TechPrefs
-## Builds ordered lists of techs as preferred by the various Great People
-## Copyright 2007 EmperorFool @ civfanatics.com
+##
+## Builds ordered lists of techs as preferred by the various Great People.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 

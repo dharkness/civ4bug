@@ -1,6 +1,10 @@
 ## BugAlertsOptionsTab
-## Tab for the BUG Civ4lerts and Reminders Options
-## BUG Mod - Copyright 2007
+##
+## Tab for the BUG Civ4lerts and Reminders Options.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 import BugOptionsTab
 
@@ -17,51 +21,51 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# Reminders
 		left, right = self.addTwoColumnLayout(screen, column, "Main")
-		self.addCheckbox(screen, left, "Alert_Reminders")
-		self.addSpacer(screen, right, "Alert")
-		self.addTextDropdown(screen, left, left, "Alert_RemindersMethod")
-		self.addCheckbox(screen, right, "Alert_LogReminders")
+		self.addCheckbox(screen, left, "Reminder__Enabled")
+		self.addSpacer(screen, right, "Reminder")
+		self.addTextDropdown(screen, left, left, "Reminder__DisplayMethod")
+		self.addCheckbox(screen, right, "Reminder__Autolog")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
 		# Civ4lerts
-		self.addCheckbox(screen, column, "Alert_Civ4lerts")
+		self.addCheckbox(screen, column, "Civ4lerts__Enabled")
 		left, center, right = self.addThreeColumnLayout(screen, column, "Civ4lerts", True)
 		
 		# Cities
-		self.addLabel(screen, left, "Alert_City", "Cities:")
-		comboBox = "Alert_ComboBoxGrowth"
+		self.addLabel(screen, left, "Civ4lerts__City", "Cities:")
+		comboBox = "Civ4lerts__ComboBoxGrowth"
 		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Alert_CityPendingGrowth")
-		self.addCheckbox(screen, comboBox, "Alert_CityGrowth")
-		comboBox = "Alert_ComboBoxHealthiness"
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingGrowth")
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityGrowth")
+		comboBox = "Civ4lerts__ComboBoxHealthiness"
 		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Alert_CityPendingHealthiness")
-		self.addCheckbox(screen, comboBox, "Alert_CityHealthiness")
-		comboBox = "Alert_ComboBoxHappiness"
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingHealthiness")
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityHealthiness")
+		comboBox = "Civ4lerts__ComboBoxHappiness"
 		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Alert_CityPendingHappiness")
-		self.addCheckbox(screen, comboBox, "Alert_CityHappiness")
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingHappiness")
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityHappiness")
 		
-		self.addCheckbox(screen, left, "Alert_CityPendingBorderExpansion")
-		self.addCheckbox(screen, left, "Alert_CityCanHurryPop")
-		self.addCheckbox(screen, left, "Alert_CityCanHurryGold")
+		self.addCheckbox(screen, left, "MoreCiv4lerts__CityPendingBorderExpansion")
+		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryPop")
+		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryGold")
 		
 		# Diplomacy
-		self.addLabel(screen, center, "Alert_Diplomacy", "Diplomacy:")
-		self.addCheckbox(screen, center, "Alert_OpenBordersTrade")
-		self.addCheckbox(screen, center, "Alert_DefensivePactTrade")
-		self.addCheckbox(screen, center, "Alert_PermanentAllianceTrade")
+		self.addLabel(screen, center, "Civ4lerts__Diplomacy", "Diplomacy:")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__OpenBordersTrade")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__DefensivePactTrade")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__PermanentAllianceTrade")
 		
 		# Trades
-		self.addLabel(screen, right, "Alert_Trade", "Trading:")
-		self.addCheckbox(screen, right, "Alert_TechTrade")
+		self.addLabel(screen, right, "Civ4lerts__Trade", "Trading:")
+		self.addCheckbox(screen, right, "MoreCiv4lerts__TechTrade")
 		
-		self.addCheckboxIntDropdown(screen, right, right, "Alert_GoldTrade", "Alert_GoldTradeThresh")
-		self.addCheckboxIntDropdown(screen, right, right, "Alert_GoldPerTurnTrade", "Alert_GoldPerTurnTradeThresh")
+		self.addCheckboxIntDropdown(screen, right, right, "Civ4lerts__GoldTrade", "Civ4lerts__GoldTradeThresh")
+		self.addCheckboxIntDropdown(screen, right, right, "Civ4lerts__GoldPerTurnTrade", "Civ4lerts__GoldPerTurnTradeThresh")
 		
 		# Victories
-		self.addLabel(screen, right, "Alert_Victory", "Victory:")
+		self.addLabel(screen, right, "Civ4lerts__Victory", "Victory:")
 		
-		self.addCheckboxFloatDropdown(screen, right, right, "Alert_DomPop", "Alert_DomPopThresh")
-		self.addCheckboxFloatDropdown(screen, right, right, "Alert_DomLand", "Alert_DomLandThresh")
+		self.addCheckboxFloatDropdown(screen, right, right, "MoreCiv4lerts__DomPop", "MoreCiv4lerts__DomPopThresh")
+		self.addCheckboxFloatDropdown(screen, right, right, "MoreCiv4lerts__DomLand", "MoreCiv4lerts__DomLandThresh")

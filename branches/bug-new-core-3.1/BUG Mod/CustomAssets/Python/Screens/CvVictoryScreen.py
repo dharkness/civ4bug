@@ -9,8 +9,8 @@ import ColorUtil
 import AttitudeUtils
 import TechUtil
 
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
+import BugOptions
+BugScreens = None
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -115,6 +115,9 @@ class CvVictoryScreen:
 										
 	def interfaceScreen(self):
 
+		global BugScreens
+		BugScreens = BugOptions.getOptions().getAdvisors()
+		
 		# Create a new screen
 		screen = self.getScreen()
 		if screen.isActive():
