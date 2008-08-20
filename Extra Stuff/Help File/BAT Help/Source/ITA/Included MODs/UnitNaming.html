@@ -21,7 +21,7 @@ E' possibile denominare le Unità in una gran varietà di modi, utilizzando le con
 Digitando <b>Ctrl+Alt+N</b> si apre una finestrella di test, dove potete immettere una convenzione di denominazione e vedere visualizzato 
 il risultato, applicato alla prima Unità che avete costruito ed alla prima Città che avete fondato 
 (ragione per cui se non avete ancora fondato una Città o costruito una Unità, la finestrella non funzionerà). 
-Nella finestrella sono presenti due distinti pulsanti di<i>"OK"</i>, uno dei quali attiva l'incremento del contatore mentre l'altro no: 
+Nella finestrella sono presenti due distinti pulsanti di <i>"OK"</i>, uno dei quali attiva l'incremento del contatore mentre l'altro no: 
 la ragione di ciò è che se si attiva l'incremento del contatore, i numeri utilizzati nella finestra di test non saranno più disponibili nel gioco 
 per quella specifica Unità (a meno di non ricaricare la partita una volta conclusi i test, ovviamente); 
 d'altra parte, soprattutto per testare denominazioni complesse, può essere utile avere un contatore attivo.</P>
@@ -74,38 +74,39 @@ Per esempio, se  scegliete il formato <strong>A</strong>, la trentesima unità sa
 <P>Più nel dettaglio:</P>
 <P><SPAN style="color: #0000ff;"><b>^civ4^</b></SPAN><br>
 	Questa indicazione prevale su tutte le altre.<br> 
-	Per l'Unità in questione verrà utilizzato il nome standard di Civ4, indipendentemente dalle altre indicazioni.<br>  
+	Per l'Unità in questione verrà utilizzato il nome standard di <i>Civ4</i>, indipendentemente dalle altre indicazioni.<br> 
 	Per esempio, la stringa <em>^civ4^ di ^ct^</em> fornirà come risultato il nome standard dell'Unità, 
 	e la parte &ldquo;<em>di ^ct^</em>&rdquo; verrà ignorata.</P>
 <P><SPAN style="color: #0000ff;"><b>^rd^</b></SPAN><br>
 	Questa indicazione prevale su tutte le altre, a parte <em>^civ4^</em>.<br> 
-	Per l'Unità in questione verrà utilizzato un nome casuale, indipendentemente dalle altre indicazioni.<br>  
-	Per esempio, la stringa <em>Armata</em> <em>^cv^ ^rd^</em> fornirà come risultato un nome casuale,  
+	Per l'Unità in questione verrà utilizzato un nome casuale, indipendentemente dalle altre indicazioni.<br> 
+	Per esempio, la stringa <em>Armata ^cv^ ^rd^</em> fornirà come risultato un nome casuale, 
 	e la parte &ldquo;<em>Armata</em> <em>^cv^</em>&rdquo; verrà ignorata.</P>
 <P><SPAN style="color: #0000ff;"><b>^rc^</b></SPAN><br>
 	Questa indicazione prevale su tutte le altre, a parte <em>^civ4^</em> e <em>^rd^</em>.<br> 
-	Per l'Unità in questione verrà utilizzato un nome casuale relativo alla Civiltà cui appartiene.<br>  
+	Per l'Unità in questione verrà utilizzato un nome casuale relativo alla Civiltà cui appartiene.<br> 
 	Valgono considerazioni analoghe al caso precedente.</P>
 <P><SPAN style="color: #0000ff;"><b>^ut^</b></SPAN><br>
 	Questa indicazione assegna all'Unità come nome quello del tipo di Unità (ad esempio &ldquo;Arciere&rdquo;).</P>
 <P><SPAN style="color: #0000ff;"><b>^cb^</b></SPAN><br>
 	Questa indicazione assegna all'Unità come nome quello del tipo di combattimento dell'Unità (ad esempio &ldquo;corpo a corpo&rdquo;).</P>
-
+<br>
 <P>Vediamo ora alcuni esempi chiarificatori:</P>
 <UL>
 	<LI><b>^ut^ (^cv^)</b>, se applicata ad un arciere romano, fornirà come risultato <em>&ldquo;Arciere (Roma)&rdquo;</em>.</LI>
 	<LI><b>^ut^ cnt[r]</b>, se applicata alle prime due Unità prodotte, un arciere ed un guerriero, fornirà come risultato 
 		<em>&ldquo;Arciere I&rdquo;</em> e <em>&ldquo;Guerriero II&rdquo;</em>; in questo caso, il conteggio prosegue all'infinito senza reset.</LI>
 	<LI><b>Armata ^cnt[A]^ ^tt1[s][2:2]^</b>, se applicata alle prime tre Unità prodotte, un arciere, un guerriero ed uno scout, 
-		fornirà come risultato <em>&ldquo;Armata A&rdquo;</em>, <em>&ldquo;Armata B&rdquo;</em> e <em>&ldquo;Armata A&rdquo;</em>; 
+		fornirà come risultato <em>&ldquo;Armata A&rdquo;</em>, <em>&ldquo;Armata B&rdquo;</em> e di nuovo <em>&ldquo;Armata A&rdquo;</em>; 
 		in questo caso, il conteggio non prosegue all'infinito, ma si resetta quando viene raggiunto il massimo indicato da <em>tt1</em>, 
-		che in questo caso non è un numero random ma vale 2 (perchè	x=y=2) e non viene mostrato (a causa del formato numerico <em>s</em>).</LI>
+		che in questo caso non è un numero random ma vale 2 (perchè x=y=2) e non viene mostrato (a causa del formato numerico <em>s</em>).</LI>
 	<LI><b>^cntc[n]^ di ^tt1[n][6:10]^, Unimatrice ^tt2[n][1]^</b>, formulazione più complessa (non per niente è quella utilizzata dai Borg ^_-), 
 		che conteggia le Unità dello stesso tipo di combattimento, fino ad un totale (determinato da <em><b>tt1</b></em>) 
 		dato da un numero casuale compreso fra 6 e 10; ogni volta che il contatore si resetta per aver raggiunto tale massimo, 
 		il numero indicato da <em><b>tt2</b></em> sale di una unità (partendo da 1). 
 		Il risultato fornito sarà qualcosa del tipo: &nbsp; 
-		&hellip;, <i>&ldquo;6 di 7, Unimatrice 1&rdquo;</i>, <i>&ldquo;7 di 7, Unimatrice 1&rdquo;</i>, <i>&ldquo;1 di 9, Unimatrice 2&rdquo;</i>, &hellip;
+		&hellip;, <i>&ldquo;6 di 7, Unimatrice 1&rdquo;</i>, <i>&ldquo;7 di 7, Unimatrice 1&rdquo;</i>, 
+		<i>&ldquo;1 di 9, Unimatrice 2&rdquo;</i>, &hellip;
 	</LI>
 </UL>
 <P>Infine, alcune FAQ:</P>
