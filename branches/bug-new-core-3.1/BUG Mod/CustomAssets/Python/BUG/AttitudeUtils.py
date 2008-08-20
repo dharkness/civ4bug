@@ -13,6 +13,14 @@ from CvPythonExtensions import *
 import BugUtil
 import re
 
+NUM_ATTITUDES = 5
+
+FURIOUS = 0
+ANNOYED = 1
+CAUTIOUS = 2
+PLEASED = 3
+FRIENDLY = 4
+
 DEFAULT_COLORS = (
 	"COLOR_RED", 
 	"COLOR_CYAN", 
@@ -23,60 +31,87 @@ DEFAULT_COLORS = (
 ATTITUDE_COLORS = None
 ATTITUDE_ICONS = None
 
-# globals
 gc = CyGlobalContext()
 
 def init (colors=DEFAULT_COLORS):
+	"""Initializes this module, raising ConfigError if any problems occur."""
+	# create font icons for each attitude level
 	global ATTITUDE_ICONS
-	ATTITUDE_ICONS = (unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4 + i) 
-					  for i in range(5))
+	ATTITUDE_ICONS = [unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4 + i) 
+					  for i in range(5)]
+	if len(ATTITUDE_ICONS) != NUM_ATTITUDES:
+		raise BugUtil.ConfigError("Failed to create attitude icons")
+	
+	# convert colors to type IDs
+	if len(colors) != NUM_ATTITUDES:
+		raise BugUtil.ConfigError("Expected %d colors" % NUM_ATTITUDES)
 	global ATTITUDE_COLORS
 	ATTITUDE_COLORS = map(gc.getInfoTypeForString, colors)
 	invalidCount = ATTITUDE_COLORS.count(-1)
 	if invalidCount > 0:
-		raise BugUtil.ConfigError("%d invalid color(s)" % invalidCount)
+		invalid = []
+		for id, color in zip(ATTITUDE_COLORS, colors):
+			if id == -1:
+				invalid.append(color)
+		raise BugUtil.ConfigError("Given %d invalid colors: %s" % (invalidCount, str(invalid)))
+
+
+def hasAttitude (nPlayer, nTarget):
+	"""Returns True if nTarget can see nPlayer's attitude toward them."""
+	return (nPlayer != nTarget
+	        and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam()))
 
 def getAttitudeString (nPlayer, nTarget):
-	if (nPlayer != nTarget
-	and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
+	"""Returns the full hover text with attitude modifiers nPlayer has toward nTarget."""
+	if hasAttitude(nPlayer, nTarget):
 		return CyGameTextMgr().getAttitudeString(nPlayer, nTarget)
+	return None
 
 def getAttitudeCategory (nPlayer, nTarget):
-	if (nPlayer != nTarget
-	and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
+	"""Returns the attitude level nPlayer has toward nTarget [0,4]."""
+	if hasAttitude(nPlayer, nTarget):
 		return gc.getPlayer(nPlayer).AI_getAttitude(nTarget)
+	return None
 
 def getAttitudeColor (nPlayer, nTarget):
-	return ATTITUDE_COLORS[getAttitudeCategory(nPlayer, nTarget)]
+	"""Returns the color of the attitude nPlayer has toward nTarget."""
+	iCategory = getAttitudeCategory(nPlayer, nTarget)
+	if iCategory is not None:
+		return ATTITUDE_COLORS[iCategory]
+	return -1
 
 def getAttitudeIcon (nPlayer, nTarget):
-	if (nPlayer != nTarget
-	and gc.getTeam(gc.getPlayer(nPlayer).getTeam()).isHasMet(gc.getPlayer(nTarget).getTeam())):
-		return ATTITUDE_ICONS[getAttitudeCategory(nPlayer, nTarget)]
+	"""Returns the font icon of the attitude nPlayer has toward nTarget."""
+	iCategory = getAttitudeCategory(nPlayer, nTarget)
+	if iCategory is not None:
+		return ATTITUDE_ICONS[iCategory]
+	return ""
 
 def getAttitudeCount (nPlayer, nTarget):
+	"""Returns the total attitude modifiers nPlayer has toward nTarget."""
 	sAttStr = getAttitudeString(nPlayer, nTarget)
 	if sAttStr == None:
 		return
 	nAtt = 0
 	# TODO: Replace with simple line-by-line handling
-	#	   (so it doesn't get tricked by leader names)
-	ltPlusAndMinuses = re.findall ("[-+][0-9]+", sAttStr)
+	#	    so it doesn't get tricked by leader names (": " fixes issue)
+	ltPlusAndMinuses = re.findall ("[-+][0-9]+: ", sAttStr)
 	for i in range (len (ltPlusAndMinuses)):
-		nAtt += int (ltPlusAndMinuses[i])
+		nAtt += int (ltPlusAndMinuses[i][:-2])
 	return nAtt
 
 
-def getAttitudeText (nPlayer, nTarget, vNumbers, vSmilies, vWorstEnemy, vWarPeace):
+def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
+	"""Returns a string describing the attitude nPlayer has toward nTarget."""
 	nAttitude = getAttitudeCount (nPlayer, nTarget)
 	if nAttitude == None:
 		return None
 	
-	if vNumbers:
+	if bNumber:
 		szText = str (nAttitude)
 		if nAttitude > 0:
 			szText = "+" + szText
-		if vSmilies:
+		if bSmily:
 			szText = "[" + szText + "] "
 		else:
 			szText = "<font=3>   " + szText + "</font> "
@@ -86,17 +121,17 @@ def getAttitudeText (nPlayer, nTarget, vNumbers, vSmilies, vWorstEnemy, vWarPeac
 	iColor = getAttitudeColor (nPlayer, nTarget)
 	szText = BugUtil.colorText(szText, iColor)
 	
-	if vSmilies:
+	if bSmily:
 		szText = getAttitudeIcon(nPlayer, nTarget) + " " + szText
 	
 	pPlayer = gc.getPlayer(nPlayer)
 	pTarget = gc.getPlayer(nTarget)
-	if vWorstEnemy:
+	if bWorstEnemy:
 		szWorstEnemy = pPlayer.getWorstEnemyName()
 		if szWorstEnemy and pTarget.getName() == szWorstEnemy:
 			szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 	
-	if vWarPeace:
+	if bWarPeace:
 		nTeam = pPlayer.getTeam()
 		pTeam = gc.getTeam(nTeam)
 		nTargetTeam = pTarget.getTeam()
