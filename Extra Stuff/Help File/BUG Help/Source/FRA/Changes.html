@@ -2,177 +2,121 @@
 <HTML>
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
-	<TITLE>Changes made to original Mods </TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.3  (Win32)">
-	<META NAME="CREATED" CONTENT="0;0">
-	<META NAME="CHANGEDBY" CONTENT="Jason Cole">
-	<META NAME="CHANGED" CONTENT="20080106;164622">
+	<TITLE>Changes made to original Mods</TITLE>
 	<STYLE TYPE="text/css">
 	<!--
 		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
-		P.style2 { color: #0000ff; font-size: 14pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 16pt; font-style: italic; font-weight: bold }
+		span.style4 { color: #0000ff; font-weight: bold }
 	-->
 	</STYLE>
 </HEAD>
 <BODY LANG="en-US" DIR="LTR">
-<P CLASS="style1">Changes made to original Mods 
-</P>
-<P ALIGN=JUSTIFY>Below
-are changes that we have made to the original code. The majority of
-changes made were required for Beyond the Sword play. Nothing we have done will
-alter the rules or your gameplay in any way.</P>
-<P>&nbsp;</P>
+
+<P CLASS="style1">Changes made to original Mods</P>
+<P>Below are changes that we have made to the original code.  
+The majority of changes made were required for  <b><i>Beyond the Sword</i></b> play. 
+Nothing we have done will alter the rules or your gameplay in any way.</P>
+<br>
+
+<P CLASS="style2">Autolog</P>
+Enhanced by <strong><em>Ruff_Hi</em></strong> prior to merging with <b>BUG Mod</b>.
+<ul>
+  <li>Silent logging mode.</li>
+  <li>Default file name.</li>
+  <li>User controlled logging start/stop.</li>
+  <li>Logging of pillaging.</li>
+  <li>Logging of whipping.</li>
+  <li>Logging of war status.</li>
+  <li>Logging of Civic changes.</li>
+  <li>Logging of Religion changes.</li>
+  <li>Location and probability of combat.</li>
+  <li>While Attacking/Defending status added to combat.</li>
+  <li>"IBT" added to split user actions and AI actions.</li>
+  <li>Option to treat 4000BC as 'turn 0'.</li>
+  <li>Date and Time of turn.</li>
+  <li>Expected duration on builds and tech research.</li>
+  <li>Color coded without '&quot;' for forums that don't support them.</li>
+</ul><BR>
+
+<P CLASS="style2">Better Espionage Screen</P>
+<ul>
+  <li>Rearranged fields for clarity.</li>
+  <li>Added tri-color coding to espionage cost modifier percentages: default, good and bad.</li>
+  <li>Added tri-color coding to missions (both passive and active): cannot perform, can perform and can almost perform.</li>
+</ul><BR>
+
+<P CLASS="style2">Civ4lerts</P>
+<ul>
+  <li>Rewrote the majority of code from scratch to fix the timing bugs with most alerts.</li>
+  <li>Added alerts for when a Civilization is willing to sign Open Borders, Defensive Pact and Permanent Alliance agreements.</li>
+  <li>Added alerts for when production in a city can be hurried (by population or gold).</li>
+  <li>Extended pending growth alert to include actual growth and pending/actual shrinkage of a city.</li>
+  <li>Changed happy/healthy alerts to notify whenever the city changes state either way.</li>
+  <li>Created new options for alerts that shared options with other alerts.</li>
+</ul><BR>
+
+<P CLASS="style2">Customizable Domestic Advisor</P>
+<ul>
+  <li>Added BtS columns (e.g. corporations and espionage) and &quot;Liberate Colony&quot; button.</li>
+  <li>Added other new columns (e.g. turns until culture growth and Great Person birth, and &ldquo;hurry pop/gold&rdquo; columns).</li>
+  <li>Added a set of building class columns showing the Civilization-specific buildings (based on your current Civilization). 
+  These columns show whether or not you have constructed the building type instead of showing the building's effect 
+  (the building's effect can be seen in the hover text of the column headers).</li>
+  <li>Resource columns now show their icon as the header and the effects or the availability (2 different series) as the value.</li>
+  <li>Fixed crash caused when you had more than 20 or so cities.</li>
+  <li>Added page switching buttons.</li>
+  <li>Added buttons to move pages while customizing.</li>
+  <li>Added a button to toggle whether or not to display the controls for changing specialists for a page.</li>
+</ul><BR>
+
 <P CLASS="style2">Great Person Progress Bar</P>
 <ul>
-  <li>  <SPAN>Always displayed, even when
-    no city has a non-zero GP rate.</SPAN></li>
-  <li>  <SPAN>Optionally displays the
-    percent chances of each GP type.</SPAN></li>
-  <li>  <SPAN>Clicking the text in the
-    bar zooms to the city.</SPAN></li>
-  <li>  <SPAN>Selecting a city on the map
-    shows the GP information for that city.</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Autolog
-(enhanced by Ruff_Hi prior to merging with BUG)</P>
+  <li>Always displayed, even when no city has a non-zero GP rate.</li>
+  <li>Optionally displays the percent chances of each GP type.</li>
+  <li>Clicking the text in the bar zooms to the city.</li>
+  <li>Selecting a city on the map shows the GP information for that city.</li>
+</ul><BR>
+
+<P CLASS="style2">Improved Glance Tab</P>
 <ul>
-  <li>  <SPAN>Silent logging mode</SPAN></li>
-  <li>  <SPAN>Default file name</SPAN></li>
-  <li>  <SPAN>User controlled logging
-    start / stop</SPAN></li>
-  <li>  <SPAN>Logging of pillaging</SPAN></li>
-  <li>  <SPAN>Logging of Whipping</SPAN></li>
-  <li>  <SPAN>Logging of War status</SPAN></li>
-  <li>  <SPAN>Logging of Civic changes</SPAN></li>
-  <li>  <SPAN>Logging of Religion
-    changes</SPAN></li>
-  <li>  <SPAN>Location and probability
-    of combat</SPAN></li>
-  <li>  <SPAN>While Attacking /
-    Defending status added to combat</SPAN></li>
-  <li>  <SPAN>IBT added to split user
-    actions and AI actions</SPAN></li>
-  <li>  <SPAN>Option to treat 4000BC
-    as turn 0</SPAN></li>
-  <li>  <SPAN>Date and Time of turn</SPAN></li>
-  <li>  <SPAN>Expected duration on
-    builds and tech research</SPAN></li>
-  <li>  <SPAN>Color coded without '&quot;'
-    for forums that don't support them</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Civ4lerts</P>
+  <li>Added display for Worst Enemy.</li>
+  <li>Changed War indicator to Crossed Swords.</li>
+  <li>Show Forced Peace indicator.</li>
+</ul><BR>
+
+<P CLASS="style2">Plot List Enhancements</P>
 <ul>
-  <li>  <SPAN>Rewrote the majority of
-    code from scratch to fix the timing bugs with most alerts.</SPAN></li>
-  <li>  <SPAN>Added alerts for when a
-    Civilization is willing to sign Open Borders, Defensive Pact and Permanent
-    Alliance agreements.</SPAN></li>
-  <li>  <SPAN>Added alerts for when
-    production in a city can be hurried (by population or gold).</SPAN></li>
-  <li>  <SPAN>Extended pending growth
-    alert to include actual growth and pending/actual shrinkage of a
-    city.</SPAN></li>
-  <li>  <SPAN>Changed happy/healthy
-    alerts to notify whenever the city changes state either way.</SPAN></li>
-  <li>  <SPAN>Created new options for
-    alerts that shared options with other alerts.</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Reminders</P>
-<ul>
-  <li>  <SPAN>Events are saved and
-    loaded.</SPAN></li>
-  <li>  <SPAN>When a reminder pops up,
-    you have the option to show the reminder again the next turn.</SPAN></li>
-  <li>  <SPAN>You can choose how
-    reminders are displayed: in the event log, as a modal pop up or both.</SPAN></li>
-  <li>  <SPAN>Reminders can be logged
-    using </SPAN><EM><STRONG><SPAN>Autolog</SPAN></STRONG></EM><SPAN>.</SPAN></li>
-  <li>  <SPAN>Reminders that have
-    fired at the start of the turn are shown as the flashing text at the
-    end of your turn.</SPAN><BR align="JUSTIFY">
-    <BR>
-  </li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Better
-  Espionage Screen</P>
-<ul>
-  <li>  <SPAN>Rearranged fields for
-    clarity.</SPAN></li>
-  <li>  <SPAN>Added tri-color coding
-    to espionage cost modifier percentages: default, good and bad.</SPAN></li>
-  <li>  <SPAN>Added tri-color coding
-    to missions (both passive and active): cannot perform, can perform
-    and can almost perform.</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Customizable
-Domestic Advisor</P>
-<ul>
-  <li>  <SPAN>Added BtS columns (e.g.
-    corporations and espionage) and &quot;Liberate Colony&quot; button.</SPAN></li>
-  <li>  <SPAN>Added other new columns
-    (e.g. turns until culture growth and great person birth, and &ldquo;hurry
-    pop/gold&rdquo; columns).</SPAN></li>
-  <li>  <SPAN>Added a set of building
-    class columns that show whether or not you have constructed the
-    building type (based on your current civilization) for that class
-    (instead of showing the building&rsquo;s effect). The headers for
-    these columns are the building icons, and the hover text shows the
-    building&rsquo;s effect.</SPAN></li>
-  <li>  <SPAN>Resource columns now
-    show their icon as the header and the effects or the availability as
-    the value (2 different series).</SPAN></li>
-  <li>  <SPAN>Fixed crash caused when
-    you had more than 20 or so cities.</SPAN></li>
-  <li>  <SPAN>Added page switching
-    buttons.</SPAN></li>
-  <li>  <SPAN>Added buttons to move
-    pages while customizing.</SPAN></li>
-  <li>  <SPAN>Added a button to toggle
-    whether or not to display the controls for changing specialists for a
-    page.</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Raw
-Commerce</P>
-<ul>
-  <li>  <SPAN>Added the 50% bonus for
-    the capital under the Bureaucracy civic.</SPAN></li>
-  <li>  <SPAN>Added a button to toggle
-    between commerce and production.</SPAN></li>
-</ul>
-<P>&nbsp;</P>
-<P CLASS="style2" ALIGN=JUSTIFY>Specialist Stacker</P>
-<ul>
-  <li>Added Chevrons to Specialist based on 5, 10, and 20 Specialist.  </li>
-</ul>
-<p>&nbsp;</p>
-<p class="style2">Plot List Enhancements </p>
-<ul>
-  <li>Changed filtering options to be more intuitive </li>
-  <li>Change multiple buttons to toggle buttons where the icon changes to show the state. </li>
+  <li>Changed filtering options to be more intuitive.</li>
+  <li>Change multiple buttons to toggle buttons where the icon changes to show the state.</li>
   <li>Finished code to allow unit movement indicator to work.</li>
-  <li>Restored Hover Text.</li>
-  <li>Made all options available through BUG Options instead of through modifying an .INI file.</li>
-  <li>Changed Mission Tags to icons representing their current mission, if any. </li>
-</ul>
-<p></p>
-<P CLASS="style2" ALIGN=JUSTIFY>SevoPedia</P>
+  <li>Restored hover text.</li>
+  <li>Made all options available through BUG Options Screen instead of through modifying an .ini file.</li>
+  <li>Changed Mission Tags to icons representing their current mission, if any.</li>
+</ul><BR>
+
+<P CLASS="style2">Reminders</P>
+<ul>
+  <li>Events are saved and loaded.</li>
+  <li>When a reminder pops up, you have the option to show the reminder again the next turn.</li>
+  <li>You can choose how reminders are displayed: in the event log, as a modal pop up or both.</li>
+  <li>Reminders can be logged using <STRONG><EM>Autolog</EM></STRONG>.</li>
+  <li>Reminders that have fired at the start of the turn are shown as the flashing text at the end of your turn.</li>
+</ul><BR>
+
+<P CLASS="style2">SevoPedia</P>
 <ul>
   <li>Changed Leader head scale problem.</li>
-  <li>Added <a href="http://forums.civfanatics.com/showthread.php?t=274436">Shortcuts Entry</a> by Ekmek  </li>
-  <li>Added <a href="http://forums.civfanatics.com/forumdisplay.php?f=268">Strategy Guides</a> by Alerum68 </li>
-</ul>
-<p>&nbsp;</p>
-<P CLASS="style2" ALIGN=JUSTIFY>Glance Tab </P>
+  <li>Added <span class="style4">Shortcuts</span> by <b>Ekmek</b>.</li>
+  <li>Added <span class="style4">Strategy Guides</span> by <b>Alerum68</b>.</li>
+  <li>Added <span class="style4">Traits</span> by <b>Sisiutil</b>.</li>
+</ul><BR>
+
+<P CLASS="style2">Specialist Stacker</P>
 <ul>
-  <li>Added display for Worst Enemy </li>
-  <li>changed War indicator to Crossed Swords </li>
-  <li>Show Forced Peace </li>
-</ul>
+  <li>Added Chevrons based on 5, 10, and 20 Specialists.</li>
+</ul><BR>
+
 </BODY>
 </HTML>
