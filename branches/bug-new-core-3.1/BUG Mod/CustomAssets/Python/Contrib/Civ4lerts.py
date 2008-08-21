@@ -641,7 +641,7 @@ class CanHurryPopulation(AbstractCanHurry):
 	def _getAlertMessage(self, city, info):
 		iPop = city.hurryPopulation(self.keHurryType)
 		iOverflow = city.hurryProduction(self.keHurryType) - city.productionLeft()
-		if BugCityScreen.isWhipAssistOverflowCountCurrentProduction():
+		if Civ4lertsOpt.isWhipAssistOverflowCountCurrentProduction():
 			iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
 		iAnger = city.getHurryAngerTimer() + city.flatHurryAngerLength()
 		iMaxOverflow = min(city.getProductionNeeded(), iOverflow)

@@ -14,6 +14,10 @@
 	 
 	<options id="Civ4lerts" file="Civ4lerts.ini">
 		<section id="Civ4lerts">
+			<!-- Move this outside of INI once Mod objects hold options -->
+			<option id="WhipAssistOverflowCountCurrentProduction" 
+					link="City__WhipAssistOverflowCountCurrentProduction"/>
+			
 			<option id="Enabled" key="Enabled" 
 					type="boolean" default="True" 
 					get="isEnabled" set="setEnabled" 
