@@ -1230,7 +1230,7 @@ class CvMainInterface:
 	
 	# displays a single unit icon in the plot list with all its decorations
 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
-		iCount = self.getI(nRow, nCol)	
+		iCount = self.getI(nRow, nCol)
 		self.listPLEButtons[iCount] = ( pLoopUnit, nRow, nCol )
 		self.bPLEHide = False
 		
@@ -1634,7 +1634,11 @@ class CvMainInterface:
 	def doPromotion(self, id):
 		idPromo		= id % 100
 		idUnit		= id / 100
-		pUnit 		= self.listPLEButtons[idUnit][0]
+		if self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+			idButton = self.getI(idUnit, 0)
+		else:
+			idButton = self.getI(0, idUnit)
+		pUnit 		= self.listPLEButtons[idButton][0]
 		iPromo		= self.dUnitPromoList[idUnit][idPromo-1]
 		pUnit.promote(iPromo, -1)
 		
@@ -1683,7 +1687,11 @@ class CvMainInterface:
 	def doUpgrade(self, id):
 		idUpgrade		= id % 100
 		idUnit			= id / 100
-		pUnit 			= self.listPLEButtons[idUnit][0]
+		if self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+			idButton = self.getI(idUnit, 0)
+		else:
+			idButton = self.getI(0, idUnit)
+		pUnit 			= self.listPLEButtons[idButton][0]
 		iUnitType		= self.dUnitUpgradeList[idUnit][idUpgrade-1]		
 		if mt.bCtrl():
 			pPlot = pUnit.plot()
@@ -1709,7 +1717,11 @@ class CvMainInterface:
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		idPromo		= id % 100
 		idUnit		= id / 100
-		pUnit 		= self.listPLEButtons[idUnit][0]
+		if self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+			idButton = self.getI(idUnit, 0)
+		else:
+			idButton = self.getI(0, idUnit)
+		pUnit 		= self.listPLEButtons[idButton][0]
 		iPromo		= self.dUnitPromoList[idUnit][idPromo-1]
 		
 		# promo info
@@ -1745,7 +1757,11 @@ class CvMainInterface:
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		idUpgrade		= id % 100
 		idUnit			= id / 100
-		pUnit 			= self.listPLEButtons[idUnit][0]
+		if self.sPLEMode == self.PLE_MODE_STACK_HORIZ:
+			idButton = self.getI(idUnit, 0)
+		else:
+			idButton = self.getI(0, idUnit)
+		pUnit 			= self.listPLEButtons[idButton][0]
 		iUnitType		= self.dUnitUpgradeList[idUnit][idUpgrade-1]		
 		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)		
 		
