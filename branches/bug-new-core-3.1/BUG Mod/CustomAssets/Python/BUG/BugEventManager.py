@@ -4,23 +4,31 @@
 ##
 ## Changes:
 ##
-## * New methods
-##   - addEvent(eventType, handler) 
+## * New public methods
+##
+##   - addEvent(eventType)
 ##       Extend the core Civ4 event list
-##   - fireEvent(eventType, args...) 
+##   - fireEvent(eventType, args...)
 ##       Fire an event from Python
-##   - reportEvent(eventType, argsList)
-##       Print a debug message with the event and its arguments
-##       Set self.bReport to True in __init__ to enable
+##
+## * Added force (default False) parameter to addEventHandler()
+##   to call addEvent() before adding the handler.
 ##
 ## * New events
+##
 ##   - BeginActivePlayerTurn
 ##       called from CvMainInterface.updateScreen()
 ##   - LanguageChanged 
 ##       called from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
+##   - PreGameStart
+##       called from CvAppInterface.preGameStart()
 ##
-## * Calls BugInit.init() once before "OnLoad" or "PreGameStart" events are handled
-##   because CyGlobalContext is not ready during "Init" event.
+## * Events and their arguments can now optionally be logged.
+##
+## * Calls BugInit.init() once before "OnLoad" or "PreGameStart" events
+##   are handled because CyGlobalContext is not ready during "Init" event.
+##   Both must do it because "OnLoad" happens before "PreGameStart", but
+##   the latter happens before "GameStart" (as expected).
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -29,6 +37,11 @@
 from CvPythonExtensions import *
 import CvEventManager
 import BugUtil
+
+DEFAULT_REPORT = False
+DEFAULT_NOLOG_EVENTS = set((
+	"gameUpdate",
+))
 
 gc = CyGlobalContext()
 
@@ -39,12 +52,12 @@ class BugEventManager(CvEventManager.CvEventManager):
 	handlers for each event.
 	
 	Instead of modifying this file as you would have done with CvCustomEventManager,
-	you should add the names of your event managers to the file "Config/init.xml"
-	in the order you want their events to fire.
+	use the <event> and <events> tags in your mod's initialization XML file.
 	
 	Methods exist for both adding and removing event handlers.  A set method 
 	also exists to override the default handlers.  Clients should not depend 
-	on event handlers being called in a particular order.
+	on event handlers being called in a particular order, though they are
+	called in the order in which they are added.
 	
 	Note that the naming conventions for the event type strings vary from event
 	to event.  Some use initial capitalization, some do not; some eliminate the
@@ -56,20 +69,25 @@ class BugEventManager(CvEventManager.CvEventManager):
 	this event manager handles invocation of the base class handler function,
 	additional handlers should not also call the base class function themselves.
 	
+	It's best *not* to extend CvEventManager or CvCustomEventManager. In fact,
+	you are free to use module methods outside classes if you wish. 
+	
 	"""
 
-	def __init__(self):
+	def __init__(self, bReport=DEFAULT_REPORT, nologEvents=DEFAULT_NOLOG_EVENTS):
 		CvEventManager.CvEventManager.__init__(self)
 		
-		self.bReport = True
+		self.bReport = bReport
+		self.nologEvents = nologEvents
+		
 		self.bDbg = False
 		self.bMultiPlayer = False
 		self.bAllowCheats = False
 		
 		# add new core events
-		self.addEvent("PreGameStart", self.onPreGameStart)
-		self.addEvent("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
-		self.addEvent("LanguageChanged", self.onLanguageChanged)
+		self.addEvent("PreGameStart")
+		self.addEvent("BeginActivePlayerTurn")
+		self.addEvent("LanguageChanged")
 		
 		# map the initial EventHandlerMap values into the new data structure
 		for eventType, eventHandler in self.EventHandlerMap.iteritems():
@@ -78,32 +96,36 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def checkEventType(self, eventType):
 		"""Enforces that eventType is defined.
 		
-		Raises ConfigError if the eventType is not valid.
+		Raises ConfigError if the eventType is undefined.
 		"""
 		if eventType not in self.EventHandlerMap:
-			raise BugUtil.ConfigError("Event '%s' is not valid" % eventType)
+			raise BugUtil.ConfigError("Event '%s' is undefined" % eventType)
 
-	def addEvent(self, eventType, eventHandler):
-		"""Creates a new event type by adding a handler to CvEventManager's map.
+	def addEvent(self, eventType):
+		"""Creates a new event type by adding it to CvEventManager's map.
 		
-		Overwrites any existing handler with a warning.
+		Prints a warning if eventType is already defined but does not
+		alter its default handler.
 		"""
 		if eventType in self.EventHandlerMap:
-			BugUtil.debug("WARN: event '%s' is already defined; overriding default handler %r" 
-						  % (eventType, self.EventHandlerMap[eventType]))
-		self.EventHandlerMap[eventType] = eventHandler
+			BugUtil.debug("WARN: event '%s' is already defined" % eventType)
+		else:
+			self.EventHandlerMap[eventType] = None
 
-	def addEventHandler(self, eventType, eventHandler):
+	def addEventHandler(self, eventType, eventHandler, force=False):
 		"""Adds a handler for the given event type.
 		
 		A list of supported event types can be found in the initialization 
 		of EventHandlerMap in the CvEventManager class.  It is an error if 
 		the given handler is not found in the list of installed handlers.
 		
-		Throws ConfigError if the eventType is not valid.
+		Throws ConfigError if the eventType is undefined and force is False.
 
 		"""
-		self.checkEventType(eventType)
+		if force:
+			self.addEvent(eventType)
+		else:
+			self.checkEventType(eventType)
 		self.EventHandlerMap[eventType].append(eventHandler)
 
 	def removeEventHandler(self, eventType, eventHandler):
@@ -113,13 +135,13 @@ class BugEventManager(CvEventManager.CvEventManager):
 		of EventHandlerMap in the CvEventManager class.  It is an error if 
 		the given handler is not found in the list of installed handlers.
 		
-		Throws ConfigError if the eventType is not valid.
+		Throws ConfigError if the eventType is undefined.
 
 		"""
 		self.checkEventType(eventType)
 		self.EventHandlerMap[eventType].remove(eventHandler)
 	
-	def setEventHandler(self, eventType, eventHandler):
+	def setEventHandler(self, eventType, eventHandler, force=False):
 		"""Removes all previously installed event handlers for the given 
 		event type and installs a new handler.
 		
@@ -128,11 +150,17 @@ class BugEventManager(CvEventManager.CvEventManager):
 		primarily useful for overriding, rather than extending, the default 
 		event handler functionality.
 		
-		Throws ConfigError if the eventType is not valid.
+		Throws ConfigError if the eventType is undefined and force is False.
 
 		"""
-		self.checkEventType(eventType)
-		self.EventHandlerMap[eventType] = [eventHandler]
+		if force:
+			self.addEvent(eventType)
+		else:
+			self.checkEventType(eventType)
+		if eventHandler is not None:
+			self.EventHandlerMap[eventType] = [eventHandler]
+		else:
+			self.EventHandlerMap[eventType] = []
 	
 	def setPopupHandler(self, eventType, popupHandler):
 		"""Removes all previously installed popup handlers for the given 
@@ -163,16 +191,15 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.bDbg, self.bMultiPlayer, self.bAlt, self.bCtrl, self.bShift, self.bAllowCheats = argsList[flagsIndex:]
 		eventType = argsList[0]
 		if self.bReport:
-			self.reportEvent(eventType, argsList[1:flagsIndex])
+			self._reportEvent(eventType, argsList[1:flagsIndex])
 		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList[1:])
 
-	def reportEvent(self, eventType, argsList):
-		if eventType != "gameUpdate":
+	def _reportEvent(self, eventType, argsList):
+		if eventType not in self.nologEvents:
 			if argsList:
 				BugUtil.debug("Event: %s - %r" % (eventType, argsList))
 			else:
 				BugUtil.debug("Event: %s" % eventType)
-			BugUtil.debug("BUG: COLOR_BLACK ID = %d" % gc.getInfoTypeForString("COLOR_BLACK"))
 
 	def _handleDefaultEvent(self, eventType, argsList):
 		if self.EventHandlerMap.has_key(eventType):
