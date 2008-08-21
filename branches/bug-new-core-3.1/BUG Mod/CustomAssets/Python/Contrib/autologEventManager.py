@@ -29,15 +29,11 @@ BugAutolog = None
 Logger = None
 lPercent = "%"
 
-bLoggingOn = False
 def isLoggingOn():
-	return bLoggingOn
-#	return BugAutolog.isLoggingOn()
+	return BugAutolog.isLoggingOn()
 
 def setLoggingOn(value):
-	global bLoggingOn
-	bLoggingOn = value
-#	BugAutolog.setLoggingOn(value)
+	BugAutolog.setLoggingOn(value)
 
 def StartLogger(vsFileName):
 

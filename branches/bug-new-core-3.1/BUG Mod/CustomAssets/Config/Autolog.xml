@@ -12,9 +12,11 @@
 	 date="12/06/2005"
 	 url="http://forums.civfanatics.com/showthread.php?t=141164">
 	 
-	<option id="LoggingOn" type="boolean" default="False"/>
 	<options id="Autolog" file="Autolog.ini">
 		<section id="Autolog">
+			<!-- Move this outside of INI once Mod objects hold options -->
+			<option id="LoggingOn" type="boolean" default="False"/>
+			
 			<option id="Enabled" key="Enabled" 
 					type="boolean" default="False" 
 					get="isEnabled" set="setEnabled" 
