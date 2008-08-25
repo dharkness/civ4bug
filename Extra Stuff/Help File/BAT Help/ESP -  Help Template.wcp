@@ -1,8 +1,8 @@
 [GENERAL]
-Title=SPA -  Help Template
-RootDir=Source\SPA\
+Title=ESP -  Help Template
+RootDir=Source\ESP\
 DefaultTopic=
-CompiledFile=C:\CODE\BUG\Civ4BUG\BAT Mod\BAT Mod Help-SPA.chm
+CompiledFile=C:\CODE\BUG\Civ4BUG\BAT Mod\BAT Mod Help-ESP.chm
 CustomTemplate=
 DefaultTemplate=1
 Encoding=Windows-1252
@@ -86,7 +86,7 @@ SunkenEdge=0
 SavePosition=0
 ContentsFont=,8,0
 IndexFont=,8,0
-Title=SPA -  Help Template
+Title=ESP -  Help Template
 Language=0x0409
 Font=
 DefaultTopic=WhatIs.html
