@@ -60,7 +60,7 @@ class CvVictoryScreen:
 		self.Y_AREA = 60
 		self.W_AREA = 1010
 		self.H_AREA = 650
-		
+
 		self.TABLE_WIDTH_0 = 350
 		self.TABLE_WIDTH_1 = 80
 		self.TABLE_WIDTH_2 = 180
@@ -73,11 +73,11 @@ class CvVictoryScreen:
 
 # BUG Additions Start
 		self.TABLE3_WIDTH_0 = 450
-		self.TABLE3_WIDTH_1 = 80
-		self.TABLE3_WIDTH_2 = 80
-		self.TABLE3_WIDTH_3 = 80
-		self.TABLE3_WIDTH_4 = 80
-		self.TABLE3_WIDTH_5 = 200
+		self.TABLE3_WIDTH_1 = 140
+		self.TABLE3_WIDTH_2 = 40
+		self.TABLE3_WIDTH_3 = 140
+		self.TABLE3_WIDTH_4 = 40
+		self.TABLE3_WIDTH_5 = 160
 
 		self.Vote_Toggle_ID = "BUGVoteToggle"
 		self.VoteToggle_X = 944
@@ -370,12 +370,14 @@ class CvVictoryScreen:
 						if iMember != self.iActivePlayer:
 							szText = AttitudeUtils.getAttitudeText (iMember, iCandidate1, True, True, False, False)
 							if (szText != None
-							and bCand1Known):
+							and bCand1Known
+							and bKnown):
 								screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandidate1, CvUtil.FONT_CENTER_JUSTIFY)
 
 							szText = AttitudeUtils.getAttitudeText (iMember, iCandidate2, True, True, False, False)
 							if (szText != None
-							and bCand2Known):
+							and bCand2Known
+							and bKnown):
 								screen.setTableText(szTable, 3, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
 
 						iVote = self.getVotesForWhichCandidate(iMember, iCandidate1, iCandidate2, self.VoteToggle)
@@ -395,7 +397,8 @@ class CvVictoryScreen:
 							and bCand2Known):
 								screen.setTableText(szTable, 4, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
-						screen.setTableText(szTable, 5, iRow, lMemberLabel, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+						if bKnown:
+							screen.setTableText(szTable, 5, iRow, lMemberLabel, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 
 						# store the player votes
 						if (iCandidate1 == iMember
