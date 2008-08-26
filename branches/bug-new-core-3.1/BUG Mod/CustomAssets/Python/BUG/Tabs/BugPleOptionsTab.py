@@ -24,7 +24,6 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextDropdown(screen, left, left, "PLE__Default_View_Mode")
 		self.addTextDropdown(screen, left, left, "PLE__Default_Group_Mode")
 		self.addTextDropdown(screen, left, left, "PLE__Filter_Behavior")
-		self.addCheckbox(screen, left, "PLE__Move_Highlighter")
 		
 		self.addSpacer(screen, left, "PLE_Indicators")
 		self.addLabel(screen, left, "PLE_Indicators")
@@ -66,5 +65,5 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addColorDropdown(screen, right, right, "PLE__Promotion_Specialties_Color")
 
 		self.addSpacer(screen, right, "PLE_Move_Highlighter") 
- 		self.addCheckbox(screen, right, "PLE_Move_Highlighter")
+ 		self.addCheckbox(screen, right, "PLE__Move_Highlighter")
  
