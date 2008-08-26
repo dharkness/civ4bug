@@ -19,8 +19,6 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 		
-		left, center, right = self.addThreeColumnLayout(screen, column, column, True)
-		
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
 
