@@ -11,6 +11,7 @@
 
 from CvPythonExtensions import *
 import sys
+import time
 import types
 import ColorUtil
 
@@ -62,17 +63,23 @@ def formatFloat(value, decimals=0):
 
 ## Debug and Error output
 
-printToScreen = True
+printToScreen = False
 printToFile = True
+includeTime = True
 
-def debug(message):
+def debug(message, *args):
 	"""
 	Logs a message on-screen and to a file, both optionally.
 	"""
-	if printToScreen:
-		CyInterface().addImmediateMessage(message, "")
-	if printToFile:
-		sys.stdout.write(message + "\n")
+	if printToScreen or printToFile:
+		if args:
+			message = message % args
+		if printToScreen:
+			CyInterface().addImmediateMessage(message, "")
+		if printToFile:
+			if includeTime:
+				message = time.asctime()[11:20] + message
+			sys.stdout.write(message + "\n")
 
 def readDebugOptions():
 	"""
@@ -165,7 +172,7 @@ def callFunction(module, functionOrClass, *args, **kwargs):
 class BugError(Exception):
 	"""Generic BUG-related error."""
 	def __init__(self, message):
-		super(BugError, self).__init__(message)
+		Exception.__init__(self, message)
 
 class ConfigError(BugError):
 	"""Error related to configuration problems.
@@ -175,7 +182,7 @@ class ConfigError(BugError):
 	result in false-positive errors being reported.
 	"""
 	def __init__(self, message):
-		super(ConfigError, self).__init__(message)
+		ConfigError.__init__(self, message)
 
 
 ## Civ4 helpers
