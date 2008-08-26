@@ -70,7 +70,7 @@ import BugUtil
 import PyHelpers
 import BugPath
 import BugConfigTracker
-import BugOptions
+import BugCore
 from configobj import ConfigObj
 import Roman
 import RandomNameUtils
@@ -97,8 +97,8 @@ RENAME_EVENT_ID = CvUtil.getNewEventID("UnitNaming.Rename")
 
 gc = CyGlobalContext()
 PyInfo = PyHelpers.PyInfo
-UnitNamingOpt = None
-AdvUnitNamingOpt = None
+
+UnitNamingOpt = BugCore.game.UnitNaming
 
 phonetic_array = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike',
                   'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yankee', 'Zulu']
@@ -119,12 +119,6 @@ class UnitNameEventManager:
 
 		BuildUnitName(eventManager)
 		
-		options = BugOptions.getOptions()
-		global UnitNamingOpt
-		UnitNamingOpt = options.getUnitNaming()
-		global AdvUnitNamingOpt
-		AdvUnitNamingOpt = options.getAdvUnitNaming()
-
 		# additions to self.Events
 		moreEvents = {
 			RENAME_EVENT_ID : ('', self.__eventUnitRenameApply,  self.__eventUnitRenameBegin),
@@ -395,7 +389,7 @@ class UnitReName(object):
 		if UnitNamingOpt.isAdvanced():
 			era = Era[4:]
 			unitClass = UnitClass[10:]
-			zsUnitNameConv = AdvUnitNamingOpt.getByEraAndClass(era, unitClass)
+			zsUnitNameConv = UnitNamingOpt.getByEraAndClass(era, unitClass)
 		else:
 			zsUnitNameConv = "DEFAULT"
 

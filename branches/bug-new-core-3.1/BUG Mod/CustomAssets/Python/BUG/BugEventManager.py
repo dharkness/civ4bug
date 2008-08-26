@@ -11,7 +11,7 @@
 ##   - fireEvent(eventType, args...)
 ##       Fire an event from Python
 ##
-## * Added force (default False) parameter to addEventHandler()
+## * Added force parameter to addEventHandler() [default False]
 ##   to call addEvent() before adding the handler.
 ##
 ## * New events
@@ -23,7 +23,8 @@
 ##   - PreGameStart
 ##       called from CvAppInterface.preGameStart()
 ##
-## * Events and their arguments can now optionally be logged.
+## * Events and their arguments are optionally logged.
+## * Added configure() to set the options.
 ##
 ## * Calls BugInit.init() once before "OnLoad" or "PreGameStart" events
 ##   are handled because CyGlobalContext is not ready during "Init" event.
@@ -44,6 +45,7 @@ DEFAULT_NOLOG_EVENTS = set((
 ))
 
 gc = CyGlobalContext()
+g_eventManager = None
 
 class BugEventManager(CvEventManager.CvEventManager):
 
@@ -74,11 +76,22 @@ class BugEventManager(CvEventManager.CvEventManager):
 	
 	"""
 
-	def __init__(self, bReport=DEFAULT_REPORT, nologEvents=DEFAULT_NOLOG_EVENTS):
+	def __init__(self, logging=None, noLogEvents=None):
 		CvEventManager.CvEventManager.__init__(self)
 		
-		self.bReport = bReport
-		self.nologEvents = nologEvents
+		global g_eventManager
+		if g_eventManager is not None:
+			raise ConfigError("BugEventManager already created")
+		g_eventManager = self
+		
+		if logging is None:
+			self.setLogging(DEFAULT_REPORT)
+		else:
+			self.setLogging(logging)
+		if noLogEvents is None:
+			self.setNoLogEvents(DEFAULT_NOLOG_EVENTS)
+		else:
+			self.setNoLogEvents(noLogEvents)
 		
 		self.bDbg = False
 		self.bMultiPlayer = False
@@ -92,8 +105,21 @@ class BugEventManager(CvEventManager.CvEventManager):
 		# map the initial EventHandlerMap values into the new data structure
 		for eventType, eventHandler in self.EventHandlerMap.iteritems():
 			self.setEventHandler(eventType, eventHandler)
+	
+	def setLogging(self, logging):
+		if logging is not None:
+			self.logging = bool(logging)
+	
+	def setNoLogEvents(self, noLogEvents):
+		if noLogEvents is not None:
+			try:
+				x = "update" in noLogEvents
+			except:
+				raise ConfigError("noLogEvents must be tuple, list or set")
+			else:
+				self.noLogEvents = noLogEvents
 
-	def checkEventType(self, eventType):
+	def _checkEvent(self, eventType):
 		"""Enforces that eventType is defined.
 		
 		Raises ConfigError if the eventType is undefined.
@@ -125,7 +151,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		if force:
 			self.addEvent(eventType)
 		else:
-			self.checkEventType(eventType)
+			self._checkEvent(eventType)
 		self.EventHandlerMap[eventType].append(eventHandler)
 
 	def removeEventHandler(self, eventType, eventHandler):
@@ -138,7 +164,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		Throws ConfigError if the eventType is undefined.
 
 		"""
-		self.checkEventType(eventType)
+		self._checkEvent(eventType)
 		self.EventHandlerMap[eventType].remove(eventHandler)
 	
 	def setEventHandler(self, eventType, eventHandler, force=False):
@@ -156,7 +182,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		if force:
 			self.addEvent(eventType)
 		else:
-			self.checkEventType(eventType)
+			self._checkEvent(eventType)
 		if eventHandler is not None:
 			self.EventHandlerMap[eventType] = [eventHandler]
 		else:
@@ -190,12 +216,12 @@ class BugEventManager(CvEventManager.CvEventManager):
 		flagsIndex = len(argsList) - 6
 		self.bDbg, self.bMultiPlayer, self.bAlt, self.bCtrl, self.bShift, self.bAllowCheats = argsList[flagsIndex:]
 		eventType = argsList[0]
-		if self.bReport:
+		if self.logging:
 			self._reportEvent(eventType, argsList[1:flagsIndex])
 		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList[1:])
 
 	def _reportEvent(self, eventType, argsList):
-		if eventType not in self.nologEvents:
+		if eventType not in self.noLogEvents:
 			if argsList:
 				BugUtil.debug("Event: %s - %r" % (eventType, argsList))
 			else:
@@ -264,6 +290,12 @@ EVENT_FUNCTION_MAP = {
 	#"windowActivation": BugEventManager._handleInitBugEvent,
 }
 
+
+def configure(logging=None, noLogEvents=None):
+	"""Sets the global event manager's logging options."""
+	if g_eventManager is not None:
+		g_eventManager.setLogging(logging)
+		g_eventManager.setNoLogEvents(noLogEvents)
 
 g_initDone = False
 def initBug():

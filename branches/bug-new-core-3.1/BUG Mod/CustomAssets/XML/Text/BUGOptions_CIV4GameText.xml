@@ -1006,7 +1006,7 @@
 	</TEXT>
 	<!-- City Screen -->
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__RAWYIELDS_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_TEXT</Tag>
 		<English>Raw Yields</English>
 		<French>Commerce Pur / Production</French>
 		<German>Anzeige der Roherträge</German>
@@ -1014,7 +1014,7 @@
 		<Spanish>Raw Yields</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__RAWYIELDS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_HOVER</Tag>
 		<English>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</English>
 		<French>En activant, le commerce pur et la production sont montrés au-dessus des routes commerciales.</French>
 		<German>Zeigt eine Aufschlüsselung der Erträge von Nahrung, Produktion und Wirtschaft im Stadt-Bildschirm über dem Handelseinkommen an</German>
@@ -1022,7 +1022,7 @@
 		<Spanish>When checked, the raw yields (food, production and commerce) can be displayed in the trade routes table</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__RAWYIELDS_VIEW_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_TEXT</Tag>
 		<English>Default View</English>
 		<French>Default View</French>
 		<German>Standardanzeige</German>
@@ -1030,7 +1030,7 @@
 		<Spanish>Default View</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__RAWYIELDS_VIEW_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_HOVER</Tag>
 		<English>Determines the Raw Yields view used when Civ is started.</English>
 		<French>Determines the Raw Yields view used when Civ is started.</French>
 		<German>Bestimmt, welche Erträge standardmäßig angezeigt werden sollen</German>
@@ -1038,7 +1038,7 @@
 		<Spanish>Determines the Raw Yields view used when Civ is started.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__RAWYIELDS_VIEW_LIST</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_LIST</Tag>
 		<English>Trade Routes|Food|Production|Commerce</English>
 		<French>Trade Routes|Food|Production|Commerce</French>
 		<German>Handelsverbindungen|Nahrung|Produktion|Wirtschaft</German>
@@ -1046,7 +1046,7 @@
 		<Spanish>Trade Routes|Food|Production|Commerce</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__WHIPASSIST_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_TEXT</Tag>
 		<English>WhipAssist</English>
 		<French>WhipAssist</French>
 		<German>Anzeige für die Beschleunigung der Produktion</German>
@@ -1054,7 +1054,7 @@
 		<Spanish>WhipAssist</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__WHIPASSIST_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_HOVER</Tag>
 		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
 		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
 		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion an sowie die Kosten, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden kann</German>
@@ -1062,7 +1062,7 @@
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
 		<English>Overflow Counts Current Production</English>
 		<French>Overflow Counts Current Production</French>
 		<German>Produktionsüberschuss der aktuellen Runde einbeziehen</German>
@@ -1070,7 +1070,7 @@
 		<Spanish>Overflow Counts Current Production</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>
 		<English>When checked, whip production overflow estimates will include the city's current production amount.</English>
 		<French>When checked, whip production overflow estimates will include the city's current production amount.</French>
 		<German>Bezieht die Produktion einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ein</German>
@@ -1078,7 +1078,7 @@
 		<Spanish>When checked, whip production overflow estimates will include the city's current production amount.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__CULTURETURNS_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
 		<French>Tours de Culture</French>
 		<German>Kulturanzeige (verbleibende Runden)</German>
@@ -1086,7 +1086,7 @@
 		<Spanish>Culture Turns</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__CULTURETURNS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__CULTURETURNS_HOVER</Tag>
 		<English>When checked, displays the number of turns until the city's borders expand.</English>
 		<French>En activant, le nombre de tours nécessaire à l'expansion des frontières culturelles est montré.</French>
 		<German>Zeigt in der Kulturanzeige die Anzahl der Runden an, bis sich die Kulturgrenzen einer Stadt erweitern</German>
@@ -1094,7 +1094,7 @@
 		<Spanish>When checked, displays the number of turns until the city's borders expand.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__GREATPERSONTURNS_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONTURNS_TEXT</Tag>
 		<English>Great Person Turns</English>
 		<French>Tours des Personnages Illustres</French>
 		<German>Große Persönlichkeit-Punkte (verbleibende Runden)</German>
@@ -1102,7 +1102,7 @@
 		<Spanish>Great Person Turns</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__GREATPERSONTURNS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONTURNS_HOVER</Tag>
 		<English>When checked, displays the number of turns until the city will produce a Great Person.</English>
 		<French>En activant, le nombre de tours nécessaire à la naissance d'un Personnage Illustre est montré.</French>
 		<German>Zeigt in der Anzeige der Große Persönlichkeit-Punkte die Anzahl der Runden an, bis eine Stadt eine Große Persönlichkeit hervorbringt</German>
@@ -1110,7 +1110,7 @@
 		<Spanish>When checked, displays the number of turns until the city will produce a Great Person.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__GREATPERSONINFO_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONINFO_TEXT</Tag>
 		<English>Great Person Info</English>
 		<French>Info des Personnages Illustres</French>
 		<German>Informationen über Große Persönlichkeiten</German>
@@ -1118,7 +1118,7 @@
 		<Spanish>Great Person Info</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__GREATPERSONINFO_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONINFO_HOVER</Tag>
 		<English>When checked, displays additional Great Person Information.</English>
 		<French>En activant, de l'information supplémentaire sur les Personnages Illustres est montrée.</French>
 		<German>Zeigt zusätzliche Information über Große Persönlichkeiten an</German>
@@ -1126,7 +1126,7 @@
 		<Spanish>When checked, displays additional Great Person Information.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__ANGER_COUNTER_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ANGER_COUNTER_TEXT</Tag>
 		<English>Anger Counter</English>
 		<French>Compteur de Colère</French>
 		<German>Rundenzähler bei Unzufriedenheit</German>
@@ -1134,7 +1134,7 @@
 		<Spanish>Anger Counter</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__ANGER_COUNTER_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ANGER_COUNTER_HOVER</Tag>
 		<English>When checked, puts anger countdown on city screen.</English>
 		<French>En activant, montre un compteur de colère sur l'écran de ville.</French>
 		<German>Zeigt einen Rundenzähler im Stadt-Bildschirm an, der die Anzahl der Runden angibt, bis die Unzufriedenheit wegen einer Beschleunigung der Produktion durch Zwangsarbeit verflogen ist</German>
@@ -1142,7 +1142,7 @@
 		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__SPECIALISTS_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_TEXT</Tag>
 		<English>City Specialists</English>
 		<French>Spécialistes</French>
 		<German>Spezialisten</German>
@@ -1150,7 +1150,7 @@
 		<Spanish>City Specialists</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__SPECIALISTS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_HOVER</Tag>
 		<English>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
 		<French>Determine comment les spécialistes sont montrés.[NEWLINE]- Défaut: Montre les spécialistes comme BtS.[NEWLINE]- Tas: Tasse les spécialistes.[NEWLINE]- Chevrons: Groupe les spécialistes par 5 (simple chevron), 10 (chevron plein) et 20 (chevron plein plus carré).</French>
 		<German>Bestimmt die Anordnung der Spezialisten im Stadt-Bildschirm:[NEWLINE]- Standard: Spezialisten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Stapel: Spezialisten werden gestapelt angeordnet (verwendet die "Stacked Specialist" Mod)[NEWLINE]- Chevron: Spezialisten werden zu Gruppen aus 5 (einfaches Chevron), 10 (geschlossenes Chevron) und 20 (eingerahmtes geschlossenes Chevron) Spezialisten zusammengefasst</German>
@@ -1158,7 +1158,7 @@
 		<Spanish>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITY__SPECIALISTS_LIST</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_LIST</Tag>
 		<English>Default|Stacker|Chevron</English>
 		<French>Défaut|Tas|Chevrons</French>
 		<German>Standard|Stapel|Chevron</German>
@@ -2451,7 +2451,7 @@
 	</TEXT>
 	<!-- Main Interface -->
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__OPTIONSKEY_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSKEY_TEXT</Tag>
 		<English>Options Shortcut Reminder</English>
 		<French>Rappel du Raccourci des Options</French>
 		<German>Erinnerung an die BUG-Optionen</German>
@@ -2459,7 +2459,7 @@
 		<Spanish>Options Shortcut Reminder</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__OPTIONSKEY_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSKEY_HOVER</Tag>
 		<English>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</English>
 		<French>En activant, en rappel sur l'utilisation de Alt + Ctrl + O est montré quand un jeu démarre ou est chargé.</French>
 		<German>Zeigt nach dem Spielstart oder dem Laden eines Spielstands eine Meldung, die an die Tastenkombination [STRG + ALT + O] erinnert, mit der man die Optionen der "BUG Mod" aufrufen kann</German>
@@ -2467,7 +2467,7 @@
 		<Spanish>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__GPBAR_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TEXT</Tag>
 		<English>Great Person Progress Bar</English>
 		<French>Barre de Progrès des Personnages Illustres</French>
 		<German>Anzeige für Große Persönlichkeit-Punkte</German>
@@ -2475,7 +2475,7 @@
 		<Spanish>Great Person Progress Bar</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__GPBAR_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_HOVER</Tag>
 		<English>When checked, displays the progress and city of the next Great Person.</English>
 		<French>En activant, montre la barre de progrès et la ville du prochain Personnage Illustre.</French>
 		<German>Zeigt einen Fortschrittsbalken an, um zu bestimmen, wann und in welcher Stadt die nächste Große Persönlichkeit erscheinen wird</German>
@@ -2483,7 +2483,7 @@
 		<Spanish>When checked, displays the progress and city of the next Great Person.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__GPBAR_TYPES_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TYPES_TEXT</Tag>
 		<English>GP Bar Types</English>
 		<French>Types de Barre PI</French>
 		<German>Anzeigemethode</German>
@@ -2491,7 +2491,7 @@
 		<Spanish>GP Bar Types</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__GPBAR_TYPES_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TYPES_HOVER</Tag>
 		<English>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</English>
 		<French>Determine combien de types de PI doivent être montrés dans la Barre de Progrès. L'option "Maximum" montre aussi les chances de chacun.</French>
 		<German>Bestimmt die Anzahl der Typen von Großen Persönlichkeiten, die im Fortschrittsbalken angezeigt werden (die Einstellung "Maximal" zeigt zusätzlich die prozentuale Chance für jede an)</German>
@@ -2499,7 +2499,7 @@
 		<Spanish>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__GPBAR_TYPES_LIST</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TYPES_LIST</Tag>
 		<English>None|One|Maximum</English>
 		<French>Aucun|Un|Maximum</French>
 		<German>Keine|Eine|Maximal</German>
@@ -2507,7 +2507,7 @@
 		<Spanish>None|One|Maximum</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__COMBAT_COUNTER_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_TEXT</Tag>
 		<English>Combat Experience</English>
 		<French>Expérience au Combat</French>
 		<German>Gefechtserfahrung</German>
@@ -2515,7 +2515,7 @@
 		<Spanish>Combat Experience</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__COMBAT_COUNTER_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_HOVER</Tag>
 		<English>When checked, displays Combat Experience to track next Great General.</English>
 		<French>En activant, montre l'Expérience au Combat nécessaire pour le prochain Général Illustre.</French>
 		<German>Zeigt die gesammelte Gefechtserfahrung an, um das Erscheinen des nächsten Großen Generals zu bestimmen</German>
@@ -2523,7 +2523,7 @@
 		<Spanish>When checked, displays Combat Experience to track next Great General.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__CITYARROWS_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__CITYARROWS_TEXT</Tag>
 		<English>City Cycle Arrows</English>
 		<French>Fleches de Ville</French>
 		<German>Städtepfeile</German>
@@ -2531,7 +2531,7 @@
 		<Spanish>City Cycle Arrows</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MAIN__CITYARROWS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__CITYARROWS_HOVER</Tag>
 		<English>When checked, displays arrows to cycle through cities above your civ's flag.</English>
 		<French>En activant, montre des flèches pour cycler vos villes au-dessous du drapeau de votre civilisation.</French>
 		<German>Zeigt Pfeile über der Flagge der eigenen Zivilisation an, mit denen durch die einzelnen Städte geschaltet werden kann</German>

@@ -9,9 +9,8 @@ import CvScreenEnums
 
 # BUG - Better Espionage - start
 import ColorUtil
-import BugOptions
-g_options = BugOptions.getOptions()
-BugEspionageOpt = None
+import BugCore
+EspionageOpt = BugCore.game.BetterEspionage
 # BUG - Better Espionage - end
 
 # globals
@@ -70,11 +69,6 @@ class CvEspionageAdvisor:
 		self.iSelectedMission = -1
 		self.iActivePlayer = CyGame().getActivePlayer()
 		
-# BUG - Better Espionage - start
-		global BugEspionageOpt
-		BugEspionageOpt = g_options.getBetterEspionage()
-# BUG - Better Espionage - end
-	
 		screen = self.getScreen()
 		if screen.isActive():
 			return
@@ -263,9 +257,9 @@ class CvEspionageAdvisor:
 			self.aszEspionageIcons = []
 
 # BUG - Better Espionage - start
-			iRatioColor = BugEspionageOpt.getDefaultRatioColor()
-			iGoodRatioColor = BugEspionageOpt.getGoodRatioColor()
-			iBadRatioColor = BugEspionageOpt.getBadRatioColor()
+			iRatioColor = EspionageOpt.getDefaultRatioColor()
+			iGoodRatioColor = EspionageOpt.getGoodRatioColor()
+			iBadRatioColor = EspionageOpt.getBadRatioColor()
 # BUG - Better Espionage - end
 			
 			for iPlayerID in self.aiKnownPlayers:
@@ -307,7 +301,7 @@ class CvEspionageAdvisor:
 				screen.setLabelAt( szName, attach, szText, 0, iX + 55, iY -15, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 				
 # BUG - Better Espionage - start
-				if (BugEspionageOpt.isEnabled()):
+				if (EspionageOpt.isEnabled()):
 					szName = "PointsText%d" %(iPlayerID)
 					self.aszPointsTexts.append(szName)
 					szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam), )) + "</font>"
@@ -325,9 +319,9 @@ class CvEspionageAdvisor:
 					szName = "AmountText%d" %(iPlayerID)
 					self.aszAmountTexts.append(szName)
 					iMultiplier, szMultiplier = self.getMultiplierAgainstTarget(iPlayerID)
-					if (iBadRatioColor >= 0 and iMultiplier >= BugEspionageOpt.getBadRatioCutoff()):
+					if (iBadRatioColor >= 0 and iMultiplier >= EspionageOpt.getBadRatioCutoff()):
 						szText = localText.changeTextColor(szMultiplier, iBadRatioColor)
-					elif (iGoodRatioColor >= 0 and iMultiplier <= BugEspionageOpt.getGoodRatioCutoff()):
+					elif (iGoodRatioColor >= 0 and iMultiplier <= EspionageOpt.getGoodRatioCutoff()):
 						szText = localText.changeTextColor(szMultiplier, iGoodRatioColor)
 					elif (iRatioColor >= 0):
 						szText = localText.changeTextColor(szMultiplier, iRatioColor)
@@ -527,10 +521,10 @@ class CvEspionageAdvisor:
 # BUG - Better Espionage - start
 				iTargetTeam = pTargetPlayer.getTeam()
 				iPlayerEPs = pActiveTeam.getEspionagePointsAgainstTeam(iTargetTeam)
-				if (BugEspionageOpt.isEnabled()):
-					iPossibleColor = BugEspionageOpt.getPossibleMissionColor()
-					iCloseColor = BugEspionageOpt.getCloseMissionColor()
-					iClosePercent = BugEspionageOpt.getCloseMissionPercent()
+				if (EspionageOpt.isEnabled()):
+					iPossibleColor = EspionageOpt.getPossibleMissionColor()
+					iCloseColor = EspionageOpt.getCloseMissionColor()
+					iClosePercent = EspionageOpt.getCloseMissionPercent()
 				else:
 					iPossibleColor = -1
 					iCloseColor = -1
@@ -575,7 +569,7 @@ class CvEspionageAdvisor:
 
 # BUG - Better Espionage - start
 								szCost = unicode(str(iCost))
-								if (BugEspionageOpt.isEnabled()):
+								if (EspionageOpt.isEnabled()):
 									if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
 										szCost = localText.changeTextColor(szCost, iPossibleColor)
 									elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):
@@ -615,7 +609,7 @@ class CvEspionageAdvisor:
 
 # BUG - Better Espionage - start
 								szCost = unicode(str(iCost))
-								if (BugEspionageOpt.isEnabled()):
+								if (EspionageOpt.isEnabled()):
 									if (iPossibleColor >= 0 and iPlayerEPs >= iCost):
 										szCost = localText.changeTextColor(szCost, iPossibleColor)
 									elif (iCloseColor >= 0 and iPlayerEPs >= (iCost * float(100 - iClosePercent) / 100)):

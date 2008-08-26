@@ -5,7 +5,7 @@
 from CvPythonExtensions import *
 import CvUtil
 import PyHelpers
-import BugOptions
+import BugCore
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -65,7 +65,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.lastPopCount = 0
 		self.lastLandCount = 0
 		
-		self.options = BugOptions.getOptions().getMoreCiv4lerts()
+		self.options = BugCore.game.MoreCiv4lerts
 
 	def getCheckForDomPopVictory(self):
 		return self.options.isShowDomPopAlert()

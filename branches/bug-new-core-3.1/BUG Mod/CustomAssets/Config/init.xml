@@ -12,6 +12,21 @@
 	 build="1124" 
 	 date="08/17/2008">
 	
+	<!-- TESTING REMOVE -- >
+	
+	<event type="BeginActivePlayerTurn" module="DiplomacyEvents" function="placeCities"/>
+	
+	<!-- Core -->
+	
+	<init module="BugEventManager" function="configure">
+		<arg name="logging" type="boolean" value="False"/>
+		<arg name="noLogEvents" type="set">
+			"gameUpdate",
+			"mouseEvent",
+			"kbdEvent"
+		</arg>
+	</init>
+	
 	<!-- Civilization Core -->
 	
 	<!-- Domestic and Military Advisors and Civilopedia are chosen by options -->

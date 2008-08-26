@@ -50,17 +50,9 @@
 ##
 ## TODO:
 ##
-##  * Create Game to encapsulate Mod accessors
-##    - mods: { Mod.ID: Mod }
-##    - getMod(id) -> Mod
-##    - get<Mod.ID>() -> Mod
-##    - <Mod.ID>: Mod
-##  * Create Mod to encapsulate Option accessors
-##    - options: { Option.ID: Option }
-##    - files: { IniFile.ID: IniFile }
-##    - getOption(id) -> Option
-##    - is/get/set<Option.ID>() -> Option.getValue()/getColor()
-##    - <Option.ID>: property(Option.getValue, Option.setValue)
+##  X Create Game to encapsulate Mod accessors
+##  X Create Mod to encapsulate Option accessors
+##    ? <Option.ID>: property(Option.getValue, Option.setValue)
 ##                     or
 ##                   property(lambda: option, Option.setValue)
 ##                     Requires Option.__nonzero__()
@@ -69,8 +61,8 @@
 ##                          if pop >= Civ4lerts.DomPopMinimum(): ...
 ##                     Might be confusing to new coders
 ##      e.g. setattr(mod, option.id, property(Option.getValue, Option.setValue))
-##    - Move createParameterizedAccessorPair to Mod
-##    - Add BaseOption.mod
+##    x Move createParameterizedAccessorPair to Mod
+##    x Add BaseOption.mod
 ##
 ##  * Remove Mod ID from Option ID but keep in Options dictionary keys
 ##  ? Drop Base from BaseOption and BaseListOption
@@ -89,9 +81,6 @@
 ##        (This way the default for GoodColor is whatever DefaultColor is)
 ##
 ## FIXME:
-##  * Options in an IniFile with a different ID than the mod get incorrect ID prefix
-##    Will be fixed by adding a Mod
-##
 ##  * BaseListOption: addGetter() stores index, but createGetter() will need value
 ##    for int/float lists and color for color lists
 ##
@@ -334,29 +323,6 @@ class IniFile(object):
 				return True
 		#BugUtil.debug("BUG: Option %s.%s not changed" % (section, key))
 		return False
-	
-	
-	def createParameterizedAccessorPair(self, id, getter=None, setter=None, values=None):
-		id = self.id + MOD_OPTION_SEP + id
-		if getter:
-			if values is None:
-				def get(*args):
-					option = getOption(id % args)
-					if option.isColor():
-						return option.getColor()
-					else:
-						return option.getValue()
-			else:
-				def equals(*args):
-					option = getOption(id % args)
-					return option.getValue() in values
-			setattr(self, getter, get)
-		
-		if setter:
-			def set(*args):
-				option = getOption(id % args)
-				option.setValue(value)
-			setattr(self, setter, set)
 
 
 NONE_TYPE = "none"
@@ -383,23 +349,26 @@ TYPE_MAP = { "boolean": bool,
 class AbstractOption(object):
 	"""Provides a basic interface and minimal abstract implementation for an option."""
 
-	def __init__(self, id, file, andId=None):
+	def __init__(self, mod, id, andId=None):
+		self.mod = mod
 		self.id = id
-		self.file = file
 		self.andId = andId
 		self.andOption = None
 	
-	def createLinkedOption(self, id, file):
-		return LinkedOption(id, file, self)
+	def createLinkedOption(self, mod, id):
+		return LinkedOption(mod, id, self)
 	
 	def getID(self):
 		return self.id
 	
-	def getFile(self):
-		return self.file
+	def getFullID(self):
+		return self.idFull
+	
+	def getMod(self):
+		return self.mod
 	
 	def getTrimmedID(self):
-		return self.id.replace(self.file.id + MOD_OPTION_SEP, "")
+		return self.id.replace(self.mod._id + MOD_OPTION_SEP, "")
 	
 	def getDefaultGetterName(self):
 		if self.isBoolean():
@@ -539,7 +508,7 @@ class AbstractOption(object):
 		return reset
 	
 	def bindAccessor(self, name, function):
-		setattr(self.file, name, function)
+		setattr(self.mod, name, function)
 	
 	
 	def hasValue(self, *args):
@@ -634,10 +603,10 @@ class BaseOption(AbstractOption):
 	  the option to force certain aspects of the interface to redraw themselves.
 	"""
 
-	def __init__(self, file, id, type, default=None, andId=None, 
+	def __init__(self, mod, id, type, default=None, andId=None, 
 				 title=None, tooltip=None, dirty=None):
 		"""Sets the important fields of the new Option."""
-		super(BaseOption, self).__init__(id, file, andId)
+		super(BaseOption, self).__init__(mod, id, andId)
 		
 		if type in TYPE_REPLACE:
 			type = TYPE_REPLACE[type]
@@ -748,14 +717,14 @@ class BaseListOption(BaseOption):
 	when creating the dropdown listbox in the Options Screen.
 	"""
 
-	def __init__(self, file, id, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, type=None, default=None, andId=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
 		if type is None:
 			type = LIST_TYPE_DEFAULT_TYPE[listType]
 		if type not in TYPE_DEFAULT_LIST_TYPE:
 			raise BugUtil.ConfigError("Invalid option type for list: %s" % type)
-		super(BaseListOption, self).__init__(file, id, type, default, andId, title, tooltip, dirty)
+		super(BaseListOption, self).__init__(mod, id, type, default, andId, title, tooltip, dirty)
 		
 		if listType is None:
 			listType = TYPE_DEFAULT_LIST_TYPE[type]
@@ -771,8 +740,8 @@ class BaseListOption(BaseOption):
 		self.displayValues = None
 		self.getters = None
 	
-	def createLinkedOption(self, file, id):
-		return LinkedListOption(id, file, self)
+	def createLinkedOption(self, mod, id):
+		return LinkedListOption(mod, id, self)
 	
 	def getListType(self):
 		return self.listType
@@ -929,17 +898,17 @@ class UnsavedMixin(object):
 
 class UnsavedOption(UnsavedMixin, BaseOption):
 	
-	def __init__(self, file, id, type, default=None, andId=None, 
+	def __init__(self, mod, id, type, default=None, andId=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseOption.__init__(self, file, id, type, default, andId, title, tooltip, dirty)
+		BaseOption.__init__(self, mod, id, type, default, andId, title, tooltip, dirty)
 		UnsavedMixin.__init__(self, self.default)
 
 class UnsavedListOption(UnsavedMixin, BaseListOption):
 	
-	def __init__(self, file, id, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, type=None, default=None, andId=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseListOption.__init__(self, file, id, type, default, andId, listType, values, format, title, tooltip, dirty)
+		BaseListOption.__init__(self, mod, id, type, default, andId, listType, values, format, title, tooltip, dirty)
 		UnsavedMixin.__init__(self, self.default)
 
 
@@ -963,12 +932,12 @@ class IniMixin(object):
 
 	def __init__(self, file, section, key):
 		"""Stores the parameters for use with IniFile for accessing the value."""
-#		self.file = file
+		self.file = file
 		self.section = section
 		self.key = key
 
-#	def getFile(self):
-#		return self.file
+	def getFile(self):
+		return self.file
 
 	def getSection(self):
 		return self.section
@@ -1003,17 +972,17 @@ class IniMixin(object):
 
 class IniOption(IniMixin, BaseOption):
 	
-	def __init__(self, file, id, section, key, type, default=None, andId=None, 
+	def __init__(self, mod, id, file, section, key, type, default=None, andId=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseOption.__init__(self, file, id, type, default, andId, title, tooltip, dirty)
+		BaseOption.__init__(self, mod, id, type, default, andId, title, tooltip, dirty)
 		IniMixin.__init__(self, file, section, key)
 
 class IniListOption(IniMixin, BaseListOption):
 	
-	def __init__(self, file, id, section, key, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, file, section, key, type=None, default=None, andId=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseListOption.__init__(self, file, id, type, default, andId, listType, values, format, title, tooltip, dirty)
+		BaseListOption.__init__(self, mod, id, type, default, andId, listType, values, format, title, tooltip, dirty)
 		IniMixin.__init__(self, file, section, key)
 
 
@@ -1023,9 +992,9 @@ class LinkedOption(AbstractOption):
 	
 	"""Facade to an actual Option."""
 
-	def __init__(self, id, file, option):
+	def __init__(self, mod, id, option):
 		"""Sets the important fields of the new LinkedOption."""
-		super(LinkedOption, self).__init__(id, file)
+		super(LinkedOption, self).__init__(mod, id)
 		self.option = option
 	
 	def getOption(self):
@@ -1072,9 +1041,9 @@ class LinkedListOption(LinkedOption):
 	
 	"""Facade to an actual ListOption."""
 
-	def __init__(self, id, file, option):
+	def __init__(self, mod, id, option):
 		"""Sets the important fields of the new LinkedListOption."""
-		super(LinkedOption, self).__init__(id, file, option)
+		super(LinkedOption, self).__init__(mod, id, option)
 	
 	def getListType(self):
 		return self.option.getListType()

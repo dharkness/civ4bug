@@ -8,22 +8,22 @@ import codecs
 import os
 import os.path
 import string
+import BugCore
 import BugOptions
 import BugPath
 import BugConfigTracker
 
-BugAutolog = None
+BugAutolog = BugCore.game.Autolog
 
 class autologInstance:
 
 
 	def __init__(self):
-		global BugAutolog
-		BugAutolog = BugOptions.getOptions().getAutolog()
 		self.MsgStore = []
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
+		# TODO: do we need to save this?
 		BugOptions.write()
 		
 	def isLogging(self):

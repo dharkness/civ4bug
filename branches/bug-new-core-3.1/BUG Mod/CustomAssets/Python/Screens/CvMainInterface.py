@@ -7,6 +7,14 @@ import CvScreenEnums
 import CvEventInterface
 import time
 
+# BUG - Options - start
+import BugCore
+ClockOpt = BugCore.game.NJAGC
+ScoreOpt = BugCore.game.Scores
+MainOpt = BugCore.game.MainInterface
+CityScreenOpt = BugCore.game.CityScreen
+# BUG - Options - end
+
 # BUG - PLE - start 			
 import MonkeyTools as mt
 import string
@@ -14,7 +22,7 @@ from AStarTools import *
 import PyHelpers 
 PyPlayer = PyHelpers.PyPlayer
 
-PleOpt = None
+PleOpt = BugCore.game.PLE
 # BUG - PLE - end
 
 # BUG - Align Icons - start
@@ -25,14 +33,6 @@ import Scoreboard
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
-
-# BUG - Options - start
-import BugOptions
-ClockOpt = None
-ScoreOpt = None
-MainOpt = None
-BugCityScreen = None
-# BUG - Options - end
 
 # BUG - 3.17 No Espionage - start
 import BugUtil
@@ -2110,23 +2110,10 @@ class CvMainInterface:
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		screen.setForcedRedraw(True)
 		
-# BUG - Options - begin
-		options = BugOptions.getOptions()
-		global ClockOpt
-		ClockOpt = options.getNJAGC()
-		global ScoreOpt
-		ScoreOpt = options.getScores()
-		global PleOpt
-		PleOpt = options.getPLE()
-		global MainOpt
-		MainOpt = options.getMain()
-		global BugCityScreen
-		BugCityScreen = options.getCity()
-		
 # BUG - Raw Yields - begin
 		global g_bYieldView
 		global g_iYieldType
-		g_bYieldView, g_iYieldType = RawYields.getViewAndType(BugCityScreen.getRawYieldsDefaultView())
+		g_bYieldView, g_iYieldType = RawYields.getViewAndType(CityScreenOpt.getRawYieldsDefaultView())
 # BUG - Raw Yields - end
 
 # BUG - PLE - begin
@@ -2991,9 +2978,9 @@ class CvMainInterface:
 
 # BUG - city specialist - start
 			self.updateCitizenButtons_hide()
-			if (BugCityScreen.isCitySpecialist_Stacker()):
+			if (CityScreenOpt.isCitySpecialist_Stacker()):
 				self.updateCitizenButtons_Stacker()
-			elif (BugCityScreen.isCitySpecialist_Chevron()):
+			elif (CityScreenOpt.isCitySpecialist_Chevron()):
 				self.updateCitizenButtons_Chevron()
 			else:
 				self.updateCitizenButtons()
@@ -5125,10 +5112,10 @@ class CvMainInterface:
 					else:
 						HURRY_WHIP = gc.getInfoTypeForString("HURRY_POPULATION")
 						HURRY_BUY = gc.getInfoTypeForString("HURRY_GOLD")
-						if (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_WHIP, False)):
+						if (CityScreenOpt.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_WHIP, False)):
 							iHurryPop = pHeadSelectedCity.hurryPopulation(HURRY_WHIP)
 							iHurryOverflow = pHeadSelectedCity.hurryProduction(HURRY_WHIP) - pHeadSelectedCity.productionLeft()
-							if BugCityScreen.isWhipAssistOverflowCountCurrentProduction():
+							if CityScreenOpt.isWhipAssistOverflowCountCurrentProduction():
 								iHurryOverflow = iHurryOverflow + pHeadSelectedCity.getCurrentProductionDifference(True, False)
 							iMaxOverflow = min(pHeadSelectedCity.getProductionNeeded(), iHurryOverflow)
 							iOverflowGold = max(0, iHurryOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100
@@ -5137,7 +5124,7 @@ class CvMainInterface:
 								szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP_PLUS_GOLD", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow, iOverflowGold))
 							else:
 								szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_WHIP", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryPop, iHurryOverflow))
-						elif (BugCityScreen.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_BUY, False)):
+						elif (CityScreenOpt.isShowWhipAssist() and pHeadSelectedCity.canHurry(HURRY_BUY, False)):
 							iHurryCost = pHeadSelectedCity.hurryGold(HURRY_BUY)
 							szBuffer = localText.getText("INTERFACE_CITY_PRODUCTION_BUY", (pHeadSelectedCity.getProductionNameKey(), pHeadSelectedCity.getProductionTurnsLeft(), iHurryCost))
 						else:
@@ -5178,7 +5165,7 @@ class CvMainInterface:
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY_NO_UNHAPPY", (pHeadSelectedCity.happyLevel(), ))
 
 # BUG - Anger Display - start
-					if (BugCityScreen.isShowAngerCounter()
+					if (CityScreenOpt.isShowAngerCounter()
 					and bShowAngerCounter):
 						iAngerTimer = pHeadSelectedCity.getHurryAngerTimer()
 						if iAngerTimer < pHeadSelectedCity.getConscriptAngerTimer():
@@ -5239,7 +5226,7 @@ class CvMainInterface:
 				screen.setStyle( "BuildingListTable", "Table_City_Style" )
 				
 # BUG - Raw Yields - start
-				bShowRawYields = g_bYieldView and BugCityScreen.isShowRawYields()
+				bShowRawYields = g_bYieldView and CityScreenOpt.isShowRawYields()
 				if (bShowRawYields):
 					screen.addTableControlGFC( "TradeRouteTable", 4, 10, 187, 238, 98, False, False, 32, 32, TableStyles.TABLE_STYLE_STANDARD )
 					screen.setStyle( "TradeRouteTable", "Table_City_Style" )
@@ -5268,7 +5255,7 @@ class CvMainInterface:
 				screen.show( "BuildingListLabel" )
 				
 # BUG - Raw Yields - start
-				if (BugCityScreen.isShowRawYields()):
+				if (CityScreenOpt.isShowRawYields()):
 					screen.setState("RawYieldsTrade0", not g_bYieldView)
 					screen.show("RawYieldsTrade0")
 					
@@ -5657,7 +5644,7 @@ class CvMainInterface:
 						szBuffer = localText.getText("INTERFACE_CITY_COMMERCE_RATE_FLOAT", (gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar(), gc.getCultureLevelInfo(pHeadSelectedCity.getCultureLevel()).getTextKey(), szRate))
 						
 # BUG - Culture Turns - start
-					if BugCityScreen.isShowCultureTurns() and iRate > 0:
+					if CityScreenOpt.isShowCultureTurns() and iRate > 0:
 						iCultureTimes100 = pHeadSelectedCity.getCultureTimes100(pHeadSelectedCity.getOwner())
 						iCultureLeftTimes100 = 100 * pHeadSelectedCity.getCultureThreshold() - iCultureTimes100
 						szBuffer += u" " + localText.getText("INTERFACE_CITY_TURNS", (((iCultureLeftTimes100 + iRate - 1) / iRate),))
@@ -5670,12 +5657,12 @@ class CvMainInterface:
 				if ((pHeadSelectedCity.getGreatPeopleProgress() > 0) or (pHeadSelectedCity.getGreatPeopleRate() > 0)):
 # BUG - Great Person Turns - start
 					iRate = pHeadSelectedCity.getGreatPeopleRate()
-					if BugCityScreen.isShowCityGreatPersonInfo():
+					if CityScreenOpt.isShowCityGreatPersonInfo():
 						iGPTurns = GPUtil.getCityTurns(pHeadSelectedCity)
 						szBuffer = GPUtil.getGreatPeopleText(pHeadSelectedCity, iGPTurns, 230, MainOpt.isGPBarTypesNone(), MainOpt.isGPBarTypesOne(), False)
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_GREATPEOPLE_RATE", (CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR), pHeadSelectedCity.getGreatPeopleRate()))
-						if BugCityScreen.isShowGreatPersonTurns() and iRate > 0:
+						if CityScreenOpt.isShowGreatPersonTurns() and iRate > 0:
 							iGPTurns = GPUtil.getCityTurns(pHeadSelectedCity)
 							szBuffer += u" " + localText.getText("INTERFACE_CITY_TURNS", (iGPTurns, ))
 # BUG - Great Person Turns - end

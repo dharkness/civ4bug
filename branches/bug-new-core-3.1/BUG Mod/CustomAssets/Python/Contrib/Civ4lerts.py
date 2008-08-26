@@ -68,7 +68,7 @@ __version__ = "$Revision: 1.2 $"
 
 
 from CvPythonExtensions import *
-import BugOptions
+import BugCore
 
 
 # Must set alerts to "not immediate" to have icons show up
@@ -84,15 +84,12 @@ UNHAPPY_ICON = "Art/Interface/mainscreen/cityscreen/angry_citizen.dds"
 gc = CyGlobalContext()
 localText = CyTranslator()
 
-Civ4lertsOpt = None
+Civ4lertsOpt = BugCore.game.Civ4lerts
 
 
 class Civ4lerts:
 
 	def __init__(self, eventManager):
-		global Civ4lertsOpt
-		Civ4lertsOpt = BugOptions.getOptions().getCiv4lerts()
-		
 		cityEvent = BeginActivePlayerTurnCityAlertManager(eventManager)
 		cityEvent.add(CityGrowth(eventManager))
 		cityEvent.add(CityHealthiness(eventManager))

@@ -12,8 +12,6 @@
 	 date="04/14/2006"
 	 url="http://forums.civfanatics.com/showthread.php?t=149572">
 	
-	<init module="AStarTools"/>
-	
 	<options id="PLE" file="Plot List Enhancements.ini">
 		<section id="PlotList">
 			<option id="Enabled" key="Enabled" 

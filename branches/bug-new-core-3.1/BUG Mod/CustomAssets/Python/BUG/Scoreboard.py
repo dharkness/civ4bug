@@ -7,12 +7,11 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import BugOptions
+import BugCore
 import CvUtil
 
 # Globals
-g_options = BugOptions.getOptions()
-ScoresOpt = None
+ScoresOpt = BugCore.game.Scores
 gc = CyGlobalContext()
 
 # Constants
@@ -67,9 +66,6 @@ def _init():
 	global bInitDone
 	if (bInitDone):
 		return
-	
-	global ScoresOpt
-	ScoresOpt = g_options.getScores()
 	
 	global columns
 	game = CyGame()

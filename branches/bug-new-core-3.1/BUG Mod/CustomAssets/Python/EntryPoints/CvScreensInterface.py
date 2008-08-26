@@ -48,12 +48,10 @@ from CvScreenEnums import *
 from CvPythonExtensions import *
 
 # BUG - Options - end
+import BugCore
 import BugOptionsScreen
+AdvisorOpt = BugCore.game.Advisors
 # BUG - Options - end
-
-# BUG - Advisors - start
-import BugOptions
-# BUG - Advisors - end
 
 g_bIsScreenActive = -1
 
@@ -131,7 +129,7 @@ def createDomesticAdvisor():
 	"""Creates the correct Domestic Advisor based on an option."""
 	global domesticAdvisor
 	if domesticAdvisor is None:
-		if (BugOptions.getOptions().getAdvisors().isCustDomAdv()):
+		if (AdvisorOpt.isCustDomAdv()):
 			import CvCustomizableDomesticAdvisor
 			domesticAdvisor = CvCustomizableDomesticAdvisor.CvCustomizableDomesticAdvisor()
 		else:
@@ -150,7 +148,7 @@ def createMilitaryAdvisor():
 	"""Creates the correct Military Advisor based on an option."""
 	global militaryAdvisor
 	if militaryAdvisor is None:
-		if (BugOptions.getOptions().getAdvisors().isBUG_MA()):
+		if (AdvisorOpt.isBUG_MA()):
 			import CvBUGMilitaryAdvisor
 			militaryAdvisor = CvBUGMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
 		else:
@@ -160,7 +158,7 @@ def createMilitaryAdvisor():
 
 def showMilitaryAdvisor():
 	if (-1 != CyGame().getActivePlayer()):
-		if (BugOptions.getOptions().getAdvisors().isBUG_MA()):
+		if (AdvisorOpt.isBUG_MA()):
 			# TODO: move to CvBUGMilitaryAdvisor.interfaceScreen()
 			militaryAdvisor.IconGridActive = False
 		militaryAdvisor.interfaceScreen()
@@ -243,7 +241,7 @@ def createCivilopedia():
 	global pediaMainScreen
 	global bUsingSevopedia
 	if pediaMainScreen is None:
-		if (BugOptions.getOptions().getAdvisors().isSevopedia()):
+		if (AdvisorOpt.isSevopedia()):
 			import SevoPediaMain
 			import SevoPediaHistory
 			bUsingSevopedia = True

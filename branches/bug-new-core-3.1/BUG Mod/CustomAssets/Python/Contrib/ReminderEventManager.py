@@ -12,7 +12,7 @@
 from CvPythonExtensions import *
 import CvUtil
 import Popup as PyPopup
-import BugOptions
+import BugCore
 import BugUtil
 import InputUtil
 import SdToolKit
@@ -27,7 +27,7 @@ RECALL_AGAIN_EVENT_ID = CvUtil.getNewEventID("Reminder.RecallAgain")
 
 gc = CyGlobalContext()
 
-ReminderOpt = None
+ReminderOpt = BugCore.game.Reminder
 g_autolog = None
 
 # Used to display flashing end-of-turn text
@@ -37,8 +37,6 @@ class ReminderEventManager:
 
 	def __init__(self, eventManager, keys):
 
-		global ReminderOpt
-		ReminderOpt = BugOptions.getOptions().getReminder()
 		global g_autolog
 		g_autolog = autolog.autologInstance()
 		

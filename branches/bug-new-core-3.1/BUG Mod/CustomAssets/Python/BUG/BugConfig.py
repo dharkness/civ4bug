@@ -5,22 +5,24 @@
 ##
 ## TODO:
 ##  - Remove IniFile
-##  - Move Mod to BugOptions/BugGame
+##  X Move Mod to BugOptions/BugGame
 ##  - Add Mod.module; used as default wherever a module is required
+##		- <init>
+##		- <event>/<events>
 ##  - Same for screens and tabs
-##  - Make sure inits and events run after options (?)
+##  X Make sure inits run after options
+##  ? Run events after options
 ##  - Change separator from "__" to "." (fix XML and tabs)
 ##
 ##  - Build an internal representation (partially done already) of the XML files
 ##    and then process everything in the correct order
-##  - Later pickle it if reading separate XML files turns out to be slow
-##    Would still need to detect changed XML files (stat)
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 import xmllib
+import BugCore
 import BugInit
 import BugOptions
 import BugPath
@@ -81,7 +83,7 @@ class GameBuilder:
 	
 	def __init__(self, game=None, attrs=None):
 		if game is None:
-			game = Game()
+			game = BugCore.game
 		self.game = game
 		self.eventManager = CvEventInterface.getEventManager()
 		self.options = BugOptions.getOptions()
@@ -103,8 +105,8 @@ class GameBuilder:
 		BugInit.loadMod(name)
 	
 	def createMod(self, id, name, author=None, url=None, version=None, build=None, releaseDate=None, attrs=None):
-		self.mod = Mod(id, name, author, url, version, build, releaseDate, attrs)
-		self.game.addMod(self.mod)
+		#self.mod = Mod(id, name, author, url, version, build, releaseDate, attrs)
+		self.mod = self.game._getMod(id)
 		return self.mod
 	
 	
@@ -118,17 +120,22 @@ class GameBuilder:
 		self.section = id
 	
 	
+	def addOption(self, option, getter=None, setter=None, attrs=None):
+		self.options.addOption(option)
+		self.mod._addOption(option)
+		option.attrs = attrs
+		option.createAccessorPair(getter, setter)
+	
 	def createLinkedOption(self, id, linkId, getter=None, setter=None, attrs=None):
-		id = makeOptionId(self.mod.id, id)
-		linkId = makeOptionId(self.mod.id, linkId)
+		id = makeOptionId(self.mod._id, id)
+		linkId = makeOptionId(self.mod._id, linkId)
 		option = self.options.getOption(linkId)
 		if option is not None:
-			link = option.createLinkedOption(id, self.iniFile)
-			self.options.addOption(link)
-			link.createAccessorPair(getter, setter)
+			link = option.createLinkedOption(self.mod, id)
+			self.addOption(link, getter, setter, attrs)
 			return link
 		else:
-			BugUtil.debug("ERR: link option %s not found" % linkId)
+			BugUtil.debug("ERROR: link option %s not found" % linkId)
 			return None
 	
 	def createOption(self, id, type, key=None, default=None, andId=None, 
@@ -136,36 +143,32 @@ class GameBuilder:
 					 attrs=None):
 		if type == "color":
 			return self.createOptionList(id, type, key, default, andId, type, None, None, title, tooltip, dirtyBit, getter, setter, attrs)
-		id = makeOptionId(self.mod.id, id)
-		andId = makeOptionId(self.mod.id, andId)
+		id = makeOptionId(self.mod._id, id)
+		andId = makeOptionId(self.mod._id, andId)
 		if key is None:
-			self.option = BugOptions.UnsavedOption(self.iniFile, id, type, 
-													  default, andId, title, tooltip, dirtyBit)
+			self.option = BugOptions.UnsavedOption(self.mod, id, type, 
+												   default, andId, title, tooltip, dirtyBit)
 		else:
-			self.option = BugOptions.IniOption(self.iniFile, id, self.section, key, type, 
-												  default, andId, title, tooltip, dirtyBit)
-		self.option.attrs = attrs
-		self.options.addOption(self.option)
-		self.option.createAccessorPair(getter, setter)
+			self.option = BugOptions.IniOption(self.mod, id, self.iniFile, self.section, key, 
+											   type, default, andId, title, tooltip, dirtyBit)
+		self.addOption(self.option, getter, setter, attrs)
 		return self.option
 	
 	def createOptionList(self, id, type, key=None, default=None, andId=None, 
 						 listType=None, values=None, format=None, 
 						 title=None, tooltip=None, dirtyBit=None, getter=None, setter=None, 
 						 attrs=None):
-		id = makeOptionId(self.mod.id, id)
-		andId = makeOptionId(self.mod.id, andId)
+		id = makeOptionId(self.mod._id, id)
+		andId = makeOptionId(self.mod._id, andId)
 		if key is None:
-			self.option = BugOptions.UnsavedListOption(self.iniFile, id, type, 
-														  default, andId, listType, values, format, 
-														  title, tooltip, dirtyBit)
+			self.option = BugOptions.UnsavedListOption(self.mod, id, type, 
+													   default, andId, listType, values, format, 
+													   title, tooltip, dirtyBit)
 		else:
-			self.option = BugOptions.IniListOption(self.iniFile, id, self.section, key, type, 
-													  default, andId, listType, values, format, 
-													  title, tooltip, dirtyBit)
-		self.option.attrs = attrs
-		self.options.addOption(self.option)
-		self.option.createAccessorPair(getter, setter)
+			self.option = BugOptions.IniListOption(self.mod, id, self.iniFile, self.section, key, 
+												   type, default, andId, listType, values, format, 
+												   title, tooltip, dirtyBit)
+		self.addOption(self.option, getter, setter, attrs)
 		return self.option
 	
 	def createChangeDirtyBit(self, dirtyBit):
@@ -178,17 +181,17 @@ class GameBuilder:
 		self.option.addValue(id, getter, setter)
 	
 	def createAccessor(self, id, getter=None, setter=None, attrs=None):
-		self.iniFile.createParameterizedAccessorPair(id, getter, setter)
+		self.mod._createParameterizedAccessorPair(id, getter, setter)
 	
 	
 	def createScreen(self, id, attrs=None):
 		self.screen = OptionsScreen(id, attrs)
-		self.game.addScreen(self.screen)
+		self.game._addScreen(self.screen)
 		return self.screen
 	
 	def createTab(self, screenId, id, module, clazz=None, attrs=None):
 		if screenId:
-			screen = self.game.getScreen(screenId)
+			screen = self.game._getScreen(screenId)
 		else:
 			screen = self.screen
 		if not screen:
@@ -234,35 +237,8 @@ class GameBuilder:
 def setGameBuilder(builder=None):
 	global g_builder
 	if builder is None:
-		builder = GameBuilder()
+		builder = GameBuilder(BugCore.game)
 	g_builder = builder
-
-
-class Game:
-	"Tracks the Mods and other top-level objects that make up the game itself."
-	
-	def __init__(self):
-		self.mods = {}
-		self.iniFiles = {}
-		self.screens = {}
-	
-	def getMod(self, id):
-		return self.mods[id]
-	
-	def addMod(self, mod):
-		self.mods[mod.id] = mod
-	
-	def getIniFile(self, id):
-		return self.iniFiles[id]
-	
-	def addIniFile(self, iniFile):
-		self.iniFiles[iniFile.id] = iniFile
-	
-	def getScreen(self, id):
-		return self.screens[id]
-	
-	def addScreen(self, screen):
-		self.screens[screen.id] = screen
 
 
 class Mod:
@@ -277,27 +253,6 @@ class Mod:
 		self.build = build
 		self.releaseDate = releaseDate
 		self.attrs = attrs
-
-
-class IniFile:
-	
-	def __init__(self, id, name, attrs=None):
-		self.id = id
-		self.name = name
-		self.attrs = attrs
-		
-		self.options = []
-		
-		path = BugPath.findIniFile(name)
-		if not path:
-			raise BugUtil.ConfigError("File %s not found" % name)
-		self.config = ConfigObj(path)
-	
-	def getConfig(self):
-		return self.config
-	
-	def addOptions(self, options):
-		self.options.append(options)
 
 
 class OptionsScreen:
@@ -371,6 +326,8 @@ class XmlParser(xmllib.XMLParser):
 
 	def __init__(self):
 		xmllib.XMLParser.__init__(self)
+		self.game = BugCore.game
+		self.mod = None
 		self.option = None
 		self.saving = False
 		self.savedText = None
@@ -438,11 +395,12 @@ class XmlParser(xmllib.XMLParser):
 		build = self.getAttribute(attrs, BUILD)
 		date = self.getAttribute(attrs, DATE)
 		url = self.getAttribute(attrs, URL)
-		mod = g_builder.createMod(id, name, author, url, 
-								  version, build, date, attrs)
+		self.mod = g_builder.createMod(id, name, author, url, 
+									   version, build, date, attrs)
 	
 	def end_mod(self):
-		pass
+		self.mod._initDone()
+		self.game._addMod(self.mod)
 	
 	
 	def start_options(self, attrs):

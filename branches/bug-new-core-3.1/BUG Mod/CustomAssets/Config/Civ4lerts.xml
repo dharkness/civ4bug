@@ -12,12 +12,12 @@
 	 date="08/11/2006"
 	 url="http://forums.civfanatics.com/showthread.php?t=157088">
 	 
+	<option id="WhipAssistOverflowCountCurrentProduction" 
+			link="CityScreen__WhipAssistOverflowCountCurrentProduction"/>
+	
 	<options id="Civ4lerts" file="Civ4lerts.ini">
 		<section id="Civ4lerts">
 			<!-- Move this outside of INI once Mod objects hold options -->
-			<option id="WhipAssistOverflowCountCurrentProduction" 
-					link="City__WhipAssistOverflowCountCurrentProduction"/>
-			
 			<option id="Enabled" key="Enabled" 
 					type="boolean" default="True" 
 					get="isEnabled" set="setEnabled" 

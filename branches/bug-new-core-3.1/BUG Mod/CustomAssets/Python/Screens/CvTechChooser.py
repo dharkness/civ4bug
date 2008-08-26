@@ -28,10 +28,9 @@ ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
 # BUG - GP Tech Prefs - start
-
 import TechPrefs
-import BugOptions
-BugOpt = None
+import BugCore
+BugOpt = BugCore.game.Advisors
 
 PREF_ICON_SIZE = 32
 PREF_ICON_TOP = 728
@@ -39,7 +38,6 @@ FLAVORS = [ TechPrefs.FLAVOR_PRODUCTION, TechPrefs.FLAVOR_GOLD, TechPrefs.FLAVOR
 			TechPrefs.FLAVOR_CULTURE, TechPrefs.FLAVOR_RELIGION ]
 UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIST",
 				 "UNITCLASS_ARTIST", "UNITCLASS_PROPHET" ]
-
 # BUG - GP Tech Prefs - end
 
 class CvTechChooser:
@@ -74,9 +72,6 @@ class CvTechChooser:
 		if ( CyGame().isPitbossHost() ):
 			return
 
-		global BugOpt
-		BugOpt = BugOptions.getOptions().getAdvisors()
-		
 		# Create a new screen, called TechChooser, using the file CvTechChooser.py for input
 		screen = CyGInterfaceScreen( "TechChooser", CvScreenEnums.TECH_CHOOSER )
 		screen.setRenderInterfaceOnly(True)
