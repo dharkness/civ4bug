@@ -17,28 +17,33 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 	def create(self, screen):
 		tab = self.createTab(screen)
 		panel = self.createMainPanel(screen)
-		column = self.addOneColumnLayout(screen, panel)
+		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 		
 		left, center, right = self.addThreeColumnLayout(screen, column, column, True)
 		
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
 
+		self.addSpacer(screen, left, "Foreign_Advisor")
+		self.addSpacer(screen, left, "Foreign_Advisor")
 		self.addLabel(screen, left, "Foreign_Advisor", "Foreign [F4]:")
 		self.addCheckbox(screen, left, "Advisors__EFAGlanceTab")
 		self.addCheckbox(screen, left, "Advisors__EFAGlanceSmilies")
 		
+		self.addSpacer(screen, left, "Military_Advisor")
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
-		self.addLabel(screen, left, "Technology_Advisor", "Technology [F6]:")
-		self.addCheckbox(screen, left, "Advisors__GPTechPrefs")
-		self.addCheckbox(screen, left, "Advisors__WideTechScreen")
+		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
+		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
+		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
 
+		self.addSpacer(screen, center, "Victory_Conditions")
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
 		self.addCheckbox(screen, center, "Advisors__BugMembersTab")
 
+		self.addSpacer(screen, center, "Sevopedia")
 		self.addLabel(screen, center, "Sevopedia", "Sevopedia [F12]:")
 		self.addCheckbox(screen, center, "Advisors__Sevopedia")
 		self.addCheckbox(screen, center, "Advisors__SevopediaSortItemList")

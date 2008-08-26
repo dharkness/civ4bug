@@ -64,4 +64,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, right, "PLE_Specialties")
 		self.addColorDropdown(screen, right, right, "PLE__Unit_Type_Specialties_Color")
 		self.addColorDropdown(screen, right, right, "PLE__Promotion_Specialties_Color")
+
+		self.addSpacer(screen, right, "PLE_Move_Highlighter") 
+ 		self.addCheckbox(screen, right, "PLE_Move_Highlighter")
  

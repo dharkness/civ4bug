@@ -1299,7 +1299,7 @@
 		<English>Close Mission Color</English>
 		<French>Couleur Mission Prête</French>
 		<German>Farbe (bald durchführbar)</German>
-		<Italian>Colore di Missione prossimamente possibile</Italian>
+		<Italian>Colore di Missione pross. poss.</Italian>
 		<Spanish>Close Mission Color</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2608,7 +2608,7 @@
 		<English>Great Person Research</English>
 		<French>Recherche des Personnages Illustres</French>
 		<German>Forschung Großer Persönlichkeiten</German>
-		<Italian>Ricerche dei Grandi Personaggi</Italian>
+		<Italian>Ricerche dei GP</Italian>
 		<Spanish>Great Person Research</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2624,7 +2624,7 @@
 		<English>Wide Tech Screen</English>
 		<French>Ecran de Technologie Large</French>
 		<German>Breiter Technologiebaum</German>
-		<Italian>Schermo Tecnologico ampio</Italian>
+		<Italian>Schermo ampio</Italian>
 		<Spanish>Wide Tech Screen</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2718,11 +2718,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__USEADVANCED_TEXT</Tag>
-		<English>Use Advanced Methods - see ini file for Era_UnitClass options</English>
-		<French>Utiliser la Méthode Avancée - voir le fichier INI pour les options Era_UnitClass</French>
-		<German>Erweitertes System verwenden - siehe INI-Datei für "Era_UnitClass"-Optionen</German>
+		<English>Use Advanced Methods (see ini file for Era_UnitClass options)</English>
+		<French>Utiliser la Méthode Avancée (voir le fichier INI pour les options Era_UnitClass)</French>
+		<German>Erweitertes System verwenden (siehe INI-Datei für "Era_UnitClass"-Optionen)</German>
 		<Italian>Usa le convenzioni di denominazione avanzate per le varie Ere</Italian>
-		<Spanish>Use Advanced Methods - see ini file for Era_UnitClass options</Spanish>
+		<Spanish>Use Advanced Methods (see ini file for Era_UnitClass options)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__USEADVANCED_HOVER</Tag>
@@ -3324,7 +3324,7 @@
 		<English>Map Scripts</English>
 		<French>Map Scripts</French>
 		<German>Map Scripts</German>
-		<Italian>Map Scripts</Italian>
+		<Italian>Map Script</Italian>
 		<Spanish>Map Scripts</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3340,7 +3340,7 @@
 		<English>Special Thanks</English>
 		<French>Special Thanks</French>
 		<German>Besonderer Dank an</German>
-		<Italian>Special Thanks</Italian>
+		<Italian>Ringraziamenti</Italian>
 		<Spanish>Special Thanks</Spanish>
 	</TEXT>
 </Civ4GameText>
