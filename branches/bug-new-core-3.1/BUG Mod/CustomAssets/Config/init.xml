@@ -12,10 +12,6 @@
 	 build="1124" 
 	 date="08/17/2008">
 	
-	<!-- TESTING REMOVE -- >
-	
-	<event type="BeginActivePlayerTurn" module="DiplomacyEvents" function="placeCities"/>
-	
 	<!-- Core -->
 	
 	<init module="BugEventManager" function="configure">
