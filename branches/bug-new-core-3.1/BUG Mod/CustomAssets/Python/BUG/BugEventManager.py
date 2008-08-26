@@ -97,14 +97,14 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.bMultiPlayer = False
 		self.bAllowCheats = False
 		
+		# map the initial EventHandlerMap values into the new data structure
+		for eventType, eventHandler in self.EventHandlerMap.iteritems():
+			self.setEventHandler(eventType, eventHandler)
+		
 		# add new core events
 		self.addEvent("PreGameStart")
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("LanguageChanged")
-		
-		# map the initial EventHandlerMap values into the new data structure
-		for eventType, eventHandler in self.EventHandlerMap.iteritems():
-			self.setEventHandler(eventType, eventHandler)
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -136,7 +136,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		if eventType in self.EventHandlerMap:
 			BugUtil.debug("WARN: event '%s' is already defined" % eventType)
 		else:
-			self.EventHandlerMap[eventType] = None
+			self.EventHandlerMap[eventType] = []
 
 	def addEventHandler(self, eventType, eventHandler, force=False):
 		"""Adds a handler for the given event type.
