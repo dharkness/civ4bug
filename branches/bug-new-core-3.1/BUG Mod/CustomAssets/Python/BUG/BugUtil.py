@@ -182,7 +182,7 @@ class ConfigError(BugError):
 	result in false-positive errors being reported.
 	"""
 	def __init__(self, message):
-		ConfigError.__init__(self, message)
+		BugError.__init__(self, message)
 
 
 ## Civ4 helpers
