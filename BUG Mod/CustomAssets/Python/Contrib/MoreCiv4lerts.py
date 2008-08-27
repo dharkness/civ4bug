@@ -5,11 +5,7 @@
 from CvPythonExtensions import *
 import CvUtil
 import PyHelpers
-
-# BUG - Options - start
-import BugAlertsOptions
-BugAlerts = BugAlertsOptions.getOptions()
-# BUG - Options - end
+import BugCore
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -68,33 +64,35 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
+		
+		self.options = BugCore.game.MoreCiv4lerts
 
 	def getCheckForDomPopVictory(self):
-		return BugAlerts.isShowDomPopAlert()
+		return self.options.isShowDomPopAlert()
 
 	def getCheckForDomLandVictory(self):
-		return BugAlerts.isShowDomLandAlert()
+		return self.options.isShowDomLandAlert()
 
 	def getPopThreshold(self):
-		return BugAlerts.getDomPopThreshold()
+		return self.options.getDomPopThreshold()
 
 	def getLandThreshold(self):
-		return BugAlerts.getDomLandThreshold()
+		return self.options.getDomLandThreshold()
 
 	def getCheckForCityBorderExpansion(self):
-		return BugAlerts.isShowCityPendingExpandBorderAlert()
+		return self.options.isShowCityPendingExpandBorderAlert()
 
 	def getCheckForNewTrades(self):
-		return BugAlerts.isShowTechTradeAlert()
+		return self.options.isShowTechTradeAlert()
 
 	def getCheckForOpenBorders(self):
-		return BugAlerts.isShowOpenBordersTradeAlert()
+		return self.options.isShowOpenBordersTradeAlert()
 
 	def getCheckForDefensivePact(self):
-		return BugAlerts.isShowDefensivePactTradeAlert()
+		return self.options.isShowDefensivePactTradeAlert()
 
 	def getCheckForPermanentAlliance(self):
-		return BugAlerts.isShowPermanentAllianceTradeAlert()
+		return self.options.isShowPermanentAllianceTradeAlert()
 
 	def getCheckForDomVictory(self):
 		return self.getCheckForDomPopVictory() or self.getCheckForDomLandVictory()
@@ -156,6 +154,8 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			teamPlayerList.append(PyPlayer(iActivePlayer))
 			for loopPlayer in range(len(teamPlayerList)):
 				lCity = []
+				# EF: This looks very wrong. Above the list of players will not be 0, 1, ...
+				#     but here it uses loopPlayer which is 0, 1, ...
 				lCity = PyPlayer(loopPlayer).getCityList()
 				for loopCity in range(len(lCity)):
 					city = gc.getPlayer(loopPlayer).getCity(loopCity)
@@ -163,7 +163,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 						popGrowthCount = popGrowthCount + 1
 					if (BeginTurn and self.getCheckForCityBorderExpansion()):
 						if (city.getCultureLevel() != gc.getNumCultureLevelInfos() - 1):
-							if ((city.getCulture(loopPlayer) + city.getCommerceRate(CommerceTypes.COMMERCE_CULTURE)) > city.getCultureThreshold()):
+							if ((city.getCulture(loopPlayer) + city.getCommerceRate(CommerceTypes.COMMERCE_CULTURE)) >= city.getCultureThreshold()):
 								message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND",(city.getName(),))
 								icon = "Art/Interface/Buttons/General/Warning_popup.dds"
 								self._addMessageAtCity(loopPlayer, message, icon, city)

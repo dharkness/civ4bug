@@ -1,29 +1,28 @@
-## Sid Meier's Civilization 4
-## Copyright Firaxis Games 2005
-##
 ## All Eras Dawn Of Man Screen Mod by Jeckel.
 ##
+## Displays the Dawn of Man screen regardless of which era you start in.
+##
+## Notes
+##  - Must be initialized externally by calling init()
+##  - Rewritten to demonstrate a simple no-class event handling mod.
 
 from CvPythonExtensions import *
-import Popup as PyPopup
-import CvUtil
 
-# globals
+START_YEAR = None
+
 gc = CyGlobalContext()
 
-class CvAllErasDawnOfManScreenEventManager:
-	def __init__(self, eventManager):
+def init():
+	global START_YEAR
+	START_YEAR = gc.getDefineINT("START_YEAR")
 
-		# initialize base class
-		eventManager.addEventHandler("GameStart", self.onGameStart)
-
-	def onGameStart(self, argsList):
-		if ( gc.getGame().getGameTurnYear() != gc.getDefineINT("START_YEAR") ) :
-			if (gc.getGame().getGameTurn() == gc.getGame().getStartTurn()) or (gc.getGame().countNumHumanGameTurnActive() == 0):
-				for iPlayer in range(gc.getMAX_PLAYERS()):
-					pPlayer = gc.getPlayer(iPlayer)
-					if (pPlayer.isAlive()) and (pPlayer.isHuman()):
-						popupInfo = CyPopupInfo()
-						popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
-						popupInfo.setText(u"showDawnOfMan")
-						popupInfo.addPopup(iPlayer)
+def onGameStart(argsList):
+	if ( gc.getGame().getGameTurnYear() != START_YEAR ) :
+		if (gc.getGame().getGameTurn() == gc.getGame().getStartTurn()) or (gc.getGame().countNumHumanGameTurnActive() == 0):
+			for iPlayer in range(gc.getMAX_PLAYERS()):
+				pPlayer = gc.getPlayer(iPlayer)
+				if (pPlayer.isAlive()) and (pPlayer.isHuman()):
+					popupInfo = CyPopupInfo()
+					popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
+					popupInfo.setText(u"showDawnOfMan")
+					popupInfo.addPopup(iPlayer)

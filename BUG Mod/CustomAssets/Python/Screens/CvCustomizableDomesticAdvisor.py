@@ -78,11 +78,10 @@ import os.path
 
 PyPlayer = PyHelpers.PyPlayer
 
+
 # BUG - Options - start
-#import BugScreensOptions
-#BugScreens = BugScreensOptions.getOptions()
-import BugCityScreenOptions
-BugCityScreen = BugCityScreenOptions.getOptions()
+import BugCore
+CityScreenOpt = BugCore.game.CityScreen
 # BUG - Options - end
 
 # Needed to save changes
@@ -1285,7 +1284,7 @@ class CvCustomizableDomesticAdvisor:
 		
 		if (city.canHurry(self.HURRY_TYPE_POP, False)):
 			iOverflow = city.hurryProduction(self.HURRY_TYPE_POP) - city.productionLeft()
-			if BugCityScreen.isOverflowCountCurrentProduction():
+			if CityScreenOpt.isWhipAssistOverflowCountCurrentProduction():
 				iOverflow = iOverflow + city.getCurrentProductionDifference(True, False)
 			iMaxOverflow = min(city.getProductionNeeded(), iOverflow)
 			iOverflowGold = max(0, iOverflow - iMaxOverflow) * gc.getDefineINT("MAXED_UNIT_GOLD_PERCENT") / 100

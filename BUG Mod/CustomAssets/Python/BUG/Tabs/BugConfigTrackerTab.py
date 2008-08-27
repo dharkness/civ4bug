@@ -1,6 +1,10 @@
-## BugGeneralOptionsTab
-## Tab for the BUG Scoreboard Options
-## BUG Mod - Copyright 2007
+## BugConfigOptionsTab
+##
+## Tab for the BUG Config Tracker.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 import BugOptionsTab
 import BugConfigTracker

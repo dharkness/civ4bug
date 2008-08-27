@@ -1,7 +1,10 @@
 ## HelpEventManager
-## Opens the BUG help file when Shift-F1 is hit.
+##
+## Opens the BUG help file when Shift-F1 is hit..
 ##
 ## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 import BugHelp

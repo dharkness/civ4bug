@@ -1,6 +1,13 @@
-## BugGeneralOptionsTab
-## Tab for the BUG Scoreboard Options
-## BUG Mod - Copyright 2007
+## BugErrorOptionsTab
+##
+## Tab for the BUG Error Tracker.
+##
+## TODO:
+##  * Display all config errors
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 import BugOptionsTab
 import BugPath

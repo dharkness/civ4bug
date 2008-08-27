@@ -8,11 +8,12 @@ import codecs
 import os
 import os.path
 import string
+import BugCore
+import BugOptions
 import BugPath
 import BugConfigTracker
-import BugAutologOptions
 
-BugAutolog = BugAutologOptions.getOptions()
+BugAutolog = BugCore.game.Autolog
 
 class autologInstance:
 
@@ -22,7 +23,8 @@ class autologInstance:
 
 	def setLogFileName(self, LogFileName):
 		BugAutolog.setFileName(LogFileName)
-		BugAutolog.write()
+		# TODO: do we need to save this?
+		BugOptions.write()
 		
 	def isLogging(self):
 		return BugAutolog.isLoggingOn()
@@ -100,7 +102,8 @@ class autologInstance:
 					zMsg = "[color=%s]%s[/color]" % (vColor, zMsg)
 
 		return "%s\r\n" % (zMsg)
-		
+
+# EF: What is this unused class for?
 class autologRetain:
 
 	def __init__(self):

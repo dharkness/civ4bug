@@ -1,24 +1,17 @@
 ## BugOptionsScreen
-## Displays the BUG Options Screen
-## BUG Mod - Copyright 2007
-
-# For input see CvOptionsScreenCallbackInterface in Python\EntryPoints\
+##
+## Displays the BUG Options Screen and its tabs.
+##
+## For input handlers see CvOptionsScreenCallbackInterface in Python/EntryPoints.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
-import BugInitOptions
 import BugOptions
 import BugUtil
-
-import BugGeneralOptionsTab
-import BugAdvisorOptionsTab
-import BugNJAGCOptionsTab
-import BugScoreOptionsTab
-import BugAlertsOptionsTab
-import BugAutologOptionsTab
-import BugUnitNameOptionsTab
-import BugPleOptionsTab
-import BugConfigTrackerTab
-import BugCreditsOptionsTab
+import CvScreensInterface
 
 import BugErrorOptionsTab
 
@@ -29,21 +22,6 @@ class BugOptionsScreen:
 		self.iScreenHeight = 50
 		self.options = BugOptions.getOptions()
 		self.tabs = []
-		
-		if (not self.options.isLoaded()):
-			self.addTab(BugErrorOptionsTab.BugErrorOptionsTab(self))
-		else:
-			# instantiate all the tab objects
-			self.addTab(BugGeneralOptionsTab.BugGeneralOptionsTab(self))
-			self.addTab(BugAdvisorOptionsTab.BugAdvisorOptionsTab(self))
-			self.addTab(BugNJAGCOptionsTab.BugNJAGCOptionsTab(self))
-			self.addTab(BugScoreOptionsTab.BugScoreOptionsTab(self))
-			self.addTab(BugPleOptionsTab.BugPleOptionsTab(self))
-			self.addTab(BugAlertsOptionsTab.BugAlertsOptionsTab(self))
-			self.addTab(BugAutologOptionsTab.BugAutologOptionsTab(self))
-			self.addTab(BugUnitNameOptionsTab.BugUnitNameOptionsTab(self))
-			self.addTab(BugConfigTrackerTab.BugConfigTrackerTab(self))
-			self.addTab(BugCreditsOptionsTab.BugCreditsOptionsTab(self))
 
 	def addTab(self, tab):
 		self.tabs.append(tab)
@@ -64,7 +42,10 @@ class BugOptionsScreen:
 		self.pTabControl.setControlsExpanding(False)
 		self.pTabControl.setColumnLength(self.iScreenHeight)
 		
-		self.createTabs()
+		if self.options.isLoaded():
+			self.createTabs()
+		else:
+			BugErrorOptionsTab.BugErrorOptionsTab(self).create(self.pTabControl)
 
 	def createTabs(self):
 		for tab in self.tabs:
@@ -74,3 +55,13 @@ class BugOptionsScreen:
 		"Clear the translations of all tabs in response to the user choosing a language"
 		for tab in self.tabs:
 			tab.clearTranslation()
+	
+	def close(self):
+		# TODO: check for error
+		self.options.write()
+		self.pTabControl.destroy()
+		self.pTabControl = None
+
+
+def clearAllTranslations(argsList=None):
+	CvScreensInterface.getBugOptionsScreen().clearAllTranslations()

@@ -1,6 +1,10 @@
 ## BugCreditsOptionsTab
-## Tab for the BUG Credits
-## BUG Mod - Copyright 2007
+##
+## Tab for the BUG Credits.
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 import BugOptionsTab
 
@@ -18,33 +22,36 @@ credits = [ "BUG_TEAM|BUG Team",
 		    "-",
 		    "MOD_AUTHORS|Mod Authors",
 		    "12monkeys - Plot List Enhancements",
-		    "Alerum68 - Loading Hints & Tips, SevoPedia Strategy Guides",
+		    "Alerum68 - Loading Hints & Tips, Sevopedia Strategy Guides",
 		    "Almightix - Better Espionage Screen",
 		    "asioasioasio - Wide City Bar",
 		    "Caesium - Score Delta",
 		    "Cammagno - Cammagno's CDA Pages",
 		    "Chinese American - Culture Turns, Great Person Turns",
 		    "daengle - (merged in full PLE)",
-		    "Dr. Elmer Jiggles - Civ4lerts, Custom Event Manager, MoreCiv4lerts",
+		    "Dr. Elmer Jiggle - Civ4lerts, CvCustomEventManager, CvPath",
 		    "Ekmek - Shortcuts in Civilopedia",
-		    "EmperorFool - Advanced Scoreboard, Deployment in Military AdvisorGP Tech Prefs, BUG Core",
-		    " -    Power Ratio, Raw Yields, Traits in Sevopedia, Whip Assist",
-		    " -    (extended BES, Civ4lerts, CDA, GP Progress Bar, Reminders, PLE, EFA Glance)",
-		    "Eotinb - Autolog, Reminders",
+		    "EmperorFool - Advanced Scoreboard, BUG Core, Deployment in Military Advisor, GP Tech Prefs,",
+		    " -    Power Ratio, Raw Yields, Sevopedia Traits, War/Peace/Enemy in EFA Glance, WhipAssist",
+		    " -    (extended BES, CDA, Civ4lerts, GP Progress Bar, PLE, Reminder, Sevopedia)",
+		    "Eotinb - Autolog, Reminder",
 		    "Fallblau - Modified Hall of Fame Screen",
 		    "fitchn - Civilopedia Index",
+		    "HOF Team - MoreCiv4lerts",
 		    "Impaler[WrG] - Great Person Progress Bar",
-		    "NeverMind - Great General Combat Experience Counter",
+		    "Jeckel - All Eras Dawn of Man Screen",
+		    "NeverMind - Great General Progress Bar (was XP Counter)",
 		    "Porges - Attitude Icons",
 		    "Requies - Exotic Foreign Advisor",
 		    "ricardojahns - I Love Asphalt (wide screen EFA)",
-		    "Ruff_Hi - Generic Unit Naming, Sit-Rep in Military Advisor",
-		    " -    (extended AutoLog, Reminders, Promo/Actions in PLE, Smilies in EFA)",
+		    "Ruff_Hi - Generic Unit Naming, Sit-Rep in Military Advisor, Smilies in EFA Glance",
+		    " -    (extended AutoLog, Reminder, Promo/Actions in PLE)",
 		    "Sevo - Raw Commerce, Sevopedia",
 		    "SimCutie - Attitudes in Scoreboard, City Cycle Arrows",
 		    "Sisiutil - Trait Civilopedia Text",
+		    "Stone-D - SD ToolKit",
 		    "Taelis - Customizable Domestic Advisor",
-		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock",
+		    "TheLopez - Dead Civ Scoreboard, Not Just Another Game Clock, Specialist Stacker",
 		    "turlute - (ported PLE to BtS)",
 		    "-",
 		    "MAP_SCRIPTS|Map Scripts",

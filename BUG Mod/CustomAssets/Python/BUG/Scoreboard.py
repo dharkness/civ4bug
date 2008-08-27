@@ -1,13 +1,17 @@
-## ScoreCard
+## Scoreboard
+##
 ## Holds the information used to display the scoreboard.
-## Copyright 2007 EmperorFool @ civfanatics.com
+##
+## Copyright (c) 2007-2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugCore
 import CvUtil
-import BugScoreOptions
 
 # Globals
-BugOpt = BugScoreOptions.getOptions()
+ScoresOpt = BugCore.game.Scores
 gc = CyGlobalContext()
 
 # Constants
@@ -180,7 +184,7 @@ class Scoreboard:
 		self._set(POWER, u"<font=2>%s</font>" % value)
 		
 	def setResearch(self, tech, turns):
-		if (BugOpt.isShowResearchIcons()):
+		if (ScoresOpt.isShowResearchIcons()):
 			self._set(RESEARCH, tech)
 		else:
 			self._set(RESEARCH, u"<font=2>%s</font>" % gc.getTechInfo(tech).getDescription())
@@ -246,12 +250,12 @@ class Scoreboard:
 		else:
 			y = yResolution - 88
 		totalWidth = 0
-		if (BugOpt.isShowResearchIcons()):
+		if (ScoresOpt.isShowResearchIcons()):
 			height = ROW_HEIGHT
 		else:
 			height = ROW_HEIGHT
 		
-		format = [ l for l in BugOpt.getDisplayOrder().upper() ]
+		format = [ l for l in ScoresOpt.getDisplayOrder().upper() ]
 		format.reverse()
 		for k in format:
 			if (not columnsByKey.has_key(k)):
@@ -261,7 +265,7 @@ class Scoreboard:
 			if (not self.hasAny[c]):
 				continue
 			type = column.type
-			if (c == RESEARCH and not BugOpt.isShowResearchIcons()):
+			if (c == RESEARCH and not ScoresOpt.isShowResearchIcons()):
 				# switch SPECIAL research icon to DYNAMIC name
 				type = DYNAMIC
 			
@@ -306,7 +310,7 @@ class Scoreboard:
 						if (c == NAME or c == SCORE):
 							if (c == NAME):
 								name = "ScoreText%d" % p
-								if (BugOpt.isLeftAlignName()):
+								if (ScoresOpt.isLeftAlignName()):
 									align = CvUtil.FONT_LEFT_JUSTIFY
 									adjustX = width
 						if (self.values[p][ALIVE]):

@@ -3,7 +3,9 @@
 ## Helps locate INI and other setup files for the BUG Mod.
 ## Based on CvPath by Dr. Elmer Jiggles.
 ##
-## Copyright 2008 (c) BUG Mod
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 # This module locates INI and other configuration files and directories.
 # It exposes several useful variables:
@@ -47,6 +49,7 @@ import os
 import os.path
 import sys
 import BugConfigTracker
+import BugUtil
 
 modName = None
 try:
@@ -119,6 +122,19 @@ def findIniFile(name, subdir=None):
 			return path
 	return None
 
+def createIniFile(name, subdir=None):
+	"Returns the path for the default location of the named INI file so it can be created."
+	if iniFileSearchPaths:
+		dir = iniFileSearchPaths[0]
+		if (subdir):
+			return os.path.join(dir, subdir, name)
+		else:
+			return os.path.join(dir, name)
+	if (subdir):
+		return os.path.join(subdir, name)
+	else:
+		return name
+
 mainModIniDir = None
 def findMainModIniFile():
 	"Locates the main INI file for the mod."
@@ -188,4 +204,8 @@ def findAssetFile(name, subdir=None):
 			path = os.path.join(dir, name)
 		if (os.path.isfile(path)):
 			return path
+	if (subdir):
+		BugUtil.debug("Cannot find asset file %s in %s" % (name, subdir))
+	else:
+		BugUtil.debug("Cannot find asset file %s" % name)
 	return None

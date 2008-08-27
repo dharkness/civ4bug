@@ -1,16 +1,9 @@
 ## Sid Meier's Civilization 4
 ## Copyright Firaxis Games 2005
 import CvMainInterface
-# BUG - CustDomAdv - start
-# (conditionally imported below)
-#import CvDomesticAdvisor
-# BUG - CustDomAdv - end
 import CvTechChooser
 import CvForeignAdvisor
 import CvExoticForeignAdvisor
-# BUG - Military Advisor - start
-#import CvMilitaryAdvisor
-# BUG - Military Advisor - end
 import CvFinanceAdvisor
 import CvReligionScreen
 import CvCorporationScreen
@@ -37,9 +30,6 @@ import CvSpaceShipScreen
 
 # BUG - Sevopedia - start
 import SevoScreenEnums
-# (conditionally imported below)
-#import CvPediaMain
-#import CvPediaHistory
 # BUG - Sevopedia - end
 
 import CvWorldBuilderScreen
@@ -57,8 +47,10 @@ import ScreenInput as PyScreenInput
 from CvScreenEnums import *
 from CvPythonExtensions import *
 
-# BUG - Options - start
+# BUG - Options - end
+import BugCore
 import BugOptionsScreen
+AdvisorOpt = BugCore.game.Advisors
 # BUG - Options - end
 
 g_bIsScreenActive = -1
@@ -132,15 +124,18 @@ def showFinanceAdvisor():
 		financeAdvisor.interfaceScreen()
 
 # BUG - CustDomAdv - start
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
-
-if (BugScreens.isCustDomAdv()):
-	import CvCustomizableDomesticAdvisor
-	domesticAdvisor = CvCustomizableDomesticAdvisor.CvCustomizableDomesticAdvisor()
-else:
-	import CvDomesticAdvisor
-	domesticAdvisor = CvDomesticAdvisor.CvDomesticAdvisor()
+domesticAdvisor = None
+def createDomesticAdvisor():
+	"""Creates the correct Domestic Advisor based on an option."""
+	global domesticAdvisor
+	if domesticAdvisor is None:
+		if (AdvisorOpt.isCustDomAdv()):
+			import CvCustomizableDomesticAdvisor
+			domesticAdvisor = CvCustomizableDomesticAdvisor.CvCustomizableDomesticAdvisor()
+		else:
+			import CvDomesticAdvisor
+			domesticAdvisor = CvDomesticAdvisor.CvDomesticAdvisor()
+		HandleInputMap[DOMESTIC_ADVISOR] = domesticAdvisor
 
 def showDomesticAdvisor(argsList):
 	if (-1 != CyGame().getActivePlayer()):
@@ -148,16 +143,23 @@ def showDomesticAdvisor(argsList):
 # BUG - CustDomAdv - end
 
 # BUG - Military Advisor - start
-if (BugScreens.isBUG_MA()):
-	import CvBUGMilitaryAdvisor
-	militaryAdvisor = CvBUGMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
-else:
-	import CvMilitaryAdvisor
-	militaryAdvisor = CvMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+militaryAdvisor = None
+def createMilitaryAdvisor():
+	"""Creates the correct Military Advisor based on an option."""
+	global militaryAdvisor
+	if militaryAdvisor is None:
+		if (AdvisorOpt.isBUG_MA()):
+			import CvBUGMilitaryAdvisor
+			militaryAdvisor = CvBUGMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+		else:
+			import CvMilitaryAdvisor
+			militaryAdvisor = CvMilitaryAdvisor.CvMilitaryAdvisor(MILITARY_ADVISOR)
+		HandleInputMap[MILITARY_ADVISOR] = militaryAdvisor
 
 def showMilitaryAdvisor():
 	if (-1 != CyGame().getActivePlayer()):
-		if (BugScreens.isBUG_MA()):
+		if (AdvisorOpt.isBUG_MA()):
+			# TODO: move to CvBUGMilitaryAdvisor.interfaceScreen()
 			militaryAdvisor.IconGridActive = False
 		militaryAdvisor.interfaceScreen()
 # BUG - Military Advisor - end
@@ -232,16 +234,117 @@ def showVictoryScreen():
 
 # BUG - Sevopedia - start
 
-if (BugScreens.isSevopedia()):
-	import SevoPediaMain
-	import SevoPediaHistory
-	bUsingSevopedia = True
-	pediaMainScreen = SevoPediaMain.SevoPediaMain()
-else:
-	import CvPediaMain
-	import CvPediaHistory
-	bUsingSevopedia = False
-	pediaMainScreen = CvPediaMain.CvPediaMain()
+pediaMainScreen = None
+bUsingSevopedia = False
+def createCivilopedia():
+	"""Creates the correct Civilopedia based on an option."""
+	global pediaMainScreen
+	global bUsingSevopedia
+	if pediaMainScreen is None:
+		if (AdvisorOpt.isSevopedia()):
+			import SevoPediaMain
+			import SevoPediaHistory
+			bUsingSevopedia = True
+			pediaMainScreen = SevoPediaMain.SevoPediaMain()
+		else:
+			import CvPediaMain
+			import CvPediaHistory
+			bUsingSevopedia = False
+			pediaMainScreen = CvPediaMain.CvPediaMain()
+		HandleInputMap.update(
+							{
+								PEDIA_MAIN : pediaMainScreen,
+								PEDIA_TECH : pediaMainScreen,
+								PEDIA_UNIT : pediaMainScreen,
+								PEDIA_BUILDING : pediaMainScreen,
+								PEDIA_PROMOTION : pediaMainScreen,
+								PEDIA_PROJECT : pediaMainScreen,
+								PEDIA_UNIT_CHART : pediaMainScreen,
+								PEDIA_BONUS : pediaMainScreen,
+								PEDIA_IMPROVEMENT : pediaMainScreen,
+								PEDIA_TERRAIN : pediaMainScreen,
+								PEDIA_FEATURE : pediaMainScreen,
+								PEDIA_CIVIC : pediaMainScreen,
+								PEDIA_CIVILIZATION : pediaMainScreen,
+								PEDIA_LEADER : pediaMainScreen,
+								PEDIA_RELIGION : pediaMainScreen,
+								PEDIA_CORPORATION : pediaMainScreen,
+								PEDIA_HISTORY : pediaMainScreen,
+								
+								SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_TRAITS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
+								SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
+								SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
+							})
+		global HandleNavigationMap
+		HandleNavigationMap = {
+							PEDIA_MAIN : pediaMainScreen,
+							PEDIA_TECH : pediaMainScreen,
+							PEDIA_UNIT : pediaMainScreen,
+							PEDIA_BUILDING : pediaMainScreen,
+							PEDIA_PROMOTION : pediaMainScreen,
+							PEDIA_PROJECT : pediaMainScreen,
+							PEDIA_UNIT_CHART : pediaMainScreen,
+							PEDIA_BONUS : pediaMainScreen,
+							PEDIA_IMPROVEMENT : pediaMainScreen,
+							PEDIA_TERRAIN : pediaMainScreen,
+							PEDIA_FEATURE : pediaMainScreen,
+							PEDIA_CIVIC : pediaMainScreen,
+							PEDIA_CIVILIZATION : pediaMainScreen,
+							PEDIA_LEADER : pediaMainScreen,
+							PEDIA_HISTORY : pediaMainScreen,
+							PEDIA_RELIGION : pediaMainScreen,
+							PEDIA_CORPORATION : pediaMainScreen,
+							
+							SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_CIVS		 	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_TRAITS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
+							SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
+							SevoScreenEnums.PEDIA_HINTS			: pediaMainScreen,
+							SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
+						}
 
 def linkToPedia(argsList):
 	pediaMainScreen.link(argsList[0])
@@ -1002,54 +1105,6 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					VICTORY_MOVIE_SCREEN : victoryMovie,
 					ESPIONAGE_ADVISOR : espionageAdvisor,
 					DAN_QUAYLE_SCREEN : danQuayleScreen,
-					
-					PEDIA_MAIN : pediaMainScreen,
-					PEDIA_TECH : pediaMainScreen,
-					PEDIA_UNIT : pediaMainScreen,
-					PEDIA_BUILDING : pediaMainScreen,
-					PEDIA_PROMOTION : pediaMainScreen,
-					PEDIA_PROJECT : pediaMainScreen,
-					PEDIA_UNIT_CHART : pediaMainScreen,
-					PEDIA_BONUS : pediaMainScreen,
-					PEDIA_IMPROVEMENT : pediaMainScreen,
-					PEDIA_TERRAIN : pediaMainScreen,
-					PEDIA_FEATURE : pediaMainScreen,
-					PEDIA_CIVIC : pediaMainScreen,
-					PEDIA_CIVILIZATION : pediaMainScreen,
-					PEDIA_LEADER : pediaMainScreen,
-					PEDIA_RELIGION : pediaMainScreen,
-					PEDIA_CORPORATION : pediaMainScreen,
-					PEDIA_HISTORY : pediaMainScreen,
-					
-# BUG - Sevopedia - start
-
-					SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
-					
-# BUG - Sevopedia - end
 
 					WORLDBUILDER_SCREEN : worldBuilderScreen,
 					WORLDBUILDER_DIPLOMACY_SCREEN : worldBuilderDiplomacyScreen,
@@ -1062,55 +1117,12 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 #######################################################################################
 ## Handle Navigation Map
 #######################################################################################
-HandleNavigationMap = {
-					PEDIA_MAIN : pediaMainScreen,
-					PEDIA_TECH : pediaMainScreen,
-					PEDIA_UNIT : pediaMainScreen,
-					PEDIA_BUILDING : pediaMainScreen,
-					PEDIA_PROMOTION : pediaMainScreen,
-					PEDIA_PROJECT : pediaMainScreen,
-					PEDIA_UNIT_CHART : pediaMainScreen,
-					PEDIA_BONUS : pediaMainScreen,
-					PEDIA_IMPROVEMENT : pediaMainScreen,
-					PEDIA_TERRAIN : pediaMainScreen,
-					PEDIA_FEATURE : pediaMainScreen,
-					PEDIA_CIVIC : pediaMainScreen,
-					PEDIA_CIVILIZATION : pediaMainScreen,
-					PEDIA_LEADER : pediaMainScreen,
-					PEDIA_HISTORY : pediaMainScreen,
-					PEDIA_RELIGION : pediaMainScreen,
-					PEDIA_CORPORATION : pediaMainScreen,
+HandleNavigationMap = {}
 
-# BUG - Sevopedia - start
 
-					SevoScreenEnums.PEDIA_MAIN		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_TECHS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNITS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNIT_UPGRADES	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_UNIT_CATEGORIES	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROMOTIONS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROMOTION_TREE	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BUILDINGS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_NATIONAL_WONDERS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_GREAT_WONDERS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_PROJECTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_SPECIALISTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_TERRAINS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_FEATURES		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BONUSES		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_IMPROVEMENTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CIVS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_LEADERS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_TRAITS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CIVICS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_RELIGIONS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CORPORATIONS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_CONCEPTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_BTS_CONCEPTS	: pediaMainScreen,
-					SevoScreenEnums.PEDIA_HINTS		: pediaMainScreen,
-					SevoScreenEnums.PEDIA_SHORTCUTS		: pediaMainScreen,
-				
-# BUG - Sevopedia - end
-
-				# add new screens here
-				}
+# BUG - Options - start
+def init():
+	createDomesticAdvisor()
+	createMilitaryAdvisor()
+	createCivilopedia()
+# BUG - Options - end

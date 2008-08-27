@@ -3,7 +3,9 @@
 ## Calculates the raw yields of food, production and commerce for a city
 ## and displays them in the trade table when enabled.
 ##
-## Copyright (c) 2008 BUG Mod.
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 import CvUtil

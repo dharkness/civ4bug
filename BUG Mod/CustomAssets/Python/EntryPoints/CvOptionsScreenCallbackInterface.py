@@ -9,10 +9,13 @@ UserProfile = CyUserProfile()
 
 # BUG - Options - start
 import BugOptions
-import BugOptionsScreen
-import ColorUtil
 import BugHelp
+import ColorUtil
 # BUG - Options - end
+
+# BUG - BugEventManager - start
+import CvEventInterface
+# BUG - BugEventManager - end
 
 #"""
 #OPTIONS SCREEN CALLBACK INTERFACE - Any time something is changed in the Options Screen the result is determined here
@@ -74,10 +77,9 @@ def handleLanguagesDropdownBoxInput ( argsList ):
 	popup.setBodyString(localText.getText("TXT_KEY_FEAT_ACCOMPLISHED_OK", ()))
 	popup.launch()
 	
-# BUG - Options - start
-	g_options.clearAllTranslations()
-	getBugOptionsScreen().clearAllTranslations()
-# BUG - Options - end
+# BUG - BugEventManager - start
+	CvEventInterface.getEventManager().fireEvent("LanguageChanged", iValue)
+# BUG - BugEventManager - end
 	
 	return 1
 	
@@ -507,15 +509,10 @@ g_options = BugOptions.getOptions()
 def getBugOptionsScreen():
 	return CvScreensInterface.getBugOptionsScreen()
 
-def getBugOptionsTabControl():
-	return getBugOptionsScreen().getTabControl()
-
-
 def handleBugExitButtonInput ( argsList ):
 	"Exits the screen after saving the options to disk"
 	szName = argsList[0]
-	g_options.write()
-	getBugOptionsTabControl().destroy()
+	getBugOptionsScreen().close()
 	return 1
 		
 def handleBugHelpButtonInput ( argsList ):
@@ -526,55 +523,44 @@ def handleBugHelpButtonInput ( argsList ):
 
 def handleBugCheckboxClicked ( argsList ): 
 	bValue, szName = argsList
-	g_options.setBoolean(szName, bValue)
 	option = g_options.getOption(szName)
-	if (option and option.getDirtyBit()):
-		CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setValue(bValue)
 	return 1
 
 def handleBugTextEditChange ( argsList ): 
 	szValue, szName = argsList
-	g_options.setString(szName, szValue)
 	option = g_options.getOption(szName)
-	if (option and option.getDirtyBit()):
-		CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setValue(szValue)
 	return 1
 
 def handleBugDropdownChange ( argsList ):
 	iIndex, szName = argsList
-	g_options.setInt(szName, iIndex)
 	option = g_options.getOption(szName)
-	if (option and option.getDirtyBit()):
-		CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setIndex(iIndex)
 	return 1
 
 def handleBugIntDropdownChange ( argsList ):
 	iIndex, szName = argsList
 	option = g_options.getOption(szName)
-	if (option):
-		iValue = option.getValues()[iIndex]
-		g_options.setInt(szName, iValue)
-		if (option.getDirtyBit()):
-			CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setIndex(iIndex)
 	return 1
 
 def handleBugFloatDropdownChange ( argsList ):
 	iIndex, szName = argsList
 	option = g_options.getOption(szName)
-	if (option):
-		fValue = option.getValues()[iIndex]
-		g_options.setFloat(szName, fValue)
-		if (option.getDirtyBit()):
-			CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setIndex(iIndex)
 	return 1
 
 def handleBugColorDropdownChange ( argsList ):
 	iIndex, szName = argsList
-	szKey = ColorUtil.indexToKey(iIndex)
-	g_options.setString(szName, szKey)
 	option = g_options.getOption(szName)
-	if (option and option.getDirtyBit()):
-		CyInterface().setDirty(option.getDirtyBit(), True)
+	if (option is not None):
+		option.setIndex(iIndex)
 	return 1
 
 # BUG - Options - end

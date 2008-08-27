@@ -1,6 +1,10 @@
 ## UnitGrouper
+##
 ## Builds groups of units for use in reporting or screens.
+##
 ## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 import BugUtil

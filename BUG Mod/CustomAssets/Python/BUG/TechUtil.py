@@ -1,30 +1,27 @@
 ## TechUtil
 ##
-## Utilities for dealing with Technologies
+## Utilities for dealing with Technologies.
+##
+## Notes
+##   - Must be initialized externally by calling init()
 ##
 ## Copyright (c) 2008 The BUG Mod.
+##
+## Author: EmperorFool
 
 from CvPythonExtensions import *
-import BugUtil
-
-gc = CyGlobalContext()
 
 NUM_TECHS = -1
 NUM_AND_PREREQS = -1
 NUM_OR_PREREQS = -1
 
-g_initDone = False
+gc = CyGlobalContext()
 
 def init():
-	global g_initDone
-	if g_initDone: return
-	
 	global NUM_TECHS, NUM_AND_PREREQS, NUM_OR_PREREQS
 	NUM_TECHS = gc.getNumTechInfos()
 	NUM_AND_PREREQS = gc.getNUM_AND_TECH_PREREQS()
 	NUM_OR_PREREQS = gc.getNUM_OR_TECH_PREREQS()
-	
-	g_initDone = True
 
 def getPlayer(ePlayer):
 	"Returns the CyPlayer for the given player ID."
@@ -43,7 +40,6 @@ def getKnownTechs(ePlayer):
 	"""
 	Returns a set of tech IDs that ePlayer knows.
 	"""
-	init()
 	knowingTeam = getTeam(ePlayer)
 	techs = set()
 	for eTech in range(NUM_TECHS):
@@ -58,7 +54,6 @@ def getVisibleKnownTechs(ePlayer, eAskingPlayer):
 	Any techs that eAskingPlayer doesn't know and cannot research yet are removed
 	from the set of all techs that ePlayer knows.
 	"""
-	init()
 	knowingTeam = getTeam(ePlayer)
 	askingPlayer, askingTeam = getPlayerAndTeam(eAskingPlayer)
 	techs = set()

@@ -5,16 +5,18 @@
 ## date     : 10.03.2006
 ## version  : 1.1
 ##
-## Modified for The BUG Mod by EmperorFool.
+## Notes
+##   - Must be initialized externally by calling init()
+##
+## Modified for The BUG Mod by EmperorFool
 
 
 from CvPythonExtensions import *
 
-import BugPleOptions
-BugPle = BugPleOptions.getOptions()
+import BugCore
+PleOpt = BugCore.game.PLE
 
 gc = CyGlobalContext()
-
 		
 #####################################################################
 # Class : AStar
@@ -412,12 +414,12 @@ class AStarMoveArea:
 					else:
 						bNeutral = true
 		if bEnemy:
-			return BugPle.getEnemyUnitColor()
+			return PleOpt.getEnemyUnitColor()
 		elif bBarbarian:
-			return BugPle.getBarbarianUnitColor()
+			return PleOpt.getBarbarianUnitColor()
 		elif bNeutral:
-			return BugPle.getNeutralUnitColor()
-		return BugPle.getPassableTerrainColor()
+			return PleOpt.getNeutralUnitColor()
+		return PleOpt.getPassableTerrainColor()
 
 	# checks if there forwign territory on the plot and returns the corresponding color
 	def checkTerritory(self, pPlot):
@@ -427,13 +429,13 @@ class AStarMoveArea:
 		pTeam = gc.getTeam(iTeam)
 		if pPlot.isRevealedGoody(iTeam):
 			if (pPlot.getImprovementType() == 3):#ImprovementTypes.IMPROVEMENT_GOODY_HUT):
-				return BugPle.getBarbarianTerritoryColor()
+				return PleOpt.getBarbarianTerritoryColor()
 		elif (iPlayer == PlayerTypes.NO_PLAYER) or (iPlayer == self.iActivePlayer):
-			return BugPle.getPassableTerrainColor()
+			return PleOpt.getPassableTerrainColor()
 		elif pTeam.isAtWar(self.iActivePlayerTeam):
-			return BugPle.getEnemyTerritoryColor()
+			return PleOpt.getEnemyTerritoryColor()
 		else:
-			return BugPle.getNeutralTerritoryColor()			
+			return PleOpt.getNeutralTerritoryColor()			
 	
 	# checks if there are revelaed plots adjacent to the given plot
 	def checkAdjacentRevealed(self, pPlot):
@@ -452,7 +454,7 @@ class AStarMoveArea:
 		# check impassable
 		if iCosts == -1:
 			if (pPlot.isWater() and (self.eDomain == DomainTypes.DOMAIN_SEA)) or ((not pPlot.isWater()) and (self.eDomain == DomainTypes.DOMAIN_LAND)):
-				self.dPlotList[tPlot] = BugPle.getImpassableTerrainColor()
+				self.dPlotList[tPlot] = PleOpt.getImpassableTerrainColor()
 		# check if plot is reachable
 		elif iCosts <= self.iMovesLeft:
 			# check if the plot is reavealed
@@ -465,10 +467,10 @@ class AStarMoveArea:
 					self.dPlotList[tPlot] = self.checkTerritory(pPlot)
 				# nothing special with that plot
 				else:
-					self.dPlotList[tPlot] = BugPle.getPassableTerrainColor()
+					self.dPlotList[tPlot] = PleOpt.getOption("PassableTerrainColor").getValue()
 			else:
 				if self.checkAdjacentRevealed(pPlot):
-					self.dPlotList[tPlot] = BugPle.getPassableTerrainColor()
+					self.dPlotList[tPlot] = PleOpt.getOption("PassableTerrainColor").getValue()
 				else:
 					self.dPlotList[tPlot] = self.COL_NO		
 	

@@ -10,16 +10,16 @@
 # No other modules should import this
 
 
-import CvCustomEventManager
+import BugEventManager
 
 # **********************************
 # GJD modifications start here
 # **********************************
 
-customEventManager = CvCustomEventManager.CvCustomEventManager()
+eventManager = BugEventManager.BugEventManager()
 
 def getEventManager():
-	return customEventManager
+	return eventManager
 
 # **********************************
 # GJD modifications end here

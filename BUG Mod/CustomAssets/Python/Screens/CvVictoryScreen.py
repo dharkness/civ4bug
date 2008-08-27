@@ -9,8 +9,8 @@ import ColorUtil
 import AttitudeUtils
 import TechUtil
 
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
+import BugCore
+AdvisorOpt = BugCore.game.Advisors
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -259,7 +259,7 @@ class CvVictoryScreen:
 		screen.enableSelect(szTable, False)		
 
 # BUG Additions Start
-		if BugScreens.isMembers():
+		if AdvisorOpt.isMembers():
 			screen.setTableColumnHeader(szTable, 0, "", self.TABLE3_WIDTH_0)
 			screen.setTableColumnHeader(szTable, 1, "", self.TABLE3_WIDTH_1)
 			screen.setTableColumnHeader(szTable, 2, "", self.TABLE3_WIDTH_2)
@@ -280,7 +280,7 @@ class CvVictoryScreen:
 				iRow = screen.appendTableRow(szTable)
 
 # BUG Additions Start
-				if BugScreens.isMembers():
+				if AdvisorOpt.isMembers():
 					sTableHeader = u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>"
 					if (gc.getGame().getVoteSourceReligion(i) != -1):
 						sTableHeader += " (" + gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription() + ")"
@@ -304,7 +304,7 @@ class CvVictoryScreen:
 #				print iSecretaryGeneralVote
 								
 # BUG Additions Start
-				if BugScreens.isMembers():
+				if AdvisorOpt.isMembers():
 					lMembers = []
 					iUNTeam = self.getUNTeam()
 					bUNBuiltTeamSlotTake = False
@@ -808,7 +808,7 @@ class CvVictoryScreen:
 					screen.setTableText(szTable, 3, iRow, unicode(nRivals), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					bEntriesFound = True
 # BUG Additions Start
-					if BugScreens.isVictories():
+					if AdvisorOpt.isVictories():
 						if nVassaled != 0:
 							sString = localText.getText("TXT_KEY_BUG_VICTORY_VASSALED", (nVassaled, ))
 							screen.setTableText(szTable, 4, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -903,7 +903,7 @@ class CvVictoryScreen:
 								iBestProjectTeam = iLoopTeam
 
 # BUG Additions Start
-				if BugScreens.isVictories():
+				if AdvisorOpt.isVictories():
 					bApolloShown = False
 					for i in range(gc.getNumProjectInfos()):
 						if (gc.getProjectInfo(i).getVictoryThreshold(iLoopVC) > 0):
@@ -1077,7 +1077,7 @@ class CvVictoryScreen:
 						if (len(ourBestCities) > i):
 							screen.setTableText(szTable, 2, iRow, ourBestCities[i][1].getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions Start
-							if BugScreens.isVictories():
+							if AdvisorOpt.isVictories():
 								if ourBestCities[i][2] == -1:
 									sString = "%i (-)" % (ourBestCities[i][0])
 								elif ourBestCities[i][2] > 100:
@@ -1096,7 +1096,7 @@ class CvVictoryScreen:
 							screen.setTableText(szTable, 4, iRow, theirBestCities[i][1].getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 # BUG Additions Start
-							if BugScreens.isVictories():
+							if AdvisorOpt.isVictories():
 								if theirBestCities[i][2] == -1:
 									sString = "%i (-)" % (theirBestCities[i][0])
 								elif theirBestCities[i][2] > 100:

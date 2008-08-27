@@ -6,7 +6,7 @@
 #   sevotastic.blogspot.com
 #   sevotastic@yahoo.com
 #
-# additional work by Gaurav, Progor, Ket, Vovan, Fitchn, LunarMongoose
+# additional work by Gaurav, Progor, Ket, Vovan, Fitchn, LunarMongoose, EmperorFool
 # see ReadMe for details
 #
 
@@ -40,14 +40,14 @@ import SevoPediaIndex
 
 import UnitUpgradesGraph
 import TraitUtil
+import BugCore
 import BugUtil
-
-import BugScreensOptions
-BugScreens = BugScreensOptions.getOptions()
 
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
+
+AdvisorOpt = BugCore.game.Advisors
 
 class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
@@ -873,7 +873,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def isSortLists(self):
-		return BugScreens.isSortSevopedia()
+		return AdvisorOpt.isSortSevopedia()
 
 	def getSortedList(self, numInfos, getInfo, noSort=False):
 		list = []
