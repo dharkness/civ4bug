@@ -157,8 +157,15 @@ class Options(object):
 				file.write()
 	
 
+	def findOption(self, id):
+		"""Returns the Option with the given ID or returns None of not found."""
+		if (id in self.options):
+			return self.options[id]
+		else:
+			return None
+
 	def getOption(self, id):
-		"""Returns the Option with the given ID."""
+		"""Returns the Option with the given ID or raises an error if not found."""
 		if (id in self.options):
 			return self.options[id]
 		else:
@@ -202,6 +209,9 @@ def getOptions(fileID=None):
 		return g_options
 	else:
 		return g_options.getFile(fileID)
+
+def findOption(id):
+	return g_options.findOption(id)
 
 def getOption(id):
 	return g_options.getOption(id)
@@ -472,7 +482,7 @@ class AbstractOption(object):
 		else:
 			if isinstance(values, (types.TupleType, types.ListType)):
 				if len(values) == 1:
-					return self.createComparerFunction(values[0])
+					return self.createColorComparerFunction(values[0])
 				else:
 					def contains(*args):
 						return self.getColor(*args) in values
@@ -780,15 +790,19 @@ class BaseListOption(BaseOption):
 		self.displayValues = None
 	
 	def addValue(self, value, getter=None, setter=None):
-		self.values.append(value)
+		if value in self.values:
+			index = self.values.index(value)
+			BugUtil.debug("Value %s has index %s" % (value, index))
+		else:
+			index = len(self.values)
+			self.values.append(value)
+			BugUtil.debug("Value %s appended at index %s" % (value, index))
 		if self.displayValues is not None:
 			self.displayValues.append(value)
 		if getter:
-			index = len(self.values) - 1
 			for name in getter.replace(",", " ").split():
 				self.addGetter(name, index)
 		if setter:
-			index = len(self.values) - 1
 			# TODO: Change to addIndexSetter or pass in value instead of index
 			self.addSetter(name, index)
 	
