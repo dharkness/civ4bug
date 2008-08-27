@@ -51,7 +51,7 @@
 					type="boolean" default="True" 
 					get="isAlignIcons" set="setAlignIcons" dirtyBit="Score"/>
 			<option id="DisplayOrder" key="Display Order" 
-					type="string" default="SC?WEPTUNBDRA*LO" 
+					type="string" default="WSZC?EPTUNBDRAH*LO" 
 					get="getDisplayOrder" set="setDisplayOrder" dirtyBit="Score"/>
 			<option id="LeftAlignName" key="Left-Align Name" 
 					type="boolean" default="True" 
