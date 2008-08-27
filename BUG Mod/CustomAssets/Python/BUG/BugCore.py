@@ -100,8 +100,11 @@ class Mod(object):
 	def _addOption(self, option):
 		self._options[option.getID()] = option
 	
+	def _hasOption(self, id):
+		return id in self._options
+	
 	def _getOption(self, id):
-		if id not in self._options:
+		if not self._hasOption(id):
 			if self._inited:
 				BugUtil.debug("ERROR: option %s not found" % id)
 		else:
@@ -117,12 +120,14 @@ class Mod(object):
 		"""Returns the Option with the given ID or False for is/getters
 		and None for setters that don't exist."""
 		if not id.startswith("_"):
-			option = self._getOption(id)
-			if option is not None:
-				return option
-			option = self._getOption(self._id + MOD_OPTION_SEP + id)
-			if option is not None:
-				return option
+			# Try bare option
+			if self._hasOption(id):
+				return self._getOption(id)
+			# Try option with Mod ID prefix
+			fullId = self._id + MOD_OPTION_SEP + id
+			if self._hasOption(fullId):
+				return self._getOption(fullId)
+			# If not yet initialized, return False for getters and setters
 			if not self._inited:
 				if id.startswith("get") or id.startswith("is"):
 					return lambda *ignored: False
