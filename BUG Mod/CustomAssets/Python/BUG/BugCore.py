@@ -120,6 +120,9 @@ class Mod(object):
 			option = self._getOption(id)
 			if option is not None:
 				return option
+			option = self._getOption(self._id + MOD_OPTION_SEP + id)
+			if option is not None:
+				return option
 			if not self._inited:
 				if id.startswith("get") or id.startswith("is"):
 					return lambda *ignored: False
