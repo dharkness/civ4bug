@@ -66,6 +66,3 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addSpacer(screen, right, "PLE_Move_Highlighter") 
  		self.addCheckbox(screen, right, "PLE__Move_Highlighter")
-
-		self.addSpacer(screen, right, "PLE_Move_Highlighter") 
-		self.addCheckbox(screen, right, "PLE_Move_Highlighter")
