@@ -414,12 +414,12 @@ class AStarMoveArea:
 					else:
 						bNeutral = true
 		if bEnemy:
-			return PleOpt.getEnemyUnitColor()
+			return PleOpt.MH_Color_Enemy_Unit()
 		elif bBarbarian:
-			return PleOpt.getBarbarianUnitColor()
+			return PleOpt.MH_Color_Barbarian_Unit()
 		elif bNeutral:
-			return PleOpt.getNeutralUnitColor()
-		return PleOpt.getPassableTerrainColor()
+			return PleOpt.MH_Color_Neutral_Unit()
+		return PleOpt.MH_Color_Passable_Terrain()
 
 	# checks if there forwign territory on the plot and returns the corresponding color
 	def checkTerritory(self, pPlot):
@@ -429,13 +429,13 @@ class AStarMoveArea:
 		pTeam = gc.getTeam(iTeam)
 		if pPlot.isRevealedGoody(iTeam):
 			if (pPlot.getImprovementType() == 3):#ImprovementTypes.IMPROVEMENT_GOODY_HUT):
-				return PleOpt.getBarbarianTerritoryColor()
+				return PleOpt.MH_Color_Passable_Barbarian_Territory()
 		elif (iPlayer == PlayerTypes.NO_PLAYER) or (iPlayer == self.iActivePlayer):
-			return PleOpt.getPassableTerrainColor()
+			return PleOpt.MH_Color_Passable_Terrain()
 		elif pTeam.isAtWar(self.iActivePlayerTeam):
-			return PleOpt.getEnemyTerritoryColor()
+			return PleOpt.MH_Color_Passable_Enemy_Territory()
 		else:
-			return PleOpt.getNeutralTerritoryColor()			
+			return PleOpt.MH_Color_Passable_Neutral_Territory()			
 	
 	# checks if there are revelaed plots adjacent to the given plot
 	def checkAdjacentRevealed(self, pPlot):
@@ -454,7 +454,7 @@ class AStarMoveArea:
 		# check impassable
 		if iCosts == -1:
 			if (pPlot.isWater() and (self.eDomain == DomainTypes.DOMAIN_SEA)) or ((not pPlot.isWater()) and (self.eDomain == DomainTypes.DOMAIN_LAND)):
-				self.dPlotList[tPlot] = PleOpt.getImpassableTerrainColor()
+				self.dPlotList[tPlot] = PleOpt.MH_Color_Impassable_Terrain()
 		# check if plot is reachable
 		elif iCosts <= self.iMovesLeft:
 			# check if the plot is reavealed
@@ -467,10 +467,10 @@ class AStarMoveArea:
 					self.dPlotList[tPlot] = self.checkTerritory(pPlot)
 				# nothing special with that plot
 				else:
-					self.dPlotList[tPlot] = PleOpt.getOption("PassableTerrainColor").getValue()
+					self.dPlotList[tPlot] = PleOpt.MH_Color_Passable_Terrain()
 			else:
 				if self.checkAdjacentRevealed(pPlot):
-					self.dPlotList[tPlot] = PleOpt.getOption("PassableTerrainColor").getValue()
+					self.dPlotList[tPlot] = PleOpt.MH_Color_Passable_Terrain()
 				else:
 					self.dPlotList[tPlot] = self.COL_NO		
 	
