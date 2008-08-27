@@ -329,9 +329,9 @@ class BugOptionsTab:
 			return checkControl, dropControl
 		else:
 			if (checkOption is None):
-				self.addMissingOption(screen, controlPanel, checkOption)
+				self.addMissingOption(screen, checkPanel, checkOption)
 			if (dropOption is None):
-				self.addMissingOption(screen, controlPanel, dropOption)
+				self.addMissingOption(screen, dropPanel, dropOption)
 
 	def addCheckboxTextDropdown (self, screen, checkPanel, dropPanel, checkName, dropName):
 		checkOption = self.getOption(checkName)
@@ -339,7 +339,7 @@ class BugOptionsTab:
 		if (checkOption is not None and dropOption is not None):
 			index = dropOption.getIndex()
 			elements = tuple(dropOption.getDisplayValues())
-			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, value, "handleBugDropdownChange")
+			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, elements, index, "handleBugDropdownChange")
 			screen.setLayoutFlag(dropControl, "LAYOUT_RIGHT")
 			return checkControl, dropControl
 		else:
