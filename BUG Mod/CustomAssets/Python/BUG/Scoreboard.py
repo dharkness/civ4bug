@@ -9,6 +9,8 @@
 from CvPythonExtensions import *
 import BugCore
 import CvUtil
+import re
+import string
 
 # Globals
 ScoresOpt = BugCore.game.Scores
@@ -255,14 +257,21 @@ class Scoreboard:
 		else:
 			height = ROW_HEIGHT
 		
-		format = [ l for l in ScoresOpt.getDisplayOrder().upper() ]
+		defaultSpacing = ScoresOpt.getDefaultSpacing()
+		spacing = defaultSpacing
+		format = re.findall('([0-9]+|[^0-9])', ScoresOpt.getDisplayOrder().replace(' ', '').upper())
 		format.reverse()
 		for k in format:
+			if k[0] in string.digits:
+				spacing = int(k)
+				continue
 			if (not columnsByKey.has_key(k)):
+				spacing = defaultSpacing
 				continue
 			column = columnsByKey[k]
 			c = column.id
 			if (not self.hasAny[c]):
+				spacing = defaultSpacing
 				continue
 			type = column.type
 			if (c == RESEARCH and not ScoresOpt.isShowResearchIcons()):
@@ -270,11 +279,13 @@ class Scoreboard:
 				type = DYNAMIC
 			
 			if (type == SKIP):
+				spacing = defaultSpacing
 				continue
 			
 			elif (type == FIXED):
 				width = column.width
 				value = column.text
+				x -= spacing
 				for p in range( self.count ):
 					if (self.has[p][c] and self.values[p][c]):
 						name = "ScoreText%d-%d" %( p, c )
@@ -289,7 +300,8 @@ class Scoreboard:
 										FontTypes.SMALL_FONT, widget, player, -1 )
 						screen.show( name )
 				x -= width
-				totalWidth += width
+				totalWidth += width + spacing
+				spacing = defaultSpacing
 			
 			elif (type == DYNAMIC):
 				width = 0
@@ -300,7 +312,9 @@ class Scoreboard:
 						if (newWidth > width):
 							width = newWidth
 				if (width == 0):
+					spacing = defaultSpacing
 					continue
+				x -= spacing
 				for p in range( self.count ):
 					if (self.has[p][c]):
 						name = "ScoreText%d-%d" %( p, c )
@@ -324,10 +338,12 @@ class Scoreboard:
 										FontTypes.SMALL_FONT, widget, player, -1 )
 						screen.show( name )
 				x -= width
-				totalWidth += width
+				totalWidth += width + spacing
+				spacing = defaultSpacing
 			
 			else: # SPECIAL
 				if (c == RESEARCH):
+					x -= spacing
 					for p in range( self.count ):
 						if (self.has[p][c]):
 							tech = self.values[p][c]
@@ -336,7 +352,8 @@ class Scoreboard:
 							screen.addDDSGFC( name, info.getButton(), x - ICON_SIZE, y - p * height - 1, ICON_SIZE, ICON_SIZE, 
 											  WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, tech, -1 )
 					x -= ICON_SIZE
-					totalWidth += ICON_SIZE
+					totalWidth += ICON_SIZE + spacing
+					spacing = defaultSpacing
 		
 		for p in range( self.count ):
 			interface.checkFlashReset( self.values[p][PLAYER] )

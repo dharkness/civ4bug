@@ -1817,6 +1817,22 @@
 		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__DEFAULTSPACING_TEXT</Tag>
+		<English>Default Spacing</English>
+		<French>Default Spacing</French>
+		<German>Default Spacing</German>
+		<Italian>Default Spacing</Italian>
+		<Spanish>Default Spacing</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__DEFAULTSPACING_HOVER</Tag>
+		<English>The spacing between columns (in pixels) to use when none is specified for a column.</English>
+		<French>The spacing between columns (in pixels) to use when none is specified for a column.</French>
+		<German>The spacing between columns (in pixels) to use when none is specified for a column.</German>
+		<Italian>The spacing between columns (in pixels) to use when none is specified for a column.</Italian>
+		<Spanish>The spacing between columns (in pixels) to use when none is specified for a column.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DISPLAYORDER_TEXT</Tag>
 		<English>Display Order</English>
 		<French>Ordre d'Affichage</French>

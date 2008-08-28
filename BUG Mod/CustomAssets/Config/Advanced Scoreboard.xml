@@ -53,6 +53,9 @@
 			<option id="DisplayOrder" key="Display Order" 
 					type="string" default="WSZC?EPTUNBDRAH*LO" 
 					get="getDisplayOrder" set="setDisplayOrder" dirtyBit="Score"/>
+			<list   id="DefaultSpacing" key="Default Column Spacing" 
+					type="int" default="0" values="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10" 
+					get="getDefaultSpacing" set="setDefaultSpacing" dirtyBit="Score"/>
 			<option id="LeftAlignName" key="Left-Align Name" 
 					type="boolean" default="True" 
 					get="isLeftAlignName" set="setLeftAlignName" dirtyBit="Score"/>
