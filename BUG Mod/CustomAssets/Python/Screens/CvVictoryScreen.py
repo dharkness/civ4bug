@@ -446,8 +446,8 @@ class CvVictoryScreen:
 					else:
 						iWinner = 1
 					iLoser = 1 - iWinner
-					sWin = lMembers[iWinner][2]
-					sLose = lMembers[iLoser][2]
+					sWin = gc.getPlayer(lMembers[iWinner][1]).getName()
+					sLose = gc.getPlayer(lMembers[iLoser][1]).getName()
 					fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
 					fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
 					
