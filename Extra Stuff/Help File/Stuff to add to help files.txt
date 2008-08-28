@@ -1,0 +1,12 @@
+BUG Mod
+=======
+
+- Scoreboard: spacing (add to Readme file, to Option file)
+- PublicMaps (no documentation about them yet)
+- Victory Screen (no documentation about it yet)
+
+BAT Mod
+=======
+
+-
+
