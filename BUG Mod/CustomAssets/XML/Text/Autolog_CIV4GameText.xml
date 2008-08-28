@@ -196,7 +196,7 @@
         <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT</Tag>
         <English>Contact made: %s1 </English>
         <French>Contact made: %s1</French>
-        <German>Kontakt aufgenommen mit: %s1</German>
+        <German>Kontakt aufgenommen: %s1</German>
         <Italian>Civiltà contattata: %s1</Italian>
         <Spanish>Contact made: %s1</Spanish>
     </TEXT> 
@@ -460,7 +460,7 @@
         <Tag>TXT_KEY_AUTOLOG_TECH_RESEARCHED</Tag>
         <English>Tech research finished: %s1</English>
         <French>Tech research finished: %s1</French>
-        <German>Forschung beendet an: %s1</German>
+        <German>Forschung beendet: %s1</German>
         <Italian>Ricerca della tecnologia %s1 completata</Italian>
         <Spanish>Tech research finished: %s1</Spanish>
     </TEXT> 
@@ -492,7 +492,7 @@
         <Tag>TXT_KEY_AUTOLOG_DISTANT_LAND</Tag>
         <English>a distant land</English>
         <French>a distant land</French>
-        <German>ein fernes Land</German>
+        <German>einem fernen Land</German>
         <Italian>una terra lontana</Italian>
         <Spanish>a distant land</Spanish>
     </TEXT> 

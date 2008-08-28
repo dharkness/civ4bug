@@ -1047,11 +1047,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_TEXT</Tag>
-		<English>WhipAssist</English>
-		<French>WhipAssist</French>
+		<English>Whip Assistant</English>
+		<French>Whip Assistant</French>
 		<German>Anzeige für die Beschleunigung der Produktion</German>
 		<Italian>Barra di produzione con accelerazione</Italian>
-		<Spanish>WhipAssist</Spanish>
+		<Spanish>Whip Assistant</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_HOVER</Tag>
@@ -1820,7 +1820,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DEFAULTSPACING_TEXT</Tag>
 		<English>Default Spacing</English>
 		<French>Default Spacing</French>
-		<German>Default Spacing</German>
+		<German>Standardabstand</German>
 		<Italian>Spaziatura predefinita</Italian>
 		<Spanish>Default Spacing</Spanish>
 	</TEXT>
@@ -1828,7 +1828,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DEFAULTSPACING_HOVER</Tag>
 		<English>The spacing between columns (in pixels) to use when none is specified for a column.</English>
 		<French>The spacing between columns (in pixels) to use when none is specified for a column.</French>
-		<German>The spacing between columns (in pixels) to use when none is specified for a column.</German>
+		<German>Bestimmt den Standardabstand zwischen den einzelnen Spalten (in Pixeln), wenn für eine Spalte kein bestimmter Abstand angegeben wird</German>
 		<Italian>Definisce la spaziatura (in pixel) tra le colonne che viene utilizzata quando non ne viene specificata una differente per una o più colonne specifiche mediante l'utilizzo di un codice numerico.</Italian>
 		<Spanish>The spacing between columns (in pixels) to use when none is specified for a column.</Spanish>
 	</TEXT>
@@ -2623,7 +2623,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__GPTECHPREFS_TEXT</Tag>
 		<English>Great Person Research</English>
 		<French>Recherche des Personnages Illustres</French>
-		<German>Forschung Großer Persönlichkeiten</German>
+		<German>GP-Technologien</German>
 		<Italian>Ricerche dei GP</Italian>
 		<Spanish>Great Person Research</Spanish>
 	</TEXT>
@@ -2631,7 +2631,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__GPTECHPREFS_HOVER</Tag>
 		<English>When checked, displays the technology each type of great person will research.</English>
 		<French>En activant, montre la technologie que chaque Personnage Illustre peut découvrir.</French>
-		<German>Zeigt die Technologien an, die jeder Typ einer Großen Persönlichkeit erforschen kann</German>
+		<German>Zeigt unterhalb des Technologiebaums die Technologien an, die jeder Typ einer Großen Persönlichkeit erforschen kann</German>
 		<Italian>Quando è selezionato, visualizza la tecnologia ricercata da ogni Grande Personaggio nella schermata del Consigliere Tecnologico.</Italian>
 		<Spanish>When checked, displays the technology each type of great person will research.</Spanish>
 	</TEXT>
@@ -2655,7 +2655,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_TEXT</Tag>
 		<English>Victories tab</English>
 		<French>Victories tab</French>
-		<German>Victories tab</German>
+		<German>Siegbedingungen</German>
 		<Italian>Victories tab</Italian>
 		<Spanish>Victories tab</Spanish>
 	</TEXT>
@@ -2663,7 +2663,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_HOVER</Tag>
 		<English>When checked, displays extra information on the Victories tab.</English>
 		<French>When checked, displays extra information on the Victories tab.</French>
-		<German>When checked, displays extra information on the Victories tab.</German>
+		<German>Zeigt zusätzliche Informationen im entsprechenden Bildschirm an</German>
 		<Italian>When checked, displays extra information on the Victories tab.</Italian>
 		<Spanish>When checked, displays extra information on the Victories tab.</Spanish>
 	</TEXT>
@@ -2671,7 +2671,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMEMBERSTAB_TEXT</Tag>
 		<English>Members tab</English>
 		<French>Members tab</French>
-		<German>Members tab</German>
+		<German>Mitglieder</German>
 		<Italian>Members tab</Italian>
 		<Spanish>Members tab</Spanish>
 	</TEXT>
@@ -2679,7 +2679,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMEMBERSTAB_HOVER</Tag>
 		<English>When checked, displays extra information on the Members tab.</English>
 		<French>When checked, displays extra information on the Members tab.</French>
-		<German>When checked, displays extra information on the Members tab.</German>
+		<German>Zeigt zusätzliche Informationen im entsprechenden Bildschirm an</German>
 		<Italian>When checked, displays extra information on the Members tab.</Italian>
 		<Spanish>When checked, displays extra information on the Members tab.</Spanish>
 	</TEXT>
@@ -3019,7 +3019,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_VICTORY_CONDITIONS</Tag>
 		<English>Victory [F8]:</English>
 		<French>Victory [F8]:</French>
-		<German>Victory [F8]:</German>
+		<German>Siegbedingungen [F8]:</German>
 		<Italian>Victory [F8]:</Italian>
 		<Spanish>Victory [F8]:</Spanish>
 	</TEXT>
@@ -3339,7 +3339,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAP_SCRIPTS</Tag>
 		<English>Map Scripts</English>
 		<French>Map Scripts</French>
-		<German>Map Scripts</German>
+		<German>Map-Scripte</German>
 		<Italian>Map Script</Italian>
 		<Spanish>Map Scripts</Spanish>
 	</TEXT>
