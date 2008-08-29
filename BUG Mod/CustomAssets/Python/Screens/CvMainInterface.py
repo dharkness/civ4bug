@@ -2521,7 +2521,7 @@ class CvMainInterface:
 		screen.addPanel( "SpecialistBackground", u"", u"", True, False, xResolution - 243, yResolution - 423, 230, 30, PanelStyles.PANEL_STYLE_STANDARD )
 		screen.setStyle( "SpecialistBackground", "Panel_City_Header_Style" )
 		screen.hide( "SpecialistBackground" )
-		screen.setLabel( "SpecialistLabel", "Background", "Specialists", CvUtil.FONT_CENTER_JUSTIFY, xResolution - 128, yResolution - 415, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setLabel( "SpecialistLabel", "Background", localText.getText("TXT_KEY_CONCEPT_SPECIALISTS", ()), CvUtil.FONT_CENTER_JUSTIFY, xResolution - 128, yResolution - 415, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.hide( "SpecialistLabel" )
 # BUG - city specialist - end
 
@@ -4649,7 +4649,7 @@ class CvMainInterface:
 							szText = localText.changeTextColor(szText, iEraColor)
 					screen.setLabel( "EraText", "Background", szText, CvUtil.FONT_RIGHT_JUSTIFY, 250, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "EraText" )
-# BUG - NJAGC - emd
+# BUG - NJAGC - end
 				
 				if (gc.getPlayer(ePlayer).isAnarchy()):
 				
@@ -5397,12 +5397,12 @@ class CvMainInterface:
 # BUG - Raw Yields - start
 								if (j == YieldTypes.YIELD_COMMERCE):
 									self.yields.addTrade(iTradeProfit)
-# BUG - Raw Yields - end
 
 						if (not bShowRawYields):
 							screen.appendTableRow( "TradeRouteTable" )
 							screen.setTableText( "TradeRouteTable", 0, iNumTradeRoutes, "<font=1>" + szLeftBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_LEFT_JUSTIFY )
 							screen.setTableText( "TradeRouteTable", 1, iNumTradeRoutes, "<font=1>" + szRightBuffer + "</font>", "", WidgetTypes.WIDGET_HELP_TRADE_ROUTE_CITY, i, -1, CvUtil.FONT_RIGHT_JUSTIFY )
+# BUG - Raw Yields - end
 						
 						iNumTradeRoutes = iNumTradeRoutes + 1
 						
