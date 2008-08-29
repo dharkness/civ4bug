@@ -32,12 +32,13 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Scores__TagDead")
 		self.addCheckbox(screen, left, "Scores__GreyDead")
 		
-		self.addCheckbox(screen, center, "Scores__Power")
+		self.addCheckboxTextDropdown(screen, center, center, "Scores__Power", "Scores__PowerFormula")
+		self.addIntDropdown(screen, center, center, "Scores__PowerDecimals", True)
 		self.addColorDropdown(screen, center, center, "Scores__PowerColor", True)
-		self.addFloatDropdown(screen, center, center, "Scores__PowerGoodRatio", True)
-		self.addColorDropdown(screen, center, center, "Scores__PowerGoodColor", True)
-		self.addFloatDropdown(screen, center, center, "Scores__PowerBadRatio", True)
-		self.addColorDropdown(screen, center, center, "Scores__PowerBadColor", True)
+		self.addFloatDropdown(screen, center, center, "Scores__PowerHighRatio", True)
+		self.addColorDropdown(screen, center, center, "Scores__PowerHighColor", True)
+		self.addFloatDropdown(screen, center, center, "Scores__PowerLowRatio", True)
+		self.addColorDropdown(screen, center, center, "Scores__PowerLowColor", True)
 		
 		self.addLabel(screen, right, "Scores_Grid", "Advanced Layout:")
 		self.addCheckbox(screen, right, "Scores__AlignIcons")

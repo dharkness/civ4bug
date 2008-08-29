@@ -1913,6 +1913,46 @@
 		<Spanish>When checked, shows the ratio of your power rating to those of civilizations against whom you have accumulated enough espionage points.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_TEXT</Tag>
+		<English>Power Formula</English>
+		<French>Power Formula</French>
+		<German>Power Formula</German>
+		<Italian>Power Formula</Italian>
+		<Spanish>Power Formula</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
+		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</English>
+		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</French>
+		<German>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</German>
+		<Italian>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Italian>
+		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_LIST</Tag>
+		<English>You vs. Them|Them vs. You</English>
+		<French>You vs. Them|Them vs. You</French>
+		<German>You vs. Them|Them vs. You</German>
+		<Italian>You vs. Them|Them vs. You</Italian>
+		<Spanish>You vs. Them|Them vs. You</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERDECIMALS_TEXT</Tag>
+		<English>Ratio Decimal Places</English>
+		<French>Ratio Decimal Places</French>
+		<German>Ratio Decimal Places</German>
+		<Italian>Ratio Decimal Places</Italian>
+		<Spanish>Ratio Decimal Places</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERDECIMALS_HOVER</Tag>
+		<English>Number of decimal places to show for power ratio display.</English>
+		<French>Number of decimal places to show for power ratio display.</French>
+		<German>Number of decimal places to show for power ratio display.</German>
+		<Italian>Number of decimal places to show for power ratio display.</Italian>
+		<Spanish>Number of decimal places to show for power ratio display.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERCOLOR_TEXT</Tag>
 		<English>Default Color</English>
 		<French>Couleur par Défaut</French>
@@ -1929,68 +1969,68 @@
 		<Spanish>Color used by default for power ratios.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERGOODRATIO_TEXT</Tag>
-		<English>Good Ratio Cutoff</English>
-		<French>Limite du Bon Pro Rata</French>
-		<German>Gutes Verhältnis</German>
-		<Italian>Livello rapporti positivi</Italian>
-		<Spanish>Good Ratio Cutoff</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHRATIO_TEXT</Tag>
+		<English>High Ratio Cutoff</English>
+		<French>High Ratio Cutoff</French>
+		<German>High Ratio Cutoff</German>
+		<Italian>High Ratio Cutoff</Italian>
+		<Spanish>High Ratio Cutoff</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERGOODRATIO_HOVER</Tag>
-		<English>Power ratings greater than or equal to this value are shown in the Good Color.</English>
-		<French>Un pro rata égal ou plus que cette valeur aura la couleur suivante.</French>
-		<German>Gute Machtverhältnisse größer oder gleich diesem Wert erscheinen in der definierten Farbe</German>
-		<Italian>I Rapporti di Forza maggiori o uguali di questo valore vengono mostrati nel Colore positivo.</Italian>
-		<Spanish>Power ratings greater than or equal to this value are shown in the Good Color.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHRATIO_HOVER</Tag>
+		<English>Power ratings greater than or equal to this value are shown in the High Color.</English>
+		<French>Power ratings greater than or equal to this value are shown in the High Color.</French>
+		<German>Power ratings greater than or equal to this value are shown in the High Color.</German>
+		<Italian>Power ratings greater than or equal to this value are shown in the High Color.</Italian>
+		<Spanish>Power ratings greater than or equal to this value are shown in the High Color.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERGOODCOLOR_TEXT</Tag>
-		<English>Good Color</English>
-		<French>Bonne Couleur</French>
-		<German>Farbe (gut)</German>
-		<Italian>Colore positivo</Italian>
-		<Spanish>Good Color</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHCOLOR_TEXT</Tag>
+		<English>High Color</English>
+		<French>High Color</French>
+		<German>High Color</German>
+		<Italian>High Color</Italian>
+		<Spanish>High Color</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERGOODCOLOR_HOVER</Tag>
-		<English>Color used for good power ratios.</English>
-		<French>Couleur utilisé pour les bons pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe, in der gute Machtverhältnisse erscheinen</German>
-		<Italian>Colore utilizzato per i Rapporti di Forza positivi.</Italian>
-		<Spanish>Color used for good power ratios.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHCOLOR_HOVER</Tag>
+		<English>Color used for high power ratios.</English>
+		<French>Color used for high power ratios.</French>
+		<German>Color used for high power ratios.</German>
+		<Italian>Color used for high power ratios.</Italian>
+		<Spanish>Color used for high power ratios.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERBADRATIO_TEXT</Tag>
-		<English>Bad Ratio Cutoff</English>
-		<French>Limite du Mauvais Pro Rata</French>
-		<German>Schlechtes Verhältnis</German>
-		<Italian>Livello rapporti negativi</Italian>
-		<Spanish>Bad Ratio Cutoff</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWRATIO_TEXT</Tag>
+		<English>Low Ratio Cutoff</English>
+		<French>Low Ratio Cutoff</French>
+		<German>Low Ratio Cutoff</German>
+		<Italian>Low Ratio Cutoff</Italian>
+		<Spanish>Low Ratio Cutoff</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERBADRATIO_HOVER</Tag>
-		<English>Power ratings less than or equal to this value are shown in in the Bad Color.</English>
-		<French>Un pro rata égal ou moins que cette valeur aura la couleur suivante.</French>
-		<German>Schlechte Machtverhältnisse kleiner oder gleich diesem Wert erscheinen in der definierten Farbe</German>
-		<Italian>I Rapporti di Forza minori o uguali di questo valore vengono mostrati nel Colore negativo.</Italian>
-		<Spanish>Power ratings less than or equal to this value are shown in in the Bad Color.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWRATIO_HOVER</Tag>
+		<English>Power ratings less than or equal to this value are shown in in the Low Color.</English>
+		<French>Power ratings less than or equal to this value are shown in in the Low Color.</French>
+		<German>Power ratings less than or equal to this value are shown in in the Low Color.</German>
+		<Italian>Power ratings less than or equal to this value are shown in in the Low Color.</Italian>
+		<Spanish>Power ratings less than or equal to this value are shown in in the Low Color.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERBADCOLOR_TEXT</Tag>
-		<English>Bad Color</English>
-		<French>Mauvaise Couleur</French>
-		<German>Farbe (schlecht)</German>
-		<Italian>Colore negativo</Italian>
-		<Spanish>Bad Color</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWCOLOR_TEXT</Tag>
+		<English>Low Color</English>
+		<French>Low Color</French>
+		<German>Low Color</German>
+		<Italian>Low Color</Italian>
+		<Spanish>Low Color</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERBADCOLOR_HOVER</Tag>
-		<English>Color used for bad power ratios.</English>
-		<French>Couleur utilisé pour les mauvais pro rata d'espionnage.</French>
-		<German>Bestimmt die Farbe, in der schlechte Machtverhältnisse erscheinen</German>
-		<Italian>Colore utilizzato per i Rapporti di Forza negativi.</Italian>
-		<Spanish>Color used for bad power ratios.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWCOLOR_HOVER</Tag>
+		<English>Color used for low power ratios.</English>
+		<French>Color used for low power ratios.</French>
+		<German>Color used for low power ratios.</German>
+		<Italian>Color used for low power ratios.</Italian>
+		<Spanish>Color used for low power ratios.</Spanish>
 	</TEXT>
 	<!-- Plot List Enhancements -->
 	<TEXT>

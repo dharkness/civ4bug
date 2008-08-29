@@ -5995,8 +5995,8 @@ class CvMainInterface:
 				if (bShowPower):
 					iPlayerPower = gc.getActivePlayer().getPower()
 					iPowerColor = ScoreOpt.getPowerColor()
-					iGoodPowerColor = ScoreOpt.getGoodPowerColor()
-					iBadPowerColor = ScoreOpt.getBadPowerColor()
+					iHighPowerColor = ScoreOpt.getHighPowerColor()
+					iLowPowerColor = ScoreOpt.getLowPowerColor()
 					
 					if (not bNoEspionage):
 						iDemographicsMission = -1
@@ -6172,12 +6172,17 @@ class CvMainInterface:
 												iPower = gc.getPlayer(ePlayer).getPower()
 												if (iPower > 0): # avoid divide by zero
 													fPowerRatio = float(iPlayerPower) / float(iPower)
+													if (ScoreOpt.isPowerThemVersusYou()):
+														if (fPowerRatio > 0):
+															fPowerRatio = 1.0 / fPowerRatio
+														else:
+															fPowerRatio = 99.0
 													cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
-													szTempBuffer = u"%.1f%c" %(fPowerRatio, cPower)
-													if (iGoodPowerColor >= 0 and fPowerRatio >= ScoreOpt.getGoodPowerRatio()):
-														szTempBuffer = localText.changeTextColor(szTempBuffer, iGoodPowerColor)
-													elif (iBadPowerColor >= 0 and fPowerRatio <= ScoreOpt.getBadPowerRatio()):
-														szTempBuffer = localText.changeTextColor(szTempBuffer, iBadPowerColor)
+													szTempBuffer = BugUtil.formatFloat(fPowerRatio, ScoreOpt.getPowerDecimals()) + u"%c" % (cPower)
+													if (iHighPowerColor >= 0 and fPowerRatio >= ScoreOpt.getHighPowerRatio()):
+														szTempBuffer = localText.changeTextColor(szTempBuffer, iHighPowerColor)
+													elif (iLowPowerColor >= 0 and fPowerRatio <= ScoreOpt.getLowPowerRatio()):
+														szTempBuffer = localText.changeTextColor(szTempBuffer, iLowPowerColor)
 													elif (iPowerColor >= 0):
 														szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
 													szBuffer = szBuffer + u" " + szTempBuffer
