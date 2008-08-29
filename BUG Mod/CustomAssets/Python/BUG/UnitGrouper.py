@@ -43,7 +43,10 @@ class Grouping:
 	def __init__(self, key, title):
 		self.index = None
 		self.key = key
-		self.title = title
+		if title.startswith("TXT_KEY_"):
+			self.title = BugUtil.getPlainText(title)
+		else:
+			self.title = title
 		self.groups = {}
 	
 	def _addGroup(self, group):
@@ -62,7 +65,10 @@ class Group:
 	def __init__(self, grouping, key, title):
 		self.grouping = grouping
 		self.key = key
-		self.title = title
+		if title.startswith("TXT_KEY_"):
+			self.title = BugUtil.getPlainText(title)
+		else:
+			self.title = title
 	
 	def getTitle(self):
 		return self.title
@@ -76,7 +82,7 @@ class UnitTypeGrouping(Grouping):
 	Ex: Warrior, Maceman, Panzer
 	"""
 	def __init__(self):
-		Grouping.__init__(self, "type", "Unit Type")
+		Grouping.__init__(self, "type", "TXT_KEY_UNIT_GROUPER_TYPE_GROUPING")
 		
 		for i in range(gc.getNumUnitInfos()):
 			info = gc.getUnitInfo(i)
@@ -92,10 +98,10 @@ class UnitCombatGrouping(Grouping):
 	Ex: None, Melee, Gunpowder, Naval
 	"""
 	def __init__(self):
-		Grouping.__init__(self, "combat", "Combat Type")
+		Grouping.__init__(self, "combat", "TXT_KEY_UNIT_GROUPER_COMBAT_GROUPING")
 		self.NONE = 0
 		
-		self._addGroup(Group(self, self.NONE, "None"))
+		self._addGroup(Group(self, self.NONE, "TXT_KEY_UNIT_GROUPER_COMBAT_GROUP_NONE"))
 		for i in range(gc.getNumUnitCombatInfos()):
 			info = gc.getUnitCombatInfo(i)
 			if info:
@@ -110,7 +116,7 @@ class LevelGrouping(Grouping):
 	Units over level MAX_LEVEL are put into the MAX_LEVEL group.
 	"""
 	def __init__(self):
-		Grouping.__init__(self, "level", "Level")
+		Grouping.__init__(self, "level", "TXT_KEY_UNIT_GROUPER_LEVEL_GROUPING")
 		
 		self.MAX_LEVEL = 30
 		for i in range(self.MAX_LEVEL):
@@ -126,10 +132,11 @@ class PromotionGrouping(Grouping):
 	Ex: Combat 1, Cover, Tactics
 	"""
 	def __init__(self):
-		Grouping.__init__(self, "promo", "Promotion")
+		Grouping.__init__(self, "promo", "TXT_KEY_UNIT_GROUPER_PROMOTION_GROUPING")
 		
 		self.NONE = 0
-		self._addGroup(Group(self, self.NONE, "None"))
+		self.NO_PROMOS = (0,)
+		self._addGroup(Group(self, self.NONE, "TXT_KEY_UNIT_GROUPER_PROMOTION_GROUP_NONE"))
 		for i in range(gc.getNumPromotionInfos()):
 			info = gc.getPromotionInfo(i)
 			if info:
@@ -141,7 +148,7 @@ class PromotionGrouping(Grouping):
 			if unit.isHasPromotion(iPromo):
 				promos.append(iPromo + 1)
 		if not promos:
-			promos = (self.NONE,)
+			promos = self.NO_PROMOS
 		return promos
 
 class LocationGrouping(Grouping):
@@ -161,15 +168,15 @@ class LocationGrouping(Grouping):
 		self.ENEMY_TERRITORY = self.NEUTRAL_TERRITORY + 1
 		self.BARBARIAN_TERRITORY = self.ENEMY_TERRITORY + 1
 		
-		self._addGroup(Group(self, self.DOMESTIC_CITY, "Domestic City"))
-		self._addGroup(Group(self, self.DOMESTIC_TERRITORY, "Domestic Territory"))
-		self._addGroup(Group(self, self.TEAM_CITY, "Team City"))
-		self._addGroup(Group(self, self.TEAM_TERRITORY, "Team Territory"))
-		self._addGroup(Group(self, self.FRIENDLY_CITY, "Friendly City"))
-		self._addGroup(Group(self, self.FRIENDLY_TERRITORY, "Friendly Territory"))
-		self._addGroup(Group(self, self.NEUTRAL_TERRITORY, "Neutral Territory"))
-		self._addGroup(Group(self, self.ENEMY_TERRITORY, "Enemy Territory"))
-		self._addGroup(Group(self, self.BARBARIAN_TERRITORY, "Barbarian Territory"))
+		self._addGroup(Group(self, self.DOMESTIC_CITY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_DOMESTIC_CITY"))
+		self._addGroup(Group(self, self.DOMESTIC_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_DOMESTIC_TERRITORY"))
+		self._addGroup(Group(self, self.TEAM_CITY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_TEAM_CITY"))
+		self._addGroup(Group(self, self.TEAM_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_TEAM_TERRITORY"))
+		self._addGroup(Group(self, self.FRIENDLY_CITY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_FRIENDLY_CITY"))
+		self._addGroup(Group(self, self.FRIENDLY_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_FRIENDLY_TERRITORY"))
+		self._addGroup(Group(self, self.NEUTRAL_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_NEUTRAL_TERRITORY"))
+		self._addGroup(Group(self, self.ENEMY_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_ENEMY_TERRITORY"))
+		self._addGroup(Group(self, self.BARBARIAN_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_BARBARIAN_TERRITORY"))
 	
 	def calcGroupKeys(self, unit, player, team):
 		plot = unit.plot()
