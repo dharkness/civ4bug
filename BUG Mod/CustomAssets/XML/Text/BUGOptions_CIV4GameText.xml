@@ -1769,6 +1769,22 @@
 		<Spanish>Leader|Civilization|Both</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__USEPLAYERNAME_TEXT</Tag>
+		<English>Use Player Name</English>
+		<French>Use Player Name</French>
+		<German>Use Player Name</German>
+		<Italian>Use Player Name</Italian>
+		<Spanish>Use Player Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__USEPLAYERNAME_HOVER</Tag>
+		<English>When checked, the human players' names are used in place of those of the leaders they are playing as.</English>
+		<French>When checked, the human players' names are used in place of those of the leaders they are playing as.</French>
+		<German>When checked, the human players' names are used in place of those of the leaders they are playing as.</German>
+		<Italian>When checked, the human players' names are used in place of those of the leaders they are playing as.</Italian>
+		<Spanish>When checked, the human players' names are used in place of those of the leaders they are playing as.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__ATTITUDE_TEXT</Tag>
 		<English>Attitude Icons</English>
 		<French>Icônes d'Attitude</French>

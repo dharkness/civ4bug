@@ -6037,12 +6037,17 @@ class CvMainInterface:
 													scores.setWaiting()
 
 # BUG - Dead Civs - start
-										if (ScoreOpt.isShowBothNames()):
-											szPlayerName = gc.getPlayer(ePlayer).getName() + "/" + gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
-										elif (ScoreOpt.isShowLeaderName()):
+										if (ScoreOpt.isUsePlayerName()):
 											szPlayerName = gc.getPlayer(ePlayer).getName()
 										else:
-											szPlayerName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+											szPlayerName = gc.getLeaderHeadInfo(gc.getPlayer(ePlayer).getLeaderType()).getDescription()
+										szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+										if (ScoreOpt.isShowBothNames()):
+											szPlayerName = szPlayerName + "/" + szCivName
+										elif (ScoreOpt.isShowLeaderName()):
+											szPlayerName = szPlayerName
+										else:
+											szPlayerName = szCivName
 										
 										if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):
 											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())

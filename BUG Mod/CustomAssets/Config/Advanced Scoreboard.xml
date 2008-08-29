@@ -32,6 +32,7 @@
 			<option id="DeltaIncludeCurrent" key="Delta Includes Current Turn" 
 					type="boolean" default="True" 
 					get="isScoreDeltaIncludeCurrentTurn" set="setScoreDeltaIncludeCurrentTurn" dirtyBit="Score"/>
+			
 			<list   id="DisplayName" key="Display Name" 
 					type="int" default="0" listType="string" 
 					get="getDisplayName" set="setDisplayName" dirtyBit="Score">
@@ -39,6 +40,10 @@
 				<choice id="Civilization" get="isShowCivName" set="setShowCivName"/>
 				<choice id="Both" get="isShowBothNames" set="setShowBothNames"/>
 			</list>
+			<option id="UsePlayerName" key="Use Player Name" 
+					type="boolean" default="True" 
+					get="isUsePlayerName" set="setUsePlayerName" dirtyBit="Score"/>
+			
 			<option id="Attitude" key="Attitude Icons" 
 					type="boolean" default="True" 
 					get="isShowAttitude" set="setShowAttitude" dirtyBit="Score"/>

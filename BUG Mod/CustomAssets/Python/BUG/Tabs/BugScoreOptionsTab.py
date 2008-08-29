@@ -22,6 +22,7 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Scores__Delta")
 		self.addCheckbox(screen, left, "Scores__DeltaIncludeCurrent")
 		self.addTextDropdown(screen, left, left, "Scores__DisplayName")
+		self.addCheckbox(screen, left, "Scores__UsePlayerName")
 		self.addCheckbox(screen, left, "Scores__Attitude")
 		self.addCheckbox(screen, left, "Scores__WorstEnemy")
 
