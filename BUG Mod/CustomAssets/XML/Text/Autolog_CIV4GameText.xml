@@ -52,7 +52,7 @@
         <Tag>TXT_KEY_AUTOLOG_POPUP_ANSWERS</Tag>
         <English>OK for YES, Cancel for NO</English>
         <French>OK for YES, Cancel for NO</French>
-        <German>Klicken Sie auf "OK" für JA und auf "Cancel" für NEIN</German>
+        <German>Klicken Sie auf "Weiter" für JA und auf "Abbruch" für NEIN</German>
         <Italian>Clicca su OK se la risposta è SI, su Cancel se è NO</Italian>
         <Spanish>OK for YES, Cancel for NO</Spanish>
     </TEXT> 
@@ -92,7 +92,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_ATTACKING</Tag>
         <English>Units victorious while attacking: %d1</English>
         <French>Units victorious while attacking: %d1</French>
-        <German>Angreifende Einheiten, die siegreich waren: %d1</German>
+        <German>Siegreiche angreifende Einheiten: %d1</German>
         <Italian>Unità vittoriose in attacco: %d1</Italian>
         <Spanish>Units victorious while attacking: %d1</Spanish>
     </TEXT> 
@@ -100,7 +100,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_VICTORIOUS_DEFENDING</Tag>
         <English>Units victorious while defending: %d1</English>
         <French>Units victorious while defending: %d1</French>
-        <German>Verteidigende Einheiten, die siegreich waren: %d1</German>
+        <German>Siegreiche verteidigende Einheiten: %d1</German>
         <Italian>Unità vittoriose in difesa: %d1</Italian>
         <Spanish>Units victorious while defending: %d1</Spanish>
     </TEXT> 
@@ -108,7 +108,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_WITHDRAWING_ATTACKING</Tag>
         <English>Units withdrawing while attacking: %d1</English>
         <French>Units withdrawing while attacking: %d1</French>
-        <German>Angreifende Einheiten, die sich zurückziehen konnten: %d1</German>
+        <German>Zurückgezogene angreifende Einheiten: %d1</German>
         <Italian>Unità in ritirata: %d1</Italian>
         <Spanish>Units withdrawing while attacking: %d1</Spanish>
     </TEXT> 
@@ -116,7 +116,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_DEFEATED_ATTACKING</Tag>
         <English>Units defeated while attacking: %d1</English>
         <French>Units defeated while attacking: %d1</French>
-        <German>Angreifende Einheiten, die besiegt wurden: %d1</German>
+        <German>Besiegte angreifende Einheiten: %d1</German>
         <Italian>Unità sconfitte in attacco: %d1</Italian>
         <Spanish>Units defeated while attacking: %d1</Spanish>
     </TEXT> 
@@ -124,7 +124,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_DEFEATED_DEFENDING</Tag>
         <English>Units defeated while defending: %d1</English>
         <French>Units defeated while defending: %d1</French>
-        <German>Verteidigende Einheiten, die besiegt wurden: %d1</German>
+        <German>Besiegte verteidigende Einheiten: %d1</German>
         <Italian>Unità sconfitte in difesa: %d1</Italian>
         <Spanish>Units defeated while defending: %d1</Spanish>
     </TEXT> 
@@ -132,7 +132,7 @@
         <Tag>TXT_KEY_AUTOLOG_UNITS_ESCAPING_ATTACKING</Tag>
         <English>Units escaping while attacking: %d1</English>
         <French>Units escaping while attacking: %d1</French>
-        <German>Angreifende Einheiten, die geflohen sind: %d1</German>
+        <German>Geflohene angreifende Einheiten: %d1</German>
         <Italian>Unità in fuga: %d1</Italian>
         <Spanish>Units escaping while attacking: %d1</Spanish>
     </TEXT> 

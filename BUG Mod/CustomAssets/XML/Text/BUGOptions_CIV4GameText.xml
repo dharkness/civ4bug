@@ -1772,7 +1772,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__USEPLAYERNAME_TEXT</Tag>
 		<English>Use Player Name</English>
 		<French>Use Player Name</French>
-		<German>Use Player Name</German>
+		<German>Spielername verwenden</German>
 		<Italian>Use Player Name</Italian>
 		<Spanish>Use Player Name</Spanish>
 	</TEXT>
@@ -1780,7 +1780,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__USEPLAYERNAME_HOVER</Tag>
 		<English>When checked, the human players' names are used in place of those of the leaders they are playing as.</English>
 		<French>When checked, the human players' names are used in place of those of the leaders they are playing as.</French>
-		<German>When checked, the human players' names are used in place of those of the leaders they are playing as.</German>
+		<German>Zeigt die Namen der menschlichen Spieler anstatt des jeweils ausgewählten Oberhauptes an</German>
 		<Italian>When checked, the human players' names are used in place of those of the leaders they are playing as.</Italian>
 		<Spanish>When checked, the human players' names are used in place of those of the leaders they are playing as.</Spanish>
 	</TEXT>
@@ -1916,7 +1916,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_TEXT</Tag>
 		<English>Power Formula</English>
 		<French>Power Formula</French>
-		<German>Power Formula</German>
+		<German>Berechnungsformel</German>
 		<Italian>Power Formula</Italian>
 		<Spanish>Power Formula</Spanish>
 	</TEXT>
@@ -1924,7 +1924,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</French>
-		<German>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</German>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Höhere Werte sind besser[NEWLINE]- Kehrwert: Niedrigere Werte sind besser</German>
 		<Italian>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Spanish>
 	</TEXT>
@@ -1932,7 +1932,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_LIST</Tag>
 		<English>You vs. Them|Them vs. You</English>
 		<French>You vs. Them|Them vs. You</French>
-		<German>You vs. Them|Them vs. You</German>
+		<German>Normal|Kehrwert</German>
 		<Italian>You vs. Them|Them vs. You</Italian>
 		<Spanish>You vs. Them|Them vs. You</Spanish>
 	</TEXT>
@@ -1940,7 +1940,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERDECIMALS_TEXT</Tag>
 		<English>Ratio Decimal Places</English>
 		<French>Ratio Decimal Places</French>
-		<German>Ratio Decimal Places</German>
+		<German>Nachkommastellen</German>
 		<Italian>Ratio Decimal Places</Italian>
 		<Spanish>Ratio Decimal Places</Spanish>
 	</TEXT>
@@ -1948,7 +1948,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERDECIMALS_HOVER</Tag>
 		<English>Number of decimal places to show for power ratio display.</English>
 		<French>Number of decimal places to show for power ratio display.</French>
-		<German>Number of decimal places to show for power ratio display.</German>
+		<German>Bestimmt die Anzahl der Nachkommastellen des Machtverhältnisses</German>
 		<Italian>Number of decimal places to show for power ratio display.</Italian>
 		<Spanish>Number of decimal places to show for power ratio display.</Spanish>
 	</TEXT>
@@ -1972,7 +1972,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHRATIO_TEXT</Tag>
 		<English>High Ratio Cutoff</English>
 		<French>High Ratio Cutoff</French>
-		<German>High Ratio Cutoff</German>
+		<German>Hohes Verhältnis</German>
 		<Italian>High Ratio Cutoff</Italian>
 		<Spanish>High Ratio Cutoff</Spanish>
 	</TEXT>
@@ -1980,7 +1980,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHRATIO_HOVER</Tag>
 		<English>Power ratings greater than or equal to this value are shown in the High Color.</English>
 		<French>Power ratings greater than or equal to this value are shown in the High Color.</French>
-		<German>Power ratings greater than or equal to this value are shown in the High Color.</German>
+		<German>Hohe Machtverhältnisse größer oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Power ratings greater than or equal to this value are shown in the High Color.</Italian>
 		<Spanish>Power ratings greater than or equal to this value are shown in the High Color.</Spanish>
 	</TEXT>
@@ -1988,7 +1988,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHCOLOR_TEXT</Tag>
 		<English>High Color</English>
 		<French>High Color</French>
-		<German>High Color</German>
+		<German>Farbe (hoch)</German>
 		<Italian>High Color</Italian>
 		<Spanish>High Color</Spanish>
 	</TEXT>
@@ -1996,7 +1996,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERHIGHCOLOR_HOVER</Tag>
 		<English>Color used for high power ratios.</English>
 		<French>Color used for high power ratios.</French>
-		<German>Color used for high power ratios.</German>
+		<German>Bestimmt die Farbe, in der hohe Machtverhältnisse erscheinen</German>
 		<Italian>Color used for high power ratios.</Italian>
 		<Spanish>Color used for high power ratios.</Spanish>
 	</TEXT>
@@ -2004,7 +2004,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWRATIO_TEXT</Tag>
 		<English>Low Ratio Cutoff</English>
 		<French>Low Ratio Cutoff</French>
-		<German>Low Ratio Cutoff</German>
+		<German>Niedriges Verhältnis</German>
 		<Italian>Low Ratio Cutoff</Italian>
 		<Spanish>Low Ratio Cutoff</Spanish>
 	</TEXT>
@@ -2012,7 +2012,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWRATIO_HOVER</Tag>
 		<English>Power ratings less than or equal to this value are shown in in the Low Color.</English>
 		<French>Power ratings less than or equal to this value are shown in in the Low Color.</French>
-		<German>Power ratings less than or equal to this value are shown in in the Low Color.</German>
+		<German>Niedrige Machtverhältnisse kleiner oder gleich diesem Wert erscheinen in der definierten Farbe</German>
 		<Italian>Power ratings less than or equal to this value are shown in in the Low Color.</Italian>
 		<Spanish>Power ratings less than or equal to this value are shown in in the Low Color.</Spanish>
 	</TEXT>
@@ -2020,7 +2020,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWCOLOR_TEXT</Tag>
 		<English>Low Color</English>
 		<French>Low Color</French>
-		<German>Low Color</German>
+		<German>Farbe (niedrig)</German>
 		<Italian>Low Color</Italian>
 		<Spanish>Low Color</Spanish>
 	</TEXT>
@@ -2028,7 +2028,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERLOWCOLOR_HOVER</Tag>
 		<English>Color used for low power ratios.</English>
 		<French>Color used for low power ratios.</French>
-		<German>Color used for low power ratios.</German>
+		<German>Bestimmt die Farbe, in der niedrige Machtverhältnisse erscheinen</German>
 		<Italian>Color used for low power ratios.</Italian>
 		<Spanish>Color used for low power ratios.</Spanish>
 	</TEXT>
@@ -2085,7 +2085,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__DEFAULT_GROUP_MODE_HOVER</Tag>
 		<English>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</English>
 		<French>Détermine le groupement quand vous démarrez Civ IV. Ceci influence comment les groupes sont montrés dans les différents modes de vue.[NEWLINE]- Type d'Unité: Les Unités sont groupées par type (Archer, Chariot, Char, etc)[NEWLINE]- Groupe de Sélection: Les Unités sont groupées basé sur leur groupe de sélection</French>
-		<German>Bestimmt, wie Einheiten in der Einheitenliste bei den Anzeigemethoden "Spalten" bzw. "Zeilen" gruppiert werden:[NEWLINE]- Einheitentyp: Einheiten werden nach Typ zusammengefasst (Bogenschützen, Streitwagen, Panzer etc.)[NEWLINE]- Truppenverband: Einheiten werden in den vom Spieler definierten Gruppen zusammengefasst</German>
+		<German>Bestimmt, wie Einheiten in der Einheitenliste bei den Anzeigemethoden "Spalten" bzw. "Zeilen" gruppiert werden:[NEWLINE]- Einheitentyp: Einheiten werden nach Typ zusammengefasst (Bogenschützen, Streitwagen, Panzer etc.)[NEWLINE]- Einheitenverband: Einheiten werden in den vom Spieler definierten Gruppen zusammengefasst</German>
 		<Italian>Determina la modalità di raggruppamento utilizzata all'avvio del gioco. Modifica il raggruppamento delle Unità nelle diverse modalità di visualizzazione.[NEWLINE]- Tipo Unità: le Unità vengono raggruppate per tipo (Arciere, Cocchio, Carrarmato, ecc.)[NEWLINE]- Gruppo selezione: le Unità vengono raggruppate in base al gruppo di selezione (1, 2, 3, ecc.) in cui si trovano.</Italian>
 		<Spanish>Sets the grouping mode used when you start Civ IV. It alters how units are grouped in the different view modes.[NEWLINE]- Unit Type: Units are grouped by their type (Archer, Chariot, Tank, etc)[NEWLINE]- Selection Groups: Units are grouped by the selection groups they are in</Spanish>
 	</TEXT>
@@ -2093,7 +2093,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__DEFAULT_GROUP_MODE_LIST</Tag>
 		<English>Unit Type|Selection Group</English>
 		<French>Type d'Unité|Groupe de Sélection</French>
-		<German>Einheitentyp|Truppenverband</German>
+		<German>Einheitentyp|Einheitenverband</German>
 		<Italian>Tipo Unità|Gruppo selezione</Italian>
 		<Spanish>Unit Type|Selection Group</Spanish>
 	</TEXT>

@@ -3,7 +3,7 @@
 	Various Interface Label Translations
 
 	Copyright (c) 2007 The BUG Mod.
--->
+  -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 
 	<!-- BUG -->
@@ -20,7 +20,7 @@
 		<Tag>TXT_KEY_BUG_CREATED_BY_HEADER</Tag>
 		<English>Created by The BUG Mod.</English>
 		<French>Created by The BUG Mod.</French>
-		<German>Created by The BUG Mod.</German>
+		<German>Erstellt durch die BUG Mod.</German>
 		<Italian>Created by The BUG Mod.</Italian>
 		<Spanish>Created by The BUG Mod.</Spanish>
 	</TEXT>
@@ -28,7 +28,7 @@
 		<Tag>TXT_KEY_BUG_DEFAULT</Tag>
 		<English>Default</English>
 		<French>Default</French>
-		<German>Default</German>
+		<German>Standard</German>
 		<Italian>Default</Italian>
 		<Spanish>Default</Spanish>
 	</TEXT>
@@ -282,7 +282,7 @@
 		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
 	</TEXT>
 	
-	<!-- WhipAssist -->
+	<!-- Whip Assist -->
 	
 	<TEXT>
 		<Tag>INTERFACE_CITY_PRODUCTION_WHIP</Tag>
@@ -315,7 +315,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_TYPE_GROUPING</Tag>
 		<English>Unit Type</English>
 		<French>Unit Type</French>
-		<German>Unit Type</German>
+		<German>Einheitentyp</German>
 		<Italian>Unit Type</Italian>
 		<Spanish>Unit Type</Spanish>
 	</TEXT>
@@ -324,7 +324,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_COMBAT_GROUPING</Tag>
 		<English>Combat Type</English>
 		<French>Combat Type</French>
-		<German>Combat Type</German>
+		<German>Einheitenklasse</German>
 		<Italian>Combat Type</Italian>
 		<Spanish>Combat Type</Spanish>
 	</TEXT>
@@ -358,7 +358,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_PROMOTION_GROUPING</Tag>
 		<English>Promotions</English>
 		<French>Promotions</French>
-		<German>Promotions</German>
+		<German>Beförderungen</German>
 		<Italian>Promotions</Italian>
 		<Spanish>Promotions</Spanish>
 	</TEXT>
@@ -375,7 +375,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUPING</Tag>
 		<English>Location</English>
 		<French>Location</French>
-		<German>Location</German>
+		<German>Standort</German>
 		<Italian>Location</Italian>
 		<Spanish>Location</Spanish>
 	</TEXT>
@@ -391,7 +391,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_DOMESTIC_TERRITORY</Tag>
 		<English>Domestic Territory</English>
 		<French>Domestic Territory</French>
-		<German>Eigenes Territorium</German>
+		<German>Eigenes Gebiet</German>
 		<Italian>Domestic Territory</Italian>
 		<Spanish>Domestic Territory</Spanish>
 	</TEXT>
@@ -399,7 +399,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_TEAM_CITY</Tag>
 		<English>Team City</English>
 		<French>Team City</French>
-		<German>Team Stadt</German>
+		<German>Verbündete Stadt</German>
 		<Italian>Team City</Italian>
 		<Spanish>Team City</Spanish>
 	</TEXT>
@@ -407,7 +407,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_TEAM_TERRITORY</Tag>
 		<English>Team Territory</English>
 		<French>Team Territory</French>
-		<German>Team Territorium</German>
+		<German>Verbündetes Gebiet</German>
 		<Italian>Team Territory</Italian>
 		<Spanish>Team Territory</Spanish>
 	</TEXT>
@@ -423,7 +423,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_FRIENDLY_TERRITORY</Tag>
 		<English>Friendly Territory</English>
 		<French>Friendly Territory</French>
-		<German>Befreundetes Territorium</German>
+		<German>Befreundetes Gebiet</German>
 		<Italian>Friendly Territory</Italian>
 		<Spanish>Friendly Territory</Spanish>
 	</TEXT>
@@ -431,7 +431,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_NEUTRAL_TERRITORY</Tag>
 		<English>Neutral Territory</English>
 		<French>Neutral Territory</French>
-		<German>Neutrales Territorium</German>
+		<German>Neutrales Gebiet</German>
 		<Italian>Neutral Territory</Italian>
 		<Spanish>Neutral Territory</Spanish>
 	</TEXT>
@@ -439,7 +439,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_ENEMY_TERRITORY</Tag>
 		<English>Enemy Territory</English>
 		<French>Enemy Territory</French>
-		<German>Feindterritorium</German>
+		<German>Feindliches Gebiet</German>
 		<Italian>Enemy Territory</Italian>
 		<Spanish>Enemy Territory</Spanish>
 	</TEXT>
@@ -447,7 +447,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_BARBARIAN_TERRITORY</Tag>
 		<English>Barbarian Territory</English>
 		<French>Barbarian Territory</French>
-		<German>Barbarenterritorium</German>
+		<German>Barbarisches Gebiet</German>
 		<Italian>Barbarian Territory</Italian>
 		<Spanish>Barbarian Territory</Spanish>
 	</TEXT>
@@ -640,7 +640,7 @@
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
 	
-	<!-- Fix for Overlap in Foreign Advisor Tab in Italian Translation -->
+	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
 	
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
