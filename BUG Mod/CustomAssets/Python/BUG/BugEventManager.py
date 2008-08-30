@@ -6,13 +6,12 @@
 ##
 ## * New public methods
 ##
+##   - hasEvent(eventType)
+##       Returns True if eventType is defined
 ##   - addEvent(eventType)
 ##       Extend the core Civ4 event list
 ##   - fireEvent(eventType, args...)
-##       Fire an event from Python
-##
-## * Added force parameter to addEventHandler() [default False]
-##   to call addEvent() before adding the handler.
+##       Fire an event from Python, building an argList from the arguments passed in
 ##
 ## * New events
 ##
@@ -33,7 +32,7 @@
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
-## Author: EmperorFool
+## Author: EmperorFool, Gillmer J. Derge
 
 from CvPythonExtensions import *
 import CvEventManager
@@ -119,39 +118,36 @@ class BugEventManager(CvEventManager.CvEventManager):
 			else:
 				self.noLogEvents = noLogEvents
 
+	def hasEvent(self, eventType):
+		"""Returns True if the given event type is defined."""
+		return eventType in self.EventHandlerMap
+
 	def _checkEvent(self, eventType):
-		"""Enforces that eventType is defined.
-		
-		Raises ConfigError if the eventType is undefined.
-		"""
-		if eventType not in self.EventHandlerMap:
+		"""Raises ConfigError if the eventType is undefined."""
+		if not self.hasEvent(eventType):
 			raise BugUtil.ConfigError("Event '%s' is undefined" % eventType)
 
 	def addEvent(self, eventType):
-		"""Creates a new event type by adding it to CvEventManager's map.
+		"""Creates a new event type without any handlers.
 		
-		Prints a warning if eventType is already defined but does not
-		alter its default handler.
+		Prints a warning if eventType is already defined.
 		"""
-		if eventType in self.EventHandlerMap:
-			BugUtil.debug("WARN: event '%s' is already defined" % eventType)
+		if self.hasEvent(eventType):
+			BugUtil.debug("WARN: event '%s' already defined" % eventType)
 		else:
+			BugUtil.debug("BUG: adding event '%s'" % eventType)
 			self.EventHandlerMap[eventType] = []
 
-	def addEventHandler(self, eventType, eventHandler, force=False):
-		"""Adds a handler for the given event type.
+	def addEventHandler(self, eventType, eventHandler):
+		"""Adds a handler for the given event type, adding the event if necessary.
 		
 		A list of supported event types can be found in the initialization 
-		of EventHandlerMap in the CvEventManager class.  It is an error if 
-		the given handler is not found in the list of installed handlers.
-		
-		Throws ConfigError if the eventType is undefined and force is False.
+		of EventHandlerMap in the CvEventManager class. A debug message is
+		printed if the event type doesn't exist.
 
 		"""
-		if force:
+		if not self.hasEvent(eventType):
 			self.addEvent(eventType)
-		else:
-			self._checkEvent(eventType)
 		self.EventHandlerMap[eventType].append(eventHandler)
 
 	def removeEventHandler(self, eventType, eventHandler):
@@ -167,22 +163,18 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self._checkEvent(eventType)
 		self.EventHandlerMap[eventType].remove(eventHandler)
 	
-	def setEventHandler(self, eventType, eventHandler, force=False):
+	def setEventHandler(self, eventType, eventHandler):
 		"""Removes all previously installed event handlers for the given 
-		event type and installs a new handler.
+		event type and installs a new handler, adding the event if necessary.
 		
 		A list of supported event types can be found in the initialization 
 		of EventHandlerMap in the CvEventManager class.  This method is 
 		primarily useful for overriding, rather than extending, the default 
 		event handler functionality.
-		
-		Throws ConfigError if the eventType is undefined and force is False.
 
 		"""
-		if force:
+		if not self.hasEvent(eventType):
 			self.addEvent(eventType)
-		else:
-			self._checkEvent(eventType)
 		if eventHandler is not None:
 			self.EventHandlerMap[eventType] = [eventHandler]
 		else:
