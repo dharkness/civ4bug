@@ -65,6 +65,25 @@
 		<Spanish>Could not find the file "%s1" in the search paths. See the Config tab on the BUG Options screen [Alt + Ctrl + O] for details.</Spanish>
 	</TEXT>
 	
+	<!-- Missing Civ4 Entries -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_CIV_MINOR_PEDIA</Tag>
+		<English>No description provided.</English>
+		<French>Description non fournie.</French>
+		<German>Keine Informationen verfügbar.</German>
+		<Italian>Nessuna descrizione fornita.</Italian>
+		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_LEADER_BARBARIAN_PEDIA</Tag>
+		<English>No description provided.</English>
+		<French>Description non fournie.</French>
+		<German>Keine Informationen verfügbar.</German>
+		<Italian>Nessuna descrizione fornita.</Italian>
+		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
+	</TEXT>
+	
 	<!-- Not Just Another Game Clock -->
 	
 	<TEXT>
