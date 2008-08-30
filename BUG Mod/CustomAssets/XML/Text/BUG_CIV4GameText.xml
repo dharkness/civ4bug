@@ -17,6 +17,22 @@
 		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_CREATED_BY_HEADER</Tag>
+		<English>Created by The BUG Mod.</English>
+		<French>Created by The BUG Mod.</French>
+		<German>Created by The BUG Mod.</German>
+		<Italian>Created by The BUG Mod.</Italian>
+		<Spanish>Created by The BUG Mod.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_DEFAULT</Tag>
+		<English>Default</English>
+		<French>Default</French>
+		<German>Default</German>
+		<Italian>Default</Italian>
+		<Spanish>Default</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
 		<English>Opening the BUG Mod help file...</English>
 		<French>Ouverture du fichier d'aide du BUG Mod...</French>

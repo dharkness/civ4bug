@@ -111,7 +111,7 @@ class GameBuilder:
 	
 	
 	def createIniFile(self, id, name, attrs=None):
-		self.iniFile = BugOptions.IniFile(id, name)
+		self.iniFile = BugOptions.IniFile(id, self.mod, name)
 		self.iniFile.attrs = attrs
 		self.options.addFile(self.iniFile)
 		return self.iniFile

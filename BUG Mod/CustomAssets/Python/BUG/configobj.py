@@ -501,13 +501,13 @@ class Section(dict):
 
     # Extra methods - not in a normal dictionary
     
-    def clearComments(self, key):
+    def clearKeyComments(self, key):
     	"""Clears all comments for the given key."""
     	if key in self.scalars or key in self.sections:
             self.comments[key] = []
             self.inline_comments[key] = ''
     
-    def addComment(self, key, comment=None):
+    def addKeyComment(self, key, comment=None):
     	"""Adds the given text as a single-line comment with a leading '# '."""
     	if key in self.scalars or key in self.sections:
 	    	if comment is None:
@@ -518,7 +518,7 @@ class Section(dict):
 	    		comment = '# ' + comment
     		self.comments.setdefault(key, []).append(comment)
 
-    def setInlineComment(self, key, comment):
+    def setInlineKeyComment(self, key, comment):
     	"""Sets the given text as the single inline comment with a leading '# '."""
     	if key in self.scalars or key in self.sections:
     		if comment:
@@ -1880,8 +1880,8 @@ class ConfigObj(Section):
         self.clearInitialComment()
         self.clearFinalComment()
     
-	def clearInitialComment(self):
-		self.initial_comment = []
+    def clearInitialComment(self):
+        self.initial_comment = []
     
     def addInitialComment(self, comment=None):
     	if comment is None:

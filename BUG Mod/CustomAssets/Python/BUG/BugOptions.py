@@ -229,8 +229,9 @@ def write():
 class IniFile(object):
 	"""Controls reading/writing an INI file and getting/setting Option values."""
 	
-	def __init__(self, id, name):
+	def __init__(self, id, mod, name):
 		self.id = id
+		self.mod = mod
 		self.name = name
 		self.path = None
 		self.config = None
@@ -265,24 +266,35 @@ class IniFile(object):
 	def create(self):
 		BugUtil.debug("BUG: Creating new INI file '%s'" % self.name)
 		self.config = ConfigObj()
-		self.config.addInitialComment(self.name)
-		self.config.addInitialComment("")
-		self.config.addInitialComment("Created by BUG Mod.")
-		self.config.addInitialComment()
 		for option in self.options:
 			if not option.isParameterized():
 				option.resetValue()
-				section = self.getSection(option.getSection())
-				key = option.getKey()
-				section.addComment(key)
-				for line in option.getTooltip().splitlines():
-					section.addComment(key, line)
-				section.addComment(key, "Default: " + str(option.getDefault()))
-				section.addComment(key)
-		self.config.addFinalComment()
+		self.fillComments()
 		self.write()
 	
+	def fillComments(self):
+		print dir(self.config)
+		self.config.clearInitialComment()
+		self.config.addInitialComment(self.mod._id)
+		self.config.addInitialComment(self.name)
+		self.config.addInitialComment("")
+		self.config.addInitialComment(BugUtil.getPlainText("TXT_KEY_BUG_CREATED_BY_HEADER"))
+		self.config.addInitialComment()
+		defaultHeader = BugUtil.getPlainText("TXT_KEY_BUG_DEFAULT") + ": "
+		for option in self.options:
+			if not option.isParameterized():
+				section = self.getSection(option.getSection())
+				key = option.getKey()
+				section.clearKeyComments(key)
+				section.addKeyComment(key)
+				for line in option.getTooltip().splitlines():
+					section.addKeyComment(key, line.encode('latin-1'))
+				section.addKeyComment(key, defaultHeader + str(option.getDefault()))
+				section.addKeyComment(key)
+		self.config.addFinalComment()
+	
 	def write(self):
+		BugUtil.debug("BUG: Writing INI file '%s'" % self.name)
 		if self.fileExists():
 			if self.isDirty():
 				try:
@@ -294,14 +306,13 @@ class IniFile(object):
 			self.path = BugPath.createIniFile(self.name)
 			try:
 				file = open(self.path, "w")
-				BugUtil.debug("CONFIGOBJ ===================\n%r\n=========================" % self.config)
 				self.config.write(file)
 				file.close()
 				self.dirty = False
 			except IOError:
 				BugUtil.debug("BUG: Failed creating INI file '%s'" % self.path)
 		else:
-			BugUtil.debug("BUG: INI file '%s' wasn't read" % self.name)
+			BugUtil.debug("BUG: INI file '%s' was never read" % self.name)
 	
 	
 	def exists(self, section, key=None):
