@@ -873,7 +873,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 
 	def isSortLists(self):
-		return AdvisorOpt.isSortSevopedia()
+		return AdvisorOpt.SevopediaSortItemList()
 
 	def getSortedList(self, numInfos, getInfo, noSort=False):
 		list = []

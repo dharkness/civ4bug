@@ -241,7 +241,8 @@ def createCivilopedia():
 	global pediaMainScreen
 	global bUsingSevopedia
 	if pediaMainScreen is None:
-		if (AdvisorOpt.isSevopedia()):
+		import SevoPediaUtil
+		if (AdvisorOpt.Sevopedia()):
 			import SevoPediaMain
 			import SevoPediaHistory
 			bUsingSevopedia = True
@@ -350,6 +351,7 @@ def linkToPedia(argsList):
 	pediaMainScreen.link(argsList[0])
 
 def pediaShow():
+	createCivilopedia()
 	return pediaMainScreen.pediaShow()
 
 def pediaBack():
