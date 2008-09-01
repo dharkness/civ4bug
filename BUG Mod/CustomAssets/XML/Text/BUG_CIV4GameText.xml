@@ -13,7 +13,7 @@
 		<English>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</English>
 		<French>Poussez sur [BOLD]ALT + CTRL + O[\BOLD] pour configurer le BUG Mod</French>
 		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
-		<Italian>Premi [BOLD]ALT + CTRL + O[\BOLD] per personalizzare il BUG Mod</Italian>
+		<Italian>Premi [BOLD]CTRL+ALT+O[\BOLD] per personalizzare il BUG Mod</Italian>
 		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
@@ -21,7 +21,7 @@
 		<English>Created by The BUG Mod.</English>
 		<French>Created by The BUG Mod.</French>
 		<German>Erstellt durch die BUG Mod.</German>
-		<Italian>Created by The BUG Mod.</Italian>
+		<Italian>Creato dal BUG Mod.</Italian>
 		<Spanish>Created by The BUG Mod.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -29,7 +29,7 @@
 		<English>Default</English>
 		<French>Default</French>
 		<German>Standard</German>
-		<Italian>Default</Italian>
+		<Italian>Predefinito</Italian>
 		<Spanish>Default</Spanish>
 	</TEXT>
 	<TEXT>
@@ -316,7 +316,7 @@
 		<English>Unit Type</English>
 		<French>Unit Type</French>
 		<German>Einheitentyp</German>
-		<Italian>Unit Type</Italian>
+		<Italian>Tipo Unità</Italian>
 		<Spanish>Unit Type</Spanish>
 	</TEXT>
 	
@@ -325,7 +325,7 @@
 		<English>Combat Type</English>
 		<French>Combat Type</French>
 		<German>Einheitenklasse</German>
-		<Italian>Combat Type</Italian>
+		<Italian>Tipo Combattimento</Italian>
 		<Spanish>Combat Type</Spanish>
 	</TEXT>
 	<TEXT>
@@ -359,7 +359,7 @@
 		<English>Promotions</English>
 		<French>Promotions</French>
 		<German>Beförderungen</German>
-		<Italian>Promotions</Italian>
+		<Italian>Promozioni</Italian>
 		<Spanish>Promotions</Spanish>
 	</TEXT>
 	<TEXT>
@@ -376,7 +376,7 @@
 		<English>Location</English>
 		<French>Location</French>
 		<German>Standort</German>
-		<Italian>Location</Italian>
+		<Italian>Luogo</Italian>
 		<Spanish>Location</Spanish>
 	</TEXT>
 	<TEXT>
@@ -384,7 +384,7 @@
 		<English>Domestic City</English>
 		<French>Domestic City</French>
 		<German>Eigene Stadt</German>
-		<Italian>Domestic City</Italian>
+		<Italian>Città propria</Italian>
 		<Spanish>Domestic City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -392,7 +392,7 @@
 		<English>Domestic Territory</English>
 		<French>Domestic Territory</French>
 		<German>Eigenes Gebiet</German>
-		<Italian>Domestic Territory</Italian>
+		<Italian>Territorio proprio</Italian>
 		<Spanish>Domestic Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -400,7 +400,7 @@
 		<English>Team City</English>
 		<French>Team City</French>
 		<German>Verbündete Stadt</German>
-		<Italian>Team City</Italian>
+		<Italian>Città alleata</Italian>
 		<Spanish>Team City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -408,7 +408,7 @@
 		<English>Team Territory</English>
 		<French>Team Territory</French>
 		<German>Verbündetes Gebiet</German>
-		<Italian>Team Territory</Italian>
+		<Italian>Territorio alleato</Italian>
 		<Spanish>Team Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -416,7 +416,7 @@
 		<English>Friendly City</English>
 		<French>Friendly City</French>
 		<German>Befreundete Stadt</German>
-		<Italian>Friendly City</Italian>
+		<Italian>Città amica</Italian>
 		<Spanish>Friendly City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -424,7 +424,7 @@
 		<English>Friendly Territory</English>
 		<French>Friendly Territory</French>
 		<German>Befreundetes Gebiet</German>
-		<Italian>Friendly Territory</Italian>
+		<Italian>Territorio amico</Italian>
 		<Spanish>Friendly Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -432,7 +432,7 @@
 		<English>Neutral Territory</English>
 		<French>Neutral Territory</French>
 		<German>Neutrales Gebiet</German>
-		<Italian>Neutral Territory</Italian>
+		<Italian>Territorio neutrale</Italian>
 		<Spanish>Neutral Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -440,7 +440,7 @@
 		<English>Enemy Territory</English>
 		<French>Enemy Territory</French>
 		<German>Feindliches Gebiet</German>
-		<Italian>Enemy Territory</Italian>
+		<Italian>Territorio nemico</Italian>
 		<Spanish>Enemy Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -448,7 +448,7 @@
 		<English>Barbarian Territory</English>
 		<French>Barbarian Territory</French>
 		<German>Barbarisches Gebiet</German>
-		<Italian>Barbarian Territory</Italian>
+		<Italian>Territorio barbaro</Italian>
 		<Spanish>Barbarian Territory</Spanish>
 	</TEXT>
 	

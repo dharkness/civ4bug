@@ -1773,7 +1773,7 @@
 		<English>Use Player Name</English>
 		<French>Use Player Name</French>
 		<German>Spielername verwenden</German>
-		<Italian>Use Player Name</Italian>
+		<Italian>Usa il nome del giocatore</Italian>
 		<Spanish>Use Player Name</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1781,7 +1781,7 @@
 		<English>When checked, the human players' names are used in place of those of the leaders they are playing as.</English>
 		<French>When checked, the human players' names are used in place of those of the leaders they are playing as.</French>
 		<German>Zeigt die Namen der menschlichen Spieler anstatt des jeweils ausgewählten Oberhauptes an</German>
-		<Italian>When checked, the human players' names are used in place of those of the leaders they are playing as.</Italian>
+		<Italian>Quando è selezionato, nel Pannello del Punteggio viene utilizzato il nome del giocatore invece di quello del Leader della Civiltà da lui utilizzata.</Italian>
 		<Spanish>When checked, the human players' names are used in place of those of the leaders they are playing as.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1917,7 +1917,7 @@
 		<English>Power Formula</English>
 		<French>Power Formula</French>
 		<German>Berechnungsformel</German>
-		<Italian>Power Formula</Italian>
+		<Italian>Rapporto di Forza</Italian>
 		<Spanish>Power Formula</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1925,7 +1925,7 @@
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</French>
 		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Höhere Werte sind besser[NEWLINE]- Kehrwert: Niedrigere Werte sind besser</German>
-		<Italian>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Italian>
+		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1933,7 +1933,7 @@
 		<English>You vs. Them|Them vs. You</English>
 		<French>You vs. Them|Them vs. You</French>
 		<German>Normal|Kehrwert</German>
-		<Italian>You vs. Them|Them vs. You</Italian>
+		<Italian>Giocatore/Avversari|Avversari/Giocatore</Italian>
 		<Spanish>You vs. Them|Them vs. You</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1941,7 +1941,7 @@
 		<English>Ratio Decimal Places</English>
 		<French>Ratio Decimal Places</French>
 		<German>Nachkommastellen</German>
-		<Italian>Ratio Decimal Places</Italian>
+		<Italian>Cifre decimali</Italian>
 		<Spanish>Ratio Decimal Places</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1949,7 +1949,7 @@
 		<English>Number of decimal places to show for power ratio display.</English>
 		<French>Number of decimal places to show for power ratio display.</French>
 		<German>Bestimmt die Anzahl der Nachkommastellen des Machtverhältnisses</German>
-		<Italian>Number of decimal places to show for power ratio display.</Italian>
+		<Italian>Indica il numero di cifre decimali con cui il Rapporto di Forza viene visualizzato nel Pannello del Punteggio.</Italian>
 		<Spanish>Number of decimal places to show for power ratio display.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1973,7 +1973,7 @@
 		<English>High Ratio Cutoff</English>
 		<French>High Ratio Cutoff</French>
 		<German>Hohes Verhältnis</German>
-		<Italian>High Ratio Cutoff</Italian>
+		<Italian>Livello rapporto alto</Italian>
 		<Spanish>High Ratio Cutoff</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1981,7 +1981,7 @@
 		<English>Power ratings greater than or equal to this value are shown in the High Color.</English>
 		<French>Power ratings greater than or equal to this value are shown in the High Color.</French>
 		<German>Hohe Machtverhältnisse größer oder gleich diesem Wert erscheinen in der definierten Farbe</German>
-		<Italian>Power ratings greater than or equal to this value are shown in the High Color.</Italian>
+		<Italian>Consente di selezionare il valore limite perchè un Rapporto di Forza venga considerato "alto" (e quindi visualizzato col relativo colore).</Italian>
 		<Spanish>Power ratings greater than or equal to this value are shown in the High Color.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1989,7 +1989,7 @@
 		<English>High Color</English>
 		<French>High Color</French>
 		<German>Farbe (hoch)</German>
-		<Italian>High Color</Italian>
+		<Italian>Colore rapporto alto</Italian>
 		<Spanish>High Color</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1997,7 +1997,7 @@
 		<English>Color used for high power ratios.</English>
 		<French>Color used for high power ratios.</French>
 		<German>Bestimmt die Farbe, in der hohe Machtverhältnisse erscheinen</German>
-		<Italian>Color used for high power ratios.</Italian>
+		<Italian>Consente di selezionare il colore con cui visualizzare il Rapporto di Forza nel Pannello del Punteggio quando è "alto".</Italian>
 		<Spanish>Color used for high power ratios.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2005,7 +2005,7 @@
 		<English>Low Ratio Cutoff</English>
 		<French>Low Ratio Cutoff</French>
 		<German>Niedriges Verhältnis</German>
-		<Italian>Low Ratio Cutoff</Italian>
+		<Italian>Livello rapporto basso</Italian>
 		<Spanish>Low Ratio Cutoff</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2013,7 +2013,7 @@
 		<English>Power ratings less than or equal to this value are shown in in the Low Color.</English>
 		<French>Power ratings less than or equal to this value are shown in in the Low Color.</French>
 		<German>Niedrige Machtverhältnisse kleiner oder gleich diesem Wert erscheinen in der definierten Farbe</German>
-		<Italian>Power ratings less than or equal to this value are shown in in the Low Color.</Italian>
+		<Italian>Consente di selezionare il valore limite perchè un Rapporto di Forza venga considerato "basso" (e quindi visualizzato col relativo colore).</Italian>
 		<Spanish>Power ratings less than or equal to this value are shown in in the Low Color.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2021,7 +2021,7 @@
 		<English>Low Color</English>
 		<French>Low Color</French>
 		<German>Farbe (niedrig)</German>
-		<Italian>Low Color</Italian>
+		<Italian>Colore rapporto basso</Italian>
 		<Spanish>Low Color</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2029,7 +2029,7 @@
 		<English>Color used for low power ratios.</English>
 		<French>Color used for low power ratios.</French>
 		<German>Bestimmt die Farbe, in der niedrige Machtverhältnisse erscheinen</German>
-		<Italian>Color used for low power ratios.</Italian>
+		<Italian>Consente di selezionare il colore con cui visualizzare il Rapporto di Forza nel Pannello del Punteggio quando è "basso".</Italian>
 		<Spanish>Color used for low power ratios.</Spanish>
 	</TEXT>
 	<!-- Plot List Enhancements -->
