@@ -1929,6 +1929,28 @@ class CvMainInterface:
 		if iFortifyBonus > 0:
 			szFortifyBonus = u"<font=2>" + localText.getText("TXT_KEY_UNIT_HELP_FORTIFY_BONUS", (iFortifyBonus, )) + u"\n" + u"</font>"
 	
+		# espionage info; mimic of CvGameTextMgr::setEspionageMissionHelp()
+		szEspionage = u""
+		if gc.getUnitInfo(pUnit.getUnitType()).isSpy():
+			pPlot = pUnit.plot()
+			eOwner = pPlot.getOwner()
+			pOwner = gc.getPlayer(eOwner)
+			if pOwner and not pOwner.isNone():
+				eOwnerTeam = pOwner.getTeam()
+				if eOwnerTeam != pUnit.getTeam():
+					if not pUnit.canEspionage(pPlot):
+						szEspionage += localText.getText("TXT_KEY_UNIT_HELP_NO_ESPIONAGE", ())
+						if pUnit.hasMoved() or pUnit.isMadeAttack():
+							szEspionage += localText.getText("TXT_KEY_UNIT_HELP_NO_ESPIONAGE_REASON_MOVED", ())
+						elif not pUnit.isInvisible(eOwnerTeam, False):
+							szEspionage += localText.getText("TXT_KEY_UNIT_HELP_NO_ESPIONAGE_REASON_VISIBLE", (pOwner.getNameKey(),))
+					elif pUnit.getFortifyTurns() > 0:
+						iModifier = - (pUnit.getFortifyTurns() * gc.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"))
+						if 0 != iModifier:
+							szEspionage += localText.getText("TXT_KEY_ESPIONAGE_COST", (iModifier,))
+		if szEspionage:
+			szEspionage = u"<font=2>" + szEspionage + u"\n</font>"
+		
 		# unit type specialities 
 		szSpecialText 	= u"<font=2>" + localText.getText("TXT_KEY_PEDIA_SPECIAL_ABILITIES", ()) + u":\n" + CyGameTextMgr().getUnitHelp( iUnitType, true, false, false, None )[1:] + u"</font>"
 		szSpecialText = localText.changeTextColor(szSpecialText, PleOpt.getUnitTypeSpecialtiesColor())
@@ -1955,6 +1977,7 @@ class CvMainInterface:
 				szCargo + \
 				szCiv + \
 				szFortifyBonus + \
+				szEspionage + \
 				szSpecialText
 
 		# display the info pane
