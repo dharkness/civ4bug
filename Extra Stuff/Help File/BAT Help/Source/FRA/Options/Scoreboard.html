@@ -23,6 +23,8 @@
 <br> 
 <P CLASS="style2">Display Name</P>
 <P>Selects what name is displayed in the scoreboard: either the Leader's name, the Civilization's name, or both.</P>
+<P CLASS="style2">Use Player Name</P>
+<P>If selected, the human players' names are used in place of those of the Leaders they are playing as.</P>
 <P CLASS="style2">Attitude Icons</P>
 <P>Toggles between Attitude Icons being displayed or not.</P>
 <P CLASS="style2">Worst Enemy Icons</P>
@@ -37,21 +39,26 @@
 <br><br> 
 
 <P CLASS="style2">Power Ratio</P>
-<P>Enables display in Scoreboard of the Power Ratio.<P>
+<P>Enables display in Scoreboard of the Power Ratio and selects the formula to use for calculating the power ratio: 
+You vs. Them (higher numbers are better) or Them vs. You (lower numbers are better).<P>
+<P CLASS="style2">Power Ratio: Ratio Decimal Places</P>
+<P>Selects the number of decimal places to show for power ratio display.<P>
 <P CLASS="style2">Power Ratio: Default Color</P>
 <P>Selects the color to display when your power ratio is even with another Civilization.<P>
-<P CLASS="style2">Power Ratio: Good Ratio Cutoff</P>
-<P>Sets the point at which the ratio changes from even to good.<P>
-<P CLASS="style2">Power Ratio: Good Color</P>
-<P>Selects the color to display when your power ratio is stronger then another Civilization.<P>
-<P CLASS="style2">Power Ratio: Bad Ration Cutoff</P>
-<P>Sets the point at which the ratio changes from even to bad.<P>
-<P CLASS="style2">Power Ratio: Bad Color</P>
-<P>Selects the color to display when your power ratio is weaker then another Civilization.<P>
+<P CLASS="style2">Power Ratio: High Ratio Cutoff</P>
+<P>Sets the point at which the ratio changes from even to high.<P>
+<P CLASS="style2">Power Ratio: High Color</P>
+<P>Selects the color to display for high power ratios.<P>
+<P CLASS="style2">Power Ratio: Low Ratio Cutoff</P>
+<P>Sets the point at which the ratio changes from even to low.<P>
+<P CLASS="style2">Power Ratio: Low Color</P>
+<P>Selects the color to display for low power ratios.<P>
 <br><br> 
 
 <P CLASS="style2">Advanced Layout: Enabled</P>
 <P>Enables advanced layout for Scoreboard, which will provide more options to change the layout of the Scoreboard.<P>
+<P CLASS="style2">Advanced Layout: Default Spacing</P>
+<P>Selects the default spacing between columns (in pixels) to use when none is specified for a column.<P>
 <P CLASS="style2">Advanced Layout: Column Order</P>
 <P>This will give you complete control over what is or isn't displayed in the Scoreboard; 
 you can also change the order of what is displayed here as well.<br>
@@ -87,6 +94,10 @@ the first 4 of them are displayed even for your Civilization, while the other 11
 	<LI><SPAN style="color: #0000ff;">*</SPAN> displays an asterisk when you are waiting for this civ to finish its turn 
 	<LI><SPAN style="color: #0000ff;">L</SPAN> displays civ's network stats (ping) 
 	<LI><SPAN style="color: #0000ff;">O</SPAN> the network player is 'out-of-sync' 
+	<LI><SPAN style="color: #0000ff;">number</SPAN> set the number of spacing pixels after the previous column 
+		(the default spacing value is ignored for columns with a specified spacing value) 
+	<LI><SPAN style="color: #0000ff;">space</SPAN> spaces are ignored 
+		(this allows their use for making more readable the sequence of codes)
 </UL>
 <P CLASS="style2">Advanced Layout: Left-Align Name</P>
 <P>Aligns the Civilization/Leader names to the left, instead of the right.<P>
