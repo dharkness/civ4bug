@@ -1837,7 +1837,7 @@
 		<English>Default Spacing</English>
 		<French>Default Spacing</French>
 		<German>Standardabstand</German>
-		<Italian>Spaziatura predefinita</Italian>
+		<Italian>Spaziatura</Italian>
 		<Spanish>Default Spacing</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1901,7 +1901,7 @@
 		<English>Power Ratio</English>
 		<French>Pro Rata de Pouvoir</French>
 		<German>Machtverhältnis</German>
-		<Italian>Rapporto di Forza</Italian>
+		<Italian>Rap. Forza</Italian>
 		<Spanish>Power Ratio</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1933,7 +1933,7 @@
 		<English>You vs. Them|Them vs. You</English>
 		<French>You vs. Them|Them vs. You</French>
 		<German>Normal|Kehrwert</German>
-		<Italian>Giocatore/Avversari|Avversari/Giocatore</Italian>
+		<Italian>Giocatore/Altri|Altri/Giocatore</Italian>
 		<Spanish>You vs. Them|Them vs. You</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1989,7 +1989,7 @@
 		<English>High Color</English>
 		<French>High Color</French>
 		<German>Farbe (hoch)</German>
-		<Italian>Colore rapporto alto</Italian>
+		<Italian>Colore rap. alto</Italian>
 		<Spanish>High Color</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2021,7 +2021,7 @@
 		<English>Low Color</English>
 		<French>Low Color</French>
 		<German>Farbe (niedrig)</German>
-		<Italian>Colore rapporto basso</Italian>
+		<Italian>Colore rap. basso</Italian>
 		<Spanish>Low Color</Spanish>
 	</TEXT>
 	<TEXT>
