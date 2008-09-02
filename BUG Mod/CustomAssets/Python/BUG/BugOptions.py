@@ -253,7 +253,7 @@ class IniFile(object):
 			if not self.path:
 				self.create()
 			else:
-				self.config = ConfigObj(self.path)
+				self.config = ConfigObj(self.path, encoding='utf_8')
 #			BugConfigTracker.add("BUG_Mod_Config", self.path)
 		except IOError:
 			self.path = None
@@ -262,7 +262,7 @@ class IniFile(object):
 	
 	def create(self):
 		BugUtil.debug("BUG: Creating new INI file '%s'" % self.name)
-		self.config = ConfigObj()
+		self.config = ConfigObj(encoding='utf_8')
 		for option in self.options:
 			if not option.isParameterized():
 				option.resetValue()
@@ -285,7 +285,7 @@ class IniFile(object):
 				section.clearKeyComments(key)
 				section.addKeyComment(key)
 				for line in option.getTooltip().splitlines():
-					section.addKeyComment(key, line.encode('latin-1'))
+					section.addKeyComment(key, line)
 				section.addKeyComment(key, defaultHeader + str(option.getDefault()))
 				section.addKeyComment(key)
 		self.config.addFinalComment()
