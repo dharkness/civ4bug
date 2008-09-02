@@ -50,9 +50,8 @@
 ##
 ## TODO:
 ##
-##  X Create Game to encapsulate Mod accessors
-##  X Create Mod to encapsulate Option accessors
-##    ? <Option.ID>: property(Option.getValue, Option.setValue)
+##  ? Create property-like Option accessors on Mod
+##    - <Option.ID>: property(Option.getValue, Option.setValue)
 ##                     or
 ##                   property(lambda: option, Option.setValue)
 ##                     Requires Option.__nonzero__()
@@ -61,8 +60,6 @@
 ##                          if pop >= Civ4lerts.DomPopMinimum(): ...
 ##                     Might be confusing to new coders
 ##      e.g. setattr(mod, option.id, property(Option.getValue, Option.setValue))
-##    x Move createParameterizedAccessorPair to Mod
-##    x Add BaseOption.mod
 ##
 ##  * Remove Mod ID from Option ID but keep in Options dictionary keys
 ##  ? Drop Base from BaseOption and BaseListOption
