@@ -640,7 +640,7 @@
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
 	
-	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
+	<!-- Fix for Overlap in Foreign Advisor Tab in Italian Translation -->
 	
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
@@ -724,5 +724,24 @@
 		<German>Quelle: Neueste BUG-Umfrage, die statistische Fehlerquote beträgt %s1.</German>
 		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %s1.</Italian>
 		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s1.</Spanish>
+	</TEXT>
+	
+	<!-- Hall of Fame Screen: Win/Loss Result -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_HOF_WINLOSS_WIN</Tag>
+		<English>W-</English>
+		<French>W-</French>
+		<German>W-</German>
+		<Italian>W-</Italian>
+		<Spanish>W-</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_HOF_WINLOSS_LOSS</Tag>
+		<English>L-</English>
+		<French>L-</French>
+		<German>L-</German>
+		<Italian>L-</Italian>
+		<Spanish>L-</Spanish>
 	</TEXT>
 </Civ4GameText>

@@ -1,19 +1,18 @@
 ## Sid Meier's Civilization 4
 ## Copyright Firaxis Games 2005
 ##
-## Modified to show Win-Loss states
-## 09-NOV-2005 Shelly Crawford (Fallblau on CFC/Apolyton)
-## Revised due to Pounder's discovery 10-NOV-2005 Shelly Crawford (Fallblau on CFC/Apolyton)
-## Revised due to Moxx's discovery 11-NOV-2005 Shelly Crawford (Fallblau on CFC/Apolyton)
-## Declared Version 1.00 FINAL by Fallblau 29-NOV-2005
+## Win-Loss code based on mod by Shelly Crawford (Fallblau on CFC/Apolyton)
+## Rewritten by EmperorFool to use player's language and not break if no message is found.
 ## Modified by Alerum of the BUG Team to bring up to latest revision of Civilization 4: Patch 1.74.
 
 from CvPythonExtensions import *
+import BugUtil
 import CvUtil
 import ScreenInput
 from CvScreenEnums import *
 import CvReplayScreen
 import CvScreensInterface
+import re
 
 # globals
 gc = CyGlobalContext()
@@ -278,77 +277,13 @@ class CvHallOfFameScreen:
 					szVictory = localText.getText("TXT_KEY_NONE", ())
 				else:
 					szVictory = gc.getVictoryInfo(replayInfo.getVictoryType()).getDescription()
-					# Begin win-loss customization
-					# This was the version1 method, check by high score
-					# Found to be flawed by Pounder, bless him!! :))
-					#
-					# lastTurn = replayInfo.getFinalTurn()
-					# vHighScore = 0
-					# for x in range(replayInfo.getNumPlayers()):
-					#	currentScore = replayInfo.getPlayerScore(x, lastTurn)
-					# 	if currentScore > vHighScore:
-					#		vHighScore = currentScore
-					#	else:
-					#		vHighScore = vHighScore
-
-					# if vHighScore == replayInfo.getFinalScore():
-					#	szVictory = "W-" + szVictory
-					# else:
-					#	szVictory = "L-" + szVictory
-					#
-
-					# OK, version 2 finds the victory announcement, and parses
-					# it out to find out who won
-					# get player's leader name					
-					playerLeader = localText.getText("TXT_KEY_LEADER_CIV_DESCRIPTION", (replayInfo.getLeaderName(), replayInfo.getShortCivDescription()))
-					# parse into individual words
-					playerLeaderList = playerLeader.split(' ')
-					# get count of replay messages and set variables
-					maxMsg = replayInfo.getNumReplayMessages()
-					numHolder = 0
-					imDone = 0
-					# go through all the replay messages until you find the
-					# victory announcement, as it may or may not be the
-					# last one!
-					while imDone == 0:
-						grog = replayInfo.getReplayMessageText(numHolder)
-						if grog.rfind("Victory") <> -1:
-							grogette = grog.split(' ')
-							myMarker = "RaClimbingTheHorizon"
-							grogette.append(myMarker)
-							grogalina = ""
-							while grogalina <> myMarker:
-								grogalina = grogette.pop(0)
-								if grogalina == playerLeaderList[0]:
-									szVictory = "W-" + szVictory
-									imDone = 1
-									grogalina = myMarker
-								elif grogalina.rfind('/') <> 1:
-									grogzilla = grogalina.split('/')
-									grogzilla.append(myMarker)
-									grognacious = ""
-									while grognacious <> myMarker:
-										grognacious = grogzilla.pop(0)
-										if grognacious == playerLeaderList[0]:
-											szVictory = "W-" + szVictory
-											imDone = 1
-											grogalina = myMarker
-											grognacious = myMarker
-										elif grognacious == myMarker:
-											szVictory = "L-" + szVictory
-											imDone = 1
-											grogalina = myMarker
-										else:
-											grognacious = ""
-								elif grogalina == myMarker:
-									szVictory = "L-" + szVictory
-									imDone = 1
-								else:
-									grogalina = ""
-						else:
-							numHolder = numHolder + 1
-					# end win-loss customization
-							
+# BUG - Win/Loss Info - start
+					results = {
+						True: localText.getText("TXT_KEY_HOF_WINLOSS_WIN", ()),
+						False: localText.getText("TXT_KEY_HOF_WINLOSS_LOSS", ())
+					}
+					szVictory = results[self.isReplayWinner(replayInfo)] + szVictory
+# BUG - Win/Loss Info - end
 					
 				if self.iSortBy == SORT_BY_NORMALIZED_SCORE:
 					iValue = -replayInfo.getNormalizedScore()
@@ -394,7 +329,26 @@ class CvHallOfFameScreen:
 			screen.attachControlToTableCell(szButtonName, self.TABLE_ID, i, 0)		
 								
 		return
-		
+	
+# BUG - Win/Loss Info - start
+	def isReplayWinner(self, replay):
+		szWinText = localText.getText("TXT_KEY_GAME_WON", ("([^ ]+)", "([^ ]+)"))
+		reWinText = re.compile(szWinText)
+		leader = replay.getLeaderName()
+		msgNum = replay.getNumReplayMessages() - 1
+		while msgNum >= 0:
+			msg = replay.getReplayMessageText(msgNum)
+			matches = reWinText.match(msg)
+			if matches:
+				BugUtil.debug("Replay: [#%d] '%s'" % (msgNum, msg))
+				if leader in matches.group(1).split('/') or leader in matches.group(2).split('/'):
+					BugUtil.debug("Replay: Win for %s" % leader)
+					return True
+				BugUtil.debug("Replay: Loss for %s" % leader)
+				return False
+			msgNum -= 1
+		return False
+# BUG - Win/Loss Info - end
 																				
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
