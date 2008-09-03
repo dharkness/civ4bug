@@ -130,9 +130,9 @@ class Function:
 				debug("BUG: binding %s.%s" % (self.module, self.functionOrClass))
 				self.function = getattr(__import__(self.module), self.functionOrClass)
 		except ImportError:
-			raise ConfigError("No such module '%s'" % module)
+			raise ConfigError("No such module '%s'" % self.module)
 		except AttributeError:
-			raise ConfigError("Module '%s' must define function or class '%s'" % (module, functionOrClass))
+			raise ConfigError("Module '%s' must define function or class '%s'" % (self.module, self.functionOrClass))
 	
 	def setArguments(self, *args, **kwargs):
 		self.args = args
