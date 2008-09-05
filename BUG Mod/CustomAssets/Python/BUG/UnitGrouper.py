@@ -32,6 +32,24 @@ class Grouper:
 			return self.groupingsByKey[key]
 		else:
 			return None
+	
+	def __getitem__(self, key):
+		if isinstance(key, int):
+			return self.groupings[key]
+		else:
+			return self.groupingsByKey(key)
+	
+	def __iter__(self):
+		return self.groupings.__iter__()
+	
+	def iterkeys(self):
+		return self.groupingsByKey.iterkeys()
+	
+	def itervalues(self):
+		return self.groupingsByKey.itervalues()
+	
+	def iteritems(self):
+		return self.groupingsByKey.iteritems()
 
 class Grouping:
 	"""
@@ -140,7 +158,8 @@ class PromotionGrouping(Grouping):
 		for i in range(gc.getNumPromotionInfos()):
 			info = gc.getPromotionInfo(i)
 			if info:
-				self._addGroup(Group(self, i + 1, info.getDescription()))
+				self._addGroup(Group(self, i + 1, '<img=%s size=16></img> %s' % 
+												  (info.getButton(), info.getDescription())))
 	
 	def calcGroupKeys(self, unit, player, team):
 		promos = []
