@@ -93,7 +93,6 @@ def readDebugOptions():
 	printToScreen = BugOpt.isDebugToScreen()
 	printToFile = BugOpt.isDebugToFile()
 
-#readDebugOptions()
 
 EVENT_CODES = { NotifyCode.NOTIFY_CURSOR_MOVE_ON        : "Mouse Enter", 
 			 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF       : "Mouse Leave", 
@@ -110,6 +109,37 @@ def debugEvent(inputClass):
 			   inputClass.getID(), 
 			   inputClass.getData1(),
 			   inputClass.getData2()))
+
+
+## Timing
+
+class Timer:
+	"""Stopwatch for timing code execution and logging the results.
+	
+	timer = BugUtil.Timer('function')
+	... code to time ...
+	timer.stop().log()
+	"""
+	def __init__(self, item):
+		self.item = item
+		self.start()
+	
+	def start(self):
+		self.start = time.clock()
+		self.end = None
+		return self
+		
+	def stop(self):
+		self.end = time.clock()
+		return self
+		
+	def time(self):
+		if self.end is None:
+			self.stop()
+		return self.end - self.start
+	
+	def log(self):
+		debug("Timer - %s took %d ms" % (self.item, 1000 * self.time()))
 
 
 ## Binding and calling functions dynamically

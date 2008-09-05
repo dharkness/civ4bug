@@ -7,7 +7,6 @@
 ##
 ## Author: EmperorFool
 
-import time
 import CvUtil
 import BugConfig
 import BugCore
@@ -33,7 +32,7 @@ def init():
 	g_initRunning = True
 	
 	BugUtil.debug("BUG: initializing...")
-	start = time.clock()
+	timer = BugUtil.Timer("BUG init")
 	
 	CvUtil.initDynamicFontIcons()
 	loadMod("init")
@@ -41,9 +40,7 @@ def init():
 	BugOptions.read()
 	callInits()
 	
-	end = time.clock()
-	print "BUG: init done (%f ms)" % (1000 * (end - start))
-	
+	timer.stop().log()
 	g_initDone = True
 	g_initRunning = False
 
