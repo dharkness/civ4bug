@@ -352,6 +352,9 @@ class XmlParser(xmllib.XMLParser):
 			BugUtil.debug("BUG: IOError parsing %s" % path)
 		except BugUtil.ConfigError:
 			BugUtil.debug("ERROR: failure parsing %s at line %d" % (path, self.lineno))
+		except:
+			BugUtil.debug("ERROR: failure parsing %s at line %d" % (path, self.lineno))
+			raise
 		self.close()
 	
 	def syntax_error(self, message):
