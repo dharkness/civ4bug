@@ -47,6 +47,7 @@ def getText(key, values, default=None):
 			return "XML key %s not found" % key
 
 def colorText(text, color):
+	"""Applies the color (string or int) to text and returns the resulting string."""
 	if text is not None and color is not None:
 		if isinstance(color, types.StringTypes):
 			color = ColorUtil.keyToType(color)
@@ -55,6 +56,10 @@ def colorText(text, color):
 	return text
 
 def formatFloat(value, decimals=0):
+	"""
+	Formats value as a floating point number with decimals digits in the mantissa
+	and returns the resulting string.
+	"""
 	if decimals <= 0:
 		return "%f" % value
 	else:
@@ -94,52 +99,102 @@ def readDebugOptions():
 	printToFile = BugOpt.isDebugToFile()
 
 
-EVENT_CODES = { NotifyCode.NOTIFY_CURSOR_MOVE_ON        : "Mouse Enter", 
-			 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF       : "Mouse Leave", 
-			    NotifyCode.NOTIFY_CLICKED               : "Click",
-			    NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED : "List Select",
-			  }
+## Event Tracking and Output
 
-def debugEvent(inputClass):
-	"Prints a debug message detailing the given event."
-	if (inputClass.getNotifyCode() in EVENT_CODES):
-		debug("Event: %s for %s #%d (%d/%d)" % 
-			  (EVENT_CODES[inputClass.getNotifyCode()], 
+INPUT_CODES = {
+	NotifyCode.NOTIFY_MOUSEMOVE             : "Mouse Move", 
+	NotifyCode.NOTIFY_MOUSEWHEELDOWN        : "Mouse Wheel Down", 
+	NotifyCode.NOTIFY_MOUSEWHEELUP          : "Mouse Wheel Up", 
+	NotifyCode.NOTIFY_CURSOR_MOVE_ON        : "Mouse Enter", 
+ 	NotifyCode.NOTIFY_CURSOR_MOVE_OFF       : "Mouse Leave", 
+    NotifyCode.NOTIFY_CLICKED               : "Click",
+    NotifyCode.NOTIFY_DBL_CLICKED           : "Double Click",
+    
+	NotifyCode.NOTIFY_CHARACTER             : "Character", 
+    
+    NotifyCode.NOTIFY_TABLE_HEADER_SELECTED : "Table Header Select",
+    NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED : "List Select",
+    NotifyCode.NOTIFY_SCROLL_DOWN           : "Scroll Down",
+    NotifyCode.NOTIFY_SCROLL_UP             : "Scroll Up",
+    
+    NotifyCode.NOTIFY_NEW_HORIZONTAL_STOP   : "New Horizontal Stop",
+    NotifyCode.NOTIFY_NEW_VERTICAL_STOP     : "New Vertical Stop",
+    NotifyCode.NOTIFY_SLIDER_NEWSTOP        : "Slider New Stop",
+    
+    NotifyCode.NOTIFY_FOCUS                 : "Focus",
+    NotifyCode.NOTIFY_UNFOCUS               : "Unfocus",
+    
+    NotifyCode.NOTIFY_LINKEXECUTE           : "Link Execute",
+    NotifyCode.NOTIFY_FLYOUT_ITEM_SELECTED  : "Flyout Item Selected",
+    NotifyCode.NOTIFY_MOVIE_DONE            : "Movie Done",
+}
+
+def debugInput(inputClass):
+	"""
+	Prints a debug message detailing the given input event.
+	
+	Add this to the handleInput function to see all events as they occur.
+	
+	def handleInput(self, inputClass):
+		BugUtil.debugInput(inputClass)
+	"""
+	if (inputClass.getNotifyCode() in INPUT_CODES):
+		debug("Input - %s for %s #%d (%d/%d/%d)" % 
+			  (INPUT_CODES[inputClass.getNotifyCode()], 
 			   inputClass.getFunctionName(),
 			   inputClass.getID(), 
+			   inputClass.getData(),
 			   inputClass.getData1(),
 			   inputClass.getData2()))
 
 
-## Timing
+## Timing Code Execution
 
 class Timer:
-	"""Stopwatch for timing code execution and logging the results.
+	"""
+	Stopwatch for timing code execution and logging the results.
 	
 	timer = BugUtil.Timer('function')
 	... code to time ...
-	timer.stop().log()
+	timer.log()
+	
+	A single Timer can be reused for timing loops without creating a new Timer
+	for each iteration by calling restart().
+	
+	timer = BugUtil.Timer('draw loop')
+	for/while ...
+		timer.restart()
+		... code to time ...
+		timer.log()
 	"""
 	def __init__(self, item):
 		self.item = item
-		self.start()
+		self.restart()
+	
+	def restart(self):
+		self.total = 0
+		self.start = time.clock()
+		return self
 	
 	def start(self):
-		self.start = time.clock()
-		self.end = None
+		if not self.running():
+			self.start = time.clock()
 		return self
 		
 	def stop(self):
-		self.end = time.clock()
+		if self.running():
+			self.total += time.clock() - self.start
+			self.start = None
 		return self
 		
+	def running(self):
+		return self.start is not None
+		
 	def time(self):
-		if self.end is None:
-			self.stop()
-		return self.end - self.start
+		return self.total
 	
 	def log(self):
-		debug("Timer - %s took %d ms" % (self.item, 1000 * self.time()))
+		debug("Timer - %s took %d ms" % (self.item, 1000 * self.stop().time()))
 
 
 ## Binding and calling functions dynamically
@@ -205,7 +260,8 @@ class BugError(Exception):
 		Exception.__init__(self, message)
 
 class ConfigError(BugError):
-	"""Error related to configuration problems.
+	"""
+	Error related to configuration problems.
 	
 	These are caught and reported during BUG initialization, and initizliation
 	is allowed to continue so most problems can be reported at once. This may
@@ -218,7 +274,7 @@ class ConfigError(BugError):
 ## Civ4 helpers
 
 def isNoEspionage():
-	"Returns True if using at least 3.17 and the option 'No Espionage' is enabled"
+	"""Returns True if using at least 3.17 and the 'No Espionage' option is enabled."""
 	try:
 		return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
 	except:
