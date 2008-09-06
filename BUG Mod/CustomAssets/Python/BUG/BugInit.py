@@ -35,12 +35,16 @@ def init():
 	timer = BugUtil.Timer("BUG init")
 	
 	CvUtil.initDynamicFontIcons()
+	timer.log("fonts").start()
 	loadMod("init")
+	timer.log("config").start()
 	BugCore.initDone()
 	BugOptions.read()
+	timer.log("read options").start()
 	callInits()
+	timer.log("call inits/events").start()
 	
-	timer.stop().log()
+	timer.logTotal()
 	g_initDone = True
 	g_initRunning = False
 
@@ -50,7 +54,9 @@ def loadMod(name):
 	if path:
 		BugUtil.debug("BUG: loading mod %s..." % name)
 		parser = BugConfig.XmlParser()
+		timer = BugUtil.Timer("load mod")
 		parser.parse(path)
+		timer.log(name)
 	else:
 		BugUtil.debug("BUG: cannot find XML file for mod %s" % name)
 

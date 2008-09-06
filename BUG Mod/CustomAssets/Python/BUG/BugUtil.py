@@ -158,43 +158,110 @@ class Timer:
 	... code to time ...
 	timer.log()
 	
-	A single Timer can be reused for timing loops without creating a new Timer
-	for each iteration by calling restart().
+	In a loop, log() will display each iteration's time. Since Timers are started
+	when created, call reset() before entering the loop or pass in False.
+	Use logTotal() at the end if you want to see the sum of all iterations.
 	
-	timer = BugUtil.Timer('draw loop')
+	timer = BugUtil.Timer('draw loop', False)
 	for/while ...
-		timer.restart()
+		timer.start()
 		... code to time ...
 		timer.log()
-	"""
-	def __init__(self, item):
-		self.item = item
-		self.restart()
+	timer.logTotal()
 	
-	def restart(self):
-		self.total = 0
-		self.start = time.clock()
+	A single Timer can be reused for timing loops without creating a new Timer
+	for each iteration by calling restart().
+	"""
+	def __init__(self, item, start=True):
+		"""Starts the timer."""
+		self._item = item
+		self.reset()
+		if start:
+			self.start()
+	
+	def reset(self):
+		"""Resets all times to zero and stops the timer."""
+		self._initial = None
+		self._start = None
+		self._time = 0
+		self._total = 0
 		return self
 	
 	def start(self):
+		"""Starts the timer if it isn't running already."""
 		if not self.running():
-			self.start = time.clock()
+			self._start = time.clock()
+			if self._initial is None:
+				self._initial = self.start
 		return self
-		
-	def stop(self):
-		if self.running():
-			self.total += time.clock() - self.start
-			self.start = None
-		return self
-		
-	def running(self):
-		return self.start is not None
-		
-	def time(self):
-		return self.total
 	
-	def log(self):
-		debug("Timer - %s took %d ms" % (self.item, 1000 * self.stop().time()))
+	def restart(self):
+		"""Resets all times to zero and starts the timer."""
+		return self.reset().start()
+	
+	def stop(self):
+		"""
+		Stops the timer if it is running and returns the elapsed time since start,
+		otherwise returns 0.
+		"""
+		if self.running():
+			self._final = time.clock()
+			self._time = self._final - self._start
+			self._total += self._time
+			self._start = None
+			return self._time
+		return 0
+	
+	def running(self):
+		"""Returns True if the timer is running."""
+		return self._start is not None
+	
+	def time(self):
+		"""Returns the most recent timing or 0 if none has completed."""
+		return self._time
+	
+	def total(self):
+		"""Returns the sum of all the individual timings."""
+		return self._total
+	
+	def span(self):
+		"""Returns the span of time from the first start() to the last stop()."""
+		return self._final - self._intitial
+	
+	def log(self, extra=None):
+		"""
+		Stops the timer and logs the time of the current timing.
+		
+		This is the same as calling logTotal() or logSpan() for the first time.
+		"""
+		self.stop()
+		return self._log(self.time(), extra)
+	
+	def logTotal(self, extra=None):
+		"""
+		Stops the timer and logs the sum of all timing steps.
+		
+		This is the same as calling log() or logSpan() for the first time.
+		"""
+		self.stop()
+		return self._log(self.total(), extra)
+	
+	def logSpan(self, extra=None):
+		"""
+		Stops the timer and logs the span of time covering all timings.
+		
+		This is the same as calling log() or logTotal() for the first time.
+		"""
+		self.stop()
+		return self._log(self.span(), extra)
+	
+	def _log(self, runtime, extra):
+		"""Logs the passed in runtime value."""
+		if extra is None:
+			debug("Timer - %s took %d ms" % (self._item, 1000 * runtime))
+		else:
+			debug("Timer - %s [%s] took %d ms" % (self._item, str(extra), 1000 * runtime))
+		return self
 
 
 ## Binding and calling functions dynamically
