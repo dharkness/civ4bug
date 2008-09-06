@@ -215,9 +215,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def _reportEvent(self, eventType, argsList):
 		if eventType not in self.noLogEvents:
 			if argsList:
-				BugUtil.debug("Event: %s - %r" % (eventType, argsList))
+				BugUtil.debug("Event - %s: %r" % (eventType, argsList))
 			else:
-				BugUtil.debug("Event: %s" % eventType)
+				BugUtil.debug("Event - %s" % eventType)
 
 	def _handleDefaultEvent(self, eventType, argsList):
 		if self.EventHandlerMap.has_key(eventType):
