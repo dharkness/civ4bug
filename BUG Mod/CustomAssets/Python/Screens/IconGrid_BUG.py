@@ -129,6 +129,8 @@ class IconGrid_BUG:
 		
 		self.SCROLL_UP = 1
 		self.SCROLL_DOWN = 2
+		self.PAGE_UP = 3
+		self.PAGE_DOWN = 4
 		
 
 	def setGroupBorder(self, iVal):
@@ -260,17 +262,19 @@ class IconGrid_BUG:
 		# check if scrollPosistion is valid and show/hide scroll buttons
 		if (self.scrollPosition <= 0):
 			self.screen.hide(self.scrollUpArrow)
+			self.screen.hide(self.pageUpArrow)
 			self.scrollPosition = 0
 		else:
 			self.screen.show(self.scrollUpArrow)
+			self.screen.show(self.pageUpArrow)
 		
-		if (len(self.data) - self.numRows <= 0):
+		if (self.scrollPosition >= len(self.data) - self.numRows):
 			self.screen.hide(self.scrollDownArrow)
-		elif (self.scrollPosition >= len(self.data) - self.numRows):
-			self.screen.hide(self.scrollDownArrow)
-			self.scrollPosition = len(self.data) - self.numRows
+			self.screen.hide(self.pageDownArrow)
+			self.scrollPosition = max(0, len(self.data) - self.numRows)
 		else:
 			self.screen.show(self.scrollDownArrow)
+			self.screen.show(self.pageDownArrow)
 
 		maxIndex = min(self.numRows, len(self.data))
 		for rowIndex in range(maxIndex):
@@ -544,18 +548,32 @@ class IconGrid_BUG:
 		
 		self.scrollUpArrow = self.getNextWidgetName()
 		self.scrollDownArrow = self.getNextWidgetName()
-		self.screen.setImageButton( self.scrollUpArrow
+		self.pageUpArrow = self.getNextWidgetName()
+		self.pageDownArrow = self.getNextWidgetName()
+		self.screen.setImageButton( self.pageUpArrow
 								  , ArtFileMgr.getInterfaceArtInfo("SCROLL_UP_ARROW").getPath()
 								  , self.xStart + self.width - self.scrollArrowSize
 								  , self.firstRowY
+								  , self.scrollArrowSize, self.scrollArrowSize
+								  , WidgetTypes.WIDGET_GENERAL, self.PAGE_UP, -1 )
+		self.screen.setImageButton( self.scrollUpArrow
+								  , ArtFileMgr.getInterfaceArtInfo("SCROLL_UP_ARROW").getPath()
+								  , self.xStart + self.width - self.scrollArrowSize
+								  , self.firstRowY + self.scrollArrowSize + 4
 								  , self.scrollArrowSize, self.scrollArrowSize
 								  , WidgetTypes.WIDGET_GENERAL, self.SCROLL_UP, -1 )
 		self.screen.setImageButton( self.scrollDownArrow
 								  , ArtFileMgr.getInterfaceArtInfo("SCROLL_DOWN_ARROW").getPath()
 								  , self.xStart + self.width - self.scrollArrowSize
-								  , self.yStart + self.height - self.scrollArrowSize
+								  , self.yStart + self.height - 2 * self.scrollArrowSize - 4
 								  , self.scrollArrowSize, self.scrollArrowSize
 								  , WidgetTypes.WIDGET_GENERAL, self.SCROLL_DOWN, -1 )
+		self.screen.setImageButton( self.pageDownArrow
+								  , ArtFileMgr.getInterfaceArtInfo("SCROLL_DOWN_ARROW").getPath()
+								  , self.xStart + self.width - self.scrollArrowSize
+								  , self.yStart + self.height - self.scrollArrowSize
+								  , self.scrollArrowSize, self.scrollArrowSize
+								  , WidgetTypes.WIDGET_GENERAL, self.PAGE_DOWN, -1 )
 
 
 
