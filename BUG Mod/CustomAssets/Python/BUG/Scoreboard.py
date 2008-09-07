@@ -2,13 +2,17 @@
 ##
 ## Holds the information used to display the scoreboard.
 ##
+## Notes
+##   - Must be initialized externally by calling init()
+##   - Add 'DealCanceled' event for onDealCanceled()
+##
 ## Copyright (c) 2007-2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
 import BugCore
-import TradeUtil
+import DealUtil
 import CvUtil
 import re
 import string
@@ -52,7 +56,6 @@ FIXED = 1
 DYNAMIC = 2
 SPECIAL = 3
 
-bInitDone = False
 columns = []
 columnsByKey = {}
 ordered = [ SCORE, SCORE_DELTA, NOT_MET, WAR, 
@@ -68,15 +71,8 @@ TRADE_TYPES = (
 	TradeableItems.TRADE_PEACE_TREATY,
 )
 
-def _init():
-	"""Initializes the strings used to display the scoreboard.
-	
-	This is called from constructor instead of when the module is loaded
-	because GC isn't fully set up otherwise."""
-	global bInitDone
-	if (bInitDone):
-		return
-	
+def init():
+	"""Initializes the strings used to display the scoreboard."""
 	global columns
 	game = CyGame()
 	
@@ -107,8 +103,10 @@ def _init():
 	global WAR_ICON, PEACE_ICON
 	WAR_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
 	PEACE_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
-	
-	bInitDone = True
+
+def onDealCanceled(argsList):
+	"""Sets the scoreboard dirty bit so it will redraw."""
+	CyInterface().setDirty(InterfaceDirtyBits.Score_DIRTY_BIT, True)
 
 
 class Column:
@@ -146,7 +144,6 @@ class Scoreboard:
 	"""Holds and builds the ScoreCards."""
 	
 	def __init__(self):
-		_init()
 		self.activePlayer = gc.getGame().getActivePlayer()
 		self.has = []
 		self.values = []
@@ -157,7 +154,7 @@ class Scoreboard:
 		self.currValues = None
 		self.currWidgets = None
 		self.count = 0
-		self.deals = TradeUtil.findDealsByPlayerAndType(self.activePlayer, TRADE_TYPES)
+		self.deals = DealUtil.findDealsByPlayerAndType(self.activePlayer, TRADE_TYPES)
 		
 	def addPlayer(self, player):
 		self.currPlayer = player

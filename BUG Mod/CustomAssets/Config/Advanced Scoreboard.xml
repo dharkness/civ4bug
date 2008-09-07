@@ -100,4 +100,7 @@
 					get="getLowPowerColor" set="setLowPowerColor" dirtyBit="Score"/>
 		</section>
 	</options>
+	
+	<init module="Scoreboard" function="init"/>
+	<event type="DealCanceled" module="Scoreboard" function="onDealCanceled"/>
 </mod>
