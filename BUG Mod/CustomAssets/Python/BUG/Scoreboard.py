@@ -8,6 +8,7 @@
 
 from CvPythonExtensions import *
 import BugCore
+import TradeUtil
 import CvUtil
 import re
 import string
@@ -59,6 +60,13 @@ ordered = [ SCORE, SCORE_DELTA, NOT_MET, WAR,
 			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WORST_ENEMY, 
 			WAITING, NET_STATS, OOS ]
 ordered.reverse()
+
+TRADE_TYPES = (
+	TradeableItems.TRADE_OPEN_BORDERS,
+	TradeableItems.TRADE_DEFENSIVE_PACT,
+	TradeableItems.TRADE_PERMANENT_ALLIANCE,
+	TradeableItems.TRADE_PEACE_TREATY,
+)
 
 def _init():
 	"""Initializes the strings used to display the scoreboard.
@@ -139,18 +147,26 @@ class Scoreboard:
 	
 	def __init__(self):
 		_init()
+		self.activePlayer = gc.getGame().getActivePlayer()
 		self.has = []
 		self.values = []
+		self.widgets = []
 		self.hasAny = [ False ] * NUM_PARTS
+		self.currPlayer = -1
 		self.currHas = None
 		self.currValues = None
+		self.currWidgets = None
 		self.count = 0
+		self.deals = TradeUtil.findDealsByPlayerAndType(self.activePlayer, TRADE_TYPES)
 		
 	def addPlayer(self, player):
+		self.currPlayer = player
 		self.currHas = [ False ] * NUM_PARTS
 		self.currValues = [ None ] * NUM_PARTS
+		self.currWidgets = [ None ] * NUM_PARTS
 		self.has.append(self.currHas)
 		self.values.append(self.currValues)
+		self.widgets.append(self.currWidgets)
 		self.count += 1
 		self.setPlayer(player)
 		
@@ -180,7 +196,7 @@ class Scoreboard:
 		self._set(WAR, WAR_ICON)
 		
 	def setPeace(self):
-		self._set(WAR, PEACE_ICON)
+		self._set(WAR, PEACE_ICON, self._getDealWidget(TradeableItems.TRADE_PEACE_TREATY))
 		
 	def setPower(self, value):
 		self._set(POWER, u"<font=2>%s</font>" % value)
@@ -199,10 +215,10 @@ class Scoreboard:
 		self._set(TRADE)
 		
 	def setBorders(self):
-		self._set(BORDERS)
+		self._set(BORDERS, True, self._getDealWidget(TradeableItems.TRADE_OPEN_BORDERS))
 		
 	def setPact(self):
-		self._set(PACT)
+		self._set(PACT, True, self._getDealWidget(TradeableItems.TRADE_DEFENSIVE_PACT))
 		
 	def setReligion(self, value):
 		self._set(RELIGION, u"<font=2>%s</font>" % value)
@@ -224,10 +240,20 @@ class Scoreboard:
 		self._set(OOS, u"<font=2>%s</font>" % value)
 		
 		
-	def _set(self, part, value=True):
+	def _getDealWidget(self, type):
+		# lookup the Deal containing the given tradeable item type
+		deals = self.deals.get(self.currPlayer, None)
+		if deals:
+			deal = deals.get(type, None)
+			if deal:
+				return (WidgetTypes.WIDGET_DEAL_KILL, deal.getID(), -1)
+		return (WidgetTypes.WIDGET_DEAL_KILL, -1, -1)
+		
+	def _set(self, part, value=True, widget=None):
 		self.hasAny[part] = True
 		self.currHas[part] = True
 		self.currValues[part] = value
+		self.currWidgets[part] = widget
 		
 		
 	def hide(self, screen):
@@ -289,15 +315,15 @@ class Scoreboard:
 				for p in range( self.count ):
 					if (self.has[p][c] and self.values[p][c]):
 						name = "ScoreText%d-%d" %( p, c )
-						if (self.values[p][ALIVE]):
-							widget = WidgetTypes.WIDGET_CONTACT_CIV
-							player = self.values[p][PLAYER]
-						else:
-							widget = WidgetTypes.WIDGET_GENERAL
-							player = -1
+						widget = self.widgets[p][c]
+						if widget is None:
+							if (self.values[p][ALIVE]):
+								widget = (WidgetTypes.WIDGET_CONTACT_CIV, self.values[p][PLAYER], -1)
+							else:
+								widget = (WidgetTypes.WIDGET_GENERAL, -1, -1)
 						screen.setText( name, "Background", value, CvUtil.FONT_RIGHT_JUSTIFY, 
 										x, y - p * height, Z_DEPTH, 
-										FontTypes.SMALL_FONT, widget, player, -1 )
+										FontTypes.SMALL_FONT, *widget )
 						screen.show( name )
 				x -= width
 				totalWidth += width + spacing
@@ -327,15 +353,15 @@ class Scoreboard:
 								if (ScoresOpt.isLeftAlignName()):
 									align = CvUtil.FONT_LEFT_JUSTIFY
 									adjustX = width
-						if (self.values[p][ALIVE]):
-							widget = WidgetTypes.WIDGET_CONTACT_CIV
-							player = self.values[p][PLAYER]
-						else:
-							widget = WidgetTypes.WIDGET_GENERAL
-							player = -1
+						widget = self.widgets[p][c]
+						if widget is None:
+							if (self.values[p][ALIVE]):
+								widget = (WidgetTypes.WIDGET_CONTACT_CIV, self.values[p][PLAYER], -1)
+							else:
+								widget = (WidgetTypes.WIDGET_GENERAL, -1, -1)
 						screen.setText( name, "Background", value, align, 
 										x - adjustX, y - p * height, Z_DEPTH, 
-										FontTypes.SMALL_FONT, widget, player, -1 )
+										FontTypes.SMALL_FONT, *widget )
 						screen.show( name )
 				x -= width
 				totalWidth += width + spacing
