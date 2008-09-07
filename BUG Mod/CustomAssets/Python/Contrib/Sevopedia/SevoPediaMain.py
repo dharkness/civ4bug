@@ -49,6 +49,8 @@ localText = CyTranslator()
 
 AdvisorOpt = BugCore.game.Advisors
 
+g_TraitUtilInitDone = False
+
 class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 
 	def __init__(self):
@@ -207,6 +209,10 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.setPediaCommonWidgets()
 
 	def pediaShow(self):
+		global g_TraitUtilInitDone
+		if not g_TraitUtilInitDone:
+			TraitUtil.init()
+			g_TraitUtilInitDone = True
 		self.iActivePlayer = gc.getGame().getActivePlayer()
 		self.iCategory = -1
 		if (not self.pediaHistory):
