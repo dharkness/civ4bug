@@ -67,6 +67,7 @@
 	<init module="GGUtil" function="init"/>
 	<init module="GPUtil" function="init"/>
 	<init module="TechUtil" function="init"/>
+	<init module="TradeUtil" function="init"/>
 	<init module="TraitUtil" function="init"/>
 	
 	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
