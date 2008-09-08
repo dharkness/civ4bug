@@ -55,7 +55,7 @@ TYPE_DEFAULT_FUNC = { "tuple": tuple,
 					  "list": list,
 					  "set": set,
 					  "dict": dict }
-TYPE_EVAL = { "boolean": lambda x: bool(x),
+TYPE_EVAL = { "boolean": lambda x: x.lower() in ('true', 't', 'yes', 'y', 'on', '1'),
 			  "string": lambda x: x,
 			  "int": lambda x: int(x),
 			  "float": lambda x: float(x),
