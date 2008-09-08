@@ -44,7 +44,7 @@ def init():
 	callInits()
 	timer.log("call inits/events").start()
 	
-	timer.logTotal()
+	timer.logTotal("total")
 	g_initDone = True
 	g_initRunning = False
 
