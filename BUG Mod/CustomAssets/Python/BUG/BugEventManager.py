@@ -4,23 +4,43 @@
 ##
 ## Changes:
 ##
+## You no longer need to modify this module in order to add your custom events.
+## Instead, add <event> and <events> tags to your mod's config XML or call
+## addEventHandler() from your mod's Python, preferably an <init> function.
+##
 ## * New public methods
 ##
 ##   - hasEvent(eventType)
 ##       Returns True if eventType is defined
+##
 ##   - addEvent(eventType)
-##       Extend the core Civ4 event list
+##       Adds a new event type with no default handler; you can also add a final True
+##       parameter to your call to addEventHandler() or use <event> and <events>
+##       in your mod's config XML to add your events and handlers.
+##
 ##   - fireEvent(eventType, args...)
-##       Fire an event from Python, building an argList from the arguments passed in
+##       Fires an event from Python, building an argList from the arguments passed in
+##
+##   - removePopupHandler(eventType)
+##       Removes the handlers for a popup event (int)
 ##
 ## * New events
 ##
 ##   - BeginActivePlayerTurn
-##       called from CvMainInterface.updateScreen()
+##       Signifies the moment the active player can begin making their moves
+##       Fired from CvMainInterface.updateScreen()
+##
 ##   - LanguageChanged 
-##       called from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
+##       Fired from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
+##
 ##   - PreGameStart
-##       called from CvAppInterface.preGameStart()
+##       Fired from CvAppInterface.preGameStart()
+##
+## * Fixed events
+##
+##   - endTurnReady
+##       Signifies the moment the "End Turn" text is displayed on the screen
+##       Fired from CvMainInterface.updateScreen()
 ##
 ## * Events and their arguments are optionally logged.
 ## * Added configure() to set the options.
@@ -38,7 +58,7 @@ from CvPythonExtensions import *
 import CvEventManager
 import BugUtil
 
-DEFAULT_REPORT = False
+DEFAULT_LOGGING = False
 DEFAULT_NOLOG_EVENTS = set((
 	"gameUpdate",
 ))
@@ -84,7 +104,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		g_eventManager = self
 		
 		if logging is None:
-			self.setLogging(DEFAULT_REPORT)
+			self.setLogging(DEFAULT_LOGGING)
 		else:
 			self.setLogging(logging)
 		if noLogEvents is None:
@@ -194,6 +214,20 @@ class BugEventManager(CvEventManager.CvEventManager):
 		"""
 		self.Events[eventType] = popupHandler
 	
+	def removePopupHandler(self, eventType):
+		"""Removes all previously installed popup handlers for the given 
+		event type.
+		
+		The eventType should be an integer. It is an error to fire this
+		eventType after removing its handlers.
+
+		"""
+		if eventType in self.Events:
+			BugUtil.debug("BUG: removing popup handler for event %d" % eventType)
+			del self.Events[eventType]
+		else:
+			BugUtil.debug("WARN: event %d has no popup handler" % eventType)
+	
 	
 	def fireEvent(self, eventType, *args):
 		"""Fires the given event passing in all args as a list."""
@@ -209,11 +243,12 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.bDbg, self.bMultiPlayer, self.bAlt, self.bCtrl, self.bShift, self.bAllowCheats = argsList[flagsIndex:]
 		eventType = argsList[0]
 		if self.logging:
-			self._reportEvent(eventType, argsList[1:flagsIndex])
+			self._logEvent(eventType, argsList[1:flagsIndex])
 		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList[1:])
 
-	def _reportEvent(self, eventType, argsList):
-		if eventType not in self.noLogEvents:
+	def _logEvent(self, eventType, argsList):
+		BugUtil.debug("Event - logging = %r" % self.logging)
+		if self.logging and eventType not in self.noLogEvents:
 			if argsList:
 				BugUtil.debug("Event - %s: %r" % (eventType, argsList))
 			else:
@@ -256,7 +291,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def _handleInitBugEvent(self, eventType, argsList):
 		"""Initializes BUG before handling event normally."""
 		initBug()
-		return self._handleDefaultEvent(eventType, argsList)
+		self._handleDefaultEvent(eventType, argsList)
 	
 	
 	def onPreGameStart(self, argsList):
@@ -288,6 +323,8 @@ def configure(logging=None, noLogEvents=None):
 	if g_eventManager is not None:
 		g_eventManager.setLogging(logging)
 		g_eventManager.setNoLogEvents(noLogEvents)
+	else:
+		BugUtil.debug("WARN: BugEventManager not setup before configure()")
 
 g_initDone = False
 def initBug():
