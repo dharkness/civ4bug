@@ -469,7 +469,7 @@
 		<Tag>TXT_KEY_PLE_GRP_STANDARD_ON</Tag>
 		<English>[COLOR_HIGHLIGHT_TEXT]Standard Mode[COLOR_REVERT][NEWLINE]Toggle how units are grouped: by unit type or selection group</English>
 		<French>[COLOR_HIGHLIGHT_TEXT]Standard Mode[COLOR_REVERT][NEWLINE]Toggle how units are grouped: by unit type or selection group</French>
-		<German>[COLOR_HIGHLIGHT_TEXT]Standardansicht[COLOR_REVERT][NEWLINE]Auswahl der Art der Gruppierung: nach Einheitentyp oder nach Truppenverband</German>
+		<German>[COLOR_HIGHLIGHT_TEXT]Standardansicht[COLOR_REVERT][NEWLINE]Auswahl der Art der Gruppierung: nach Einheitentyp oder nach Einheitenverband</German>
 		<Italian>[COLOR_HIGHLIGHT_TEXT]Modalità Standard[COLOR_REVERT][NEWLINE]Cambia il raggruppamento delle Unità: per tipo o per gruppo di selezione</Italian>
 		<Spanish>[COLOR_HIGHLIGHT_TEXT]Standard Mode[COLOR_REVERT][NEWLINE]Toggle how units are grouped: by unit type or selection group</Spanish>
 	</TEXT>

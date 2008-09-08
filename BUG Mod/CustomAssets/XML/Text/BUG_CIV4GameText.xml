@@ -155,7 +155,7 @@
 		<Tag>TXT_KEY_CONCEPT_WORKED_TILES</Tag>
 		<English>Worked Tiles (%d1)</English>
 		<French>Cases Travaillées (%d1)</French>
-		<German>Bearbeitete Geländefelder (%d1)</German>
+		<German>Geländefelder: %d1</German>
 		<Italian>Caselle lavorate (%d1)</Italian>
 		<Spanish>Azulejos Trabajados (%d1)</Spanish>
 	</TEXT>
@@ -163,7 +163,7 @@
 		<Tag>TXT_KEY_CONCEPT_CITY_TILES</Tag>
 		<English>City's Tiles (%d1)</English>
 		<French>City's Tiles (%d1)</French>
-		<German>Stadtgeländefelder (%d1)</German>
+		<German>Geländefelder: %d1</German>
 		<Italian>Caselle della Città (%d1)</Italian>
 		<Spanish>City's Tiles (%d1)</Spanish>
 	</TEXT>
@@ -171,7 +171,7 @@
 		<Tag>TXT_KEY_CONCEPT_OWNED_TILES</Tag>
 		<English>Owned Tiles (%d1)</English>
 		<French>Owned Tiles (%d1)</French>
-		<German>Geländefelder in Besitz (%d1)</German>
+		<German>Geländefelder: %d1</German>
 		<Italian>Caselle possedute (%d1)</Italian>
 		<Spanish>Owned Tiles (%d1)</Spanish>
 	</TEXT>
@@ -179,7 +179,7 @@
 		<Tag>TXT_KEY_CONCEPT_ALL_TILES</Tag>
 		<English>All Tiles (%d1)</English>
 		<French>All Tiles (%d1)</French>
-		<German>Alle Geländefelder (%d1)</German>
+		<German>Geländefelder: %d1</German>
 		<Italian>Tutte le caselle (%d1)</Italian>
 		<Spanish>All Tiles (%d1)</Spanish>
 	</TEXT>
@@ -188,7 +188,7 @@
 		<!-- Bureaucracy, Forge, Factory, Power, Ironworks -->
 		<English>Modifiers (%D1%%)</English>
 		<French>Modifiers (%D1%%)</French>
-		<German>Modifikatoren (%D1%%)</German>
+		<German>Modifikatoren: %D1%%</German>
 		<Italian>Modificatori (%D1%%)</Italian>
 		<Spanish>Modifiers (%D1%%)</Spanish>
 	</TEXT>
@@ -640,7 +640,7 @@
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
 	
-	<!-- Fix for Overlap in Foreign Advisor Tab in Italian Translation -->
+	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
 	
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
@@ -713,7 +713,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT</Tag>
 		<English>%s1 (%s2) leads by %s3.</English>
 		<French>%s1 (%s2) conduit par %s3.</French>
-		<German>%s1 (%s2 der Stimmen) führt mit %s3 Abstand.</German>
+		<German>%s1 (%s2) führt mit %s3 Vorsprung.</German>
 		<Italian>%s1 (%s2) in testa di %s3.</Italian>
 		<Spanish>%s1 (%s2) conduce por %s3.</Spanish>
 	</TEXT>
@@ -721,7 +721,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR</Tag>
 		<English>Source: Recent BUG Poll, statistical margin of error %s1.</English>
 		<French>Source: Sondage BUG récents, marge d'erreur %s1.</French>
-		<German>Quelle: Neueste BUG-Umfrage, die statistische Fehlerquote beträgt %s1.</German>
+		<German>Quelle: Neueste BUG-Umfrage (statistische Fehlerquote: %s1)</German>
 		<Italian>Fonte: recente sondaggio BUG, margine di errore statistico %s1.</Italian>
 		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s1.</Spanish>
 	</TEXT>
@@ -732,7 +732,7 @@
 		<Tag>TXT_KEY_HOF_WINLOSS_WIN</Tag>
 		<English>W-</English>
 		<French>W-</French>
-		<German>W-</German>
+		<German>S-</German>
 		<Italian>W-</Italian>
 		<Spanish>W-</Spanish>
 	</TEXT>
@@ -740,7 +740,7 @@
 		<Tag>TXT_KEY_HOF_WINLOSS_LOSS</Tag>
 		<English>L-</English>
 		<French>L-</French>
-		<German>L-</German>
+		<German>N-</German>
 		<Italian>L-</Italian>
 		<Spanish>L-</Spanish>
 	</TEXT>
