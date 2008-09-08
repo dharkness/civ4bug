@@ -69,7 +69,7 @@ def formatFloat(value, decimals=0):
 ## Debug and Error output
 
 printToScreen = False
-printToFile = True
+printToFile = False
 includeTime = True
 
 def debug(message, *args):
