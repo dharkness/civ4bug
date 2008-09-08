@@ -2872,9 +2872,11 @@ class CvMainInterface:
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
 				elif ( CyInterface().shouldDisplayEndTurn() ):
+# BUG - Event Manager - start
 					if ( not g_bEndTurnFired ):
 						g_bEndTurnFired = True
 						CvEventInterface.getEventManager().fireEvent("endTurnReady", g_iActiveTurn)
+# BUG - Event Manager - end
 # BUG - Reminders - start
 					if ( ReminderEventManager.g_turnReminderTexts ):
 						acOutput = u"%s" % ReminderEventManager.g_turnReminderTexts
