@@ -6220,29 +6220,29 @@ class CvMainInterface:
 													if (bAlignIcons):
 														scores.setPower(szTempBuffer)
 # BUG - Power Rating - end
-											# BUG: ...end of indentation
-# BUG - Dead Civs - end
 
 # BUG - Attitude Icons - start
-										if (ScoreOpt.isShowAttitude()):
-											if (not gc.getPlayer(ePlayer).isHuman()):
-												iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
-												cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-												szBuffer += cAtt
-												if (bAlignIcons):
-													scores.setAttitude(cAtt)
+											if (ScoreOpt.isShowAttitude()):
+												if (not gc.getPlayer(ePlayer).isHuman()):
+													iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
+													cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+													szBuffer += cAtt
+													if (bAlignIcons):
+														scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
 
 # BUG - Worst Enemy - start
-										if (ScoreOpt.isShowWorstEnemy()):
-											if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
-												szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
-												if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
-													cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
-													szBuffer += cWorstEnemy
-													if (bAlignIcons):
-														scores.setWorstEnemy()
+											if (ScoreOpt.isShowWorstEnemy()):
+												if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
+													szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
+													if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
+														cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+														szBuffer += cWorstEnemy
+														if (bAlignIcons):
+															scores.setWorstEnemy()
 # BUG - Worst Enemy - end
+											# BUG: ...end of indentation
+# BUG - Dead Civs - end
 
 										if (CyGame().isNetworkMultiPlayer()):
 											szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
