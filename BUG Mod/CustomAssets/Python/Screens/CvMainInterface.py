@@ -27,6 +27,7 @@ PleOpt = BugCore.game.PLE
 
 # BUG - Align Icons - start
 import Scoreboard
+import PlayerUtil
 # BUG - Align Icons - end
 
 # globals
@@ -6145,6 +6146,11 @@ class CvMainInterface:
 															if (bAlignIcons):
 																scores.setPeace()
 															break
+												if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
+													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
+													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setWHEOOH()
 												if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 													szBuffer = szBuffer + szTempBuffer

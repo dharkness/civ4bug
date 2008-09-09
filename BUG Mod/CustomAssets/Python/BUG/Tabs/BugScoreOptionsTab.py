@@ -25,6 +25,7 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Scores__UsePlayerName")
 		self.addCheckbox(screen, left, "Scores__Attitude")
 		self.addCheckbox(screen, left, "Scores__WorstEnemy")
+		self.addCheckbox(screen, left, "Scores__WHEOOH")
 
 		self.addSpacer(screen, left, "Scores_Dead_Civs")
 		self.addLabel(screen, left, "Scores_Dead_Civs", "Dead Civilizations:")

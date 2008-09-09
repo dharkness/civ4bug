@@ -26,29 +26,31 @@ ICON_SIZE = 24
 ROW_HEIGHT = 22
 Z_DEPTH = -0.3
 
-# Columns: War Power Tech Espionage Network OpenBorders DefesivePact Religion Attitude
-ALIVE = 0
-PLAYER = ALIVE + 1
-SCORE = PLAYER + 1
-SCORE_DELTA = SCORE + 1
-NAME = SCORE_DELTA + 1
-NOT_MET = NAME + 1
-WAR = NOT_MET + 1
-POWER = WAR + 1
-RESEARCH = POWER + 1
-RESEARCH_TURNS = RESEARCH + 1
-ESPIONAGE = RESEARCH_TURNS + 1
-TRADE = ESPIONAGE + 1
-BORDERS = TRADE + 1
-PACT = BORDERS + 1
-RELIGION = PACT + 1
-ATTITUDE = RELIGION + 1
-WORST_ENEMY = ATTITUDE + 1
-WAITING = WORST_ENEMY + 1
-NET_STATS = WAITING + 1
-OOS = NET_STATS + 1
-
-NUM_PARTS = OOS + 1
+# Columns IDs
+NUM_PARTS = 21
+(
+	ALIVE,
+	PLAYER,
+	SCORE,
+	SCORE_DELTA,
+	NAME,
+	NOT_MET,
+	WHEOOH,
+	WAR,
+	POWER,
+	RESEARCH,
+	RESEARCH_TURNS,
+	ESPIONAGE,
+	TRADE,
+	BORDERS,
+	PACT,
+	RELIGION,
+	ATTITUDE,
+	WORST_ENEMY,
+	WAITING,
+	NET_STATS,
+	OOS
+) = range(NUM_PARTS)
 
 # Types
 SKIP = 0
@@ -56,13 +58,9 @@ FIXED = 1
 DYNAMIC = 2
 SPECIAL = 3
 
+# Column Definitions
 columns = []
 columnsByKey = {}
-ordered = [ SCORE, SCORE_DELTA, NOT_MET, WAR, 
-			ESPIONAGE, POWER, RESEARCH, RESEARCH_TURNS, 
-			TRADE, BORDERS, PACT, RELIGION, ATTITUDE, WORST_ENEMY, 
-			WAITING, NET_STATS, OOS ]
-ordered.reverse()
 
 TRADE_TYPES = (
 	TradeableItems.TRADE_OPEN_BORDERS,
@@ -77,14 +75,15 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHLNOPRSTUWZ*?
-	# FGIJKMQVXY
+	# ABCDEHLMNOPRSTUWZ*?
+	# FGIJKQVXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('', PLAYER))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
+	columns.append(Column('M', WHEOOH, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
 	columns.append(Column('W', WAR, DYNAMIC))
 	columns.append(Column('P', POWER, DYNAMIC))
 	columns.append(Column('T', RESEARCH, SPECIAL))
@@ -188,6 +187,9 @@ class Scoreboard:
 		
 	def setNotMet(self):
 		self._set(NOT_MET)
+		
+	def setWHEOOH(self):
+		self._set(WHEOOH)
 		
 	def setWar(self):
 		self._set(WAR, WAR_ICON)
