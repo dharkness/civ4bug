@@ -228,35 +228,35 @@ class CvVictoryScreen:
 				iRow = screen.appendTableRow(szTable)
 				screen.setTableText(szTable, 0, iRow, gc.getVoteSourceInfo(i).getSecretaryGeneralText(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 				screen.setTableText(szTable, 1, iRow, gc.getTeam(gc.getGame().getSecretaryGeneral(i)).getName(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-	
+
 			for iLoop in range(gc.getNumVoteInfos()):
-				if gc.getGame().countPossibleVote(iLoop, i) > 0:		
+				if gc.getGame().countPossibleVote(iLoop, i) > 0:
 					info = gc.getVoteInfo(iLoop)
-					if gc.getGame().isChooseElection(iLoop):			
+					if gc.getGame().isChooseElection(iLoop):
 						iRow = screen.appendTableRow(szTable)
 						screen.setTableText(szTable, 0, iRow, info.getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						if gc.getGame().isVotePassed(iLoop):
 							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_POPUP_PASSED", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						else:
 							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_POPUP_ELECTION_OPTION", (u"", gc.getGame().getVoteRequired(iLoop, i), gc.getGame().countPossibleVote(iLoop, i))), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								
+
 		self.drawTabs()
 
 
 	def showMembersScreen(self):
-	
+
 		self.deleteAllWidgets()
-	
+
 		activePlayer = gc.getPlayer(self.iActivePlayer)
 		iActiveTeam = activePlayer.getTeam()
-		
+
 		screen = self.getScreen()
 
 		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
 		szTable = self.getNextWidgetName()
 #		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
 		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA-20, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
-		screen.enableSelect(szTable, False)		
+		screen.enableSelect(szTable, False)
 
 # BUG Additions Start
 		if AdvisorOpt.isMembers():
@@ -319,6 +319,7 @@ class CvVictoryScreen:
 
 							if (gc.getGame().canHaveSecretaryGeneral(i)
 							and iUNTeam == pPlayer.getTeam()
+							and gc.getGame().getSecretaryGeneral(i) == -1
 							and not bUNBuiltTeamSlotTake):
 								lPlayerStatus = 0
 								lPlayerLabel = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
@@ -339,25 +340,25 @@ class CvVictoryScreen:
 								lPlayerStatus = 3
 								lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER", ())
 
-							lMembers.append([lPlayerStatus, iPlayer, lPlayerVotes, lPlayerLabel])
+							lMembers.append([lPlayerStatus, lPlayerVotes, iPlayer, lPlayerLabel])
 
 					lMembers.sort()
 
 					# determine the two candidates, add to header
-					iCandidate1 = lMembers[0][1]
-					iCandidate2 = lMembers[1][1]
+					iCandidate1 = lMembers[0][2]
+					iCandidate2 = lMembers[1][2]
 					iVoteTotal = [0] * 2
 					iVoteCand = [0] * 2
-					bCand1Known, sCand1Name = self.getCandStatusandName(lMembers[0][1])
-					bCand2Known, sCand2Name = self.getCandStatusandName(lMembers[1][1])
+					bCand1Known, sCand1Name = self.getCandStatusandName(iCandidate1)
+					bCand2Known, sCand2Name = self.getCandStatusandName(iCandidate2)
 
 					screen.setTableText(szTable, 1, iRow, sCand1Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 					screen.setTableText(szTable, 3, iRow, sCand2Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
 					for lMember in lMembers:
 						lMemberStatus = lMember[0]
-						iMember = lMember[1]
-						lMemberVotes = 10000 - lMember[2]
+						lMemberVotes = 10000 - lMember[1]
+						iMember = lMember[2]
 						lMemberLabel = lMember[3]
 
 						bKnown, szPlayerText = self.getCandStatusandName(iMember)
@@ -446,8 +447,8 @@ class CvVictoryScreen:
 					else:
 						iWinner = 1
 					iLoser = 1 - iWinner
-					sWin = gc.getPlayer(lMembers[iWinner][1]).getName()
-					sLose = gc.getPlayer(lMembers[iLoser][1]).getName()
+					sWin = gc.getPlayer(lMembers[iWinner][2]).getName()
+					sLose = gc.getPlayer(lMembers[iLoser][2]).getName()
 					fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
 					fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
 					
@@ -663,7 +664,7 @@ class CvVictoryScreen:
 
 		# Score
 		ourScore = gc.getGame().getTeamScore(iActiveTeam)
-			
+
 		iBestScoreTeam = -1
 		bestScore = 0
 		for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
@@ -681,7 +682,7 @@ class CvVictoryScreen:
 			landPercent = (ourLand * 100.0) / totalLand
 		else:
 			landPercent = 0.0
-			
+
 		iBestLandTeam = -1
 		bestLand = 0
 		for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
@@ -745,7 +746,7 @@ class CvVictoryScreen:
 
 		self.deleteAllWidgets()	
 		screen = self.getScreen()
-														
+
 		# Start filling in the table below
 		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
 		szTable = self.getNextWidgetName()
@@ -757,11 +758,11 @@ class CvVictoryScreen:
 		screen.setTableColumnHeader(szTable, 4, "", self.TABLE_WIDTH_4)
 		screen.setTableColumnHeader(szTable, 5, "", self.TABLE_WIDTH_5)
 		screen.appendTableRow(szTable)
-		
+
 		for iLoopVC in range(gc.getNumVictoryInfos()):
 			victory = gc.getVictoryInfo(iLoopVC)
 			if gc.getGame().isVictoryValid(iLoopVC):
-				
+
 				iNumRows = screen.getTableNumRows(szTable)
 				szVictoryType = u"<font=4b>" + victory.getDescription().upper() + u"</font>"
 				if (victory.isEndScore() and (gc.getGame().getMaxTurns() > gc.getGame().getElapsedGameTurns())):
@@ -770,22 +771,22 @@ class CvVictoryScreen:
 				iVictoryTitleRow = iNumRows - 1
 				screen.setTableText(szTable, 0, iVictoryTitleRow, szVictoryType, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 				bSpaceshipFound = False
-					
+
 				bEntriesFound = False
-				
+
 				if (victory.isTargetScore() and gc.getGame().getTargetScore() != 0):
-										
+
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_TARGET_SCORE", (gc.getGame().getTargetScore(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 3, iRow, (u"%d" % ourScore), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					
+
 					if (iBestScoreTeam != -1):
 						screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestScoreTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						screen.setTableText(szTable, 5, iRow, (u"%d" % bestScore), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						
+
 					bEntriesFound = True
-				
+
 				if (victory.isEndScore()):
 
 					szText1 = localText.getText("TXT_KEY_VICTORY_SCREEN_HIGHEST_SCORE", (CyGameTextMgr().getTimeStr(gc.getGame().getStartTurn() + gc.getGame().getMaxTurns(), false), ))
@@ -794,13 +795,13 @@ class CvVictoryScreen:
 					screen.setTableText(szTable, 0, iRow, szText1, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 3, iRow, (u"%d" % ourScore), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					
+
 					if (iBestScoreTeam != -1):
 						screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestScoreTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						screen.setTableText(szTable, 5, iRow, (u"%d" % bestScore), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						
+
 					bEntriesFound = True
-					
+
 				if (victory.isConquest()):
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_ELIMINATE_ALL", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -817,7 +818,7 @@ class CvVictoryScreen:
 							screen.setTableText(szTable, 5, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 # BUG Additions End
 
-				if (gc.getGame().getAdjustedPopulationPercent(iLoopVC) > 0):			
+				if (gc.getGame().getAdjustedPopulationPercent(iLoopVC) > 0):
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_PERCENT_POP", (gc.getGame().getAdjustedPopulationPercent(iLoopVC), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -838,7 +839,7 @@ class CvVictoryScreen:
 						screen.setTableText(szTable, 5, iRow, (u"%.2f%%" % (bestLand * 100 / totalLand)), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					bEntriesFound = True
 
-				if (victory.getReligionPercent() > 0):			
+				if (victory.getReligionPercent() > 0):
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_PERCENT_RELIGION", (victory.getReligionPercent(), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					if (iOurReligion != -1):
@@ -851,8 +852,8 @@ class CvVictoryScreen:
 						screen.setTableText(szTable, 4, iRow, gc.getReligionInfo(iBestReligion).getDescription() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						screen.setTableText(szTable, 5, iRow, (u"%d%%" % religionPercent), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					bEntriesFound = True
-				
-				if (victory.getTotalCultureRatio() > 0):			
+
+				if (victory.getTotalCultureRatio() > 0):
 					iRow = screen.appendTableRow(szTable)
 					screen.setTableText(szTable, 0, iRow, localText.getText("TXT_KEY_VICTORY_SCREEN_PERCENT_CULTURE", (int((100.0 * bestCulture) / victory.getTotalCultureRatio()), )), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 					screen.setTableText(szTable, 2, iRow, activePlayer.getTeam().getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -873,8 +874,8 @@ class CvVictoryScreen:
 									teamBuilding += gc.getTeam(iLoopTeam).getBuildingClassCount(i)
 							if (teamBuilding > bestBuilding):
 								bestBuilding = teamBuilding
-								iBestBuildingTeam = iLoopTeam	
-											
+								iBestBuildingTeam = iLoopTeam
+
 				for i in range(gc.getNumBuildingClassInfos()):
 					if (gc.getBuildingClassInfo(i).getVictoryThreshold(iLoopVC) > 0):
 						iRow = screen.appendTableRow(szTable)
@@ -886,7 +887,7 @@ class CvVictoryScreen:
 							screen.setTableText(szTable, 4, iRow, gc.getTeam(iBestBuildingTeam).getName() + ":", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 							screen.setTableText(szTable, 5, iRow, gc.getTeam(iBestBuildingTeam).getBuildingClassCount(i), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						bEntriesFound = True
-						
+
 				iBestProjectTeam = -1
 				bestProject = -1
 				for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
@@ -896,7 +897,7 @@ class CvVictoryScreen:
 						and self.isApolloBuiltbyTeam(gc.getTeam(iLoopTeam))):
 							teamProject = 0
 							for i in range(gc.getNumProjectInfos()):
-								if (gc.getProjectInfo(i).getVictoryThreshold(iLoopVC) > 0):					
+								if (gc.getProjectInfo(i).getVictoryThreshold(iLoopVC) > 0):
 									teamProject += gc.getTeam(iLoopTeam).getProjectCount(i)
 							if (teamProject > bestProject):
 								bestProject = teamProject
@@ -1347,10 +1348,10 @@ class CvVictoryScreen:
 			screen.deleteWidget(self.getNextWidgetName())
 			i -= 1
 
-		self.nWidgetCount = 0		
+		self.nWidgetCount = 0
 
 		screen.deleteWidget(self.Vote_Toggle_ID)
-																				
+
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
@@ -1359,11 +1360,11 @@ class CvVictoryScreen:
 				iIndex = self.getScreen().getSelectedPullDownID(szName)
 				self.iActivePlayer = self.getScreen().getPullDownData(szName, iIndex)
 				self.iScreen = VICTORY_CONDITION_SCREEN
-				self.showVictoryConditionScreen()				
+				self.showVictoryConditionScreen()
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if (inputClass.getFunctionName() == self.VC_TAB_ID):
 				self.iScreen = VICTORY_CONDITION_SCREEN
-				self.showVictoryConditionScreen()				
+				self.showVictoryConditionScreen()
 			elif (inputClass.getFunctionName() == self.SETTINGS_TAB_ID):
 				self.iScreen = GAME_SETTINGS_SCREEN
 				self.showGameSettingsScreen()
