@@ -20,6 +20,10 @@
 ##   playerUnits(playerOrId), playerCities(playerOrId)
 ##     Loop over a player's units or cities.
 ##
+##   getStateReligion(playerOrId)
+##   getFavoriteCivic(playerOrId)
+##     Returns a single piece of information about the given player.
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
@@ -226,3 +230,14 @@ def playerCities(playerOrId):
 		if not city.isNone() and city.getOwner() == ePlayer:
 			yield city
 		city, iter = player.nextCity(iter, False)
+
+
+## Player Information
+
+def getStateReligion(playerOrId):
+	player = getPlayer(playerOrId)
+	return player.getStateReligion()
+
+def getFavoriteCivic(playerOrId):
+	player = getPlayer(playerOrId)
+	return gc.getLeaderHeadInfo(player.getLeaderType()).getFavoriteCivic()
