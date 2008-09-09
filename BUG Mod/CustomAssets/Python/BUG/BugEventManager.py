@@ -158,8 +158,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 			BugUtil.debug("BUG: adding event '%s'" % eventType)
 			self.EventHandlerMap[eventType] = []
 
-	def addEventHandler(self, eventType, eventHandler):
+	def addEventHandler(self, eventType, eventHandler=None):
 		"""Adds a handler for the given event type, adding the event if necessary.
+		
+		If eventHandler is None, the event is added if necessary without a handler.
 		
 		A list of supported event types can be found in the initialization 
 		of EventHandlerMap in the CvEventManager class. A debug message is
@@ -168,7 +170,8 @@ class BugEventManager(CvEventManager.CvEventManager):
 		"""
 		if not self.hasEvent(eventType):
 			self.addEvent(eventType)
-		self.EventHandlerMap[eventType].append(eventHandler)
+		if eventHandler:
+			self.EventHandlerMap[eventType].append(eventHandler)
 
 	def removeEventHandler(self, eventType, eventHandler):
 		"""Removes a handler for the given event type.
