@@ -5,6 +5,10 @@
 ##   format(player or ID, TradeData(s))
 ##     Returns a plain text description of the given tradeable item(s).
 ##
+##   Trade class
+##     Can be used to create new trades.
+##     (not really since implementDeal() not exposed to Python)
+##
 ## Notes
 ##   - Must be initialized externally by calling init()
 ##
@@ -19,6 +23,77 @@ import PlayerUtil
 gc = CyGlobalContext()
 
 TRADE_FORMATS = {}
+
+
+## Trade Class
+
+class Trade(object):
+	"""
+	Encapsulates the player IDs and TradeData for a new or proposed trade.
+	
+	Implements the same interface as the DealUtil.Deal class.
+	"""
+	def __init__(self, ePlayer, eOtherPlayer):
+		self.ePlayer = ePlayer
+		self.eOtherPlayer = eOtherPlayer
+		self.tradeList = []
+		self.otherTradeList = []
+	
+	def isReversed(self):
+		return False
+	def getPlayer(self):
+		return self.ePlayer
+	def getOtherPlayer(self):
+		return self.eOtherPlayer
+	
+	def getCount(self):
+		return len(self.tradeList)
+	def getOtherCount(self):
+		return len(self.otherTradeList)
+	def getTrade(self, index):
+		return self.tradeList[index]
+	def getOtherTrade(self, index):
+		return self.otherTradeList[index]
+	def trades(self):
+		return self.tradeList
+	def otherTrades(self):
+		return self.otherTradeList
+	
+	def addTrade(self, trade):
+		self.tradeList.append(trade)
+	def addOtherTrade(self, trade):
+		self.otherTradeList.append(trade)
+	
+	def hasType(self, type):
+		return self.hasAnyType((type,))
+	def hasAnyType(self, types):
+		for trade in self.trades():
+			if trade.ItemType in types:
+				return True
+		for trade in self.otherTrades():
+			if trade.ItemType in types:
+				return True
+		return False
+	def findType(self, type):
+		return self.findTypes((type,))
+	def findTypes(self, types):
+		found = []
+		for trade in self.trades():
+			for type in types:
+				if type == trade.ItemType:
+					found.append(type)
+		for trade in self.otherTrades():
+			for type in types:
+				if type == trade.ItemType:
+					found.append(type)
+		return found
+	
+	def __repr__(self):
+		return ("<trade %d [%s] for %d [%s]>" % 
+				(self.getPlayer(), 
+				format(self.getPlayer(), self.trades()), 
+				self.getOtherPlayer(), 
+				format(self.getOtherPlayer(), self.otherTrades())))
 
 
 ## TradeData Formatting
