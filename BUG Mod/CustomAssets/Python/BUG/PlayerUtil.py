@@ -14,17 +14,20 @@
 ## All of them return -1 and/or None if given -1 or None for playerOrId.
 ##
 ##   players(), teams(), teamPlayers(teamOrID)
-##     Loop over players, teams or players belonging to a team.
+##     Loop over players and teams matching various criteria.
 ##     Only valid objects that were alive at some point are returned, and they can
-##     be filtered further by alive, human, and/or barbarian status.
+##     be filtered further by alive, human, barbarian, and/or minor status.
 ##
 ##   playerUnits(playerOrID), playerCities(playerOrID)
 ##     Loop over a player's units or cities.
 ##
 ##   getStateReligion(playerOrID)
 ##   getFavoriteCivic(playerOrID)
-##   getWorstEnemyPlayer(playerOrID, askingPlayerOrID)
+##   getWorstEnemy(playerOrID, askingPlayerOrID)
 ##     Returns a single piece of information about the given player.
+##
+##   getVassals(playerOrID, askingPlayerOrID)
+##   getDefensivePacts(playerOrID, askingPlayerOrID)
 ##
 ##   getActiveWars(playerOrID, askingPlayerOrID)
 ##   getPossibleWars(playerOrID, askingPlayerOrID)
@@ -297,7 +300,7 @@ def getFavoriteCivic(playerOrID):
 			return leader.getFavoriteCivic()
 	return CivicTypes.NO_CIVIC
 
-def getWorstEnemyPlayer(playerOrID, askingPlayerOrID=None):
+def getWorstEnemy(playerOrID, askingPlayerOrID=None):
 	"""
 	Returns the CyPlayer who is the worst enemy of the given player or None.
 	
@@ -317,7 +320,33 @@ def getWorstEnemyPlayer(playerOrID, askingPlayerOrID=None):
 	return None
 
 
-## Wars
+## Vassalage and other Diplomatic Agreements
+
+def getVassals(playerOrID, askingPlayerOrID):
+	vassals = []
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	for player in players(alive=True, barbarian=False, minor=False):
+		if (askedPlayer.getID() != player.getID() and 
+				(askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			team = getPlayerTeam(player)
+			if team.isAVassal() and team.isVassal(askedTeam.getID()):
+				vassals.append(player)
+	return vassals
+
+def getDefensivePacts(playerOrID, askingPlayerOrID):
+	pacts = []
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	for player in players(alive=True, barbarian=False, minor=False):
+		if (askedPlayer.getID() != player.getID() and 
+				(askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			if askedTeam.isDefensivePact(player.getTeam()):
+				pacts.append(player)
+	return pacts
+
+
+## Wars and WHEOOH
 
 def getActiveWars(playerOrID, askingPlayerOrID):
 	wars = []

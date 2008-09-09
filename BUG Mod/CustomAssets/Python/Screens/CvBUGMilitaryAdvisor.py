@@ -293,8 +293,8 @@ class CvMilitaryAdvisor:
 
 		
 		# get Player arrays
-		iVassals = [[]] * gc.getMAX_PLAYERS()
-		iDefPacts = [[]] * gc.getMAX_PLAYERS()
+		pVassals = [[]] * gc.getMAX_PLAYERS()
+		pDefPacts = [[]] * gc.getMAX_PLAYERS()
 		bVassals = False
 		bDefPacts = False
 		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
@@ -306,13 +306,13 @@ class CvMilitaryAdvisor:
 			and iLoopPlayer != self.iActivePlayer
 			and not pPlayer.isBarbarian()
 			and not pPlayer.isMinorCiv()):
-				iVassals[iLoopPlayer] = self.getVassals(iLoopPlayer)
-				iDefPacts[iLoopPlayer] = self.getDefPacts(iLoopPlayer)
+				pVassals[iLoopPlayer] = PlayerUtil.getVassals(iLoopPlayer, self.iActivePlayer)
+				pDefPacts[iLoopPlayer] = PlayerUtil.getDefensivePacts(iLoopPlayer, self.iActivePlayer)
 
-				if len(iVassals[iLoopPlayer]) > 0:
+				if len(pVassals[iLoopPlayer]) > 0:
 					bVassals = True
 
-				if len(iDefPacts[iLoopPlayer]) > 0:
+				if len(pDefPacts[iLoopPlayer]) > 0:
 					bDefPacts = True
 
 		self.initGrid(screen, bVassals, bDefPacts)
@@ -363,38 +363,34 @@ class CvMilitaryAdvisor:
 				self.Grid_Strategic_Resources(iRow, iLoopPlayer)
 
 				# add current war opponents
-				self.bCurrentWar = False
-				iActiveWars = self.GetActiveWars(iRow, iLoopPlayer)
-				if len(iActiveWars) > 0:
-					self.bCurrentWar = True
-					
-				for iLoopPlayer2 in iActiveWars:
+				pActiveWars = PlayerUtil.getActiveWars(iLoopPlayer, self.iActivePlayer)
+				self.bCurrentWar = len(pActiveWars) > 0
+				for pLoopPlayer in pActiveWars:
 					self.SitRepGrid.addIcon(iRow, self.Col_Curr_Wars, 
-											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
+											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
+											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
 
 				# show vassals
 				if bVassals:
-					for iLoopPlayer2 in iVassals[iLoopPlayer]:
+					for pLoopPlayer in pVassals[iLoopPlayer]:
 						self.SitRepGrid.addIcon(iRow, self.Col_Vassals, 
-												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
+												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
+												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
 
-				# show defensive packs
+				# show defensive pacts
 				if bDefPacts:
-					for iLoopPlayer2 in iDefPacts[iLoopPlayer]:
+					for pLoopPlayer in pDefPacts[iLoopPlayer]:
 						self.SitRepGrid.addIcon(iRow, self.Col_DefPacts, 
-												gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
+												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
+												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
 
 				# show players that the current player will declare on
-				self.bWHEOOH = False
-				iActiveWars = self.GetDeclareWar(iRow, iLoopPlayer)
-				for iLoopPlayer2 in iActiveWars:
+				self.bWHEOOH, pPossibleWars = PlayerUtil.getPossibleWars(iLoopPlayer, self.iActivePlayer)
+				for pLoopPlayer in pPossibleWars:
 					self.SitRepGrid.addIcon(iRow, self.Col_WillDeclareOn, 
-											gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer2).getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer2)
-				# WHEOOH
+											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
+											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+				# show WHEOOH
 				if self.bWHEOOH:
 					sWHEOOH = u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
 				else:
@@ -464,11 +460,6 @@ class CvMilitaryAdvisor:
 		gridY = self.MIN_TOP_BOTTOM_SPACE + self.SITREP_PANEL_SPACE + self.TABLE_CONTROL_HEIGHT + self.TITLE_HEIGHT + 10
 		gridWidth = self.W_SCREEN - 10 # - self.MIN_LEFT_RIGHT_SPACE * 2 - 20
 		gridHeight = self.H_SCREEN - self.MIN_TOP_BOTTOM_SPACE * 2 - self.SITREP_PANEL_SPACE - self.TITLE_HEIGHT - 20
-		
-#		self.resIconGridName = self.getNextWidgetName()
-#class IconGrid:  def __init__(self, sWidgetId, screen, iX, iY, iWidth, iHeight, columns, bUseSmallIcons, bShowRowHeader, bShowRowBorder):
-
-
 		self.SitRepGrid = IconGrid_BUG.IconGrid_BUG(self.getNextWidgetName(), screen, gridX, gridY, gridWidth, gridHeight,
 													columns, True, self.SHOW_LEADER_NAMES, self.SHOW_ROW_BORDERS)
 
@@ -629,80 +620,15 @@ class CvMilitaryAdvisor:
 
 
 	def Grid_WorstEnemy(self, iRow, iLeader):
-		szWEnemyName = gc.getPlayer(iLeader).getWorstEnemyName()
-
-		if szWEnemyName == "":
+		pWorstEnemy = PlayerUtil.getWorstEnemy(iLeader, self.iActivePlayer)
+		if pWorstEnemy:
+			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
+									gc.getLeaderHeadInfo(pWorstEnemy.getLeaderType()).getButton(), 45, 
+									WidgetTypes.WIDGET_LEADERHEAD, pWorstEnemy.getID())
+		else:
 			self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
 									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
 									WidgetTypes.WIDGET_LEADERHEAD, -1)
-		else:
-			for iLoopEnemy in range(gc.getMAX_PLAYERS()):
-				if gc.getPlayer(iLoopEnemy).getName() == szWEnemyName:
-					iWEnemy = iLoopEnemy
-					break
-
-			pWEPlayer = gc.getPlayer(iWEnemy)
-			if (pWEPlayer.isAlive()
-			and (gc.getTeam(pWEPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-			or gc.getGame().isDebugMode())
-			and not pWEPlayer.isBarbarian()
-			and not pWEPlayer.isMinorCiv()):
-				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-										gc.getLeaderHeadInfo(pWEPlayer.getLeaderType()).getButton(), 45, 
-										WidgetTypes.WIDGET_LEADERHEAD, iLoopEnemy)
-			else:
-				self.SitRepGrid.addIcon(iRow, self.Col_WEnemy,
-										ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
-										WidgetTypes.WIDGET_LEADERHEAD, -1)
-		return
-
-	def GetActiveWars(self, iRow, iLeader):
-		iWars = []
-
-		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			pLoopPlayer = gc.getPlayer(iLoopPlayer)
-			if (pLoopPlayer.isAlive()
-			and (gc.getTeam(pLoopPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-			or gc.getGame().isDebugMode())
-			and not pLoopPlayer.isBarbarian()
-			and not pLoopPlayer.isMinorCiv()):
-				if gc.getTeam(gc.getPlayer(iLeader).getTeam()).isAtWar(pLoopPlayer.getTeam()):
-					iWars.append(iLoopPlayer)
-
-		return iWars
-
-	def getVassals(self, iPlayer):
-		iVassals = []
-		pPlayer = gc.getPlayer(iPlayer)
-
-		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			pLoopPlayer = gc.getPlayer(iLoopPlayer)
-			if (pLoopPlayer.isAlive()
-			and (gc.getTeam(pLoopPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-			or gc.getGame().isDebugMode())
-			and not pLoopPlayer.isBarbarian()
-			and not pLoopPlayer.isMinorCiv()
-			and iPlayer != iLoopPlayer):
-				if gc.getTeam(pLoopPlayer.getTeam()).isVassal(pPlayer.getTeam()):
-					iVassals.append(iLoopPlayer)
-		return iVassals
-
-	def getDefPacts(self, iPlayer):
-		iDefPacts = []
-		pPlayer = gc.getPlayer(iPlayer)
-
-		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			pLoopPlayer = gc.getPlayer(iLoopPlayer)
-			if (pLoopPlayer.isAlive()
-			and (gc.getTeam(pLoopPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-			or gc.getGame().isDebugMode())
-			and not pLoopPlayer.isBarbarian()
-			and not pLoopPlayer.isMinorCiv()
-			and iPlayer != iLoopPlayer):
-				if gc.getTeam(pLoopPlayer.getTeam()).isDefensivePact(pPlayer.getTeam()):
-					iDefPacts.append(iLoopPlayer)
-		return iDefPacts
-
 
 
 	def PrintUpgrades(self):
@@ -757,51 +683,7 @@ class CvMilitaryAdvisor:
 				# RJG Start - following line deleted, next added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
 #				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnit)
-
-
-
-
-
-
-				
-#				if (PlayerHasTech != ""):
-
-
-
-#				szButton = gc.getPlayer(pHeadSelectedCity.getOwner()).getUnitButton(eLoopUnit)
-#						screen.appendMultiListButton( "BottomButtonContainer", szButton, iRow, WidgetTypes.WIDGET_TRAIN, i, -1, False )
-#		self.SitRepGrid.addIcon( iRow, self.Col_StratResPos
-#								, gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton()
-#								, WidgetTypes.WIDGET_LEADERHEAD, iPlayer)
-
-
-#units.getDiscoveryTech()
-#						elif currentPlayer.canResearch(iLoopTech, False):
-
-		# Go through all the techs
-#		for i in range(gc.getNumTechInfos()):
 		
-#			abChanged.append(0)
-		
-#			if ( gc.getTeam(gc.getPlayer(self.iCivSelected).getTeam()).isHasTech(i) ):
-
-
-
-
-
-
-
-
-#		self.SitRepGrid.addIcon( iRow, self.Col_StratResPos
-#								, gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton()
-#								, WidgetTypes.WIDGET_LEADERHEAD, iPlayer)
-
-#		self.SitRepGrid.addIcon( iRow, self.Col_StratResNeg
-#								, gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton()
-#								, WidgetTypes.WIDGET_LEADERHEAD, iPlayer)
-
-
-
 		return
 
 
@@ -870,30 +752,6 @@ class CvMilitaryAdvisor:
 		return len(upgrades & enemyUnits) == 0 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
 	def GetDeclareWar(self, iRow, iPlayer):
 		# this module will check if the iPlayer will declare war
 		# on the other leaders.  We cannot check if the iPlayer, the iActivePlayer
@@ -902,90 +760,12 @@ class CvMilitaryAdvisor:
 		# so we only need to check if the iPlayer and the iActivePlayer both know the iTargetPlayer.
 
 		# also need to check on vassal state - will do that later
-
-		iLeaderWars = []
-		szWarDenial = ""
-
-		tradeData = TradeData()
-		tradeData.ItemType = TradeableItems.TRADE_WAR
-
-		pPlayer = gc.getPlayer(iPlayer)
-
-		szPlayerName = gc.getPlayer(iPlayer).getName() + "/" + gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
-
-		for iTargetPlayer in range(gc.getMAX_PLAYERS()):
-			pTargetPlayer = gc.getPlayer(iTargetPlayer)
-			
-			if (pTargetPlayer.isAlive()
-			and (gc.getTeam(pTargetPlayer.getTeam()).isHasMet(gc.getPlayer(self.iActivePlayer).getTeam())
-			and  gc.getTeam(pTargetPlayer.getTeam()).isHasMet(gc.getPlayer(iPlayer).getTeam())
-			or   gc.getGame().isDebugMode())
-			and not iTargetPlayer == self.iActivePlayer
-			and not iTargetPlayer == iPlayer
-			and not gc.getTeam(pPlayer.getTeam()).isAtWar(pTargetPlayer.getTeam())
-			and not pTargetPlayer.isBarbarian()
-			and not pTargetPlayer.isMinorCiv()):
-
-				szPlayerName = gc.getPlayer(iTargetPlayer).getName() + "/" + gc.getPlayer(iTargetPlayer).getCivilizationShortDescription(0)
-
-				tradeData.iData = iTargetPlayer
-				if (pPlayer.canTradeItem(self.iActivePlayer, tradeData, False)):
-					WarDenial = pPlayer.getTradeDenial(self.iActivePlayer, tradeData)
-					if WarDenial == DenialTypes.NO_DENIAL:
-						iLeaderWars.append(iTargetPlayer)
-					elif szWarDenial == "":
-						szWarDenial = gc.getDenialInfo(WarDenial).getDescription()
-
-					if WarDenial == DenialTypes.DENIAL_TOO_MANY_WARS:
-						self.bWHEOOH = True
-
+		
+		
 		return iLeaderWars
 
-	def getWarDeclarationTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
-		tradeData = TradeData()
-		tradeData.ItemType = TradeableItems.TRADE_WAR
-		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-						currentTrades.add(iLoopPlayerID)
-		return currentTrades
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### Deployment Tab ####
 
 	def showUnitLocation(self):
 		self.deleteAllWidgets()	
