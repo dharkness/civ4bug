@@ -2,6 +2,11 @@
 ##
 ## Utilities for dealing with Players and their Teams, Cities and Units.
 ##
+## All functions in thie module that take a playerOrID or teamOrID as their
+## parameter will accept either the CyPlayer/CyTeam object or its ID.
+## Many of them will probably also accept a PyPlayer/PyTeam wrapper, but I
+## recommend that you use getCy() on the object instead.
+##
 ##   getPlayer(playerOrID)
 ##     Returns the CyPlayer given an ID or CyPlayer
 ##   getPlayerID(playerOrID)
@@ -292,7 +297,11 @@ def getStateReligion(playerOrID):
 	return player.getStateReligion()
 
 def getFavoriteCivic(playerOrID):
-	"""Returns the favorite civic of the given player's leader or -1 if none."""
+	"""
+	Returns the favorite civic of the given player's leader or -1 if none.
+	
+	This works even when the Random Personalities option is enabled.
+	"""
 	eLeaderType = getPlayer(playerOrID).getLeaderType()
 	if eLeaderType != -1:
 		leader = gc.getLeaderHeadInfo(eLeaderType)
@@ -302,7 +311,7 @@ def getFavoriteCivic(playerOrID):
 
 def getWorstEnemy(playerOrID, askingPlayerOrID=None):
 	"""
-	Returns the CyPlayer who is the worst enemy of the given player or None.
+	Returns the CyPlayer who is the worst enemy of playerOrID or None.
 	
 	If askingPlayerOrID is given, the check is restricted to players they have met.
 	"""
@@ -323,6 +332,11 @@ def getWorstEnemy(playerOrID, askingPlayerOrID=None):
 ## Vassalage and other Diplomatic Agreements
 
 def getVassals(playerOrID, askingPlayerOrID):
+	"""
+	Returns a list of CyPlayers who are vassals of playerOrID.
+	
+	The askingPlayerOrID is used to limit the list to players they have met.
+	"""
 	vassals = []
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
@@ -335,6 +349,11 @@ def getVassals(playerOrID, askingPlayerOrID):
 	return vassals
 
 def getDefensivePacts(playerOrID, askingPlayerOrID):
+	"""
+	Returns a list of CyPlayers who have a Defensive Pact with playerOrID.
+	
+	The askingPlayerOrID is used to limit the list to players they have met.
+	"""
 	pacts = []
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
@@ -349,6 +368,11 @@ def getDefensivePacts(playerOrID, askingPlayerOrID):
 ## Wars and WHEOOH
 
 def getActiveWars(playerOrID, askingPlayerOrID):
+	"""
+	Returns a list of CyPlayers who are at war with playerOrID.
+	
+	The askingPlayerOrID is used to limit the list to players they have met.
+	"""
 	wars = []
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
@@ -358,14 +382,12 @@ def getActiveWars(playerOrID, askingPlayerOrID):
 				wars.append(player)
 	return wars
 
-def getPossibleWars(playerOrID, askingPlayerOrID, justWHEOOH=False):
+def getPossibleWars(playerOrID, askingPlayerOrID):
 	"""
 	Returns a tuple containing the WHEOOH status of the given player and 
-	a list of all CyPlayers on which the given player will declare war in a trade.
+	a list of all CyPlayers on which playerOrID will declare war in a trade.
 	
-	If askingPlayerOrID is given, the check is restricted to players they have both met.
-	
-	If justWHEOOH is True, only the WHOOH status is returned as soon as it's found.
+	The askingPlayerOrID is used to limit the list to players they have met.
 	"""
 	wheooh = False
 	wars = []
@@ -386,13 +408,30 @@ def getPossibleWars(playerOrID, askingPlayerOrID, justWHEOOH=False):
 			if denial == DenialTypes.NO_DENIAL:
 				wars.append(player)
 			elif denial == DenialTypes.DENIAL_TOO_MANY_WARS:
-				if justWHEOOH:
-					return True
 				wheooh = True
-	if justWHEOOH:
-		return wheooh
 	return (wheooh, wars)
 
 def isWHEOOH(playerOrID, askingPlayerOrID):
-	"""Returns True if askingPlayerOrID can see that playerOrID is WHEOOH."""
-	return getPossibleWars(playerOrID, askingPlayerOrID, True)
+	"""
+	Returns True if askingPlayerOrID can see that playerOrID is WHEOOH.
+	
+	In game terms, this is the case if the player gives the TOO_MANY_WARS denial type
+	for a request to go to war against another civ.
+	"""
+	tradeData = TradeData()
+	tradeData.ItemType = TradeableItems.TRADE_WAR
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	for player in players(alive=True, barbarian=False, minor=False):
+		if (askingPlayer.getID() == player.getID()
+				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			continue
+		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
+				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			continue
+		tradeData.iData = player.getID()
+		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
+			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
+			if denial == DenialTypes.DENIAL_TOO_MANY_WARS:
+				return True
+	return False
