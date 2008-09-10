@@ -160,7 +160,7 @@ def getActivePlayerAndID():
 
 def getActiveTeam():
 	"""Returns the CyTeam for the active player."""
-	return gc.getActiveTeam()
+	return getTeam(getActiveTeamID())
 
 def getActiveTeamID():
 	"""Returns the Team ID for the active player."""
@@ -168,7 +168,7 @@ def getActiveTeamID():
 
 def getActiveTeamAndID():
 	"""Returns the Team ID and CyTeam for the active player."""
-	return gc.getGame().getActiveTeam(), gc.getActiveTeam()
+	return getActiveTeamID(), getActiveTeam()
 
 
 def getActivePlayerAndTeam():
