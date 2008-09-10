@@ -65,6 +65,7 @@
 	<event type="LanguageChanged" module="ColorUtil" function="createColors"/>
 	
 	<events module="DealUtil" function="addEvents"/>
+	<events module="DiplomacyUtil" function="addEvents"/>
 	<init module="GGUtil" function="init"/>
 	<init module="GPUtil" function="init"/>
 	<init module="TechUtil" function="init"/>
