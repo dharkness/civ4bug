@@ -893,23 +893,20 @@ class CvMilitaryAdvisor:
 				screen.setLabel(self.UNIT_BUTTON_LABEL_ID, "", szText, CvUtil.FONT_LEFT_JUSTIFY, iTxt_X, iTxt_Y, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		if bReload:
-			activePlayer = gc.getPlayer(self.iActivePlayer)
-			iActiveTeam = activePlayer.getTeam()
-			activeTeam = gc.getTeam(iActiveTeam)
+			timer = BugUtil.Timer("MilAdv - process units")
+			_, activePlayer, iActiveTeam, activeTeam = PlayerUtil.getActivePlayerAndTeamAndIDs()
 			self.stats = UnitGrouper.GrouperStats(self.grouper)
-			for iPlayer in range(gc.getMAX_PLAYERS()):
-				player = gc.getPlayer(iPlayer)
-				if player.isAlive():
-					team = gc.getTeam(player.getTeam())
-					for unit in PlayerUtil.playerUnits(player):
-						plot = unit.plot()
-						if plot.isNone():
-							continue
-						bVisible = plot.isVisible(iActiveTeam, False) and not unit.isInvisible(iActiveTeam, False)
-						if not bVisible:
-							continue
-						if unit.getVisualOwner() in self.selectedLeaders:
-							self.stats.processUnit(activePlayer, activeTeam, unit)
+			for player in PlayerUtil.players(alive=True):
+				for unit in PlayerUtil.playerUnits(player):
+					plot = unit.plot()
+					if plot.isNone():
+						continue
+					bVisible = plot.isVisible(iActiveTeam, False) and not unit.isInvisible(iActiveTeam, False)
+					if not bVisible:
+						continue
+					if unit.getVisualOwner() in self.selectedLeaders:
+						self.stats.processUnit(activePlayer, activeTeam, unit)
+			timer.log()
 		
 		szText = localText.getText("TXT_KEY_PEDIA_ALL_UNITS", ()).upper()
 		bAllSelected = self.isSelectedGroup(None)
@@ -931,6 +928,7 @@ class CvMilitaryAdvisor:
 		grouping2 = self.stats.getGrouping(self.groupingKeys[1])
 		BugUtil.debug("Grouping 1 is %s" % grouping1.grouping.title)
 		BugUtil.debug("Grouping 2 is %s" % grouping2.grouping.title)
+		timer = BugUtil.Timer("MilAdv - draw unit list")
 		iItem = 1
 		for group1 in grouping1.itergroups():
 			if (group1.isEmpty()):
@@ -1009,6 +1007,7 @@ class CvMilitaryAdvisor:
 						else:
 							iColor = gc.getInfoTypeForString("COLOR_WHITE")
 						screen.minimapFlashPlot(loopUnit.getX(), loopUnit.getY(), iColor, -1)
+		timer.log()
 
 	def refreshSelectedGroup(self, iSelected):
 		if (iSelected in self.selectedGroups):
