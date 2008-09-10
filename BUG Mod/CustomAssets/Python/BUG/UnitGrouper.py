@@ -130,13 +130,13 @@ class UnitCombatGrouping(Grouping):
 
 class LevelGrouping(Grouping):
 	"""
-	Groups units by their level, 1 to MAX_LEVEL (30).
+	Groups units by their level, 1 to MAX_LEVEL (50).
 	Units over level MAX_LEVEL are put into the MAX_LEVEL group.
 	"""
 	def __init__(self):
 		Grouping.__init__(self, "level", "TXT_KEY_UNIT_GROUPER_LEVEL_GROUPING")
 		
-		self.MAX_LEVEL = 30
+		self.MAX_LEVEL = 50
 		for i in range(self.MAX_LEVEL):
 			self._addGroup(Group(self, i, BugUtil.getText("TXT_KEY_UNIT_GROUPER_LEVEL_GROUP", (str(i),))))
 		self._addGroup(Group(self, self.MAX_LEVEL, BugUtil.getText("TXT_KEY_UNIT_GROUPER_LEVEL_GROUP", ("%d+" % self.MAX_LEVEL,))))
