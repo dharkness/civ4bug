@@ -226,7 +226,7 @@ class Timer:
 	
 	def span(self):
 		"""Returns the span of time from the first start() to the last stop()."""
-		return self._final - self._intitial
+		return self._final - self._initial
 	
 	def log(self, extra=None):
 		"""
@@ -237,7 +237,7 @@ class Timer:
 		self.stop()
 		return self._log(self.time(), extra)
 	
-	def logTotal(self, extra=None):
+	def logTotal(self, extra="total"):
 		"""
 		Stops the timer and logs the sum of all timing steps.
 		
