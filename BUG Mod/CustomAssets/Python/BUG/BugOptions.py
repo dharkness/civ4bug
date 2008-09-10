@@ -390,7 +390,7 @@ TYPE_DEFAULT = { "boolean": False,
 				 "int": 0,
 				 "float": 0.0,
 				 "color": "COLOR_WHITE" }
-TYPE_MAP = { "boolean": bool,
+TYPE_MAP = { "boolean": lambda x: (isinstance(x, types.StringTypes) and x.lower() in ('true', 't', 'yes', 'y', 'on', '1')) or (isinstance(x, bool) and x),
 			 "string": str,
 			 "int": int,
 			 "float": float,
