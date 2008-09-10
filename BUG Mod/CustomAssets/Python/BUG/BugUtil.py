@@ -192,7 +192,7 @@ class Timer:
 		if not self.running():
 			self._start = time.clock()
 			if self._initial is None:
-				self._initial = self.start
+				self._initial = self._start
 		return self
 	
 	def restart(self):
