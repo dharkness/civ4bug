@@ -298,6 +298,8 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			screen = self.getScreen()
 			screen.setText(self.TOC_ID, "Background", self.TOC_ACTIVE_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
 			screen.setText(self.INDEX_ID, "Background", self.INDEX_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+			screen.show(self.BACK_ID)
+			screen.show(self.NEXT_ID)
 		if not self.isContentsShowing() or self.iCategory != iCategory or bForce:
 			BugUtil.debug("Drawing item list %d" % iCategory)
 			self.mapListGenerators.get(iCategory)()
@@ -316,13 +318,11 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		screen = self.getScreen()
 		screen.setText(self.TOC_ID, "Background", self.TOC_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
 		screen.setText(self.INDEX_ID, "Background", self.INDEX_ACTIVE_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
+		screen.hide(self.BACK_ID)
+		screen.hide(self.NEXT_ID)
 		self.pediaIndex.interfaceScreen()
 		self.tab = self.TAB_INDEX
 	
-	def setContentsIndexButtons(self):
-		screen.setText(self.TOC_ID, "Background", self.TOC_TEXT,   CvUtil.FONT_LEFT_JUSTIFY,   self.X_TOC,   self.Y_TOC,   0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
-		screen.setText(self.INDEX_ID, "Background", self.INDEX_TEXT, CvUtil.FONT_LEFT_JUSTIFY, self.X_INDEX, self.Y_INDEX, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL,      -1, -1)
-
 	def setPediaCommonWidgets(self):
 		self.HEAD_TEXT = u"<font=4b>" + localText.getText("TXT_KEY_SEVOPEDIA_TITLE",      ())         + u"</font>"
 		self.BACK_TEXT = u"<font=4>"  + localText.getText("TXT_KEY_PEDIA_SCREEN_BACK",    ()).upper() + u"</font>"
@@ -849,12 +849,15 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def handleInput (self, inputClass):
 		if (inputClass.getPythonFile() == SevoScreenEnums.PEDIA_LEADERS):
 			return self.pediaLeader.handleInput(inputClass)
-		if (inputClass.getFunctionName() == self.TOC_ID):
+		elif (inputClass.getFunctionName() == self.TOC_ID):
 			self.showContents()
 			return 1
-		if (inputClass.getFunctionName() == self.INDEX_ID):
+		elif (inputClass.getFunctionName() == self.INDEX_ID):
 			self.showIndex()
 			return 1
+		elif (self.isIndexShowing()):
+			return self.pediaIndex.handleInput(inputClass)
+		
 		return 0
 
 
