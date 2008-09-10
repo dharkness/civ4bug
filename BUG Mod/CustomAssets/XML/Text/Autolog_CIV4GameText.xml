@@ -340,7 +340,7 @@
         <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT</Tag>
         <English>Tribal village results: %s1</English>
         <French>Tribal village results: %s1</French>
-        <German>Eingeborenendorf hat gewährt: %s1</German>
+        <German>Geschenk eines Eingeborenendorfes: %s1</German>
         <Italian>Scoperto un villaggio tribale: %s1</Italian>
         <Spanish>Tribal village results: %s1</Spanish>
     </TEXT> 
