@@ -218,6 +218,8 @@ class CvMilitaryAdvisor:
 										
 	def interfaceScreen(self):
 
+		self.timer = BugUtil.Timer("MilAdv")
+		
 		# Create a new screen
 		screen = self.getScreen()
 		if screen.isActive():
@@ -260,8 +262,7 @@ class CvMilitaryAdvisor:
 			self.showUnitLocation()
 		elif self.iScreen == SITUATION_REPORT_SCREEN:
 			self.showSituationReport()
-#		elif self.iScreen == PLACE_HOLDER:
-#			self.showGameSettingsScreen()
+		self.timer.logSpan("total")
 
 	def drawTabs(self):
 	
@@ -283,6 +284,7 @@ class CvMilitaryAdvisor:
 # dev using icongrid
 	def showSituationReport(self):
 
+		self.timer.start()
 		self.deleteAllWidgets()
 		screen = self.getScreen()
 
@@ -404,10 +406,8 @@ class CvMilitaryAdvisor:
 				iRow += 1
 
 		self.SitRepGrid.refresh()
-
 		self.drawTabs()
-
-		return
+		self.timer.log("SitRep")
 
 	def initGrid(self, screen, bVassals, bDefPacts):
 		
@@ -787,6 +787,7 @@ class CvMilitaryAdvisor:
 
 	def UL_initMinimap(self, screen):
 		# Minimap initialization
+		self.timer.start()
 		map = CyMap()
 		iMap_W = map.getGridWidth()
 		iMap_H = map.getGridHeight()
@@ -804,6 +805,7 @@ class CvMilitaryAdvisor:
 
 		self.UL_setMinimapVisibility(screen, True)
 		screen.bringMinimapToFront()
+		self.timer.log("minimap")
 
 	def UL_setMinimapVisibility(self, screen, bVisibile):
 		iOldMode = CyInterface().getShowInterface()
@@ -829,7 +831,7 @@ class CvMilitaryAdvisor:
 	def UL_refresh(self, bReload, bRedraw):
 		if (self.iActivePlayer < 0):
 			return
-						
+		
 		screen = self.getScreen()
 		if bRedraw:
 			# Set scrollable area for unit buttons
@@ -893,7 +895,7 @@ class CvMilitaryAdvisor:
 				screen.setLabel(self.UNIT_BUTTON_LABEL_ID, "", szText, CvUtil.FONT_LEFT_JUSTIFY, iTxt_X, iTxt_Y, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		if bReload:
-			timer = BugUtil.Timer("MilAdv - process units")
+			self.timer.start()
 			_, activePlayer, iActiveTeam, activeTeam = PlayerUtil.getActivePlayerAndTeamAndIDs()
 			self.stats = UnitGrouper.GrouperStats(self.grouper)
 			for player in PlayerUtil.players(alive=True):
@@ -906,7 +908,7 @@ class CvMilitaryAdvisor:
 						continue
 					if unit.getVisualOwner() in self.selectedLeaders:
 						self.stats.processUnit(activePlayer, activeTeam, unit)
-			timer.log()
+			self.timer.log("process units")
 		
 		szText = localText.getText("TXT_KEY_PEDIA_ALL_UNITS", ()).upper()
 		bAllSelected = self.isSelectedGroup(None)
@@ -928,7 +930,7 @@ class CvMilitaryAdvisor:
 		grouping2 = self.stats.getGrouping(self.groupingKeys[1])
 		BugUtil.debug("Grouping 1 is %s" % grouping1.grouping.title)
 		BugUtil.debug("Grouping 2 is %s" % grouping2.grouping.title)
-		timer = BugUtil.Timer("MilAdv - draw unit list")
+		self.timer.start()
 		iItem = 1
 		for group1 in grouping1.itergroups():
 			if (group1.isEmpty()):
@@ -1007,7 +1009,7 @@ class CvMilitaryAdvisor:
 						else:
 							iColor = gc.getInfoTypeForString("COLOR_WHITE")
 						screen.minimapFlashPlot(loopUnit.getX(), loopUnit.getY(), iColor, -1)
-		timer.log()
+		self.timer.log("draw unit list")
 
 	def refreshSelectedGroup(self, iSelected):
 		if (iSelected in self.selectedGroups):
