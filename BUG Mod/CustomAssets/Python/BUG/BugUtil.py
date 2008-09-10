@@ -188,11 +188,10 @@ class Timer:
 		return self
 	
 	def start(self):
-		"""Starts the timer if it isn't running already."""
-		if not self.running():
-			self._start = time.clock()
-			if self._initial is None:
-				self._initial = self._start
+		"""Starts the timer or starts it again if it is already running."""
+		self._start = time.clock()
+		if self._initial is None:
+			self._initial = self._start
 		return self
 	
 	def restart(self):
