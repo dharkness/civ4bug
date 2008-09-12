@@ -1989,7 +1989,7 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			if pUnit.isHasPromotion(i):
 				szName = self.PLE_PROMO_BUTTONS_UNITINFO + str(i)
-				self.displayUnitInfoPromoButtonPos( szName, iTemp, dy-1*self.CFG_INFOPANE_PIX_PER_LINE_1 )
+				self.displayUnitInfoPromoButtonPos( szName, iTemp, dy - self.CFG_INFOPANE_PIX_PER_LINE_1 + PleOpt.getInfoPanePromoIconOffsetY() )
 				screen.show( szName )
 				iTemp += 1
 							

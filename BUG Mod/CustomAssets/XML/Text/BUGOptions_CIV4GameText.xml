@@ -2458,6 +2458,22 @@
 		<Spanish>Specifies the vertical position of the Unit Info hover pane (default value is 160).</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE__INFO_PANE_PROMO_ICON_OFFSET_Y_TEXT</Tag>
+		<English>Promotion Icon Offset</English>
+		<French>Promotion Icon Offset</French>
+		<German>Promotion Icon Offset</German>
+		<Italian>Promotion Icon Offset</Italian>
+		<Spanish>Promotion Icon Offset</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE__INFO_PANE_PROMO_ICON_OFFSET_Y_HOVER</Tag>
+		<English>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</English>
+		<French>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</French>
+		<German>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</German>
+		<Italian>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</Italian>
+		<Spanish>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__UNIT_NAME_COLOR_TEXT</Tag>
 		<English>Unit Name</English>
 		<French>Unit Name</French>
