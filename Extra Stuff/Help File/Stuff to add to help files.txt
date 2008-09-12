@@ -1,6 +1,6 @@
 BUG Mod
 =======
-- Scoreboard: M
+- Scoreboard: M,V,spaces
 - PublicMaps (no documentation about them yet)
 - Victory Screen (no documentation about it yet)
 
