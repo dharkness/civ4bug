@@ -6039,6 +6039,10 @@ class CvMainInterface:
 					eTeam = gc.getGame().getRankTeam(i)
 
 					if (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam) or gc.getTeam(eTeam).isHuman() or gc.getGame().isDebugMode()):
+# BUG - Align Icons - start
+						if (bAlignIcons):
+							scores.addTeam(gc.getTeam(eTeam), i)
+# BUG - Align Icons - end
 						j = gc.getMAX_CIV_PLAYERS() - 1
 						while (j > -1):
 							ePlayer = gc.getGame().getRankPlayer(j)
@@ -6052,7 +6056,7 @@ class CvMainInterface:
 										szBuffer = u"<font=2>"
 # BUG - Align Icons - start
 										if (bAlignIcons):
-											scores.addPlayer(ePlayer)
+											scores.addPlayer(gc.getPlayer(ePlayer), j)
 											# BUG: Align Icons continues throughout -- if (bAlignIcons): scores.setFoo(foo)
 # BUG - Align Icons - end
 
@@ -6078,12 +6082,12 @@ class CvMainInterface:
 										if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):
 											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
 											if (bAlignIcons):
-												scores.setScore(szPlayerScore + u" ")
+												scores.setScore(szPlayerScore)
 										else:
 											iScore = gc.getGame().getPlayerScore(ePlayer)
 											szPlayerScore = u"%d" % iScore
 											if (bAlignIcons):
-												scores.setScore(szPlayerScore + u" ")
+												scores.setScore(szPlayerScore)
 # BUG - Score Delta - start
 											if (ScoreOpt.isShowScoreDelta()):
 												iGameTurn = gc.getGame().getGameTurn()
@@ -6122,7 +6126,7 @@ class CvMainInterface:
 										szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
 										szBuffer = szBuffer + szTempBuffer
 										if (bAlignIcons):
-											scores.setName(szPlayerName + u" ")
+											scores.setName(szPlayerName)
 										
 										if (gc.getPlayer(ePlayer).isAlive()):
 											if (bAlignIcons):

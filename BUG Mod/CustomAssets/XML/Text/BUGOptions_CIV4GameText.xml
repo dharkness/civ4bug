@@ -1881,6 +1881,22 @@
 		<Spanish>This determines the order in which the score columns appear.[NEWLINE]W - You are at war or have a peace treaty with the civ.[NEWLINE]S - The civ's score.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__GROUPVASSALS_TEXT</Tag>
+		<English>Group Vassals</English>
+		<French>Group Vassals</French>
+		<German>Group Vassals</German>
+		<Italian>Group Vassals</Italian>
+		<Spanish>Group Vassals</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__GROUPVASSALS_HOVER</Tag>
+		<English>When checked, vassals are group together under their master(s).</English>
+		<French>When checked, vassals are group together under their master(s).</French>
+		<German>When checked, vassals are group together under their master(s).</German>
+		<Italian>When checked, vassals are group together under their master(s).</Italian>
+		<Spanish>When checked, vassals are group together under their master(s).</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__LEFTALIGNNAME_TEXT</Tag>
 		<English>Left-Align Name</English>
 		<French>Nom Aligné à Gauche</French>

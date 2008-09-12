@@ -12,13 +12,15 @@
 
 from CvPythonExtensions import *
 import BugCore
+import BugUtil
 import DealUtil
+import PlayerUtil
 import CvUtil
 import re
 import string
 
 # Globals
-ScoresOpt = BugCore.game.Scores
+ScoreOpt = BugCore.game.Scores
 gc = CyGlobalContext()
 
 # Constants
@@ -30,13 +32,12 @@ Z_DEPTH = -0.3
 NUM_PARTS = 21
 (
 	ALIVE,
-	PLAYER,
+	WAR,
 	SCORE,
 	SCORE_DELTA,
+	MASTER,
 	NAME,
 	NOT_MET,
-	WHEOOH,
-	WAR,
 	POWER,
 	RESEARCH,
 	RESEARCH_TURNS,
@@ -47,6 +48,7 @@ NUM_PARTS = 21
 	RELIGION,
 	ATTITUDE,
 	WORST_ENEMY,
+	WHEOOH,
 	WAITING,
 	NET_STATS,
 	OOS
@@ -75,15 +77,14 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHLMNOPRSTUWZ*?
-	# FGIJKQVXY
+	# ABCDEHLMNOPRSTUVWZ*?
+	# FGIJKQXY
 	columns.append(Column('', ALIVE))
-	columns.append(Column('', PLAYER))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
+	columns.append(Column('V', MASTER, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.SILVER_STAR_CHAR)))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
-	columns.append(Column('M', WHEOOH, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
 	columns.append(Column('W', WAR, DYNAMIC))
 	columns.append(Column('P', POWER, DYNAMIC))
 	columns.append(Column('T', RESEARCH, SPECIAL))
@@ -95,6 +96,7 @@ def init():
 	columns.append(Column('R', RELIGION, DYNAMIC))
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
 	columns.append(Column('H', WORST_ENEMY, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.ANGRY_POP_CHAR)))
+	columns.append(Column('M', WHEOOH, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
 	columns.append(Column('*', WAITING, FIXED, u"<font=2>*</font>"))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
@@ -102,6 +104,10 @@ def init():
 	global WAR_ICON, PEACE_ICON
 	WAR_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
 	PEACE_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
+	
+	global VASSAL_PREFIX, VASSAL_POSTFIX
+	VASSAL_PREFIX = u" - "   # u" %c " % game.getSymbolID(FontSymbols.BULLET_CHAR)
+	VASSAL_POSTFIX = u" - "   # u" %c " % game.getSymbolID(FontSymbols.BULLET_CHAR)
 
 def onDealCanceled(argsList):
 	"""Sets the scoreboard dirty bit so it will redraw."""
@@ -143,38 +149,37 @@ class Scoreboard:
 	"""Holds and builds the ScoreCards."""
 	
 	def __init__(self):
-		self.activePlayer = gc.getGame().getActivePlayer()
-		self.has = []
-		self.values = []
-		self.widgets = []
-		self.hasAny = [ False ] * NUM_PARTS
-		self.currPlayer = -1
-		self.currHas = None
-		self.currValues = None
-		self.currWidgets = None
-		self.count = 0
-		self.deals = DealUtil.findDealsByPlayerAndType(self.activePlayer, TRADE_TYPES)
+		self._activePlayer = gc.getGame().getActivePlayer()
+		self._teamScores = []
+		self._playerScores = []
+		self._teamScoresByID = {}
+		self._anyHas = [ False ] * NUM_PARTS
+		self._currTeamScores = None
+		self._currPlayerScore = None
+		self._deals = DealUtil.findDealsByPlayerAndType(self._activePlayer, TRADE_TYPES)
 		
-	def addPlayer(self, player):
-		self.currPlayer = player
-		self.currHas = [ False ] * NUM_PARTS
-		self.currValues = [ None ] * NUM_PARTS
-		self.currWidgets = [ None ] * NUM_PARTS
-		self.has.append(self.currHas)
-		self.values.append(self.currValues)
-		self.widgets.append(self.currWidgets)
-		self.count += 1
-		self.setPlayer(player)
+	def addTeam(self, team, rank):
+		self._currTeamScores = TeamScores(self, team, rank)
+		self._teamScores.append(self._currTeamScores)
+		self._teamScoresByID[team.getID()] = self._currTeamScores
+		self._currPlayerScore = None
+		
+	def getTeamScores(self, eTeam):
+		return self._teamScoresByID.get(eTeam, None)
+		
+	def addPlayer(self, player, rank):
+		self._currPlayerScore = self._currTeamScores.addPlayer(player, rank)
+		self._playerScores.append(self._currPlayerScore)
 		
 	def size(self):
-		return self.count
+		return len(self._playerScores)
 		
 		
 	def setAlive(self):
 		self._set(ALIVE)
 		
-	def setPlayer(self, value):
-		self._set(PLAYER, value)
+	def setMaster(self):
+		self._set(MASTER)
 		
 	def setScore(self, value):
 		self._set(SCORE, u"<font=2>%s</font>" % value)
@@ -201,7 +206,7 @@ class Scoreboard:
 		self._set(POWER, u"<font=2>%s</font>" % value)
 		
 	def setResearch(self, tech, turns):
-		if (ScoresOpt.isShowResearchIcons()):
+		if (ScoreOpt.isShowResearchIcons()):
 			self._set(RESEARCH, tech)
 		else:
 			self._set(RESEARCH, u"<font=2>%s</font>" % gc.getTechInfo(tech).getDescription())
@@ -241,7 +246,7 @@ class Scoreboard:
 		
 	def _getDealWidget(self, type):
 		# lookup the Deal containing the given tradeable item type
-		deals = self.deals.get(self.currPlayer, None)
+		deals = self._deals.get(self._currPlayerScore.getID(), None)
 		if deals:
 			deal = deals.get(type, None)
 			if deal:
@@ -249,24 +254,36 @@ class Scoreboard:
 		return (WidgetTypes.WIDGET_DEAL_KILL, -1, -1)
 		
 	def _set(self, part, value=True, widget=None):
-		self.hasAny[part] = True
-		self.currHas[part] = True
-		self.currValues[part] = value
-		self.currWidgets[part] = widget
+		self._anyHas[part] = True
+		self._currPlayerScore.set(part, value, widget)
 		
+		
+	def gatherVassals(self):
+		for teamScores in self._teamScores:
+			teamScores.gatherVassals()
+		
+	def sort(self):
+		"""Sorts the list by pulling any vassals up below their masters."""
+		if ScoreOpt.isGroupVassals():
+			self._playerScores.sort(lambda x, y: cmp(x.sortKey(), y.sortKey()))
+			self._playerScores.reverse()
 		
 	def hide(self, screen):
 		"""Hides the text from the screen before building the scoreboard."""
 		screen.hide( "ScoreBackground" )
-		for p in range( gc.getMAX_PLAYERS() ):
+		for p in range( gc.getMAX_CIV_PLAYERS() ):
 			name = "ScoreText%d" %( p ) # the part that flashes? holds the score and name
 			screen.hide( name )
-			for c in range( NOT_MET, NUM_PARTS ):
+			for c in range( NUM_PARTS ):
 				name = "ScoreText%d-%d" %( p, c )
 				screen.hide( name )
 		
 	def draw(self, screen):
-		"""Draws the scoreboard right-to-left, bottom-to-top."""
+		"""Sorts and draws the scoreboard right-to-left, bottom-to-top."""
+		timer = BugUtil.Timer("scores")
+		self.hide(screen)
+		self.gatherVassals()
+		self.sort()
 		interface = CyInterface()
 		xResolution = screen.getXResolution()
 		yResolution = screen.getYResolution()
@@ -277,17 +294,20 @@ class Scoreboard:
 		else:
 			y = yResolution - 88
 		totalWidth = 0
-		if (ScoresOpt.isShowResearchIcons()):
+		if (ScoreOpt.isShowResearchIcons()):
 			height = ROW_HEIGHT
 		else:
 			height = ROW_HEIGHT
 		
-		defaultSpacing = ScoresOpt.getDefaultSpacing()
+		defaultSpacing = ScoreOpt.getDefaultSpacing()
 		spacing = defaultSpacing
-		format = re.findall('([0-9]+|[^0-9])', ScoresOpt.getDisplayOrder().replace(' ', '').upper())
+		format = re.findall('(-?[0-9]+|[^0-9])', ScoreOpt.getDisplayOrder().replace(' ', '').upper())
 		format.reverse()
 		for k in format:
-			if k[0] in string.digits:
+			if k == '-':
+				spacing = 0
+				continue
+			if k[0] in string.digits or k[0] == '-':
 				spacing = int(k)
 				continue
 			if (not columnsByKey.has_key(k)):
@@ -295,11 +315,11 @@ class Scoreboard:
 				continue
 			column = columnsByKey[k]
 			c = column.id
-			if (not self.hasAny[c]):
+			if (not self._anyHas[c]):
 				spacing = defaultSpacing
 				continue
 			type = column.type
-			if (c == RESEARCH and not ScoresOpt.isShowResearchIcons()):
+			if (c == RESEARCH and not ScoreOpt.isShowResearchIcons()):
 				# switch SPECIAL research icon to DYNAMIC name
 				type = DYNAMIC
 			
@@ -311,13 +331,13 @@ class Scoreboard:
 				width = column.width
 				value = column.text
 				x -= spacing
-				for p in range( self.count ):
-					if (self.has[p][c] and self.values[p][c]):
+				for p, playerScore in enumerate(self._playerScores):
+					if (playerScore.has(c) and playerScore.value(c)):
 						name = "ScoreText%d-%d" %( p, c )
-						widget = self.widgets[p][c]
+						widget = playerScore.widget(c)
 						if widget is None:
-							if (self.values[p][ALIVE]):
-								widget = (WidgetTypes.WIDGET_CONTACT_CIV, self.values[p][PLAYER], -1)
+							if (playerScore.value(ALIVE)):
+								widget = (WidgetTypes.WIDGET_CONTACT_CIV, playerScore.getID(), -1)
 							else:
 								widget = (WidgetTypes.WIDGET_GENERAL, -1, -1)
 						screen.setText( name, "Background", value, CvUtil.FONT_RIGHT_JUSTIFY, 
@@ -330,9 +350,14 @@ class Scoreboard:
 			
 			elif (type == DYNAMIC):
 				width = 0
-				for p in range( self.count ):
-					if (self.has[p][c]):
-						value = self.values[p][c]
+				for playerScore in self._playerScores:
+					if (playerScore.has(c)):
+						value = playerScore.value(c)
+						if (c == NAME and playerScore.isVassal() and ScoreOpt.isGroupVassals()):
+							if (ScoreOpt.isLeftAlignName()):
+								value = VASSAL_PREFIX + value
+							else:
+								value += VASSAL_POSTFIX
 						newWidth = interface.determineWidth( value )
 						if (newWidth > width):
 							width = newWidth
@@ -340,22 +365,26 @@ class Scoreboard:
 					spacing = defaultSpacing
 					continue
 				x -= spacing
-				for p in range( self.count ):
-					if (self.has[p][c]):
+				for p, playerScore in enumerate(self._playerScores):
+					if (playerScore.has(c)):
 						name = "ScoreText%d-%d" %( p, c )
-						value = self.values[p][c]
+						value = playerScore.value(c)
+						if (c == NAME and playerScore.isVassal() and ScoreOpt.isGroupVassals()):
+							if (ScoreOpt.isLeftAlignName()):
+								value = VASSAL_PREFIX + value
+							else:
+								value += VASSAL_POSTFIX
 						align = CvUtil.FONT_RIGHT_JUSTIFY
 						adjustX = 0
-						if (c == NAME or c == SCORE):
-							if (c == NAME):
-								name = "ScoreText%d" % p
-								if (ScoresOpt.isLeftAlignName()):
-									align = CvUtil.FONT_LEFT_JUSTIFY
-									adjustX = width
-						widget = self.widgets[p][c]
+						if (c == NAME):
+							name = "ScoreText%d" % p
+							if (ScoreOpt.isLeftAlignName()):
+								align = CvUtil.FONT_LEFT_JUSTIFY
+								adjustX = width
+						widget = playerScore.widget(c)
 						if widget is None:
-							if (self.values[p][ALIVE]):
-								widget = (WidgetTypes.WIDGET_CONTACT_CIV, self.values[p][PLAYER], -1)
+							if (playerScore.value(ALIVE)):
+								widget = (WidgetTypes.WIDGET_CONTACT_CIV, playerScore.getID(), -1)
 							else:
 								widget = (WidgetTypes.WIDGET_GENERAL, -1, -1)
 						screen.setText( name, "Background", value, align, 
@@ -369,9 +398,9 @@ class Scoreboard:
 			else: # SPECIAL
 				if (c == RESEARCH):
 					x -= spacing
-					for p in range( self.count ):
-						if (self.has[p][c]):
-							tech = self.values[p][c]
+					for p, playerScore in enumerate(self._playerScores):
+						if (playerScore.has(c)):
+							tech = playerScore.value(c)
 							name = "ScoreTech%d" % p
 							info = gc.getTechInfo(tech)
 							screen.addDDSGFC( name, info.getButton(), x - ICON_SIZE, y - p * height - 1, ICON_SIZE, ICON_SIZE, 
@@ -380,13 +409,99 @@ class Scoreboard:
 					totalWidth += ICON_SIZE + spacing
 					spacing = defaultSpacing
 		
-		for p in range( self.count ):
-			interface.checkFlashReset( self.values[p][PLAYER] )
+		for playerScore in self._playerScores:
+			interface.checkFlashReset( playerScore.getID() )
 		
 		if ( interface.getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or interface.isInAdvancedStart()):
 			y = yResolution - 186
 		else:
 			y = yResolution - 68
-		screen.setPanelSize( "ScoreBackground", xResolution - 21 - totalWidth, y - (height * self.count) - 4, 
-							 totalWidth + 12, (height * self.count) + 8 )
+		screen.setPanelSize( "ScoreBackground", xResolution - 21 - totalWidth, y - (height * self.size()) - 4, 
+							 totalWidth + 12, (height * self.size()) + 8 )
 		screen.show( "ScoreBackground" )
+		timer.log()
+
+
+class TeamScores:
+	def __init__(self, scoreboard, team, rank):
+		self._scoreboard = scoreboard
+		self._team = team
+		self._rank = rank
+		self._playerScores = []
+		self._isVassal = team.isAVassal()
+		self._master = None
+		self._vassalTeamScores = []
+		
+	def team(self):
+		return self._team
+		
+	def rank(self):
+		if self.isVassal():
+			return self._master.rank()
+		else:
+			return self._rank
+		
+	def isVassal(self):
+		return self._isVassal
+	
+	def addPlayer(self, player, rank):
+		playerScore = PlayerScore(self, player, rank)
+		self._playerScores.append(playerScore)
+		return playerScore
+	
+	def addVassal(self, teamScore):
+		self._vassalTeamScores.append(teamScore)
+		
+	def gatherVassals(self):
+		if self._team.isAVassal():
+			for eTeam in range( gc.getMAX_TEAMS() ):
+				teamScores = self._scoreboard.getTeamScores(eTeam)
+				if teamScores and self._team.isVassal(eTeam):
+					teamScores.addVassal(self)
+					self._master = teamScores
+					for playerScore in teamScores._playerScores:
+						playerScore.set(MASTER)
+					self._scoreboard._anyHas[MASTER] = True
+
+
+class PlayerScore:
+	def __init__(self, teamScore, player, rank):
+		self._teamScore = teamScore
+		self._isVassal = teamScore.isVassal()
+		self._player = player
+		self._rank = rank
+		self._has = [False] * NUM_PARTS
+		self._values = [None] * NUM_PARTS
+		self._widgets = [None] * NUM_PARTS
+		self._sortKey = None
+		
+	def player(self):
+		return self._player
+		
+	def rank(self):
+		return self._rank
+		
+	def isVassal(self):
+		return self._isVassal
+	
+	def getID(self):
+		return self._player.getID()
+		
+	def sortKey(self):
+		if self._sortKey is None:
+				self._sortKey = (self._teamScore.rank(), self._isVassal, self._rank)
+		return self._sortKey
+		
+	def set(self, part, value=True, widget=None):
+		self._has[part] = True
+		self._values[part] = value
+		self._widgets[part] = widget
+		
+	def has(self, part):
+		return self._has[part]
+		
+	def value(self, part):
+		return self._values[part]
+		
+	def widget(self, part):
+		return self._widgets[part]

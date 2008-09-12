@@ -43,8 +43,9 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addLabel(screen, right, "Scores_Grid", "Advanced Layout:")
 		self.addCheckbox(screen, right, "Scores__AlignIcons")
-		self.addIntDropdown(screen, right, right, "Scores__DefaultSpacing", True)
+		self.addCheckbox(screen, right, "Scores__GroupVassals")
 		self.addCheckbox(screen, right, "Scores__LeftAlignName")
 		self.addCheckbox(screen, right, "Scores__ResearchIcons")
+		self.addIntDropdown(screen, right, right, "Scores__DefaultSpacing", True)
 		self.addLabel(screen, right, "Scores_Order", "Column Order:")
 		self.addTextEdit(screen, None, right, "Scores__DisplayOrder")
