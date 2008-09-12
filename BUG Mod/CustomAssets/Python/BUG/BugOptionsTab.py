@@ -234,7 +234,7 @@ class BugOptionsTab:
 			
 			# create textedit
 			control = name + "Edit"
-			value = option.getRealValue()
+			value = str(option.getValue())
 			screen.attachEdit(controlPanel, control, value, self.callbackIFace, "handleBugTextEditChange", name)
 			screen.setToolTip(control, option.getTooltip())
 			screen.setLayoutFlag(control, "LAYOUT_SIZE_HPREFERREDEXPANDING")
