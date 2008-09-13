@@ -32,6 +32,9 @@ il nome della Civiltà o entrambi.</P>
 <P CLASS="style2">Icone del Peggior Nemico</P>
 <P>Abilita/disabilita la visualizzazione nel Pannello del Punteggio delle Icone del Peggior Nemico 
 per quelle Civiltà che considerano tale il giocatore.</P>
+<P CLASS="style2">Icone di Mobilitazione</P>
+<P>Abilita/disabilita la visualizzazione nel Pannello del Punteggio delle Icone di Mobilitazione 
+per quelle Civiltà che si stanno mobilitando per la guerra.</P>
 <br>
 <P CLASS="style2">Civiltà Scomparse: Mostra</P>
 <P>Abilita/disabilita la visualizzazione delle Civiltà scomparse (quelle che hanno lasciato il gioco per una qualunque ragione).<P>
@@ -60,6 +63,12 @@ consente di selezionare se deve essere visualizzato il rapporto fra il giocatore
 
 <P CLASS="style2">Layout avanzato: Attivato</P>
 <P>Attiva/disattiva il layout avanzato del Pannello del Punteggio.<P>
+<P CLASS="style2">Layout avanzato: Raggruppa Vassalli</P>
+<P>Attiva/disattiva il raggruppamento delle Civiltà Vassalle al di sotto delle Civiltà di cui sono Vassalli.<P>
+<P CLASS="style2">Layout avanzato: Nome a sinistra</P>
+<P>Attiva/disattiva l'allineamento del nome della Civiltà e/o del Leader a sinistra anzichè a destra.<P>
+<P CLASS="style2">Layout avanzato: Icone di Ricerca</P>
+<P>Attiva/disattiva la visualizzazione delle icone per le Tecnologie invece del loro nome.<P>
 <P CLASS="style2">Layout avanzato: Spaziatura</P>
 <P>Consente di selezionare il numero di pixel della spaziatura predefinita; è possibile impostare spaziature differenti 
 per le singole colonne facendone seguire il codice letterale dal numero di pixel della spaziatura desiderata.<P>
@@ -67,19 +76,18 @@ per le singole colonne facendone seguire il codice letterale dal numero di pixel
 <P>Consente di impostare quali colonne visualizzare nel Pannello del Punteggio ed il loro ordine.<br>
 I codici che è possibile utilizzare in questa casella sono i seguenti 
 (si noti che le ultime 3 colonne sono visibili solo per gli avversari in una partita in multiplayer, 
-le prime 4 sono visibili anche per la vostra Civiltà, mentre le altre 11 sono visibili solo per gli avversari):<P>
+le prime 5 sono visibili anche per la vostra Civiltà, mentre le altre sono visibili solo per gli avversari):<P>
 <UL>
 	<LI><SPAN style="color: #0000ff;">S</SPAN> mostra il punteggio della Civiltà
 	<LI><SPAN style="color: #0000ff;">Z</SPAN> mostra la variazione nel punteggio della Civiltà rispetto al turno precedente 
-		(se è selezionata la casella di scelta opzionale <i>'Variazione punteggio'</i> ed  
-		in base a quanto impostato nella casella di scelta opzionale <i>'Includere turno corrente'</i>) 
+		(se è selezionata la casella di spunta  <i>'Variazione punteggio'</i> ed  
+		in base a quanto impostato nella casella di spunta <i>'Includere turno corrente'</i>) 
+	<LI><SPAN style="color: #0000ff;">V</SPAN> mostra un’icona con una stella argentata per le Civiltà che hanno almeno un Vassallo 
 	<LI><SPAN style="color: #0000ff;">C</SPAN> mostra il nome della Civiltà e/o del Leader 
 		(in base a quanto impostato nella casella di scelta opzionale <i>'Identifica con nome'</i>, 
 		ed allineato in base alla selezione della casella di spunta <i>'Nome a sinistra'</i>)
 	<LI><SPAN style="color: #0000ff;">R</SPAN> mostra la religione di stato della Civiltà
 	<LI><SPAN style="color: #0000ff;">?</SPAN> mostra un punto interrogativo se non avete ancora incontrato la Civiltà 
-	<LI><SPAN style="color: #0000ff;">W</SPAN> mostra un’icona con le spade incrociate se siete in Guerra con la Civiltà, o 
-		un'icona con il simbolo della pace se avete siglato un Trattato di Pace con la Civiltà
 	<LI><SPAN style="color: #0000ff;">E</SPAN> mostra l’icona della spia se avete un rapporto di punti-spionaggio positivo 
 		nei confronti della Civiltà
 	<LI><SPAN style="color: #0000ff;">P</SPAN> mostra il vostro rapporto di forza con la Civiltà, 
@@ -87,6 +95,8 @@ le prime 4 sono visibili anche per la vostra Civiltà, mentre le altre 11 sono vi
 		più alto è il numero, più forti siete rispetto a tale Civiltà.
 	<LI><SPAN style="color: #0000ff;">T</SPAN> mostra la tecnologia che la Civiltà sta ricercando, quando vi è nota
 		(sotto forma di icona o di nome a seconda che la casella di spunta <i>'Icone di ricerca'</i> sia o meno selezionata)
+	<LI><SPAN style="color: #0000ff;">W</SPAN> mostra un’icona con le spade incrociate se siete in Guerra con la Civiltà, o 
+		un'icona con il simbolo della pace se avete siglato un Trattato di Pace con la Civiltà
 	<LI><SPAN style="color: #0000ff;">U</SPAN> mostra il numero di turni di ricerca rimasti, quando vi sono noti
 		(per via del suo vassallaggio nei vostri confronti, della sua alleanza con voi o del vostro spionaggio)
 	<LI><SPAN style="color: #0000ff;">N</SPAN> mostra l’icona col triangolo di frecce 
@@ -99,17 +109,16 @@ le prime 4 sono visibili anche per la vostra Civiltà, mentre le altre 11 sono vi
 		(se la casella di spunta <i>'Icone di atteggiamento'</i> è attivata)
 	<LI><SPAN style="color: #0000ff;">H</SPAN> mostra l’icona di una persona adirata se siete il Peggior Nemico della Civiltà 
 		(se la casella di spunta <i>'Icona del Peggior Nemico'</i> è attivata)
-	<LI><SPAN style="color: #0000ff;">*</SPAN> mostra un asteriscvo quando siete in attesa che questa Civiltà completi il suo turno
+	<LI><SPAN style="color: #0000ff;">M</SPAN> mostra l’icona di un pugno se la Civiltà si sta mobilitando per la guerra 
+		(se la casella di spunta <i>'Icone di Mobilitazione'</i> è attivata)
+	<LI><SPAN style="color: #0000ff;">*</SPAN> mostra un asterisco quando siete in attesa che questa Civiltà completi il suo turno
 	<LI><SPAN style="color: #0000ff;">L</SPAN> mostra il valore di ping del giocatore che guida la Civiltà
 	<LI><SPAN style="color: #0000ff;">O</SPAN> il giocatore che guida la Civiltà è “out-of-sync”
 	<LI><SPAN style="color: #0000ff;">numero</SPAN> indica il numero di pixel che deve essere utilizzato per la spaziatura dopo la colonna precedente 
-		(il valore predefinito per la spaziatura viene ignorato per le colonne che hanno assegnato un valore specifico mediante il codice numerico) 
+		(il valore predefinito per la spaziatura viene ignorato per le colonne che hanno assegnato un valore specifico mediante il codice numerico);
+		un numero negativo comporta un avvicinamento (o al limite una sovrapposizione) delle due colonne 
 	<LI><SPAN style="color: #0000ff;">spazi</SPAN> gli spazi vengono ignorati 
 		(ciò consente di utilizzarli per trendere più leggibile la serie di codici)
 </UL>
-<P CLASS="style2">Layout avanzato: Nome a sinistra</P>
-<P>Attiva/disattiva l'allineamento del nome della Civiltà e/o del Leader a sinistra anzichè a destra.<P>
-<P CLASS="style2">Layout avanzato: Icone di Ricerca</P>
-<P>Attiva/disattiva la visualizzazione delle icone per le Tecnologie invece del loro nome.<P>
 </BODY>
 </HTML>
