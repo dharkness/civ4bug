@@ -190,9 +190,9 @@ class BugOptionsTab:
 			return label
 		return None
 
-	def addSpacer (self, screen, panel, name):
+	def addSpacer (self, screen, panel, name, size=1):
 		spacer = name + "_Spacer"
-		screen.attachLabel(panel, spacer, " ")
+		screen.attachLabel(panel, spacer, " " * size)
 		screen.setControlFlag(spacer, "CF_LABEL_DEFAULTSIZE")
 	
 	def addButton (self, screen, panel, name, callback, title=None, tooltip=None):
