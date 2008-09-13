@@ -54,7 +54,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		#self.addCheckbox(screen, right, "PLE__Info_Pane")  # EF: Can't get it to work
 		#self.addTextEdit(screen, right, right, "PLE__Info_Pane_X")
 		#self.addTextEdit(screen, right, right, "PLE__Info_Pane_Y")
-		self.addIntDropdown(screen, right, right, "PLE__Info_Pane_Promo_Icon_Offset_Y")
+		#self.addIntDropdown(screen, right, right, "PLE__Info_Pane_Promo_Icon_Offset_Y")
 		self.addColorDropdown(screen, right, right, "PLE__Unit_Name_Color")
 		
 		self.addLabel(screen, right, "PLE_Upgrade_Cost")
