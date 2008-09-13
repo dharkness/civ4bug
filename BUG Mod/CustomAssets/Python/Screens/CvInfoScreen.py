@@ -424,16 +424,34 @@ class CvInfoScreen:
 		self.TEXT_BUILT = localText.getText("TXT_KEY_INFO_SCREEN_BUILT", ())
 
 #BUG: Change Graphs - start
-		self.SELECT_ALL_NONE = u"<font=2>" + localText.getText("SELECT_ALL_NONE", ()) + u"</font>"
+		self.SHOW_ALL = u"<font=2>" + localText.getText("SHOW_ALL", ()) + u"</font>"
+		self.SHOW_NONE = u"<font=2>" + localText.getText("SHOW_NONE", ()) + u"</font>"
 
-		self.sGraphText = [""] * 7
-		self.sGraphText[0] = self.TEXT_SCORE
-		self.sGraphText[1] = self.TEXT_ECONOMY
-		self.sGraphText[2] = self.TEXT_INDUSTRY
-		self.sGraphText[3] = self.TEXT_AGRICULTURE
-		self.sGraphText[4] = self.TEXT_POWER
-		self.sGraphText[5] = self.TEXT_CULTURE
-		self.sGraphText[6] = self.TEXT_ESPIONAGE
+		sTemp1 = [""] * self.NUM_SCORES
+		sTemp2 = [""] * self.NUM_SCORES
+
+		sTemp1[0] = localText.getText("TXT_KEY_GAME_SCORE", ())
+		sTemp1[1] = localText.getText("TXT_KEY_DEMO_SCREEN_ECONOMY_TEXT", ())
+		sTemp1[2] = localText.getText("TXT_KEY_DEMO_SCREEN_INDUSTRY_TEXT", ())
+		sTemp1[3] = localText.getText("TXT_KEY_DEMO_SCREEN_AGRICULTURE_TEXT", ())
+		sTemp1[4] = localText.getText("TXT_KEY_POWER", ())
+		sTemp1[5] = localText.getObjectText("TXT_KEY_COMMERCE_CULTURE", 0)
+		sTemp1[6] = localText.getObjectText("TXT_KEY_ESPIONAGE_CULTURE", 0)
+
+		sTemp2[0] = localText.getColorText("TXT_KEY_GAME_SCORE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[1] = localText.getColorText("TXT_KEY_DEMO_SCREEN_ECONOMY_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[2] = localText.getColorText("TXT_KEY_DEMO_SCREEN_INDUSTRY_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[3] = localText.getColorText("TXT_KEY_DEMO_SCREEN_AGRICULTURE_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[4] = localText.getColorText("TXT_KEY_POWER", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[5] = localText.getColorText("TXT_KEY_COMMERCE_CULTURE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		sTemp2[6] = localText.getColorText("TXT_KEY_ESPIONAGE_CULTURE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+
+		self.sGraphText = []
+		self.sGraphText.append(sTemp1)
+		self.sGraphText.append(sTemp2)
+
+		iW_GRAPH = self.W_SCREEN - 2 * self.X_MARGIN
+		self.X_GRAPH_TEXT = iW_GRAPH / (2 * self.NUM_SCORES)
 #BUG: Change Graphs - end
 
 	def reset(self):
@@ -661,6 +679,7 @@ class CvInfoScreen:
 #BUG: Change Graphs - start
 		if self.iGraphTabID == -1:
 			self.iGraphTabID = self.TOTAL_SCORE
+			self.bPlayerInclude = [True] * gc.getMAX_CIV_PLAYERS()
 #BUG: Change Graphs - end
 
 		self.drawPermanentGraphWidgets()
@@ -687,8 +706,8 @@ class CvInfoScreen:
 		for i in range(gc.getMAX_CIV_PLAYERS()):
 			self.sPlayerTextWidget[i] = self.getNextWidgetName()
 
-		self.sSelectAllNoneWidget = self.getNextWidgetName()
-		self.bPlayerInclude = [True] * gc.getMAX_CIV_PLAYERS()
+		self.sShowAllWidget = self.getNextWidgetName()
+		self.sShowNoneWidget = self.getNextWidgetName()
 
 		if not AdvisorOpt.isGraphs():
 			self.drawLegend()
@@ -877,16 +896,18 @@ class CvInfoScreen:
 				self.drawGraph(self.iGraphTabID)
 				self.drawLegend()
 
-				iX = self.X_MARGIN
+				iX = self.X_MARGIN + self.X_GRAPH_TEXT
 				iY = self.Y_MARGIN - 30
 				for i in range(7):
 					if BugUtil.isNoEspionage() and i == 7:
 						continue
 
 					screen.hide(self.sGraphText2Widget[i])
-					if i != self.iGraphTabID:
-						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[i], CvUtil.FONT_LEFT_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-						iX += 180
+					if i == self.iGraphTabID:
+						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[1][i], CvUtil.FONT_CENTER_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+					else:
+						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[0][i], CvUtil.FONT_CENTER_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+					iX += 2 * self.X_GRAPH_TEXT
 			else:
 				for i in range(7):
 					if BugUtil.isNoEspionage() and i == 7:
@@ -1049,7 +1070,7 @@ class CvInfoScreen:
 				iY_GRAPH_TITLE = iY_GRAPH + 5
 
 			screen.addPanel(self.sGraphPanelWidget[vGraphID], "", "", true, true, iX_GRAPH + 5, iY_GRAPH_TITLE, self.W_LEGEND, 25, PanelStyles.PANEL_STYLE_IN)
-			zsText = self.sGraphText[vGraphID]   #u"<font=3>" + localText.getColorText("TXT_KEY_INFO_GRAPH", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + u"</font>"
+			zsText = self.sGraphText[0][vGraphID]   #u"<font=3>" + localText.getColorText("TXT_KEY_INFO_GRAPH", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + u"</font>"
 			screen.setText(self.sGraphText1Widget[vGraphID], "", zsText, CvUtil.FONT_LEFT_JUSTIFY, iX_GRAPH + 10, iY_GRAPH_TITLE, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #BUG: Change Graphs - start
 
@@ -1066,7 +1087,7 @@ class CvInfoScreen:
 			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + self.iNumPlayersMet * self.H_LEGEND_TEXT + 3
 			self.Y_LEGEND = self.Y_GRAPH + self.H_GRAPH - self.H_LEGEND
 		else:
-			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + (self.iNumPlayersMet + 2) * self.H_LEGEND_TEXT + 3
+			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + (self.iNumPlayersMet + 3) * self.H_LEGEND_TEXT + 3
 
 			if self.BIG_GRAPH:
 				self.X_LEGEND = self.X_MARGIN + 5
@@ -1125,7 +1146,10 @@ class CvInfoScreen:
 #BUG: Change Graphs - start
 		if AdvisorOpt.isGraphs():
 			yText += self.H_LEGEND_TEXT
-			screen.setText(self.sSelectAllNoneWidget, "", self.SELECT_ALL_NONE, CvUtil.FONT_LEFT_JUSTIFY,
+			screen.setText(self.sShowAllWidget, "", self.SHOW_ALL, CvUtil.FONT_LEFT_JUSTIFY,
+						   self.X_LEGEND + self.X_LEGEND_TEXT - 30, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			yText += self.H_LEGEND_TEXT
+			screen.setText(self.sShowNoneWidget, "", self.SHOW_NONE, CvUtil.FONT_LEFT_JUSTIFY,
 						   self.X_LEGEND + self.X_LEGEND_TEXT - 30, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #BUG: Change Graphs - end
 
@@ -2492,6 +2516,9 @@ class CvInfoScreen:
 						break
 
 					if szWidgetName == self.sGraphText2Widget[i]:
+						if self.iGraphTabID == i:
+							self.BIG_GRAPH = False
+
 						self.iGraphTabID = i
 						self.drawGraphs()
 						break
@@ -2502,10 +2529,14 @@ class CvInfoScreen:
 						self.drawGraphs()
 						break
 
-				if szWidgetName == self.sSelectAllNoneWidget:
-					bFirstPlayer = not self.bPlayerInclude[0]
+				if szWidgetName == self.sShowAllWidget:
 					for i in range(gc.getMAX_CIV_PLAYERS()):
-						self.bPlayerInclude[i] = bFirstPlayer
+						self.bPlayerInclude[i] = True
+					self.drawGraphs()
+
+				if szWidgetName == self.sShowNoneWidget:
+					for i in range(gc.getMAX_CIV_PLAYERS()):
+						self.bPlayerInclude[i] = False
 					self.drawGraphs()
 #BUG: Change Graphs - start
 

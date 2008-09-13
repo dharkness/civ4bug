@@ -651,15 +651,23 @@
 		<Spanish>Info.</Spanish>
 	</TEXT>
 	
-	<!-- Graph Screen -->
+	<!-- graph Screen -->
 	
 	<TEXT>
-		<Tag>SELECT_ALL_NONE</Tag>
-		<English>Select All / None</English>
-		<French>Select All / None</French>
-		<German>Select All / None</German>
-		<Italian>Seleziona Tutti / Nessuno</Italian>
-		<Spanish>Select All / None</Spanish>
+		<Tag>SHOW_ALL</Tag>
+		<English>Show All</English>
+		<French>Show All</French>
+		<German>Show All</German>
+		<Italian>Show All</Italian>
+		<Spanish>Show All</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>SHOW_NONE</Tag>
+		<English>Show None</English>
+		<French>Show None</French>
+		<German>Show None</German>
+		<Italian>Show None</Italian>
+		<Spanish>Show None</Spanish>
 	</TEXT>
 
 	<!-- Victory Screen -->
