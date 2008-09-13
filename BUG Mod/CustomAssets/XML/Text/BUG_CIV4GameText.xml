@@ -651,8 +651,19 @@
 		<Spanish>Info.</Spanish>
 	</TEXT>
 	
-	<!-- Victory Screen -->
+	<!-- graph Screen -->
 	
+	<TEXT>
+		<Tag>SELECT_ALL_NONE</Tag>
+		<English>Select All / None</English>
+		<French>Select All / None</French>
+		<German>Select All / None</German>
+		<Italian>Select All / None</Italian>
+		<Spanish>Select All / None</Spanish>
+	</TEXT>
+
+	<!-- Victory Screen -->
+
 	<TEXT>
 		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
 		<English>Non Member</English>
