@@ -1,8 +1,10 @@
 BUG Mod
 =======
-- Scoreboard: M,V,spaces
+- update Scoreboard readme (all languages)
+- update MA readme (all languages)
 - PublicMaps (no documentation about them yet)
-- Victory Screen (no documentation about it yet)
+- Enhanced Victory Screen readme (no documentation about it yet)
+- Better Info Screen readme (no documentation about it yet)
 
 BAT Mod
 =======
