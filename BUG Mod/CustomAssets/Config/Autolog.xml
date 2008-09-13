@@ -18,12 +18,12 @@
 			<option id="LoggingOn" type="boolean" default="False"/>
 			
 			<option id="Enabled" key="Enabled" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isEnabled" set="setEnabled" 
 					label="Enable Logging" 
 					help="When checked, various game events are logged to a text file using eotinb's AutoLog mod."/>
 			<option id="Silent" key="Silent" 
-					type="boolean" default="True" 
+					type="boolean" default="False" 
 					get="isSilent" set="setSilent" 
 					label="Start Automatically" 
 					help="When checked, the logger is automatically started with no in-game message."/>

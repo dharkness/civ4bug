@@ -33,7 +33,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		left, center, right = self.addThreeColumnLayout(screen, column, "Civ4lerts", True)
 		
 		# Cities
-		self.addLabel(screen, left, "Civ4lerts_City", "Cities:")
+		self.addLabel(screen, left, "Alerts_City", "Cities:")
 		comboBox = "Civ4lerts_ComboBoxGrowth"
 		screen.attachHBox(left, comboBox)
 		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingGrowth")
@@ -52,20 +52,20 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryGold")
 		
 		# Diplomacy
-		self.addLabel(screen, center, "Civ4lerts_Diplomacy", "Diplomacy:")
+		self.addLabel(screen, center, "Alerts_Diplomacy", "Diplomacy:")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__OpenBordersTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__DefensivePactTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__PermanentAllianceTrade")
 		
 		# Trades
-		self.addLabel(screen, right, "Civ4lerts_Trade", "Trading:")
+		self.addLabel(screen, right, "Alerts_Trade", "Trading:")
 		self.addCheckbox(screen, right, "MoreCiv4lerts__TechTrade")
 		
 		self.addCheckboxIntDropdown(screen, right, right, "Civ4lerts__GoldTrade", "Civ4lerts__GoldTradeThresh")
 		self.addCheckboxIntDropdown(screen, right, right, "Civ4lerts__GoldPerTurnTrade", "Civ4lerts__GoldPerTurnTradeThresh")
 		
 		# Victories
-		self.addLabel(screen, right, "Civ4lerts_Victory", "Victory:")
+		self.addLabel(screen, right, "Alerts_Victory", "Victory:")
 		
 		self.addCheckboxFloatDropdown(screen, right, right, "MoreCiv4lerts__DomPop", "MoreCiv4lerts__DomPopThresh")
 		self.addCheckboxFloatDropdown(screen, right, right, "MoreCiv4lerts__DomLand", "MoreCiv4lerts__DomLandThresh")

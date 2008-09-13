@@ -26,12 +26,12 @@
 			
 			<!-- City -->
 			<option id="CityPendingGrowth" key="City Pending Growth" 
-					type="boolean" default="False" and="Enabled" 
+					type="boolean" default="True" and="Enabled" 
 					get="isShowCityPendingGrowthAlert" set="setShowCityPendingGrowthAlert" 
 					label="Pending" 
 					help="When checked, displays an alert when a city's population will grow or shrink next turn."/>
 			<option id="CityGrowth" key="City Growth" 
-					type="boolean" default="False" and="Enabled" 
+					type="boolean" default="True" and="Enabled" 
 					get="isShowCityGrowthAlert" set="setShowCityGrowthAlert" 
 					label="Growth" 
 					help="When checked, displays an alert when a city's population has grown or shrunk."/>

@@ -19,10 +19,10 @@
 					type="boolean" default="True" 
 					get="isShowDeadCivs" set="setShowDeadCivs" dirtyBit="Score"/>
 			<option id="TagDead" key="Show Dead Tag" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isShowDeadTag" set="setShowDeadTag" dirtyBit="Score"/>
 			<option id="GreyDead" key="Grey Out Dead Civilizations" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isGreyOutDeadCivs" set="setGreyOutDeadCivs" dirtyBit="Score"/>
 			
 			<!-- New Columns -->
@@ -34,7 +34,7 @@
 					get="isScoreDeltaIncludeCurrentTurn" set="setScoreDeltaIncludeCurrentTurn" dirtyBit="Score"/>
 			
 			<list   id="DisplayName" key="Display Name" 
-					type="int" default="0" listType="string" 
+					type="int" default="2" listType="string" 
 					get="getDisplayName" set="setDisplayName" dirtyBit="Score">
 				<choice id="Leader" get="isShowLeaderName" set="setShowLeaderName"/>
 				<choice id="Civilization" get="isShowCivName" set="setShowCivName"/>
@@ -59,7 +59,7 @@
 					type="boolean" default="True" 
 					get="isAlignIcons" set="setAlignIcons" dirtyBit="Score"/>
 			<option id="DisplayOrder" key="Display Order" 
-					type="string" default="MWSZC?EPTUNBDRAH*LO" 
+					type="string" default="WSZVC?EPTUNBDRAHM*LO" 
 					get="getDisplayOrder" set="setDisplayOrder" dirtyBit="Score"/>
 			<list   id="DefaultSpacing" key="Default Column Spacing" 
 					type="int" default="0" values="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10" 
@@ -79,10 +79,10 @@
 					type="boolean" default="True" 
 					get="isShowPower" set="setShowPower" dirtyBit="Score"/>
 			<list   id="PowerFormula" key="Power Formula" 
-					type="int" default="0" listType="string" 
+					type="int" default="1" listType="string" 
 					get="getPowerFormula" set="setPowerFormula" dirtyBit="Score">
-				<choice id="YouVersusThem" get="isPowerYouVersusThem"/>
 				<choice id="ThemVersusYou" get="isPowerThemVersusYou"/>
+				<choice id="YouVersusThem" get="isPowerYouVersusThem"/>
 			</list>
 			<list   id="PowerDecimals" key="Power Ratio Decimals" 
 					type="int" default="1" values="1, 2, 3, 4" 
@@ -102,7 +102,7 @@
 					values="0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0" format="%.1f" 
 					get="getLowPowerRatio" set="setLowPowerRatio" dirtyBit="Score"/>
 			<option id="PowerLowColor" key="Power Low Color" 
-					type="color" default="COLOR_YELLOW" 
+					type="color" default="COLOR_RED" 
 					get="getLowPowerColor" set="setLowPowerColor" dirtyBit="Score"/>
 		</section>
 	</options>

@@ -68,7 +68,7 @@
 			<accessor get="getEraColor" set="setEraColor" args="era" id="Color_%s"/>
 			
 			<option id="ShowTime" key="Show Game Clock" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isShowTime" set="setShowTime" dirtyBit="GameData" 
 					label="Clock" 
 					help="When checked, the real time is displayed."/>
@@ -94,7 +94,7 @@
 					help="When checked, the in-game date and turns left in a Golden Age are displayed."/>
 			
 			<option id="AlternateText" key="Alternate Views" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isAlternateTimeText" set="setAlternateTimeText" dirtyBit="GameData" 
 					label="Alternate Game Clock" 
 					help="When checked, the game clock switches between two views: standard and alternate."/>
@@ -106,7 +106,7 @@
 					help="Select the time each view of the game clock is displayed when alternating is enabled."/>
 			
 			<option id="ShowAltTime" key="Alternate Show Game Clock" 
-					type="boolean" default="False" 
+					type="boolean" default="True" 
 					get="isShowAltTime" set="setShowAltTime" dirtyBit="GameData" 
 					label="Clock" 
 					help="When checked, the real time is displayed."/>
