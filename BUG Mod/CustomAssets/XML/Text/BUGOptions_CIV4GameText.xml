@@ -2483,11 +2483,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__INFO_PANE_PROMO_ICON_OFFSET_Y_HOVER</Tag>
-		<English>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</English>
-		<French>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</French>
-		<German>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</German>
+		<English>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</English>
+		<French>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</French>
+		<German>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</German>
 		<Italian>Determina il posizionamento verticale delle Icone di Promozione nel Pannello di Informazioni sulle Unità (il valore predefinito è '0', i valori positivi indicano uno spostamento verso l'alto e quelli negativi verso il basso).</Italian>
-		<Spanish>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up).</Spanish>
+		<Spanish>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__UNIT_NAME_COLOR_TEXT</Tag>
