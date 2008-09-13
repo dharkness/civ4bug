@@ -23,12 +23,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
 
 		self.addSpacer(screen, left, "Foreign_Advisor")
-		self.addSpacer(screen, left, "Foreign_Advisor")
 		self.addLabel(screen, left, "Foreign_Advisor", "Foreign [F4]:")
 		self.addCheckbox(screen, left, "Advisors__EFAGlanceTab")
 		self.addCheckbox(screen, left, "Advisors__EFAGlanceSmilies")
 		
-		self.addSpacer(screen, left, "Military_Advisor")
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
@@ -36,12 +34,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
 		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
 
-		self.addSpacer(screen, center, "Victory_Conditions")
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
 		self.addCheckbox(screen, center, "Advisors__BugMembersTab")
 
-		self.addSpacer(screen, center, "Info_Screens")
 		self.addLabel(screen, center, "Info_Screens", "Info [F9]:")
 		self.addCheckbox(screen, center, "Advisors__BugGraphsTab")
 
