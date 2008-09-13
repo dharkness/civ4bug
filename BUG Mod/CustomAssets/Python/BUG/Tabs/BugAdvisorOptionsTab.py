@@ -41,6 +41,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
 		self.addCheckbox(screen, center, "Advisors__BugMembersTab")
 
+		self.addSpacer(screen, center, "Info_Screens")
+		self.addLabel(screen, center, "Info_Screens", "Info [F9]:")
+		self.addCheckbox(screen, center, "Advisors__BugGraphsTab")
+
 		self.addSpacer(screen, center, "Sevopedia")
 		self.addLabel(screen, center, "Sevopedia", "Sevopedia [F12]:")
 		self.addCheckbox(screen, center, "Advisors__Sevopedia")

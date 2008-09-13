@@ -50,6 +50,11 @@
 					type="boolean" default="True" 
 					get="isMembers"/>
 	
+			<!-- BUG Info (F9) by Ruff_Hi -->
+			<option id="BugGraphsTab" key="Graphs" 
+					type="boolean" default="True" 
+					get="isGraphs"/>
+
 			<!-- Sevopedia (F12) by Sevo -->
 			<option id="Sevopedia" key="Sevopedia" 
 					type="boolean" default="True" 

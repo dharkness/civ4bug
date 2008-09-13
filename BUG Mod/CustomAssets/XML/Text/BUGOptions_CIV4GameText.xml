@@ -2788,6 +2788,22 @@
 		<Spanish>When checked, displays extra information on the Members tab.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_TEXT</Tag>
+		<English>Graphs tab</English>
+		<French>Graphs tab</French>
+		<German>Graphs tab</German>
+		<Italian>Graphs tab</Italian>
+		<Spanish>Graphs tab</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_HOVER</Tag>
+		<English>When checked, displays graphs in BUG format.</English>
+		<French>When checked, displays graphs in BUG format.</French>
+		<German>When checked, displays graphs in BUG format.</German>
+		<Italian>When checked, displays graphs in BUG format.</Italian>
+		<Spanish>When checked, displays graphs in BUG format.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SEVOPEDIA_TEXT</Tag>
 		<English>Enabled</English>
 		<French>Activé</French>
