@@ -15,12 +15,12 @@
 	<options id="UnitNaming" file="Unit Naming.ini">
 		<section id="UnitName">
 			<option id="Enabled" key="Enabled" 
-					type="boolean" default="False"/>
+					type="boolean" default="True"/>
 			<option id="UseAdvanced" key="UseAdvanced" 
 					type="boolean" default="False" 
 					get="isAdvanced" set="setAdvanced"/>
 			<option id="Default" key="Default" 
-					type="string" default="^ut^ ^cnt[r]^ of ^ct^"/>
+					type="string" default="^ut^ ^cntu[n]^ of ^ct^"/>
 			
 			<option id="Combat_None" key="CombatNone" 
 					type="string" default="DEFAULT"/>
