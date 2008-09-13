@@ -470,11 +470,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__SILENT_TEXT</Tag>
-		<English>Automatic Start</English>
+		<English>Start Automatically</English>
 		<French>Démarrage Silencieux</French>
 		<German>Automatischer Start</German>
 		<Italian>Avvio automatico</Italian>
-		<Spanish>Automatic Start</Spanish>
+		<Spanish>Start Automatically</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__SILENT_HOVER</Tag>
@@ -1664,6 +1664,22 @@
 		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
 	</TEXT>
 	<!-- Scoreboard -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_TEXT</Tag>
+		<English>Show Minor Civilizations</English>
+		<French>Show Minor Civilizations</French>
+		<German>Show Minor Civilizations</German>
+		<Italian>Show Minor Civilizations</Italian>
+		<Spanish>Show Minor Civilizations</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_HOVER</Tag>
+		<English>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</English>
+		<French>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</French>
+		<German>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</German>
+		<Italian>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Italian>
+		<Spanish>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Spanish>
+	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWDEAD_TEXT</Tag>
 		<English>Show</English>
@@ -3071,7 +3087,7 @@
 		<Spanish>General</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_MAIN_INTERFACE</Tag>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MAININTERFACE</Tag>
 		<English>Main Interface:</English>
 		<French>Interface Centrale:</French>
 		<German>Hauptbildschirm:</German>
@@ -3210,12 +3226,28 @@
 		<Spanish>Scoreboard</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GENERAL</Tag>
+		<English>General:</English>
+		<French>General:</French>
+		<German>General:</German>
+		<Italian>General:</Italian>
+		<Spanish>General:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_DEAD_CIVS</Tag>
 		<English>Dead Civilizations:</English>
 		<French>Civilisations Mortes:</French>
 		<German>Ausgelöschte Zivilisationen:</German>
 		<Italian>Civiltà scomparse:</Italian>
 		<Spanish>Dead Civilizations:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_NEW_COLUMNS</Tag>
+		<English>Additional Columns:</English>
+		<French>Additional Columns:</French>
+		<German>Additional Columns:</German>
+		<Italian>Additional Columns:</Italian>
+		<Spanish>Additional Columns:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GRID</Tag>

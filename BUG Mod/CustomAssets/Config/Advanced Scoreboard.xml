@@ -25,6 +25,11 @@
 					type="boolean" default="True" 
 					get="isGreyOutDeadCivs" set="setGreyOutDeadCivs" dirtyBit="Score"/>
 			
+			<!-- Minor Civs -->
+			<option id="ShowMinor" key="Show Minor Civilizations" 
+					type="boolean" default="True" 
+					get="isShowMinorCivs" set="setShowMinorCivs" dirtyBit="Score"/>
+			
 			<!-- New Columns -->
 			<option id="Delta" key="Delta" 
 					type="boolean" default="True" 

@@ -6049,245 +6049,248 @@ class CvMainInterface:
 
 							if (not CyInterface().isScoresMinimized() or gc.getGame().getActivePlayer() == ePlayer):
 # BUG - Dead Civs - start
-								if (gc.getPlayer(ePlayer).isEverAlive() and not gc.getPlayer(ePlayer).isMinorCiv()
+								if (gc.getPlayer(ePlayer).isEverAlive() and not gc.getPlayer(ePlayer).isBarbarian()
 									and (gc.getPlayer(ePlayer).isAlive() or ScoreOpt.isShowDeadCivs())):
 # BUG - Dead Civs - end
-									if (gc.getPlayer(ePlayer).getTeam() == eTeam):
-										szBuffer = u"<font=2>"
+# BUG - Minor Civs - start
+									if (not gc.getPlayer(ePlayer).isMinorCiv() or ScoreOpt.isShowMinorCivs()):
+# BUG - Minor Civs - end
+										if (gc.getPlayer(ePlayer).getTeam() == eTeam):
+											szBuffer = u"<font=2>"
 # BUG - Align Icons - start
-										if (bAlignIcons):
-											scores.addPlayer(gc.getPlayer(ePlayer), j)
-											# BUG: Align Icons continues throughout -- if (bAlignIcons): scores.setFoo(foo)
+											if (bAlignIcons):
+												scores.addPlayer(gc.getPlayer(ePlayer), j)
+												# BUG: Align Icons continues throughout -- if (bAlignIcons): scores.setFoo(foo)
 # BUG - Align Icons - end
-
-										if (gc.getGame().isGameMultiPlayer()):
-											if (not (gc.getPlayer(ePlayer).isTurnActive())):
-												szBuffer = szBuffer + "*"
-												if (bAlignIcons):
-													scores.setWaiting()
-
+	
+											if (gc.getGame().isGameMultiPlayer()):
+												if (not (gc.getPlayer(ePlayer).isTurnActive())):
+													szBuffer = szBuffer + "*"
+													if (bAlignIcons):
+														scores.setWaiting()
+	
 # BUG - Dead Civs - start
-										if (ScoreOpt.isUsePlayerName()):
-											szPlayerName = gc.getPlayer(ePlayer).getName()
-										else:
-											szPlayerName = gc.getLeaderHeadInfo(gc.getPlayer(ePlayer).getLeaderType()).getDescription()
-										szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
-										if (ScoreOpt.isShowBothNames()):
-											szPlayerName = szPlayerName + "/" + szCivName
-										elif (ScoreOpt.isShowLeaderName()):
-											szPlayerName = szPlayerName
-										else:
-											szPlayerName = szCivName
-										
-										if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):
-											szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
-											if (bAlignIcons):
-												scores.setScore(szPlayerScore)
-										else:
-											iScore = gc.getGame().getPlayerScore(ePlayer)
-											szPlayerScore = u"%d" % iScore
-											if (bAlignIcons):
-												scores.setScore(szPlayerScore)
-# BUG - Score Delta - start
-											if (ScoreOpt.isShowScoreDelta()):
-												iGameTurn = gc.getGame().getGameTurn()
-												if (ePlayer >= gc.getGame().getActivePlayer()):
-													iGameTurn -= 1
-												if (ScoreOpt.isScoreDeltaIncludeCurrentTurn()):
-													iScoreDelta = iScore
-												elif (iGameTurn >= 0):
-													iScoreDelta = gc.getPlayer(ePlayer).getScoreHistory(iGameTurn)
-												else:
-													iScoreDelta = 0
-												iPrevGameTurn = iGameTurn - 1
-												if (iPrevGameTurn >= 0):
-													iScoreDelta -= gc.getPlayer(ePlayer).getScoreHistory(iPrevGameTurn)
-												if (iScoreDelta != 0):
-													if (iScoreDelta > 0):
-														iColorType = gc.getInfoTypeForString("COLOR_GREEN")
-													elif (iScoreDelta < 0):
-														iColorType = gc.getInfoTypeForString("COLOR_RED")
-													szScoreDelta = "%+d" % iScoreDelta
-													if (iColorType >= 0):
-														szScoreDelta = localText.changeTextColor(szScoreDelta, iColorType)
-													szPlayerScore += szScoreDelta + u" "
-													if (bAlignIcons):
-														scores.setScoreDelta(szScoreDelta)
-# BUG - Score Delta - end
-										
-										if (not CyInterface().isFlashingPlayer(ePlayer) or CyInterface().shouldFlash(ePlayer)):
-											if (ePlayer == gc.getGame().getActivePlayer()):
-												szPlayerName = u"[<color=%d,%d,%d,%d>%s</color>]" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+											if (ScoreOpt.isUsePlayerName()):
+												szPlayerName = gc.getPlayer(ePlayer).getName()
 											else:
-												if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isGreyOutDeadCivs()):
-													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(175, 175, 175, gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
-												else:
-													szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
-										szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
-										szBuffer = szBuffer + szTempBuffer
-										if (bAlignIcons):
-											scores.setName(szPlayerName)
-										
-										if (gc.getPlayer(ePlayer).isAlive()):
-											if (bAlignIcons):
-												scores.setAlive()
-											# BUG: Rest of Dead Civs change is merely indentation by 1 level ...
-											if (gc.getTeam(eTeam).isAlive()):
-												if ( not (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam)) ):
-													szBuffer = szBuffer + (" ?")
-													if (bAlignIcons):
-														scores.setNotMet()
-												if (gc.getTeam(eTeam).isAtWar(gc.getGame().getActiveTeam())):
-													szBuffer = szBuffer + "("  + localText.getColorText("TXT_KEY_CONCEPT_WAR", (), gc.getInfoTypeForString("COLOR_RED")).upper() + ")"
-													if (bAlignIcons):
-														scores.setWar()
-												elif (gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(eTeam)):
-													if (bAlignIcons):
-														scores.setPeace()
-												elif (gc.getTeam(eTeam).isAVassal()):
-													for iOwnerTeam in range(gc.getMAX_TEAMS()):
-														if (gc.getTeam(eTeam).isVassal(iOwnerTeam) and gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(iOwnerTeam)):
-															if (bAlignIcons):
-																scores.setPeace()
-															break
-												if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
-													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setWHEOOH()
-												if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
-													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setTrade()
-												if (gc.getTeam(eTeam).isOpenBorders(gc.getGame().getActiveTeam())):
-													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OPEN_BORDERS_CHAR))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setBorders()
-												if (gc.getTeam(eTeam).isDefensivePact(gc.getGame().getActiveTeam())):
-													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setPact()
-												if (gc.getPlayer(ePlayer).getStateReligion() != -1):
-													if (gc.getPlayer(ePlayer).hasHolyCity(gc.getPlayer(ePlayer).getStateReligion())):
-														szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getHolyCityChar())
+												szPlayerName = gc.getLeaderHeadInfo(gc.getPlayer(ePlayer).getLeaderType()).getDescription()
+											szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+											if (ScoreOpt.isShowBothNames()):
+												szPlayerName = szPlayerName + "/" + szCivName
+											elif (ScoreOpt.isShowLeaderName()):
+												szPlayerName = szPlayerName
+											else:
+												szPlayerName = szCivName
+											
+											if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):
+												szPlayerScore = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
+												if (bAlignIcons):
+													scores.setScore(szPlayerScore)
+											else:
+												iScore = gc.getGame().getPlayerScore(ePlayer)
+												szPlayerScore = u"%d" % iScore
+												if (bAlignIcons):
+													scores.setScore(szPlayerScore)
+# BUG - Score Delta - start
+												if (ScoreOpt.isShowScoreDelta()):
+													iGameTurn = gc.getGame().getGameTurn()
+													if (ePlayer >= gc.getGame().getActivePlayer()):
+														iGameTurn -= 1
+													if (ScoreOpt.isScoreDeltaIncludeCurrentTurn()):
+														iScoreDelta = iScore
+													elif (iGameTurn >= 0):
+														iScoreDelta = gc.getPlayer(ePlayer).getScoreHistory(iGameTurn)
 													else:
-														szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getChar())
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setReligion(szTempBuffer)
-												
-												if (not bNoEspionage and gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
-													szTempBuffer = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setEspionage()
+														iScoreDelta = 0
+													iPrevGameTurn = iGameTurn - 1
+													if (iPrevGameTurn >= 0):
+														iScoreDelta -= gc.getPlayer(ePlayer).getScoreHistory(iPrevGameTurn)
+													if (iScoreDelta != 0):
+														if (iScoreDelta > 0):
+															iColorType = gc.getInfoTypeForString("COLOR_GREEN")
+														elif (iScoreDelta < 0):
+															iColorType = gc.getInfoTypeForString("COLOR_RED")
+														szScoreDelta = "%+d" % iScoreDelta
+														if (iColorType >= 0):
+															szScoreDelta = localText.changeTextColor(szScoreDelta, iColorType)
+														szPlayerScore += szScoreDelta + u" "
+														if (bAlignIcons):
+															scores.setScoreDelta(szScoreDelta)
+# BUG - Score Delta - end
 											
-											bEspionageCanSeeResearch = False
-											if (not bNoEspionage):
-												for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
-													if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
-														bEspionageCanSeeResearch = gc.getActivePlayer().canDoEspionageMission(iMissionLoop, ePlayer, None, -1)
-														break
+											if (not CyInterface().isFlashingPlayer(ePlayer) or CyInterface().shouldFlash(ePlayer)):
+												if (ePlayer == gc.getGame().getActivePlayer()):
+													szPlayerName = u"[<color=%d,%d,%d,%d>%s</color>]" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+												else:
+													if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isGreyOutDeadCivs()):
+														szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(175, 175, 175, gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+													else:
+														szPlayerName = u"<color=%d,%d,%d,%d>%s</color>" %(gc.getPlayer(ePlayer).getPlayerTextColorR(), gc.getPlayer(ePlayer).getPlayerTextColorG(), gc.getPlayer(ePlayer).getPlayerTextColorB(), gc.getPlayer(ePlayer).getPlayerTextColorA(), szPlayerName)
+											szTempBuffer = u"%s: %s" %(szPlayerScore, szPlayerName)
+											szBuffer = szBuffer + szTempBuffer
+											if (bAlignIcons):
+												scores.setName(szPlayerName)
 											
-											if (((gc.getPlayer(ePlayer).getTeam() == gc.getGame().getActiveTeam()) and (gc.getTeam(gc.getGame().getActiveTeam()).getNumMembers() > 1)) or (gc.getTeam(gc.getPlayer(ePlayer).getTeam()).isVassal(gc.getGame().getActiveTeam())) or gc.getGame().isDebugMode() or bEspionageCanSeeResearch):
-												if (gc.getPlayer(ePlayer).getCurrentResearch() != -1):
-													szTempBuffer = u"-%s (%d)" %(gc.getTechInfo(gc.getPlayer(ePlayer).getCurrentResearch()).getDescription(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setResearch(gc.getPlayer(ePlayer).getCurrentResearch(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
-											
-# BUG - Power Rating - start
-											# if on, show according to espionage "see demographics" mission
-											if (bShowPower 
-												and (gc.getGame().getActivePlayer() != ePlayer
-													 and (bNoEspionage or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1)))):
-												iPower = gc.getPlayer(ePlayer).getPower()
-												if (iPower > 0): # avoid divide by zero
-													fPowerRatio = float(iPlayerPower) / float(iPower)
-													if (ScoreOpt.isPowerThemVersusYou()):
-														if (fPowerRatio > 0):
-															fPowerRatio = 1.0 / fPowerRatio
+											if (gc.getPlayer(ePlayer).isAlive()):
+												if (bAlignIcons):
+													scores.setAlive()
+												# BUG: Rest of Dead Civs change is merely indentation by 1 level ...
+												if (gc.getTeam(eTeam).isAlive()):
+													if ( not (gc.getTeam(gc.getGame().getActiveTeam()).isHasMet(eTeam)) ):
+														szBuffer = szBuffer + (" ?")
+														if (bAlignIcons):
+															scores.setNotMet()
+													if (gc.getTeam(eTeam).isAtWar(gc.getGame().getActiveTeam())):
+														szBuffer = szBuffer + "("  + localText.getColorText("TXT_KEY_CONCEPT_WAR", (), gc.getInfoTypeForString("COLOR_RED")).upper() + ")"
+														if (bAlignIcons):
+															scores.setWar()
+													elif (gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(eTeam)):
+														if (bAlignIcons):
+															scores.setPeace()
+													elif (gc.getTeam(eTeam).isAVassal()):
+														for iOwnerTeam in range(gc.getMAX_TEAMS()):
+															if (gc.getTeam(eTeam).isVassal(iOwnerTeam) and gc.getTeam(gc.getGame().getActiveTeam()).isForcePeace(iOwnerTeam)):
+																if (bAlignIcons):
+																	scores.setPeace()
+																break
+													if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setWHEOOH()
+													if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setTrade()
+													if (gc.getTeam(eTeam).isOpenBorders(gc.getGame().getActiveTeam())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OPEN_BORDERS_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setBorders()
+													if (gc.getTeam(eTeam).isDefensivePact(gc.getGame().getActiveTeam())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setPact()
+													if (gc.getPlayer(ePlayer).getStateReligion() != -1):
+														if (gc.getPlayer(ePlayer).hasHolyCity(gc.getPlayer(ePlayer).getStateReligion())):
+															szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getHolyCityChar())
 														else:
-															fPowerRatio = 99.0
-													cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
-													szTempBuffer = BugUtil.formatFloat(fPowerRatio, ScoreOpt.getPowerDecimals()) + u"%c" % (cPower)
-													if (iHighPowerColor >= 0 and fPowerRatio >= ScoreOpt.getHighPowerRatio()):
-														szTempBuffer = localText.changeTextColor(szTempBuffer, iHighPowerColor)
-													elif (iLowPowerColor >= 0 and fPowerRatio <= ScoreOpt.getLowPowerRatio()):
-														szTempBuffer = localText.changeTextColor(szTempBuffer, iLowPowerColor)
-													elif (iPowerColor >= 0):
-														szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
-													szBuffer = szBuffer + u" " + szTempBuffer
-													if (bAlignIcons):
-														scores.setPower(szTempBuffer)
+															szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getChar())
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setReligion(szTempBuffer)
+													
+													if (not bNoEspionage and gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
+														szTempBuffer = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setEspionage()
+												
+												bEspionageCanSeeResearch = False
+												if (not bNoEspionage):
+													for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
+														if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
+															bEspionageCanSeeResearch = gc.getActivePlayer().canDoEspionageMission(iMissionLoop, ePlayer, None, -1)
+															break
+												
+												if (((gc.getPlayer(ePlayer).getTeam() == gc.getGame().getActiveTeam()) and (gc.getTeam(gc.getGame().getActiveTeam()).getNumMembers() > 1)) or (gc.getTeam(gc.getPlayer(ePlayer).getTeam()).isVassal(gc.getGame().getActiveTeam())) or gc.getGame().isDebugMode() or bEspionageCanSeeResearch):
+													if (gc.getPlayer(ePlayer).getCurrentResearch() != -1):
+														szTempBuffer = u"-%s (%d)" %(gc.getTechInfo(gc.getPlayer(ePlayer).getCurrentResearch()).getDescription(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setResearch(gc.getPlayer(ePlayer).getCurrentResearch(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
+												
+# BUG - Power Rating - start
+												# if on, show according to espionage "see demographics" mission
+												if (bShowPower 
+													and (gc.getGame().getActivePlayer() != ePlayer
+														 and (bNoEspionage or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1)))):
+													iPower = gc.getPlayer(ePlayer).getPower()
+													if (iPower > 0): # avoid divide by zero
+														fPowerRatio = float(iPlayerPower) / float(iPower)
+														if (ScoreOpt.isPowerThemVersusYou()):
+															if (fPowerRatio > 0):
+																fPowerRatio = 1.0 / fPowerRatio
+															else:
+																fPowerRatio = 99.0
+														cPower = gc.getGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
+														szTempBuffer = BugUtil.formatFloat(fPowerRatio, ScoreOpt.getPowerDecimals()) + u"%c" % (cPower)
+														if (iHighPowerColor >= 0 and fPowerRatio >= ScoreOpt.getHighPowerRatio()):
+															szTempBuffer = localText.changeTextColor(szTempBuffer, iHighPowerColor)
+														elif (iLowPowerColor >= 0 and fPowerRatio <= ScoreOpt.getLowPowerRatio()):
+															szTempBuffer = localText.changeTextColor(szTempBuffer, iLowPowerColor)
+														elif (iPowerColor >= 0):
+															szTempBuffer = localText.changeTextColor(szTempBuffer, iPowerColor)
+														szBuffer = szBuffer + u" " + szTempBuffer
+														if (bAlignIcons):
+															scores.setPower(szTempBuffer)
 # BUG - Power Rating - end
 
 # BUG - Attitude Icons - start
-											if (ScoreOpt.isShowAttitude()):
-												if (not gc.getPlayer(ePlayer).isHuman()):
-													iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
-													cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
-													szBuffer += cAtt
-													if (bAlignIcons):
-														scores.setAttitude(cAtt)
+												if (ScoreOpt.isShowAttitude()):
+													if (not gc.getPlayer(ePlayer).isHuman()):
+														iAtt = gc.getPlayer(ePlayer).AI_getAttitude(gc.getGame().getActivePlayer())
+														cAtt =  unichr(ord(unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4)) + iAtt)
+														szBuffer += cAtt
+														if (bAlignIcons):
+															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
 
 # BUG - Worst Enemy - start
-											if (ScoreOpt.isShowWorstEnemy()):
-												if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
-													szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
-													if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
-														cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
-														szBuffer += cWorstEnemy
-														if (bAlignIcons):
-															scores.setWorstEnemy()
+												if (ScoreOpt.isShowWorstEnemy()):
+													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
+														szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
+														if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
+															cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+															szBuffer += cWorstEnemy
+															if (bAlignIcons):
+																scores.setWorstEnemy()
 # BUG - Worst Enemy - end
-											# BUG: ...end of indentation
+												# BUG: ...end of indentation
 # BUG - Dead Civs - end
-
-										if (CyGame().isNetworkMultiPlayer()):
-											szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
-											szBuffer = szBuffer + szTempBuffer
-											if (bAlignIcons):
-												scores.setNetStats(szTempBuffer)
-										
-										if (gc.getPlayer(ePlayer).isHuman() and CyInterface().isOOSVisible()):
-											szTempBuffer = u" <color=255,0,0>* %s *</color>" %(CyGameTextMgr().getOOSSeeds(ePlayer))
-											szBuffer = szBuffer + szTempBuffer
-											if (bAlignIcons):
-												scores.setNetStats(szTempBuffer)
+	
+											if (CyGame().isNetworkMultiPlayer()):
+												szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
+												szBuffer = szBuffer + szTempBuffer
+												if (bAlignIcons):
+													scores.setNetStats(szTempBuffer)
 											
-										szBuffer = szBuffer + "</font>"
-
+											if (gc.getPlayer(ePlayer).isHuman() and CyInterface().isOOSVisible()):
+												szTempBuffer = u" <color=255,0,0>* %s *</color>" %(CyGameTextMgr().getOOSSeeds(ePlayer))
+												szBuffer = szBuffer + szTempBuffer
+												if (bAlignIcons):
+													scores.setNetStats(szTempBuffer)
+												
+											szBuffer = szBuffer + "</font>"
+	
 # BUG - Align Icons - start
-										if (not bAlignIcons):
-											if ( CyInterface().determineWidth( szBuffer ) > iWidth ):
-												iWidth = CyInterface().determineWidth( szBuffer )
-	
-											szName = "ScoreText" + str(ePlayer)
-											if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
-												yCoord = yResolution - 206
-											else:
-												yCoord = yResolution - 88
-	
+											if (not bAlignIcons):
+												if ( CyInterface().determineWidth( szBuffer ) > iWidth ):
+													iWidth = CyInterface().determineWidth( szBuffer )
+		
+												szName = "ScoreText" + str(ePlayer)
+												if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW or CyInterface().isInAdvancedStart()):
+													yCoord = yResolution - 206
+												else:
+													yCoord = yResolution - 88
+		
 # BUG - Dead Civs - start
-											# Don't try to contact dead civs
-											if (gc.getPlayer(ePlayer).isAlive()):
-												iWidgetType = WidgetTypes.WIDGET_CONTACT_CIV
-												iPlayer = ePlayer
-											else:
-												iWidgetType = WidgetTypes.WIDGET_GENERAL
-												iPlayer = -1
-											screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight), -0.3, FontTypes.SMALL_FONT, iWidgetType, iPlayer, -1 )
+												# Don't try to contact dead civs
+												if (gc.getPlayer(ePlayer).isAlive()):
+													iWidgetType = WidgetTypes.WIDGET_CONTACT_CIV
+													iPlayer = ePlayer
+												else:
+													iWidgetType = WidgetTypes.WIDGET_GENERAL
+													iPlayer = -1
+												screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight), -0.3, FontTypes.SMALL_FONT, iWidgetType, iPlayer, -1 )
 # BUG - Dead Civs - end
-											screen.show( szName )
-											
-											CyInterface().checkFlashReset(ePlayer)
-	
-											iCount = iCount + 1
+												screen.show( szName )
+												
+												CyInterface().checkFlashReset(ePlayer)
+		
+												iCount = iCount + 1
 # BUG - Align Icons - end
 							j = j - 1
 					i = i - 1
