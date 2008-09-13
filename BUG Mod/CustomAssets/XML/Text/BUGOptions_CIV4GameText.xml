@@ -1669,7 +1669,7 @@
 		<English>Show Minor Civilizations</English>
 		<French>Show Minor Civilizations</French>
 		<German>Show Minor Civilizations</German>
-		<Italian>Show Minor Civilizations</Italian>
+		<Italian>Mostra Civiltà Minori</Italian>
 		<Spanish>Show Minor Civilizations</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1677,7 +1677,7 @@
 		<English>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</English>
 		<French>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</French>
 		<German>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</German>
-		<Italian>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Italian>
+		<Italian>Quando è selezionato, vengono visualizzate anche le Civiltà Minori (certi Scenari considerano alcune Civiltà come minori).</Italian>
 		<Spanish>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3230,7 +3230,7 @@
 		<English>General:</English>
 		<French>General:</French>
 		<German>General:</German>
-		<Italian>General:</Italian>
+		<Italian>Generale:</Italian>
 		<Spanish>General:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3246,7 +3246,7 @@
 		<English>Additional Columns:</English>
 		<French>Additional Columns:</French>
 		<German>Additional Columns:</German>
-		<Italian>Additional Columns:</Italian>
+		<Italian>Colonne aggiuntive:</Italian>
 		<Spanish>Additional Columns:</Spanish>
 	</TEXT>
 	<TEXT>

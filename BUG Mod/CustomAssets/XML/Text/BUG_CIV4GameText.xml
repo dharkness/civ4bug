@@ -651,14 +651,14 @@
 		<Spanish>Info.</Spanish>
 	</TEXT>
 	
-	<!-- graph Screen -->
+	<!-- Graph Screen -->
 	
 	<TEXT>
 		<Tag>SELECT_ALL_NONE</Tag>
 		<English>Select All / None</English>
 		<French>Select All / None</French>
 		<German>Select All / None</German>
-		<Italian>Select All / None</Italian>
+		<Italian>Seleziona Tutti / Nessuno</Italian>
 		<Spanish>Select All / None</Spanish>
 	</TEXT>
 
