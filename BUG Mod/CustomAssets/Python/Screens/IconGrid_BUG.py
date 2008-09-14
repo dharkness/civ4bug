@@ -3,6 +3,7 @@ from CvPythonExtensions import *
 import CvUtil
 import ScreenInput
 import CvScreenEnums
+import BugUtil
 import math
 
 
@@ -10,11 +11,6 @@ import math
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
-
-def BUGPrint (stuff):
-#	stuff = "BUG_IconGrid: " + stuff
-#	print stuff
-	return
 
 class IconData:
 
@@ -38,11 +34,12 @@ class CellData:
 		self.icons = []
 		self.stackedbar = []
 		self.text = ""
+		self.font = 3
 	
 	def addIcon(self, sImage, iSize, widgetType, iData):
 		self.icons.append(IconData(sImage, iSize, widgetType, iData))
 	
-	def addText(self, sText, iFont):
+	def setText(self, sText, iFont):
 		self.text = sText
 		self.font = iFont
 	
@@ -64,8 +61,8 @@ class RowData:
 	def addIcon(self, iColumnIndex, sImage, iSize, widgetType, iData):
 		self.cells[iColumnIndex].addIcon(sImage, iSize, widgetType, iData)
 	
-	def addText(self, iColumnIndex, sText, iFont):
-		self.cells[iColumnIndex].addText(sText, iFont)
+	def setText(self, iColumnIndex, sText, iFont):
+		self.cells[iColumnIndex].setText(sText, iFont)
 
 	def addStackedBar(self, iColumnIndex, fValue, sColor, sText, iFont):
 		self.cells[iColumnIndex].addStackedBar(fValue, sColor, sText, iFont)
@@ -134,6 +131,23 @@ class IconGrid_BUG:
 		self.SCROLL_TOP = 5
 		self.SCROLL_BOTTOM = 6
 		
+		self.inputFunctionMap = {
+			self.SCROLL_UP: self.scrollUp,
+			self.SCROLL_DOWN: self.scrollDown,
+			self.SCROLL_PAGE_UP: self.scrollPageUp,
+			self.SCROLL_PAGE_DOWN: self.scrollPageDown,
+			self.SCROLL_TOP: self.scrollTop,
+			self.SCROLL_BOTTOM: self.scrollBottom,
+		}
+		self.keyFunctionMap = {
+			int(InputTypes.KB_UP): self.scrollUp,
+			int(InputTypes.KB_DOWN): self.scrollDown,
+			int(InputTypes.KB_PGUP): self.scrollPageUp,
+			int(InputTypes.KB_PGDN): self.scrollPageDown,
+			int(InputTypes.KB_HOME): self.scrollTop,
+			int(InputTypes.KB_END): self.scrollBottom,
+		}
+		
 
 	def setGroupBorder(self, iVal):
 		self.groupBorder = iVal
@@ -198,7 +212,7 @@ class IconGrid_BUG:
 			return initHeight + self.headerHeight
 	
 	
-	def setHeader(self, iCol, sLabel, iFont):
+	def setHeader(self, iCol, sLabel, iFont=3):
 		self.header[iCol] = sLabel
 		self.headerFont[iCol] = iFont
 		
@@ -222,17 +236,17 @@ class IconGrid_BUG:
 		self.hideControls()
 
 
-	def appendRow(self, sRowHeader, sMessage, iFont):
+	def appendRow(self, sRowHeader, sMessage, iFont=3):
 		self.data.append(RowData(sRowHeader, sMessage, iFont, len(self.columns)))
 
  	def addIcon(self, iRowIndex, iColumnIndex, sImage, iSize, widgetType, iData):
  		self.data[iRowIndex].addIcon(iColumnIndex, sImage, iSize, widgetType, iData)
 
- 	def addText(self, iRowIndex, iColumnIndex, sText, iFont):
- 		self.data[iRowIndex].addText(iColumnIndex, sText, iFont)
+ 	def setText(self, iRowIndex, iColumnIndex, sText, iFont=3):
+ 		self.data[iRowIndex].setText(iColumnIndex, sText, iFont)
 
-	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText, iFont):
-#		BUGPrint("addStackedbar %i %i %s %s %i" % (iColumnIndex, fValue, sColor, sText, iFont))
+	def addStackedBar(self, iRowIndex, iColumnIndex, fValue, sColor, sText, iFont=3):
+#		BugUtil.debug("addStackedbar %i %i %s %s %i" % (iColumnIndex, fValue, sColor, sText, iFont))
 		self.data[iRowIndex].addStackedBar(iColumnIndex, fValue, sColor, sText, iFont)
 
 	def clearData(self):
@@ -263,6 +277,26 @@ class IconGrid_BUG:
 	def scrollBottom(self):
 		self.scrollPosition = len(self.data) - self.numRows
 		self.refresh()
+	
+	def handleInput(self, inputClass):
+		BugUtil.debugInput(inputClass)
+		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
+			if (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
+				func = self.inputFunctionMap.get(inputClass.getData1(), None)
+				if func:
+					BugUtil.debug("calling %r", func)
+					func()
+					return 1
+		
+		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
+			func = self.keyFunctionMap.get(inputClass.getData(), None)
+			if func:
+				if inputClass.getID():
+					BugUtil.debug("calling %r", func)
+					func()
+				return 1
+		
+		return 0
 	
 	
 	def refresh(self):
@@ -312,7 +346,7 @@ class IconGrid_BUG:
 
 				# put info in grouped columns
 				for offset in range(colGroup.length):
-#					BUGPrint("Grouped Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
+#					BugUtil.debug("Grouped Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
 					if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
 						bDataFound = True
 						try:
@@ -344,16 +378,16 @@ class IconGrid_BUG:
 						currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-#						BUGPrint("Stacked Bar Start A")
+#						BugUtil.debug("Stacked Bar Start A")
 
 						bDataFound = True
 						try:
-#							BUGPrint("Stacked Bar try")
+#							BugUtil.debug("Stacked Bar try")
 							stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
 						except:
 							bDataFound = False
 
-#						BUGPrint("Stacked Bar data found? %s" % (bDataFound))
+#						BugUtil.debug("Stacked Bar data found? %s" % (bDataFound))
 						if bDataFound:		
 							textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 20
 							if (self.showRowHeader):
@@ -366,7 +400,7 @@ class IconGrid_BUG:
 							else:
 								iSBarOffset_Y = 0
 
-#							BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
+#							BugUtil.debug("Stacked Bar value %i" % (stackedbarData.value))
 							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 							if stackedbarData.value > 0:
 								self.screen.addStackedBarGFC(szBar_ID, 
@@ -389,7 +423,7 @@ class IconGrid_BUG:
 								self.screen.deleteWidget(szTxt_ID)
 
 							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
-#							BUGPrint("Stacked Bar done")
+#							BugUtil.debug("Stacked Bar done")
 
 				startIndex += colGroup.length
 				if (colGroup.label != ""):
@@ -397,7 +431,7 @@ class IconGrid_BUG:
 			
 			# put info in non grouped columns
 			for offset in range(len(self.columns) - startIndex):
-#				BUGPrint("Single Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
+#				BugUtil.debug("Single Column %i %i" % (startIndex + offset, self.columns[startIndex + offset]))
 				if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
 					bDataFound = True
 					try:
@@ -427,7 +461,7 @@ class IconGrid_BUG:
 					currentX += self.textColWidth[startIndex + offset] + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
-#					BUGPrint("Stacked Bar Start B")
+#					BugUtil.debug("Stacked Bar Start B")
 					bDataFound = True
 					try:
 						stackedbarData = rowData.cells[startIndex + offset].stackedbar[0]
@@ -444,7 +478,7 @@ class IconGrid_BUG:
 						else:
 							iSBarOffset_Y = 0
 
-#						BUGPrint("Stacked Bar value %i" % (stackedbarData.value))
+#						BugUtil.debug("Stacked Bar value %i" % (stackedbarData.value))
 						szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
 						if stackedbarData.value > 0:
 							szBar_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB"
@@ -467,7 +501,7 @@ class IconGrid_BUG:
 							self.screen.deleteWidget(szTxt_ID)
 
 						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
-#						BUGPrint("Stacked Bar done")
+#						BugUtil.debug("Stacked Bar done")
 			
 			if ( rowData.message == "" ):
 				self.screen.attachLabel(self.rowName + str(rowIndex), self.rowName + str(rowIndex) + "NotConnected", "")
@@ -477,9 +511,6 @@ class IconGrid_BUG:
 										self.rowName + str(rowIndex) + "NotConnected",
 										text)
 
-		
-		
-		
 	def calculateLayout(self):
 		if (self.useSmallIcons):
 			self.iconSize = 32
@@ -541,10 +572,6 @@ class IconGrid_BUG:
 		self.numRows = (availableHeight + self.minRowSpace) / (self.totalRowHeight + self.minRowSpace)
 		self.rowSpace = (availableHeight - self.numRows * self.totalRowHeight) / (self.numRows - 1)
 		
-		
-		
-		
-		
 	def addControls(self):
 		self.addGroups()
 		self.addHeader()
@@ -598,8 +625,6 @@ class IconGrid_BUG:
 								  , self.scrollArrowSize, self.scrollArrowSize
 								  , WidgetTypes.WIDGET_GENERAL, self.SCROLL_BOTTOM, -1 )
 
-
-
 	def addGroups(self):
 		self.groupPanelName = self.getNextWidgetName()
 		
@@ -646,8 +671,6 @@ class IconGrid_BUG:
 
 			startIndex += colGroup.length
 			
-	
-	
 	def addHeader(self):
 		self.headerName = self.getNextWidgetName()
 		headerX = self.xStart
@@ -698,9 +721,6 @@ class IconGrid_BUG:
 			self.screen.setTableText(self.headerName, startIndex + offset, 0,
 									 text, "", WidgetTypes.WIDGET_GENERAL, -1, -1, 0 )
 
-	
-	
-	
 	def addRow(self, rowIndex):
 		if (self.showRowBorder):
 			panelY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex
@@ -754,15 +774,6 @@ class IconGrid_BUG:
 				currentX += self.textColWidth[startIndex + offset] + self.colSpace
 			elif (self.columns[startIndex + offset] == GRID_STACKEDBAR_COLUMN):
 				currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
-
-
-
-
-
-
-
-
-
 
 	def hideControls(self):
 		self.hideGroups()
@@ -826,15 +837,6 @@ class IconGrid_BUG:
 				self.screen.hide( self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "SB")
 				self.screen.hide( self.rowName + str(rowIndex) + "_" + str(startIndex + offset) + "T")
 
-
-
-
-
-
-
-
-
-
 	def getNextWidgetName(self):
 		szName = self.NEXT_WIDGET_ID + str(self.widgetCount)
 		self.widgetCount += 1
@@ -857,15 +859,6 @@ class IconGrid_BUG:
 			self.screen.hide(self.rowName + str(rowIndex) + "name")
 
 			self.screen.deleteWidget(self.rowName + str(rowIndex))
-
-
-
-
-
-
-
-
-
 			startIndex = 0
 			for groupIndex in range(len(self.columnGroups)):
 				colGroup = self.columnGroups[groupIndex]
@@ -875,8 +868,3 @@ class IconGrid_BUG:
 				for offset in range(colGroup.length):
 					if (self.columns[startIndex + offset] == GRID_ICON_COLUMN):
 						self.screen.hide(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
-
-
-
-
-

@@ -193,28 +193,6 @@ class CvMilitaryAdvisor:
 		self.TITLE_HEIGHT = 0
 		self.TABLE_CONTROL_HEIGHT = 0
 #		self.RESOURCE_ICON_SIZE = 34
-		self.SCROLL_TABLE_UP = 1
-		self.SCROLL_TABLE_DOWN = 2
-		self.SCROLL_PAGE_TABLE_UP = 3
-		self.SCROLL_PAGE_TABLE_DOWN = 4
-		self.SCROLL_TABLE_TOP = 5
-		self.SCROLL_TABLE_BOTTOM = 6
-		self.inputFunctionMap = {
-			self.SCROLL_TABLE_UP: self.scrollGrid_Up,
-			self.SCROLL_TABLE_DOWN: self.scrollGrid_Down,
-			self.SCROLL_PAGE_TABLE_UP: self.scrollGrid_PageUp,
-			self.SCROLL_PAGE_TABLE_DOWN: self.scrollGrid_PageDown,
-			self.SCROLL_TABLE_TOP: self.scrollGrid_Top,
-			self.SCROLL_TABLE_BOTTOM: self.scrollGrid_Bottom,
-		}
-		self.keyFunctionMap = {
-			int(InputTypes.KB_UP): self.scrollGrid_Up,
-			int(InputTypes.KB_DOWN): self.scrollGrid_Down,
-			int(InputTypes.KB_PGUP): self.scrollGrid_PageUp,
-			int(InputTypes.KB_PGDN): self.scrollGrid_PageDown,
-			int(InputTypes.KB_HOME): self.scrollGrid_Top,
-			int(InputTypes.KB_END): self.scrollGrid_Bottom,
-		}
 
 		self.bWHEOOH = False
 		self.bCurrentWar = False
@@ -410,7 +388,7 @@ class CvMilitaryAdvisor:
 				else:
 					sWHEOOH = ""
 
-				self.SitRepGrid.addText(iRow, self.Col_WHEOOH, sWHEOOH, 3)
+				self.SitRepGrid.setText(iRow, self.Col_WHEOOH, sWHEOOH, 3)
 
 				# add the threat index
 				self.Grid_ThreatIndex(iRow, iLoopPlayer)
@@ -1180,44 +1158,35 @@ class CvMilitaryAdvisor:
 			if (inputClass.getFunctionName() == self.UNIT_LOC_TAB_ID):
 				self.iScreen = UNIT_LOCATION_SCREEN
 				self.showUnitLocation()
+				return 1
 
 			elif (inputClass.getFunctionName() == self.SIT_REP_TAB_ID):
 				self.iScreen = SITUATION_REPORT_SCREEN
 				self.showSituationReport()
-
-#			elif (inputClass.getFunctionName() == self.PLACE_HOLDER_TAB):
-#				self.iScreen = PLACE_HOLDER
-#				self.showGameSettingsScreen()
+				return 1
 
 			elif (inputClass.getFunctionName() == self.UNIT_BUTTON_ID):
 				self.bUnitDetails = not self.bUnitDetails
 				self.UL_refreshUnitSelection(True, True)
+				return 1
 
 			# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
 			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
 #				if (inputClass.getFlags() & MouseFlags.MOUSE_LBUTTONUP):
 #					self.iSelectedLeader = inputClass.getData1()
 #					self.drawContents(False)
+#				return 1
 				if (inputClass.getFlags() & MouseFlags.MOUSE_RBUTTONUP):
 					if (self.iActivePlayer != inputClass.getData1()):
 						self.getScreen().hideScreen()
+						return 1
 			# RJG End
-
-			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
-				func = self.inputFunctionMap.get(inputClass.getData1(), None)
-				if func:
-					func()
-					return 1
 		
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
 			if (inputClass.getData() == int(InputTypes.KB_LSHIFT)
 			or  inputClass.getData() == int(InputTypes.KB_RSHIFT)):
 				self.iShiftKeyDown = inputClass.getID()
-			else:
-				func = self.keyFunctionMap.get(inputClass.getData(), None)
-				if func and inputClass.getID():
-					func()
-					return 1
+				return 1
 
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
 			iSelected = inputClass.getData()
@@ -1231,7 +1200,7 @@ class CvMilitaryAdvisor:
 				self.UL_refresh(False, True)
 				return 1
 		
-		return 0
+		return self.SitRepGrid.handleInput(inputClass)
 
 
 	def update(self, fDelta):

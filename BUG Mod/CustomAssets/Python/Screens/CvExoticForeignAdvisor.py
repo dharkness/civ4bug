@@ -12,8 +12,8 @@ import math
 ############################################
 ### BEGIN CHANGES ENHANCED INTERFACE MOD ###
 ############################################
-import IconGrid
-#from IconGrid import IconGrid
+import IconGrid_BUG
+#from IconGrid_BUG import IconGrid_BUG
 ##########################################
 ### END CHANGES ENHANCED INTERFACE MOD ###
 ##########################################
@@ -557,12 +557,12 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		screen = self.getScreen()
 		
 		if (self.RES_SHOW_ACTIVE_TRADE):
-			columns = ( IconGrid.GRID_ICON_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN
-					  , IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_TEXT_COLUMN
-					  , IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_TEXT_COLUMN )
+			columns = ( IconGrid_BUG.GRID_ICON_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN
+					  , IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_TEXT_COLUMN
+					  , IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_TEXT_COLUMN )
 		else:
-			columns = ( IconGrid.GRID_ICON_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN
-					  , IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_TEXT_COLUMN )
+			columns = ( IconGrid_BUG.GRID_ICON_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN
+					  , IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_TEXT_COLUMN )
 		self.NUM_RESOURCE_COLUMNS = len(columns) - 1
 		
 		gridX = self.MIN_LEFT_RIGHT_SPACE + 10
@@ -571,7 +571,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		gridHeight = self.H_SCREEN - self.MIN_TOP_BOTTOM_SPACE * 2 - self.RES_SURPLUS_HEIGHT - self.RES_PANEL_SPACE - self.TITLE_HEIGHT - 20
 		
 		self.resIconGridName = self.getNextWidgetName()
-		self.resIconGrid = IconGrid.IconGrid( self.resIconGridName, screen, gridX, gridY, gridWidth, gridHeight
+		self.resIconGrid = IconGrid_BUG.IconGrid_BUG( self.resIconGridName, screen, gridX, gridY, gridWidth, gridHeight
 											, columns, True, self.SHOW_LEADER_NAMES, self.SHOW_ROW_BORDERS )
 
 		self.resIconGrid.setGroupBorder(self.GROUP_BORDER)
@@ -748,11 +748,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				self.resIconGrid.appendRow(currentPlayer.getName(), message)
 				self.resIconGrid.addIcon( currentRow, self.leaderCol
 										, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
+										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
 # 				for i in range(4):
 # 					for iLoopBonus in range(gc.getNumBonusInfos()):
 # 						self.resIconGrid.addIcon( currentRow, i + 1, gc.getBonusInfo(iLoopBonus).getButton()
-# 												, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+# 												, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 				for iLoopBonus in range(gc.getNumBonusInfos()):
 					if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
 						sAmount = str(gc.getPlayer(iLoopPlayer).AI_maxGoldPerTurnTrade(self.iActiveLeader))
@@ -762,17 +762,17 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False)):
 						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, (not currentPlayer.isHuman()))): # surplus
 							self.resIconGrid.addIcon( currentRow, self.surplusCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 						else: # used
 							self.resIconGrid.addIcon( currentRow, self.usedCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 					if (currentPlayer.canTradeItem(self.iActiveLeader, tradeData, False)):
 						if (currentPlayer.canTradeItem(self.iActiveLeader, tradeData, (not currentPlayer.isHuman()))): # will trade
 							self.resIconGrid.addIcon( currentRow, self.willTradeCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 						else: # won't trade
 							self.resIconGrid.addIcon( currentRow, self.wontTradeCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 				if (self.RES_SHOW_ACTIVE_TRADE):
 					amount = 0
 					for iLoopDeal in range(gc.getGame().getIndexAfterLastDeal()):
@@ -786,7 +786,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
 									self.resIconGrid.addIcon( currentRow, self.activeImportCol
 															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
+															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
 							for iLoopTradeItem in range(deal.getLengthSecondTrades()):
 								tradeData2 = deal.getSecondTrade(iLoopTradeItem)
 								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
@@ -794,7 +794,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
 									self.resIconGrid.addIcon( currentRow, self.activeExportCol
 															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
+															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
 						
 						if ( deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader ):
 							for iLoopTradeItem in range(deal.getLengthFirstTrades()):
@@ -804,7 +804,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
 									self.resIconGrid.addIcon( currentRow, self.activeExportCol
 															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
+															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
 							for iLoopTradeItem in range(deal.getLengthSecondTrades()):
 								tradeData2 = deal.getSecondTrade(iLoopTradeItem)
 								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
@@ -812,7 +812,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
 									self.resIconGrid.addIcon( currentRow, self.activeImportCol
 															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
+															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
 					if (amount != 0):
 						self.resIconGrid.setText(currentRow, self.payingCol, str(amount))
 				currentRow += 1
@@ -866,7 +866,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				self.techIconGrid.appendRow(currentPlayer.getName(), message)
 				self.techIconGrid.addIcon( currentRow, 0, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										 , WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
+										 , 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
 				
 				if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
 					sAmount = str(gc.getPlayer(iLoopPlayer).AI_maxGoldTrade(self.iActiveLeader))
@@ -879,20 +879,20 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						tradeData.iData = iLoopTech
 						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False)): # wants
 							self.techIconGrid.addIcon( currentRow, 1, gc.getTechInfo(iLoopTech).getButton()
-																				 , WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																				 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 						elif currentPlayer.canResearch(iLoopTech, False):
 							self.techIconGrid.addIcon( currentRow, 2, gc.getTechInfo(iLoopTech).getButton()
-																			, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																			, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 						if (currentPlayer.canTradeItem(self.iActiveLeader, tradeData, False)):
 							if (currentPlayer.getTradeDenial(self.iActiveLeader, tradeData) == DenialTypes.NO_DENIAL): # will trade
 								self.techIconGrid.addIcon( currentRow, 4, gc.getTechInfo(iLoopTech).getButton()
-																					 , WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 							else: # won't trade
 								self.techIconGrid.addIcon( currentRow, 5, gc.getTechInfo(iLoopTech).getButton()
-																					 , WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 						elif (gc.getTeam(currentPlayer.getTeam()).isHasTech(iLoopTech) and activePlayer.canResearch(iLoopTech, False)):
 							self.techIconGrid.addIcon( currentRow, 6, gc.getTechInfo(iLoopTech).getButton()
-																					 , WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 
 				currentRow += 1
 		self.techIconGrid.refresh()
@@ -907,11 +907,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		gridWidth = self.W_SCREEN - self.MIN_LEFT_RIGHT_SPACE * 2 - 20
 		gridHeight = self.H_SCREEN - self.MIN_TOP_BOTTOM_SPACE * 2 - 20
 		
-		columns = ( IconGrid.GRID_ICON_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN
-								, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_TEXT_COLUMN
-								, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN, IconGrid.GRID_MULTI_LIST_COLUMN )
+		columns = ( IconGrid_BUG.GRID_ICON_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN
+								, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_TEXT_COLUMN
+								, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN, IconGrid_BUG.GRID_MULTI_LIST_COLUMN )
 		self.techIconGridName = self.getNextWidgetName()
-		self.techIconGrid = IconGrid.IconGrid( self.techIconGridName, screen, gridX, gridY, gridWidth, gridHeight
+		self.techIconGrid = IconGrid_BUG.IconGrid_BUG( self.techIconGridName, screen, gridX, gridY, gridWidth, gridHeight
 											 , columns, self.TECH_USE_SMALL_ICONS, self.SHOW_LEADER_NAMES, self.SHOW_ROW_BORDERS )
 
 		self.techIconGrid.setGroupBorder(self.GROUP_BORDER)
@@ -949,19 +949,17 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				if (inputClass.getFlags() & MouseFlags.MOUSE_LBUTTONUP):
 					self.iSelectedLeader = inputClass.getData1()
 					self.drawContents(False)
+					return 1
 				elif (inputClass.getFlags() & MouseFlags.MOUSE_RBUTTONUP):
 					if inputClass.getData1() != self.iActiveLeader:
 						self.getScreen().hideScreen()
+						return 1
 			elif (inputClass.getFunctionName() == self.GLANCE_BUTTON):
 				self.handlePlusMinusToggle()
+				return 1
 ############################################
 ### BEGIN CHANGES ENHANCED INTERFACE MOD ###
 ############################################
-			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
-				if (inputClass.getData1() == self.SCROLL_TABLE_UP):
-					self.scrollTradeTableUp()
-				elif (inputClass.getData1() == self.SCROLL_TABLE_DOWN):
-					self.scrollTradeTableDown()
 			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS):
 #				ExoticForPrint ("FOOOOOO!!!!")
 				pass
@@ -976,8 +974,15 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				iIndex = self.getScreen().getSelectedPullDownID(szName)
 				self.iActiveLeader = self.getScreen().getPullDownData(szName, iIndex)
 				self.drawContents(False)
+				return 1
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
 			if (inputClass.getData() == int(InputTypes.KB_LSHIFT) or inputClass.getData() == int(InputTypes.KB_RSHIFT)):
-				self.iShiftKeyDown = inputClass.getID() 
+				self.iShiftKeyDown = inputClass.getID()
+				return 1
+		
+		if (self.iScreen == self.SCREEN_DICT["BONUS"]):
+			return self.resIconGrid.handleInput(inputClass)
+		elif (self.iScreen == self.SCREEN_DICT["TECH"]):
+			return self.techIconGrid.handleInput(inputClass)
 
 		return 0
