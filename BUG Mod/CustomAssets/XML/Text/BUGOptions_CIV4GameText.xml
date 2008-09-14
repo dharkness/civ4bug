@@ -712,7 +712,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCITYFOUNDED_HOVER</Tag>
 		<English>When checked, will log when you found a city.</English>
 		<French>En activant, la fondation d'une ville sera noté dans le log.</French>
-		<German>Protokolliert die Gründung von Städten</German>
+		<German>Protokolliert die Gründung von eigenen Städten</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra quando fondi una Città.</Italian>
 		<Spanish>When checked, will log when you found a city.</Spanish>
 	</TEXT>
@@ -728,7 +728,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCITYGROWTH_HOVER</Tag>
 		<English>When checked, will log when one of your cities grows in population.</English>
 		<French>En activant, l'aggrandissement de la population de vos villes sera noté dans le log.</French>
-		<German>Protokolliert das Bevölkerungswachstum von Städten</German>
+		<German>Protokolliert das Bevölkerungswachstum in den eigenen Städten</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra quando cresce la popolazione di una tua Città.</Italian>
 		<Spanish>When checked, will log when one of your cities grows in population.</Spanish>
 	</TEXT>
@@ -792,7 +792,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCITYWHIPSTATUS_HOVER</Tag>
 		<English>When checked, will log when you whip a city or when the whip anger decreases in a city.</English>
 		<French>En activant, l'utilisation du fouet dans vos villes sera noté dans le log, ainsi que le décroissement de la colère.</French>
-		<German>Protokolliert die Opferung von Bevölkerung zur Beschleunigung der Produktion oder das Abklingen der Unzufriedenheit darüber</German>
+		<German>Protokolliert die Opferung von Bürgern zur Beschleunigung der Produktion oder das Abklingen der Unzufriedenheit darüber</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra quando compi Sacrifici in una tua Città o quando la rabbia da Sacrifici diminuisce in una tua Città.</Italian>
 		<Spanish>When checked, will log when you whip a city or when the whip anger decreases in a city.</Spanish>
 	</TEXT>
@@ -808,7 +808,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGGOODIES_HOVER</Tag>
 		<English>When checked, will log results from popping tribal villages.</English>
 		<French>En activant, le résultats des villages tribaux sera noté dans le log.</French>
-		<German>Protokolliert die Ereignisse beim Betreten von Eingeborenendörfern</German>
+		<German>Protokolliert die Ereignisse beim Betreten von Stammesdörfern</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le conseguenze del ritrovamento di Villaggi Tribali.</Italian>
 		<Spanish>When checked, will log results from popping tribal villages.</Spanish>
 	</TEXT>
@@ -840,7 +840,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCORPORATION_HOVER</Tag>
 		<English>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</English>
 		<French>En activant, le log contiendra[NEWLINE]- Quand vous fondez une corporation[NEWLINE]- Quand une corporation se propage dans vos villes[NEWLINE]- Quand une corporation dont vous contrôlez la Quartier Général se propage dans une ville étrangère</French>
-		<German>Protokolliert:[NEWLINE]- die Gründung einer Kapitalgesellschaft[NEWLINE]- die Verbreitung von Kapitalgesellschaften in eigenen Städten[NEWLINE]- die Verbreitung von Kapitalgesellschaften, deren Hauptsitze der eigenen Zivilisation angehören, in ausländischen Städten</German>
+		<German>Protokolliert:[NEWLINE]- die Gründung einer Kapitalgesellschaft[NEWLINE]- die Verbreitung von Kapitalgesellschaften in eigenen Städten[NEWLINE]- die Verbreitung von Kapitalgesellschaften, deren Hauptsitze  sich in Städten der eigenen Zivilisation befinden, in ausländischen Städten</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra: [NEWLINE]- quando fondi una Corporazione;[NEWLINE]- la diffusione delle varie Corporazioni nelle tue Città;[NEWLINE]- la diffusione nelle città straniere delle Corporazioni di cui controlli la Sede Principale.</Italian>
 		<Spanish>When checked, will log[NEWLINE]- When you found a corporation[NEWLINE]- Spread of any corporation to your cities[NEWLINE]- Spread of corporation whose headquarters you control to foreign cities</Spanish>
 	</TEXT>
@@ -856,7 +856,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGGP_HOVER</Tag>
 		<English>When checked, will log the birth of great people (in your cities).</English>
 		<French>En activant, la naissance des personnages illustres dans vos villes sera noté dans le log.</French>
-		<German>Protokolliert das Erscheinen Großer Persönlichkeiten (in eigenen Städten)</German>
+		<German>Protokolliert das Erscheinen Großer Persönlichkeiten in eigenen Städten</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra la nascita di Grandi Personaggi nelle tue Città.</Italian>
 		<Spanish>When checked, will log the birth of great people (in your cities).</Spanish>
 	</TEXT>
@@ -872,7 +872,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGGA_HOVER</Tag>
 		<English>When checked, will log begin and end of your Golden Ages.</English>
 		<French>En activant, le début et la fin de vos Ages d'Or sera noté dans le log.</French>
-		<German>Protokolliert den Beginn und das Ende eigener Goldener Zeitalter</German>
+		<German>Protokolliert den Beginn und das Ende von Goldenen Zeitaltern der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra l'inizio e la fine delle Età dell'Oro.</Italian>
 		<Spanish>When checked, will log begin and end of your Golden Ages.</Spanish>
 	</TEXT>
@@ -888,7 +888,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCONTACT_HOVER</Tag>
 		<English>When checked, will log first contact with other civs.</English>
 		<French>En activant, le premier contact avec une autre civilisation sera noté dans le log.</French>
-		<German>Protokolliert den Erstkontakt mit anderen Zivilisationen</German>
+		<German>Protokolliert eigene Erstkontakte mit anderen Zivilisationen</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra i Primi Contatti con le altre Civiltà.</Italian>
 		<Spanish>When checked, will log first contact with other civs.</Spanish>
 	</TEXT>
@@ -936,7 +936,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGVASSALS_HOVER</Tag>
 		<English>When checked, will log when any civ becomes a vassal state of or frees itself from another.</English>
 		<French>En activant, il sera noté dans le log quand une civilisation devient vassale ou se libère.</French>
-		<German>Protokolliert jede Zivilisationen, die zu einem Vasallenstaat wird oder sich aus einer Fremdherrschaft befreit</German>
+		<German>Protokolliert jede Zivilisationen, die zu einem Vasallenstaat wird oder von ihrem Hegemoniestaat lossagt</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra quando una Civiltà diviene uno Stato Vassallo di un'altra e quando si affranca da essa.</Italian>
 		<Spanish>When checked, will log when any civ becomes a vassal state of or frees itself from another.</Spanish>
 	</TEXT>
@@ -960,7 +960,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCOMBAT_TEXT</Tag>
 		<English>Combat</English>
 		<French>Combat</French>
-		<German>Kampf</German>
+		<German>Kämpfe</German>
 		<Italian>Battaglie</Italian>
 		<Spanish>Combat</Spanish>
 	</TEXT>
@@ -1033,7 +1033,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_HOVER</Tag>
 		<English>Determines the Raw Yields view used when Civ is started.</English>
 		<French>Determines the Raw Yields view used when Civ is started.</French>
-		<German>Bestimmt, welche Erträge standardmäßig angezeigt werden sollen</German>
+		<German>Bestimmt, welche Erträge beim Aufruf des Stadt-Bildschirms standardmäßig angezeigt werden sollen</German>
 		<Italian>Determina la vista predefinita alla partenza di Civ4 per il pannello dei Prodotti Grezzi: Rotte Commerciali, Cibo, Produzione o Commercio.</Italian>
 		<Spanish>Determines the Raw Yields view used when Civ is started.</Spanish>
 	</TEXT>
@@ -1047,17 +1047,17 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_TEXT</Tag>
-		<English>Whip Assistant</English>
-		<French>Whip Assistant</French>
+		<English>Whip Assist</English>
+		<French>Whip Assist</French>
 		<German>Anzeige für die Beschleunigung der Produktion</German>
 		<Italian>Barra di produzione con accelerazione</Italian>
-		<Spanish>Whip Assistant</Spanish>
+		<Spanish>Whip Assist</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_HOVER</Tag>
 		<English>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</English>
 		<French>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</French>
-		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion an sowie die Kosten, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden kann</German>
+		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion sowie die Kosten an, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden kann</German>
 		<Italian>Quando è selezionato, la Barra della Pruduzione della Schermata Cittadina mostra il costo in popolazione ed il surplus di produzione per l'accelerazione di produzione mediante sacrifici e il costo in oro per l'accelerazione di produzione mediante pagamenti relativi all'oggetto attualmente costruito.</Italian>
 		<Spanish>When checked, displays the population cost and overflow production for whipping and the gold cost for buying the item being produced.</Spanish>
 	</TEXT>
@@ -1121,7 +1121,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONINFO_HOVER</Tag>
 		<English>When checked, displays additional Great Person Information.</English>
 		<French>En activant, de l'information supplémentaire sur les Personnages Illustres est montrée.</French>
-		<German>Zeigt zusätzliche Information über Große Persönlichkeiten an</German>
+		<German>Zeigt zusätzliche Information über zukünftige Große Persönlichkeiten an</German>
 		<Italian>Quando è selezionato, vengono visualizzate informazioni aggiuntive sui Grandi Personaggi.</Italian>
 		<Spanish>When checked, displays additional Great Person Information.</Spanish>
 	</TEXT>
@@ -1668,7 +1668,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_TEXT</Tag>
 		<English>Show Minor Civilizations</English>
 		<French>Show Minor Civilizations</French>
-		<German>Show Minor Civilizations</German>
+		<German>Primitive Zivilisationen anzeigen</German>
 		<Italian>Mostra Civiltà Minori</Italian>
 		<Spanish>Show Minor Civilizations</Spanish>
 	</TEXT>
@@ -1676,7 +1676,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_HOVER</Tag>
 		<English>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</English>
 		<French>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</French>
-		<German>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</German>
+		<German>Zeigt primitive Zivilisationen an (diese werden in einigen Szenarios verwendet)</German>
 		<Italian>Quando è selezionato, vengono visualizzate anche le Civiltà Minori (certi Scenari considerano alcune Civiltà come minori).</Italian>
 		<Spanish>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Spanish>
 	</TEXT>
@@ -1804,7 +1804,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__ATTITUDE_TEXT</Tag>
 		<English>Attitude Icons</English>
 		<French>Icônes d'Attitude</French>
-		<German>Einstellung als Smiley</German>
+		<German>Einstellung</German>
 		<Italian>Icone di Atteggiamento</Italian>
 		<Spanish>Attitude Icons</Spanish>
 	</TEXT>
@@ -1820,7 +1820,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__WORSTENEMY_TEXT</Tag>
 		<English>Worst Enemy Icons</English>
 		<French>Icône Plus Grand Ennemi</French>
-		<German>Symbol für Erzfeind</German>
+		<German>Erzfeind</German>
 		<Italian>Icone del Peggior Nemico</Italian>
 		<Spanish>Worst Enemy Icons</Spanish>
 	</TEXT>
@@ -1836,7 +1836,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__WHEOOH_TEXT</Tag>
 		<English>War Mobilization Icons</English>
 		<French>War Mobilization Icons</French>
-		<German>Symbol für Kriegsvorbereitungen</German>
+		<German>Kriegsvorbereitungen</German>
 		<Italian>Icone di Mobilitazione</Italian>
 		<Spanish>War Mobilization Icons</Spanish>
 	</TEXT>
@@ -1890,17 +1890,17 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DISPLAYORDER_HOVER</Tag>
-		<English>This determines the order in which the score columns appear.[NEWLINE]W - You are at war or have a peace treaty with the civ.[NEWLINE]S - The civ's score.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]V - The civ has at least one vassal.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</English>
+		<English>This determines the order in which the score columns appear.[NEWLINE]W - You are at war or have a peace treaty with the civ.[NEWLINE]S - The civ's score.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]V - The civ has at least one vassal.[NEWLINE]C - The civ's/leader's/player's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</English>
 		<French>Ceci détermine l'ordre dans lequel les colonnes apparaissent.[NEWLINE]W - Vous êtes en guerre contre cette civilisation.[NEWLINE]S - Score de la civilisation.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]V - The civ has at least one vassal.[NEWLINE]C - Nom de la civilisation et/ou du dirigeant.[NEWLINE]? - Vous n'avez pas encore rencontré cette civilisation.[NEWLINE]E - Votre pro rata d'espionnage avec cette civilisation est bon.[NEWLINE]P - Pro rata du pouvoir de cette civilisation comparé à vous.[NEWLINE]T - La technologie que la civilisation recherche (vassaux, équipe et espionnage).[NEWLINE]U - Le nombre de tours qui restent à la recherche.[NEWLINE]N - Cette civilisation est connectée à votre réseau de commerce.[NEWLINE]B - Vous avez une accord de frontières ouvertes avec cette civilisation.[NEWLINE]D - Vous avez un pacte défensif avec cette civilisation.[NEWLINE]R - La religion nationale de cette civilisation.[NEWLINE]A - L'attitude de cette civilisation envers vous.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - Vous attendez que cette civilisation finisse son tour.[NEWLINE]L - Statistique de Réseau (ping).[NEWLINE]O - Le joueur est out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</French>
-		<German>Bestimmt die Reihenfolge, in der die Spalten der Punkteanzeige angeordnet werden:[NEWLINE]W - Kriegszustand oder Friedensvertrag mit einer Zivilisation[NEWLINE]S - Wertung einer Zivilisation[NEWLINE]Z - Veränderung der Wertung einer Zivilisation seit der letzten Runde[NEWLINE]C - Name einer Zivilisation/eines Oberhaupts[NEWLINE]? - Zivilisation noch nicht kontaktiert[NEWLINE]E - Gutes Spionagepunktverhältnis gegenüber einer Zivilisation[NEWLINE]P - Machtverhältnis zwischen der eigenen und einer gegnerischen Zivilisation[NEWLINE]T - Derzeitiges Forschungsprojekt einer Zivilisation (gilt für Vasallen, Verbündete und durch Spionage erlangt)[NEWLINE]U - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE]N - Handelsverbindungen mit einer Zivilisation[NEWLINE]B - "Offene Grenzen" mit einer Zivilisation[NEWLINE]D - "Verteidigungsbündis" mit einer Zivilisation[NEWLINE]R - Staatsreligion einer Zivilisation[NEWLINE]A - Einstellung einer Zivilisation gegenüber der eigenen[NEWLINE]H - Erzfeind der eigenen Zivilisation[NEWLINE]M - Kriegsvorbereitungen einer Zivilisation (engl. "WHEOOH")[NEWLINE]* - Warten auf den Zug einer Zivilisation (im Multiplayer)[NEWLINE]L - Netzwerkstatistik einer Zivilisation (Ping)[NEWLINE]O - Verbundener Spieler ist "out-of-sync"[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</German>
+		<German>Bestimmt die Reihenfolge, in der die Spalten der Punkteanzeige angeordnet werden:[NEWLINE]W - Kriegszustand oder Friedensvertrag mit einer Zivilisation[NEWLINE]S - Wertung einer Zivilisation[NEWLINE]Z - Veränderung der Wertung einer Zivilisation seit der letzten Runde[NEWLINE]V - Eine Zivilisation hat mindestens einen Vasallen[NEWLINE]C - Name einer Zivilisation/eines Oberhaupts/eines Spielers[NEWLINE]? - Zivilisation noch nicht kontaktiert[NEWLINE]E - Gutes Spionagepunktverhältnis gegenüber einer Zivilisation[NEWLINE]P - Machtverhältnis zwischen der eigenen und einer gegnerischen Zivilisation[NEWLINE]T - Derzeitiges Forschungsprojekt einer Zivilisation (gilt für Vasallen, Verbündete und durch Spionage erlangt)[NEWLINE]U - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE]N - Handelsverbindungen mit einer Zivilisation[NEWLINE]B - "Offene Grenzen" mit einer Zivilisation[NEWLINE]D - "Verteidigungsbündis" mit einer Zivilisation[NEWLINE]R - Staatsreligion einer Zivilisation[NEWLINE]A - Einstellung einer Zivilisation gegenüber der eigenen[NEWLINE]H - Erzfeind der eigenen Zivilisation[NEWLINE]M - Kriegsvorbereitungen einer Zivilisation (engl. "WHEOOH")[NEWLINE]* - Warten auf den Zug einer Zivilisation (im Multiplayer)[NEWLINE]L - Netzwerkstatistik einer Zivilisation (Ping)[NEWLINE]O - Verbundener Spieler ist "out-of-sync"[NEWLINE][NEWLINE]Zwischen den Codes für die Spalten können Zahlen (positive oder negative) gesetzt werden, die den eingestellten Standardabstand außer Kraft setzen</German>
 		<Italian>Determina l'ordine in base al quale vengono visualizzate le colonne del Pannello del Punteggio.[NEWLINE]W - Sei in guerra o hai un trattato di pace con la Civiltà.[NEWLINE]S - Il Punteggio della Civiltà.[NEWLINE]Z - La variazione nel punteggio rispetto al turno precedente.[NEWLINE]V - Mostra l'icona di una stella argentata se la Civiltà ha dei Vassalli.[NEWLINE]C - Il Nome della Civiltà/del Leader della Civiltà.[NEWLINE]? - Non hai ancora incontrato questa Civiltà.[NEWLINE]E - Hai un Rapporto di Spionaggio positivo verso la Civiltà.[NEWLINE]P - La Potenza della Civiltà rispetto alla tua.[NEWLINE]T - La Tecnologia che la Civiltà sta ricercando (nota per Vassalli e Alleati o mediante Spionaggio).[NEWLINE]U - Il numero di Turni di Ricerca rimasti alla Civiltà.[NEWLINE]N - La Civiltà è connessa alla tua rete commerciale.[NEWLINE]B - Hai un accordo di Libero Scambio con la Civiltà.[NEWLINE]D - Hai un Patto Difensivo con la Civiltà.[NEWLINE]R - La Religione di Stato della Civiltà.[NEWLINE]A - L'atteggiamento della Civiltà verso di te.[NEWLINE]H - Siete il Peggior Nemico della Civiltà.[NEWLINE]M - La Civiltà si sta mobilitando per la guerra.[NEWLINE]* - Sei in attesa che questa Civiltà finisca il suo turno.[NEWLINE]L - Le statistiche di connessione del giocatore della Civiltà (ping).[NEWLINE]O - Il giocatore di questa Civiltà è "out-of-sync".[NEWLINE][NEWLINE]Un numero definisce la spaziatura (in pixel) che deve seguire la colonna precedente (se visualizzata), prevalendo sulla spaziatura di default; un numero negativo comporta il ravvicinamento (ed al limite anche la sovrapposizione) fra le due colonne.[NEWLINE]Gli spazi vengono ignorati, per cui possono essere utilizzati per semplificare la lettura della stringa di codici.</Italian>
-		<Spanish>This determines the order in which the score columns appear.[NEWLINE]W - You are at war or have a peace treaty with the civ.[NEWLINE]S - The civ's score.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]V - The civ has at least one vassal.[NEWLINE]C - The civ's/leader's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</Spanish>
+		<Spanish>This determines the order in which the score columns appear.[NEWLINE]W - You are at war or have a peace treaty with the civ.[NEWLINE]S - The civ's score.[NEWLINE]Z - The change in the civ's score since previous turn.[NEWLINE]V - The civ has at least one vassal.[NEWLINE]C - The civ's/leader's/player's name.[NEWLINE]? - You have not yet met the civ.[NEWLINE]E - You have a positive espionage point ratio against the civ.[NEWLINE]P - The civ's power ratio compared to you.[NEWLINE]T - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE]U - The number of research turns left.[NEWLINE]N - The civ is connected to your trade network.[NEWLINE]B - You have an open borders agreement with the civ.[NEWLINE]D - You have a defensive pact with the civ.[NEWLINE]R - The civ's state religion.[NEWLINE]A - The civ's attitude toward you.[NEWLINE]H - You are the civ's worst enemy.[NEWLINE]M - The civ is mobilizing for war (WHEOOH).[NEWLINE]* - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE]L - Civ's network stats (ping).[NEWLINE]O - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__GROUPVASSALS_TEXT</Tag>
 		<English>Group Vassals</English>
 		<French>Group Vassals</French>
-		<German>Group Vassals</German>
+		<German>Vasallen gruppieren</German>
 		<Italian>Raggruppa Vassalli</Italian>
 		<Spanish>Group Vassals</Spanish>
 	</TEXT>
@@ -1908,7 +1908,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__GROUPVASSALS_HOVER</Tag>
 		<English>When checked, vassals are group together under their master(s).</English>
 		<French>When checked, vassals are group together under their master(s).</French>
-		<German>When checked, vassals are group together under their master(s).</German>
+		<German>Gruppiert Vasallenstaaten zusammen mit ihren jeweiligen Hegemoniestaaten</German>
 		<Italian>Quando è selezionato, le Civiltà Vassalle sono elencate (rientranti) sotto alla Civiltà di cui sono Vassalli.</Italian>
 		<Spanish>When checked, vassals are group together under their master(s).</Spanish>
 	</TEXT>
@@ -1972,7 +1972,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</French>
-		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Höhere Werte sind besser[NEWLINE]- Kehrwert: Niedrigere Werte sind besser</German>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)</German>
 		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Spanish>
 	</TEXT>
@@ -2462,7 +2462,7 @@
 		<English>Vertical Position</English>
 		<French>Position Verticale</French>
 		<German>Vertikale Position</German>
-		<Italian>Posizione verticale</Italian>
+		<Italian>Posizione  verticale</Italian>
 		<Spanish>Vertical Position</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2477,7 +2477,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__INFO_PANE_PROMO_ICON_OFFSET_Y_TEXT</Tag>
 		<English>Promotion Icon Offset</English>
 		<French>Promotion Icon Offset</French>
-		<German>Promotion Icon Offset</German>
+		<German>Beförderungen (Abstand)</German>
 		<Italian>Posiz. Icone Promozione</Italian>
 		<Spanish>Promotion Icon Offset</Spanish>
 	</TEXT>
@@ -2485,7 +2485,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__INFO_PANE_PROMO_ICON_OFFSET_Y_HOVER</Tag>
 		<English>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</English>
 		<French>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</French>
-		<German>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</German>
+		<German>Legt den vertikalen Abstand der Beförderungssymbole im Info-Tooltip fest, um bei Themes, die die Schriftart verändern, diese Symbole richtig anzuordnen (der Standardwert ist 0, der beste Wert für "Blue Marble" ist 6)</German>
 		<Italian>Determina il posizionamento verticale delle Icone di Promozione nel Pannello di Informazioni sulle Unità (il valore predefinito è '0', i valori positivi indicano uno spostamento verso l'alto e quelli negativi verso il basso). Utilizza questa impostazione per aggiustare il piazzamento delle icone di promozione quando utilizzi dei temi personalizzati che modificano il font predefinito di Civ4 (per esempio, ti consigliamo di impostare un valore di '6' se utilizzi il tema del mod BlueMarble).</Italian>
 		<Spanish>Specifies the vertical offset of the promotion icons on the Unit Info hover pane (default value is 0, positive is up). Use this to adjust the placement of the icons when using themes that change the font. For example, use 6 with BlueMarble.</Spanish>
 	</TEXT>
@@ -2630,7 +2630,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TYPES_HOVER</Tag>
 		<English>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</English>
 		<French>Determine combien de types de PI doivent être montrés dans la Barre de Progrès. L'option "Maximum" montre aussi les chances de chacun.</French>
-		<German>Bestimmt die Anzahl der Typen von Großen Persönlichkeiten, die im Fortschrittsbalken angezeigt werden (die Einstellung "Maximal" zeigt zusätzlich die prozentuale Chance für jede an)</German>
+		<German>Bestimmt die Anzahl der Typen von Großen Persönlichkeiten, die im Fortschrittsbalken angezeigt werden (die Einstellung "Maximal" zeigt zusätzlich die prozentuale Chance für jede einzelne an)</German>
 		<Italian>Determina quanti tipi di Grandi Personaggi devono essere mostrati nella Barra dei Grandi Personaggi. L'impostazione "Massimo" mostra anche la possibilità percentuale di ognuna.</Italian>
 		<Spanish>Determines how many GP types to display in the GP Progress Bar. The "Maximum" setting also displays the percent chance for each.</Spanish>
 	</TEXT>
@@ -2775,7 +2775,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_TEXT</Tag>
 		<English>Victories tab</English>
 		<French>Victories tab</French>
-		<German>Siegbedingungen</German>
+		<German>BUG Siegbedingungen</German>
 		<Italian>Scheda Vittorie</Italian>
 		<Spanish>Victories tab</Spanish>
 	</TEXT>
@@ -2783,7 +2783,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_HOVER</Tag>
 		<English>When checked, displays extra information on the Victories tab.</English>
 		<French>When checked, displays extra information on the Victories tab.</French>
-		<German>Zeigt zusätzliche Informationen im entsprechenden Bildschirm an</German>
+		<German>Zeigt zusätzliche Informationen auf der entsprechenden Seite des Sieg-Bildschirms an</German>
 		<Italian>Quando è selezionato, mostra informazioni aggiuntive nella Scheda delle Vittorie della Schermata Condizioni di Vittoria.</Italian>
 		<Spanish>When checked, displays extra information on the Victories tab.</Spanish>
 	</TEXT>
@@ -2791,7 +2791,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMEMBERSTAB_TEXT</Tag>
 		<English>Members tab</English>
 		<French>Members tab</French>
-		<German>Mitglieder</German>
+		<German>BUG Mitglieder</German>
 		<Italian>Scheda Membri</Italian>
 		<Spanish>Members tab</Spanish>
 	</TEXT>
@@ -2799,7 +2799,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMEMBERSTAB_HOVER</Tag>
 		<English>When checked, displays extra information on the Members tab.</English>
 		<French>When checked, displays extra information on the Members tab.</French>
-		<German>Zeigt zusätzliche Informationen im entsprechenden Bildschirm an</German>
+		<German>Zeigt zusätzliche Informationen auf der entsprechenden Seite des Sieg-Bildschirms an</German>
 		<Italian>Quando è selezionato, mostra informazioni aggiuntive nella Scheda dei Membri della Schermata Condizioni di Vittoria.</Italian>
 		<Spanish>When checked, displays extra information on the Members tab.</Spanish>
 	</TEXT>
@@ -2807,7 +2807,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_TEXT</Tag>
 		<English>Graphs tab</English>
 		<French>Graphs tab</French>
-		<German>Graphs tab</German>
+		<German>BUG Diagramme</German>
 		<Italian>Scheda Grafici</Italian>
 		<Spanish>Graphs tab</Spanish>
 	</TEXT>
@@ -2815,7 +2815,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_HOVER</Tag>
 		<English>When checked, displays graphs in BUG format.</English>
 		<French>When checked, displays graphs in BUG format.</French>
-		<German>When checked, displays graphs in BUG format.</German>
+		<German>Zeigt die Diagramme auf der entsprechenden Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an</German>
 		<Italian>Quando è selezionato, mostra la Scheda dei Grafici nel formato modificato del BUG Mod</Italian>
 		<Spanish>When checked, displays graphs in BUG format.</Spanish>
 	</TEXT>
@@ -3229,7 +3229,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GENERAL</Tag>
 		<English>General:</English>
 		<French>General:</French>
-		<German>General:</German>
+		<German>Allgemein:</German>
 		<Italian>Generale:</Italian>
 		<Spanish>General:</Spanish>
 	</TEXT>
@@ -3245,7 +3245,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_NEW_COLUMNS</Tag>
 		<English>Additional Columns:</English>
 		<French>Additional Columns:</French>
-		<German>Additional Columns:</German>
+		<German>Zusätzliche Spalten:</German>
 		<Italian>Colonne aggiuntive:</Italian>
 		<Spanish>Additional Columns:</Spanish>
 	</TEXT>

@@ -651,27 +651,38 @@
 		<Spanish>Info.</Spanish>
 	</TEXT>
 	
-	<!-- graph Screen -->
+	<!--Fix for wrong translation of "Power" in German, Italian and Spanish language-->
 	
 	<TEXT>
-		<Tag>SHOW_ALL</Tag>
+		<Tag>TXT_KEY_POWER</Tag>
+		<English>Power</English>
+		<French>Puissance</French>
+		<German>Macht</German>
+		<Italian>Energia</Italian>
+		<Spanish>Energ&#237;a</Spanish>
+	</TEXT>
+	
+	<!-- Graph Screen -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_SHOW_ALL</Tag>
 		<English>Show All</English>
 		<French>Show All</French>
-		<German>Show All</German>
+		<German>Alle anzeigen</German>
 		<Italian>Mostra tutti</Italian>
 		<Spanish>Show All</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>SHOW_NONE</Tag>
+		<Tag>TXT_KEY_SHOW_NONE</Tag>
 		<English>Show None</English>
 		<French>Show None</French>
-		<German>Show None</German>
+		<German>Keine anzeigen</German>
 		<Italian>Cancella tutti</Italian>
 		<Spanish>Show None</Spanish>
 	</TEXT>
 
 	<!-- Victory Screen -->
-
+	
 	<TEXT>
 		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
 		<English>Non Member</English>
