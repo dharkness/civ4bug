@@ -1200,7 +1200,10 @@ class CvMilitaryAdvisor:
 				self.UL_refresh(False, True)
 				return 1
 		
-		return self.SitRepGrid.handleInput(inputClass)
+		if self.iScreen == SITUATION_REPORT_SCREEN and self.SitRepGrid:
+			return self.SitRepGrid.handleInput(inputClass)
+		
+		return 0
 
 
 	def update(self, fDelta):
