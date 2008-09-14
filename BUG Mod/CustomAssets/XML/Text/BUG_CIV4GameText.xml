@@ -658,7 +658,7 @@
 		<English>Show All</English>
 		<French>Show All</French>
 		<German>Show All</German>
-		<Italian>Show All</Italian>
+		<Italian>Mostra tutti</Italian>
 		<Spanish>Show All</Spanish>
 	</TEXT>
 	<TEXT>
@@ -666,7 +666,7 @@
 		<English>Show None</English>
 		<French>Show None</French>
 		<German>Show None</German>
-		<Italian>Show None</Italian>
+		<Italian>Cancella tutti</Italian>
 		<Spanish>Show None</Spanish>
 	</TEXT>
 
