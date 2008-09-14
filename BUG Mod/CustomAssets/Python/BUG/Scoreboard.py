@@ -168,8 +168,9 @@ class Scoreboard:
 		return self._teamScoresByID.get(eTeam, None)
 		
 	def addPlayer(self, player, rank):
-		self._currPlayerScore = self._currTeamScores.addPlayer(player, rank)
-		self._playerScores.append(self._currPlayerScore)
+		if self._currTeamScores:
+			self._currPlayerScore = self._currTeamScores.addPlayer(player, rank)
+			self._playerScores.append(self._currPlayerScore)
 		
 	def size(self):
 		return len(self._playerScores)
