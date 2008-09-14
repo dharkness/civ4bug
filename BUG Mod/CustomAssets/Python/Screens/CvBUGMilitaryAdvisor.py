@@ -195,13 +195,25 @@ class CvMilitaryAdvisor:
 #		self.RESOURCE_ICON_SIZE = 34
 		self.SCROLL_TABLE_UP = 1
 		self.SCROLL_TABLE_DOWN = 2
-		self.PAGE_TABLE_UP = 3
-		self.PAGE_TABLE_DOWN = 4
+		self.SCROLL_PAGE_TABLE_UP = 3
+		self.SCROLL_PAGE_TABLE_DOWN = 4
+		self.SCROLL_TABLE_TOP = 5
+		self.SCROLL_TABLE_BOTTOM = 6
 		self.inputFunctionMap = {
 			self.SCROLL_TABLE_UP: self.scrollGrid_Up,
 			self.SCROLL_TABLE_DOWN: self.scrollGrid_Down,
-			self.PAGE_TABLE_UP: self.pageGrid_Up,
-			self.PAGE_TABLE_DOWN: self.pageGrid_Down,
+			self.SCROLL_PAGE_TABLE_UP: self.scrollGrid_PageUp,
+			self.SCROLL_PAGE_TABLE_DOWN: self.scrollGrid_PageDown,
+			self.SCROLL_TABLE_TOP: self.scrollGrid_Top,
+			self.SCROLL_TABLE_BOTTOM: self.scrollGrid_Bottom,
+		}
+		self.keyFunctionMap = {
+			int(InputTypes.KB_UP): self.scrollGrid_Up,
+			int(InputTypes.KB_DOWN): self.scrollGrid_Down,
+			int(InputTypes.KB_PGUP): self.scrollGrid_PageUp,
+			int(InputTypes.KB_PGDN): self.scrollGrid_PageDown,
+			int(InputTypes.KB_HOME): self.scrollGrid_Top,
+			int(InputTypes.KB_END): self.scrollGrid_Bottom,
 		}
 
 		self.bWHEOOH = False
@@ -1109,13 +1121,21 @@ class CvMilitaryAdvisor:
 		if self.iScreen == SITUATION_REPORT_SCREEN:
 			self.SitRepGrid.scrollDown()
 
-	def pageGrid_Up(self):
+	def scrollGrid_PageUp(self):
 		if self.iScreen == SITUATION_REPORT_SCREEN:
-			self.SitRepGrid.pageUp()
+			self.SitRepGrid.scrollPageUp()
 
-	def pageGrid_Down(self):
+	def scrollGrid_PageDown(self):
 		if self.iScreen == SITUATION_REPORT_SCREEN:
-			self.SitRepGrid.pageDown()
+			self.SitRepGrid.scrollPageDown()
+
+	def scrollGrid_Top(self):
+		if self.iScreen == SITUATION_REPORT_SCREEN:
+			self.SitRepGrid.scrollTop()
+
+	def scrollGrid_Bottom(self):
+		if self.iScreen == SITUATION_REPORT_SCREEN:
+			self.SitRepGrid.scrollBottom()
 
 
 
@@ -1189,26 +1209,17 @@ class CvMilitaryAdvisor:
 					func()
 					return 1
 		
-		# can't get mousewheel events to fire
-		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_MOUSEWHEELUP):
-			if self.iShiftKeyDown:
-				self.pageGrid_Up()
-			else:
-				self.scrollGrid_Up()
-			return 1
-		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_MOUSEWHEELDOWN):
-			if self.iShiftKeyDown:
-				self.pageGrid_Down()
-			else:
-				self.scrollGrid_Down()
-			return 1
-
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
 			if (inputClass.getData() == int(InputTypes.KB_LSHIFT)
 			or  inputClass.getData() == int(InputTypes.KB_RSHIFT)):
-				self.iShiftKeyDown = inputClass.getID() 
+				self.iShiftKeyDown = inputClass.getID()
+			else:
+				func = self.keyFunctionMap.get(inputClass.getData(), None)
+				if func and inputClass.getID():
+					func()
+					return 1
 
-		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
 			iSelected = inputClass.getData()
 			control = inputClass.getFunctionName() + str(inputClass.getID())
 			BugUtil.debug("Selected item %d from list %s" % (iSelected, control))
