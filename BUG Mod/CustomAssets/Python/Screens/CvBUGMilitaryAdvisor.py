@@ -638,25 +638,44 @@ class CvMilitaryAdvisor:
 		pPlayer = gc.getPlayer(iPlayer)
 		pActivePlayer = gc.getPlayer(self.iActivePlayer)
 
-		if (not pActivePlayer.canTradeNetworkWith(iPlayer)
-		or (not gc.getTeam(pActivePlayer.getTeam()).isTechTrading()
-		and not gc.getTeam(pPlayer.getTeam()).isTechTrading())):
+		if (not gc.getTeam(pActivePlayer.getTeam()).isTechTrading()
+		and not gc.getTeam(pPlayer.getTeam()).isTechTrading()):
 			szButton = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath()
 			self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
 			return
 
-		iAIUnits = self.getCanTrainUnits(iPlayer, self.iActivePlayer)
-		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer, self.iActivePlayer)
+		bTrade = pActivePlayer.canTradeNetworkWith(iPlayer)
+
+		iAIUnits = self.getCanTrainUnits(iPlayer, self.iActivePlayer, bTrade)
+		iHumanUnits = self.getCanTrainUnits(self.iActivePlayer, self.iActivePlayer, True)
+
+# dump AI units
+#		pPlayer = gc.getPlayer(iPlayer)
+#		sCivDesc = gc.getCivilizationInfo(gc.getPlayer(iPlayer).getCivilizationType()).getDescription()
+#		BugUtil.debug("MA SitRep Unit List - %s" % (sCivDesc))
+#		for iUnit in iAIUnits:
+#			pUnitInfo = gc.getUnitInfo(iUnit)
+#			BugUtil.debug("%s" % (pUnitInfo.getDescription()))
+# end dump
+
+# dump AI units
+#		pPlayer = gc.getPlayer(iPlayer)
+#		sCivDesc = gc.getCivilizationInfo(gc.getPlayer(self.iActivePlayer).getCivilizationType()).getDescription()
+#		BugUtil.debug("MA SitRep Unit List (Human) - %s" % (sCivDesc))
+#		for iUnit in iHumanUnits:
+#			pUnitInfo = gc.getUnitInfo(iUnit)
+#			BugUtil.debug("%s" % (pUnitInfo.getDescription()))
+# end dump
 
 		# remove units that the human does not know about
-		iUnitsToRemove = set()
-		for iUnit in iAIUnits:
-			iDiscoverTech = gc.getUnitInfo(iUnit).getPrereqAndTech()
-			if not (gc.getTeam(pActivePlayer.getTeam()).isHasTech(iDiscoverTech)
-			or  pActivePlayer.canResearch(iDiscoverTech, False)):
-				iUnitsToRemove.add(iUnit)
-		iAIUnits -= iUnitsToRemove
+#		iUnitsToRemove = set()
+#		for iUnit in iAIUnits:
+#			iDiscoverTech = gc.getUnitInfo(iUnit).getPrereqAndTech()
+#			if not (gc.getTeam(pActivePlayer.getTeam()).isHasTech(iDiscoverTech)
+#			or  pActivePlayer.canResearch(iDiscoverTech, False)):
+#				iUnitsToRemove.add(iUnit)
+#		iAIUnits -= iUnitsToRemove
 
 		# determine units that human can build that the AI cannot
 		for iUnit in iHumanUnits:
@@ -667,8 +686,15 @@ class CvMilitaryAdvisor:
 				self.SitRepGrid.addIcon(iRow, self.Col_StratResPos, szButton, 32, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnit)
 
 		# determine units that AI can build that the human cannot
+		if not bTrade:
+			szButton = ArtFileMgr.getInterfaceArtInfo("QUESTION_MARK").getPath()
+			self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
+
 		for iUnit in iAIUnits:
-			if self.isUnitUnique(iUnit, iHumanUnits):
+			iDiscoverTech = gc.getUnitInfo(iUnit).getPrereqAndTech()
+			if (self.isUnitUnique(iUnit, iHumanUnits)
+			and (gc.getTeam(pActivePlayer.getTeam()).isHasTech(iDiscoverTech)
+			or  pActivePlayer.canResearch(iDiscoverTech, False))):
 				szButton = gc.getUnitInfo(iUnit).getButton()
 				# RJG Start - following line deleted, next added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
 #				self.SitRepGrid.addIcon(iRow, self.Col_StratResNeg, szButton, 32, WidgetTypes.WIDGET_GENERAL, -1)
@@ -677,7 +703,7 @@ class CvMilitaryAdvisor:
 		return
 
 
-	def getCanTrainUnits(self, iPlayer, iCheckingPlayer):
+	def getCanTrainUnits(self, iPlayer, iCheckingPlayer, bTrade):
 		pPlayer = gc.getPlayer(iPlayer)
 		pCheckingPlayer = gc.getPlayer(iCheckingPlayer)
 		civInfo = gc.getCivilizationInfo(pPlayer.getCivilizationType())
@@ -689,15 +715,16 @@ class CvMilitaryAdvisor:
 				pUnitClassInfo = gc.getUnitClassInfo(i)
 				BugUtil.debug("%s doesn't have %s" % (civInfo.getDescription(), pUnitClassInfo.getDescription()))
 				iUnit = pUnitClassInfo.getDefaultUnitIndex()
+
 			pUnitInfo = gc.getUnitInfo(iUnit)
 			if pUnitInfo and pUnitInfo.getUnitCombatType() > 0: # ie, not settler, worker, missionary, etc
 				for c in range(pPlayer.getNumCities()):
 					pCity = pPlayer.getCity(c)
-					if pCity and not pCity.isNone() and pCity.canTrain(iUnit, False, False):
-						if pUnitInfo.getDomainType() == DomainTypes.DOMAIN_SEA and not pCity.isRevealed(pCheckingPlayer.getTeam(), False):
-							# Skip water units if the checking player doesn't know about this city
-							BugUtil.debug("%s can build %s, but %s cannot see the city" % (pCity.getName(), pUnitInfo.getDescription(), pCheckingPlayer.getName()))
-							continue
+					if (pCity.isNone()
+					or not pCity.isRevealed(pCheckingPlayer.getTeam(), False)):
+						continue
+					if (bTrade and pCity.canTrain(iUnit, False, False)       # can train the unit and has the required resource
+					or not bTrade and pCity.canTrain(iUnit, False, True)): # can train the unit and hasn't got the required resource
 						iUnits.add(iUnit)
 						break
 

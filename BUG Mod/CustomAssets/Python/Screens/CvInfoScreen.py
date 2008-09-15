@@ -20,6 +20,7 @@ import BugUtil
 #BUG: Change Graphs - start
 import BugCore
 AdvisorOpt = BugCore.game.Advisors
+ScoreOpt = BugCore.game.Scores
 #BUG: Change Graphs - end
 
 # globals
@@ -424,8 +425,8 @@ class CvInfoScreen:
 		self.TEXT_BUILT = localText.getText("TXT_KEY_INFO_SCREEN_BUILT", ())
 
 #BUG: Change Graphs - start
-		self.SHOW_ALL = u"<font=2>" + localText.getText("SHOW_ALL", ()) + u"</font>"
-		self.SHOW_NONE = u"<font=2>" + localText.getText("SHOW_NONE", ()) + u"</font>"
+		self.SHOW_ALL = u"<font=2>" + localText.getText("TXT_KEY_SHOW_ALL", ()) + u"</font>"
+		self.SHOW_NONE = u"<font=2>" + localText.getText("TXT_KEY_SHOW_NONE", ()) + u"</font>"
 
 		sTemp1 = [""] * self.NUM_SCORES
 		sTemp2 = [""] * self.NUM_SCORES
@@ -1082,7 +1083,15 @@ class CvInfoScreen:
 		screen = self.getScreen()
 
 #BUG: Change Graphs - start
-		# draw the chart text
+		iW_LEGEND = self.W_LEGEND
+		if AdvisorOpt.isGraphs():
+			for p in self.aiPlayersMet:
+				name = gc.getPlayer(p).getName()
+				if (ScoreOpt.isShowBothNames()):
+					name += "/" + gc.getPlayer(p).getCivilizationShortDescription(0)
+				if iW_LEGEND < self.X_LEGEND_TEXT + CyInterface().determineWidth(name) + 10:
+					iW_LEGEND = self.X_LEGEND_TEXT + CyInterface().determineWidth(name) + 10
+
 		if not AdvisorOpt.isGraphs():
 			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + self.iNumPlayersMet * self.H_LEGEND_TEXT + 3
 			self.Y_LEGEND = self.Y_GRAPH + self.H_GRAPH - self.H_LEGEND
@@ -1098,12 +1107,12 @@ class CvInfoScreen:
 
 #		self.LEGEND_PANEL_ID = self.getNextWidgetName()
 		screen.addPanel(self.getNextWidgetName(), "", "", true, true, 
-						self.X_LEGEND, self.Y_LEGEND, self.W_LEGEND, self.H_LEGEND,
+						self.X_LEGEND, self.Y_LEGEND, iW_LEGEND, self.H_LEGEND,
 						PanelStyles.PANEL_STYLE_IN)
 
 #		self.LEGEND_CANVAS_ID = self.getNextWidgetName()
 		sLEGEND_CANVAS_ID = self.getNextWidgetName()
-		screen.addDrawControl(sLEGEND_CANVAS_ID, None, self.X_LEGEND, self.Y_LEGEND, self.W_LEGEND, self.H_LEGEND, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		screen.addDrawControl(sLEGEND_CANVAS_ID, None, self.X_LEGEND, self.Y_LEGEND, iW_LEGEND, self.H_LEGEND, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		yLine = self.Y_LEGEND_LINE
 		yText = self.Y_LEGEND + self.Y_LEGEND_TEXT
@@ -1112,6 +1121,10 @@ class CvInfoScreen:
 			name = gc.getPlayer(p).getName()
 
 #BUG: Change Graphs - start
+			if (AdvisorOpt.isGraphs()
+			and ScoreOpt.isShowBothNames()):
+				name += "/" + gc.getPlayer(p).getCivilizationShortDescription(0)
+
 			i = gc.getPlayer(p).getID()
 			if (self.bPlayerInclude[i]
 			or not AdvisorOpt.isGraphs()):
@@ -1146,11 +1159,10 @@ class CvInfoScreen:
 #BUG: Change Graphs - start
 		if AdvisorOpt.isGraphs():
 			yText += self.H_LEGEND_TEXT
-			screen.setText(self.sShowAllWidget, "", self.SHOW_ALL, CvUtil.FONT_LEFT_JUSTIFY,
-						   self.X_LEGEND + self.X_LEGEND_TEXT - 30, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			xShow = self.X_LEGEND + iW_LEGEND / 2
+			screen.setText(self.sShowAllWidget, "", self.SHOW_ALL, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			yText += self.H_LEGEND_TEXT
-			screen.setText(self.sShowNoneWidget, "", self.SHOW_NONE, CvUtil.FONT_LEFT_JUSTIFY,
-						   self.X_LEGEND + self.X_LEGEND_TEXT - 30, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.setText(self.sShowNoneWidget, "", self.SHOW_NONE, CvUtil.FONT_CENTER_JUSTIFY, how, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #BUG: Change Graphs - end
 
 #############################################################################################################
