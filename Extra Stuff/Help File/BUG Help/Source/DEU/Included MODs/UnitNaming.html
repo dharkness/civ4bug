@@ -1,0 +1,811 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Unit Naming</TITLE>
+	<STYLE TYPE="text/css">
+	<!--
+		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 14pt; font-style: italic; font-weight: bold }
+		P.style4 { color: #0000ff; font-size: 12pt; font-style: italic }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<P CLASS="style1">Unit Naming</P>
+<P CLASS="style3">von ruff_hi</P>
+<BR>
+<P CLASS="style1">&Uuml;berblick</P>
+<P>Dieses Dokument erkl&auml;rt die Benennungsregeln f&uuml;r Einheiten, die in der BUG Mod verwendet werden. Hier soll gezeigt werden, wie die Regeln funktionieren <I>sollen</I>, nicht unbedingt, was sie dann tats&auml;chlich tun. Falls eine Situation auftritt, in der die Beschreibung in diesem Dokument vom im Spiel generierten Einheitennamen abweicht, dann sollte dies als Bug im entsprechenden Forum gemeldet werden.</P>
+
+<BR>
+<P CLASS="style1">Anleitung</P>
+<P>Alle Einstellungen für diese Mod können im Optionsbildschirm der <b>BUG Mod</b> unter &quot;<A HREF="../Options/UnitNaming.html">Einheitennamen</A>&quot; vorgenommen werden.
+<P><FONT COLOR="#0000ff">Strg+Alt+N</FONT>: Ruft ein Dialogfenster auf, in dem eine Benennungsregel eingegeben und an der ersten aufgestellten Einheit bzw. mit der ersten gegründeten Stadt getestet werden kann (deshalb funtioniert dieses Dialogfenster nicht, wenn noch keine Einheit aufgestellt und keine Stadt gegründet wurde). In dem Testfenster stehen zwei <i>"OK"</i>-Schaltflächen zur Verfügung: einer erhöht die Nummerierung und der andere nicht. Aber: Falls ein Nummerierungs-Code verwendet wird, steht die im Testfenster eingesetzte Zahl für diesen Einheitentyp bis zu einem Neustart des Spiels nicht mehr zur Verfügung. Andererseits ist die Erhöhung der Nummerierung nützlich, um einige komplexe Benennungsregeln zu testen.</P>
+<P>Die folgenden Code-Elemente kontrollieren den Namen, den eine Einheit erh&auml;lt.</P>
+<UL>
+	<LI><FONT COLOR="#0000ff">^civ4^</FONT> - keine Benennungsregel, Standard Civ4-Namen verwenden</LI>
+	<LI><FONT COLOR="#0000ff">^rd^</FONT> - Zuf&auml;lliger Name</LI>
+	<LI><FONT COLOR="#0000ff">^rc^</FONT> - Zuf&auml;lliger zivilisationsbezogener Name</LI>
+	<LI><FONT COLOR="#0000ff">^ct^</FONT> - Name der Stadt, die eine Einheit aufgestellt hat</LI>
+	<LI><FONT COLOR="#0000ff">^cv^</FONT> - Adjektiv der Zivilisation, die eine Einheit aufgestellt hat</LI>
+	<LI><FONT COLOR="#0000ff">^ut^</FONT> - Einheitentyp (z.B. Bogensch&uuml;tze)</LI>
+	<LI><FONT COLOR="#0000ff">^cb^</FONT> - Einheitenklasse (z.B. Nahkampf)</LI>
+	<LI><FONT COLOR="#0000ff">^dm^</FONT> - Einsatzgebiet einer Einheit (z.B. Wasser)</LI>
+	<LI><FONT COLOR="#0000ff">^ld^</FONT> - Name des Oberhaupts, das eine Einheit aufgestellt hat</LI>
+	<LI><FONT COLOR="#0000ff">^cnt[f]^</FONT> - Nummerierung &uuml;ber alle Einheiten (Zuwachs abh&auml;ngig von	Einheit)</LI>
+	<LI><FONT COLOR="#0000ff">^cntu[f]^</FONT> - Nummerierung &uuml;ber alle Einheiten gleichen Typs (Zuwachs abh&auml;ngig von Einheit)</LI>
+	<LI><FONT COLOR="#0000ff">^cntct[f]^</FONT> - Nummerierung pro Stadt (Zuwachs abh&auml;ngig von Einheit)</LI>
+	<LI><FONT COLOR="#0000ff">^cntuct[f]^</FONT> - Nummerierung pro Einheitentyp/Stadt in Kombination (Zuwachs abh&auml;ngig von Einheit)</LI>
+	<LI><FONT COLOR="#0000ff">^cntc[f]^</FONT> - Nummerierung pro Einheitenklasse (Zuwachs abh&auml;ngig von Einheitenklasse)</LI>
+	<LI><FONT COLOR="#0000ff">^cntd[f]^</FONT> - Nummerierung pro Einsatzgebiet einer Einheit (Zuwachs abh&auml;ngig vom Element der Einheit)</LI>
+	<LI><FONT COLOR="#0000ff">^tt1[f][x:y]^</FONT> - Nummerierung mit einer festgelegten Zahl zwischen x und y (Zahl)</LI>
+	<LI><FONT COLOR="#0000ff">^tt2[f][x]^</FONT> - Gesamtanzahl (Nummerierung beginnt mit x und w&auml;chst jedes Mal an, wenn der Code tt auf 1 zur&uuml;ckgesetzt wird)</LI>
+</UL>
+<P>Nachfolgend finden Sie einige Formate f&uuml;r die Nummerierung:</P>
+<UL>
+	<LI><P><FONT COLOR="#0000ff">[f]</FONT> kann eins der folgenden Elemente sein: 's', 'A', 'a', 'p', 'g', 'n', 'o' oder 'r', wobei...</P>
+	<UL>
+		<LI><FONT COLOR="#0000ff">s</FONT> - stumm (wird nicht angezeigt)</LI>
+		<LI><FONT COLOR="#0000ff">A</FONT> - Gro&szlig;buchstaben (A, B, C, D, ...)</LI>
+		<LI><FONT COLOR="#0000ff">a</FONT> - Kleinbuchstaben (a, b, c, d, ...)</LI>
+		<LI><FONT COLOR="#0000ff">p</FONT> - phonetisch (alpha, bravo, Charlie, delta, echo, ...)</LI>
+		<LI><FONT COLOR="#0000ff">g</FONT> - griechisch (alpha, beta, gamma, delta, epsilon, ...)</LI>
+		<LI><FONT COLOR="#0000ff">n</FONT> - Zahl</LI>
+		<LI><FONT COLOR="#0000ff">o</FONT> - ordinal (1st, 2nd, 3rd, 4th, ...)</LI>
+		<LI><FONT COLOR="#0000ff">r</FONT> - römisch (I, IV, V, X, ...)</LI>
+	</UL>
+</UL>
+<P>Einige Formate f&uuml;r die Nummerierung haben eine eingebaute H&ouml;chstgrenze (z.B. alpha). Wenn die Nummerierung diese Grenze erreicht, springt sie zur&uuml;ck zum Anfang. Zum Beispiel, falls die Zahl '30' &uuml;berschritten wird und diese nun mit 'A' (Gro&szlig;buchstaben) formatiert werden soll, dann wird ein 'D' ausgegeben.</P>
+<BR>
+<P CLASS="style1">Beispiele</P>
+<P>Am einfachsten ist es, die Benennungsregeln an einigen Beispielen zu erl&auml;utern. Folgende Einheiten werden in den Beispielen verwendet werden:</P>
+<UL>
+	<LI>Sp&auml;her, aufgestellt in Teheran</LI>
+	<LI>Arbeitstrupp, aufgestellt in Rom</LI>
+	<LI>Triere, aufgestellt in Leeds</LI>
+	<LI>Bomber, aufgestellt in Moskau</LI>
+	<LI>Axtk&auml;mpfer, aufgestellt in Moskau</LI>
+	<LI>Schwertk&auml;mpfer, aufgestellt in Athen</LI>
+</UL>
+
+
+<P><STRONG>1.) ^civ4^ aus ^ct^</STRONG></P>
+<P>Diese Benennungsregel hebt alle anderen verwendeten Regeln auf, weil der Code ^civ4^ verwendet wird. So wird signalisiert, dass der Standard Civ4-Namen verwendet werden soll. In anderen Worten, der Name der Einheit wird nicht ver&auml;ndert. Auch der Codeteil &quot;aus ^ct^&quot; wird ignoriert.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=89>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^civ4^ aus ^ct^</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Sp&auml;her</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Arbeitstrupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Triere</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Bomber</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=89>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>2.) ^rd^ ^cv^ Armee</STRONG></P>
+<P>Diese Benennungsregel hebt fast alle anderen verwendeten Regeln auf, au&szlig;er der Regel ^civ4^, weil der Codeteil ^rd^ verwendet wird. So wird signalisiert, dass der Einheit ein vollkommen zuf&auml;lliger Name gegeben werden soll. Der Codeteil &quot;^cv^ Armee&quot; wird ignoriert.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^rd^ ^cv^ Armee</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>3.) ^rc^</STRONG></P>
+<P>Diese Benennungsregel hebt fast alle anderen verwendeten Regeln auf, au&szlig;er den Regeln ^civ4^ und ^rd^, weil der Codeteil ^rc^ verwendet wird. So wird signalisiert, dass der Einheit ein vollkommen zuf&auml;lliger, aber zivilisationsbezogener Name gegeben werden soll.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^rc^</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Wer wei&szlig;, es ist ein zuf&auml;lliger Name</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>4.) ^ut^ [^cv^]</STRONG></P>
+<P>Diese Benennungsregel ist ein einfacher Austauschcode. Der Codeteil ^cv^ wird durch das Adjektiv der Zivilisation ersetzt, w&auml;hrend der Codeteil ^ut^ den Einheitentyp ausgibt.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^ut^ [^cv^]</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Sp&auml;her [persisch]</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Arbeitstrupp [r&ouml;misch]</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Triere [englisch]</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Bomber [russisch]</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Axtk&auml;mpfer [russisch]</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Schwertk&auml;mpfer [griechisch]</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>5.) ^ut^ ^cnt[r]^</STRONG></P>
+<P>Diese Benennungsregel ist das erste Beispiel f&uuml;r eine Nummerierung. Hier wird der Einheitentyp zusammen mit einer Nummerierung ausgegeben, die nicht zur&uuml;ckgesetzt wird. Die Nummerierung wird in römischen Ziffern angezeigt.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^ut^ ^cnt[r]^</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Sp&auml;her I</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Arbeitstrupp II</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Triere III</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Bomber IV</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Axtk&auml;mpfer V</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Schwertk&auml;mpfer VI</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>6.) ^cnt[A]^ Trupp ^tt1[s][5:5]^</STRONG></P>
+<P>Diese Benennungsregel stellt eine Nummerierungsregel dar, die sich selbst zur&uuml;cksetzt. Hier wird auch die Formatierung '[s]' verwendet, die die Gesamtanzahl verbirgt.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^cnt[A]^ Trupp ^tt1[s][5:5]^</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>A Trupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>B Trupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>C Trupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>D Trupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>F Trupp</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>A Trupp</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>7.) ^cntc[p]^ Zug ^tt1[o][5:5]^ Kompanie, ^tt2[o][101]^ Div</STRONG></P>
+<P>Eine komplexere Benennungsregel, die als Beispiel f&uuml;r eine Nummerierungsregel nach Einheitenklasse dienen soll. Au&szlig;erdem werden phonetische und ordinale Formate f&uuml;r die Nummerierung eingesetzt.</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^cntc[p]^ Zug ^tt1[o][5:5]^ Kompanie, ^tt2[o][101]^ Div</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Beta Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Alpha Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>Beta Zug 1st Kompanie, 101st Div</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P><STRONG>8.) ^cnt[f]^ of ^tt1[f][6:10]^, Unimatrix ^tt2[f][1]^</STRONG></P>
+<P>Nur zum Spa&szlig;!</P>
+<CENTER>
+	<TABLE WIDTH=494 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0 FRAME=ABOVE RULES=GROUPS>
+		<COL WIDTH=88>
+		<COL WIDTH=20>
+		<COL WIDTH=343>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=3 WIDTH=480 VALIGN=BOTTOM>
+					<P CLASS="style4">^cnt[f]^ of ^tt1[f][6:10]^, Unimatrix ^tt2[f][1]^</P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Sp&auml;her</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>1 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Arbeitstrupp</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>2 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Triere</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>3 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Bomber</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>4 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Axtk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>5 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=88>
+					<P>Schwertk&auml;mpfer</P>
+				</TD>
+				<TD WIDTH=20>
+					<P><BR>
+					</P>
+				</TD>
+				<TD WIDTH=343>
+					<P>6 of 7, Unimatrix 1</P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<BR>
+<P CLASS="style1">FAQ</P>
+<P>Q: Mit welchem Code werden Einheiten einfach nur durchnummeriert (z.B. &quot;Krieger 1&quot;)?</P>
+<P>A: <FONT COLOR="#0000ff">^ut^ ^cnt[n]^</FONT></P>
+<P>Q: Mit welchem Code werden Einheiten aus einer Stadt einfach nur durchnummeriert, ohne dass der Name der Stadt im Namen angezeigt wird (z.B. &quot;Krieger 1&quot;)?</P>
+<P>A: <FONT COLOR="#0000ff">^ut^ ^cntct[n]^</FONT></P>
+<P>Q: Mit welchem Code werden Einheiten je nach Einheitenklasse einfach nur durchnummeriert?</P>
+<P>A: <FONT COLOR="#0000ff">^ut^ ^cntc[n]^</FONT></P>
+<P>Q: Nexus' Armee-Benennungsregel (1st Armee 2nd Corp 8th Div) ist ziemlich cool. Wieso ist sie nicht in dieser Mod enthalten?</P>
+<P>A: Muss sie nicht, weil stattdessen einfach der folgende Code verwendet werden kann...</P>
+<P><FONT COLOR="#0000ff">^cnt[o]^ Armee ^tt1[o][5:5]^ Corp ^tt2[o][1]^ Div</FONT></P>
+<BR>
+<P CLASS="style1">Credits</P>
+<P>Forum: <A HREF="http://forums.civfanatics.com/forumdisplay.php?f=268">http://forums.civfanatics.com/forumdisplay.php?f=268</A></P>
+<P>Autor: <FONT COLOR="#0000ff"><I><B>ruff_hi</B></I></FONT></P>
+<BR>
+</BODY>
+</HTML>
