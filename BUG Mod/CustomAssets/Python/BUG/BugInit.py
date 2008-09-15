@@ -1,7 +1,8 @@
 ## BugInit
 ##
 ## Initializes the BUG core and loads all of the mods.
-## Called by BugEventManager during "windowActivation" event.
+##
+## Called by BugEventManager during "OnLoad" and "PreGameStart" events.
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
