@@ -55,7 +55,7 @@
 		<Tag>TXT_KEY_BUG_OPT_REMINDER__ENABLED_HOVER</Tag>
 		<English>When checked, you can create messages using [ALT + M] that pop up in a specified number of turns using eotinb's Reminders mod.</English>
 		<French>En activant, vous pourrez créer des messages avec [ALT + M] qui réapparaîtront un nombre de tours spécifiés plus tard, grâce au mod Reminders de eotinb.</French>
-		<German>Ermöglicht das Schreiben von Erinnerungsmeldungen (Tastenkombination [ALT + M]), die nach einer bestimmten Anzahl Runden wieder erscheinen (verwendet "eotinbs Reminders" Mod)</German>
+		<German>Ermöglicht das Schreiben von Erinnerungsmeldungen (Tastenkombination [ALT + M]), die nach einer bestimmten Anzahl Runden wieder erscheinen (verwendet eotinbs "Reminders"-Mod)</German>
 		<Italian>Quando è selezionato, usando [ALT + M] durante il gioco potrai creare messaggi che appariranno dopo un numero definito di turni (utilizzando il Reminders Mod di Eotinb).</Italian>
 		<Spanish>When checked, you can create messages using [ALT + M] that pop up in a specified number of turns using eotinb's Reminders mod.</Spanish>
 	</TEXT>
@@ -95,7 +95,7 @@
 		<Tag>TXT_KEY_BUG_OPT_REMINDER__AUTOLOG_HOVER</Tag>
 		<English>When checked, reminders will be logged using Autolog when created and triggered.</English>
 		<French>En activant, les rappels seront écrits dans le log à travers Autolog quand ils sont créés et montrés.</French>
-		<German>Protokolliert die Erstellung und Auslösung von Erinnerungen (verwendet "eotinbs Autolog" Mod)</German>
+		<German>Protokolliert die Erstellung und Auslösung von Erinnerungen (verwendet eotinbs "Autolog"-Mod)</German>
 		<Italian>Quando è selezionato, i Promemoria verranno registrati dal Registro Automatico quando vengono creati e quando vengono mostrati.</Italian>
 		<Spanish>When checked, reminders will be logged using Autolog when created and triggered.</Spanish>
 	</TEXT>
@@ -111,7 +111,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CIV4LERTS_HOVER</Tag>
 		<English>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</English>
 		<French>En activant, des messages apparaissent pour vous informer de l'état de plusieurs éléments du jeu, grâce au mod Civ4lerts de Dr. Elmer Jiggle.</French>
-		<German>Lässt Warnungen erscheinen, die bevorstehende oder bereits eingetretene Ereignisse melden (verwendet "Dr. Elmer Jiggles Civ4lerts" Mod)</German>
+		<German>Lässt Warnungen erscheinen, die bevorstehende oder bereits eingetretene Ereignisse melden (verwendet Dr. Elmer Jiggles "Civ4lerts"-Mod)</German>
 		<Italian>Quando è selezionato, vengono visualizzati dei messaggi per avvertirti di varie condizioni presenti o imminenti (utilizzando il Civ4lerts Mod di Dr. Elmer Jiggle's).</Italian>
 		<Spanish>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</Spanish>
 	</TEXT>
@@ -464,7 +464,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__ENABLED_HOVER</Tag>
 		<English>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</English>
 		<French>En activant, plusieurs évènements du jeu sont loggés dans un fichier texte grâce au mod AutoLog de eotinb.</French>
-		<German>Protokolliert verschiedene Spielereignisse in einer Textdatei (verwendet "eotinbs AutoLog" Mod)</German>
+		<German>Protokolliert verschiedene Spielereignisse in einer Textdatei (verwendet eotinbs "AutoLog"-Mod)</German>
 		<Italian>Quando è selezionato, vari eventi di gioco vengono registrati in un file  (utilizzando l'AutoLog Mod di Eotinb).</Italian>
 		<Spanish>When checked, various game events are logged to a text file using eotinb's AutoLog mod.</Spanish>
 	</TEXT>
@@ -1145,7 +1145,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_TEXT</Tag>
 		<English>City Specialists</English>
 		<French>Spécialistes</French>
-		<German>Spezialisten</German>
+		<German>Anordnung der Spezialisten</German>
 		<Italian>Specialisti</Italian>
 		<Spanish>City Specialists</Spanish>
 	</TEXT>
@@ -1153,7 +1153,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_HOVER</Tag>
 		<English>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</English>
 		<French>Determine comment les spécialistes sont montrés.[NEWLINE]- Défaut: Montre les spécialistes comme BtS.[NEWLINE]- Tas: Tasse les spécialistes.[NEWLINE]- Chevrons: Groupe les spécialistes par 5 (simple chevron), 10 (chevron plein) et 20 (chevron plein plus carré).</French>
-		<German>Bestimmt die Anordnung der Spezialisten im Stadt-Bildschirm:[NEWLINE]- Standard: Spezialisten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Stapel: Spezialisten werden gestapelt angeordnet (verwendet die "Stacked Specialist" Mod)[NEWLINE]- Chevron: Spezialisten werden zu Gruppen aus 5 (einfaches Chevron), 10 (geschlossenes Chevron) und 20 (eingerahmtes geschlossenes Chevron) Spezialisten zusammengefasst</German>
+		<German>Bestimmt die Anordnung der Spezialisten im Stadt-Bildschirm:[NEWLINE]- Standard: Spezialisten werden wie in "Beyond the Sword" angeordnet[NEWLINE]- Stapel: Spezialisten werden gestapelt angeordnet (verwendet die "Stacked Specialist"-Mod)[NEWLINE]- Chevron: Spezialisten werden zu Gruppen aus 5 (einfaches Chevron), 10 (geschlossenes Chevron) und 20 (eingerahmtes geschlossenes Chevron) Spezialisten zusammengefasst</German>
 		<Italian>Determina quanti Specialisti vengono mostrati:[NEWLINE]- Predefinito: mostra gli Specialisti utilizzando il formato standard di Civ4:BtS.[NEWLINE]- Impilati: mostra gli Specialisti utilizzando il formato a pile dello Stacked Specialist Mod.[NEWLINE]- Galloni: mostra gli Specialisti raggruppati per 5, 10 e 20 utilizzando il formato a galloni dello Chevron Mod.</Italian>
 		<Spanish>Determines how specialists are displayed:[NEWLINE]- Default: Shows specialists using the vanilla BtS format.[NEWLINE]- Stacker: Shows specialists stacked using the Stacked Specialist mod.[NEWLINE]- Chevron: Shows specialists grouped into 5 (single chevron), 10 (capped chevron) and 20 (boxed capped chevron) format.</Spanish>
 	</TEXT>
@@ -1178,7 +1178,7 @@
 		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__ENABLED_HOVER</Tag>
 		<English>When checked, uses Almightix's Better Espionage Screen.</English>
 		<French>En activant, utilise le mod Better Espionage Screen de Almightix.</French>
-		<German>Aktiviert den verbesserten Spionagebildschirm (verwendet "Almightix' Better Espionage Screen" Mod)</German>
+		<German>Aktiviert den verbesserten Spionagebildschirm (verwendet Almightix' "Better Espionage Screen"-Mod)</German>
 		<Italian>Quando è selezionato, viene utilizzata la schermata di spionaggio migliorata del Better Espionage Screen Mod di Almightix.</Italian>
 		<Spanish>When checked, uses Almightix's Better Espionage Screen.</Spanish>
 	</TEXT>
@@ -1323,7 +1323,7 @@
 		<Tag>TXT_KEY_BUG_OPT_NJAGC__ENABLED_HOVER</Tag>
 		<English>When checked, the game clock is displayed using TheLopez's NJAGC mod.</English>
 		<French>En activant, l'horloge est remplacé par le mod NJAGC de TheLopez.</French>
-		<German>Zeigt die Uhr- und Spielzeit an (verwendet "TheLopez' Not Just Another Game Clock" Mod)</German>
+		<German>Zeigt die Uhr- und Spielzeit an (verwendet TheLopez' "Not Just Another Game Clock"-Mod)</German>
 		<Italian>Quando è selezionato, viene utilizzato l'orologio evoluto del NJAGC (Not Just Another Game Clock) Mod di TheLopez.</Italian>
 		<Spanish>When checked, the game clock is displayed using TheLopez's NJAGC mod.</Spanish>
 	</TEXT>
@@ -1668,7 +1668,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_TEXT</Tag>
 		<English>Show Minor Civilizations</English>
 		<French>Show Minor Civilizations</French>
-		<German>Primitive Zivilisationen anzeigen</German>
+		<German>Unbedeutende Zivilisationen anzeigen</German>
 		<Italian>Mostra Civiltà Minori</Italian>
 		<Spanish>Show Minor Civilizations</Spanish>
 	</TEXT>
@@ -1676,7 +1676,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_HOVER</Tag>
 		<English>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</English>
 		<French>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</French>
-		<German>Zeigt primitive Zivilisationen an (diese werden in einigen Szenarios verwendet)</German>
+		<German>Zeigt unbedeutende Zivilisationen in der Punteanzeige an (diese werden in einigen Szenarios verwendet)</German>
 		<Italian>Quando è selezionato, vengono visualizzate anche le Civiltà Minori (certi Scenari considerano alcune Civiltà come minori).</Italian>
 		<Spanish>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Spanish>
 	</TEXT>
@@ -2093,7 +2093,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__ENABLED_HOVER</Tag>
 		<English>Enables the Plot List Enhancements mod and the rest of the options on this tab.</English>
 		<French>Active le mod Plot List Enhancements ainsi que le reste des options sur cet onglet.</French>
-		<German>Aktiviert die Verbesserungen der Einheitenliste am unteren Bildschirmrand (verwendet 12monkeys' "Plot List Enhancements" Mod)</German>
+		<German>Aktiviert die Verbesserungen der Einheitenliste am unteren Bildschirmrand (verwendet 12monkeys' "Plot List Enhancements"-Mod)</German>
 		<Italian>Abilita il mod 'Plot List Enhancements' (PLE, Icone delle Unità Avanzate) e le altre opzioni in questa pagina.</Italian>
 		<Spanish>Enables the Plot List Enhancements mod and the rest of the options on this tab.</Spanish>
 	</TEXT>
@@ -2687,7 +2687,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CUSTDOMADV_HOVER</Tag>
 		<English>When checked, uses the Customizable Domestic Advisor (requires restart).</English>
 		<French>En activant, utilise le Customizable Domestic Advisor (requièrt un redémarrage).</French>
-		<German>Aktiviert den anpassbaren Inlandsberater (verwendet "Cammagnos Customizable Domestic Advisor Pages" Mod; erfordert Neustart)</German>
+		<German>Aktiviert den anpassbaren Inlandsberater (verwendet Cammagnos "Customizable Domestic Advisor Pages"-Mod; erfordert Neustart)</German>
 		<Italian>Quando è selezionato, utilizza il Consigliere Interno personalizzabile del Customizable Domestic Advisor Mod (è richiesto un riavvio perchè il cambio abbia effetto).</Italian>
 		<Spanish>When checked, uses the Customizable Domestic Advisor (requires restart).</Spanish>
 	</TEXT>
@@ -3158,6 +3158,14 @@
 		<German>Siegbedingungen [F8]:</German>
 		<Italian>Vittoria [F8]:</Italian>
 		<Spanish>Victory [F8]:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_INFO_SCREENS</Tag>
+		<English>Info [F9]:</English>
+		<French>Info [F9]:</French>
+		<German>Info-Bildschirm [F9]:</German>
+		<Italian>Info [F9]:</Italian>
+		<Spanish>Info [F9]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SEVOPEDIA</Tag>

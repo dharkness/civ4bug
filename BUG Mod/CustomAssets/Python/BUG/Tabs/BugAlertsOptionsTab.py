@@ -22,9 +22,8 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		# Reminders
 		left, right = self.addTwoColumnLayout(screen, column, "Main")
 		self.addCheckbox(screen, left, "Reminder__Enabled")
-		self.addSpacer(screen, right, "Reminder")
+		self.addCheckbox(screen, left, "Reminder__Autolog")
 		self.addTextDropdown(screen, left, left, "Reminder__DisplayMethod")
-		self.addCheckbox(screen, right, "Reminder__Autolog")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		

@@ -62,7 +62,7 @@
 		<Tag>TXT_KEY_BUG_HINT_1</Tag>
 		<English>*BUG Hint*: When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</English>
 		<French>*Conseils du BUG*: Quand une case est dans la Croix de Ville de plusieures villes, vous pouvez changez la ville à laquelle la case appartient en cliquant dessus dans l'écran de ville de la ville choisie.</French>
-		<German>[BUG] Tipp...  Befindet sich ein Geländefeld im Einzugsbereich zweier Städte, lässt sich dessen Zugehörigkeit festlegen, indem es im Stadt-Bildschirm der betreffenden Stadt per Mausklick ausgewählt wird.</German>
+		<German>[BUG] Tipp... Befindet sich ein Geländefeld im Einzugsbereich zweier Städte, lässt sich dessen Zugehörigkeit festlegen, indem es im Stadt-Bildschirm der betreffenden Stadt per Mausklick ausgewählt wird.</German>
 		<Italian>*Suggerimento del BUG Team*: Quando una casella appartiene all'area cittadina di due diverse città, puoi cambiare la sua appartenenza cliccando su di essa dalla Schermata Cittadina della città a cui vuoi che appartenga.</Italian>
 		<Spanish>*BUG Hint*: When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</Spanish>
 	</TEXT>
@@ -102,7 +102,7 @@
 		<Tag>TXT_KEY_BUG_HINT_6</Tag>
 		<English>*BUG Hint*: Examine what resources are available before researching worker techs.</English>
 		<French>*Conseils du BUG*: Examinez quelles ressources sont à votre disposition avant de choisir une technologie à rechercher.</French>
-		<German>[BUG] Tipp...  Die Erkundung des Umlands ist lebenswichtig, vor allem das Auffinden von Ressourcen. Dieses erlaubt eine Planung der Expansion und der technologischen Entwicklung, um die Rohstoffe möglichst schnell erschließen und nutzen zu können.</German>
+		<German>[BUG] Tipp... Die Erkundung des Umlands ist überlebenswichtig, vor allem das Auffinden von Ressourcen. Dieses erlaubt eine Planung der Expansion und der technologischen Entwicklung, um die Rohstoffe möglichst schnell erschließen und nutzen zu können.</German>
 		<Italian>*Suggerimento del BUG Team*: Esamina quali risorse sono disponibili prima di ricercare le tecnologie dei lavoratori.</Italian>
 		<Spanish>*BUG Hint*: Examine what resources are available before researching worker techs.</Spanish>
 	</TEXT>
@@ -126,7 +126,7 @@
 		<Tag>TXT_KEY_BUG_HINT_9</Tag>
 		<English>*BUG Hint*: Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.</English>
 		<French>*Conseils du BUG*: Vendre des ressources que vous n'utilisez plus, comme le Cuivre ou le Fer, peut être très profitable. Veillez juste que vous les vendez à un ami plus faible que vous!</French>
-		<German>[BUG] Tipp...  Der Verkauf von zwischenzeitlich unbrauchbaren Ressourcen, wie Kupfer oder Eisen, kann langfristig vorteilhaft sein, wenn der Käufer ein momentan noch schwacher Verbündeter ist.</German>
+		<German>[BUG] Tipp... Der Verkauf von zwischenzeitlich unbrauchbaren Ressourcen, wie Kupfer oder Eisen, kann langfristig vorteilhaft sein, wenn der Käufer ein momentan noch schwacher Verbündeter ist.</German>
 		<Italian>*Suggerimento del BUG Team*: Vendere le risorse che non usi più, come Rame e Ferro, può rendere parecchio a lungo termine. Però assicurati di venderle ad una nazione amica più debole!</Italian>
 		<Spanish>*BUG Hint*: Selling resources that you no longer use, such as copper or iron, can pay off nicely over the long run.</Spanish>
 	</TEXT>
@@ -174,7 +174,7 @@
 		<Tag>TXT_KEY_BUG_HINT_15</Tag>
 		<English>*BUG Hint*: Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</English>
 		<French>*Conseils du BUG*: Stationnez des unités navales près de vos ressources aquatiques, et faites les Patrouiller pour les protéger.</French>
-		<German>[BUG] Tipp... See-Einheiten sollten in der Nähe von Ressourcen auf Meeres-Geländefeldern stationiert und mit dem Auftrag "Seepatrouille" versehen werden, um diese zu verteidigen.</German>
+		<German>[BUG] Tipp... Marineeinheiten sollten in der Nähe von Ressourcen auf Meeres-Geländefeldern stationiert und mit dem Auftrag "Seepatrouille" versehen werden, um diese zu verteidigen.</German>
 		<Italian>*Suggerimento del BUG Team*: Disloca le tue unità navali vicino alle tue risorse acquatiche e mettile di pattuglia per proteggerle.</Italian>
 		<Spanish>*BUG Hint*: Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Spanish>
 	</TEXT>
@@ -190,7 +190,7 @@
 		<Tag>TXT_KEY_BUG_HINT_17</Tag>
 		<English>*BUG Hint*: Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</English>
 		<French>*Conseils du BUG*: Gardez un oeuil sur les changements de Doctrine de vos voisins. Un changement de Liberté de Culte vers Théologie peut indiquer l'assemblement d'une armée.</French>
-		<German>[BUG] Tipp... Ein Wechsel der Gesellschaftsform in einem benachbarten Reich sollte aufmerksam verfolgt werden. Er könnte die Vorbereitung auf einen Krieg sein.</German>
+		<German>[BUG] Tipp... Ein Wechsel der Staatsform in einem benachbarten Reich sollte aufmerksam verfolgt werden. Er könnte die Vorbereitung auf einen Krieg sein.</German>
 		<Italian>*Suggerimento del BUG Team*: Tieni d'occhio i cambiamenti di forma di governo dei tuoi vicini. Un cambiamento da Libertà Religiosa a Teologia può significare un aumento di aggressività.</Italian>
 		<Spanish>*BUG Hint*: Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</Spanish>
 	</TEXT>
@@ -198,7 +198,7 @@
 		<Tag>TXT_KEY_BUG_HINT_18</Tag>
 		<English>*BUG Hint*: Speak softly and carry a big stick, and you will go far.</English>
 		<French>*Conseils du BUG*: Parlez doucement et portez un gros bâton, et vous irez loin.</French>
-		<German>[BUG] Tipp... Anregungen und Hinweise zur "BUG Mod" können bei civfanatics.com im Forum hinterlassen werden.</German>
+		<German>[BUG] Tipp... Anregungen und Hinweise zur "BUG Mod" können bei civfanatics.com im dortigen Forum hinterlassen werden.</German>
 		<Italian>*Suggerimento del BUG Team*: Poche parole e un grosso bastone ti porteranno lontano.</Italian>
 		<Spanish>*BUG Hint*: Speak softly and carry a big stick, and you will go far.</Spanish>
 	</TEXT>
@@ -206,7 +206,7 @@
 		<Tag>TXT_KEY_BUG_HINT_19</Tag>
 		<English>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</English>
 		<French>*Conseils du BUG*: Parfois il vaut mieux arrêter un Eclaireur ou un Explorateur sur une fôret, une montagne ou une jungle et perdre un peu de mouvement pour gagner en sécurité.</French>
-		<German>[BUG] Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter die Runde auf einem Wald-, Hügel- or Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen Sicherheit zu tauschen.</German>
+		<German>[BUG] Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter die Runde auf einem Wald-, Hügel- or Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen Sicherheit einzutauschen.</German>
 		<Italian>*Suggerimento del BUG Team*: A volte è meglio fermare un Esploratore su una casella di collina, foresta o giungla e perdere il movimento extra in favore della prudenza.</Italian>
 		<Spanish>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
 	</TEXT>

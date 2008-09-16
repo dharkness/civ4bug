@@ -30,9 +30,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
-		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
-		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
-		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
+		self.addSpacer(screen, left, "Technology_Advisor")
+		self.addLabel(screen, left, "Technology_Advisor", "Technology [F6]:")
+		self.addCheckbox(screen, left, "Advisors__GPTechPrefs")
+		self.addCheckbox(screen, left, "Advisors__WideTechScreen")
 
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
