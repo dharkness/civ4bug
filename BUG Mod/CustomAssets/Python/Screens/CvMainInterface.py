@@ -5994,7 +5994,7 @@ class CvMainInterface:
 			screen.hide( szName )
 			szName = "ScoreTech" + str(i)
 			screen.hide( szName )
-			for j in range( Scoreboard.SCORE, Scoreboard.NUM_PARTS ):
+			for j in range( Scoreboard.NUM_PARTS ):
 				szName = "ScoreText%d-%d" %( i, j )
 				screen.hide( szName )
 # BUG - Align Icons - end
