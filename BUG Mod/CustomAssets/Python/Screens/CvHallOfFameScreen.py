@@ -278,11 +278,12 @@ class CvHallOfFameScreen:
 				else:
 					szVictory = gc.getVictoryInfo(replayInfo.getVictoryType()).getDescription()
 # BUG - Win/Loss Info - start
-					results = {
-						True: localText.getText("TXT_KEY_HOF_WINLOSS_WIN", ()),
-						False: localText.getText("TXT_KEY_HOF_WINLOSS_LOSS", ())
-					}
-					szVictory = results[self.isReplayWinner(replayInfo)] + szVictory
+				results = {
+					True: localText.getText("TXT_KEY_HOF_WINLOSS_WIN", ()),
+					False: localText.getText("TXT_KEY_HOF_WINLOSS_LOSS", ())
+				}
+				win, szType = self.isReplayWinner(replayInfo)
+				szVictory = results[win] + szType
 # BUG - Win/Loss Info - end
 					
 				if self.iSortBy == SORT_BY_NORMALIZED_SCORE:
@@ -332,22 +333,29 @@ class CvHallOfFameScreen:
 	
 # BUG - Win/Loss Info - start
 	def isReplayWinner(self, replay):
-		szWinText = localText.getText("TXT_KEY_GAME_WON", ("([^ ]+)", "([^ ]+)"))
+		szWinText = localText.getText("TXT_KEY_GAME_WON", ("(.*)", "(.*)"))
 		reWinText = re.compile(szWinText)
+		leaderGroup = 1
+		typeGroup = 2
 		leader = replay.getLeaderName()
 		msgNum = replay.getNumReplayMessages() - 1
+		BugUtil.debug("scanning replay for %s with %d msgs", leader, msgNum + 1)
+		count = 0
 		while msgNum >= 0:
 			msg = replay.getReplayMessageText(msgNum)
+			if count > 100:
+				BugUtil.debug("no victory message in first 100; skipping")
+				break
 			matches = reWinText.match(msg)
 			if matches:
-				BugUtil.debug("Replay: [#%d] '%s'" % (msgNum, msg))
-				if leader in matches.group(1).split('/') or leader in matches.group(2).split('/'):
-					BugUtil.debug("Replay: Win for %s" % leader)
-					return True
-				BugUtil.debug("Replay: Loss for %s" % leader)
-				return False
+				type = matches.group(typeGroup)
+				if leader in matches.group(leaderGroup).split('/'):
+					BugUtil.info("replay: %s win for %s", type, leader)
+					return True, type
+				BugUtil.info("replay: %s loss for %s", type, leader)
+				return False, type
 			msgNum -= 1
-		return False
+		return False, localText.getText("TXT_KEY_NONE", ())
 # BUG - Win/Loss Info - end
 																				
 	# handle the input for this screen...
