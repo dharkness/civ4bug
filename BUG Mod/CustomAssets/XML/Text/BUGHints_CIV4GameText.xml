@@ -12,11 +12,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_INTERFACE_2</Tag>
-		<English>*BUG Hint*: Ever forget to build that Barracks?  [ALT +M] -OR- [ALT + CTRL + R] will allow you to set up reminders so you don't forget again!</English>
-		<French>*Conseils du BUG*: Oublié de construire une Caserne?  [ALT +M] -OU- [ALT + CTRL + R] vous permet de créer une alerte pour que vous ne l'oublierez plus jamais!</French>
+		<English>*BUG Hint*: Ever forget to build that Barracks?  [ALT + M] -OR- [ALT + CTRL + R] will allow you to set up reminders so you don't forget again!</English>
+		<French>*Conseils du BUG*: Oublié de construire une Caserne?  [ALT + M] -OU- [ALT + CTRL + R] vous permet de créer une alerte pour que vous ne l'oublierez plus jamais!</French>
 		<German>[BUG] Tipp... Mit den Tastenkombinationen [ALT + M] oder [STRG + ALT + R] lassen sich Erinnerungen verfassen, die nach einer festgelegten Anzahl Runden wieder erscheinen.</German>
-		<Italian>*Suggerimento del BUG Team*: Ti dimentichi sempre di costruire le caserme? [ALT +M] -O- [ALT + CTRL + R] ti permette di inserire un promemoria in modo da non dimenticartene più!</Italian>
-		<Spanish>*BUG Hint*: Ever forget to build that Barracks?  [ALT +M] -OR- [ALT + CTRL + R] will allow you to set up reminders so you don't forget again!</Spanish>
+		<Italian>*Suggerimento del BUG Team*: Ti dimentichi sempre di costruire le caserme? [ALT + M] -O- [ALT + CTRL + R] ti permette di inserire un promemoria in modo da non dimenticartene più!</Italian>
+		<Spanish>*BUG Hint*: Ever forget to build that Barracks?  [ALT + M] -OR- [ALT + CTRL + R] will allow you to set up reminders so you don't forget again!</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_INTERFACE_3</Tag>
