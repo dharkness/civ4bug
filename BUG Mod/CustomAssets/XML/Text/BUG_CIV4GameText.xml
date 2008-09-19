@@ -774,4 +774,81 @@
 		<Italian>L-</Italian>
 		<Spanish>L-</Spanish>
 	</TEXT>
+
+	<!-- Foreign Advisor Info Screen Header Text
+	
+		 All the entries except POSSIBLE_FAV_CIVICS must be kept 
+		 short so that everything lines up properly. 4-6 letters 
+		 is usually best; some can probably fit 8-9 if the letters 
+		 used are narrow (e.g. i,l,t) When in doubt, check the FA 
+		 Info Screen to be sure it looks okay. The CIVICOPTION
+		 abbreviations should be similar to the full words used in 
+		 the CIVICOPTION keys in CIV4GameTextInfos_Objects.xml 
+	  -->
+
+	<TEXT>
+		<Tag>TXT_KEY_FOREIGN_ADVISOR_ABBR_LEADER</Tag>
+		<English>Leader</English>
+		<French>Chef</French>
+		<German>Leader</German>
+		<Italian>Leader</Italian>
+		<Spanish>L&#237;der</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FOREIGN_ADVISOR_ABBR_ATTITUDE</Tag>
+		<English>Attitude</English>
+		<French>Attitude</French>
+		<German>Attitude</German>
+		<Italian>Attitude</Italian>
+		<Spanish>Attitude</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_FOREIGN_ADVISOR_POSSIBLE_FAV_CIVICS</Tag>
+		<English>Possible Favorite Civics</English>
+		<French>Possible Favorite Civics</French>
+		<German>Possible Favorite Civics</German>
+		<Italian>Possible Favorite Civics</Italian>
+		<Spanish>Possible Favorite Civics</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVICOPTION_ABBR_GOVERNMENT</Tag>
+		<English>Govt</English>
+		<French>Govt</French>
+		<German>Govt</German>
+		<Italian>Govt</Italian>
+		<Spanish>Govt</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVICOPTION_ABBR_LEGAL</Tag>
+		<English>Legal</English>
+		<French>Justice</French>
+		<German>Recht</German>
+		<Italian>Legal</Italian>
+		<Spanish>Legal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVICOPTION_ABBR_LABOR</Tag>
+		<English>Labor</English>
+		<French>Travail</French>
+		<German>Arbeit</German>
+		<Italian>Lavoro</Italian>
+		<Spanish>Labor</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVICOPTION_ABBR_ECONOMY</Tag>
+		<English>Econ</English>
+		<French>Econ</French>
+		<German>&#214;kon</German>
+		<Italian>Econ</Italian>
+		<Spanish>Econ</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVICOPTION_ABBR_RELIGION</Tag>
+		<English>Religion</English>
+		<French>Religion</French>
+		<German>Religion</German>
+		<Italian>Religione</Italian>
+		<Spanish>Religi&#243;n</Spanish>
+	</TEXT>
+
 </Civ4GameText>

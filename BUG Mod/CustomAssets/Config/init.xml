@@ -39,7 +39,28 @@
 			"COLOR_GREEN", 
 			"COLOR_YELLOW"
 		</arg>
+		<!-- Non-memory attitude modifier keys -->
+		<arg name="modifiers" type="tuple">
+			"TXT_KEY_MISC_ATTITUDE_LAND_TARGET",
+			"TXT_KEY_MISC_ATTITUDE_WAR",
+			"TXT_KEY_MISC_ATTITUDE_PEACE",
+			"TXT_KEY_MISC_ATTITUDE_SAME_RELIGION",
+			"TXT_KEY_MISC_ATTITUDE_DIFFERENT_RELIGION",
+			"TXT_KEY_MISC_ATTITUDE_BONUS_TRADE",
+			"TXT_KEY_MISC_ATTITUDE_OPEN_BORDERS",
+			"TXT_KEY_MISC_ATTITUDE_DEFENSIVE_PACT",
+			"TXT_KEY_MISC_ATTITUDE_RIVAL_DEFENSIVE_PACT",
+			"TXT_KEY_MISC_ATTITUDE_RIVAL_VASSAL",
+			"TXT_KEY_MISC_ATTITUDE_SHARE_WAR",
+			"TXT_KEY_MISC_ATTITUDE_FAVORITE_CIVIC",
+			"TXT_KEY_MISC_ATTITUDE_TRADE",
+			"TXT_KEY_MISC_ATTITUDE_RIVAL_TRADE",
+			"TXT_KEY_MISC_ATTITUDE_FREEDOM",
+			"TXT_KEY_MISC_ATTITUDE_EXTRA_GOOD",
+			"TXT_KEY_MISC_ATTITUDE_EXTRA_BAD"
+		</arg>
 	</init>
+	<event type="LanguageChanged" module="AttitudeUtils" function="initModifiers"/>
 	
 	<init module="ColorUtil" function="init">
 		<!--
@@ -102,6 +123,7 @@
 	<load mod="Civ4lerts"/>
 	<load mod="MoreCiv4lerts"/>
 	<load mod="Unit Naming"/>
+	<load mod="FavoriteCivicDetector"/>
 	
 	
 	<!-- Options Screens -->
