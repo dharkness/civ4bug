@@ -108,12 +108,12 @@ class BugOptionsTab:
 		hbox = panel + "HBox"
 		screen.attachHBox(parent, hbox)
 		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VMIN")
 		
 		column = panel + "VBox"
 		screen.attachVBox(hbox, column)
 		screen.setLayoutFlag(column, "LAYOUT_SIZE_HMIN")
-		screen.setLayoutFlag(column, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(column, "LAYOUT_SIZE_VMIN")
 		
 		return column
 
@@ -124,12 +124,12 @@ class BugOptionsTab:
 		hbox = panel + "HBox"
 		screen.attachHBox(parent, hbox)
 		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VMIN")
 		
 		leftColumn = panel + "Left"
 		screen.attachVBox(hbox, leftColumn)
 		screen.setLayoutFlag(leftColumn, "LAYOUT_SIZE_HMIN")
-		screen.setLayoutFlag(leftColumn, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(leftColumn, "LAYOUT_SIZE_VMIN")
 		
 		if (separator):
 			sep = panel + "Sep"
@@ -139,7 +139,7 @@ class BugOptionsTab:
 		rightColumn = panel + "Right"
 		screen.attachVBox(hbox, rightColumn)
 		screen.setLayoutFlag(rightColumn, "LAYOUT_SIZE_HMIN")
-		screen.setLayoutFlag(rightColumn, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(rightColumn, "LAYOUT_SIZE_VMIN")
 		
 		return leftColumn, rightColumn
 
@@ -157,7 +157,7 @@ class BugOptionsTab:
 		hbox = panel + "HBox"
 		screen.attachHBox(parent, hbox)
 		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+		screen.setLayoutFlag(hbox, "LAYOUT_SIZE_VMIN")
 		
 		columns = []
 		first = True
@@ -171,7 +171,7 @@ class BugOptionsTab:
 			column = panel + "Col%d" % i
 			screen.attachVBox(hbox, column)
 			screen.setLayoutFlag(column, "LAYOUT_SIZE_HMIN")
-			screen.setLayoutFlag(column, "LAYOUT_SIZE_VPREFERREDEXPANDING")
+			screen.setLayoutFlag(column, "LAYOUT_SIZE_VMIN")
 			columns.append(column)
 		
 		return columns
