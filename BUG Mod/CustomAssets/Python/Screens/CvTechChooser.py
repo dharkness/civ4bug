@@ -919,7 +919,7 @@ class CvTechChooser:
 				pUnitInfo = gc.getUnitInfo(iUnitType)
 				iX = PREF_ICON_LEFT
 				iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE
-				screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnitType, -1 )
 			self.bPrefsShowing = True
 
 		# Remove any techs researched since last call, creating tree if necessary
