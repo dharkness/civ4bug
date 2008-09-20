@@ -2,10 +2,10 @@ BUG Mod
 =======
 - update Scoreboard readme (all languages): new options and features
 - update MA readme (all languages): order choices
-- Translate Enhanced Victory Screen readme (ITA, DEU)
-- Translate Better Info Screen readme (ITA, DEU)
+- Translate Enhanced Victory Screen readme (DEU)
+- Translate Better Info Screen readme (DEU)
 - PublicMaps (no documentation about them yet)
-
+- Revamped Foreign Advisor Info Screen  (no documentation about it yet)
 
 
 
@@ -13,5 +13,5 @@ BUG Mod
 BAT Mod
 =======
 
--
+- update help files with the BUG version
 
