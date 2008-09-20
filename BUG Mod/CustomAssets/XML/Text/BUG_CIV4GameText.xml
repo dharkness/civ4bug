@@ -799,7 +799,7 @@
 		<English>Attitude</English>
 		<French>Attitude</French>
 		<German>Attitude</German>
-		<Italian>Attitude</Italian>
+		<Italian>Attitudine</Italian>
 		<Spanish>Attitude</Spanish>
 	</TEXT>
 	<TEXT>
@@ -807,7 +807,7 @@
 		<English>Possible Favorite Civics</English>
 		<French>Possible Favorite Civics</French>
 		<German>Possible Favorite Civics</German>
-		<Italian>Possible Favorite Civics</Italian>
+		<Italian>Possibili Forme di Governo Favorite</Italian>
 		<Spanish>Possible Favorite Civics</Spanish>
 	</TEXT>
 	<TEXT>
@@ -815,7 +815,7 @@
 		<English>Govt</English>
 		<French>Govt</French>
 		<German>Govt</German>
-		<Italian>Govt</Italian>
+		<Italian>Governo</Italian>
 		<Spanish>Govt</Spanish>
 	</TEXT>
 	<TEXT>
@@ -823,7 +823,7 @@
 		<English>Legal</English>
 		<French>Justice</French>
 		<German>Recht</German>
-		<Italian>Legal</Italian>
+		<Italian>S. Legale</Italian>
 		<Spanish>Legal</Spanish>
 	</TEXT>
 	<TEXT>
@@ -839,7 +839,7 @@
 		<English>Econ</English>
 		<French>Econ</French>
 		<German>&#214;kon</German>
-		<Italian>Econ</Italian>
+		<Italian>Economia</Italian>
 		<Spanish>Econ</Spanish>
 	</TEXT>
 	<TEXT>
