@@ -1970,19 +1970,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
-		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</English>
-		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</French>
-		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)</German>
-		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
-		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- You vs. Them: Higher numbers are better.[NEWLINE]- Them vs. You: Lower numbers are better.</Spanish>
+		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</English>
+		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</French>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)</German>
+		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
+		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_LIST</Tag>
-		<English>You vs. Them|Them vs. You</English>
-		<French>You vs. Them|Them vs. You</French>
+		<English>Rival vs. You|You vs. Rival</English>
+		<French>Rival vs. You|You vs. Rival</French>
 		<German>Normal|Kehrwert</German>
-		<Italian>Giocatore/Altri|Altri/Giocatore</Italian>
-		<Spanish>You vs. Them|Them vs. You</Spanish>
+		<Italian>Altri/Giocatore|Giocatore/Altri</Italian>
+		<Spanish>Rival vs. You|You vs. Rival</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERDECIMALS_TEXT</Tag>
