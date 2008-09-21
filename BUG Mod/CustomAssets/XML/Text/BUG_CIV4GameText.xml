@@ -695,7 +695,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_TOGGLE_VOTES</Tag>
 		<English>Toggle Votes</English>
 		<French>Alterner Voix</French>
-		<German>Stimmen umschalten</German>
+		<German>Wahlen umschalten</German>
 		<Italian>Alterna Voti</Italian>
 		<Spanish>Alternar Votos</Spanish>
 	</TEXT>
@@ -703,7 +703,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_VASSALED</Tag>
 		<English>%d1 vassaled</English>
 		<French>%d1 vassaled</French>
-		<German>%d1 Vasallen</German>
+		<German>Vasallen: %d1</German>
 		<Italian>%d1 vassallo</Italian>
 		<Spanish>%d1 vassaled</Spanish>
 	</TEXT>
@@ -711,7 +711,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_UNKNOWN</Tag>
 		<English>%d1 unknown</English>
 		<French>%d1 unknown</French>
-		<German>%d1 unbekannt</German>
+		<German>Unbekannt: %d1</German>
 		<Italian>%d1 sconosciuto</Italian>
 		<Spanish>%d1 unknown</Spanish>
 	</TEXT>
@@ -790,7 +790,7 @@
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_ABBR_LEADER</Tag>
 		<English>Leader</English>
 		<French>Chef</French>
-		<German>Leader</German>
+		<German>Herrscher</German>
 		<Italian>Leader</Italian>
 		<Spanish>L&#237;der</Spanish>
 	</TEXT>
@@ -798,7 +798,7 @@
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_ABBR_ATTITUDE</Tag>
 		<English>Attitude</English>
 		<French>Attitude</French>
-		<German>Attitude</German>
+		<German>Einstellung</German>
 		<Italian>Attitudine</Italian>
 		<Spanish>Attitude</Spanish>
 	</TEXT>
@@ -806,7 +806,7 @@
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_POSSIBLE_FAV_CIVICS</Tag>
 		<English>Possible Favorite Civics</English>
 		<French>Possible Favorite Civics</French>
-		<German>Possible Favorite Civics</German>
+		<German>Mögliche bevorzugte Staatsformen</German>
 		<Italian>Possibili Forme di Governo Favorite</Italian>
 		<Spanish>Possible Favorite Civics</Spanish>
 	</TEXT>
@@ -814,7 +814,7 @@
 		<Tag>TXT_KEY_CIVICOPTION_ABBR_GOVERNMENT</Tag>
 		<English>Govt</English>
 		<French>Govt</French>
-		<German>Govt</German>
+		<German>Regierung</German>
 		<Italian>Governo</Italian>
 		<Spanish>Govt</Spanish>
 	</TEXT>
@@ -838,7 +838,7 @@
 		<Tag>TXT_KEY_CIVICOPTION_ABBR_ECONOMY</Tag>
 		<English>Econ</English>
 		<French>Econ</French>
-		<German>&#214;kon</German>
+		<German>Ökonomie</German>
 		<Italian>Economia</Italian>
 		<Spanish>Econ</Spanish>
 	</TEXT>

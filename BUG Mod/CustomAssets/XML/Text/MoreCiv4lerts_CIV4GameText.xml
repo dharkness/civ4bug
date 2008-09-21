@@ -4,19 +4,19 @@
 	<!-- MORECIV4LERTS TEXT -->
 	<TEXT>
 		<Tag>TXT_KEY_MISC_BORDERS_EXPANDED</Tag>
-		<English>[COLOR_CULTURE_RATE]The borders of %s1_CityName have expanded![COLOR_REVERT]</English>
-		<French>[COLOR_CULTURE_RATE]Les fronti&#232;res de %s1_CityName se sont &#233;tendues ![COLOR_REVERT]</French>
-		<German>[COLOR_CULTURE_RATE]Die Stadtgrenzen von %s1_CityName haben sich erweitert![COLOR_REVERT]</German>
-		<Italian>[COLOR_CULTURE_RATE]I confini di %s1_CityName si sono espansi![COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_CULTURE_RATE]Las fronteras de %s1_CityName se han ampliado.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_MAGENTA]The borders of %s1_CityName have expanded![COLOR_REVERT]</English>
+		<French>[COLOR_MAGENTA]Les fronti&#232;res de %s1_CityName se sont &#233;tendues ![COLOR_REVERT]</French>
+		<German>[COLOR_MAGENTA]Die Stadtgrenzen von %s1_CityName haben sich erweitert![COLOR_REVERT]</German>
+		<Italian>[COLOR_MAGENTA]I confini di %s1_CityName si sono espansi![COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_MAGENTA]Las fronteras de %s1_CityName se han ampliado.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_CITY_TO_EXPAND</Tag>
-		<English>[COLOR_CULTURE_RATE]%s1's cultural boundary is about to expand.[COLOR_REVERT]</English>
-		<French>[COLOR_CULTURE_RATE]La frontière culturelle de %s1's est sur le point de s'étendre.[COLOR_REVERT]</French>
-		<German>[COLOR_CULTURE_RATE]Die Stadtgrenzen von %s1 werden sich in der nächsten Runde erweitern.[COLOR_REVERT]</German>
-		<Italian>[COLOR_CULTURE_RATE]Il confine culturale di %s1 sta per espandersi.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_CULTURE_RATE]El límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_MAGENTA]The borders of %s1 are about to expand.[COLOR_REVERT]</English>
+		<French>[COLOR_MAGENTA]La frontière culturelle de %s1's est sur le point de s'étendre.[COLOR_REVERT]</French>
+		<German>[COLOR_MAGENTA]Die Stadtgrenzen von %s1 werden sich in der nächsten Runde erweitern.[COLOR_REVERT]</German>
+		<Italian>[COLOR_MAGENTA]Il confine culturale di %s1 sta per espandersi.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_MAGENTA]El límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_POP_EXCEEDS_LIMIT</Tag>

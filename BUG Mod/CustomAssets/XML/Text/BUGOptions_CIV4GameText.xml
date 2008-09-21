@@ -1972,7 +1972,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</French>
-		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)</German>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)[NEWLINE]- Kehrwert: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)</German>
 		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</Spanish>
 	</TEXT>
@@ -2124,7 +2124,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__DEFAULT_GROUP_MODE_TEXT</Tag>
 		<English>Default Grouping</English>
-		<French>Groupement par Défaut</French>
+		<French>Groupement à</French>
 		<German>Gruppierung nach</German>
 		<Italian>Raggruppamento</Italian>
 		<Spanish>Default Grouping</Spanish>
@@ -2166,7 +2166,7 @@
 		<English>Filter Behavior</English>
 		<French>Filter Behavior</French>
 		<German>Filterfunktion</German>
-		<Italian>Funzionamento dei filtri</Italian>
+		<Italian>Modalità filtri</Italian>
 		<Spanish>Filter Behavior</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2300,7 +2300,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__NO_MOVEMENT_COLOR_TEXT</Tag>
 		<English>Cannot Move</English>
-		<French>Ne Peut Pas Bouger</French>
+		<French>Immobile</French>
 		<German>Unbeweglich</German>
 		<Italian>Immobile</Italian>
 		<Spanish>Cannot Move</Spanish>
@@ -3256,6 +3256,14 @@
 		<German>Zusätzliche Spalten:</German>
 		<Italian>Colonne aggiuntive:</Italian>
 		<Spanish>Additional Columns:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_ICONS</Tag>
+		<English>Icons:</English>
+		<French>Icons:</French>
+		<German>Symbole:</German>
+		<Italian>Icons:</Italian>
+		<Spanish>Icons:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_GRID</Tag>
