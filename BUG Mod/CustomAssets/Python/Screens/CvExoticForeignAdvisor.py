@@ -380,7 +380,9 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						   BugUtil.getPlainText("TXT_KEY_CIVICOPTION_ABBR_RELIGION"),
 						   "",
 						   fcHeaderText):
-			screen.attachTextGFC(headerPanelName, "", headerText, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			itemName = self.getNextWidgetName()
+			screen.attachTextGFC(headerPanelName, itemName, headerText, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			iOffset = iOffset + 65
 
 		# Main
@@ -435,23 +437,30 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			screen.attachPanel(mainPanelName, playerPanelName, szPlayerLabel, "", False, True, ePanelStyle)
 
 			# Panels always created but essentially blank if unmet
+			itemName = self.getNextWidgetName()
 			if (not self.objActiveTeam.isHasMet(objLoopPlayer.getTeam()) and not gc.getGame().isDebugMode()):
-				screen.attachImageButton(playerPanelName, "", gc.getDefineSTRING("LEADERHEAD_RANDOM"), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_GENERAL, -1, -1, False)
+				screen.attachImageButton(playerPanelName, itemName, gc.getDefineSTRING("LEADERHEAD_RANDOM"), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_GENERAL, -1, -1, False)
 				return
 			else:
-				screen.attachImageButton(playerPanelName, "", objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+				screen.attachImageButton(playerPanelName, itemName, objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+			#screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 					
 			infoPanelName = self.getNextWidgetName()
 			screen.attachPanel(playerPanelName, infoPanelName, "", "", False, False, PanelStyles.PANEL_STYLE_EMPTY)
 
 			# Attitude
+			itemName = self.getNextWidgetName()
 			if (not bIsActivePlayer):
 				szAttStr = "<font=2>" + objAttitude.getText(True, True, False, False) + "</font>"
 			else:
 				szAttStr = ""
-			screen.attachTextGFC(infoPanelName, "", szAttStr, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			screen.attachTextGFC(infoPanelName, itemName, szAttStr, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			# Disable the widget if this is active player since it's a blank string.
+			if bIsActivePlayer:
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 
 			# Religion
+			itemName = self.getNextWidgetName()
 			nReligion = objLoopPlayer.getStateReligion()
 			if (nReligion != -1):
 				objReligion = gc.getReligionInfo (nReligion)
@@ -477,9 +486,13 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			else:
 				szPlayerReligion = ""
 			
-			screen.attachTextGFC(infoPanelName, "", szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			screen.attachTextGFC(infoPanelName, itemName, szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			# Disable the widget if this is active player since we don't have diplo info.
+			if bIsActivePlayer:
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
 			# Trade (only if connected to trade network and has open borders agreement)
+			itemName = self.getNextWidgetName()
 			if (not bIsActivePlayer 
 				and objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
 				and self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam())):
@@ -487,10 +500,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				szTrade = "%d" % (self.calculateTrade (self.iActiveLeader, iLoopPlayer))
 			else:
 				szTrade = ""
-			screen.attachTextGFC(infoPanelName, "", szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			# Trade has no useful widget so always disable hit testing.
+			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 
 			# Civics
-			
 			for nCivicOption in range (gc.getNumCivicOptionInfos()):
 				nCivic = objLoopPlayer.getCivics (nCivicOption)
 				buttonName = self.getNextWidgetName()
@@ -534,7 +548,9 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 							szDiplo = "<font=2>" + localText.changeTextColor(" [%+d]" % (iDiploModifier), gc.getInfoTypeForString(szColor)) + "</font>"
 						else:
 							szDiplo = ""
-						screen.attachTextGFC(infoPanelName, "", szDiplo, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+						itemName = self.getNextWidgetName()
+						screen.attachTextGFC(infoPanelName, itemName, szDiplo, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+						#screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 
 	def calculateTrade (self, nPlayer, nTradePartner):
 		# Trade status...
