@@ -31,10 +31,11 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Autolog__IBT")
 		
 		self.addCheckbox(screen, right, "Autolog__DefaultFileName")
-		self.addTextEdit(screen, right, right, "Autolog__FilePath")
-		self.addTextEdit(screen, right, right, "Autolog__FileName")
-		self.addTextEdit(screen, right, right, "Autolog__Prefix")
-		self.addTextDropdown(screen, right, right, "Autolog__Format")
+		rightL, rightR = self.addTwoColumnLayout(screen, right, "File_Column")
+		self.addTextEdit(screen, rightL, rightR, "Autolog__FilePath")
+		self.addTextEdit(screen, rightL, rightR, "Autolog__FileName")
+		self.addTextEdit(screen, rightL, rightR, "Autolog__Prefix")
+		self.addTextDropdown(screen, rightL, rightR, "Autolog__Format")
 		
 		# What to Log
 		screen.attachHSeparator(column, column + "Sep2")

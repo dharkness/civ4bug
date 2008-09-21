@@ -21,17 +21,20 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		#self.addCheckbox(screen, left, "PLE__Enabled")
 		self.addCheckbox(screen, left, "PLE__Show_Buttons")
-		self.addTextDropdown(screen, left, left, "PLE__Default_View_Mode")
-		self.addTextDropdown(screen, left, left, "PLE__Default_Group_Mode")
-		self.addTextDropdown(screen, left, left, "PLE__Filter_Behavior")
+		leftL, leftR = self.addTwoColumnLayout(screen, left, "Show_Buttons_Column")
+		self.addTextDropdown(screen, leftL, leftR, "PLE__Default_View_Mode", True, "LAYOUT_LEFT")
+		self.addTextDropdown(screen, leftL, leftR, "PLE__Default_Group_Mode", True, "LAYOUT_LEFT")
+		self.addTextDropdown(screen, leftL, leftR, "PLE__Filter_Behavior", True, "LAYOUT_LEFT")
 		
-		self.addSpacer(screen, left, "PLE_Indicators")
+		self.addSpacer(screen, left, "PLE_Indicators", 1)
 		self.addLabel(screen, left, "PLE_Indicators")
 		self.addCheckbox(screen, left, "PLE__Wounded_Indicator")
 		self.addCheckbox(screen, left, "PLE__Lead_By_GG_Indicator")
 		self.addCheckbox(screen, left, "PLE__Promotion_Indicator")
 		self.addCheckbox(screen, left, "PLE__Upgrade_Indicator")
 		self.addCheckbox(screen, left, "PLE__Mission_Info")
+		self.addSpacer(screen, left, "PLE_Tab")
+		self.addSpacer(screen, left, "PLE_Tab")
 		
 		#self.addSpacer(screen, left, "PLE__Spacing")
 		#self.addTextEdit(screen, left, left, "PLE__Horizontal_Spacing")
@@ -39,15 +42,17 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		
 		self.addCheckbox(screen, center, "PLE__Health_Bar")
-		self.addColorDropdown(screen, center, center, "PLE__Healthy_Color")
-		self.addColorDropdown(screen, center, center, "PLE__Wounded_Color")
+		centerL, centerR = self.addTwoColumnLayout(screen, center, "Health_Bar_Column")
+		self.addColorDropdown(screen, centerL, centerR, "PLE__Healthy_Color")
+		self.addColorDropdown(screen, centerL, centerR, "PLE__Wounded_Color")
 		self.addCheckbox(screen, center, "PLE__Hide_Health_Fighting")
 		
-		self.addSpacer(screen, center, "PLE__Bars")
+		self.addSpacer(screen, center, "PLE__Bars", 1)
 		self.addCheckbox(screen, center, "PLE__Move_Bar")
-		self.addColorDropdown(screen, center, center, "PLE__Full_Movement_Color")
-		self.addColorDropdown(screen, center, center, "PLE__Has_Moved_Color")
-		self.addColorDropdown(screen, center, center, "PLE__No_Movement_Color")
+		centerL, centerR = self.addTwoColumnLayout(screen, center, "Move_Bar_Column")
+		self.addColorDropdown(screen, centerL, centerR, "PLE__Full_Movement_Color")
+		self.addColorDropdown(screen, centerL, centerR, "PLE__Has_Moved_Color")
+		self.addColorDropdown(screen, centerL, centerR, "PLE__No_Movement_Color")
 		
 		
 		self.addLabel(screen, right, "PLE_Unit_Info_Tooltip")
@@ -58,12 +63,14 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addColorDropdown(screen, right, right, "PLE__Unit_Name_Color")
 		
 		self.addLabel(screen, right, "PLE_Upgrade_Cost")
-		self.addColorDropdown(screen, right, right, "PLE__Upgrade_Possible_Color")
-		self.addColorDropdown(screen, right, right, "PLE__Upgrade_Not_Possible_Color")
+		rightL, rightR = self.addTwoColumnLayout(screen, right, "PLE_Upgrade_Cost_Column")
+		self.addColorDropdown(screen, rightL, rightR, "PLE__Upgrade_Possible_Color")
+		self.addColorDropdown(screen, rightL, rightR, "PLE__Upgrade_Not_Possible_Color")
 		
 		self.addLabel(screen, right, "PLE_Specialties")
-		self.addColorDropdown(screen, right, right, "PLE__Unit_Type_Specialties_Color")
-		self.addColorDropdown(screen, right, right, "PLE__Promotion_Specialties_Color")
+		rightL, rightR = self.addTwoColumnLayout(screen, right, "PLE_Specialties_Column")
+		self.addColorDropdown(screen, rightL, rightR, "PLE__Unit_Type_Specialties_Color")
+		self.addColorDropdown(screen, rightL, rightR, "PLE__Promotion_Specialties_Color")
 
-		self.addSpacer(screen, right, "PLE_Move_Highlighter") 
+		self.addSpacer(screen, right, "PLE_Move_Highlighter", 1)
  		self.addCheckbox(screen, right, "PLE__Move_Highlighter")
