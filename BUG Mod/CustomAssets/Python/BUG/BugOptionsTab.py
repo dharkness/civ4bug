@@ -231,6 +231,7 @@ class BugOptionsTab:
 			if (labelPanel is not None):
 				label = name + "Label"
 				screen.attachLabel(labelPanel, label, option.getTitle())
+				screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
 			
 			# create textedit
 			control = name + "Edit"
