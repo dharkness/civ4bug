@@ -22,6 +22,7 @@ class BugOptionsScreen:
 		self.iScreenHeight = 50
 		self.options = BugOptions.getOptions()
 		self.tabs = []
+		self.reopen = False
 
 	def addTab(self, tab):
 		self.tabs.append(tab)
@@ -48,8 +49,9 @@ class BugOptionsScreen:
 			BugErrorOptionsTab.BugErrorOptionsTab(self).create(self.pTabControl)
 
 	def createTabs(self):
-		for tab in self.tabs:
-			tab.create(self.pTabControl)
+		for i, tab in enumerate(self.tabs):
+			if not self.reopen or i % 2:
+				tab.create(self.pTabControl)
 
 	def clearAllTranslations(self):
 		"Clear the translations of all tabs in response to the user choosing a language"
@@ -61,6 +63,9 @@ class BugOptionsScreen:
 		self.options.write()
 		self.pTabControl.destroy()
 		self.pTabControl = None
+		if self.reopen:
+			self.reopen = False
+			self.interfaceScreen()
 
 
 def clearAllTranslations(argsList=None):

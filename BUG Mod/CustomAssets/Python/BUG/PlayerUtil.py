@@ -19,12 +19,17 @@
 ## All of them return -1 and/or None if given -1 or None for playerOrId.
 ##
 ##   players(), teams(), teamPlayers(teamOrID)
-##     Loop over players and teams matching various criteria.
+##     Loops over players and teams matching various criteria.
 ##     Only valid objects that were alive at some point are returned, and they can
 ##     be filtered further by alive, human, barbarian, and/or minor status.
 ##
-##   playerUnits(playerOrID), playerCities(playerOrID)
-##     Loop over a player's units or cities.
+##   playerUnits(playerOrID, testFunc), playerCities(playerOrID, testFunc)
+##     Loops over a player's units or cities.
+##   getPlayerUnits(playerOrID, testFunc), getPlayerCities(playerOrID, testFunc)
+##     Returns a list of a player's units or cities.
+##
+##   isSaltWaterPort(city, eAskingTeam)
+##     Returns True if (asking team knows) the CyCity has an adjacent saltwater plot.
 ##
 ##   getStateReligion(playerOrID)
 ##   getFavoriteCivic(playerOrID)
@@ -33,6 +38,7 @@
 ##
 ##   getVassals(playerOrID, askingPlayerOrID)
 ##   getDefensivePacts(playerOrID, askingPlayerOrID)
+##     Returns lists of players with whom the given player has certain relationships.
 ##
 ##   getActiveWars(playerOrID, askingPlayerOrID)
 ##   getPossibleWars(playerOrID, askingPlayerOrID)
@@ -258,11 +264,13 @@ def matchPlayerOrTeam(teamOrPlayer, alive=None, human=None, barbarian=None, mino
 			and (minor is None or minor == teamOrPlayer.isMinorCiv()))
 
 
-## Units and Cities - Iteration
+## Units and Cities
 
-def playerUnits(playerOrID):
+def playerUnits(playerOrID, testFunc=None):
 	"""
 	Creates an iterator for the CyUnits owned by the given player.
+	
+	If testFunc is given, only units for which it returns True are returned.
 	
 	for unit in PlayerUtil.playerUnits(PlayerUtil.getActivePlayerID()):
 		...
@@ -270,13 +278,23 @@ def playerUnits(playerOrID):
 	ePlayer, player = getPlayerAndID(playerOrID)
 	unit, iter = player.firstUnit(False)
 	while unit:
-		if not unit.isDead():
+		if not unit.isDead() and (testFunc is None or testFunc(unit)):
 			yield unit
 		unit, iter = player.nextUnit(iter, False)
 
-def playerCities(playerOrID):
+def getPlayerUnits(playerOrID, testFunc=None):
 	"""
-	Creates an iterator for the CyCities owned by the given player.
+	Creates and returns a list containing all the CyUnits owned by the given player.
+	
+	If testFunc is given, only units for which it returns True are returned.
+	"""
+	return [unit for unit in playerUnits(playerOrID, testFunc)]
+
+def playerCities(playerOrID, testFunc=None):
+	"""
+	Creates an iterator for the CyCity objects owned by the given player.
+	
+	If testFunc is given, only cities for which it returns True are returned.
 	
 	for city in PlayerUtil.playerCities(PlayerUtil.getActivePlayerID()):
 		...
@@ -284,10 +302,29 @@ def playerCities(playerOrID):
 	ePlayer, player = getPlayerAndID(playerOrID)
 	city, iter = player.firstCity(False)
 	while city:
-		if not city.isNone() and city.getOwner() == ePlayer:
+		if not city.isNone() and city.getOwner() == ePlayer and (testFunc is None or testFunc(city)):
 			yield city
 		city, iter = player.nextCity(iter, False)
 
+def getPlayerCities(playerOrID, testFunc=None):
+	"""
+	Creates and returns a list containing all the CyCitys owned by the given player.
+	
+	If testFunc is given, only cities for which it returns True are returned.
+	"""
+	return [city for city in playerCities(playerOrID, testFunc)]
+
+def isSaltWaterPort(city, askingTeamOrID=None):
+	if city:
+		eAskingTeam = getTeamID(askingTeamOrID)
+		map = CyMap()
+		for eDirection in range(DirectionTypes.NUM_DIRECTION_TYPES):
+			plot = plotDirection(city.getX(), city.getY(), DirectionTypes(eDirection))
+			if eAskingTeam != -1 and not plot.isRevealed(eAskingTeam, False):
+				continue
+			if plot.isWater() and not plot.isLake():
+				return True
+	return False
 
 ## Player Information
 

@@ -153,9 +153,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 		Prints a warning if eventType is already defined.
 		"""
 		if self.hasEvent(eventType):
-			BugUtil.debug("WARN: event '%s' already defined" % eventType)
+			BugUtil.warn("BugEventManager - event '%s' already defined", eventType)
 		else:
-			BugUtil.debug("BUG: adding event '%s'" % eventType)
+			BugUtil.debug("BugEventManager - adding event '%s'", eventType)
 			self.EventHandlerMap[eventType] = []
 
 	def addEventHandler(self, eventType, eventHandler=None):
@@ -226,10 +226,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 
 		"""
 		if eventType in self.Events:
-			BugUtil.debug("BUG: removing popup handler for event %d" % eventType)
+			BugUtil.debug("BugEventManager - removing popup handler for event %d", eventType)
 			del self.Events[eventType]
 		else:
-			BugUtil.debug("WARN: event %d has no popup handler" % eventType)
+			BugUtil.warn("BugEventManager - event %d has no popup handler", eventType)
 	
 	
 	def fireEvent(self, eventType, *args):
@@ -250,12 +250,11 @@ class BugEventManager(CvEventManager.CvEventManager):
 		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList[1:])
 
 	def _logEvent(self, eventType, argsList):
-		BugUtil.debug("Event - logging = %r" % self.logging)
 		if self.logging and eventType not in self.noLogEvents:
 			if argsList:
-				BugUtil.debug("Event - %s: %r" % (eventType, argsList))
+				BugUtil.debug("BugEventManager - event %s: %r", eventType, argsList)
 			else:
-				BugUtil.debug("Event - %s" % eventType)
+				BugUtil.debug("BugEventManager - event %s", eventType)
 
 	def _handleDefaultEvent(self, eventType, argsList):
 		if self.EventHandlerMap.has_key(eventType):
@@ -327,7 +326,7 @@ def configure(logging=None, noLogEvents=None):
 		g_eventManager.setLogging(logging)
 		g_eventManager.setNoLogEvents(noLogEvents)
 	else:
-		BugUtil.debug("WARN: BugEventManager not setup before configure()")
+		BugUtil.error("BugEventManager - BugEventManager not setup before configure()")
 
 g_initDone = False
 def initBug():

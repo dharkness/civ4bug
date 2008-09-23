@@ -70,7 +70,7 @@ def getViewAndType(iView):
 	elif iView in (1, 2, 3):
 		return (True, YIELDS[iView - 1])
 	else:
-		BugUtil.debug("RawYields.getViewAndType - Invalid view number: %d" % iView)
+		BugUtil.error("RawYields - invalid view number %d", iView)
 		return (False, YieldTypes.YIELD_FOOD)
 
 class Tracker:

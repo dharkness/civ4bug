@@ -21,7 +21,7 @@ class Game(object):
 	
 	def _createMod(self, id):
 		if self._inited:
-			raise BugUtil.ConfigError("Cannot create mod '%s' after initialization" % id)
+			raise BugUtil.ConfigError("cannot create mod '%s' after initialization" % id)
 		else:
 			return self._newMod(id)
 	
@@ -35,21 +35,21 @@ class Game(object):
 		if id in self._mods:
 			return self._mods[id]
 		elif not self._inited:
-			BugUtil.debug("INFO: creating uninitialized mod %s" % id)
+			BugUtil.info("BugCore - creating uninitialized mod %s", id)
 			return self._newMod(id)
 		else:
-			BugUtil.debug("ERROR: invalid mod %s" % id)
+			BugUtil.error("BugCore - invalid mod %s", id)
 	
 	def _addMod(self, mod):
 		id = mod._getID()
 		if self._inited:
-			BugUtil.debug("WARN: cannot add mod %s post-init" % id)
+			BugUtil.warn("BugCore - cannot add mod %s post-init", id)
 		elif id in self._emptyMods:
 			if not mod._inited:
-				BugUtil.debug("ERROR: mod %s not initialized" % id)
+				BugUtil.error("BugCore - mod %s not initialized", id)
 			del self._emptyMods[id]
 		elif id in self._mods:
-			BugUtil.debug("ERROR: mod %s already exists" % id)
+			BugUtil.error("BugCore - mod %s already exists", id)
 		else:
 			self._mods[id] = mod
 	
@@ -59,15 +59,15 @@ class Game(object):
 	
 	def _initDone(self):
 		if self._inited:
-			BugUtil.debug("WARN: game already initialized")
+			BugUtil.warn("BugCore - game already initialized")
 		else:
 			for mod in self._emptyMods.values():
 				id = mod._getID()
 				if mod._inited:
-					BugUtil.debug("WARN: mod %s not added; adding" % id)
+					BugUtil.warn("BugCore - mod %s not added; adding", id)
 					del self._emptyMods[id]
 				else:
-					BugUtil.debug("WARN: mod %s not initialized; removing" % id)
+					BugUtil.warn("BugCore - mod %s not initialized; removing", id)
 					self._removeMod(id)
 			self._inited = True
 	
@@ -106,13 +106,13 @@ class Mod(object):
 	def _getOption(self, id):
 		if not self._hasOption(id):
 			if self._inited:
-				BugUtil.debug("ERROR: option %s not found" % id)
+				BugUtil.error("BugCore - option %s not found", id)
 		else:
 			return self._options[id]  # BugOptions.getOption[self._id + "__" + id]
 	
 	def _initDone(self):
 		if self._inited:
-			BugUtil.debug("WARN: mod already initialized")
+			BugUtil.warn("BugCore - mod already initialized")
 		else:
 			self._inited = True
 	

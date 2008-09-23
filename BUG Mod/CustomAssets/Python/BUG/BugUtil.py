@@ -2,8 +2,70 @@
 ##
 ## Collection of general-purpose utility functions.
 ##
-## TODO:
-##  * Add warn() and error()
+## Text Formatting
+##
+##   - getPlainText(key, default), getText(key, values, default)
+##     Retrieves a translated <TEXT> message from CyTranslator. If the key doesn't
+##     exist, the default (if given) is returned. If no default is given, an
+##     error message is returned.
+##
+##   - colorText(text, color)
+##     Accepts both a string (e.g. "COLOR_RED") or integer color.
+##
+##   - formatFloat(number, decimals)
+##     Returns number formatted as a string with <decimals> number of digits
+##     after the decimal point (default 0).
+##
+## Logging
+##
+##   See "BUG Core.xml" for options. They take effect during initialization.
+##   Until then, the defaults in this module are used.
+##
+##   - alert(message, args...)
+##     Displays a formatted message on-screen. Use this sparingly as it's lame.
+##
+##   - debug(message, args...) 
+##     info(message, args...) 
+##     warn(message, args...)
+##     error(message, args...)
+##     Logs a message with optional arguments (percent substitutions) to the
+##     screen and/or the debug file depending on the current level cutoffs.
+##     e.g. BugUtil.warn("TradeUtil - unknown item type %d", trade.ItemType)
+##
+##   - trace(message, detail?, stack?)
+##     Logs an exception message with optional detail and stacktrace (default on)
+##
+## Event Tracing (handleInput)
+##
+##   - debugInput(inputClass)
+##     Logs a DEBUG message detailing the input event.
+##
+## Timing Code Execution
+##
+##   - Timer class
+##     Times single and multiple blocks of code and provides methods for logging
+##     the individual and total times at DEBUG level.
+##
+## Binding and Calling Functions Dynamically
+##
+##   - getFunction(module, functionOrClass, bind?, args..., kwargs...)
+##     Returns a Function object that can be used to dynamically call a function
+##     or class constructor at a later time with the arguments provided when
+##     the Function was created.
+##
+##   - callFunction(module, functionOrClass, args..., kwargs...)
+##     Returns the result of calling the function bound using getFunction().
+##
+## Exception Classes
+##
+##   - BugError, ConfigError
+##     Raise these in BUG Core code rather than generic exceptions.
+##
+## Civ4 Helpers (move these)
+##
+##   - isNoEspionage()
+##     Returns True if running at least 3.17 and the No Espionage option is set
+##     for the game in progress.
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -12,11 +74,13 @@
 from CvPythonExtensions import *
 import sys
 import time
+import traceback
 import types
 import ColorUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
+interface = CyInterface()
 
 ## Getting translated text from CIV4GameText XML files and general formatting
 
@@ -44,6 +108,7 @@ def getText(key, values, default=None):
 		if default is not None:
 			return default
 		else:
+			warn("BugUtil - XML key %s not found", key)
 			return "XML key %s not found" % key
 
 def colorText(text, color):
@@ -55,48 +120,100 @@ def colorText(text, color):
 			return localText.changeTextColor(text, color)
 	return text
 
-def formatFloat(value, decimals=0):
+def formatFloat(number, decimals=0):
 	"""
 	Formats value as a floating point number with decimals digits in the mantissa
 	and returns the resulting string.
 	"""
 	if decimals <= 0:
-		return "%f" % value
+		return "%f" % number
 	else:
-		return ("%." + str(decimals) + "f") % value
+		return ("%." + str(decimals) + "f") % number
 
 
-## Debug and Error output
+## Logging to the Screen and Debug File
 
-printToScreen = False
-printToFile = False
-includeTime = True
+DEBUG = 0
+INFO = 1
+WARN = 2
+ERROR = 3
+
+LEVEL_PREFIXES = (
+	"DEBUG: ",
+	"INFO : ",
+	"WARN : ",
+	"ERROR: ",
+)
+
+screenLogLevel = ERROR
+fileLogLevel = DEBUG
+minimumLogLevel = min(screenLogLevel, fileLogLevel)
+
+logTime = True
+
+def alert(message, *args):
+	logToScreen(message % args)
+
+def trace(message, detail=True, stack=True):
+	# TODO: register with ConfigTracker
+	logToFile(message)
+	if detail:
+		logToFile("  " + str(sys.exc_info()[1]))
+	if stack:
+		traceback.print_exc()
 
 def debug(message, *args):
+	"""Logs a message at DEBUG level."""
+	log(DEBUG, message, args)
+
+def info(message, *args):
+	"""Logs a message at INFO level."""
+	log(INFO, message, args)
+
+def warn(message, *args):
+	"""Logs a message at WARN level."""
+	log(WARN, message, args)
+
+def error(message, *args):
+	"""Logs a message at ERROR level."""
+	log(ERROR, message, args)
+
+def log(level, message, args=()):
 	"""
-	Logs a message on-screen and to a file, both optionally.
+	Logs a message on-screen and/or to a file depending on the current levels.
+	
+	The message is sent to each if the level is at least that of the destination.
+	The level of the message is prepended to the message, and if logTime is True, 
+	the current time in HH:MM:SS format is prepended as well.
 	"""
-	if printToScreen or printToFile:
+	if level >= minimumLogLevel:
 		if args:
 			message = message % args
-		if printToScreen:
-			CyInterface().addImmediateMessage(message, "")
-		if printToFile:
-			if includeTime:
-				message = time.asctime()[11:20] + message
-			sys.stdout.write(message + "\n")
+		if level >= screenLogLevel:
+			logToScreen(message)
+		if level >= fileLogLevel:
+			logToFile(LEVEL_PREFIXES[level] + message)
 
-def readDebugOptions():
+def logToScreen(message):
+	interface.addImmediateMessage(message, "")
+
+def logToFile(message):
+	if logTime:
+		message = time.asctime()[11:20] + message
+	sys.stdout.write(message + "\n")
+
+def readLoggingOptions(option=None, value=None):
 	"""
-	Pulls the debug options from BugOptions and stores into local copies.
-	Done this way to avoid hitting the options in tight loops using debug().
+	Pulls the logging options from the BUG Core options and stores into local copies.
+	Done this way to avoid hitting the options in tight loops that use logging.
 	"""
-	import BugOptions
-	BugOpt = BugOptions.getOptions()
-	global printToScreen
-	global printToFile
-	printToScreen = BugOpt.isDebugToScreen()
-	printToFile = BugOpt.isDebugToFile()
+	import BugCore
+	CoreOpt = BugCore.game.Core
+	global screenLogLevel, fileLogLevel, minimumLogLevel, logTime
+	screenLogLevel = CoreOpt.getScreenLogLevel()
+	fileLogLevel = CoreOpt.getFileLogLevel()
+	minimumLogLevel = min(screenLogLevel, fileLogLevel)
+	logTime = CoreOpt.isLogTime()
 
 
 ## Event Tracking and Output
@@ -263,7 +380,8 @@ class Timer:
 		return self
 
 
-## Binding and calling functions dynamically
+## Binding and Calling Functions Dynamically
+##
 ## (looking up module and function/class by name rather than directly in Python
 ## and passing in arguments set up at time of creation or when called)
 
@@ -318,7 +436,7 @@ def callFunction(module, functionOrClass, *args, **kwargs):
 	return func(*args, **kwargs)
 
 
-## Exception classes
+## Exception Classes
 
 class BugError(Exception):
 	"""Generic BUG-related error."""
@@ -337,7 +455,7 @@ class ConfigError(BugError):
 		BugError.__init__(self, message)
 
 
-## Civ4 helpers
+## Civ4 Helpers
 
 def isNoEspionage():
 	"""Returns True if using at least 3.17 and the 'No Espionage' option is enabled."""

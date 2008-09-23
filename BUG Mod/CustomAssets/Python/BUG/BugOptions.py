@@ -121,7 +121,7 @@ class Options(object):
 		#self.mods = {}
 		self.files = {}
 		self.options = {}
-		self.loaded = False
+		self.loaded = True
 	
 	def getFile(self, id):
 		"""Returns the IniFile with the given ID."""
@@ -133,7 +133,7 @@ class Options(object):
 	def addFile(self, file):
 		"""Adds the given IniFile to the dictionary."""
 		if file.id in self.files:
-			BugUtil.debug("BUG: Duplicate INI file: %s" % file.id)
+			BugUtil.error("BugOptions - duplicate INI file: %s", file.id)
 		else:
 			self.files[file.id] = file
 			self.createFileGetter(file)
@@ -171,10 +171,10 @@ class Options(object):
 	def addOption(self, option):
 		"""Adds an Option to the dictionary if its ID doesn't clash."""
 		if option.id in self.options:
-			BugUtil.debug("BUG: Duplicate option: %s" % option.id)
+			BugUtil.error("BugOptions - duplicate option %s", option.id)
 		else:
 			self.options[option.id] = option
-			BugUtil.debug("BUG: Added option: %s" % str(option))
+			BugUtil.debug("BugOptions - added option %s", str(option))
 
 	def clearAllTranslations(self):
 		"""Clears the translations of all options in response to the user choosing a language."""
@@ -193,7 +193,7 @@ class Options(object):
 			return file
 		getter = "get" + file.id
 		setattr(self, getter, get)
-		BugUtil.debug("BUG: %s will return IniFile %s" % (getter, file.id))
+		BugUtil.debug("BugOptions - %s will return IniFile %s", getter, file.id)
 
 
 # The singleton Options object that holds all Option and IniFile objects.
@@ -258,10 +258,10 @@ class IniFile(object):
 		except IOError:
 			self.path = None
 			self.config = None
-			BugUtil.debug("ERROR: Problem reading file '%s'" % name)
+			BugUtil.error("BugOptions - error reading file '%s'", name)
 	
 	def create(self):
-		BugUtil.debug("BUG: Creating new INI file '%s'" % self.name)
+		BugUtil.debug("BugOptions - creating INI file '%s'", self.name)
 		self.config = ConfigObj(encoding='utf_8')
 		for option in self.options:
 			if not option.isParameterized():
@@ -291,14 +291,14 @@ class IniFile(object):
 		self.config.addFinalComment()
 	
 	def write(self):
-		BugUtil.debug("BUG: Writing INI file '%s'" % self.name)
+		BugUtil.debug("BugOptions - writing INI file '%s'", self.name)
 		if self.fileExists():
 			if self.isDirty():
 				try:
 					self.config.write()
 					self.dirty = False
 				except IOError:
-					BugUtil.debug("BUG: Failed writing INI file '%s'" % self.path)
+					BugUtil.error("BugOptions - failed writing INI file '%s'", self.path)
 		elif self.isLoaded():
 			self.path = BugPath.createIniFile(self.name)
 			try:
@@ -307,13 +307,13 @@ class IniFile(object):
 				file.close()
 				self.dirty = False
 			except IOError:
-				BugUtil.debug("BUG: Failed creating INI file '%s'" % self.path)
+				BugUtil.error("BugOptions - failed creating INI file '%s'", self.path)
 		else:
-			BugUtil.debug("BUG: INI file '%s' was never read" % self.name)
+			BugUtil.warn("BugOptions - INI file '%s' was never read", self.name)
 	
 	
 	def exists(self, section, key=None):
-		return section in self.config and (key is None or key in self.config[section])
+		return self.config and section in self.config and (key is None or key in self.config[section])
 	
 	def getSection(self, section):
 		if section not in self.config:
@@ -369,9 +369,10 @@ class IniFile(object):
 			if old is None or old != value:
 				sect[key] = value
 				self.dirty = True
-				BugUtil.debug("BUG: Option %s.%s changed from %s to %s" % (section, key, str(old), str(value)))
+				BugUtil.debug("BugOptions - option %s.%s changed from %s to %s", 
+						section, key, str(old), str(value))
 				return True
-		#BugUtil.debug("BUG: Option %s.%s not changed" % (section, key))
+		#BugUtil.debug("BugOptions - option %s.%s not changed", section, key)
 		return False
 
 
@@ -499,7 +500,7 @@ class AbstractOption(object):
 		if self.isColor():
 			return self.createColorGetterFunction(values)
 		if values is None:
-			BugUtil.debug("WARN: createComparerFunction() requires one or more values")
+			BugUtil.warn("BugOptions - createComparerFunction() requires one or more values")
 			return None
 		else:
 			if isinstance(values, (types.TupleType, types.ListType)):
@@ -517,7 +518,7 @@ class AbstractOption(object):
 	
 	def createColorComparerFunction(self, values):
 		if values is None:
-			BugUtil.debug("WARN: createColorComparerFunction() requires one or more values")
+			BugUtil.warn("BugOptions - createColorComparerFunction() requires one or more values")
 			return None
 		else:
 			if isinstance(values, (types.TupleType, types.ListType)):
@@ -637,7 +638,7 @@ class AbstractOption(object):
 		pass
 	
 	def resetValue(self, *args):
-		BugUtil.debug("Resetting %s" % self.getID())
+		BugUtil.debug("BugOptions - resetting %s", self.getID())
 		self.setValue(self.getDefault(), *args)
 
 
@@ -833,11 +834,11 @@ class BaseListOption(BaseOption):
 	def addValue(self, value, getter=None, setter=None):
 		if value in self.values:
 			index = self.values.index(value)
-			BugUtil.debug("Value %s has index %s" % (value, index))
+			BugUtil.debug("BugOptions - value %s has index %s", value, index)
 		else:
 			index = len(self.values)
 			self.values.append(value)
-			BugUtil.debug("Value %s appended at index %s" % (value, index))
+			BugUtil.debug("BugOptions - value %s appended at index %s", value, index)
 		if self.displayValues is not None:
 			self.displayValues.append(value)
 		if getter:
@@ -1024,7 +1025,7 @@ class IniMixin(object):
 	
 	def _setValue(self, value, *args):
 		"""Sets the actual value in the INI file."""
-		BugUtil.debug("Setting %s to %r" % (self.getID(), value))
+		BugUtil.debug("BugOptions - setting %s to %r", self.getID(), value)
 		if args:
 			return TYPE_SETTER_MAP[self.type](self.file, self.section, self.key % args, value)
 		else:

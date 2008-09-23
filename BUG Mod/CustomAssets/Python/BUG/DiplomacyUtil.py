@@ -57,20 +57,16 @@ def addEvents(eventManager):
 	DiploEvent("USER_DIPLOCOMMENT_REJECT_DEMAND", "TributeRejected", sendTrade=True)
 	
 	# Religion
-	DiploEvent("AI_DIPLOCOMMENT_RELIGION_PRESSURE", "ReligionDemanded", onReligionDemanded, 
-			argFunc=PlayerUtil.getStateReligion)
-	DiploEvent("USER_DIPLOCOMMENT_CONVERT", "ReligionAccepted", onReligionAccepted, 
-			argFunc=PlayerUtil.getStateReligion)
-	DiploEvent("USER_DIPLOCOMMENT_NO_CONVERT", "ReligionRejected", onReligionRejected, 
-			argFunc=PlayerUtil.getStateReligion)
+	DiploEvent("AI_DIPLOCOMMENT_RELIGION_PRESSURE", "ReligionDemanded", onReligionDemanded, argFunc=extractReligion)
+	DiploEvent("USER_DIPLOCOMMENT_CONVERT", "ReligionAccepted", onReligionAccepted, argFunc=extractReligion)
+	DiploEvent("USER_DIPLOCOMMENT_NO_CONVERT", "ReligionRejected", onReligionRejected, argFunc=extractReligion)
 	
 	# Civic
-	DiploEvent("AI_DIPLOCOMMENT_CIVIC_PRESSURE", "CivicDemanded", onCivicDemanded,
-			argFunc=PlayerUtil.getFavoriteCivic)
-	DiploEvent("USER_DIPLOCOMMENT_REVOLUTION", "CivicAccepted", onCivicAccepted,
-			argFunc=PlayerUtil.getFavoriteCivic)
-	DiploEvent("USER_DIPLOCOMMENT_NO_REVOLUTION", "CivicRejected", onCivicRejected,
-			argFunc=PlayerUtil.getFavoriteCivic)
+	DiploEvent("AI_DIPLOCOMMENT_CIVIC_PRESSURE", "CivicDemanded", onCivicDemanded, argFunc=extractAndLookupInfoType)
+	DiploEvent("USER_DIPLOCOMMENT_REVOLUTION", "CivicAccepted", onCivicAccepted, 
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: PlayerUtil.getFavoriteCivic(eToPlayer))
+	DiploEvent("USER_DIPLOCOMMENT_NO_REVOLUTION", "CivicRejected", onCivicRejected, 
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: PlayerUtil.getFavoriteCivic(eToPlayer))
 	
 	# Join War
 	DiploEvent("AI_DIPLOCOMMENT_JOIN_WAR", "WarDemanded", sendData=True)
@@ -81,6 +77,13 @@ def addEvents(eventManager):
 	DiploEvent("AI_DIPLOCOMMENT_STOP_TRADING", "EmbargoDemanded", sendData=True)
 	DiploEvent("USER_DIPLOCOMMENT_STOP_TRADING", "EmbargoAccepted", sendData=True)
 	DiploEvent("USER_DIPLOCOMMENT_NO_STOP_TRADING", "EmbargoRejected", sendData=True)
+
+
+def extractAndLookupInfoType(eFromPlayer, eToPlayer, args, data):
+	return (gc.getInfoTypeForString(args[0]), )
+
+def extractReligion(eFromPlayer, eToPlayer, args, data):
+	return (PlayerUtil.getStateReligion(eFromPlayer), )
 
 class DiploEvent:
 	def __init__(self, comment, event, handler=None, 
@@ -100,16 +103,16 @@ class DiploEvent:
 		self.sendTrade = sendTrade
 		self.tradeType = tradeType
 		if tradeType:
-			BugUtil.debug("Diplomacy - mapped %s to %s with %s", 
+			BugUtil.debug("DiplomacyUtil - mapped %s to %s with %s", 
 					comment, event, str(tradeType))
 		else:
-			BugUtil.debug("Diplomacy - mapped %s to %s", comment, event)
+			BugUtil.debug("DiplomacyUtil - mapped %s to %s", comment, event)
 		g_eventsByCommentType[self.eComment] = self
 		g_eventManager.addEventHandler(event, handler)
 	
 	def dispatch(self, eFromPlayer, eToPlayer, args):
 		data = diplo.getData()
-		BugUtil.debug("Diplomacy - %s [%d] from %d to %d with %r",
+		BugUtil.debug("DiplomacyUtil - %s [%d] from %d to %d with %r",
 				self.comment, data, eFromPlayer, eToPlayer, args)
 		argList = []
 		if self.sendFromPlayer:
@@ -117,39 +120,32 @@ class DiploEvent:
 		if self.sendToPlayer:
 			argList.append(eToPlayer)
 		
-		if self.sendData:
-			argList.append(data)
-		if self.sendArgs:
-			argList.append(args)
 		if self.argFunc:
-			argList.append(self.argFunc(eFromPlayer))
-		
-		if self.sendTrade or self.tradeType:
-			trade = getProposedTrade()
-			if self.sendTrade:
-				argList.append(trade)
-			if self.tradeType:
-				trades = trade.findType(self.tradeType)
-				if trade and trades:
-					iData = trades[0].iData
-					BugUtil.debug("Diplomacy - firing %s with %s %d", 
-							self.event, str(self.tradeType), iData)
-					argList.append(iData)
-				else:
-					BugUtil.debug("Diplomacy - firing %s without %s", 
-							self.event, str(self.tradeType))
-					argList.append(-1)
-#			else:
-#				if self.sendTrade:
-#					argList.append(Trade())
-#				if self.tradeType:
-#					BugUtil.debug("Diplomacy - firing %s with empty trade (no %s)", 
-#							self.event, str(self.tradeType))
-#					argList.append(-1)
-#				else:
-#					BugUtil.debug("Diplomacy - firing %s with empty trade", self.event)
+			argList.extend(self.argFunc(eFromPlayer, eToPlayer, args, data))
+			BugUtil.debug("DiplomacyUtil - firing %s", self.event)
 		else:
-			BugUtil.debug("Diplomacy - firing %s", self.event)
+			if self.sendData:
+				argList.append(data)
+			if self.sendArgs:
+				argList.append(args)
+			
+			if self.sendTrade or self.tradeType:
+				trade = getProposedTrade()
+				if self.sendTrade:
+					argList.append(trade)
+				if self.tradeType:
+					trades = trade.findType(self.tradeType)
+					if trade and trades:
+						iData = trades[0].iData
+						BugUtil.debug("DiplomacyUtil - firing %s with %s %d", 
+								self.event, str(self.tradeType), iData)
+						argList.append(iData)
+					else:
+						BugUtil.debug("DiplomacyUtil - firing %s without %s", 
+								self.event, str(self.tradeType))
+						argList.append(-1)
+			else:
+				BugUtil.debug("DiplomacyUtil - firing %s", self.event)
 		g_eventManager.fireEvent(self.event, *argList)
 
 
@@ -169,7 +165,7 @@ def dispatchEvent(eComment, eFromPlayer, eToPlayer, args):
 		event.dispatch(eFromPlayer, eToPlayer, args)
 	else:
 		key = gc.getDiplomacyInfo(eComment).getType()
-		BugUtil.debug("Diplomacy - ignoring %s from %d to %d with %r", 
+		BugUtil.debug("DiplomacyUtil - ignoring %s from %d to %d with %r", 
 				key, eFromPlayer, eToPlayer, args)
 
 
@@ -177,7 +173,7 @@ def dispatchEvent(eComment, eFromPlayer, eToPlayer, args):
 
 def onReligionDemanded(argsList):
 	ePlayer, eTargetPlayer, eReligion = argsList
-	BugUtil.debug("Diplomacy - %s asks %s to convert to %s",
+	BugUtil.debug("DiplomacyUtil - %s asks %s to convert to %s",
 			PlayerUtil.getPlayer(ePlayer).getName(), 
 			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
 			gc.getReligionInfo(eReligion).getDescription())
@@ -191,7 +187,7 @@ def onReligionRejected(argsList):
 
 def onCivicDemanded(argsList):
 	ePlayer, eTargetPlayer, eCivic = argsList
-	BugUtil.debug("Diplomacy - %s asks %s to switch to %s",
+	BugUtil.debug("DiplomacyUtil - %s asks %s to switch to %s",
 			PlayerUtil.getPlayer(ePlayer).getName(), 
 			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
 			gc.getCivicInfo(eCivic).getDescription())
@@ -211,7 +207,7 @@ def getProposedTrade():
 		getProposedTradeData(diplo.getPlayerTradeOffer, trade.addTrade)
 	if not diplo.theirOfferEmpty():
 		getProposedTradeData(diplo.getTheirTradeOffer, trade.addOtherTrade)
-	BugUtil.debug("getProposedTrade - %r" % trade)
+	BugUtil.debug("DiplomacyUtil.getProposedTrade - %r", trade)
 	return trade
 
 def getProposedTradeData(getFunc, addFunc):
@@ -222,4 +218,5 @@ def getProposedTradeData(getFunc, addFunc):
 		else:
 			break
 	else:
-		BugUtil.debug("WARN: reached %d items in a single trade" % MAX_TRADE_DATA)
+		BugUtil.warn("DiplomacyUtil.getProposedTradeData - reached %d items, ignoring rest",
+				MAX_TRADE_DATA)

@@ -24,28 +24,25 @@ def init():
 	"""Performs the one-time initialization of the BUG core and all mods."""
 	global g_initDone
 	if g_initDone:
-		BugUtil.debug("WARN: BugInit.init() called again")
+		BugUtil.warn("BugInit - init() called again")
 		return
 	global g_initRunning
 	if g_initRunning:
-		BugUtil.debug("WARN: BugInit.init() called while running")
+		BugUtil.warn("BugInit - init() already running")
 		return
 	g_initRunning = True
 	
-	BugUtil.debug("BUG: initializing...")
+	BugUtil.debug("BugInit - initializing...")
 	timer = BugUtil.Timer("BUG init")
 	
 	CvUtil.initDynamicFontIcons()
-	timer.log("fonts").start()
 	loadMod("init")
-	timer.log("config").start()
 	BugCore.initDone()
-	BugOptions.read()
-	timer.log("read options").start()
+	timer.log("read configs").start()
 	callInits()
 	timer.log("call inits/events").start()
 	
-	timer.logTotal("total")
+	timer.logTotal()
 	g_initDone = True
 	g_initRunning = False
 
@@ -53,13 +50,13 @@ def loadMod(name):
 	"""Load the given mod from its XML file using a custom parser."""
 	path = BugPath.findAssetFile(name + ".xml", "Config")
 	if path:
-		BugUtil.debug("BUG: loading mod %s..." % name)
+		BugUtil.debug("BugInit - loading mod %s...", name)
 		parser = BugConfig.XmlParser()
 		timer = BugUtil.Timer("load mod")
 		parser.parse(path)
 		timer.log(name)
 	else:
-		BugUtil.debug("BUG: cannot find XML file for mod %s" % name)
+		BugUtil.error("BugInit - cannot find XML file for mod %s", name)
 
 def addInit(name, function):
 	"""
@@ -80,18 +77,10 @@ def addInit(name, function):
 
 def callInits():
 	"""Calls all of the stored init functions in the order they were added."""
-	BugUtil.debug("BUG: calling init functions...")
+	BugUtil.debug("BugInit - calling init functions...")
 	while g_initQueue:
 		name, func = g_initQueue.pop(0)
 		try:
 			func()
-#		except BugUtil.ConfigError, e:
-#			# TODO: register with ConfigTracker
-#			BugUtil.debug("ERROR: init for module '%s' failed: %s" % (name, e))
 		except:
-			import sys
-			info = sys.exc_info()
-			# TODO: register with ConfigTracker
-			BugUtil.debug("ERROR: init for module '%s' failed: %s" % (name, info[1]))
-			import traceback
-			traceback.print_exc()
+			BugUtil.trace("BugInit - init '%s' failed" % name)

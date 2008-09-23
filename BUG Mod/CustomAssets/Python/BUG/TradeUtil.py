@@ -108,7 +108,7 @@ def format(player, trade):
 	elif trade.ItemType in TRADE_FORMATS:
 		return TRADE_FORMATS[trade.ItemType].format(player, trade)
 	else:
-		BugUtil.debug("WARN: unknown item type %d" % trade.ItemType)
+		BugUtil.warn("TradeUtil - unknown item type %d", trade.ItemType)
 		return ""
 
 def init():
@@ -182,7 +182,7 @@ def getTradePlayer(player, trade):
 	return PlayerUtil.getPlayer(trade.iData).getName()
 
 def getTradePeaceDeal(player, trade):
-	BugUtil.debug("TradeUtil - peace treaty has iData %d" % trade.iData)
+	BugUtil.debug("TradeUtil - peace treaty has iData %d", trade.iData)
 	return BugUtil.getText("TXT_KEY_TRADE_PEACE_TREATY_STRING", (gc.getDefineINT("PEACE_TREATY_LENGTH"),))
 
 

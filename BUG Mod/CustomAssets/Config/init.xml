@@ -8,27 +8,43 @@
 -->
 <mod id="BUG" 
 	 name="BUG Mod" 
-	 version="3.1" 
-	 build="1124" 
+	 version="3.5" 
+	 build="1324" 
 	 date="08/17/2008">
 	
-	<!-- Core -->
+	<!-- BUG Core -->
 	
-	<init module="BugEventManager" function="configure">
+	<load mod="BUG Core"/>
+	
+	<init module="BugEventManager" function="configure" immediate="True">
 		<arg name="logging" type="boolean" value="False"/>
 		<arg name="noLogEvents" type="set">
 			"gameUpdate",
 			"mouseEvent",
 			"kbdEvent"
 		</arg>
-	</init>
+	</init>	
+	
+	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
+	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
+	
+	<events module="HelpEventManager">
+		<!--arg type="key" value="Alt Ctrl F1"/-->
+		<!--arg type="string" value="TXT_KEY_BUG_HELP_FILE"/-->
+	</events>
+	<events module="BugOptionsEventManager">
+		<!--arg type="key" value="Alt Ctrl O | Alt J"/-->
+		<!--arg type="string" value="BUGFull"/-->
+	</events>
+	
 	
 	<!-- Civilization Core -->
 	
 	<!-- Domestic and Military Advisors and Civilopedia are chosen by options -->
 	<init module="CvScreensInterface" function="init"/>
 	
-	<!-- BUG Core and Utils -->
+	
+	<!-- Utility Modules -->
 	
 	<init module="AttitudeUtils" function="init">
 		<!-- Furious, Annoyed, Cautious, Pleased, Friendly -->
@@ -92,18 +108,7 @@
 	<init module="TechUtil" function="init"/>
 	<init module="TradeUtil" function="init"/>
 	<init module="TraitUtil" function="init"/>
-	
-	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
-	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
-	
-	<events module="HelpEventManager">
-		<!--arg type="key" value="Alt Ctrl F1"/-->
-		<!--arg type="string" value="TXT_KEY_BUG_HELP_FILE"/-->
-	</events>
-	<events module="BugOptionsEventManager">
-		<!--arg type="key" value="Alt Ctrl O | Alt J"/-->
-		<!--arg type="string" value="BUGFull"/-->
-	</events>
+	<!--init module="UnitUtil" function="init"/-->
 	
 	
 	<!-- Mods -->
@@ -145,6 +150,7 @@
 		<tab module="BugAutologOptionsTab"/>
 		<tab module="BugUnitNameOptionsTab"/>
 		
+		<tab module="BugSystemOptionsTab"/>
 		<tab module="BugConfigTrackerTab"/>
 		<tab module="BugCreditsOptionsTab"/>
 	</screen>

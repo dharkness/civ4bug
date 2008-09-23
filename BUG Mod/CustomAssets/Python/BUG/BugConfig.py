@@ -34,6 +34,8 @@ import CvScreensInterface
 
 MOD_OPTION_SEP = "__"
 
+TRUE_STRINGS = ('true', 't', 'yes', 'y', 'on', '1')
+
 TYPE_REPLACE = { "bool": "boolean",
 			 	 "bit": "boolean",
 			 	 "str": "string",
@@ -55,7 +57,7 @@ TYPE_DEFAULT_FUNC = { "tuple": tuple,
 					  "list": list,
 					  "set": set,
 					  "dict": dict }
-TYPE_EVAL = { "boolean": lambda x: x.lower() in ('true', 't', 'yes', 'y', 'on', '1'),
+TYPE_EVAL = { "boolean": lambda x: x.lower() in TRUE_STRINGS,
 			  "string": lambda x: x,
 			  "int": lambda x: int(x),
 			  "float": lambda x: float(x),
@@ -135,7 +137,7 @@ class GameBuilder:
 			self.addOption(link, getter, setter, attrs)
 			return link
 		else:
-			BugUtil.debug("ERROR: link option %s not found" % linkId)
+			BugUtil.error("BugConfig - link option %s not found", linkId)
 			return None
 	
 	def createOption(self, id, type, key=None, default=None, andId=None, 
@@ -205,8 +207,12 @@ class GameBuilder:
 		return tab
 	
 	
-	def createInit(self, module, function="init", args=(), kwargs={}, attrs=None):
-		BugInit.addInit(module, BugUtil.getFunction(module, function, *args, **kwargs))
+	def createInit(self, module, function="init", immediate=False, args=(), kwargs={}, attrs=None):
+		func = BugUtil.getFunction(module, function, *args, **kwargs)
+		if immediate:
+			func()
+		else:
+			BugInit.addInit(module, func)
 	
 	def createEvent(self, eventType, module, function, args=(), kwargs={}, attrs=None):
 		self.eventManager.addEventHandler(eventType, BugUtil.getFunction(module, function, *args, **kwargs))
@@ -312,6 +318,7 @@ SCREEN = "screen"
 TAB = "tab"
 
 INIT = "init"
+IMMEDIATE = "immediate"
 EVENT = "event"
 EVENTS = "events"
 
@@ -328,6 +335,7 @@ class XmlParser(xmllib.XMLParser):
 		xmllib.XMLParser.__init__(self)
 		self.game = BugCore.game
 		self.mod = None
+		self.iniFile = None
 		self.option = None
 		self.saving = False
 		self.savedText = None
@@ -349,22 +357,22 @@ class XmlParser(xmllib.XMLParser):
 			finally:
 				file.close()
 		except IOError:
-			BugUtil.debug("BUG: IOError parsing %s" % path)
+			BugUtil.trace("BugConfig - IOError parsing %s" % path)
 		except BugUtil.ConfigError:
-			BugUtil.debug("ERROR: failure parsing %s at line %d" % (path, self.lineno))
+			BugUtil.trace("BugConfig - failure parsing %s at line %d" % (path, self.lineno))
 		except:
-			BugUtil.debug("ERROR: failure parsing %s at line %d" % (path, self.lineno))
+			BugUtil.trace("BugConfig - failure parsing %s at line %d" % (path, self.lineno))
 			raise
 		self.close()
 	
 	def syntax_error(self, message):
-		BugUtil.debug(message)
+		raise BugUtil.ConfigError("error parsing XML: %s" % message)
 	
 	def unknown_starttag(self, tag, attrs):
-		BugUtil.debug("XML start %s with %d attributes" % (tag, len(attrs)))
+		BugUtil.warn("BugConfig - unknown XML start tag %s with %d attributes", tag, len(attrs))
 	
 	def unknown_endtag(self, tag):
-		BugUtil.debug("XML end %s" % tag)
+		BugUtil.warn("BugConfig - unknown XML end tag %s", tag)
 	
 	def handle_data(self, data):
 		if self.saving:
@@ -409,10 +417,11 @@ class XmlParser(xmllib.XMLParser):
 	def start_options(self, attrs):
 		id = self.getRequiredAttribute(attrs, ID, OPTIONS)
 		file = self.getRequiredAttribute(attrs, FILE, OPTIONS)
-		iniFile = g_builder.createIniFile(id, file, attrs)
+		self.iniFile = g_builder.createIniFile(id, file, attrs)
 	
 	def end_options(self):
-		pass
+		if self.iniFile:
+			self.iniFile.read()
 	
 	def start_section(self, attrs):
 		id = self.getRequiredAttribute(attrs, ID, SECTION)
@@ -521,8 +530,13 @@ class XmlParser(xmllib.XMLParser):
 	def end_init(self):
 		attrs, args, kwargs = self.endArgs()
 		module = self.getRequiredAttribute(attrs, MODULE, INIT)
-		function = self.getAttribute(attrs, FUNCTION, "init")
-		g_builder.createInit(module, function, args, kwargs, attrs)
+		function = self.getAttribute(attrs, FUNCTION, INIT)
+		immediate = self.getAttribute(attrs, IMMEDIATE, INIT)
+		if immediate:
+			immediate = immediate in TRUE_STRINGS
+		else:
+			immediate = False
+		g_builder.createInit(module, function, immediate, args, kwargs, attrs)
 	
 	def start_event(self, attrs):
 		self.startArgs(attrs)
@@ -558,7 +572,7 @@ class XmlParser(xmllib.XMLParser):
 		if value is None:
 			value = self.endText()
 		arg = g_builder.createArgument(name, type, value)
-		BugUtil.debug("BUG: %s argument %s = %r" % (type, name, arg))
+		BugUtil.debug("BugConfig - %s argument %s = %r", type, name, arg)
 		if arg is not None:
 			if name:
 				self.kwargs[name] = arg
@@ -580,13 +594,13 @@ class XmlParser(xmllib.XMLParser):
 	
 	def startText(self):
 		if self.saving:
-			BugUtil.debug("ERROR: already saving text in XML parser")
+			BugUtil.error("BugConfig - already saving text in XML parser")
 		self.saving = True
 		self.savedText = ""
 	
 	def endText(self):
 		if not self.saving:
-			BugUtil.debug("ERROR: not saving text in XML parser")
+			BugUtil.error("BugConfig - not saving text in XML parser")
 			return ""
 		self.saving = False
 		return self.savedText
