@@ -41,7 +41,7 @@ class SevoPediaBuilding:
 		self.X_STATS_PANE = self.X_BUILDING_PANE + 110
 		self.Y_STATS_PANE = self.Y_BUILDING_PANE + 17
 		self.W_STATS_PANE = 190
-		self.H_STATS_PANE = 110
+		self.H_STATS_PANE = 110 - 20
 
 		self.X_PREREQ_PANE = self.X_BUILDING_PANE
 		self.W_PREREQ_PANE = self.W_BUILDING_PANE
