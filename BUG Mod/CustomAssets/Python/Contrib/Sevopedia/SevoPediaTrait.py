@@ -29,6 +29,7 @@ class SevoPediaTrait:
 		self.W_LEADERS = self.top.R_PEDIA_PAGE - self.X_LEADERS
 		self.H_LEADERS = 110
 
+		# lines are 22 pixels high using WB font -- no idea about normal font
 		self.X_SPECIAL = self.X_MAIN_PANE + self.W_MAIN_PANE + 10
 		self.Y_SPECIAL = self.Y_LEADERS + self.H_LEADERS + 10
 		self.W_SPECIAL = self.top.R_PEDIA_PAGE - self.X_SPECIAL
@@ -101,6 +102,7 @@ class SevoPediaTrait:
 			trait = gc.getTraitInfo(self.iTrait)
 			szText = CyGameTextMgr().parseLeaderTraits(self.iLeader, -1, False, True)
 			szSpecial = u""
+			bFirst = True
 			bFound = False
 			bSkip = True
 			for line in szText.splitlines():
@@ -118,9 +120,13 @@ class SevoPediaTrait:
 						bSkip = True
 				else:
 					if not bSkip:
-						szSpecial += "\n" + line[2:]  # strip first two spaces
+						if bFirst:
+							bFirst = False
+						else:
+							szSpecial += "\n"
+						szSpecial += line[2:]  # strip first two spaces
 			if bFound:
-				screen.addMultilineText(listName, szSpecial, self.X_SPECIAL+5, self.Y_SPECIAL+5, self.W_SPECIAL-10, self.H_SPECIAL-10, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+				screen.addMultilineText(listName, szSpecial, self.X_SPECIAL+5, self.Y_SPECIAL+27, self.W_SPECIAL-10, self.H_SPECIAL-32, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 
 
