@@ -37,7 +37,7 @@
 			<option id="CheckForUpdates" key="Check For Updates" 
 					type="boolean" default="True" 
 					title="Check for Updates">
-				<change module="BugUpdateChecker" function="onCheckForUpdatesChanged"/>
+				<!--change module="BugUpdateChecker" function="onCheckForUpdatesChanged"/-->
 			</option>
 			
 			<option id="LocalRoot" key="Local Root" 
