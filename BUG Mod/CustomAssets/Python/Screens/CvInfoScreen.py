@@ -928,10 +928,10 @@ class CvInfoScreen:
 
 #BUG: Change Graphs - start
 		if not AdvisorOpt.isGraphs():
-				iX_GRAPH = self.X_GRAPH
-				iY_GRAPH = self.Y_GRAPH
-				iW_GRAPH = self.W_GRAPH
-				iH_GRAPH = self.H_GRAPH
+			iX_GRAPH = self.X_GRAPH
+			iY_GRAPH = self.Y_GRAPH
+			iW_GRAPH = self.W_GRAPH
+			iH_GRAPH = self.H_GRAPH
 		else:
 			# compute graph x, y, w, h
 			if self.BIG_GRAPH:
@@ -1047,8 +1047,9 @@ class CvInfoScreen:
 				x = int(xFactor * (turn - firstTurn))
 
 #				if (x < oldX):
-				if x < oldX and abs(x - oldX) > 1 and abs(y - oldY) > 1:
-					if (y != iH_GRAPH or oldY != iH_GRAPH): # don't draw if score is constant zero
+				if x < oldX:
+#				if x < oldX and abs(x - oldX) > 1 and abs(y - oldY) > 1:
+					if (y != iH_GRAPH or oldY != iH_GRAPH):
 						self.drawLine(screen, zsGRAPH_CANVAS_ID, oldX, oldY, x, y, color)
 					oldX = x
 					oldY = y
@@ -1059,8 +1060,6 @@ class CvInfoScreen:
 				turn -= 1
 
 			self.timer.log("drawGraph - player plots, inner loop")
-		self.timer.logSpan("total - all players")
-		self.timer.start()
 
 #BUG: Change Graphs - start
 		# draw the chart text
@@ -1075,7 +1074,8 @@ class CvInfoScreen:
 			screen.setText(self.sGraphText1Widget[vGraphID], "", zsText, CvUtil.FONT_LEFT_JUSTIFY, iX_GRAPH + 10, iY_GRAPH_TITLE, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #BUG: Change Graphs - start
 
-#		self.timer.log("drawGraph")
+		self.timer.logSpan("total - all players")
+		self.timer.reset()
 
 		return
 
@@ -2314,7 +2314,6 @@ class CvInfoScreen:
 #############################################################################################################
 
 	def drawLine (self, screen, canvas, x0, y0, x1, y1, color):
-#		if abs(x0 - x1) <= 1 and abs(y0 - y1) <= 1: return
 		screen.addLineGFC(canvas, self.getNextLineName(), x0, y0 + 1, x1, y1 + 1, color)
 		screen.addLineGFC(canvas, self.getNextLineName(), x0 + 1, y0, x1 + 1, y1, color)
 		screen.addLineGFC(canvas, self.getNextLineName(), x0, y0, x1, y1, color)

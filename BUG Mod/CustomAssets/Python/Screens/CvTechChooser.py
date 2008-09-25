@@ -200,6 +200,8 @@ class CvTechChooser:
 		BugUtil.debug("cvTechChooser: ConstructTabs")
 
 		screen = self.getScreen()
+
+		self.BOX_INCREMENT_WIDTH = 27 # Used to be 33 #Should be a multiple of 3...
 		self.DrawTechChooser(screen, self.TabPanels[0], True, True, True, True, True, True)
 
 
@@ -207,6 +209,7 @@ class CvTechChooser:
 
 		self.BOX_INCREMENT_WIDTH = 12 # Used to be 33 #Should be a multiple of 3...
 		self.DrawTechChooser(screen, self.TabPanels[1], True, False, True, False, False, True)
+		self.BOX_INCREMENT_WIDTH = 27 # Used to be 33 #Should be a multiple of 3...
 #	def DrawTechChooser(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails, bANDPreReq, bORPreReq):
 
 
