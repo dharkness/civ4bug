@@ -973,6 +973,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		# store civ attitudes
 		for iCiv1 in range(0, ziMaxCiv, 1):
 			for iCiv2 in range(0, ziMaxCiv, 1):
+				# Don't try to get a civ's attitude with itself
+				if iCiv1 == iCiv2:
+					continue
 				zKey = ziMaxCiv * iCiv1 + iCiv2
 				self.CIVAttitude[zKey] = gc.getAttitudeInfo(gc.getPlayer(iCiv1).AI_getAttitude(iCiv2)).getDescription()
 
@@ -1020,6 +1023,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if (AutologOpt.isLogAttitude()):
 			for iCiv1 in range(0, ziMaxCiv, 1):
 				for iCiv2 in range(0, ziMaxCiv, 1):
+					# Don't try to get a civ's attitude with itself
+					if iCiv1 == iCiv2:
+						continue
 					zKey = ziMaxCiv * iCiv1 + iCiv2
 					zsNewAttitude = gc.getAttitudeInfo(gc.getPlayer(iCiv1).AI_getAttitude(iCiv2)).getDescription()
 
@@ -1070,6 +1076,9 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		# dump attitude
 		for iCiv1 in range(0, ziMaxCiv, 1):
 			for iCiv2 in range(0, ziMaxCiv, 1):
+				# Don't try to get a civ's attitude with itself
+				if iCiv1 == iCiv2:
+					continue
 				zsCiv1 = gc.getPlayer(iCiv1).getCivilizationAdjective(0)  #getCivilizationShortDescription(0)
 				zsCiv2 = gc.getPlayer(iCiv2).getCivilizationAdjective(0)  #getCivilizationShortDescription(0)
 				zsNewAttitude = gc.getAttitudeInfo(gc.getPlayer(iCiv1).AI_getAttitude(iCiv2)).getDescription()
