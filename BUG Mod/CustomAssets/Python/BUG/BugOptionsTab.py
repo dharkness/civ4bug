@@ -180,13 +180,13 @@ class BugOptionsTab:
 	def addLabel (self, screen, panel, name, title=None, tooltip=None):
 		key = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
 		title = BugUtil.getPlainText(key, title)
-		tooltip = BugUtil.getPlainText(key + "_HOVER", tooltip)
+		#tooltip = BugUtil.getPlainText(key + "_HOVER", tooltip)
 		if (title):
 			label = name + "_Label"
 			screen.attachLabel(panel, label, title)
 			screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
-			if (tooltip):
-				screen.setToolTip(label, tooltip)
+			#if (tooltip):
+			#	screen.setToolTip(label, tooltip)
 			return label
 		return None
 
