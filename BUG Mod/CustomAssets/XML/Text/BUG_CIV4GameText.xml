@@ -142,11 +142,11 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_DEAD_CIV</Tag>
-		<English>Dead</English>
-		<French>Mort</French>
-		<German>Tot</German>
-		<Italian>Scomparsa</Italian>
-		<Spanish>Muerto</Spanish>
+		<English>DEAD</English>
+		<French>MORT</French>
+		<German>TOT</German>
+		<Italian>SCOMPARSA</Italian>
+		<Spanish>MUERTO</Spanish>
 	</TEXT>
 	
 	<!-- Raw Yields -->

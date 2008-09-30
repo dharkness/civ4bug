@@ -47,7 +47,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_TEXT</Tag>
 		<English>Screen Logging Level</English>
 		<French>Screen Logging Level</French>
-		<German>Screen Logging Level</German>
+		<German>Protokollierungsstufe (Bildschirm)</German>
 		<Italian>Livello di log a video</Italian>
 		<Spanish>Screen Logging Level</Spanish>
 	</TEXT>
@@ -55,7 +55,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_HOVER</Tag>
 		<English>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</English>
 		<French>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</French>
-		<German>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</German>
+		<German>Bestimmt, welche Protokoll-Meldungen im Hauptbildschirm angezeigt werden (jede Stufe schließt die Meldungen der Stufe darunter mit ein)</German>
 		<Italian>Seleziona quali messaggi di log vengono mostrati sullo schermo. Ogni livello comprende ovviamente tutti i messaggi dei livelli inferiori.</Italian>
 		<Spanish>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</Spanish>
 	</TEXT>
@@ -63,7 +63,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_LIST</Tag>
 		<English>Debug|Info|Warning|Error|None</English>
 		<French>Debug|Info|Warning|Error|None</French>
-		<German>Debug|Info|Warning|Error|None</German>
+		<German>Debug|Info|Warnung|Fehler|Keine</German>
 		<Italian>Debug|Informazioni|Avvisi|Errori|Nessuno</Italian>
 		<Spanish>Debug|Info|Warning|Error|None</Spanish>
 	</TEXT>
@@ -71,7 +71,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_TEXT</Tag>
 		<English>File Logging Level</English>
 		<French>File Logging Level</French>
-		<German>File Logging Level</German>
+		<German>Protokollierungsstufe (Datei)</German>
 		<Italian>Livello di log su file</Italian>
 		<Spanish>File Logging Level</Spanish>
 	</TEXT>
@@ -79,7 +79,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_HOVER</Tag>
 		<English>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</English>
 		<French>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</French>
-		<German>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</German>
+		<German>Bestimmt, welche Protokoll-Meldungen in der Datei "PythonDbg.log" gespeichert werden (jede Stufe schließt die Meldungen der Stufe darunter mit ein)</German>
 		<Italian>Seleziona quali messaggi di log vengono scritti nel file PythonDbg.log. Ogni livello comprende ovviamente tutti i messaggi dei livelli inferiori.</Italian>
 		<Spanish>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</Spanish>
 	</TEXT>
@@ -87,7 +87,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_LIST</Tag>
 		<English>Debug|Info|Warning|Error|None</English>
 		<French>Debug|Info|Warning|Error|None</French>
-		<German>Debug|Info|Warning|Error|None</German>
+		<German>Debug|Info|Warnung|Fehler|Keine</German>
 		<Italian>Debug|Informazioni|Avvisi|Errori|Nessuno</Italian>
 		<Spanish>Debug|Info|Warning|Error|None</Spanish>
 	</TEXT>
@@ -95,7 +95,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOGTIME_TEXT</Tag>
 		<English>Include Time</English>
 		<French>Include Time</French>
-		<German>Include Time</German>
+		<German>Zeit protokollieren</German>
 		<Italian>Includi ora</Italian>
 		<Spanish>Include Time</Spanish>
 	</TEXT>
@@ -103,7 +103,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOGTIME_HOVER</Tag>
 		<English>When checked, each log file message includes the current time in HH:MM:SS format.</English>
 		<French>When checked, each log file message includes the current time in HH:MM:SS format.</French>
-		<German>When checked, each log file message includes the current time in HH:MM:SS format.</German>
+		<German>Fügt jeder ausgegebenen Protokoll-Meldung die aktuelle Uhrzeit im Format "HH:MM:SS" hinzu</German>
 		<Italian>Quando è selezionato, ogni messaggio di log include l'ora corrente (nel formato HH:MM:SS).</Italian>
 		<Spanish>When checked, each log file message includes the current time in HH:MM:SS format.</Spanish>
 	</TEXT>
@@ -112,7 +112,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_TEXT</Tag>
 		<English>Check for Updates</English>
 		<French>Check for Updates</French>
-		<German>Check for Updates</German>
+		<German>Nach Updates suchen</German>
 		<Italian>Cerca aggiornamenti</Italian>
 		<Spanish>Check for Updates</Spanish>
 	</TEXT>
@@ -120,7 +120,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_HOVER</Tag>
 		<English>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</English>
 		<French>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</French>
-		<German>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</German>
+		<German>Lässt BUG bei jedem Spielstart nach SVN-Updates und/oder neuen offiziellen Versionen suchen und eine Meldung ausgeben, wenn aktuellere Versionen gefunden wurden</German>
 		<Italian>Quando è selezionato, il BUG Mod controllerà la disponibilità di aggiornamenti SVN e/o nuove versioni ogni volta che lancerai Civ4 e ti notificherà ciò che avrà eventualmente trovato.</Italian>
 		<Spanish>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Spanish>
 	</TEXT>
@@ -128,7 +128,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALROOT_TEXT</Tag>
 		<English>BUG Install Folder</English>
 		<French>BUG Install Folder</French>
-		<German>BUG Install Folder</German>
+		<German>Installationsverzeichnis der BUG Mod</German>
 		<Italian>Cartella di installazione del BUG Mod</Italian>
 		<Spanish>BUG Install Folder</Spanish>
 	</TEXT>
@@ -136,7 +136,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALROOT_HOVER</Tag>
 		<English>Location where BUG files are installed.</English>
 		<French>Location where BUG files are installed.</French>
-		<German>Location where BUG files are installed.</German>
+		<German>Verzeichnis, in dem sich die Dateien der BUG Mod befinden</German>
 		<Italian>Posizione in cui sono installati i file del BUG Mod.</Italian>
 		<Spanish>Location where BUG files are installed.</Spanish>
 	</TEXT>
@@ -144,7 +144,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALVERSION_TEXT</Tag>
 		<English>Installed Revision</English>
 		<French>Installed Revision</French>
-		<German>Installed Revision</German>
+		<German>Installierte Revision</German>
 		<Italian>Revisione installata</Italian>
 		<Spanish>Installed Revision</Spanish>
 	</TEXT>
@@ -152,7 +152,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALVERSION_HOVER</Tag>
 		<English>Revision number of the BUG installation.</English>
 		<French>Revision number of the BUG installation.</French>
-		<German>Revision number of the BUG installation.</German>
+		<German>Revisionsnummer der installierten BUG Mod</German>
 		<Italian>Numero di revisione del BUG Mod installato.</Italian>
 		<Spanish>Revision number of the BUG installation.</Spanish>
 	</TEXT>
@@ -160,7 +160,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYURL_TEXT</Tag>
 		<English>Repository URL</English>
 		<French>Repository URL</French>
-		<German>Repository URL</German>
+		<German>URL des Projektarchivs</German>
 		<Italian>URL del repository</Italian>
 		<Spanish>Repository URL</Spanish>
 	</TEXT>
@@ -168,7 +168,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYURL_HOVER</Tag>
 		<English>URL for the BUG repository.</English>
 		<French>URL for the BUG repository.</French>
-		<German>URL for the BUG repository.</German>
+		<German>URL des Projektarchivs der BUG Mod</German>
 		<Italian>URL della directory SVN online dove si trovano i file del BUG Mod.</Italian>
 		<Spanish>URL for the BUG repository.</Spanish>
 	</TEXT>
@@ -176,7 +176,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYVERSION_TEXT</Tag>
 		<English>Repository Revision</English>
 		<French>Repository Revision</French>
-		<German>Repository Revision</German>
+		<German>Revision des Projektarchivs</German>
 		<Italian>Revisione del repository</Italian>
 		<Spanish>Repository Revision</Spanish>
 	</TEXT>
@@ -184,7 +184,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYVERSION_HOVER</Tag>
 		<English>Revision number of the BUG repository.</English>
 		<French>Revision number of the BUG repository.</French>
-		<German>Revision number of the BUG repository.</German>
+		<German>Revisionsnummer des Projektarchivs der BUG Mod</German>
 		<Italian>Numero di revisione della versione SVN disponibile online del BUG Mod.</Italian>
 		<Spanish>Revision number of the BUG repository.</Spanish>
 	</TEXT>
@@ -1844,19 +1844,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__TAGDEAD_TEXT</Tag>
-		<English>Tag as "Dead"</English>
-		<French>Marquer "Mort"</French>
-		<German>Mit "Tot" markieren</German>
-		<Italian>Marca come "Scomparse"</Italian>
-		<Spanish>Tag as "Dead"</Spanish>
+		<English>Tag as "DEAD"</English>
+		<French>Marquer "MORT"</French>
+		<German>Mit "TOT" markieren</German>
+		<Italian>Marca come "SCOMPARSE"</Italian>
+		<Spanish>Tag as "DEAD"</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__TAGDEAD_HOVER</Tag>
-		<English>When checked, dead civilizations will be tagged as "Dead" when shown.</English>
-		<French>En activant, les civilisations mortes seront marquées "Mort".</French>
-		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "Tot" in der Punkteanzeige, wenn sie angezeigt werden sollen</German>
-		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come "Scomparsa" nel Pannello del Punteggio.</Italian>
-		<Spanish>When checked, dead civilizations will be tagged as "Dead" when shown.</Spanish>
+		<English>When checked, dead civilizations will be tagged as "DEAD" when shown.</English>
+		<French>En activant, les civilisations mortes seront marquées "MORT".</French>
+		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "TOT" in der Punkteanzeige, wenn diese angezeigt werden sollen</German>
+		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come "SCOMPARSA" nel Pannello del Punteggio.</Italian>
+		<Spanish>When checked, dead civilizations will be tagged as "DEAD" when shown.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__GREYDEAD_TEXT</Tag>
@@ -1870,7 +1870,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__GREYDEAD_HOVER</Tag>
 		<English>When checked, dead civilizations will be greyed out when not shown.</English>
 		<French>En activant, les civilisations mortes seront marquées en gris.</French>
-		<German>Graut ausgelöschte Zivilisationen aus, wenn sie nicht angezeigt werden sollen</German>
+		<German>Graut ausgelöschte Zivilisationen aus, wenn diese nicht angezeigt werden sollen</German>
 		<Italian>Quando è selezionato, le Civiltà scomparse verranno colorate in grigio nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will be greyed out when not shown.</Spanish>
 	</TEXT>
@@ -1958,7 +1958,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__ATTITUDE_HOVER</Tag>
 		<English>When checked, shows faces depicting each AI's attitude toward you.</English>
 		<French>En activant, utilise des smileys pour indiquer l'attitude des IA envers vous.</French>
-		<German>Zeigt die Einstellung jedes Computerspielers gegenüber der eigenen Zivilisation als Smiley an</German>
+		<German>Zeigt die Einstellung jedes Computerspielers gegenüber der eigenen Zivilisation mit Smilies an</German>
 		<Italian>Quando è selezionato, nel Pannello del Punteggio vengono mostrate delle emoticons che rappresentano l'atteggiamento delle altre Civiltà verso di te.</Italian>
 		<Spanish>When checked, shows faces depicting each AI's attitude toward you.</Spanish>
 	</TEXT>
@@ -2118,7 +2118,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</French>
-		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)[NEWLINE]- Kehrwert: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)</German>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)</German>
 		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</Spanish>
 	</TEXT>
@@ -2126,7 +2126,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_LIST</Tag>
 		<English>Rival vs. You|You vs. Rival</English>
 		<French>Rival vs. You|You vs. Rival</French>
-		<German>Normal|Kehrwert</German>
+		<German>Kehrwert|Normal</German>
 		<Italian>Altri/Giocatore|Giocatore/Altri</Italian>
 		<Spanish>Rival vs. You|You vs. Rival</Spanish>
 	</TEXT>
@@ -2825,23 +2825,23 @@
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_TEXT</Tag>
 		<English>View</English>
 		<French>View</French>
-		<German>View</German>
+		<German>Ansicht</German>
 		<Italian>Visualizzazione</Italian>
 		<Spanish>View</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_HOVER</Tag>
-		<English>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</English>
-		<French>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</French>
-		<German>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</German>
+		<English>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</English>
+		<French>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</French>
+		<German>Bestimmt das Aussehen des Popups, das nach Erforschung oder Erwerb einer Technologie angezeigt wird:[NEWLINE]- Normal: Minimale Standardansicht aus Civ4[NEWLINE]- Ausführlich: Zeigt zusätzliche Informationen an[NEWLINE]- Breit: Breitere Version der ausführlichen Ansicht</German>
 		<Italian>Determina quale visualizzazione mostrare quando viene scoperta una nuova Tecnologia.[NEWLINE]- Originale: visualizzazione minima standard di Civ4.[NEWLINE]- Dettagliata: aggiunge informazioni più dettagliate[NEWLINE]- Ampia: versione estesa della visualizzazione dettagliata</Italian>
-		<Spanish>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</Spanish>
+		<Spanish>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_LIST</Tag>
 		<English>Original|Detailed|Wide</English>
 		<French>Original|Detailed|Wide</French>
-		<German>Original|Detailed|Wide</German>
+		<German>Normal|Ausführlich|Breit</German>
 		<Italian>Originale|Dettagliata|Ampia</Italian>
 		<Spanish>Original|Detailed|Wide</Spanish>
 	</TEXT>
@@ -2849,17 +2849,17 @@
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__CIVILOPEDIATEXT_TEXT</Tag>
 		<English>Show Civilopedia Text</English>
 		<French>Show Civilopedia Text</French>
-		<German>Show Civilopedia Text</German>
+		<German>Civilopedia-Text anzeigen</German>
 		<Italian>Mostra il testo della Civilopedia</Italian>
 		<Spanish>Show Civilopedia Text</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__CIVILOPEDIATEXT_HOVER</Tag>
-		<English>When checked, includes the Civilopedia text after the quote for the technology discovered.</English>
-		<French>When checked, includes the Civilopedia text after the quote for the technology discovered.</French>
-		<German>When checked, includes the Civilopedia text after the quote for the technology discovered.</German>
+		<English>When checked, includes the Civilopedia text after the quote for the discovered technology.</English>
+		<French>When checked, includes the Civilopedia text after the quote for the discovered technology.</French>
+		<German>Zeigt den kompletten Eintrag einer erforschten oder erworbenen Technolgie aus der Civilopedia zusätzlich zu deren Zitat an</German>
 		<Italian>Quando è selezionato, include il testo della Civilopedia dopo la citazione per la tecnologia scoperta.</Italian>
-		<Spanish>When checked, includes the Civilopedia text after the quote for the technology discovered.</Spanish>
+		<Spanish>When checked, includes the Civilopedia text after the quote for the discovered technology.</Spanish>
 	</TEXT>
 	<!-- Advisors -->
 	<TEXT>
@@ -3049,11 +3049,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__ENABLED_HOVER</Tag>
-		<English>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
-		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités. [NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
-		<German>Bestimmt die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei. Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Name der Stadt, die eine Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die eine Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Einsatzgebiet einer Einheit (z.B. Wasser)[NEWLINE]- ld - Name des Oberhaupts, das eine Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Einsatzgebiet einer Einheit[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt2[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt auf 1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
+		<English>When checked, uses the formats on this tab and in the INI file to name the player's units.</English>
+		<French>En activant,utilise les formats spécifiés içi et dans le fichier INI pour nommer vos unités.</French>
+		<German>Aktiviert die Benennung eigener Einheiten mit Hilfe der Regeln hier und in der entsprechenden INI-Datei</German>
 		<Italian>Quando è selezionato, vengono utilizzati i formati in questa tabella e nel file 'Adv Unit Naming.ini' per denominare le Unità del giocatore. I nomi possono essere costruiti combinando testo semplice e codici (che devono essere posti fra accenti circonflessi: ^).[NEWLINE]  Ad esempio: "^cv^ ^ut^ di ^ct^" --> "Arciere Americano di Boston".</Italian>
-		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units. Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
+		<Spanish>When checked, uses the formats on this tab and in the INI file to name the player's units.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__USEADVANCED_TEXT</Tag>
@@ -3081,11 +3081,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__DEFAULT_HOVER</Tag>
-		<English>Enter the user defined naming convention (see help file for further information).</English>
-		<French>Entrez la convention des noms (voir le fichier d'aide pour plus d'information).</French>
-		<German>Eingabe der benutzerdefinierten Benennungsregel (siehe Hilfe-Datei für weitere Information)</German>
+		<English>Enter the user defined naming convention (see help file for further information). Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</English>
+		<French>Entrez la convention des noms (voir le fichier d'aide pour plus d'information).[NEWLINE]Les noms sont construits avec du texte et des codets de format entre carets (^).[NEWLINE]- p.ex. "^ut^ ^cv^ de ^ct^" --> "Archer Américain de Boston"[NEWLINE]Codes Généraux:[NEWLINE]- civ4 - Utilise les noms inclus dans Civ4[NEWLINE]- rd - Nom aléatoire[NEWLINE]- rc - Nom aléatoire spécifique à votre civilisation[NEWLINE]Codes d'Information:[NEWLINE]- ct - Ville ou l'unité a étée construite (p.ex. Boston)[NEWLINE]- cv - Civilisation de l'unité (p.ex. Américain)[NEWLINE]- ut - Type d'Unité (p.ex. Archer)[NEWLINE]- cb - Type de Combat (p.ex. Melee)[NEWLINE]- dm - Type de Domaine (p.ex. Eau)[NEWLINE]- ld - Dirigeant qui a construit l'unité (p.ex. Roosevelt)[NEWLINE]Codes Numériques:[NEWLINE]- cnt[f] - Compte toutes les unités[NEWLINE]- cntu[f] - Compte toutes les unités d'un même type[NEWLINE]- cntct[f] - Compte les unités par ville[NEWLINE]- cntuct[f] - Compte par combination d'unité/ville[NEWLINE]- cntc[f] - Compte par type de combat[NEWLINE]- cntd[f] - Compte par domaine[NEWLINE]- tt1[f][x:y] - Compte entre x et y[NEWLINE]- tt1[f][x] - Compte à partir de x[NEWLINE]* f dans [f] est égal à s, A, a, p, g, n, o ou r (voir fichier d'aide)</French>
+		<German>Eingabe der benutzerdefinierten Benennungsregel (siehe Hilfe-Datei für weitere Information). Die Benennung kann aus Klartext und Formatierungscodes zwischen zwei Zirkumflexen (^) bestehen:[NEWLINE]- z.B. "^cv^ ^ut^ aus ^ct^" --> "Amerikanischer Bogenschütze aus Boston"[NEWLINE]Allgemeine Codes:[NEWLINE]- civ4 - Standard Civ4-Namen verwenden[NEWLINE]- rd - Zufälliger Name[NEWLINE]- rc - Zufälliger zivilisationsbezogener Name[NEWLINE]Codes für Einheiteninfos:[NEWLINE]- ct - Name der Stadt, die eine Einheit aufgestellt hat (z.B. Boston)[NEWLINE]- cv - Adjektiv der Zivilisation, die eine Einheit aufgestellt hat (z.B. amerikanisch)[NEWLINE]- ut - Einheitentyp (z.B. Bogenschütze)[NEWLINE]- cb - Einheitenklasse (z.B. Nahkampf)[NEWLINE]- dm - Einsatzgebiet einer Einheit (z.B. Wasser)[NEWLINE]- ld - Name des Oberhaupts, das eine Einheit aufgestellt hat (z.B. Roosevelt)[NEWLINE]Nummerierungscodes:[NEWLINE]- cnt[f] - Nummerierung über alle Einheiten[NEWLINE]- cntu[f] - Nummerierung über alle Einheiten gleichen Typs[NEWLINE]- cntct[f] - Nummerierung pro Stadt[NEWLINE]- cntuct[f] - Nummerierung pro Einheitentyp/Stadt in Kombination[NEWLINE]- cntc[f] - Nummerierung pro Einheitenklasse[NEWLINE]- cntd[f] - Nummerierung pro Einsatzgebiet einer Einheit[NEWLINE]- tt1[f][x:y] - Nummerierung mit einer festgelegten Zahl zwischen x und y[NEWLINE]- tt2[f][x] - Nummerierung beginnt mit x und wächst jedes Mal an, wenn der Code tt auf 1 zurückgesetzt wird[NEWLINE]* f in [f] kann auch s, A, a, p, g, n, o, r sein (siehe Hilfe-Datei)</German>
 		<Italian>Inserisci la tua convenzione di denominazione personalizzata[NEWLINE]Codici generici:[NEWLINE] - civ4 - usa i nomi standard di Civ4:BtS;[NEWLINE] - rd - nome casuale[NEWLINE] - rc - nome casuale relativo alla Civiltà[NEWLINE]Codici informativi:[NEWLINE] - ct - Città dove l'Unità è stata costruita (ad es. Boston)[NEWLINE] - cv - aggettivo della Civiltà che ha costruito l'Unità (ad es. Americano)[NEWLINE] - ut - tipo di Unità (ad es. Arciere)[NEWLINE] - cb - tipologia di combattimento dell'Unità (ad es. A distanza)[NEWLINE] - dm - dominio dell'Unità (ad esempio Acqua)[NEWLINE] - ld - leader che ha costruito l'Unità (ad esempio Roosevelt)[NEWLINE]Codici di conteggio:[NEWLINE] - cnt[f] - conta su tutte le Unità[NEWLINE] - cntu[f] - conta su tutte le Unità dello stesso tipo[NEWLINE] - cntct[f] - conta su tutte le Unità prodotte nella stessa Città[NEWLINE] - cntuct[f] - conta su tutte le Unità dello stesso tipo e prodotte nella stessa Città[NEWLINE] - cntc[f] - conta su tutte le Unità della stessa tipologia di combattimento[NEWLINE] - cntd[f] - conta su tutte le Unità dello stesso dominio [NEWLINE] - tt1[f][x:y] - conta fino ad un numero casuale scelto fra x ed y[NEWLINE] - tt1[f][x] - conta a partire da x, incrementandosi di 1 ogni volta che il codice tt1 viene resettato[NEWLINE] * f in [f] è uno fra s (assente), A (lettera maiuscola), a (lettera minuscola), p (lettera fonetica), g (lettera greca), n (numero cardinale), o (numero ordinale), r (numero romano).[NEWLINE]Vedi il file di aiuto per maggiori dettagli.</Italian>
-		<Spanish>Enter the user defined naming convention (see help file for further information).</Spanish>
+		<Spanish>Enter the user defined naming convention (see help file for further information). Names can be built from plain text and format codes that appear between matching carets (^).[NEWLINE]- e.g. "^cv^ ^ut^ from ^ct^" --> "American Archer from Boston"[NEWLINE]General Codes:[NEWLINE]- civ4 - Use built-in Civ4 names[NEWLINE]- rd - Random name[NEWLINE]- rc - Random civ-related name[NEWLINE]Unit Info Codes:[NEWLINE]- ct - City where unit was built (e.g. Boston)[NEWLINE]- cv - Civilization that built the unit in adjective form (e.g. American)[NEWLINE]- ut - Unit type (e.g. Archer)[NEWLINE]- cb - Combat type (e.g. Melee)[NEWLINE]- dm - Domain type (e.g. Water)[NEWLINE]- ld - Leader that built the unit (e.g. Roosevelt)[NEWLINE]Counting Codes:[NEWLINE]- cnt[f] - Count across all units[NEWLINE]- cntu[f] - Count per unit type[NEWLINE]- cntct[f] - Count per city[NEWLINE]- cntuct[f] - Count per unit/city combination[NEWLINE]- cntc[f] - Count per combat type[NEWLINE]- cntd[f] - Count per domain[NEWLINE]- tt1[f][x:y] - Count up to a number chosen between x and y[NEWLINE]- tt1[f][x] - Count from x, incrementing each time tt1 code is reset[NEWLINE]* f in [f] is one of s, A, a, p, g, n, o, r (see help file)</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__COMBAT_AIR_TEXT</Tag>
@@ -3285,7 +3285,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
 		<English>Tech Splash Screen:</English>
 		<French>Tech Splash Screen:</French>
-		<German>Tech Splash Screen:</German>
+		<German>Technologie-Popup:</German>
 		<Italian>Scheda della scoperta tecnologica:</Italian>
 		<Spanish>Tech Splash Screen:</Spanish>
 	</TEXT>
@@ -3637,7 +3637,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_DEBUG_LOGGING</Tag>
 		<English>Debug Output:</English>
 		<French>Debug Output:</French>
-		<German>Debug Output:</German>
+		<German>Debug-Meldungen:</German>
 		<Italian>Debug Output:</Italian>
 		<Spanish>Debug Output:</Spanish>
 	</TEXT>
@@ -3646,7 +3646,7 @@
 		<Tag>TXT_KEY_BUG_OPTTAB_CONFIG</Tag>
 		<English>Config</English>
 		<French>Configuration</French>
-		<German>System</German>
+		<German>Pfade</German>
 		<Italian>Config</Italian>
 		<Spanish>Config</Spanish>
 	</TEXT>
