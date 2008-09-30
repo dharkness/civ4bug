@@ -451,8 +451,22 @@ class CvInfoScreen:
 		self.sGraphText.append(sTemp1)
 		self.sGraphText.append(sTemp2)
 
+		# determine the big graph text spacing
+		self.X_GRAPH_TEXT = [0] * self.NUM_SCORES
+
 		iW_GRAPH = self.W_SCREEN - 2 * self.X_MARGIN
-		self.X_GRAPH_TEXT = iW_GRAPH / (2 * self.NUM_SCORES)
+		iTEXT_W = 0
+		for i in range(self.NUM_SCORES):
+			iTEXT_W += CyInterface().determineWidth(sTemp1[i])
+
+		iText_Space = max(0, iW_GRAPH - iTEXT_W) / (self.NUM_SCORES - 1)
+
+		for i in range(self.NUM_SCORES):
+			if i == 0:
+				self.X_GRAPH_TEXT[i] = self.X_MARGIN
+				continue
+
+			self.X_GRAPH_TEXT[i] = self.X_GRAPH_TEXT[i - 1] + CyInterface().determineWidth(sTemp1[i - 1]) + iText_Space
 #BUG: Change Graphs - end
 
 	def reset(self):
@@ -687,10 +701,9 @@ class CvInfoScreen:
 		self.drawGraphs()
 
 		self.timer.logSpan("total")
+		self.timer.reset()
 
 	def drawPermanentGraphWidgets(self):
-
-		self.timer.start()
 
 		screen = self.getScreen()
 
@@ -769,8 +782,8 @@ class CvInfoScreen:
 
 		self.iNumPreDemoChartWidgets = self.nWidgetCount
 
-#		self.timer.log("drawPermanentGraphWidgets")
-
+		self.timer.log("drawPermanentGraphWidgets")
+		self.timer.start()
 
 	def updateGraphButtons(self):
 		screen = self.getScreen()
@@ -897,18 +910,17 @@ class CvInfoScreen:
 				self.drawGraph(self.iGraphTabID)
 				self.drawLegend()
 
-				iX = self.X_MARGIN + self.X_GRAPH_TEXT
 				iY = self.Y_MARGIN - 30
 				for i in range(7):
 					if BugUtil.isNoEspionage() and i == 7:
 						continue
 
+					iX = self.X_GRAPH_TEXT[i]
 					screen.hide(self.sGraphText2Widget[i])
 					if i == self.iGraphTabID:
-						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[1][i], CvUtil.FONT_CENTER_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[1][i], CvUtil.FONT_LEFT_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 					else:
-						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[0][i], CvUtil.FONT_CENTER_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-					iX += 2 * self.X_GRAPH_TEXT
+						screen.setText(self.sGraphText2Widget[i], "", self.sGraphText[0][i], CvUtil.FONT_LEFT_JUSTIFY, iX, iY, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			else:
 				for i in range(7):
 					if BugUtil.isNoEspionage() and i == 7:
@@ -921,8 +933,6 @@ class CvInfoScreen:
 #BUG: Change Graphs - end
 
 	def drawGraph(self, vGraphID):
-
-		self.timer.start()
 
 		screen = self.getScreen()
 
@@ -950,13 +960,13 @@ class CvInfoScreen:
 		zsGRAPH_CANVAS_ID = self.getNextWidgetName()
 		screen.addDrawControl(zsGRAPH_CANVAS_ID, ArtFileMgr.getInterfaceArtInfo("SCREEN_BG").getPath(), iX_GRAPH, iY_GRAPH, iW_GRAPH, iH_GRAPH, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-#		self.timer.log("drawGraph - init")
+		self.timer.log("drawGraph - init")
 		self.timer.start()
 
 		# Compute the scores
 		self.buildScoreCache(vGraphID)
 
-#		self.timer.log("drawGraph - buildScoreCache")
+		self.timer.log("drawGraph - buildScoreCache")
 		self.timer.start()
 
 		# Compute max score
@@ -974,7 +984,7 @@ class CvInfoScreen:
 		else:
 			lastTurn = self.graphEnd
 
-#		self.timer.log("drawGraph - start, end turn")
+		self.timer.log("drawGraph - start, end turn")
 		self.timer.start()
 
 		self.drawGraphLines(zsGRAPH_CANVAS_ID)
@@ -994,7 +1004,7 @@ class CvInfoScreen:
 		if (firstTurn >= lastTurn):
 			return
 
-#		self.timer.log("drawGraph - x y labels")
+		self.timer.log("drawGraph - x y labels")
 		self.timer.start()
 
 		# Compute max and min
@@ -1020,8 +1030,8 @@ class CvInfoScreen:
 				turn = firstTurn + 3 * (lastTurn - firstTurn) / 4
 				self.drawXLabel ( screen, turn, iX_GRAPH + int(xFactor * (turn - firstTurn)) )
 
-#		self.timer.log("drawGraph - max, min")
-#		self.timer.start()
+		self.timer.log("drawGraph - max, min")
+		self.timer.start()
 
 		# Draw the lines
 		for p in self.aiPlayersMet:
@@ -1038,7 +1048,8 @@ class CvInfoScreen:
 			oldY = iH_GRAPH
 			turn = lastTurn
 
-			self.timer.start()
+#			BugUtil.debug("CvInfoScreen: graphs")
+#			BugUtil.info("CvInfoScreen: graphs-i")
 
 			while (turn >= firstTurn):
 
@@ -1046,8 +1057,11 @@ class CvInfoScreen:
 				y = iH_GRAPH - int(yFactor * (score - min))
 				x = int(xFactor * (turn - firstTurn))
 
+#tjp
 #				if (x < oldX):
-				if x < oldX:
+#				BugUtil.info("CvInfoScreen: graphs-1 %i %i", x, oldX)
+				if x < oldX - 1:
+#					BugUtil.info("CvInfoScreen: graphs-2 %i %i", x, oldX)
 #				if x < oldX and abs(x - oldX) > 1 and abs(y - oldY) > 1:
 					if (y != iH_GRAPH or oldY != iH_GRAPH):
 						self.drawLine(screen, zsGRAPH_CANVAS_ID, oldX, oldY, x, y, color)
@@ -1060,6 +1074,7 @@ class CvInfoScreen:
 				turn -= 1
 
 			self.timer.log("drawGraph - player plots, inner loop")
+			self.timer.start()
 
 #BUG: Change Graphs - start
 		# draw the chart text
@@ -1074,8 +1089,8 @@ class CvInfoScreen:
 			screen.setText(self.sGraphText1Widget[vGraphID], "", zsText, CvUtil.FONT_LEFT_JUSTIFY, iX_GRAPH + 10, iY_GRAPH_TITLE, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #BUG: Change Graphs - start
 
-		self.timer.logSpan("total - all players")
-		self.timer.reset()
+		self.timer.log("total - all players")
+		self.timer.start()
 
 		return
 
@@ -2314,8 +2329,9 @@ class CvInfoScreen:
 #############################################################################################################
 
 	def drawLine (self, screen, canvas, x0, y0, x1, y1, color):
-		screen.addLineGFC(canvas, self.getNextLineName(), x0, y0 + 1, x1, y1 + 1, color)
-		screen.addLineGFC(canvas, self.getNextLineName(), x0 + 1, y0, x1 + 1, y1, color)
+		if self.BIG_GRAPH:
+			screen.addLineGFC(canvas, self.getNextLineName(), x0, y0 + 1, x1, y1 + 1, color)
+			screen.addLineGFC(canvas, self.getNextLineName(), x0 + 1, y0, x1 + 1, y1, color)
 		screen.addLineGFC(canvas, self.getNextLineName(), x0, y0, x1, y1, color)
 
 	def getTurnDate(self,turn):
