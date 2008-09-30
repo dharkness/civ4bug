@@ -37,25 +37,29 @@
 			<option id="CheckForUpdates" key="Check For Updates" 
 					type="boolean" default="True" 
 					title="Check for Updates">
-				<!--change module="BugUpdateChecker" function="onCheckForUpdatesChanged"/-->
+				<change module="BugUpdateChecker" function="onCheckForUpdatesChanged"/>
 			</option>
 			
 			<option id="LocalRoot" key="Local Root" 
-					type="string" default="${UserBts}"
-					title="Local Root Directory"/>
+					type="string" default="C:/Coding/Civ/BUG/BUG New Core"
+					title="Local Root Directory">
+				<change module="BugUpdateChecker" function="onLocalRootChanged"/>
+			</option>
 			<option id="LocalVersion" key="Local Revision" 
 					type="int" default="0"
 					title="Local Revision"/>
 			
 			<option id="RepositoryUrl" key="Repository URL" 
 					type="string" default="http://civ4bug.svn.sourceforge.net/svnroot/civ4bug/BUG Mod/"
-					title="Repository URL"/>
+					title="Repository URL">
+				<change module="BugUpdateChecker" function="onRepositoryUrlChanged"/>
+			</option>
 			<option id="RepositoryVersion" key="Repository Revision" 
 					type="int" default="0"
 					title="Repository Revision"/>
 		</section>
 		
-		<option id="LastSvnCheck" type="int" default="0"/>
+		<option id="LastSvnCheck" type="float" default="0"/>
 	</options>
 	
 	<init module="BugUtil" function="readLoggingOptions" immediate="true"/>

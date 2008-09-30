@@ -51,6 +51,7 @@ from CvPythonExtensions import *
 import BugCore
 import BugOptionsScreen
 AdvisorOpt = BugCore.game.Advisors
+TechWindowOpt = BugCore.game.TechWindow
 # BUG - Options - end
 
 g_bIsScreenActive = -1
@@ -223,9 +224,34 @@ debugInfoScreen = CvDebugInfoScreen.CvDebugInfoScreen()
 def showDebugInfoScreen():
 	debugInfoScreen.interfaceScreen()
 
-techSplashScreen = CvTechSplashScreen.CvTechSplashScreen(TECH_SPLASH)
+# BUG - Tech Splash Screen - start
+techSplashScreen = None
+def createTechSplash():
+	"""Creates the correct Tech Splash Screen based on an option."""
+	global techSplashScreen
+	if techSplashScreen is None:
+		if (TechWindowOpt.isDetailedView()):
+			import TechWindow
+			techSplashScreen = TechWindow.CvTechSplashScreen(TECH_SPLASH)
+		elif (TechWindowOpt.isWideView()):
+			import TechWindowWide
+			techSplashScreen = TechWindowWide.CvTechSplashScreen(TECH_SPLASH)
+		else:
+			import CvTechSplashScreen
+			techSplashScreen = CvTechSplashScreen.CvTechSplashScreen(TECH_SPLASH)
+	HandleInputMap[TECH_SPLASH] = techSplashScreen
+
+def deleteTechSplash(option=None, value=None):
+	global techSplashScreen
+	techSplashScreen = None
+	if TECH_SPLASH in HandleInputMap:
+		del HandleInputMap[TECH_SPLASH]
+
 def showTechSplash(argsList):
+	if techSplashScreen is None:
+		createTechSplash()
 	techSplashScreen.interfaceScreen(argsList[0])
+# BUG - Tech Splash Screen - end
 
 victoryScreen = CvVictoryScreen.CvVictoryScreen(VICTORY_SCREEN)
 def showVictoryScreen():
@@ -1099,7 +1125,6 @@ HandleInputMap = {  MAIN_INTERFACE : mainInterface,
 					INTRO_MOVIE_SCREEN : introMovie,
 					OPTIONS_SCREEN : optionsScreen,
 					INFO_SCREEN : infoScreen,
-					TECH_SPLASH : techSplashScreen,
 					REPLAY_SCREEN : replayScreen,
 					VICTORY_SCREEN : victoryScreen,
 					TOP_CIVS : topCivs,
@@ -1127,4 +1152,5 @@ def init():
 	createDomesticAdvisor()
 	createMilitaryAdvisor()
 	createCivilopedia()
+	createTechSplash()
 # BUG - Options - end

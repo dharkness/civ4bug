@@ -42,6 +42,152 @@
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
 <!-- Option Titles and Hovers -->
+	<!-- Logging -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_TEXT</Tag>
+		<English>Screen Logging Level</English>
+		<French>Screen Logging Level</French>
+		<German>Screen Logging Level</German>
+		<Italian>Screen Logging Level</Italian>
+		<Spanish>Screen Logging Level</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_HOVER</Tag>
+		<English>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</English>
+		<French>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</French>
+		<German>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</German>
+		<Italian>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</Italian>
+		<Spanish>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_LIST</Tag>
+		<English>Debug|Info|Warning|Error|None</English>
+		<French>Debug|Info|Warning|Error|None</French>
+		<German>Debug|Info|Warning|Error|None</German>
+		<Italian>Debug|Info|Warning|Error|None</Italian>
+		<Spanish>Debug|Info|Warning|Error|None</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_TEXT</Tag>
+		<English>File Logging Level</English>
+		<French>File Logging Level</French>
+		<German>File Logging Level</German>
+		<Italian>File Logging Level</Italian>
+		<Spanish>File Logging Level</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_HOVER</Tag>
+		<English>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</English>
+		<French>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</French>
+		<German>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</German>
+		<Italian>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</Italian>
+		<Spanish>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__FILELOGLEVEL_LIST</Tag>
+		<English>Debug|Info|Warning|Error|None</English>
+		<French>Debug|Info|Warning|Error|None</French>
+		<German>Debug|Info|Warning|Error|None</German>
+		<Italian>Debug|Info|Warning|Error|None</Italian>
+		<Spanish>Debug|Info|Warning|Error|None</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOGTIME_TEXT</Tag>
+		<English>Include Time</English>
+		<French>Include Time</French>
+		<German>Include Time</German>
+		<Italian>Include Time</Italian>
+		<Spanish>Include Time</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOGTIME_HOVER</Tag>
+		<English>When checked, each log file message includes the current time in HH:MM:SS format.</English>
+		<French>When checked, each log file message includes the current time in HH:MM:SS format.</French>
+		<German>When checked, each log file message includes the current time in HH:MM:SS format.</German>
+		<Italian>When checked, each log file message includes the current time in HH:MM:SS format.</Italian>
+		<Spanish>When checked, each log file message includes the current time in HH:MM:SS format.</Spanish>
+	</TEXT>
+	<!-- Subversion -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_TEXT</Tag>
+		<English>Check for Updates</English>
+		<French>Check for Updates</French>
+		<German>Check for Updates</German>
+		<Italian>Check for Updates</Italian>
+		<Spanish>Check for Updates</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_HOVER</Tag>
+		<English>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</English>
+		<French>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</French>
+		<German>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</German>
+		<Italian>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Italian>
+		<Spanish>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALROOT_TEXT</Tag>
+		<English>BUG Install Folder</English>
+		<French>BUG Install Folder</French>
+		<German>BUG Install Folder</German>
+		<Italian>BUG Install Folder</Italian>
+		<Spanish>BUG Install Folder</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALROOT_HOVER</Tag>
+		<English>Location where BUG files are installed.</English>
+		<French>Location where BUG files are installed.</French>
+		<German>Location where BUG files are installed.</German>
+		<Italian>Location where BUG files are installed.</Italian>
+		<Spanish>Location where BUG files are installed.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALVERSION_TEXT</Tag>
+		<English>Installed Revision</English>
+		<French>Installed Revision</French>
+		<German>Installed Revision</German>
+		<Italian>Installed Revision</Italian>
+		<Spanish>Installed Revision</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__LOCALVERSION_HOVER</Tag>
+		<English>Revision number of the BUG installation.</English>
+		<French>Revision number of the BUG installation.</French>
+		<German>Revision number of the BUG installation.</German>
+		<Italian>Revision number of the BUG installation.</Italian>
+		<Spanish>Revision number of the BUG installation.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYURL_TEXT</Tag>
+		<English>Repository URL</English>
+		<French>Repository URL</French>
+		<German>Repository URL</German>
+		<Italian>Repository URL</Italian>
+		<Spanish>Repository URL</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYURL_HOVER</Tag>
+		<English>URL for the BUG repository.</English>
+		<French>URL for the BUG repository.</French>
+		<German>URL for the BUG repository.</German>
+		<Italian>URL for the BUG repository.</Italian>
+		<Spanish>URL for the BUG repository.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYVERSION_TEXT</Tag>
+		<English>Repository Revision</English>
+		<French>Repository Revision</French>
+		<German>Repository Revision</German>
+		<Italian>Repository Revision</Italian>
+		<Spanish>Repository Revision</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CORE__REPOSITORYVERSION_HOVER</Tag>
+		<English>Revision number of the BUG repository.</English>
+		<French>Revision number of the BUG repository.</French>
+		<German>Revision number of the BUG repository.</German>
+		<Italian>Revision number of the BUG repository.</Italian>
+		<Spanish>Revision number of the BUG repository.</Spanish>
+	</TEXT>
 	<!-- Alerts -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_REMINDER__ENABLED_TEXT</Tag>
@@ -2674,6 +2820,47 @@
 		<Italian>Quando è selezionato, mostra sopra alla vostra bandiera le frecce per scorrere fra le Città.</Italian>
 		<Spanish>When checked, displays arrows to cycle through cities above your civ's flag.</Spanish>
 	</TEXT>
+	<!-- TechWindow -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_TEXT</Tag>
+		<English>View</English>
+		<French>View</French>
+		<German>View</German>
+		<Italian>View</Italian>
+		<Spanish>View</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_HOVER</Tag>
+		<English>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</English>
+		<French>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</French>
+		<German>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</German>
+		<Italian>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</Italian>
+		<Spanish>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_LIST</Tag>
+		<English>Original|Detailed|Wide</English>
+		<French>Original|Detailed|Wide</French>
+		<German>Original|Detailed|Wide</German>
+		<Italian>Original|Detailed|Wide</Italian>
+		<Spanish>Original|Detailed|Wide</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__CIVILOPEDIATEXT_TEXT</Tag>
+		<English>Show Civilopedia Text</English>
+		<French>Show Civilopedia Text</French>
+		<German>Show Civilopedia Text</German>
+		<Italian>Show Civilopedia Text</Italian>
+		<Spanish>Show Civilopedia Text</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__CIVILOPEDIATEXT_HOVER</Tag>
+		<English>When checked, includes the Civilopedia text after the quote for the technology discovered.</English>
+		<French>When checked, includes the Civilopedia text after the quote for the technology discovered.</French>
+		<German>When checked, includes the Civilopedia text after the quote for the technology discovered.</German>
+		<Italian>When checked, includes the Civilopedia text after the quote for the technology discovered.</Italian>
+		<Spanish>When checked, includes the Civilopedia text after the quote for the technology discovered.</Spanish>
+	</TEXT>
 	<!-- Advisors -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CUSTDOMADV_TEXT</Tag>
@@ -3093,6 +3280,14 @@
 		<German>Hauptbildschirm:</German>
 		<Italian>Interfaccia principale:</Italian>
 		<Spanish>Main Interface:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
+		<English>Tech Splash Screen:</English>
+		<French>Tech Splash Screen:</French>
+		<German>Tech Splash Screen:</German>
+		<Italian>Tech Splash Screen:</Italian>
+		<Spanish>Tech Splash Screen:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>

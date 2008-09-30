@@ -24,17 +24,22 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addLabel(screen, left, "MainInterface", "Main Interface:")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
-		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types")
+		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		
 		self.addSpacer(screen, left, "MainInterface_Combat_Counter")
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		
 		self.addSpacer(screen, left, "MainInterface_CityArrows")
 		self.addCheckbox(screen, left, "MainInterface__CityArrows")
+		
+		self.addSpacer(screen, left, "MainInterface_TechWindow")
+		self.addLabel(screen, left, "TechWindow", "Tech Splash Screen:")
+		self.addTextDropdown(screen, left, left, "TechWindow__ViewType", True)
+		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
 
 		self.addLabel(screen, right, "CityScreen", "City Screen:")
 		self.addCheckbox(screen, right, "CityScreen__RawYields")
-		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View")
+		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View", True)
 		
 		self.addSpacer(screen, right, "CityScreen_TopCenter")
 		self.addCheckbox(screen, right, "CityScreen__WhipAssist")
@@ -45,7 +50,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "CityScreen__CultureTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonInfo")
-		self.addTextDropdown(screen, right, right, "CityScreen__Specialists")
+		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)
 
 		screen.attachHSeparator(column, column + "Sep")
 		left, right = self.addTwoColumnLayout(screen, column, "Bottom", False)
