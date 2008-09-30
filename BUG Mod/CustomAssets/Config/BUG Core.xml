@@ -35,13 +35,13 @@
 		
 		<section id="Subversion">
 			<option id="CheckForUpdates" key="Check For Updates" 
-					type="boolean" default="True" 
+					type="boolean" default="False" 
 					title="Check for Updates">
 				<change module="BugUpdateChecker" function="onCheckForUpdatesChanged"/>
 			</option>
 			
 			<option id="LocalRoot" key="Local Root" 
-					type="string" default="C:/Coding/Civ/BUG/BUG New Core"
+					type="string" default=""
 					title="Local Root Directory">
 				<change module="BugUpdateChecker" function="onLocalRootChanged"/>
 			</option>
