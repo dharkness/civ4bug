@@ -3616,6 +3616,31 @@
 		<Italian>Nomi Unità</Italian>
 		<Spanish>Unit Naming</Spanish>
 	</TEXT>
+	<!-- System Tab -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_SYSTEM</Tag>
+		<English>System</English>
+		<French>System</French>
+		<German>System</German>
+		<Italian>System</Italian>
+		<Spanish>System</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SUBVERSION</Tag>
+		<English>Subversion (SVN):</English>
+		<French>Subversion (SVN):</French>
+		<German>Subversion (SVN):</German>
+		<Italian>Subversion (SVN):</Italian>
+		<Spanish>Subversion (SVN):</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_DEBUG_LOGGING</Tag>
+		<English>Debug Output:</English>
+		<French>Debug Output:</French>
+		<German>Debug Output:</German>
+		<Italian>Debug Output:</Italian>
+		<Spanish>Debug Output:</Spanish>
+	</TEXT>
 	<!-- Configuration Tab -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_CONFIG</Tag>

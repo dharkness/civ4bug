@@ -13,7 +13,7 @@ class BugSystemOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG System Options Screen Tab"
 	
 	def __init__(self, screen):
-		BugOptionsTab.BugOptionsTab.__init__(self, "General", "General")
+		BugOptionsTab.BugOptionsTab.__init__(self, "System", "System")
 
 	def create(self, screen):
 		tab = self.createTab(screen)
@@ -26,7 +26,7 @@ class BugSystemOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextEdit(screen, column, column, "Core__RepositoryUrl")
 
 		screen.attachHSeparator(column, column + "Sep1")
-		self.addLabel(screen, column, "Subversion", "Debugging Output:")
+		self.addLabel(screen, column, "Debug_Logging", "Debugging Output:")
 		left, center, right = self.addThreeColumnLayout(screen, column)
 		self.addTextDropdown(screen, left, left, "Core__ScreenLogLevel")
 		self.addTextDropdown(screen, center, center, "Core__FileLogLevel")
