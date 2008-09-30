@@ -48,7 +48,7 @@
 		<English>Screen Logging Level</English>
 		<French>Screen Logging Level</French>
 		<German>Screen Logging Level</German>
-		<Italian>Screen Logging Level</Italian>
+		<Italian>Livello di log a video</Italian>
 		<Spanish>Screen Logging Level</Spanish>
 	</TEXT>
 	<TEXT>
@@ -56,7 +56,7 @@
 		<English>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</English>
 		<French>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</French>
 		<German>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</German>
-		<Italian>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</Italian>
+		<Italian>Seleziona quali messaggi di log vengono mostrati sullo schermo. Ogni livello comprende ovviamente tutti i messaggi dei livelli inferiori.</Italian>
 		<Spanish>Selects which logging messages get printed to the screen. Each level includes messages of all levels below it.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -64,7 +64,7 @@
 		<English>Debug|Info|Warning|Error|None</English>
 		<French>Debug|Info|Warning|Error|None</French>
 		<German>Debug|Info|Warning|Error|None</German>
-		<Italian>Debug|Info|Warning|Error|None</Italian>
+		<Italian>Debug|Informazioni|Avvisi|Errori|Nessuno</Italian>
 		<Spanish>Debug|Info|Warning|Error|None</Spanish>
 	</TEXT>
 	<TEXT>
@@ -72,7 +72,7 @@
 		<English>File Logging Level</English>
 		<French>File Logging Level</French>
 		<German>File Logging Level</German>
-		<Italian>File Logging Level</Italian>
+		<Italian>Livello di log su file</Italian>
 		<Spanish>File Logging Level</Spanish>
 	</TEXT>
 	<TEXT>
@@ -80,7 +80,7 @@
 		<English>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</English>
 		<French>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</French>
 		<German>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</German>
-		<Italian>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</Italian>
+		<Italian>Seleziona quali messaggi di log vengono scritti nel file PythonDbg.log. Ogni livello comprende ovviamente tutti i messaggi dei livelli inferiori.</Italian>
 		<Spanish>Selects which logging messages get printed to the PythonDbg.log file. Each level includes messages of all levels below it.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -88,7 +88,7 @@
 		<English>Debug|Info|Warning|Error|None</English>
 		<French>Debug|Info|Warning|Error|None</French>
 		<German>Debug|Info|Warning|Error|None</German>
-		<Italian>Debug|Info|Warning|Error|None</Italian>
+		<Italian>Debug|Informazioni|Avvisi|Errori|Nessuno</Italian>
 		<Spanish>Debug|Info|Warning|Error|None</Spanish>
 	</TEXT>
 	<TEXT>
@@ -96,7 +96,7 @@
 		<English>Include Time</English>
 		<French>Include Time</French>
 		<German>Include Time</German>
-		<Italian>Include Time</Italian>
+		<Italian>Includi ora</Italian>
 		<Spanish>Include Time</Spanish>
 	</TEXT>
 	<TEXT>
@@ -104,7 +104,7 @@
 		<English>When checked, each log file message includes the current time in HH:MM:SS format.</English>
 		<French>When checked, each log file message includes the current time in HH:MM:SS format.</French>
 		<German>When checked, each log file message includes the current time in HH:MM:SS format.</German>
-		<Italian>When checked, each log file message includes the current time in HH:MM:SS format.</Italian>
+		<Italian>Quando è selezionato, ogni messaggio di log include l'ora corrente (nel formato HH:MM:SS).</Italian>
 		<Spanish>When checked, each log file message includes the current time in HH:MM:SS format.</Spanish>
 	</TEXT>
 	<!-- Subversion -->
@@ -113,7 +113,7 @@
 		<English>Check for Updates</English>
 		<French>Check for Updates</French>
 		<German>Check for Updates</German>
-		<Italian>Check for Updates</Italian>
+		<Italian>Cerca aggiornamenti</Italian>
 		<Spanish>Check for Updates</Spanish>
 	</TEXT>
 	<TEXT>
@@ -121,7 +121,7 @@
 		<English>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</English>
 		<French>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</French>
 		<German>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</German>
-		<Italian>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Italian>
+		<Italian>Quando è selezionato, il BUG Mod controllerà la disponibilità di aggiornamenti SVN e/o nuove versioni ogni volta che lancerai Civ4 e ti notificherà ciò che avrà eventualmente trovato.</Italian>
 		<Spanish>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -129,7 +129,7 @@
 		<English>BUG Install Folder</English>
 		<French>BUG Install Folder</French>
 		<German>BUG Install Folder</German>
-		<Italian>BUG Install Folder</Italian>
+		<Italian>Cartella di installazione del BUG Mod</Italian>
 		<Spanish>BUG Install Folder</Spanish>
 	</TEXT>
 	<TEXT>
@@ -137,7 +137,7 @@
 		<English>Location where BUG files are installed.</English>
 		<French>Location where BUG files are installed.</French>
 		<German>Location where BUG files are installed.</German>
-		<Italian>Location where BUG files are installed.</Italian>
+		<Italian>Posizione in cui sono installati i file del BUG Mod.</Italian>
 		<Spanish>Location where BUG files are installed.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -145,7 +145,7 @@
 		<English>Installed Revision</English>
 		<French>Installed Revision</French>
 		<German>Installed Revision</German>
-		<Italian>Installed Revision</Italian>
+		<Italian>Revisione installata</Italian>
 		<Spanish>Installed Revision</Spanish>
 	</TEXT>
 	<TEXT>
@@ -153,7 +153,7 @@
 		<English>Revision number of the BUG installation.</English>
 		<French>Revision number of the BUG installation.</French>
 		<German>Revision number of the BUG installation.</German>
-		<Italian>Revision number of the BUG installation.</Italian>
+		<Italian>Numero di revisione del BUG Mod installato.</Italian>
 		<Spanish>Revision number of the BUG installation.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -161,7 +161,7 @@
 		<English>Repository URL</English>
 		<French>Repository URL</French>
 		<German>Repository URL</German>
-		<Italian>Repository URL</Italian>
+		<Italian>URL del repository</Italian>
 		<Spanish>Repository URL</Spanish>
 	</TEXT>
 	<TEXT>
@@ -169,7 +169,7 @@
 		<English>URL for the BUG repository.</English>
 		<French>URL for the BUG repository.</French>
 		<German>URL for the BUG repository.</German>
-		<Italian>URL for the BUG repository.</Italian>
+		<Italian>URL della directory SVN online dove si trovano i file del BUG Mod.</Italian>
 		<Spanish>URL for the BUG repository.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -177,7 +177,7 @@
 		<English>Repository Revision</English>
 		<French>Repository Revision</French>
 		<German>Repository Revision</German>
-		<Italian>Repository Revision</Italian>
+		<Italian>Revisione del repository</Italian>
 		<Spanish>Repository Revision</Spanish>
 	</TEXT>
 	<TEXT>
@@ -185,7 +185,7 @@
 		<English>Revision number of the BUG repository.</English>
 		<French>Revision number of the BUG repository.</French>
 		<German>Revision number of the BUG repository.</German>
-		<Italian>Revision number of the BUG repository.</Italian>
+		<Italian>Numero di revisione della versione SVN disponibile online del BUG Mod.</Italian>
 		<Spanish>Revision number of the BUG repository.</Spanish>
 	</TEXT>
 	<!-- Alerts -->
@@ -2826,7 +2826,7 @@
 		<English>View</English>
 		<French>View</French>
 		<German>View</German>
-		<Italian>View</Italian>
+		<Italian>Visualizzazione</Italian>
 		<Spanish>View</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2834,7 +2834,7 @@
 		<English>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</English>
 		<French>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</French>
 		<German>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</German>
-		<Italian>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</Italian>
+		<Italian>Determina quale visualizzazione mostrare quando viene scoperta una nuova Tecnologia.[NEWLINE]- Originale: visualizzazione minima standard di Civ4.[NEWLINE]- Dettagliata: aggiunge informazioni più dettagliate[NEWLINE]- Ampia: versione estesa della visualizzazione dettagliata</Italian>
 		<Spanish>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information[NEWLINE]- Wide: Wider version of the Detailed view</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2842,7 +2842,7 @@
 		<English>Original|Detailed|Wide</English>
 		<French>Original|Detailed|Wide</French>
 		<German>Original|Detailed|Wide</German>
-		<Italian>Original|Detailed|Wide</Italian>
+		<Italian>Originale|Dettagliata|Ampia</Italian>
 		<Spanish>Original|Detailed|Wide</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2850,7 +2850,7 @@
 		<English>Show Civilopedia Text</English>
 		<French>Show Civilopedia Text</French>
 		<German>Show Civilopedia Text</German>
-		<Italian>Show Civilopedia Text</Italian>
+		<Italian>Mostra il testo della Civilopedia</Italian>
 		<Spanish>Show Civilopedia Text</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2858,7 +2858,7 @@
 		<English>When checked, includes the Civilopedia text after the quote for the technology discovered.</English>
 		<French>When checked, includes the Civilopedia text after the quote for the technology discovered.</French>
 		<German>When checked, includes the Civilopedia text after the quote for the technology discovered.</German>
-		<Italian>When checked, includes the Civilopedia text after the quote for the technology discovered.</Italian>
+		<Italian>Quando è selezionato, include il testo della Civilopedia dopo la citazione per la tecnologia scoperta.</Italian>
 		<Spanish>When checked, includes the Civilopedia text after the quote for the technology discovered.</Spanish>
 	</TEXT>
 	<!-- Advisors -->
@@ -3286,7 +3286,7 @@
 		<English>Tech Splash Screen:</English>
 		<French>Tech Splash Screen:</French>
 		<German>Tech Splash Screen:</German>
-		<Italian>Tech Splash Screen:</Italian>
+		<Italian>Schermo tecnologico:</Italian>
 		<Spanish>Tech Splash Screen:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3457,7 +3457,7 @@
 		<English>Icons:</English>
 		<French>Icons:</French>
 		<German>Symbole:</German>
-		<Italian>Icons:</Italian>
+		<Italian>Icone:</Italian>
 		<Spanish>Icons:</Spanish>
 	</TEXT>
 	<TEXT>
