@@ -94,7 +94,7 @@ if (sys.executable):
 # Create an ordered list of paths which are searched for INI files.
 iniFileSearchPaths = []
 def addIniFileSearchPath(path):
-	"Adds the given path to the search list if it is a directory."
+	"""Adds the given path to the search list if it is a valid directory."""
 	if (os.path.isdir(path)):
 		BugUtil.info("BugPath - adding search path '%s'", path)
 		iniFileSearchPaths.append(path)
