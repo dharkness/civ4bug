@@ -89,6 +89,7 @@ class CvInfoScreen:
 		self.iActiveTab = self.iGraphID
 
 		self.iGraphTabID = -1
+		self.iGraph_Smoothing = -1
 
 		self.TOTAL_SCORE	= 0
 		self.ECONOMY_SCORE	= 1
@@ -663,6 +664,7 @@ class CvInfoScreen:
 #BUG: Change Graphs - start
 		if self.iGraphTabID == -1:
 			self.iGraphTabID = self.TOTAL_SCORE
+			self.iGraph_Smoothing = 0
 			self.bPlayerInclude = [True] * gc.getMAX_CIV_PLAYERS()
 #BUG: Change Graphs - end
 
@@ -730,6 +732,15 @@ class CvInfoScreen:
 		else:
 			iX_ZOOM_DROPDOWN = self.X_ZOOM_DROPDOWN
 			iY_ZOOM_DROPDOWN = self.Y_ZOOM_DROPDOWN
+
+		# graph smoothing dropdown
+		self.szGraphSmoothingDropdownWidget = self.getNextWidgetName()
+		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget, iX_ZOOM_DROPDOWN - self.W_DEMO_DROPDOWN - 60, iY_ZOOM_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		for i in range(11):
+			screen.addPullDownString(self.szGraphSmoothingDropdownWidget, localText.getText("TXT_KEY_GRAPH_SMOOTHING", (i,)), i, i, False )
+
+		if not AdvisorOpt.isGraphs():
+			screen.hide(self.szGraphSmoothingDropdownWidget)
 #BUG: Change Graphs - end
 
 		self.dropDownTurns = []
@@ -1025,9 +1036,9 @@ class CvInfoScreen:
 #			BugUtil.debug("CvInfoScreen: graphs")
 
 			if self.BIG_GRAPH:
-				iSmooth = 5  #0
+				iSmooth = self.iGraph_Smoothing
 			else:
-				iSmooth = 5  #1
+				iSmooth = self.iGraph_Smoothing
 
 			while (turn >= firstTurn):
 
@@ -2480,6 +2491,10 @@ class CvInfoScreen:
 				elif (szWidgetName == self.szTurnsDropdownWidget):
 
 					self.zoomGraph(self.dropDownTurns[iSelected])
+					self.drawGraphs()
+
+				elif (szWidgetName == self.szGraphSmoothingDropdownWidget):
+					self.iGraph_Smoothing = iSelected
 					self.drawGraphs()
 
 		# Something Clicked

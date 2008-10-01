@@ -756,6 +756,15 @@
 		<Spanish>Fuente: Encuesta BUG recientes, margen estadístico de error %s1.</Spanish>
 	</TEXT>
 	
+	<TEXT>
+		<Tag>TXT_KEY_GRAPH_SMOOTHING</Tag>
+		<English>Smooth Factor %d1_Num</English>
+		<French>Smooth Factor %d1_Num</French>
+		<German>Smooth Factor %d1_Num</German>
+		<Italian>Smooth Factor %d1_Num</Italian>
+		<Spanish>Smooth Factor %d1_Num</Spanish>
+	</TEXT>
+
 	<!-- Hall of Fame Screen: Win/Loss Result -->
 	
 	<TEXT>

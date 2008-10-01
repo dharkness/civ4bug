@@ -1100,7 +1100,7 @@ class CvTechChooser:
 		return 0
 
 	def getNextWidgetName(self, sName):
-		BugUtil.debug("cvTechChooser: getNextWidgetName %i %i", self.nWidgetCount, len(self.sWidgets))
+#		BugUtil.debug("cvTechChooser: getNextWidgetName %i %i", self.nWidgetCount, len(self.sWidgets))
 		szName = sName + str(self.nWidgetCount)
 		self.nWidgetCount += 1
 		self.sWidgets.append(szName)
