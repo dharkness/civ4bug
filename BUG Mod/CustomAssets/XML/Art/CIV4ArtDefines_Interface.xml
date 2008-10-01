@@ -1632,6 +1632,10 @@
 			<Type>QUESTION_MARK</Type>
 			<Path>Art/BUG/QuestionMark.dds</Path>
 		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>INTERFACE_BUTTON_NULL</Type>
+			<Path>Art/BUG/Null.dds</Path>
+		</InterfaceArtInfo>
 
 	</InterfaceArtInfos>
 </Civ4ArtDefines>
