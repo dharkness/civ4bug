@@ -342,7 +342,13 @@ class Timer:
 	
 	def span(self):
 		"""Returns the span of time from the first start() to the last stop()."""
-		return self._final - self._initial
+		if self._initial is None:
+			warn("called span() on a Timer that has not been started")
+			return 0
+		elif self._final is None:
+			return time.clock() - self._initial
+		else:
+			return self._final - self._initial
 	
 	def log(self, extra=None):
 		"""
