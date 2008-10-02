@@ -440,13 +440,8 @@ class CvInfoScreen:
 		sTemp1[5] = localText.getObjectText("TXT_KEY_COMMERCE_CULTURE", 0)
 		sTemp1[6] = localText.getObjectText("TXT_KEY_ESPIONAGE_CULTURE", 0)
 
-		sTemp2[0] = localText.getColorText("TXT_KEY_GAME_SCORE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[1] = localText.getColorText("TXT_KEY_DEMO_SCREEN_ECONOMY_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[2] = localText.getColorText("TXT_KEY_DEMO_SCREEN_INDUSTRY_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[3] = localText.getColorText("TXT_KEY_DEMO_SCREEN_AGRICULTURE_TEXT", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[4] = localText.getColorText("TXT_KEY_POWER", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[5] = localText.getColorText("TXT_KEY_COMMERCE_CULTURE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
-		sTemp2[6] = localText.getColorText("TXT_KEY_ESPIONAGE_CULTURE", (), gc.getInfoTypeForString("COLOR_YELLOW"))
+		for i in range(self.NUM_SCORES):
+			sTemp2[i] = BugUtil.colorText(sTemp1[i], "COLOR_YELLOW")
 
 		self.sGraphText = []
 		self.sGraphText.append(sTemp1)
@@ -585,18 +580,23 @@ class CvInfoScreen:
 		
 		# Determine who this active player knows
 		self.aiPlayersMet = []
+		self.aiPlayersMetNAEspionage = []
 		self.iNumPlayersMet = 0
+		self.iNumPlayersMetNAEspionage = 0
 		for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
 			pLoopPlayer = gc.getPlayer(iLoopPlayer)
 			iLoopPlayerTeam = pLoopPlayer.getTeam()
 			if (gc.getTeam(iLoopPlayerTeam).isEverAlive()):
 				if (self.pActiveTeam.isHasMet(iLoopPlayerTeam) or CyGame().isDebugMode() or iEndGame != 0):
-					if (	iDemographicsMission == -1 or
-							self.pActivePlayer.canDoEspionageMission(iDemographicsMission, iLoopPlayer, None, -1) or
-							iEndGame != 0 or
-							iLoopPlayerTeam == CyGame().getActiveTeam()):
+					if (iDemographicsMission == -1
+					or self.pActivePlayer.canDoEspionageMission(iDemographicsMission, iLoopPlayer, None, -1)
+					or iEndGame != 0
+					or iLoopPlayerTeam == CyGame().getActiveTeam()):
 						self.aiPlayersMet.append(iLoopPlayer)
 						self.iNumPlayersMet += 1
+					else:
+						self.aiPlayersMetNAEspionage.append(iLoopPlayer)
+						self.iNumPlayersMetNAEspionage += 1
 
 		# "Save" current widgets so they won't be deleted later when changing tabs
 		self.iNumPermanentWidgets = self.nWidgetCount
@@ -676,11 +676,11 @@ class CvInfoScreen:
 		screen = self.getScreen()
 
 #BUG: Change Graphs - start
-		self.sGraphText1Widget = [0] * 7
-		self.sGraphText2Widget = [0] * 7
-		self.sGraphPanelWidget = [0] * 7
-		self.sGraphBGWidget = [0] * 7
-		for i in range(7):
+		self.sGraphText1Widget = [0] * self.NUM_SCORES
+		self.sGraphText2Widget = [0] * self.NUM_SCORES
+		self.sGraphPanelWidget = [0] * self.NUM_SCORES
+		self.sGraphBGWidget = [0] * self.NUM_SCORES
+		for i in range(self.NUM_SCORES):
 			self.sGraphText1Widget[i] = self.getNextWidgetName()
 			self.sGraphText2Widget[i] = self.getNextWidgetName()
 			self.sGraphPanelWidget[i] = self.getNextWidgetName()
@@ -741,6 +741,8 @@ class CvInfoScreen:
 
 		if not AdvisorOpt.isGraphs():
 			screen.hide(self.szGraphSmoothingDropdownWidget)
+			self.iGraph_Smoothing = 0
+
 #BUG: Change Graphs - end
 
 		self.dropDownTurns = []
@@ -1085,17 +1087,22 @@ class CvInfoScreen:
 		iW_LEGEND = self.W_LEGEND
 		if AdvisorOpt.isGraphs():
 			for p in self.aiPlayersMet:
-				name = gc.getPlayer(p).getName()
-				if (ScoreOpt.isShowBothNames()):
-					name += "/" + gc.getPlayer(p).getCivilizationShortDescription(0)
-				if iW_LEGEND < self.X_LEGEND_TEXT + CyInterface().determineWidth(name) + 10:
-					iW_LEGEND = self.X_LEGEND_TEXT + CyInterface().determineWidth(name) + 10
+				szPlayerName = self.getPlayerName(p)
+
+				if iW_LEGEND < self.X_LEGEND_TEXT + CyInterface().determineWidth(szPlayerName) + 10:
+					iW_LEGEND = self.X_LEGEND_TEXT + CyInterface().determineWidth(szPlayerName) + 10
+
+			for p in self.aiPlayersMetNAEspionage:
+				szPlayerName = self.getPlayerName(p)
+
+				if iW_LEGEND < self.X_LEGEND_TEXT + CyInterface().determineWidth(szPlayerName) + 10:
+					iW_LEGEND = self.X_LEGEND_TEXT + CyInterface().determineWidth(szPlayerName) + 10
 
 		if not AdvisorOpt.isGraphs():
 			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + self.iNumPlayersMet * self.H_LEGEND_TEXT + 3
 			self.Y_LEGEND = self.Y_GRAPH + self.H_GRAPH - self.H_LEGEND
 		else:
-			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + (self.iNumPlayersMet + 3) * self.H_LEGEND_TEXT + 3
+			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + (self.iNumPlayersMet + self.iNumPlayersMetNAEspionage + 4) * self.H_LEGEND_TEXT + 3
 
 			if self.BIG_GRAPH:
 				self.X_LEGEND = self.X_MARGIN + 5
@@ -1117,12 +1124,11 @@ class CvInfoScreen:
 		yText = self.Y_LEGEND + self.Y_LEGEND_TEXT
 
 		for p in self.aiPlayersMet:
-			name = gc.getPlayer(p).getName()
-
 #BUG: Change Graphs - start
-			if (AdvisorOpt.isGraphs()
-			and ScoreOpt.isShowBothNames()):
-				name += "/" + gc.getPlayer(p).getCivilizationShortDescription(0)
+			if AdvisorOpt.isGraphs():
+				name = self.getPlayerName(p)
+			else:
+				name = gc.getPlayer(p).getName()
 
 			i = gc.getPlayer(p).getID()
 			if (self.bPlayerInclude[i]
@@ -1157,11 +1163,45 @@ class CvInfoScreen:
 
 #BUG: Change Graphs - start
 		if AdvisorOpt.isGraphs():
+			# add blank line
+			yLine += self.H_LEGEND_TEXT
+			yText += self.H_LEGEND_TEXT
+			for p in self.aiPlayersMetNAEspionage:
+				i = gc.getPlayer(p).getID()
+
+				name = self.getPlayerName(p)
+				textColorR = gc.getPlayer(p).getPlayerTextColorR()
+				textColorG = gc.getPlayer(p).getPlayerTextColorG()
+				textColorB = gc.getPlayer(p).getPlayerTextColorB()
+				textColorA = gc.getPlayer(p).getPlayerTextColorA()
+				str = u"<color=%d,%d,%d,%d>%s</color>" %(textColorR,textColorG,textColorB,textColorA,name)
+
+				screen.setLabel(self.sPlayerTextWidget[i], "", u"<font=2>" + str + u"</font>", CvUtil.FONT_LEFT_JUSTIFY,
+								self.X_LEGEND + self.X_LEGEND_TEXT + 2, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+				yLine += self.H_LEGEND_TEXT
+				yText += self.H_LEGEND_TEXT
+
 			yText += self.H_LEGEND_TEXT
 			xShow = self.X_LEGEND + iW_LEGEND / 2
 			screen.setText(self.sShowAllWidget, "", self.SHOW_ALL, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			yText += self.H_LEGEND_TEXT
 			screen.setText(self.sShowNoneWidget, "", self.SHOW_NONE, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+	def getPlayerName(self, ePlayer):
+		if (ScoreOpt.isUsePlayerName()):
+			szPlayerName = gc.getPlayer(ePlayer).getName()
+		else:
+			szPlayerName = gc.getLeaderHeadInfo(gc.getPlayer(ePlayer).getLeaderType()).getDescription()
+
+		if (ScoreOpt.isShowBothNames()):
+			szPlayerName = szPlayerName + "/" + gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+		elif (ScoreOpt.isShowLeaderName()):
+			szPlayerName = szPlayerName
+		else:
+			szPlayerName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+
+		return szPlayerName
 #BUG: Change Graphs - end
 
 #############################################################################################################
