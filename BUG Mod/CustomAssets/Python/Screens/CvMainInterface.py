@@ -168,6 +168,7 @@ RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 
 # BUG - Event Manager - start
 g_iActiveTurn = -1
+g_bEndTurnFired = False
 # BUG - Event Manager - end
 
 g_pSelectedUnit = 0
