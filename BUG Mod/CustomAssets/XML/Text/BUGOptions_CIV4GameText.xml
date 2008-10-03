@@ -1814,7 +1814,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_TEXT</Tag>
 		<English>Show Minor Civilizations</English>
 		<French>Show Minor Civilizations</French>
-		<German>Unbedeutende Zivilisationen anzeigen</German>
+		<German>Unbedeutende Zivilisationen</German>
 		<Italian>Mostra Civiltà Minori</Italian>
 		<Spanish>Show Minor Civilizations</Spanish>
 	</TEXT>
@@ -1822,7 +1822,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_HOVER</Tag>
 		<English>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</English>
 		<French>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</French>
-		<German>Zeigt unbedeutende Zivilisationen in der Punteanzeige an (diese werden in einigen Szenarios verwendet)</German>
+		<German>Zeigt unbedeutende Zivilisationen in der Punkteanzeige an (diese werden in einigen Szenarios verwendet)</German>
 		<Italian>Quando è selezionato, vengono visualizzate anche le Civiltà Minori (certi Scenari considerano alcune Civiltà come minori).</Italian>
 		<Spanish>When checked, minor civilizations are shown (some scenarios consider certain civs to be minor).</Spanish>
 	</TEXT>
@@ -1958,7 +1958,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__ATTITUDE_HOVER</Tag>
 		<English>When checked, shows faces depicting each AI's attitude toward you.</English>
 		<French>En activant, utilise des smileys pour indiquer l'attitude des IA envers vous.</French>
-		<German>Zeigt die Einstellung jedes Computerspielers gegenüber der eigenen Zivilisation mit Smilies an</German>
+		<German>Zeigt die Einstellung jeder Zivilisation gegenüber der eigenen mit Smilies an</German>
 		<Italian>Quando è selezionato, nel Pannello del Punteggio vengono mostrate delle emoticons che rappresentano l'atteggiamento delle altre Civiltà verso di te.</Italian>
 		<Spanish>When checked, shows faces depicting each AI's attitude toward you.</Spanish>
 	</TEXT>
@@ -1974,7 +1974,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__WORSTENEMY_HOVER</Tag>
 		<English>When checked, shows an angry person icon when you are an AI's worst enemy.</English>
 		<French>En activant, une icône de citoyen faché démontrera quand vous êtes le plus grand ennemi d'une IA.</French>
-		<German>Zeigt das Symbol eines wütenden Bürgers an, wenn ein Computerspieler der Erzfeind der eigenen Zivilisation ist</German>
+		<German>Zeigt das Symbol eines wütenden Bürgers an, wenn eine Zivilisation der Erzfeind der eigenen Zivilisation ist</German>
 		<Italian>Quando è selezionato, mostra un'apposita icona quando sei il Peggior Nemico di quella Civiltà.</Italian>
 		<Spanish>When checked, shows an angry person icon when you are an AI's worst enemy.</Spanish>
 	</TEXT>
@@ -1990,7 +1990,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__WHEOOH_HOVER</Tag>
 		<English>When checked, shows an orange fist icon when the AI is mobilizing for war (We Have Enough on Our Hands).</English>
 		<French>When checked, shows an orange fist icon when the AI is mobilizing for war (We Have Enough on Our Hands).</French>
-		<German>Zeigt ein orangenes Faust-Symbol an, wenn sich ein Gegner auf einen Krieg vorbereitet (engl. "We Have Enough on Our Hands")</German>
+		<German>Zeigt ein orangenes Faust-Symbol an, wenn sich eine Zivilisation auf einen Krieg vorbereitet (engl. "We Have Enough on Our Hands")</German>
 		<Italian>Quando è selezionato, mostra un'apposita icona quando la Civiltà si sta mobilitando per la guerra ('We Have Enough on Our Hands', WHEOH).</Italian>
 		<Spanish>When checked, shows an orange fist icon when the AI is mobilizing for war (We Have Enough on Our Hands).</Spanish>
 	</TEXT>
@@ -2118,7 +2118,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_HOVER</Tag>
 		<English>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</English>
 		<French>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</French>
-		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Normal: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)</German>
+		<German>Bestimmt, wie das Machtverhältnis berechnet wird:[NEWLINE]- Standard: Macht der eigenen Zivilisation geteilt durch die der gegnerischen (höhere Werte sind besser)[NEWLINE]- Kehrwert: Macht der gegnerischen Zivilisation geteilt durch die der eigenen (niedrigere Werte sind besser)</German>
 		<Italian>Seleziona la formula da utilizzare per calcolare il Rapporto di Forza nel Pannello del Punteggio:[NEWLINE]- Avversari/Giocatore: minore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.[NEWLINE]- Giocatore/Avversari: maggiore è il rapporto, maggiore è la forza del giocatore rispetto a quella degli avversari.</Italian>
 		<Spanish>Select the formula to use for calculating the power ratio:[NEWLINE]- Rival vs. You: Lower numbers are better.[NEWLINE]- You vs. Rival: Higher numbers are better.</Spanish>
 	</TEXT>
@@ -2126,7 +2126,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__POWERFORMULA_LIST</Tag>
 		<English>Rival vs. You|You vs. Rival</English>
 		<French>Rival vs. You|You vs. Rival</French>
-		<German>Kehrwert|Normal</German>
+		<German>Kehrwert|Standard</German>
 		<Italian>Altri/Giocatore|Giocatore/Altri</Italian>
 		<Spanish>Rival vs. You|You vs. Rival</Spanish>
 	</TEXT>
@@ -2270,7 +2270,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__DEFAULT_GROUP_MODE_TEXT</Tag>
 		<English>Default Grouping</English>
-		<French>Groupement à</French>
+		<French>Groupement</French>
 		<German>Gruppierung nach</German>
 		<Italian>Raggruppamento</Italian>
 		<Spanish>Default Grouping</Spanish>
@@ -2833,7 +2833,7 @@
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_HOVER</Tag>
 		<English>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</English>
 		<French>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</French>
-		<German>Bestimmt das Aussehen des Popups, das nach Erforschung oder Erwerb einer Technologie angezeigt wird:[NEWLINE]- Normal: Minimale Standardansicht aus Civ4[NEWLINE]- Ausführlich: Zeigt zusätzliche Informationen an[NEWLINE]- Breit: Breitere Version der ausführlichen Ansicht</German>
+		<German>Bestimmt das Aussehen des Popups, das nach Erforschung oder Erwerb einer Technologie angezeigt wird:[NEWLINE]- Standard: Minimale Standardansicht aus Civ4[NEWLINE]- Ausführlich: Zeigt die Informationen übersichtlicher an[NEWLINE]- Verbreitert: Breitere Version der ausführlichen Ansicht</German>
 		<Italian>Determina quale visualizzazione mostrare quando viene scoperta una nuova Tecnologia.[NEWLINE]- Originale: visualizzazione minima standard di Civ4.[NEWLINE]- Dettagliata: aggiunge informazioni più dettagliate[NEWLINE]- Ampia: versione estesa della visualizzazione dettagliata</Italian>
 		<Spanish>Determines the view to display when you discover a technology.[NEWLINE]- Original: Default minimal Civ4 view.[NEWLINE]- Detailed: Adds more detailed information.[NEWLINE]- Wide: Wider version of the Detailed view.</Spanish>
 	</TEXT>
@@ -2841,7 +2841,7 @@
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_LIST</Tag>
 		<English>Original|Detailed|Wide</English>
 		<French>Original|Detailed|Wide</French>
-		<German>Normal|Ausführlich|Breit</German>
+		<German>Standard|Ausführlich|Verbreitert</German>
 		<Italian>Originale|Dettagliata|Ampia</Italian>
 		<Spanish>Original|Detailed|Wide</Spanish>
 	</TEXT>
@@ -2896,11 +2896,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAGLANCESMILIES_TEXT</Tag>
-		<English>Glance Tab Smilies</English>
-		<French>Smileys Page Coup d'Oeuil</French>
-		<German>Smilies im Überblick</German>
-		<Italian>Icone di Atteggiamento</Italian>
-		<Spanish>Glance Tab Smilies</Spanish>
+		<English>Smilies</English>
+		<French>Smileys</French>
+		<German>Smilies</German>
+		<Italian>Smilies</Italian>
+		<Spanish>Smilies</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAGLANCESMILIES_HOVER</Tag>
@@ -2914,7 +2914,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAIMPROVEDINFO_TEXT</Tag>
 		<English>Improved Info Tab</English>
 		<French>Improved Info Tab</French>
-		<German>Improved Info Tab</German>
+		<German>BUG Info</German>
 		<Italian>Scheda Informazioni migliorata</Italian>
 		<Spanish>Improved Info Tab</Spanish>
 	</TEXT>
@@ -2922,7 +2922,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAIMPROVEDINFO_HOVER</Tag>
 		<English>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</English>
 		<French>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</French>
-		<German>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</German>
+		<German>Zeigt die Informationen auf der entsprechenden Seite des Auslandsberaters übersichtlicher an</German>
 		<Italian>Quando è selezionato, utilizza la versione migliorata della scheda Informazioni del Consigliere Estero al posto di quella standard.</Italian>
 		<Spanish>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Spanish>
 	</TEXT>
@@ -3470,7 +3470,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_SCORES_ICONS</Tag>
-		<English>Icons:</English>
+		<English>[SPACE]</English>
 		<French>Icons:</French>
 		<German>Symbole:</German>
 		<Italian>Icone:</Italian>

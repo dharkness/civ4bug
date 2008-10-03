@@ -24,8 +24,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addSpacer(screen, left, "Foreign_Advisor")
 		self.addLabel(screen, left, "Foreign_Advisor", "Foreign [F4]:")
-		self.addCheckbox(screen, left, "Advisors__EFAGlanceTab")
-		self.addCheckbox(screen, left, "Advisors__EFAGlanceSmilies")
+		comboBox = "Advisors_ComboBoxEFA"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Advisors__EFAGlanceTab")
+		self.addCheckbox(screen, comboBox, "Advisors__EFAGlanceSmilies")
 		self.addCheckbox(screen, left, "Advisors__EFAImprovedInfo")
 		
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")

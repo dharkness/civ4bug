@@ -340,7 +340,7 @@
         <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT</Tag>
         <English>Tribal village results: %s1</English>
         <French>Tribal village results: %s1</French>
-        <German>Geschenk eines Eingeborenendorfes: %s1</German>
+        <German>Geschenk eines Stammesdorfes: %s1</German>
         <Italian>Scoperto un villaggio tribale: %s1</Italian>
         <Spanish>Tribal village results: %s1</Spanish>
     </TEXT> 
@@ -404,7 +404,7 @@
         <Tag>TXT_KEY_AUTOLOG_VILLAGE_RESULT_WORKER</Tag>
         <English>worker</English>
         <French>worker</French>
-        <German>Arbeitstrupp</German>
+        <German>Bautrupp</German>
         <Italian>ricevuto uno Lavoratore</Italian>
         <Spanish>worker</Spanish>
     </TEXT> 
@@ -468,7 +468,7 @@
         <Tag>TXT_KEY_AUTOLOG_TECH_ACQUIRED</Tag>
         <English>Tech acquired (trade, lightbulb, hut, espionage): %s1</English>
         <French>Tech acquired (trade, lightbulb, hut, espionage): %s1</French>
-        <German>Technologie erhalten (durch Handel, Große Persönlichkeit, Eingeborenendorf, Spionage): %s1</German>
+        <German>Technologie erhalten (durch Handel, Große Persönlichkeit, Stammesdorf, Spionage): %s1</German>
         <Italian>E' stata acquisita la tecnologia %s1</Italian>
         <Spanish>Tech acquired (trade, lightbulb, hut, espionage): %s1</Spanish>
     </TEXT> 

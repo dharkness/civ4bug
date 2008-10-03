@@ -684,6 +684,26 @@
 	<!-- Victory Screen -->
 	
 	<TEXT>
+		<Tag>TXT_KEY_PROJECT_APOLLO_PROGRAM</Tag>
+		<English>Apollo Program</English>
+		<French>
+			<Text>Programme Apollo</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</French>
+		<German><Text>Apollo-Programm</Text><Gender>Neuter</Gender><Plural>0</Plural></German>
+		<Italian>
+			<Text>Programma Apollo</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</Italian>
+		<Spanish>
+			<Text>el Programa Apollo</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
 		<English>Non Member</English>
 		<French>Non Membres</French>
@@ -711,7 +731,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_UNKNOWN</Tag>
 		<English>%d1 unknown</English>
 		<French>%d1 unknown</French>
-		<German>Unbekannt: %d1</German>
+		<German>unbekannt: %d1</German>
 		<Italian>%d1 sconosciuto</Italian>
 		<Spanish>%d1 unknown</Spanish>
 	</TEXT>
@@ -760,7 +780,7 @@
 		<Tag>TXT_KEY_GRAPH_SMOOTHING</Tag>
 		<English>Smooth Factor %d1_Num</English>
 		<French>Smooth Factor %d1_Num</French>
-		<German>Smooth Factor %d1_Num</German>
+		<German>Glättungsstufe %d1_Num</German>
 		<Italian>Fattore di smoothing %d1_Num</Italian>
 		<Spanish>Smooth Factor %d1_Num</Spanish>
 	</TEXT>
@@ -799,7 +819,7 @@
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_ABBR_LEADER</Tag>
 		<English>Leader</English>
 		<French>Chef</French>
-		<German>Herrscher</German>
+		<German>Oberhaupt</German>
 		<Italian>Leader</Italian>
 		<Spanish>L&#237;der</Spanish>
 	</TEXT>
@@ -815,7 +835,7 @@
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_POSSIBLE_FAV_CIVICS</Tag>
 		<English>Possible Favorite Civics</English>
 		<French>Possible Favorite Civics</French>
-		<German>Mögliche bevorzugte Staatsformen</German>
+		<German>Mögliche Vorlieben</German>
 		<Italian>Possibili Forme di Governo Favorite</Italian>
 		<Spanish>Possible Favorite Civics</Spanish>
 	</TEXT>

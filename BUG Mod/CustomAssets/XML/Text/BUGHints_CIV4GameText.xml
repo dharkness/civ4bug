@@ -30,7 +30,7 @@
 		<Tag>TXT_KEY_BUG_HINT_INTERFACE_4</Tag>
 		<English>*BUG Hint*: To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the [ALT] key, click the cancel orders button.</English>
 		<French>*Conseils du BUG*: Pour annuler tous les ordres des Ouvriers, sélectionnez 1 ouvrier avec des ordres, et en gardant [ALT] enfoncé, cliquez le bouton pour annuler les ordres.</French>
-		<German>[BUG] Tipp... Bei gedrückter [ALT]-Taste lassen sich die Missionen aller aktiven Arbeitstrupps per Mausklick auf das Abbrechensymbol eines aktiven Arbeitstrupps abbrechen.</German>
+		<German>[BUG] Tipp... Bei gedrückter [ALT]-Taste lassen sich die Missionen aller aktiven Bautrupps per Mausklick auf das Abbrechensymbol eines aktiven Bautrupps abbrechen.</German>
 		<Italian>*Suggerimento del BUG Team*: Per cancellare velocemente tutti gli ordini dei lavoratori, selezionane uno che abbia ordini attivi, tieni premuto il tasto [ALT] e clicca il pulsante di cancellazione degli ordini.</Italian>
 		<Spanish>*BUG Hint*: To cancel all Worker Orders quickly, select 1 worker with orders, and while holding the [ALT] key, click the cancel orders button.</Spanish>
 	</TEXT>
@@ -38,7 +38,7 @@
 		<Tag>TXT_KEY_BUG_HINT_INTERFACE_5</Tag>
 		<English>*BUG Hint*: [ALT + E] will allow you to make a custom Event in the autologger.</English>
 		<French>*Conseils du BUG*: [ALT + E] vous permet d'ajouter une entrée customisée dans l'autologger.</French>
-		<German>[BUG] Tipp... Mit der Tastenkombination [ALT + E] lassen sich eigene Ereignisse in das automatische Logbuch eintragen.</German>
+		<German>[BUG] Tipp... Mit der Tastenkombination [ALT + E] können dem Protokoll eigene Einträge hinzugefügt werden.</German>
 		<Italian>*Suggerimento del BUG Team*: [ALT + E] ti consente di inserire un evento personalizzato nel registro automatico.</Italian>
 		<Spanish>*BUG Hint*: [ALT + E] will allow you to make a custom Event in the autologger.</Spanish>
 	</TEXT>
@@ -46,7 +46,7 @@
 		<Tag>TXT_KEY_BUG_HINT_INTERFACE_6</Tag>
 		<English>*BUG Hint*: Clicking on the Scroll button within the Domestic Advisor will allow you to customize it to your playing style.</English>
 		<French>*Conseils du BUG*: Cliquer sur le parchemin dans l'adviseur domestique vous permet de le customiser comme vous le désirez.</French>
-		<German>[BUG] Tipp... Mit einem Klick auf die gelbe Schriftrolle im Bildschirm "Inland" lässt sich dieser an den eigenen Spielstil anpassen.</German>
+		<German>[BUG] Tipp... Mit einem Klick auf die gelbe Schriftrolle im "Inlandsberater" lässt sich dieser an den eigenen Spielstil anpassen.</German>
 		<Italian>*Suggerimento del BUG Team*: Cliccare sul pulsante con la pergamena nella schermata del Consigliere Interno ti permetterà di personalizzarlo in base al tuo stile di gioco.</Italian>
 		<Spanish>*BUG Hint*: Clicking on the Scroll button within the Domestic Advisor will allow you to customize it to your playing style.</Spanish>
 	</TEXT>
@@ -78,7 +78,7 @@
 		<Tag>TXT_KEY_BUG_HINT_3</Tag>
 		<English>*BUG Hint*: When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</English>
 		<French>*Conseils du BUG*: Pendant une Guerre, utilisez des unités rapides pour piller les ressources stratégiques comme le Fer ou l'Aluminium, et laissez-y une sentinelle pour éviter que votre ennemi ne reconnecte la ressource.</French>
-		<German>[BUG] Tipp... Während eines Krieges sollten schnelle Einheiten genutzt werden, um zuerst strategische Ressourcen, wie Eisen oder Aluminium, zu plündern. Nachrückende Einheiten sollten dann deren Bewachung übernehmen, um dem Gegner den Zugang zu diesen Ressourcen dauerhaft zu verwehren.</German>
+		<German>[BUG] Tipp... Während eines Krieges sollten schnelle Einheiten genutzt werden, um zuerst strategische Ressourcen, wie Eisen oder Aluminium, zu plündern. Nachrückende Einheiten können dann deren Bewachung übernehmen, um dem Gegner den Zugang zu diesen Ressourcen dauerhaft zu verwehren.</German>
 		<Italian>*Suggerimento del BUG Team*: Quando sei in guerra, utilizza le unità che si muovono velocemente per depredare le risorse strategiche, e lascia sul posto una sentinella per evitare che il nemico le recuperi.</Italian>
 		<Spanish>*BUG Hint*: When at War, use fast moving units to pillage strategic resources such as Iron, or Aluminum first, and leave a sentry to prevent the enemy from reconnecting that resource.</Spanish>
 	</TEXT>
@@ -86,7 +86,7 @@
 		<Tag>TXT_KEY_BUG_HINT_4</Tag>
 		<English>*BUG Hint*: Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</English>
 		<French>*Conseils du BUG*: Attendez pour promouvoir une unité pour le moment ou elle a besoin de soins. Quand vous promovez, choisissez les promotions en fonction de l'ennemi que vous encontrez.</French>
-		<German>[BUG] Tipp... Eine verfügbare Beförderung braucht nicht sofort auf eine Einheit angewendet zu werden. Manchmal lohnt es sich zu warten, um im passenden Moment die bestgeeignete Beförderung und Bonusfähigkeit zu wählen. Eine Beförderung wirkt auf verletzte Einheiten übrigens heilsam.</German>
+		<German>[BUG] Tipp... Eine verfügbare Beförderung muss einer Einheit nicht sofort verliehen werden. Manchmal lohnt es sich zu warten, um im passenden Moment die bestgeeignete Beförderung und Bonusfähigkeit zu wählen. Eine Beförderung wirkt auf verletzte Einheiten übrigens heilsam.</German>
 		<Italian>*Suggerimento del BUG Team*: Risparmia le promozioni per accelerare la cura quando le tue unità vengono ferite, e quando le promuovi, ottimizza le tue unità contro il tipo di nemico che stai affrontando.</Italian>
 		<Spanish>*BUG Hint*: Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Spanish>
 	</TEXT>
@@ -102,7 +102,7 @@
 		<Tag>TXT_KEY_BUG_HINT_6</Tag>
 		<English>*BUG Hint*: Examine what resources are available before researching worker techs.</English>
 		<French>*Conseils du BUG*: Examinez quelles ressources sont à votre disposition avant de choisir une technologie à rechercher.</French>
-		<German>[BUG] Tipp... Die Erkundung des Umlands ist überlebenswichtig, vor allem das Auffinden von Ressourcen. Dieses erlaubt eine Planung der Expansion und der technologischen Entwicklung, um die Rohstoffe möglichst schnell erschließen und nutzen zu können.</German>
+		<German>[BUG] Tipp... Bevor Technolgien erforscht werden, die die Fähigkeiten der Bautrupps erweitern, sollte zunächst das Umland erkundet werden, um die dort verfügbaren Ressourcen möglichst schnell erschließen und nutzen zu können.</German>
 		<Italian>*Suggerimento del BUG Team*: Esamina quali risorse sono disponibili prima di ricercare le tecnologie dei lavoratori.</Italian>
 		<Spanish>*BUG Hint*: Examine what resources are available before researching worker techs.</Spanish>
 	</TEXT>
@@ -118,7 +118,7 @@
 		<Tag>TXT_KEY_BUG_HINT_8</Tag>
 		<English>*BUG Hint*: Play to your Civilization's traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</English>
 		<French>*Conseils du BUG*: Utilisez les Traits de votre Civilisation et spécialisez votre Empire. Que vaut être Charismatique et Aggressif si vous ne partez pas en guerre?</French>
-		<German>[BUG] Tipp... Der eigene Spielstil sollte sich an den Eigenschaften des gewählten Staatsoberhaupts orientieren und die Zivilisation entsprechend spezialisiert werden. Die Eigenschaften "Charismatisch" und "Aggressiv" nützen wenig, wenn keine Kriege beabsichtigt sind.</German>
+		<German>[BUG] Tipp... Der eigene Spielstil sollte sich an den Eigenschaften des gewählten Staatsoberhaupts orientieren und die eigene Zivilisation entsprechend spezialisiert werden. Die Eigenschaften "Charismatisch" und "Aggressiv" nützen wenig, wenn keine Kriege beabsichtigt sind.</German>
 		<Italian>*Suggerimento del BUG Team*: Sfrutta le caratteristiche della tua Civiltà, e specializza il tuo Impero.  E' inutile essere Carismatico ed Aggressivo e non iniziare neppure una guerra.</Italian>
 		<Spanish>*BUG Hint*: Play to your Civilization's traits, and specialize your Empire.  No use being Charismatic and Aggressive and never starting a war.</Spanish>
 	</TEXT>
@@ -134,7 +134,7 @@
 		<Tag>TXT_KEY_BUG_HINT_10</Tag>
 		<English>*BUG Hint*: Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</English>
 		<French>*Conseils du BUG*: Ne négligez pas votre Diplomatie! Faites attention aux Alertes qui arrivent et qui vous informent de ce qui est disponible.</French>
-		<German>[BUG] Tipp... Die Diplomatie sollte nicht vernachlässigt werden. Während einer Partie erscheinende Meldung zeigen ständig die verfügbaren Handelswaren anderer Zivilisationen.</German>
+		<German>[BUG] Tipp... Die Diplomatie sollte nicht vernachlässigt werden. Während einer Partie erscheinen ständig Meldungen, die die verfügbaren Handelswaren anderer Zivilisationen anzeigen.</German>
 		<Italian>*Suggerimento del BUG Team*: Non trascurare la Diplomazia!  Fai attenzione agli avvisi che compaiono per dirti cosa c'è di disponibile in giro.</Italian>
 		<Spanish>*BUG Hint*: Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Spanish>
 	</TEXT>
@@ -142,7 +142,7 @@
 		<Tag>TXT_KEY_BUG_HINT_11</Tag>
 		<English>*BUG Hint*: Be the first to circle the globe, and your Naval Units all receive +1 movement.</English>
 		<French>*Conseils du BUG*: Soyez le premier à naviguer autour du globe, et tous vos Unités Navales recevront +1 en mouvement.</French>
-		<German>[BUG] Tipp... Die See-Einheiten der Zivilisation, die als erste die Welt umrundet, erhalten einen Bewegungsbonus von +1.</German>
+		<German>[BUG] Tipp... Die Marineeinheiten der Zivilisation, die als erste die Welt umrundet, erhalten einen Bewegungsbonus von +1.</German>
 		<Italian>*Suggerimento del BUG Team*: Circunnaviga il globo per primo, e tutte le tue Unità Navali presenti e future riceveranno un bonus di +1 al loro movimento.</Italian>
 		<Spanish>*BUG Hint*: Be the first to circle the globe, and your Naval Units all receive +1 movement.</Spanish>
 	</TEXT>
@@ -158,7 +158,7 @@
 		<Tag>TXT_KEY_BUG_HINT_13</Tag>
 		<English>*BUG Hint*: Form trade relations with nations that get along with each other to avoid an attitude penalty.</English>
 		<French>*Conseils du BUG*: Formez des relations commerciales avec des nations qui s'agréent entre eux, pour éviter des pénalités diplomatiques.</French>
-		<German>[BUG] Tipp... Zwischen ähnlichen Zivilisationen sollten Handelsverbindungen geknüpft werden, um einen Beziehungsmalus zu vermeiden.</German>
+		<German>[BUG] Tipp... Zwischen ähnlichen Zivilisationen sollten Handelsverbindungen geknüpft werden, um einen Diplomatiemalus zu vermeiden.</German>
 		<Italian>*Suggerimento del BUG Team*: Stabilisci relazioni mercantili con nazioni che vanno d'accordo per evitare penalità nei rapporti.</Italian>
 		<Spanish>*BUG Hint*: Form trade relations with nations that get along with each other to avoid an attitude penalty.</Spanish>
 	</TEXT>
@@ -166,7 +166,7 @@
 		<Tag>TXT_KEY_BUG_HINT_14</Tag>
 		<English>*BUG Hint*: If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</English>
 		<French>*Conseils du BUG*: Si vous négligez votre armée et que votre pouvoir décline, un de vos voisins vous attaquera sûrement!</French>
-		<German>[BUG] Tipp... Das Militär sollte nicht vernachlässigt werden. Ein schwaches Reich wird gern von benachbarten Reichen angegriffen.</German>
+		<German>[BUG] Tipp... Das Militär sollte nicht vernachlässigt werden. Eine schwache Zivilisation wird gern von benachbarten Zivilisationen angegriffen.</German>
 		<Italian>*Suggerimento del BUG Team*: Se trascuri il tuo esercito, e la tua potenza si indebolisce, un paese confinante ti attaccherà sicuramente.</Italian>
 		<Spanish>*BUG Hint*: If you neglect your military, and your power becomes weak, a neighbor WILL attack you.</Spanish>
 	</TEXT>
@@ -174,7 +174,7 @@
 		<Tag>TXT_KEY_BUG_HINT_15</Tag>
 		<English>*BUG Hint*: Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</English>
 		<French>*Conseils du BUG*: Stationnez des unités navales près de vos ressources aquatiques, et faites les Patrouiller pour les protéger.</French>
-		<German>[BUG] Tipp... Marineeinheiten sollten in der Nähe von Ressourcen auf Meeres-Geländefeldern stationiert und mit dem Auftrag "Seepatrouille" versehen werden, um diese zu verteidigen.</German>
+		<German>[BUG] Tipp... Marineeinheiten sollten in der Nähe von Meeres-Ressourcen stationiert und mit dem Auftrag "Seepatrouille" versehen werden, um diese zu verteidigen.</German>
 		<Italian>*Suggerimento del BUG Team*: Disloca le tue unità navali vicino alle tue risorse acquatiche e mettile di pattuglia per proteggerle.</Italian>
 		<Spanish>*BUG Hint*: Station naval units near your water based resources, and put them on Sea Patrol to protect your resources.</Spanish>
 	</TEXT>
@@ -190,7 +190,7 @@
 		<Tag>TXT_KEY_BUG_HINT_17</Tag>
 		<English>*BUG Hint*: Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</English>
 		<French>*Conseils du BUG*: Gardez un oeuil sur les changements de Doctrine de vos voisins. Un changement de Liberté de Culte vers Théologie peut indiquer l'assemblement d'une armée.</French>
-		<German>[BUG] Tipp... Ein Wechsel der Staatsform in einem benachbarten Reich sollte aufmerksam verfolgt werden. Er könnte die Vorbereitung auf einen Krieg sein.</German>
+		<German>[BUG] Tipp... Ein Wechsel der Staatsform in einer benachbarten Zivilisation sollte aufmerksam verfolgt werden. Es könnte die Vorbereitung auf einen Krieg sein.</German>
 		<Italian>*Suggerimento del BUG Team*: Tieni d'occhio i cambiamenti di forma di governo dei tuoi vicini. Un cambiamento da Libertà Religiosa a Teologia può significare un aumento di aggressività.</Italian>
 		<Spanish>*BUG Hint*: Watch your neighbors' civics changes.  A change from Free Religion to Theology could mean an arms build-up.</Spanish>
 	</TEXT>
@@ -206,7 +206,7 @@
 		<Tag>TXT_KEY_BUG_HINT_19</Tag>
 		<English>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</English>
 		<French>*Conseils du BUG*: Parfois il vaut mieux arrêter un Eclaireur ou un Explorateur sur une fôret, une montagne ou une jungle et perdre un peu de mouvement pour gagner en sécurité.</French>
-		<German>[BUG] Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter die Runde auf einem Wald-, Hügel- or Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen Sicherheit einzutauschen.</German>
+		<German>[BUG] Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter eine Runde auf einem Wald-, Hügel- or Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen Sicherheit einzutauschen.</German>
 		<Italian>*Suggerimento del BUG Team*: A volte è meglio fermare un Esploratore su una casella di collina, foresta o giungla e perdere il movimento extra in favore della prudenza.</Italian>
 		<Spanish>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
 	</TEXT>
