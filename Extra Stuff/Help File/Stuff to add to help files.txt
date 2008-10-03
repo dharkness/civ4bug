@@ -7,7 +7,7 @@ BUG Mod
 - PublicMaps (no documentation about them yet)
 - Improved Foreign Advisor Info Screen (no documentation about it yet)
 - TechSplashScreen (no documentation about it yet) 
-- modify the options file to match the new option layout and added options
+- modify the help option files to match the new option layout and added options
 
 
 BAT Mod
