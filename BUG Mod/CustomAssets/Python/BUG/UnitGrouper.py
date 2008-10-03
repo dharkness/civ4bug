@@ -176,16 +176,18 @@ class LocationGrouping(Grouping):
 	Ex: Domestic City, Friendly City, Enemy Territory
 	"""
 	def __init__(self):
-		Grouping.__init__(self, "loc", "Location")
-		self.DOMESTIC_CITY = 0
-		self.DOMESTIC_TERRITORY = self.DOMESTIC_CITY + 1
-		self.TEAM_CITY = self.DOMESTIC_TERRITORY + 1
-		self.TEAM_TERRITORY = self.TEAM_CITY + 1
-		self.FRIENDLY_CITY = self.TEAM_TERRITORY + 1
-		self.FRIENDLY_TERRITORY = self.FRIENDLY_CITY + 1
-		self.NEUTRAL_TERRITORY = self.FRIENDLY_TERRITORY + 1
-		self.ENEMY_TERRITORY = self.NEUTRAL_TERRITORY + 1
-		self.BARBARIAN_TERRITORY = self.ENEMY_TERRITORY + 1
+		Grouping.__init__(self, "loc", "TXT_KEY_UNIT_GROUPER_LOCATION_GROUPING")
+		(
+			self.DOMESTIC_CITY,
+			self.DOMESTIC_TERRITORY,
+			self.TEAM_CITY,
+			self.TEAM_TERRITORY,
+			self.FRIENDLY_CITY,
+			self.FRIENDLY_TERRITORY,
+			self.NEUTRAL_TERRITORY,
+			self.ENEMY_TERRITORY,
+			self.BARBARIAN_TERRITORY
+		) = range(9)
 		
 		self._addGroup(Group(self, self.DOMESTIC_CITY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_DOMESTIC_CITY"))
 		self._addGroup(Group(self, self.DOMESTIC_TERRITORY, "TXT_KEY_UNIT_GROUPER_LOCATION_GROUP_DOMESTIC_TERRITORY"))
