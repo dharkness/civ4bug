@@ -2915,7 +2915,7 @@
 		<English>Improved Info Tab</English>
 		<French>Improved Info Tab</French>
 		<German>Improved Info Tab</German>
-		<Italian>Improved Info Tab</Italian>
+		<Italian>Scheda Informazioni migliorata</Italian>
 		<Spanish>Improved Info Tab</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2923,7 +2923,7 @@
 		<English>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</English>
 		<French>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</French>
 		<German>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</German>
-		<Italian>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Italian>
+		<Italian>Quando è selezionato, utilizza la versione migliorata della scheda Informazioni del Consigliere Estero al posto di quella standard.</Italian>
 		<Spanish>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3638,7 +3638,7 @@
 		<English>System</English>
 		<French>System</French>
 		<German>System</German>
-		<Italian>System</Italian>
+		<Italian>Sistema</Italian>
 		<Spanish>System</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3654,7 +3654,7 @@
 		<English>Debug Output:</English>
 		<French>Debug Output:</French>
 		<German>Debug-Meldungen:</German>
-		<Italian>Debug Output:</Italian>
+		<Italian>Output del debug:</Italian>
 		<Spanish>Debug Output:</Spanish>
 	</TEXT>
 	<!-- Configuration Tab -->

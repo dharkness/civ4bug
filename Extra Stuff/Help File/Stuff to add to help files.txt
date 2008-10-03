@@ -5,9 +5,9 @@ BUG Mod
 - Translate Enhanced Victory Screen readme (DEU)
 - Translate Better Info Screen readme (DEU)
 - PublicMaps (no documentation about them yet)
-- Revamped Foreign Advisor Info Screen  (no documentation about it yet)
-
-
+- Improved Foreign Advisor Info Screen (no documentation about it yet)
+- TechSplashScreen (no documentation about it yet) 
+- modify the options file to match the new option layout and added options
 
 
 BAT Mod
