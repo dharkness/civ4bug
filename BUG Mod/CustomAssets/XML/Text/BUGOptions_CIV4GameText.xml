@@ -2911,6 +2911,22 @@
 		<Spanish>When checked, the 'Glance' tab shows Smilies (attitude icons).</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAIMPROVEDINFO_TEXT</Tag>
+		<English>Improved Info Tab</English>
+		<French>Improved Info Tab</French>
+		<German>Improved Info Tab</German>
+		<Italian>Improved Info Tab</Italian>
+		<Spanish>Improved Info Tab</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAIMPROVEDINFO_HOVER</Tag>
+		<English>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</English>
+		<French>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</French>
+		<German>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</German>
+		<Italian>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Italian>
+		<Spanish>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMA_TEXT</Tag>
 		<English>BUG Military Advisor</English>
 		<French>BUG Military Advisor</French>

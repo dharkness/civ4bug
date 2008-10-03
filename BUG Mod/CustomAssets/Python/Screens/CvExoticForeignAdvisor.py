@@ -339,6 +339,74 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 #	RJG End
 
 	def drawInfo (self, bInitial):
+		if AdvisorOpt.isUseImprovedEFAInfo():
+			self.drawInfoImproved(bInitial)
+		else:
+			self.drawInfoOriginal(bInitial)
+
+	def drawInfoOriginal (self, bInitial):
+#		ExoticForPrint ("Entered drawInfo")
+
+		screen = self.getScreen()
+
+		# Get the Players
+		playerActive = gc.getPlayer(self.iActiveLeader)
+					
+		# Put everything inside a main panel, so we get vertical scrolling
+		mainPanelName = self.getNextWidgetName()
+		screen.addPanel(mainPanelName, "", "", True, True, 50, 100, self.W_SCREEN - 100, self.H_SCREEN - 200, PanelStyles.PANEL_STYLE_EMPTY)
+
+		ltCivicOptions = range (gc.getNumCivicOptionInfos())
+
+		# loop through all players and display leaderheads
+		# Their leaderheads		
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			if (gc.getPlayer(iLoopPlayer).isAlive() and iLoopPlayer != self.iActiveLeader and (gc.getTeam(gc.getPlayer(iLoopPlayer).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam()) or gc.getGame().isDebugMode()) and not gc.getPlayer(iLoopPlayer).isBarbarian() and not gc.getPlayer(iLoopPlayer).isMinorCiv()):
+
+				nPlayerReligion = gc.getPlayer(iLoopPlayer).getStateReligion()
+				objReligion = gc.getReligionInfo (nPlayerReligion)
+
+				objLeaderHead = gc.getLeaderHeadInfo (gc.getPlayer(iLoopPlayer).getLeaderType())
+
+				# Player panel
+				playerPanelName = self.getNextWidgetName()
+				screen.attachPanel(mainPanelName, playerPanelName, gc.getPlayer(iLoopPlayer).getName(), "", False, True, PanelStyles.PANEL_STYLE_MAIN)
+
+				screen.attachImageButton(playerPanelName, "", objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
+						
+				infoPanelName = self.getNextWidgetName()
+				screen.attachPanel(playerPanelName, infoPanelName, "", "", False, False, PanelStyles.PANEL_STYLE_EMPTY)
+
+				religionName = self.getNextWidgetName()
+				szPlayerReligion = ""
+				
+				if (nPlayerReligion != -1):
+					
+					if (gc.getPlayer(iLoopPlayer).hasHolyCity (nPlayerReligion)):
+						szPlayerReligion = u"%c" %(objReligion.getHolyCityChar())
+					elif objReligion:
+						szPlayerReligion = u"%c" %(objReligion.getChar())
+
+				screen.attachTextGFC(infoPanelName, "", szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer), )), FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_CIVICS_SCREEN_TITLE", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+				for nCivicOption in ltCivicOptions:
+					nCivic = gc.getPlayer(iLoopPlayer).getCivics (nCivicOption)
+					screen.attachImageButton (infoPanelName, "", gc.getCivicInfo (nCivic).getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIVIC, nCivic, 1, False)
+
+				# Don't show favorite civic if playing with Random Personalities.
+				if not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_RANDOM_PERSONALITIES):
+					nFavoriteCivic = objLeaderHead.getFavoriteCivic()
+					if nFavoriteCivic != -1:
+						screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_PEDIA_FAV_CIVIC", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+						objCivicInfo = gc.getCivicInfo (nFavoriteCivic)
+						screen.attachImageButton (infoPanelName, "", objCivicInfo.getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIVIC, nFavoriteCivic, 1, False)
+						screen.attachTextGFC(infoPanelName, "", "(" + gc.getCivicOptionInfo (objCivicInfo.getCivicOptionType()).getDescription() + ")", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+	def drawInfoImproved (self, bInitial):
 		screen = self.getScreen()
 
 		# Some spacing variables to help with the layout

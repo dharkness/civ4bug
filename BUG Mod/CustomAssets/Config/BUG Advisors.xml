@@ -28,6 +28,9 @@
 			<option id="EFAGlanceSmilies" key="EFA Glance Smilies" 
 					type="boolean" default="True" 
 					get="isShowGlanceSmilies"/>
+			<option id="EFAImprovedInfo" key="EFA Improved Info" 
+					type="boolean" default="True" 
+					get="isUseImprovedEFAInfo"/>
 	
 			<!-- BUG Military Advisor (F5) by Ruff_Hi, EmperorFool -->
 			<option id="BugMA" key="BugMilitaryAdvisor" 
