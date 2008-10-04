@@ -20,12 +20,18 @@ class autologInstance:
 
 	def __init__(self):
 		self.MsgStore = []
+		self.LogFileName = BugAutolog.getFileName()
 
-	def setLogFileName(self, LogFileName):
-		BugAutolog.setFileName(LogFileName)
-		# TODO: do we need to save this?
-		BugOptions.write()
+	def setLogFileName(self, LogFileName, bSaveToOptions=False):
+		if (bSaveToOptions):
+			BugAutolog.setFileName(LogFileName)
+			# TODO: do we need to save this?
+			BugOptions.write()
+		self.LogFileName = LogFileName
 		
+	def getLogFileName(self):
+		return self.LogFileName
+
 	def isLogging(self):
 		return BugAutolog.isLoggingOn()
 
@@ -57,7 +63,7 @@ class autologInstance:
 			szPath = BugPath.findOrMakeDir("Autolog")
 		if (not os.path.isdir(szPath)):
 			os.makedirs(szPath)
-		szFile = os.path.join(szPath, BugAutolog.getFileName())
+		szFile = os.path.join(szPath, self.LogFileName)
 		self.log = codecs.open(szFile, 'a', 'utf-8')
 		BugConfigTracker.add("Autolog_Log", szFile)
 

@@ -39,7 +39,7 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# What to Log
 		screen.attachHSeparator(column, column + "Sep2")
-		col1, col2, col3, col4, col5 = self.addMultiColumnLayout(screen, column, 5, "Events")
+		col1, col2, col3, col4, col5, col6 = self.addMultiColumnLayout(screen, column, 6, "Events")
 		
 		self.addLabel(screen, col1, "Autolog_Builds", "Research and Builds:")
 		self.addCheckbox(screen, col1, "Autolog__LogTech")
@@ -69,8 +69,17 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, col4, "Autolog__LogWar")
 		self.addCheckbox(screen, col4, "Autolog__LogVassals")
 		self.addCheckbox(screen, col4, "Autolog__LogCivics")
-		
+		self.addCheckbox(screen, col4, "Autolog__LogTradeAll")
+
 		self.addLabel(screen, col5, "Autolog_Combat", "Combat:")
 		self.addCheckbox(screen, col5, "Autolog__LogCombat")
 		self.addCheckbox(screen, col5, "Autolog__LogPromotions")
 		self.addCheckbox(screen, col5, "Autolog__LogPillage")
+
+		#self.addLabel(screen, col6, "Autolog_Trade", "Trade and Demands:")
+		#self.addCheckbox(screen, col6, "Autolog__LogTradeOffer")
+		#self.addCheckbox(screen, col6, "Autolog__LogTributeDemand")
+		#self.addCheckbox(screen, col6, "Autolog__LogReligionDemand")
+		#self.addCheckbox(screen, col6, "Autolog__LogCivicDemand")
+		#self.addCheckbox(screen, col6, "Autolog__LogWarDemand")
+		#self.addCheckbox(screen, col6, "Autolog__LogEmbargoDemand")

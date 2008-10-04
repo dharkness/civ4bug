@@ -205,6 +205,44 @@
 					get="isLogPillage" set="setLogPillage" 
 					label="Pillaging" 
 					help="When checked, will log when you pillage or your improvements are pillaged."/>
+
+			<!-- Trades and Demands -->
+			<option id="LogTradeAll" key="TradeAll" 
+					type="boolean" default="True" 
+					get="isLogTradeAll" set="setLogTradeAll" 
+					label="TradeAll" 
+					help="When checked, will log all AI-initiated trade offers and demands along with your responses."/>
+			
+			<option id="LogTradeOffer" key="TradeOffer" 
+					type="boolean" default="True" 
+					get="isLogTradeOffer" set="setLogTradeOffer" 
+					label="TradeOffer" 
+					help="When checked, will log AI-initiated trades and gift offers and your responses."/>
+			<option id="LogTributeDemand" key="TributeDemand" 
+					type="boolean" default="True" 
+					get="isLogTributeDemand" set="setLogTributeDemand" 
+					label="TributeDemand" 
+					help="When checked, will log AI demands for tribute or help and your responses."/>
+			<option id="LogReligionDemand" key="ReligionDemand" 
+					type="boolean" default="True" 
+					get="isLogReligionDemand" set="setLogReligionDemand" 
+					label="ReligionDemand" 
+					help="When checked, will log AI demands that you change religion and your responses."/>
+			<option id="LogCivicDemand" key="CivicDemand" 
+					type="boolean" default="True" 
+					get="isLogCivicDemand" set="setLogCivicDemand" 
+					label="CivicDemand" 
+					help="When checked, will log AI demands that you change civics and your responses."/>
+			<option id="LogWarDemand" key="WarDemand" 
+					type="boolean" default="True" 
+					get="isLogWarDemand" set="setLogWarDemand" 
+					label="WarDemand" 
+					help="When checked, will log AI requests to declare war on a third party and your responses."/>
+			<option id="LogEmbargoDemand" key="EmbargoDemand" 
+					type="boolean" default="True" 
+					get="isLogEmbargoDemand" set="setLogEmbargoDemand" 
+					label="EmbargoDemand" 
+					help="When checked, will log AI requests to stop trading with a third party and your responses."/>
 		</section>
 	</options>
 	

@@ -16,6 +16,7 @@ from CvPythonExtensions import *
 import BugUtil
 import PlayerUtil
 import TradeUtil
+import string
 
 MAX_TRADE_DATA = 50  # avoid an infinite loop
 
@@ -35,55 +36,53 @@ def addEvents(eventManager):
 	g_eventManager = eventManager
 	
 	# Trade
-	DiploEvent("AI_DIPLOCOMMENT_OFFER_DEAL", "DealOffered", sendTrade=True)
-	DiploEvent("AI_DIPLOCOMMENT_CANCEL_DEAL", "DealCanceled", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_ACCEPT_OFFER", "DealAccepted", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_REJECT_OFFER", "DealRejected", sendTrade=True)
+	DiploEvent("AI_DIPLOCOMMENT_OFFER_DEAL", "DealOffered", onDealOffered, sendTrade=True)
+	DiploEvent("AI_DIPLOCOMMENT_CANCEL_DEAL", "DealCanceled", onDealCanceled, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_ACCEPT_OFFER", "DealAccepted", onDealAccepted, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_REJECT_OFFER", "DealRejected", onDealRejected, sendTrade=True)
 	
 	# Free Stuff
-	DiploEvent("AI_DIPLOCOMMENT_OFFER_CITY", "CityOffered", tradeType=TradeableItems.TRADE_CITIES)
-	DiploEvent("AI_DIPLOCOMMENT_GIVE_HELP", "HelpOffered", sendTrade=True)
-	DiploEvent("AI_DIPLOCOMMENT_OFFER_PEACE", "PeaceOffered")
-	DiploEvent("AI_DIPLOCOMMENT_OFFER_VASSAL", "VassalOffered")
+	DiploEvent("AI_DIPLOCOMMENT_OFFER_CITY", "CityOffered", onCityOffered, tradeType=TradeableItems.TRADE_CITIES)
+	DiploEvent("AI_DIPLOCOMMENT_GIVE_HELP", "HelpOffered", onHelpOffered, sendTrade=True)
+	DiploEvent("AI_DIPLOCOMMENT_OFFER_PEACE", "PeaceOffered", onPeaceOffered)
+	DiploEvent("AI_DIPLOCOMMENT_OFFER_VASSAL", "VassalOffered", onVassalOffered)
 	
 	# Ask for Help
-	DiploEvent("AI_DIPLOCOMMENT_ASK_FOR_HELP", "HelpDemanded", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_GIVE_HELP", "HelpAccepted", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_REFUSE_HELP", "HelpRejected", sendTrade=True)
+	DiploEvent("AI_DIPLOCOMMENT_ASK_FOR_HELP", "HelpDemanded", onHelpDemanded, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_GIVE_HELP", "HelpAccepted", onHelpAccepted, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_REFUSE_HELP", "HelpRejected", onHelpRejected, sendTrade=True)
 	
 	# Demand Tribute
-	DiploEvent("AI_DIPLOCOMMENT_DEMAND_TRIBUTE", "TributeDemanded", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_ACCEPT_DEMAND", "TributeAccepted", sendTrade=True)
-	DiploEvent("USER_DIPLOCOMMENT_REJECT_DEMAND", "TributeRejected", sendTrade=True)
+	DiploEvent("AI_DIPLOCOMMENT_DEMAND_TRIBUTE", "TributeDemanded", onTributeDemanded, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_ACCEPT_DEMAND", "TributeAccepted", onTributeAccepted, sendTrade=True)
+	DiploEvent("USER_DIPLOCOMMENT_REJECT_DEMAND", "TributeRejected", onTributeRejected, sendTrade=True)
 	
 	# Religion
-	DiploEvent("AI_DIPLOCOMMENT_RELIGION_PRESSURE", "ReligionDemanded", onReligionDemanded, argFunc=extractReligion)
-	DiploEvent("USER_DIPLOCOMMENT_CONVERT", "ReligionAccepted", onReligionAccepted, argFunc=extractReligion)
-	DiploEvent("USER_DIPLOCOMMENT_NO_CONVERT", "ReligionRejected", onReligionRejected, argFunc=extractReligion)
+	DiploEvent("AI_DIPLOCOMMENT_RELIGION_PRESSURE", "ReligionDemanded", onReligionDemanded, 
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getStateReligion(eFromPlayer), ))
+	DiploEvent("USER_DIPLOCOMMENT_CONVERT", "ReligionAccepted", onReligionAccepted,
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getStateReligion(eToPlayer), ))
+	DiploEvent("USER_DIPLOCOMMENT_NO_CONVERT", "ReligionRejected", onReligionRejected,
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getStateReligion(eToPlayer), ))
 	
 	# Civic
-	DiploEvent("AI_DIPLOCOMMENT_CIVIC_PRESSURE", "CivicDemanded", onCivicDemanded, argFunc=extractAndLookupInfoType)
+	DiploEvent("AI_DIPLOCOMMENT_CIVIC_PRESSURE", "CivicDemanded", onCivicDemanded, 
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getFavoriteCivic(eFromPlayer), ))
 	DiploEvent("USER_DIPLOCOMMENT_REVOLUTION", "CivicAccepted", onCivicAccepted, 
-			argFunc=lambda eFromPlayer, eToPlayer, args, data: PlayerUtil.getFavoriteCivic(eToPlayer))
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getFavoriteCivic(eToPlayer), ))
 	DiploEvent("USER_DIPLOCOMMENT_NO_REVOLUTION", "CivicRejected", onCivicRejected, 
-			argFunc=lambda eFromPlayer, eToPlayer, args, data: PlayerUtil.getFavoriteCivic(eToPlayer))
+			argFunc=lambda eFromPlayer, eToPlayer, args, data: (PlayerUtil.getFavoriteCivic(eToPlayer), ))
 	
 	# Join War
-	DiploEvent("AI_DIPLOCOMMENT_JOIN_WAR", "WarDemanded", sendData=True)
-	DiploEvent("USER_DIPLOCOMMENT_JOIN_WAR", "WarAccepted", sendData=True)
-	DiploEvent("USER_DIPLOCOMMENT_NO_JOIN_WAR", "WarRejected", sendData=True)
+	DiploEvent("AI_DIPLOCOMMENT_JOIN_WAR", "WarDemanded", onWarDemanded, sendData=True)
+	DiploEvent("USER_DIPLOCOMMENT_JOIN_WAR", "WarAccepted", onWarAccepted, sendData=True)
+	DiploEvent("USER_DIPLOCOMMENT_NO_JOIN_WAR", "WarRejected", onWarRejected, sendData=True)
 	
 	# Trade Embargo
-	DiploEvent("AI_DIPLOCOMMENT_STOP_TRADING", "EmbargoDemanded", sendData=True)
-	DiploEvent("USER_DIPLOCOMMENT_STOP_TRADING", "EmbargoAccepted", sendData=True)
-	DiploEvent("USER_DIPLOCOMMENT_NO_STOP_TRADING", "EmbargoRejected", sendData=True)
+	DiploEvent("AI_DIPLOCOMMENT_STOP_TRADING", "EmbargoDemanded", onEmbargoDemanded, sendData=True)
+	DiploEvent("USER_DIPLOCOMMENT_STOP_TRADING", "EmbargoAccepted", onEmbargoAccepted, sendData=True)
+	DiploEvent("USER_DIPLOCOMMENT_NO_STOP_TRADING", "EmbargoRejected", onEmbargoRejected, sendData=True)
 
-
-def extractAndLookupInfoType(eFromPlayer, eToPlayer, args, data):
-	return (gc.getInfoTypeForString(args[0]), )
-
-def extractReligion(eFromPlayer, eToPlayer, args, data):
-	return (PlayerUtil.getStateReligion(eFromPlayer), )
 
 class DiploEvent:
 	def __init__(self, comment, event, handler=None, 
@@ -171,32 +170,196 @@ def dispatchEvent(eComment, eFromPlayer, eToPlayer, args):
 
 ## Event Handlers
 
+def onDealOffered(argsList):
+	BugUtil.debug("DiplomacyUtil::onDealOffered %s" %(str(argsList)))
+
+def onCityOffered(argsList):
+	BugUtil.debug("DiplomacyUtil::onCityOffered %s" %(str(argsList)))
+
+def onHelpOffered(argsList):
+	BugUtil.debug("DiplomacyUtil::onHelpOffered %s" %(str(argsList)))
+
+def onPeaceOffered(argsList):
+	BugUtil.debug("DiplomacyUtil::onPeaceOffered %s" %(str(argsList)))
+
+def onVassalOffered(argsList):
+	BugUtil.debug("DiplomacyUtil::onVassalOffered %s" %(str(argsList)))
+
+def onDealCanceled(argsList):
+	BugUtil.debug("DiplomacyUtil::onDealCanceled %s" %(str(argsList)))
+
+def onDealAccepted(argsList):
+	BugUtil.debug("DiplomacyUtil::onDealAccepted %s" %(str(argsList)))
+
+def onDealRejected(argsList):
+	BugUtil.debug("DiplomacyUtil::onDealRejected %s" %(str(argsList)))
+
+
+def onHelpDemanded(argsList):
+	#BugUtil.debug("DiplomacyUtil::onHelpDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s requests help (%s) from %s",
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eTargetPlayer).getName())
+
+def onHelpAccepted(argsList):
+	#BugUtil.debug("DiplomacyUtil::onHelpAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s agrees to give help (%s) to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eDemandPlayer).getName())
+
+def onHelpRejected(argsList):
+	#BugUtil.debug("DiplomacyUtil::onHelpRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s refuses to give help (%s) to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eDemandPlayer).getName())
+
+
+def onTributeDemanded(argsList):
+	#BugUtil.debug("DiplomacyUtil::onTributeDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s demands a tribute (%s) from %s",
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eTargetPlayer).getName())
+
+def onTributeAccepted(argsList):
+	#BugUtil.debug("DiplomacyUtil::onTributeAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s agrees to give tribute (%s) to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eDemandPlayer).getName())
+
+def onTributeRejected(argsList):
+	#BugUtil.debug("DiplomacyUtil::onTributeRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, pTrade = argsList
+	szItems = ""
+	for i in range(pTrade.getCount()):
+		szItems = szItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i))
+	BugUtil.debug("DiplomacyUtil - %s refuses to give tribute (%s) to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			szItems,
+			PlayerUtil.getPlayer(eDemandPlayer).getName())
+
 def onReligionDemanded(argsList):
-	ePlayer, eTargetPlayer, eReligion = argsList
+	#BugUtil.debug("DiplomacyUtil::onReligionDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, eReligion = argsList
 	BugUtil.debug("DiplomacyUtil - %s asks %s to convert to %s",
-			PlayerUtil.getPlayer(ePlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
 			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
 			gc.getReligionInfo(eReligion).getDescription())
 
 def onReligionAccepted(argsList):
-	ePlayer, eTargetPlayer, eReligion = argsList
+	#BugUtil.debug("DiplomacyUtil::onReligionAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eReligion = argsList
+	BugUtil.debug("DiplomacyUtil - %s accepts demand from %s to convert to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			gc.getReligionInfo(eReligion).getDescription())
 
 def onReligionRejected(argsList):
-	ePlayer, eTargetPlayer, eReligion = argsList
+	#BugUtil.debug("DiplomacyUtil::onReligionRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eReligion = argsList
+	BugUtil.debug("DiplomacyUtil - %s rejects demand from %s to convert to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			gc.getReligionInfo(eReligion).getDescription())
 
 
 def onCivicDemanded(argsList):
-	ePlayer, eTargetPlayer, eCivic = argsList
+	#BugUtil.debug("DiplomacyUtil::onCivicDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, eCivic = argsList
 	BugUtil.debug("DiplomacyUtil - %s asks %s to switch to %s",
-			PlayerUtil.getPlayer(ePlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
 			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
 			gc.getCivicInfo(eCivic).getDescription())
 
 def onCivicAccepted(argsList):
-	ePlayer, eTargetPlayer, eCivic = argsList
+	#BugUtil.debug("DiplomacyUtil::onCivicAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eCivic = argsList
+	BugUtil.debug("DiplomacyUtil - %s accepts demand from %s to switch to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			gc.getCivicInfo(eCivic).getDescription())
 
 def onCivicRejected(argsList):
-	ePlayer, eTargetPlayer, eCivic = argsList
+	#BugUtil.debug("DiplomacyUtil::onCivicRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eCivic = argsList
+	BugUtil.debug("DiplomacyUtil - %s rejects demand from %s to switch to %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			gc.getCivicInfo(eCivic).getDescription())
+
+
+def onWarDemanded(argsList):
+	#BugUtil.debug("DiplomacyUtil::onWarDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s asks %s to declare war on %s",
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
+
+def onWarAccepted(argsList):
+	#BugUtil.debug("DiplomacyUtil::onWarAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s agrees to demand from %s to declare war on %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
+
+def onWarRejected(argsList):
+	#BugUtil.debug("DiplomacyUtil::onWarRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s rejects demand from %s to declare war on %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
+
+
+def onEmbargoDemanded(argsList):
+	#BugUtil.debug("DiplomacyUtil::onEmbargoDemanded %s" %(str(argsList)))
+	eDemandPlayer, eTargetPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s asks %s to stop trading with %s",
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
+
+def onEmbargoAccepted(argsList):
+	#BugUtil.debug("DiplomacyUtil::onEmbargoAccepted %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s agrees to demand from %s to stop trading with %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
+
+def onEmbargoRejected(argsList):
+	#BugUtil.debug("DiplomacyUtil::onEmbargoRejected %s" %(str(argsList)))
+	eTargetPlayer, eDemandPlayer, eVictim = argsList
+	BugUtil.debug("DiplomacyUtil - %s rejects demand from %s to stop trading with %s",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(), 
+			PlayerUtil.getPlayer(eDemandPlayer).getName(), 
+			PlayerUtil.getPlayer(eVictim).getName())
 
 
 ## Proposed Trade Functions
