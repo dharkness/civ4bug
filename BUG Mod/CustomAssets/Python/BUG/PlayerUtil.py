@@ -339,7 +339,7 @@ def getFavoriteCivic(playerOrID):
 	
 	This works even when the Random Personalities option is enabled.
 	"""
-	eLeaderType = getPlayer(playerOrID).getLeaderType()
+	eLeaderType = getPlayer(playerOrID).getPersonalityType()
 	if eLeaderType != -1:
 		leader = gc.getLeaderHeadInfo(eLeaderType)
 		if leader:
