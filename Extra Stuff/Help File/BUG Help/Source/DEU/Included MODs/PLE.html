@@ -2,7 +2,7 @@
 <HTML>
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
-	<TITLE>Plot List Enhancement</TITLE>
+	<TITLE>Plot List Enhancement (PLE)</TITLE>
 	<STYLE TYPE="text/css">
 	<!--
 		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
@@ -13,448 +13,214 @@
 	</STYLE>
 </HEAD>
 <BODY LANG="de-DE" DIR="LTR">
-<P CLASS="style1">Plot List Enhancement</P>
-<P CLASS="style3">von 12Monkeys (f&uuml;r BUG angepasst von turlute, stark modifiziert von EmperorFool)</P>
-<BR>
-<P CLASS="style1">&Uuml;ber Plot List Enhancement 
-</P>
-<P>The motivation for this mod was born when I tried to
-fiddle a unit stack with a large number of units. It was a
-frustrating experience, due to the strange behavior of the plot list
-and some bothering bugs in Civ4. So I started to create this mod
-here. It is a more or less complete reprogrammed plot list with a
-bunch of new features. Not all of the features may be used at one
-time, but I think everybody will find something hes looking for. It
-is based on the previous version of the Plot List Enhancement
-although is has been reworked completely. There is not muched left
-except some graphics. 
-</P>
-<BR>
-<P CLASS="style1">Features</P>
-<P><FONT COLOR="#0000ff"><B>1.) Enhanced Unit Buttons</B></FONT></P>
-<P>Each unit button provides you now with some additional
-information. This makes it easier to determine what status a single
-unit has, without selecting it first. 
-</P>
-<P>Following information is implemented : 
-</P>
-<OL TYPE=A>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Health + Movement Indicator<BR></B>The
-	colored spot changes depending on how many movement points are left:
-		</P>
-	<UL>
-		<LI><P STYLE="margin-bottom: 0cm">Green = All 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Yellow = Some 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Red = None 
-		</P>
-		<LI><P>Grey = All (skipping turn) 
-		</P>
-	</UL>
-</OL>
-<P STYLE="margin-left: 1.06cm">The spot is displayed in a darker
-color, when the unit is wounded.<BR>Also, if the unit is led by a
-Great General, the dot becomes a star. 
-</P>
-<OL START=2>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Health Bar<BR></B>At the top of
-	each unit button, a horizontal bar is displayed. This bar indicates
-	the remaining health points of the unit in percent. The colors of
-	the bar can be changed. The default colors are green and red. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Movement Bar</B><BR>At the top
-	of each unit button, below the health bar, another bar is
-	displayed. This indicates the remaining movement points of the unit
-	in percent. The colors of the bar can be changed. The default colors
-	are blue and grey. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Mission Indicator</B><BR>In the
-	lower right corner, the unit's mission is displayed with an icon.
-	They are split into groups using their background: green for
-	automation, yellow for defensive, red for offensive, light blue for
-	movement and white for stationary actions. The following mission
-	types are indicated (the background color is indicated in brackets)
-	: 
-	</P>
-	<UL>
-		<LI><P STYLE="margin-bottom: 0cm">Blue shield (yellow) - unit is
-		fortified 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Plane (yellow) - air unit is in
-		intercept mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Binoculars (yellow) - unit is in
-		sentry mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Anchor (yellow) - sea unit is in
-		patrol mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Gold symbol (red) - sea unit is
-		in blockade mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Foot (light blue) - unit has a
-		goto command 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Compass (light blue) - unit is
-		exploring 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Red cross (white) - unit is in
-		healing mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Hourglass (white) - unit is
-		skipping current turn 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Z's (white) - unit is in sleep
-		mode 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Hammer (green) - worker is
-		automated 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">City skyline (green) - worker is
-		automated (city) 
-		</P>
-		<LI><P STYLE="margin-bottom: 0cm">Trade symbol (green) - worker is
-		automated (trade network) 
-		</P>
-	</UL>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Promotion Indicator</B><BR>A
-	unit which can be promoted is displayed with a light blue frame in
-	the plot list. 
-	</P>
-	<LI><P><B>Upgrade Indicator<BR></B>A unit which can be upgraded to
-	any other unit, will get a small orange up-arrow in the lower left
-	corner of its unit button. The arrow is displayed regardless whether
-	you have the money for the upgrade or not. 
-	</P>
-</OL>
-<P><FONT COLOR="#0000ff"><B>2.) Unit Mouseover Changes</B></FONT></P>
-<P>When you move the mouse over any unit button in the plot list, an
-info pane is displayed on the left side of the screen. This Info pane
-has been been modified in the following places : </P>
-<OL>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Remaining Movement Points</B><BR>The
-	remaining movement points of the unit are displayed as a floating
-	value with 1 decimal 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Strength + Turns-To-Heal</B><BR>The
-	current unit strength is displayed as a floating value with 1
-	decimal. In case the unit is wounded a third value is displayed in
-	brackets. This number indicates the number of rounds the units need
-	to heal completely under the current circumstances. This
-	circumstances takes consideration of city building (like hospital),
-	the unit's promotion (Medic, or any other promotion with self heal
-	abilities) the promotions of units on the same or adjacent tiles,
-	the territory the unit is on. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Special Abilities</B><BR>The
-	special abilities a unit gains due to a promotion are displayed in a
-	different color than the specials it gains due to its unit type. The
-	color can be modified in the ini file, the default color is light
-	gray. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Experience</B><BR>The unit's
-	experience points are displayed in the following format :
-	&lt;curr-exp&gt;/&lt;needed-exp&gt;. Where &lt;curr-exp&gt; is the
-	units current experience points and &lt;needed-exp&gt; is the units
-	needed experience points to get the next higher level. Both values
-	are only displayed if the unit has an experience value &gt; 0. 
-		</P>
-	<LI><P><B>Level</B><BR>The unit's level is displayed in the
-	following format. : &lt;curr-lev&gt;/&lt;possible-lev&gt;. Where
-	&lt;curr-lev&gt; is the unit's actual level and &lt;possible-lev&gt;
-	is the level the unit could have due to its experience points. In
-	other words : the first value shows the number of promotions the
-	unit already has, the second value shows the number of promotion the
-	unit could have. Both values are displayed, as soon as one of the
-	values is &gt; 0. 
-	</P>
-</OL>
-<P>Because this info pane has to be reprogrammed completely new, the
-layout differs slightly from the built-in one. There may also be some
-differences in the information I haven't documented here. If so,
-please contact me. </P>
-<P><FONT COLOR="#0000ff"><B>3.) Plot List Selection</B></FONT></P>
-<P>The selection in the plot list has also been improved by
-eliminating some bugs of the Civ4 standard version : </P>
-<OL>
-	<LI><P STYLE="margin-bottom: 0cm">Civ4 bug : when selecting a unit
-	on the very right the plot list is rebuilt so that the selected unit
-	is at position 10 in the plot list - <B>fixed </B> 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Civ4 bug : under some special
-	circumstances the scroll arrows did disappear - <B>fixed</B> 
-	</P>
-	<LI><P>Civ4 bug : when selecting a unit with Alt-key pressed, all
-	units should be selected. Because it is not possible to put units
-	with different domain type into one group, always the first domain
-	in the plot list is selected - <B>fixed</B> - All units with
-	the same domain type as the selected unit will be put together into
-	a group. 
-	</P>
-</OL>
-<P>The rest of the selection method is pretty much the same as before
-: </P>
-<UL>
-	<LI><P STYLE="margin-bottom: 0cm">Shift : to add single units or
-	their groups to the selected group 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Ctrl : to select all units of the
-	same type 
-	</P>
-	<LI><P>Alt : to select all units of the same domain type. 
-	</P>
-</UL>
-<P>*Remark made (see Appendix A, (i))</P>
-<P><FONT COLOR="#0000ff"><B>4.) Plot list display modes</B></FONT></P>
-<P>To improve the display of a large amount of units on one plot, I
-added some display modes.  These are now in cyclic format, so
-that it switches to a different view each time you click in this
-order: </P>
-<OL>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Standard mode</B><BR>The units
-	are displayed in one vertical line with scroll buttons on the right
-	side. As already mentioned in chapter 3., the bothering bugs with
-	the display have been eliminated. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Multiline mode<BR></B>All units
-	are displayed in several line<B>s,</B> so that there is no scrolling
-	needed. The display starts in the lower left corner. Using this
-	view, no scroll buttons are needed, except you have so much units on
-	one plot, that the screen height is not enough to display them in
-	multi line view. In this case, vertical scroll buttons (up and down
-	arrow) are displayed. 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Vertical stacks</B><BR>Dependent
-	on the grouping mode (see chapter 6) some units are displayed in
-	vertical stacks. You can scroll left an right with the scroll
-	buttons. In the unit type grouping mode, units of the same type are
-	displayed in a vertical stack, in the selection group grouping mode
-	selection groups are displayed in a vertical stack. 
-	</P>
-	<LI><P><B>Horizontal stacks<BR></B>Pretty much the same as the
-	vertical stacks with the only difference, that the stacks are
-	horizontal oriented. You may now ask what that is for. Two reasons.
-	First: because of the different screen ratios this option may be
-	better than the vertical stacks (you have smaller stacks, but more
-	lines). Second : it was fun to do it ;) 
-	</P>
-</OL>
-<P><FONT COLOR="#0000ff"><B>5.) Unit Filters</B></FONT></P>
-<P>There are several unit filters added. You find them next to the
-display mode buttons. The following filters have been implemented
-(the button in brackets) : </P>
-<OL>
-	<LI><P STYLE="margin-bottom: 0cm">Units that can move (white foot) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Units that cannot move (red foot) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Wounded units (red cross) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Healthy units (green cross) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Domain filter air units (plane) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Domain filter sea units (ship) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Domain filter land units (tank) 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Combat units (crossed swords) 
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm">Domestic units (peace symbol) 
-		</P>
-	<LI><P STYLE="margin-bottom: 0cm">Player units (green flag) 
-	</P>
-	<LI><P>Foreign units (red flag) 
-	</P>
-</OL>
-<P>An active filter is displayed with a yellow ring. By default all
-filters are inactive. To turn off all filters, press the red
-&quot;null&quot; button between the upgrade grouping button and the
-movement filter buttons. </P>
-<P><FONT COLOR="#0000ff"><B>6.) Plot list grouping modes</B></FONT></P>
-<P>There are two grouping modes implemented. The grouping modes have
-influence in the order the units are displayed. If a stack display
-mode (vertical or horizontal) is selected it also have an influence
-on what is displayed in a stack: </P>
-<OL>
-	<LI><P STYLE="margin-bottom: 0cm"><B>Unit type grouping</B>
-	(overlapping squares)<BR>Default grouping mode. When the
-	display mode is a stack mode, then units of the same type are put
-	into one stack. For more details, see Appendix (i). 
-	</P>
-	<LI><P><B>Selection group grouping</B> (square and triangle)<BR>Click
-	on the &quot;overlapping squares&quot; button to toggle between the
-	two modes. In this mode, units which are in the same
-	selection group are displayed together. Also the selection groups
-	are displayed right most within their domain. When the display mode
-	is a stack mode, then units within the same selection group are put
-	into one stack. For more details, see Appendix (ii) 
-	</P>
-</OL>
-<P><FONT COLOR="#0000ff"><B>7.) Plot list upgrade view</B></FONT></P>
-<P>The upgrade view (button with the up-arrow) can be used to get a
-clear overview about the units which can be upgraded. It also
-provides a simple method to upgrade a bunch of units without
-selecting each unit first. </P>
-<P>When you press the button only units which can be upgraded are
-displayed. If you also have a stack view active, above each unit its
-possible upgrades are displayed. The upgrade buttons are disable
-(displayed, but you can't push them) you don't have enough money to
-perform the upgrade. </P>
-<P>By pressing one of those upgrade buttons, the unit is upgraded to
-that type. Usually that results in that the unit disappearing from
-the view, because in most cases only one upgrade is possible. If you
-press the Ctrl-key when pressing an upgrade button all units on that
-plot are upgraded, when pressing the Alt-key all of the player's
-units are upgraded. If you run out of money during those multi
-upgrades, it simply stops doing it (as in normal Civ4). 
-</P>
-<P>By moving the mouse over an upgrade button, a special info pane is
-displayed on the left side of the screen. It provides you with the
-unit type related info of the upgrade and with three values in
-brackets, separated by a slash. The three values have the following
-meaning: </P>
-<UL>
-	<LI><P STYLE="margin-bottom: 0cm">Costs to upgrade one unit 
-	</P>
-	<LI><P STYLE="margin-bottom: 0cm">Costs to upgrade all units on the
-	plot 
-	</P>
-	<LI><P>Costs to upgrade all of the player's units 
-	</P>
-</UL>
-<P>If one of the values exceeds your current budget, it is displayed
-in red, otherwise in green. The colors can be modified in the
-ini-file. Of course, those multi-upgrade only upgrades the units of
-the same unit type.</P>
-<P><FONT COLOR="#0000ff"><B>8.) Plot list promotion view</B></FONT></P>
-<P>This view (button with the &quot;star&quot; on it) is very similar
-to the upgrade view. It displays only units which can be promoted. If
-a stack view is active, above each unit its possible promotions are
-displayed. By pressing such a promotion button, the promotion is
-performed and the display is refreshed. This could result in that the
-unit disappears from list because there are no more promotions
-possible, or that new promotions are displayed if the experience
-points of the units does allow that. </P>
-<P>You can use the &quot;level&quot; in the unit info pane to check
-how much promotions are possible. (see chapter 2) </P>
-<P><FONT COLOR="#0000ff"><B>9.) Move highlighter</B></FONT></P>
-<P>When you hold down the alt-key, hover the mouse over a plot list
-button, the plots the unit can reach with its remaining movement
-points are highlighted.</P>
-<BR>
+<P CLASS="style1">Plot List Enhancement (PLE)</P>
+<P CLASS="style3">von 12Monkeys (für BUG angepasst von turlute, stark modifiziert von EmperorFool)</P>
+<br>
+<P CLASS="style1">Über Plot List Enhancement</P>
+<P>The motivation for this mod was born when I tried to fiddle a unit stack with a large number of units. It was a frustrating experience, due to the strange behavior of the plot list and some bothering bugs in <i>Civ4</i>. So I started this mod, which is a more or less complete reprogrammed plot list with a bunch of new features. Not all of the features may be used at one time, but I think everybody will find something he's looking for.</P>
+
+<P CLASS="style4">Enhanced Unit Buttons</P>
+<p>Each unit button provides you now with some additional information. This makes it easier to determine what status a single unit has, without selecting it first.</p>
+<ul>
+	<LI><FONT COLOR="#0000ff">Health Bar</FONT> (an horizontal bar placed over the unit icons) 
+		<ul><li>This bar indicates the remaining health points of the unit in percent; the default colors for 'Healthy' and 'Wounded' units are green and red, but they can be changed.</li></ul>
+	<LI><FONT COLOR="#0000ff">Movement Bar</FONT> (an horizontal bar placed over the unit icons, below the Health Bar) 
+		<ul><li>This bar indicates the remaining movement points of the unit in percent; the default colors for 'Available movement points' and 'Used movement points' portions of the bar are blue and yellow, 
+		but they can be changed; the default color for the bar of units which can't move is black.</li></ul>
+	<LI><FONT COLOR="#0000ff">Health &amp; Movement Indicator</FONT> (a dot or star placed in the upper-left corner of unit icons)
+		<ul>
+			<li>The color changes depending on how many movement points are left:</li>
+			<ul>
+				<li><b>Green</b> all movement points are available</li>
+				<li><b>Yellow</b> some movement points are available</li>
+				<li><b>Red</b> no movement points are available</li>
+				<li><b>Grey</b> all movement points are available but the unit is skipping turn;</li>
+			</ul>
+			<li>the spot is displayed in a darker color when the unit is wounded (this allows to clearly distinguish a wounded unit from an healthy one even when the Health Bar is almost full;</li>
+			<li>the dot becomes a star if the unit is led by a Great General.</li>
+		</ul> 
+	<LI><FONT COLOR="#0000ff">Mission Indicator</FONT> (an icon placed in the lower-right corner of unit icons) 
+		<ul>
+			<li>the background color shows the mission or action group:</li>
+			<ul>
+				<li><b>yellow</b> the unit is performing a defensive mission</li>
+				<li><b>red</b> the unit is performing an offensive mission</li>
+				<li><b>light blue</b> the unit is moving</li>
+				<li><b>white</b> the unit is performing a stationary action</li>
+				<li><b>green</b> the unit is performing an automation activity</li>
+			</ul>
+			<li>the icon shows the specific mission:</li>
+			<ul>
+				<li><b>Shield (yellow background)</b> unit is Fortified (defensive)</li>
+				<li><b>Binoculars (yellow background)</b> unit is in Sentry Mode (defensive)</li>
+				<li><b>Anchor (yellow background)</b> sea unit is in Patrol Mode (defensive)</li>
+				<li><b>Plane (yellow background)</b> air unit is in Intercept Mode (defensive)</li>
+				<li><b>Gold (red background)</b> sea unit is in Blockade Mode (offensive)</li>
+				<li><b>Foot (light blue background)</b> unit has a 'go to' command (movement)</li>
+				<li><b>Compass (light blue background)</b> unit is in Exploring Mode (movement)</li>
+				<li><b>Red cross (white background)</b> unit is in Healing Mode (stationary)</li>
+				<li><b>Hourglass (white background)</b> unit is skipping current turn (stationary)</li>
+				<li><b>Zzz (white background)</b> unit is in Sleep Mode (stationary)</li>
+				<li><b>Hammer (green background)</b> worker is automated (automation)</li>
+				<li><b>City skyline (green background)</b>  worker is automated around city (automation)</li>
+				<li><b>Trade symbol (green background)</b> worker is automated to build a trade network (automation)</li>
+			</ul>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Promotion Indicator</FONT> (a light blue frame around unit icons) 
+		<ul><li>It shows that the unit can be promoted.</li></ul>
+	<LI><FONT COLOR="#0000ff">Upgrade Indicator</FONT> (an orange up-arrow in the lower-left corner of unit icons) 
+		<ul><li>It shows that the unit can be upgraded; it is displayed regardless whether the player has the money for the upgrade or not.</li></ul>
+</ul>
+
+<P CLASS="style4">Unit Mouseover Changes</P>
+<p>When you move the mouse over any unit button in the plot list, an info pane is displayed on the left side of the screen; this Info pane has been been modified.</p>
+<ul>
+	<LI><FONT COLOR="#0000ff">Strength %amp; Turns-To-Heal</FONT>  
+		<ul>
+			<li>The current unit strength is displayed as a floating value with 1 decimal.</li>
+			<li> In case the unit is wounded a third value is displayed in brackets: this number indicates the number of rounds the units need to heal completely under the current circumstances; this circumstances takes consideration of the territory the unit is on, city buildings (like Hospital), the unit's promotion (Medic, or any other self-heal ability) and the promotions of units on the same or adjacent tiles.</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Remaining Movement Points</FONT>  
+		<ul><li>The remaining movement points of the unit are displayed as a floating value with 1 decimal.</li></ul>
+	<LI><FONT COLOR="#0000ff">Experience</FONT>  
+		<ul><li>The unit's experience points are displayed in the following format: &lt;curr-exp&gt;/&lt;needed-exp&gt;, where &lt;curr-exp&gt; is the units current experience points and &lt;needed-exp&gt; is the units needed experience points to get the next higher level; both values are only displayed if the unit has an experience value &gt; 0.</li></ul>
+	<LI><FONT COLOR="#0000ff">Level</FONT>  
+		<ul><li>The unit's level is displayed in the following format: &lt;curr-lev&gt;/&lt;possible-lev&gt;, where &lt;curr-lev&gt; is the unit's actual level and &lt;possible-lev&gt; is the level the unit could have due to its experience points (in other words, the first value shows the number of promotions the unit already has, the second value shows the number of promotion the unit could have); both values are displayed as soon as one of the values is &gt; 0.</li></ul>
+	<LI><FONT COLOR="#0000ff">Special Abilities</FONT>  
+		<ul><li>The special abilities a unit gains due to a promotion are displayed in a different color than the specials it gains due to its unit type (the default color are light gray and white, but they can be modified).</li></ul>
+</ul>
+
+<P CLASS="style4">Plot List Selection</P>
+<p>The selection in the plot list has also been improved by eliminating some bugs of the <i>Civ4</i> standard version:
+<ul>
+	<li>when selecting a unit on the very right the plot list is rebuilt so that the selected unit is at position 10 in the plot list: <b>fixed</b>;</li> 
+	<li>under some special circumstances the scroll arrows did disappear: <b>fixed</b>;</li>
+	<li>when selecting a unit with Alt-key pressed, all units should be selected, but because it is not possible to put units with different domain type into one group, always the first domain in the plot list is selected: <b>fixed</b> (all units with the same domain type as the selected unit will now be put together into a group).</li>
+</ul></p>
+<p>The rest of the selection method is pretty much the same as before:
+<ul>
+	<LI><FONT COLOR="#0000ff">Selection Keys</FONT> (keys that can be used to select unit icons)
+			<ul>
+				<li><b>Shift</b> to add a single unit or a group to the selected group</li>
+				<li><b>Ctrl</b> to select all units of the same type</li>
+				<li><b>Alt</b> to select all units of the same domain</li>
+			</ul>
+</ul></p>
+
+<P CLASS="style4">Plot List Display Modes</P>
+<p>To improve the display of a large amount of units on one plot, some display modes have been added; each time you click on the first button on the left (the one with blue dots) it switches to a different view.</p>
+<ul>
+	<LI><FONT COLOR="#0000ff">Single-Line Mode</FONT> (standard mode for <i>Civ4</i>)  
+		<ul><li>The units are displayed in one vertical line (with scroll buttons, if needed, on the right side).</li></ul>
+	<LI><FONT COLOR="#0000ff">Multi-Line Mode</FONT> (standard mode for <i>Civ4:BtS</i>)  
+		<ul><li>The  units are displayed in several lines, starting from the lower left corner; no scroll buttons are needed, except you have so much units on one plot that the screen height is not enough to display them: in this unusual case, vertical scroll buttons are displayed.</li></ul>
+	<LI><FONT COLOR="#0000ff">Vertical Stacks Mode</FONT> (new) 
+		<ul><li>The units are displayed in vertical stacks, dependent on the grouping mode: in the 'unit type' grouping mode, units of the same type are displayed in a vertical stack, while in the 'selection group' grouping mode selection groups are displayed in a vertical stack.</li></ul>
+	<LI><FONT COLOR="#0000ff">Horizontal Stacks Mode</FONT> (new) 
+		<ul><li>The units are displayed in horizontal stacks, dependent on the grouping mode: in the 'unit type' grouping mode, units of the same type are displayed in a horizontal stack, while in the 'selection group' grouping mode selection groups are displayed in a horizontal stack.</li></ul>
+</ul>
+
+<P CLASS="style4">Plot List Grouping Modes</P>
+<p>There are two grouping modes implemented; each time you click on the second button on the left (the one with blue shapes) it toggles between them. The grouping modes have influence on the order the units are displayed (if a standard (Single-Line or Multi-Line) display mode is selected) or also on what is displayed in a stack (if a stack display mode (Vertical Stacks or Horizontal Stacks) is selected.</p>
+<ul>
+	<LI><FONT COLOR="#0000ff">Unit Type Grouping</FONT> (overlapping squares)  
+		<ul>
+			<li>In standard (Single-Line or Multi-Line) display modes, the unit icons are sorted according to the following criteria (decreasing priority): 
+			<ul>
+				<li><b>Player</b> player units first, then all other players units (in the order of their Player Id)</li>
+				<li><b>Domain</b> Sea Units first, then Air Units, Land Units last</li>
+				<li><b>Combat Strength</b> strongest units first</li>
+				<li><b>Unit Type</b> units are ordered (descending) by Unit Type Id</li>
+				<li><b>Unit Level</b> units are ordered (descending) by Unit Level</li>
+				<li><b>Unit Experience</b> units are ordered (descending) by Unit Experience</li>
+				<li><b>Unit ID</b> units are ordered (ascending) by Unit ID (this is just added to get a reproducible sorting in case anything else isn't unique)</li> 		
+			</ul>
+			There is one exception for the cargoed units (this is as in <i>Civ4</i> standard): as soon as a unit is cargo of another unit, the cargo unit is always displayed behind its transporting unit (within the cargo units, the sorting order is as mentioned above).</li>
+			<li>In stack (Vertical Stacks or Horizontal Stacks) display modes, the units of the same Unit Type are put into the same stack; the stack sorting order follows the above criteria.<br>
+			There is one exception for the cargoed units: cargo units are displayed together with their transport unit in the same stack, where the cargoed units are on top of their transport unit.</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Selection Group Grouping</FONT> (square and triangle)  
+		<ul>
+			<li>In standard (Single-Line or Multi-Line) display modes, the unit icons are sorted according to the following criteria (decreasing priority): 
+			<ul>
+				<li><b>Player</b> player units first, then all other players units (in the order of their Player Id)</li>
+				<li><b>Domain</b> Sea Units first, then Air Units, Land Units last</li>
+				<li><b>Selection Group</b> units are ordered (ascending) by Selection Group ID</li>
+				<li><b>Combat Strength</b> strongest units first</li>
+				<li><b>Unit Type</b> units are ordered (descending) by Unit Type Id</li>
+				<li><b>Unit Level</b> units are ordered (descending) by Unit Level</li>
+				<li><b>Unit Experience</b> units are ordered (descending) by Unit Experience</li>
+				<li><b>Unit ID</b> units are ordered (ascending) by Unit ID</li> 		
+			</ul>
+			There is one exception for the sorting: cargoed units (this is as in <i>Civ4</i> standard): as soon as a unit is cargo of another unit, the cargo unit is always displayed behind its transporting unit (within the cargo units, the sorting order is as mentioned above).</li>
+			<li>In stack (Vertical Stacks or Horizontal Stacks) display modes, the units of the same Selection Group are put into the same stack; the stack sorting order follows the above criteria.</li>
+		</ul>
+</ul>
+
+<P CLASS="style4">Unit Filters</P>
+<p>There are several unit filters added; they can be toggled with the corresponding buttons (when a filter is active, its button has a yellow ring; by default all filters are inactive).<br>
+You can activate different filters together, but only if they are in different filter groups (filters inside the same filter group are mutually exclusive): only the units meeting all the requisites will be displayed.<br>  
+There is also a button to remove all the filters (the one with the ban sign, the fifth on the left).</p>
+<ul>
+	<LI><FONT COLOR="#0000ff">Movement Filters</FONT>   
+		<ul>
+			<li><b>White Foot</b> selects only Units that can move</li>
+			<li><b>Red Foot</b> selects only Units that can't move</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Health Filters</FONT>   
+		<ul>
+			<li><b>Green Cross</b> selects only Healthy Units</li>
+			<li><b>Red Cross</b> selects only Wounded Units</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Domain Filters</FONT>   
+		<ul>
+			<li><b>Tank</b> selects only Land Units</li>
+			<li><b>Anchor</b> selects only Sea Units</li>
+			<li><b>Plane</b> selects only Air Units</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Unit Type Filter</FONT>   
+		<ul>
+			<li><b>Crossed Swords</b> selects only Combat Units</li>
+			<li><b>Peace Symbol</b> selects only Domestic Units</li>
+		</ul>
+	<LI><FONT COLOR="#0000ff">Owner Filter</FONT>   
+		<ul>
+			<li><b>Green Flag</b> selects only Player Units</li>
+			<li><b>Red Flag</b> selects only Foreign Units</li>
+		</ul>
+</ul>
+
+<P CLASS="style4">Promotion Mode and Upgrade Mode</P>
+<p>Two special display and filter modes have also been introduced: Promotion Mode (third button on the left, with a white star) and Upgrade Mode (forth button on the left, with an orange up-arrow). These modes are alternative each other and alternative to the standard mode, so their buttons and the grouping button  
+(second button on the left, with blue shapes) are mutually exclusive.<br>
+<ul>
+<li>If a <u>standard (Single-Line or Multi-Line) display mode</u> is in place, these buttons simply act as filters, showing only the units that can be promoted or upgraded (respectively).<br>
+Note that if some other filter is active, it will remain so even after selecting the Promotion or Upgrade Mode, so only the units that meet all the requirements (that is, the filter(s) requirement(s) and the mode requirement) will be shown; also note that the 'remove filters' button (the fifth on the left, with the ban sign) has no effect on the Promotion or Upgrade Mode.</li>
+<li>If a <u>stack (Vertical Stacks or Horizontal Stacks) display mode</u> is in place, these buttons don't only act as filters (showing only the units that can be respectively promoted or upgraded), but they also generate a stack for each unit, where the unit icon itself is followed (on the right or on the top) by special icons showing available promotions or upgrades.
+<ul>
+	<li>In the <b>Promotion Mode</b>, the additional icons show the available promotions for the unit. By pressing one of these promotion buttons, the unit get that promotion and the display is refreshed. This could result in that the unit disappears from list because there are no more promotions possible, or even that new promotions are displayed if the experience points of the units does allow that.</li>
+	<li>In the <b>Upgrade Mode</b>, the additional icons show the available upgrades for the unit. By pressing one of these upgrade buttons, the unit is upgraded to that type (if some or all of the upgrade buttons are disabled (that is, they are displayed, but you can't push them), it means that you don't have enough money to perform those upgrades). Usually that results in that the unit disappearing from the view, because in most cases only one upgrade is possible.<br> 
+	By moving the mouse over an upgrade button, a special info pane is displayed on the left side of the screen: it provides you with the unit type related info of the upgrade and with 3 values in brackets, separated by a slash, showing respectively cost to upgrade that specific unit (you can do it simply by clicking on the upgrade icon), cost to upgrade all player's units of that type on the plot (you can do it by clicking on the upgrade icon while pressing the Alt-key) and cost to upgrade all of the player's units of that type wherever they are (you can do it by clicking on the upgrade icon while pressing the Ctrl-key). If one of the values exceeds your current budget, it is displayed in red, otherwise in green (these colors can be modified); if you run out of money during those multi-upgrades, it simply stops doing it (as in normal <i>Civ4</i>).</li>
+</ul>
+In this case also, if some other filter is active, it will remain so even after selecting the Promotion or Upgrade Mode, and the 'remove filters' button has no effect on the Promotion or Upgrade Mode.</li>
+</ul>
+<P CLASS="style4">Move Highlighter</P>
+<p>Finally, A Move Highlighter has been added.</p>
+<p>When you hold down the Alt-key, hover the mouse over a plot list button, the plots the unit can reach with its remaining movement points are highlighted with a white frame.</p>
+<br>
 <P CLASS="style1">Anleitung</P>
-<P>Alle Einstellungen für diese Mod können im Optionsbildschirm der <b>BUG Mod</b> unter &quot;Einheitenliste&quot; vorgenommen werden.</P>
-<BR>
+<P>Alle Einstellungen für diese Mod können im Optionsbildschirm der <b>BUG Mod</b> unter "<A HREF="../Options/PlotList.html">Einheitenliste</A>" vorgenommen werden.</P>
+<br>
 <P CLASS="style1">Credits</P>
-<P>Forum: <A HREF="http://forums.civfanatics.com/showthread.php?t=149572">http://forums.civfanatics.com/showthread.php?t=149572</A></P>
-<P>Autor: <FONT COLOR="#0000ff"><I><B>12Monkeys</B></I></FONT></P>
-<BR>
+<P>Forum: <A href="http://forums.civfanatics.com/showthread.php?t=149572" target="_blank">http://forums.civfanatics.com/showthread.php?t=149572</A></P>
+<P>Autor: <FONT COLOR="#0000ff"><I><B>12Monkeys</B></I></FONT>, <FONT COLOR="#0000ff"><I><B>EmperorFool</B></I></FONT></P>
+<br>
 <P CLASS="style1">Danksagungen des Autors</P>
 <P><FONT COLOR="#0000ff"><I><B>The Great Apple</B></I></FONT> and <FONT COLOR="#0000ff"><I><B>Belizan </B></I></FONT>, for the inital idea and motivation of the implemented Move Highlighter</P>
 <P><FONT COLOR="#0000ff"><I><B>Dr. Elmar Jiggle</B></I></FONT>, for the used INI Parser (modders: use it!)</P>
 <P><FONT COLOR="#0000ff"><I><B>Firaxis</B></I></FONT> and the <FONT COLOR="#0000ff"><I><B>Civ4-Team</B></I></FONT>, for making this game so moddable. Although I havn't played it since months, I still have a lot of fun to mod it. I never had so much fun with a game over such a long time.</P>
 <P><FONT COLOR="#0000ff"><I><B>Civ4 community at civfanatics, especially in the C&amp;D subforum</B></I></FONT>, for all the inspiration, help and ideas.</P>
-<BR>
-<P CLASS="style1">Anhang</P>
-<OL>
-	<OL>
-		<LI><P>The main problem of the complete mod was to modify the unit
-		selection in the plot list. The existing API function
-		CyInterface.selectUnit() and CyInterface.selectGroup() are quite a
-		mess. You have no chance to create a selection group without the
-		function CyInterface.selectGroup(). The problem with that is, that
-		this function doesn't have a any parameter for a unit. It directly
-		checks the existing units on the plot and takes it decisions, so
-		that you don't have any influence to it. Because I want that the
-		selection groups doesn't select any unit which is not displayed due
-		to one of the display filter, I had to make several crazy program
-		climbs (you can watch them in the selectGroup() function in the
-		PLEMainInterface.py). Main method to avoid those things is to
-		temporarily move away (with CyUnit.setXY()) those units I don't
-		want to be added to the group, create the group with
-		CyInterface.selectGroup() and then move back those &quot;parked&quot;
-		units. </P>
-		<P>Due to that changes it might be possible, that there are some
-		error in I haven't caught so far. Also, the behavior of the
-		complete selection functionality could be slightly different to
-		that you know. If you found any problems, just inform me, please. </P>
-	</OL>
-	<LI><P STYLE="margin-bottom: 0cm"> 
-	</P>
-	<OL>
-		<LI><P>The grouping is done by unit type. That means that the units
-		are sorted in the following order : 
-		</P>
-	</OL>
-</OL>
-<OL START=2>
-	<UL>
-		<UL>
-			<LI><P STYLE="margin-bottom: 0cm">Player: player units, then all
-			other players in the order of their player id. 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Domain: sea, air, land 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Combat strength (strongest
-			first) 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit type: order by unit type
-			id, descending 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit level: descending 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit experience: descending 
-			</P>
-			<LI><P>Unit ID: ascending - this is just added to get a
-			reproducible sorting in case anything else isn't unique</P>
-		</UL>
-	</UL>
-</OL>
-<P>ATTENTION : <BR>There is one exception for the sorting:
-cargoed units. As soon as a unit is cargo of another unit, the cargo
-unit is always displayed BEHIND its transporting unit. Within the
-cargo units, the sorting is as mentioned above. This is as in Civ4
-standard, but has some effects to the stacked views modes: cargo
-units are displayed together with their transport unit in the same
-stack, where the cargo units are on top off their transport unit. 
-</P>
-<OL START=2>
-	<OL START=2>
-		<LI><P STYLE="margin-bottom: 0cm">The above grouping is slightly
-		changed : 
-		</P>
-		<UL>
-			<LI><P STYLE="margin-bottom: 0cm">Player: player units first, then
-			all other players in the order of their player id 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Domain: sea, air, land 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Selection group: ascending order
-			by their internal group id. 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Combat strength: (strongest
-			first) 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit type: by unit type id,
-			descending 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit level: descending. 
-			</P>
-			<LI><P STYLE="margin-bottom: 0cm">Unit experience: descending 
-			</P>
-			<LI><P>Unit ID: ascending. This is just added to get a
-			reproducible sorting in case anything else isn't unique. 
-			</P>
-		</UL>
-	</OL>
-</OL>
-<P>Again, cargo units are displayed together with their transport
-units. This view is ideal to create complex selection groups. </P>
-<P>Tip : try the &quot;Group&quot; grouping and create selection
-group by selecting single units holding the shift key down. Looks
-funny ;) </P>
-<BR>
+<P><FONT COLOR="#0000ff"><I><B>Turlute </B></I></FONT>, for adapting this mod for its inclusion in the <b>BUG Mod</b>.</P>
+<br>
 </BODY>
 </HTML>
