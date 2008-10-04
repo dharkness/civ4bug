@@ -526,11 +526,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_PLUNDER</Tag>
-		<English>Plunder</English>
-		<French>Plunder</French>
-		<German>Plunder</German>
-		<Italian>Plunder</Italian>
-		<Spanish>Plunder</Spanish>
+		<English>Blockade</English>
+		<French>Blockade</French>
+		<German>Blockade</German>
+		<Italian>Blockade</Italian>
+		<Spanish>Blockade</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_BUILD</Tag>
