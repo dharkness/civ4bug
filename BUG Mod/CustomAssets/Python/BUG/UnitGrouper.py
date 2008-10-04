@@ -8,6 +8,7 @@
 
 from CvPythonExtensions import *
 import BugUtil
+import UnitUtil
 
 # globals
 gc = CyGlobalContext()
@@ -230,6 +231,60 @@ class LocationGrouping(Grouping):
 				else:
 					return (self.FRIENDLY_TERRITORY,)
 
+class OrderGrouping(Grouping):
+	"""
+	Groups units by their current order/action.
+	Ex: Fortify, Go To, Blockade
+	"""
+	def __init__(self):
+		Grouping.__init__(self, "order", "TXT_KEY_UNIT_GROUPER_ORDER_GROUPING")
+		(
+			self.ORDER_NONE,
+			self.ORDER_SKIP,
+			self.ORDER_SLEEP,
+			self.ORDER_FORTIFY,
+			self.ORDER_HEAL,
+			self.ORDER_SENTRY,
+			self.ORDER_INTERCEPT,
+			self.ORDER_PATROL,
+			self.ORDER_PLUNDER,
+			self.ORDER_BUILD,
+			self.ORDER_CONSTRUCT,
+			self.ORDER_GOTO,
+			self.ORDER_EXPLORE,
+			self.ORDER_AUTO_BUILD,
+			self.ORDER_AUTO_NETWORK,
+			self.ORDER_AUTO_CITY,
+			self.ORDER_AUTO_RELIGION,
+			self.ORDER_OTHER,
+		) = range(18)
+		
+		self._addGroup(Group(self, self.ORDER_NONE, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_NONE"))
+		self._addGroup(Group(self, self.ORDER_SKIP, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SKIP"))
+		self._addGroup(Group(self, self.ORDER_SLEEP, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SLEEP"))
+		self._addGroup(Group(self, self.ORDER_FORTIFY, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_FORTIFY"))
+		self._addGroup(Group(self, self.ORDER_HEAL, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_HEAL"))
+		self._addGroup(Group(self, self.ORDER_SENTRY, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SENTRY"))
+		self._addGroup(Group(self, self.ORDER_INTERCEPT, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_INTERCEPT"))
+		self._addGroup(Group(self, self.ORDER_PATROL, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_PATROL"))
+		self._addGroup(Group(self, self.ORDER_PLUNDER, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_PLUNDER"))
+		self._addGroup(Group(self, self.ORDER_BUILD, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_BUILD"))
+		self._addGroup(Group(self, self.ORDER_CONSTRUCT, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_CONSTRUCT"))
+		self._addGroup(Group(self, self.ORDER_GOTO, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_GOTO"))
+		self._addGroup(Group(self, self.ORDER_EXPLORE, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_EXPLORE"))
+		self._addGroup(Group(self, self.ORDER_AUTO_BUILD, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_BUILD"))
+		self._addGroup(Group(self, self.ORDER_AUTO_NETWORK, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_NETWORK"))
+		self._addGroup(Group(self, self.ORDER_AUTO_CITY, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_CITY"))
+		self._addGroup(Group(self, self.ORDER_AUTO_RELIGION, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_RELIGION"))
+		self._addGroup(Group(self, self.ORDER_OTHER, "TXT_KEY_UNIT_GROUPER_ORDER_GROUP_OTHER"))
+	
+	def calcGroupKeys(self, unit, player, team):
+		eOrder = UnitUtil.getOrder(unit)
+		if eOrder >= self.ORDER_OTHER:
+			return (self.ORDER_OTHER,)
+		else:
+			return (eOrder,)
+
 class StandardGrouper(Grouper):
 	def __init__(self):
 		Grouper.__init__(self)
@@ -239,6 +294,7 @@ class StandardGrouper(Grouper):
 		self._addGrouping(LevelGrouping())
 		self._addGrouping(PromotionGrouping())
 		self._addGrouping(LocationGrouping())
+		self._addGrouping(OrderGrouping())
 
 
 # Classes for tracking stats about groups and units
