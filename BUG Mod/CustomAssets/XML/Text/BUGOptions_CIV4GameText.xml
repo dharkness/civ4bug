@@ -1155,7 +1155,7 @@
 		<English>Trade/Demands</English>
 		<French>Trade/Demands</French>
 		<German>Trade/Demands</German>
-		<Italian>Trade/Demands</Italian>
+		<Italian>Commercio</Italian>
 		<Spanish>Trade/Demands</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1163,7 +1163,7 @@
 		<English>When checked, will log all AI-initiated trade offers and demands along with your responses.</English>
 		<French>When checked, will log all AI-initiated trade offers and demands along with your responses.</French>
 		<German>When checked, will log all AI-initiated trade offers and demands along with your responses.</German>
-		<Italian>When checked, will log all AI-initiated trade offers and demands along with your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra tutte le offerte e le richieste commerciali delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log all AI-initiated trade offers and demands along with your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1171,7 +1171,7 @@
 		<English>Trade Offers</English>
 		<French>Trade Offers</French>
 		<German>Trade Offers</German>
-		<Italian>Trade Offers</Italian>
+		<Italian>Offerte commericali</Italian>
 		<Spanish>Trade Offers</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1179,7 +1179,7 @@
 		<English>When checked, will log AI-initiated trades and gift offers and your responses.</English>
 		<French>When checked, will log AI-initiated trades and gift offers and your responses.</French>
 		<German>When checked, will log AI-initiated trades and gift offers and your responses.</German>
-		<Italian>When checked, will log AI-initiated trades and gift offers and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le offerte commerciali ed i doni delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI-initiated trades and gift offers and your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1187,7 +1187,7 @@
 		<English>Tribute/Help</English>
 		<French>Tribute/Help</French>
 		<German>Tribute/Help</German>
-		<Italian>Tribute/Help</Italian>
+		<Italian>Richieste di tributi</Italian>
 		<Spanish>Tribute/Help</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1195,7 +1195,7 @@
 		<English>When checked, will log AI demands for tribute or help and your responses.</English>
 		<French>When checked, will log AI demands for tribute or help and your responses.</French>
 		<German>When checked, will log AI demands for tribute or help and your responses.</German>
-		<Italian>When checked, will log AI demands for tribute or help and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di tributi o d'aiuto delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands for tribute or help and your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1203,7 +1203,7 @@
 		<English>Change Religion</English>
 		<French>Change Religion</French>
 		<German>Change Religion</German>
-		<Italian>Change Religion</Italian>
+		<Italian>Conversioni religiose</Italian>
 		<Spanish>Change Religion</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1211,7 +1211,7 @@
 		<English>When checked, will log AI demands that you change religion and your responses.</English>
 		<French>When checked, will log AI demands that you change religion and your responses.</French>
 		<German>When checked, will log AI demands that you change religion and your responses.</German>
-		<Italian>When checked, will log AI demands that you change religion and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di conversione religiosa delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands that you change religion and your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1219,7 +1219,7 @@
 		<English>Change Civics</English>
 		<French>Change Civics</French>
 		<German>Change Civics</German>
-		<Italian>Change Civics</Italian>
+		<Italian>Cambi di governo</Italian>
 		<Spanish>Change Civics</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1227,7 +1227,7 @@
 		<English>When checked, will log AI demands that you change civics and your responses.</English>
 		<French>When checked, will log AI demands that you change civics and your responses.</French>
 		<German>When checked, will log AI demands that you change civics and your responses.</German>
-		<Italian>When checked, will log AI demands that you change civics and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di cambio di forme di governo delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands that you change civics and your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1235,7 +1235,7 @@
 		<English>Declare War</English>
 		<French>Declare War</French>
 		<German>Declare War</German>
-		<Italian>Declare War</Italian>
+		<Italian>Dichiarazioni di guerra</Italian>
 		<Spanish>Declare War</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1243,7 +1243,7 @@
 		<English>When checked, will log AI requests to declare war on a third party and your responses.</English>
 		<French>When checked, will log AI requests to declare war on a third party and your responses.</French>
 		<German>When checked, will log AI requests to declare war on a third party and your responses.</German>
-		<Italian>When checked, will log AI requests to declare war on a third party and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di dichiarazione di guerra delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI requests to declare war on a third party and your responses.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1251,7 +1251,7 @@
 		<English>Stop Trading</English>
 		<French>Stop Trading</French>
 		<German>Stop Trading</German>
-		<Italian>Stop Trading</Italian>
+		<Italian>Embargo commerciale</Italian>
 		<Spanish>Stop Trading</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1259,7 +1259,7 @@
 		<English>When checked, will log AI requests to stop trading with a third party and your responses.</English>
 		<French>When checked, will log AI requests to stop trading with a third party and your responses.</French>
 		<German>When checked, will log AI requests to stop trading with a third party and your responses.</German>
-		<Italian>When checked, will log AI requests to stop trading with a third party and your responses.</Italian>
+		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di embargo commerciale delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI requests to stop trading with a third party and your responses.</Spanish>
 	</TEXT>
 	<!-- City Screen -->
@@ -3740,7 +3740,7 @@
 		<English>Trade and Demands:</English>
 		<French>Trade and Demands:</French>
 		<German>Trade and Demands:</German>
-		<Italian>Trade and Demands:</Italian>
+		<Italian>Commercio:</Italian>
 		<Spanish>Trade and Demands:</Spanish>
 	</TEXT>
 	<!-- Unit Naming Tab -->

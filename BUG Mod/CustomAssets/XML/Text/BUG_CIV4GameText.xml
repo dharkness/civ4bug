@@ -457,7 +457,7 @@
 		<English>Orders</English>
 		<French>Orders</French>
 		<German>Orders</German>
-		<Italian>Orders</Italian>
+		<Italian>Ordini</Italian>
 		<Spanish>Orders</Spanish>
 	</TEXT>
 	<TEXT>
@@ -465,7 +465,7 @@
 		<English>None</English>
 		<French>None</French>
 		<German>None</German>
-		<Italian>None</Italian>
+		<Italian>Nessuno</Italian>
 		<Spanish>None</Spanish>
 	</TEXT>
 	<TEXT>
@@ -473,7 +473,7 @@
 		<English>Skip</English>
 		<French>Skip</French>
 		<German>Skip</German>
-		<Italian>Skip</Italian>
+		<Italian>Passa</Italian>
 		<Spanish>Skip</Spanish>
 	</TEXT>
 	<TEXT>
@@ -481,7 +481,7 @@
 		<English>Sleep</English>
 		<French>Sleep</French>
 		<German>Sleep</German>
-		<Italian>Sleep</Italian>
+		<Italian>A riposo</Italian>
 		<Spanish>Sleep</Spanish>
 	</TEXT>
 	<TEXT>
@@ -489,7 +489,7 @@
 		<English>Fortify</English>
 		<French>Fortify</French>
 		<German>Fortify</German>
-		<Italian>Fortify</Italian>
+		<Italian>Fortificarsi</Italian>
 		<Spanish>Fortify</Spanish>
 	</TEXT>
 	<TEXT>
@@ -497,7 +497,7 @@
 		<English>Heal</English>
 		<French>Heal</French>
 		<German>Heal</German>
-		<Italian>Heal</Italian>
+		<Italian>Curarsi</Italian>
 		<Spanish>Heal</Spanish>
 	</TEXT>
 	<TEXT>
@@ -505,7 +505,7 @@
 		<English>Sentry</English>
 		<French>Sentry</French>
 		<German>Sentry</German>
-		<Italian>Sentry</Italian>
+		<Italian>Sentinella</Italian>
 		<Spanish>Sentry</Spanish>
 	</TEXT>
 	<TEXT>
@@ -513,7 +513,7 @@
 		<English>Intercept</English>
 		<French>Intercept</French>
 		<German>Intercept</German>
-		<Italian>Intercept</Italian>
+		<Italian>Intercettare</Italian>
 		<Spanish>Intercept</Spanish>
 	</TEXT>
 	<TEXT>
@@ -521,7 +521,7 @@
 		<English>Patrol</English>
 		<French>Patrol</French>
 		<German>Patrol</German>
-		<Italian>Patrol</Italian>
+		<Italian>Pattugliare</Italian>
 		<Spanish>Patrol</Spanish>
 	</TEXT>
 	<TEXT>
@@ -529,7 +529,7 @@
 		<English>Blockade</English>
 		<French>Blockade</French>
 		<German>Blockade</German>
-		<Italian>Blockade</Italian>
+		<Italian>Embargo</Italian>
 		<Spanish>Blockade</Spanish>
 	</TEXT>
 	<TEXT>
@@ -537,7 +537,7 @@
 		<English>Build Improvement</English>
 		<French>Build Improvement</French>
 		<German>Build Improvement</German>
-		<Italian>Build Improvement</Italian>
+		<Italian>Costruire miglioramenti</Italian>
 		<Spanish>Build Improvement</Spanish>
 	</TEXT>
 	<TEXT>
@@ -545,7 +545,7 @@
 		<English>Construct Building</English>
 		<French>Construct Building</French>
 		<German>Construct Building</German>
-		<Italian>Construct Building</Italian>
+		<Italian>Edificare</Italian>
 		<Spanish>Construct Building</Spanish>
 	</TEXT>
 	<TEXT>
@@ -553,7 +553,7 @@
 		<English>Go To</English>
 		<French>Go To</French>
 		<German>Go To</German>
-		<Italian>Go To</Italian>
+		<Italian>Andare</Italian>
 		<Spanish>Go To</Spanish>
 	</TEXT>
 	<TEXT>
@@ -561,7 +561,7 @@
 		<English>Explore</English>
 		<French>Explore</French>
 		<German>Explore</German>
-		<Italian>Explore</Italian>
+		<Italian>Esplorare</Italian>
 		<Spanish>Explore</Spanish>
 	</TEXT>
 	<TEXT>
@@ -569,7 +569,7 @@
 		<English>Auto Build Improvements</English>
 		<French>Auto Build Improvements</French>
 		<German>Auto Build Improvements</German>
-		<Italian>Auto Build Improvements</Italian>
+		<Italian>Miglioramenti automatici</Italian>
 		<Spanish>Auto Build Improvements</Spanish>
 	</TEXT>
 	<TEXT>
@@ -577,7 +577,7 @@
 		<English>Auto Trade Network</English>
 		<French>Auto Trade Network</French>
 		<German>Auto Trade Network</German>
-		<Italian>Auto Trade Network</Italian>
+		<Italian>Rete stradale automatica</Italian>
 		<Spanish>Auto Trade Network</Spanish>
 	</TEXT>
 	<TEXT>
@@ -585,7 +585,7 @@
 		<English>Auto Improve City</English>
 		<French>Auto Improve City</French>
 		<German>Auto Improve City</German>
-		<Italian>Auto Improve City</Italian>
+		<Italian>Miglioramenti cittadini automatici</Italian>
 		<Spanish>Auto Improve City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -593,7 +593,7 @@
 		<English>Spread Relgion/Corporation</English>
 		<French>Spread Relgion/Corporation</French>
 		<German>Spread Relgion/Corporation</German>
-		<Italian>Spread Relgion/Corporation</Italian>
+		<Italian>Diffondere religioni/corporazioni</Italian>
 		<Spanish>Spread Relgion/Corporation</Spanish>
 	</TEXT>
 	<TEXT>
@@ -601,7 +601,7 @@
 		<English>Other</English>
 		<French>Other</French>
 		<German>Other</German>
-		<Italian>Other</Italian>
+		<Italian>Altri</Italian>
 		<Spanish>Other</Spanish>
 	</TEXT>
 	
