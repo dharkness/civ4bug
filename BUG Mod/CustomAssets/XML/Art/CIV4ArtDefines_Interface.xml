@@ -1547,7 +1547,16 @@
 			<Path>Art/PlotListEnhancements/medallion_fortify_injured_GG.dds</Path>
 		</InterfaceArtInfo>
 
-<!-- BUG - PLE - end -->	
+<!-- BUG - PLE - end -->
+
+<!-- BUG - Tech Advisor - start -->
+
+		<InterfaceArtInfo>
+			<Type>DISCOVER_TECHNOLOGY_BUTTON</Type>
+			<Path>Art/Interface/Buttons/Actions/Discover.dds</Path>
+		</InterfaceArtInfo>
+
+<!-- BUG - Tech Advisor - end -->
 
 <!-- BUG - Sevopedia - start -->
 

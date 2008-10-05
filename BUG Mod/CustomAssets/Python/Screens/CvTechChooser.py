@@ -986,7 +986,7 @@ class CvTechChooser:
 			iIconSize = 48
 			iX = PREF_ICON_LEFT + 5 * PREF_ICON_SIZE / 4 - iIconSize / 2
 			iY = PREF_ICON_TOP - iIconSize - 40
-			screen.addDDSGFC( "GreatPersonHeading", gc.getActionInfo(515).getButton(), iX, iY, iIconSize, iIconSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.addDDSGFC( "GreatPersonHeading", ArtFileMgr.getInterfaceArtInfo("DISCOVER_TECHNOLOGY_BUTTON").getPath(), iX, iY, iIconSize, iIconSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 			for i, f in enumerate(FLAVORS):
 				# GP icon
