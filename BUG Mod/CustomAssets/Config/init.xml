@@ -152,7 +152,6 @@
 		<tab module="BugUnitNameOptionsTab"/>
 		
 		<tab module="BugSystemOptionsTab"/>
-		<tab module="BugConfigTrackerTab"/>
 		<tab module="BugCreditsOptionsTab"/>
 	</screen>
 </mod>

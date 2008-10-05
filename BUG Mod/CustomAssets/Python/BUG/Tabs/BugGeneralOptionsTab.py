@@ -22,22 +22,21 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 
-		self.addLabel(screen, left, "MainInterface", "Main Interface:")
+		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
-		
-		self.addSpacer(screen, left, "MainInterface_Combat_Counter")
-		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
-		
-		self.addSpacer(screen, left, "MainInterface_CityArrows")
-		self.addCheckbox(screen, left, "MainInterface__CityArrows")
 		
 		self.addSpacer(screen, left, "MainInterface_TechWindow")
 		self.addLabel(screen, left, "TechWindow", "Tech Splash Screen:")
 		self.addTextDropdown(screen, left, left, "TechWindow__ViewType", True)
 		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
+		
+		self.addSpacer(screen, left, "Misc")
+		self.addLabel(screen, left, "Misc", "Misc:")		
+		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
+		self.addCheckbox(screen, left, "MainInterface__CityArrows")
 
-		self.addLabel(screen, right, "CityScreen", "City Screen:")
+		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
 		self.addCheckbox(screen, right, "CityScreen__RawYields")
 		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View", True)
 		
@@ -47,15 +46,9 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "CityScreen__Anger_Counter")
 		
 		self.addSpacer(screen, right, "CityScreen_Bottom")
+		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "CityScreen__CultureTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonInfo")
 		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)
 
-		screen.attachHSeparator(column, column + "Sep")
-		left, right = self.addTwoColumnLayout(screen, column, "Bottom", False)
-		self.addCheckbox(screen, left, "MainInterface__OptionsKey")
-		screen.setLayoutFlag(right, "LAYOUT_RIGHT")
-		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
-		self.addLabel(screen, right, "Version", 
-					  CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")

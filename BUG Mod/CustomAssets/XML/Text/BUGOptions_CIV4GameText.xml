@@ -1154,7 +1154,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEALL_TEXT</Tag>
 		<English>Trade/Demands</English>
 		<French>Trade/Demands</French>
-		<German>Trade/Demands</German>
+		<German>Handel / Tribut</German>
 		<Italian>Commercio</Italian>
 		<Spanish>Trade/Demands</Spanish>
 	</TEXT>
@@ -1162,7 +1162,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEALL_HOVER</Tag>
 		<English>When checked, will log all AI-initiated trade offers and demands along with your responses.</English>
 		<French>When checked, will log all AI-initiated trade offers and demands along with your responses.</French>
-		<German>When checked, will log all AI-initiated trade offers and demands along with your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen angeregte Handelsangebote und Tribute zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra tutte le offerte e le richieste commerciali delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log all AI-initiated trade offers and demands along with your responses.</Spanish>
 	</TEXT>
@@ -1170,7 +1170,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEOFFER_TEXT</Tag>
 		<English>Trade Offers</English>
 		<French>Trade Offers</French>
-		<German>Trade Offers</German>
+		<German>Handelsangebot</German>
 		<Italian>Offerte commericali</Italian>
 		<Spanish>Trade Offers</Spanish>
 	</TEXT>
@@ -1178,7 +1178,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEOFFER_HOVER</Tag>
 		<English>When checked, will log AI-initiated trades and gift offers and your responses.</English>
 		<French>When checked, will log AI-initiated trades and gift offers and your responses.</French>
-		<German>When checked, will log AI-initiated trades and gift offers and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen angeregte Handels- und Geschenkangebote zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le offerte commerciali ed i doni delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI-initiated trades and gift offers and your responses.</Spanish>
 	</TEXT>
@@ -1186,7 +1186,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRIBUTEDEMAND_TEXT</Tag>
 		<English>Tribute/Help</English>
 		<French>Tribute/Help</French>
-		<German>Tribute/Help</German>
+		<German>Tribut / Hilfe</German>
 		<Italian>Richieste di tributi</Italian>
 		<Spanish>Tribute/Help</Spanish>
 	</TEXT>
@@ -1194,7 +1194,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRIBUTEDEMAND_HOVER</Tag>
 		<English>When checked, will log AI demands for tribute or help and your responses.</English>
 		<French>When checked, will log AI demands for tribute or help and your responses.</French>
-		<German>When checked, will log AI demands for tribute or help and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen verlangte Tribute oder Hilfsleistungen zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di tributi o d'aiuto delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands for tribute or help and your responses.</Spanish>
 	</TEXT>
@@ -1202,7 +1202,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGRELIGIONDEMAND_TEXT</Tag>
 		<English>Change Religion</English>
 		<French>Change Religion</French>
-		<German>Change Religion</German>
+		<German>Religionswechsel</German>
 		<Italian>Conversioni religiose</Italian>
 		<Spanish>Change Religion</Spanish>
 	</TEXT>
@@ -1210,7 +1210,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGRELIGIONDEMAND_HOVER</Tag>
 		<English>When checked, will log AI demands that you change religion and your responses.</English>
 		<French>When checked, will log AI demands that you change religion and your responses.</French>
-		<German>When checked, will log AI demands that you change religion and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen verlangte Religionswechsel zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di conversione religiosa delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands that you change religion and your responses.</Spanish>
 	</TEXT>
@@ -1218,7 +1218,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCIVICDEMAND_TEXT</Tag>
 		<English>Change Civics</English>
 		<French>Change Civics</French>
-		<German>Change Civics</German>
+		<German>Staatsformwechsel</German>
 		<Italian>Cambi di governo</Italian>
 		<Spanish>Change Civics</Spanish>
 	</TEXT>
@@ -1226,7 +1226,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGCIVICDEMAND_HOVER</Tag>
 		<English>When checked, will log AI demands that you change civics and your responses.</English>
 		<French>When checked, will log AI demands that you change civics and your responses.</French>
-		<German>When checked, will log AI demands that you change civics and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen verlangte Staatsformwechsel zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di cambio di forme di governo delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI demands that you change civics and your responses.</Spanish>
 	</TEXT>
@@ -1234,7 +1234,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGWARDEMAND_TEXT</Tag>
 		<English>Declare War</English>
 		<French>Declare War</French>
-		<German>Declare War</German>
+		<German>Kriegserklärung</German>
 		<Italian>Dichiarazioni di guerra</Italian>
 		<Spanish>Declare War</Spanish>
 	</TEXT>
@@ -1242,7 +1242,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGWARDEMAND_HOVER</Tag>
 		<English>When checked, will log AI requests to declare war on a third party and your responses.</English>
 		<French>When checked, will log AI requests to declare war on a third party and your responses.</French>
-		<German>When checked, will log AI requests to declare war on a third party and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen verlangte Kriegserklärungen gegenüber einer dritten Partei zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di dichiarazione di guerra delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI requests to declare war on a third party and your responses.</Spanish>
 	</TEXT>
@@ -1250,7 +1250,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGEMBARGODEMAND_TEXT</Tag>
 		<English>Stop Trading</English>
 		<French>Stop Trading</French>
-		<German>Stop Trading</German>
+		<German>Handelsstopp</German>
 		<Italian>Embargo commerciale</Italian>
 		<Spanish>Stop Trading</Spanish>
 	</TEXT>
@@ -1258,7 +1258,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGEMBARGODEMAND_HOVER</Tag>
 		<English>When checked, will log AI requests to stop trading with a third party and your responses.</English>
 		<French>When checked, will log AI requests to stop trading with a third party and your responses.</French>
-		<German>When checked, will log AI requests to stop trading with a third party and your responses.</German>
+		<German>Protokolliert alle von anderen Zivilisationen verlangte Handelsstopps gegenüber einer dritten Partei zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di embargo commerciale delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI requests to stop trading with a third party and your responses.</Spanish>
 	</TEXT>
@@ -3403,11 +3403,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAININTERFACE</Tag>
-		<English>Main Interface:</English>
-		<French>Interface Centrale:</French>
-		<German>Hauptbildschirm:</German>
-		<Italian>Interfaccia principale:</Italian>
-		<Spanish>Main Interface:</Spanish>
+		<English>MAIN INTERFACE</English>
+		<French>INTERFACE CENTRALE</French>
+		<German>HAUPTBILDSCHIRM</German>
+		<Italian>INTERFACCIA PRINCIPALE</Italian>
+		<Spanish>MAIN INTERFACE</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
@@ -3419,11 +3419,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>
-		<English>City Screen:</English>
-		<French>Ecran de Ville:</French>
-		<German>Stadt-Bildschirm:</German>
-		<Italian>Schermata cittadina:</Italian>
-		<Spanish>City Screen:</Spanish>
+		<English>CITY SCREEN</English>
+		<French>ECRAN DE VILLE</French>
+		<German>STADT-BILDSCHIRM</German>
+		<Italian>SCHERMATA CITTADINA</Italian>
+		<Spanish>CITY SCREEN</Spanish>
+	</TEXT>
+		<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MISC</Tag>
+		<English>Miscellaneous:</English>
+		<French>Miscellaneous:</French>
+		<German>Sonstiges:</German>
+		<Italian>Miscellaneous:</Italian>
+		<Spanish>Miscellaneous:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_INIFILENOTFOUND</Tag>
@@ -3739,7 +3747,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_TRADE</Tag>
 		<English>Trade and Demands:</English>
 		<French>Trade and Demands:</French>
-		<German>Trade and Demands:</German>
+		<German>Handel / Tribut:</German>
 		<Italian>Commercio:</Italian>
 		<Spanish>Trade and Demands:</Spanish>
 	</TEXT>

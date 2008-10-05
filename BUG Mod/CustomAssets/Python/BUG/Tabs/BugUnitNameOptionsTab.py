@@ -25,7 +25,7 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "UnitNaming__Enabled")
 		self.addCheckbox(screen, right, "UnitNaming__UseAdvanced")
 
-		columnL, columnR = self.addTwoColumnLayout(screen, column, "Move_Bar_Column")
+		columnL, columnR = self.addTwoColumnLayout(screen, column, "UnitNaming")
 		self.addTextEdit(screen, columnL, columnR, "UnitNaming__Default")
 		self.addTextEdit(screen, columnL, columnR, "UnitNaming__Combat_AIR")
 		self.addTextEdit(screen, columnL, columnR, "UnitNaming__Combat_ARCHER")

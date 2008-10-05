@@ -456,7 +456,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUPING</Tag>
 		<English>Orders</English>
 		<French>Orders</French>
-		<German>Orders</German>
+		<German>Befehle</German>
 		<Italian>Ordini</Italian>
 		<Spanish>Orders</Spanish>
 	</TEXT>
@@ -464,7 +464,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_NONE</Tag>
 		<English>None</English>
 		<French>None</French>
-		<German>None</German>
+		<German>Keine</German>
 		<Italian>Nessuno</Italian>
 		<Spanish>None</Spanish>
 	</TEXT>
@@ -472,7 +472,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SKIP</Tag>
 		<English>Skip</English>
 		<French>Skip</French>
-		<German>Skip</German>
+		<German>Runde überspringen</German>
 		<Italian>Passa</Italian>
 		<Spanish>Skip</Spanish>
 	</TEXT>
@@ -480,7 +480,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SLEEP</Tag>
 		<English>Sleep</English>
 		<French>Sleep</French>
-		<German>Sleep</German>
+		<German>Ausruhen</German>
 		<Italian>A riposo</Italian>
 		<Spanish>Sleep</Spanish>
 	</TEXT>
@@ -488,7 +488,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_FORTIFY</Tag>
 		<English>Fortify</English>
 		<French>Fortify</French>
-		<German>Fortify</German>
+		<German>Verschanzen</German>
 		<Italian>Fortificarsi</Italian>
 		<Spanish>Fortify</Spanish>
 	</TEXT>
@@ -496,7 +496,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_HEAL</Tag>
 		<English>Heal</English>
 		<French>Heal</French>
-		<German>Heal</German>
+		<German>Heilen</German>
 		<Italian>Curarsi</Italian>
 		<Spanish>Heal</Spanish>
 	</TEXT>
@@ -504,7 +504,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_SENTRY</Tag>
 		<English>Sentry</English>
 		<French>Sentry</French>
-		<German>Sentry</German>
+		<German>Wache</German>
 		<Italian>Sentinella</Italian>
 		<Spanish>Sentry</Spanish>
 	</TEXT>
@@ -512,7 +512,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_INTERCEPT</Tag>
 		<English>Intercept</English>
 		<French>Intercept</French>
-		<German>Intercept</German>
+		<German>Abfangen</German>
 		<Italian>Intercettare</Italian>
 		<Spanish>Intercept</Spanish>
 	</TEXT>
@@ -520,7 +520,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_PATROL</Tag>
 		<English>Patrol</English>
 		<French>Patrol</French>
-		<German>Patrol</German>
+		<German>Patrouille</German>
 		<Italian>Pattugliare</Italian>
 		<Spanish>Patrol</Spanish>
 	</TEXT>
@@ -536,7 +536,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_BUILD</Tag>
 		<English>Build Improvement</English>
 		<French>Build Improvement</French>
-		<German>Build Improvement</German>
+		<German>Modernisierung errichten</German>
 		<Italian>Costruire miglioramenti</Italian>
 		<Spanish>Build Improvement</Spanish>
 	</TEXT>
@@ -544,7 +544,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_CONSTRUCT</Tag>
 		<English>Construct Building</English>
 		<French>Construct Building</French>
-		<German>Construct Building</German>
+		<German>Gebäude errichten</German>
 		<Italian>Edificare</Italian>
 		<Spanish>Construct Building</Spanish>
 	</TEXT>
@@ -552,7 +552,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_GOTO</Tag>
 		<English>Go To</English>
 		<French>Go To</French>
-		<German>Go To</German>
+		<German>Gehe zu</German>
 		<Italian>Andare</Italian>
 		<Spanish>Go To</Spanish>
 	</TEXT>
@@ -560,7 +560,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_EXPLORE</Tag>
 		<English>Explore</English>
 		<French>Explore</French>
-		<German>Explore</German>
+		<German>Erkunden</German>
 		<Italian>Esplorare</Italian>
 		<Spanish>Explore</Spanish>
 	</TEXT>
@@ -568,7 +568,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_BUILD</Tag>
 		<English>Auto Build Improvements</English>
 		<French>Auto Build Improvements</French>
-		<German>Auto Build Improvements</German>
+		<German>Modernisierungen errichten (automatisch)</German>
 		<Italian>Miglioramenti automatici</Italian>
 		<Spanish>Auto Build Improvements</Spanish>
 	</TEXT>
@@ -576,7 +576,7 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_NETWORK</Tag>
 		<English>Auto Trade Network</English>
 		<French>Auto Trade Network</French>
-		<German>Auto Trade Network</German>
+		<German>Handelsnetz errichten (automatisch)</German>
 		<Italian>Rete stradale automatica</Italian>
 		<Spanish>Auto Trade Network</Spanish>
 	</TEXT>
@@ -584,23 +584,23 @@
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_CITY</Tag>
 		<English>Auto Improve City</English>
 		<French>Auto Improve City</French>
-		<German>Auto Improve City</German>
+		<German>Nächste Stadt modernisieren (automatisch)</German>
 		<Italian>Miglioramenti cittadini automatici</Italian>
 		<Spanish>Auto Improve City</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_AUTO_RELIGION</Tag>
-		<English>Spread Relgion/Corporation</English>
-		<French>Spread Relgion/Corporation</French>
-		<German>Spread Relgion/Corporation</German>
+		<English>Spread Religion/Corporation</English>
+		<French>Spread Religion/Corporation</French>
+		<German>Religion/Kapitalgesellschaft verbreiten</German>
 		<Italian>Diffondere religioni/corporazioni</Italian>
-		<Spanish>Spread Relgion/Corporation</Spanish>
+		<Spanish>Spread Religion/Corporation</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_ORDER_GROUP_OTHER</Tag>
 		<English>Other</English>
 		<French>Other</French>
-		<German>Other</German>
+		<German>Andere</German>
 		<Italian>Altri</Italian>
 		<Spanish>Other</Spanish>
 	</TEXT>
