@@ -905,147 +905,67 @@
         <Spanish>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_DIPLO_GENERIC_ACCEPT</Tag>
+        <English>; %s1 agrees.</English>
+        <French>; %s1 agrees.</French>
+        <German>; %s1 agrees.</German>
+        <Italian>; %s1 agrees.</Italian>
+        <Spanish>; %s1 agrees.</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_DIPLO_GENERIC_REJECT</Tag>
+        <English>; %s1 REFUSES.</English>
+        <French>; %s1 REFUSES.</French>
+        <German>; %s1 REFUSES.</German>
+        <Italian>; %s1 REFUSES.</Italian>
+        <Spanish>; %s1 REFUSES.</Spanish>
+    </TEXT> 
+    <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_HELP_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) asks %s3 (%s4) for help (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) asks %s3 (%s4) for help (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) asks %s3 (%s4) for help (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) asks %s3 (%s4) for help (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) asks %s3 (%s4) for help (%s5)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_HELP_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to request of %s3 (%s4) for help (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) agrees to request of %s3 (%s4) for help (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) agrees to request of %s3 (%s4) for help (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to request of %s3 (%s4) for help (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to request of %s3 (%s4) for help (%s5)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_HELP_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) refuses request of %s3 (%s4) for help (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) refuses request of %s3 (%s4) for help (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) refuses request of %s3 (%s4) for help (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) refuses request of %s3 (%s4) for help (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) refuses request of %s3 (%s4) for help (%s5)</Spanish>
+        <English>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</English>
+        <French>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</French>
+        <German>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</German>
+        <Italian>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</Italian>
+        <Spanish>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_TRIBUTE_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) demands %s3 (%s4) give tribute (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) demands %s3 (%s4) give tribute (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) demands %s3 (%s4) give tribute (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) demands %s3 (%s4) give tribute (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) demands %s3 (%s4) give tribute (%s5)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_TRIBUTE_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to demand of %s3 (%s4) for tribute (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) agrees to demand of %s3 (%s4) for tribute (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) agrees to demand of %s3 (%s4) for tribute (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to demand of %s3 (%s4) for tribute (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to demand of %s3 (%s4) for tribute (%s5)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_TRIBUTE_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) rejects demand of %s3 (%s4) for tribute (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) rejects demand of %s3 (%s4) for tribute (%s5)</French>
-        <German>Diplomacy: %s1 (%s2) rejects demand of %s3 (%s4) for tribute (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects demand of %s3 (%s4) for tribute (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) rejects demand of %s3 (%s4) for tribute (%s5)</Spanish>
+        <English>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</English>
+        <French>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</French>
+        <German>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</German>
+        <Italian>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</Italian>
+        <Spanish>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_RELIGION_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) asks %s3 (%s4) to convert to %s5</English>
-        <French>Diplomacy: %s1 (%s2) asks %s3 (%s4) to convert to %s5</French>
-        <German>Diplomacy: %s1 (%s2) asks %s3 (%s4) to convert to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) asks %s3 (%s4) to convert to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) asks %s3 (%s4) to convert to %s5</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_RELIGION_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to convert to %s5</English>
-        <French>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to convert to %s5</French>
-        <German>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to convert to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to convert to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to convert to %s5</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_RELIGION_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to convert to %s5</English>
-        <French>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to convert to %s5</French>
-        <German>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to convert to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to convert to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to convert to %s5</Spanish>
+        <English>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</English>
+        <French>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</French>
+        <German>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</German>
+        <Italian>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</Italian>
+        <Spanish>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_CIVIC_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) asks %s3 (%s4) to switch to %s5</English>
-        <French>Diplomacy: %s1 (%s2) asks %s3 (%s4) to switch to %s5</French>
-        <German>Diplomacy: %s1 (%s2) asks %s3 (%s4) to switch to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) asks %s3 (%s4) to switch to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) asks %s3 (%s4) to switch to %s5</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_CIVIC_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to switch to %s5</English>
-        <French>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to switch to %s5</French>
-        <German>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to switch to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to switch to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to switch to %s5</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_CIVIC_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to switch to %s5</English>
-        <French>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to switch to %s5</French>
-        <German>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to switch to %s5</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to switch to %s5</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to switch to %s5</Spanish>
+        <English>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</English>
+        <French>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</French>
+        <German>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</German>
+        <Italian>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</Italian>
+        <Spanish>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_WAR_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_WAR_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to declare war on %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to declare war on %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to declare war on %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to declare war on %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to declare war on %s5 (%s6)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_WAR_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to declare war on %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to declare war on %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to declare war on %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to declare war on %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to declare war on %s5 (%s6)</Spanish>
+        <English>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</English>
+        <French>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</French>
+        <German>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</German>
+        <Italian>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Italian>
+        <Spanish>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_EMBARGO_DEMAND</Tag>
-        <English>Diplomacy: %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_EMBARGO_ACCEPT</Tag>
-        <English>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to stop trading with %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to stop trading with %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to stop trading with %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to stop trading with %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) agrees to request from %s3 (%s4) to stop trading with %s5 (%s6)</Spanish>
-    </TEXT> 
-    <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_DIPLO_EMBARGO_REJECT</Tag>
-        <English>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to stop trading with %s5 (%s6)</English>
-        <French>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to stop trading with %s5 (%s6)</French>
-        <German>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to stop trading with %s5 (%s6)</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to stop trading with %s5 (%s6)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) rejects request from %s3 (%s4) to stop trading with %s5 (%s6)</Spanish>
+        <English>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</English>
+        <French>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</French>
+        <German>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</German>
+        <Italian>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Italian>
+        <Spanish>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Spanish>
     </TEXT> 
 </Civ4GameText>

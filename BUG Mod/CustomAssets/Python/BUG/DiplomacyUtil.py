@@ -171,28 +171,68 @@ def dispatchEvent(eComment, eFromPlayer, eToPlayer, args):
 ## Event Handlers
 
 def onDealOffered(argsList):
-	BugUtil.debug("DiplomacyUtil::onDealOffered %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onDealOffered %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers trade to %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onCityOffered(argsList):
-	BugUtil.debug("DiplomacyUtil::onCityOffered %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onCityOffered %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers city to %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onHelpOffered(argsList):
-	BugUtil.debug("DiplomacyUtil::onHelpOffered %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onHelpOffered %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers help to %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onPeaceOffered(argsList):
-	BugUtil.debug("DiplomacyUtil::onPeaceOffered %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onPeaceOffered %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers peace to %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onVassalOffered(argsList):
-	BugUtil.debug("DiplomacyUtil::onVassalOffered %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onVassalOffered %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers vassalage to %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onDealCanceled(argsList):
-	BugUtil.debug("DiplomacyUtil::onDealCanceled %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onDealCanceled %s" %(str(argsList)))
+	eOfferPlayer, eTargetPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s cancels deal with %s: %r",
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			pTrade)
 
 def onDealAccepted(argsList):
-	BugUtil.debug("DiplomacyUtil::onDealAccepted %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onDealAccepted %s" %(str(argsList)))
+	eTargetPlayer, eOfferPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s accepts trade offered by %s: %r",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			pTrade)
 
 def onDealRejected(argsList):
-	BugUtil.debug("DiplomacyUtil::onDealRejected %s" %(str(argsList)))
+	#BugUtil.debug("DiplomacyUtil::onDealRejected %s" %(str(argsList)))
+	eTargetPlayer, eOfferPlayer, pTrade = argsList
+	BugUtil.debug("DiplomacyUtil - %s accepts trade offered by %s: %r",
+			PlayerUtil.getPlayer(eTargetPlayer).getName(),
+			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+			pTrade)
 
 
 def onHelpDemanded(argsList):
