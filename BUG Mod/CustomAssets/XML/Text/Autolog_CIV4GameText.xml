@@ -821,7 +821,7 @@
         <English>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</English>
         <French>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</French>
         <German>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</German>
-        <Italian>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</Italian>
+        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) %s3 in cambio di %s6</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</Spanish>
     </TEXT> 
     <TEXT>
@@ -829,7 +829,7 @@
         <English>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) la Città di %s3</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -837,7 +837,7 @@
         <English>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) il suo aiuto (%s3)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -845,7 +845,7 @@
         <English>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha fatto una proposta di pace a %s4 (%s5)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -853,7 +853,7 @@
         <English>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) si è offerto di diventare Vassallo di %s4 (%s5)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -861,7 +861,7 @@
         <English>Diplomacy: %s1 (%s2) cancels trade of %s3 to %s4 (%s5) for %s6</English>
         <French>Diplomacy: %s1 (%s2) cancels trade of %s3 to %s4 (%s5) for %s6</French>
         <German>Diplomacy: %s1 (%s2) cancels trade of %s3 to %s4 (%s5) for %s6</German>
-        <Italian>Diplomacy: %s1 (%s2) cancels trade of %s3 to %s4 (%s5) for %s6</Italian>
+        <Italian>%s1 (%s2) ha cancellato il suo accordo commerciale con %s4 (%s5) sullo scambio di %s3 per %s6</Italian>
         <Spanish>Diplomacy: %s1 (%s2) cancels trade of %s3 to %s4 (%s5) for %s6</Spanish>
     </TEXT> 
     <TEXT>
@@ -869,7 +869,7 @@
         <English>Diplomacy: %s1 (%s2) cancels gift of %s3 to %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) cancels gift of %s3 to %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) cancels gift of %s3 to %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) cancels gift of %s3 to %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha cancellato la sua donazione di %s3 a %s4 (%s5)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) cancels gift of %s3 to %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -877,7 +877,7 @@
         <English>Diplomacy: %s1 (%s2) accepts trade of %s3 to %s4 (%s5) for %s6</English>
         <French>Diplomacy: %s1 (%s2) accepts trade of %s3 to %s4 (%s5) for %s6</French>
         <German>Diplomacy: %s1 (%s2) accepts trade of %s3 to %s4 (%s5) for %s6</German>
-        <Italian>Diplomacy: %s1 (%s2) accepts trade of %s3 to %s4 (%s5) for %s6</Italian>
+        <Italian>%s1 (%s2) ha accettato l'accordo con %s4 (%s5) per lo scambio di %s3 per %s6</Italian>
         <Spanish>Diplomacy: %s1 (%s2) accepts trade of %s3 to %s4 (%s5) for %s6</Spanish>
     </TEXT> 
     <TEXT>
@@ -885,7 +885,7 @@
         <English>Diplomacy: %s1 (%s2) accepts gift of %s3 from %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) accepts gift of %s3 from %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) accepts gift of %s3 from %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) accepts gift of %s3 from %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha accettato la donazione di %s3 da parte di %s4 (%s5)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) accepts gift of %s3 from %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -893,7 +893,7 @@
         <English>Diplomacy: %s1 (%s2) rejects trade of %s3 to %s4 (%s5) for %s6</English>
         <French>Diplomacy: %s1 (%s2) rejects trade of %s3 to %s4 (%s5) for %s6</French>
         <German>Diplomacy: %s1 (%s2) rejects trade of %s3 to %s4 (%s5) for %s6</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects trade of %s3 to %s4 (%s5) for %s6</Italian>
+        <Italian>%s1 (%s2) ha rifiutato l'accordo con %s4 (%s5) per lo scambio di %s3 per %s6</Italian>
         <Spanish>Diplomacy: %s1 (%s2) rejects trade of %s3 to %s4 (%s5) for %s6</Spanish>
     </TEXT> 
     <TEXT>
@@ -901,7 +901,7 @@
         <English>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</French>
         <German>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</German>
-        <Italian>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</Italian>
+        <Italian>%s1 (%s2) ha accettato la donazione di %s3 da parte di %s4 (%s5)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) rejects gift of %s3 from %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -909,7 +909,7 @@
         <English>; %s1 agrees.</English>
         <French>; %s1 agrees.</French>
         <German>; %s1 agrees.</German>
-        <Italian>; %s1 agrees.</Italian>
+        <Italian>; %s1 ha accettato.</Italian>
         <Spanish>; %s1 agrees.</Spanish>
     </TEXT> 
     <TEXT>
@@ -917,7 +917,7 @@
         <English>; %s1 REFUSES.</English>
         <French>; %s1 REFUSES.</French>
         <German>; %s1 REFUSES.</German>
-        <Italian>; %s1 REFUSES.</Italian>
+        <Italian>; %s1 ha rifiutato.</Italian>
         <Spanish>; %s1 REFUSES.</Spanish>
     </TEXT> 
     <TEXT>
@@ -925,7 +925,7 @@
         <English>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</English>
         <French>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</French>
         <German>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</German>
-        <Italian>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</Italian>
+        <Italian>%s1 (%s2) ha supplicato %s3 (%s4) di aiutarlo donandogli %s5</Italian>
         <Spanish>Diplomacy (Help Request): %s1 (%s2) asks %s3 (%s4) for %s5</Spanish>
     </TEXT> 
     <TEXT>
@@ -933,7 +933,7 @@
         <English>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</English>
         <French>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</French>
         <German>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</German>
-        <Italian>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</Italian>
+        <Italian> %s1 (%s2) ha chiesto a %s3 (%s4) il psagamento di un tributo consistente in %s5</Italian>
         <Spanish>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) give %s5</Spanish>
     </TEXT> 
     <TEXT>
@@ -941,7 +941,7 @@
         <English>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</English>
         <French>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</French>
         <German>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</German>
-        <Italian>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</Italian>
+        <Italian>%s1 (%s2) ha chiesto a %s3 (%s4) di convertirsi al %s5</Italian>
         <Spanish>Diplomacy (Religion Request): %s1 (%s2) asks %s3 (%s4) to convert to %s5</Spanish>
     </TEXT> 
     <TEXT>
@@ -949,7 +949,7 @@
         <English>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</English>
         <French>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</French>
         <German>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</German>
-        <Italian>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</Italian>
+        <Italian>%s1 (%s2) ha chiesto a %s3 (%s4) di passare alla Forma di governo %s5</Italian>
         <Spanish>Diplomacy (Civic Request): %s1 (%s2) asks %s3 (%s4) to switch to %s5</Spanish>
     </TEXT> 
     <TEXT>
@@ -957,7 +957,7 @@
         <English>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</English>
         <French>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</French>
         <German>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</German>
-        <Italian>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Italian>
+        <Italian>%s1 (%s2) ha chiesto a %s3 (%s4) di dichiarare guerra a %s5 (%s6)</Italian>
         <Spanish>Diplomacy (War Request): %s1 (%s2) asks %s3 (%s4) to declare war on %s5 (%s6)</Spanish>
     </TEXT> 
     <TEXT>
@@ -965,7 +965,7 @@
         <English>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</English>
         <French>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</French>
         <German>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</German>
-        <Italian>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Italian>
+        <Italian>%s1 (%s2) ha chiesto a %s3 (%s4) di cessare ogni scambio commerciale con %s5 (%s6)</Italian>
         <Spanish>Diplomacy (Embargo Request): %s1 (%s2) asks %s3 (%s4) to stop trading with %s5 (%s6)</Spanish>
     </TEXT> 
 </Civ4GameText>
