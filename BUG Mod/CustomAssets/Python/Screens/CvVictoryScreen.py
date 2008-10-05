@@ -24,6 +24,8 @@ GAME_SETTINGS_SCREEN = 1
 UN_RESOLUTION_SCREEN = 2
 UN_MEMBERS_SCREEN = 3
 
+import BugUtil
+
 class CvVictoryScreen:
 	"Keeps track of victory conditions"
 
@@ -42,7 +44,7 @@ class CvVictoryScreen:
 		self.UN_RESOLUTION_TAB_ID = "VotingTabWidget"
 		self.UN_MEMBERS_TAB_ID = "MembersTabWidget"
 		self.SPACESHIP_SCREEN_BUTTON = 1234
-		
+
 		self.Z_BACKGROUND = -6.1
 		self.Z_CONTROLS = self.Z_BACKGROUND - 0.2
 		self.DZ = -0.2
@@ -52,10 +54,10 @@ class CvVictoryScreen:
 		self.W_SCREEN = 1024
 		self.H_SCREEN = 768
 		self.Y_TITLE = 12
-		
+
 		self.X_EXIT = 994
 		self.Y_EXIT = 726
-		
+
 		self.X_AREA = 10
 		self.Y_AREA = 60
 		self.W_AREA = 1010
@@ -73,16 +75,21 @@ class CvVictoryScreen:
 
 # BUG Additions Start
 		self.TABLE3_WIDTH_0 = 450
-		self.TABLE3_WIDTH_1 = 140
-		self.TABLE3_WIDTH_2 = 40
-		self.TABLE3_WIDTH_3 = 140
-		self.TABLE3_WIDTH_4 = 40
-		self.TABLE3_WIDTH_5 = 160
+		self.TABLE3_WIDTH_1 = 90
+		self.TABLE3_WIDTH_2 = 90
+		self.TABLE3_WIDTH_3 = 90
+		self.TABLE3_WIDTH_4 = 90
+		self.TABLE3_WIDTH_5 = 200
 
-		self.Vote_Toggle_ID = "BUGVoteToggle"
-		self.VoteToggle_X = 944
-		self.VoteToggle_Y = 688
-		self.VoteToggle = 0
+		self.Vote_Pope_ID = "BUGVotePope_Widget"
+		self.Vote_DipVic_ID = "BUGVoteDiplomaticVictory_Widget"
+		self.Vote_X = 20
+		self.Vote_Y = 688
+		self.VoteType = 1  # 1 = Pope or GenSec, 2 = Diplomatic Victory
+		self.VoteBody = 1  # 1 = AP, 2 = UN
+
+		self.Vote_AP_ID = "BUGVoteAP_Widget"
+		self.Vote_UN_ID = "BUGVoteUN_Widget"
 # BUG Additions End
 
 		self.X_LINK = 100
@@ -96,7 +103,7 @@ class CvVictoryScreen:
 		self.SETTINGS_PANEL_Y = 150
 		self.SETTINGS_PANEL_WIDTH = 300
 		self.SETTINGS_PANEL_HEIGHT = 500
-								
+
 		self.nWidgetCount = 0
 		self.iActivePlayer = -1
 		self.bVoteTab = False
@@ -112,7 +119,7 @@ class CvVictoryScreen:
 	def hideScreen(self):
 		screen = self.getScreen()
 		screen.hideScreen()
-										
+
 	def interfaceScreen(self):
 
 		# Create a new screen
@@ -136,7 +143,7 @@ class CvVictoryScreen:
 
 		# Header...
 		screen.setLabel(self.HEADER_ID, "Background", u"<font=4b>" + localText.getText("TXT_KEY_VICTORY_SCREEN_TITLE", ()).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, self.X_SCREEN, self.Y_TITLE, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		
+
 		if self.iScreen == VICTORY_CONDITION_SCREEN:
 			self.showVictoryConditionScreen()
 		elif self.iScreen == GAME_SETTINGS_SCREEN:
@@ -147,7 +154,6 @@ class CvVictoryScreen:
 			self.showMembersScreen()
 
 	def drawTabs(self):
-	
 		screen = self.getScreen()
 
 		xLink = self.X_LINK
@@ -156,14 +162,14 @@ class CvVictoryScreen:
 		else:
 			screen.setText(self.VC_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MAIN_MENU_VICTORIES", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		xLink += self.DX_LINK
-			
+
 		if (self.iScreen != GAME_SETTINGS_SCREEN):
 			screen.setText(self.SETTINGS_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MAIN_MENU_SETTINGS", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		else:
 			screen.setText(self.SETTINGS_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MAIN_MENU_SETTINGS", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		xLink += self.DX_LINK
-			
-		if self.bVoteTab:			
+
+		if self.bVoteTab:
 			if (self.iScreen != UN_RESOLUTION_SCREEN):
 				screen.setText(self.UN_RESOLUTION_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_VOTING_TITLE", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			else:
@@ -177,16 +183,15 @@ class CvVictoryScreen:
 			xLink += self.DX_LINK
 
 	def showVotingScreen(self):
-	
 		self.deleteAllWidgets()
-	
+
 		activePlayer = gc.getPlayer(self.iActivePlayer)
 		iActiveTeam = activePlayer.getTeam()
-		
+
 		aiVoteBuildingClass = []
 		for i in range(gc.getNumBuildingInfos()):
 			for j in range(gc.getNumVoteSourceInfos()):
-				if (gc.getBuildingInfo(i).getVoteSourceType() == j):								
+				if (gc.getBuildingInfo(i).getVoteSourceType() == j):
 					iUNTeam = -1
 					bUnknown = true
 					for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
@@ -194,11 +199,11 @@ class CvVictoryScreen:
 							if (gc.getTeam(iLoopTeam).getBuildingClassCount(gc.getBuildingInfo(i).getBuildingClassType()) > 0):
 								iUNTeam = iLoopTeam
 								if (iLoopTeam == iActiveTeam or gc.getGame().isDebugMode() or gc.getTeam(activePlayer.getTeam()).isHasMet(iLoopTeam)):
-									bUnknown = false		
+									bUnknown = false
 								break
-									
+
 					aiVoteBuildingClass.append((gc.getBuildingInfo(i).getBuildingClassType(), iUNTeam, bUnknown))
-				
+
 		if (len(aiVoteBuildingClass) == 0):
 			return
 
@@ -243,8 +248,322 @@ class CvVictoryScreen:
 		self.drawTabs()
 
 
+# BUG Additions Start
 	def showMembersScreen(self):
+		iRelVote, iRelVoteIdx, iUNVote, iUNVoteIdx  = self.getVoteAvailable()
 
+		if AdvisorOpt.isMembers():
+			if  iRelVote == -1: self.VoteBody = 2 # AP Not active
+			elif iUNVote == -1: self.VoteBody = 1 # UN Not active
+
+			if self.VoteBody == 1:
+				iVoteBody = iRelVote
+				iVoteIdx = iRelVoteIdx
+			else:
+				iVoteBody = iUNVote
+				iVoteIdx = iUNVoteIdx
+
+			self.showMembersScreen_BUG(iRelVote, iUNVote, iVoteBody, iVoteIdx)
+		else:
+			self.showMembersScreen_NonBUG()
+
+		self.drawTabs()
+
+	def getVoteAvailable(self):
+
+		iRelVote = -1
+		iRelVoteIdx = -1
+		iUNVote = -1
+		iUNVoteIdx = -1
+
+		for i in range(gc.getNumVoteSourceInfos()):
+			if gc.getGame().isDiploVote(i):
+				if (gc.getGame().getVoteSourceReligion(i) != -1):
+					iRelVote = i
+				else:
+					iUNVote = i
+
+			if (gc.getGame().canHaveSecretaryGeneral(i)
+			and gc.getGame().getSecretaryGeneral(i) != -1):
+				for j in range(gc.getNumVoteInfos()):
+					if gc.getVoteInfo(j).isVoteSourceType(i):
+						if gc.getVoteInfo(j).isSecretaryGeneral():
+							if (gc.getGame().getVoteSourceReligion(i) != -1):
+								iRelVoteIdx = j
+							else:
+								iUNVoteIdx = j
+
+							break
+
+		BugUtil.debug("CvVictoryScreen: Rel Vote %i, UN Vote %i, Rel Vote Idx %i, UN Vote Idx %i", iRelVote, iRelVoteIdx, iUNVote, iUNVoteIdx)
+
+		return iRelVote, iRelVoteIdx, iUNVote, iUNVoteIdx
+
+	def showMembersScreen_BUG(self, iRelVote, iUNVote, iActiveVote, iVoteIdx):
+		self.deleteAllWidgets()
+
+		if (iRelVote == -1 and iUNVote == -1): return  # neither AP or UN are active
+
+		activePlayer = gc.getPlayer(self.iActivePlayer)
+		iActiveTeam = activePlayer.getTeam()
+
+		screen = self.getScreen()
+
+		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
+
+		# set up the header row
+		szHeading = self.getNextWidgetName()
+		screen.addTableControlGFC(szHeading, 3, self.X_AREA, self.Y_AREA, self.W_AREA, 30, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.setTableColumnHeader(szHeading, 0, "", self.TABLE3_WIDTH_0)
+		screen.setTableColumnHeader(szHeading, 1, "", self.TABLE3_WIDTH_1 + self.TABLE3_WIDTH_2)
+		screen.setTableColumnHeader(szHeading, 2, "", self.TABLE3_WIDTH_3 + self.TABLE3_WIDTH_4)
+		iRow = screen.appendTableRow(szHeading)
+
+		# heading
+		kVoteSource = gc.getVoteSourceInfo(iActiveVote)
+		sTableHeader = u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>"
+		if (gc.getGame().getVoteSourceReligion(iActiveVote) != -1):
+			sTableHeader += " (" + gc.getReligionInfo(gc.getGame().getVoteSourceReligion(iActiveVote)).getDescription() + ")"
+
+		screen.setTableText(szHeading, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		# determine the two candidates, add to header
+		iCandTeam1 = -1
+		iCandTeam2 = -1
+		for j in range(gc.getMAX_TEAMS()):
+			BugUtil.debug("CvVictoryScreen: Team %i", j)
+
+			if (gc.getTeam(j).isAlive()
+			and gc.getGame().isTeamVoteEligible(j, iActiveVote)):
+				BugUtil.debug("CvVictoryScreen: Team %i, %s <- vote eligible ", j, gc.getTeam(j).getName())
+				if iCandTeam1 == -1:
+					iCandTeam1 = j
+				else:
+					iCandTeam2 = j
+
+		# get the first player for each team
+		# going to use that to calculation attitude - too hard to calc attitude for team
+		iCandPlayer1 = self.getPlayerOnTeam(iCandTeam1)
+		iCandPlayer2 = self.getPlayerOnTeam(iCandTeam2)
+
+		# candidate known returns -1 if there is no candidate, 0 if not known or 1 if known
+		iCand1Known, sCand1Name = self.getCandStatusName(iCandTeam1)
+		iCand2Known, sCand2Name = self.getCandStatusName(iCandTeam2)
+
+		screen.setTableText(szHeading, 1, iRow, sCand1Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+		screen.setTableText(szHeading, 2, iRow, sCand2Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+		# set up the member table
+		szTable = self.getNextWidgetName()
+		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA + 30, self.W_AREA, self.H_AREA-20-30, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.enableSelect(szTable, False)
+		screen.setTableColumnHeader(szTable, 0, "", self.TABLE3_WIDTH_0)
+		screen.setTableColumnHeader(szTable, 1, "", self.TABLE3_WIDTH_1)
+		screen.setTableColumnHeader(szTable, 2, "", self.TABLE3_WIDTH_2)
+		screen.setTableColumnHeader(szTable, 3, "", self.TABLE3_WIDTH_3)
+		screen.setTableColumnHeader(szTable, 4, "", self.TABLE3_WIDTH_4)
+		screen.setTableColumnHeader(szTable, 5, "", self.TABLE3_WIDTH_5)
+		iRow = screen.appendTableRow(szTable)
+
+		# set up the vote selection texts
+		iX = self.X_EXIT
+		sText = gc.getVoteSourceInfo(iActiveVote).getSecretaryGeneralText()
+		if self.VoteType == 1: sText = BugUtil.colorText(sText, "COLOR_YELLOW")
+		screen.setText(self.Vote_Pope_ID, "", sText, CvUtil.FONT_RIGHT_JUSTIFY, iX, self.Vote_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+		iX -= 10 + CyInterface().determineWidth(sText)
+		sText = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
+		if self.VoteType == 2: sText = BugUtil.colorText(sText, "COLOR_YELLOW")
+		screen.setText(self.Vote_DipVic_ID, "", sText, CvUtil.FONT_RIGHT_JUSTIFY, iX, self.Vote_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+		if (iRelVote != -1
+		and iUNVote != -1):  # both AP and UN are active
+			iX = self.Vote_X
+			sText = gc.getVoteSourceInfo(iRelVote).getDescription()
+			if iActiveVote == iRelVote: sText = BugUtil.colorText(sText, "COLOR_YELLOW")
+			screen.setText(self.Vote_AP_ID, "", sText, CvUtil.FONT_LEFT_JUSTIFY, iX, self.Vote_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+			iX += 10 + CyInterface().determineWidth(sText)
+			sText = gc.getVoteSourceInfo(iUNVote).getDescription()
+			if iActiveVote == iUNVote: sText = BugUtil.colorText(sText, "COLOR_YELLOW")
+			screen.setText(self.Vote_UN_ID, "", sText, CvUtil.FONT_LEFT_JUSTIFY, iX, self.Vote_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		else:
+			screen.hide(self.Vote_AP_ID)
+			screen.hide(self.Vote_UN_ID)
+
+		# initialize the candidate votes and total vote counter
+		iVoteTotal = [0] * 2
+		iVoteCand = [0] * 2
+
+		lMembers = []
+		iAPUNTeam = self.getAP_UN_OwnerTeam()
+
+		for j in range(gc.getMAX_PLAYERS()):
+			pPlayer = gc.getPlayer(j)
+			if (pPlayer.isAlive()
+			and not pPlayer.isBarbarian()):
+				iPlayer = j
+				lPlayerName = pPlayer.getName()
+				lPlayerVotes = 10000 - pPlayer.getVotes(iVoteIdx, iActiveVote)   # so that it sorts from most votes to least
+
+				if (gc.getGame().canHaveSecretaryGeneral(iActiveVote)
+				and iAPUNTeam == pPlayer.getTeam()
+				and gc.getGame().getSecretaryGeneral(iActiveVote) == -1):
+					lPlayerStatus = 0
+					lPlayerLabel = gc.getVoteSourceInfo(iActiveVote).getSecretaryGeneralText()
+				elif (gc.getGame().canHaveSecretaryGeneral(iActiveVote)
+				and gc.getGame().getSecretaryGeneral(iActiveVote) == pPlayer.getTeam()):
+					lPlayerStatus = 1
+					lPlayerLabel = gc.getVoteSourceInfo(iActiveVote).getSecretaryGeneralText()
+				elif (pPlayer.isFullMember(iActiveVote)):
+					lPlayerStatus = 2
+					lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ())
+				elif (pPlayer.isVotingMember(iActiveVote)):
+					lPlayerStatus = 3
+					lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ())
+				else:
+					lPlayerStatus = 4
+					lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER", ())
+
+				lMembers.append([lPlayerStatus, lPlayerVotes, iPlayer, lPlayerLabel])
+
+		lMembers.sort()
+
+		for lMember in lMembers:
+			lMemberStatus = lMember[0]
+			lMemberVotes = 10000 - lMember[1]
+			iMember = lMember[2]
+			lMemberLabel = lMember[3]
+
+			# player name
+			bKnown, szPlayerText = self.getPlayerStatusName(iMember)
+
+			if (lMemberVotes > 0
+			and bKnown):
+				szPlayerText += localText.getText("TXT_KEY_VICTORY_SCREEN_PLAYER_VOTES", (lMemberVotes, iActiveVote), )
+
+			iRow = screen.appendTableRow(szTable)
+			screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+			if iMember != self.iActivePlayer:
+				# player attitude to candidate #1
+				szText = AttitudeUtils.getAttitudeText (iMember, iCandPlayer1, True, True, False, False)
+				if (szText != None
+				and iCand1Known == 1
+				and bKnown):
+					screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandPlayer1, CvUtil.FONT_CENTER_JUSTIFY)
+
+				# player attitude to candidate #2
+				szText = AttitudeUtils.getAttitudeText (iMember, iCandPlayer2, True, True, False, False)
+				if (szText != None
+				and iCand2Known == 1
+				and bKnown):
+					screen.setTableText(szTable, 3, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandPlayer2, CvUtil.FONT_CENTER_JUSTIFY)
+
+			iVote = self.getVotesForWhichCandidate(iMember, iCandTeam1, iCandTeam2, self.VoteType)
+			iVote_Column = -1
+
+			if iVote != -1:
+				sVote = str(lMemberVotes)
+				iVoteTotal[iVote - 1] += lMemberVotes
+
+				# number of votes for Candidate #1
+				if (iVote == 1
+				and lMemberVotes > 0
+				and iCand1Known == 1):
+					screen.setTableText(szTable, 2, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+				# number of votes for Candidate #2
+				if (iVote == 2
+				and lMemberVotes > 0
+				and iCand2Known == 1):
+					screen.setTableText(szTable, 4, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+			# player status
+			if bKnown:
+				screen.setTableText(szTable, 5, iRow, lMemberLabel, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+
+			# store the candidates own votes
+			if (iCandTeam1 == gc.getPlayer(iMember).getTeam()
+			and iCand1Known == 1):
+				iVoteCand[0] = lMemberVotes
+			if (iCandTeam2 == gc.getPlayer(iMember).getTeam()
+			and iCand2Known == 1):
+				iVoteCand[1] = lMemberVotes
+
+		# calculate the maximum number of votes
+		iMaxVotes = 0
+		for iLoop in range(gc.getNumVoteInfos()):
+			if gc.getGame().countPossibleVote(iLoop, iActiveVote) > 0:
+				iMaxVotes = gc.getGame().countPossibleVote(iLoop, iActiveVote)
+				break
+
+		iRow = screen.appendTableRow(szTable)
+		iVoteReq = self.getVoteReq(iActiveVote, self.VoteType)
+		sVoteReq = "%i" % (iVoteReq)
+		sString = u"<font=3b>" + localText.getText("TXT_KEY_BUG_VICTORY_VOTES_TOTAL", ()) + "</font> "
+		if (iCand1Known != 0
+		and iCand2Known != 0):
+			sString +=  localText.getText("TXT_KEY_BUG_VICTORY_VOTES_REQUIRED", (sVoteReq,))
+		screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		if iCand1Known == 1:
+			# color code the totals
+			sVoteTotal = str(iVoteTotal[0])
+			iColor = self.getVoteTotalColor(iVoteReq, iVoteTotal[0], iVoteCand[0], iVoteTotal[0] > iVoteTotal[1], self.VoteType == 2)
+			if iColor != -1:
+				sVoteTotal = localText.changeTextColor(sVoteTotal, iColor)
+			screen.setTableText(szTable, 2, iRow, sVoteTotal, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+		if iCand2Known == 1:
+			sVoteTotal = str(iVoteTotal[1])
+			iColor = self.getVoteTotalColor(iVoteReq, iVoteTotal[1], iVoteCand[1], iVoteTotal[1] > iVoteTotal[0], self.VoteType == 2)
+			if iColor != -1:
+				sVoteTotal = localText.changeTextColor(sVoteTotal, iColor)
+			screen.setTableText(szTable, 4, iRow, sVoteTotal, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
+
+		# add a blank row
+		iRow = screen.appendTableRow(szTable)
+
+		# SecGen vote prediction
+		if iVoteTotal[0] > iVoteTotal[1]:
+			iWinner = 0
+		else:
+			iWinner = 1
+		iLoser = 1 - iWinner
+
+		pWin = gc.getPlayer(lMembers[iWinner][2]).getTeam()
+		sWin = gc.getTeam(pWin).getName()
+
+		fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
+		fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
+		
+		if self.VoteType == 1:
+			sSecGen = gc.getVoteSourceInfo(iActiveVote).getSecretaryGeneralText()
+		else:
+			sSecGen = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
+
+		# display SecGen vote prediction
+		if (iCand1Known != 0
+		and iCand2Known != 0):
+			sString = sSecGen + ":"
+			iRow = screen.appendTableRow(szTable)
+			screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+			sString = "     " + localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, self.formatPercent(fVotePercent), self.formatPercent(fMargin)))
+			iRow = screen.appendTableRow(szTable)
+			screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+			# BUG Poll statistical error
+			sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (self.formatPercent(3.5 + gc.getASyncRand().get(10, "") / 10.0), ))
+			iRow = screen.appendTableRow(szTable)
+			screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		iRow = screen.appendTableRow(szTable)
+
+
+
+	def showMembersScreen_NonBUG(self):
 		self.deleteAllWidgets()
 
 		activePlayer = gc.getPlayer(self.iActivePlayer)
@@ -254,250 +573,55 @@ class CvVictoryScreen:
 
 		screen.addPanel(self.getNextWidgetName(), "", "", False, False, self.X_AREA-10, self.Y_AREA-15, self.W_AREA+20, self.H_AREA+30, PanelStyles.PANEL_STYLE_BLUE50)
 		szTable = self.getNextWidgetName()
-#		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
-		screen.addTableControlGFC(szTable, 6, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA-20, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.addTableControlGFC(szTable, 2, self.X_AREA, self.Y_AREA, self.W_AREA, self.H_AREA, False, False, 32,32, TableStyles.TABLE_STYLE_STANDARD)
 		screen.enableSelect(szTable, False)
-
-# BUG Additions Start
-		if AdvisorOpt.isMembers():
-			screen.setTableColumnHeader(szTable, 0, "", self.TABLE3_WIDTH_0)
-			screen.setTableColumnHeader(szTable, 1, "", self.TABLE3_WIDTH_1)
-			screen.setTableColumnHeader(szTable, 2, "", self.TABLE3_WIDTH_2)
-			screen.setTableColumnHeader(szTable, 3, "", self.TABLE3_WIDTH_3)
-			screen.setTableColumnHeader(szTable, 4, "", self.TABLE3_WIDTH_4)
-			screen.setTableColumnHeader(szTable, 5, "", self.TABLE3_WIDTH_5)
-
-			screen.setText(self.Vote_Toggle_ID, "", localText.getText("TXT_KEY_BUG_VICTORY_TOGGLE_VOTES", ()), CvUtil.FONT_CENTER_JUSTIFY, self.VoteToggle_X, self.VoteToggle_Y, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-#			screen.setText(self.Vote_Toggle_ID, "", "Toggle Votes", CvUtil.FONT_CENTER_JUSTIFY, self.X_EXIT-50, self.Y_EXIT-38, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		else:
-			screen.setTableColumnHeader(szTable, 0, "", self.TABLE2_WIDTH_0)
-			screen.setTableColumnHeader(szTable, 1, "", self.TABLE2_WIDTH_1)
-# BUG Additions End
+		screen.setTableColumnHeader(szTable, 0, "", self.TABLE2_WIDTH_0)
+		screen.setTableColumnHeader(szTable, 1, "", self.TABLE2_WIDTH_1)
 
 		for i in range(gc.getNumVoteSourceInfos()):
 			if gc.getGame().isDiploVote(i):
 				kVoteSource = gc.getVoteSourceInfo(i)
 				iRow = screen.appendTableRow(szTable)
-
-# BUG Additions Start
-				if AdvisorOpt.isMembers():
-					sTableHeader = u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>"
-					if (gc.getGame().getVoteSourceReligion(i) != -1):
-						sTableHeader += " (" + gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription() + ")"
-					screen.setTableText(szTable, 0, iRow, sTableHeader, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-				else:
-					screen.setTableText(szTable, 0, iRow, u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					if (gc.getGame().getVoteSourceReligion(i) != -1):
-						screen.setTableText(szTable, 1, iRow, gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-# BUG Additions End
+				screen.setTableText(szTable, 0, iRow, u"<font=4b>" + kVoteSource.getDescription().upper() + u"</font>", "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+				if (gc.getGame().getVoteSourceReligion(i) != -1):
+					screen.setTableText(szTable, 1, iRow, gc.getReligionInfo(gc.getGame().getVoteSourceReligion(i)).getDescription(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 				iSecretaryGeneralVote = -1
-				if (gc.getGame().canHaveSecretaryGeneral(i) and -1 != gc.getGame().getSecretaryGeneral(i)):		
+				if (gc.getGame().canHaveSecretaryGeneral(i) and -1 != gc.getGame().getSecretaryGeneral(i)):
 					for j in range(gc.getNumVoteInfos()):
-#						print j
+						print j
 						if gc.getVoteInfo(j).isVoteSourceType(i):
-#							print "votesource"
+							print "votesource"
 							if gc.getVoteInfo(j).isSecretaryGeneral():
-#								print "secgen"
+								print "secgen"
 								iSecretaryGeneralVote = j
 								break
-#				print iSecretaryGeneralVote
-								
-# BUG Additions Start
-				if AdvisorOpt.isMembers():
-					lMembers = []
-					iUNTeam = self.getUNTeam()
-					bUNBuiltTeamSlotTake = False
-					bSecGenTeamSlotTake = False
-					for j in range(gc.getMAX_PLAYERS()):
-						pPlayer = gc.getPlayer(j)
-#						if pPlayer.isAlive() and not pPlayer.isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(pPlayer.getTeam()):
-						if pPlayer.isAlive() and not pPlayer.isBarbarian():
-							iPlayer = j
-							lPlayerName = pPlayer.getName()
-							lPlayerVotes = 10000 - pPlayer.getVotes(iSecretaryGeneralVote, i)   # so that it sorts from most votes to least
 
-							if (gc.getGame().canHaveSecretaryGeneral(i)
-							and iUNTeam == pPlayer.getTeam()
-							and gc.getGame().getSecretaryGeneral(i) == -1
-							and not bUNBuiltTeamSlotTake):
-								lPlayerStatus = 0
-								lPlayerLabel = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
-								bUNBuiltTeamSlotTake = True
-							elif (gc.getGame().canHaveSecretaryGeneral(i)
-							and gc.getGame().getSecretaryGeneral(i) == pPlayer.getTeam()
-							and not bSecGenTeamSlotTake):
-								lPlayerStatus = 0
-								lPlayerLabel = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
-								bSecGenTeamSlotTake = True
-							elif (pPlayer.isFullMember(i)):
-								lPlayerStatus = 1
-								lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ())
-							elif (pPlayer.isVotingMember(i)):
-								lPlayerStatus = 2
-								lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ())
-							else:
-								lPlayerStatus = 3
-								lPlayerLabel = localText.getText("TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER", ())
+				print iSecretaryGeneralVote
+				for j in range(gc.getMAX_PLAYERS()):
+					if gc.getPlayer(j).isAlive() and not gc.getPlayer(j).isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(gc.getPlayer(j).getTeam()):
+						szPlayerText = gc.getPlayer(j).getName()
+						if (-1 != iSecretaryGeneralVote):
+							szPlayerText += localText.getText("TXT_KEY_VICTORY_SCREEN_PLAYER_VOTES", (gc.getPlayer(j).getVotes(iSecretaryGeneralVote, i), )) 
+						if (gc.getGame().canHaveSecretaryGeneral(i) and gc.getGame().getSecretaryGeneral(i) == gc.getPlayer(j).getTeam()):
+							iRow = screen.appendTableRow(szTable)
+							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 1, iRow, gc.getVoteSourceInfo(i).getSecretaryGeneralText(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+						elif (gc.getPlayer(j).isFullMember(i)):
+							iRow = screen.appendTableRow(szTable)
+							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+						elif (gc.getPlayer(j).isVotingMember(i)):
+							iRow = screen.appendTableRow(szTable)
+							screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
-							lMembers.append([lPlayerStatus, lPlayerVotes, iPlayer, lPlayerLabel])
+				iRow = screen.appendTableRow(szTable)
 
-					lMembers.sort()
-
-					# determine the two candidates, add to header
-					iCandidate1 = lMembers[0][2]
-					iCandidate2 = lMembers[1][2]
-					iVoteTotal = [0] * 2
-					iVoteCand = [0] * 2
-					bCand1Known, sCand1Name = self.getCandStatusandName(iCandidate1)
-					bCand2Known, sCand2Name = self.getCandStatusandName(iCandidate2)
-
-					screen.setTableText(szTable, 1, iRow, sCand1Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-					screen.setTableText(szTable, 3, iRow, sCand2Name, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-
-					for lMember in lMembers:
-						lMemberStatus = lMember[0]
-						lMemberVotes = 10000 - lMember[1]
-						iMember = lMember[2]
-						lMemberLabel = lMember[3]
-
-						bKnown, szPlayerText = self.getCandStatusandName(iMember)
-						if (lMemberVotes > 0
-						and bKnown):
-							szPlayerText += localText.getText("TXT_KEY_VICTORY_SCREEN_PLAYER_VOTES", (lMemberVotes, i), )
-						iRow = screen.appendTableRow(szTable)
-						screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-						if iMember != self.iActivePlayer:
-							szText = AttitudeUtils.getAttitudeText (iMember, iCandidate1, True, True, False, False)
-							if (szText != None
-							and bCand1Known
-							and bKnown):
-								screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandidate1, CvUtil.FONT_CENTER_JUSTIFY)
-
-							szText = AttitudeUtils.getAttitudeText (iMember, iCandidate2, True, True, False, False)
-							if (szText != None
-							and bCand2Known
-							and bKnown):
-								screen.setTableText(szTable, 3, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandidate2, CvUtil.FONT_CENTER_JUSTIFY)
-
-						iVote = self.getVotesForWhichCandidate(iMember, iCandidate1, iCandidate2, self.VoteToggle)
-						iVote_Column = -1
-
-						if iVote != -1:
-							sVote = str(lMemberVotes)
-							iVoteTotal[iVote - 1] += lMemberVotes
-							
-							if (iVote == 1
-							and lMemberVotes > 0
-							and bCand1Known):
-								screen.setTableText(szTable, 2, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-
-							if (iVote == 2
-							and lMemberVotes > 0
-							and bCand2Known):
-								screen.setTableText(szTable, 4, iRow, sVote, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-
-						if bKnown:
-							screen.setTableText(szTable, 5, iRow, lMemberLabel, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
-
-						# store the player votes
-						if (iCandidate1 == iMember
-						and bCand1Known):
-							iVoteCand[0] = lMemberVotes
-						if (iCandidate2 == iMember
-						and bCand2Known):
-							iVoteCand[1] = lMemberVotes
-
-					# calculate the maximum number of votes
-					iMaxVotes = 0
-					for iLoop in range(gc.getNumVoteInfos()):
-						if gc.getGame().countPossibleVote(iLoop, i) > 0:
-							iMaxVotes = gc.getGame().countPossibleVote(iLoop, i)
-							break
-
-					iRow = screen.appendTableRow(szTable)
-					iVoteReq = self.getVoteReq(i, self.VoteToggle)
-					sVoteReq = "%i" % (iVoteReq)
-					sString = u"<font=3b>" + localText.getText("TXT_KEY_BUG_VICTORY_VOTES_TOTAL", ()) + "</font> "
-					if bCand1Known and bCand2Known:
-						sString +=  localText.getText("TXT_KEY_BUG_VICTORY_VOTES_REQUIRED", (sVoteReq,))
-					screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-					if bCand1Known and bCand2Known:
-						# color code the totals
-						sVoteTotal = str(iVoteTotal[0])
-						iColor = self.getVoteTotalColor(iVoteReq, iVoteTotal[0], iVoteCand[0], iVoteTotal[0] > iVoteTotal[1], self.VoteToggle == 1)
-						if iColor != -1:
-							sVoteTotal = localText.changeTextColor(sVoteTotal, iColor)
-						screen.setTableText(szTable, 2, iRow, sVoteTotal, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-
-						sVoteTotal = str(iVoteTotal[1])
-						iColor = self.getVoteTotalColor(iVoteReq, iVoteTotal[1], iVoteCand[1], iVoteTotal[1] > iVoteTotal[0], self.VoteToggle == 1)
-						if iColor != -1:
-							sVoteTotal = localText.changeTextColor(sVoteTotal, iColor)
-						screen.setTableText(szTable, 4, iRow, sVoteTotal, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
-
-					# add a blank row
-					iRow = screen.appendTableRow(szTable)
-
-					# SecGen vote prediction
-					if iVoteTotal[0] > iVoteTotal[1]:
-						iWinner = 0
-					else:
-						iWinner = 1
-					iLoser = 1 - iWinner
-					sWin = gc.getPlayer(lMembers[iWinner][2]).getName()
-					sLose = gc.getPlayer(lMembers[iLoser][2]).getName()
-					fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
-					fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
-					
-					if self.VoteToggle == 0:
-						sSecGen = gc.getVoteSourceInfo(i).getSecretaryGeneralText()
-					else:
-						sSecGen = localText.getText("TXT_KEY_BUG_VICTORY_DIPLOMATIC", ())
-
-					# display SecGen vote prediction
-					if bCand1Known and bCand2Known:
-						sString = sSecGen + ": " + localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_RESULT", (sWin, self.formatPercent(fVotePercent), self.formatPercent(fMargin)))
-						iRow = screen.appendTableRow(szTable)
-						screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-						# BUG Poll statistical error
-						sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (self.formatPercent(3.5 + gc.getASyncRand().get(10, "") / 10.0), ))
-						iRow = screen.appendTableRow(szTable)
-						screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-					iRow = screen.appendTableRow(szTable)
-
-				else: # following is vanilla BtS code
-					for j in range(gc.getMAX_PLAYERS()):
-						if gc.getPlayer(j).isAlive() and not gc.getPlayer(j).isBarbarian() and gc.getTeam(iActiveTeam).isHasMet(gc.getPlayer(j).getTeam()):
-							szPlayerText = gc.getPlayer(j).getName()
-							if (-1 != iSecretaryGeneralVote):
-								szPlayerText += localText.getText("TXT_KEY_VICTORY_SCREEN_PLAYER_VOTES", (gc.getPlayer(j).getVotes(iSecretaryGeneralVote, i), )) 
-							if (gc.getGame().canHaveSecretaryGeneral(i) and gc.getGame().getSecretaryGeneral(i) == gc.getPlayer(j).getTeam()):
-								iRow = screen.appendTableRow(szTable)
-								screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szTable, 1, iRow, gc.getVoteSourceInfo(i).getSecretaryGeneralText(), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-							elif (gc.getPlayer(j).isFullMember(i)):
-								iRow = screen.appendTableRow(szTable)
-								screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_FULL_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-							elif (gc.getPlayer(j).isVotingMember(i)):
-								iRow = screen.appendTableRow(szTable)
-								screen.setTableText(szTable, 0, iRow, szPlayerText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-								screen.setTableText(szTable, 1, iRow, localText.getText("TXT_KEY_VOTESOURCE_VOTING_MEMBER", ()), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			
-					iRow = screen.appendTableRow(szTable)
-# BUG Additions End
-
-		self.drawTabs()
-	
 	def formatPercent(self, f):
 		return "%.1f%%" % f
 
-	def getVoteReq(self, i, Toggle):
+	def getVoteReq(self, i, iVote):
 		iMaxVotes = 0
 		iMinVotes = 999999
 		for iLoop in range(gc.getNumVoteInfos()):
@@ -508,22 +632,41 @@ class CvVictoryScreen:
 				if iVoteReq < iMinVotes:
 					iMinVotes = iVoteReq
 
-		if Toggle == 0:
+		if iVote == 1:
 			return iMinVotes
 		else:
 			return iMaxVotes
 
-	def getCandStatusandName(self, iCand):
-		pCand = gc.getPlayer(iCand)
-		iCandTeam = pCand.getTeam()
+	def getCandStatusName(self, iCand):
+		# iCand is a team
+		if iCand == -1: # there is no candidate
+			return -1, "-"
+
 		activePlayer = gc.getPlayer(self.iActivePlayer)
 		iActiveTeam = activePlayer.getTeam()
 
-		if iActiveTeam == iCandTeam:
-			return True, gc.getTeam(iCandTeam).getName()
+		if iActiveTeam == iCand:
+			return 1, gc.getTeam(iCand).getName()
 
-		if gc.getTeam(iActiveTeam).isHasMet(iCandTeam):
-			return True, gc.getTeam(iCandTeam).getName()
+		if gc.getTeam(iActiveTeam).isHasMet(iCand):
+			return 1, gc.getTeam(iCand).getName()
+		else:
+			return 0, localText.getText("TXT_KEY_TOPCIVS_UNKNOWN", ())
+
+	def getPlayerStatusName(self, iPlayer):
+		if iPlayer == -1: # there is no player
+			return False, "-"
+
+		pPlayer = gc.getPlayer(iPlayer)
+		iPlayerTeam = pPlayer.getTeam()
+		activePlayer = gc.getPlayer(self.iActivePlayer)
+		iActiveTeam = activePlayer.getTeam()
+
+		if iActiveTeam == iPlayerTeam:
+			return True, pPlayer.getName()
+
+		if gc.getTeam(iActiveTeam).isHasMet(iPlayerTeam):
+			return True, pPlayer.getName()
 		else:
 			return False, localText.getText("TXT_KEY_TOPCIVS_UNKNOWN", ())
 
@@ -539,10 +682,8 @@ class CvVictoryScreen:
 		return -1
 
 	def showGameSettingsScreen(self):
-	
 		self.deleteAllWidgets()	
 		screen = self.getScreen()
-				
 
 		activePlayer = gc.getPlayer(self.iActivePlayer)
 
@@ -551,7 +692,7 @@ class CvVictoryScreen:
 		szSettingsTable = self.getNextWidgetName()
 		screen.addListBoxGFC(szSettingsTable, "", self.SETTINGS_PANEL_X1 + self.MARGIN, self.SETTINGS_PANEL_Y + self.MARGIN, self.SETTINGS_PANEL_WIDTH - 2*self.MARGIN, self.SETTINGS_PANEL_HEIGHT - 2*self.MARGIN, TableStyles.TABLE_STYLE_EMPTY)
 		screen.enableSelect(szSettingsTable, False)
-		
+
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_LEADER_CIV_DESCRIPTION", (activePlayer.getNameKey(), activePlayer.getCivilizationShortDescriptionKey())), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, u"     (" + CyGameTextMgr().parseLeaderTraits(activePlayer.getLeaderType(), activePlayer.getCivilizationType(), True, False) + ")", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
@@ -564,9 +705,9 @@ class CvVictoryScreen:
 		screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_STARTING_ERA", (gc.getEraInfo(gc.getGame().getStartEra()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_GAME_SPEED", (gc.getGameSpeedInfo(gc.getGame().getGameSpeedType()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
-		
+
 		screen.updateListBox(szSettingsTable)
-		
+
 		szOptionsPanel = self.getNextWidgetName()
 		screen.addPanel(szOptionsPanel, localText.getText("TXT_KEY_MAIN_MENU_CUSTOM_SETUP_OPTIONS", ()).upper(), "", True, True, self.SETTINGS_PANEL_X2, self.SETTINGS_PANEL_Y - 10, self.SETTINGS_PANEL_WIDTH, self.SETTINGS_PANEL_HEIGHT, PanelStyles.PANEL_STYLE_MAIN)
 		szOptionsTable = self.getNextWidgetName()
@@ -575,28 +716,28 @@ class CvVictoryScreen:
 
 		for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
 			if gc.getGame().isOption(i):
-				screen.appendListBoxStringNoUpdate(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)		
+				screen.appendListBoxStringNoUpdate(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 		if (gc.getGame().isOption(GameOptionTypes.GAMEOPTION_ADVANCED_START)):
 			szNumPoints = u"%s %d" % (localText.getText("TXT_KEY_ADVANCED_START_POINTS", ()), gc.getGame().getNumAdvancedStartPoints())
-			screen.appendListBoxStringNoUpdate(szOptionsTable, szNumPoints, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)		
+			screen.appendListBoxStringNoUpdate(szOptionsTable, szNumPoints, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 		if (gc.getGame().isGameMultiPlayer()):
 			for i in range(gc.getNumMPOptionInfos()):
 				if (gc.getGame().isMPOption(i)):
 					screen.appendListBoxStringNoUpdate(szOptionsTable, gc.getMPOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-		
+
 			if (gc.getGame().getMaxTurns() > 0):
 				szMaxTurns = u"%s %d" % (localText.getText("TXT_KEY_TURN_LIMIT_TAG", ()), gc.getGame().getMaxTurns())
-				screen.appendListBoxStringNoUpdate(szOptionsTable, szMaxTurns, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)		
-				
+				screen.appendListBoxStringNoUpdate(szOptionsTable, szMaxTurns, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 			if (gc.getGame().getMaxCityElimination() > 0):
 				szMaxCityElimination = u"%s %d" % (localText.getText("TXT_KEY_CITY_ELIM_TAG", ()), gc.getGame().getMaxCityElimination())
-				screen.appendListBoxStringNoUpdate(szOptionsTable, szMaxCityElimination, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)		
+				screen.appendListBoxStringNoUpdate(szOptionsTable, szMaxCityElimination, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 		if (gc.getGame().hasSkippedSaveChecksum()):
-			screen.appendListBoxStringNoUpdate(szOptionsTable, "Skipped Checksum", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)		
-			
+			screen.appendListBoxStringNoUpdate(szOptionsTable, "Skipped Checksum", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
 		screen.updateListBox(szOptionsTable)
 
 		szCivsPanel = self.getNextWidgetName()
@@ -616,10 +757,8 @@ class CvVictoryScreen:
 		screen.updateListBox(szCivsTable)
 
 		self.drawTabs()
-		
 
 	def showVictoryConditionScreen(self):
-					
 		activePlayer = PyHelpers.PyPlayer(self.iActivePlayer)
 		iActiveTeam = gc.getPlayer(self.iActivePlayer).getTeam()
 
@@ -870,7 +1009,7 @@ class CvVictoryScreen:
 						if (iLoopTeam != iActiveTeam and (activePlayer.getTeam().isHasMet(iLoopTeam) or gc.getGame().isDebugMode())):
 							teamBuilding = 0
 							for i in range(gc.getNumBuildingClassInfos()):
-								if (gc.getBuildingClassInfo(i).getVictoryThreshold(iLoopVC) > 0):					
+								if (gc.getBuildingClassInfo(i).getVictoryThreshold(iLoopVC) > 0):
 									teamBuilding += gc.getTeam(iLoopTeam).getBuildingClassCount(i)
 							if (teamBuilding > bestBuilding):
 								bestBuilding = teamBuilding
@@ -1161,7 +1300,7 @@ class CvVictoryScreen:
 				listCultureCities.sort()
 				listCultureCities.reverse()
 				return listCultureCities
-		return []					
+		return []
 
 # BUG Additions Start
 	def getVotesForWhichCandidate(self, iPlayer, iCand1, iCand2, iVote):
@@ -1169,8 +1308,10 @@ class CvVictoryScreen:
 		#             2 = vote for candidate 2
 		#            -1 = abstain
 
-		# iVote = 0 means vote for SecGen or Pope
-		# iVote = 1 means vote for diplomatic victory
+		# iVote = 1 means vote for SecGen or Pope
+		# iVote = 2 means vote for diplomatic victory
+
+		# candidates are teams!!!
 
 		# * AI votes for itself if it can
 		# * AI votes for a team member if it can
@@ -1179,39 +1320,28 @@ class CvVictoryScreen:
 		# * if both candidates are at 'friendly' status, votes for one with highest attitude
 		# * if neither candidate is at 'friendly', abstains
 
-		# * AI votes for itself if it can
-		if iPlayer == iCand1:
-			return 1
-		if iPlayer == iCand2:
-			return 2
+		iPTeam = gc.getPlayer(iPlayer).getTeam()
+		iPCand1 = self.getPlayerOnTeam(iCand1)
+		iPCand2 = self.getPlayerOnTeam(iCand2)
+
+		# * player votes for its own team if it can
+		if iPTeam == iCand1: return 1
+		if iPTeam == iCand2: return 2
 
 		# if player is human, votes for self or abstains
-		if iPlayer == self.iActivePlayer:
-			return -1
+		if iPlayer == self.iActivePlayer: return -1
 
-		iPTeam = gc.getPlayer(iPlayer).getTeam()
-		iC1Team = gc.getPlayer(iCand1).getTeam()
-		iC2Team = gc.getPlayer(iCand2).getTeam()
-
-		# * AI votes for a team member if it can
 		# * AI votes for its master, if it is a vassal
-#		if (gc.getTeam(iC1Team).isVassal(iPTeam)
-		if (gc.getTeam(iPTeam).isVassal(iC1Team)
-		or  iC1Team == iPTeam):
-			return 1
-
-#		if (gc.getTeam(iC2Team).isVassal(iPTeam)
-		if (gc.getTeam(iPTeam).isVassal(iC2Team)
-		or  iC2Team == iPTeam):
-			return 2
+		if gc.getTeam(iPTeam).isVassal(iCand1): return 1
+		if gc.getTeam(iPTeam).isVassal(iCand2): return 2
 
 		# get player category (friendly) to candidates
-		iC1Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand1)
-		iC2Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iCand2)
+		iC1Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iPCand1)
+		iC2Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iPCand2)
 
 		# the cut-off for SecGen votes is pleased (3)
 		# the cut-off for Diplo victory votes is friendly (4)
-		if iVote == 0:
+		if iVote == 1:  # vote for SecGen or Pope
 			iCutOff = 3
 		else:
 			iCutOff = 4
@@ -1236,8 +1366,8 @@ class CvVictoryScreen:
 		# need to decide on straight attitude (visible only)
 
 		# get player attitude to candidates
-		iC1Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand1)
-		iC2Att = AttitudeUtils.getAttitudeCount(iPlayer, iCand2)
+		iC1Att = AttitudeUtils.getAttitudeCount(iPlayer, iPCand1)
+		iC2Att = AttitudeUtils.getAttitudeCount(iPlayer, iPCand2)
 
 		# * if both candidates are at 'friendly' status, votes for one with highest attitude
 		if iC2Att < iC1Att: # ties go to Candidate #1
@@ -1247,17 +1377,24 @@ class CvVictoryScreen:
 
 		return -1
 
-	def getUNTeam(self):
+	def getPlayerOnTeam(self, iTeam):
+		for i in range(gc.getMAX_PLAYERS()):
+			if iTeam == gc.getPlayer(i).getTeam():
+				return i
+
+		return -1
+
+	def getAP_UN_OwnerTeam(self):
 		for i in range(gc.getNumBuildingInfos()):
 			for j in range(gc.getNumVoteSourceInfos()):
-				if (gc.getBuildingInfo(i).getVoteSourceType() == j):								
+				if (gc.getBuildingInfo(i).getVoteSourceType() == j):
 					for iLoopTeam in range(gc.getMAX_CIV_TEAMS()):
 						if (gc.getTeam(iLoopTeam).isAlive() and not gc.getTeam(iLoopTeam).isMinorCiv() and not gc.getTeam(iLoopTeam).isBarbarian()):
 							if (gc.getTeam(iLoopTeam).getBuildingClassCount(gc.getBuildingInfo(i).getBuildingClassType()) > 0):
 								return iLoopTeam
 								break
 		return -1
-		
+
 	def canBuildSSComponent(self, vTeam, vComponent):
 		if(not vTeam.isHasTech(vComponent.getTechPrereq())):
 			return False
@@ -1320,18 +1457,6 @@ class CvVictoryScreen:
 		self.ApolloTeamCheckResult[iTeam] = False
 		self.ApolloTeamsChecked.add(iTeam)
 		return False
-
-#		self.ApolloTeamChecked = set()
-#		self.ApolloTeamCheckResult = {}
-#self.ApolloTeamsChecked
-#		if iUnit not in self.UnitsAlreadyMapped:
-#			nextUpgrades = set()
-#			for iNextUnit in upgrades:
-#				nextUpgrades |= self.buildFutureArray_Closure(iNextUnit)  # note recursive call
-#			upgrades |= nextUpgrades
-#			self.UnitsAlreadyMapped.add(iUnit)
-
-
 # BUG Additions End
 
 	# returns a unique ID for a widget in this screen
@@ -1339,7 +1464,7 @@ class CvVictoryScreen:
 		szName = self.WIDGET_ID + str(self.nWidgetCount)
 		self.nWidgetCount += 1
 		return szName
-	
+
 	def deleteAllWidgets(self):
 		screen = self.getScreen()
 		i = self.nWidgetCount - 1
@@ -1350,40 +1475,61 @@ class CvVictoryScreen:
 
 		self.nWidgetCount = 0
 
-		screen.deleteWidget(self.Vote_Toggle_ID)
+		screen.deleteWidget(self.Vote_Pope_ID)
+		screen.deleteWidget(self.Vote_DipVic_ID)
+		screen.deleteWidget(self.Vote_AP_ID)
+		screen.deleteWidget(self.Vote_UN_ID)
 
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
+		sWidget = inputClass.getFunctionName()
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
-			if (inputClass.getFunctionName() == self.DEBUG_DROPDOWN_ID):
+			if (sWidget == self.DEBUG_DROPDOWN_ID):
 				szName = self.DEBUG_DROPDOWN_ID
 				iIndex = self.getScreen().getSelectedPullDownID(szName)
 				self.iActivePlayer = self.getScreen().getPullDownData(szName, iIndex)
 				self.iScreen = VICTORY_CONDITION_SCREEN
 				self.showVictoryConditionScreen()
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
-			if (inputClass.getFunctionName() == self.VC_TAB_ID):
+			if (sWidget == self.VC_TAB_ID):
 				self.iScreen = VICTORY_CONDITION_SCREEN
 				self.showVictoryConditionScreen()
-			elif (inputClass.getFunctionName() == self.SETTINGS_TAB_ID):
+			elif (sWidget == self.SETTINGS_TAB_ID):
 				self.iScreen = GAME_SETTINGS_SCREEN
 				self.showGameSettingsScreen()
-			elif (inputClass.getFunctionName() == self.UN_RESOLUTION_TAB_ID):
+			elif (sWidget == self.UN_RESOLUTION_TAB_ID):
 				self.iScreen = UN_RESOLUTION_SCREEN
 				self.showVotingScreen()
-			elif (inputClass.getFunctionName() == self.UN_MEMBERS_TAB_ID):
+			elif (sWidget == self.UN_MEMBERS_TAB_ID):
 				self.iScreen = UN_MEMBERS_SCREEN
 				self.showMembersScreen()
-			elif (inputClass.getFunctionName() == self.Vote_Toggle_ID):
-				self.VoteToggle = (self.VoteToggle + 1) % 2
+
+			elif (sWidget == self.Vote_Pope_ID and self.VoteType == 2):
+				self.VoteType = 1
 				self.iScreen = UN_MEMBERS_SCREEN
 				self.showMembersScreen()
+
+			elif (sWidget == self.Vote_DipVic_ID and self.VoteType == 1):
+				self.VoteType = 2
+				self.iScreen = UN_MEMBERS_SCREEN
+				self.showMembersScreen()
+
+			elif (sWidget == self.Vote_AP_ID and self.VoteBody == 2):
+				self.VoteBody = 1
+				self.iScreen = UN_MEMBERS_SCREEN
+				self.showMembersScreen()
+
+			elif (sWidget == self.Vote_UN_ID and self.VoteBody == 1):
+				self.VoteBody = 2
+				self.iScreen = UN_MEMBERS_SCREEN
+				self.showMembersScreen()
+
 			elif (inputClass.getData1() == self.SPACESHIP_SCREEN_BUTTON):
 				#close screen
 				screen = self.getScreen()
 				screen.setDying(True)
 				CyInterface().clearSelectedCities()
-				
+
 				#popup spaceship screen
 				popupInfo = CyPopupInfo()
 				popupInfo.setButtonPopupType(ButtonPopupTypes.BUTTONPOPUP_PYTHON_SCREEN)
