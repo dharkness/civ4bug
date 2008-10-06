@@ -108,7 +108,7 @@ def getText(key, values, default=None):
 		if default is not None:
 			return default
 		else:
-			warn("BugUtil - XML key %s not found", key)
+			debug("BugUtil.getText - XML key %s not found", key)
 			return "XML key %s not found" % key
 
 def colorText(text, color):
