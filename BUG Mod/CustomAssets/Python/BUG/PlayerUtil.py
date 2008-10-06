@@ -315,6 +315,12 @@ def getPlayerCities(playerOrID, testFunc=None):
 	return [city for city in playerCities(playerOrID, testFunc)]
 
 def isSaltWaterPort(city, askingTeamOrID=None):
+	"""
+	Returns True if the asking team can tell that the CyCity is on the coast
+	of the sea.
+	
+	If askingTeamOrID is None, the result is as if the owner of the city is asking.
+	"""
 	if city:
 		eAskingTeam = getTeamID(askingTeamOrID)
 		map = CyMap()
