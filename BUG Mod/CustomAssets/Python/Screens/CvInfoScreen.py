@@ -570,34 +570,16 @@ class CvInfoScreen:
 		
 # BUG - 3.17 No Espionage - start
 		# Always show graph if espionage is disabled
-		iDemographicsMission = -1
+		self.iDemographicsMission = -1
 		# See if Espionage allows graph to be shown for each player
 		if (not BugUtil.isNoEspionage()):
 			for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 				if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
-					iDemographicsMission = iMissionLoop
+					self.iDemographicsMission = iMissionLoop
 					break
 # BUG - 3.17 No Espionage - end
 		
-		# Determine who this active player knows
-		self.aiPlayersMet = []
-		self.aiPlayersMetNAEspionage = []
-		self.iNumPlayersMet = 0
-		self.iNumPlayersMetNAEspionage = 0
-		for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
-			pLoopPlayer = gc.getPlayer(iLoopPlayer)
-			iLoopPlayerTeam = pLoopPlayer.getTeam()
-			if (gc.getTeam(iLoopPlayerTeam).isEverAlive()):
-				if (self.pActiveTeam.isHasMet(iLoopPlayerTeam) or CyGame().isDebugMode() or iEndGame != 0):
-					if (iDemographicsMission == -1
-					or self.pActivePlayer.canDoEspionageMission(iDemographicsMission, iLoopPlayer, None, -1)
-					or iEndGame != 0
-					or iLoopPlayerTeam == CyGame().getActiveTeam()):
-						self.aiPlayersMet.append(iLoopPlayer)
-						self.iNumPlayersMet += 1
-					else:
-						self.aiPlayersMetNAEspionage.append(iLoopPlayer)
-						self.iNumPlayersMetNAEspionage += 1
+		self.determineKnownPlayers(iEndGame)
 
 		# "Save" current widgets so they won't be deleted later when changing tabs
 		self.iNumPermanentWidgets = self.nWidgetCount
@@ -2456,15 +2438,11 @@ class CvInfoScreen:
 				self.iActiveTeam = self.pActivePlayer.getTeam()
 				self.pActiveTeam = gc.getTeam(self.iActiveTeam)
 
-				# Determine who this active player knows
-				self.aiPlayersMet = []
-				self.iNumPlayersMet = 0
-				for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
-					pLoopPlayer = gc.getPlayer(iLoopPlayer)
-					iLoopPlayerTeam = pLoopPlayer.getTeam()
-					if (self.pActiveTeam.isHasMet(iLoopPlayerTeam)):
-						self.aiPlayersMet.append(iLoopPlayer)
-						self.iNumPlayersMet += 1
+				self.determineKnownPlayers()
+				# Force recache of all scores
+				self.scoreCache = []
+				for t in self.RANGE_SCORES:
+					self.scoreCache.append(None)
 				self.redrawContents()
 
 			iSelected = inputClass.getData()
@@ -2630,3 +2608,24 @@ class CvInfoScreen:
 	def update(self, fDelta):
 
 		return
+
+	def determineKnownPlayers(self, iEndGame=0):
+		# Determine who this active player knows
+		self.aiPlayersMet = []
+		self.aiPlayersMetNAEspionage = []
+		self.iNumPlayersMet = 0
+		self.iNumPlayersMetNAEspionage = 0
+		for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
+			pLoopPlayer = gc.getPlayer(iLoopPlayer)
+			iLoopPlayerTeam = pLoopPlayer.getTeam()
+			if (gc.getTeam(iLoopPlayerTeam).isEverAlive()):
+				if (self.pActiveTeam.isHasMet(iLoopPlayerTeam) or CyGame().isDebugMode() or iEndGame != 0):
+					if (self.iDemographicsMission == -1
+					or self.pActivePlayer.canDoEspionageMission(self.iDemographicsMission, iLoopPlayer, None, -1)
+					or iEndGame != 0
+					or iLoopPlayerTeam == self.iActiveTeam):
+						self.aiPlayersMet.append(iLoopPlayer)
+						self.iNumPlayersMet += 1
+					else:
+						self.aiPlayersMetNAEspionage.append(iLoopPlayer)
+						self.iNumPlayersMetNAEspionage += 1
