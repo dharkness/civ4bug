@@ -25,6 +25,8 @@ TRAIN_LACK_BONUS = 2
 unitsWithoutBonuses = set()
 # units that require at least one resource to build
 unitsWithBonuses = set()
+# bonuses that are required to build at least one unit
+strategicBonuses = set()
 # unit ID -> set of tech IDs
 unitTechs = dict()
 
@@ -65,13 +67,17 @@ def init():
 		
 		# resource sets
 		found = False
-		if unitInfo.getPrereqAndBonus() != -1:
+		eBonus = unitInfo.getPrereqAndBonus()
+		if eBonus != -1:
 			found = True
-		elif NUM_OR_BONUSES > 0:
-			for i in range(NUM_OR_BONUSES):
-				if unitInfo.getPrereqOrBonuses(i) != -1:
-					found = True
-					break
+			strategicBonuses.add(eBonus)
+			BugUtil.debug("  requires %s", gc.getBonusInfo(eBonus).getDescription())
+		for i in range(NUM_OR_BONUSES):
+			eBonus = unitInfo.getPrereqOrBonuses(i)
+			if eBonus != -1:
+				found = True
+				strategicBonuses.add(eBonus)
+				BugUtil.debug("  requires %s", gc.getBonusInfo(eBonus).getDescription())
 		if found:
 			unitsWithBonuses.add(eUnit)
 		else:
@@ -266,6 +272,7 @@ def getTrainableUnits(playerOrID, knowableUnits, checkCities=True, military=None
 	for eClass in range(NUM_CLASSES):
 		eUnit = civInfo.getCivilizationUnits(eClass)
 		if eUnit == -1 or eUnit not in knowableUnits:
+			#BugUtil.debug("  %s -> unknowable", gc.getUnitClassInfo(eClass).getDescription())
 			continue
 		unitInfo = gc.getUnitInfo(eUnit)
 		# military
@@ -273,13 +280,17 @@ def getTrainableUnits(playerOrID, knowableUnits, checkCities=True, military=None
 			combat = (unitInfo.getUnitCombatType() > 0 or unitInfo.getNukeRange() != -1
 					or unitInfo.getAirCombat() > 0)
 			if military != combat:
+				#BugUtil.debug("  %s -> combat is %s", unitInfo.getDescription(), combat)
 				continue
 		# OCC and Settlers
 		if game.isOption(GameOptionTypes.GAMEOPTION_ONE_CITY_CHALLENGE) and unitInfo.isFound():
+			BugUtil.debug("  %s -> no founding units in OCC", unitInfo.getDescription())
 			continue
 		# techs
 		for eTech in unitTechs[eUnit]:
 			if not team.isHasTech(eTech):
+				BugUtil.debug("  %s -> doesn't know %s", unitInfo.getDescription(), 
+						gc.getTechInfo(eTech).getDescription())
 				missing = True
 				break
 		else:
@@ -289,26 +300,48 @@ def getTrainableUnits(playerOrID, knowableUnits, checkCities=True, military=None
 		# state religion
 		eReligion = unitInfo.getStateReligion()
 		if eReligion != -1 and player.getStateReligion() != eReligion:
+			BugUtil.debug("  %s -> wrong state religion", unitInfo.getDescription())
 			continue
 		# nukes
 		if (game.isNoNukes() or not game.isNukesValid()) and unitInfo.getNukeRange() != -1:
+			BugUtil.debug("  %s -> no nukes", unitInfo.getDescription())
 			continue
 		# getSpecialUnitType, game.isSpecialUnitValid
 		eSpecialType = unitInfo.getSpecialUnitType()
 		if eSpecialType != -1 and not game.isSpecialUnitValid(eSpecialType):
+			BugUtil.debug("  %s -> special unit type %s invalid", unitInfo.getDescription(),
+					gc.getSpecialUnitInfo(eSpecialType).getDescription())
 			continue
 		# cities
 		if cities and not canAnyCityBuildUnit(eUnit, cities, True):
+			BugUtil.debug("  %s -> no city can train unit", unitInfo.getDescription())
 			continue
 		BugUtil.debug("  %s", unitInfo.getDescription())
 		units.add(eUnit)
 	return units
 
-def getKnownTrainableUnits(playerOrID, askingPlayerOrID, knowableUnits, military=None):
+def getTrainableAndUntrainableUnits(playerOrID, knowableUnits, military=None):
+	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
+	cities = PlayerUtil.getPlayerCities(player)
+	# separate units into two groups: yes and no
+	units = getTrainableUnits(playerOrID, knowableUnits, False, military)
+	yesUnits = set()
+	noUnits = set()
+	BugUtil.debug("-----------------------")
+	for eUnit in units:
+		if canAnyCityBuildUnit(eUnit, cities, -1, True):
+			BugUtil.debug("  yes %s", gc.getUnitInfo(eUnit).getDescription())
+			yesUnits.add(eUnit)
+		else:
+			BugUtil.debug("  no  %s", gc.getUnitInfo(eUnit).getDescription())
+			noUnits.add(eUnit)
+	return yesUnits, noUnits
+
+def getKnownTrainableUnits(playerOrID, askingPlayerOrID, knowableUnits, bonuses, military=None):
 	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
 	askingPlayer = PlayerUtil.getPlayer(askingPlayerOrID)
 	eAskingTeam, askingTeam = PlayerUtil.getPlayerTeamAndID(askingPlayer)
-	trade = player.canTradeNetworkWith(askingPlayer.getID())
+	#trade = player.canTradeNetworkWith(askingPlayer.getID())
 	cities = PlayerUtil.getPlayerCities(player, 
 			lambda city: city.isRevealed(eAskingTeam, False))
 	# separate units into two groups: yes and maybe
@@ -317,16 +350,38 @@ def getKnownTrainableUnits(playerOrID, askingPlayerOrID, knowableUnits, military
 	maybeUnits = set()
 	BugUtil.debug("-----------------------")
 	for eUnit in units:
-		if ((trade or eUnit not in unitsWithBonuses) 
-		and canAnyCityBuildUnit(eUnit, cities, eAskingTeam, trade)):
-			BugUtil.debug("  yes %s", gc.getUnitInfo(eUnit).getDescription())
+		if not canAnyCityBuildUnit(eUnit, cities, eAskingTeam, False):
+			BugUtil.debug("  no    %s", gc.getUnitInfo(eUnit).getDescription())
+		elif hasBonusesForUnit(eUnit, bonuses):
+			BugUtil.debug("  yes   %s", gc.getUnitInfo(eUnit).getDescription())
 			yesUnits.add(eUnit)
-		else:
-			BugUtil.debug("  no  %s", gc.getUnitInfo(eUnit).getDescription())
+		elif bonuses is None:
+			BugUtil.debug("  maybe %s", gc.getUnitInfo(eUnit).getDescription())
 			maybeUnits.add(eUnit)
 	return yesUnits, maybeUnits
 
-def canAnyCityBuildUnit(eUnit, cities, askingTeamOrID, checkBonuses=True):
+def hasBonusesForUnit(eUnit, bonuses):
+	if eUnit not in unitsWithBonuses:
+		return True
+	if not bonuses:
+		return False
+	unitInfo = gc.getUnitInfo(eUnit)
+	eBonus = unitInfo.getPrereqAndBonus()
+	if eBonus != -1 and eBonus not in bonuses:
+		return False
+	requiresBonus = False
+	for i in range(NUM_OR_BONUSES):
+		eBonus = unitInfo.getPrereqOrBonuses(i)
+		if eBonus != -1:
+			requiresBonus = True
+			if eBonus in bonuses:
+				break
+	else:
+		if requiresBonus:
+			return False
+	return True
+
+def canAnyCityBuildUnit(eUnit, cities=None, askingTeamOrID=-1, checkBonuses=True):
 	eAskingTeam = PlayerUtil.getTeamID(askingTeamOrID)
 	unitInfo = gc.getUnitInfo(eUnit)
 	if cities:
@@ -341,7 +396,7 @@ def canCityBuildUnit(unitInfo, city, eAskingTeam, checkBonuses=True):
 	# religion
 	if unitInfo.isPrereqReligion():
 		if not city or city.getReligionCount() > 0:
-			# EF: Teems odd to enforce NO religions in the city, 
+			# EF: Seems odd to enforce NO religions in the city, 
 			#     but this is how CvPlot.canTrain() does it.
 			#     The function should actually be called isPrereqNoReligion().
 			return False
@@ -381,12 +436,12 @@ def canCityBuildUnit(unitInfo, city, eAskingTeam, checkBonuses=True):
 			if eSpecialBuilding == -1 or not player.isSpecialBuildingNotRequired(eSpecialBuilding):
 				return False
 	# resources
-	if checkBonuses and not hasBonusesForUnit(unitInfo, city):
+	if checkBonuses and not cityHasBonusesForUnit(unitInfo, city):
 		return False
 	# passes all tests for this city
 	return True
 
-def hasBonusesForUnit(unitInfo, city):
+def cityHasBonusesForUnit(unitInfo, city):
 	if not city:
 		return False
 	eBonus = unitInfo.getPrereqAndBonus()
@@ -417,6 +472,9 @@ def getCanTrainUnits(playerOrID, askingPlayerOrID=None, military=None):
 	
 	If military is provided, only military or civilian units are checked
 	depending on its value, True or False, respectively.
+	
+	*** OBSOLETE ***
+	
 	"""
 	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
 	askingPlayer = PlayerUtil.getPlayer(askingPlayerOrID)

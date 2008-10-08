@@ -108,7 +108,7 @@
 	<init module="TechUtil" function="init"/>
 	<init module="TradeUtil" function="init"/>
 	<init module="TraitUtil" function="init"/>
-	<!--init module="UnitUtil" function="init"/-->
+	<init module="UnitUtil" function="init"/>
 	
 	
 	<!-- Mods -->

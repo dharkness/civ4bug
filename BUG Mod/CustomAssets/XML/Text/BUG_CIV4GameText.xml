@@ -311,6 +311,7 @@
 	
 	<!-- Military Advisor -->
 	
+	<!-- Unit Groupings -->
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_GROUPER_TYPE_GROUPING</Tag>
 		<English>Unit Type</English>
@@ -605,6 +606,7 @@
 		<Spanish>Other</Spanish>
 	</TEXT>
 	
+	<!-- General Screen -->
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_UNIT_LOCATION</Tag>
 		<English>Deployment</English>
@@ -621,6 +623,16 @@
 		<Italian>Rapporti</Italian>
 		<Spanish>Sit-Rep</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES</Tag>
+		<English>Strategic Advantages</English>
+		<French>Strategic Advantages</French>
+		<German>Strategic Advantages</German>
+		<Italian>Strategic Advantages</Italian>
+		<Spanish>Strategic Advantages</Spanish>
+	</TEXT>
+	
+	<!-- Situation Report Tab -->
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WORST</Tag>
 		<English>Worst</English>
@@ -663,35 +675,27 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL</Tag>
-		<English>Optional</English>
+		<English>Possible</English>
 		<French>Déclarera?</French>
 		<German>Möglich</German>
 		<Italian>Potenziali</Italian>
-		<Spanish>Optional</Spanish>
+		<Spanish>Possible</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_STRATEGIC_RESOURCES</Tag>
-		<English>Strategic Advantages</English>
-		<French>Avantages Stratégiques</French>
-		<German>Strategische Vorteile</German>
-		<Italian>Vantaggi Strategici</Italian>
-		<Spanish>Strategic Advantages</Spanish>
+		<Tag>TXT_KEY_MILITARY_SITREP_POSSIBLE_EMBARGOS_1</Tag>
+		<English>Possible</English>
+		<French>Possible</French>
+		<German>Possible</German>
+		<Italian>Possible</Italian>
+		<Spanish>Possible</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_OURS</Tag>
-		<English>Ours</English>
-		<French>Nous</French>
-		<German>Eigene</German>
-		<Italian>Propri</Italian>
-		<Spanish>Ours</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_MILITARY_SITREP_STRAT_RES_THEIRS</Tag>
-		<English>Theirs</English>
-		<French>Eux</French>
-		<German>Gegnerische</German>
-		<Italian>Altrui</Italian>
-		<Spanish>Theirs</Spanish>
+		<Tag>TXT_KEY_MILITARY_SITREP_POSSIBLE_EMBARGOS_2</Tag>
+		<English>Embargos</English>
+		<French>Embargos</French>
+		<German>Embargos</German>
+		<Italian>Embargos</Italian>
+		<Spanish>Embargos</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_VASSALS</Tag>
@@ -756,6 +760,80 @@
 		<German>Akut</German>
 		<Italian>Grave allarme</Italian>
 		<Spanish>Severe</Spanish>
+	</TEXT>
+	
+	<!-- Strategic Advantages Tab -->
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_RESOURCES</Tag>
+		<English>Resources</English>
+		<French>
+			<Text>Ressources</Text>
+			<Gender>Female</Gender>
+			<Plural>1</Plural>
+		</French>
+		<German>
+			<Text>Ressourcen</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</German>
+		<Italian>
+			<Text>Risorse</Text>
+			<Gender>Female</Gender>
+			<Plural>1</Plural>
+		</Italian>
+		<Spanish>
+			<Text>Recursos</Text>
+			<Gender>Male</Gender>
+			<Plural>1</Plural>
+		</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_OURS</Tag>
+		<English>Ours</English>
+		<French>Nous</French>
+		<German>Eigene</German>
+		<Italian>Propri</Italian>
+		<Spanish>Ours</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_THEIRS</Tag>
+		<English>Theirs</English>
+		<French>Eux</French>
+		<German>Gegnerische</German>
+		<Italian>Altrui</Italian>
+		<Spanish>Theirs</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_OUR_UNITS</Tag>
+		<English>Our Units</English>
+		<French>Our Units</French>
+		<German>Our Units</German>
+		<Italian>Our Units</Italian>
+		<Spanish>Our Units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_THEIR_UNITS</Tag>
+		<English>Their Units</English>
+		<French>Their Units</French>
+		<German>Their Units</German>
+		<Italian>Their Units</Italian>
+		<Spanish>Their Units</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_KNOWN</Tag>
+		<English>Known</English>
+		<French>Known</French>
+		<German>Known</German>
+		<Italian>Known</Italian>
+		<Spanish>Known</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MILITARY_STRATADV_POSSIBLE</Tag>
+		<English>Possible</English>
+		<French>Possible</French>
+		<German>Possible</German>
+		<Italian>Possible</Italian>
+		<Spanish>Possible</Spanish>
 	</TEXT>
 	
 	<!-- Reminders -->

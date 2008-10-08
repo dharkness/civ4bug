@@ -14,11 +14,12 @@ localText = CyTranslator()
 
 class IconData:
 
-	def __init__(self, sImage, iSize, widgetType, iData):
+	def __init__(self, sImage, iSize, widgetType, iData, bEnabled=True):
 		self.image = sImage
 		self.widgetType = widgetType
 		self.data = iData
 		self.size = iSize
+		self.enabled = bEnabled
 	
 class StackedBarData:
 
@@ -36,8 +37,8 @@ class CellData:
 		self.text = ""
 		self.font = 3
 	
-	def addIcon(self, sImage, iSize, widgetType, iData):
-		self.icons.append(IconData(sImage, iSize, widgetType, iData))
+	def addIcon(self, sImage, iSize, widgetType, iData, bEnabled=True):
+		self.icons.append(IconData(sImage, iSize, widgetType, iData, bEnabled))
 	
 	def setText(self, sText, iFont):
 		self.text = sText
@@ -58,8 +59,8 @@ class RowData:
 		for i in range(iNumColumns):
 			self.cells.append(CellData())
 	
-	def addIcon(self, iColumnIndex, sImage, iSize, widgetType, iData):
-		self.cells[iColumnIndex].addIcon(sImage, iSize, widgetType, iData)
+	def addIcon(self, iColumnIndex, sImage, iSize, widgetType, iData, bEnabled=True):
+		self.cells[iColumnIndex].addIcon(sImage, iSize, widgetType, iData, bEnabled)
 	
 	def setText(self, iColumnIndex, sText, iFont):
 		self.cells[iColumnIndex].setText(sText, iFont)
@@ -239,8 +240,8 @@ class IconGrid_BUG:
 	def appendRow(self, sRowHeader, sMessage, iFont=3):
 		self.data.append(RowData(sRowHeader, sMessage, iFont, len(self.columns)))
 
- 	def addIcon(self, iRowIndex, iColumnIndex, sImage, iSize, widgetType, iData):
- 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, iSize, widgetType, iData)
+ 	def addIcon(self, iRowIndex, iColumnIndex, sImage, iSize, widgetType, iData, bEnabled=True):
+ 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, iSize, widgetType, iData, bEnabled)
 
  	def setText(self, iRowIndex, iColumnIndex, sText, iFont=3):
  		self.data[iRowIndex].setText(iColumnIndex, sText, iFont)
@@ -279,11 +280,10 @@ class IconGrid_BUG:
 		self.refresh()
 	
 	def handleInput(self, inputClass):
-		BugUtil.debugInput(inputClass)
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if (inputClass.getButtonType() == WidgetTypes.WIDGET_GENERAL):
 				func = self.inputFunctionMap.get(inputClass.getData1(), None)
-				if func:
+				if func is not None:
 					BugUtil.debug("calling %r", func)
 					func()
 					return 1
@@ -361,10 +361,14 @@ class IconGrid_BUG:
 							currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
-						self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
+						listName = self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
+						self.screen.clearMultiList(listName)
+						iCount = 0
 						for icon in rowData.cells[startIndex + offset].icons:
-							self.screen.appendMultiListButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
-															  icon.image, 0, icon.widgetType, icon.data, -1, False)
+							self.screen.appendMultiListButton(listName, icon.image, 0, icon.widgetType, icon.data, -1, False)
+							if not icon.enabled:
+								self.screen.disableMultiListButton( listName, 0, iCount, icon.image)
+							iCount += 1
 						currentX += self.multiListColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
@@ -789,8 +793,16 @@ class IconGrid_BUG:
 		
 		self.scrollUpArrow = self.getNextWidgetName()
 		self.scrollDownArrow = self.getNextWidgetName()
+		self.pageUpArrow = self.getNextWidgetName()
+		self.pageDownArrow = self.getNextWidgetName()
+		self.scrollTopArrow = self.getNextWidgetName()
+		self.scrollBottomArrow = self.getNextWidgetName()
 		self.screen.deleteWidget(self.scrollUpArrow)
 		self.screen.deleteWidget(self.scrollDownArrow)
+		self.screen.deleteWidget(self.pageUpArrow)
+		self.screen.deleteWidget(self.pageDownArrow)
+		self.screen.deleteWidget(self.scrollTopArrow)
+		self.screen.deleteWidget(self.scrollBottomArrow)
 
 	def hideGroups(self):
 		self.groupPanelName = self.getNextWidgetName()
