@@ -7,11 +7,13 @@
 ##
 ## Deployment Tab
 ##  * Add unit filter buttons
-##  * Make it pretty
 ##
 ## Sit Rep Tab
 ##  * Attitude icon
-##  * Possible Embargos
+##
+## Strat Adv Tab
+##  * Allow player to add/remove units and resources to assume a rival has access to
+##  * Examine trades for resources; ideally show sources of traded resources
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -1195,19 +1197,19 @@ class CvMilitaryAdvisor:
 				self.iShiftKeyDown = inputClass.getID()
 				return 1
 
-		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED 
-				and inputClass.getFunctionName() == self.UNIT_LIST_ID):
-			iSelected = inputClass.getData()
-			control = inputClass.getFunctionName() + str(inputClass.getID())
-			BugUtil.debug("Selected item %d from list %s" % (iSelected, control))
-			if control in self.groupDropDowns:
-				iGroup = self.groupDropDowns.index(control)
-				key = self.grouper[iSelected].key
-				self.groupingKeys[iGroup] = key
-				self.selectedGroups.clear()
-				BugUtil.debug("Switched grouping %d to %s" % (iGroup, key))
-				self.UL_refresh(False, True)
-				return 1
+		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED ):
+			if self.iScreen == UNIT_LOCATION_SCREEN:
+				iSelected = inputClass.getData()
+				control = inputClass.getFunctionName() + str(inputClass.getID())
+				BugUtil.debug("Selected item %d from list %s" % (iSelected, control))
+				if control in self.groupDropDowns:
+					iGroup = self.groupDropDowns.index(control)
+					key = self.grouper[iSelected].key
+					self.groupingKeys[iGroup] = key
+					self.selectedGroups.clear()
+					BugUtil.debug("Switched grouping %d to %s" % (iGroup, key))
+					self.UL_refresh(False, True)
+					return 1
 		
 		if self.iconGrid:
 			return self.iconGrid.handleInput(inputClass)
