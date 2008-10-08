@@ -15,18 +15,34 @@
 <P CLASS="style1">Military Advisor</P>
 <P CLASS="style3">by Ruff_hi &amp; EmperorFool</P>
 <br>
-<P>The Military Advisor is now divided into two sections, <b>'Deployment'</b> and <b>'Sit-Rep'</b> (or <i>Situation Report</i>).<br>
-The <b>Deployment Tab</b> makes finding units easier by grouping units by location and unit type.<br>
-The <b>Sit-Rep Tab</b> is your all-in-one spot to find information related to your military diplomacy.</P>
-<P>This tab displays the follow information for each known Civ (from left to right):
+<p>The Military Advisor is now divided into three tabs:</p>
+<ul>
+  <li>The <b>Deployment</b> tab makes finding units easier by allowing you to group units by several different criteria.</li>
+  <li>The <b>Sit-Rep</b> tab gives you an overview of the diplomatic situation from a war- and threat-planning point of view.</li>
+  <li>The <b>Strategic Advantages</b> tab shows you the strategic resources (Copper, Iron, Horses, etc) and units that you have as an advantage over a rival and vice versa.</li>
+</ul>
+
+<p><b>Deployment Tab</b><br><br>
+<p>This tab is based on the original Military Advisor screen. It adds the ability to select the two criteria used to group units, choosing from several attributes:</p>
+<ul>
+  <li><font color="#0000ff">Unit Type</font>: Warrior, Archer, Swordsman, etc.</li>
+  <li><font color="#0000ff">Combat Type</font>: Melee, Archery, Gunpowder, etc.</li>
+  <li><font color="#0000ff">Level</font>: 1, 2, 3 . . . 50+</li>
+  <li><font color="#0000ff">Promotions</font>: Combat 1, Woodsman 2, Tactics, etc.</li>
+  <li><font color="#0000ff">Location</font>: Domestic/Friendly/Neutral/Enemy City/Territory</li>
+  <li><font color="#0000ff">Orders</font>: Fortify, Sentry, Automate Build, etc.</li>
+</ul>
+
+<p><b>Sit-Rep Tab</b><br><br>
+<p>This tab displays the following information for each known rival (from left to right):
 <ul>
   <li>the icon of the Civilization's Leader</li>
   <li>a fist indicating that the Civilization &quot;Has Enough on Their Hands&quot;, 
       which usually means they are planning, or are engaged in a war that is taking all their resources</li>
   <li>the icon of the Civilzation's Worst Enemy</li>
   <li>the Threat Indicator, which gives you a rough idea what the threat level of attack from that Civilization is towards you</li>
-  <li>Strategic Advantages, both yours and the other Civilizations: this is useful so you don't go attacking rifles with swordsman!</li>
-  <li>icons of Leaders which are at war (or will probably be at war soon) with that Civ</li>
+  <li>icons of Leaders with whom that Civ is willing to stop trading</li>
+  <li>icons of Leaders who are at war with that Civ and those with whom the Civ is willing to start or join a war</li>
   <li>an indicator showing that the Civilization is a Vassal State of another Civ</li>
   <li>an indicator showing that the Civilization has a Defensive Pact with another Civ</li>
 </ul>
@@ -53,15 +69,18 @@ About <b>Adjustments</b>,
 if you have a Defensive Pact with the AI, then the Threat Index is multiplied by 0.2;
 if the AI is in WHEOOH mode and not at war (i.e. planning for war), then the Threat Index is multiplied by 1.3.
 <br><br>
-<p><b>Strategic Advantages</b><br><br>
-Any military unit that you can build (tech and required resource) and the AI cannot (including any possible upgrade) 
-is a strategic advantage to you; the same applies to the AI.<br>
-For example: If you can build knights and the AI can build horse archers, you have a strategic advantage (Knight) 
-and the AI doesn't (your knight cancels out the horse archer even though you cannot build it as the horse archer upgrades to a knight).<br>
-The strategic Advantage information is primarily non-domestic unit based 
-(workers, settlers, missionaries, corporate execs, spies, etc are excluded). 
-The information required is tech and resource knowledge; if you don't have this information, then the cancel icon is displayed. 
-Unique Units are a strategic advantage and are not canceled by the regular unit. 
+
+<p><b>Strategic Advantages Tab</b><br><br>
+<p>This tab has two sets of columns: resources and units.</p>
+<p>The resources columns ("Ours" and "Theirs") display which strategic resources you have access to that the rival does not and vice versa.
+If you are not connected to their trade network (e.g. you are at war), both columns show a red question mark, and this affects the unit columns.</p>
+<p>The units are displayed in two groups ("Our Units" and "Their Units") of two columns each ("Known" and "Possible").
+If you cannot trade techs with a rival, both "Known" columns display a red question mark.
+Otherwise, a unit is shown in the "Known" column when it is known that one side can build it and the other cannot. This happens mostly when one side knows a military technology (e.g. Horseback Riding) that the other does not, and
+a unit is shown in the "Possible" column when there is uncertainty about the advantage. This happens only when access to resources or water is not known for certain.
+<p>Obsolete units are hidden where possible. If you can build Axeman, Spearman, and Swordsmen, the Warrior will not be shown as an advantage for your rivals even though you can no longer build them.
+Unique Units and the units they replace are considered as wholey different units and do not cancel either other out. The screen makes no judgment as to which is better than the other.</p>
+
 <br>
 <P CLASS="style1">Instructions</P>
 <P>The enhanced Military Advisor can be enabled in the <A HREF="../Options/Advisors.html">Advisors</A> tab of the <b><i>BUG Options Screen</i></b> 
