@@ -2,7 +2,8 @@ BUG Mod
 =======
 - translate Scoreboard readme (DEU, ITA): new options and features, reordered features to match hover
 - translate MA readme (DEU, ITA): rewrote all but Sit-Rep section and copied to FRA/ESP
-- Sevopedia additions: index, shortcuts, traits, strategy articles
+- Create mod files (readmes) for Sevopedia additions:
+    index, shortcuts, traits, strategy articles
 - PublicMaps (no documentation about them yet)
 - modify the help option files to match the new option layout and added options
 
