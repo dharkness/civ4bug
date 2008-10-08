@@ -627,8 +627,8 @@
 		<Tag>TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES</Tag>
 		<English>Strategic Advantages</English>
 		<French>Strategic Advantages</French>
-		<German>Strategic Advantages</German>
-		<Italian>Strategic Advantages</Italian>
+		<German>Strategische Vorteile</German>
+		<Italian>Vantaggi Strategici</Italian>
 		<Spanish>Strategic Advantages</Spanish>
 	</TEXT>
 	
@@ -676,7 +676,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITREP_WARS_OPTIONAL</Tag>
 		<English>Possible</English>
-		<French>Déclarera?</French>
+		<French>Possible</French>
 		<German>Möglich</German>
 		<Italian>Potenziali</Italian>
 		<Spanish>Possible</Spanish>
@@ -685,7 +685,7 @@
 		<Tag>TXT_KEY_MILITARY_SITREP_POSSIBLE_EMBARGOS_1</Tag>
 		<English>Possible</English>
 		<French>Possible</French>
-		<German>Possible</German>
+		<German>Mögliche</German>
 		<Italian>Possible</Italian>
 		<Spanish>Possible</Spanish>
 	</TEXT>
@@ -766,26 +766,10 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_STRATADV_RESOURCES</Tag>
 		<English>Resources</English>
-		<French>
-			<Text>Ressources</Text>
-			<Gender>Female</Gender>
-			<Plural>1</Plural>
-		</French>
-		<German>
-			<Text>Ressourcen</Text>
-			<Gender>Male</Gender>
-			<Plural>0</Plural>
-		</German>
-		<Italian>
-			<Text>Risorse</Text>
-			<Gender>Female</Gender>
-			<Plural>1</Plural>
-		</Italian>
-		<Spanish>
-			<Text>Recursos</Text>
-			<Gender>Male</Gender>
-			<Plural>1</Plural>
-		</Spanish>
+		<French>Ressources</French>
+		<German>Ressourcen</German>
+		<Italian>Risorse</Italian>
+		<Spanish>Recursos</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_STRATADV_OURS</Tag>
@@ -807,7 +791,7 @@
 		<Tag>TXT_KEY_MILITARY_STRATADV_OUR_UNITS</Tag>
 		<English>Our Units</English>
 		<French>Our Units</French>
-		<German>Our Units</German>
+		<German>Eigene Einheiten</German>
 		<Italian>Our Units</Italian>
 		<Spanish>Our Units</Spanish>
 	</TEXT>
@@ -815,7 +799,7 @@
 		<Tag>TXT_KEY_MILITARY_STRATADV_THEIR_UNITS</Tag>
 		<English>Their Units</English>
 		<French>Their Units</French>
-		<German>Their Units</German>
+		<German>Gegnerische Einheiten</German>
 		<Italian>Their Units</Italian>
 		<Spanish>Their Units</Spanish>
 	</TEXT>
@@ -823,7 +807,7 @@
 		<Tag>TXT_KEY_MILITARY_STRATADV_KNOWN</Tag>
 		<English>Known</English>
 		<French>Known</French>
-		<German>Known</German>
+		<German>Bekannt</German>
 		<Italian>Known</Italian>
 		<Spanish>Known</Spanish>
 	</TEXT>
@@ -831,7 +815,7 @@
 		<Tag>TXT_KEY_MILITARY_STRATADV_POSSIBLE</Tag>
 		<English>Possible</English>
 		<French>Possible</French>
-		<German>Possible</German>
+		<German>Möglich</German>
 		<Italian>Possible</Italian>
 		<Spanish>Possible</Spanish>
 	</TEXT>

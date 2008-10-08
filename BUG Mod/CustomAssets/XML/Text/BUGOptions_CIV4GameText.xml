@@ -120,7 +120,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_HOVER</Tag>
 		<English>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</English>
 		<French>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</French>
-		<German>Lässt BUG bei jedem Spielstart nach SVN-Updates und/oder neuen offiziellen Versionen suchen und eine Meldung ausgeben, wenn aktuellere Versionen gefunden wurden</German>
+		<German>Lässt die BUG Mod bei jedem Spielstart nach SVN-Updates und/oder neuen offiziellen Versionen suchen und eine Meldung ausgeben, wenn aktuellere Versionen gefunden wurden</German>
 		<Italian>Quando è selezionato, il BUG Mod controllerà la disponibilità di aggiornamenti SVN e/o nuove versioni ogni volta che lancerai Civ4 e ti notificherà ciò che avrà eventualmente trovato.</Italian>
 		<Spanish>When checked, BUG will look for SVN updates and/or releases each time you launch Civilization and notify you when new ones are found.</Spanish>
 	</TEXT>
@@ -1154,7 +1154,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEALL_TEXT</Tag>
 		<English>Trade/Demands</English>
 		<French>Trade/Demands</French>
-		<German>Handel / Tribut</German>
+		<German>Handel / Forderungen</German>
 		<Italian>Commercio</Italian>
 		<Spanish>Trade/Demands</Spanish>
 	</TEXT>
@@ -1162,7 +1162,7 @@
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__LOGTRADEALL_HOVER</Tag>
 		<English>When checked, will log all AI-initiated trade offers and demands along with your responses.</English>
 		<French>When checked, will log all AI-initiated trade offers and demands along with your responses.</French>
-		<German>Protokolliert alle von anderen Zivilisationen angeregte Handelsangebote und Tribute zusammen mit den Reaktionen der eigenen Zivilisation</German>
+		<German>Protokolliert alle von anderen Zivilisationen angeregte Handelsangebote und Forderungen zusammen mit den Reaktionen der eigenen Zivilisation</German>
 		<Italian>Quando è selezionato, il Registro Automatico registra tutte le offerte e le richieste commerciali delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log all AI-initiated trade offers and demands along with your responses.</Spanish>
 	</TEXT>
@@ -3747,7 +3747,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOLOG_TRADE</Tag>
 		<English>Trade and Demands:</English>
 		<French>Trade and Demands:</French>
-		<German>Handel / Tribut:</German>
+		<German>Handel / Forderungen:</German>
 		<Italian>Commercio:</Italian>
 		<Spanish>Trade and Demands:</Spanish>
 	</TEXT>
