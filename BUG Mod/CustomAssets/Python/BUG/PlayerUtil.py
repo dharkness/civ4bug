@@ -40,6 +40,7 @@
 ##   getDefensivePacts(playerOrID, askingPlayerOrID)
 ##     Returns lists of players with whom the given player has certain relationships.
 ##
+##   getPossibleEmbargos(playerOrID, askingPlayerOrID)
 ##   getActiveWars(playerOrID, askingPlayerOrID)
 ##   getPossibleWars(playerOrID, askingPlayerOrID)
 ##   isWHEOOH(playerOrID, askingPlayerOrID)
@@ -406,6 +407,31 @@ def getDefensivePacts(playerOrID, askingPlayerOrID):
 			if askedTeam.isDefensivePact(player.getTeam()):
 				pacts.append(player)
 	return pacts
+
+def getPossibleEmbargos(playerOrID, askingPlayerOrID):
+	"""
+	Returns a list of all CyPlayers with which playerOrID will stop trading.
+	
+	The askingPlayerOrID is used to limit the list to players they have met.
+	"""
+	embargos = []
+	tradeData = TradeData()
+	tradeData.ItemType = TradeableItems.TRADE_EMBARGO
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	for player in players(alive=True, barbarian=False, minor=False):
+		if (askingPlayer.getID() == player.getID()
+				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			continue
+		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
+				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			continue
+		tradeData.iData = player.getID()
+		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
+			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
+			if denial == DenialTypes.NO_DENIAL:
+				embargos.append(player)
+	return embargos
 
 
 ## Wars and WHEOOH
