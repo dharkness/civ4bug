@@ -56,7 +56,7 @@ def init():
 	NUM_AND_TECHS = gc.getNUM_UNIT_AND_TECH_PREREQS()
 	for eUnit in range(NUM_UNITS):
 		unitInfo = gc.getUnitInfo(eUnit)
-		BugUtil.debug("%s ===========", unitInfo.getDescription())
+		BugUtil.debug("==== %s ====", unitInfo.getDescription())
 		
 		# generic unit
 		classInfo = gc.getUnitClassInfo(unitInfo.getUnitClassType())
@@ -64,6 +64,9 @@ def init():
 		genericUnitIDs[eUnit] = eGenericUnit
 		if eUnit == eGenericUnit:
 			genericUnits.add(eUnit)
+		else:
+			BugUtil.debug("  unique of %s",
+					gc.getUnitInfo(eGenericUnit).getDescription())
 		
 		# resource sets
 		found = False
@@ -135,7 +138,7 @@ def getGenerics(units):
 	for eUnit in units:
 		eGenericUnit = genericUnitIDs[eUnit]
 		if eGenericUnit != eUnit:
-			generics.add(eUnit)
+			generics.add(eGenericUnit)
 	return generics
 
 def getGenericUpgrades(eUnit):
@@ -227,10 +230,14 @@ def findObsoleteUnits(units):
 	generics = getGenerics(units)
 	obsoletes = set()
 	for eUnit in units:
+#		unitInfo = gc.getUnitInfo(eUnit)
 		upgrades = getGenericUpgrades(eUnit)
 		if upgrades:
 			for eUpgradeUnit in upgrades:
 				if eUpgradeUnit not in units and eUpgradeUnit not in generics:
+#					BugUtil.debug("findObsoleteUnits - %s, cannot build %s", 
+#							unitInfo.getDescription(),
+#							gc.getUnitInfo(eUpgradeUnit).getDescription())
 					break
 			else:
 				obsoletes.add(eUnit)
