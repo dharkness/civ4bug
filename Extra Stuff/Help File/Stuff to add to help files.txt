@@ -1,5 +1,6 @@
 BUG Mod
 =======
+- ITA: translate file for System tab options (also remove shortcut reminder option from General tab file and add System and Credits tab to the main Options file)
 - Create mod files (readmes) for Sevopedia additions:
     index, shortcuts, traits, strategy articles
 - PublicMaps (no documentation about them yet)
