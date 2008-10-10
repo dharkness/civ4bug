@@ -4158,7 +4158,9 @@ class CvMainInterface:
 			screen.hide( szName )
 			szName = "AngryCitizen" + str(i)
 			screen.hide( szName )
-			
+			szName = "AngryCitizenChevron" + str(i)
+			screen.hide( szName )
+
 		for i in range( gc.getNumSpecialistInfos() ):
 			szName = "IncreaseSpecialist" + str(i)
 			screen.hide( szName )
