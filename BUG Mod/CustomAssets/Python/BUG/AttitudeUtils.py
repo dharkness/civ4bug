@@ -234,7 +234,7 @@ class Attitude:
 					else:
 						BugUtil.debug(u"Attitude::init() - Attitude string contains unknown modifier text: %s" % (sString))
 		#BugUtil.debug(u"Attitude::init() complete.")
-		#BugUtil.debug(u"%s"  % (self))
+		BugUtil.debug(u"%s"  % (self))
 
 	def __str__ (self):
 		""" String representation of class instance. """
@@ -283,7 +283,7 @@ class Attitude:
 		""" Returns smilie icon string based on attitude type. """
 		if self.bHasActiveMetBoth:
 			eCategory = self.getCategory()
-			if eCategory and eCategory != AttitudeTypes.NO_ATTITUDE:
+			if eCategory != AttitudeTypes.NO_ATTITUDE:
 				return ATTITUDE_ICONS[int(eCategory)]
 		return ""
 
@@ -291,7 +291,7 @@ class Attitude:
 		""" Returns the color of the attitude this player has toward target. """
 		if self.bHasActiveMetBoth:
 			eCategory = self.getCategory()
-			if eCategory and eCategory != AttitudeTypes.NO_ATTITUDE:
+			if eCategory != AttitudeTypes.NO_ATTITUDE:
 				return ATTITUDE_COLORS[int(eCategory)]
 		return -1
 	
