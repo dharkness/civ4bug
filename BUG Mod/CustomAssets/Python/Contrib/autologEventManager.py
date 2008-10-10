@@ -1076,22 +1076,13 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			Logger.writeLog(message, vColor="Navy")
 	
 	def onVassalOffered(self, argsList):
-		eOfferPlayer, eTargetPlayer, pTrade = argsList
+		eOfferPlayer, eTargetPlayer = argsList
 		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
-			szOfferItems = ""
 			message = ""
-			if eOfferPlayer == pTrade.getPlayer():
-				for i in range(pTrade.getCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getTrade(i)) + ", "
-			else:
-				for i in range(pTrade.getOtherCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getOtherTrade(i)) + ", "
-			szOfferItems = szOfferItems.rstrip(", ")
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_VASSAL_OFFER", 
 									(pOfferPlayer.getName(), pOfferPlayer.getCivilizationShortDescription(0),
-									szOfferItems,
 									pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0)))
 			Logger.writeLog(message, vColor="Navy")
 	
@@ -1157,7 +1148,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_GIFT_ACCEPT", 
 										(pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0),
-										szTargetItems,
+										szOfferItems,
 										pOfferPlayer.getName(), pOfferPlayer.getCivilizationShortDescription(0)))
 			Logger.writeLog(message, vColor="Green")
 	
@@ -1190,7 +1181,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			else:
 				message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_GIFT_REJECT", 
 										(pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0),
-										szTargetItems,
+										szOfferItems,
 										pOfferPlayer.getName(), pOfferPlayer.getCivilizationShortDescription(0)))
 			Logger.writeLog(message, vColor="Red")
 	

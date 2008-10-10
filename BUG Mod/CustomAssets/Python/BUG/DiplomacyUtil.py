@@ -204,11 +204,10 @@ def onPeaceOffered(argsList):
 
 def onVassalOffered(argsList):
 	#BugUtil.debug("DiplomacyUtil::onVassalOffered %s" %(str(argsList)))
-	eOfferPlayer, eTargetPlayer, pTrade = argsList
-	BugUtil.debug("DiplomacyUtil - %s offers vassalage to %s: %r",
+	eOfferPlayer, eTargetPlayer = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers vassalage to %s",
 			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
-			PlayerUtil.getPlayer(eTargetPlayer).getName(),
-			pTrade)
+			PlayerUtil.getPlayer(eTargetPlayer).getName())
 
 def onDealCanceled(argsList):
 	#BugUtil.debug("DiplomacyUtil::onDealCanceled %s" %(str(argsList)))

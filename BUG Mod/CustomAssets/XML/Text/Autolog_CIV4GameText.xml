@@ -850,11 +850,11 @@
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_VASSAL_OFFER</Tag>
-        <English>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</French>
-        <German>Diplomatie: %s1 (%s2) bietet %s4 (%s5) an, ein Vasall zu werden</German>
-        <Italian>%s1 (%s2) si è offerto di diventare Vassallo di %s4 (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) offers to become a vassal of %s4 (%s5)</Spanish>
+        <English>Diplomacy: %s1 (%s2) offers to become a vassal of %s3 (%s4)</English>
+        <French>Diplomacy: %s1 (%s2) offers to become a vassal of %s3 (%s4)</French>
+        <German>Diplomatie: %s1 (%s2) bietet %s3 (%s4) an, ein Vasall zu werden</German>
+        <Italian>%s1 (%s2) si è offerto di diventare Vassallo di %s3 (%s4)</Italian>
+        <Spanish>Diplomacy: %s1 (%s2) offers to become a vassal of %s3 (%s4)</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_DEAL_CANCEL</Tag>
