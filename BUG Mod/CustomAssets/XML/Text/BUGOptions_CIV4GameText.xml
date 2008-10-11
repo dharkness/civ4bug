@@ -643,7 +643,7 @@
 		<English>When checked, the default (playername.txt) will be used, ignores log file name option.</English>
 		<French>En activant, le nom de fichier par défaut (playername.txt) sera utilisé, en ignorant l'option çi-dessous.</French>
 		<German>Den Standard-Dateinamen (playername.txt) verwenden, wobei die Namensoption für die Protokolldatei ignoriert wird</German>
-		<Italian>Quando è selezionato, viene utilizzato il nome di file predefinito (nomegiocatore.txt): le sottostanti opzioni sul nome di file personalizzato verranno ignorata.</Italian>
+		<Italian>Quando è selezionato, viene utilizzato il nome di file predefinito (nomegiocatore.txt): le opzioni sul nome di file personalizzato verranno ignorate.</Italian>
 		<Spanish>When checked, the default (playername.txt) will be used, ignores log file name option.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -723,7 +723,7 @@
 		<English>4000BC is Turn</English>
 		<French>4000 av. J.C. est le Tour</French>
 		<German>4000 n.Chr. ist Runde</German>
-		<Italian>4000 a.C. è il turno</Italian>
+		<Italian>[SPACE][SPACE]4000 a.C. è il turno</Italian>
 		<Spanish>4000BC is Turn</Spanish>
 	</TEXT>
 	<TEXT>
