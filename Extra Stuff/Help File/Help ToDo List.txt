@@ -3,8 +3,8 @@ BUG Mod
 
 - Create mod files (readmes) for Sevopedia additions:
     index, shortcuts, traits, strategy articles
-- PublicMaps (no documentation about them yet)
-- DEU: update help files for BOS
+- Help files for PublicMaps (no documentation about them yet)
+
 
 
 BAT Mod
