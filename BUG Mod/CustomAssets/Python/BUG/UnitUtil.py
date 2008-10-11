@@ -320,7 +320,7 @@ def getTrainableUnits(playerOrID, knowableUnits, checkCities=True, military=None
 					gc.getSpecialUnitInfo(eSpecialType).getDescription())
 			continue
 		# cities
-		if cities and not canAnyCityBuildUnit(eUnit, cities, True):
+		if cities and not canAnyCityBuildUnit(eUnit, cities, -1, True):
 			BugUtil.debug("  %s -> no city can train unit", unitInfo.getDescription())
 			continue
 		BugUtil.debug("  %s", unitInfo.getDescription())
