@@ -161,7 +161,7 @@
 		<English>Repository URL</English>
 		<French>Repository URL</French>
 		<German>URL des Projektarchivs</German>
-		<Italian>URL del repository</Italian>
+		<Italian>URL del repository SVN</Italian>
 		<Spanish>Repository URL</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3864,7 +3864,7 @@
 		<English>Mod Authors</English>
 		<French>Auteurs des Mods</French>
 		<German>Mod-Autoren</German>
-		<Italian>Autori dei Mod</Italian>
+		<Italian>Autori dei Mod inclusi</Italian>
 		<Spanish>Mod Authors</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3872,7 +3872,7 @@
 		<English>Map Scripts</English>
 		<French>Map Scripts</French>
 		<German>Map-Scripte</German>
-		<Italian>Map Script</Italian>
+		<Italian>Autori dei Map Script</Italian>
 		<Spanish>Map Scripts</Spanish>
 	</TEXT>
 	<TEXT>
