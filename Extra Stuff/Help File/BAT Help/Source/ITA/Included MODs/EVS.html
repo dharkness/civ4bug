@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Enhanced Victory Screen (EVS)</TITLE>
+	<STYLE TYPE="text/css">
+	<!--
+		P.style1 { color: #0000ff; font-size: 16pt; font-style: italic; font-weight: bold }
+		P.style2 { color: #0000ff; font-size: 14pt; font-weight: bold }
+		P.style3 { font-size: 16pt; font-style: italic; font-weight: bold }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P CLASS="style1">Enhanced Victory Screen (Schermo delle Vittorie evoluto)</P>
+<P CLASS="style3">di Ruff_hi</P>
+<br>
+<P>Questo mod migliora le schede <i>Vittorie</i> e <i>Membri</i> della <i>Schermata delle Vittorie (F8)</i>.</P>
+
+<p><b>Scheda 'Vittorie'</b><br><br>
+La nuova versione della Scheda 'Vittorie' include le seguenti informazioni:
+<ul>
+	<li>numero di Civiltà non ancora incontrate;</li>
+	<li>numero di Civiltà che sono Vassalli del giocatore;</li>
+	<li>numero di turni perchè le prime 3 Città del giocatore raggiungano lo stato di 'città leggendaria';</li>
+	<li>numero di turni perchè le prime 3 Città del migliore avversario del giocatore raggiungano lo stato di 'città leggendaria';</li>
+	<li>stato del Programma apollo (costruito / non costruito);</li>
+	<li>informazioni riguardanti i componenti della Nave Spaziale:
+		<ul>
+		<li>uno spazio viene mostrato accanto al componente se non si possiede la tecnologia necessaria,</li>
+		<li>la descrizione ed il contatore del componente cambiano colore se se ne ha a disposizione un numero sufficiente al lancio della nave 
+			(sia per il giocatore che per il suo avversario),</li>
+		<li>a descrizione ed il contatore del componente cambiano colore se se ne ha a disposizione il numero massimo possibile 
+			(sia per il giocatore che per il suo avversario),</li>
+		<li>viene mostrato anche il numero dei componenti in costruzione (solo per il giocatore);</li>
+		</ul>
+		il codice cromatico per i componenti della Nave Spaziale è il seguente:
+		<ul>
+		<li>bianco se il giocatore non possiede la tecnologia necessaria 
+			o se la possiede ma non ha ancora costruito nessun componente di quel tipo,</li>
+		<li>bianco per l'avversario del giocatore se il giocatore non sa se l'avversario possiede la tecnologia necessaria,</li>
+		<li>arancione per l'avversario del giocatore se il giocatore sa che l'avversario possiede la tecnologia necessaria,</li>
+		<li>giallo se il giocatore o l'avversario hanno già costruito il numero minimo di componenti necessari per il lancio,</li>
+		<li>verde se il giocatore o l'avversario hanno già costruito il numero massimo di componenti di quel tipo.</li>
+		</ul>		
+	</li>
+	</ul></p>	
+
+<p><b>Scheda 'Membri'</b><br><br>
+La nuova versione della Scheda 'Membri' include le seguenti informazioni:
+<ul>
+	<li>La lista di tutte le Civiltà membre del Palazzo Apostolico e delle Nazioni Unite;<br>
+		i due Leader in testa sono i candidati alla guida del Palazzo Apostolico e delle Nazioni Unite.<br>
+		La lista del Palazzo Apostolico riporta:
+		<ul>
+		<li>il numero dei voti,</li>
+		<li>lo status nel Palazzo Apostolico (Guida del Palazzo, Costruttore del Palazzo, Membro a pieno titolo, Membro associato, Non Membro),</li>
+		<li>l'atteggiamento verso i due candidati,</li>
+		<li>il numero di voti stimato per ogni candidato.</li>
+		</ul>	
+		La lista delle Nazioni Unite riporta:
+		<ul>
+		<li>il numero dei voti,</li>
+		<li>l'atteggiamento verso i due candidati,</li>
+		<li>il numero di voti stimato per ogni candidato.</li>
+		</ul>
+	</li>
+	<li>Una riga dei totali che riporta anche il numero di voti necessari per vincere.</li>
+	<li>Un riassunto del risultato che comprende un margine d'errore casuale.</li><br>
+	<li>E' possibile alternare la visualizzazione fra l'elezione a Papa / Segretario Generale e la votazione per la Vittoria Diplomatica.</li><br>
+	Le intenzioni di voto delle IA sono stimate nel modo seguente:
+		<ul>
+		<li>l'IA se è possibile vota per sè stessa,</li>
+		<li>altrimenti se è possibile vota per un compagno di squadra,</li>
+		<li>altrimenti se è un Vassallo vota per il suo signore,</li>
+		<li>altrimenti vota per un candidato se il suo atteggiamento verso di lui è "amichevole": 
+			se l'atteggiamento verso l'altro candidato è "compiaciuto" o meno il voto va al primo, 
+			mentre se anche l'atteggiamento verso l'altro candidato è "amichevole" il voto va al candidato verso cui ha un 
+			valore di atteggiamento maggiore;</li>
+		<li>se non ha un atteggiamento "amichevole" verso nessuno dei due candidati, l'IA si astiene.</li>
+		</ul>
+</ul>
+
+<br>
+<P CLASS="style1">Istruzioni</P>
+<P>Questo mod può essere abilitato/disabilitato nella <b><i>Schermata delle Opzioni del BUG Mod</i></b> (<b>Ctrl+Alt+O</b>), 
+semplicemente selezionando/deselezionando le caselle di spunta <i>'Scheda delle vittorie'</i> e <i>'Scheda dei Membri'</i> 
+nella scheda <A HREF="../Options/Advisors.html">Consiglieri</A>.
+<br>
+
+<P CLASS="style1">Crediti</P>
+<P>Forum: <a href="http://forums.civfanatics.com/showthread.php?t=284132" target="_blank">http://forums.civfanatics.com/showthread.php?t=284132</a></P>
+<P>Autore: <FONT COLOR="#0000ff"><I><B>Ruff_hi</B></I></FONT></P>
+<br>
+
+</BODY>
+</HTML>
