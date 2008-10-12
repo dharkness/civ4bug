@@ -16,93 +16,103 @@
 <P>This tab include all the configuration options for the <A HREF="../Included%20MODs/Scoreboard.html">Advanced Scoreboard</A> mod.</P>
 <br> 
 
-<P CLASS="style2">Score Delta</P>
-<P>Enables display of the score variation towards previous turn.</P>
-<P CLASS="style2">Score Delta: Include Current Turn</P>
-<P>Enables the inclusion of the current turn in the score variation calculation.</P>
-<br> 
-<P CLASS="style2">Display Name</P>
+<P CLASS="style2">General: Display Name</P>
 <P>Selects what name is displayed in the scoreboard: either the Leader's name, the Civilization's name, or both.</P>
-<P CLASS="style2">Use Player Name</P>
+<P CLASS="style2">General: Use Player Name</P>
 <P>If selected, the human players' names are used in place of those of the Leaders they are playing as.</P>
-<P CLASS="style2">Attitude Icons</P>
-<P>Toggles between Attitude Icons being displayed or not.</P>
-<P CLASS="style2">Worst Enemy Icons</P>
-<P>Enables display of the Worst Enemy Icon for the Civilizations that consider the player as their Worst Enemy.</P>
+<P CLASS="style2">General: Show Minor Civilizations</P>
+<P>Enables display in Scoreboard of minor Civilizations (some scenarios consider certain Civs to be minor).<P>
 <br>
 <P CLASS="style2">Dead Civilizations: Show</P>
 <P>Enables display in Scoreboard of dead Civilizations.<P>
-<P CLASS="style2">Dead Civilizations: Tag as 'Dead'</P>
+<P CLASS="style2">Dead Civilizations: Tag as 'DEAD'</P>
 <P>Enables display in Scoreboard of the 'Dead' label for dead Civilizations.<P>
 <P CLASS="style2">Dead Civilizations: Use Grey Color</P>
 <P>Enables use of grey color for displaying dead Civilizations in Scoreboard.<P>
-<br><br> 
+<br><br>
 
-<P CLASS="style2">Power Ratio</P>
+<P CLASS="style2">Additional Columns: Power Ratio</P>
 <P>Enables display in Scoreboard of the Power Ratio and selects the formula to use for calculating the power ratio: 
 You vs. Them (higher numbers are better) or Them vs. You (lower numbers are better).<P>
-<P CLASS="style2">Power Ratio: Ratio Decimal Places</P>
+<P CLASS="style2">Additional Columns: Power Ratio - Ratio Decimal Places</P>
 <P>Selects the number of decimal places to show for power ratio display.<P>
-<P CLASS="style2">Power Ratio: Default Color</P>
+<P CLASS="style2">Additional Columns: Power Ratio - Default Color</P>
 <P>Selects the color to display when your power ratio is even with another Civilization.<P>
-<P CLASS="style2">Power Ratio: High Ratio Cutoff</P>
+<P CLASS="style2">Additional Columns: Power Ratio - High Ratio Cutoff</P>
 <P>Sets the point at which the ratio changes from even to high.<P>
-<P CLASS="style2">Power Ratio: High Color</P>
+<P CLASS="style2">Additional Columns: Power Ratio - High Color</P>
 <P>Selects the color to display for high power ratios.<P>
-<P CLASS="style2">Power Ratio: Low Ratio Cutoff</P>
+<P CLASS="style2">Additional Columns: Power Ratio - Low Ratio Cutoff</P>
 <P>Sets the point at which the ratio changes from even to low.<P>
-<P CLASS="style2">Power Ratio: Low Color</P>
+<P CLASS="style2">Additional Columns: Power Ratio- Low Color</P>
 <P>Selects the color to display for low power ratios.<P>
+<br>
+
+<P CLASS="style2">Additional Columns: Score Delta</P>
+<P>Enables display of the score variation towards previous turn.</P>
+<P CLASS="style2">Additional Columns: Score Delta - Include Current Turn</P>
+<P>Enables the inclusion of the current turn in the score variation calculation.</P>
+<br> 
+<P CLASS="style2">Additional Columns: Attitude Icons</P>
+<P>Toggles between Attitude Icons being displayed or not.</P>
+<P CLASS="style2">Additional Columns: Worst Enemy Icons</P>
+<P>Enables display of the Worst Enemy Icon for the Civilizations that consider the player as their Worst Enemy.</P>
+<P CLASS="style2">Additional Columns: War Mobilization Icons</P>
+<P>Enables display of the War Mobilization Icon for the Civilizations that are mobilizing for war ('We Have Enough on Our Hands').</P>
 <br><br> 
 
 <P CLASS="style2">Advanced Layout: Enabled</P>
 <P>Enables advanced layout for Scoreboard, which will provide more options to change the layout of the Scoreboard.<P>
-<P CLASS="style2">Advanced Layout: Default Spacing</P>
-<P>Selects the default spacing between columns (in pixels) to use when none is specified for a column.<P>
+<P CLASS="style2">Advanced Layout: Group Vassals</P>
+<P>Vassals are group together under their master (and their names are indented).<P>
+<P CLASS="style2">Advanced Layout: Left-Align Name</P>
+<P>Aligns the Civilization/Leader names to the left, instead of the right.<P>
+<P CLASS="style2">Advanced Layout: Research Icons</P>
+<P>Displays the icon of the technology the civ is researching instead of the name of the technology.<P>
+<br>
 <P CLASS="style2">Advanced Layout: Column Order</P>
 <P>This will give you complete control over what is or isn't displayed in the Scoreboard; 
 you can also change the order of what is displayed here as well.<br>
 The codes that you can use in this box, to display the corresponding items, are the following 
 (note that the last 3 of them are displayed only for your opponents in a multiplayer game, 
-the first 4 of them are displayed even for your Civilization, while the other 11 are displayed only for your opponents):<P>
+the first 5 of them are displayed even for your Civilization, while the other are displayed only for your opponents):<P>
 <UL>
 	<LI><SPAN style="color: #0000ff;">S</SPAN> displays the civ's score
 	<LI><SPAN style="color: #0000ff;">Z</SPAN> displays the civ's score variation towards previous turn 
 		(if the <i>'Score Delta'</i> checkbox is selected and according to what is selected in the <i>'Include Current Turn' checkbox</i>) 
+	<LI><SPAN style="color: #0000ff;">V</SPAN> displays a silver star if the civ has at least one vassal
 	<LI><SPAN style="color: #0000ff;">C</SPAN> displays the civ's/leader's name 
-		(according to what is selected in the <i>'Display Name'</i> checkbox, and aligned 
+		(according to what is selected in the <i>'Display Name'</i> and <i>'Use Player Name'</i> checkboxes, and aligned 
 		according to what is selected in the <i>'Left-Align' checkbox</i>) 
-	<LI><SPAN style="color: #0000ff;">R</SPAN> displays the the civ's state religion 
 	<LI><SPAN style="color: #0000ff;">?</SPAN> displays a question mark if you have not yet met the civ 
 	<LI><SPAN style="color: #0000ff;">W</SPAN> displays a crossed swords icon if you are at war with the civ, 
 		or a peace symbol icon if you have signed a Peace Treaty with the civ 
-	<LI><SPAN style="color: #0000ff;">E</SPAN> displays a spy icon if you have a positive espionage	point ratio against the civ. 
 	<LI><SPAN style="color: #0000ff;">P</SPAN> displays the civ's power ratio compared to you 
-		(the higher is the number, the stronger you are compared with that civ) 
+		(according to the values which have been selected in the <i>'Power Ratio'</i> option boxes) 
 	<LI><SPAN style="color: #0000ff;">T</SPAN> displays the tech the civ is researching, if it is known to you 
 		(as icon or name according to what is selected in the <i>'Research Icons'</i> checkbox) 
 	<LI><SPAN style="color: #0000ff;">U</SPAN> displays the number of research turns left, if it is known to you 
 		(for vassals, for team-mates or by espionage) 
+	<LI><SPAN style="color: #0000ff;">E</SPAN> displays a spy icon if you have a positive espionage	point ratio against the civ. 
 	<LI><SPAN style="color: #0000ff;">N</SPAN> displays a trade icon if the civ is connected to your trade network
 	<LI><SPAN style="color: #0000ff;">B</SPAN> displays a parchment icon if you have an Open Borders agreement with the civ 
 	<LI><SPAN style="color: #0000ff;">D</SPAN> displays a parchment icon (different from the previous one) if you 
 		have a Defensive Pact with the civ 
+	<LI><SPAN style="color: #0000ff;">R</SPAN> displays the the civ's state religion 
 	<LI><SPAN style="color: #0000ff;">A</SPAN> displays an icon showing the civ's attitude toward you 
 		(if the <i>'Attitude Icons'</i> checkbox is selected) 
 	<LI><SPAN style="color: #0000ff;">H</SPAN> displays an angry man icon if you are the Worst Enemy of the civ 
 		(if the <i>'Worst Enemy Icons'</i> checkbox is selected) 
+	<LI><SPAN style="color: #0000ff;">M</SPAN> displays a red fist if the civ is mobilizing for war or in a war itself (a.k.a. We Have Enough on Our Hands) 
 	<LI><SPAN style="color: #0000ff;">*</SPAN> displays an asterisk when you are waiting for this civ to finish its turn 
 	<LI><SPAN style="color: #0000ff;">L</SPAN> displays civ's network stats (ping) 
 	<LI><SPAN style="color: #0000ff;">O</SPAN> the network player is 'out-of-sync' 
 	<LI><SPAN style="color: #0000ff;">number</SPAN> set the number of spacing pixels after the previous column 
-		(the default spacing value is ignored for columns with a specified spacing value) 
-	<LI><SPAN style="color: #0000ff;">space</SPAN> spaces are ignored 
-		(this allows their use for making more readable the sequence of codes)
+		(the default spacing value is ignored for columns with a specified spacing value; negative values are acceptable to bring two columns closer together) 
+	<LI><SPAN style="color: #0000ff;">space</SPAN> ignored, for making the sequence of codes more readable
 </UL>
-<P CLASS="style2">Advanced Layout: Left-Align Name</P>
-<P>Aligns the Civilization/Leader names to the left, instead of the right.<P>
-<P CLASS="style2">Advanced Layout: Research Icons</P>
-<P>Displays the icon of the technology the civ is researching instead of the name of the technology.<P>
+<P CLASS="style2">Advanced Layout: Default Spacing</P>
+<P>Selects the default spacing between columns (in pixels) to use when none is specified for a column.<P>
 
 </BODY>
 </HTML>
