@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	BUG Advisors
+	by Taelis, Cammagno, Requies, Ruff_Hi, Sevo, EmperorFool
+	
+	Collects all of the various advisor-based mods.
+
+	Copyright (c) 2008 The BUG Mod.
+-->
+<mod id="Advisors" 
+	 name="BUG Advisors" 
+	 author="Taelis, Cammagno, Requies, Ruff_Hi, Sevo, EmperorFool" 
+	 version="3.0" 
+	 date="07/11/2008"
+	 url="http://forums.civfanatics.com/forumdisplay.php?f=268">
+	 
+	<options id="Advisors" file="BUG Advisors.ini">
+		<section id="Advisors">
+			<!-- Customizable Domestic Advisor (F1) by Taelis, pages by Cammagno -->
+			<option id="CustDomAdv" key="CustDomAdv" 
+					type="boolean" default="True" 
+					get="isCustDomAdv"/>
+	
+			<!-- Exotic Foreign Advisor (F4) by Requies -->
+			<option id="EFAGlanceTab" key="EFA Glance" 
+					type="boolean" default="True" 
+					get="isShowGlance"/>
+			<option id="EFAGlanceSmilies" key="EFA Glance Smilies" 
+					type="boolean" default="True" 
+					get="isShowGlanceSmilies"/>
+			<option id="EFAImprovedInfo" key="EFA Improved Info" 
+					type="boolean" default="True" 
+					get="isUseImprovedEFAInfo"/>
+	
+			<!-- BUG Military Advisor (F5) by Ruff_Hi, EmperorFool -->
+			<option id="BugMA" key="BugMilitaryAdvisor" 
+					type="boolean" default="True" 
+					get="isBUG_MA"/>
+	
+			<!-- Technology Advisor (F6) by EmperorFool -->
+			<option id="GPTechPrefs" key="GP Tech Prefs" 
+					type="boolean" default="True" 
+					get="isShowGPTechPrefs"/>
+			<option id="WideTechScreen" key="Wide Tech Screen" 
+					type="boolean" default="True" 
+					get="isWideTechScreen"/>
+	
+			<!-- BUG Victories (F8) by Ruff_Hi -->
+			<option id="BugVictoriesTab" key="Victories" 
+					type="boolean" default="True" 
+					get="isVictories"/>
+			<option id="BugMembersTab" key="Members" 
+					type="boolean" default="True" 
+					get="isMembers"/>
+	
+			<!-- BUG Info (F9) by Ruff_Hi -->
+			<option id="BugGraphsTab" key="Graphs" 
+					type="boolean" default="True" 
+					get="isGraphs"/>
+
+			<!-- Sevopedia (F12) by Sevo -->
+			<option id="Sevopedia" key="Sevopedia" 
+					type="boolean" default="True" 
+					get="isSevopedia"/>
+			<option id="SevopediaSortItemList" key="Sevopedia Sort" 
+					type="boolean" default="True" 
+					get="isSortSevopedia"/>
+		</section>
+	</options>
+</mod>
