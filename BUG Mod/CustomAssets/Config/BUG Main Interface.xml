@@ -43,6 +43,14 @@
 			<option id="CityArrows" key="City Cycle Arrows" 
 					type="boolean" default="True" 
 					get="isShowCityCycleArrows" dirtyBit="MiscButtons"/>
+
+			<!-- Field of View -->
+			<list   id="FieldOfView" key="Field of View" 
+					type="int" default="42" values="5, 10, 15, 20, 25, 30, 40, 42, 50, 60, 70, 80, 90" 
+					get="getFieldOfView"
+					label="Field of View" 
+					help="Modifies the screen zoom, default is 42."/>
+
 		</section>
 	</options>
 </mod>

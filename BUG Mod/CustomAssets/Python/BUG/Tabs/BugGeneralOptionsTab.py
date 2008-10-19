@@ -32,9 +32,10 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
 		
 		self.addSpacer(screen, left, "Misc")
-		self.addLabel(screen, left, "Misc", "Misc:")		
+		self.addLabel(screen, left, "Misc", "Misc:")
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		self.addCheckbox(screen, left, "MainInterface__CityArrows")
+		self.addIntDropdown(screen, left, left, "MainInterface__FieldOfView", True)
 
 		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
 		self.addCheckbox(screen, right, "CityScreen__RawYields")

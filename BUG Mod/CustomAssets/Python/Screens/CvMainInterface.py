@@ -2127,7 +2127,7 @@ class CvMainInterface:
 		global MAX_DISPLAYABLE_TRADE_ROUTES
 		global MAX_BONUS_ROWS
 		global MAX_CITIZEN_BUTTONS
-		
+
 		if ( CyGame().isPitbossHost() ):
 			return
 
@@ -3035,7 +3035,10 @@ class CvMainInterface:
 			# Globeview and Globelayer buttons
 			CyInterface().setDirty(InterfaceDirtyBits.GlobeInfo_DIRTY_BIT, False)
 			self.updateGlobeviewButtons()
-		
+
+		# field of view
+		self.setFieldofView(CyInterface().isCityScreenUp())
+
 		return 0
 
 	# Will update the percent buttons
@@ -5024,6 +5027,7 @@ class CvMainInterface:
 
 		i = 0
 		if ( CyInterface().isCityScreenUp() ):
+			self.setFieldofView(True)
 			if ( pHeadSelectedCity ):
 			
 				screen.show( "InterfaceTopLeftBackgroundWidget" )
@@ -6653,3 +6657,12 @@ class CvMainInterface:
 	
 	def update(self, fDelta):
 		return
+
+	def setFieldofView(self, bDefault):
+		fFoV = MainOpt.getFieldOfView()
+		if bDefault:
+			gc.setDefineFLOAT("FIELD_OF_VIEW",float(42))
+		else:
+			gc.setDefineFLOAT("FIELD_OF_VIEW",float(fFoV))
+
+
