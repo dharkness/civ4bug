@@ -2945,7 +2945,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_HOVER</Tag>
 		<English>When checked, displays a slide bar which can be used to change the field of view.</English>
 		<French>When checked, displays a slide bar which can be used to change the field of view.</French>
-		<German>When checked, displays a slide bar which can be used to change the field of view.</German>
+		<German>Zeigt im Hauptbildschirm einen Schieberegler an, mit der das Sichtfeld (engl. "Field of View") eingestellt werden kann</German>
 		<Italian>When checked, displays a slide bar which can be used to change the field of view.</Italian>
 		<Spanish>When checked, displays a slide bar which can be used to change the field of view.</Spanish>
 	</TEXT>

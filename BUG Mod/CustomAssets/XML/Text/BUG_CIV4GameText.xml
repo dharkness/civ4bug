@@ -899,7 +899,7 @@
 		<Tag>TXT_KEY_BUG_CHART_HELP</Tag>
 		<English>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</English>
 		<French>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</French>
-		<German>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</German>
+		<German>Mit einem Mausklick auf den Namen eines Diagramms oder das Diagramm selbst kann zwischen der 7-in-1-Ansicht und der Groﬂansicht umgeschalten werden</German>
 		<Italian>Alterna la visualizzazione "7-in-1" con la visualizzazione "grafico singolo" cliccando sul titolo di un grafico o sul grafico stesso</Italian>
 		<Spanish>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</Spanish>
 	</TEXT>
@@ -1014,24 +1014,24 @@
 		<Tag>TXT_KEY_MAP_SCRIPT_MAZE_LAND_PLUS1</Tag>
 		<English>Extra Land Strip</English>
 		<French>Extra Land Strip</French>
-		<German>Extra Land Strip</German>
-		<Italian>Extra Land Strip</Italian>
+		<German>Zus‰tzlicher Landstrich</German>
+		<Italian>Terreno aggiuntivo</Italian>
 		<Spanish>Extra Land Strip</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_TRUE</Tag>
 		<English>True</English>
 		<French>True</French>
-		<German>True</German>
-		<Italian>True</Italian>
+		<German>Ja</German>
+		<Italian>Vero</Italian>
 		<Spanish>True</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_FALSE</Tag>
 		<English>False</English>
 		<French>False</French>
-		<German>False</German>
-		<Italian>False</Italian>
+		<German>Nein</German>
+		<Italian>Falso</Italian>
 		<Spanish>False</Spanish>
 	</TEXT>
 
