@@ -35,7 +35,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Misc", "Misc:")
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		self.addCheckbox(screen, left, "MainInterface__CityArrows")
-		self.addIntDropdown(screen, left, left, "MainInterface__FieldOfView", True)
+		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
+#		self.addIntDropdown(screen, left, left, "MainInterface__FieldOfView", True)
 
 		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
 		self.addCheckbox(screen, right, "CityScreen__RawYields")

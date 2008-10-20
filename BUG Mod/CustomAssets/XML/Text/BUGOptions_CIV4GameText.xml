@@ -2932,6 +2932,24 @@
 		<Italian>Quando è selezionato, mostra sopra alla vostra bandiera le frecce per scorrere fra le Città.</Italian>
 		<Spanish>When checked, displays arrows to cycle through cities above your civ's flag.</Spanish>
 	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT</Tag>
+		<English>Field of View</English>
+		<French>Field of View</French>
+		<German>Field of View</German>
+		<Italian>Field of View</Italian>
+		<Spanish>Field of View</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_HOVER</Tag>
+		<English>When checked, displays a slide bar which can be used to change the field of view.</English>
+		<French>When checked, displays a slide bar which can be used to change the field of view.</French>
+		<German>When checked, displays a slide bar which can be used to change the field of view.</German>
+		<Italian>When checked, displays a slide bar which can be used to change the field of view.</Italian>
+		<Spanish>When checked, displays a slide bar which can be used to change the field of view.</Spanish>
+	</TEXT>
+
 	<!-- TechWindow -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_TEXT</Tag>

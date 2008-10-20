@@ -897,11 +897,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_CHART_HELP</Tag>
-		<English>Flip between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</English>
-		<French>Flip between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</French>
-		<German>Flip between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</German>
+		<English>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</English>
+		<French>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</French>
+		<German>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</German>
 		<Italian>Alterna la visualizzazione "7-in-1" con la visualizzazione "grafico singolo" cliccando sul titolo di un grafico o sul grafico stesso</Italian>
-		<Spanish>Flip between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</Spanish>
+		<Spanish>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</Spanish>
 	</TEXT>
 
 	<!-- Victory Screen -->
@@ -1015,7 +1015,7 @@
 		<English>Extra Land Strip</English>
 		<French>Extra Land Strip</French>
 		<German>Extra Land Strip</German>
-		<Italian>Terreno aggiuntivo</Italian>
+		<Italian>Extra Land Strip</Italian>
 		<Spanish>Extra Land Strip</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1023,7 +1023,7 @@
 		<English>True</English>
 		<French>True</French>
 		<German>True</German>
-		<Italian>Vero</Italian>
+		<Italian>True</Italian>
 		<Spanish>True</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1031,7 +1031,7 @@
 		<English>False</English>
 		<French>False</French>
 		<German>False</German>
-		<Italian>Falso</Italian>
+		<Italian>False</Italian>
 		<Spanish>False</Spanish>
 	</TEXT>
 

@@ -173,7 +173,6 @@ g_bEndTurnFired = False
 
 g_pSelectedUnit = 0
 
-
 class CvMainInterface:
 	"Main Interface Screen"
 	
@@ -2133,6 +2132,7 @@ class CvMainInterface:
 
 		# This is the main interface screen, create it as such
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		#self.setFieldofView(CyInterface().isCityScreenUp())
 		screen.setForcedRedraw(True)
 		
 # BUG - Raw Yields - begin
@@ -2332,7 +2332,23 @@ class CvMainInterface:
 			screen.setStyle( "EspionageAdvisorButton", "Button_HUDAdvisorEspionage_Style" )
 			screen.hide( "EspionageAdvisorButton" )
 # BUG - 3.17 No Espionage - end
-		
+
+# BUG - field of view slider - start
+		iX = xResolution - 277
+		iY = iBtnY + 30
+		iW = 100
+		iH = 15
+		self.iField_View = 42
+		self.szSliderTextId = "FieldOfViewSliderText"
+		screen.setLabel(self.szSliderTextId, "", "Field of View", CvUtil.FONT_RIGHT_JUSTIFY, iX, iY + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+		self.szSliderId = "FieldOfViewSlider"
+		screen.addSlider(self.szSliderId, iX + 5, iY, iW, iH, self.iField_View - 1, 0, 100-1, WidgetTypes.WIDGET_GENERAL, -1, -1, False);
+
+		screen.hide(self.szSliderTextId)
+		screen.hide(self.szSliderId)
+# BUG - field of view slider - end
+
 		# City Tabs
 		iBtnX = xResolution - 324
 		iBtnY = yResolution - 94
@@ -3166,8 +3182,13 @@ class CvMainInterface:
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
-# BUG - City Arrows - end			
-		
+# BUG - City Arrows - end
+
+# BUG - field of view slider - start
+			screen.hide(self.szSliderTextId)
+			screen.hide(self.szSliderId)
+# BUG - field of view slider - end
+
 		elif ( CyInterface().isCityScreenUp() ):
 			screen.show( "InterfaceLeftBackgroundWidget" )
 			screen.show( "InterfaceTopBackgroundWidget" )
@@ -3193,7 +3214,11 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-	
+# BUG - field of view slider - start
+			screen.hide(self.szSliderTextId)
+			screen.hide(self.szSliderId)
+# BUG - field of view slider - end
+
 		elif ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
 			screen.show( "InterfaceTopBackgroundWidget" )
@@ -3219,6 +3244,10 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )			
 # BUG - City Arrows - end
+# BUG - field of view slider - start
+			screen.hide(self.szSliderTextId)
+			screen.hide(self.szSliderId)
+# BUG - field of view slider - end
 
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -3284,6 +3313,10 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
+# BUG - field of view slider - start
+			screen.hide(self.szSliderTextId)
+			screen.hide(self.szSliderId)
+# BUG - field of view slider - end
 
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -3327,6 +3360,14 @@ class CvMainInterface:
 				screen.hide( "MainCityScrollMinus" )
 				screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
+# BUG - field of view slider - start
+			if (MainOpt.isShowFieldOfView()):
+				screen.show(self.szSliderTextId)
+				screen.show(self.szSliderId)
+			else:
+				screen.hide(self.szSliderTextId)
+				screen.hide(self.szSliderId)
+# BUG - field of view slider - end
 
 			screen.moveToFront( "TurnLogButton" )
 			screen.moveToFront( "EspionageAdvisorButton" )
@@ -5027,7 +5068,7 @@ class CvMainInterface:
 
 		i = 0
 		if ( CyInterface().isCityScreenUp() ):
-			self.setFieldofView(True)
+			#self.setFieldofView(True)
 			if ( pHeadSelectedCity ):
 			
 				screen.show( "InterfaceTopLeftBackgroundWidget" )
@@ -6613,7 +6654,7 @@ class CvMainInterface:
 		if (inputClass.getFunctionName().startswith("RawYields")):
 			return self.handleRawYieldsButtons(inputClass)
 # BUG - Raw Yields - end
-		
+
 # BUG - Great Person Bar - start
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED and inputClass.getFunctionName().startswith("GreatPersonBar")):
 			# Zoom to next GP city
@@ -6626,7 +6667,11 @@ class CvMainInterface:
 				CyInterface().selectCity(pCity, False)
 			return 1
 # BUG - Great Person Bar - end
-		
+
+		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_SLIDER_NEWSTOP):
+			if (inputClass.getFunctionName() == self.szSliderId):
+				self.iField_View = inputClass.getData() + 1
+				self.setFieldofView(False)
 		return 0
 	
 # BUG - Raw Yields - start
@@ -6659,10 +6704,10 @@ class CvMainInterface:
 		return
 
 	def setFieldofView(self, bDefault):
-		fFoV = MainOpt.getFieldOfView()
-		if bDefault:
+#		fFoV = MainOpt.getFieldOfView()
+		fFoV = self.iField_View
+		if (bDefault
+		or not MainOpt.isShowFieldOfView()):
 			gc.setDefineFLOAT("FIELD_OF_VIEW",float(42))
 		else:
 			gc.setDefineFLOAT("FIELD_OF_VIEW",float(fFoV))
-
-
