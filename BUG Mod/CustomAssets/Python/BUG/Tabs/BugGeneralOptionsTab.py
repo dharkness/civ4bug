@@ -25,28 +25,28 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
-		
+
 		self.addSpacer(screen, left, "MainInterface_TechWindow")
 		self.addLabel(screen, left, "TechWindow", "Tech Splash Screen:")
 		self.addTextDropdown(screen, left, left, "TechWindow__ViewType", True)
 		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
-		
+
 		self.addSpacer(screen, left, "Misc")
 		self.addLabel(screen, left, "Misc", "Misc:")
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		self.addCheckbox(screen, left, "MainInterface__CityArrows")
 		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
-#		self.addIntDropdown(screen, left, left, "MainInterface__FieldOfView", True)
+		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
 
 		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
 		self.addCheckbox(screen, right, "CityScreen__RawYields")
 		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View", True)
-		
+
 		self.addSpacer(screen, right, "CityScreen_TopCenter")
 		self.addCheckbox(screen, right, "CityScreen__WhipAssist")
 		self.addCheckbox(screen, right, "CityScreen__WhipAssistOverflowCountCurrentProduction")
 		self.addCheckbox(screen, right, "CityScreen__Anger_Counter")
-		
+
 		self.addSpacer(screen, right, "CityScreen_Bottom")
 		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "CityScreen__CultureTurns")

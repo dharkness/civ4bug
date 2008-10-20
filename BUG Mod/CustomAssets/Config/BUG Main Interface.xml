@@ -49,6 +49,13 @@
 					type="boolean" default="True" 
 					get="isShowFieldOfView" dirtyBit="MiscButtons"/>
 
+			<option id="FieldOfView_Remember" key="Remember Field of View" 
+					type="boolean" default="True" 
+					get="isRememberFieldOfView"/>
+
+			<option id="FieldOfView_Value" key="Field of View Value"
+					type="string" default="42" 
+					get="getFieldOfView" set="setFieldOfView"/> 
 		</section>
 	</options>
 </mod>

@@ -346,16 +346,8 @@ class CvInfoScreen:
 		self.X_LEADER_NAME = self.X_STATS_TOP_CHART
 		self.Y_LEADER_NAME = self.Y_STATS_TOP_CHART - 40
 
-		# Bottom Chart
-
-		self.X_STATS_BOTTOM_CHART = 45
-		self.Y_STATS_BOTTOM_CHART = 280
-		self.W_STATS_BOTTOM_CHART_UNITS = 545
-		self.W_STATS_BOTTOM_CHART_BUILDINGS = 390
-		self.H_STATS_BOTTOM_CHART = 410
-
 		self.reset()
-	
+
 	def initText(self):
 
 		###### TEXT ######
@@ -425,6 +417,7 @@ class CvInfoScreen:
 		self.TEXT_KILLED = localText.getText("TXT_KEY_INFO_SCREEN_KILLED", ())
 		self.TEXT_LOST = localText.getText("TXT_KEY_INFO_SCREEN_LOST", ())
 		self.TEXT_BUILT = localText.getText("TXT_KEY_INFO_SCREEN_BUILT", ())
+		self.TEXT_IMPROVEMENTS = localText.getText("TXT_KEY_CONCEPT_IMPROVEMENTS", ())
 
 #BUG: Change Graphs - start
 		self.SHOW_ALL = u"<font=2>" + localText.getText("TXT_KEY_SHOW_ALL", ()) + u"</font>"
@@ -464,6 +457,9 @@ class CvInfoScreen:
 				continue
 
 			self.X_GRAPH_TEXT[i] = self.X_GRAPH_TEXT[i - 1] + CyInterface().determineWidth(sTemp1[i - 1]) + iText_Space
+
+		self.BUG_GRAPH_HELP = localText.getText("TXT_KEY_BUG_CHART_HELP", ())
+		self.BUG_LEGEND_DEAD = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
 #BUG: Change Graphs - end
 
 	def reset(self):
@@ -549,7 +545,7 @@ class CvInfoScreen:
 		# Header...
 		self.szHeaderWidget = self.getNextWidgetName()
 		screen.setText(self.szHeaderWidget, "Background", self.SCREEN_TITLE, CvUtil.FONT_CENTER_JUSTIFY, self.X_TITLE, self.Y_TITLE, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		
+
 		# Help area for tooltips
 		screen.setHelpTextArea(self.W_HELP_AREA, FontTypes.SMALL_FONT, self.X_SCREEN, self.Y_SCREEN, self.Z_HELP_AREA, 1, ArtFileMgr.getInterfaceArtInfo("POPUPS_BACKGROUND_TRANSPARENT").getPath(), True, True, CvUtil.FONT_LEFT_JUSTIFY, 0 )
 
@@ -567,7 +563,7 @@ class CvInfoScreen:
 		self.pActivePlayer = gc.getPlayer(self.iActivePlayer)
 		self.iActiveTeam = self.pActivePlayer.getTeam()
 		self.pActiveTeam = gc.getTeam(self.iActiveTeam)
-		
+
 # BUG - 3.17 No Espionage - start
 		# Always show graph if espionage is disabled
 		self.iDemographicsMission = -1
@@ -578,7 +574,7 @@ class CvInfoScreen:
 					self.iDemographicsMission = iMissionLoop
 					break
 # BUG - 3.17 No Espionage - end
-		
+
 		self.determineKnownPlayers(iEndGame)
 
 		# "Save" current widgets so they won't be deleted later when changing tabs
@@ -713,6 +709,10 @@ class CvInfoScreen:
 
 			iX_ZOOM_DROPDOWN = 870
 			iY_ZOOM_DROPDOWN = 10
+			if CyGame().isDebugMode():
+				iY_SMOOTH_DROPDOWN = iY_ZOOM_DROPDOWN + 50
+			else:
+				iY_SMOOTH_DROPDOWN = iY_ZOOM_DROPDOWN
 		else:
 			iX_ZOOM_DROPDOWN = self.X_ZOOM_DROPDOWN
 			iY_ZOOM_DROPDOWN = self.Y_ZOOM_DROPDOWN
@@ -721,8 +721,8 @@ class CvInfoScreen:
 		self.szGraphSmoothingDropdownWidget_BIG = self.getNextWidgetName()
 		self.szGraphSmoothingDropdownWidget_SMALL = self.getNextWidgetName()
 #		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget, iX_ZOOM_DROPDOWN - self.W_DEMO_DROPDOWN - 60, iY_ZOOM_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
-		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget_BIG, 10, iY_ZOOM_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
-		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget_SMALL, 10, iY_ZOOM_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget_BIG, 10, iY_SMOOTH_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		screen.addDropDownBoxGFC(self.szGraphSmoothingDropdownWidget_SMALL, 10, iY_SMOOTH_DROPDOWN, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
 		for i in range(11):
 			screen.addPullDownString(self.szGraphSmoothingDropdownWidget_BIG, localText.getText("TXT_KEY_GRAPH_SMOOTHING", (i,)), i, i, False )
 			screen.addPullDownString(self.szGraphSmoothingDropdownWidget_SMALL, localText.getText("TXT_KEY_GRAPH_SMOOTHING", (i,)), i, i, False )
@@ -882,7 +882,6 @@ class CvInfoScreen:
 				screen.hide(self.szGraphSmoothingDropdownWidget_BIG)
 				screen.show(self.szGraphSmoothingDropdownWidget_SMALL)
 
-
 			for i in range(7):
 				screen.hide(self.sGraphText1Widget[i])
 				screen.hide(self.sGraphPanelWidget[i])
@@ -911,6 +910,8 @@ class CvInfoScreen:
 					self.drawGraph(i)
 
 				self.drawLegend()
+
+			screen.setText(self.getNextWidgetName(), "", self.BUG_GRAPH_HELP, CvUtil.FONT_CENTER_JUSTIFY, self.X_TITLE, self.Y_EXIT - 40, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 		self.timer.logTotal("total")
 		BugUtil.debug("")
@@ -1162,6 +1163,7 @@ class CvInfoScreen:
 			yText += self.H_LEGEND_TEXT
 
 #BUG: Change Graphs - start
+# ADD players where you don't have enough espionage points
 		if AdvisorOpt.isGraphs():
 			# add blank line
 			yLine += self.H_LEGEND_TEXT
@@ -1170,10 +1172,19 @@ class CvInfoScreen:
 				i = gc.getPlayer(p).getID()
 
 				name = self.getPlayerName(p)
-				textColorR = gc.getPlayer(p).getPlayerTextColorR()
-				textColorG = gc.getPlayer(p).getPlayerTextColorG()
-				textColorB = gc.getPlayer(p).getPlayerTextColorB()
-				textColorA = gc.getPlayer(p).getPlayerTextColorA()
+
+				if not gc.getPlayer(p).isAlive(): # player is dead!
+					textColorR = 175
+					textColorG = 175
+					textColorB = 175
+					textColorA = gc.getPlayer(p).getPlayerTextColorA()
+					name += " [" + self.BUG_LEGEND_DEAD + "]"
+				else:
+					textColorR = gc.getPlayer(p).getPlayerTextColorR()
+					textColorG = gc.getPlayer(p).getPlayerTextColorG()
+					textColorB = gc.getPlayer(p).getPlayerTextColorB()
+					textColorA = gc.getPlayer(p).getPlayerTextColorA()
+
 				str = u"<color=%d,%d,%d,%d>%s</color>" %(textColorR,textColorG,textColorB,textColorA,name)
 
 				screen.setLabel(self.sPlayerTextWidget[i], "", u"<font=2>" + str + u"</font>", CvUtil.FONT_LEFT_JUSTIFY,
@@ -2154,15 +2165,36 @@ class CvInfoScreen:
 
 	def drawStatsTab(self):
 
+		# Bottom Chart
+#BUG: improvements - start
+		if AdvisorOpt.isShowImprovements():
+			self.X_STATS_BOTTOM_CHART = 45
+			self.Y_STATS_BOTTOM_CHART = 280
+			self.W_STATS_BOTTOM_CHART_UNITS = 455
+			self.W_STATS_BOTTOM_CHART_BUILDINGS = 260
+			self.W_STATS_BOTTOM_CHART_IMPROVEMENTS = 220
+			self.H_STATS_BOTTOM_CHART = 410
+		else:
+			self.X_STATS_BOTTOM_CHART = 45
+			self.Y_STATS_BOTTOM_CHART = 280
+			self.W_STATS_BOTTOM_CHART_UNITS = 545
+			self.W_STATS_BOTTOM_CHART_BUILDINGS = 390
+			self.H_STATS_BOTTOM_CHART = 410
+#BUG: improvements - end
+
 		screen = self.getScreen()
 
 		iNumUnits = gc.getNumUnitInfos()
 		iNumBuildings = gc.getNumBuildingInfos()
+		iNumImprovements = gc.getNumImprovementInfos()
 
 		self.iNumUnitStatsChartCols = 5
 		self.iNumBuildingStatsChartCols = 2
+		self.iNumImprovementStatsChartCols = 2
+
 		self.iNumUnitStatsChartRows = iNumUnits
 		self.iNumBuildingStatsChartRows = iNumBuildings
+		self.iNumImprovementStatsChartRows = iNumImprovements
 
 ################################################### CALCULATE STATS ###################################################
 
@@ -2212,6 +2244,20 @@ class CvInfoScreen:
 		for pUnit in apUnitList:
 			iType = pUnit.getUnitType()
 			aiUnitsCurrent[iType] += 1
+
+		aiImprovementsCurrent = []
+		for iImprovementLoop in range(iNumImprovements):
+			aiImprovementsCurrent.append(0)
+
+		iGridW = CyMap().getGridWidth()
+		iGridH = CyMap().getGridHeight()
+		for iX in range(iGridW):
+			for iY in range(iGridH):
+				plot = CyMap().plot(iX, iY)
+				if (plot.getOwner() == self.iActivePlayer):
+					iType = plot.getImprovementType()
+					if (iType != ImprovementTypes.NO_IMPROVEMENT):
+						aiImprovementsCurrent[iType] += 1
 
 ################################################### TOP PANEL ###################################################
 
@@ -2284,26 +2330,58 @@ class CvInfoScreen:
 					  True, True, 32,32, TableStyles.TABLE_STYLE_STANDARD)
 		screen.enableSort(szBuildingsTable)
 
-		
+#BUG: improvements - start
+		if AdvisorOpt.isShowImprovements():
+			szImprovementsTable = self.getNextWidgetName()
+			screen.addTableControlGFC(szImprovementsTable, self.iNumImprovementStatsChartCols, self.X_STATS_BOTTOM_CHART + self.W_STATS_BOTTOM_CHART_UNITS + self.W_STATS_BOTTOM_CHART_BUILDINGS, self.Y_STATS_BOTTOM_CHART, self.W_STATS_BOTTOM_CHART_IMPROVEMENTS, self.H_STATS_BOTTOM_CHART,
+						  True, True, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+			screen.enableSort(szImprovementsTable)
+#BUG: improvements - end
+
 		# Reducing the width a bit to leave room for the vertical scrollbar, preventing a horizontal scrollbar from also being created
-		iChartWidth = self.W_STATS_BOTTOM_CHART_UNITS + self.W_STATS_BOTTOM_CHART_BUILDINGS - 24
-		
-		# Add Columns
-		iColWidth = int((iChartWidth / 12 * 3))
-		screen.setTableColumnHeader(szUnitsTable, 0, self.TEXT_UNITS, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 1))
-		screen.setTableColumnHeader(szUnitsTable, 1, self.TEXT_CURRENT, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 1))
-		screen.setTableColumnHeader(szUnitsTable, 2, self.TEXT_BUILT, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 1))
-		screen.setTableColumnHeader(szUnitsTable, 3, self.TEXT_KILLED, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 1))
-		screen.setTableColumnHeader(szUnitsTable, 4, self.TEXT_LOST, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 4))
-		screen.setTableColumnHeader(szBuildingsTable, 0, self.TEXT_BUILDINGS, iColWidth)
-		iColWidth = int((iChartWidth / 12 * 1))
-		screen.setTableColumnHeader(szBuildingsTable, 1, self.TEXT_BUILT, iColWidth)
-		
+#BUG: improvements - start
+		if AdvisorOpt.isShowImprovements():
+			iChartWidth = self.W_STATS_BOTTOM_CHART_UNITS + self.W_STATS_BOTTOM_CHART_BUILDINGS + self.W_STATS_BOTTOM_CHART_IMPROVEMENTS - 24
+
+			# Add Columns
+			iColWidth = int((iChartWidth / 16 * 3))
+			screen.setTableColumnHeader(szUnitsTable, 0, self.TEXT_UNITS, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 1, self.TEXT_CURRENT, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 2, self.TEXT_BUILT, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 3, self.TEXT_KILLED, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 4, self.TEXT_LOST, iColWidth)
+			iColWidth = int((iChartWidth / 16 * 3))
+			screen.setTableColumnHeader(szBuildingsTable, 0, self.TEXT_BUILDINGS, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szBuildingsTable, 1, self.TEXT_BUILT, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 2))
+			screen.setTableColumnHeader(szImprovementsTable, 0, self.TEXT_IMPROVEMENTS, iColWidth)
+			iColWidth = int((iChartWidth / 14 * 1))
+			screen.setTableColumnHeader(szImprovementsTable, 1, self.TEXT_CURRENT, iColWidth)
+		else:
+			iChartWidth = self.W_STATS_BOTTOM_CHART_UNITS + self.W_STATS_BOTTOM_CHART_BUILDINGS - 24
+
+			# Add Columns
+			iColWidth = int((iChartWidth / 12 * 3))
+			screen.setTableColumnHeader(szUnitsTable, 0, self.TEXT_UNITS, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 1, self.TEXT_CURRENT, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 2, self.TEXT_BUILT, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 3, self.TEXT_KILLED, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 1))
+			screen.setTableColumnHeader(szUnitsTable, 4, self.TEXT_LOST, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 4))
+			screen.setTableColumnHeader(szBuildingsTable, 0, self.TEXT_BUILDINGS, iColWidth)
+			iColWidth = int((iChartWidth / 12 * 1))
+			screen.setTableColumnHeader(szBuildingsTable, 1, self.TEXT_BUILT, iColWidth)
+#BUG: improvements - end
+
 		# Add Rows
 		for i in range(self.iNumUnitStatsChartRows):
 			screen.appendTableRow(szUnitsTable)
@@ -2312,41 +2390,65 @@ class CvInfoScreen:
 		for i in range(self.iNumBuildingStatsChartRows):
 			screen.appendTableRow(szBuildingsTable)
 		iNumBuildingRows = screen.getTableNumRows(szBuildingsTable)
-		
+
+#BUG: improvements - start
+		if AdvisorOpt.isShowImprovements():
+			for i in range(self.iNumImprovementStatsChartRows):
+				if (aiImprovementsCurrent[i] > 0):
+					screen.appendTableRow(szImprovementsTable)
+			iNumImprovementRows = screen.getTableNumRows(szImprovementsTable)
+#BUG: improvements - end
+
 		# Add Units to table
 		for iUnitLoop in range(iNumUnits):
 			iRow = iUnitLoop
-			
+
 			iCol = 0
 			szUnitName = gc.getUnitInfo(iUnitLoop).getDescription()
 			screen.setTableText(szUnitsTable, iCol, iRow, szUnitName, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			
+
 			iCol = 1
 			iNumUnitsCurrent = aiUnitsCurrent[iUnitLoop]
 			screen.setTableInt(szUnitsTable, iCol, iRow, str(iNumUnitsCurrent), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			
+
 			iCol = 2
 			iNumUnitsBuilt = aiUnitsBuilt[iUnitLoop]
 			screen.setTableInt(szUnitsTable, iCol, iRow, str(iNumUnitsBuilt), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			
+
 			iCol = 3
 			iNumUnitsKilled = aiUnitsKilled[iUnitLoop]
 			screen.setTableInt(szUnitsTable, iCol, iRow, str(iNumUnitsKilled), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			
+
 			iCol = 4
 			iNumUnitsLost = aiUnitsLost[iUnitLoop]
 			screen.setTableInt(szUnitsTable, iCol, iRow, str(iNumUnitsLost), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-		
+
 		# Add Buildings to table
 		for iBuildingLoop in range(iNumBuildings):
 			iRow = iBuildingLoop
-			
+
 			iCol = 0
 			szBuildingName = gc.getBuildingInfo(iBuildingLoop).getDescription()
 			screen.setTableText(szBuildingsTable, iCol, iRow, szBuildingName, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			iCol = 1
 			iNumBuildingsBuilt = aiBuildingsBuilt[iBuildingLoop]
 			screen.setTableInt(szBuildingsTable, iCol, iRow, str(iNumBuildingsBuilt), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+#BUG: improvements - start
+		if AdvisorOpt.isShowImprovements():
+			# Add Improvements to table	
+			iRow = 0
+
+			for iImprovementLoop in range(iNumImprovements):
+				iNumImprovementsCurrent = aiImprovementsCurrent[iImprovementLoop]
+				if (iNumImprovementsCurrent > 0):
+					iCol = 0
+					szImprovementName = gc.getImprovementInfo(iImprovementLoop).getDescription()
+					screen.setTableText(szImprovementsTable, iCol, iRow, szImprovementName, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+					iCol = 1
+					screen.setTableInt(szImprovementsTable, iCol, iRow, str(iNumImprovementsCurrent), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+					iRow += 1
+#BUG: improvements - end
 
 #############################################################################################################
 ##################################################### OTHER #################################################

@@ -15,7 +15,7 @@ MainOpt = BugCore.game.MainInterface
 CityScreenOpt = BugCore.game.CityScreen
 # BUG - Options - end
 
-# BUG - PLE - start 			
+# BUG - PLE - start
 import MonkeyTools as mt
 import string
 from AStarTools import *
@@ -348,6 +348,7 @@ class CvMainInterface:
 		self.xResolution = 0
 		self.yResolution = 0
 
+		self.iField_View_Prev = -1
 ############## Basic operational functions ###################
 
 	# Returns True if the given filter is active
@@ -2132,7 +2133,6 @@ class CvMainInterface:
 
 		# This is the main interface screen, create it as such
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		#self.setFieldofView(CyInterface().isCityScreenUp())
 		screen.setForcedRedraw(True)
 		
 # BUG - Raw Yields - begin
@@ -2334,16 +2334,22 @@ class CvMainInterface:
 # BUG - 3.17 No Espionage - end
 
 # BUG - field of view slider - start
-		iX = xResolution - 277
-		iY = iBtnY + 30
+		self.iX_FoVSlider = xResolution - 120
+		self.iY_FoVSlider = iBtnY + 30
 		iW = 100
 		iH = 15
-		self.iField_View = 42
+
+		if MainOpt.isRememberFieldOfView():
+			self.iField_View = int(MainOpt.getFieldOfView())
+		else:
+			self.iField_View = 42
+
 		self.szSliderTextId = "FieldOfViewSliderText"
-		screen.setLabel(self.szSliderTextId, "", "Field of View", CvUtil.FONT_RIGHT_JUSTIFY, iX, iY + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
+		self.setFieldofView_Text(screen)
 
 		self.szSliderId = "FieldOfViewSlider"
-		screen.addSlider(self.szSliderId, iX + 5, iY, iW, iH, self.iField_View - 1, 0, 100-1, WidgetTypes.WIDGET_GENERAL, -1, -1, False);
+		screen.addSlider(self.szSliderId, self.iX_FoVSlider + 5, self.iY_FoVSlider, iW, iH, self.iField_View - 1, 0, 100-1, WidgetTypes.WIDGET_GENERAL, -1, -1, False);
 
 		screen.hide(self.szSliderTextId)
 		screen.hide(self.szSliderId)
@@ -2986,6 +2992,9 @@ class CvMainInterface:
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
+		# field of view
+		self.setFieldofView(screen, CyInterface().isCityScreenUp())
+
 		# Check Dirty Bits, see what we need to redraw...
 		if (CyInterface().isDirty(InterfaceDirtyBits.PercentButtons_DIRTY_BIT) == True):
 			# Percent Buttons
@@ -3051,9 +3060,6 @@ class CvMainInterface:
 			# Globeview and Globelayer buttons
 			CyInterface().setDirty(InterfaceDirtyBits.GlobeInfo_DIRTY_BIT, False)
 			self.updateGlobeviewButtons()
-
-		# field of view
-		self.setFieldofView(CyInterface().isCityScreenUp())
 
 		return 0
 
@@ -5068,7 +5074,6 @@ class CvMainInterface:
 
 		i = 0
 		if ( CyInterface().isCityScreenUp() ):
-			#self.setFieldofView(True)
 			if ( pHeadSelectedCity ):
 			
 				screen.show( "InterfaceTopLeftBackgroundWidget" )
@@ -6670,8 +6675,12 @@ class CvMainInterface:
 
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_SLIDER_NEWSTOP):
 			if (inputClass.getFunctionName() == self.szSliderId):
+				screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 				self.iField_View = inputClass.getData() + 1
-				self.setFieldofView(False)
+				self.setFieldofView(screen, False)
+				self.setFieldofView_Text(screen)
+				MainOpt.setFieldOfView(self.iField_View)
+
 		return 0
 	
 # BUG - Raw Yields - start
@@ -6703,11 +6712,19 @@ class CvMainInterface:
 	def update(self, fDelta):
 		return
 
-	def setFieldofView(self, bDefault):
-#		fFoV = MainOpt.getFieldOfView()
-		fFoV = self.iField_View
+	def setFieldofView(self, screen, bDefault):
 		if (bDefault
 		or not MainOpt.isShowFieldOfView()):
-			gc.setDefineFLOAT("FIELD_OF_VIEW",float(42))
+			self._setFieldofView(screen, 42)
 		else:
-			gc.setDefineFLOAT("FIELD_OF_VIEW",float(fFoV))
+			self._setFieldofView(screen, self.iField_View)
+
+	def _setFieldofView(self, screen, iFoV):
+		if self.iField_View_Prev != iFoV:
+			gc.setDefineFLOAT("FIELD_OF_VIEW",float(iFoV))
+			self.iField_View_Prev = iFoV
+			screen.setForcedRedraw(True)
+
+	def setFieldofView_Text(self, screen):
+		zsFieldOfView_Text = "%s [%i]" % (self.sFieldOfView_Text, self.iField_View)
+		screen.setLabel(self.szSliderTextId, "", zsFieldOfView_Text, CvUtil.FONT_RIGHT_JUSTIFY, self.iX_FoVSlider, self.iY_FoVSlider + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)

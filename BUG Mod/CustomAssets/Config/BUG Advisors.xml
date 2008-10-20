@@ -57,6 +57,9 @@
 			<option id="BugGraphsTab" key="Graphs" 
 					type="boolean" default="True" 
 					get="isGraphs"/>
+			<option id="BugStatsTab" key="Improvements" 
+					type="boolean" default="True" 
+					get="isShowImprovements"/>
 
 			<!-- Sevopedia (F12) by Sevo -->
 			<option id="Sevopedia" key="Sevopedia" 

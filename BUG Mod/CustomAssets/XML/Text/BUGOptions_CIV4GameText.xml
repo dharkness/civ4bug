@@ -2949,6 +2949,41 @@
 		<Italian>When checked, displays a slide bar which can be used to change the field of view.</Italian>
 		<Spanish>When checked, displays a slide bar which can be used to change the field of view.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_REMEMBER_TEXT</Tag>
+		<English>Remember Field of View</English>
+		<French>Remember Field of View</French>
+		<German>Remember Field of View</German>
+		<Italian>Remember Field of View</Italian>
+		<Spanish>Remember Field of View</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_REMEMBER_HOVER</Tag>
+		<English>When checked, the Field of View value is remembered from game to game.</English>
+		<French>When checked, the Field of View value is remembered from game to game.</French>
+		<German>When checked, the Field of View value is remembered from game to game.</German>
+		<Italian>When checked, the Field of View value is remembered from game to game.</Italian>
+		<Spanish>When checked, the Field of View value is remembered from game to game.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_VALUE_TEXT</Tag>
+		<English>Field of View - Value</English>
+		<French>Field of View - Value</French>
+		<German>Field of View - Value</German>
+		<Italian>Field of View - Value</Italian>
+		<Spanish>Field of View - Value</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_VALUE_HOVER</Tag>
+		<English>Stores the Field of View value</English>
+		<French>Stores the Field of View value</French>
+		<German>Stores the Field of View value</German>
+		<Italian>Stores the Field of View value</Italian>
+		<Spanish>Stores the Field of View value</Spanish>
+	</TEXT>
+
+
+
 
 	<!-- TechWindow -->
 	<TEXT>
@@ -3152,6 +3187,23 @@
 		<Italian>Quando è selezionato, mostra la Scheda dei Grafici nel formato modificato del BUG Mod</Italian>
 		<Spanish>When checked, displays graphs in BUG format.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGSTATSTAB_TEXT</Tag>
+		<English>Stats tab</English>
+		<French>Stats tab</French>
+		<German>Stats tab</German>
+		<Italian>Stats tab</Italian>
+		<Spanish>Statss tab</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGSTATSTAB_HOVER</Tag>
+		<English>When checked, displays improvements on Stats tab.</English>
+		<French>When checked, displays improvements on Stats tab.</French>
+		<German>When checked, displays improvements on Stats tab.</German>
+		<Italian>When checked, displays improvements on Stats tab.</Italian>
+		<Spanish>When checked, displays improvements on Stats tab.</Spanish>
+	</TEXT>
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SEVOPEDIA_TEXT</Tag>
 		<English>Enabled</English>
