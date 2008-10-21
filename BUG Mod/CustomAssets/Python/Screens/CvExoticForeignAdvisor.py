@@ -975,7 +975,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				self.resIconGrid.appendRow(currentPlayer.getName(), message)
 				self.resIconGrid.addIcon( currentRow, self.leaderCol
 										, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
+										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader )
 # 				for i in range(4):
 # 					for iLoopBonus in range(gc.getNumBonusInfos()):
 # 						self.resIconGrid.addIcon( currentRow, i + 1, gc.getBonusInfo(iLoopBonus).getButton()
@@ -1093,7 +1093,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				self.techIconGrid.appendRow(currentPlayer.getName(), message)
 				self.techIconGrid.addIcon( currentRow, 0, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										 , 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer )
+										 , 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader )
 				
 				if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
 					sAmount = str(gc.getPlayer(iLoopPlayer).AI_maxGoldTrade(self.iActiveLeader))

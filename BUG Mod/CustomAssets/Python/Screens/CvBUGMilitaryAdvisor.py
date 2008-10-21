@@ -314,7 +314,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.Col_Leader,
 										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(), 64, 
-										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer)
+										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActivePlayer)
 
 				# add worst enemy
 				self.Grid_WorstEnemy(iRow, iLoopPlayer)
@@ -325,28 +325,28 @@ class CvMilitaryAdvisor:
 				for pLoopPlayer in pActiveWars:
 					self.iconGrid.addIcon(iRow, self.Col_Curr_Wars, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID(), iLoopPlayer)
 
 				# show vassals
 				if bVassals:
 					for pLoopPlayer in pVassals[iLoopPlayer]:
 						self.iconGrid.addIcon(iRow, self.Col_Vassals, 
 												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID(), iLoopPlayer)
 
 				# show defensive pacts
 				if bDefPacts:
 					for pLoopPlayer in pDefPacts[iLoopPlayer]:
 						self.iconGrid.addIcon(iRow, self.Col_DefPacts, 
 												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+												WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID(), iLoopPlayer)
 
 				# show players that the current player will declare on
 				bWHEOOH, pPossibleWars = PlayerUtil.getPossibleWars(iLoopPlayer, self.iActivePlayer)
 				for pLoopPlayer in pPossibleWars:
 					self.iconGrid.addIcon(iRow, self.Col_WillDeclareOn, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID(), iLoopPlayer)
 				# show WHEOOH
 				if bWHEOOH:
 					sWHEOOH = u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
@@ -358,7 +358,7 @@ class CvMilitaryAdvisor:
 				for pLoopPlayer in pPossibleEmbargos:
 					self.iconGrid.addIcon(iRow, self.Col_WillEmbargo, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID())
+											WidgetTypes.WIDGET_LEADERHEAD, pLoopPlayer.getID(), iLoopPlayer)
 
 				self.iconGrid.setText(iRow, self.Col_WHEOOH, sWHEOOH, 3)
 
@@ -564,11 +564,12 @@ class CvMilitaryAdvisor:
 		if pWorstEnemy:
 			self.iconGrid.addIcon(iRow, self.Col_WEnemy,
 									gc.getLeaderHeadInfo(pWorstEnemy.getLeaderType()).getButton(), 45, 
-									WidgetTypes.WIDGET_LEADERHEAD, pWorstEnemy.getID())
+									WidgetTypes.WIDGET_LEADERHEAD, pWorstEnemy.getID(), iLeader)
 		else:
-			self.iconGrid.addIcon(iRow, self.Col_WEnemy,
-									ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
-									WidgetTypes.WIDGET_LEADERHEAD, -1)
+			pass
+			#self.iconGrid.addIcon(iRow, self.Col_WEnemy,
+			#						ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
+			#						WidgetTypes.WIDGET_GENERAL, -1)
 
 	def GetDeclareWar(self, iRow, iPlayer):
 		# this module will check if the iPlayer will declare war
@@ -682,7 +683,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.SA_Col_Leader,
 						gc.getLeaderHeadInfo(player.getLeaderType()).getButton(), 64, 
-						WidgetTypes.WIDGET_LEADERHEAD, player.getID())
+						WidgetTypes.WIDGET_LEADERHEAD, player.getID(), self.iActivePlayer)
 				
 				# add bonus and unit icons
 				self.addStratAdvBonuses(activePlayer, player, iRow)

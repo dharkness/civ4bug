@@ -13,10 +13,11 @@ localText = CyTranslator()
 
 class IconData:
 
-	def __init__(self, sImage, widgetType, iData):
+	def __init__(self, sImage, widgetType, iData1, iData2=-1):
 		self.image = sImage
 		self.widgetType = widgetType
-		self.data = iData
+		self.data1 = iData1
+		self.data2 = iData2
 	
 
 class CellData:
@@ -25,8 +26,8 @@ class CellData:
 		self.icons = []
 		self.text = ""
 	
-	def addIcon(self, sImage, widgetType, iData):
-		self.icons.append(IconData(sImage, widgetType, iData))
+	def addIcon(self, sImage, widgetType, iData1, iData2=-1):
+		self.icons.append(IconData(sImage, widgetType, iData1, iData2))
 	
 	def setText(self, sText):
 		self.text = sText
@@ -42,8 +43,8 @@ class RowData:
 		for i in range(iNumColumns):
 			self.cells.append(CellData())
 	
-	def addIcon(self, iColumnIndex, sImage, widgetType, iData):
-		self.cells[iColumnIndex].addIcon(sImage, widgetType, iData)
+	def addIcon(self, iColumnIndex, sImage, widgetType, iData1, iData2=-1):
+		self.cells[iColumnIndex].addIcon(sImage, widgetType, iData1, iData2)
 	
 	def setText(self, iColumnIndex, sText):
 		self.cells[iColumnIndex].setText(sText)
@@ -184,8 +185,8 @@ class IconGrid:
 		self.data.append(RowData(sRowHeader, sMessage, len(self.columns)))
 	
 	
- 	def addIcon(self, iRowIndex, iColumnIndex, sImage, widgetType, iData):
- 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, widgetType, iData)
+ 	def addIcon(self, iRowIndex, iColumnIndex, sImage, widgetType, iData1, iData2=-1):
+ 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, widgetType, iData1, iData2)
 	
  		
  	def setText(self, iRowIndex, iColumnIndex, sText):
@@ -251,13 +252,13 @@ class IconGrid:
 						iconData = rowData.cells[startIndex + offset].icons[0]
 						self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
 												  , iconData.image, currentX, currentY, 64, 64
-												  , iconData.widgetType, iconData.data, -1 )
+												  , iconData.widgetType, iconData.data1, iconData.data2 )
 						currentX += self.iconColWidth + self.colSpace
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 						self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
 						for icon in rowData.cells[startIndex + offset].icons:
 							self.screen.appendMultiListButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-															 , icon.image, 0, icon.widgetType, icon.data, -1, False )
+															 , icon.image, 0, icon.widgetType, icon.data1, icon.data2, False )
 						currentX += self.multiListColWidth + self.colSpace
 					elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
 						textY = self.firstRowY + (self.totalRowHeight + self.rowSpace) * rowIndex + 28
@@ -278,13 +279,13 @@ class IconGrid:
 					iconData = rowData.cells[startIndex + offset].icons[0]
 					self.screen.setImageButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
 											  , iconData.image, currentX, currentY, 64, 64
-											  , iconData.widgetType, iconData.data, -1 )
+											  , iconData.widgetType, iconData.data1, iconData.data2 )
 					currentX += self.iconColWidth + self.colSpace
 				elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 					self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
 					for icon in rowData.cells[startIndex + offset].icons:
 						self.screen.appendMultiListButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-														 , icon.image, 0, icon.widgetType, icon.data, -1, False )
+														 , icon.image, 0, icon.widgetType, icon.data1, icon.data2, False )
 					currentX += self.multiListColWidth + self.colSpace
 				elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
 					text = rowData.cells[startIndex + offset].text

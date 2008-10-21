@@ -14,10 +14,11 @@ localText = CyTranslator()
 
 class IconData:
 
-	def __init__(self, sImage, iSize, widgetType, iData, bEnabled=True):
+	def __init__(self, sImage, iSize, widgetType, iData1, iData2=-1, bEnabled=True):
 		self.image = sImage
 		self.widgetType = widgetType
-		self.data = iData
+		self.data1 = iData1
+		self.data2 = iData2
 		self.size = iSize
 		self.enabled = bEnabled
 	
@@ -37,8 +38,8 @@ class CellData:
 		self.text = ""
 		self.font = 3
 	
-	def addIcon(self, sImage, iSize, widgetType, iData, bEnabled=True):
-		self.icons.append(IconData(sImage, iSize, widgetType, iData, bEnabled))
+	def addIcon(self, sImage, iSize, widgetType, iData1, iData2=-1, bEnabled=True):
+		self.icons.append(IconData(sImage, iSize, widgetType, iData1, iData2, bEnabled))
 	
 	def setText(self, sText, iFont):
 		self.text = sText
@@ -59,8 +60,8 @@ class RowData:
 		for i in range(iNumColumns):
 			self.cells.append(CellData())
 	
-	def addIcon(self, iColumnIndex, sImage, iSize, widgetType, iData, bEnabled=True):
-		self.cells[iColumnIndex].addIcon(sImage, iSize, widgetType, iData, bEnabled)
+	def addIcon(self, iColumnIndex, sImage, iSize, widgetType, iData1, iData2=-1, bEnabled=True):
+		self.cells[iColumnIndex].addIcon(sImage, iSize, widgetType, iData1, iData2, bEnabled)
 	
 	def setText(self, iColumnIndex, sText, iFont):
 		self.cells[iColumnIndex].setText(sText, iFont)
@@ -240,8 +241,8 @@ class IconGrid_BUG:
 	def appendRow(self, sRowHeader, sMessage, iFont=3):
 		self.data.append(RowData(sRowHeader, sMessage, iFont, len(self.columns)))
 
- 	def addIcon(self, iRowIndex, iColumnIndex, sImage, iSize, widgetType, iData, bEnabled=True):
- 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, iSize, widgetType, iData, bEnabled)
+ 	def addIcon(self, iRowIndex, iColumnIndex, sImage, iSize, widgetType, iData1, iData2=-1, bEnabled=True):
+ 		self.data[iRowIndex].addIcon(iColumnIndex, sImage, iSize, widgetType, iData1, iData2, bEnabled)
 
  	def setText(self, iRowIndex, iColumnIndex, sText, iFont=3):
  		self.data[iRowIndex].setText(iColumnIndex, sText, iFont)
@@ -357,7 +358,7 @@ class IconGrid_BUG:
 						if bDataFound:
 							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
 													   iconData.image, currentX - (iconData.size - 64) / 2, currentY - (iconData.size - 64) / 2, iconData.size, iconData.size, 
-													   iconData.widgetType, iconData.data, -1)
+													   iconData.widgetType, iconData.data1, iconData.data2)
 							currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
@@ -365,7 +366,7 @@ class IconGrid_BUG:
 						self.screen.clearMultiList(listName)
 						iCount = 0
 						for icon in rowData.cells[startIndex + offset].icons:
-							self.screen.appendMultiListButton(listName, icon.image, 0, icon.widgetType, icon.data, -1, False)
+							self.screen.appendMultiListButton(listName, icon.image, 0, icon.widgetType, icon.data1, icon.data2, False)
 							if not icon.enabled:
 								self.screen.disableMultiListButton( listName, 0, iCount, icon.image)
 							iCount += 1
@@ -446,14 +447,14 @@ class IconGrid_BUG:
 					if bDataFound:		
 						self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset), 
 												   iconData.image, currentX - (iconData.size - 64) / 2, currentY - (iconData.size - 64) / 2, iconData.size, iconData.size, 
-												   iconData.widgetType, iconData.data, -1 )
+												   iconData.widgetType, iconData.data1, iconData.data2 )
 						currentX += self.iconColWidth + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 					self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
 					for icon in rowData.cells[startIndex + offset].icons:
 						self.screen.appendMultiListButton( self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
-														 , icon.image, 0, icon.widgetType, icon.data, -1, False )
+														 , icon.image, 0, icon.widgetType, icon.data1, icon.data2, False )
 					currentX += self.multiListColWidth + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_TEXT_COLUMN):
