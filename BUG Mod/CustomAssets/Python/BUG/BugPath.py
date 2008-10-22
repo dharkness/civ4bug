@@ -77,9 +77,9 @@ else:
 	myDocuments = __getRegValue(_winreg.HKEY_CURRENT_USER, 
 			r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
 			"Personal")
-	BugUtil.debug("BugPath - My Documents dir is '%s'", myDocuments)
+	#BugUtil.debug("BugPath - My Documents dir is '%s'", myDocuments)
 	userDir = os.path.join(myDocuments, "My Games")
-BugUtil.debug("BugPath - user dir is '%s'", userDir)
+#BugUtil.debug("BugPath - user dir is '%s'", userDir)
 
 # Determine the root directory that holds the executable and mods
 # as well as the directory inside "My Games" that holds CustomAssets and mods.
@@ -88,15 +88,15 @@ appName = "Beyond the Sword"
 if (sys.executable):
 	rootDir = os.path.dirname(sys.executable)
 	appName = os.path.basename(rootDir)
-	BugUtil.debug("BugPath - root dir is '%s'", rootDir)
-	BugUtil.debug("BugPath - app name is '%s'", appName)
+	#BugUtil.debug("BugPath - root dir is '%s'", rootDir)
+	#BugUtil.debug("BugPath - app name is '%s'", appName)
 
 # Create an ordered list of paths which are searched for INI files.
 iniFileSearchPaths = []
 def addIniFileSearchPath(path):
 	"""Adds the given path to the search list if it is a valid directory."""
 	if (os.path.isdir(path)):
-		BugUtil.info("BugPath - adding search path '%s'", path)
+		#BugUtil.info("BugPath - adding search path '%s'", path)
 		iniFileSearchPaths.append(path)
 
 if (userDir):
