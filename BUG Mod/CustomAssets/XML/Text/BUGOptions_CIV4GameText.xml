@@ -2945,7 +2945,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_HOVER</Tag>
 		<English>When checked, displays a slide bar which can be used to change the field of view.</English>
 		<French>When checked, displays a slide bar which can be used to change the field of view.</French>
-		<German>Zeigt im Hauptbildschirm einen Schieberegler an, mit der das Sichtfeld (engl. "Field of View") eingestellt werden kann</German>
+		<German>Zeigt im Hauptbildschirm einen Schieberegler an, mit dem das Sichtfeld (engl. "Field of View") eingestellt werden kann</German>
 		<Italian>When checked, displays a slide bar which can be used to change the field of view.</Italian>
 		<Spanish>When checked, displays a slide bar which can be used to change the field of view.</Spanish>
 	</TEXT>
@@ -2953,7 +2953,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_REMEMBER_TEXT</Tag>
 		<English>Remember Field of View</English>
 		<French>Remember Field of View</French>
-		<German>Remember Field of View</German>
+		<German>FOV-Einstellung merken</German>
 		<Italian>Remember Field of View</Italian>
 		<Spanish>Remember Field of View</Spanish>
 	</TEXT>
@@ -2961,7 +2961,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_REMEMBER_HOVER</Tag>
 		<English>When checked, the Field of View value is remembered from game to game.</English>
 		<French>When checked, the Field of View value is remembered from game to game.</French>
-		<German>When checked, the Field of View value is remembered from game to game.</German>
+		<German>Merkt sich die letzte gewählte Einstellung für das Sichtfeld (engl. "Field of View") für weitere Partien</German>
 		<Italian>When checked, the Field of View value is remembered from game to game.</Italian>
 		<Spanish>When checked, the Field of View value is remembered from game to game.</Spanish>
 	</TEXT>
@@ -2969,7 +2969,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_VALUE_TEXT</Tag>
 		<English>Field of View - Value</English>
 		<French>Field of View - Value</French>
-		<German>Field of View - Value</German>
+		<German>FOV-Wert</German>
 		<Italian>Field of View - Value</Italian>
 		<Spanish>Field of View - Value</Spanish>
 	</TEXT>
@@ -2977,7 +2977,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_VALUE_HOVER</Tag>
 		<English>Stores the Field of View value</English>
 		<French>Stores the Field of View value</French>
-		<German>Stores the Field of View value</German>
+		<German>Eingabemöglichkeit für die Einstellung des Sichtfeldes (engl. "Field of View")</German>
 		<Italian>Stores the Field of View value</Italian>
 		<Spanish>Stores the Field of View value</Spanish>
 	</TEXT>
@@ -3191,15 +3191,15 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGSTATSTAB_TEXT</Tag>
 		<English>Stats tab</English>
 		<French>Stats tab</French>
-		<German>Stats tab</German>
+		<German>BUG Statistiken</German>
 		<Italian>Stats tab</Italian>
-		<Spanish>Statss tab</Spanish>
+		<Spanish>Stats tab</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGSTATSTAB_HOVER</Tag>
 		<English>When checked, displays improvements on Stats tab.</English>
 		<French>When checked, displays improvements on Stats tab.</French>
-		<German>When checked, displays improvements on Stats tab.</German>
+		<German>Zeigt die Statistiken auf der entsprechenden Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an</German>
 		<Italian>When checked, displays improvements on Stats tab.</Italian>
 		<Spanish>When checked, displays improvements on Stats tab.</Spanish>
 	</TEXT>
