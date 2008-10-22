@@ -1159,6 +1159,7 @@ class CvMilitaryAdvisor:
 
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
+		BugUtil.debugInput(inputClass, True)
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if (inputClass.getFunctionName() == self.UNIT_LOC_TAB_ID):
 				self.iScreen = UNIT_LOCATION_SCREEN
@@ -1182,10 +1183,6 @@ class CvMilitaryAdvisor:
 
 			# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
 			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
-#				if (inputClass.getFlags() & MouseFlags.MOUSE_LBUTTONUP):
-#					self.iSelectedLeader = inputClass.getData1()
-#					self.drawContents(False)
-#				return 1
 				if (inputClass.getFlags() & MouseFlags.MOUSE_RBUTTONUP):
 					if (self.iActivePlayer != inputClass.getData1()):
 						self.getScreen().hideScreen()
@@ -1210,6 +1207,10 @@ class CvMilitaryAdvisor:
 					self.selectedGroups.clear()
 					BugUtil.debug("Switched grouping %d to %s" % (iGroup, key))
 					self.UL_refresh(False, True)
+					return 1
+			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
+				if (self.iActivePlayer != inputClass.getData1()):
+					self.getScreen().hideScreen()
 					return 1
 		
 		if self.iconGrid:
