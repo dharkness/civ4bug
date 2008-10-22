@@ -52,9 +52,9 @@ TYPE_DEFAULT = { "boolean": False,
 			 	 "string": "",
 				 "int": 0,
 				 "float": 0.0,
-				 "key": "" }
-TYPE_DEFAULT_FUNC = { "tuple": tuple,
-					  "list": list,
+				 "key": "",
+				 "tuple": () }
+TYPE_DEFAULT_FUNC = { "list": list,
 					  "set": set,
 					  "dict": dict }
 TYPE_EVAL = { "boolean": lambda x: x.lower() in TRUE_STRINGS,
@@ -192,6 +192,7 @@ class GameBuilder:
 		return self.screen
 	
 	def createTab(self, screenId, id, module, clazz=None, attrs=None):
+		# TODO: add args
 		if screenId:
 			screen = self.game._getScreen(screenId)
 		else:
