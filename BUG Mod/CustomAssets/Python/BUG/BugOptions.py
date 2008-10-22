@@ -885,7 +885,7 @@ class BaseListOption(BaseOption):
 	def buildDisplayValues(self):
 		if not self.displayValues:
 			if self.format is None:
-				if self.listType == "int":
+				if self.isIntList():
 					format = "%d"
 				else:
 					format = "%f"
