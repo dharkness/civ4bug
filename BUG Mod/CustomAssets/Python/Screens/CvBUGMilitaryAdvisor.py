@@ -1159,7 +1159,6 @@ class CvMilitaryAdvisor:
 
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
-		BugUtil.debugInput(inputClass, True)
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if (inputClass.getFunctionName() == self.UNIT_LOC_TAB_ID):
 				self.iScreen = UNIT_LOCATION_SCREEN
