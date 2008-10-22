@@ -37,8 +37,12 @@
 ##
 ## Event Tracing (handleInput)
 ##
-##   - debugInput(inputClass)
+##   - debugInput(inputClass, flags?)
 ##     Logs a DEBUG message detailing the input event.
+##     If flags is given and True, calls debugInputFlags() as well.
+##
+##   - debugInputFlags(inputClass)
+##     Logs a DEBUG message detailing the input event's flags, if any.
 ##
 ## Timing Code Execution
 ##
@@ -246,23 +250,74 @@ INPUT_CODES = {
     NotifyCode.NOTIFY_MOVIE_DONE            : "Movie Done",
 }
 
-def debugInput(inputClass):
+def debugInput(inputClass, flags=False):
 	"""
 	Prints a debug message detailing the given input event.
 	
 	Add this to the handleInput function to see all events as they occur.
+	Pass True for flags to output the mouse flags, if any.
 	
 	def handleInput(self, inputClass):
 		BugUtil.debugInput(inputClass)
 	"""
-	if (inputClass.getNotifyCode() in INPUT_CODES):
-		debug("Input - %s for %s #%d (%d/%d/%d)" % 
-			  (INPUT_CODES[inputClass.getNotifyCode()], 
-			   inputClass.getFunctionName(),
-			   inputClass.getID(), 
-			   inputClass.getData(),
-			   inputClass.getData1(),
-			   inputClass.getData2()))
+	if inputClass.getNotifyCode() in INPUT_CODES:
+		debug("%s - %s #%d, data %d, widget %d %d %d",
+			INPUT_CODES[inputClass.getNotifyCode()], 
+			inputClass.getFunctionName(),
+			inputClass.getID(), 
+			inputClass.getData(),
+			inputClass.getButtonType(),
+			inputClass.getData1(),
+			inputClass.getData2()
+		)
+	if flags:
+		debugInputFlags(inputClass)
+
+MOUSE_FLAGS = {
+	MouseFlags.MOUSE_CLICKED:			"Click",
+	MouseFlags.MOUSE_CONTROL:			"Control",
+	MouseFlags.MOUSE_DBLCLICKED:		"DblClick",
+	MouseFlags.MOUSE_EVENT:				"Event",
+	MouseFlags.MOUSE_LBUTTON:			"L-Click",
+	MouseFlags.MOUSE_LBUTTONDBLCLK:		"L-DblClick",
+	MouseFlags.MOUSE_LBUTTONDOWN:		"L-Down",
+	MouseFlags.MOUSE_LBUTTONUP:			"L-Up",
+	MouseFlags.MOUSE_MBUTTON:			"M-Click",
+	MouseFlags.MOUSE_MBUTTONDBLCLK:		"M-DblClick",
+	MouseFlags.MOUSE_MBUTTONDOWN:		"M-Down",
+	MouseFlags.MOUSE_MBUTTONUP:			"M-Up",
+	MouseFlags.MOUSE_MOUSEMOVE:			"Move",
+	MouseFlags.MOUSE_MOUSEWHEELDOWN: 	"W-Down",
+	MouseFlags.MOUSE_MOUSEWHEELUP:		"W-Up",
+	MouseFlags.MOUSE_RBUTTON:			"R-Click",
+	MouseFlags.MOUSE_RBUTTONDBLCLK:		"R-DblClick",
+	MouseFlags.MOUSE_RBUTTONDOWN:		"R-Down",
+	MouseFlags.MOUSE_RBUTTONUP:			"R-Up",
+	MouseFlags.MOUSE_RELEASED:			"Release",
+	MouseFlags.MOUSE_SHIFT:				"Shift",
+	MouseFlags.MOUSE_STATE:				"State",
+	MouseFlags.MOUSE_XBUTTON1:			"X1-Click",
+	MouseFlags.MOUSE_XBUTTON2:			"X2-Click",
+	MouseFlags.MOUSE_XBUTTONDBLCLK:		"X-DblClick",
+	MouseFlags.MOUSE_XBUTTONDOWN:		"X-Down",
+	MouseFlags.MOUSE_XBUTTONUP:			"X-Up",
+}
+
+def debugInputFlags(inputClass):
+	"""
+	Prints a debug message detailing the given input event's mouse flags, if any.
+	
+	def handleInput(self, inputClass):
+		BugUtil.debugInputFlags(inputClass)
+	"""
+	flags = inputClass.getFlags()
+	if flags:
+		flagList = []
+		for flag, text in MOUSE_FLAGS.iteritems():
+			if flags & flag:
+				flagList.append(text)
+		if flagList:
+			debug("Flags - %s", ", ".join(flagList))
 
 
 ## Timing Code Execution
