@@ -359,7 +359,7 @@ class IconGrid_BUG:
 							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
 													   iconData.image, currentX - (iconData.size - 64) / 2, currentY - (iconData.size - 64) / 2, iconData.size, iconData.size, 
 													   iconData.widgetType, iconData.data1, iconData.data2)
-							currentX += self.iconColWidth + self.colSpace
+						currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 						listName = self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
@@ -427,8 +427,8 @@ class IconGrid_BUG:
 							else:
 								self.screen.deleteWidget(szTxt_ID)
 
-							currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
-#							BugUtil.debug("Stacked Bar done")
+						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+#						BugUtil.debug("Stacked Bar done")
 
 				startIndex += colGroup.length
 				if (colGroup.label != ""):
@@ -448,7 +448,7 @@ class IconGrid_BUG:
 						self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset), 
 												   iconData.image, currentX - (iconData.size - 64) / 2, currentY - (iconData.size - 64) / 2, iconData.size, iconData.size, 
 												   iconData.widgetType, iconData.data1, iconData.data2 )
-						currentX += self.iconColWidth + self.colSpace
+					currentX += self.iconColWidth + self.colSpace
 
 				elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
 					self.screen.clearMultiList(self.rowName + str(rowIndex) + "_" + str(startIndex + offset))
@@ -505,8 +505,8 @@ class IconGrid_BUG:
 						else:
 							self.screen.deleteWidget(szTxt_ID)
 
-						currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
-#						BugUtil.debug("Stacked Bar done")
+					currentX += self.StackedBarColWidth[startIndex + offset] + self.colSpace
+#					BugUtil.debug("Stacked Bar done")
 			
 			if ( rowData.message == "" ):
 				self.screen.attachLabel(self.rowName + str(rowIndex), self.rowName + str(rowIndex) + "NotConnected", "")
