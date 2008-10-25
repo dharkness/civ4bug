@@ -81,11 +81,11 @@ class Trade(object):
 		for trade in self.trades():
 			for type in types:
 				if type == trade.ItemType:
-					found.append(type)
+					found.append(trade)
 		for trade in self.otherTrades():
 			for type in types:
 				if type == trade.ItemType:
-					found.append(type)
+					found.append(trade)
 		return found
 	
 	def __repr__(self):

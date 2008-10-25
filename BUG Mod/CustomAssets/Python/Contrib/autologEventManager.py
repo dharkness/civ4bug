@@ -1009,22 +1009,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			Logger.writeLog(message, vColor="Navy")
 	
 	def onCityOffered(self, argsList):
-		eOfferPlayer, eTargetPlayer, pTrade = argsList
+		eOfferPlayer, eTargetPlayer, iCityID = argsList
 		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
-			szOfferItems = ""
-			message = ""
-			if eOfferPlayer == pTrade.getPlayer():
-				for i in range(pTrade.getCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getTrade(i)) + ", "
-			else:
-				for i in range(pTrade.getOtherCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getOtherTrade(i)) + ", "
-			szOfferItems = szOfferItems.rstrip(", ")
+			pCityOffered = pOfferPlayer.getCity(iCityID)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_CITY_OFFER", 
 									(pOfferPlayer.getName(), pOfferPlayer.getCivilizationShortDescription(0),
-									szOfferItems,
+									pCityOffered.getName(),
 									pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0)))
 			Logger.writeLog(message, vColor="Navy")
 	
