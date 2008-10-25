@@ -9,6 +9,7 @@ import time
 
 # BUG - Options - start
 import BugCore
+import BugOptions
 ClockOpt = BugCore.game.NJAGC
 ScoreOpt = BugCore.game.Scores
 MainOpt = BugCore.game.MainInterface
@@ -165,6 +166,10 @@ RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 				   "TXT_KEY_RAW_YIELD_TILES_OWNED",
 				   "TXT_KEY_RAW_YIELD_TILES_ALL" )
 # BUG - Raw Yields - end
+
+# BUG - field of view slider - start
+DEFAULT_FIELD_OF_VIEW = 42
+# BUG - field of view slider - end
 
 # BUG - Event Manager - start
 g_iActiveTurn = -1
@@ -2342,7 +2347,7 @@ class CvMainInterface:
 		if MainOpt.isRememberFieldOfView():
 			self.iField_View = int(MainOpt.getFieldOfView())
 		else:
-			self.iField_View = 42
+			self.iField_View = DEFAULT_FIELD_OF_VIEW
 
 		self.szSliderTextId = "FieldOfViewSliderText"
 		self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
@@ -2828,9 +2833,10 @@ class CvMainInterface:
 		
 		global g_szTimeText
 		global g_iTimeTextCounter
-# BUG - NJAGC - start
-		global g_bShowTimeTextAlt
-# BUG - NJAGC - end
+
+# BUG - Options - start
+		BugOptions.write()
+# BUG - Options - end
 
 # BUG - Event Manager - start
 		global g_iActiveTurn
@@ -2935,6 +2941,7 @@ class CvMainInterface:
 		self.updateEndTurnButton()
 
 # BUG - NJAGC - start
+		global g_bShowTimeTextAlt
 		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
 			if (ClockOpt.isEnabled()):
 				if (ClockOpt.isShowEra()):
@@ -6712,10 +6719,11 @@ class CvMainInterface:
 	def update(self, fDelta):
 		return
 
+# BUG - field of view slider - start
 	def setFieldofView(self, screen, bDefault):
 		if (bDefault
 		or not MainOpt.isShowFieldOfView()):
-			self._setFieldofView(screen, 42)
+			self._setFieldofView(screen, DEFAULT_FIELD_OF_VIEW)
 		else:
 			self._setFieldofView(screen, self.iField_View)
 
@@ -6728,3 +6736,4 @@ class CvMainInterface:
 	def setFieldofView_Text(self, screen):
 		zsFieldOfView_Text = "%s [%i]" % (self.sFieldOfView_Text, self.iField_View)
 		screen.setLabel(self.szSliderTextId, "", zsFieldOfView_Text, CvUtil.FONT_RIGHT_JUSTIFY, self.iX_FoVSlider, self.iY_FoVSlider + 6, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+# BUG - field of view slider - end
