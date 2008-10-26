@@ -161,6 +161,10 @@ def handleResolutionDropdownInput ( argsList ):
 	
 	UserProfile.setResolution(iValue)
 	
+# BUG - BugEventManager - start
+	CvEventInterface.getEventManager().fireEvent("ResolutionChanged", iValue)
+# BUG - BugEventManager - end
+
 	return 1
 	
 def handleAntiAliasingDropdownInput ( argsList ):

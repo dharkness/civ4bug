@@ -72,6 +72,7 @@ import Popup as PyPopup
 import CvEventInterface
 import BugPath
 import BugConfigTracker
+import BugUtil
 
 import math
 import os.path
@@ -82,6 +83,7 @@ PyPlayer = PyHelpers.PyPlayer
 # BUG - Options - start
 import BugCore
 CityScreenOpt = BugCore.game.CityScreen
+AdvisorOpt = BugCore.game.Advisors
 # BUG - Options - end
 
 # Needed to save changes
@@ -109,6 +111,13 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
+# hack to handle resolution-switching
+g_bMustCreatePositions = True
+
+def handleResolutionChanged (argsList=None):
+	global g_bMustCreatePositions
+	g_bMustCreatePositions = True
+
 # Class CvDomesticAdvisor
 # Class
 # Class
@@ -135,84 +144,10 @@ class CvCustomizableDomesticAdvisor:
 		# An event context for renaming pages
 		self.renameEventContext = None
 
-		# Dimensions. Here is where you change sizes and lengths of general things
-		self.nScreenWidth = 1024
-		self.nScreenLength = 768
-
-		# Location/Size of the Panel
-		self.nPanelX = 0
-		self.nPanelY = 29
-		self.nPanelWidth = self.nScreenWidth
-		self.nPanelLength = 562
-
-		# Dimension of the table
-		self.nTableX = 12
-		self.nTableY = 42
-		self.nTableWidth = 1000
-		self.nTableLength = self.nPanelLength - 10 - self.nTableY
-		self.nShortTableLength = 400
-
-		self.nSecondHalfTableX = self.nTableX + self.nTableWidth / 2 + 10
-		self.nHalfTableWidth = self.nTableWidth / 2 - 10
-
-		self.nCustomizeControlY = 450
-
-		# Location of Text Buttons
-		self.X_EXIT = self.nTableX + self.nTableWidth
-		self.Y_EXIT = self.nPanelLength + self.nPanelY - 32
-		self.Y_TEXT = self.nPanelLength + self.nPanelY - 27
-		self.Z_TEXT = -0.1
-		self.DX_TEXT = -200
-
-# BUG - Colony Split - start
-
-		# Location of Split Empire Button
-		self.SPLIT_NAME = "DomesticSplit"
-		self.X_SPLIT = self.X_EXIT - 100
-		self.Y_SPLIT = self.Y_TEXT - 8
-
-# BUG - Colony Split - end
-
-		# Building Button Headers
-		self.BUILDING_BUTTON_X_SIZE = 24
-		self.BUILDING_BUTTON_Y_SIZE = 24
-
-		# Location of Specialist Toggle Button
-		self.X_SPECIAL = self.nTableX
-		self.Y_SPECIAL = self.Y_TEXT - 10
-		
-		# Width of page dropdown
-		self.PAGES_DD_W = 300
-
-		# Location of Culture Threshold Info
-		self.nCultureLevelX = 670
-		self.nCultureLevelY = 450
-		self.nCultureLevelDistance = 15
-		self.nCultureLevelTextOffset = 110
-
-		# Location of next GP Threshold Info
-		self.nGPLevelX = 870
-		self.nGPLevelY = 450
-		self.nGPLevelDistance = 30
-
-		self.nControlSize = 28
-
-		# Location/Size of the Specialist Images
-		self.nFirstSpecialistX = 30
-		self.nSpecialistY = 450
-		self.nSpecialistWidth = 32
-		self.nSpecialistLength = 32
-		self.nSpecialistDistance = 70
-
-		# Offset from Specialist Image/Size for the Specialist Plus/Minus buttons
-		self.nPlusOffsetX = -4
-		self.nMinusOffsetX = 16
-		self.nPlusOffsetY = self.nMinusOffsetY = 30
-		self.nPlusWidth = self.nPlusHeight = self.nMinusWidth = self.nMinusHeight = 20
-
-		# Offset from Specialist Image for the Specialist Text
-		self.nSpecTextOffsetX = 0
-		self.nSpecTextOffsetY = 50
+		# All size information moved to self.createPositions because they are now
+		# all based on the screen resolution and the screen isn't available yet.
+		self.cachedOption_CDASpaceTop = -1
+		self.cachedOption_CDASpaceSides = -1
 
 		# Names of Widgets
 		self.SCREEN_NAME = "DomesticAdvisor"
@@ -308,6 +243,7 @@ class CvCustomizableDomesticAdvisor:
 				("HURRY_POP",				38,		"int",	None,					None,					0,									self.calculateWhipPopulation,			None,						"u\"H\" + self.angryIcon"),
 				("HURRY_POP_EXTRA",			38,		"int",	None,					None,					0,									self.calculateWhipOverflowProduction,	None,						"u\"H\" + self.hammerIcon"),
 				("HURRY_POP_GOLD",			38,		"int",	None,					None,					0,									self.calculateWhipOverflowGold,			None,						"u\"H\" + self.goldIcon"),
+				("HURRY_POP_ANGER",			38,		"int",	None,					None,					0,									self.calculateWhipAnger,				None,						"u\"H\" + self.unhappyIcon"),
 				("LIBERATE",				35,		"int",	None,					None,					0,									self.canLiberate,						None,						"self.fistIcon"),
 				("LOCATION_X",				50,		"int",	CyCity.getX,			None,					0,									None,									None,						"u\"X\""),
 				("LOCATION_Y",				50,		"int",	CyCity.getY,			None,					0,									None,									None,						"u\"Y\""),
@@ -354,6 +290,7 @@ class CvCustomizableDomesticAdvisor:
 			"HEALTH" : 0,
 			"GROWTH" : 0,
 			"FOOD" : 0,
+			"HURRY_POP_ANGER" : 1
 			}
 
 		# Values to check to see if we need to color the number as great
@@ -466,7 +403,7 @@ class CvCustomizableDomesticAdvisor:
 		self.researchIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar())
 		self.sickIcon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHEALTHY_CHAR)
 		self.tradeIcon = u"%c" % CyGame().getSymbolID(FontSymbols.TRADE_CHAR)
-		self.unhappyicon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHAPPY_CHAR)
+		self.unhappyIcon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHAPPY_CHAR)
 		
 		self.yieldIcons = {}
 		for eYieldType in range(YieldTypes.NUM_YIELD_TYPES):
@@ -721,9 +658,107 @@ class CvCustomizableDomesticAdvisor:
 		self.runtimeInitDone = True
 
 	def createPositions (self, screen):
-		""" Gets the basic positions to draw on. """
-		self.nScreenX = screen.centerX(0)
-		self.nScreenY = screen.centerY(0)
+		""" Calculates the basic positions to draw on. """
+
+		# Borders from BUG Options
+		self.cachedOption_CDASpaceTop = AdvisorOpt.getCDASpaceTop()
+		self.cachedOption_CDASpaceSides = AdvisorOpt.getCDASpaceSides()
+		nBorderTop = [0,23,52,105][self.cachedOption_CDASpaceTop]
+		nBorderBottom = 177
+		nBorderLeft = [0,20,40,110,110][self.cachedOption_CDASpaceSides]
+		nBorderRight = [0,20,40,110,20][self.cachedOption_CDASpaceSides]
+
+		# Location/Size of the Overall Screen
+		self.nScreenX = nBorderLeft
+		self.nScreenWidth = screen.getXResolution() - nBorderLeft - nBorderRight
+		self.nScreenY = nBorderTop
+		self.nScreenLength = screen.getYResolution() - nBorderTop - nBorderBottom
+
+		# Location/Size of the Panel
+		# Panel no longer needs to be offset from screen since borders taken care of already.
+		self.nPanelX = 0
+		self.nPanelY = 0
+		self.nPanelWidth = self.nScreenWidth #- (2 * self.nPanelX)
+		self.nPanelLength = self.nScreenLength #- (2 * self.nPanelY)
+
+		# Dimension of the table
+		tableXOffset = 12
+		tableYOffset = 13
+		self.nTableX = self.nPanelX + tableXOffset
+		self.nTableY = self.nPanelY + tableYOffset
+		self.nTableWidth = self.nPanelWidth - (2 * tableXOffset)
+		self.nTableLength = self.nPanelLength - 40 - tableYOffset
+		self.nShortTableLength = self.nPanelY + self.nPanelLength - 140 # was 400 when nPanelLength was 562
+
+		self.nSecondHalfTableX = self.nTableX + self.nTableWidth / 2 + 10
+		self.nHalfTableWidth = self.nTableWidth / 2 - 10
+
+		self.nCustomizeControlY = self.nPanelY + self.nPanelLength - 120 # was 450 when nPanelLength was 562
+
+		BugUtil.debug("CDA Screen: %d x %d from (%d, %d) to (%d, %d)" %(self.nScreenWidth, self.nScreenLength, self.nScreenX, self.nScreenY, self.nScreenX + self.nScreenWidth, self.nScreenY + self.nScreenLength))
+		BugUtil.debug("CDA Panel: %d x %d from (%d, %d) to (%d, %d)" %(self.nPanelWidth, self.nPanelLength, self.nPanelX, self.nPanelY, self.nPanelX + self.nPanelWidth, self.nPanelY + self.nPanelLength))
+		BugUtil.debug("CDA Table: %d x %d from (%d, %d) to (%d, %d)" %(self.nTableWidth, self.nTableLength, self.nTableX, self.nTableY, self.nTableX + self.nTableWidth, self.nTableY + self.nTableLength))
+
+		# Location of Text Buttons
+		self.X_EXIT = self.nTableX + self.nTableWidth
+		self.Y_EXIT = self.nPanelLength + self.nPanelY - 32
+		self.Y_TEXT = self.nPanelLength + self.nPanelY - 27
+		self.Z_TEXT = -0.1
+		self.DX_TEXT = -200
+
+# BUG - Colony Split - start
+
+		# Location of Split Empire Button
+		self.SPLIT_NAME = "DomesticSplit"
+		self.X_SPLIT = self.X_EXIT - 100
+		self.Y_SPLIT = self.Y_TEXT - 8
+
+# BUG - Colony Split - end
+
+		# Building Button Headers
+		self.BUILDING_BUTTON_X_SIZE = 24
+		self.BUILDING_BUTTON_Y_SIZE = 24
+
+		# Location of Specialist Toggle Button
+		self.X_SPECIAL = self.nTableX
+		self.Y_SPECIAL = self.Y_TEXT - 10
+		
+		# Width of page dropdown
+		self.PAGES_DD_W = 300
+
+		# Location of Culture Threshold Info
+		self.nCultureLevelX = self.nPanelX + self.nPanelWidth - 354 # was 670 when nPanelWidth was 1024
+		self.nCultureLevelY = self.nPanelY + self.nPanelLength - 120 # was 450 when nPanelLength was 562
+		self.nCultureLevelDistance = 15
+		self.nCultureLevelTextOffset = 110
+
+		# Location of next GP Threshold Info
+		self.nGPLevelX = self.nPanelX + self.nPanelWidth - 154 # was 870 when nPanelWidth was 1024
+		self.nGPLevelY = self.nPanelY + self.nPanelLength - 120 # was 450 when nPanelLength was 562
+		self.nGPLevelDistance = 30
+
+		self.nControlSize = 28
+
+		# Location/Size of the Specialist Images
+		self.nFirstSpecialistX = self.nPanelX + 30
+		self.nSpecialistY = self.nPanelY + self.nPanelLength - 120 # was 450 when nPanelLength was 562
+		self.nSpecialistWidth = 32
+		self.nSpecialistLength = 32
+		self.nSpecialistDistance = 70
+
+		# Offset from Specialist Image/Size for the Specialist Plus/Minus buttons
+		self.nPlusOffsetX = -4
+		self.nMinusOffsetX = 16
+		self.nPlusOffsetY = self.nMinusOffsetY = 30
+		self.nPlusWidth = self.nPlusHeight = self.nMinusWidth = self.nMinusHeight = 20
+
+		# Offset from Specialist Image for the Specialist Text
+		self.nSpecTextOffsetX = 0
+		self.nSpecTextOffsetY = 50
+
+		# Flag so that we only do this again if really necessary
+		global g_bMustCreatePositions
+		g_bMustCreatePositions = False
 
 	def getScreen(self):
 		""" Return the screen we draw with. """
@@ -764,7 +799,13 @@ class CvCustomizableDomesticAdvisor:
 
 		screen = self.getScreen()
 #		screen.setForcedRedraw (True)
-		self.createPositions (screen)
+
+		# createPositions determines our size/positions and should only
+		# be called if something has changed.
+		if (g_bMustCreatePositions or 
+			self.cachedOption_CDASpaceTop != AdvisorOpt.getCDASpaceTop() or 
+			self.cachedOption_CDASpaceSides != AdvisorOpt.getCDASpaceSides()):
+			self.createPositions (screen)
 
 		screen.setDimensions (self.nScreenX, self.nScreenY, self.nScreenWidth, self.nScreenLength)
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
@@ -1292,6 +1333,13 @@ class CvCustomizableDomesticAdvisor:
 			return unicode(iOverflow), unicode(iOverflowGold)
 		else:
 			return self.objectNotPossible, self.objectNotPossible
+
+	def calculateWhipAnger (self, city, szKey, arg):
+		
+		if (city.canHurry(self.HURRY_TYPE_POP, False)):
+			return city.getHurryAngerTimer()
+		else:
+			return self.objectNotPossible
 
 	def calculateHurryGoldCost (self, city, szKey, arg):
 		

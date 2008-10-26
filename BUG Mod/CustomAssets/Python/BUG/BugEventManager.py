@@ -33,6 +33,9 @@
 ##   - LanguageChanged 
 ##       Fired from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
 ##
+##   - ResolutionChanged 
+##       Fired from CvOptionsScreenCallbackInterface.handleResolutionDropdownInput()
+##
 ##   - PreGameStart
 ##       Fired from CvAppInterface.preGameStart()
 ##
@@ -124,6 +127,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("PreGameStart")
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("LanguageChanged")
+		self.addEvent("ResolutionChanged")
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -308,6 +312,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 		"""Called when the user changes their language selection."""
 		iLanguage = argsList[0]
 
+	def onResolutionChanged(self, argsList):
+		"""Called when the user changes their graphics resolution."""
+		iResolution = argsList[0]
 
 EVENT_FUNCTION_MAP = {
 	"kbdEvent": BugEventManager._handleConsumableEvent,

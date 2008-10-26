@@ -21,8 +21,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
-		
-		self.addSpacer(screen, left, "Foreign_Advisor")
+		#col1L, col1R = self.addMultiColumnLayout(screen, left, 2)
+		self.addTextDropdown(screen, left, left, "Advisors__CDASpaceTop")
+		self.addTextDropdown(screen, left, left, "Advisors__CDASpaceSides")
+
 		self.addLabel(screen, left, "Foreign_Advisor", "Foreign [F4]:")
 		comboBox = "Advisors_ComboBoxEFA"
 		screen.attachHBox(left, comboBox)

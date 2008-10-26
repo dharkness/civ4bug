@@ -20,7 +20,15 @@
 			<option id="CustDomAdv" key="CustDomAdv" 
 					type="boolean" default="True" 
 					get="isCustDomAdv"/>
-	
+			<list   id="CDASpaceTop" key="CDASpaceTop"
+					type="int" listType="string" 
+					values="None|Small|Medium|Large" default="1"
+					get="getCDASpaceTop" />
+			<list   id="CDASpaceSides" key="CDASpaceSides"
+					type="int" listType="string" 
+					values="None|Small|Medium|Large|LargeLeft" default="1"
+					get="getCDASpaceSides" />
+
 			<!-- Exotic Foreign Advisor (F4) by Requies -->
 			<option id="EFAGlanceTab" key="EFA Glance" 
 					type="boolean" default="True" 
@@ -70,4 +78,7 @@
 					get="isSortSevopedia"/>
 		</section>
 	</options>
+
+	<event type="ResolutionChanged" module="CvCustomizableDomesticAdvisor" function="handleResolutionChanged"/>
+
 </mod>
