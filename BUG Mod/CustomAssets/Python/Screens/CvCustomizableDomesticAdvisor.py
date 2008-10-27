@@ -282,6 +282,7 @@ class CvCustomizableDomesticAdvisor:
 			"HEALTH" : -1,
 			"GROWTH" : -1,
 			"FOOD" : -1,
+			"HURRY_POP_ANGER" : 1,
 			}
 
 		# Values to check to see if we need to color the number as neutral
@@ -290,7 +291,6 @@ class CvCustomizableDomesticAdvisor:
 			"HEALTH" : 0,
 			"GROWTH" : 0,
 			"FOOD" : 0,
-			"HURRY_POP_ANGER" : 1
 			}
 
 		# Values to check to see if we need to color the number as great
@@ -299,6 +299,11 @@ class CvCustomizableDomesticAdvisor:
 			"HEALTH" : 6,
 			"FOOD" : 8,
 			}
+
+		# Values for whom coloring comparison is reversed; i.e. higher numbers are worse
+		self.COMPARISON_REVERSED = [
+			"HURRY_POP_ANGER",
+			]
 
 		# Dictionary of the coloring dictionaries!
 		self.COLOR_DICT_DICT = {
@@ -1336,8 +1341,9 @@ class CvCustomizableDomesticAdvisor:
 
 	def calculateWhipAnger (self, city, szKey, arg):
 		
-		if (city.canHurry(self.HURRY_TYPE_POP, False)):
-			return city.getHurryAngerTimer()
+		iAnger = city.getHurryAngerTimer()
+		if (city.canHurry(self.HURRY_TYPE_POP, False) or iAnger > 0):
+			return iAnger
 		else:
 			return self.objectNotPossible
 
@@ -1906,10 +1912,17 @@ class CvCustomizableDomesticAdvisor:
 				# Get the color we will use.
 				color = self.COLOR_DICT[szCompareType]
 
-				# If the dictionary has the key and the comparison is appropriate
-				if (clDict != None and clDict.has_key(szKey) and (szCompareType == "PROBLEM" and int(nValue) <= clDict[szKey] or szCompareType == "NEUTRAL" and int(nValue) == clDict[szKey] or szCompareType == "GREAT" and int(nValue) >= clDict[szKey])):
-					# Color and return it
-					return localText.changeTextColor (nValue, color)
+				# If the dictionary has the key...
+				if (clDict != None and clDict.has_key(szKey)):
+					if (szKey in self.COMPARISON_REVERSED):
+						# ...and the comparison is appropriate...
+						if ((szCompareType == "PROBLEM" and int(nValue) >= clDict[szKey] or szCompareType == "NEUTRAL" and int(nValue) == clDict[szKey] or szCompareType == "GREAT" and int(nValue) <= clDict[szKey])):
+							# ...color and return it
+							return localText.changeTextColor (nValue, color)
+					# ...and the comparison is appropriate...
+					elif ((szCompareType == "PROBLEM" and int(nValue) <= clDict[szKey] or szCompareType == "NEUTRAL" and int(nValue) == clDict[szKey] or szCompareType == "GREAT" and int(nValue) >= clDict[szKey])):
+						# ...color and return it
+						return localText.changeTextColor (nValue, color)
 
 		# Otherwise, just return the regular value
 		return nValue
