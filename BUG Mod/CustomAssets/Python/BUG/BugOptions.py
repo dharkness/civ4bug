@@ -291,9 +291,9 @@ class IniFile(object):
 		self.config.addFinalComment()
 	
 	def write(self):
-		BugUtil.debug("BugOptions - writing INI file '%s'", self.name)
 		if self.fileExists():
 			if self.isDirty():
+				BugUtil.debug("BugOptions - writing INI file '%s'", self.name)
 				try:
 					self.config.write()
 					self.dirty = False
@@ -301,6 +301,7 @@ class IniFile(object):
 					BugUtil.error("BugOptions - failed writing INI file '%s'", self.path)
 		elif self.isLoaded():
 			self.path = BugPath.createIniFile(self.name)
+			BugUtil.debug("BugOptions - writing new INI file '%s'", self.name)
 			try:
 				file = open(self.path, "w")
 				self.config.write(file)
