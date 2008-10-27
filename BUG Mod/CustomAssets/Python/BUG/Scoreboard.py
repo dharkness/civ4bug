@@ -27,7 +27,6 @@ gc = CyGlobalContext()
 ICON_SIZE = 24
 ROW_HEIGHT = 22
 Z_DEPTH = -0.3
-VASSAL_INDENT = 10
 
 # Columns IDs
 NUM_PARTS = 21
@@ -72,6 +71,9 @@ TRADE_TYPES = (
 	TradeableItems.TRADE_PEACE_TREATY,
 )
 
+VASSAL_PREFIX = None
+VASSAL_POSTFIX = None
+
 def init():
 	"""Initializes the strings used to display the scoreboard."""
 	global columns
@@ -105,6 +107,10 @@ def init():
 	global WAR_ICON, PEACE_ICON
 	WAR_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
 	PEACE_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
+	
+	global VASSAL_PREFIX, VASSAL_POSTFIX
+	VASSAL_PREFIX = u"<font=2>%c</font>" % (CyGame().getSymbolID(FontSymbols.BULLET_CHAR))
+	VASSAL_POSTFIX = u"<font=2> %c</font>" % (CyGame().getSymbolID(FontSymbols.BULLET_CHAR))
 
 def onDealCanceled(argsList):
 	"""Sets the scoreboard dirty bit so it will redraw."""
@@ -351,9 +357,12 @@ class Scoreboard:
 				for playerScore in self._playerScores:
 					if (playerScore.has(c)):
 						value = playerScore.value(c)
-						newWidth = interface.determineWidth( value )
 						if (c == NAME and playerScore.isVassal() and ScoreOpt.isGroupVassals()):
-							newWidth += VASSAL_INDENT
+							if (ScoreOpt.isLeftAlignName()):
+								value = VASSAL_PREFIX + value
+							else:
+								value += VASSAL_POSTFIX
+						newWidth = interface.determineWidth( value )
 						if (newWidth > width):
 							width = newWidth
 				if (width == 0):
@@ -364,6 +373,11 @@ class Scoreboard:
 					if (playerScore.has(c)):
 						name = "ScoreText%d-%d" %( p, c )
 						value = playerScore.value(c)
+						if (c == NAME and playerScore.isVassal() and ScoreOpt.isGroupVassals()):
+							if (ScoreOpt.isLeftAlignName()):
+								value = VASSAL_PREFIX + value
+							else:
+								value += VASSAL_POSTFIX
 						align = CvUtil.FONT_RIGHT_JUSTIFY
 						adjustX = 0
 						if (c == NAME):
@@ -371,11 +385,6 @@ class Scoreboard:
 							if (ScoreOpt.isLeftAlignName()):
 								align = CvUtil.FONT_LEFT_JUSTIFY
 								adjustX = width
-							if (playerScore.isVassal() and ScoreOpt.isGroupVassals()):
-								if (ScoreOpt.isLeftAlignName()):
-									adjustX -= VASSAL_INDENT
-								else:
-									adjustX = VASSAL_INDENT
 						widget = playerScore.widget(c)
 						if widget is None:
 							if (playerScore.value(ALIVE)):
