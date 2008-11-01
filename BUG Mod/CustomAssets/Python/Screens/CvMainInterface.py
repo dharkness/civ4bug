@@ -2597,6 +2597,8 @@ class CvMainInterface:
 
 # BUG - Progress Bar - Tick Marks - start
 		self.pBarResearchBar_n = ProgressBarUtil.ProgressBar("ResearchBar-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS)
+		self.pBarResearchBar_n.addBarItem("ResearchBar")
+		self.pBarResearchBar_n.addBarItem("ResearchText")
 # BUG - Progress Bar - Tick Marks - end
 
 # BUG - Great General Bar - start
@@ -2637,6 +2639,8 @@ class CvMainInterface:
 
 # BUG - Progress Bar - Tick Marks - start
 		self.pBarResearchBar_w = ProgressBarUtil.ProgressBar("ResearchBar-w-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS)
+		self.pBarResearchBar_n.addBarItem("ResearchBar-w")
+		self.pBarResearchBar_n.addBarItem("ResearchText")
 # BUG - Progress Bar - Tick Marks - end
 
 		xCoord += 6 + 487
@@ -2671,7 +2675,11 @@ class CvMainInterface:
 
 # BUG - Progress Bar - Tick Marks - start
 		self.pBarPopulationBar = ProgressBarUtil.ProgressBar("PopulationBar-Canvas", iCityCenterRow1X, iCityCenterRow1Y-4, xResolution - (iCityCenterRow1X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType(), ProgressBarUtil.SOLID_MARKS)
+		self.pBarPopulationBar.addBarItem("PopulationBar")
+		self.pBarPopulationBar.addBarItem("PopulationText")
 		self.pBarProductionBar = ProgressBarUtil.ProgressBar("ProductionBar-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType(), ProgressBarUtil.SOLID_MARKS)
+		self.pBarProductionBar.addBarItem("ProductionBar")
+		self.pBarProductionBar.addBarItem("ProductionText")
 # BUG - Progress Bar - Tick Marks - end
 
 		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )

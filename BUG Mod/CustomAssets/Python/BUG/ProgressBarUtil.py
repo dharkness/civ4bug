@@ -45,6 +45,10 @@ class ProgressBar:
 
 		self.line_cnt = 0
 		self.bVisible = False
+		self.barItems = []
+	
+	def addBarItem(self, item):
+		self.barItems.append(item)
 
 	def _setLineCount(self, i):
 		self.line_cnt = i
@@ -92,3 +96,6 @@ class ProgressBar:
 
 			i += 1
 			iXPrev = iX
+		
+		for item in self.barItems:
+			screen.moveToFront(item)
