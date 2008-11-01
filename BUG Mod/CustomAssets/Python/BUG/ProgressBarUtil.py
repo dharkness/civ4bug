@@ -43,6 +43,9 @@ class ProgressBar:
 			self.m_y3 = -1
 			self.m_y4 = -1
 
+#			self.m_y1 = 0
+#			self.m_y2 = self.h
+
 		self.line_cnt = 0
 		self.bVisible = False
 		self.barItems = []
@@ -73,7 +76,7 @@ class ProgressBar:
 	def hide(self, screen):
 		screen.hide(self.id)
 
-	def drawTickMarks(self, screen, iCurr, iTotal, iRate):
+	def drawTickMarks(self, screen, iCurr, iTotal, iFirst, iRate):
 		if iRate <= 0:
 			return
 
@@ -82,10 +85,12 @@ class ProgressBar:
 		screen.addDrawControl(self.id, self.BG, self.x, self.y, self.w, self.h, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		self._setVisible(True)
 
-		i = 0
-		iXPrev = self.w * (iCurr + iRate) / iTotal
+		i = 1
+		iXPrev = self.w * (iCurr + iFirst) / iTotal
+#		BugUtil.info("drawTickMarks: iCurr, iRate, iTotal, iXPrev %i %i %i %i", iCurr, iRate, iTotal, iXPrev)
 		while True:
-			iX = self.w * (iCurr + (2 + i) * iRate) / iTotal
+			iX = self.w * (iCurr + iFirst + i * iRate) / iTotal
+#			BugUtil.info("drawTickMarks: iCurr, iRate, iTotal, iX     %i %i %i %i", iCurr, iRate, iTotal, iX)
 
 			if (iX > self.w
 			or  iX - iXPrev < 5): break
