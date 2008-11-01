@@ -53,6 +53,10 @@ import GPUtil
 GP_BAR_WIDTH = 320
 # BUG - Great Person Bar - end
 
+# BUG - Progress Bar - Tick Marks - start
+import ProgressBarUtil
+# BUG - Progress Bar - Tick Marks - end
+
 g_NumEmphasizeInfos = 0
 g_NumCityTabTypes = 0
 g_NumHurryInfos = 0
@@ -2591,6 +2595,10 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar" )
 
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarResearchBar_n = ProgressBarUtil.ProgressBar("ResearchBar-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS)
+# BUG - Progress Bar - Tick Marks - end
+
 # BUG - Great General Bar - start
 		screen.addStackedBarGFC( "GreatGeneralBar", xCoord, 27, 100, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_NEGATIVE_RATE") ) #gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
@@ -2627,6 +2635,10 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar-w", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar-w" )
 
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarResearchBar_w = ProgressBarUtil.ProgressBar("ResearchBar-w-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS)
+# BUG - Progress Bar - Tick Marks - end
+
 		xCoord += 6 + 487
 		screen.addStackedBarGFC( "GreatPersonBar-w", xCoord, 2, 320, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar-w", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
@@ -2649,21 +2661,26 @@ class CvMainInterface:
 		screen.setStackedBarColors( "PopulationBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_NEGATIVE_RATE") )
 		screen.setStackedBarColors( "PopulationBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "PopulationBar" )
-		
+
 		screen.addStackedBarGFC( "ProductionBar", iCityCenterRow2X, iCityCenterRow2Y-4, xResolution - (iCityCenterRow2X*2), iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_PRODUCTION, -1, -1 )
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_STORED, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType() )
 		screen.setStackedBarColorsAlpha( "ProductionBar", InfoBarTypes.INFOBAR_RATE, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType(), 0.8 )
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType() )
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ProductionBar" )
-		
+
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarPopulationBar = ProgressBarUtil.ProgressBar("PopulationBar-Canvas", iCityCenterRow1X, iCityCenterRow1Y-4, xResolution - (iCityCenterRow1X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType(), ProgressBarUtil.SOLID_MARKS)
+		self.pBarProductionBar = ProgressBarUtil.ProgressBar("ProductionBar-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType(), ProgressBarUtil.SOLID_MARKS)
+# BUG - Progress Bar - Tick Marks - end
+
 		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "GreatPeopleBar" )
-		
+
 		screen.addStackedBarGFC( "CultureBar", 6, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_CULTURE, -1, -1 )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_CULTURE_STORED") )
 		screen.setStackedBarColors( "CultureBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_CULTURE_RATE") )
@@ -4649,7 +4666,7 @@ class CvMainInterface:
 		screen.hide( "GoldText" )
 		screen.hide( "TimeText" )
 		screen.hide( "ResearchBar" )
-		
+
 # BUG - NJAGC - start
 		screen.hide( "EraText" )
 # BUG - NJAGC - end
@@ -4669,6 +4686,11 @@ class CvMainInterface:
 		screen.hide( "ResearchBar-w" )
 		screen.hide( "GreatPersonBar-w" )
 # BUG - Bars on single line for higher resolution screens - end
+
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarResearchBar_n.hide(screen)
+		self.pBarResearchBar_w.hide(screen)
+# BUG - Progress Bar - Tick Marks - end
 
 		bShift = CyInterface().shiftKey()
 		
@@ -4787,7 +4809,14 @@ class CvMainInterface:
 						screen.setBarPercentage( szResearchBar, InfoBarTypes.INFOBAR_RATE, ( ( float(researchRate) / float(researchCost) ) ) / ( 1 - iFirst ) )
 
 					screen.show( szResearchBar )
-					
+
+# BUG - Progress Bar - Tick Marks - start
+					if szResearchBar == "ResearchBar":
+						self.pBarResearchBar_n.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
+					else:
+						self.pBarResearchBar_w.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
+# BUG - Progress Bar - Tick Marks - end
+
 # BUG - Great Person Bar - start
 				self.updateGreatPersonBar(screen)
 # BUG - Great Person Bar - end
@@ -4988,7 +5017,12 @@ class CvMainInterface:
 		screen.hide( "CultureBar" )
 		screen.hide( "MaintenanceText" )
 		screen.hide( "MaintenanceAmountText" )
-		
+
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarPopulationBar.hide(screen)
+		self.pBarProductionBar.hide(screen)
+# BUG - Progress Bar - Tick Marks - end
+
 # BUG - Raw Commerce - start
 		screen.hide("RawYieldsTrade0")
 		screen.hide("RawYieldsFood1")
@@ -5191,6 +5225,10 @@ class CvMainInterface:
 					
 				screen.show( "PopulationBar" )
 
+# BUG - Progress Bar - Tick Marks - start
+				self.pBarPopulationBar.drawTickMarks(screen, pHeadSelectedCity.getFood(), pHeadSelectedCity.growthThreshold(), iFoodDifference)
+# BUG - Progress Bar - Tick Marks - end
+
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
 					if (pHeadSelectedCity.isProductionProcess()):
 						szBuffer = pHeadSelectedCity.getProductionName()
@@ -5283,6 +5321,16 @@ class CvMainInterface:
 						screen.setBarPercentage( "ProductionBar", InfoBarTypes.INFOBAR_RATE_EXTRA, ( ( ((float(iProductionDiffJustFood)) / (float(pHeadSelectedCity.getProductionNeeded()))) ) ) / ( 1 - ( iFirst + iSecond ) ) )
 
 					screen.show( "ProductionBar" )
+
+# BUG - Progress Bar - Tick Marks - start
+					if (pHeadSelectedCity.isProductionProcess()):
+						iRate = 0
+					elif (pHeadSelectedCity.isFoodProduction() and (iProductionDiffJustFood > 0)):
+						iRate = iProductionDiffJustFood + iProductionDiffNoFood
+					else:
+						iRate = iProductionDiffNoFood
+					self.pBarProductionBar.drawTickMarks(screen, pHeadSelectedCity.getProduction(), pHeadSelectedCity.getProductionNeeded(), iRate)
+# BUG - Progress Bar - Tick Marks - end
 
 				iCount = 0
 
