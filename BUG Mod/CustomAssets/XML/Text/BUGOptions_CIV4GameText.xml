@@ -2950,6 +2950,22 @@
 		<Spanish>When checked, displays a slide bar which can be used to change the field of view.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__PROGRESSBARSTICKMARKS_TEXT</Tag>
+		<English>Tick Marks</English>
+		<French>Tick Marks</French>
+		<German>Tick Marks</German>
+		<Italian>Tick Marks</Italian>
+		<Spanish>Tick Marks</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__PROGRESSBARSTICKMARKS_HOVER</Tag>
+		<English>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</English>
+		<French>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</French>
+		<German>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</German>
+		<Italian>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</Italian>
+		<Spanish>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_REMEMBER_TEXT</Tag>
 		<English>Remember Field of View</English>
 		<French>Remember Field of View</French>

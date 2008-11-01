@@ -4819,10 +4819,11 @@ class CvMainInterface:
 					screen.show( szResearchBar )
 
 # BUG - Progress Bar - Tick Marks - start
-					if szResearchBar == "ResearchBar":
-						self.pBarResearchBar_n.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
-					else:
-						self.pBarResearchBar_w.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
+					if MainOpt.isShowpBarTickMarks():
+						if szResearchBar == "ResearchBar":
+							self.pBarResearchBar_n.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
+						else:
+							self.pBarResearchBar_w.drawTickMarks(screen, researchProgress + overflowResearch, researchCost, researchRate)
 # BUG - Progress Bar - Tick Marks - end
 
 # BUG - Great Person Bar - start
@@ -5234,7 +5235,8 @@ class CvMainInterface:
 				screen.show( "PopulationBar" )
 
 # BUG - Progress Bar - Tick Marks - start
-				self.pBarPopulationBar.drawTickMarks(screen, pHeadSelectedCity.getFood(), pHeadSelectedCity.growthThreshold(), iFoodDifference)
+				if MainOpt.isShowpBarTickMarks():
+					self.pBarPopulationBar.drawTickMarks(screen, pHeadSelectedCity.getFood(), pHeadSelectedCity.growthThreshold(), iFoodDifference)
 # BUG - Progress Bar - Tick Marks - end
 
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
@@ -5331,13 +5333,14 @@ class CvMainInterface:
 					screen.show( "ProductionBar" )
 
 # BUG - Progress Bar - Tick Marks - start
-					if (pHeadSelectedCity.isProductionProcess()):
-						iRate = 0
-					elif (pHeadSelectedCity.isFoodProduction() and (iProductionDiffJustFood > 0)):
-						iRate = iProductionDiffJustFood + iProductionDiffNoFood
-					else:
-						iRate = iProductionDiffNoFood
-					self.pBarProductionBar.drawTickMarks(screen, pHeadSelectedCity.getProduction(), pHeadSelectedCity.getProductionNeeded(), iRate)
+					if MainOpt.isShowpBarTickMarks():
+						if (pHeadSelectedCity.isProductionProcess()):
+							iRate = 0
+						elif (pHeadSelectedCity.isFoodProduction() and (iProductionDiffJustFood > 0)):
+							iRate = iProductionDiffJustFood + iProductionDiffNoFood
+						else:
+							iRate = iProductionDiffNoFood
+						self.pBarProductionBar.drawTickMarks(screen, pHeadSelectedCity.getProduction(), pHeadSelectedCity.getProductionNeeded(), iRate)
 # BUG - Progress Bar - Tick Marks - end
 
 				iCount = 0

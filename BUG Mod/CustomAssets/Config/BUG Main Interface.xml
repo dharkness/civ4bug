@@ -44,6 +44,11 @@
 					type="boolean" default="True" 
 					get="isShowCityCycleArrows" dirtyBit="MiscButtons"/>
 
+			<!-- progress bars -->
+			<option id="ProgressBarsTickMarks" key="Tick Marks" 
+					type="boolean" default="True" 
+					get="isShowpBarTickMarks" dirtyBit="GameData"/>
+
 			<!-- Field of View -->
 			<option id="FieldOfView" key="Field of View" 
 					type="boolean" default="True" 
