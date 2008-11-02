@@ -559,15 +559,19 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
-			# Trade (only if connected to trade network and has open borders agreement)
-			itemName = self.getNextWidgetName()
-			if (not bIsActivePlayer 
-				and objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
-				and self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam())):
-				#szTrade = localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer), 0))
-				szTrade = "%d" % (self.calculateTrade (self.iActiveLeader, iLoopPlayer))
+			# Trade (only if connected to trade network and has open borders agreement and foreign trade allowed for both players)
+			iTrade = -1
+			if (bIsActivePlayer
+					or (objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
+					and self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam())
+					and not self.objActiveLeader.isNoForeignTrade()
+					and not objLoopPlayer.isNoForeignTrade())):
+				iTrade = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
+			if iTrade >= 0:
+				szTrade = u"%d %c" % (iTrade, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
 			else:
-				szTrade = ""
+				szTrade = u""
+			itemName = self.getNextWidgetName()
 			screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			# Trade has no useful widget so always disable hit testing.
 			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
@@ -624,10 +628,10 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		# Trade status...
 		nTotalTradeProfit = 0
 
-		iPlayer = PyPlayer(nPlayer)
+		pPlayer = PyPlayer(nPlayer)
 
 		# Loop through the cities
-		cityList = iPlayer.getCityList()
+		cityList = pPlayer.getCityList()
 		for i in range(len(cityList)):
 			pLoopCity = PyCity( nPlayer, cityList[i].getID() )
 
@@ -637,12 +641,12 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				pTradeCity = pLoopCity.getTradeCity(nTradeRoute)
 				# Not quite sure what this does but it's in the MainInterface
 				# and I pretty much C&Ped :p
-				if (pTradeCity and pTradeCity.getOwner() >= 0):
+				if (pTradeCity and pTradeCity.getOwner() == nTradePartner):
 					for j in range( YieldTypes.NUM_YIELD_TYPES ):
 						nTradeProfit = pLoopCity.calculateTradeYield(j, pLoopCity.calculateTradeProfit(pTradeCity))
 
 						# If the TradeProfit is greater than 0 and it to the total
-						if ( nTradeProfit > 0 and pTradeCity.getOwner() == nTradePartner):
+						if ( nTradeProfit > 0):
 							nTotalTradeProfit += nTradeProfit
 
 		return nTotalTradeProfit
