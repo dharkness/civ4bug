@@ -2639,8 +2639,8 @@ class CvMainInterface:
 
 # BUG - Progress Bar - Tick Marks - start
 		self.pBarResearchBar_w = ProgressBarUtil.ProgressBar("ResearchBar-w-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS)
-		self.pBarResearchBar_n.addBarItem("ResearchBar-w")
-		self.pBarResearchBar_n.addBarItem("ResearchText")
+		self.pBarResearchBar_w.addBarItem("ResearchBar-w")
+		self.pBarResearchBar_w.addBarItem("ResearchText")
 # BUG - Progress Bar - Tick Marks - end
 
 		xCoord += 6 + 487
