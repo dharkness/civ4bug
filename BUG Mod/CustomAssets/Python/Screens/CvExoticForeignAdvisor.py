@@ -23,7 +23,7 @@ import DomPyHelpers
 import TechTree
 import re
 import BugUtil
-import AttitudeUtils
+import AttitudeUtil
 import BugCore
 import FavoriteCivicDetector
 
@@ -497,7 +497,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			and not objLoopPlayer.isMinorCiv()):
 			
 			objLeaderHead = gc.getLeaderHeadInfo (objLoopPlayer.getLeaderType())
-			objAttitude = AttitudeUtils.Attitude(iLoopPlayer, self.iActiveLeader)
+			objAttitude = AttitudeUtil.Attitude(iLoopPlayer, self.iActiveLeader)
 
 			# Player panel
 			playerPanelName = self.getNextWidgetName()
@@ -691,7 +691,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					or gc.getGame().isDebugMode())
 					and not gc.getPlayer(nHost).isBarbarian()
 					and not gc.getPlayer(nHost).isMinorCiv()):
-						nRelation = AttitudeUtils.getAttitudeCount(nHost, iLoopPlayer)
+						nRelation = AttitudeUtil.getAttitudeCount(nHost, iLoopPlayer)
 						self.ltPlayerRelations [iLoopPlayer][nHost] = nRelation
 
 				# Player panel
@@ -749,7 +749,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						szName = self.getNextWidgetName()
 						nAttitude = self.ltPlayerRelations[iLoopPlayer][j]
 						if nAttitude != None:
-							szText = AttitudeUtils.getAttitudeText(j, iLoopPlayer, True, AdvisorOpt.isShowGlanceSmilies(), True, True)
+							szText = AttitudeUtil.getAttitudeText(j, iLoopPlayer, True, AdvisorOpt.isShowGlanceSmilies(), True, True)
 						else:
 							szText = ""
 

@@ -27,7 +27,7 @@ import time
 import re
 
 import IconGrid_BUG
-import AttitudeUtils
+import AttitudeUtil
 import BugUtil
 import PlayerUtil
 import UnitGrouper
@@ -492,7 +492,7 @@ class CvMilitaryAdvisor:
 		iThreat = 0
 
 		# add attitude threat value
-		iRel = AttitudeUtils.getAttitudeCount(iPlayer, self.iActivePlayer)
+		iRel = AttitudeUtil.getAttitudeCount(iPlayer, self.iActivePlayer)
 		fRel_Threat = float(38) * float(15 - iRel) / float(30)
 		if fRel_Threat < 0:
 			fRel_Threat = 0.0

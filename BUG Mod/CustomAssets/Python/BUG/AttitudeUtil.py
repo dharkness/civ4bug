@@ -1,4 +1,4 @@
-## AttitudeUtils
+## AttitudeUtil
 ##
 ## Utility functions for dealing with AI Attitudes.
 ##

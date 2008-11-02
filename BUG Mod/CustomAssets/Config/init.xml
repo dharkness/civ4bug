@@ -46,7 +46,7 @@
 	
 	<!-- Utility Modules -->
 	
-	<init module="AttitudeUtils" function="init">
+	<init module="AttitudeUtil" function="init">
 		<!-- Furious, Annoyed, Cautious, Pleased, Friendly -->
 		<arg name="colors" type="tuple">
 			"COLOR_RED", 
@@ -76,7 +76,7 @@
 			"TXT_KEY_MISC_ATTITUDE_EXTRA_BAD"
 		</arg>
 	</init>
-	<event type="LanguageChanged" module="AttitudeUtils" function="initModifiers"/>
+	<event type="LanguageChanged" module="AttitudeUtil" function="initModifiers"/>
 	
 	<init module="ColorUtil" function="init">
 		<!--

@@ -13,7 +13,7 @@
 
 from CvPythonExtensions import *
 
-import AttitudeUtils
+import AttitudeUtil
 import BugUtil
 import SdToolKit
 
@@ -89,7 +89,7 @@ def doUpdate ():
 							if ( (not pActiveTeam.isHasMet(iOtherTeam)) or (not pTeam.isHasMet(iOtherTeam)) ):
 								BugUtil.debug("     -- Skipping; either active team or updating team has not met test team")
 								continue
-							pAttitude = AttitudeUtils.Attitude(iPlayer, iOtherPlayer)
+							pAttitude = AttitudeUtil.Attitude(iPlayer, iOtherPlayer)
 							bFoundPossibleFavorite = pAttitude.hasModifier("TXT_KEY_MISC_ATTITUDE_FAVORITE_CIVIC")
 							for eCategory in range(gc.getNumCivicOptionInfos()):
 								eCivic = pPlayer.getCivics(eCategory)

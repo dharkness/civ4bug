@@ -6,7 +6,7 @@ import ScreenInput
 import PyHelpers
 import time
 import ColorUtil
-import AttitudeUtils
+import AttitudeUtil
 import TechUtil
 
 import BugCore
@@ -447,14 +447,14 @@ class CvVictoryScreen:
 
 			if iMember != self.iActivePlayer:
 				# player attitude to candidate #1
-				szText = AttitudeUtils.getAttitudeText (iMember, iCandPlayer1, True, True, False, False)
+				szText = AttitudeUtil.getAttitudeText (iMember, iCandPlayer1, True, True, False, False)
 				if (szText != None
 				and iCand1Known == 1
 				and bKnown):
 					screen.setTableText(szTable, 1, iRow, szText, "", WidgetTypes.WIDGET_LEADERHEAD, iMember, iCandPlayer1, CvUtil.FONT_CENTER_JUSTIFY)
 
 				# player attitude to candidate #2
-				szText = AttitudeUtils.getAttitudeText (iMember, iCandPlayer2, True, True, False, False)
+				szText = AttitudeUtil.getAttitudeText (iMember, iCandPlayer2, True, True, False, False)
 				if (szText != None
 				and iCand2Known == 1
 				and bKnown):
@@ -1336,8 +1336,8 @@ class CvVictoryScreen:
 		if gc.getTeam(iPTeam).isVassal(iCand2): return 2
 
 		# get player category (friendly) to candidates
-		iC1Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iPCand1)
-		iC2Cat = AttitudeUtils.getAttitudeCategory(iPlayer, iPCand2)
+		iC1Cat = AttitudeUtil.getAttitudeCategory(iPlayer, iPCand1)
+		iC2Cat = AttitudeUtil.getAttitudeCategory(iPlayer, iPCand2)
 
 		# the cut-off for SecGen votes is pleased (3)
 		# the cut-off for Diplo victory votes is friendly (4)
@@ -1366,8 +1366,8 @@ class CvVictoryScreen:
 		# need to decide on straight attitude (visible only)
 
 		# get player attitude to candidates
-		iC1Att = AttitudeUtils.getAttitudeCount(iPlayer, iPCand1)
-		iC2Att = AttitudeUtils.getAttitudeCount(iPlayer, iPCand2)
+		iC1Att = AttitudeUtil.getAttitudeCount(iPlayer, iPCand1)
+		iC2Att = AttitudeUtil.getAttitudeCount(iPlayer, iPCand2)
 
 		# * if both candidates are at 'friendly' status, votes for one with highest attitude
 		if iC2Att < iC1Att: # ties go to Candidate #1
