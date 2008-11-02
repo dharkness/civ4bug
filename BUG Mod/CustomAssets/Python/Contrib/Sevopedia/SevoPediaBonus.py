@@ -198,7 +198,17 @@ class SevoPediaBonus:
 		screen.addPanel( panelName, localText.getText("TXT_KEY_PEDIA_CATEGORY_BUILDING", ()), "", False, True, self.X_BUILDINGS, self.Y_BUILDINGS, self.W_BUILDINGS, self.H_BUILDINGS, PanelStyles.PANEL_STYLE_BLUE50 )
 		screen.attachLabel(panelName, "", "  ")
 		for iBuilding in range(gc.getNumBuildingInfos()):
-			if (gc.getBuildingInfo(iBuilding).getFreeBonus() == self.iBonus):
+			info = gc.getBuildingInfo(iBuilding)
+			bShow = (info.getFreeBonus() == self.iBonus
+					or info.getBonusHealthChanges(self.iBonus) > 0
+					or info.getBonusHappinessChanges(self.iBonus) > 0
+					or info.getBonusProductionModifier(self.iBonus) > 0)
+			if (not bShow):
+				for eYield in range(YieldTypes.NUM_YIELD_TYPES):
+					if (info.getBonusYieldModifier(self.iBonus, eYield) > 0):
+						bShow = True
+						break
+			if (bShow):
 				screen.attachImageButton( panelName, "", gc.getBuildingInfo(iBuilding).getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, iBuilding, 1, False )
 
 
