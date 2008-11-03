@@ -389,7 +389,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				screen.attachTextGFC(infoPanelName, "", szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer), )), FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer)[0], )), FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_CIVICS_SCREEN_TITLE", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
@@ -441,6 +441,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						   BugUtil.getPlainText("TXT_KEY_FOREIGN_ADVISOR_ABBR_ATTITUDE"),
 						   u"%c" %(CyGame().getSymbolID(FontSymbols.RELIGION_CHAR)), 
 						   u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR)),
+						   u"%c%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR),gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar()),
 						   BugUtil.getPlainText("TXT_KEY_CIVICOPTION_ABBR_GOVERNMENT"),
 						   BugUtil.getPlainText("TXT_KEY_CIVICOPTION_ABBR_LEGAL"),
 						   BugUtil.getPlainText("TXT_KEY_CIVICOPTION_ABBR_LABOR"),
@@ -559,16 +560,25 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
-			# Trade (only if connected to trade network and has open borders agreement and foreign trade allowed for both players)
-			iTrade = -1
+			# Trade (only if connected to trade network, has open borders agreement and foreign trade allowed for both players)
+			iTradeCommerce = -1
+			iTradeRoutes = -1
 			if (bIsActivePlayer
 					or (objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
 					and self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam())
 					and not self.objActiveLeader.isNoForeignTrade()
 					and not objLoopPlayer.isNoForeignTrade())):
-				iTrade = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
-			if iTrade >= 0:
-				szTrade = u"%d %c" % (iTrade, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
+				(iTradeCommerce,iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
+			if iTradeRoutes > 0:
+				szTrade = u"%d" % (iTradeRoutes)
+			else:
+				szTrade = u""
+			itemName = self.getNextWidgetName()
+			screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			# Trade has no useful widget so always disable hit testing.
+			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+			if iTradeCommerce >= 0:
+				szTrade = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
 			else:
 				szTrade = u""
 			itemName = self.getNextWidgetName()
@@ -627,6 +637,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 	def calculateTrade (self, nPlayer, nTradePartner):
 		# Trade status...
 		nTotalTradeProfit = 0
+		nNumberRoutes = 0
 
 		pPlayer = PyPlayer(nPlayer)
 
@@ -642,6 +653,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				# Not quite sure what this does but it's in the MainInterface
 				# and I pretty much C&Ped :p
 				if (pTradeCity and pTradeCity.getOwner() == nTradePartner):
+					nNumberRoutes += 1
 					for j in range( YieldTypes.NUM_YIELD_TYPES ):
 						nTradeProfit = pLoopCity.calculateTradeYield(j, pLoopCity.calculateTradeProfit(pTradeCity))
 
@@ -649,7 +661,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						if ( nTradeProfit > 0):
 							nTotalTradeProfit += nTradeProfit
 
-		return nTotalTradeProfit
+		return (nTotalTradeProfit, nNumberRoutes)
 
 	def drawGlance (self, bInitial):
 #		ExoticForPrint ("Entered drawGlance")
