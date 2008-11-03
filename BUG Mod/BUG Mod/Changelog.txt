@@ -1,0 +1,32 @@
+Changelog from BUG 3.5:
+
+Features:
+- Added map script "Maze" by Sirian
+- Field of View slider on the main screen
+- Improvements to stats tab on info screen
+- Tick Marks for selected progressbars (tech, food, production)
+- Tick Marks: Added whip threshold indicator to city production bar (look for yellow center tick mark)
+- Customizable Domestic Advisor (CDA) now also resizable based on 2 new BUG options
+- CDA: Added a "whip anger" column to CDA (not added to any pages)
+- CDA: coloring options now allow reversed comparisons (i.e. higher numbers are worse)
+- Show attitudes in leaderhead hovers in Exotic Foreign Advisor (EFA) Info tab and Military Advisor (MA)
+- EFA Info tab: Added Domestic Trade total and detection of Mercantilism
+- EFA Info tab: Added second trade column (for number of trade routes) to EFA Info Tab
+- BUG options screen: Redesigned hover texts with lists and General tab
+- New Font File includes citizen icon and blank icon
+- Created FontUtil for adding new constants to FontSymbols (Define symbols in XML: <symbol id [name] [from] [offset]/>; provides getChar(symbol) for easier access to unicode string for symbol)
+- Resource pages in Sevopedia show all builds they affect in the Buildings list--not just the buildings that supply the resource
+
+
+Bugfixes:
+- Advanced Scoreboard: Fixed offset for vassals when grouped
+- Advanced Scoreboard: Changed empty vassal indent to a bullet
+- Autolog: Added checking of logging to all logging options which was previously ignored
+- Autolog: Fixed bug with Autolog onCityOffered logging which was misinterpreting a passed event argument
+- IconGrid: Added changes by DanF5771 (two widget data values instead of one)
+- IconGrid: Fixed bug where empty icon and stacked bar columns caused following columns to misalign
+- MA: Removed event reporting
+- MA: Reversed leaderhead parameters so attitude of row leaderhead is shown
+- Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
+- Fixed click/hover response on (widescreen) research bar
+

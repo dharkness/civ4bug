@@ -2953,7 +2953,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__PROGRESSBARSTICKMARKS_TEXT</Tag>
 		<English>Tick Marks</English>
 		<French>Tick Marks</French>
-		<German>Tick Marks</German>
+		<German>Teilstriche</German>
 		<Italian>Tick Marks</Italian>
 		<Spanish>Tick Marks</Spanish>
 	</TEXT>
@@ -2961,7 +2961,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__PROGRESSBARSTICKMARKS_HOVER</Tag>
 		<English>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</English>
 		<French>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</French>
-		<German>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</German>
+		<German>Zeigt Teilstriche auf ausgewählten Fortschrittsbalken an, die deren voraussichtlichen Verlauf in zukünftigen Runden darstellen</German>
 		<Italian>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</Italian>
 		<Spanish>When checked, displays tick marks on selected progress bars that illustrate estimated future turn progress.</Spanish>
 	</TEXT>
