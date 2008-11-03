@@ -22,8 +22,6 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import CvEventInterface
-import BugUtil
 import PlayerUtil
 
 gc = CyGlobalContext()
@@ -67,7 +65,6 @@ def findDealsByPlayerAndType(ePlayer, types):
 	one deal mapped to it per player. This is because you cannot trade open borders
 	to the same player in two or more deals.
 	"""
-	timer = BugUtil.Timer("findDealsByPlayerAndType")
 	if isinstance(types, int):
 		types = (types,)
 	found = {}
@@ -75,7 +72,6 @@ def findDealsByPlayerAndType(ePlayer, types):
 		matches = deal.findTypes(types)
 		for type in matches:
 			found.setdefault(deal.getOtherPlayer(), {})[type] = deal
-	timer.log()
 	return found
 
 
