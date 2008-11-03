@@ -93,7 +93,7 @@ def init():
 	columns.append(Column('P', POWER, DYNAMIC))
 	columns.append(Column('T', RESEARCH, SPECIAL))
 	columns.append(Column('U', RESEARCH_TURNS, DYNAMIC))
-	columns.append(Column('E', ESPIONAGE, FIXED, getSymbolText(FontSymbols.COMMERCE_ESPIONAGE_CHAR)))
+	columns.append(Column('E', ESPIONAGE, FIXED, smallSymbol(FontSymbols.COMMERCE_ESPIONAGE_CHAR)))
 	columns.append(Column('N', TRADE, FIXED, smallSymbol(FontSymbols.TRADE_CHAR)))
 	columns.append(Column('B', BORDERS, FIXED, smallSymbol(FontSymbols.OPEN_BORDERS_CHAR)))
 	columns.append(Column('D', PACT, FIXED, smallSymbol(FontSymbols.DEFENSIVE_PACT_CHAR)))
