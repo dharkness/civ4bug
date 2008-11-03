@@ -14,6 +14,7 @@ from CvPythonExtensions import *
 import BugCore
 import BugUtil
 import DealUtil
+import FontUtil
 import PlayerUtil
 import CvUtil
 import re
@@ -85,32 +86,38 @@ def init():
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
-	columns.append(Column('V', MASTER, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.SILVER_STAR_CHAR)))
+	columns.append(Column('V', MASTER, FIXED, smallSymbol(FontSymbols.SILVER_STAR_CHAR)))
 	columns.append(Column('C', NAME, DYNAMIC))
-	columns.append(Column('?', NOT_MET, FIXED, u"<font=2>?</font>"))
+	columns.append(Column('?', NOT_MET, FIXED, smallText("?")))
 	columns.append(Column('W', WAR, DYNAMIC))
 	columns.append(Column('P', POWER, DYNAMIC))
 	columns.append(Column('T', RESEARCH, SPECIAL))
 	columns.append(Column('U', RESEARCH_TURNS, DYNAMIC))
-	columns.append(Column('E', ESPIONAGE, FIXED, u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())))
-	columns.append(Column('N', TRADE, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.TRADE_CHAR)))
-	columns.append(Column('B', BORDERS, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OPEN_BORDERS_CHAR)))
-	columns.append(Column('D', PACT, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.DEFENSIVE_PACT_CHAR)))
+	columns.append(Column('E', ESPIONAGE, FIXED, getSymbolText(FontSymbols.COMMERCE_ESPIONAGE_CHAR)))
+	columns.append(Column('N', TRADE, FIXED, smallSymbol(FontSymbols.TRADE_CHAR)))
+	columns.append(Column('B', BORDERS, FIXED, smallSymbol(FontSymbols.OPEN_BORDERS_CHAR)))
+	columns.append(Column('D', PACT, FIXED, smallSymbol(FontSymbols.DEFENSIVE_PACT_CHAR)))
 	columns.append(Column('R', RELIGION, DYNAMIC))
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
-	columns.append(Column('H', WORST_ENEMY, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.ANGRY_POP_CHAR)))
-	columns.append(Column('M', WHEOOH, FIXED, u"<font=2>%c</font>" % game.getSymbolID(FontSymbols.OCCUPATION_CHAR)))
-	columns.append(Column('*', WAITING, FIXED, u"<font=2>*</font>"))
+	columns.append(Column('H', WORST_ENEMY, FIXED, smallSymbol(FontSymbols.ANGRY_POP_CHAR)))
+	columns.append(Column('M', WHEOOH, FIXED, smallSymbol(FontSymbols.OCCUPATION_CHAR)))
+	columns.append(Column('*', WAITING, FIXED, smallText("*")))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
 	
 	global WAR_ICON, PEACE_ICON
-	WAR_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
-	PEACE_ICON = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
+	WAR_ICON = smallSymbol(FontSymbols.WAR_CHAR)
+	PEACE_ICON = smallSymbol(FontSymbols.PEACE_CHAR)
 	
 	global VASSAL_PREFIX, VASSAL_POSTFIX
-	VASSAL_PREFIX = u"<font=2>%c</font>" % (CyGame().getSymbolID(FontSymbols.BULLET_CHAR))
-	VASSAL_POSTFIX = u"<font=2> %c</font>" % (CyGame().getSymbolID(FontSymbols.BULLET_CHAR))
+	VASSAL_PREFIX = smallSymbol(FontSymbols.BULLET_CHAR)
+	VASSAL_POSTFIX = smallText(u" %s" % FontUtil.getChar(FontSymbols.BULLET_CHAR))
+
+def smallText(text):
+	return u"<font=2>%s</font>" % text
+
+def smallSymbol(symbol):
+	return smallText(FontUtil.getChar(symbol))
 
 def onDealCanceled(argsList):
 	"""Sets the scoreboard dirty bit so it will redraw."""
@@ -186,13 +193,13 @@ class Scoreboard:
 		self._set(MASTER)
 		
 	def setScore(self, value):
-		self._set(SCORE, u"<font=2>%s</font>" % value)
+		self._set(SCORE, smallText(value))
 		
 	def setScoreDelta(self, value):
-		self._set(SCORE_DELTA, u"<font=2>%s</font>" % value)
+		self._set(SCORE_DELTA, smallText(value))
 		
 	def setName(self, value):
-		self._set(NAME, u"<font=2>%s</font>" % value)
+		self._set(NAME, smallText(value))
 		
 	def setNotMet(self):
 		self._set(NOT_MET)
@@ -207,14 +214,14 @@ class Scoreboard:
 		self._set(WAR, PEACE_ICON, self._getDealWidget(TradeableItems.TRADE_PEACE_TREATY))
 		
 	def setPower(self, value):
-		self._set(POWER, u"<font=2>%s</font>" % value)
+		self._set(POWER, smallText(value))
 		
 	def setResearch(self, tech, turns):
 		if (ScoreOpt.isShowResearchIcons()):
 			self._set(RESEARCH, tech)
 		else:
-			self._set(RESEARCH, u"<font=2>%s</font>" % gc.getTechInfo(tech).getDescription())
-		self._set(RESEARCH_TURNS, u"<font=2> (%d)</font>" % turns)
+			self._set(RESEARCH, smallText(gc.getTechInfo(tech).getDescription()))
+		self._set(RESEARCH_TURNS, smallText(u" (%d)" % turns))
 		
 	def setEspionage(self):
 		self._set(ESPIONAGE)
@@ -229,10 +236,10 @@ class Scoreboard:
 		self._set(PACT, True, self._getDealWidget(TradeableItems.TRADE_DEFENSIVE_PACT))
 		
 	def setReligion(self, value):
-		self._set(RELIGION, u"<font=2>%s</font>" % value)
+		self._set(RELIGION, smallText(value))
 		
 	def setAttitude(self, value):
-		self._set(ATTITUDE, u"<font=2>%s</font>" % value)
+		self._set(ATTITUDE, smallText(value))
 		
 	def setWorstEnemy(self):
 		self._set(WORST_ENEMY)
@@ -242,10 +249,10 @@ class Scoreboard:
 		self._set(WAITING)
 		
 	def setNetStats(self, value):
-		self._set(NET_STATS, u"<font=2>%s</font>" % value)
+		self._set(NET_STATS, smallText(value))
 		
 	def setOOS(self, value):
-		self._set(OOS, u"<font=2>%s</font>" % value)
+		self._set(OOS, smallText(value))
 		
 		
 	def _getDealWidget(self, type):

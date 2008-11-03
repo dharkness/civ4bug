@@ -11,6 +11,7 @@
 
 from CvPythonExtensions import *
 import BugUtil
+import FontUtil
 import re
 
 NUM_ATTITUDES = 5
@@ -21,6 +22,14 @@ DEFAULT_COLORS = (
 	"COLOR_CLEAR", 
 	"COLOR_GREEN", 
 	"COLOR_YELLOW",
+)
+
+ATTITUDE_KEYS = (
+	"furious", 
+	"annoyed", 
+	"cautious", 
+	"pleased", 
+	"friendly", 
 )
 ATTITUDE_COLORS = None
 ATTITUDE_ICONS = None
@@ -54,8 +63,7 @@ def init (colors=DEFAULT_COLORS, modifiers=None):
 	"""Initializes this module, raising ConfigError if any problems occur."""
 	# create font icons for each attitude level
 	global ATTITUDE_ICONS
-	ATTITUDE_ICONS = [unichr(CyGame().getSymbolID(FontSymbols.POWER_CHAR) + 4 + i) 
-					  for i in range(5)]
+	ATTITUDE_ICONS = [FontUtil.getChar(key) for key in ATTITUDE_KEYS]
 	if len(ATTITUDE_ICONS) != NUM_ATTITUDES:
 		raise BugUtil.ConfigError("Failed to create attitude icons")
 	

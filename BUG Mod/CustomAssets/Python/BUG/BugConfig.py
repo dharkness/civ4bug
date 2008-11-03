@@ -28,6 +28,7 @@ import BugOptions
 import BugPath
 import BugUtil
 from configobj import ConfigObj
+import FontUtil
 import InputUtil
 import CvEventInterface
 import CvScreensInterface
@@ -97,6 +98,7 @@ class GameBuilder:
 		self.section = None
 		self.option = None
 		self.screen = None
+		self.symbol = None
 
 	def createBuilder(self, module, clazz=None, attrs=None):
 		if not clazz:
@@ -241,6 +243,15 @@ class GameBuilder:
 					return TYPE_EVAL[type](value)
 		return eval(value)
 
+	def createFontSymbol(self, key, fromSymbolOrKey=None, offset=None, name=None, attrs=None):
+		if not fromSymbolOrKey:
+			if not self.symbol:
+				raise BugUtil.ConfigError("symbol %s requires an offset symbol" % key)
+			fromSymbolOrKey = self.symbol
+		if offset is None:
+			offset = 1
+		self.symbol = FontUtil.addOffsetSymbol(key, fromSymbolOrKey, offset, name)
+
 def setGameBuilder(builder=None):
 	global g_builder
 	if builder is None:
@@ -325,6 +336,10 @@ EVENTS = "events"
 
 ARG = "arg"
 VALUE = "value"
+
+SYMBOL = "symbol"
+FROM = "from"
+OFFSET = "offset"
 
 MODULE = "module"
 CLASS = "class"
@@ -534,7 +549,7 @@ class XmlParser(xmllib.XMLParser):
 		function = self.getAttribute(attrs, FUNCTION, INIT)
 		immediate = self.getAttribute(attrs, IMMEDIATE, INIT)
 		if immediate:
-			immediate = immediate in TRUE_STRINGS
+			immediate = immediate.lower() in TRUE_STRINGS
 		else:
 			immediate = False
 		g_builder.createInit(module, function, immediate, args, kwargs, attrs)
@@ -579,6 +594,18 @@ class XmlParser(xmllib.XMLParser):
 				self.kwargs[name] = arg
 			else:
 				self.args.append(arg)
+	
+	def start_symbol(self, attrs):
+		id = self.getRequiredAttribute(attrs, ID, SYMBOL)
+		fromSymbolOrKey = self.getAttribute(attrs, FROM)
+		offset = self.getAttribute(attrs, OFFSET)
+		if offset:
+			offset = int(offset)
+		name = self.getAttribute(attrs, NAME)
+		symbol = g_builder.createFontSymbol(id, fromSymbolOrKey, offset, name, attrs)
+	
+	def end_symbol(self):
+		pass
 	
 	
 	def getAttribute(self, attrs, key, default=None):
