@@ -2918,19 +2918,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_TEXT</Tag>
-		<English>Combat Experience</English>
-		<French>Expérience au Combat</French>
+		<English>Great General Progress Bar</English>
+		<French>Barre de Progrès des G&#233;n&#233;ral Illustre</French>
 		<German>Gefechtserfahrung</German>
 		<Italian>Esperienza di combattimento</Italian>
-		<Spanish>Combat Experience</Spanish>
+		<Spanish>Great General Progress Bar</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_HOVER</Tag>
-		<English>When checked, displays Combat Experience to track next Great General.</English>
+		<English>When checked, displays a progress bar for the next Great General.</English>
 		<French>En activant, montre l'Expérience au Combat nécessaire pour le prochain Général Illustre.</French>
 		<German>Zeigt die gesammelte Gefechtserfahrung an, um das Erscheinen des nächsten Großen Generals zu bestimmen</German>
 		<Italian>Quando è selezionato, mostra l'Esperienza di combattimento necessaria per il prossimo Grande Generale.</Italian>
-		<Spanish>When checked, displays Combat Experience to track next Great General.</Spanish>
+		<Spanish>When checked, displays a progress bar for the next Great General.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__CITYARROWS_TEXT</Tag>
