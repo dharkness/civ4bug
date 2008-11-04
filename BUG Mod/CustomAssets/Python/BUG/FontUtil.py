@@ -46,7 +46,8 @@ def init():
 	):
 		for enum in range(count):
 			info = getInfo(enum)
-			addSymbol(info.getText().lower(), info.getChar(), info.getType())
+			addSymbol(info.getType().lower().replace("_", " "), 
+					info.getChar(), info.getType())
 
 def addBuiltinSymbol(key, symbol):
 	registerSymbol(key, symbol, gc.getGame().getSymbolID(symbol))
