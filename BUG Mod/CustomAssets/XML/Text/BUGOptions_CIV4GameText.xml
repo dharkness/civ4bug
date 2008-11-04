@@ -1304,12 +1304,28 @@
 		<Spanish>Trade Routes|Food|Production|Commerce</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__FOODASSIST_TEXT</Tag>
+		<English>Detailed Food Info</English>
+		<French>Detailed Food Info</French>
+		<German>Detailed Food Info</German>
+		<Italian>Detailed Food Info</Italian>
+		<Spanish>Detailed Food Info</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__FOODASSIST_HOVER</Tag>
+		<English>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</English>
+		<French>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</French>
+		<German>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</German>
+		<Italian>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</Italian>
+		<Spanish>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_TEXT</Tag>
-		<English>Whip Assist</English>
-		<French>Whip Assist</French>
+		<English>Detailed Whip/Buy Info</English>
+		<French>Detailed Whip/Buy Info</French>
 		<German>Anzeige für die Beschleunigung der Produktion</German>
 		<Italian>Barra di produzione con accelerazione</Italian>
-		<Spanish>Whip Assist</Spanish>
+		<Spanish>Detailed Whip/Buy Info</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_HOVER</Tag>
@@ -1321,11 +1337,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
-		<English>Overflow Counts Current Production</English>
-		<French>Overflow Counts Current Production</French>
+		<English>Whip Overflow Includes Production</English>
+		<French>Whip Overflow Includes Production</French>
 		<German>Produktionsüberschuss der aktuellen Runde einbeziehen</German>
 		<Italian>Surplus comprendente produzione corrente</Italian>
-		<Spanish>Overflow Counts Current Production</Spanish>
+		<Spanish>Whip Overflow Includes Production</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>

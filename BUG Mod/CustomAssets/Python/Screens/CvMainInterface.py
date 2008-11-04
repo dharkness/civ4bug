@@ -5177,7 +5177,14 @@ class CvMainInterface:
 					if (iFoodDifference > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_GROWING", (pHeadSelectedCity.getFoodTurnsLeft(), ))	
 					elif (iFoodDifference < 0):
-						szBuffer = localText.getText("INTERFACE_CITY_STARVING", ())	
+						if (CityScreenOpt.isShowFoodAssist()):
+							iTurnsToStarve = pHeadSelectedCity.getFood() / -iFoodDifference + 1
+							if iTurnsToStarve > 1:
+								szBuffer = localText.getText("INTERFACE_CITY_SHRINKING", (iTurnsToStarve, ))
+							else:
+								szBuffer = localText.getText("INTERFACE_CITY_STARVING", ()) 
+						else:
+							szBuffer = localText.getText("INTERFACE_CITY_STARVING", ()) 
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_STAGNANT", ())	
 
@@ -5187,7 +5194,17 @@ class CvMainInterface:
 
 				if (not pHeadSelectedCity.isDisorder() and not pHeadSelectedCity.isFoodProduction()):
 				
-					szBuffer = u"%d%c - %d%c" %(pHeadSelectedCity.getYieldRate(YieldTypes.YIELD_FOOD), gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar(), pHeadSelectedCity.foodConsumption(False, 0), CyGame().getSymbolID(FontSymbols.EATEN_FOOD_CHAR))
+					if (CityScreenOpt.isShowFoodAssist()):
+						iFoodYield = pHeadSelectedCity.getYieldRate(YieldTypes.YIELD_FOOD)
+						iFoodEaten = pHeadSelectedCity.foodConsumption(False, 0)
+						if iFoodYield == iFoodEaten:
+							szBuffer = localText.getText("INTERFACE_CITY_FOOD_STAGNATE", (iFoodYield, iFoodEaten))
+						elif iFoodYield > iFoodEaten:
+							szBuffer = localText.getText("INTERFACE_CITY_FOOD_GROW", (iFoodYield, iFoodEaten, iFoodYield - iFoodEaten))
+						else:
+							szBuffer = localText.getText("INTERFACE_CITY_FOOD_SHRINK", (iFoodYield, iFoodEaten, iFoodYield - iFoodEaten))
+					else:
+						szBuffer = u"%d%c - %d%c" %(pHeadSelectedCity.getYieldRate(YieldTypes.YIELD_FOOD), gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar(), pHeadSelectedCity.foodConsumption(False, 0), CyGame().getSymbolID(FontSymbols.EATEN_FOOD_CHAR))
 					screen.setLabel( "PopulationInputText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, iCityCenterRow1X - 6, iCityCenterRow1Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 					screen.show( "PopulationInputText" )
 					

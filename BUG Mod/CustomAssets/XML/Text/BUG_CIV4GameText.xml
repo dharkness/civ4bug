@@ -282,6 +282,41 @@
 		<Spanish>[COLOR_HIGHLIGHT_TEXT]Count All Tiles[COLOR_REVERT][NEWLINE]Counts all tiles in the city radius regardless of owner.</Spanish>
 	</TEXT>
 	
+	<!-- Food Assist -->
+	
+	<TEXT>
+		<Tag>INTERFACE_CITY_SHRINKING</Tag>
+		<English>[COLOR_YELLOW]Shrinking (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</English>
+		<French>[COLOR_YELLOW]Rétrécissement (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</French>
+		<German>[COLOR_YELLOW]Schrumpfen (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</German>
+		<Italian>[COLOR_YELLOW]Restringimento (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YELLOW]Contracción (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_CITY_FOOD_GROW</Tag>
+		<English>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = +%d3[ICON_FOOD]</English>
+		<French>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = +%d3[ICON_FOOD]</French>
+		<German>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = +%d3[ICON_FOOD]</German>
+		<Italian>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = +%d3[ICON_FOOD]</Italian>
+		<Spanish>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = +%d3[ICON_FOOD]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_CITY_FOOD_SHRINK</Tag>
+		<English>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = [COLOR_WARNING_TEXT]%d3[COLOR_REVERT][ICON_BAD_FOOD]</English>
+		<French>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = [COLOR_WARNING_TEXT]%d3[COLOR_REVERT][ICON_BAD_FOOD]</French>
+		<German>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = [COLOR_WARNING_TEXT]%d3[COLOR_REVERT][ICON_BAD_FOOD]</German>
+		<Italian>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = [COLOR_WARNING_TEXT]%d3[COLOR_REVERT][ICON_BAD_FOOD]</Italian>
+		<Spanish>%d1[ICON_FOOD] - %d2[ICON_EATENFOOD] = [COLOR_WARNING_TEXT]%d3[COLOR_REVERT][ICON_BAD_FOOD]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>INTERFACE_CITY_FOOD_STAGNATE</Tag>
+		<English>%d1[ICON_FOOD] = %d2[ICON_EATENFOOD]</English>
+		<French>%d1[ICON_FOOD] = %d2[ICON_EATENFOOD]</French>
+		<German>%d1[ICON_FOOD] = %d2[ICON_EATENFOOD]</German>
+		<Italian>%d1[ICON_FOOD] = %d2[ICON_EATENFOOD]</Italian>
+		<Spanish>%d1[ICON_FOOD] = %d2[ICON_EATENFOOD]</Spanish>
+	</TEXT>
+	
 	<!-- Whip Assist -->
 	
 	<TEXT>

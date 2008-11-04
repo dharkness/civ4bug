@@ -52,6 +52,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextDropdown(screen, left, left, "CityScreen__RawYields_View", True)
 		
 		self.addSpacer(screen, left, "CityScreen_TopCenter")
+		self.addCheckbox(screen, left, "CityScreen__FoodAssist")
 		self.addCheckbox(screen, left, "CityScreen__WhipAssist")
 		self.addCheckbox(screen, left, "CityScreen__WhipAssistOverflowCountCurrentProduction")
 		self.addCheckbox(screen, left, "CityScreen__Anger_Counter")

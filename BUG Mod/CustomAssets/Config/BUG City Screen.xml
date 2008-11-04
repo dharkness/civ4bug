@@ -30,6 +30,11 @@
 				<choice id="Commerce" get="isRawYieldsDefaultView_Commerce"/>
 			</list>
 			
+			<!-- FoodAssist by EmperorFool -->
+			<option id="FoodAssist" key="FoodAssist" 
+					type="boolean" default="True" 
+					get="isShowFoodAssist" dirtyBit="CityScreen"/>
+			
 			<!-- WhipAssist by EmperorFool, Dresden -->
 			<option id="WhipAssist" key="WhipAssist" 
 					type="boolean" default="True" 
