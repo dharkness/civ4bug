@@ -4,7 +4,7 @@ Features:
 - Added map script "Maze" by Sirian
 - Field of View slider on the main screen
 - Improvements to stats tab on info screen
-- Tick Marks for selected progressbars (tech, food, production)
+- Tick Marks for selected progress bars (tech, food, production)
 - Tick Marks: Added whip threshold indicator to city production bar (look for yellow center tick mark)
 - Customizable Domestic Advisor (CDA) now also resizable based on 2 new BUG options
 - CDA: Added a "whip anger" column to CDA (not added to any pages)
@@ -15,7 +15,8 @@ Features:
 - BUG options screen: Redesigned hover texts with lists and General tab
 - New Font File includes citizen icon and blank icon
 - Created FontUtil for adding new constants to FontSymbols (Define symbols in XML: <symbol id [name] [from] [offset]/>; provides getChar(symbol) for easier access to unicode string for symbol)
-- Resource pages in Sevopedia show all builds they affect in the Buildings list--not just the buildings that supply the resource
+- Resource pages in Sevopedia show all buildings they affect in the Buildings list--not just the buildings that supply the resource
+- Added FoodAssist: net food added to stores per turn and turns until starvation
 
 
 Bugfixes:
