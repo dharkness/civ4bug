@@ -131,11 +131,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>INTERFACE_NEXT_GREAT_GENERAL_XP</Tag>
-		<English>General (%d1)</English>
-		<French>G&#233;n&#233;ral (%d1)</French>
-		<German>General (%d1)</German>
-		<Italian>Generale (%d1)</Italian>
-		<Spanish>General (%d1)</Spanish>
+		<English>%s1 (%d2)</English>
+		<French>%s1 (%d2)</French>
+		<German>%s1 (%d2)</German>
+		<Italian>%s1 (%d2)</Italian>
+		<Spanish>%s1 (%d2)</Spanish>
 	</TEXT>
 	
 	<!-- Dead Civs Scoreboard -->
