@@ -49,8 +49,9 @@
 	<init module="FontUtil" function="init" immediate="True"/>
 	<symbol id="war" from="COMMERCE_GOLD" offset="25"/>
 	<symbol id="peace"/>
-	<symbol id="null"/>
+	<symbol id="space"/>  <!-- blank symbol the same size as other standard symbols -->
 	<symbol id="citizen" from="POWER" offset="1"/>
+	<symbol id="greatgeneral" name="GREAT_GENERAL"/>
 	
 	<init module="AttitudeUtil" function="init">
 		<!-- Furious, Annoyed, Cautious, Pleased, Friendly -->
