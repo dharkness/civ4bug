@@ -30,12 +30,13 @@ ROW_HEIGHT = 22
 Z_DEPTH = -0.3
 
 # Columns IDs
-NUM_PARTS = 21
+NUM_PARTS = 22
 (
 	ALIVE,
 	WAR,
 	SCORE,
 	SCORE_DELTA,
+	ID,
 	MASTER,
 	NAME,
 	NOT_MET,
@@ -81,11 +82,12 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHLMNOPRSTUVWZ*?
-	# FGIJKQXY
+	# ABCDEHILMNOPRSTUVWZ*?
+	# FGJKQXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
+	columns.append(Column('I', ID, DYNAMIC))
 	columns.append(Column('V', MASTER, FIXED, smallSymbol(FontSymbols.SILVER_STAR_CHAR)))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, smallText("?")))
@@ -197,6 +199,9 @@ class Scoreboard:
 		
 	def setScoreDelta(self, value):
 		self._set(SCORE_DELTA, smallText(value))
+		
+	def setID(self, value):
+		self._set(ID, smallText(value))
 		
 	def setName(self, value):
 		self._set(NAME, smallText(value))
