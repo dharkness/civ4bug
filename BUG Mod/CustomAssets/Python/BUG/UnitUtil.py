@@ -427,7 +427,7 @@ def canCityBuildUnit(unitInfo, city, eAskingTeam, checkBonuses=True):
 	else:
 		minArea = unitInfo.getMinAreaSize()
 		if minArea != -1:
-			if askingPlayer or not city or city.plot().area().getNumTiles() < minArea:
+			if eAskingTeam != -1 or not city or city.plot().area().getNumTiles() < minArea:
 				return False
 	# holy city
 	eReligion = unitInfo.getHolyCity()
@@ -436,11 +436,11 @@ def canCityBuildUnit(unitInfo, city, eAskingTeam, checkBonuses=True):
 	# building
 	eBuilding = unitInfo.getPrereqBuilding()
 	if eBuilding != -1:
-		if askingPlayer or not city:
+		if eAskingTeam != -1 or not city:
 			return False
 		if city.getNumBuilding(eBuilding) == 0:
 			eSpecialBuilding = gc.getBuildingInfo(eBuilding).getSpecialBuildingType()
-			if eSpecialBuilding == -1 or not player.isSpecialBuildingNotRequired(eSpecialBuilding):
+			if eSpecialBuilding == -1 or not gc.getPlayer(city.getOwner()).isSpecialBuildingNotRequired(eSpecialBuilding):
 				return False
 	# resources
 	if checkBonuses and not cityHasBonusesForUnit(unitInfo, city):
