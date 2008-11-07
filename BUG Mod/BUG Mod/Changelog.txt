@@ -33,4 +33,5 @@ Bugfixes:
 - MA: Reversed leaderhead parameters so attitude of row leaderhead is shown
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
 - Fixed click/hover response on (widescreen) research bar
+- CDA now adjusts position of Liberate button to make sure it doesn't overlap Exit text
 

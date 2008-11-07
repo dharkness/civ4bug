@@ -79,6 +79,7 @@
 		</section>
 	</options>
 
-	<event type="ResolutionChanged" module="CvCustomizableDomesticAdvisor" function="handleResolutionChanged"/>
+	<event type="ResolutionChanged" module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
+	<event type="LanguageChanged" module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
 
 </mod>

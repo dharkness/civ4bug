@@ -111,10 +111,10 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-# hack to handle resolution-switching
+# hack to force repositioning if resolution (or language) changes
 g_bMustCreatePositions = True
 
-def handleResolutionChanged (argsList=None):
+def forcePositionCalc (argsList=None):
 	global g_bMustCreatePositions
 	g_bMustCreatePositions = True
 
@@ -713,9 +713,10 @@ class CvCustomizableDomesticAdvisor:
 
 # BUG - Colony Split - start
 
-		# Location of Split Empire Button
+		# Location of Split Empire Button; make sure it leaves enough room for exit text
 		self.SPLIT_NAME = "DomesticSplit"
-		self.X_SPLIT = self.X_EXIT - 100
+		nExitTextWidth = CyInterface().determineWidth(localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper())
+		self.X_SPLIT = self.X_EXIT - 50 - nExitTextWidth
 		self.Y_SPLIT = self.Y_TEXT - 8
 
 # BUG - Colony Split - end
