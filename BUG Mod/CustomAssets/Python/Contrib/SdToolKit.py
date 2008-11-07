@@ -14,6 +14,10 @@ from CvPythonExtensions import *
 import CvUtil
 import sys
 import cPickle as pickle
+
+# BUG - start
+import BugUtil
+# BUG - end
 	
 gc = CyGlobalContext()
 CyGameInstance = gc.getGame()
@@ -21,14 +25,17 @@ CyGameInstance = gc.getGame()
 ################# SD-UTILITY-PACK ###################
 #-=-=-=-=-=-=-=-= BASIC-UTILITIES =-=-=-=-=-=-=-=-=-#
 def sdEcho( echoString ):
-	printToScr = True
-	printToLog = True
-	message = "%s" %(echoString)
-	if (printToScr):
-		CyInterface().addImmediateMessage(message,"")
-	if (printToLog):
-		CvUtil.pyPrint(message)
+# BUG - start
+	BugUtil.debug("SdToolKit: %s" %(echoString))
+	#printToScr = True
+	#printToLog = True
+	#message = "%s" %(echoString)
+	#if (printToScr):
+	#	CyInterface().addImmediateMessage(message,"")
+	#if (printToLog):
+	#	CvUtil.pyPrint(message)
 	return 0
+# BUG - end
 
 def sdGetTimeInt( turn ):
 	TurnTable = CyGameTextMgr().getTimeStr(turn, false).split(' ')
