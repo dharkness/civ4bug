@@ -42,6 +42,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "MainInterface__Combat_Counter")
 		self.addCheckbox(screen, right, "MainInterface__CityArrows")
+		self.addCheckbox(screen, right, "EventSigns__Enabled")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		

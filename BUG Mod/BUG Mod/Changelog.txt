@@ -19,6 +19,7 @@ Features:
 - Resource pages in Sevopedia show all buildings they affect in the Buildings list--not just the buildings that supply the resource
 - Added FoodAssist: net food added to stores per turn and turns until starvation
 - Added Advanced Scoreboard option to show Civ ID number; layout character is "I" but it's not in the default layout
+- Added EventSigns: plots whose yields change due to random events marked on the map with signs
 
 
 Bugfixes:

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+  DAS: Text for landmark/sign captioning for random events
+  - The tag names for the descriptions are based on the <type> of the events in CIV4EventInfos.xml
+  - Example: The caption corresponding to the event with <type>EVENT_SALTPETER_1</type>
+  -  in that file will be the entry here with tag TXT_KEY_SIGN_EVENT_SALTPETER_1
+  - Non-English ranslations may be inaccurate as they came from guesses and babelfish.
+  -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_FORMAT_OVERVIEW</Tag>
+		<!-- s1: Food string, s2: Prod string, s3: Comm string, s4: Descriptive string -->
+		<!-- Note there will be some extra spaces added between these strings -->
+		<English>%s1%s2%s3 (%s4)</English>
+		<French>%s1%s2%s3 (%s4)</French>
+		<German>%s1%s2%s3 (%s4)</German>
+		<Italian>%s1%s2%s3 (%s4)</Italian>
+		<Spanish>%s1%s2%s3 (%s4)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_FORMAT_FOOD</Tag>
+		<English>%D1 F</English>
+		<French>%D1 F</French>
+		<German>%D1 F</German>
+		<Italian>%D1 F</Italian>
+		<Spanish>%D1 F</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_FORMAT_PROD</Tag>
+		<English>%D1 P</English>
+		<French>%D1 P</French>
+		<German>%D1 P</German>
+		<Italian>%D1 P</Italian>
+		<Spanish>%D1 P</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_FORMAT_COMM</Tag>
+		<English>%D1 C</English>
+		<French>%D1 C</French>
+		<German>%D1 C</German>
+		<Italian>%D1 C</Italian>
+		<Spanish>%D1 C</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_HORTICULTURE_1</Tag>
+		<English>remedies</English>
+		<French>rem&#232;des</French>
+		<German>Hilfsmittel</German>
+		<Italian>rimedi</Italian>
+		<Spanish>remedios</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_HORTICULTURE_2</Tag>
+		<English>remedies</English>
+		<French>rem&#232;des</French>
+		<German>Hilfsmittel</German>
+		<Italian>rimedi</Italian>
+		<Spanish>remedios</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_PARROTS_1</Tag>
+		<English>parrots</English>
+		<French>perroquets</French>
+		<German>Papageien</German>
+		<Italian>pappagalli</Italian>
+		<Spanish>loros</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_JADE_1</Tag>
+		<English>jade</English>
+		<French>jade</French>
+		<German>jade</German>
+		<Italian>giada</Italian>
+		<Spanish>jade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_BLACK_PEARLS_1</Tag>
+		<English>black pearls</English>
+		<French>perles noires</French>
+		<German>schwarze Perlen</German>
+		<Italian>perle nere</Italian>
+		<Spanish>perlas negras</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_SALTPETER_1</Tag>
+		<English>saltpeter</English>
+		<French>salp&#234;tre</French>
+		<German>Salpeter</German>
+		<Italian>salnitro</Italian>
+		<Spanish>Salitre</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_CLUNKER_COAL_1</Tag>
+		<English>impurities</English>
+		<French>impuret&#233;s</French>
+		<German>Verunreinigungen</German>
+		<Italian>impurit&#224;</Italian>
+		<Spanish>impurezas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_SOUR_CRUDE_1</Tag>
+		<English>impurities</English>
+		<French>impuret&#233;s</French>
+		<German>Verunreinigungen</German>
+		<Italian>impurit&#224;</Italian>
+		<Spanish>impurezas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_TRUFFLES_1</Tag>
+		<English>truffles</English>
+		<French>truffes</French>
+		<German>Tr&#252;ffeln</German>
+		<Italian>tartufi</Italian>
+		<Spanish>trufas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_SEA_TURTLES_1</Tag>
+		<English>sea turtles</English>
+		<French>tortues de mer</French>
+		<German>Seeschildkr&#246;ten</German>
+		<Italian>testuggini</Italian>
+		<Spanish>tortugas marinas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_TIN_1</Tag>
+		<English>tin</English>
+		<French>&#233;tain</French>
+		<German>Zinn</German>
+		<Italian>latta</Italian>
+		<Spanish>lata</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_PRAIRIE_DOGS_1</Tag>
+		<English>prairie dogs</English>
+		<French>chiens de prairie</French>
+		<German>Pr&#228;riehunde</German>
+		<Italian>cani di prateria</Italian>
+		<Spanish>perros de pradera</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_APPLESEED_1</Tag>
+		<English>apples</English>
+		<French>pommes</French>
+		<German>&#196;pfel</German>
+		<Italian>mele</Italian>
+		<Spanish>manzanas</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_FORTY_THIEVES_1</Tag>
+		<English>local legends</English>
+		<French>l&#233;gende locales</French>
+		<German>lokale Legenden</German>
+		<Italian>leggende locali</Italian>
+		<Spanish>leyendas locales</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_WATERS_OF_LIFE_1</Tag>
+		<English>Waters of Life</English>
+		<French>Les Eaux de la Vie</French>
+		<German>Wasser des Lebens</German>
+		<Italian>Acque di vita</Italian>
+		<Spanish>Aguas de la Vida</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SIGN_EVENT_GREAT_BEAST_1</Tag>
+		<English>great beasts</English>
+		<French>grandes b&#234;tes</French>
+		<German>gro&#223;e Tiere</German>
+		<Italian>grandi bestie</Italian>
+		<Spanish>grandes bestias</Spanish>
+	</TEXT>
+</Civ4GameText>

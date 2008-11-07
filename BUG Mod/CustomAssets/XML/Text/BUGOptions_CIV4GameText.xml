@@ -3013,10 +3013,23 @@
 		<Italian>Riporta il valore assegnato al Campo visuale</Italian>
 		<Spanish>Stores the Field of View value</Spanish>
 	</TEXT>
-
-
-
-
+	<!-- EventSigns -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_EVENTSIGNS__ENABLED_TEXT</Tag>
+		<English>Event Signs</English>
+		<French>Event Signs</French>
+		<German>Event Signs</German>
+		<Italian>Event Signs</Italian>
+		<Spanish>Event Signs</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_EVENTSIGNS__ENABLED_HOVER</Tag>
+		<English>When checked, plots whose yields have changed because of random events will be marked on the map with signs.</English>
+		<French>When checked, plots whose yields have changed because of random events will be marked on the map with signs.</French>
+		<German>When checked, plots whose yields have changed because of random events will be marked on the map with signs.</German>
+		<Italian>When checked, plots whose yields have changed because of random events will be marked on the map with signs.</Italian>
+		<Spanish>When checked, plots whose yields have changed because of random events will be marked on the map with signs.</Spanish>
+	</TEXT>
 	<!-- TechWindow -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_TEXT</Tag>

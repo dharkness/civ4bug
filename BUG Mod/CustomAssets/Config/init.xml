@@ -142,6 +142,7 @@
 	<load mod="MoreCiv4lerts"/>
 	<load mod="Unit Naming"/>
 	<load mod="FavoriteCivicDetector"/>
+	<load mod="EventSigns"/>
 	
 	
 	<!-- Options Screens -->

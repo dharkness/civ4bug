@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	EventSigns
+	by Dresden
+
+	Copyright (c) 2008 The BUG Mod.
+-->
+<mod id="EventSigns" 
+	 name="EventSigns" 
+	 author="Dresden" 
+	 version="2.0" 
+	 date="11/7/2008"
+	 url="http://forums.civfanatics.com/forumdisplay.php?f=268">
+	 
+	<options id="EventSigns" file="EventSigns.ini">
+		<section id="EventSigns">
+			<option id="Enabled" key="Enabled" 
+					type="boolean" default="True" 
+					get="isEnabled"/>
+		</section>
+	</options>
+
+	<events module="EventSigns" class="EventSignsEventHandler"/>
+
+</mod>
