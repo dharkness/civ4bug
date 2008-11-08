@@ -20,14 +20,18 @@
 			<option id="CustDomAdv" key="CustDomAdv" 
 					type="boolean" default="True" 
 					get="isCustDomAdv"/>
-			<list   id="CDASpaceTop" key="CDASpaceTop"
+			<list	id="CDASpaceTop" key="CDASpaceTop"
 					type="int" listType="string" 
 					values="None|Small|Medium|Large" default="1"
-					get="getCDASpaceTop" />
-			<list   id="CDASpaceSides" key="CDASpaceSides"
+					get="getCDASpaceTop">
+				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
+			</list>
+			<list	id="CDASpaceSides" key="CDASpaceSides"
 					type="int" listType="string" 
 					values="None|Small|Medium|Large|LargeLeft" default="1"
-					get="getCDASpaceSides" />
+					get="getCDASpaceSides">
+				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
+			</list>
 
 			<!-- Exotic Foreign Advisor (F4) by Requies -->
 			<option id="EFAGlanceTab" key="EFA Glance" 

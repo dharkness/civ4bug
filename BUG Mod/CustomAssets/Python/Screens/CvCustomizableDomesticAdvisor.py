@@ -114,7 +114,7 @@ localText = CyTranslator()
 # hack to force repositioning if resolution (or language) changes
 g_bMustCreatePositions = True
 
-def forcePositionCalc (argsList=None):
+def forcePositionCalc (*args):
 	global g_bMustCreatePositions
 	g_bMustCreatePositions = True
 
@@ -146,8 +146,6 @@ class CvCustomizableDomesticAdvisor:
 
 		# All size information moved to self.createPositions because they are now
 		# all based on the screen resolution and the screen isn't available yet.
-		self.cachedOption_CDASpaceTop = -1
-		self.cachedOption_CDASpaceSides = -1
 
 		# Names of Widgets
 		self.SCREEN_NAME = "DomesticAdvisor"
@@ -666,12 +664,10 @@ class CvCustomizableDomesticAdvisor:
 		""" Calculates the basic positions to draw on. """
 
 		# Borders from BUG Options
-		self.cachedOption_CDASpaceTop = AdvisorOpt.getCDASpaceTop()
-		self.cachedOption_CDASpaceSides = AdvisorOpt.getCDASpaceSides()
-		nBorderTop = [0,23,52,105][self.cachedOption_CDASpaceTop]
+		nBorderTop = [0,23,52,105][AdvisorOpt.getCDASpaceTop()]
 		nBorderBottom = 177
-		nBorderLeft = [0,20,40,110,110][self.cachedOption_CDASpaceSides]
-		nBorderRight = [0,20,40,110,20][self.cachedOption_CDASpaceSides]
+		nBorderLeft = [0,20,40,110,110][AdvisorOpt.getCDASpaceSides()]
+		nBorderRight = [0,20,40,110,20][AdvisorOpt.getCDASpaceSides()]
 
 		# Location/Size of the Overall Screen
 		self.nScreenX = nBorderLeft
@@ -808,9 +804,7 @@ class CvCustomizableDomesticAdvisor:
 
 		# createPositions determines our size/positions and should only
 		# be called if something has changed.
-		if (g_bMustCreatePositions or 
-			self.cachedOption_CDASpaceTop != AdvisorOpt.getCDASpaceTop() or 
-			self.cachedOption_CDASpaceSides != AdvisorOpt.getCDASpaceSides()):
+		if g_bMustCreatePositions:
 			self.createPositions (screen)
 
 		screen.setDimensions (self.nScreenX, self.nScreenY, self.nScreenWidth, self.nScreenLength)
