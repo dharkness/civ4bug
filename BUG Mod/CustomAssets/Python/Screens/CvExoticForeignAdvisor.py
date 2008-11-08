@@ -281,7 +281,10 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			screen.addDropDownBoxGFC(self.szDropdownName, 22, 12, 300, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
 			for j in range(gc.getMAX_PLAYERS()):
 				if (gc.getPlayer(j).isAlive()):
-					screen.addPullDownString(self.szDropdownName, gc.getPlayer(j).getName(), j, j, False )
+					bSelected = False
+					if j == self.iActiveLeader:
+						bSelected = True
+					screen.addPullDownString(self.szDropdownName, gc.getPlayer(j).getName(), j, j, bSelected )
 
 		CyInterface().setDirty(InterfaceDirtyBits.Foreign_Screen_DIRTY_BIT, False)
 		
@@ -668,15 +671,13 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 		screen = self.getScreen()
 
-		# Get the Players
-		playerActive = gc.getPlayer(self.iActiveLeader)
-					
 		# Put everything inside a main panel, so we get vertical scrolling
 		headerPanelName = self.getNextWidgetName()
 		screen.addPanel(headerPanelName, "", "", True, True, 0, 50, self.W_SCREEN, 60, PanelStyles.PANEL_STYLE_TOPBAR)
 
 		if (bInitial):
 			self.initializeGlance()
+			self.iSelectedLeader = self.iActiveLeader
 
 		self.drawGlanceHeader(screen, headerPanelName)
 
@@ -721,7 +722,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		if self.Y_Text_Offset < 0: self.Y_Text_Offset = 0
 
 	def drawGlanceHeader (self, screen, panelName):
-		nCount = 0
+		nCount = 1
 		for iLoopPlayer in range (gc.getMAX_PLAYERS()):
 			if self.ltPlayerMet[iLoopPlayer]:
 				if (iLoopPlayer != self.iActiveLeader):
@@ -731,20 +732,23 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						screen.setState(szName, True)
 					else:
 						screen.setState(szName, False)
-
-				nCount += 1
+					nCount += 1
 		
 	def drawGlanceRows (self, screen, mainPanelName, bSorted = False, nPlayer = 1):
-		ltSortedRelations = [(None,-1)] * gc.getMAX_PLAYERS()
 #		ExoticForPrint ("MAX Players = %d" % gc.getMAX_PLAYERS())
+		ltSortedRelations = [(None,-1)] * gc.getMAX_PLAYERS()
+		self.loadColIntoList (self.ltPlayerRelations, ltSortedRelations, nPlayer)
 		if bSorted:
-			self.loadColIntoList (self.ltPlayerRelations, ltSortedRelations, nPlayer)
 			ltSortedRelations.sort()
 			if (self.bGlancePlus):
 				ltSortedRelations.reverse()
 			self.bGlancePlus = not self.bGlancePlus
 		else:
-			self.loadColIntoList (self.ltPlayerRelations, ltSortedRelations, nPlayer)
+			# If not sorted, we take the original ID list and move active player to the front.
+			#ltSortedRelations = map(lambda x: (0, x), range(gc.getMAX_PLAYERS()))
+			nFirstElement = self.ltPlayerRelations[self.iActiveLeader][nPlayer]
+			ltSortedRelations.remove((nFirstElement, self.iActiveLeader))
+			ltSortedRelations.insert(0, (nFirstElement, self.iActiveLeader))
 
 		# loop through all players and display leaderheads
 		for nOffset in range (gc.getMAX_PLAYERS()):
@@ -756,9 +760,12 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 #			ExoticForPrint ("iLoopPlayer = %d" % iLoopPlayer)
 
 			playerPanelName = self.getNextWidgetName()
-			screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_FLAT)
+			if iLoopPlayer == self.iActiveLeader:
+				screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_MAIN_BLACK50)
+			else:
+				screen.attachPanel(mainPanelName, playerPanelName, "", "", False, True, PanelStyles.PANEL_STYLE_MAIN_BLACK25)
 
-			nCount = 0
+			nCount = 1
 			for j in range (gc.getMAX_PLAYERS()):
 				if self.ltPlayerMet[j]:
 					if j != self.iActiveLeader:
@@ -768,10 +775,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 							szText = AttitudeUtil.getAttitudeText(j, iLoopPlayer, True, AdvisorOpt.isShowGlanceSmilies(), True, True)
 						else:
 							szText = ""
-
 						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET - 2 + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + self.Y_Text_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
-
-					nCount += 1
+						nCount += 1
 
 			if nCount > 8:
 				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
@@ -1216,7 +1221,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				szName = self.getWidgetName(self.DEBUG_DROPDOWN_ID)
 				iIndex = self.getScreen().getSelectedPullDownID(szName)
 				self.iActiveLeader = self.getScreen().getPullDownData(szName, iIndex)
-				self.drawContents(False)
+				self.drawContents(True)
 				return 1
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):
 			if (inputClass.getData() == int(InputTypes.KB_LSHIFT) or inputClass.getData() == int(InputTypes.KB_RSHIFT)):
