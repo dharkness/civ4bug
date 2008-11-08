@@ -289,7 +289,7 @@
 		<English>[COLOR_YELLOW]Shrinking (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</English>
 		<French>[COLOR_YELLOW]Rétrécissement (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</French>
 		<German>[COLOR_YELLOW]Schrumpfen (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</German>
-		<Italian>[COLOR_YELLOW]Restringimento (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_YELLOW]Riduzione (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YELLOW]Contracción (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>

@@ -22,7 +22,7 @@
 		<English>%D1 F</English>
 		<French>%D1 F</French>
 		<German>%D1 F</German>
-		<Italian>%D1 F</Italian>
+		<Italian>%D1 Cibo</Italian>
 		<Spanish>%D1 F</Spanish>
 	</TEXT>
 	<TEXT>
@@ -30,7 +30,7 @@
 		<English>%D1 P</English>
 		<French>%D1 P</French>
 		<German>%D1 P</German>
-		<Italian>%D1 P</Italian>
+		<Italian>%D1 Prod.</Italian>
 		<Spanish>%D1 P</Spanish>
 	</TEXT>
 	<TEXT>
@@ -38,7 +38,7 @@
 		<English>%D1 C</English>
 		<French>%D1 C</French>
 		<German>%D1 C</German>
-		<Italian>%D1 C</Italian>
+		<Italian>%D1 Comm.</Italian>
 		<Spanish>%D1 C</Spanish>
 	</TEXT>
 	<TEXT>
@@ -94,7 +94,7 @@
 		<English>impurities</English>
 		<French>impuret&#233;s</French>
 		<German>Verunreinigungen</German>
-		<Italian>impurit&#224;</Italian>
+		<Italian>impurezze</Italian>
 		<Spanish>impurezas</Spanish>
 	</TEXT>
 	<TEXT>
@@ -102,7 +102,7 @@
 		<English>impurities</English>
 		<French>impuret&#233;s</French>
 		<German>Verunreinigungen</German>
-		<Italian>impurit&#224;</Italian>
+		<Italian>impurezze</Italian>
 		<Spanish>impurezas</Spanish>
 	</TEXT>
 	<TEXT>
@@ -126,7 +126,7 @@
 		<English>tin</English>
 		<French>&#233;tain</French>
 		<German>Zinn</German>
-		<Italian>latta</Italian>
+		<Italian>piombo</Italian>
 		<Spanish>lata</Spanish>
 	</TEXT>
 	<TEXT>
@@ -158,7 +158,7 @@
 		<English>Waters of Life</English>
 		<French>Les Eaux de la Vie</French>
 		<German>Wasser des Lebens</German>
-		<Italian>Acque di vita</Italian>
+		<Italian>acque vitali</Italian>
 		<Spanish>Aguas de la Vida</Spanish>
 	</TEXT>
 	<TEXT>
@@ -166,7 +166,7 @@
 		<English>great beasts</English>
 		<French>grandes b&#234;tes</French>
 		<German>gro&#223;e Tiere</German>
-		<Italian>grandi bestie</Italian>
+		<Italian>grandi animali</Italian>
 		<Spanish>grandes bestias</Spanish>
 	</TEXT>
 </Civ4GameText>
