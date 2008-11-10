@@ -6749,7 +6749,7 @@ class CvMainInterface:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
-		#BugUtil.debugEvent(inputClass)
+		#BugUtil.debugInput(inputClass)
 # BUG - PLE - start
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
@@ -6778,6 +6778,7 @@ class CvMainInterface:
 			return 1
 # BUG - Great Person Bar - end
 
+# BUG - field of view slider - start
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_SLIDER_NEWSTOP):
 			if (inputClass.getFunctionName() == self.szSliderId):
 				screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -6785,6 +6786,7 @@ class CvMainInterface:
 				self.setFieldofView(screen, False)
 				self.setFieldofView_Text(screen)
 				MainOpt.setFieldOfView(self.iField_View)
+# BUG - field of view slider - end
 
 		return 0
 	
