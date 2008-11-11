@@ -276,11 +276,12 @@ class FavoriteCivicDetectorEvent:
 	def onBeginActivePlayerTurn(self, argsList):
 		""" Called when the active player can start making their moves. """
 		if gDetectionNecessary:
-			iTurn = argsList[0]
+			iActivePlayer = argsList[0]
+			iTurn = argsList[1]
 			BugUtil.debug("======================================================================")
 			BugUtil.debug("FavoriteCivicDetectorEvent.onBeginActivePlayerTurn() START Turn %d" % (iTurn))
 			doUpdate()
-			BugUtil.debug("END Turn")
+			BugUtil.debug("FavoriteCivicDetectorEvent.onBeginActivePlayerTurn() Update Complete.")
 
 	def onGameStart(self, argsList):
 		""" Called when a new game is started """
