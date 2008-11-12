@@ -326,6 +326,23 @@
 		<Spanish>When checked, displays an alert when a city will expand its cultural borders next turn.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYPENDINGOCCUPATION_TEXT</Tag>
+		<English>Pending</English>
+		<French>Prochain tour</French>
+		<German>Bevorstehend</German>
+		<Italian>Imminente</Italian>
+		<Spanish>Pending</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYPENDINGOCCUPATION_HOVER</Tag>
+		<English>When checked, displays an alert when a city will be pacified next turn, ending occupation.</English>
+		<French>When checked, displays an alert when a city will be pacified next turn, ending occupation.</French>
+		<German>When checked, displays an alert when a city will be pacified next turn, ending occupation.</German>
+		<Italian>When checked, displays an alert when a city will be pacified next turn, ending occupation.</Italian>
+		<Spanish>When checked, displays an alert when a city will be pacified next turn, ending occupation.</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYGROWTH_TEXT</Tag>
 		<English>Growth</English>
 		<French>Taille</French>
@@ -374,6 +391,23 @@
 		<Spanish>When checked, displays an alert when a city has become healthy or unhealthy.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_TEXT</Tag>
+		<English>Occupation</English>
+		<French>Occupation</French>
+		<German>Occupation</German>
+		<Italian>Occupation</Italian>
+		<Spanish>Occupation</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_HOVER</Tag>
+		<English>When checked, displays an alert when a city has been pacified, ending occupation.</English>
+		<French>When checked, displays an alert when a city has been pacified, ending occupation.</French>
+		<German>When checked, displays an alert when a city has been pacified, ending occupation.</German>
+		<Italian>When checked, displays an alert when a city has been pacified, ending occupation.</Italian>
+		<Spanish>When checked, displays an alert when a city has been pacified, ending occupation.</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYCANHURRYPOP_TEXT</Tag>
 		<English>Can Hurry w. Population</English>
 		<French>Précipiter à cout de Population</French>
@@ -405,6 +439,7 @@
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando una città può accelerare la produzione attuale mediante pagamenti in Oro.</Italian>
 		<Spanish>When checked, displays an alert once a city can hurry the item it's building with gold.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__TECHTRADE_TEXT</Tag>
 		<English>Technologies</English>

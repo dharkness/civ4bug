@@ -37,6 +37,10 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachHBox(left, comboBox)
 		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingHappiness")
 		self.addCheckbox(screen, comboBox, "Civ4lerts__CityHappiness")
+		comboBox = "Civ4lerts_ComboBoxOccupation"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingOccupation")
+		self.addCheckbox(screen, comboBox, "Civ4lerts__CityOccupation")
 		
 		self.addCheckbox(screen, left, "MoreCiv4lerts__CityPendingBorderExpansion")
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryPop")

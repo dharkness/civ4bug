@@ -33,6 +33,7 @@
 		<Italian>[COLOR_TECH_TEXT]%s1 è disposto a negoziare.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 está dispuesto a negociar.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_GOLD_TRADE</Tag>
 		<English>[COLOR_YIELD_COMMERCE]%s1 has %d2 gold available for trade.[COLOR_REVERT]</English>
@@ -49,6 +50,7 @@
 		<Italian>[COLOR_YIELD_COMMERCE]%s1 ha %d2 oro per turno disponibile per il commercio.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_YIELD_COMMERCE]%s1 tiene %d2 de oro por turno disponible para el comercio.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_GROWTH</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 will grow to size %d2 on the next turn.[COLOR_REVERT]</English>
@@ -65,6 +67,7 @@
 		<Italian>[COLOR_WARNING_TEXT]%s1 si ridurrà a grandezza %d2 al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se reducirá tamaño %d2 el próximo turno.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHEALTHY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will become unhealthy on the next turn.[COLOR_REVERT]</English>
@@ -81,6 +84,7 @@
 		<Italian>[COLOR_TECH_TEXT]%s1 diventerà salubre al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá sano el próximo turno.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_UNHAPPY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 will become unhappy on the next turn.[COLOR_REVERT]</English>
@@ -97,6 +101,7 @@
 		<Italian>[COLOR_TECH_TEXT]%s1 diventerà felice al prossimo turno.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá feliz el próximo turno.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_UNHEALTHY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 has become unhealthy.[COLOR_REVERT]</English>
@@ -113,6 +118,7 @@
 		<Italian>[COLOR_TECH_TEXT]%s1 è diventata salubre.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto sano.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_UNHAPPY</Tag>
 		<English>[COLOR_WARNING_TEXT]%s1 has become unhappy.[COLOR_REVERT]</English>
@@ -129,6 +135,7 @@
 		<Italian>[COLOR_TECH_TEXT]%s1 è diventata felice.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto feliz.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_GROWTH</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 has grown to size %d2.[COLOR_REVERT]</English>
@@ -145,6 +152,24 @@
 		<Italian>[COLOR_WARNING_TEXT]%s1 si è ridotta a grandezza %d2.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 se ha reducido tamaño %d2.[COLOR_REVERT]</Spanish>
 	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_PACIFIED</Tag>
+		<English>[COLOR_TECH_TEXT]%s1 will be pacified on the next turn.[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 sera apaisée sur le prochain tour.[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird auf der folgenden Umdrehung beruhigt.[COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 sarà pacificata sulla girata seguente.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]%s1 será pacificado en la vuelta siguiente.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PACIFIED</Tag>
+		<English>[COLOR_TECH_TEXT]%s1 has been pacified.[COLOR_REVERT]</English>
+		<French>[COLOR_TECH_TEXT]%s1 a été apaisée.[COLOR_REVERT]</French>
+		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 ist beruhigt worden![COLOR_REVERT]</German>
+		<Italian>[COLOR_TECH_TEXT]%s1 è stata pacificata.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_TECH_TEXT]Se ha pacificado %s1.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 can hurry %s2 for %d3[ICON_ANGRYPOP] with %d4[ICON_PRODUCTION] overflow and +1[ICON_UNHAPPY] for %d5 turns.[COLOR_REVERT]</English>

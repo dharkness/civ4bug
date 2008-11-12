@@ -91,6 +91,7 @@ class Civ4lerts:
 
 	def __init__(self, eventManager):
 		cityEvent = BeginActivePlayerTurnCityAlertManager(eventManager)
+		cityEvent.add(CityOccupation(eventManager))
 		cityEvent.add(CityGrowth(eventManager))
 		cityEvent.add(CityHealthiness(eventManager))
 		cityEvent.add(CityHappiness(eventManager))
@@ -545,7 +546,7 @@ class CityHealthiness(AbstractCityTestAlert):
 		# badHealth() doesn't take iExtra!
 		iHealthRate = city.healthRate(False, iExtra)
 		if (city.getEspionageHealthCounter() > 0):
-			iHealthRate -= 1
+			iHealthRate += 1
 		return iHealthRate < 0
 	
 	def _isShowAlert(self, passes):
@@ -569,6 +570,46 @@ class CityHealthiness(AbstractCityTestAlert):
 		else:
 			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY", (city.getName(), )),
 					HEALTHY_ICON)
+
+
+### Anarchy
+
+class CityOccupation(AbstractCityTestAlert):
+	"""
+	Displays an alert when a city switches to/from occupation.
+	
+	Test: True if the city is under occupation.
+	"""
+	def __init__(self, eventManager):
+		AbstractCityTestAlert.__init__(self, eventManager)
+	
+	def _passesTest(self, city):
+		return city.isOccupation()
+
+	def _willPassTest(self, city):
+		return city.isOccupation() and city.getOccupationTimer() > 1
+	
+	def _isShowAlert(self, passes):
+		return Civ4lertsOpt.isShowCityOccupationAlert()
+	
+	def _getAlertMessageIcon(self, city, passes):
+		if (passes):
+			BugUtil.debug("%s passed occupation test, ignoring", city.getName())
+			return (None, None)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PACIFIED", (city.getName(), )),
+					HAPPY_ICON)
+	
+	def _isShowPendingAlert(self, passes):
+		return Civ4lertsOpt.isShowCityPendingOccupationAlert()
+
+	def _getPendingAlertMessageIcon(self, city, passes):
+		if (passes):
+			BugUtil.warn("%s passed pending occupation test, ignoring", city.getName())
+			return (None, None)
+		else:
+			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_PACIFIED", (city.getName(), )),
+					HAPPY_ICON)
 
 
 ### Hurrying Production
