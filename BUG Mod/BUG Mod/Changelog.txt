@@ -20,6 +20,7 @@ Features:
 - Added FoodAssist: net food added to stores per turn and turns until starvation
 - Added Advanced Scoreboard option to show Civ ID number; layout character is "I" but it's not in the default layout
 - Added EventSigns: plots whose yields change due to random events marked on the map with signs
+- Added Civ4lert for cities that will/have come out of occupation after capture or revolt.
 
 
 Bugfixes:
