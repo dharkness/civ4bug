@@ -175,11 +175,6 @@ RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 DEFAULT_FIELD_OF_VIEW = 42
 # BUG - field of view slider - end
 
-# BUG - Event Manager - start
-g_iActiveTurn = -1
-g_bEndTurnFired = False
-# BUG - Event Manager - end
-
 g_pSelectedUnit = 0
 
 class CvMainInterface:
@@ -277,6 +272,7 @@ class CvMainInterface:
 			self.PLOT_LIST_UP_NAME 			: self.getPlotListUpName,
 			self.PLOT_LIST_DOWN_NAME 		: self.getPlotListDownName,
 			
+			"PleViewModeStyle1"				: self.onClickPLEViewMode,
 			self.PLE_VIEW_MODE   	   	    : self.onClickPLEViewMode,
 			self.PLE_MODE_STANDARD			: self.onClickPLEModeStandard,
 			self.PLE_MODE_MULTILINE			: self.onClickPLEModeMultiline,
@@ -933,6 +929,10 @@ class CvMainInterface:
 		nDist	= 22
 		nGap    = 10
 		nNum	= 0
+		
+		# PLE Style-Mode buttons
+		#screen.setImageButton( "PleViewModeStyle1", "", 20, 400, 28, 28, WidgetTypes.WIDGET_GENERAL, 1, -1 )
+		#screen.setStyle( "PleViewModeStyle1", "Button_BUG_PLE_ViewMode_SingleRow_Style" )
 		
 		# place the PLE mode switches
 		nXOff += nDist
@@ -2867,12 +2867,7 @@ class CvMainInterface:
 # BUG - Options - end
 
 # BUG - Event Manager - start
-		global g_iActiveTurn
-		global g_bEndTurnFired
-		if g_iActiveTurn != gc.getGame().getGameTurn():
-			g_iActiveTurn = gc.getGame().getGameTurn()
-			g_bEndTurnFired = False
-			CvEventInterface.getEventManager().fireEvent("BeginActivePlayerTurn", gc.getGame().getActivePlayer(), g_iActiveTurn)
+		CvEventInterface.getEventManager().updateActiveTurn()
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -2931,9 +2926,7 @@ class CvMainInterface:
 					bShow = True
 				elif ( CyInterface().shouldDisplayEndTurn() ):
 # BUG - Event Manager - start
-					if ( not g_bEndTurnFired ):
-						g_bEndTurnFired = True
-						CvEventInterface.getEventManager().fireEvent("endTurnReady", g_iActiveTurn)
+					CvEventInterface.getEventManager().updateEndTurn()
 # BUG - Event Manager - end
 # BUG - Reminders - start
 					if ( ReminderEventManager.g_turnReminderTexts ):

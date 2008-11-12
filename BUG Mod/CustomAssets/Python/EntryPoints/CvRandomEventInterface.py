@@ -4211,13 +4211,13 @@ def placeLandmark(pPlot, sEventType, iFood, iProd, iComm, bIsSign, iSignOwner):
 				pPlayer = gc.getPlayer(iPlayer)
 				iTeam = pPlayer.getTeam()
 				if ( (not pPlayer.isNone()) and (pPlayer.isHuman()) and (pPlayer.isAlive()) ):
-					EventSigns.addSign(pPlot, iPlayer, str(sCaption))
+					EventSigns.addSign(pPlot, iPlayer, sCaption)
 		else:
 			pPlayer = gc.getPlayer(iSignOwner)
 			iTeam = pPlayer.getTeam()
-			EventSigns.addSign(pPlot, iSignOwner, str(sCaption))
+			EventSigns.addSign(pPlot, iSignOwner, sCaption)
 	else:
-		engine.addLandmark(pPlot, str(sCaption))
+		engine.addLandmark(pPlot, sCaption)
 
 	return True
 

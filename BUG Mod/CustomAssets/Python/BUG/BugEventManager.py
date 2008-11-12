@@ -119,6 +119,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.bMultiPlayer = False
 		self.bAllowCheats = False
 		
+		# used for BeginActivePlayerTurn
+		self.iActiveTurn = -1
+		self.bEndTurnFired = False
+		
 		# map the initial EventHandlerMap values into the new data structure
 		for eventType, eventHandler in self.EventHandlerMap.iteritems():
 			self.setEventHandler(eventType, eventHandler)
@@ -128,6 +132,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("LanguageChanged")
 		self.addEvent("ResolutionChanged")
+		
+		self.addEventHandler("OnLoad", self.resetActiveTurn)
+		self.addEventHandler("GameStart", self.resetActiveTurn)
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -300,10 +307,29 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self._handleDefaultEvent(eventType, argsList)
 	
 	
+	def resetActiveTurn(self, argsList):
+		self.iActiveTurn = -1
+		self.bEndTurnFired = False
+	
+	def updateActiveTurn(self):
+		"""Called from CvMainInterface.updateScreen() every 250 milliseconds."""
+		iGameTurn = gc.getGame().getGameTurn()
+		if self.iActiveTurn != iGameTurn:
+			self.iActiveTurn = iGameTurn
+			self.bEndTurnFired = False
+			self.fireEvent("BeginActivePlayerTurn", gc.getGame().getActivePlayer(), iGameTurn)
+	
+	def updateEndTurn(self):
+		"""Called from CvMainInterface.updateScreen() when end turn button is shown."""
+		if not self.bEndTurnFired:
+			self.bEndTurnFired = True
+			self.fireEvent("endTurnReady", self.iActiveTurn)
+
+	
 	def onPreGameStart(self, argsList):
 		"""Fired from CvAppInterface.preGameStart()."""
 		pass
-
+	
 	def onBeginActivePlayerTurn(self, argsList):
 		"""Called when the active player can start their turn."""
 		ePlayer, iGameTurn = argsList

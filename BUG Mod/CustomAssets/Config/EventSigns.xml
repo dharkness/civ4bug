@@ -16,7 +16,9 @@
 		<section id="EventSigns">
 			<option id="Enabled" key="Enabled" 
 					type="boolean" default="True" 
-					get="isEnabled"/>
+					get="isEnabled">
+				<change module="EventSigns" function="enabledOptionChanged"/>
+			</option>
 		</section>
 	</options>
 
