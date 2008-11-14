@@ -54,6 +54,8 @@ def enabledOptionChanged (pIniObject, bNewValue):
 	global g_bShowSigns
 	if g_bShowSigns != bNewValue:
 		g_bShowSigns = bNewValue
+		if gSavedSigns == None:
+			initData()
 		gSavedSigns.processSigns(g_bShowSigns)
 	return True
 
