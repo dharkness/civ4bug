@@ -15,6 +15,7 @@ from CvPythonExtensions import *
 
 import AttitudeUtil
 import BugUtil
+import PlayerUtil
 import SdToolKit
 
 # globals
@@ -77,6 +78,16 @@ def doUpdate ():
 					BugUtil.debug(" -- Skipping; active team has not met team we are updating")
 					continue
 				favorite = gFavoriteByPlayer[iPlayer]
+				# Check Diplomacy first (if necessary)
+				if not favorite.isKnown():
+					if PlayerUtil.isGivingFavoriteCivicDenial(pPlayer, pActivePlayer):
+						BugUtil.debug(" -- Player showing FAVORITE_CIVIC trade denial; must be running his/her favorite." )
+						for eCategory in range(gc.getNumCivicOptionInfos()):
+							eCivic = pPlayer.getCivics(eCategory)
+							for eOtherCivic in gCivicsByCategory[eCategory]:
+								if (eOtherCivic != eCivic):
+									favorite.removePossible(eOtherCivic)
+				# Now take Attitude survey (if necessary)
 				if not favorite.isKnown():
 					for iOtherPlayer in range(gc.getMAX_PLAYERS()):
 						pOtherPlayer = gc.getPlayer(iOtherPlayer)
@@ -119,7 +130,7 @@ def doUpdate ():
 										BugUtil.debug("     -- Players do NOT share civic %d (%s) and %s is NOT giving the diplo modifier." 
 													  % (eCivic, gc.getCivicInfo(eCivic).getText(), pPlayer.getName()))
 										BugUtil.debug("         -- This doesn't tell us anything new.") 
-				BugUtil.debug(str(favorite))
+				BugUtil.debug(" -- Finished update for %s: %s" % (pPlayer.getName(), str(favorite)))
 		#dump()
 
 def initData ():

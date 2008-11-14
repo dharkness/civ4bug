@@ -51,6 +51,7 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugUtil
 
 gc = CyGlobalContext()
 
@@ -503,4 +504,27 @@ def isWHEOOH(playerOrID, askingPlayerOrID):
 			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
 			if denial == DenialTypes.DENIAL_TOO_MANY_WARS:
 				return True
+	return False
+
+def isGivingFavoriteCivicDenial(playerOrID, askingPlayerOrID):
+	"""
+	Returns True if askingPlayerOrID can see that playerOrID is refusing Civic changes
+	because of the "that would go against everything we stand for" FAVORITE_CIVIC denial.
+	
+	In the unmodified game, this denial type will show for every available civic choice 
+	so long as they are running their favorite civic; so we can't tell which civic is the 
+	favorite, but we do know that one of their current civics is the favorite one.
+	"""
+	tradeData = TradeData()
+	tradeData.ItemType = TradeableItems.TRADE_CIVIC
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	if askingTeam.isHasMet(askedTeam.getID()):
+		for iCategory in range(gc.getNumCivicOptionInfos()):
+			iCivic = askingPlayer.getCivics(iCategory)
+			tradeData.iData = iCivic
+			if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
+				denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
+				if denial == DenialTypes.DENIAL_FAVORITE_CIVIC:
+					return True
 	return False
