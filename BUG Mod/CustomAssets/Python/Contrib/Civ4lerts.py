@@ -69,6 +69,7 @@ __version__ = "$Revision: 1.2 $"
 
 from CvPythonExtensions import *
 import BugCore
+import BugUtil
 
 
 # Must set alerts to "not immediate" to have icons show up
