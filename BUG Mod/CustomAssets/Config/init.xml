@@ -50,6 +50,15 @@
 	<symbol id="war" from="COMMERCE_GOLD" offset="25"/>
 	<symbol id="peace"/>
 	<symbol id="space"/>  <!-- blank symbol the same size as other standard symbols -->
+	<symbol id="militaryinstructor" name="MILITARY_INSTRUCTOR"/>
+	<symbol id="land" name="DOMAIN_LAND"/>
+	<symbol id="sea" name="DOMAIN_SEA"/>
+	<symbol id="air" name="DOMAIN_AIR"/>
+	<symbol id="sentry" name="ORDER_SENTRY"/>
+	<symbol id="fortify" name="ORDER_FORTIFY"/>
+	<symbol id="wait" name="ORDER_WAIT"/>
+	<symbol id="upgrade"/>
+	<symbol id="cancel"/>
 	<symbol id="citizen" from="POWER" offset="1"/>
 	<symbol id="greatgeneral" name="GREAT_GENERAL"/>
 	
