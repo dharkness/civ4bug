@@ -33,7 +33,12 @@
 				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
 			</list>
 
-			<!-- Exotic Foreign Advisor (F4) by Requies -->
+			<!-- Finance Advisor by EmperorFool -->
+			<option id="BugFinanceAdvisor" key="BUG Finance Advisor" 
+					type="boolean" default="True" 
+					get="isBugFinanceAdvisor"/>
+
+			<!-- Exotic Foreign Advisor (F4) by Requies, Dresden -->
 			<option id="EFAGlanceTab" key="EFA Glance" 
 					type="boolean" default="True" 
 					get="isShowGlance"/>

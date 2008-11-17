@@ -22,7 +22,39 @@ import PlayerUtil
 
 gc = CyGlobalContext()
 
+DOMESTIC_TRADE = 0
+DOMESTIC_OVERSEAS_TRADE = 1
+FOREIGN_TRADE = 2
+FOREIGN_OVERSEAS_TRADE = 3
+
+MAX_TRADE_ROUTES = gc.getDefineINT("MAX_TRADE_ROUTES")
+
 TRADE_FORMATS = {}
+
+
+## Trade Route functions
+
+def calculateTradeRoutes(playerOrID):
+	tradeTotals = [0, 0, 0, 0]
+	for city in PlayerUtil.playerCities(playerOrID):
+		eTeam = city.getTeam()
+		areaID = city.area().getID()
+		for i in range(city.getTradeRoutes()):    # MAX_TRADE_ROUTES):
+			tradeCity = city.getTradeCity(i)
+			if tradeCity and tradeCity.getOwner() >= 0:
+				trade = city.calculateTradeYield(YieldTypes.YIELD_COMMERCE, city.calculateTradeProfit(tradeCity))
+				overseas = tradeCity.area().getID() == areaID
+				if tradeCity.getTeam() == eTeam:
+					if overseas:
+						tradeTotals[DOMESTIC_OVERSEAS_TRADE] += trade
+					else:
+						tradeTotals[DOMESTIC_TRADE] += trade
+				else:
+					if overseas:
+						tradeTotals[FOREIGN_OVERSEAS_TRADE] += trade
+					else:
+						tradeTotals[FOREIGN_TRADE] += trade
+	return tradeTotals
 
 
 ## Trade Class

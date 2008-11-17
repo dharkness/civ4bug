@@ -3172,6 +3172,22 @@
 		<Spanish>Select the amount of space to leave to the sides of the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No space at all.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Small[COLOR_REVERT] - Same amount of space as Foreign and Military Advisors.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Medium[COLOR_REVERT] - Twice the space as Foreign and Military Advisors.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Large[COLOR_REVERT] - Enough space to show all the culture sliders on the left and same amount of space on the right.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Large Left[COLOR_REVERT] - Enough space to show all the culture sliders to the left but just a small amount of space on the right.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGFINANCEADVISOR_TEXT</Tag>
+		<English>BUG Finance Advisor</English>
+		<French>BUG Finance Advisor</French>
+		<German>BUG Finance Advisor</German>
+		<Italian>BUG Finance Advisor</Italian>
+		<Spanish>BUG Finance Advisor</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGFINANCEADVISOR_HOVER</Tag>
+		<English>When checked, uses the BUG Finance Advisor (requires restart).</English>
+		<French>When checked, uses the BUG Finance Advisor (requires restart).</French>
+		<German>When checked, uses the BUG Finance Advisor (requires restart).</German>
+		<Italian>When checked, uses the BUG Finance Advisor (requires restart).</Italian>
+		<Spanish>When checked, uses the BUG Finance Advisor (requires restart).</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAGLANCETAB_TEXT</Tag>
 		<English>Glance Tab</English>
 		<French>Page Coup d'Oeuil</French>
@@ -3655,6 +3671,14 @@
 		<German>Inland [F1]:</German>
 		<Italian>Interno [F1]:</Italian>
 		<Spanish>Domestic [F1]:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_FINANCE_ADVISOR</Tag>
+		<English>Finance [F2]:</English>
+		<French>Finance [F2]:</French>
+		<German>Finance [F2]:</German>
+		<Italian>Finance [F2]:</Italian>
+		<Spanish>Finance [F2]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_FOREIGN_ADVISOR</Tag>

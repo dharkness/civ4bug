@@ -1088,6 +1088,33 @@
 		<Italian>L-</Italian>
 		<Spanish>L-</Spanish>
 	</TEXT>
+	
+	<!-- BUG Finance Advisor -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_DOMESTIC_TRADE</Tag>
+		<English>Domestic Trade</English>
+		<French>Domestic Trade</French>
+		<German>Domestic Trade</German>
+		<Italian>Domestic Trade</Italian>
+		<Spanish>Domestic Trade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_FOREIGN_TRADE</Tag>
+		<English>Foreign Trade</English>
+		<French>Foreign Trade</French>
+		<German>Foreign Trade</German>
+		<Italian>Foreign Trade</Italian>
+		<Spanish>Foreign Trade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_COMMERCE</Tag>
+		<English>Total Commerce</English>
+		<French>Commerce total</French>
+		<German>Gesamthandel</German>
+		<Italian>Commercio totale</Italian>
+		<Spanish>Comercio total</Spanish>
+	</TEXT>
 
 	<!-- Foreign Advisor Info Screen Header Text
 	
