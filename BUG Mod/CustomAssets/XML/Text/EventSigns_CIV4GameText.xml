@@ -21,7 +21,7 @@
 		<Tag>TXT_KEY_SIGN_FORMAT_FOOD</Tag>
 		<English>%D1 F</English>
 		<French>%D1 F</French>
-		<German>%D1 F</German>
+		<German>%D1 N</German>
 		<Italian>%D1 Cibo</Italian>
 		<Spanish>%D1 F</Spanish>
 	</TEXT>
@@ -37,25 +37,25 @@
 		<Tag>TXT_KEY_SIGN_FORMAT_COMM</Tag>
 		<English>%D1 C</English>
 		<French>%D1 C</French>
-		<German>%D1 C</German>
+		<German>%D1 G</German>
 		<Italian>%D1 Comm.</Italian>
 		<Spanish>%D1 C</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_HORTICULTURE_1</Tag>
-		<English>remedies</English>
-		<French>rem&#232;des</French>
-		<German>Hilfsmittel</German>
-		<Italian>rimedi</Italian>
-		<Spanish>remedios</Spanish>
+		<English>medicine</English>
+		<French>médicament</French>
+		<German>Medizin</German>
+		<Italian>medicina</Italian>
+		<Spanish>medicina</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_HORTICULTURE_2</Tag>
-		<English>remedies</English>
-		<French>rem&#232;des</French>
-		<German>Hilfsmittel</German>
-		<Italian>rimedi</Italian>
-		<Spanish>remedios</Spanish>
+		<English>medicine</English>
+		<French>médicament</French>
+		<German>Medizin</German>
+		<Italian>medicina</Italian>
+		<Spanish>medicina</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_PARROTS_1</Tag>
@@ -69,7 +69,7 @@
 		<Tag>TXT_KEY_SIGN_EVENT_JADE_1</Tag>
 		<English>jade</English>
 		<French>jade</French>
-		<German>jade</German>
+		<German>Jade</German>
 		<Italian>giada</Italian>
 		<Spanish>jade</Spanish>
 	</TEXT>
@@ -87,7 +87,7 @@
 		<French>salp&#234;tre</French>
 		<German>Salpeter</German>
 		<Italian>salnitro</Italian>
-		<Spanish>Salitre</Spanish>
+		<Spanish>salitre</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_CLUNKER_COAL_1</Tag>
@@ -109,64 +109,64 @@
 		<Tag>TXT_KEY_SIGN_EVENT_TRUFFLES_1</Tag>
 		<English>truffles</English>
 		<French>truffes</French>
-		<German>Tr&#252;ffeln</German>
+		<German>Trüffel</German>
 		<Italian>tartufi</Italian>
-		<Spanish>trufas</Spanish>
+		<Spanish>Trufas</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_SEA_TURTLES_1</Tag>
 		<English>sea turtles</English>
 		<French>tortues de mer</French>
-		<German>Seeschildkr&#246;ten</German>
-		<Italian>testuggini</Italian>
-		<Spanish>tortugas marinas</Spanish>
+		<German>Meeresschildkröten</German>
+		<Italian>Testuggini</Italian>
+		<Spanish>Tortugas marinas</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_TIN_1</Tag>
-		<English>tin</English>
+		<English>Tin</English>
 		<French>&#233;tain</French>
 		<German>Zinn</German>
-		<Italian>piombo</Italian>
-		<Spanish>lata</Spanish>
+		<Italian>stagno</Italian>
+		<Spanish>esta&#241;o</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_PRAIRIE_DOGS_1</Tag>
 		<English>prairie dogs</English>
 		<French>chiens de prairie</French>
-		<German>Pr&#228;riehunde</German>
-		<Italian>cani di prateria</Italian>
-		<Spanish>perros de pradera</Spanish>
+		<German>Präriehunde</German>
+		<Italian>cani della prateria</Italian>
+		<Spanish>perros de las praderas</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_APPLESEED_1</Tag>
-		<English>apples</English>
-		<French>pommes</French>
-		<German>&#196;pfel</German>
-		<Italian>mele</Italian>
-		<Spanish>manzanas</Spanish>
+		<English>apple trees</English>
+		<French>pommiers</French>
+		<German>Apfelbäume</German>
+		<Italian>meli</Italian>
+		<Spanish>manzanos</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_FORTY_THIEVES_1</Tag>
-		<English>local legends</English>
-		<French>l&#233;gende locales</French>
-		<German>lokale Legenden</German>
-		<Italian>leggende locali</Italian>
-		<Spanish>leyendas locales</Spanish>
+		<English>local legend</English>
+		<French>l&#233;gende locale</French>
+		<German>örtliche Legende</German>
+		<Italian>leggenda locale</Italian>
+		<Spanish>leyenda local</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_WATERS_OF_LIFE_1</Tag>
 		<English>Waters of Life</English>
-		<French>Les Eaux de la Vie</French>
+		<French>Eaux de la Vie</French>
 		<German>Wasser des Lebens</German>
-		<Italian>acque vitali</Italian>
+		<Italian>Acque della vita</Italian>
 		<Spanish>Aguas de la Vida</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_SIGN_EVENT_GREAT_BEAST_1</Tag>
-		<English>great beasts</English>
-		<French>grandes b&#234;tes</French>
-		<German>gro&#223;e Tiere</German>
-		<Italian>grandi animali</Italian>
-		<Spanish>grandes bestias</Spanish>
+		<English>great beast</English>
+		<French>enorme animal</French>
+		<German>riesiges Tier</German>
+		<Italian>grande animale</Italian>
+		<Spanish>gran bestia</Spanish>
 	</TEXT>
 </Civ4GameText>
