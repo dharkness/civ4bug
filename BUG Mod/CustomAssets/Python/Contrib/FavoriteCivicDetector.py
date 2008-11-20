@@ -185,17 +185,26 @@ def dump (*args):
 	else:
 		BugUtil.debug("FavoriteCivicDetector.dump() Nothing to dump; detection isn't necessary.")
 
-# The class that handles internal data management of the favorite civics
 NO_CIVIC = -1
 class FavoriteCivic:
+	""" The class that handles internal data management of the favorite civics.
+
+	On initialization, the set of possible civics is empty to conserve space; we
+	only begin tracking civics and therefore explicitly listing possibilities once
+	the active player has met the other player and some knowledge has been gained.
+
+	This means there is some special handling on methods such as isPossible() to 
+	show all civics as possible even though the internal data structure is empty.
+	"""
+
 	def __init__(self, iPlayer):
 		""" Class initialization. Parameter is this player's id. """
 		self.iPlayer = iPlayer
-		self.reset()
-
-	def reset(self):
-		""" Resets data for this instance to defaults. """
 		self.eFavorite = NO_CIVIC
+		self.possibles = None
+
+	def initPossibles(self):
+		""" Initializes set of possible favorites and removes starter civics. """
 		self.possibles = set(range(gc.getNumCivicInfos()))
 		pPlayer = gc.getPlayer(self.iPlayer)
 		if ( pPlayer and (not pPlayer.isNone()) and pPlayer.isAlive() and (not pPlayer.isHuman())
@@ -204,6 +213,10 @@ class FavoriteCivic:
 			pCiv = gc.getCivilizationInfo(pPlayer.getCivilizationType())
 			for eCategory in range(gc.getNumCivicOptionInfos()):
 				self.possibles.remove(pCiv.getCivilizationInitialCivics(eCategory))
+
+	def isInitialState(self):
+		""" Returns True if this structure is unchanged from initialization. """
+		return (self.eFavorite == NO_CIVIC and self.possibles == None)
 
 	def isKnown(self):
 		""" Do we know this player's favorite civic? """
@@ -227,13 +240,17 @@ class FavoriteCivic:
 
 	def isPossible(self, eCivic):
 		""" Returns True if given civic might be this player's favorite. """
-		if (self.isKnown()):
+		if self.isKnown():
 			return (self.eFavorite == eCivic)
+		elif self.isInitialState():
+			return True
 		else:
 			return (eCivic in self.possibles)
 
 	def removePossible(self, eCivic):
 		""" Removes given civic from the possibilities for this player. """
+		if self.isInitialState():
+			self.initPossibles()
 		if self.isPossible(eCivic):
 			self.possibles.remove(eCivic)
 			if len(self.possibles) == 1:
@@ -243,8 +260,10 @@ class FavoriteCivic:
 
 	def getPossibles(self):
 		""" Returns tuple of ids for all possible favorite civics for this player. """
-		if (self.isKnown()):
+		if self.isKnown():
 			return (self.eFavorite,)
+		elif self.isInitialState():
+			return tuple(range(gc.getNumCivicInfos()))
 		else:
 			return tuple(self.possibles)
 
@@ -252,13 +271,15 @@ class FavoriteCivic:
 		""" Returns number of possible favorite civics for this player. """
 		if (self.isKnown()):
 			return 1
+		elif self.isInitialState():
+			return gc.getNumCivicInfos()
 		else:
 			return len(self.possibles)
 
 	def __str__ (self):
 		""" String representation of class instance. """
 		szReturnText = "FavoriteCivic { iPlayer = %d, " % (self.iPlayer)
-		szText = ""
+		szText = "UNKNOWN"
 		if self.isKnown():
 			szText = gc.getCivicInfo(self.eFavorite).getText()
 		szReturnText = szReturnText + "eFavorite: %d (%s), " % (self.eFavorite, szText)
@@ -321,10 +342,15 @@ class FavoriteCivicDetectorEvent:
 		""" Called before a game is actually saved """
 		#BugUtil.debug("FavoriteCivicDetectorEvent.onPreSave()")
 		if gDetectionNecessary:
-			global gFavoriteByPlayer
 			if (gFavoriteByPlayer):
-				SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gFavoriteByPlayer)
-				#BugUtil.debug("Data Saved to sdtoolkit")
+				bNeedToSave = False
+				for iPlayer in range(gc.getMAX_PLAYERS()):
+					if not gFavoriteByPlayer[iPlayer].isInitialState():
+						bNeedToSave = True
+						break
+				if (bNeedToSave):
+					SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gFavoriteByPlayer)
+					#BugUtil.debug("Data Saved to sdtoolkit")
 
 	def onCivicDemanded(self, argsList):
 		""" Called when AI demands you switch to their favorite civic. """
