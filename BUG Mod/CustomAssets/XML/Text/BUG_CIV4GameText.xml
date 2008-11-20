@@ -1115,6 +1115,14 @@
 		<Italian>Commercio totale</Italian>
 		<Spanish>Comercio total</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_BUILDING_COUNT_AVERAGE</Tag>
+		<English>(%d1 x %s2[ICON_GOLD] avg)</English>
+		<French>(%d1 x %s2[ICON_GOLD] avg)</French>
+		<German>(%d1 x %s2[ICON_GOLD] avg)</German>
+		<Italian>(%d1 x %s2[ICON_GOLD] avg)</Italian>
+		<Spanish>(%d1 x %s2[ICON_GOLD] avg)</Spanish>
+	</TEXT>
 
 	<!-- Foreign Advisor Info Screen Header Text
 	
