@@ -392,7 +392,7 @@ class EventSignsEventHandler:
 	def onPreSave(self, argsList):
 		""" Called before a game is actually saved """
 		#BugUtil.debug("EventSignsEventHandler.onPreSave()")
-		if (gSavedSigns):
+		if (gSavedSigns and (not gSavedSigns.isEmpty())):
 			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gSavedSigns)
 			#BugUtil.debug("Data Saved to sdtoolkit\n %s" % (gSavedSigns))
 
