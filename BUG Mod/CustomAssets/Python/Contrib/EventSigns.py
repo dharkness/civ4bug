@@ -108,7 +108,7 @@ class MapSigns:
 
 	def isEmpty (self):
 		""" Check to see if object has any PlotSigns data. """
-		return (len(self.signDict) == 0)
+		return (len(self.plotDict) == 0)
 
 	def getPlotSigns (self, pPlot):
 		""" Returns PlotSigns object for given Plot. """
