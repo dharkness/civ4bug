@@ -1117,11 +1117,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_BUILDING_COUNT_AVERAGE</Tag>
-		<English>(%d1 x %s2[ICON_GOLD] avg)</English>
-		<French>(%d1 x %s2[ICON_GOLD] avg)</French>
-		<German>(%d1 x %s2[ICON_GOLD] avg)</German>
-		<Italian>(%d1 x %s2[ICON_GOLD] avg)</Italian>
-		<Spanish>(%d1 x %s2[ICON_GOLD] avg)</Spanish>
+		<English>(%d1 &#215; %s2[ICON_GOLD])</English>
+		<French>(%d1 &#215; %s2[ICON_GOLD])</French>
+		<German>(%d1 &#215; %s2[ICON_GOLD])</German>
+		<Italian>(%d1 &#215; %s2[ICON_GOLD])</Italian>
+		<Spanish>(%d1 &#215; %s2[ICON_GOLD])</Spanish>
 	</TEXT>
 
 	<!-- Foreign Advisor Info Screen Header Text
@@ -1198,6 +1198,33 @@
 		<German>Religion</German>
 		<Italian>Religione</Italian>
 		<Spanish>Religi&#243;n</Spanish>
+	</TEXT>
+	
+	<!-- Customizable Domestic Advisor -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_SETTLED_SPECIALISTS</Tag>
+		<English>Settled Specialists</English>
+		<French>
+			<Text>Sp&#233;cialistes</Text>
+			<Gender>Male</Gender>
+			<Plural>1</Plural>
+		</French>
+		<German>
+			<Text>Spezialisten</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</German>
+		<Italian>
+			<Text>Specialisti</Text>
+			<Gender>Male</Gender>
+			<Plural>0:1</Plural>
+		</Italian>
+		<Spanish>
+			<Text>Especialistas</Text>
+			<Gender>Male</Gender>
+			<Plural>1</Plural>
+		</Spanish>
 	</TEXT>
 
 </Civ4GameText>
