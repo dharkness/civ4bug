@@ -19,6 +19,22 @@
 		<Spanish>[COLOR_MAGENTA]El límite cultural de %s1's es alrededor ampliarse.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_CITY_FOUNDED</Tag>
+		<English>%s1_Player has founded %s2_City.</English>
+		<French>%s1_Player has founded %s2_City.</French>
+		<German>%s1_Player has founded %s2_City.</German>
+		<Italian>%s1_Player has founded %s2_City.</Italian>
+		<Spanish>%s1_Player has founded %s2_City.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MORECIV4LERTS_CITY_FOUNDED_UNSEEN</Tag>
+		<English>%s1_Player has founded %s2_City in a distant land.</English>
+		<French>%s1_Player has founded %s2_City in a distant land.</French>
+		<German>%s1_Player has founded %s2_City in a distant land.</German>
+		<Italian>%s1_Player has founded %s2_City in a distant land.</Italian>
+		<Spanish>%s1_Player has founded %s2_City in a distant land.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_MORECIV4LERTS_POP_EXCEEDS_LIMIT</Tag>
 		<English>[COLOR_WARNING_TEXT]Your population: %d1 (%s2) exceeds the Domination Limit: %d3 (%s4)[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]Votre population : %d1 (%s2) dépasse la limite de domination : %d3 (%s4)[COLOR_REVERT]</French>

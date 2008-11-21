@@ -22,6 +22,11 @@
 					get="isShowCityPendingExpandBorderAlert" set="setShowCityPendingExpandBorderAlert" 
 					label="Pending Border Expansion" 
 					help="When checked, displays an alert when a city will expand its curltural borders next turn."/>
+			<option id="CityFounded" key="City Founded" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowCityFoundedAlert" set="setShowCityFoundedAlert" 
+					label="Founded by Rival" 
+					help="When checked, displays an alert when a rival founds a city."/>
 			
 			<!-- Trade -->
 			<option id="TechTrade" key="CheckForNewTrades" 

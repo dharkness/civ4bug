@@ -25,6 +25,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# Cities
 		self.addLabel(screen, left, "Alerts_City", "Cities:")
+		self.addCheckbox(screen, left, "Civ4lerts__CityFounded")
 		comboBox = "Civ4lerts_ComboBoxGrowth"
 		screen.attachHBox(left, comboBox)
 		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingGrowth")
@@ -45,7 +46,6 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "MoreCiv4lerts__CityPendingBorderExpansion")
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryPop")
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryGold")
-		self.addSpacer(screen, left, "Alerts_Tab")
 		
 		# Diplomacy
 		self.addLabel(screen, center, "Alerts_Diplomacy", "Diplomacy:")
