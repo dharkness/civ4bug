@@ -290,3 +290,72 @@ def testList():
 		makeTrade(TradeableItems.TRADE_CITY, 1),
 		makeTrade(TradeableItems.TRADE_GOLD_PER_TURN, 6),
 	])
+
+STATUS_TRADE_ITEMS = (
+	(TradeableItems.TRADE_MAPS, "Map"),
+	(TradeableItems.TRADE_VASSAL, "Vassal"),
+	(TradeableItems.TRADE_SURRENDER, "Surrender"),
+	(TradeableItems.TRADE_OPEN_BORDERS, "Borders"),
+	(TradeableItems.TRADE_DEFENSIVE_PACT, "Pact"),
+	(TradeableItems.TRADE_PERMANENT_ALLIANCE, "Alliance"),
+	(TradeableItems.TRADE_PEACE_TREATY, "Peace"),
+)
+DENIALS = {
+	DenialTypes.NO_DENIAL : "None",
+	DenialTypes.DENIAL_UNKNOWN : "Unknown",
+	DenialTypes.DENIAL_NEVER : "Never",
+	DenialTypes.DENIAL_TOO_MUCH : "Too Much",
+	DenialTypes.DENIAL_MYSTERY : "Mystery",
+	DenialTypes.DENIAL_JOKING : "Joking",
+	DenialTypes.DENIAL_ANGER_CIVIC : "Anger Civic",
+	DenialTypes.DENIAL_FAVORITE_CIVIC : "Favorite Civic",
+	DenialTypes.DENIAL_MINORITY_RELIGION : "Minority Religion",
+	DenialTypes.DENIAL_CONTACT_THEM : "Contact Them",
+	DenialTypes.DENIAL_VICTORY : "Victory",
+	DenialTypes.DENIAL_ATTITUDE : "Attitude",
+	DenialTypes.DENIAL_ATTITUDE_THEM : "Attitude Them",
+	DenialTypes.DENIAL_TECH_WHORE : "Tech Whore",
+	DenialTypes.DENIAL_TECH_MONOPOLY : "Tech Monopoly",
+	DenialTypes.DENIAL_POWER_US : "Power Us",
+	DenialTypes.DENIAL_POWER_YOU : "Power You",
+	DenialTypes.DENIAL_POWER_THEM : "Power Them",
+	DenialTypes.DENIAL_TOO_MANY_WARS : "WHEOOH",
+	DenialTypes.DENIAL_NO_GAIN : "No Gain",
+	DenialTypes.DENIAL_NOT_ALLIED : "Not Allied",
+	DenialTypes.DENIAL_RECENT_CANCEL : "Recent Cancel",
+	DenialTypes.DENIAL_WORST_ENEMY : "Worst Enemy",
+	DenialTypes.DENIAL_POWER_YOUR_ENEMIES : "Power Your Enemies",
+	DenialTypes.DENIAL_TOO_FAR : "Too Far",
+	# these aren't available during startup (dunno about later)
+	#DenialTypes.DENIAL_VASSAL : "Vassal",
+	#DenialTypes.DENIAL_WAR_NOT_POSSIBLE_US : "War Not Possible Us",
+	#DenialTypes.DENIAL_WAR_NOT_POSSIBLE_THEM : "War Not Possible Them",
+	#DenialTypes.DENIAL_PEACE_NOT_POSSIBLE_US : "Peace Not Possible Us",
+	#DenialTypes.DENIAL_PEACE_NOT_POSSIBLE_THEM : "Peace Not Possible Them",
+}
+
+def printStatus(ePlayer, eAskingPlayer=None):
+	player = PlayerUtil.getPlayer(ePlayer)
+	if eAskingPlayer is None:
+		eAskingPlayer = PlayerUtil.getActivePlayerID()
+	print "Trade Status -- %s" % player.getName()
+	for eItem, name in STATUS_TRADE_ITEMS:
+		tradeData = TradeData()
+		tradeData.ItemType = eItem
+		can = player.canTradeItem(eAskingPlayer, tradeData, False)
+		denial = player.getTradeDenial(eAskingPlayer, tradeData)
+		will = denial == DenialTypes.NO_DENIAL
+		if denial in DENIALS:
+			denial = DENIALS[denial]
+		else:
+			denial = str(denial)
+		if not can:
+			if will:
+				print "%s: can't but will" % (name)
+			else:
+				print "%s: can't and won't because %s" % (name, denial)
+		else:
+			if will:
+				print "%s: will" % (name)
+			else:
+				print "%s: won't because %s" % (name, denial)
