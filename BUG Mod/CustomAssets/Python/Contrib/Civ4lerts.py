@@ -109,17 +109,17 @@ class Civ4lerts:
 
 def addMessageNoIcon(iPlayer, message):
 	"Displays an on-screen message with no popup icon."
-	addMessage(iPlayer, message, None, 0, 0)
+	addMessage(iPlayer, message, None)
 
 def addMessageAtCity(iPlayer, message, icon, city):
 	"Displays an on-screen message with a popup icon that zooms to the given city."
-	addMessage(iPlayer, message, icon, city.getX(), city.getY())
+	addMessage(iPlayer, message, icon, city.getX(), city.getY(), True, True)
 
 def addMessageAtPlot(iPlayer, message, icon, plot):
 	"Displays an on-screen message with a popup icon that zooms to the given plot."
-	addMessage(iPlayer, message, icon, plot.getX(), plot.getY())
+	addMessage(iPlayer, message, icon, plot.getX(), plot.getY(), True, True)
 
-def addMessage(iPlayer, szString, szIcon, iFlashX, iFlashY):
+def addMessage(iPlayer, szString, szIcon, iFlashX=-1, iFlashY=-1, bOffArrow=False, bOnArrow=False):
 	"Displays an on-screen message."
 	"""
 	Make these alerts optionally show a delayable popup with various options.
@@ -139,7 +139,7 @@ def addMessage(iPlayer, szString, szIcon, iFlashX, iFlashY):
 	eventMessageTimeLong = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 	CyInterface().addMessage(iPlayer, True, eventMessageTimeLong,
 							 szString, None, 0, szIcon, ColorTypes(-1),
-							 iFlashX, iFlashY, True, True)
+							 iFlashX, iFlashY, bOffArrow, bOnArrow)
 
 
 ### Abstract and Core Classes

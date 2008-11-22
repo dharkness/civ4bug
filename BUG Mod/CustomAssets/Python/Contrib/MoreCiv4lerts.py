@@ -25,24 +25,24 @@ class AbstractMoreCiv4lertsEvent(object):
 	def __init__(self, eventManager, *args, **kwargs):
 			super( AbstractMoreCiv4lertsEvent, self).__init__(*args, **kwargs)
 
-	def _addMessageNoIcon(self, player, message):
+	def _addMessageNoIcon(self, iPlayer, message, iColor=-1):
 			#Displays an on-screen message with no popup icon.
-			self._addMessage(player, message, None, 0, 0, False, False)
+			self._addMessage(iPlayer, message, None, -1, -1, False, False, iColor)
 
-	def _addMessageAtCity(self, player, message, icon, city):
+	def _addMessageAtCity(self, iPlayer, message, icon, city, iColor=-1):
 			#Displays an on-screen message with a popup icon that zooms to the given city.
-			self._addMessage(player, message, icon, city.getX(), city.getY(), True, True)
+			self._addMessage(iPlayer, message, icon, city.getX(), city.getY(), True, True, iColor)
 
-	def _addMessageAtPlot(self, player, message, icon, plot):
+	def _addMessageAtPlot(self, iPlayer, message, icon, plot, iColor=-1):
 			#Displays an on-screen message with a popup icon that zooms to the given plot.
-			self._addMessage(player, message, icon, plot.getX(), plot.getY(), True, True)
+			self._addMessage(iPlayer, message, icon, plot.getX(), plot.getY(), True, True, iColor)
 
-	def _addMessage(self, ePlayer, szString, szIcon, iFlashX, iFlashY, bOffArrow, bOnArrow):
+	def _addMessage(self, iPlayer, szString, szIcon, iFlashX, iFlashY, bOffArrow, bOnArrow, iColor):
 			#Displays an on-screen message.
 			eventMessageTimeLong = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
-			CyInterface().addMessage(ePlayer, True, eventMessageTimeLong,
-															 szString, None, 0, szIcon, ColorTypes(-1),
-															 iFlashX, iFlashY, bOffArrow, bOnArrow)
+			CyInterface().addMessage(iPlayer, True, eventMessageTimeLong,
+									 szString, None, 0, szIcon, ColorTypes(iColor),
+									 iFlashX, iFlashY, bOffArrow, bOnArrow)
 
 class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
@@ -96,6 +96,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
 	def getCheckForDomVictory(self):
 		return self.getCheckForDomPopVictory() or self.getCheckForDomLandVictory()
+	
+	def getCheckForForeignCities(self):
+		return self.options.isShowCityFoundedAlert()
 
 	def getDoChecks(self):
 		return self.getCheckForDomVictory() or self.getCheckForCityBorderExpansion() or self.getCheckForNewTrades()
@@ -117,9 +120,21 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def OnCityBuilt(self, argsList):
 		city = argsList[0]
 		iPlayer = city.getOwner()
-		if (not self.getCheckForDomVictory()): return
-		if (iPlayer == gc.getGame().getActivePlayer()):
-			self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+		iActivePlayer = gc.getGame().getActivePlayer()
+		if (self.getCheckForDomVictory()):
+			if (iPlayer == iActivePlayer):
+				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
+		if (self.getCheckForForeignCities()):
+			if (iPlayer != iActivePlayer):
+				player = gc.getPlayer(iPlayer)
+				#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
+				iColor = gc.getInfoTypeForString("COLOR_WHITE")
+				if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED", (player.getName(), city.getName()))
+					self._addMessageAtCity(iActivePlayer, message, "Art/Interface/Buttons/Actions/foundcity.dds", city, iColor)
+				else:
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED_UNSEEN", (player.getName(), city.getName()))
+					self._addMessageNoIcon(iActivePlayer, message, iColor)
 
 	def OnCityRazed(self, argsList):
 		city, iPlayer = argsList
