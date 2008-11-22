@@ -585,6 +585,54 @@
 		<Spanish>When checked, displays an alert when a civilization is willing to sign a "Permanent Alliance" agreement.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__VASSALTRADE_TEXT</Tag>
+		<English>Vassal</English>
+		<French>Vassal</French>
+		<German>Vassal</German>
+		<Italian>Vassal</Italian>
+		<Spanish>Vassal</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__VASSALTRADE_HOVER</Tag>
+		<English>When checked, displays an alert when a civilization is willing to become your vassal.</English>
+		<French>When checked, displays an alert when a civilization is willing to become your vassal.</French>
+		<German>When checked, displays an alert when a civilization is willing to become your vassal.</German>
+		<Italian>When checked, displays an alert when a civilization is willing to become your vassal.</Italian>
+		<Spanish>When checked, displays an alert when a civilization is willing to become your vassal.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__PEACETRADE_TEXT</Tag>
+		<English>Peace Treaty</English>
+		<French>Peace Treaty</French>
+		<German>Peace Treaty</German>
+		<Italian>Peace Treaty</Italian>
+		<Spanish>Peace Treaty</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__PEACETRADE_HOVER</Tag>
+		<English>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</English>
+		<French>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</French>
+		<German>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</German>
+		<Italian>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</Italian>
+		<Spanish>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__SURRENDERTRADE_TEXT</Tag>
+		<English>Capitulation</English>
+		<French>Capitulation</French>
+		<German>Capitulation</German>
+		<Italian>Capitulation</Italian>
+		<Spanish>Capitulation</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__SURRENDERTRADE_HOVER</Tag>
+		<English>When checked, displays an alert when a civilization is willing to capitulate during war.</English>
+		<French>When checked, displays an alert when a civilization is willing to capitulate during war.</French>
+		<German>When checked, displays an alert when a civilization is willing to capitulate during war.</German>
+		<Italian>When checked, displays an alert when a civilization is willing to capitulate during war.</Italian>
+		<Spanish>When checked, displays an alert when a civilization is willing to capitulate during war.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__DOMPOP_TEXT</Tag>
 		<English>Domination: Population</English>
 		<French>Domination: Population</French>

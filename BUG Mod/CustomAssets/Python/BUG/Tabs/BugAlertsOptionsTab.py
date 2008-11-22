@@ -25,7 +25,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# Cities
 		self.addLabel(screen, left, "Alerts_City", "Cities:")
-		self.addCheckbox(screen, left, "Civ4lerts__CityFounded")
+		self.addCheckbox(screen, left, "MoreCiv4lerts__CityFounded")
 		comboBox = "Civ4lerts_ComboBoxGrowth"
 		screen.attachHBox(left, comboBox)
 		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingGrowth")
@@ -52,6 +52,9 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "MoreCiv4lerts__OpenBordersTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__DefensivePactTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__PermanentAllianceTrade")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__VassalTrade")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__PeaceTrade")
+		self.addCheckbox(screen, center, "MoreCiv4lerts__SurrenderTrade")
 		
 		# Trades
 		self.addLabel(screen, right, "Alerts_Trade", "Trading:")
@@ -62,6 +65,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckboxIntDropdown(screen, rightL, rightR, "Civ4lerts__GoldPerTurnTrade", "Civ4lerts__GoldPerTurnTradeThresh", "LAYOUT_LEFT")
 		
 		# Victories
+		self.addSpacer(screen, right, "Alerts_Victory")
 		self.addLabel(screen, right, "Alerts_Victory", "Victory:")
 		
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Alerts_Victory_Column")

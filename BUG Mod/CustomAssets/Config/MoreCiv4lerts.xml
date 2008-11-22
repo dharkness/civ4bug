@@ -38,19 +38,22 @@
 			<!-- Diplomacy -->
 			<option id="OpenBordersTrade" key="Open Borders Trades" 
 					type="boolean" default="True" and="Enabled" 
-					get="isShowOpenBordersTradeAlert" set="setShowOpenBordersTradeAlert" 
-					label="Open Borders" 
-					help="."/>
+					get="isShowOpenBordersTradeAlert" set="setShowOpenBordersTradeAlert"/>
 			<option id="DefensivePactTrade" key="Defensive Pact Trades" 
 					type="boolean" default="True" and="Enabled" 
-					get="isShowDefensivePactTradeAlert" set="setShowDefensivePactTradeAlert" 
-					label="Defensive Pact" 
-					help="."/>
+					get="isShowDefensivePactTradeAlert" set="setShowDefensivePactTradeAlert"/>
 			<option id="PermanentAllianceTrade" key="Permanent Alliance Trades" 
 					type="boolean" default="True" and="Enabled" 
-					get="isShowPermanentAllianceTradeAlert" set="setShowPermanentAllianceTradeAlert" 
-					label="Permanent Alliance" 
-					help="."/>
+					get="isShowPermanentAllianceTradeAlert" set="setShowPermanentAllianceTradeAlert"/>
+			<option id="VassalTrade" key="Vassal Trades" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowVassalTradeAlert" set="setShowVassalTradeAlert"/>
+			<option id="SurrenderTrade" key="Surrender Trades" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowSurrenderTradeAlert" set="setShowSurrenderTradeAlert"/>
+			<option id="PeaceTrade" key="Peace Trades" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowPeaceTradeAlert" set="setShowPeaceTradeAlert"/>
 			
 			<!-- Victory -->
 			<option id="DomPop" key="CheckForDomPopVictory" 

@@ -23,6 +23,7 @@ Features:
 - Added Civ4lert for cities that will/have come out of occupation after capture or revolt.
 - Added BUG Finance Advisor with breakdowns for Commerce and Income.
 - Added Civ4lert for cities founded by rivals.
+- Added Civ4lert for when rival will become a vassal, capitulate, or sign a peace treaty.
 
 
 Bugfixes:
