@@ -3032,6 +3032,22 @@
 		<Spanish>When checked, displays a progress bar for the next Great General.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__MINMAX_COMMERCE_TEXT</Tag>
+		<English>Min/Max Commerce Buttons</English>
+		<French>Min/Max Commerce Buttons</French>
+		<German>Min/Max Commerce Buttons</German>
+		<Italian>Min/Max Commerce Buttons</Italian>
+		<Spanish>Min/Max Commerce Buttons</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__MINMAX_COMMERCE_HOVER</Tag>
+		<English>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</English>
+		<French>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</French>
+		<German>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</German>
+		<Italian>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</Italian>
+		<Spanish>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__CITYARROWS_TEXT</Tag>
 		<English>City Cycle Arrows</English>
 		<French>Fleches de Ville</French>

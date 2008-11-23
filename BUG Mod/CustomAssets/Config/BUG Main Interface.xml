@@ -39,6 +39,11 @@
 					type="boolean" default="True" 
 					get="isShowGGProgressBar" dirtyBit="GameData"/>
 			
+			<!-- Min/Max Commerce Buttons by codewarrior -->
+			<option id="MinMax_Commerce" key="MinMax Commerce" 
+					type="boolean" default="True" 
+					get="isShowMinMaxCommerceButtons" dirtyBit="PercentButtons, GameData"/>
+			
 			<!-- City Cycle Arrows by SimCutie -->
 			<option id="CityArrows" key="City Cycle Arrows" 
 					type="boolean" default="True" 

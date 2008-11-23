@@ -25,9 +25,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
-		self.addSpacer(screen, left, "MainInterface_FieldOfView")
-		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
-		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
+		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
+		self.addCheckbox(screen, left, "MainInterface__MinMax_Commerce")
 		
 		self.addSpacer(screen, space1, "Main_TechWindow", 3)
 		
@@ -40,9 +39,10 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addSpacer(screen, right, "Misc")		
 		self.addLabel(screen, right, "Misc", "Misc:")
-		self.addCheckbox(screen, right, "MainInterface__Combat_Counter")
 		self.addCheckbox(screen, right, "MainInterface__CityArrows")
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
+		self.addCheckbox(screen, right, "MainInterface__FieldOfView")
+		self.addCheckbox(screen, right, "MainInterface__FieldOfView_Remember")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
