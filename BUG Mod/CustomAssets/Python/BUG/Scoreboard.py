@@ -25,8 +25,6 @@ ScoreOpt = BugCore.game.Scores
 gc = CyGlobalContext()
 
 # Constants
-ICON_SIZE = 24
-ROW_HEIGHT = 22
 Z_DEPTH = -0.3
 
 # Columns IDs
@@ -310,10 +308,8 @@ class Scoreboard:
 		else:
 			y = yResolution - 88
 		totalWidth = 0
-		if (ScoreOpt.isShowResearchIcons()):
-			height = ROW_HEIGHT
-		else:
-			height = ROW_HEIGHT
+		height = ScoreOpt.getLineHeight()
+		techIconSize = ScoreOpt.getResearchIconSize()
 		
 		defaultSpacing = ScoreOpt.getDefaultSpacing()
 		spacing = defaultSpacing
@@ -419,10 +415,10 @@ class Scoreboard:
 							tech = playerScore.value(c)
 							name = "ScoreTech%d" % p
 							info = gc.getTechInfo(tech)
-							screen.addDDSGFC( name, info.getButton(), x - ICON_SIZE, y - p * height - 1, ICON_SIZE, ICON_SIZE, 
+							screen.addDDSGFC( name, info.getButton(), x - techIconSize, y - p * height - 1, techIconSize, techIconSize, 
 											  WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, tech, -1 )
-					x -= ICON_SIZE
-					totalWidth += ICON_SIZE + spacing
+					x -= techIconSize
+					totalWidth += techIconSize + spacing
 					spacing = defaultSpacing
 		
 		for playerScore in self._playerScores:

@@ -32,13 +32,13 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addLabel(screen, right, "Scores_New_Columns", "Additional Columns:")
 		col1L, col1R, col2, col3 = self.addMultiColumnLayout(screen, right, 4, "Scores_Power_Column")
-		self.addCheckboxTextDropdown(screen, col1L, col1R, "Scores__Power", "Scores__PowerFormula", "LAYOUT_LEFT")
-		self.addIntDropdown(screen, col1L, col1R, "Scores__PowerDecimals", True, "LAYOUT_LEFT")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerColor", True, "LAYOUT_LEFT")
-		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerHighRatio", True, "LAYOUT_LEFT")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerHighColor", True, "LAYOUT_LEFT")
-		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerLowRatio", True, "LAYOUT_LEFT")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerLowColor", True, "LAYOUT_LEFT")
+		self.addCheckboxTextDropdown(screen, col1L, col1R, "Scores__Power", "Scores__PowerFormula")
+		self.addIntDropdown(screen, col1L, col1R, "Scores__PowerDecimals", True, "left")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerColor", True)
+		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerHighRatio", True, "left")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerHighColor", True)
+		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerLowRatio", True, "left")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerLowColor", True)
 		
 		self.addSpacer(screen, col2, "Scores_New_Columns", 3)
 		
@@ -56,7 +56,7 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "Scores__AlignIcons")
 		self.addCheckbox(screen, left, "Scores__GroupVassals")
 		self.addCheckbox(screen, left, "Scores__LeftAlignName")
-		self.addCheckbox(screen, left, "Scores__ResearchIcons")
+		self.addCheckboxIntDropdown(screen, left, left, "Scores__ResearchIcons", "Scores__ResearchIconSize")
 		
 		self.addSpacer(screen, space, "Scores_Grid", 3)
 		
@@ -64,3 +64,4 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, center, "Scores_Order", "Column Order:")
 		self.addTextEdit(screen, None, center, "Scores__DisplayOrder")
 		self.addIntDropdown(screen, center, center, "Scores__DefaultSpacing", True)
+		self.addIntDropdown(screen, center, center, "Scores__LineHeight", True)
