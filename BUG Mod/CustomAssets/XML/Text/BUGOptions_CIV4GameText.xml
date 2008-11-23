@@ -2238,6 +2238,22 @@
 		<Spanish>When checked, the scoreboard is drawn as a grid, and the other options in this column affect it.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__MAXPLAYERS_TEXT</Tag>
+		<English>Maximum Civilizations</English>
+		<French>Maximum Civilizations</French>
+		<German>Maximum Civilizations</German>
+		<Italian>Maximum Civilizations</Italian>
+		<Spanish>Maximum Civilizations</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__MAXPLAYERS_HOVER</Tag>
+		<English>Select the maximum number of civilizations to display (0 for unlimited).</English>
+		<French>Select the maximum number of civilizations to display (0 for unlimited).</French>
+		<German>Select the maximum number of civilizations to display (0 for unlimited).</German>
+		<Italian>Select the maximum number of civilizations to display (0 for unlimited).</Italian>
+		<Spanish>Select the maximum number of civilizations to display (0 for unlimited).</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__LINEHEIGHT_TEXT</Tag>
 		<English>Line Height</English>
 		<French>Line Height</French>
@@ -2247,11 +2263,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__LINEHEIGHT_HOVER</Tag>
-		<English>Select the height of each line in the scoreboard (default value is 22).</English>
-		<French>Select the height of each line in the scoreboard (default value is 22).</French>
-		<German>Select the height of each line in the scoreboard (default value is 22).</German>
-		<Italian>Select the height of each line in the scoreboard (default value is 22).</Italian>
-		<Spanish>Select the height of each line in the scoreboard (default value is 22).</Spanish>
+		<English>Select the height of each civilization's line (default value is 22).</English>
+		<French>Select the height of each civilization's line (default value is 22).</French>
+		<German>Select the height of each civilization's line (default value is 22).</German>
+		<Italian>Select the height of each civilization's line (default value is 22).</Italian>
+		<Spanish>Select the height of each civilization's line (default value is 22).</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DEFAULTSPACING_TEXT</Tag>

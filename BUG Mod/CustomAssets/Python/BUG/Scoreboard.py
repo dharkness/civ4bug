@@ -287,6 +287,9 @@ class Scoreboard:
 		if ScoreOpt.isGroupVassals():
 			self._playerScores.sort(lambda x, y: cmp(x.sortKey(), y.sortKey()))
 			self._playerScores.reverse()
+		maxPlayers = ScoreOpt.getMaxPlayers()
+		if maxPlayers > 0 and len(self._playerScores) > maxPlayers:
+			self._playerScores = self._playerScores[len(self._playerScores) - maxPlayers:]
 		
 	def hide(self, screen):
 		"""Hides the text from the screen before building the scoreboard."""

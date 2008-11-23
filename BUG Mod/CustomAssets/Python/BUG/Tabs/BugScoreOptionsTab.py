@@ -51,17 +51,22 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
-		left, space, center = self.addThreeColumnLayout(screen, column, column, False)
+		left, space, right = self.addThreeColumnLayout(screen, column, column, False)
 		self.addLabel(screen, left, "Scores_Grid", "Advanced Layout:")
 		self.addCheckbox(screen, left, "Scores__AlignIcons")
 		self.addCheckbox(screen, left, "Scores__GroupVassals")
 		self.addCheckbox(screen, left, "Scores__LeftAlignName")
 		self.addCheckboxIntDropdown(screen, left, left, "Scores__ResearchIcons", "Scores__ResearchIconSize")
 		
-		self.addSpacer(screen, space, "Scores_Grid", 3)
+		self.addSpacer(screen, space, "Scores_Grid1", 3)
 		
-		self.addSpacer(screen, center, "Scoreboard_Tab")
-		self.addLabel(screen, center, "Scores_Order", "Column Order:")
-		self.addTextEdit(screen, None, center, "Scores__DisplayOrder")
-		self.addIntDropdown(screen, center, center, "Scores__DefaultSpacing", True)
-		self.addIntDropdown(screen, center, center, "Scores__LineHeight", True)
+		self.addSpacer(screen, right, "Scoreboard_Tab")
+		rightLeft, rightSpace, rightRight = self.addThreeColumnLayout(screen, right, right, False)
+		self.addSpacer(screen, rightSpace, "Scores_Grid2", 3)
+		
+		self.addIntDropdown(screen, rightLeft, rightLeft, "Scores__MaxPlayers", True)
+		self.addIntDropdown(screen, rightRight, rightRight, "Scores__LineHeight", True)
+		
+		self.addLabel(screen, right, "Scores_Order", "Column Order:")
+		self.addTextEdit(screen, None, right, "Scores__DisplayOrder")
+		self.addIntDropdown(screen, right, right, "Scores__DefaultSpacing", True)
