@@ -24,6 +24,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Advisors__CustDomAdv")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True, "LAYOUT_LEFT")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceSides", True)
+		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True)
 		
 		self.addLabel(screen, left, "Finance_Advisor", "Finance [F2]:")
 		self.addCheckbox(screen, left, "Advisors__BugFinanceAdvisor")

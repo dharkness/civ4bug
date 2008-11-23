@@ -3284,6 +3284,30 @@
 		<Spanish>Select the amount of space to leave to the sides of the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No space at all.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Small[COLOR_REVERT] - Same amount of space as Foreign and Military Advisors.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Medium[COLOR_REVERT] - Twice the space as Foreign and Military Advisors.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Large[COLOR_REVERT] - Enough space to show all the culture sliders on the left and same amount of space on the right.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Large Left[COLOR_REVERT] - Enough space to show all the culture sliders to the left but just a small amount of space on the right.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CDAPRODGROUP_TEXT</Tag>
+		<English>Production Grouping</English>
+		<French>Production Grouping</French>
+		<German>Production Grouping</German>
+		<Italian>Production Grouping</Italian>
+		<Spanish>Production Grouping</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CDAPRODGROUP_LIST</Tag>
+		<English>None|Icons|Colors|Both</English>
+		<French>None|Icons|Colors|Both</French>
+		<German>None|Icons|Colors|Both</German>
+		<Italian>None|Icons|Colors|Both</Italian>
+		<Spanish>None|Icons|Colors|Both</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CDAPRODGROUP_HOVER</Tag>
+		<English>Select grouping options for the production list on the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No special grouping.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icons[COLOR_REVERT] - Production items prefaced by icons denoting the type of item which keeps them grouped together when sorting.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colors[COLOR_REVERT] - Production items colored based on the type of item.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Both[COLOR_REVERT] - Production items prefaced by icons and colored based on the type of item.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGFINANCEADVISOR_TEXT</Tag>
 		<English>BUG Finance Advisor</English>
 		<French>BUG Finance Advisor</French>

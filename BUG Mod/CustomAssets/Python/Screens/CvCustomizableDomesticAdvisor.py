@@ -20,6 +20,7 @@
 #    - Added page switching buttons that wrap around.
 #    - Added buttons to move pages while customizing.
 #    - Added a button to toggle whether or not to display the controls for changing specialists.
+#    - Added base experience for units in production and optional icons/coloring for the producing list.
 #
 ## Credits
 #
@@ -73,6 +74,7 @@ import CvEventInterface
 import BugPath
 import BugConfigTracker
 import BugUtil
+import FontUtil
 
 import math
 import os.path
@@ -220,6 +222,9 @@ class CvCustomizableDomesticAdvisor:
 				("FEATURES",				106,	"text",	None,					None,					0,									self.calculateFeatures,					None,						"localText.getText(\"TXT_KEY_MISC_FEATURES\", ())"),
 				("FOOD",					35,		"int",	None,					None,					0,									self.calculateFood,						None,						"self.foodIcon"),
 				("FOUNDED",					80,		"date",	None,					None,					0,									self.calculateFounded,					None,						"localText.getText(\"TXT_KEY_DOMESTIC_ADVISOR_FOUNDED\", ()).upper()"),
+				("FREE_EXPERIENCE_LAND",	30,		"int",	None,					None,					0,									self.calculateFreeExperience,			"L",						"self.landIcon"),
+				("FREE_EXPERIENCE_SEA",		30,		"int",	None,					None,					0,									self.calculateFreeExperience,			"S",						"self.seaIcon"),
+				("FREE_EXPERIENCE_AIR",		30,		"int",	None,					None,					0,									self.calculateFreeExperience,			"A",						"self.airIcon"),
 				("GARRISON",				30,		"int",	CyCity.getMilitaryHappinessUnits,	None,		0,									None,									None,						"self.militaryIcon"),
 				("GOLD",					38,		"int",	None,					CyCity.getCommerceRate, CommerceTypes.COMMERCE_GOLD,		None,									None,						"self.goldIcon"),
 				("GRANK_BASE_COMMERCE",		42,		"int",	None,					None,					0,									self.findGlobalBaseYieldRateRank, YieldTypes.YIELD_COMMERCE,		"u\"B\" + self.commerceIcon + u\"g\""),
@@ -255,6 +260,7 @@ class CvCustomizableDomesticAdvisor:
 				("NRANK_CULTURE",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_CULTURE,	None,								None,						"self.cultureIcon + u\"n\""),
 				("NRANK_GOLD",				38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_GOLD,	None,									None,						"self.goldIcon + u\"n\""),
 				("NRANK_RESEARCH",			38,		"int",	None,					CyCity.findCommerceRateRank, CommerceTypes.COMMERCE_RESEARCH,	None,								None,						"self.researchIcon + u\"n\""),
+				("NUM_SPECIALIST_GG",		30,		"int",	None,					None,					0,									self.countFreeSpecialists,				"GREAT_GENERAL",			"self.milInstructorIcon"),
 				("POPULATION",				35,		"int",	CyCity.getPopulation,	None,					0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper()"),
 				("POPULATION_REAL",			65,		"int",	CyCity.getRealPopulation,	None,				0,									None,									None,						"localText.getText(\"TXT_KEY_POPULATION\", ()).upper() + u\"#\""),
 				("POWER",					50,		"text",	None,					None,					0,									self.calculatePower,					None,						"self.powerIcon"),
@@ -345,6 +351,9 @@ class CvCustomizableDomesticAdvisor:
 		self.SPECIALIST_ICON_DICT = None
 		self.AUTOMATION_ICON_DICT = None
 		self.COLOR_DICT = None
+# BUG - Production Grouping - start
+		self.PROD_COLOR_DICT = None
+# BUG - Production Grouping - end
 
 		# Input handling functions
 		self.DomesticScreenInputMap = {
@@ -393,6 +402,7 @@ class CvCustomizableDomesticAdvisor:
 		self.espionageIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 		self.fistIcon = u"%c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
 		self.foodIcon = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar())
+		self.footIcon = u"%c" % CyGame().getSymbolID(FontSymbols.MOVES_CHAR)
 		self.goldIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
 		self.redGoldIcon = u"%c" % CyGame().getSymbolID(FontSymbols.BAD_GOLD_CHAR)
 		self.figureheadIcon = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
@@ -403,6 +413,7 @@ class CvCustomizableDomesticAdvisor:
 		self.militaryIcon = u"%c" % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR)
 		self.powerIcon = u"%c" % CyGame().getSymbolID(FontSymbols.POWER_CHAR)
 		self.redfoodIcon = u"%c" % CyGame().getSymbolID(FontSymbols.BAD_FOOD_CHAR)
+		self.religionIcon = u"%c" % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR)
 		self.researchIcon = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar())
 		self.sickIcon = u"%c" % CyGame().getSymbolID(FontSymbols.UNHEALTHY_CHAR)
 		self.tradeIcon = u"%c" % CyGame().getSymbolID(FontSymbols.TRADE_CHAR)
@@ -421,6 +432,12 @@ class CvCustomizableDomesticAdvisor:
 		self.starIcon = u"%c" % CyGame().getSymbolID(FontSymbols.STAR_CHAR)
 		self.silverStarIcon = u"%c" % CyGame().getSymbolID(FontSymbols.SILVER_STAR_CHAR)
 		self.bulletIcon = u"%c" % CyGame().getSymbolID(FontSymbols.BULLET_CHAR)
+
+		self.milInstructorIcon = FontUtil.getChar(FontSymbols.MILITARY_INSTRUCTOR_CHAR)
+		self.landIcon = FontUtil.getChar(FontSymbols.DOMAIN_LAND_CHAR)
+		self.seaIcon = FontUtil.getChar(FontSymbols.DOMAIN_SEA_CHAR)
+		self.airIcon = FontUtil.getChar(FontSymbols.DOMAIN_AIR_CHAR)
+		self.cancelIcon = FontUtil.getChar(FontSymbols.CANCEL_CHAR)
 
 		# Special symbols for building, wonder and project views
 		self.objectIsPresent = "x"
@@ -655,6 +672,23 @@ class CvCustomizableDomesticAdvisor:
 				"NEUTRAL": gc.getInfoTypeForString("COLOR_YELLOW"),
 				"GREAT": gc.getInfoTypeForString("COLOR_GREEN"),
 				}
+
+# BUG - Production Grouping - start
+		if self.PROD_COLOR_DICT == None:
+			# Colors to use for color-coding of production items.
+			# ["DEFAULT"] is used if color-coding is off.
+			self.PROD_COLOR_DICT = {
+				"DEFAULT": gc.getInfoTypeForString("COLOR_WHITE"),
+				"NOTHING": gc.getInfoTypeForString("COLOR_RED"),
+				"BUILDING": gc.getInfoTypeForString("COLOR_WHITE"),
+				"WONDER": gc.getInfoTypeForString("COLOR_CYAN"), 
+				"WEALTH": gc.getInfoTypeForString("COLOR_YELLOW"),
+				"RESEARCH": gc.getInfoTypeForString("COLOR_GREEN"),
+				"CULTURE": gc.getInfoTypeForString("COLOR_MAGENTA"), 
+				"PROJECT": gc.getInfoTypeForString("COLOR_CYAN"),
+				"UNIT": gc.getInfoTypeForString("COLOR_YIELD_FOOD"),
+				}
+# BUG - Production Grouping - end
 
 		self.switchPage(self.PAGES[0]["name"])
 
@@ -1131,7 +1165,7 @@ class CvCustomizableDomesticAdvisor:
 		# Draw the city list...
 		self.drawContents (page)
 		end = time.clock()
-		CvUtil.pyPrint("drawContents: " + str(end - start) + "s")
+		BugUtil.debug("drawContents: " + str(end - start) + "s")
 
 	def calculateFounded (self, city, szKey, arg):
 
@@ -1277,18 +1311,114 @@ class CvCustomizableDomesticAdvisor:
 
 		return unicode(nRoutes)
 
+	def countSpecialists (self, city, szKey, arg):
+		"""arg: specialist type string (excluding "SPECIALIST_") e.g. use "ARTIST" to count artist specialists"""
+		szSpecialistType = "SPECIALIST_" + arg
+		nCount = city.getSpecialistCount(gc.getInfoTypeForString(szSpecialistType))
+		if nCount > 0:
+			return unicode(nCount)
+		else:
+			return u"-"
+
+	def countFreeSpecialists (self, city, szKey, arg):
+		"""arg: specialist type string (excluding "SPECIALIST_") e.g. use "ARTIST" to count artist specialists"""
+		szSpecialistType = "SPECIALIST_" + arg
+		nCount = city.getFreeSpecialistCount(gc.getInfoTypeForString(szSpecialistType))
+		if nCount > 0:
+			return unicode(nCount)
+		else:
+			return u"-"
+
 	def calculateProducing (self, city, szKey, arg):
 
 		szReturn = u""
+# BUG - Production Grouping - start
+		bProdColors = AdvisorOpt.isCDAProdColors()
+		bProdIcons = AdvisorOpt.isCDAProdIcons()
+# BUG - Production Grouping - end
+
 		# If there's something in the queue,
 		if (city.getOrderQueueLength() > 0):
 
 			# Get the name of whatever it's producing.
 			szReturn = city.getProductionName()
 
+# BUG - Base XP for units - start
+			# Note this has been separated out so that it is always in effect
+			# even if user chooses to disable the production coloring/grouping
+			if city.isProductionUnit():
+				iUnit = city.getProductionUnit()
+				pInfo = gc.getUnitInfo(iUnit)
+				if pInfo.getUnitCombatType() != UnitCombatTypes.NO_UNITCOMBAT:
+					iExp = city.getProductionExperience(iUnit)
+					szReturn = szReturn + u" " + localText.getText("TXT_KEY_CDA_BASE_XP", (iExp,))
+# BUG - Base XP for units - end
+
+# BUG - Production Grouping - start
+			if (bProdColors or bProdIcons):
+				szColorKey = "DEFAULT"
+				szIcon = self.hammerIcon
+				if city.isProductionBuilding():
+					szColorKey = "WONDER"
+					pInfo = gc.getBuildingClassInfo(gc.getBuildingInfo(city.getProductionBuilding()).getBuildingClassType())
+					if pInfo.getMaxGlobalInstances() != -1:
+						szIcon = self.starIcon
+					elif pInfo.getMaxTeamInstances() != -1:
+						szIcon = self.silverStarIcon
+					elif pInfo.getMaxPlayerInstances() != -1:
+						szIcon = self.silverStarIcon
+					else:
+						szColorKey = "BUILDING"
+				elif city.isProductionProcess():
+					iType = city.getProductionProcess()
+					if iType == gc.getInfoTypeForString("PROCESS_WEALTH"):
+						szColorKey = "WEALTH"
+						szIcon = self.goldIcon
+					elif iType == gc.getInfoTypeForString("PROCESS_RESEARCH"):
+						szColorKey = "RESEARCH"
+						szIcon = self.researchIcon
+					elif iType == gc.getInfoTypeForString("PROCESS_CULTURE"):
+						szColorKey = "CULTURE"
+						szIcon = self.cultureIcon
+				elif city.isProductionProject():
+					szColorKey = "PROJECT"
+					pInfo = gc.getProjectInfo(city.getProductionProject())
+					if pInfo.getMaxGlobalInstances() != -1:
+						szIcon = self.starIcon
+					elif pInfo.getMaxTeamInstances() != -1:
+						szIcon = self.silverStarIcon
+				elif city.isProductionUnit():
+					szColorKey = "UNIT"
+					iUnit = city.getProductionUnit()
+					pInfo = gc.getUnitInfo(iUnit)
+					iType = pInfo.getDomainType()
+					if pInfo.getUnitCombatType() != UnitCombatTypes.NO_UNITCOMBAT:
+ 						szIcon = self.militaryIcon
+# 						if iType == DomainTypes.DOMAIN_SEA:
+# 							szIcon = self.seaIcon
+# 						elif iType == DomainTypes.DOMAIN_LAND:
+# 							szIcon = self.landIcon
+# 						elif iType == DomainTypes.DOMAIN_AIR:
+# 							szIcon = self.airIcon
+# 						elif iType == DomainTypes.DOMAIN_IMMOBILE:
+# 							szIcon = self.airIcon
+					else:
+ 						szIcon = self.footIcon
+				if bProdIcons:
+					szReturn = szIcon + szReturn
+				if bProdColors:
+					szReturn = localText.changeTextColor (szReturn, self.PROD_COLOR_DICT[szColorKey])
+# BUG - Production Grouping - end
+
 		# Otherwise we're not producing anything. Leave it blank.
 		else:
 			szReturn = u"-"
+# BUG - Production Grouping - start
+			if bProdIcons:
+				szReturn = self.cancelIcon + szReturn
+			if bProdColors:
+				szReturn = localText.changeTextColor (szReturn, self.PROD_COLOR_DICT["NOTHING"])
+# BUG - Production Grouping - end
 
 		return szReturn
 
@@ -1684,6 +1814,29 @@ class CvCustomizableDomesticAdvisor:
 			return self.objectHave
 		return szEffects.strip()
 
+	def calculateFreeExperience (self, city, szKey, arg):
+		"""arg: Domain identifier; "L" for Land, "S" for Sea, "A" for Air, "I" for Immobile"""
+		# Thanks to MatzeHH for original version of this
+		player = gc.getActivePlayer()
+		# Generic modifiers first
+		freeXP = city.getSpecialistFreeExperience()
+		freeXP += city.getFreeExperience()
+		freeXP += player.getFreeExperience()
+		if (player.getStateReligion() != ReligionTypes.NO_RELIGION):
+			if (city.isHasReligion(player.getStateReligion())):
+				freeXP += player.getStateReligionFreeExperience()
+		# Then tack on the proper domain-based extras
+		if (arg == "L"):
+			freeXP += city.getDomainFreeExperience(DomainTypes.DOMAIN_LAND)
+		elif (arg == "S"):
+			freeXP += city.getDomainFreeExperience(DomainTypes.DOMAIN_SEA)
+		elif (arg == "A"):
+			freeXP += city.getDomainFreeExperience(DomainTypes.DOMAIN_AIR)
+		elif (arg == "I"):
+			freeXP += city.getDomainFreeExperience(DomainTypes.DOMAIN_IMMOBILE)
+
+		return unicode(freeXP)
+
 	def findGlobalBaseYieldRateRank (self, city, szKey, arg):
 
 		L = []
@@ -1856,7 +2009,7 @@ class CvCustomizableDomesticAdvisor:
 					elif type == "Military":
 						if city.findBaseYieldRateRank(YieldTypes.YIELD_PRODUCTION) <= 3:
 							value = -1 * info.getMilitaryProductionModifier() / float(info.getProductionCost())
-							CvUtil.pyPrint(info.getDescription() + ": " + str(value))
+							BugUtil.debug(info.getDescription() + ": " + str(value))
 							if value > bestData:
 								bestOrder = bldg
 								bestData = value
@@ -2215,8 +2368,8 @@ class CvCustomizableDomesticAdvisor:
 					return 1
 
 			else:
-				CvUtil.pyPrint(szWidget)
-				CvUtil.pyPrint(self.currentPage)
+				BugUtil.debug(szWidget)
+				BugUtil.debug(self.currentPage)
 
 		# Is the input from a mapped button?
 		elif (code == NotifyCode.NOTIFY_CLICKED and self.DomesticScreenInputMap.has_key(inputClass.getFunctionName())):
