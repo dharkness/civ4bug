@@ -26,6 +26,7 @@ Features:
 - Added Civ4lert for when rival will become a vassal, capitulate, or sign a peace treaty.
 - Added Min/Max Commerce Buttons by codewarrior.
 - Added Advanced Scoreboard options for line height and research icon size.
+- Added Advanced Scoreboard column for rank.
 
 
 Bugfixes:

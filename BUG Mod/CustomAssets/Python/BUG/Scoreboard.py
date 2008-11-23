@@ -28,12 +28,13 @@ gc = CyGlobalContext()
 Z_DEPTH = -0.3
 
 # Columns IDs
-NUM_PARTS = 22
+NUM_PARTS = 23
 (
 	ALIVE,
 	WAR,
 	SCORE,
 	SCORE_DELTA,
+	RANK,
 	ID,
 	MASTER,
 	NAME,
@@ -85,6 +86,7 @@ def init():
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
+	columns.append(Column('K', RANK, DYNAMIC))
 	columns.append(Column('I', ID, DYNAMIC))
 	columns.append(Column('V', MASTER, FIXED, smallSymbol(FontSymbols.SILVER_STAR_CHAR)))
 	columns.append(Column('C', NAME, DYNAMIC))
@@ -181,6 +183,7 @@ class Scoreboard:
 		if self._currTeamScores:
 			self._currPlayerScore = self._currTeamScores.addPlayer(player, rank)
 			self._playerScores.append(self._currPlayerScore)
+			self.setRank(BugUtil.colorText(u"<font=2>%d</font>" % (rank + 1), ScoreOpt.getRankColor()))
 		
 	def size(self):
 		return len(self._playerScores)
@@ -197,6 +200,9 @@ class Scoreboard:
 		
 	def setScoreDelta(self, value):
 		self._set(SCORE_DELTA, smallText(value))
+		
+	def setRank(self, value):
+		self._set(RANK, smallText(value))
 		
 	def setID(self, value):
 		self._set(ID, smallText(value))

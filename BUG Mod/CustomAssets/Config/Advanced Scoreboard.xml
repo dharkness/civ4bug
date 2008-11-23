@@ -84,6 +84,9 @@
 			<list   id="ResearchIconSize" key="Research Icon Size" 
 					type="int" default="24" values="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32" 
 					get="getResearchIconSize" set="setgetResearchIconSize" dirtyBit="Score"/>
+			<option id="RankColor" key="Rank Color" 
+					type="color" default="COLOR_YELLOW" 
+					get="getRankColor" set="setRankColor" dirtyBit="Score"/>
 			
 			<!-- Power Ratio -->
 			<option id="Power" key="Power" 
