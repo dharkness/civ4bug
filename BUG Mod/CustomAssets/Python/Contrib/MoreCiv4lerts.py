@@ -14,6 +14,8 @@ PyPlayer = PyHelpers.PyPlayer
 PyCity = PyHelpers.PyCity
 PyInfo = PyHelpers.PyInfo
 
+PEACE_TREATY_LENGTH = gc.getDefineINT("PEACE_TREATY_LENGTH")
+
 class MoreCiv4lerts:
 
 	def __init__(self, eventManager):
@@ -61,6 +63,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.PrevAvailOpenBordersTrades = set()
 		self.PrevAvailDefensivePactTrades = set()
 		self.PrevAvailPermanentAllianceTrades = set()
+		self.PrevAvailVassalTrades = set()
+		self.PrevAvailSurrenderTrades = set()
+		self.PrevAvailPeaceTrades = set()
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
@@ -93,6 +98,15 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
 	def getCheckForPermanentAlliance(self):
 		return self.options.isShowPermanentAllianceTradeAlert()
+	
+	def getCheckForVassal(self):
+		return self.options.isShowVassalTradeAlert()
+	
+	def getCheckForSurrender(self):
+		return self.options.isShowSurrenderTradeAlert()
+	
+	def getCheckForPeace(self):
+		return self.options.isShowPeaceTradeAlert()
 
 	def getCheckForDomVictory(self):
 		return self.getCheckForDomPopVictory() or self.getCheckForDomLandVictory()
@@ -127,14 +141,15 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		if (self.getCheckForForeignCities()):
 			if (iPlayer != iActivePlayer):
 				player = gc.getPlayer(iPlayer)
-				#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
-				iColor = gc.getInfoTypeForString("COLOR_WHITE")
-				if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
-					message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED", (player.getName(), city.getName()))
-					self._addMessageAtCity(iActivePlayer, message, "Art/Interface/Buttons/Actions/foundcity.dds", city, iColor)
-				else:
-					message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED_UNSEEN", (player.getName(), city.getName()))
-					self._addMessageNoIcon(iActivePlayer, message, iColor)
+				if (not player.isBarbarian() and not player.isMinorCiv() and player.isAlive() and not gc.getTeam(player.getTeam()).isAVassal()):
+					#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
+					iColor = gc.getInfoTypeForString("COLOR_MAGENTA")
+					if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
+						message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED", (player.getName(), city.getName()))
+						self._addMessageAtCity(iActivePlayer, message, "Art/Interface/Buttons/Actions/foundcity.dds", city, iColor)
+					else:
+						message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED_UNSEEN", (player.getName(), city.getName()))
+						self._addMessageNoIcon(iActivePlayer, message, iColor)
 
 	def OnCityRazed(self, argsList):
 		city, iPlayer = argsList
@@ -303,29 +318,56 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		if (BeginTurn and self.getCheckForOpenBorders()):
 			currentTrades = self.getOpenBordersTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailOpenBordersTrades)
+			self.PrevAvailOpenBordersTrades = currentTrades
 			if (newTrades):
 				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_OPEN_BORDERS", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
-				self.PrevAvailOpenBordersTrades.update(newTrades)
 		
 		if (BeginTurn and self.getCheckForDefensivePact()):
 			currentTrades = self.getDefensivePactTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailDefensivePactTrades)
+			self.PrevAvailDefensivePactTrades = currentTrades
 			if (newTrades):
 				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_DEFENSIVE_PACT", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
-				self.PrevAvailDefensivePactTrades.update(newTrades)
 		
 		if (BeginTurn and self.getCheckForPermanentAlliance()):
 			currentTrades = self.getPermanentAllianceTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailPermanentAllianceTrades)
+			self.PrevAvailPermanentAllianceTrades = currentTrades
 			if (newTrades):
 				players = self.buildPlayerString(newTrades)
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_PERMANENT_ALLIANCE", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
-				self.PrevAvailPermanentAllianceTrades.update(newTrades)
+		
+		if (BeginTurn and self.getCheckForVassal()):
+			currentTrades = self.getVassalTrades(activePlayer, activeTeam)
+			newTrades = currentTrades.difference(self.PrevAvailVassalTrades)
+			self.PrevAvailVassalTrades = currentTrades
+			if (newTrades):
+				players = self.buildPlayerString(newTrades)
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_VASSAL", (players,))
+				self._addMessageNoIcon(iActivePlayer, message)
+		
+		if (BeginTurn and self.getCheckForSurrender()):
+			currentTrades = self.getSurrenderTrades(activePlayer, activeTeam)
+			newTrades = currentTrades.difference(self.PrevAvailSurrenderTrades)
+			self.PrevAvailSurrenderTrades = currentTrades
+			if (newTrades):
+				players = self.buildPlayerString(newTrades)
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_SURRENDER", (players,))
+				self._addMessageNoIcon(iActivePlayer, message)
+		
+		if (BeginTurn and self.getCheckForPeace()):
+			currentTrades = self.getPeaceTrades(activePlayer, activeTeam)
+			newTrades = currentTrades.difference(self.PrevAvailPeaceTrades)
+			self.PrevAvailPeaceTrades = currentTrades
+			if (newTrades):
+				players = self.buildPlayerString(newTrades)
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_PEACE_TREATY", (players,))
+				self._addMessageNoIcon(iActivePlayer, message)
 
 	def getTechForTrade(self, player, team):
 		iTeamID = team.getID()
@@ -417,6 +459,65 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				#	continue
 				if (activeTeam.isPermanentAllianceTrading() or loopTeam.isPermanentAllianceTrading()):
 					#tradeData.iData = None
+					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+							currentTrades.add(iLoopPlayerID)
+		return currentTrades
+
+	def getVassalTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_VASSAL
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+						currentTrades.add(iLoopPlayerID)
+		return currentTrades
+
+	def getSurrenderTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_SURRENDER
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
+					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+						currentTrades.add(iLoopPlayerID)
+		return currentTrades
+
+	def getPeaceTrades(self, activePlayer, activeTeam):
+		iActivePlayerID = activePlayer.getID()
+		iActiveTeamID = activeTeam.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_PEACE_TREATY
+		tradeData.iData = PEACE_TREATY_LENGTH
+		currentTrades = set()
+		
+		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
+			loopPlayer = gc.getPlayer(iLoopPlayerID)
+			iLoopTeamID = loopPlayer.getTeam()
+			loopTeam = gc.getTeam(iLoopTeamID)
+			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
+				continue
+			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
+				if (loopTeam.isAtWar(iActiveTeamID)):
 					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
 						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
 							currentTrades.add(iLoopPlayerID)
