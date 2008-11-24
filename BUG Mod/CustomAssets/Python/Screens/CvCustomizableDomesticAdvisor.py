@@ -86,6 +86,7 @@ PyPlayer = PyHelpers.PyPlayer
 import BugCore
 CityScreenOpt = BugCore.game.CityScreen
 AdvisorOpt = BugCore.game.Advisors
+MainOpt = BugCore.game.MainInterface
 # BUG - Options - end
 
 # Needed to save changes
@@ -698,10 +699,14 @@ class CvCustomizableDomesticAdvisor:
 		""" Calculates the basic positions to draw on. """
 
 		# Borders from BUG Options
-		nBorderTop = [0,23,52,105][AdvisorOpt.getCDASpaceTop()]
+		nBorderTop = [0, 23, 52, 105][AdvisorOpt.getCDASpaceTop()]
 		nBorderBottom = 177
-		nBorderLeft = [0,20,40,110,110][AdvisorOpt.getCDASpaceSides()]
-		nBorderRight = [0,20,40,110,20][AdvisorOpt.getCDASpaceSides()]
+		# If the min/max commerce buttons are shown, we need more space on the left
+		nBorderLeft = 110
+		if (MainOpt.isShowMinMaxCommerceButtons()):
+			nBorderLeft = 150
+		nBorderLeft = [0, 20, 40, nBorderLeft, nBorderLeft][AdvisorOpt.getCDASpaceSides()]
+		nBorderRight = [0, 20, 40, nBorderLeft, 20][AdvisorOpt.getCDASpaceSides()]
 
 		# Location/Size of the Overall Screen
 		self.nScreenX = nBorderLeft

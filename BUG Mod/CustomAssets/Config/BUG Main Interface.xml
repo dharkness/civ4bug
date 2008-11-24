@@ -42,7 +42,9 @@
 			<!-- Min/Max Commerce Buttons by codewarrior -->
 			<option id="MinMax_Commerce" key="MinMax Commerce" 
 					type="boolean" default="True" 
-					get="isShowMinMaxCommerceButtons" dirtyBit="PercentButtons, GameData"/>
+					get="isShowMinMaxCommerceButtons" dirtyBit="PercentButtons, GameData">
+				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
+			</option>
 			
 			<!-- City Cycle Arrows by SimCutie -->
 			<option id="CityArrows" key="City Cycle Arrows" 
