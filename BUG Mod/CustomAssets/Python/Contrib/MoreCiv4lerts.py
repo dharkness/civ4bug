@@ -141,7 +141,8 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		if (self.getCheckForForeignCities()):
 			if (iPlayer != iActivePlayer):
 				player = gc.getPlayer(iPlayer)
-				if (not player.isBarbarian() and not player.isMinorCiv() and player.isAlive() and not gc.getTeam(player.getTeam()).isAVassal()):
+				team = gc.getTeam(player.getTeam())
+				if (not player.isBarbarian() and not player.isMinorCiv() and player.isAlive() and team.isHasMet(gc.getPlayer(iActivePlayer).getTeam()) and not team.isAVassal()):
 					#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
 					iColor = gc.getInfoTypeForString("COLOR_MAGENTA")
 					if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
