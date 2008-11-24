@@ -392,11 +392,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_TEXT</Tag>
-		<English>Occupation</English>
-		<French>Occupation</French>
+		<English>Pacification</English>
+		<French>Pacification</French>
 		<German>Befriedung</German>
 		<Italian>Pacificazione</Italian>
-		<Spanish>Occupation</Spanish>
+		<Spanish>Pacification</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_HOVER</Tag>
