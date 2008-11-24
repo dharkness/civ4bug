@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- HOF MOD V1.60.001 -->
 	<!-- MORECIV4LERTS TEXT -->
 	<TEXT>
 		<Tag>TXT_KEY_MISC_BORDERS_EXPANDED</Tag>
@@ -23,7 +22,7 @@
 		<English>%s1_Player has founded %s2_City.</English>
 		<French>%s1_Player has founded %s2_City.</French>
 		<German>%s1_Player hat die Stadt %s2_City gegründet.</German>
-		<Italian>%s1_Player has founded %s2_City.</Italian>
+		<Italian>%s1_Player ha fondato %s2_City.</Italian>
 		<Spanish>%s1_Player has founded %s2_City.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -31,7 +30,7 @@
 		<English>%s1_Player has founded %s2_City in a distant land.</English>
 		<French>%s1_Player has founded %s2_City in a distant land.</French>
 		<German>%s1_Player hat in einem fernen Land die Stadt %s2_City gegründet.</German>
-		<Italian>%s1_Player has founded %s2_City in a distant land.</Italian>
+		<Italian>%s1_Player ha fondato %s2_City in una terra lontana.</Italian>
 		<Spanish>%s1_Player has founded %s2_City in a distant land.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -127,7 +126,7 @@
 		<English>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird zu einem Vasallen werden: %s1[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]Diverrà Vassallo: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -135,7 +134,7 @@
 		<English>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird kapitulieren: %s1[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]Capitolerà: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -143,7 +142,7 @@
 		<English>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Wird einem "Friedensvertrag" zustimmen: %s1[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]Firmerà un Trattato di Pace: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>

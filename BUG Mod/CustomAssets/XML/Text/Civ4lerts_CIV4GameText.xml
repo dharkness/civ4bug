@@ -20,8 +20,6 @@
   02110-1301 USA
   -->
 
-<!-- $Revision: 1.3 $ -->
-<!-- $Source: /usr/local/cvsroot/Civ4lerts/src/main/xml/text/Civ4lertsTextInfos.xml,v $ -->
 
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<!-- CIV4LERTS TEXT -->
@@ -158,7 +156,7 @@
 		<English>[COLOR_TECH_TEXT]%s1 will be pacified on the next turn.[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 sera apaisée sur le prochain tour.[COLOR_REVERT]</French>
 		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde befriedet.[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 sarà pacificata sulla girata seguente.[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_TECH_TEXT]%s1 sarà pacificata al turno seguente.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 será pacificado en la vuelta siguiente.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>

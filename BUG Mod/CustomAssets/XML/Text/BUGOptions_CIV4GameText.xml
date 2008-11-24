@@ -266,7 +266,7 @@
 		<English>City Founded by Rival</English>
 		<French>City Founded by Rival</French>
 		<German>Gegnerische Stadtgründungen</German>
-		<Italian>City Founded by Rival</Italian>
+		<Italian>Città fondate dagli avversari</Italian>
 		<Spanish>City Founded by Rival</Spanish>
 	</TEXT>
 	<TEXT>
@@ -274,7 +274,7 @@
 		<English>When checked, displays an alert when a rival founds a city.</English>
 		<French>When checked, displays an alert when a rival founds a city.</French>
 		<German>Lässt eine Warnung erscheinen, wenn eine gegnerische Zivilisation eine Stadt gründet</German>
-		<Italian>When checked, displays an alert when a rival founds a city.</Italian>
+		<Italian>Quando è selezionato,  viene visualizzato un avviso quando una Civiltà avversaria fonda una Città.</Italian>
 		<Spanish>When checked, displays an alert when a rival founds a city.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -338,7 +338,7 @@
 		<English>When checked, displays an alert when a city will be pacified next turn, ending occupation.</English>
 		<French>When checked, displays an alert when a city will be pacified next turn, ending occupation.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer eroberten Stadt in der nächsten Runde enden</German>
-		<Italian>When checked, displays an alert when a city will be pacified next turn, ending occupation.</Italian>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una città verrà pacificata al turno successivo, ponendo fine al periodo di occupazione.</Italian>
 		<Spanish>When checked, displays an alert when a city will be pacified next turn, ending occupation.</Spanish>
 	</TEXT>
 	
@@ -395,7 +395,7 @@
 		<English>Occupation</English>
 		<French>Occupation</French>
 		<German>Befriedung</German>
-		<Italian>Occupation</Italian>
+		<Italian>Occupazione</Italian>
 		<Spanish>Occupation</Spanish>
 	</TEXT>
 	<TEXT>
@@ -403,7 +403,7 @@
 		<English>When checked, displays an alert when a city has been pacified, ending occupation.</English>
 		<French>When checked, displays an alert when a city has been pacified, ending occupation.</French>
 		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer eroberten Stadt enden</German>
-		<Italian>When checked, displays an alert when a city has been pacified, ending occupation.</Italian>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una città viene pacificata, ponendo fine al periodo di occupazione.</Italian>
 		<Spanish>When checked, displays an alert when a city has been pacified, ending occupation.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -589,7 +589,7 @@
 		<English>Vassal</English>
 		<French>Vassal</French>
 		<German>Vasall</German>
-		<Italian>Vassal</Italian>
+		<Italian>Vassallaggio</Italian>
 		<Spanish>Vassal</Spanish>
 	</TEXT>
 	<TEXT>
@@ -597,7 +597,7 @@
 		<English>When checked, displays an alert when a civilization is willing to become your vassal.</English>
 		<French>When checked, displays an alert when a civilization is willing to become your vassal.</French>
 		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation bereit ist, zu einem Vasallen der eigenen Zivilisation zu werden</German>
-		<Italian>When checked, displays an alert when a civilization is willing to become your vassal.</Italian>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una Civiltà è disponibile a diventare Vassallo del giocatore.</Italian>
 		<Spanish>When checked, displays an alert when a civilization is willing to become your vassal.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -605,7 +605,7 @@
 		<English>Peace Treaty</English>
 		<French>Peace Treaty</French>
 		<German>Friedensvertrag</German>
-		<Italian>Peace Treaty</Italian>
+		<Italian>Trattato di Pace</Italian>
 		<Spanish>Peace Treaty</Spanish>
 	</TEXT>
 	<TEXT>
@@ -613,7 +613,7 @@
 		<English>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</English>
 		<French>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</French>
 		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation einem "Friedensvertrag" zustimmen wird</German>
-		<Italian>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</Italian>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una Civiltà è disponibile a firmare un Trattato di Pace.</Italian>
 		<Spanish>When checked, displays an alert when a civilization is willing to sign a Peace Treaty.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -621,7 +621,7 @@
 		<English>Capitulation</English>
 		<French>Capitulation</French>
 		<German>Kapitulation</German>
-		<Italian>Capitulation</Italian>
+		<Italian>Capitolazione</Italian>
 		<Spanish>Capitulation</Spanish>
 	</TEXT>
 	<TEXT>
@@ -629,7 +629,7 @@
 		<English>When checked, displays an alert when a civilization is willing to capitulate during war.</English>
 		<French>When checked, displays an alert when a civilization is willing to capitulate during war.</French>
 		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation bereit ist, einen Krieg durch eine Kapitulation zu beenden</German>
-		<Italian>When checked, displays an alert when a civilization is willing to capitulate during war.</Italian>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una Civiltà è disponibile a firmare un Atto di Capitolazione</Italian>
 		<Spanish>When checked, displays an alert when a civilization is willing to capitulate during war.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2242,7 +2242,7 @@
 		<English>Maximum Civilizations</English>
 		<French>Maximum Civilizations</French>
 		<German>Anzahl Zivilisationen</German>
-		<Italian>Maximum Civilizations</Italian>
+		<Italian>Massimo di Civiltà</Italian>
 		<Spanish>Maximum Civilizations</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2250,7 +2250,7 @@
 		<English>Select the maximum number of civilizations to display (0 for unlimited).</English>
 		<French>Select the maximum number of civilizations to display (0 for unlimited).</French>
 		<German>Bestimmt die maximale Anzahl der angezeigten Zivilisationen (0 für unendlich)</German>
-		<Italian>Select the maximum number of civilizations to display (0 for unlimited).</Italian>
+		<Italian>Seleziona il massimo numero di Civiltà che verranno mostrate (0 significa illimitate).</Italian>
 		<Spanish>Select the maximum number of civilizations to display (0 for unlimited).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2258,7 +2258,7 @@
 		<English>Line Height</English>
 		<French>Line Height</French>
 		<German>Zeilenhöhe</German>
-		<Italian>Line Height</Italian>
+		<Italian>Altezza riga</Italian>
 		<Spanish>Line Height</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2266,7 +2266,7 @@
 		<English>Select the height of each civilization's line (default value is 22).</English>
 		<French>Select the height of each civilization's line (default value is 22).</French>
 		<German>Bestimmt die Zeilenhöhe für jede Zivilisation (der Standardwert ist 22)</German>
-		<Italian>Select the height of each civilization's line (default value is 22).</Italian>
+		<Italian>Imposta l'altezza della riga di ogni Civiltà (il valore predefinito è 22).</Italian>
 		<Spanish>Select the height of each civilization's line (default value is 22).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2298,7 +2298,7 @@
 		<English>This determines the order in which the score columns appear.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - You are at war or have a peace treaty with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - The civ's score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - The change in the civ's score since previous turn.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - The civ's rank based on their score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - The civ has at least one vassal.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - The civ's player ID number.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - The civ's/leader's/player's name.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - You have not yet met the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - You have a positive espionage point ratio against the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - The civ's power ratio compared to you.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - The number of research turns left.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - The civ is connected to your trade network.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - You have an open borders agreement with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - You have a defensive pact with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - The civ's state religion.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - The civ's attitude toward you.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - You are the civ's worst enemy.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - The civ is mobilizing for war (WHEOOH).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - Civ's network stats (ping).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</English>
 		<French>Ceci détermine l'ordre dans lequel les colonnes apparaissent.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - Vous êtes en guerre contre cette civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - Score de la civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - The change in the civ's score since previous turn.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - The civ's rank based on their score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - The civ has at least one vassal.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - The civ's player ID number.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - Nom de la civilisation et/ou du dirigeant.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - Vous n'avez pas encore rencontré cette civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - Votre pro rata d'espionnage avec cette civilisation est bon.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - Pro rata du pouvoir de cette civilisation comparé à vous.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - La technologie que la civilisation recherche (vassaux, équipe et espionnage).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - Le nombre de tours qui restent à la recherche.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - Cette civilisation est connectée à votre réseau de commerce.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - Vous avez une accord de frontières ouvertes avec cette civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - Vous avez un pacte défensif avec cette civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - La religion nationale de cette civilisation.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - L'attitude de cette civilisation envers vous.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - You are the civ's worst enemy.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - The civ is mobilizing for war (WHEOOH).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - Vous attendez que cette civilisation finisse son tour.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - Statistique de Réseau (ping).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - Le joueur est out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</French>
 		<German>Bestimmt die Reihenfolge, in der die Spalten der Punkteanzeige angeordnet werden:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - Kriegszustand oder Friedensvertrag mit einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - Wertung einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - Veränderung der Wertung einer Zivilisation seit der letzten Runde[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - Rang einer Zivilisation basierend auf ihrer Wertung[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - Eine Zivilisation hat mindestens einen Vasallen[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - Spieler-ID-Nummer einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - Name einer Zivilisation/eines Oberhaupts/eines Spielers[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - Zivilisation noch nicht kontaktiert[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - Gutes Spionagepunktverhältnis gegenüber einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - Machtverhältnis zwischen der eigenen und einer gegnerischen Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - Derzeitiges Forschungsprojekt einer Zivilisation (bei Vasallen, Verbündeten und durch Spionage erlangt)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - Anzahl verbleibender Runden bis zur Erforschung[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - Handelsverbindungen mit einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - "Offene Grenzen" mit einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - "Verteidigungsbündis" mit einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - Staatsreligion einer Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - Einstellung einer Zivilisation gegenüber der eigenen[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - Erzfeind der eigenen Zivilisation[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - Kriegsvorbereitungen einer Zivilisation (engl. "WHEOOH")[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - Warten auf den Zug einer Zivilisation (im Multiplayer)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - Netzwerkstatistik einer Zivilisation (Ping)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - Verbundener Spieler ist "out-of-sync"[NEWLINE][NEWLINE]Zwischen den Codes für die Spalten können (positive oder negative) Zahlen gesetzt werden, die den eingestellten Standardabstand außer Kraft setzen</German>
-		<Italian>Determina l'ordine in base al quale vengono visualizzate le colonne del Pannello del Punteggio:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - sei in guerra o hai un trattato di pace con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - il Punteggio della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - la variazione nel punteggio rispetto al turno precedente;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - The civ's rank based on their score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - mostra l'icona di una stella argentata se la Civiltà ha dei Vassalli;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - il numero di identificazione della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - il Nome della Civiltà/del Leader della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - non hai ancora incontrato questa Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - hai un Rapporto di Spionaggio positivo verso la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - la Potenza della Civiltà rispetto alla tua (o viceversa);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - la Tecnologia che la Civiltà sta ricercando (nota per Vassalli e Alleati o mediante Spionaggio);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - il numero di Turni di Ricerca rimasti alla Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - la Civiltà è connessa alla tua rete commerciale;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - hai un accordo di Libero Scambio con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - hai un Patto Difensivo con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - la Religione di Stato della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - l'atteggiamento della Civiltà verso di te;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - siete il Peggior Nemico della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - la Civiltà si sta mobilitando per la guerra;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - sei in attesa che questa Civiltà finisca il suo turno;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - le statistiche di connessione del giocatore della Civiltà (ping);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - il giocatore di questa Civiltà è "out-of-sync".[NEWLINE][NEWLINE]Un numero definisce la spaziatura (in pixel) che deve seguire la colonna precedente (se visualizzata), prevalendo sulla spaziatura di default; un numero negativo comporta il ravvicinamento (ed al limite anche la sovrapposizione) fra le due colonne.[NEWLINE]Gli spazi vengono ignorati, per cui possono essere utilizzati per semplificare la lettura della stringa di codici.</Italian>
+		<Italian>Determina l'ordine in base al quale vengono visualizzate le colonne del Pannello del Punteggio:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - sei in guerra o hai un trattato di pace con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - il Punteggio della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - la variazione nel punteggio rispetto al turno precedente;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - La posizione della Civiltà in base al punteggio.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - mostra l'icona di una stella argentata se la Civiltà ha dei Vassalli;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - il numero di identificazione della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - il Nome della Civiltà/del Leader della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - non hai ancora incontrato questa Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - hai un Rapporto di Spionaggio positivo verso la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - la Potenza della Civiltà rispetto alla tua (o viceversa);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - la Tecnologia che la Civiltà sta ricercando (nota per Vassalli e Alleati o mediante Spionaggio);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - il numero di Turni di Ricerca rimasti alla Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - la Civiltà è connessa alla tua rete commerciale;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - hai un accordo di Libero Scambio con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - hai un Patto Difensivo con la Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - la Religione di Stato della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - l'atteggiamento della Civiltà verso di te;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - siete il Peggior Nemico della Civiltà;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - la Civiltà si sta mobilitando per la guerra;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - sei in attesa che questa Civiltà finisca il suo turno;[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - le statistiche di connessione del giocatore della Civiltà (ping);[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - il giocatore di questa Civiltà è "out-of-sync".[NEWLINE][NEWLINE]Un numero definisce la spaziatura (in pixel) che deve seguire la colonna precedente (se visualizzata), prevalendo sulla spaziatura di default; un numero negativo comporta il ravvicinamento (ed al limite anche la sovrapposizione) fra le due colonne.[NEWLINE]Gli spazi vengono ignorati, per cui possono essere utilizzati per semplificare la lettura della stringa di codici.</Italian>
 		<Spanish>This determines the order in which the score columns appear.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]W[COLOR_REVERT] - You are at war or have a peace treaty with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]S[COLOR_REVERT] - The civ's score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Z[COLOR_REVERT] - The change in the civ's score since previous turn.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]K[COLOR_REVERT] - The civ's rank based on their score.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]V[COLOR_REVERT] - The civ has at least one vassal.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]I[COLOR_REVERT] - The civ's player ID number.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]C[COLOR_REVERT] - The civ's/leader's/player's name.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]?[COLOR_REVERT] - You have not yet met the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]E[COLOR_REVERT] - You have a positive espionage point ratio against the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]P[COLOR_REVERT] - The civ's power ratio compared to you.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]T[COLOR_REVERT] - The tech the civ is researching (vassals, teammates and espionage).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]U[COLOR_REVERT] - The number of research turns left.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]N[COLOR_REVERT] - The civ is connected to your trade network.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]B[COLOR_REVERT] - You have an open borders agreement with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]D[COLOR_REVERT] - You have a defensive pact with the civ.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]R[COLOR_REVERT] - The civ's state religion.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]A[COLOR_REVERT] - The civ's attitude toward you.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]H[COLOR_REVERT] - You are the civ's worst enemy.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]M[COLOR_REVERT] - The civ is mobilizing for war (WHEOOH).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]*[COLOR_REVERT] - This civ is waiting for you to finish your turn in multiplayer.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]L[COLOR_REVERT] - Civ's network stats (ping).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]O[COLOR_REVERT] - The network player is out-of-sync.[NEWLINE][NEWLINE]You can place a number (positive or negative) between column codes to override the default spacing.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2354,7 +2354,7 @@
 		<English>Size</English>
 		<French>Size</French>
 		<German>Größe</German>
-		<Italian>Size</Italian>
+		<Italian>Dimensione</Italian>
 		<Spanish>Size</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2362,7 +2362,7 @@
 		<English>Select the size of the research icons when displayed (default value is 24).</English>
 		<French>Select the size of the research icons when displayed (default value is 24).</French>
 		<German>Bestimmt die Größe der Technologiesymbole, falls diese angezeigt werden (der Standardwert ist 24).</German>
-		<Italian>Select the size of the research icons when displayed (default value is 24).</Italian>
+		<Italian>Imposta la dimensione delle Icone di Ricerca (quando queste sono visualizzate; il valore predefinito è 24).</Italian>
 		<Spanish>Select the size of the research icons when displayed (default value is 24).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3084,7 +3084,7 @@
 		<English>Min/Max Commerce Buttons</English>
 		<French>Min/Max Commerce Buttons</French>
 		<German>Min/Max Investitionsanteile</German>
-		<Italian>Min/Max Commerce Buttons</Italian>
+		<Italian>Bottoni del Commercio minimo/massimo</Italian>
 		<Spanish>Min/Max Commerce Buttons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3092,7 +3092,7 @@
 		<English>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</English>
 		<French>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</French>
 		<German>Zeigt ein zweites Paar "+/-"-Schaltflächen für jede Art Investitionsanteil an, die diese auf 100% beziehungsweise 0% setzen</German>
-		<Italian>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</Italian>
+		<Italian>Quando è selezionato, mostra una seconda coppia di bottoni +/- per ogni tipo di commercio che impostano il valore rispettivamente al 100% ed allo 0%.</Italian>
 		<Spanish>When checked, displays a second pair of +/- buttons for each commerce type that set the rate to 100% and 0% respectively.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3304,7 +3304,7 @@
 		<English>Production Grouping</English>
 		<French>Production Grouping</French>
 		<German>Produktionsgruppen</German>
-		<Italian>Production Grouping</Italian>
+		<Italian>Raggruppamento di Produzione</Italian>
 		<Spanish>Production Grouping</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3312,7 +3312,7 @@
 		<English>None|Icons|Colors|Both</English>
 		<French>None|Icons|Colors|Both</French>
 		<German>Keine|Symbole|Farben|Beides</German>
-		<Italian>None|Icons|Colors|Both</Italian>
+		<Italian>Nulla|Icone|Colori|Entrambi</Italian>
 		<Spanish>None|Icons|Colors|Both</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3320,7 +3320,7 @@
 		<English>Select grouping options for the production list on the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No special grouping.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icons[COLOR_REVERT] - Production items prefaced by icons denoting the type of item which keeps them grouped together when sorting.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colors[COLOR_REVERT] - Production items colored based on the type of item.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Both[COLOR_REVERT] - Production items prefaced by icons and colored based on the type of item.</English>
 		<French>Select grouping options for the production list on the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No special grouping.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icons[COLOR_REVERT] - Production items prefaced by icons denoting the type of item which keeps them grouped together when sorting.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colors[COLOR_REVERT] - Production items colored based on the type of item.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Both[COLOR_REVERT] - Production items prefaced by icons and colored based on the type of item.</French>
 		<German>Bestimmt die Gruppierungseinstellungen für die Spalte "Produktion" im "Customizable Domestic Advisor" (CDA):[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Keine[COLOR_REVERT] - Keine besondere Gruppierung[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Symbole[COLOR_REVERT] - Produzierte Objekte erhalten entsprechend ihrer Art vorangestellte Symbole, wobei die Gruppierung auch nach einer Sortierung erhalten bleibt[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Farben[COLOR_REVERT] - Produzierte Objekte werden entsprechend ihrer Art eingefärbt[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Beides[COLOR_REVERT] - Produzierte Objekte erhalten entsprechend ihrer Art vorangestellte Symbole und werden gleichzeitig eingefärbt</German>
-		<Italian>Select grouping options for the production list on the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No special grouping.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icons[COLOR_REVERT] - Production items prefaced by icons denoting the type of item which keeps them grouped together when sorting.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colors[COLOR_REVERT] - Production items colored based on the type of item.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Both[COLOR_REVERT] - Production items prefaced by icons and colored based on the type of item.</Italian>
+		<Italian>Seleziona l'opzione di raggruppamento per la lista di produzione nella schermata del Consigliere Interno Personalizzabile (CDA):[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Nulla[COLOR_REVERT] - Nessun raggruppamento.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icone[COLOR_REVERT] - Gli oggetti in produzione vengono preceduti da icone che mostrano il tipo di oggetto e mantengono insieme gli oggetti dello stesso tipo quando il Pannello del Punteggio viene ordinato in base a questo parametro.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colori[COLOR_REVERT] - Il nome degli oggetti in produzione viene colorato in base al tipo di oggetto.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Entrambi[COLOR_REVERT] - Il nome degli oggetti in produzione viene colorato in base al tipo dell'oggetto e preceduto da una icona opportuna.</Italian>
 		<Spanish>Select grouping options for the production list on the Customizable Domestic Advisor screen:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]None[COLOR_REVERT] - No special grouping.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Icons[COLOR_REVERT] - Production items prefaced by icons denoting the type of item which keeps them grouped together when sorting.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Colors[COLOR_REVERT] - Production items colored based on the type of item.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Both[COLOR_REVERT] - Production items prefaced by icons and colored based on the type of item.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3328,7 +3328,7 @@
 		<English>BUG Finance Advisor</English>
 		<French>BUG Finance Advisor</French>
 		<German>BUG Finanzberater</German>
-		<Italian>BUG Finance Advisor</Italian>
+		<Italian>evoluto</Italian>
 		<Spanish>BUG Finance Advisor</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3336,7 +3336,7 @@
 		<English>When checked, uses the BUG Finance Advisor (requires restart).</English>
 		<French>When checked, uses the BUG Finance Advisor (requires restart).</French>
 		<German>Aktiviert den verbesserten Finanzberater der BUG Mod (erfordert Neustart)</German>
-		<Italian>When checked, uses the BUG Finance Advisor (requires restart).</Italian>
+		<Italian>Quando è selezionato, visualizza il Consigliere Economico del BUG mod (è richiesto un  perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, uses the BUG Finance Advisor (requires restart).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3400,7 +3400,7 @@
 		<English>When checked, uses the BUG Militiary Advisor (requires restart).</English>
 		<French>When checked, uses the BUG Militiary Advisor (requires restart).</French>
 		<German>Aktiviert den verbesserten Militärberater der BUG Mod (erfordert Neustart)</German>
-		<Italian>Quando è selezionato, utilizza il Consigliere Militare del BUG Mod ( perchè il cambiamento abbia effetto).</Italian>
+		<Italian>Quando è selezionato, utilizza il Consigliere Militare del BUG Mod (è richiesto un  perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, uses the BUG Militiary Advisor (requires restart).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3829,7 +3829,7 @@
 		<English>Finance [F2]:</English>
 		<French>Finance [F2]:</French>
 		<German>Finanzen [F2]:</German>
-		<Italian>Finance [F2]:</Italian>
+		<Italian>Economico [F2]:</Italian>
 		<Spanish>Finance [F2]:</Spanish>
 	</TEXT>
 	<TEXT>
