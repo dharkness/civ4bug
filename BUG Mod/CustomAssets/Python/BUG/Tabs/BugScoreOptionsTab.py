@@ -32,13 +32,13 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addLabel(screen, right, "Scores_New_Columns", "Additional Columns:")
 		col1L, col1R, col2, col3 = self.addMultiColumnLayout(screen, right, 4, "Scores_Power_Column")
-		self.addCheckboxTextDropdown(screen, col1L, col1R, "Scores__Power", "Scores__PowerFormula")
-		self.addIntDropdown(screen, col1L, col1R, "Scores__PowerDecimals", True, "left")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerColor", True)
-		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerHighRatio", True, "left")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerHighColor", True)
-		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerLowRatio", True, "left")
-		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerLowColor", True)
+		self.addCheckboxTextDropdown(screen, col1L, col1R, "Scores__Power", "Scores__PowerFormula", "LAYOUT_LEFT")
+		self.addIntDropdown(screen, col1L, col1R, "Scores__PowerDecimals", True, "LAYOUT_LEFT")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerColor", True, "LAYOUT_LEFT")
+		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerHighRatio", True, "LAYOUT_LEFT")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerHighColor", True, "LAYOUT_LEFT")
+		self.addFloatDropdown(screen, col1L, col1R, "Scores__PowerLowRatio", True, "LAYOUT_LEFT")
+		self.addColorDropdown(screen, col1L, col1R, "Scores__PowerLowColor", True, "LAYOUT_LEFT")
 		
 		self.addSpacer(screen, col2, "Scores_New_Columns", 3)
 		
@@ -51,22 +51,19 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
-		left, space, right = self.addThreeColumnLayout(screen, column, column, False)
+		left, space, center, right = self.addMultiColumnLayout(screen, column, 4, "Advanced_Scores_Column")
 		self.addLabel(screen, left, "Scores_Grid", "Advanced Layout:")
 		self.addCheckbox(screen, left, "Scores__AlignIcons")
 		self.addCheckbox(screen, left, "Scores__GroupVassals")
 		self.addCheckbox(screen, left, "Scores__LeftAlignName")
 		self.addCheckboxIntDropdown(screen, left, left, "Scores__ResearchIcons", "Scores__ResearchIconSize")
 		
-		self.addSpacer(screen, space, "Scores_Grid1", 3)
+		self.addSpacer(screen, space, "Scores_Grid", 3)
 		
-		self.addSpacer(screen, right, "Scoreboard_Tab")
-		rightLeft, rightSpace, rightRight = self.addThreeColumnLayout(screen, right, right, False)
-		self.addSpacer(screen, rightSpace, "Scores_Grid2", 3)
-		
-		self.addIntDropdown(screen, rightLeft, rightLeft, "Scores__MaxPlayers", True)
-		self.addIntDropdown(screen, rightRight, rightRight, "Scores__LineHeight", True)
-		
-		self.addLabel(screen, right, "Scores_Order", "Column Order:")
-		self.addTextEdit(screen, None, right, "Scores__DisplayOrder")
-		self.addIntDropdown(screen, right, right, "Scores__DefaultSpacing", True)
+		self.addSpacer(screen, center, "Scoreboard_Tab")
+		#self.addLabel(screen, center, "Scores_Order", "Column Order:")		
+		self.addTextEdit(screen, center, center, "Scores__DisplayOrder")
+		centerL, centerR = self.addTwoColumnLayout(screen, center, "Scores")
+		self.addIntDropdown(screen, centerL, centerR, "Scores__DefaultSpacing", True, "LAYOUT_LEFT")
+		self.addIntDropdown(screen, centerL, centerR, "Scores__MaxPlayers", True, "LAYOUT_LEFT")
+		self.addIntDropdown(screen, centerL, centerR, "Scores__LineHeight", True, "LAYOUT_LEFT")

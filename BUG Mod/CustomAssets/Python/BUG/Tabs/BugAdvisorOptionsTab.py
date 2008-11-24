@@ -24,11 +24,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Advisors__CustDomAdv")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True, "LAYOUT_LEFT")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceSides", True)
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True)
+		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True, "LAYOUT_LEFT")
 		
 		self.addLabel(screen, left, "Finance_Advisor", "Finance [F2]:")
 		self.addCheckbox(screen, left, "Advisors__BugFinanceAdvisor")
-		self.addSpacer(screen, left, "Finance_Advisor_2")
 		
 		self.addLabel(screen, left, "Foreign_Advisor", "Foreign [F4]:")
 		comboBox = "Advisors_ComboBoxEFA"
@@ -43,7 +42,6 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
 		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
 		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
-		self.addSpacer(screen, center, "Technology_Advisor_3")
 		
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")

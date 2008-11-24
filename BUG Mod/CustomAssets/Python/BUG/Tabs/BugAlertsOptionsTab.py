@@ -25,27 +25,20 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# Cities
 		self.addLabel(screen, left, "Alerts_City", "Cities:")
-		self.addCheckbox(screen, left, "MoreCiv4lerts__CityFounded")
-		comboBox = "Civ4lerts_ComboBoxGrowth"
-		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingGrowth")
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityGrowth")
-		comboBox = "Civ4lerts_ComboBoxHealthiness"
-		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingHealthiness")
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityHealthiness")
-		comboBox = "Civ4lerts_ComboBoxHappiness"
-		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingHappiness")
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityHappiness")
-		comboBox = "Civ4lerts_ComboBoxOccupation"
-		screen.attachHBox(left, comboBox)
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityPendingOccupation")
-		self.addCheckbox(screen, comboBox, "Civ4lerts__CityOccupation")
+		leftL, leftR = self.addTwoColumnLayout(screen, left, "Civ4lerts_TableGrowth")		
+		self.addCheckbox(screen, leftL, "Civ4lerts__CityPendingGrowth")
+		self.addCheckbox(screen, leftR, "Civ4lerts__CityGrowth")		
+		self.addCheckbox(screen, leftL, "Civ4lerts__CityPendingHealthiness")
+		self.addCheckbox(screen, leftR, "Civ4lerts__CityHealthiness")		
+		self.addCheckbox(screen, leftL, "Civ4lerts__CityPendingHappiness")
+		self.addCheckbox(screen, leftR, "Civ4lerts__CityHappiness")		
+		self.addCheckbox(screen, leftL, "Civ4lerts__CityPendingOccupation")
+		self.addCheckbox(screen, leftR, "Civ4lerts__CityOccupation")
 		
 		self.addCheckbox(screen, left, "MoreCiv4lerts__CityPendingBorderExpansion")
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryPop")
 		self.addCheckbox(screen, left, "Civ4lerts__CityCanHurryGold")
+		self.addCheckbox(screen, left, "MoreCiv4lerts__CityFounded")
 		
 		# Diplomacy
 		self.addLabel(screen, center, "Alerts_Diplomacy", "Diplomacy:")

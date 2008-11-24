@@ -20,33 +20,30 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		left, space1, center, space2, right = self.addMultiColumnLayout(screen, column, 5, "Top", False)
+		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
 		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
-		self.addCheckbox(screen, left, "MainInterface__MinMax_Commerce")
+		self.addSpacer(screen, left, "MainInterface_FieldOfView")
+		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
+		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
 		
-		self.addSpacer(screen, space1, "Main_TechWindow", 3)
-		
-		self.addSpacer(screen, center, "MainInterface_TechWindow")
-		self.addLabel(screen, center, "TechWindow", "Tech Splash Screen:")
-		self.addTextDropdown(screen, center, center, "TechWindow__ViewType", True)
-		self.addCheckbox(screen, center, "TechWindow__CivilopediaText")
-		
-		self.addSpacer(screen, space2, "Main_Misc", 3)
+		self.addSpacer(screen, right, "MainInterface_TechWindow")
+		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")
+		self.addTextDropdown(screen, right, right, "TechWindow__ViewType", True)
+		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")
 		
 		self.addSpacer(screen, right, "Misc")		
 		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "MainInterface__CityArrows")
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
-		self.addCheckbox(screen, right, "MainInterface__FieldOfView")
-		self.addCheckbox(screen, right, "MainInterface__FieldOfView_Remember")
+		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
-		left, space, right = self.addThreeColumnLayout(screen, column, "Bottom", False)
+		left, right = self.addTwoColumnLayout(screen, column, "Bottom", True)
 		
 		self.addLabel(screen, left, "CityScreen", "CITY SCREEN")
 		self.addCheckbox(screen, left, "CityScreen__RawYields")
@@ -57,8 +54,6 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "CityScreen__WhipAssist")
 		self.addCheckbox(screen, left, "CityScreen__WhipAssistOverflowCountCurrentProduction")
 		self.addCheckbox(screen, left, "CityScreen__Anger_Counter")
-		
-		self.addSpacer(screen, space, "City_Misc", 3)
 		
 		self.addSpacer(screen, right, "CityScreen_Bottom")
 		self.addLabel(screen, right, "Misc", "Misc:")

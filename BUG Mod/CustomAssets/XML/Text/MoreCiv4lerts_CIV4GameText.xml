@@ -22,7 +22,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_CITY_FOUNDED</Tag>
 		<English>%s1_Player has founded %s2_City.</English>
 		<French>%s1_Player has founded %s2_City.</French>
-		<German>%s1_Player has founded %s2_City.</German>
+		<German>%s1_Player hat die Stadt %s2_City gegründet.</German>
 		<Italian>%s1_Player has founded %s2_City.</Italian>
 		<Spanish>%s1_Player has founded %s2_City.</Spanish>
 	</TEXT>
@@ -30,7 +30,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_CITY_FOUNDED_UNSEEN</Tag>
 		<English>%s1_Player has founded %s2_City in a distant land.</English>
 		<French>%s1_Player has founded %s2_City in a distant land.</French>
-		<German>%s1_Player has founded %s2_City in a distant land.</German>
+		<German>%s1_Player hat in einem fernen Land die Stadt %s2_City gegründet.</German>
 		<Italian>%s1_Player has founded %s2_City in a distant land.</Italian>
 		<Spanish>%s1_Player has founded %s2_City in a distant land.</Spanish>
 	</TEXT>
@@ -126,7 +126,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_VASSAL</Tag>
 		<English>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Wird zu einem Vasallen werden: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Become a Vassal: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -134,7 +134,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_SURRENDER</Tag>
 		<English>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Wird kapitulieren: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Capitulate: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -142,7 +142,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_PEACE_TREATY</Tag>
 		<English>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Wird einem "Friedensvertrag" zustimmen: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Sign Peace Treaty: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
