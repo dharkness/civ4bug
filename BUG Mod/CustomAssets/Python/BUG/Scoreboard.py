@@ -183,7 +183,6 @@ class Scoreboard:
 		if self._currTeamScores:
 			self._currPlayerScore = self._currTeamScores.addPlayer(player, rank)
 			self._playerScores.append(self._currPlayerScore)
-			self.setRank(BugUtil.colorText(u"<font=2>%d</font>" % (rank + 1), ScoreOpt.getRankColor()))
 		
 	def size(self):
 		return len(self._playerScores)
@@ -278,6 +277,17 @@ class Scoreboard:
 		self._currPlayerScore.set(part, value, widget)
 		
 		
+	def assignRanks(self):
+		"""Assigns a rank from 1 to N based on score.
+		As the player scores are currently reversed, this is done in reverse order."""
+		rank = 0
+		for playerScore in reversed(self._playerScores):
+			if not playerScore.has(NOT_MET) or not playerScore.value(NOT_MET):
+				rank += 1
+				playerScore.set(RANK, smallText(BugUtil.colorText(u"%d" % rank, ScoreOpt.getRankColor())))
+		if rank > 0:
+			self._anyHas[RANK] = True
+		
 	def gatherVassals(self):
 		for teamScores in self._teamScores:
 			teamScores.gatherVassals()
@@ -305,6 +315,7 @@ class Scoreboard:
 		"""Sorts and draws the scoreboard right-to-left, bottom-to-top."""
 		timer = BugUtil.Timer("scores")
 		self.hide(screen)
+		self.assignRanks()
 		self.gatherVassals()
 		self.sort()
 		interface = CyInterface()
