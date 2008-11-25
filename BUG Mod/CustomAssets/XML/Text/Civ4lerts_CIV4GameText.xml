@@ -155,7 +155,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_PACIFIED</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 will be pacified on the next turn.[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 sera apaisée sur le prochain tour.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde befriedet.[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Die Unruhen in %s1 werden nächste Runde enden.[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 sarà pacificata al turno seguente.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]%s1 será pacificado en la vuelta siguiente.[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -163,7 +163,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PACIFIED</Tag>
 		<English>[COLOR_TECH_TEXT]%s1 has been pacified.[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]%s1 a été apaisée.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wurde befriedet![COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Die Unruhen in %s1 sind beendet![COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]%s1 è stata pacificata.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Se ha pacificado %s1.[COLOR_REVERT]</Spanish>
 	</TEXT>

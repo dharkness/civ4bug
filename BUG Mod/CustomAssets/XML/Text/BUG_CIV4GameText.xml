@@ -1095,7 +1095,7 @@
 		<Tag>TXT_KEY_CONCEPT_DOMESTIC_TRADE</Tag>
 		<English>Domestic Trade</English>
 		<French>Domestic Trade</French>
-		<German>Handel im Inland</German>
+		<German>Binnenhandel</German>
 		<Italian>Commercio Interno</Italian>
 		<Spanish>Domestic Trade</Spanish>
 	</TEXT>
@@ -1103,7 +1103,7 @@
 		<Tag>TXT_KEY_CONCEPT_FOREIGN_TRADE</Tag>
 		<English>Foreign Trade</English>
 		<French>Foreign Trade</French>
-		<German>Handel mit Ausland</German>
+		<German>Auﬂenhandel</German>
 		<Italian>Commercio Estero</Italian>
 		<Spanish>Foreign Trade</Spanish>
 	</TEXT>

@@ -337,7 +337,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYPENDINGOCCUPATION_HOVER</Tag>
 		<English>When checked, displays an alert when a city will be pacified next turn, ending occupation.</English>
 		<French>When checked, displays an alert when a city will be pacified next turn, ending occupation.</French>
-		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer eroberten Stadt in der nächsten Runde enden</German>
+		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer (eroberten) Stadt in der nächsten Runde enden</German>
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando una città verrà pacificata al turno successivo, ponendo fine al periodo di occupazione.</Italian>
 		<Spanish>When checked, displays an alert when a city will be pacified next turn, ending occupation.</Spanish>
 	</TEXT>
@@ -394,7 +394,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_TEXT</Tag>
 		<English>Pacification</English>
 		<French>Pacification</French>
-		<German>Befriedung</German>
+		<German>Beruhigung</German>
 		<Italian>Pacificazione</Italian>
 		<Spanish>Pacification</Spanish>
 	</TEXT>
@@ -402,7 +402,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CITYOCCUPATION_HOVER</Tag>
 		<English>When checked, displays an alert when a city has been pacified, ending occupation.</English>
 		<French>When checked, displays an alert when a city has been pacified, ending occupation.</French>
-		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer eroberten Stadt enden</German>
+		<German>Lässt eine Warnung erscheinen, wenn die Unruhen in einer (eroberten) Stadt enden</German>
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando una città viene pacificata, ponendo fine al periodo di occupazione.</Italian>
 		<Spanish>When checked, displays an alert when a city has been pacified, ending occupation.</Spanish>
 	</TEXT>
@@ -3303,7 +3303,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CDAPRODGROUP_TEXT</Tag>
 		<English>Production Grouping</English>
 		<French>Production Grouping</French>
-		<German>Produktionsgruppen</German>
+		<German>Produktgruppen</German>
 		<Italian>Produzione</Italian>
 		<Spanish>Production Grouping</Spanish>
 	</TEXT>
@@ -3423,7 +3423,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__WIDETECHSCREEN_TEXT</Tag>
 		<English>Wide Tech Screen</English>
 		<French>Ecran de Technologie Large</French>
-		<German>Breiter Technologiebaum</German>
+		<German>Breitbild</German>
 		<Italian>Schermo ampio</Italian>
 		<Spanish>Wide Tech Screen</Spanish>
 	</TEXT>

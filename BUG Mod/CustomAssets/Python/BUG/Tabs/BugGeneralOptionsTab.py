@@ -26,39 +26,42 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
-		self.addSpacer(screen, left, "MainInterface_FieldOfView")
+		
+		screen.attachHSeparator(left, left + "SepL1")
+		
 		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
 		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
 		
-		self.addSpacer(screen, right, "MainInterface_TechWindow")
-		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")
-		self.addTextDropdown(screen, right, right, "TechWindow__ViewType", True)
-		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")
+		screen.attachHSeparator(left, left + "SepL2")
 		
-		self.addSpacer(screen, right, "Misc")		
-		self.addLabel(screen, right, "Misc", "Misc:")
-		self.addCheckbox(screen, right, "MainInterface__CityArrows")
-		self.addCheckbox(screen, right, "EventSigns__Enabled")
-		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
+		self.addLabel(screen, left, "TechWindow", "Tech Splash Screen:")
+		self.addTextDropdown(screen, left, left, "TechWindow__ViewType", True)
+		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
 		
-		screen.attachHSeparator(column, column + "Sep")
+		screen.attachHSeparator(left, left + "SepL3")
 		
-		left, right = self.addTwoColumnLayout(screen, column, "Bottom", True)
+		self.addLabel(screen, left, "Misc", "Misc:")
+		self.addCheckbox(screen, left, "MainInterface__CityArrows")
+		self.addCheckbox(screen, left, "EventSigns__Enabled")
+		self.addCheckbox(screen, left, "MainInterface__MinMax_Commerce")
 		
-		self.addLabel(screen, left, "CityScreen", "CITY SCREEN")
-		self.addCheckbox(screen, left, "CityScreen__RawYields")
-		self.addTextDropdown(screen, left, left, "CityScreen__RawYields_View", True)
 		
-		self.addSpacer(screen, left, "CityScreen_TopCenter")
-		self.addCheckbox(screen, left, "CityScreen__FoodAssist")
-		self.addCheckbox(screen, left, "CityScreen__WhipAssist")
-		self.addCheckbox(screen, left, "CityScreen__WhipAssistOverflowCountCurrentProduction")
-		self.addCheckbox(screen, left, "CityScreen__Anger_Counter")
+		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
+		self.addCheckbox(screen, right, "CityScreen__WhipAssist")
+		self.addCheckbox(screen, right, "CityScreen__WhipAssistOverflowCountCurrentProduction")
+		self.addCheckbox(screen, right, "CityScreen__Anger_Counter")
 		
-		self.addSpacer(screen, right, "CityScreen_Bottom")
+		screen.attachHSeparator(right, right + "SepR1")
+		
+		self.addCheckbox(screen, right, "CityScreen__RawYields")
+		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View", True)
+		
+		screen.attachHSeparator(right, right + "SepR2")
+		
 		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "CityScreen__CultureTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonTurns")
 		self.addCheckbox(screen, right, "CityScreen__GreatPersonInfo")
+		self.addCheckbox(screen, right, "CityScreen__FoodAssist")
 		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
 		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)		
