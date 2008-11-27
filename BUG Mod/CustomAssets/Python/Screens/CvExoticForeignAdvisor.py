@@ -474,9 +474,17 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 		FavoriteCivicDetector.doUpdate()
 
+		# Checking whether the "Open Markets" UN resolution has passed which will be used in the rows
+		self.bOpenMarkets = False
+		for iVote in range(gc.getNumVoteInfos()):
+			if gc.getVoteInfo(iVote).isFreeTrade():
+				if gc.getGame().isVotePassed(iVote):
+					self.bOpenMarkets = True
+					break
+		
 		# display the active player's row at the top
 		self.drawInfoRow(screen, mainPanelName, self.iActiveLeader, PanelStyles.PANEL_STYLE_MAIN_BLACK25)
-		
+
 		# loop through all other players and add their rows; show known first
 		lKnownPlayers = []
 		lUnknownPlayers = []
@@ -568,11 +576,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			iTradeRoutes = -1
 			if (bIsActivePlayer
 					or (objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
-					and self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam())
+					and (self.bOpenMarkets or self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam()))
 					and not self.objActiveLeader.isNoForeignTrade()
 					and not objLoopPlayer.isNoForeignTrade())):
 				(iTradeCommerce,iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
-			if iTradeRoutes > 0:
+			if iTradeRoutes >= 0:
 				szTrade = u"%d" % (iTradeRoutes)
 			else:
 				szTrade = u""
