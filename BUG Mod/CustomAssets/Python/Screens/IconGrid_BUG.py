@@ -355,10 +355,13 @@ class IconGrid_BUG:
 						except:
 							bDataFound = False
 
+						szIcon_ID = self.rowName + str(rowIndex) + "_" + str(startIndex + offset)
 						if bDataFound:
-							self.screen.setImageButton(self.rowName + str(rowIndex) + "_" + str(startIndex + offset),
+							self.screen.setImageButton(szIcon_ID,
 													   iconData.image, currentX - (iconData.size - 64) / 2, currentY - (iconData.size - 64) / 2, iconData.size, iconData.size, 
 													   iconData.widgetType, iconData.data1, iconData.data2)
+						else:
+							self.screen.deleteWidget(szIcon_ID)
 						currentX += self.iconColWidth + self.colSpace
 
 					elif (self.columns[startIndex + offset] == GRID_MULTI_LIST_COLUMN):
