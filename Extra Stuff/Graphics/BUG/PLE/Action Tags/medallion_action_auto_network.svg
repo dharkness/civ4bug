@@ -475,18 +475,6 @@
        y1="268.72131"
        x2="704.1853"
        y2="719.34882" />
-    <filter
-       inkscape:collect="always"
-       x="-0.080132782"
-       width="1.1602656"
-       y="-0.18113604"
-       height="1.3622721"
-       id="filter4772">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="33.563752"
-         id="feGaussianBlur4774" />
-    </filter>
     <inkscape:perspective
        id="perspective2473"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
@@ -506,8 +494,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="-234.6416"
-     inkscape:cy="203.63008"
+     inkscape:cx="-286.02183"
+     inkscape:cy="166.70176"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      width="1200px"
@@ -546,7 +534,7 @@
     <rect
        inkscape:export-ydpi="1.1583772"
        inkscape:export-xdpi="1.1583772"
-       style="fill:#ffbf61;fill-opacity:1;fill-rule:evenodd;stroke:#3f3f3f;stroke-width:0.63563323;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#3f3f3f;stroke-width:0.63563323000000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3237"
        width="15.364367"
        height="15.364367"
