@@ -5596,7 +5596,12 @@ class CvMainInterface:
 									szRightBuffer = szRightBuffer + szTempBuffer
 # BUG - Raw Yields - start
 								if (j == YieldTypes.YIELD_COMMERCE):
-									self.yields.addTrade(iTradeProfit)
+									if pHeadSelectedCity.getTeam() == pLoopCity.getTeam():
+										self.yields.addDomesticTrade(iTradeProfit)
+									elif pHeadSelectedCity.area().getID() == pLoopCity.area().getID():
+										self.yields.addForeignTrade(iTradeProfit)
+									else:
+										self.yields.addForeignOverseasTrade(iTradeProfit)
 
 						if (not bShowRawYields):
 							screen.appendTableRow( "TradeRouteTable" )

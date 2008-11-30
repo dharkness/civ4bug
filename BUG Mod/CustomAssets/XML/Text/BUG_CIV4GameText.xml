@@ -1094,18 +1094,26 @@
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_DOMESTIC_TRADE</Tag>
 		<English>Domestic Trade</English>
-		<French>Domestic Trade</French>
+		<French>Commerce Domestique</French>
 		<German>Binnenhandel</German>
 		<Italian>Commercio Interno</Italian>
-		<Spanish>Domestic Trade</Spanish>
+		<Spanish>Comercio Doméstico</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CONCEPT_FOREIGN_TRADE</Tag>
 		<English>Foreign Trade</English>
-		<French>Foreign Trade</French>
+		<French>Commerce Extérieur</French>
 		<German>Außenhandel</German>
 		<Italian>Commercio Estero</Italian>
-		<Spanish>Foreign Trade</Spanish>
+		<Spanish>Comercio Exterior</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_FOREIGN_OVERSEAS_TRADE</Tag>
+		<English>Overseas Trade</English>
+		<French>Commerce d'outre-mer</French>
+		<German>&#220;berseehandel</German>
+		<Italian>Commercio d'oltreoceano</Italian>
+		<Spanish>Comercio de Ultramar</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_COMMERCE</Tag>

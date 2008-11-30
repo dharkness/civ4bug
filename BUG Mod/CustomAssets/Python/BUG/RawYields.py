@@ -14,21 +14,25 @@ import BugUtil
 gc = CyGlobalContext()
 
 # Types
-WORKED_TILES = 0
-CITY_TILES = 1
-OWNED_TILES = 2
-ALL_TILES = 3
-
-TRADE = 4
-BUILDINGS = 5
-CORPORATIONS = 6
-SPECIALISTS = 7
-
-# Hold the percents, not the actual yield values
-BASE_MODIFIER = 8
-PRODUCTION_MODIFIER = 9
-
-NUM_TYPES = 10
+NUM_TYPES = 12
+(
+	WORKED_TILES,
+	CITY_TILES,
+	OWNED_TILES,
+	ALL_TILES,
+	
+	DOMESTIC_TRADE,
+	FOREIGN_TRADE, # excludes overseas trade
+	FOREIGN_OVERSEAS_TRADE,
+	
+	BUILDINGS,
+	CORPORATIONS,
+	SPECIALISTS,
+	
+	# Hold the percents, not the actual yield values
+	BASE_MODIFIER,
+	PRODUCTION_MODIFIER,
+) = range(NUM_TYPES)
 
 # Leave these for later when we have icons for each
 #DOMAIN_MODIFIER
@@ -45,7 +49,9 @@ LABEL_KEYS = ("TXT_KEY_CONCEPT_WORKED_TILES",
 			  "TXT_KEY_CONCEPT_CITY_TILES",
 			  "TXT_KEY_CONCEPT_OWNED_TILES",
 			  "TXT_KEY_CONCEPT_ALL_TILES",
-			  "TXT_KEY_HEADING_TRADEROUTE_LIST",
+			  "TXT_KEY_CONCEPT_DOMESTIC_TRADE",
+			  "TXT_KEY_CONCEPT_FOREIGN_TRADE",
+			  "TXT_KEY_CONCEPT_FOREIGN_OVERSEAS_TRADE",
 			  "TXT_KEY_CONCEPT_BUILDINGS",
 			  "TXT_KEY_CONCEPT_CORPORATIONS",
 			  "TXT_KEY_CONCEPT_SPECIALISTS",
@@ -64,7 +70,7 @@ VALUE_COLUMN = 1
 TOTAL_COLUMN = 2
 
 def getViewAndType(iView):
-	"Returns the view boolean and YieldTypes enum given the give number 0-3."
+	"""Returns the view boolean and YieldTypes enum given the give number 0-3."""
 	if iView == 0:
 		return (False, YieldTypes.YIELD_FOOD)
 	elif iView in (1, 2, 3):
@@ -76,7 +82,7 @@ def getViewAndType(iView):
 class Tracker:
 	
 	def __init__(self):
-		"Creates a table to hold all of the tracked values for each yield type."
+		"""Creates a table to hold all of the tracked values for each yield type."""
 		self.values = {}
 		for eYield in range(YieldTypes.NUM_YIELD_TYPES):
 			self.values[eYield] = {}
@@ -89,15 +95,22 @@ class Tracker:
 		return self.values[eYield][eType]
 	
 	def _addYield(self, eYield, eType, iValue):
-		"Adds the given yield value to the given type in the table."
+		"""Adds the given yield value to the given type in the table."""
 		self.values[eYield][eType] += iValue
 	
 	
 	def addBuilding(self, eYield, iValue):
 		self._addYield(eYield, BUILDINGS, iValue)
 	
-	def addTrade(self, iValue):
-		self._addYield(YieldTypes.YIELD_COMMERCE, TRADE, iValue)
+	def addDomesticTrade(self, iValue):
+		self._addYield(YieldTypes.YIELD_COMMERCE, DOMESTIC_TRADE, iValue)
+	
+	def addForeignTrade(self, iValue):
+		"""Excludes overseas trade."""
+		self._addYield(YieldTypes.YIELD_COMMERCE, FOREIGN_TRADE, iValue)
+	
+	def addForeignOverseasTrade(self, iValue):
+		self._addYield(YieldTypes.YIELD_COMMERCE, FOREIGN_OVERSEAS_TRADE, iValue)
 	
 	def processCity(self, pCity):
 		"""
@@ -110,7 +123,7 @@ class Tracker:
 		self.calculateModifiers(pCity)
 	
 	def calculateTiles(self, pCity):
-		"Calculates the yields for all tiles of the given CyCity."
+		"""Calculates the yields for all tiles of the given CyCity."""
 		for i in range(gc.getNUM_CITY_PLOTS()):
 			pPlot = pCity.getCityIndexPlot(i)
 			if pPlot and not pPlot.isNone() and pPlot.hasYield():
@@ -165,14 +178,14 @@ class Tracker:
 	
 	
 	def fillTable(self, screen, table, eYield, eTileType):
-		"Fills the given GFC table control with the chosen yield values."
+		"""Fills the given GFC table control with the chosen yield values."""
 		self.iRow = 0
 		# Tiles
 		iTotal = self.getYield(eYield, eTileType)
 		self.appendTable(screen, table, False, BugUtil.getText(LABEL_KEYS[eTileType], (self.tileCounts[eTileType],)), eYield, iTotal)
 		
 		# Other types
-		for eType in (TRADE, BUILDINGS, CORPORATIONS, SPECIALISTS):
+		for eType in (DOMESTIC_TRADE, FOREIGN_TRADE, FOREIGN_OVERSEAS_TRADE, BUILDINGS, CORPORATIONS, SPECIALISTS):
 			iValue = self.getYield(eYield, eType)
 			if iValue != 0:
 				iTotal += iValue

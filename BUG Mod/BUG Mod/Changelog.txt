@@ -27,6 +27,7 @@ Features:
 - Added Min/Max Commerce Rate buttons by codewarrior
 - Added Advanced Scoreboard options for maximum players, line height, and research icon size
 - Added Advanced Scoreboard column for rank
+- Split up Trade Routes total for Raw Yields into Domestic, Foreign, and Overseas (foreign only) Trade
 
 
 Bugfixes:
