@@ -2,28 +2,35 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1143"
-   height="1143"
+   width="24"
+   height="24"
    id="svg3148"
    sodipodi:version="0.32"
-   inkscape:version="0.45"
+   inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="PLEswords.svg"
+   sodipodi:docname="PLE_Filter_Mil_32.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docbase="C:\Documents and Settings\Games\My Documents\My Pictures\BUG\PLE"
-   inkscape:export-filename="C:\Documents and Settings\Games\My Documents\My Pictures\BUG\PLE\PLEswordsmini2.png"
-   inkscape:export-xdpi="1.2598425"
-   inkscape:export-ydpi="1.2598425"
+   inkscape:export-filename="C:\Documents and Settings\James\My Documents\My Games\BUG Work\PLE Filters\swords.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
    sodipodi:modified="true">
   <defs
      id="defs3150">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 571.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1143 : 571.5 : 1"
+       inkscape:persp3d-origin="571.5 : 381 : 1"
+       id="perspective51" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4799"
@@ -96,23 +103,6 @@
          offset="1"
          id="stop3162" />
     </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3158"
-       id="linearGradient3164"
-       x1="647.14288"
-       y1="451.33795"
-       x2="647.14288"
-       y2="1001.439"
-       gradientUnits="userSpaceOnUse" />
-    <filter
-       inkscape:collect="always"
-       id="filter3198">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="4.8438161"
-         id="feGaussianBlur3200" />
-    </filter>
     <filter
        inkscape:collect="always"
        x="-0.29084748"
@@ -168,9 +158,10 @@
      width="1143px"
      height="1143px"
      inkscape:window-width="744"
-     inkscape:window-height="573"
+     inkscape:window-height="667"
      inkscape:window-x="374"
-     inkscape:window-y="31" />
+     inkscape:window-y="31"
+     showgrid="false" />
   <metadata
      id="metadata3153">
     <rdf:RDF>
@@ -186,28 +177,15 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       sodipodi:type="arc"
-       style="opacity:0.98999999;fill:url(#linearGradient3164);fill-opacity:1;stroke:none;stroke-width:10.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3198)"
-       id="path3156"
-       sodipodi:cx="647.14288"
-       sodipodi:cy="535.71429"
-       sodipodi:rx="484.28571"
-       sodipodi:ry="484.28571"
-       d="M 466.58399,985.08177 A 484.28571,484.28571 0 1 1 468.53247,985.85979"
-       sodipodi:start="1.9528593"
-       sodipodi:end="8.2317123"
-       sodipodi:open="true"
-       transform="translate(-74.285716,34.285714)" />
     <g
        id="g4673" />
     <g
        id="g4825"
-       transform="matrix(0.7922721,-0.7922721,0.7922721,0.7922721,-193.61989,570.77069)"
+       transform="matrix(1.8237981e-2,-1.8237981e-2,1.8237981e-2,1.8237981e-2,-5.323431,11.869282)"
        style="fill:#000000;filter:url(#filter4911)">
       <path
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.9122436px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z "
+         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z"
          id="path4664"
          sodipodi:nodetypes="cccccc" />
       <rect
@@ -237,13 +215,13 @@
          ry="27.142857" />
     </g>
     <g
-       transform="matrix(-0.7922721,-0.7922721,-0.7922721,0.7922721,1367.437,582.89252)"
+       transform="matrix(-1.8237981e-2,-1.8237981e-2,-1.8237981e-2,1.8237981e-2,30.611857,12.148324)"
        id="g4853"
        style="fill:#000000;filter:url(#filter4907)">
       <path
          sodipodi:nodetypes="cccccc"
          id="path4855"
-         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z "
+         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.9122436px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <rect
          ry="31.155029"
@@ -273,10 +251,10 @@
     </g>
     <g
        id="g4922"
-       transform="matrix(0.7922721,-0.7922721,0.7922721,0.7922721,-203.18677,567.67504)">
+       transform="matrix(1.8237981e-2,-1.8237981e-2,1.8237981e-2,1.8237981e-2,-5.543659,11.798018)">
       <path
          style="fill:url(#linearGradient4849);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.9122436px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z "
+         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z"
          id="path4924"
          sodipodi:nodetypes="cccccc" />
       <rect
@@ -306,12 +284,12 @@
          ry="27.142857" />
     </g>
     <g
-       transform="matrix(-0.7922721,-0.7922721,-0.7922721,0.7922721,1353.8295,567.67504)"
+       transform="matrix(-1.8237981e-2,-1.8237981e-2,-1.8237981e-2,1.8237981e-2,30.298614,11.798018)"
        id="g4932">
       <path
          sodipodi:nodetypes="cccccc"
          id="path4934"
-         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z "
+         d="M 453.52149,657.47244 L 431.3847,196.90943 L 491.24409,125.67042 L 545.75815,195.54427 L 525.46609,657.1042 L 453.52149,657.47244 z"
          style="fill:url(#linearGradient4863);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.9122436px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <rect
          ry="31.155029"
