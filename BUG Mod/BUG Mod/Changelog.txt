@@ -20,13 +20,13 @@ Features:
 - Added FoodAssist: net food added to stores per turn and turns until starvation
 - Added Advanced Scoreboard option to show Civ ID number; layout character is "I" but it's not in the default layout
 - Added EventSigns: plots whose yields change due to random events marked on the map with signs
-- Added Civ4lert for cities that will/have come out of occupation after capture or revolt.
-- Added BUG Finance Advisor with breakdowns for Commerce and Income.
-- Added Civ4lert for cities founded by rivals.
-- Added Civ4lert for when rival will become a vassal, capitulate, or sign a peace treaty.
-- Added Min/Max Commerce Buttons by codewarrior.
-- Added Advanced Scoreboard options for maximum players, line height, and research icon size.
-- Added Advanced Scoreboard column for rank.
+- Added Civ4lert for cities that will/have come out of occupation after capture or revolt
+- Added BUG Finance Advisor with breakdowns for Commerce and Income
+- Added Civ4lert for cities founded by rivals
+- Added Civ4lert for when rival will become a vassal, capitulate, or sign a peace treaty
+- Added Min/Max Commerce Rate buttons by codewarrior
+- Added Advanced Scoreboard options for maximum players, line height, and research icon size
+- Added Advanced Scoreboard column for rank
 
 
 Bugfixes:
@@ -41,4 +41,5 @@ Bugfixes:
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
 - Fixed click/hover response on (widescreen) research bar
 - CDA now adjusts position of Liberate button to make sure it doesn't overlap Exit text
+- Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
 
