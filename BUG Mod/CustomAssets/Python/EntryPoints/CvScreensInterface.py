@@ -71,6 +71,9 @@ mainInterface = CvMainInterface.CvMainInterface()
 def showMainInterface():
 	mainInterface.interfaceScreen()
 
+def reinitMainInterface():
+	mainInterface.initState()
+
 def numPlotListButtons():
 	return mainInterface.numPlotListButtons()
 

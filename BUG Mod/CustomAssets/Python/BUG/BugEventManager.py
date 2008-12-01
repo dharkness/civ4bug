@@ -367,5 +367,5 @@ def initBug():
 	global g_initDone
 	if not g_initDone:
 		import BugInit
-		BugInit.init()
-		g_initDone = True
+		if BugInit.init():
+			g_initDone = True

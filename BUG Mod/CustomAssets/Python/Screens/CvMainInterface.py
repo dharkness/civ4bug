@@ -180,13 +180,9 @@ g_pSelectedUnit = 0
 class CvMainInterface:
 	"Main Interface Screen"
 	
-#########################################################################################
-#########################################################################################
-#########################################################################################
-#########################################################################################
-# BUG - PLE - start
 	def __init__(self):
 	
+# BUG - PLE - start
 		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"		
 		self.PLOT_LIST_MINUS_NAME 		= "MyPlotListMinus"
 		self.PLOT_LIST_PLUS_NAME 		= "MyPlotListPlus"
@@ -352,6 +348,13 @@ class CvMainInterface:
 
 		self.xResolution = 0
 		self.yResolution = 0
+# BUG - PLE - end
+
+# BUG - field of view slider - start
+		self.szSliderTextId = "FieldOfViewSliderText"
+		self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
+		self.szSliderId = "FieldOfViewSlider"
+# BUG - field of view slider - end
 
 		self.iField_View_Prev = -1
 ############## Basic operational functions ###################
@@ -2119,30 +2122,12 @@ class CvMainInterface:
 	def numPlotListButtons(self):
 		return self.m_iNumPlotListButtons
 
-	def interfaceScreen (self):
-
-		# Global variables being set here
-		global g_NumEmphasizeInfos
-		global g_NumCityTabTypes
-		global g_NumHurryInfos
-		global g_NumUnitClassInfos
-		global g_NumBuildingClassInfos
-		global g_NumProjectInfos
-		global g_NumProcessInfos
-		global g_NumActionInfos
+	def initState (self, screen=None):
 		
-		global MAX_SELECTED_TEXT
-		global MAX_DISPLAYABLE_BUILDINGS
-		global MAX_DISPLAYABLE_TRADE_ROUTES
-		global MAX_BONUS_ROWS
-		global MAX_CITIZEN_BUTTONS
-
-		if ( CyGame().isPitbossHost() ):
-			return
-
-		# This is the main interface screen, create it as such
-		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-		screen.setForcedRedraw(True)
+		if screen is None:
+			screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		self.xResolution = screen.getXResolution()
+		self.yResolution = screen.getYResolution()
 		
 # BUG - Raw Yields - begin
 		global g_bYieldView
@@ -2151,29 +2136,14 @@ class CvMainInterface:
 # BUG - Raw Yields - end
 
 # BUG - PLE - begin
-#		# Find out our resolution
-#		xResolution = screen.getXResolution()
-#		yResolution = screen.getYResolution()
-#		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
-#		
-#		screen.setDimensions(0, 0, xResolution, yResolution)
-
 		self.pOldPlot = 0
-
-		self.xResolution = screen.getXResolution()
-		self.yResolution = screen.getYResolution()
-		
-		# this is only to prevent changing all variables in the code. 
-		xResolution = self.xResolution
-		yResolution = self.yResolution
-		self.m_iNumPlotListButtons = (self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
-		screen.setDimensions(0, 0, self.xResolution, self.yResolution)
+		self.m_iNumPlotListButtons = (self.xResolution - (iMultiListXL + iMultiListXR) - 68) / 34
 		
 		self.CFG_INFOPANE_PIX_PER_LINE_1 			= 24
 		self.CFG_INFOPANE_PIX_PER_LINE_2 			= 19
 		self.CFG_INFOPANE_DX 					    = 290
 		
-		self.CFG_INFOPANE_Y		 			= yResolution - PleOpt.getInfoPaneY()
+		self.CFG_INFOPANE_Y		 			= self.yResolution - PleOpt.getInfoPaneY()
 		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1 - 2
 		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
 		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
@@ -2183,6 +2153,15 @@ class CvMainInterface:
 # BUG - PLE - end
 
 		# Set up our global variables...
+		global g_NumEmphasizeInfos
+		global g_NumCityTabTypes
+		global g_NumHurryInfos
+		global g_NumUnitClassInfos
+		global g_NumBuildingClassInfos
+		global g_NumProjectInfos
+		global g_NumProcessInfos
+		global g_NumActionInfos
+		
 		g_NumEmphasizeInfos = gc.getNumEmphasizeInfos()
 		g_NumCityTabTypes = CityTabTypes.NUM_CITYTAB_TYPES
 		g_NumHurryInfos = gc.getNumHurryInfos()
@@ -2191,6 +2170,62 @@ class CvMainInterface:
 		g_NumProjectInfos = gc.getNumProjectInfos()
 		g_NumProcessInfos = gc.getNumProcessInfos()
 		g_NumActionInfos = gc.getNumActionInfos()
+		
+# BUG - field of view slider - start
+		iBtnY = 27
+		self.iX_FoVSlider = self.xResolution - 120
+		self.iY_FoVSlider = iBtnY + 30
+		if MainOpt.isRememberFieldOfView():
+			self.iField_View = int(MainOpt.getFieldOfView())
+		else:
+			self.iField_View = DEFAULT_FIELD_OF_VIEW
+# BUG - field of view slider - end
+
+# BUG - PLE - begin
+		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
+# BUG - PLE - end
+
+# BUG - Progress Bar - Tick Marks - start
+		xCoord = 268 + (self.xResolution - 1024) / 2
+		self.pBarResearchBar_n = ProgressBarUtil.ProgressBar("ResearchBar-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS, True)
+		self.pBarResearchBar_n.addBarItem("ResearchBar")
+		self.pBarResearchBar_n.addBarItem("ResearchText")
+# BUG - Progress Bar - Tick Marks - end
+		
+# BUG - Progress Bar - Tick Marks - start
+		xCoord = 268 + (self.xResolution - 1440) / 2
+		xCoord += 6 + 84
+		self.pBarResearchBar_w = ProgressBarUtil.ProgressBar("ResearchBar-w-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS, True)
+		self.pBarResearchBar_w.addBarItem("ResearchBar-w")
+		self.pBarResearchBar_w.addBarItem("ResearchText")
+# BUG - Progress Bar - Tick Marks - end
+
+# BUG - Progress Bar - Tick Marks - start
+		self.pBarPopulationBar = ProgressBarUtil.ProgressBar("PopulationBar-Canvas", iCityCenterRow1X, iCityCenterRow1Y-4, self.xResolution - (iCityCenterRow1X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType(), ProgressBarUtil.SOLID_MARKS, True)
+		self.pBarPopulationBar.addBarItem("PopulationBar")
+		self.pBarPopulationBar.addBarItem("PopulationText")
+		self.pBarProductionBar = ProgressBarUtil.ProgressBar("ProductionBar-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, self.xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType(), ProgressBarUtil.TICK_MARKS, True)
+		self.pBarProductionBar.addBarItem("ProductionBar")
+		self.pBarProductionBar.addBarItem("ProductionText")
+		self.pBarProductionBar_Whip = ProgressBarUtil.ProgressBar("ProductionBar-Whip-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, self.xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getInfoTypeForString("COLOR_YELLOW"), ProgressBarUtil.CENTER_MARKS, False)
+		self.pBarProductionBar_Whip.addBarItem("ProductionBar")
+		self.pBarProductionBar_Whip.addBarItem("ProductionText")
+# BUG - Progress Bar - Tick Marks - end
+
+	def interfaceScreen (self):
+		
+		if ( CyGame().isPitbossHost() ):
+			return
+		
+		# This is the main interface screen, create it as such
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		self.initState(screen)
+		screen.setForcedRedraw(True)
+		screen.setDimensions(0, 0, self.xResolution, self.yResolution)
+		
+		# to avoid changing all the code below
+		xResolution = self.xResolution
+		yResolution = self.yResolution
 		
 		# Help Text Area
 		screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
@@ -2343,23 +2378,10 @@ class CvMainInterface:
 # BUG - 3.17 No Espionage - end
 
 # BUG - field of view slider - start
-		self.iX_FoVSlider = xResolution - 120
-		self.iY_FoVSlider = iBtnY + 30
+		self.setFieldofView_Text(screen)
 		iW = 100
 		iH = 15
-
-		if MainOpt.isRememberFieldOfView():
-			self.iField_View = int(MainOpt.getFieldOfView())
-		else:
-			self.iField_View = DEFAULT_FIELD_OF_VIEW
-
-		self.szSliderTextId = "FieldOfViewSliderText"
-		self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
-		self.setFieldofView_Text(screen)
-
-		self.szSliderId = "FieldOfViewSlider"
-		screen.addSlider(self.szSliderId, self.iX_FoVSlider + 5, self.iY_FoVSlider, iW, iH, self.iField_View - 1, 0, 100-1, WidgetTypes.WIDGET_GENERAL, -1, -1, False);
-
+		screen.addSlider(self.szSliderId, self.iX_FoVSlider + 5, self.iY_FoVSlider, iW, iH, self.iField_View - 1, 0, 100 - 1, WidgetTypes.WIDGET_GENERAL, -1, -1, False);
 		screen.hide(self.szSliderTextId)
 		screen.hide(self.szSliderId)
 # BUG - field of view slider - end
@@ -2442,7 +2464,6 @@ class CvMainInterface:
 #				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
 #				screen.hide( szStringIcon )
 
-		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
 		iHealthyColor = PleOpt.getHealthyColor()
 		iWoundedColor = PleOpt.getWoundedColor()
 		iMovementColor = PleOpt.getFullMovementColor()
@@ -2595,12 +2616,6 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar" )
 
-# BUG - Progress Bar - Tick Marks - start
-		self.pBarResearchBar_n = ProgressBarUtil.ProgressBar("ResearchBar-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS, True)
-		self.pBarResearchBar_n.addBarItem("ResearchBar")
-		self.pBarResearchBar_n.addBarItem("ResearchText")
-# BUG - Progress Bar - Tick Marks - end
-
 # BUG - Great General Bar - start
 		screen.addStackedBarGFC( "GreatGeneralBar", xCoord, 27, 100, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatGeneralBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_NEGATIVE_RATE") ) #gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
@@ -2637,12 +2652,6 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ResearchBar-w", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ResearchBar-w" )
 
-# BUG - Progress Bar - Tick Marks - start
-		self.pBarResearchBar_w = ProgressBarUtil.ProgressBar("ResearchBar-w-Canvas", xCoord, 2, 487, iStackBarHeight, gc.getInfoTypeForString("COLOR_RESEARCH_RATE"), ProgressBarUtil.TICK_MARKS, True)
-		self.pBarResearchBar_w.addBarItem("ResearchBar-w")
-		self.pBarResearchBar_w.addBarItem("ResearchText")
-# BUG - Progress Bar - Tick Marks - end
-
 		xCoord += 6 + 487
 		screen.addStackedBarGFC( "GreatPersonBar-w", xCoord, 2, 320, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar-w", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
@@ -2672,18 +2681,6 @@ class CvMainInterface:
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType() )
 		screen.setStackedBarColors( "ProductionBar", InfoBarTypes.INFOBAR_EMPTY, gc.getInfoTypeForString("COLOR_EMPTY") )
 		screen.hide( "ProductionBar" )
-
-# BUG - Progress Bar - Tick Marks - start
-		self.pBarPopulationBar = ProgressBarUtil.ProgressBar("PopulationBar-Canvas", iCityCenterRow1X, iCityCenterRow1Y-4, xResolution - (iCityCenterRow1X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getColorType(), ProgressBarUtil.SOLID_MARKS, True)
-		self.pBarPopulationBar.addBarItem("PopulationBar")
-		self.pBarPopulationBar.addBarItem("PopulationText")
-		self.pBarProductionBar = ProgressBarUtil.ProgressBar("ProductionBar-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getColorType(), ProgressBarUtil.TICK_MARKS, True)
-		self.pBarProductionBar.addBarItem("ProductionBar")
-		self.pBarProductionBar.addBarItem("ProductionText")
-		self.pBarProductionBar_Whip = ProgressBarUtil.ProgressBar("ProductionBar-Whip-Canvas", iCityCenterRow2X, iCityCenterRow2Y-4, xResolution - (iCityCenterRow2X*2), iStackBarHeight, gc.getInfoTypeForString("COLOR_YELLOW"), ProgressBarUtil.CENTER_MARKS, False)
-		self.pBarProductionBar_Whip.addBarItem("ProductionBar")
-		self.pBarProductionBar_Whip.addBarItem("ProductionText")
-# BUG - Progress Bar - Tick Marks - end
 
 		screen.addStackedBarGFC( "GreatPeopleBar", xResolution - 246, yResolution - 188, 240, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_HELP_GREAT_PEOPLE, -1, -1 )
 		screen.setStackedBarColors( "GreatPeopleBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )

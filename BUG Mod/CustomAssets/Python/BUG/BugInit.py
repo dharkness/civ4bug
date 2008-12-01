@@ -35,16 +35,24 @@ def init():
 	BugUtil.debug("BugInit - initializing...")
 	timer = BugUtil.Timer("BUG init")
 	
-	CvUtil.initDynamicFontIcons()
+	try:
+		# test to see if global context is ready
+		CvUtil.initDynamicFontIcons()
+	except:
+		BugUtil.debug("BugInit - global context not ready")
+		g_initRunning = False
+		return False
+	
 	loadMod("init")
 	BugCore.initDone()
 	timer.log("read configs").start()
 	callInits()
-	timer.log("call inits/events").start()
+	timer.log("call inits/events")
 	
 	timer.logTotal()
 	g_initDone = True
 	g_initRunning = False
+	return True
 
 def loadMod(name):
 	"""Load the given mod from its XML file using a custom parser."""
@@ -53,8 +61,10 @@ def loadMod(name):
 		BugUtil.debug("BugInit - loading mod %s...", name)
 		parser = BugConfig.XmlParser()
 		timer = BugUtil.Timer("load mod")
-		parser.parse(path)
-		timer.log(name)
+		try:
+			parser.parse(path)
+		finally:
+			timer.log(name)
 	else:
 		BugUtil.error("BugInit - cannot find XML file for mod %s", name)
 

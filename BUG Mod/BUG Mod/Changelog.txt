@@ -43,4 +43,5 @@ Bugfixes:
 - Fixed click/hover response on (widescreen) research bar
 - CDA now adjusts position of Liberate button to make sure it doesn't overlap Exit text
 - Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
+- Fixed errors after reloading Python modules
 
