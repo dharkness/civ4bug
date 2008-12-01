@@ -2123,7 +2123,14 @@ class CvMainInterface:
 		return self.m_iNumPlotListButtons
 
 	def initState (self, screen=None):
+		"""
+		Initialize screen instance (self.foo) and global variables.
 		
+		This function is called before drawing the screen (from interfaceScreen() below)
+		and anytime the Python modules are reloaded (from CvEventInterface).
+		
+		THIS FUNCTION MUST NOT ALTER THE SCREEN -- screen.foo()
+		"""
 		if screen is None:
 			screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		self.xResolution = screen.getXResolution()
@@ -2213,7 +2220,14 @@ class CvMainInterface:
 # BUG - Progress Bar - Tick Marks - end
 
 	def interfaceScreen (self):
+		"""
+		Draw all of the screen elements.
 		
+		This function is called once after starting or loading a game.
+		
+		THIS FUNCTION MUST NOT CREATE ANY INSTANCE OR GLOBAL VARIABLES.
+		It may alter existing ones created in __init__() or initState(), however.
+		"""
 		if ( CyGame().isPitbossHost() ):
 			return
 		
