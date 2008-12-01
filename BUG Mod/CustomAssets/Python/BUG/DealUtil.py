@@ -12,10 +12,15 @@
 ##   playerDeals(player ID)
 ##     Used to iterate over all deals that the player participates in.
 ##
+## * New events
+##
+##   - DealCanceled
+##       Fired when a player cancels a deal
+##       Doesn't work as GameUpdate event isn't actually fired by Civ4
+##
 ## Notes
 ##   - Must be initialized externally by calling init()
 ##   - Add 'gameUpdate' event for onGameUpdate()
-##   - Defines new 'DealCanceled' event
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -92,7 +97,7 @@ def onGameUpdate(argsList):
 	count = gc.getGame().getNumDeals()
 	if count < g_lastDealCount:
 		g_eventManager.fireEvent('DealCanceled')
-		g_lastDealCount = count
+	g_lastDealCount = count
 
 
 ## Wrapper Classes
