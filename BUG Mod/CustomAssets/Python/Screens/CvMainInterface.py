@@ -352,7 +352,6 @@ class CvMainInterface:
 
 # BUG - field of view slider - start
 		self.szSliderTextId = "FieldOfViewSliderText"
-		# Will init text later when the XML is available
 		self.sFieldOfView_Text = ""
 		self.szSliderId = "FieldOfViewSlider"
 # BUG - field of view slider - end
@@ -2180,11 +2179,10 @@ class CvMainInterface:
 		g_NumActionInfos = gc.getNumActionInfos()
 		
 # BUG - field of view slider - start
-		if not self.sFieldOfView_Text:
-			self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
 		iBtnY = 27
 		self.iX_FoVSlider = self.xResolution - 120
 		self.iY_FoVSlider = iBtnY + 30
+		self.sFieldOfView_Text = localText.getText("TXT_KEY_BUG_OPT_MAININTERFACE__FIELDOFVIEW_TEXT", ())
 		if MainOpt.isRememberFieldOfView():
 			self.iField_View = int(MainOpt.getFieldOfView())
 		else:
