@@ -1,33 +1,36 @@
-Changelog from BUG 3.5:
+Changelog since BUG 3.5:
 
-Features:
+New Features:
 - Added map script "Maze" by Sirian
 - Field of View slider on the main screen
 - Improvements to stats tab on info screen
 - Tick Marks for selected progress bars (tech, food, production)
 - Tick Marks: Added whip threshold indicator to city production bar (look for yellow center tick mark)
+- Added FoodAssist: net food added to stores per turn and turns until starvation
+- Added EventSigns: plots whose yields change due to random events marked on the map with signs
+- Added BUG Finance Advisor with breakdowns for Commerce and Income
+- Added Min/Max Commerce Rate buttons by codewarrior
+
+Improvements:
 - Customizable Domestic Advisor (CDA) now also resizable based on 2 new BUG options
 - CDA: Added a "whip anger" column to CDA (not added to any pages)
 - CDA: coloring options now allow reversed comparisons (i.e. higher numbers are worse)
 - Show attitudes in leaderhead hovers in Exotic Foreign Advisor (EFA) Info tab and Military Advisor (MA)
 - EFA Info tab: Added Domestic Trade total and detection of Mercantilism
 - EFA Info tab: Added second trade column (for number of trade routes) to EFA Info Tab
-- BUG options screen: Redesigned hover texts with lists and General tab
+- Advanced Scoreboard: option to show Civ ID number; layout character is "I" but it's not in the default layout
+- Advanced Scoreboard: option to show the rank of a Civ; layout character is "K"
+- Advanced Scoreboard: options for maximum players, line height, and research icon size
+- Civ4lert: alert for cities that will/have come out of occupation after capture or revolt
+- Civ4lert: alert for cities founded by rivals
+- Civ4lert: alert for when rival will become a vassal, capitulate, or sign a peace treaty
+- Raw Yields: Split up Trade Routes total into Domestic, Foreign, and Overseas (foreign only) Trade
+- Sevopedia: Resource pages show all buildings they affect in the Buildings list--not just the buildings that supply the resource
+- Great General Progress Bar: Replaced "General" with icon
+- BUG options screen: Improved hover texts that include multiple options and redesigned General tab
+- Updated German and Italian translations
 - New Font File includes citizen icon, great general icon, and blank icon
-- Replaced "General" with icon in GG Bar.
 - Created FontUtil for adding new constants to FontSymbols (Define symbols in XML: <symbol id [name] [from] [offset]/>; provides getChar(symbol) for easier access to unicode string for symbol)
-- Resource pages in Sevopedia show all buildings they affect in the Buildings list--not just the buildings that supply the resource
-- Added FoodAssist: net food added to stores per turn and turns until starvation
-- Added Advanced Scoreboard option to show Civ ID number; layout character is "I" but it's not in the default layout
-- Added EventSigns: plots whose yields change due to random events marked on the map with signs
-- Added Civ4lert for cities that will/have come out of occupation after capture or revolt
-- Added BUG Finance Advisor with breakdowns for Commerce and Income
-- Added Civ4lert for cities founded by rivals
-- Added Civ4lert for when rival will become a vassal, capitulate, or sign a peace treaty
-- Added Min/Max Commerce Rate buttons by codewarrior
-- Added Advanced Scoreboard options for maximum players, line height, and research icon size
-- Added Advanced Scoreboard column for rank
-- Split up Trade Routes total for Raw Yields into Domestic, Foreign, and Overseas (foreign only) Trade
 
 
 Bugfixes:
@@ -39,9 +42,8 @@ Bugfixes:
 - IconGrid: Fixed bug where empty icon and stacked bar columns caused following columns to misalign
 - MA: Removed event reporting
 - MA: Reversed leaderhead parameters so attitude of row leaderhead is shown
+- MA: Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
 - Fixed click/hover response on (widescreen) research bar
 - CDA now adjusts position of Liberate button to make sure it doesn't overlap Exit text
-- Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
 - Fixed errors after reloading Python modules
-
