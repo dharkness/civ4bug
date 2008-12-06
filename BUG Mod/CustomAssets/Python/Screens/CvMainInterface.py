@@ -2880,6 +2880,7 @@ class CvMainInterface:
 
 # BUG - Event Manager - start
 		CvEventInterface.getEventManager().updateActiveTurn()
+		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -3024,10 +3025,6 @@ class CvMainInterface:
 				if self.bUnitPromoButtonsActive:
 					self.hideUnitInfoPromoButtons()
 # BUG - PLE - end
-
-# BUG - Event Manager - start
-		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
-# BUG - Event Manager - end
 
 		return 0
 
