@@ -1116,6 +1116,14 @@
 		<Spanish>Comercio de Ultramar</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_RELIGIOUS_SHRINES</Tag>
+		<English>Religious Shrines</English>
+		<French>Lieux Saints</French>
+		<German>Schreine</German>
+		<Italian>Santuari Religiosi</Italian>
+		<Spanish>Santuarios</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_COMMERCE</Tag>
 		<English>Total Commerce</English>
 		<French>Commerce total</French>

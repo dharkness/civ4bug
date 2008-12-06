@@ -231,9 +231,11 @@ class BugFinanceAdvisor:
 		
 		iBuildingCount = 0
 		iHeadquartersCount = 0
+		iShrinesCount = 0
 		fTaxes = 0.0
 		fBuildings = 0.0
 		fHeadquarters = 0.0
+		fShrines = 0.0
 		fCorporations = 0.0
 		fSpecialists = 0.0
 		iWealthCount = 0
@@ -246,6 +248,7 @@ class BugFinanceAdvisor:
 				
 				fCityBuildings = 0.0
 				fCityHeadquarters = 0.0
+				fCityShrines = 0.0
 				for eBldg in range(gc.getNumBuildingInfos()):
 					iCount = city.getNumRealBuilding(eBldg)
 					if iCount > 0:
@@ -255,11 +258,15 @@ class BugFinanceAdvisor:
 							if info.getFoundsCorporation() != -1:
 								fCityHeadquarters += iBuildingGold
 								iHeadquartersCount += 1
+							elif info.getGlobalReligionCommerce() != -1:
+								fCityShrines += iBuildingGold
+								iShrinesCount += 1
 							else:
 								fCityBuildings += iBuildingGold
 								iBuildingCount += iCount
 				fBuildings += fCityBuildings
 				fHeadquarters += fCityHeadquarters
+				fShrines += fCityShrines
 				
 				fCityCorporations = city.getCorporationCommerce(CommerceTypes.COMMERCE_GOLD)
 				fCorporations += fCityCorporations
@@ -304,6 +311,11 @@ class BugFinanceAdvisor:
 			yLocation += self.Y_SPACING
 			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_CORPORATIONS", ()) + "</font>", CvUtil.FONT_LEFT_JUSTIFY, self.X_INCOME + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + unicode(int(fCorporations)) + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_INCOME + self.PANE_WIDTH - self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		
+		if fShrines > 0.0:
+			yLocation += self.Y_SPACING
+			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_RELIGIOUS_SHRINES", ()) + " (%d)</font>" % iShrinesCount, CvUtil.FONT_LEFT_JUSTIFY, self.X_INCOME + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + unicode(int(fShrines)) + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_INCOME + self.PANE_WIDTH - self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		
 		if fSpecialists > 0.0:
 			yLocation += self.Y_SPACING
