@@ -1,6 +1,7 @@
 Changelog since BUG 3.5:
 
 New Features:
+
 - Added map script "Maze" by Sirian
 - Field of View slider on the main screen
 - Improvements to stats tab on info screen
@@ -12,6 +13,7 @@ New Features:
 - Added Min/Max Commerce Rate buttons by codewarrior
 
 Improvements:
+
 - Customizable Domestic Advisor (CDA) now also resizable based on 2 new BUG options
 - CDA: Added a "whip anger" column to CDA (not added to any pages)
 - CDA: coloring options now allow reversed comparisons (i.e. higher numbers are worse)
@@ -21,19 +23,17 @@ Improvements:
 - Advanced Scoreboard: option to show Civ ID number; layout character is "I" but it's not in the default layout
 - Advanced Scoreboard: option to show the rank of a Civ; layout character is "K"
 - Advanced Scoreboard: options for maximum players, line height, and research icon size
-- Civ4lert: alert for cities that will/have come out of occupation after capture or revolt
-- Civ4lert: alert for cities founded by rivals
+- Civ4lert: alert for cities that will/have become pacified after capture or revolt
+- Civ4lert: alert for cities founded by non-vassal rivals
 - Civ4lert: alert for when rival will become a vassal, capitulate, or sign a peace treaty
 - Raw Yields: Split up Trade Routes total into Domestic, Foreign, and Overseas (foreign only) Trade
 - Sevopedia: Resource pages show all buildings they affect in the Buildings list--not just the buildings that supply the resource
 - Great General Progress Bar: Replaced "General" with icon
 - BUG options screen: Improved hover texts that include multiple options and redesigned General tab
 - Updated German and Italian translations
-- New Font File includes citizen icon, great general icon, and blank icon
-- Created FontUtil for adding new constants to FontSymbols (Define symbols in XML: <symbol id [name] [from] [offset]/>; provides getChar(symbol) for easier access to unicode string for symbol)
 
+Bug Fixes:
 
-Bugfixes:
 - Advanced Scoreboard: Fixed offset for vassals when grouped
 - Advanced Scoreboard: Changed empty vassal indent to a bullet
 - Autolog: Added checking of logging to all logging options which was previously ignored
@@ -43,7 +43,17 @@ Bugfixes:
 - MA: Removed event reporting
 - MA: Reversed leaderhead parameters so attitude of row leaderhead is shown
 - MA: Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
+- Main Interface: Fixed click/hover response on (widescreen) research bar
+- CDA: Now adjusts position of Liberate button to make sure it doesn't overlap Exit text
+- Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
+
+For Modders:
+
+- New Font File includes citizen icon, great general icon, and blank icon
+- Created FontUtil for adding new constants to FontSymbols
+    Define symbols in XML: <symbol id [name] [from] [offset]/>
+    Provides getChar(symbol) for easier access to unicode string for symbol
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
-- Fixed click/hover response on (widescreen) research bar
-- CDA now adjusts position of Liberate button to make sure it doesn't overlap Exit text
-- Fixed errors after reloading Python modules
+- Reloading Python modules now works!
+- Fixed DealCanceled event
+- CvMainInterface.updateScreen() fires gameUpdate event (not fired by Civ4)
