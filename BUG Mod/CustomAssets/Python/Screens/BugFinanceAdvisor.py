@@ -230,8 +230,10 @@ class BugFinanceAdvisor:
 				multipliers.append([eBldg, iMultiplier, 0, 0.0])
 		
 		iBuildingCount = 0
+		iHeadquartersCount = 0
 		fTaxes = 0.0
 		fBuildings = 0.0
+		fHeadquarters = 0.0
 		fCorporations = 0.0
 		fSpecialists = 0.0
 		iWealthCount = 0
@@ -243,14 +245,21 @@ class BugFinanceAdvisor:
 				fTaxes += fCityTaxes
 				
 				fCityBuildings = 0.0
+				fCityHeadquarters = 0.0
 				for eBldg in range(gc.getNumBuildingInfos()):
 					iCount = city.getNumRealBuilding(eBldg)
 					if iCount > 0:
 						iBuildingGold = city.getBuildingCommerceByBuilding(CommerceTypes.COMMERCE_GOLD, eBldg)
 						if iBuildingGold > 0:
-							fCityBuildings += iBuildingGold
-							iBuildingCount += iCount
+							info = gc.getBuildingInfo(eBldg)
+							if info.getFoundsCorporation() != -1:
+								fCityHeadquarters += iBuildingGold
+								iHeadquartersCount += 1
+							else:
+								fCityBuildings += iBuildingGold
+								iBuildingCount += iCount
 				fBuildings += fCityBuildings
+				fHeadquarters += fCityHeadquarters
 				
 				fCityCorporations = city.getCorporationCommerce(CommerceTypes.COMMERCE_GOLD)
 				fCorporations += fCityCorporations
@@ -265,7 +274,7 @@ class BugFinanceAdvisor:
 					iWealthCount += 1
 				
 				# buildings don't multiply wealth
-				fCityTotel = fCityTaxes + fCityBuildings + fCityCorporations + fCitySpecialists
+				fCityTotel = fCityTaxes + fCityBuildings + fCityHeadquarters + fCityCorporations + fCitySpecialists
 				for entry in multipliers:
 					eBldg, iMultiplier, _, _ = entry
 					iCount = city.getNumRealBuilding(eBldg)
@@ -283,8 +292,13 @@ class BugFinanceAdvisor:
 		
 		if fBuildings > 0.0:
 			yLocation += self.Y_SPACING
-			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_BUILDINGS", ()) + "</font>", CvUtil.FONT_LEFT_JUSTIFY, self.X_INCOME + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_BUILDINGS", ()) + " (%d)</font>" % iBuildingCount, CvUtil.FONT_LEFT_JUSTIFY, self.X_INCOME + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + unicode(int(fBuildings)) + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_INCOME + self.PANE_WIDTH - self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		
+		if fHeadquarters > 0.0:
+			yLocation += self.Y_SPACING
+			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CORPORATION_HEADQUARTERS", ()) + " (%d)</font>" % iHeadquartersCount, CvUtil.FONT_LEFT_JUSTIFY, self.X_INCOME + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + unicode(int(fHeadquarters)) + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_INCOME + self.PANE_WIDTH - self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		
 		if fCorporations > 0.0:
 			yLocation += self.Y_SPACING
