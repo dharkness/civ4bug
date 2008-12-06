@@ -3025,6 +3025,10 @@ class CvMainInterface:
 					self.hideUnitInfoPromoButtons()
 # BUG - PLE - end
 
+# BUG - Event Manager - start
+		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
+# BUG - Event Manager - end
+
 		return 0
 
 	# Will redraw the interface

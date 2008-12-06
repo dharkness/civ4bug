@@ -212,10 +212,11 @@ def onVassalOffered(argsList):
 def onDealCanceled(argsList):
 	#BugUtil.debug("DiplomacyUtil::onDealCanceled %s" %(str(argsList)))
 	eOfferPlayer, eTargetPlayer, pTrade = argsList
-	BugUtil.debug("DiplomacyUtil - %s cancels deal with %s: %r",
-			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
-			PlayerUtil.getPlayer(eTargetPlayer).getName(),
-			pTrade)
+	if eOfferPlayer != -1 and eTargetPlayer != -1 and pTrade is not None:
+		BugUtil.debug("DiplomacyUtil - %s cancels deal with %s: %r",
+				PlayerUtil.getPlayer(eOfferPlayer).getName(), 
+				PlayerUtil.getPlayer(eTargetPlayer).getName(),
+				pTrade)
 
 def onDealAccepted(argsList):
 	#BugUtil.debug("DiplomacyUtil::onDealAccepted %s" %(str(argsList)))

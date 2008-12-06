@@ -87,6 +87,7 @@ def addEvents(eventManager):
 	global g_eventManager
 	g_eventManager = eventManager
 	g_eventManager.addEvent("DealCanceled")
+	g_eventManager.addEventHandler("gameUpdate", onGameUpdate)
 
 def onGameUpdate(argsList):
 	"""
@@ -96,7 +97,7 @@ def onGameUpdate(argsList):
 	global g_lastDealCount
 	count = gc.getGame().getNumDeals()
 	if count < g_lastDealCount:
-		g_eventManager.fireEvent('DealCanceled')
+		g_eventManager.fireEvent("DealCanceled", -1, -1, None)
 	g_lastDealCount = count
 
 
