@@ -13,9 +13,16 @@
 # modName
 #   Pulled from CvModName
 #
+# modFolder
+#   Pulled from CvModFolder when present. If found, isMod is set to True.
+#
 # userDir
 #   Typically the "My Documents\My Games" folder on Windows and the "Documents"
 #   folder on MacOS X. Both are in the user's private documents area.
+#
+# civIniDir
+#   Full path to directory containing the CivilizationIV.ini file.
+#   Can be overridden with the CvPathOverride module.
 #
 # rootDir
 #   Location of the Civ4 executable (CIV4BeyondSword.exe on Windows)
@@ -51,34 +58,57 @@ import sys
 import BugConfigTracker
 import BugUtil
 
-modName = None
 try:
 	import CvModName
 	modName = CvModName.modName
 except:
+	modName = None
+
+try:
+	import CvModFolder
+	modFolder = CvModFolder.modFolder
+	BugUtil.debug("BugPath - modFolder is '%s'", modFolder)
+except:
+	modFolder = None
+
+civIniDir = None
+try:
+	import CvPathOverride
+	if os.path.isdir(CvPathOverride.civIniDir):
+		if os.path.isfile(os.path.join(CvPathOverride.civIniDir, "CivilizationIV.ini")):
+			civIniDir = CvPathOverride.civIniDir
+			BugUtil.debug("BugPath - overriding civIniDir")
+		else:
+			BugUtil.error("Cannot find CivilizationIV.ini in directory from CvPathOverride.py")
+	else:
+		BugUtil.error("Directory from CvPathOverride.py is not valid")
+except:
 	pass
 
-# Determine the base user directory (e.g. "C:\...\My Documents\My Games").
-userDir = None
-if (sys.platform == 'darwin'):
-	"Mac OS X"
-	userDir = os.path.join(os.environ['HOME'], "Documents")
+if civIniDir is None:
+	# Determine the base user directory (e.g. "C:\...\My Documents\My Games").
+	userDir = None
+	if (sys.platform == 'darwin'):
+		"Mac OS X"
+		userDir = os.path.join(os.environ['HOME'], "Documents")
+	else:
+		import _winreg
+		"Windows"
+		def __getRegValue(root, subkey, name):
+			key = _winreg.OpenKey(root, subkey)
+			try:
+				value = _winreg.QueryValueEx(key, name)
+				return value[0]
+			finally:
+				key.Close()
+		
+		myDocuments = __getRegValue(_winreg.HKEY_CURRENT_USER, 
+				r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
+				"Personal")
+		#BugUtil.debug("BugPath - My Documents dir is '%s'", myDocuments)
+		userDir = os.path.join(myDocuments, "My Games")
 else:
-	import _winreg
-	"Windows"
-	def __getRegValue(root, subkey, name):
-		key = _winreg.OpenKey(root, subkey)
-		try:
-			value = _winreg.QueryValueEx(key, name)
-			return value[0]
-		finally:
-			key.Close()
-	
-	myDocuments = __getRegValue(_winreg.HKEY_CURRENT_USER, 
-			r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
-			"Personal")
-	#BugUtil.debug("BugPath - My Documents dir is '%s'", myDocuments)
-	userDir = os.path.join(myDocuments, "My Games")
+	userDir = os.path.dirname(civIniDir)
 #BugUtil.debug("BugPath - user dir is '%s'", userDir)
 
 # Determine the root directory that holds the executable and mods
@@ -91,6 +121,10 @@ if (sys.executable):
 	#BugUtil.debug("BugPath - root dir is '%s'", rootDir)
 	#BugUtil.debug("BugPath - app name is '%s'", appName)
 
+if civIniDir is None:
+	civIniDir = os.path.join(userDir, appName)
+#BugUtil.debug("BugPath - civIniDir is '%s'", civIniDir)
+
 # Create an ordered list of paths which are searched for INI files.
 iniFileSearchPaths = []
 def addIniFileSearchPath(path):
@@ -102,13 +136,17 @@ def addIniFileSearchPath(path):
 if (userDir):
 	if (modName):
 		addIniFileSearchPath(os.path.join(userDir, modName))
-		addIniFileSearchPath(os.path.join(userDir, appName, modName))
-		addIniFileSearchPath(os.path.join(userDir, appName, "Mods", modName))
+		addIniFileSearchPath(os.path.join(civIniDir, modName))
+		if modFolder:
+			addIniFileSearchPath(os.path.join(civIniDir, "Mods", modFolder, modName))
+			addIniFileSearchPath(os.path.join(civIniDir, "Mods", modFolder))
 	addIniFileSearchPath(os.path.join(userDir, appName))
 if (rootDir):
 	if (modName):
 		addIniFileSearchPath(os.path.join(rootDir, modName))
-		addIniFileSearchPath(os.path.join(rootDir, "Mods", modName))
+		if modFolder:
+			addIniFileSearchPath(os.path.join(rootDir, "Mods", modFolder, modName))
+			addIniFileSearchPath(os.path.join(rootDir, "Mods", modFolder))
 	addIniFileSearchPath(os.path.join(rootDir))
 
 if (iniFileSearchPaths):
@@ -187,12 +225,12 @@ def addAssetFileSearchPath(path):
 		assetFileSearchPaths.append(path)
 
 if (userDir):
-	addAssetFileSearchPath(os.path.join(userDir, appName, "CustomAssets"))
-	if (modName):
-		addAssetFileSearchPath(os.path.join(userDir, appName, "Mods", modName, "Assets"))
+	addAssetFileSearchPath(os.path.join(civIniDir, "CustomAssets"))
+	if (modFolder):
+		addAssetFileSearchPath(os.path.join(civIniDir, "Mods", modFolder, "Assets"))
 if (rootDir):
-	if (modName):
-		addAssetFileSearchPath(os.path.join(rootDir, "Mods", modName, "Assets"))
+	if (modFolder):
+		addAssetFileSearchPath(os.path.join(rootDir, "Mods", modFolder, "Assets"))
 	addAssetFileSearchPath(os.path.join(rootDir, "Assets"))
 
 if (assetFileSearchPaths):

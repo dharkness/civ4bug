@@ -31,6 +31,7 @@ Improvements:
 - Great General Progress Bar: Replaced "General" with icon
 - BUG options screen: Improved hover texts that include multiple options and redesigned General tab
 - Updated German and Italian translations
+- Added CvModFolder and CvPathOverride
 
 Bug Fixes:
 
