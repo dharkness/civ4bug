@@ -207,12 +207,6 @@
 					help="When checked, will log when you pillage or your improvements are pillaged."/>
 
 			<!-- Trades and Demands -->
-			<option id="LogTradeAll" key="TradeAll" 
-					type="boolean" default="True" and="LoggingOn" 
-					get="isLogTradeAll" set="setLogTradeAll" 
-					label="TradeAll" 
-					help="When checked, will log all AI-initiated trade offers and demands along with your responses."/>
-			
 			<option id="LogTradeOffer" key="TradeOffer" 
 					type="boolean" default="True" and="LoggingOn" 
 					get="isLogTradeOffer" set="setLogTradeOffer" 

@@ -983,7 +983,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onDealOffered(self, argsList):
 		eOfferPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1010,7 +1010,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onCityOffered(self, argsList):
 		eOfferPlayer, eTargetPlayer, iCityID = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			pCityOffered = pOfferPlayer.getCity(iCityID)
@@ -1022,7 +1022,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onHelpOffered(self, argsList):
 		eOfferPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1042,7 +1042,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onPeaceOffered(self, argsList):
 		eOfferPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1069,7 +1069,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onVassalOffered(self, argsList):
 		eOfferPlayer, eTargetPlayer = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			message = ""
@@ -1080,7 +1080,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onDealCanceled(self, argsList):
 		eOfferPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer() and pTrade != None:
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1113,7 +1113,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onDealAccepted(self, argsList):
 		eTargetPlayer, eOfferPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1146,7 +1146,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onDealRejected(self, argsList):
 		eTargetPlayer, eOfferPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTradeOffer():
+		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
 			szOfferItems = ""
@@ -1179,7 +1179,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onHelpDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1195,7 +1195,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onHelpAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1212,7 +1212,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onHelpRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1229,7 +1229,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onTributeDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1245,7 +1245,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onTributeAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1262,7 +1262,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onTributeRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, pTrade = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogTributeDemand():
+		if AutologOpt.isLogTributeDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			szItems = ""
@@ -1279,7 +1279,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onReligionDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, eReligion = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogReligionDemand():
+		if AutologOpt.isLogReligionDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_RELIGION_DEMAND", 
@@ -1290,7 +1290,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onReligionAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, eReligion = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogReligionDemand():
+		if AutologOpt.isLogReligionDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_RELIGION_DEMAND", 
@@ -1302,7 +1302,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onReligionRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, eReligion = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogReligionDemand():
+		if AutologOpt.isLogReligionDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_RELIGION_DEMAND", 
@@ -1314,7 +1314,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onCivicDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, eCivic = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogCivicDemand():
+		if AutologOpt.isLogCivicDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_CIVIC_DEMAND", 
@@ -1325,7 +1325,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onCivicAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, eCivic = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogCivicDemand():
+		if AutologOpt.isLogCivicDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_CIVIC_DEMAND", 
@@ -1337,7 +1337,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onCivicRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, eCivic = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogCivicDemand():
+		if AutologOpt.isLogCivicDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_CIVIC_DEMAND", 
@@ -1349,7 +1349,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onWarDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogWarDemand():
+		if AutologOpt.isLogWarDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
@@ -1361,7 +1361,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onWarAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogWarDemand():
+		if AutologOpt.isLogWarDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
@@ -1374,7 +1374,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onWarRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogWarDemand():
+		if AutologOpt.isLogWarDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
@@ -1387,7 +1387,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 	def onEmbargoDemanded(self, argsList):
 		eDemandPlayer, eTargetPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogEmbargoDemand():
+		if AutologOpt.isLogEmbargoDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
@@ -1399,7 +1399,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onEmbargoAccepted(self, argsList):
 		eTargetPlayer, eDemandPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogEmbargoDemand():
+		if AutologOpt.isLogEmbargoDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
@@ -1412,7 +1412,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 	
 	def onEmbargoRejected(self, argsList):
 		eTargetPlayer, eDemandPlayer, eVictim = argsList
-		if AutologOpt.isLogTradeAll() and AutologOpt.isLogEmbargoDemand():
+		if AutologOpt.isLogEmbargoDemand():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pDemandPlayer = gc.getPlayer(eDemandPlayer)
 			pVictim = gc.getPlayer(eVictim)
