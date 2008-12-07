@@ -97,8 +97,10 @@ def onGameUpdate(argsList):
 	global g_lastDealCount
 	count = gc.getGame().getNumDeals()
 	if count < g_lastDealCount:
+		g_lastDealCount = count
 		g_eventManager.fireEvent("DealCanceled", -1, -1, None)
-	g_lastDealCount = count
+	else:
+		g_lastDealCount = count
 
 
 ## Wrapper Classes
