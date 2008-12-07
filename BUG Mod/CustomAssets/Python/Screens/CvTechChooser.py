@@ -253,6 +253,8 @@ class CvTechChooser:
 		# Draw the arrows
 		self.drawArrows(screen, sPanel, bANDPreReq, bORPreReq)
 
+		self.updateTechPrefs()
+
 		screen.moveToFront( "CivDropDown" )
 
 		screen.moveToFront( "AddTechButton" )
@@ -985,23 +987,22 @@ class CvTechChooser:
 					screen.hide( "GreatPersonTechNext" + str(f) )
 				self.bPrefsShowing = False
 			return
-		# Otherwise, show the GP icons if they aren't yet
-		if (not self.bPrefsShowing):
-			# discover icon heading
-			iIconSize = 48
-			iX = PREF_ICON_LEFT + 5 * PREF_ICON_SIZE / 4 - iIconSize / 2
-			iY = PREF_ICON_TOP - iIconSize - 40
-			screen.addDDSGFC( "GreatPersonHeading", ArtFileMgr.getInterfaceArtInfo("DISCOVER_TECHNOLOGY_BUTTON").getPath(), iX, iY, iIconSize, iIconSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		# Always redraw the GP icons because otherwise they are prone to disappearing
+		# discover icon heading
+		iIconSize = 48
+		iX = PREF_ICON_LEFT + 5 * PREF_ICON_SIZE / 4 - iIconSize / 2
+		iY = PREF_ICON_TOP - iIconSize - 40
+		screen.addDDSGFC( "GreatPersonHeading", ArtFileMgr.getInterfaceArtInfo("DISCOVER_TECHNOLOGY_BUTTON").getPath(), iX, iY, iIconSize, iIconSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
-			for i, f in enumerate(FLAVORS):
-				# GP icon
-				iUnitClass = gc.getInfoTypeForString(UNIT_CLASSES[i])
-				iUnitType = gc.getUnitClassInfo(iUnitClass).getDefaultUnitIndex()
-				pUnitInfo = gc.getUnitInfo(iUnitType)
-				iX = PREF_ICON_LEFT
-				iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE
-				screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnitType, -1 )
-			self.bPrefsShowing = True
+		for i, f in enumerate(FLAVORS):
+			# GP icon
+			iUnitClass = gc.getInfoTypeForString(UNIT_CLASSES[i])
+			iUnitType = gc.getUnitClassInfo(iUnitClass).getDefaultUnitIndex()
+			pUnitInfo = gc.getUnitInfo(iUnitType)
+			iX = PREF_ICON_LEFT
+			iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE
+			screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnitType, -1 )
+		self.bPrefsShowing = True
 
 		# Remove any techs researched since last call, creating tree if necessary
 		if (not self.pPrefs):
