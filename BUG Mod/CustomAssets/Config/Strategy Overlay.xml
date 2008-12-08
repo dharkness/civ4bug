@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	Strategy Overlay
+	by Del69
+	
+	Initial config and event handler setup for strategy overlay screen
+	Placed in CustomAssets/Config for Bug Mod
+-->
+<mod id="StrategyOverlay"
+	 name="Strategy Overlay"
+	 author="Del69"
+	 version="1.0b"
+	 date="10/20/2008">
+	 
+	 <events module="CvStrategyOverlayEventManager"/>
+</mod>

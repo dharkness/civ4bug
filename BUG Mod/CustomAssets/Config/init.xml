@@ -152,6 +152,7 @@
 	<load mod="Unit Naming"/>
 	<load mod="FavoriteCivicDetector"/>
 	<load mod="EventSigns"/>
+	<load mod="Strategy Overlay"/>
 	
 	
 	<!-- Options Screens -->
