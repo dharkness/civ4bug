@@ -2,7 +2,7 @@
 <!--
 	Strategy Overlay
 	by Del69
-	
+
 	Initial config and event handler setup for strategy overlay screen
 	Placed in CustomAssets/Config for Bug Mod
 -->
@@ -11,6 +11,9 @@
 	 author="Del69"
 	 version="1.0b"
 	 date="10/20/2008">
-	 
-	 <events module="CvStrategyOverlayEventManager"/>
+
+	<init module="CvOverlayScreenUtils" function="configure">
+		<arg name="keyList" type="key" value="Alt F10 | Ctrl F10"/>
+	</init>
+	<event type="kbdEvent" module="CvOverlayScreenUtils" function="onKbdEvent"/>
 </mod>
