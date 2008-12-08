@@ -34,15 +34,6 @@ def init():
 		pydoc.help(CvPythonExtensions)
 		helpFile.close()
 	
-# BUG - core - start
-	# swallow xmllib deprecation warning
-	class NullWriter:
-		def write(self, stuff):
-			pass
-	sys.stderr=NullWriter()
-	import xmllib
-# BUG - core - end
-	
 	sys.stderr=CvUtil.RedirectError()
 	sys.excepthook = CvUtil.myExceptHook
 	sys.stdout=CvUtil.RedirectDebug()

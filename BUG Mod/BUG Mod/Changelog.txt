@@ -48,6 +48,7 @@ Bug Fixes:
 - Main Interface: Fixed click/hover response on (widescreen) research bar
 - CDA: Now adjusts position of Liberate button to make sure it doesn't overlap Exit text
 - Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
+- No more warning about xmllib being deprecated
 
 For Modders:
 

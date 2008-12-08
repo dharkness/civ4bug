@@ -21,7 +21,15 @@
 ##
 ## Author: EmperorFool
 
-import xmllib
+# block error alert about xmllib deprecation
+try:
+	import sys
+	stderr = sys.stderr
+	sys.stderr = sys.stdout
+	import xmllib
+finally:
+	sys.stderr = stderr
+
 import BugCore
 import BugInit
 import BugOptions
