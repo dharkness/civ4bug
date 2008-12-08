@@ -83,14 +83,6 @@
 		<Spanish>Remove Sign</Spanish>
 	</TEXT>
 	<TEXT>
-	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_TITLE</Tag>
-	    <English>Enter Sign Text</English>
-	    <French>Enter Sign Text</French>
-		<German>Enter Sign Text</German>
-		<Italian>Enter Sign Text</Italian>
-		<Spanish>Enter Sign Text</Spanish>
-	</TEXT>
-	<TEXT>
 	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_HELP</Tag>
 	    <English>Enter the text to be displayed on the sign</English>
 	    <French>Enter the text to be displayed on the sign</French>

@@ -42,7 +42,6 @@ def beginAddSignEvent(argsList):
 	artMgr = CyArtFileMgr()
 	hdrTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_TITLE",())
 	bodyTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_BODY",())
-	editboxTitle = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_TITLE",())
 	editboxHelp = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_HELP",())
 
 	popup = CyPopup(CvOverlayScreen.EventOverlayAddSign, EventContextTypes.EVENTCONTEXT_ALL,True)
@@ -50,7 +49,7 @@ def beginAddSignEvent(argsList):
 	popup.setHeaderString(hdrTxt, CvUtil.FONT_CENTER_JUSTIFY)
 	popup.setBodyString(bodyTxt, CvUtil.FONT_CENTER_JUSTIFY)
 
-	popup.createPythonEditBox(editboxTitle, editboxHelp, GROUP_SIGNTXT)
+	popup.createPythonEditBox("", editboxHelp, GROUP_SIGNTXT)
 	popup.launch(True, PopupStates.POPUPSTATE_IMMEDIATE)
 
 def applyAddSignEvent(playerID, userData, popupReturn):
