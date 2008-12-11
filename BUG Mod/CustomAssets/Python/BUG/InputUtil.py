@@ -62,6 +62,10 @@ MODIFIER_KEYS = (
 KEYS_BY_CODE = {}
 CODES_BY_KEY = {}
 
+ALT_HASH = 256
+CONTROL_HASH = 512
+SHIFT_HASH = 1024
+
 def isModifier(key):
 	return key in MODIFIER_KEYS
 
@@ -137,6 +141,7 @@ class Keystroke:
 		self.alt = alt
 		self.control = control
 		self.shift = shift
+		self.hash = None
 	
 	def __str__(self):
 		s = ""
@@ -150,6 +155,17 @@ class Keystroke:
 	
 	def __repr__(self):
 		return "<key %s>" % str(self)
+	
+	def __hash__(self):
+		if self.hash is None:
+			self.hash = self.code
+			if self.alt:
+				self.hash ^= ALT_HASH
+			if self.control:
+				self.hash ^= CONTROL_HASH
+			if self.shift:
+				self.hash ^= SHIFT_HASH
+		return self.hash
 	
 	def __eq__(self, other):
 		if not isinstance(other, Keystroke):

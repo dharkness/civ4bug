@@ -233,6 +233,9 @@ class GameBuilder:
 			function = module
 		return BugUtil.callFunction(module, function, self.eventManager, *args, **kwargs)
 	
+	def createShortcut(self, key, module, function, args=(), kwargs={}, attrs=None):
+		self.eventManager.addShortcutHandler(key, BugUtil.getFunction(module, function, *args, **kwargs))
+	
 	def createArgument(self, name, type=None, value=None, attrs=None):
 		if type:
 			type = type.lower()
@@ -341,6 +344,7 @@ INIT = "init"
 IMMEDIATE = "immediate"
 EVENT = "event"
 EVENTS = "events"
+SHORTCUT = "shortcut"
 
 ARG = "arg"
 VALUE = "value"
@@ -581,6 +585,16 @@ class XmlParser(xmllib.XMLParser):
 		function = self.getAttribute(attrs, FUNCTION, module)
 		clazz = self.getAttribute(attrs, CLASS, function)
 		g_builder.createEvents(module, clazz, args, kwargs, attrs)
+	
+	def start_shortcut(self, attrs):
+		self.startArgs(attrs)
+	
+	def end_shortcut(self):
+		attrs, args, kwargs = self.endArgs()
+		key = self.getRequiredAttribute(attrs, KEY, SHORTCUT)
+		module = self.getRequiredAttribute(attrs, MODULE, SHORTCUT)
+		function = self.getRequiredAttribute(attrs, FUNCTION, SHORTCUT)
+		g_builder.createShortcut(key, module, function, args, kwargs, attrs)
 	
 	
 	def start_arg(self, attrs):

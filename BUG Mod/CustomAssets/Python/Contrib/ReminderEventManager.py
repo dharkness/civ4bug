@@ -14,7 +14,6 @@ import CvUtil
 import Popup as PyPopup
 import BugCore
 import BugUtil
-import InputUtil
 import SdToolKit
 import autolog
 
@@ -28,19 +27,25 @@ RECALL_AGAIN_EVENT_ID = CvUtil.getNewEventID("Reminder.RecallAgain")
 gc = CyGlobalContext()
 
 ReminderOpt = BugCore.game.Reminder
+g_eventMgr = None
 g_autolog = None
 
 # Used to display flashing end-of-turn text
 g_turnReminderTexts = None
 
+def createReminder(argsList):
+	g_eventMgr.beginEvent(STORE_EVENT_ID)
+
 class ReminderEventManager:
 
-	def __init__(self, eventManager, keys):
+	def __init__(self, eventManager):
 
 		global g_autolog
 		g_autolog = autolog.autologInstance()
 		
-		ReminderEvent(eventManager, self, keys)
+		global g_eventMgr
+		g_eventMgr = eventManager
+		ReminderEvent(eventManager, self)
 
 		self.reminders = ReminderQueue()
 		self.endOfTurnReminders = ReminderQueue()
@@ -152,27 +157,17 @@ class ReminderEventManager:
 
 class ReminderEvent:
 
-	def __init__(self, eventManager, reminderManager, keys):
-		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
+	def __init__(self, eventManager, reminderManager):
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
 		eventManager.addEventHandler("OnPreSave", self.onPreSave)
-
-		self.eventMgr = eventManager
+		
 		self.reminderManager = reminderManager
-		self.keys = keys
-
-	def onKbdEvent(self, argsList):
-		eventType,key,mx,my,px,py = argsList
-		if ( ReminderOpt.isEnabled() and eventType == self.eventMgr.EventKeyDown ):
-			if ( not InputUtil.isModifier(key) ):
-				stroke = InputUtil.Keystroke(key, self.eventMgr.bAlt, self.eventMgr.bCtrl, self.eventMgr.bShift)
-				if stroke in self.keys:
-					self.eventMgr.beginEvent(STORE_EVENT_ID)
-					return 1
-		return 0
+	
+	def createReminder(self):
+		g_eventMgr.beginEvent(STORE_EVENT_ID)
 
 	def onBeginActivePlayerTurn(self, argsList):
 		"Called at the start of the active player's turn."
@@ -180,13 +175,13 @@ class ReminderEvent:
 
 		g_turnReminderTexts = None
 		if (ReminderOpt.isEnabled()):
-			self.eventMgr.beginEvent(RECALL_EVENT_ID)
+			g_eventMgr.beginEvent(RECALL_EVENT_ID)
 
 	def onEndTurnReady(self, argsList):
 		iGameTurn = argsList[0]
 		
 		if (ReminderOpt.isEnabled()):
-			self.eventMgr.beginEvent(RECALL_AGAIN_EVENT_ID)
+			g_eventMgr.beginEvent(RECALL_AGAIN_EVENT_ID)
 #			return 1
 
 	def onGameStart(self, argsList):

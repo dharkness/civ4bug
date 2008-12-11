@@ -24,6 +24,9 @@
 ##   - removePopupHandler(eventType)
 ##       Removes the handlers for a popup event (int)
 ##
+##   - addShortcutHandler(keys, function)
+##       Adds a handler for the given keyboard shortcut(s)
+##
 ## * New events
 ##
 ##   - BeginActivePlayerTurn
@@ -60,6 +63,8 @@
 from CvPythonExtensions import *
 import CvEventManager
 import BugUtil
+import InputUtil
+import types
 
 DEFAULT_LOGGING = False
 DEFAULT_NOLOG_EVENTS = set((
@@ -119,6 +124,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.bMultiPlayer = False
 		self.bAllowCheats = False
 		
+		# used to register shortcut handlers
+		self.shortcuts = {}
+		
 		# used for BeginActivePlayerTurn
 		self.iActiveTurn = -1
 		self.bEndTurnFired = False
@@ -133,6 +141,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("LanguageChanged")
 		self.addEvent("ResolutionChanged")
 		
+		self.addEventHandler("kbdEvent", self.onKbdEvent)
 		self.addEventHandler("OnLoad", self.resetActiveTurn)
 		self.addEventHandler("GameStart", self.resetActiveTurn)
 	
@@ -226,6 +235,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		in response to the event.
 
 		"""
+		BugUtil.debug("BugEventManager - setting popup handler for event %d", eventType)
 		self.Events[eventType] = popupHandler
 	
 	def removePopupHandler(self, eventType):
@@ -241,6 +251,25 @@ class BugEventManager(CvEventManager.CvEventManager):
 			del self.Events[eventType]
 		else:
 			BugUtil.warn("BugEventManager - event %d has no popup handler", eventType)
+	
+	def addShortcutHandler(self, keys, handler):
+		"""Adds the given handler to be called when any of the keyboard shortcut(s) is hit.
+		
+		The keys argument may be a single Keystroke, a collection of one or more Keystrokes, or
+		a string which will be converted to such.
+		If any keystrokes have existing handlers, new ones are ignored and a warning is displayed.
+		
+		"""
+		if isinstance(keys, InputUtil.Keystroke):
+			keys = (keys,)
+		elif isinstance(keys, types.StringTypes):
+			keys = InputUtil.stringToKeystrokes(keys)
+		for key in keys:
+			if key in self.shortcuts:
+				BugUtil.error("shortcut %s already assigned", key)
+			else:
+				BugUtil.debug("BugEventManager - setting shortcut handler for %s", key)
+				self.shortcuts[key] = handler
 	
 	
 	def fireEvent(self, eventType, *args):
@@ -282,9 +311,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 
 		"""
 		if self.EventHandlerMap.has_key(eventType):
+			# the last 6 arguments are for internal use by handleEvent
+			args = argsList[:len(argsList) - 6]
 			for eventHandler in self.EventHandlerMap[eventType]:
-				# the last 6 arguments are for internal use by handleEvent
-				result = eventHandler(argsList[:len(argsList) - 6])
+				result = eventHandler(args)
 				if (result > 0):
 					return result
 		return 0
@@ -325,6 +355,19 @@ class BugEventManager(CvEventManager.CvEventManager):
 			self.bEndTurnFired = True
 			self.fireEvent("endTurnReady", self.iActiveTurn)
 
+
+	def onKbdEvent(self, argsList):
+		"""Handles onKbdEvent by firing the keystroke's handler if it has one registered.
+		"""
+		eventType, key, mx, my, px, py = argsList
+		if eventType == self.EventKeyDown:
+			if not InputUtil.isModifier(key):
+				stroke = InputUtil.Keystroke(key, self.bAlt, self.bCtrl, self.bShift)
+				if stroke in self.shortcuts:
+					BugUtil.debug("BugEventManager - calling handler for shortcut %s", stroke)
+					self.shortcuts[stroke](argsList)
+					return 1
+		return 0
 	
 	def onPreGameStart(self, argsList):
 		"""Fired from CvAppInterface.preGameStart()."""

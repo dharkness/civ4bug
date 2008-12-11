@@ -50,13 +50,20 @@ Bug Fixes:
 - Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
 - No more warning about xmllib being deprecated
 
-For Modders:
+
+FOR MODDERS
+
+New Features:
 
 - New Font File includes citizen icon, great general icon, and blank icon
 - Created FontUtil for adding new constants to FontSymbols
     Define symbols in XML: <symbol id [name] [from] [offset]/>
     Provides getChar(symbol) for easier access to unicode string for symbol
-- Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
-- Reloading Python modules now works!
-- Fixed DealCanceled event
 - CvMainInterface.updateScreen() fires gameUpdate event (not fired by Civ4)
+- Added <shortcut> tag to XML configuration to create keyboard shortcuts
+
+Bug Fixes:
+
+- Reloading Python modules now works!
+- Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
+- Fixed DealCanceled event

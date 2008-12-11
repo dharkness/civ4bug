@@ -32,8 +32,7 @@
 		</section>
 	</options>
 	
-	<events module="ReminderEventManager">
-		<arg type="key" value="Alt Ctrl R | Alt M"/>
-	</events>
+	<events module="ReminderEventManager"/>
+	<shortcut key="Alt Ctrl R | Alt M" module="ReminderEventManager" function="createReminder"/>
 	
 </mod>
