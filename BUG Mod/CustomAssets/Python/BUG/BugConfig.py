@@ -363,6 +363,7 @@ class XmlParser(xmllib.XMLParser):
 		xmllib.XMLParser.__init__(self)
 		self.game = BugCore.game
 		self.mod = None
+		self.module = None
 		self.iniFile = None
 		self.option = None
 		self.saving = False
@@ -408,7 +409,7 @@ class XmlParser(xmllib.XMLParser):
 	
 	
 	def start_builder(self, attrs):
-		module = self.getRequiredAttribute(attrs, MODULE, BUILDER)
+		module = self.getModuleAttribute(attrs, BUILDER)
 		clazz = self.getAttribute(attrs, CLASS, module)
 		builder = g_builder.createBuilder(module, clazz, attrs)
 		if builder:
@@ -434,6 +435,7 @@ class XmlParser(xmllib.XMLParser):
 		build = self.getAttribute(attrs, BUILD)
 		date = self.getAttribute(attrs, DATE)
 		url = self.getAttribute(attrs, URL)
+		self.module = self.getAttribute(attrs, MODULE)
 		self.mod = g_builder.createMod(id, name, author, url, 
 									   version, build, date, attrs)
 	
@@ -486,7 +488,7 @@ class XmlParser(xmllib.XMLParser):
 		if dirtyBit:
 			g_builder.createChangeDirtyBit(dirtyBit)
 		else:
-			module = self.getRequiredAttribute(attrs, MODULE, CHANGE)
+			module = self.getModuleAttribute(attrs, CHANGE)
 			function = self.getRequiredAttribute(attrs, FUNCTION, CHANGE)
 			g_builder.createChangeFunction(module, function)
 	
@@ -543,7 +545,7 @@ class XmlParser(xmllib.XMLParser):
 
 	def start_tab(self, attrs):
 		screenId = self.getAttribute(attrs, SCREEN)
-		module = self.getRequiredAttribute(attrs, MODULE, TAB)
+		module = self.getModuleAttribute(attrs, TAB)
 		clazz = self.getAttribute(attrs, CLASS, module)
 		id = self.getAttribute(attrs, ID, module)
 		tab = g_builder.createTab(screenId, id, module, clazz, attrs)
@@ -557,7 +559,7 @@ class XmlParser(xmllib.XMLParser):
 	
 	def end_init(self):
 		attrs, args, kwargs = self.endArgs()
-		module = self.getRequiredAttribute(attrs, MODULE, INIT)
+		module = self.getModuleAttribute(attrs, INIT)
 		function = self.getAttribute(attrs, FUNCTION, INIT)
 		immediate = self.getAttribute(attrs, IMMEDIATE, INIT)
 		if immediate:
@@ -572,7 +574,7 @@ class XmlParser(xmllib.XMLParser):
 	def end_event(self):
 		attrs, args, kwargs = self.endArgs()
 		eventType = self.getRequiredAttribute(attrs, TYPE, EVENT)
-		module = self.getRequiredAttribute(attrs, MODULE, EVENT)
+		module = self.getModuleAttribute(attrs, EVENT)
 		function = self.getRequiredAttribute(attrs, FUNCTION, EVENT)
 		g_builder.createEvent(eventType, module, function, args, kwargs, attrs)
 	
@@ -581,7 +583,7 @@ class XmlParser(xmllib.XMLParser):
 	
 	def end_events(self):
 		attrs, args, kwargs = self.endArgs()
-		module = self.getRequiredAttribute(attrs, MODULE, EVENTS)
+		module = self.getModuleAttribute(attrs, EVENTS)
 		function = self.getAttribute(attrs, FUNCTION, module)
 		clazz = self.getAttribute(attrs, CLASS, function)
 		g_builder.createEvents(module, clazz, args, kwargs, attrs)
@@ -592,7 +594,7 @@ class XmlParser(xmllib.XMLParser):
 	def end_shortcut(self):
 		attrs, args, kwargs = self.endArgs()
 		key = self.getRequiredAttribute(attrs, KEY, SHORTCUT)
-		module = self.getRequiredAttribute(attrs, MODULE, SHORTCUT)
+		module = self.getModuleAttribute(attrs, SHORTCUT)
 		function = self.getRequiredAttribute(attrs, FUNCTION, SHORTCUT)
 		g_builder.createShortcut(key, module, function, args, kwargs, attrs)
 	
@@ -636,11 +638,16 @@ class XmlParser(xmllib.XMLParser):
 		else:
 			return default
 	
-	def getRequiredAttribute(self, attrs, key, tag):
+	def getRequiredAttribute(self, attrs, key, tag, default=None):
 		if key in attrs:
 			return attrs[key]
+		elif default:
+			return default
 		else:
 			raise BugUtil.ConfigError("<%s>.%s is required" % (tag, key))
+	
+	def getModuleAttribute(self, attrs, tag):
+		return self.getRequiredAttribute(attrs, MODULE, tag, self.module)
 	
 	def startText(self):
 		if self.saving:

@@ -6,6 +6,7 @@
 	Copyright (c) 2008 The BUG Mod.
 -->
 <mod id="Reminder" 
+	 module="ReminderEventManager" 
 	 name="Reminder" 
 	 author="eotinb, EmperorFool, Ruff_Hi" 
 	 version="1.0" 
@@ -32,7 +33,7 @@
 		</section>
 	</options>
 	
-	<events module="ReminderEventManager"/>
-	<shortcut key="Alt Ctrl R | Alt M" module="ReminderEventManager" function="createReminder"/>
+	<events/>
+	<shortcut key="Alt Ctrl R | Alt M" function="createReminder"/>
 	
 </mod>

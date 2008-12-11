@@ -61,6 +61,7 @@ New Features:
     Provides getChar(symbol) for easier access to unicode string for symbol
 - CvMainInterface.updateScreen() fires gameUpdate event (not fired by Civ4)
 - Added <shortcut> tag to XML configuration to create keyboard shortcuts
+- Added module attribute to <mod> element that is used as default for module attributes in all child elements 
 
 Bug Fixes:
 
