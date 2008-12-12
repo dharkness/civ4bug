@@ -42,6 +42,9 @@
 ##   - PreGameStart
 ##       Fired from CvAppInterface.preGameStart()
 ##
+##   - PythonReloaded
+##       Fired after Python modules have been reloaded while game is running
+##
 ## * Fixed events
 ##
 ##   - endTurnReady
@@ -140,6 +143,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("LanguageChanged")
 		self.addEvent("ResolutionChanged")
+		self.addEvent("PythonReloaded")
 		
 		self.addEventHandler("kbdEvent", self.onKbdEvent)
 		self.addEventHandler("OnLoad", self.resetActiveTurn)

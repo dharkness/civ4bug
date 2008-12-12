@@ -162,6 +162,7 @@ class ReminderEvent:
 		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
+		eventManager.addEventHandler("PythonReloaded", self.onLoadGame)
 		eventManager.addEventHandler("OnPreSave", self.onPreSave)
 		
 		self.reminderManager = reminderManager
@@ -182,12 +183,10 @@ class ReminderEvent:
 		
 		if (ReminderOpt.isEnabled()):
 			g_eventMgr.beginEvent(RECALL_AGAIN_EVENT_ID)
-#			return 1
 
 	def onGameStart(self, argsList):
 		'Called when a new game is started'
 		self.reminderManager.clearReminders()
-#		return 1
 
 	def onLoadGame(self, argsList):
 		'Called when a game is loaded'
@@ -195,14 +194,11 @@ class ReminderEvent:
 		queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
 		if (queue):
 			self.reminderManager.setReminders(queue)
-#			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, None)
-#		return 1
 
 	def onPreSave(self, argsList):
 		"Called before a game is actually saved"
 		if (not self.reminderManager.reminders.isEmpty()):
 			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
-#		return 1
 
 
 class Reminder(object):
