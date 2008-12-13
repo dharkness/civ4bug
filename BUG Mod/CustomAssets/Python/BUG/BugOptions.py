@@ -105,6 +105,7 @@ Each file can have multiple sections.
 
 from CvPythonExtensions import *
 import BugConfigTracker
+import BugInit
 import BugPath
 import BugUtil
 import ColorUtil
@@ -626,7 +627,10 @@ class AbstractOption(object):
 		return -1
 	
 	def setValue(self, value, *args):
-		"""Sets the value in the file and calls onChanged()."""
+		"""Sets the value and calls onChanged() if different.
+		
+		Sets it to the default if value is None.
+		"""
 		if value is None:
 			value = self.getDefault()
 		if self._setValue(value, *args):
@@ -711,7 +715,8 @@ class BaseOption(AbstractOption):
 	
 	
 	def onChanged(self, *args):
-		self.doDirties(*args)
+		if not BugInit.g_initRunning:
+			self.doDirties(*args)
 	
 	def addDirty(self, obj):
 		if isinstance(obj, types.FunctionType):

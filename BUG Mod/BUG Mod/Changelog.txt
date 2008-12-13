@@ -69,3 +69,4 @@ Bug Fixes:
     Added PythonReloaded event fired after reloading (good time to call onLoad handler for mods that store data)
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
 - Fixed DealCanceled event
+- Option dirty bits and change functions are no longer set/called during initialization
