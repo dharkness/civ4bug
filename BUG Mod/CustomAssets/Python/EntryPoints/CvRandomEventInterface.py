@@ -61,11 +61,14 @@ def canTriggerBlessedSea(argsList):
 	if (iOurLandmasses > iOurMaxLandmass):
 		return false
 
-	player = gc.getPlayer(kTriggeredData.ePlayer)
-	if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEY')) == 0:
-		if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CARAVEL')) == 0:
-			if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEON')) == 0:
-				return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		player = gc.getPlayer(kTriggeredData.ePlayer)
+		if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEY')) == 0:
+			if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CARAVEL')) == 0:
+				if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEON')) == 0:
+					return false
+# EventSigns - 3.13 vs 3.17 - End
 			
 	return true
 
@@ -1857,23 +1860,26 @@ def canTriggerTheHuns(argsList):
 	if not bFoundValid:
 		return false
 
-	# Can we build the counter unit?		
-	iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_SPEARMAN')
-	iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
-	if iCounterUnit == -1:
-		return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_SPEARMAN')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
 
-	(loopCity, iter) = player.firstCity(false)
-	bFound = false
-	while(loopCity):
-		if (loopCity.canTrain(iCounterUnit, false, false)):
-			bFound = true
-			break
-				
-		(loopCity, iter) = player.nextCity(iter, false)
-		
-	if not bFound:
-		return false
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# EventSigns - 3.13 vs 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -1968,23 +1974,26 @@ def canTriggerTheVandals(argsList):
 	if not bFoundValid:
 		return false
 
-	# Can we build the counter unit?		
-	iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
-	iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
-	if iCounterUnit == -1:
-		return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
 
-	(loopCity, iter) = player.firstCity(false)
-	bFound = false
-	while(loopCity):
-		if (loopCity.canTrain(iCounterUnit, false, false)):
-			bFound = true
-			break
-				
-		(loopCity, iter) = player.nextCity(iter, false)
-		
-	if not bFound:
-		return false
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# EventSigns - 3.13 vs 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2079,23 +2088,26 @@ def canTriggerTheGoths(argsList):
 	if not bFoundValid:
 		return false
 
-	# Can we build the counter unit?		
-	iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CHARIOT')
-	iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
-	if iCounterUnit == -1:
-		return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CHARIOT')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
 
-	(loopCity, iter) = player.firstCity(false)
-	bFound = false
-	while(loopCity):
-		if (loopCity.canTrain(iCounterUnit, false, false)):
-			bFound = true
-			break
-				
-		(loopCity, iter) = player.nextCity(iter, false)
-		
-	if not bFound:
-		return false
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# EventSigns - 3.13 vs 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2190,23 +2202,26 @@ def canTriggerThePhilistines(argsList):
 	if not bFoundValid:
 		return false
 
-	# Can we build the counter unit?		
-	iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
-	iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
-	if iCounterUnit == -1:
-		return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
 
-	(loopCity, iter) = player.firstCity(false)
-	bFound = false
-	while(loopCity):
-		if (loopCity.canTrain(iCounterUnit, false, false)):
-			bFound = true
-			break
-				
-		(loopCity, iter) = player.nextCity(iter, false)
-		
-	if not bFound:
-		return false
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# EventSigns - 3.13 vs 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2301,23 +2316,26 @@ def canTriggerTheVedicAryans(argsList):
 	if not bFoundValid:
 		return false
 
-	# Can we build the counter unit?		
-	iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_ARCHER')
-	iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
-	if iCounterUnit == -1:
-		return false
+# EventSigns - 3.13 vs 3.17 - Start
+	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_ARCHER')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
 
-	(loopCity, iter) = player.firstCity(false)
-	bFound = false
-	while(loopCity):
-		if (loopCity.canTrain(iCounterUnit, false, false)):
-			bFound = true
-			break
-				
-		(loopCity, iter) = player.nextCity(iter, false)
-		
-	if not bFound:
-		return false
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# EventSigns - 3.13 vs 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
