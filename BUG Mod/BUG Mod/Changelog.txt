@@ -62,6 +62,7 @@ New Features:
 - CvMainInterface.updateScreen() fires gameUpdate event (not fired by Civ4)
 - Added <shortcut> tag to XML configuration to create keyboard shortcuts
 - Added module attribute to <mod> element that is used as default for module attributes in all child elements
+- Added horizontal and vertical sliders to BUG Options Screen (see BugOptionsTab)
 
 Bug Fixes:
 

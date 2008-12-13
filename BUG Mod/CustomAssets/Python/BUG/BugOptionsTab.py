@@ -47,7 +47,10 @@ class BugOptionsTab:
 		self.options = options
 
 	def getOption (self, name):
-		return g_options.getOption(name)
+		try:
+			return g_options.getOption(name)
+		except BugUtil.ConfigError:
+			return None
 
 
 	def create (self, screen):
@@ -376,6 +379,43 @@ class BugOptionsTab:
 				self.addMissingOption(screen, checkPanel, checkOption)
 			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
+	
+
+	def addSlider (self, screen, labelPanel, controlPanel, name, spacer=False, vertical=False, expanding=True, fill=None, min=0, max=100):
+		option = self.getOption(name)
+		if (option is not None):
+			# create label
+			if (labelPanel is not None):
+				if (labelPanel == controlPanel or spacer):
+					box = name + "HBox"
+					screen.attachHBox(labelPanel, box)
+					#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+					if (spacer):
+						screen.attachSpacer(box)
+					if (labelPanel == controlPanel):
+						controlPanel = box
+					labelPanel = box
+				label = name + "Label"
+				screen.attachLabel(labelPanel, label, option.getTitle())
+				screen.setControlFlag(label, "CF_LABEL_DEFAULTSIZE")
+				
+			# create slider
+			control = name + "Slider"
+			value = option.getRealValue()
+			if vertical:
+				screen.attachVSlider(controlPanel, control, self.callbackIFace, "handleBugSliderChanged", name, min, max, value)
+				if expanding:
+					screen.setLayoutFlag(control, "LAYOUT_SIZE_VEXPANDING")
+			else:
+				screen.attachHSlider(controlPanel, control, self.callbackIFace, "handleBugSliderChanged", name, min, max, value)
+				if expanding:
+					screen.setLayoutFlag(control, "LAYOUT_SIZE_HEXPANDING")
+			if fill:
+				screen.setControlFlag(control, "CF_SLIDER_FILL_" + fill.upper())
+			screen.setToolTip(control, option.getTooltip())
+			return control
+		else:
+			self.addMissingOption(screen, controlPanel, name)
 
 
 	def addMissingOption (self, screen, panel, name):
