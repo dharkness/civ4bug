@@ -567,4 +567,11 @@ def handleBugColorDropdownChange ( argsList ):
 		option.setIndex(iIndex)
 	return 1
 
+def handleBugSliderChanged ( argsList ):
+	iValue, szName = argsList
+	option = g_options.getOption(szName)
+	if (option is not None):
+		option.setValue(iValue)
+	return 1
+
 # BUG - Options - end
