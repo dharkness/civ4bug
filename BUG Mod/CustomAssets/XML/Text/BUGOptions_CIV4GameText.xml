@@ -2265,7 +2265,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__LINEHEIGHT_HOVER</Tag>
 		<English>Select the height of each civilization's line (default value is 22).</English>
 		<French>Select the height of each civilization's line (default value is 22).</French>
-		<German>Bestimmt die Zeilenhöhe für jede Zivilisation (der Standardwert ist 22)</German>
+		<German>Bestimmt die Höhe der Textzeile für jede Zivilisation (der Standardwert ist 22)</German>
 		<Italian>Imposta l'altezza della riga di ogni Civiltà (il valore predefinito è 22).</Italian>
 		<Spanish>Select the height of each civilization's line (default value is 22).</Spanish>
 	</TEXT>
@@ -3189,7 +3189,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_HOVER</Tag>
 		<English>When checked, the shortcut keys and features of the Strategy Layer are activated.</English>
 		<French>When checked, the shortcut keys and features of the Strategy Layer are activated.</French>
-		<German>When checked, the shortcut keys and features of the Strategy Layer are activated.</German>
+		<German>Aktiviert die Tastenkombinationen und Fähigkeiten des Strategie-Overlays</German>
 		<Italian>When checked, the shortcut keys and features of the Strategy Layer are activated.</Italian>
 		<Spanish>When checked, the shortcut keys and features of the Strategy Layer are activated.</Spanish>
 	</TEXT>
@@ -3197,7 +3197,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_TEXT</Tag>
 		<English>Show Dot Map</English>
 		<French>Show Dot Map</French>
-		<German>Show Dot Map</German>
+		<German>Punktkarte zeigen</German>
 		<Italian>Show Dot Map</Italian>
 		<Spanish>Show Dot Map</Spanish>
 	</TEXT>
@@ -3205,7 +3205,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_HOVER</Tag>
 		<English>When checked, the city-planning dot map layer is shown overlaying the terrain.</English>
 		<French>When checked, the city-planning dot map layer is shown overlaying the terrain.</French>
-		<German>When checked, the city-planning dot map layer is shown overlaying the terrain.</German>
+		<German>Lässt die Punktkarte zur Planung von Stadtgründungen das Gelände überlagern</German>
 		<Italian>When checked, the city-planning dot map layer is shown overlaying the terrain.</Italian>
 		<Spanish>When checked, the city-planning dot map layer is shown overlaying the terrain.</Spanish>
 	</TEXT>
@@ -3213,7 +3213,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDRAWDOTS_TEXT</Tag>
 		<English>Draw City Dots</English>
 		<French>Draw City Dots</French>
-		<German>Draw City Dots</German>
+		<German>Städte markieren</German>
 		<Italian>Draw City Dots</Italian>
 		<Spanish>Draw City Dots</Spanish>
 	</TEXT>
@@ -3221,7 +3221,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDRAWDOTS_HOVER</Tag>
 		<English>When checked, an icon is drawn in the center of the borders of planned cities.</English>
 		<French>When checked, an icon is drawn in the center of the borders of planned cities.</French>
-		<German>When checked, an icon is drawn in the center of the borders of planned cities.</German>
+		<German>Zeigt im Zentrum der Grenzen von geplanten Städten ein Symbol an</German>
 		<Italian>When checked, an icon is drawn in the center of the borders of planned cities.</Italian>
 		<Spanish>When checked, an icon is drawn in the center of the borders of planned cities.</Spanish>
 	</TEXT>
@@ -3229,7 +3229,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDOTICON_TEXT</Tag>
 		<English>City Dot Icon</English>
 		<French>City Dot Icon</French>
-		<German>City Dot Icon</German>
+		<German>Städtesymbol</German>
 		<Italian>City Dot Icon</Italian>
 		<Spanish>City Dot Icon</Spanish>
 	</TEXT>
@@ -3237,7 +3237,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDOTICON_HOVER</Tag>
 		<English>The index number of the icon to be placed in the center of the borders of planned cities.</English>
 		<French>The index number of the icon to be placed in the center of the borders of planned cities.</French>
-		<German>The index number of the icon to be placed in the center of the borders of planned cities.</German>
+		<German>Die Indexnummer des Symbols, das im Zentrum der Grenzen von geplanten Städten angezeigt werden soll</German>
 		<Italian>The index number of the icon to be placed in the center of the borders of planned cities.</Italian>
 		<Spanish>The index number of the icon to be placed in the center of the borders of planned cities.</Spanish>
 	</TEXT>
@@ -3245,7 +3245,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPBRIGHTNESS_TEXT</Tag>
 		<English>Brightness</English>
 		<French>Brightness</French>
-		<German>Brightness</German>
+		<German>Transparenz</German>
 		<Italian>Brightness</Italian>
 		<Spanish>Brightness</Spanish>
 	</TEXT>
@@ -3253,7 +3253,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPBRIGHTNESS_HOVER</Tag>
 		<English>Determines the brightness of planned cities.</English>
 		<French>Determines the brightness of planned cities.</French>
-		<German>Determines the brightness of planned cities.</German>
+		<German>Bestimmt den Grad der Transparenz, in der geplante Städte erscheinen sollen</German>
 		<Italian>Determines the brightness of planned cities.</Italian>
 		<Spanish>Determines the brightness of planned cities.</Spanish>
 	</TEXT>
@@ -3261,7 +3261,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPHIGHLIGHTBRIGHTNESS_TEXT</Tag>
 		<English>Highlight Brightness</English>
 		<French>Highlight Brightness</French>
-		<German>Highlight Brightness</German>
+		<German>Transparenz beim Platzieren</German>
 		<Italian>Highlight Brightness</Italian>
 		<Spanish>Highlight Brightness</Spanish>
 	</TEXT>
@@ -3269,7 +3269,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPHIGHLIGHTBRIGHTNESS_HOVER</Tag>
 		<English>Determines the brightness of the highlighted city being placed.</English>
 		<French>Determines the brightness of the highlighted city being placed.</French>
-		<German>Determines the brightness of the highlighted city being placed.</German>
+		<German>Bestimmt den Grad der Transparenz, in der die gerade platzierte Stadt erscheinen soll</German>
 		<Italian>Determines the brightness of the highlighted city being placed.</Italian>
 		<Spanish>Determines the brightness of the highlighted city being placed.</Spanish>
 	</TEXT>
@@ -3876,7 +3876,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
 		<English>STRATEGY LAYER</English>
 		<French>STRATEGY LAYER</French>
-		<German>STRATEGY LAYER</German>
+		<German>STRATEGIE-OVERLAY</German>
 		<Italian>STRATEGY LAYER</Italian>
 		<Spanish>STRATEGY LAYER</Spanish>
 	</TEXT>

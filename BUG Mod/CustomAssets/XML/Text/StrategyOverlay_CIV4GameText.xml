@@ -6,7 +6,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_TITLE</Tag>
 		<English>Strategy Overlay</English>
 		<French>Strategy Overlay</French>
-		<German>Strategy Overlay</German>
+		<German>Strategie-Overlay</German>
 		<Italian>Strategy Overlay</Italian>
 		<Spanish>Strategy Overlay</Spanish>
 	</TEXT>
@@ -14,7 +14,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_DOTMAPPER</Tag>
 		<English>Dot Mapper</English>
 		<French>Dot Mapper</French>
-		<German>Dot Mapper</German>
+		<German>Punkt-Werkzeug</German>
 		<Italian>Dot Mapper</Italian>
 		<Spanish>Dot Mapper</Spanish>
 	</TEXT>
@@ -22,7 +22,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_PLACECITY</Tag>
 		<English>Place City</English>
 		<French>Place City</French>
-		<German>Place City</German>
+		<German>Stadt platzieren</German>
 		<Italian>Place City</Italian>
 		<Spanish>Place City</Spanish>
 	</TEXT>
@@ -30,7 +30,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_REMOVECITY</Tag>
 		<English>Remove City</English>
 		<French>Remove City</French>
-		<German>Remove City</German>
+		<German>Stadt entfernen</German>
 		<Italian>Remove City</Italian>
 		<Spanish>Remove City</Spanish>
 	</TEXT>
@@ -38,7 +38,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_COLORSELECT</Tag>
 		<English>Color Selection</English>
 		<French>Color Selection</French>
-		<German>Color Selection</German>
+		<German>Farbauswahl</German>
 		<Italian>Color Selection</Italian>
 		<Spanish>Color Selection</Spanish>
 	</TEXT>
@@ -46,7 +46,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_SIGNS</Tag>
 		<English>Signs</English>
 		<French>Signs</French>
-		<German>Signs</German>
+		<German>Markierungen</German>
 		<Italian>Signs</Italian>
 		<Spanish>Signs</Spanish>
 	</TEXT>
@@ -54,7 +54,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN_TITLE</Tag>
 		<English>Add Overlay Sign</English>
 		<French>Add Overlay Sign</French>
-		<German>Add Overlay Sign</German>
+		<German>Overlay-Markierung hinzufügen</German>
 		<Italian>Add Overlay Sign</Italian>
 		<Spanish>Add Overlay Sign</Spanish>
 	</TEXT>
@@ -62,7 +62,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN_BODY</Tag>
 		<English>Caption for the sign</English>
 		<French>Caption for the sign</French>
-		<German>Caption for the sign</German>
+		<German>Text der Markierung</German>
 		<Italian>Caption for the sign</Italian>
 		<Spanish>Caption for the sign</Spanish>
 	</TEXT>
@@ -70,7 +70,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN</Tag>
 		<English>Add Sign</English>
 		<French>Add Sign</French>
-		<German>Add Sign</German>
+		<German>Markierung hinzufügen</German>
 		<Italian>Add Sign</Italian>
 		<Spanish>Add Sign</Spanish>
 	</TEXT>
@@ -78,7 +78,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_REMOVESIGN</Tag>
 		<English>Remove Sign</English>
 		<French>Remove Sign</French>
-		<German>Remove Sign</German>
+		<German>Markierung entfernen</German>
 		<Italian>Remove Sign</Italian>
 		<Spanish>Remove Sign</Spanish>
 	</TEXT>
@@ -86,7 +86,7 @@
 	    <Tag>TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_HELP</Tag>
 	    <English>Enter the text to be displayed on the sign</English>
 	    <French>Enter the text to be displayed on the sign</French>
-	    <German>Enter the text to be displayed on the sign</German>
+	    <German>Eingabe des Textes, der auf der Markierung erscheinen soll</German>
 	    <Italian>Enter the text to be displayed on the sign</Italian>
 	    <Spanish>Enter the text to be displayed on the sign</Spanish>
 	</TEXT>
