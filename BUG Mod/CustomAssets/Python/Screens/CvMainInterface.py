@@ -3207,10 +3207,6 @@ class CvMainInterface:
 		
 		xResolution = screen.getXResolution()
 
-# BUG - Great Person Bar - start
-		self.updateGreatPersonBar(screen)
-# BUG - Great Person Bar - end
-
 		if ( CyInterface().shouldDisplayFlag() and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
 			screen.show( "CivilizationFlag" )
 			screen.show( "InterfaceHelpButton" )
@@ -3275,6 +3271,9 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
+# BUG - NJAGC - start
+			screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3305,6 +3304,9 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
+# BUG - NJAGC - start
+			screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )			
@@ -3348,6 +3350,9 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
+# BUG - NJAGC - start
+			screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3374,6 +3379,9 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )			
+# BUG - NJAGC - start
+			screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3417,6 +3425,12 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
+# BUG - NJAGC - start
+			if (ClockOpt.isShowEra()):
+				screen.show( "EraText" )
+			else:
+				screen.hide( "EraText" )
+# BUG - NJAGC - end
 # BUG - City Arrows - start
 			if (MainOpt.isShowCityCycleArrows()):
 				screen.show( "MainCityScrollMinus" )
