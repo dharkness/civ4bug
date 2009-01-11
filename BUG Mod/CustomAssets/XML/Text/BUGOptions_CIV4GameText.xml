@@ -3176,6 +3176,103 @@
 		<Italian>Riporta il valore assegnato al Campo visuale</Italian>
 		<Spanish>Stores the Field of View value</Spanish>
 	</TEXT>
+	<!-- Strategy Overlay -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_TEXT</Tag>
+		<English>Enabled</English>
+		<French>Activé</French>
+		<German>Aktivieren</German>
+		<Italian>Attivato</Italian>
+		<Spanish>Enabled</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_HOVER</Tag>
+		<English>When checked, the shortcut keys and features of the Strategy Layer are activated.</English>
+		<French>When checked, the shortcut keys and features of the Strategy Layer are activated.</French>
+		<German>When checked, the shortcut keys and features of the Strategy Layer are activated.</German>
+		<Italian>When checked, the shortcut keys and features of the Strategy Layer are activated.</Italian>
+		<Spanish>When checked, the shortcut keys and features of the Strategy Layer are activated.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_TEXT</Tag>
+		<English>Show Dot Map</English>
+		<French>Show Dot Map</French>
+		<German>Show Dot Map</German>
+		<Italian>Show Dot Map</Italian>
+		<Spanish>Show Dot Map</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_HOVER</Tag>
+		<English>When checked, the city-planning dot map layer is shown overlaying the terrain.</English>
+		<French>When checked, the city-planning dot map layer is shown overlaying the terrain.</French>
+		<German>When checked, the city-planning dot map layer is shown overlaying the terrain.</German>
+		<Italian>When checked, the city-planning dot map layer is shown overlaying the terrain.</Italian>
+		<Spanish>When checked, the city-planning dot map layer is shown overlaying the terrain.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDRAWDOTS_TEXT</Tag>
+		<English>Draw City Dots</English>
+		<French>Draw City Dots</French>
+		<German>Draw City Dots</German>
+		<Italian>Draw City Dots</Italian>
+		<Spanish>Draw City Dots</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDRAWDOTS_HOVER</Tag>
+		<English>When checked, an icon is drawn in the center of the borders of planned cities.</English>
+		<French>When checked, an icon is drawn in the center of the borders of planned cities.</French>
+		<German>When checked, an icon is drawn in the center of the borders of planned cities.</German>
+		<Italian>When checked, an icon is drawn in the center of the borders of planned cities.</Italian>
+		<Spanish>When checked, an icon is drawn in the center of the borders of planned cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDOTICON_TEXT</Tag>
+		<English>City Dot Icon</English>
+		<French>City Dot Icon</French>
+		<German>City Dot Icon</German>
+		<Italian>City Dot Icon</Italian>
+		<Spanish>City Dot Icon</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPDOTICON_HOVER</Tag>
+		<English>The index number of the icon to be placed in the center of the borders of planned cities.</English>
+		<French>The index number of the icon to be placed in the center of the borders of planned cities.</French>
+		<German>The index number of the icon to be placed in the center of the borders of planned cities.</German>
+		<Italian>The index number of the icon to be placed in the center of the borders of planned cities.</Italian>
+		<Spanish>The index number of the icon to be placed in the center of the borders of planned cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPBRIGHTNESS_TEXT</Tag>
+		<English>Brightness</English>
+		<French>Brightness</French>
+		<German>Brightness</German>
+		<Italian>Brightness</Italian>
+		<Spanish>Brightness</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPBRIGHTNESS_HOVER</Tag>
+		<English>Determines the brightness of planned cities.</English>
+		<French>Determines the brightness of planned cities.</French>
+		<German>Determines the brightness of planned cities.</German>
+		<Italian>Determines the brightness of planned cities.</Italian>
+		<Spanish>Determines the brightness of planned cities.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPHIGHLIGHTBRIGHTNESS_TEXT</Tag>
+		<English>Highlight Brightness</English>
+		<French>Highlight Brightness</French>
+		<German>Highlight Brightness</German>
+		<Italian>Highlight Brightness</Italian>
+		<Spanish>Highlight Brightness</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPHIGHLIGHTBRIGHTNESS_HOVER</Tag>
+		<English>Determines the brightness of the highlighted city being placed.</English>
+		<French>Determines the brightness of the highlighted city being placed.</French>
+		<German>Determines the brightness of the highlighted city being placed.</German>
+		<Italian>Determines the brightness of the highlighted city being placed.</Italian>
+		<Spanish>Determines the brightness of the highlighted city being placed.</Spanish>
+	</TEXT>
 	<!-- EventSigns -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EVENTSIGNS__ENABLED_TEXT</Tag>
@@ -3774,6 +3871,14 @@
 		<German>HAUPTBILDSCHIRM</German>
 		<Italian>INTERFACCIA PRINCIPALE</Italian>
 		<Spanish>MAIN INTERFACE</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
+		<English>STRATEGY LAYER</English>
+		<French>STRATEGY LAYER</French>
+		<German>STRATEGY LAYER</German>
+		<Italian>STRATEGY LAYER</Italian>
+		<Spanish>STRATEGY LAYER</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
