@@ -1,5 +1,5 @@
 ###############################################
-## CvStrategyOverlayScreenUtils.py
+## CvOverlayScreenUtils.py
 ## Created on : 10-20-08
 ## By Del69 for Strategy Overlay mod
 ##
@@ -7,7 +7,7 @@
 ## Placed in CustomAssets/Python/Contrib for Bug mod use
 ###############################################
 from CvPythonExtensions import *
-import CvOverlayScreen
+import CvDotMapOverlayScreen
 import CvScreenUtils
 import CvEventInterface
 import InputUtil
@@ -23,57 +23,62 @@ STRATEGY_OVERLAY_SCREEN = 1001
 #-------------------------------------------------------------------------------
 gc = CyGlobalContext()
 keys = None
-GROUP_SIGNTXT = 0
+#GROUP_SIGNTXT = 0
 
-overlayScreen = CvOverlayScreen.CvOverlayScreen(STRATEGY_OVERLAY_SCREEN)
+overlayScreen = CvDotMapOverlayScreen.CvDotMapOverlayScreen(STRATEGY_OVERLAY_SCREEN)
 def showOverlayScreen():
 	"""
-	Shows the Overlay Screen from CvOverlayScreen.py
+	Shows the Overlay Screen from CvDotMapOverlayScreen.py
 	"""
 	overlayScreen.interfaceScreen()
 
-
-
-def beginAddSignEvent(argsList):
+def hideOverlayScreen():
 	"""
-	Starts the popup for the OverlayAddSign Event
+	Hides the Overlay Screen from CvDotMapOverlayScreen.py
 	"""
-	localTxt = CyTranslator()
-	artMgr = CyArtFileMgr()
-	hdrTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_TITLE",())
-	bodyTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_BODY",())
-	editboxHelp = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_HELP",())
+	overlayScreen.hideScreen()
 
-	popup = CyPopup(CvOverlayScreen.EventOverlayAddSign, EventContextTypes.EVENTCONTEXT_ALL,True)
-	popup.setUserData( argsList )
-	popup.setHeaderString(hdrTxt, CvUtil.FONT_CENTER_JUSTIFY)
-	popup.setBodyString(bodyTxt, CvUtil.FONT_CENTER_JUSTIFY)
 
-	popup.createPythonEditBox("", editboxHelp, GROUP_SIGNTXT)
-	popup.launch(True, PopupStates.POPUPSTATE_IMMEDIATE)
+#def beginAddSignEvent(argsList):
+#	"""
+#	Starts the popup for the OverlayAddSign Event
+#	"""
+#	localTxt = CyTranslator()
+#	artMgr = CyArtFileMgr()
+#	hdrTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_TITLE",())
+#	bodyTxt = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_BODY",())
+#	editboxHelp = localTxt.getText("TXT_KEY_STRATOVERLAY_ADDSIGN_EDITBOX_HELP",())
+#
+#	popup = CyPopup(CvDotMapOverlayScreen.EventOverlayAddSign, EventContextTypes.EVENTCONTEXT_ALL,True)
+#	popup.setUserData( argsList )
+#	popup.setHeaderString(hdrTxt, CvUtil.FONT_CENTER_JUSTIFY)
+#	popup.setBodyString(bodyTxt, CvUtil.FONT_CENTER_JUSTIFY)
+#
+#	popup.createPythonEditBox("", editboxHelp, GROUP_SIGNTXT)
+#	popup.launch(True, PopupStates.POPUPSTATE_IMMEDIATE)
 
-def applyAddSignEvent(playerID, userData, popupReturn):
-	"""
-	Applys the popup for OverlayAddSign Event
-	"""
-	signText = popupReturn.getEditBoxString(GROUP_SIGNTXT)
-	signText = CvUtil.convertToStr(signText)
-	x,y = userData
-	if gc.getMap().isPlot(x,y):
-		plot = gc.getMap().plot(x,y)
-		player = gc.getGame().getActivePlayer()
-		CyEngine().addSign(plot, player, signText)
-		overlayScreen.saveSign(x, y, signText, player)
-	else:
-		sdEcho("Invalid sign x,y")
+#def applyAddSignEvent(playerID, userData, popupReturn):
+#	"""
+#	Applys the popup for OverlayAddSign Event
+#	"""
+#	signText = popupReturn.getEditBoxString(GROUP_SIGNTXT)
+#	signText = CvUtil.convertToStr(signText)
+#	x,y = userData
+#	if gc.getMap().isPlot(x,y):
+#		plot = gc.getMap().plot(x,y)
+#		player = gc.getGame().getActivePlayer()
+#		CyEngine().addSign(plot, player, signText)
+#		overlayScreen.saveSign(x, y, signText, player)
+#	else:
+#		sdEcho("Invalid sign x,y")
 
-def configure(keyList=None):
+def createEvents(eventManager):
 	"""
 	Initial configuration of the list of HotKeys to open the screen
 	"""
 	global keys
 	keys = keyList
-	CvEventInterface.getEventManager().setPopupHandler(CvOverlayScreen.EventOverlayAddSign, ("OverlayAddSign", applyAddSignEvent, beginAddSignEvent))
+#	eventManager.setPopupHandler(CvDotMapOverlayScreen.EventOverlayAddSign, ("OverlayAddSign", applyAddSignEvent, beginAddSignEvent))
 
 def onKbdEvent(argsList):
 	"""
@@ -85,7 +90,7 @@ def onKbdEvent(argsList):
 		stroke = InputUtil.Keystroke(key, eventManager.bAlt, eventManager.bCtrl, eventManager.bShift)
 		if stroke in keys:
 			if overlayScreen.isOpen():
-				overlayScreen.hideScreen()
+				hideOverlayScreen()
 			else:
 				showOverlayScreen()
 			return 1
@@ -100,8 +105,8 @@ class CvOverlayScreenUtils:
 	"""
 
 	HandleInputMap = {
-					STRATEGY_OVERLAY_SCREEN : overlayScreen, # Pass off input to the overlay screen for it to handle
-					}
+		STRATEGY_OVERLAY_SCREEN : overlayScreen, # Pass off input to the overlay screen for it to handle
+	}
 
 	def leftMouseDown (self, argsList):
 		# return 1 to consume the input
