@@ -20,7 +20,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
+		left, center, right = self.addThreeColumnLayout(screen, column, "Top", True)
 		
 		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
@@ -46,22 +46,36 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "MainInterface__MinMax_Commerce")
 		
 		
-		self.addLabel(screen, right, "CityScreen", "CITY SCREEN")
-		self.addCheckbox(screen, right, "CityScreen__WhipAssist")
-		self.addCheckbox(screen, right, "CityScreen__WhipAssistOverflowCountCurrentProduction")
-		self.addCheckbox(screen, right, "CityScreen__Anger_Counter")
+		self.addLabel(screen, center, "CityScreen", "CITY SCREEN")
+		self.addCheckbox(screen, center, "CityScreen__WhipAssist")
+		self.addCheckbox(screen, center, "CityScreen__WhipAssistOverflowCountCurrentProduction")
+		self.addCheckbox(screen, center, "CityScreen__Anger_Counter")
 		
-		screen.attachHSeparator(right, right + "SepR1")
+		screen.attachHSeparator(center, center + "SepC1")
 		
-		self.addCheckbox(screen, right, "CityScreen__RawYields")
-		self.addTextDropdown(screen, right, right, "CityScreen__RawYields_View", True)
+		self.addCheckbox(screen, center, "CityScreen__RawYields")
+		self.addTextDropdown(screen, center, center, "CityScreen__RawYields_View", True)
 		
-		screen.attachHSeparator(right, right + "SepR2")
+		screen.attachHSeparator(center, center + "SepC2")
 		
-		self.addLabel(screen, right, "Misc", "Misc:")
-		self.addCheckbox(screen, right, "CityScreen__CultureTurns")
-		self.addCheckbox(screen, right, "CityScreen__GreatPersonTurns")
-		self.addCheckbox(screen, right, "CityScreen__GreatPersonInfo")
-		self.addCheckbox(screen, right, "CityScreen__FoodAssist")
-		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
-		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)		
+		self.addLabel(screen, center, "Misc", "Misc:")
+		self.addCheckbox(screen, center, "CityScreen__CultureTurns")
+		self.addCheckbox(screen, center, "CityScreen__GreatPersonTurns")
+		self.addCheckbox(screen, center, "CityScreen__GreatPersonInfo")
+		self.addCheckbox(screen, center, "CityScreen__FoodAssist")
+		self.addCheckbox(screen, center, "MainInterface__ProgressBarsTickMarks")
+		self.addTextDropdown(screen, center, center, "CityScreen__Specialists", True)
+		
+		
+		self.addLabel(screen, right, "StrategyOverlay", "STRATEGY LAYER")
+		self.addCheckbox(screen, right, "StrategyOverlay__Enabled")
+		
+		self.addSpacer(screen, right, "StrategyOverlay_DotMap")
+		self.addCheckbox(screen, right, "StrategyOverlay__ShowDotMap")
+		self.addCheckbox(screen, right, "StrategyOverlay__DotMapDrawDots")
+		rightLeft, rightRight = self.addTwoColumnLayout(screen, right, right)
+		#self.addTextEdit(screen, rightLeft, rightRight, "StrategyOverlay__DotMapDotIcon")
+		self.addSlider(screen, rightLeft, rightRight, "StrategyOverlay__DotMapBrightness", 
+				False, False, True, "up", 0, 100)
+		self.addSlider(screen, rightLeft, rightRight, "StrategyOverlay__DotMapHighlightBrightness", 
+				False, False, True, "up", 0, 100)
