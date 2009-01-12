@@ -46,6 +46,7 @@ Bug Fixes:
 - MA: Reversed leaderhead parameters so attitude of row leaderhead is shown
 - MA: Fixed scrolling display error with Worst Enemy in MA Sit Rep when there is none for a leader
 - Main Interface: Fixed click/hover response on (widescreen) research bar
+- Main Interface: Era Text and Great Person Bar now hide with No Interface and WorldBuilder
 - CDA: Now adjusts position of Liberate button to make sure it doesn't overlap Exit text
 - Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
 - No more warning about xmllib being deprecated
