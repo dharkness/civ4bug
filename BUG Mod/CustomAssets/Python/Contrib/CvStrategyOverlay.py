@@ -231,7 +231,7 @@ class DotMapLayer(StrategyLayer):
 		if len(data) == 0:
 			# empty, don't care
 			return data
-		for key, value in data:
+		for key, value in data.iteritems():
 			if isinstance(int, key):
 				# data in latest format
 				return data
@@ -312,13 +312,14 @@ class DotMapLayer(StrategyLayer):
 		"""
 		Adds the city to the data set and draws its dot and cross.
 		"""
-		if city.point in self.cities:
-			oldCity = self.cities.get(city.point)
+		ePlayer = PlayerUtil.getActivePlayerID()
+		if self.hasCity(ePlayer, city.point):
+			oldCity = self.getCity(ePlayer, city.point)
 			if city == oldCity:
 				return
 			self.removeCity(oldCity)
 		BugUtil.debug("DotMap - adding city %s", city)
-		self.getCities(PlayerUtil.getActivePlayerID())[city.point] = city
+		self.getCities(ePlayer)[city.point] = city
 		self.dirty = True
 		self.drawCity(city, self.CROSS_ALPHA, self.DOT_ALPHA)
 		
