@@ -2976,7 +2976,7 @@ class CvMainInterface:
 
 # BUG - NJAGC - start
 		global g_bShowTimeTextAlt
-		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
+		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY):
 			if (ClockOpt.isEnabled()):
 				if (ClockOpt.isShowEra()):
 					screen.show( "EraText" )
@@ -2999,15 +2999,11 @@ class CvMainInterface:
 							g_bShowTimeTextAlt = not g_bShowTimeTextAlt
 				else:
 					g_bShowTimeTextAlt = False
-				
-				self.updateTimeText()
-				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-				screen.show( "TimeText" )
 			else:
 				screen.hide( "EraText" )
-				self.updateTimeText()
-				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-				screen.show( "TimeText" )
+			self.updateTimeText()
+			screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+			screen.show( "TimeText" )
 		else:
 			screen.hide( "TimeText" )
 			screen.hide( "EraText" )
