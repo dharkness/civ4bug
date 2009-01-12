@@ -51,6 +51,9 @@
 ##       Signifies the moment the "End Turn" text is displayed on the screen
 ##       Fired from CvMainInterface.updateScreen()
 ##
+##   - gameUpdate
+##       Fired from CvMainInterface.updateScreen() every 250 milliseconds
+##
 ## * Events and their arguments are optionally logged.
 ## * Added configure() to set the options.
 ##
@@ -156,7 +159,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def setNoLogEvents(self, noLogEvents):
 		if noLogEvents is not None:
 			try:
-				x = "update" in noLogEvents
+				x = "gameUpdate" in noLogEvents
 			except:
 				raise ConfigError("noLogEvents must be tuple, list or set")
 			else:
@@ -278,20 +281,17 @@ class BugEventManager(CvEventManager.CvEventManager):
 	
 	def fireEvent(self, eventType, *args):
 		"""Fires the given event passing in all args as a list."""
-		argsList = [eventType]
-		argsList.extend(args)
-		argsList.extend((self.bDbg, self.bMultiPlayer, False, False, False, self.bAllowCheats))
-		self.handleEvent(argsList)
+		self._dispatchEvent(eventType, args)
 
 	def handleEvent(self, argsList):
 		"""Handles events by calling all installed handlers."""
-		self.origArgsList = argsList
-		flagsIndex = len(argsList) - 6
-		self.bDbg, self.bMultiPlayer, self.bAlt, self.bCtrl, self.bShift, self.bAllowCheats = argsList[flagsIndex:]
-		eventType = argsList[0]
+		self.bDbg, self.bMultiPlayer, self.bAlt, self.bCtrl, self.bShift, self.bAllowCheats = argsList[-6:]
+		self._dispatchEvent(argsList[0], argsList[1:-6])
+	
+	def _dispatchEvent(self, eventType, argsList):
 		if self.logging:
-			self._logEvent(eventType, argsList[1:flagsIndex])
-		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList[1:])
+			self._logEvent(eventType, argsList)
+		return EVENT_FUNCTION_MAP.get(eventType, BugEventManager._handleDefaultEvent)(self, eventType, argsList)
 
 	def _logEvent(self, eventType, argsList):
 		if self.logging and eventType not in self.noLogEvents:
@@ -303,8 +303,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def _handleDefaultEvent(self, eventType, argsList):
 		if self.EventHandlerMap.has_key(eventType):
 			for eventHandler in self.EventHandlerMap[eventType]:
-				# the last 6 arguments are for internal use by handleEvent
-				eventHandler(argsList[:len(argsList) - 6])
+				eventHandler(argsList)
 
 	def _handleConsumableEvent(self, eventType, argsList):
 		"""Handles events that can be consumed by the handlers, such as
@@ -315,10 +314,8 @@ class BugEventManager(CvEventManager.CvEventManager):
 
 		"""
 		if self.EventHandlerMap.has_key(eventType):
-			# the last 6 arguments are for internal use by handleEvent
-			args = argsList[:len(argsList) - 6]
 			for eventHandler in self.EventHandlerMap[eventType]:
-				result = eventHandler(args)
+				result = eventHandler(argsList)
 				if (result > 0):
 					return result
 		return 0
@@ -331,8 +328,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		result = ""
 		if self.EventHandlerMap.has_key(eventType):
 			for eventHandler in self.EventHandlerMap[eventType]:
-				# the last 6 arguments are for internal use by handleEvent
-				result = result + eventHandler(argsList[:len(argsList) - 6])
+				result = result + eventHandler(argsList)
 		return result
 
 	def _handleInitBugEvent(self, eventType, argsList):
