@@ -7,7 +7,7 @@
 		<English>Strategy Overlay</English>
 		<French>Strategy Overlay</French>
 		<German>Strategie-Overlay</German>
-		<Italian>Strategy Overlay</Italian>
+		<Italian>Livello Strategico</Italian>
 		<Spanish>Strategy Overlay</Spanish>
 	</TEXT>
 	<TEXT>
@@ -15,7 +15,7 @@
 		<English>Dot Mapper</English>
 		<French>Dot Mapper</French>
 		<German>Punkt-Werkzeug</German>
-		<Italian>Dot Mapper</Italian>
+		<Italian>Mappa di posizionamento</Italian>
 		<Spanish>Dot Mapper</Spanish>
 	</TEXT>
 	<TEXT>
@@ -23,7 +23,7 @@
 		<English>Place City</English>
 		<French>Place City</French>
 		<German>Stadt platzieren</German>
-		<Italian>Place City</Italian>
+		<Italian>Posiziona città</Italian>
 		<Spanish>Place City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -31,7 +31,7 @@
 		<English>Remove City</English>
 		<French>Remove City</French>
 		<German>Stadt entfernen</German>
-		<Italian>Remove City</Italian>
+		<Italian>Rimuovi Città</Italian>
 		<Spanish>Remove City</Spanish>
 	</TEXT>
 	<TEXT>
@@ -39,7 +39,7 @@
 		<English>Color Selection</English>
 		<French>Color Selection</French>
 		<German>Farbauswahl</German>
-		<Italian>Color Selection</Italian>
+		<Italian>Seleziona colore</Italian>
 		<Spanish>Color Selection</Spanish>
 	</TEXT>
 	<TEXT>
@@ -47,7 +47,7 @@
 		<English>Signs</English>
 		<French>Signs</French>
 		<German>Markierungen</German>
-		<Italian>Signs</Italian>
+		<Italian>Etichette</Italian>
 		<Spanish>Signs</Spanish>
 	</TEXT>
 	<TEXT>
@@ -55,7 +55,7 @@
 		<English>Add Overlay Sign</English>
 		<French>Add Overlay Sign</French>
 		<German>Overlay-Markierung hinzufügen</German>
-		<Italian>Add Overlay Sign</Italian>
+		<Italian>Aggiungi livello etichette</Italian>
 		<Spanish>Add Overlay Sign</Spanish>
 	</TEXT>
 	<TEXT>
@@ -63,7 +63,7 @@
 		<English>Caption for the sign</English>
 		<French>Caption for the sign</French>
 		<German>Text der Markierung</German>
-		<Italian>Caption for the sign</Italian>
+		<Italian>Testo dell'etichetta</Italian>
 		<Spanish>Caption for the sign</Spanish>
 	</TEXT>
 	<TEXT>
@@ -71,7 +71,7 @@
 		<English>Add Sign</English>
 		<French>Add Sign</French>
 		<German>Markierung hinzufügen</German>
-		<Italian>Add Sign</Italian>
+		<Italian>Aggiungi etichetta</Italian>
 		<Spanish>Add Sign</Spanish>
 	</TEXT>
 	<TEXT>
@@ -79,7 +79,7 @@
 		<English>Remove Sign</English>
 		<French>Remove Sign</French>
 		<German>Markierung entfernen</German>
-		<Italian>Remove Sign</Italian>
+		<Italian>Rimuovi etichetta</Italian>
 		<Spanish>Remove Sign</Spanish>
 	</TEXT>
 	<TEXT>
@@ -87,7 +87,7 @@
 	    <English>Enter the text to be displayed on the sign</English>
 	    <French>Enter the text to be displayed on the sign</French>
 	    <German>Eingabe des Textes, der auf der Markierung erscheinen soll</German>
-	    <Italian>Enter the text to be displayed on the sign</Italian>
+	    <Italian>Digita il testo che deve essere visualizzato sull'etichetta</Italian>
 	    <Spanish>Enter the text to be displayed on the sign</Spanish>
 	</TEXT>
 </Civ4GameText>
