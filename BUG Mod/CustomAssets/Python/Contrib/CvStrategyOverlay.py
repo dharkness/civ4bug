@@ -232,7 +232,7 @@ class DotMapLayer(StrategyLayer):
 			# empty, don't care
 			return data
 		for key, value in data.iteritems():
-			if isinstance(int, key):
+			if isinstance(key, int):
 				# data in latest format
 				return data
 			else:
