@@ -3179,11 +3179,11 @@
 	<!-- Strategy Overlay -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_TEXT</Tag>
-		<English>Enabled</English>
-		<French>Activé</French>
-		<German>Aktivieren</German>
-		<Italian>Attivato</Italian>
-		<Spanish>Enabled</Spanish>
+		<English>Enable Strategy Layer</English>
+		<French>Enable Strategy Layer</French>
+		<German>Strategie-Overlay aktivieren</German>
+		<Italian>Enable Strategy Layer</Italian>
+		<Spanish>Enable Strategy Layer</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_HOVER</Tag>
@@ -3197,7 +3197,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_TEXT</Tag>
 		<English>Show Dot Map</English>
 		<French>Show Dot Map</French>
-		<German>Punktkarte zeigen</German>
+		<German>Overlay-Karte anzeigen</German>
 		<Italian>Show Dot Map</Italian>
 		<Spanish>Show Dot Map</Spanish>
 	</TEXT>
@@ -3205,7 +3205,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__SHOWDOTMAP_HOVER</Tag>
 		<English>When checked, the city-planning dot map layer is shown overlaying the terrain.</English>
 		<French>When checked, the city-planning dot map layer is shown overlaying the terrain.</French>
-		<German>Lässt die Punktkarte zur Planung von Stadtgründungen das Gelände überlagern</German>
+		<German>Lässt die Overlay-Karte zur Planung von Stadtgründungen das Gelände überlagern</German>
 		<Italian>When checked, the city-planning dot map layer is shown overlaying the terrain.</Italian>
 		<Spanish>When checked, the city-planning dot map layer is shown overlaying the terrain.</Spanish>
 	</TEXT>
@@ -3253,7 +3253,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPBRIGHTNESS_HOVER</Tag>
 		<English>Determines the brightness of planned cities.</English>
 		<French>Determines the brightness of planned cities.</French>
-		<German>Bestimmt den Grad der Transparenz, in der geplante Städte erscheinen sollen</German>
+		<German>Bestimmt den Grad der Transparenz, in der geplante Stadtkreuze erscheinen sollen</German>
 		<Italian>Determines the brightness of planned cities.</Italian>
 		<Spanish>Determines the brightness of planned cities.</Spanish>
 	</TEXT>
@@ -3269,7 +3269,7 @@
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__DOTMAPHIGHLIGHTBRIGHTNESS_HOVER</Tag>
 		<English>Determines the brightness of the highlighted city being placed.</English>
 		<French>Determines the brightness of the highlighted city being placed.</French>
-		<German>Bestimmt den Grad der Transparenz, in der die gerade platzierte Stadt erscheinen soll</German>
+		<German>Bestimmt den Grad der Transparenz, in der das zu platzierende Stadtkreuz erscheinen soll</German>
 		<Italian>Determines the brightness of the highlighted city being placed.</Italian>
 		<Spanish>Determines the brightness of the highlighted city being placed.</Spanish>
 	</TEXT>
@@ -4008,6 +4008,15 @@
 		<German>Spionagemissionen:</German>
 		<Italian>Missioni:</Italian>
 		<Spanish>Missions:</Spanish>
+	</TEXT>
+	<!-- City Screen Tab -->
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_CITYSCREEN</Tag>
+		<English>City Screen</English>
+		<French>City Screen</French>
+		<German>Stadt-Bildschirm</German>
+		<Italian>City Screen</Italian>
+		<Spanish>City Screen</Spanish>
 	</TEXT>
 	<!-- Clock Tab -->
 	<TEXT>

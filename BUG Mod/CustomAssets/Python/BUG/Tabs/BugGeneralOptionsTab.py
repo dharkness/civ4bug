@@ -20,62 +20,39 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		left, center, right = self.addThreeColumnLayout(screen, column, "Top", True)
+		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
-		self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
+		#self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		
-		screen.attachHSeparator(left, left + "SepL1")
+		self.addSpacer(screen, left, "General1")
 		
 		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
 		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
 		
-		screen.attachHSeparator(left, left + "SepL2")
+		self.addSpacer(screen, left, "General2")
 		
-		self.addLabel(screen, left, "TechWindow", "Tech Splash Screen:")
-		self.addTextDropdown(screen, left, left, "TechWindow__ViewType", True)
-		self.addCheckbox(screen, left, "TechWindow__CivilopediaText")
+		#self.addLabel(screen, left, "StrategyOverlay", "STRATEGY LAYER")
+		self.addCheckbox(screen, left, "StrategyOverlay__Enabled")
 		
-		screen.attachHSeparator(left, left + "SepL3")
+		#self.addSpacer(screen, left, "StrategyOverlay_DotMap")
+		self.addCheckbox(screen, left, "StrategyOverlay__ShowDotMap")
+		self.addCheckbox(screen, left, "StrategyOverlay__DotMapDrawDots")
+		leftL, leftR = self.addTwoColumnLayout(screen, left, left)
+		#self.addTextEdit(screen, leftL, leftR, "StrategyOverlay__DotMapDotIcon")
+		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapBrightness", False, False, False, "up", 0, 100)
+		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapHighlightBrightness", False, False, False, "up", 0, 100)
 		
-		self.addLabel(screen, left, "Misc", "Misc:")
-		self.addCheckbox(screen, left, "MainInterface__CityArrows")
-		self.addCheckbox(screen, left, "EventSigns__Enabled")
-		self.addCheckbox(screen, left, "MainInterface__MinMax_Commerce")
+		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")
+		self.addTextDropdown(screen, right, right, "TechWindow__ViewType", True)
+		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")		
 		
+		self.addSpacer(screen, right, "General3")
 		
-		self.addLabel(screen, center, "CityScreen", "CITY SCREEN")
-		self.addCheckbox(screen, center, "CityScreen__WhipAssist")
-		self.addCheckbox(screen, center, "CityScreen__WhipAssistOverflowCountCurrentProduction")
-		self.addCheckbox(screen, center, "CityScreen__Anger_Counter")
-		
-		screen.attachHSeparator(center, center + "SepC1")
-		
-		self.addCheckbox(screen, center, "CityScreen__RawYields")
-		self.addTextDropdown(screen, center, center, "CityScreen__RawYields_View", True)
-		
-		screen.attachHSeparator(center, center + "SepC2")
-		
-		self.addLabel(screen, center, "Misc", "Misc:")
-		self.addCheckbox(screen, center, "CityScreen__CultureTurns")
-		self.addCheckbox(screen, center, "CityScreen__GreatPersonTurns")
-		self.addCheckbox(screen, center, "CityScreen__GreatPersonInfo")
-		self.addCheckbox(screen, center, "CityScreen__FoodAssist")
-		self.addCheckbox(screen, center, "MainInterface__ProgressBarsTickMarks")
-		self.addTextDropdown(screen, center, center, "CityScreen__Specialists", True)
-		
-		
-		self.addLabel(screen, right, "StrategyOverlay", "STRATEGY LAYER")
-		self.addCheckbox(screen, right, "StrategyOverlay__Enabled")
-		
-		self.addSpacer(screen, right, "StrategyOverlay_DotMap")
-		self.addCheckbox(screen, right, "StrategyOverlay__ShowDotMap")
-		self.addCheckbox(screen, right, "StrategyOverlay__DotMapDrawDots")
-		rightLeft, rightRight = self.addTwoColumnLayout(screen, right, right)
-		#self.addTextEdit(screen, rightLeft, rightRight, "StrategyOverlay__DotMapDotIcon")
-		self.addSlider(screen, rightLeft, rightRight, "StrategyOverlay__DotMapBrightness", 
-				False, False, True, "up", 0, 100)
-		self.addSlider(screen, rightLeft, rightRight, "StrategyOverlay__DotMapHighlightBrightness", 
-				False, False, True, "up", 0, 100)
+		self.addLabel(screen, right, "Misc", "Misc:")
+		self.addCheckbox(screen, right, "MainInterface__CityArrows")
+		self.addCheckbox(screen, right, "EventSigns__Enabled")
+		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
+		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
