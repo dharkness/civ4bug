@@ -252,8 +252,9 @@ class DotMapLayer(StrategyLayer):
 		return newData
 		
 	def write(self):
-		sdSetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID, self.cities)
-		self.dirty = False
+		if self.dirty:
+			sdSetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID, self.cities)
+			self.dirty = False
 	
 	def show(self):
 		if super(DotMapLayer, self).show():
