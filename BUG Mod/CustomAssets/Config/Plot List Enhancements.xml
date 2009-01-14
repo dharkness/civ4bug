@@ -15,7 +15,8 @@
 	<options id="PLE" file="Plot List Enhancements.ini">
 		<section id="PlotList">
 			<option id="Enabled" key="Enabled" 
-					type="boolean" default="True"/>
+					type="boolean" default="True"
+					get="isEnabled" dirtyBit="PlotListButtons"/>
 			
 			<!-- Modes and Filters -->
 			<option id="Show_Buttons" key="Show Buttons" 

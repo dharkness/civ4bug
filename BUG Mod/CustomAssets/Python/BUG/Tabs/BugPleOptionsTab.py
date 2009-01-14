@@ -18,14 +18,14 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		tab = self.createTab(screen)
 		panel = self.createMainPanel(screen)
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
-		
-		#self.addCheckbox(screen, left, "PLE__Enabled")
+
+		self.addCheckbox(screen, left, "PLE__Enabled")
 		self.addCheckbox(screen, left, "PLE__Show_Buttons")
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Show_Buttons_Column")
 		self.addTextDropdown(screen, leftL, leftR, "PLE__Default_View_Mode", True, "LAYOUT_LEFT")
 		self.addTextDropdown(screen, leftL, leftR, "PLE__Default_Group_Mode", True, "LAYOUT_LEFT")
 		self.addTextDropdown(screen, leftL, leftR, "PLE__Filter_Behavior", True, "LAYOUT_LEFT")
-		
+
 		self.addSpacer(screen, left, "PLE_Indicators", 1)
 		self.addLabel(screen, left, "PLE_Indicators")
 		self.addCheckbox(screen, left, "PLE__Wounded_Indicator")
@@ -35,7 +35,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "PLE__Mission_Info")
 		self.addSpacer(screen, left, "PLE_Tab")
 		self.addSpacer(screen, left, "PLE_Tab")
-		
+
 		#self.addSpacer(screen, left, "PLE__Spacing")
 		#self.addTextEdit(screen, left, left, "PLE__Horizontal_Spacing")
 		#self.addTextEdit(screen, left, left, "PLE__Vertical_Spacing")

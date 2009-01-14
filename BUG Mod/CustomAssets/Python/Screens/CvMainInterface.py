@@ -2451,33 +2451,33 @@ class CvMainInterface:
 		# *********************************************************************************
 
 # BUG - PLE - begin
-#		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-#			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
-#			yPixel = yResolution - 169 + yRow - 3
-#			xPixel = 315 - 3
-#			xWidth = self.numPlotListButtons() * 34 + 3
-#			yHeight = 32 + 3
-#		
-#			szStringPanel = "PlotListPanel" + str(j)
-#			screen.addPanel(szStringPanel, u"", u"", True, False, xPixel, yPixel, xWidth, yHeight, PanelStyles.PANEL_STYLE_EMPTY)
-#
-#			for i in range(self.numPlotListButtons()):
-#				k = j*self.numPlotListButtons()+i
-#				
-#				xOffset = i * 34
-#				
-#				szString = "PlotListButton" + str(k)
-#				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
-#				screen.hide( szString )
-#				
-#				szStringHealth = szString + "Health"
-#				screen.addStackedBarGFCAt( szStringHealth, szStringPanel, xOffset + 3, 26, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, k, -1 )
-#				screen.hide( szStringHealth )
-#				
-#				szStringIcon = szString + "Icon"
-#				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-#				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
-#				screen.hide( szStringIcon )
+		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
+			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+			yPixel = yResolution - 169 + yRow - 3
+			xPixel = 315 - 3
+			xWidth = self.numPlotListButtons() * 34 + 3
+			yHeight = 32 + 3
+		
+			szStringPanel = "PlotListPanel" + str(j)
+			screen.addPanel(szStringPanel, u"", u"", True, False, xPixel, yPixel, xWidth, yHeight, PanelStyles.PANEL_STYLE_EMPTY)
+
+			for i in range(self.numPlotListButtons()):
+				k = j*self.numPlotListButtons()+i
+				
+				xOffset = i * 34
+				
+				szString = "PlotListButton" + str(k)
+				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
+				screen.hide( szString )
+				
+				szStringHealth = szString + "Health"
+				screen.addStackedBarGFCAt( szStringHealth, szStringPanel, xOffset + 3, 26, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, k, -1 )
+				screen.hide( szStringHealth )
+				
+				szStringIcon = szString + "Icon"
+				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.hide( szStringIcon )
 
 		iHealthyColor = PleOpt.getHealthyColor()
 		iWoundedColor = PleOpt.getWoundedColor()
@@ -2976,7 +2976,7 @@ class CvMainInterface:
 
 # BUG - NJAGC - start
 		global g_bShowTimeTextAlt
-		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY):
+		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
 			if (ClockOpt.isEnabled()):
 				if (ClockOpt.isShowEra()):
 					screen.show( "EraText" )
@@ -2999,11 +2999,15 @@ class CvMainInterface:
 							g_bShowTimeTextAlt = not g_bShowTimeTextAlt
 				else:
 					g_bShowTimeTextAlt = False
+				
+				self.updateTimeText()
+				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.show( "TimeText" )
 			else:
 				screen.hide( "EraText" )
-			self.updateTimeText()
-			screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-			screen.show( "TimeText" )
+				self.updateTimeText()
+				screen.setLabel( "TimeText", "Background", g_szTimeText, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 56, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.show( "TimeText" )
 		else:
 			screen.hide( "TimeText" )
 			screen.hide( "EraText" )
@@ -3203,6 +3207,10 @@ class CvMainInterface:
 		
 		xResolution = screen.getXResolution()
 
+# BUG - Great Person Bar - start
+		self.updateGreatPersonBar(screen)
+# BUG - Great Person Bar - end
+
 		if ( CyInterface().shouldDisplayFlag() and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
 			screen.show( "CivilizationFlag" )
 			screen.show( "InterfaceHelpButton" )
@@ -3267,9 +3275,6 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
-# BUG - NJAGC - start
-			screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3300,9 +3305,6 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
-# BUG - NJAGC - start
-			screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )			
@@ -3346,9 +3348,6 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
-# BUG - NJAGC - start
-			screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3375,9 +3374,6 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )			
-# BUG - NJAGC - start
-			screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
@@ -3421,12 +3417,6 @@ class CvMainInterface:
 			screen.show( "MilitaryAdvisorButton" )
 			screen.show( "VictoryAdvisorButton" )
 			screen.show( "InfoAdvisorButton" )
-# BUG - NJAGC - start
-			if (ClockOpt.isShowEra()):
-				screen.show( "EraText" )
-			else:
-				screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			if (MainOpt.isShowCityCycleArrows()):
 				screen.show( "MainCityScrollMinus" )
@@ -3466,9 +3456,193 @@ class CvMainInterface:
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-# BUG - PLE - begin
-##		xResolution = screen.getXResolution()
-##		yResolution = screen.getYResolution()
+		self.updatePlotListButtons_Hide(screen)
+
+		if PleOpt.isEnabled():
+			self.updatePlotListButtons_PLE(screen)
+		else:
+			self.updatePlotListButtons_Orig(screen)
+		return 0
+
+	def updatePlotListButtons_Hide( self, screen ):
+		# hide all buttons
+		if (not self.bPLEHide):
+			self.hidePlotListButtonObjects(screen)
+
+		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
+			#szStringPanel = "PlotListPanel" + str(j)
+			#screen.hide(szStringPanel)
+			
+			for i in range(self.numPlotListButtons()):
+				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
+				screen.hide( szString )
+
+				szStringHealth = szString + "Health"
+				screen.hide( szStringHealth )
+
+				szStringIcon = szString + "Icon"
+				screen.hide( szStringIcon )
+		return 0
+
+	def updatePlotListButtons_Orig( self, screen ):
+
+		xResolution = screen.getXResolution()
+		yResolution = screen.getYResolution()
+
+		bHandled = False
+		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
+			if ( CyInterface().isCitySelection() ):
+
+				iOrders = CyInterface().getNumOrdersQueued()
+
+				for i in range( iOrders ):
+					if ( bHandled == False ):
+						eOrderNodeType = CyInterface().getOrderNodeType(i)
+						if (eOrderNodeType  == OrderTypes.ORDER_TRAIN ):
+							screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getOrderNodeData1(i), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1,  -20, 30, 1, False )
+							bHandled = True
+						elif ( eOrderNodeType == OrderTypes.ORDER_CONSTRUCT ):
+							screen.addBuildingGraphicGFC( "InterfaceUnitModel", CyInterface().getOrderNodeData1(i), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1,  -20, 30, 0.8, False )
+							bHandled = True
+						elif ( eOrderNodeType == OrderTypes.ORDER_CREATE ):
+							if(gc.getProjectInfo(CyInterface().getOrderNodeData1(i)).isSpaceship()):
+								modelType = 0
+								screen.addSpaceShipWidgetGFC("InterfaceUnitModel", 175, yResolution - 138, 123, 132, CyInterface().getOrderNodeData1(i), modelType, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1)
+							else:
+								screen.hide( "InterfaceUnitModel" )
+							bHandled = True
+						elif ( eOrderNodeType == OrderTypes.ORDER_MAINTAIN ):
+							screen.hide( "InterfaceUnitModel" )
+							bHandled = True
+							
+				if ( not bHandled ):
+					screen.hide( "InterfaceUnitModel" )
+					bHandled = True
+
+				screen.moveToFront("SelectedCityText")
+
+			elif ( CyInterface().getHeadSelectedUnit() ):
+				screen.addSpecificUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
+#				screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit().getUnitType(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
+				screen.moveToFront("SelectedUnitText")
+			else:
+				screen.hide( "InterfaceUnitModel" )
+		else:
+			screen.hide( "InterfaceUnitModel" )
+			
+		pPlot = CyInterface().getSelectionPlot()
+
+		for i in range(gc.getNumPromotionInfos()):
+			szName = "PromotionButton" + str(i)
+			screen.moveToFront( szName )
+
+		screen.hide( "PlotListMinus" )
+		screen.hide( "PlotListPlus" )
+
+		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
+			#szStringPanel = "PlotListPanel" + str(j)
+			#screen.hide(szStringPanel)
+			
+			for i in range(self.numPlotListButtons()):
+				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
+				screen.hide( szString )
+
+				szStringHealth = szString + "Health"
+				screen.hide( szStringHealth )
+
+				szStringIcon = szString + "Icon"
+				screen.hide( szStringIcon )
+
+		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
+
+			iVisibleUnits = CyInterface().getNumVisibleUnits()
+			iCount = -(CyInterface().getPlotListColumn())
+
+			bLeftArrow = False
+			bRightArrow = False
+
+			if (CyInterface().isCityScreenUp()):
+				iMaxRows = 1
+				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
+				iCount += iSkipped
+			else:
+				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
+				iCount += CyInterface().getPlotListOffset()
+				iSkipped = 0
+
+			CyInterface().cacheInterfacePlotUnits(pPlot)
+			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
+				pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
+				if (pLoopUnit):
+
+					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
+						bLeftArrow = True
+					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
+						bRightArrow = True
+						
+					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
+						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
+							
+						elif (pLoopUnit.canMove()):
+							if (pLoopUnit.hasMoved()):
+								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
+							else:
+								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+						else:
+							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
+
+						szString = "PlotListButton" + str(iCount)
+						screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
+						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
+							bEnable = True
+						else:
+							bEnable = False
+						screen.enable(szString, bEnable)
+
+						if (pLoopUnit.IsSelected()):
+							screen.setState(szString, True)
+						else:
+							screen.setState(szString, False)
+						screen.show( szString )
+						
+						# place the health bar
+						if (pLoopUnit.isFighting()):
+							bShowHealth = False
+						elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
+							bShowHealth = pLoopUnit.canAirAttack()
+						else:
+							bShowHealth = pLoopUnit.canFight()
+						
+						if bShowHealth:
+							szStringHealth = szString + "Health"
+							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
+							if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+							elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+							else:
+								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
+							screen.show( szStringHealth )
+						
+						# Adds the overlay first
+						szStringIcon = szString + "Icon"
+						screen.changeDDSGFC( szStringIcon, szFileName )
+						screen.show( szStringIcon )
+
+					iCount = iCount + 1
+
+			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
+				screen.enable("PlotListMinus", bLeftArrow)
+				screen.show( "PlotListMinus" )
+	
+				screen.enable("PlotListPlus", bRightArrow)
+				screen.show( "PlotListPlus" )
+			
+
+		return 0
+
+	def updatePlotListButtons_PLE( self, screen ):
 
 		self.hideUnitInfoPane()
 		self.xResolution = screen.getXResolution()
@@ -3487,7 +3661,6 @@ class CvMainInterface:
 		
 		xResolution = self.xResolution
 		yResolution = self.yResolution
-# BUG - PLE - end
 
 		bHandled = False
 		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
@@ -3528,10 +3701,7 @@ class CvMainInterface:
 				screen.hide( "InterfaceUnitModel" )
 		else:
 			screen.hide( "InterfaceUnitModel" )
-			
-# BUG - PLE - begin
-#		pPlot = CyInterface().getSelectionPlot()
-		
+
 		self.iLoopCnt += 1
 		
 		self.pActPlot = CyInterface().getSelectionPlot()
@@ -3572,40 +3742,15 @@ class CvMainInterface:
 			# mt.debug("Sel Unit: UPDATE!")
 
 		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
-			
-# BUG - PLE - end
 
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
-		
-# BUG - PLE - begin
-#		screen.hide( "PlotListMinus" )
-#		screen.hide( "PlotListPlus" )
-#		
-#		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-#			#szStringPanel = "PlotListPanel" + str(j)
-#			#screen.hide(szStringPanel)
-#			
-#			for i in range(self.numPlotListButtons()):
-#				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
-#				screen.hide( szString )
-#				
-#				szStringHealth = szString + "Health"
-#				screen.hide( szStringHealth )
-#
-#				szStringIcon = szString + "Icon"
-#				screen.hide( szStringIcon )
-#
-#		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
-#
-#			iVisibleUnits = CyInterface().getNumVisibleUnits()
-#			iCount = -(CyInterface().getPlotListColumn())
 
 		# hide all buttons
 		if (not self.bPLEHide):
-			self.hidePlotListButtonObjects(screen)		
-				
+			self.hidePlotListButtonObjects(screen)
+
 		if ( self.pActPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
 			nRow = 0
@@ -3635,86 +3780,7 @@ class CvMainInterface:
 
 			bLeftArrow = False
 			bRightArrow = False
-			
-# BUG - PLE - start 			
-#			if (CyInterface().isCityScreenUp()):
-#				iMaxRows = 1
-#				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
-#				iCount += iSkipped
-#			else:
-#				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
-#				iCount += CyInterface().getPlotListOffset()
-#				iSkipped = 0
-#
-#			CyInterface().cacheInterfacePlotUnits(pPlot)
-#			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
-#				pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
-#				if (pLoopUnit):
-#
-#					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
-#						bLeftArrow = True
-#					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
-#						bRightArrow = True
-#						
-#					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
-#						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
-#							
-#						elif (pLoopUnit.canMove()):
-#							if (pLoopUnit.hasMoved()):
-#								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
-#							else:
-#								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-#						else:
-#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
-#
-#						szString = "PlotListButton" + str(iCount)
-#						screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
-#						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
-#							bEnable = True
-#						else:
-#							bEnable = False
-#						screen.enable(szString, bEnable)
-#
-#						if (pLoopUnit.IsSelected()):
-#							screen.setState(szString, True)
-#						else:
-#							screen.setState(szString, False)
-#						screen.show( szString )
-#						
-#						# place the health bar
-#						if (pLoopUnit.isFighting()):
-#							bShowHealth = False
-#						elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
-#							bShowHealth = pLoopUnit.canAirAttack()
-#						else:
-#							bShowHealth = pLoopUnit.canFight()
-#						
-#						if bShowHealth:
-#							szStringHealth = szString + "Health"
-#							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
-#							if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
-#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-#							elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
-#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
-#							else:
-#								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
-#							screen.show( szStringHealth )
-#						
-#						# Adds the overlay first
-#						szStringIcon = szString + "Icon"
-#						screen.changeDDSGFC( szStringIcon, szFileName )
-#						screen.show( szStringIcon )
-#
-#					iCount = iCount + 1
-#
-#			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
-#				screen.enable("PlotListMinus", bLeftArrow)
-#				screen.show( "PlotListMinus" )
-#	
-#				screen.enable("PlotListPlus", bRightArrow)
-#				screen.show( "PlotListPlus" )
-			
+
 			iLastUnitType = UnitTypes.NO_UNIT
 			iLastGroupID  = 0
 			# loop for all units on the plot
@@ -3871,7 +3937,7 @@ class CvMainInterface:
 			
 		else:
 			if (not self.bPLEHide):
-				self.hidePlotListButtonObjects(screen)		
+				self.hidePlotListButtonObjects(screen)
 # BUG - PLE - end
 
 		return 0
