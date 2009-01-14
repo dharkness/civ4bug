@@ -344,6 +344,8 @@ class DotMapLayer(StrategyLayer):
 				self.eraseDot(city, self.DOT_ALPHA)
 			else:
 				BugUtil.debug("City doesn't exist")
+		else:
+			self.freeze()
 	
 	def highlightCity(self, point, color):
 		"""
