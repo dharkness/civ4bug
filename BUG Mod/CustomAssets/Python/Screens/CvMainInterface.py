@@ -1241,19 +1241,23 @@ class CvMainInterface:
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, iMovementColor )
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, iHasMovedColor )
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, iNoMovementColor )
-	
+
+#tjp
 	# displays a single unit icon in the plot list with all its decorations
 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 		iCount = self.getI(nRow, nCol)
 		self.listPLEButtons[iCount] = ( pLoopUnit, nRow, nCol )
 		self.bPLEHide = False
-		
+
+		x = self.getX( nCol )
+		y = self.getY( nRow )
+
 		# create the button name 
 		szString = self.PLOT_LIST_BUTTON_NAME + str(iCount)
-		
+
 		# set unit button image
 		screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
-		
+
 		# check if it is an player unit or not
 		if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
 			bEnable = True
@@ -1261,7 +1265,7 @@ class CvMainInterface:
 			bEnable = False
 		# if player unit enable button (->visible, but not selectable)
 		screen.enable(szString, bEnable)
-		
+
 		# check if the units is selected
 		if (pLoopUnit.IsSelected()):
 			screen.setState(szString, True)
@@ -1269,7 +1273,21 @@ class CvMainInterface:
 			screen.setState(szString, False)
 		# set select state of the unit button
 		screen.show( szString )
-		
+
+		if bEnable:
+			self.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y )
+			self.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
+			self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
+			self.displayUnitPlotList_HealthBar( screen, pLoopUnit, szString )
+			self.displayUnitPlotList_MoveBar( screen, pLoopUnit, szString )
+			self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y )
+
+		return 0
+
+
+
+
+	def displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y ):
 		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon.
 		xSize = 12
 		ySize = 12
@@ -1277,7 +1295,7 @@ class CvMainInterface:
 		yOffset = 0
 		if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
 			# fortified
-			szDotState = "OVERLAY_FORTIFY"								
+			szDotState = "OVERLAY_FORTIFY"
 		elif (pLoopUnit.canMove()):
 			if (pLoopUnit.hasMoved()):
 				# unit moved, but some movement points are left
@@ -1288,11 +1306,11 @@ class CvMainInterface:
 		else:
 			# unit has no movement points left
 			szDotState = "OVERLAY_NOMOVE"
-		
+
 		# Wounded units will get a darker colored button.
 		if (self.bShowWoundedIndicator) and (pLoopUnit.isHurt()):
 			szDotState += "_INJURED"
-		
+
 		# Units lead by a GG will get a star instead of a dot.
 		if (self.bShowGreatGeneralIndicator):
 			# is unit lead by a GG?
@@ -1303,20 +1321,28 @@ class CvMainInterface:
 				ySize = 16
 				xOffset = -3
 				yOffset = -3
-		
+
 		szFileNameState = ArtFileMgr.getInterfaceArtInfo(szDotState).getPath()
-		
-		if (bEnable and self.bShowPromotionIndicator):
+
+		# display the colored spot icon
+		szStringIcon = szString+"Icon"
+		screen.addDDSGFC( szStringIcon, szFileNameState, x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		screen.show( szStringIcon )
+
+		return 0
+
+	def displayUnitPlotList_Promo( self, screen, pLoopUnit, szString ):
+		if (self.bShowPromotionIndicator):
 			# can unit be promoted ?
 			if (pLoopUnit.isPromotionReady()):
 				# place the promotion frame
 				szStringPromoFrame = szString+"PromoFrame"
 				screen.show( szStringPromoFrame )
 
-		x = self.getX( nCol )
-		y = self.getY( nRow )
+		return 0
 
-		if (bEnable and self.bShowUpgradeIndicator):
+	def displayUnitPlotList_Upgrade( self, screen, pLoopUnit, szString, iCount, x, y ):
+		if (self.bShowUpgradeIndicator):
 			# can unit be upgraded ?
 			if (mt.checkAnyUpgrade(pLoopUnit)):
 				# place the upgrade arrow
@@ -1325,7 +1351,11 @@ class CvMainInterface:
 				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringUpgrade )
 
-		if (self.bShowHealthBar and pLoopUnit.maxHitPoints() and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
+		return 0
+
+	def displayUnitPlotList_HealthBar( self, screen, pLoopUnit, szString ):
+		if (self.bShowHealthBar and pLoopUnit.maxHitPoints()
+		and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
 			# place the health bar
 			szStringHealthBar = szString+"HealthBar"
 			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
@@ -1338,10 +1368,13 @@ class CvMainInterface:
 			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
 			#else:
 			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
-													
+
 			screen.show( szStringHealthBar )
 
-		if (bEnable and self.bShowMoveBar):
+		return 0
+
+	def displayUnitPlotList_MoveBar( self, screen, pLoopUnit, szString ):
+		if (self.bShowMoveBar):
 			# place the move bar
 			szStringMoveBar = szString+"MoveBar"
 			if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
@@ -1360,15 +1393,17 @@ class CvMainInterface:
 				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 1.0 )
 				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
 			screen.show( szStringMoveBar )
-		
+
+		return 0
+
+	def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y ):
 		# display the mission or activity info
 		if (self.bShowMissionInfo): 
-			
 			# place the activity info below the unit icon.
-			szFileNameAction = ""						
+			szFileNameAction = ""
 			eActivityType = pLoopUnit.getGroup().getActivityType()
 			eAutomationType = pLoopUnit.getGroup().getAutomateType()
-			
+
 			# is unit on air intercept mission
 			if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_INTERCEPT").getPath()
@@ -1415,18 +1450,27 @@ class CvMainInterface:
 					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
 				else:
 					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SLEEP").getPath()
-						
+
 			# display the mission icon
 			if (szFileNameAction != ""):
 				szStringActionIcon = szString+"ActionIcon"
 				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, 16, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringActionIcon )
-			
-		# display the colored spot icon
-		szStringIcon = szString+"Icon"
-		screen.addDDSGFC( szStringIcon, szFileNameState, x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-		screen.show( szStringIcon )
-	
+
+		return 0
+
+
+
+
+
+
+
+
+
+
+
+
+
 	# checks if the unit matches actual filter conditions
 	def checkDisplayFilter(self, pUnit):
 
@@ -3458,6 +3502,8 @@ class CvMainInterface:
 
 		self.updatePlotListButtons_Hide(screen)
 
+		self.updatePlotListButtons_Common(screen)
+
 		if PleOpt.isEnabled():
 			self.updatePlotListButtons_PLE(screen)
 		else:
@@ -3466,8 +3512,8 @@ class CvMainInterface:
 
 	def updatePlotListButtons_Hide( self, screen ):
 		# hide all buttons
-		if (not self.bPLEHide):
-			self.hidePlotListButtonObjects(screen)
+		self.hidePlotListButtonObjects(screen)
+		self.hideUnitInfoPane()
 
 		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
 			#szStringPanel = "PlotListPanel" + str(j)
@@ -3484,7 +3530,7 @@ class CvMainInterface:
 				screen.hide( szStringIcon )
 		return 0
 
-	def updatePlotListButtons_Orig( self, screen ):
+	def updatePlotListButtons_Common( self, screen ):
 
 		xResolution = screen.getXResolution()
 		yResolution = screen.getYResolution()
@@ -3522,14 +3568,21 @@ class CvMainInterface:
 				screen.moveToFront("SelectedCityText")
 
 			elif ( CyInterface().getHeadSelectedUnit() ):
-				screen.addSpecificUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
-#				screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit().getUnitType(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
+				screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit().getUnitType(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
+#				screen.addSpecificUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
 				screen.moveToFront("SelectedUnitText")
 			else:
 				screen.hide( "InterfaceUnitModel" )
 		else:
 			screen.hide( "InterfaceUnitModel" )
-			
+
+	def updatePlotListButtons_Orig( self, screen ):
+
+# need to put in something similar to 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
+
+		xResolution = screen.getXResolution()
+		yResolution = screen.getYResolution()
+
 		pPlot = CyInterface().getSelectionPlot()
 
 		for i in range(gc.getNumPromotionInfos()):
@@ -3538,20 +3591,6 @@ class CvMainInterface:
 
 		screen.hide( "PlotListMinus" )
 		screen.hide( "PlotListPlus" )
-
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			#szStringPanel = "PlotListPanel" + str(j)
-			#screen.hide(szStringPanel)
-			
-			for i in range(self.numPlotListButtons()):
-				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
-				screen.hide( szString )
-
-				szStringHealth = szString + "Health"
-				screen.hide( szStringHealth )
-
-				szStringIcon = szString + "Icon"
-				screen.hide( szStringIcon )
 
 		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
@@ -3579,11 +3618,11 @@ class CvMainInterface:
 						bLeftArrow = True
 					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
 						bRightArrow = True
-						
+
 					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
 						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
 							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
-							
+
 						elif (pLoopUnit.canMove()):
 							if (pLoopUnit.hasMoved()):
 								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
@@ -3605,7 +3644,7 @@ class CvMainInterface:
 						else:
 							screen.setState(szString, False)
 						screen.show( szString )
-						
+
 						# place the health bar
 						if (pLoopUnit.isFighting()):
 							bShowHealth = False
@@ -3613,7 +3652,7 @@ class CvMainInterface:
 							bShowHealth = pLoopUnit.canAirAttack()
 						else:
 							bShowHealth = pLoopUnit.canFight()
-						
+
 						if bShowHealth:
 							szStringHealth = szString + "Health"
 							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
@@ -3624,7 +3663,7 @@ class CvMainInterface:
 							else:
 								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
 							screen.show( szStringHealth )
-						
+
 						# Adds the overlay first
 						szStringIcon = szString + "Icon"
 						screen.changeDDSGFC( szStringIcon, szFileName )
@@ -3635,83 +3674,42 @@ class CvMainInterface:
 			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
 				screen.enable("PlotListMinus", bLeftArrow)
 				screen.show( "PlotListMinus" )
-	
+
 				screen.enable("PlotListPlus", bRightArrow)
 				screen.show( "PlotListPlus" )
-			
 
 		return 0
 
 	def updatePlotListButtons_PLE( self, screen ):
 
-		self.hideUnitInfoPane()
-		self.xResolution = screen.getXResolution()
-		self.yResolution = screen.getYResolution()
-		
+#		self.hideUnitInfoPane()
+#		self.xResolution = screen.getXResolution()
+#		self.yResolution = screen.getYResolution()
+
 		# Capture these for looping over the plot's units
 		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
 		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
 		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
 		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
 		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
-		
+
 		self.bShowHealthBar = PleOpt.isShowHealthBar()
 		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
 		self.bShowMoveBar = PleOpt.isShowMoveBar()
-		
+
 		xResolution = self.xResolution
 		yResolution = self.yResolution
 
-		bHandled = False
-		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
-			if ( CyInterface().isCitySelection() ):
-
-				iOrders = CyInterface().getNumOrdersQueued()
-
-				for i in range( iOrders ):
-					if ( bHandled == False ):
-						eOrderNodeType = CyInterface().getOrderNodeType(i)
-						if (eOrderNodeType  == OrderTypes.ORDER_TRAIN ):
-							screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getOrderNodeData1(i), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1,  -20, 30, 1, False )
-							bHandled = True
-						elif ( eOrderNodeType == OrderTypes.ORDER_CONSTRUCT ):
-							screen.addBuildingGraphicGFC( "InterfaceUnitModel", CyInterface().getOrderNodeData1(i), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1,  -20, 30, 0.8, False )
-							bHandled = True
-						elif ( eOrderNodeType == OrderTypes.ORDER_CREATE ):
-							if(gc.getProjectInfo(CyInterface().getOrderNodeData1(i)).isSpaceship()):
-								modelType = 0
-								screen.addSpaceShipWidgetGFC("InterfaceUnitModel", 175, yResolution - 138, 123, 132, CyInterface().getOrderNodeData1(i), modelType, WidgetTypes.WIDGET_HELP_SELECTED, 0, -1)
-							else:
-								screen.hide( "InterfaceUnitModel" )
-							bHandled = True
-						elif ( eOrderNodeType == OrderTypes.ORDER_MAINTAIN ):
-							screen.hide( "InterfaceUnitModel" )
-							bHandled = True
-							
-				if ( not bHandled ):
-					screen.hide( "InterfaceUnitModel" )
-					bHandled = True
-
-				screen.moveToFront("SelectedCityText")
-
-			elif ( CyInterface().getHeadSelectedUnit() ):
-				screen.addUnitGraphicGFC( "InterfaceUnitModel", CyInterface().getHeadSelectedUnit().getUnitType(), 175, yResolution - 138, 123, 132, WidgetTypes.WIDGET_UNIT_MODEL, CyInterface().getHeadSelectedUnit().getUnitType(), -1,  -20, 30, 1, False )
-				screen.moveToFront("SelectedUnitText")
-			else:
-				screen.hide( "InterfaceUnitModel" )
-		else:
-			screen.hide( "InterfaceUnitModel" )
-
 		self.iLoopCnt += 1
-		
+
 		self.pActPlot = CyInterface().getSelectionPlot()
 		# if the plot changed, reset plot list offset
 		if (self.pOldPlot):
 			# check if plot has changed
 			if (self.pOldPlot.getX() != self.pActPlot.getX()) or (self.pOldPlot.getY() != self.pActPlot.getY()):
 				self.pOldPlot = self.pActPlot
-				self.iColOffset = 0		
-				self.iRowOffset = 0		
+				self.iColOffset = 0
+				self.iRowOffset = 0
 				self.bUpdatePLEUnitList = True
 				# mt.debug("update plot:"+str(self.iLoopCnt))
 		else:
@@ -3728,7 +3726,7 @@ class CvMainInterface:
 			id = pHeadSelectedUnit.getID()
 			# mt.debug("Sel Unit:"+str(id))
 			if (id in self.dPLEUnitInfo):
-				lActUnitInfo = self.getPLEUnitInfo( pHeadSelectedUnit ) 	
+				lActUnitInfo = self.getPLEUnitInfo( pHeadSelectedUnit )
 				if (lActUnitInfo <> self.dPLEUnitInfo[ id ]):
 					self.bUpdatePLEUnitList = True
 					# mt.debug("update unload:"+str(self.iLoopCnt))
@@ -3754,7 +3752,7 @@ class CvMainInterface:
 		if ( self.pActPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
 			nRow = 0
-			nCol = 0		
+			nCol = 0
 			self.iVisibleUnits = CyInterface().getNumVisibleUnits()
 			
 			if self.sPLEMode == self.PLE_MODE_STANDARD:
@@ -3785,21 +3783,18 @@ class CvMainInterface:
 			iLastGroupID  = 0
 			# loop for all units on the plot
 			for i in range(len(self.lPLEUnitList)):
-			
 				pLoopUnit = self.getInterfacePlotUnit(i)
-				
+
 				if (pLoopUnit):
-					
 					# checks if the units matches actual filters
 					if (self.checkDisplayFilter(pLoopUnit)):
-													
+
 						if not pLoopUnit.isCargo():
 							iActUnitType = pLoopUnit.getUnitType()
 							iActGroupID  = pLoopUnit.getGroupID()
-							
+
 						# standard view with scroll arrows
 						if (self.sPLEMode == self.PLE_MODE_STANDARD):
-						
 							if (self.iColOffset > 0):
 								bLeftArrow = True
 							if ((self.iVisibleUnits - self.getMaxCol() - self.iColOffset) > 0):
@@ -3811,7 +3806,7 @@ class CvMainInterface:
 								self.displayUnitPlotListObjects(screen, pLoopUnit, nRow, nCol)
 
 						# multiline view
-						elif (self.sPLEMode == self.PLE_MODE_MULTILINE):						
+						elif (self.sPLEMode == self.PLE_MODE_MULTILINE):
 
 							if (self.iRowOffset > 0):
 								bDownArrow = True
