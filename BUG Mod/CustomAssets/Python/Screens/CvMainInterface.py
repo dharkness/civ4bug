@@ -183,12 +183,12 @@ class CvMainInterface:
 	def __init__(self):
 	
 # BUG - PLE - start
-		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"		
+		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"
 		self.PLOT_LIST_MINUS_NAME 		= "MyPlotListMinus"
 		self.PLOT_LIST_PLUS_NAME 		= "MyPlotListPlus"
 		self.PLOT_LIST_UP_NAME 			= "MyPlotListUp"
 		self.PLOT_LIST_DOWN_NAME 		= "MyPlotListDown"
-		self.PLOT_LIST_PROMO_NAME 		= "MyPlotListPromo"		
+		self.PLOT_LIST_PROMO_NAME 		= "MyPlotListPromo"
 		self.PLOT_LIST_UPGRADE_NAME 	= "MyPlotListUpgrade"		
 		
 		self.PLE_VIEW_MODE 		 	   	= "PLE_VIEW_MODE1"
@@ -882,10 +882,10 @@ class CvMainInterface:
 			for nRow in range(self.getMaxRow()+1):
 				# 
 				szStringUnitPromo = self.PLOT_LIST_PROMO_NAME + string.zfill(str(nRow), 2) + string.zfill(str(nCol), 2)
-				screen.hide( szStringUnitPromo )		
+				screen.hide( szStringUnitPromo )
 				# 
 				szStringUnitUpgrade = self.PLOT_LIST_UPGRADE_NAME + string.zfill(str(nRow), 2) + string.zfill(str(nCol), 2)
-				screen.hide( szStringUnitUpgrade )				
+				screen.hide( szStringUnitUpgrade )
 		
 		# hide PLE modes switches
 		screen.hide(self.PLE_VIEW_MODE)
@@ -2532,13 +2532,13 @@ class CvMainInterface:
 		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
 		szFileNameHilite = ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath()
-		for i in range( self.iMaxPlotListIcons ):		
+		for i in range( self.iMaxPlotListIcons ):
 			# create button name
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
-				
+
 			x = self.getX( self.getCol( i ) )
 			y = self.getY( self.getRow( i ) )
-			
+
 			# place/init the promotion frame. Important to have it at first place within the for loop.
 			szStringPromoFrame = szString + "PromoFrame"
 			screen.addDDSGFC( szStringPromoFrame, szFileNamePromo, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1 )
@@ -2547,7 +2547,7 @@ class CvMainInterface:
 			# place the plot list unit button
 			screen.addCheckBoxGFC( szString, szFileNameGovernor, szFileNameHilite, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 			screen.hide( szString )
-	
+
 			# place/init the health bar. Important to have it at last place within the for loop.
 			szStringHealthBar = szString + "HealthBar"
 #			screen.addStackedBarGFC( szStringHealthBar, x+7, y-7, 25, 14, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
@@ -3504,7 +3504,7 @@ class CvMainInterface:
 
 		self.updatePlotListButtons_Common(screen)
 
-		if PleOpt.isEnabled():
+		if PleOpt.isPLE_Style():
 			self.updatePlotListButtons_PLE(screen)
 		else:
 			self.updatePlotListButtons_Orig(screen)
