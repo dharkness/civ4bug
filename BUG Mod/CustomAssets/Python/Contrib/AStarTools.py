@@ -403,16 +403,21 @@ class AStarMoveArea:
 		for i in range(iNumUnits):
 			pUnit = pPlot.getUnit(i)
 			iTeam = pUnit.getTeam()
-			if ((pUnit.getInvisibleType() == InvisibleTypes.NO_INVISIBLE) or \
-				(pUnit.getInvisibleType() == self.pUnit.getSeeInvisibleType())) and \
-				(not pUnit.isCounterSpy()):
-				if (iTeam != self.iActivePlayerTeam):
-					if (gc.getTeam(iTeam).isBarbarian()):
-						bBarbarian = true
-					elif (gc.getTeam(iTeam).isAtWar(self.iActivePlayerTeam)):
-						bEnemy = true
-					else:
-						bNeutral = true
+			if (iTeam == self.iActivePlayerTeam or pUnit.isCounterSpy()):
+				continue
+			iInvisibleType = pUnit.getInvisibleType()
+			if (iInvisibleType != InvisibleTypes.NO_INVISIBLE):
+				for j in range(self.pUnit.getNumSeeInvisibleTypes()):
+					if (iInvisibleType == self.pUnit.getSeeInvisibleType(j)):
+						break
+				else:
+					continue
+			if (gc.getTeam(iTeam).isBarbarian()):
+				bBarbarian = true
+			elif (gc.getTeam(iTeam).isAtWar(self.iActivePlayerTeam)):
+				bEnemy = true
+			else:
+				bNeutral = true
 		if bEnemy:
 			return PleOpt.MH_Color_Enemy_Unit()
 		elif bBarbarian:
