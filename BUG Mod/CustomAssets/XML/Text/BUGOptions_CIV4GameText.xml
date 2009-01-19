@@ -3040,6 +3040,22 @@
 		<Spanish>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_TEXT</Tag>
+		<English>Gold Rate Warning</English>
+		<French>Gold Rate Warning</French>
+		<German>Gold Rate Warning</German>
+		<Italian>Gold Rate Warning</Italian>
+		<Spanish>Gold Rate Warning</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_HOVER</Tag>
+		<English>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</English>
+		<French>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</French>
+		<German>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</German>
+		<Italian>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Italian>
+		<Spanish>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TEXT</Tag>
 		<English>Great Person Progress Bar</English>
 		<French>Barre de Progrès des Personnages Illustres</French>

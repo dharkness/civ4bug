@@ -11,6 +11,7 @@ New Features:
 - Added EventSigns: plots whose yields change due to random events marked on the map with signs
 - Added BUG Finance Advisor with breakdowns for Commerce and Income
 - Added Min/Max Commerce Rate buttons: set any commerce rate to 0% or 100% with one click
+- Added Gold Rate Warning: yellow gold rate when negative but not enough to cause a strike
 - Added Strategy Overlay: create a multicolored dot map in-game
 
 Improvements:

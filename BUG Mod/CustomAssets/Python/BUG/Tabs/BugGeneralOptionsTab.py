@@ -52,7 +52,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addSpacer(screen, right, "General3")
 		
 		self.addLabel(screen, right, "Misc", "Misc:")
-		self.addCheckbox(screen, right, "MainInterface__CityArrows")
-		self.addCheckbox(screen, right, "EventSigns__Enabled")
+		self.addCheckbox(screen, right, "MainInterface__GoldRateWarning")
 		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
 		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
+		self.addCheckbox(screen, right, "MainInterface__CityArrows")
+		self.addCheckbox(screen, right, "EventSigns__Enabled")

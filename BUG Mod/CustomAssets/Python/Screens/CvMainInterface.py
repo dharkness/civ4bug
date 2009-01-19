@@ -4852,7 +4852,32 @@ class CvMainInterface:
 			
 			if (gc.getPlayer(ePlayer).isAlive()):
 				
-				szText = CyGameTextMgr().getGoldStr(ePlayer)
+# BUG - Gold Rate Warning - start
+				if MainOpt.isGoldRateWarning():
+					pPlayer = gc.getPlayer(ePlayer)
+					iGold = pPlayer.getGold()
+					iGoldRate = pPlayer.calculateGoldRate()
+					if iGold < 0:
+						szText = BugUtil.getText("TXT_KEY_MISC_NEG_GOLD", iGold)
+						if iGold + iGoldRate >= 0:
+							szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
+						elif iGoldRate >= 0:
+							szText += BugUtil.getText("TXT_KEY_MISC_POS_WARNING_GOLD_PER_TURN", iGoldRate)
+						else:
+							szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
+					else:
+						szText = BugUtil.getText("TXT_KEY_MISC_POS_GOLD", iGold)
+						if iGoldRate >= 0:
+							szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
+						elif iGold + iGoldRate >= 0:
+							szText += BugUtil.getText("TXT_KEY_MISC_NEG_WARNING_GOLD_PER_TURN", iGoldRate)
+						else:
+							szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
+					if pPlayer.isStrike():
+						szText += BugUtil.getPlainText("TXT_KEY_MISC_STRIKE")
+				else:
+					szText = CyGameTextMgr().getGoldStr(ePlayer)
+# BUG - Gold Rate Warning - end
 				screen.setLabel( "GoldText", "Background", szText, CvUtil.FONT_LEFT_JUSTIFY, 12, 6, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 				screen.show( "GoldText" )
 				

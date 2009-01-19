@@ -6,7 +6,7 @@
   -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 
-	<!-- BUG -->
+	<!-- General -->
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
@@ -32,6 +32,9 @@
 		<Italian>Predefinito</Italian>
 		<Spanish>Default</Spanish>
 	</TEXT>
+	
+	<!-- Help -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HELP_OPENING</Tag>
 		<English>Opening the BUG Mod help file...</English>
@@ -82,6 +85,41 @@
 		<German>Keine Informationen verfügbar.</German>
 		<Italian>Nessuna descrizione fornita.</Italian>
 		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
+	</TEXT>
+	
+	<!-- Gold Rate Warning -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_MISC_POS_GOLD</Tag>
+		<English>[ICON_GOLD]: %d1_Gold</English>
+		<French>[ICON_GOLD]: %d1_Gold</French>
+		<German>[ICON_GOLD]: %d1_Gold</German>
+		<Italian>[ICON_GOLD]: %d1_Gold</Italian>
+		<Spanish>[ICON_GOLD]: %d1_Gold</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISC_NEG_GOLD</Tag>
+		<English>[ICON_GOLD]: [COLOR_NEGATIVE_TEXT]%d1_Gold[COLOR_REVERT]</English>
+		<French>[ICON_GOLD]: [COLOR_NEGATIVE_TEXT]%d1_Gold[COLOR_REVERT]</French>
+		<German>[ICON_GOLD]: [COLOR_NEGATIVE_TEXT]%d1_Gold[COLOR_REVERT]</German>
+		<Italian>[ICON_GOLD]: [COLOR_NEGATIVE_TEXT]%d1_Gold[COLOR_REVERT]</Italian>
+		<Spanish>[ICON_GOLD]: [COLOR_NEGATIVE_TEXT]%d1_Gold[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISC_NEG_WARNING_GOLD_PER_TURN</Tag>
+		<English>[SPACE][COLOR_YELLOW](%D1_Change/Turn)[COLOR_REVERT]</English>
+		<French>[SPACE][COLOR_YELLOW](%D1_Change/tour)[COLOR_REVERT]</French>
+		<German>[SPACE][COLOR_YELLOW](%D1_Change/Runde)[COLOR_REVERT]</German>
+		<Italian>[SPACE][COLOR_YELLOW](%D1_Change/Turno)[COLOR_REVERT]</Italian>
+		<Spanish>[SPACE][COLOR_YELLOW](%D1_Change/turno)[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISC_POS_WARNING_GOLD_PER_TURN</Tag>
+		<English>[SPACE][COLOR_YELLOW](%D1_Change/Turn)[COLOR_REVERT]</English>
+		<French>[SPACE][COLOR_YELLOW](%D1_Change/tour)[COLOR_REVERT]</French>
+		<German>[SPACE][COLOR_YELLOW](%D1_Change/Runde)[COLOR_REVERT]</German>
+		<Italian>[SPACE][COLOR_YELLOW](%D1_Change/Turno)[COLOR_REVERT]</Italian>
+		<Spanish>[SPACE][COLOR_YELLOW](%D1_Change/turno)[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<!-- Not Just Another Game Clock -->
