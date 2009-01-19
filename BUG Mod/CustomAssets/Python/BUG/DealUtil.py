@@ -16,7 +16,6 @@
 ##
 ##   - DealCanceled
 ##       Fired when a player cancels a deal
-##       Doesn't work as GameUpdate event isn't actually fired by Civ4
 ##
 ## Notes
 ##   - Must be initialized externally by calling init()
