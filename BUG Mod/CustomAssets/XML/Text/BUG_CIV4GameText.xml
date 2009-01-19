@@ -932,11 +932,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_CHART_HELP</Tag>
-		<English>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</English>
-		<French>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</French>
+		<English>Zoom in and out by clicking on the body of the chart</English>
+		<French>Zoom in and out by clicking on the body of the chart</French>
 		<German>Mit einem Mausklick auf den Namen eines Diagramms oder das Diagramm selbst kann zwischen der 7-in-1-Ansicht und der Groﬂansicht umgeschalten werden</German>
 		<Italian>Alterna la visualizzazione "7-in-1" con la visualizzazione "grafico singolo" cliccando sul titolo di un grafico o sul grafico stesso</Italian>
-		<Spanish>Swap between the 7-in-1 charts and the big chart by clicking on the title or body of the chart</Spanish>
+		<Spanish>Zoom in and out by clicking on the body of the chart</Spanish>
 	</TEXT>
 
 	<!-- Victory Screen -->
