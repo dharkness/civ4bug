@@ -752,6 +752,7 @@ class CvInfoScreen:
 
 			# 3 in 1 graph selectionS
 			self.szGraphDropdownWidget_3in1 = [""] * 3
+			self.iGraph_3in1 = [0, 1, 2]
 			iW_GRAPH = 463
 			iH_GRAPH = 290
 			for i in range(3):
@@ -760,13 +761,8 @@ class CvInfoScreen:
 				y = self.Y_MARGIN + self.Y_3_IN_1_CHART_ADJ[i] * (iH_GRAPH + 10) + 5
 				screen.addDropDownBoxGFC(self.szGraphDropdownWidget_3in1[i], x, y, self.W_DEMO_DROPDOWN + 50, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
 				for j in range(self.NUM_SCORES):
-					screen.addPullDownString(self.szGraphDropdownWidget_3in1[i], self.sGraphText[0][j], j, j, False )
+					screen.addPullDownString(self.szGraphDropdownWidget_3in1[i], self.sGraphText[0][j], j, j, self.iGraph_3in1[i] == j )
 				screen.hide(self.szGraphDropdownWidget_3in1[i])
-
-			self.szGraph_3in1 = [0] * 3
-			self.szGraph_3in1[0] = 0
-			self.szGraph_3in1[1] = 1
-			self.szGraph_3in1[2] = 2
 
 		if not AdvisorOpt.isGraphs():
 			self.iGraph_Smoothing = 0
@@ -980,7 +976,7 @@ class CvInfoScreen:
 		screen = self.getScreen()
 
 		if self.Graph_Status_Current == self.Graph_Status_3in1:
-			iGraphID = self.szGraph_3in1[vGraphID_Locn]
+			iGraphID = self.iGraph_3in1[vGraphID_Locn]
 		else:
 			iGraphID = vGraphID_Locn
 
@@ -2735,7 +2731,7 @@ class CvInfoScreen:
 
 				for i in range(3):
 					if (szWidgetName == self.szGraphDropdownWidget_3in1[i]):
-						self.szGraph_3in1[i] = iSelected
+						self.iGraph_3in1[i] = iSelected
 						self.drawGraphs()
 
 		# Something Clicked
