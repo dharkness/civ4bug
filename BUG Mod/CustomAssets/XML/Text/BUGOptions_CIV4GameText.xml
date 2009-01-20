@@ -3044,7 +3044,7 @@
 		<English>Gold Rate Warning</English>
 		<French>Gold Rate Warning</French>
 		<German>Gold Rate Warning</German>
-		<Italian>Gold Rate Warning</Italian>
+		<Italian>Calo dell'Oro</Italian>
 		<Spanish>Gold Rate Warning</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3052,7 +3052,7 @@
 		<English>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</English>
 		<French>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</French>
 		<German>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</German>
-		<Italian>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Italian>
+		<Italian>Quando è selezionato, mostra il tasso di crescita dell'oro in giallo se è negativo ma non abbastanza da mandarvi in rosso.</Italian>
 		<Spanish>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Spanish>
 	</TEXT>
 	<TEXT>
