@@ -33,7 +33,7 @@ Improvements:
 - Great General Progress Bar: Replaced "General" with icon
 - BUG options screen: Improved hover texts that include multiple options and redesigned General tab
 - Updated German and Italian translations
-- Added CvModFolder and CvAltRoot
+- Added CvAltRoot for use with Civ4's /AltRoot command-line feature
 - F9 / Charts now includes a 3-in-1 feature that displays 3 user selected charts
 
 Bug Fixes:
