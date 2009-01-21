@@ -95,7 +95,7 @@ def getPlainText(key, default=None):
 	"""
 	return getText(key, (), default)
 
-def getText(key, values, default=None):
+def getText(key, values=(), default=None):
 	"""
 	Looks up a translated message in XML with a tuple of replacement parameters.
 	It is safe to pass in a single value instead of tuple/list.
