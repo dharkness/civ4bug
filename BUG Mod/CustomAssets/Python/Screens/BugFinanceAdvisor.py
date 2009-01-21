@@ -184,6 +184,7 @@ class BugFinanceAdvisor:
 			iCommerce += iSpecialists
 		
 		iTotalCommerce = player.calculateTotalYield(YieldTypes.YIELD_COMMERCE)
+		# buildings includes 50% capital bonus for Bureaucracy civic
 		iBuildings = iTotalCommerce - iCommerce
 		if iBuildings > 0:
 			yLocation += self.Y_SPACING
@@ -241,6 +242,10 @@ class BugFinanceAdvisor:
 		iWealthCount = 0
 		fWealth = 0.0
 		eWealth = gc.getInfoTypeForString("PROCESS_WEALTH")
+		# ignores
+		#   CyCity.getReligionCommerce() -- excludes shrines
+		#   CyPlayer.getFreeCityCommerce()
+		#   CyPlayer.getSpecialistExtraCommerce() * (CyCity.getSpecialistPopulation() + CyCity.getNumGreatPeople())
 		for city in PlayerUtil.playerCities(player):
 			if not city.isDisorder():
 				fCityTaxes = city.getYieldRate(YieldTypes.YIELD_COMMERCE) * iTaxRate / 100.0
