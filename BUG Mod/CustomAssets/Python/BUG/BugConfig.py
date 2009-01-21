@@ -35,7 +35,6 @@ import BugInit
 import BugOptions
 import BugPath
 import BugUtil
-from configobj import ConfigObj
 import FontUtil
 import InputUtil
 import CvEventInterface
