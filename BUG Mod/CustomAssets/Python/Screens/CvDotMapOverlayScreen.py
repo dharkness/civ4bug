@@ -174,7 +174,7 @@ class CvDotMapOverlayScreen:
 		screen = self.getScreen()
 		if screen.isActive():
 			return
-		screen.setCloseOnEscape(True)
+		screen.setCloseOnEscape(False)
 		screen.setAlwaysShown(True)
 		screen.setForcedRedraw(True)
 		#-------------------------------------------------------------------------------
