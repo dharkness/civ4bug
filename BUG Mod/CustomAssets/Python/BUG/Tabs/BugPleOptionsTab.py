@@ -36,7 +36,6 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "PLE__Upgrade_Indicator")
 		self.addCheckbox(screen, left, "PLE__Mission_Info")
 		self.addSpacer(screen, left, "PLE_Tab")
-		self.addSpacer(screen, left, "PLE_Tab")
 
 		#self.addSpacer(screen, left, "PLE__Spacing")
 		#self.addTextEdit(screen, left, left, "PLE__Horizontal_Spacing")

@@ -1,4 +1,4 @@
-Changelog since BUG 3.5:
+Changes since BUG 3.5.1:
 
 New Features:
 

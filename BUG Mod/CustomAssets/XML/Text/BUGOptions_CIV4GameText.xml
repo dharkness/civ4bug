@@ -2522,7 +2522,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__PLE_STYLE_TEXT</Tag>
 		<English>PLE Style</English>
 		<French>PLE Style</French>
-		<German>PLE Style</German>
+		<German>PLE aktivieren</German>
 		<Italian>Stile PLE</Italian>
 		<Spanish>PLE Style</Spanish>
 	</TEXT>
@@ -3043,7 +3043,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_TEXT</Tag>
 		<English>Gold Rate Warning</English>
 		<French>Gold Rate Warning</French>
-		<German>Gold Rate Warning</German>
+		<German>"Gold/Runde"-Warnung</German>
 		<Italian>Calo dell'Oro</Italian>
 		<Spanish>Gold Rate Warning</Spanish>
 	</TEXT>
@@ -3051,7 +3051,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_HOVER</Tag>
 		<English>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</English>
 		<French>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</French>
-		<German>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</German>
+		<German>Färbt die Anzeige für "Gold/Runde" Gelb ein, wenn dessen Wert zwar negativ ist, den Goldvorrat in der nächsten Runde aber nicht unter 0 senken wird</German>
 		<Italian>Quando è selezionato, mostra il tasso di crescita dell'oro in giallo se è negativo ma non abbastanza da mandarvi in rosso.</Italian>
 		<Spanish>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Spanish>
 	</TEXT>
