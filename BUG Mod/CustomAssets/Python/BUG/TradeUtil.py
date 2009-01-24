@@ -43,7 +43,7 @@ def calculateTradeRoutes(playerOrID):
 			tradeCity = city.getTradeCity(i)
 			if tradeCity and tradeCity.getOwner() >= 0:
 				trade = city.calculateTradeYield(YieldTypes.YIELD_COMMERCE, city.calculateTradeProfit(tradeCity))
-				overseas = tradeCity.area().getID() == areaID
+				overseas = tradeCity.area().getID() != areaID
 				if tradeCity.getTeam() == eTeam:
 					if overseas:
 						tradeTotals[DOMESTIC_OVERSEAS_TRADE] += trade
