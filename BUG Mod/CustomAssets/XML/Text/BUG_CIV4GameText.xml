@@ -325,10 +325,10 @@
 	<TEXT>
 		<Tag>INTERFACE_CITY_SHRINKING</Tag>
 		<English>[COLOR_YELLOW]Shrinking (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</English>
-		<French>[COLOR_YELLOW]Rétrécissement (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</French>
-		<German>[COLOR_YELLOW]Schrumpfen (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</German>
-		<Italian>[COLOR_YELLOW]Riduzione (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YELLOW]Contracción (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</Spanish>
+		<French>[COLOR_YELLOW]Rétrécissement (%d1 [NUM1:tour:tours])[COLOR_REVERT]</French>
+		<German>[COLOR_YELLOW]Schrumpfen (%d1 [NUM1:Runde:Runden])[COLOR_REVERT]</German>
+		<Italian>[COLOR_YELLOW]Riduzione (%d1 [NUM1:Turno:Turni])[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YELLOW]Contracción (%d1 [NUM1:turno:turnos])[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>INTERFACE_CITY_FOOD_GROW</Tag>
