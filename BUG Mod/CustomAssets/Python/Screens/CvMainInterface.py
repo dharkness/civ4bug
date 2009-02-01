@@ -849,7 +849,7 @@ class CvMainInterface:
 
 
 	# hides all plot list switches (views, filters, groupings) and all the other objects
-	def hidePlotListButtonObjects(self, screen):
+	def hidePlotListButtonPLEObjects(self, screen):
 		# hides all unit button objects
 		for i in range( self.iMaxPlotListIcons ):
 			# hide unit button
@@ -1242,7 +1242,6 @@ class CvMainInterface:
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, iHasMovedColor )
 			screen.setStackedBarColors( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, iNoMovementColor )
 
-#tjp
 	# displays a single unit icon in the plot list with all its decorations
 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 		iCount = self.getI(nRow, nCol)
@@ -1280,12 +1279,9 @@ class CvMainInterface:
 			self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
 			self.displayUnitPlotList_HealthBar( screen, pLoopUnit, szString )
 			self.displayUnitPlotList_MoveBar( screen, pLoopUnit, szString )
-			self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y )
+			self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y, 16 )
 
 		return 0
-
-
-
 
 	def displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y ):
 		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon.
@@ -1396,7 +1392,7 @@ class CvMainInterface:
 
 		return 0
 
-	def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y ):
+	def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y, iSize ):
 		# display the mission or activity info
 		if (self.bShowMissionInfo): 
 			# place the activity info below the unit icon.
@@ -1454,22 +1450,10 @@ class CvMainInterface:
 			# display the mission icon
 			if (szFileNameAction != ""):
 				szStringActionIcon = szString+"ActionIcon"
-				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, 16, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, iSize, iSize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 				screen.show( szStringActionIcon )
 
 		return 0
-
-
-
-
-
-
-
-
-
-
-
-
 
 	# checks if the unit matches actual filter conditions
 	def checkDisplayFilter(self, pUnit):
@@ -2511,13 +2495,21 @@ class CvMainInterface:
 				xOffset = i * 34
 				
 				szString = "PlotListButton" + str(k)
+
+# BUG - plot list - start
+				szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
+				szStringPromoFrame  = szString + "PromoFrame"
+				screen.addDDSGFCAt( szStringPromoFrame , szStringPanel, szFileNamePromo, xOffset +  2,  2, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
+				screen.hide( szStringPromoFrame  )
+# BUG - plot list - end
+
 				screen.addCheckBoxGFCAt(szStringPanel, szString, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), xOffset + 3, 3, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, k, -1, ButtonStyles.BUTTON_STYLE_LABEL, True )
 				screen.hide( szString )
-				
+
 				szStringHealth = szString + "Health"
 				screen.addStackedBarGFCAt( szStringHealth, szStringPanel, xOffset + 3, 26, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, k, -1 )
 				screen.hide( szStringHealth )
-				
+
 				szStringIcon = szString + "Icon"
 				szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
 				screen.addDDSGFCAt( szStringIcon, szStringPanel, szFileName, xOffset, 0, 12, 12, WidgetTypes.WIDGET_PLOT_LIST, k, -1, False )
@@ -3512,13 +3504,13 @@ class CvMainInterface:
 
 	def updatePlotListButtons_Hide( self, screen ):
 		# hide all buttons
-		self.hidePlotListButtonObjects(screen)
+		self.hidePlotListButtonPLEObjects(screen)
 		self.hideUnitInfoPane()
 
+		self.hidePlotListButtonNonPLEObjects(screen)
+
+	def hidePlotListButtonNonPLEObjects(self, screen):
 		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			#szStringPanel = "PlotListPanel" + str(j)
-			#screen.hide(szStringPanel)
-			
 			for i in range(self.numPlotListButtons()):
 				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
 				screen.hide( szString )
@@ -3528,12 +3520,35 @@ class CvMainInterface:
 
 				szStringIcon = szString + "Icon"
 				screen.hide( szStringIcon )
+
+				szStringPromoFrame = szString + "PromoFrame"
+				screen.hide( szStringPromoFrame )
+
+				szStringActionIcon = szString + "ActionIcon"
+				screen.hide( szStringActionIcon )
+
+				szStringUpgrade = szString + "Upgrade"
+				screen.hide( szStringUpgrade )
+
+				szStringUpgrade = szString + "GreatGeneral"
+				screen.hide( szStringUpgrade )
 		return 0
 
 	def updatePlotListButtons_Common( self, screen ):
 
 		xResolution = screen.getXResolution()
 		yResolution = screen.getYResolution()
+
+		# Capture these for looping over the plot's units
+		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
+		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
+		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
+		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
+		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
+
+		self.bShowHealthBar = PleOpt.isShowHealthBar()
+		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
+		self.bShowMoveBar = PleOpt.isShowMoveBar()
 
 		bHandled = False
 		if ( CyInterface().shouldDisplayUnitModel() and not CyEngine().isGlobeviewUp() and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL ):
@@ -3669,6 +3684,15 @@ class CvMainInterface:
 						screen.changeDDSGFC( szStringIcon, szFileName )
 						screen.show( szStringIcon )
 
+						if bEnable:
+							x = 315 + ((iCount % self.numPlotListButtons()) * 34)
+							y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+
+							self.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y + 4 )
+							self.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
+							self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
+							self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y - 22, 12)
+
 					iCount = iCount + 1
 
 			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
@@ -3681,21 +3705,6 @@ class CvMainInterface:
 		return 0
 
 	def updatePlotListButtons_PLE( self, screen ):
-
-#		self.hideUnitInfoPane()
-#		self.xResolution = screen.getXResolution()
-#		self.yResolution = screen.getYResolution()
-
-		# Capture these for looping over the plot's units
-		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
-		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
-		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
-		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
-		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
-
-		self.bShowHealthBar = PleOpt.isShowHealthBar()
-		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
-		self.bShowMoveBar = PleOpt.isShowMoveBar()
 
 		xResolution = self.xResolution
 		yResolution = self.yResolution
@@ -3747,7 +3756,7 @@ class CvMainInterface:
 
 		# hide all buttons
 		if (not self.bPLEHide):
-			self.hidePlotListButtonObjects(screen)
+			self.hidePlotListButtonPLEObjects(screen)
 
 		if ( self.pActPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
@@ -3932,7 +3941,7 @@ class CvMainInterface:
 			
 		else:
 			if (not self.bPLEHide):
-				self.hidePlotListButtonObjects(screen)
+				self.hidePlotListButtonPLEObjects(screen)
 # BUG - PLE - end
 
 		return 0

@@ -35,6 +35,8 @@ Improvements:
 - Updated German and Italian translations
 - Added CvAltRoot for use with Civ4's /AltRoot command-line feature
 - F9 / Charts now includes a 3-in-1 feature that displays 3 user selected charts
+- Added the ability to revert to the original BtS unit plot style
+- Added the ability to add the following options to the original BtS unit plot style (promo, mission, GG, wounded, upgrade)
 
 Bug Fixes:
 
