@@ -528,12 +528,11 @@ class CvVictoryScreen:
 		# SecGen vote prediction
 		if iVoteTotal[0] > iVoteTotal[1]:
 			iWinner = 0
+			sWin = sCand1Name
 		else:
 			iWinner = 1
+			sWin = sCand2Name
 		iLoser = 1 - iWinner
-
-		pWin = gc.getPlayer(lMembers[iWinner][2]).getTeam()
-		sWin = gc.getTeam(pWin).getName()
 
 		fVotePercent = 100.0 * iVoteTotal[iWinner] / iMaxVotes
 		fMargin = 100.0 * (iVoteTotal[iWinner] - iVoteTotal[iLoser]) / iMaxVotes
