@@ -55,6 +55,7 @@ Bug Fixes:
 - CDA: Now adjusts position of Liberate button to make sure it doesn't overlap Exit text
 - Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
 - No more warning about xmllib being deprecated
+- Fixed bug with loading options when viewing Sevopedia from the MAIN MENU
 
 
 FOR MODDERS
