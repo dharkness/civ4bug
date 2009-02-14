@@ -221,9 +221,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		screen.showScreen( PopupStates.POPUPSTATE_IMMEDIATE, False)
 	
 		self.iActiveLeader = CyGame().getActivePlayer()
-		self.objActiveLeader = gc.getPlayer(self.iActiveLeader)
-		self.iActiveTeam = self.objActiveLeader.getTeam()
-		self.objActiveTeam = gc.getTeam(self.iActiveTeam)
 		self.iSelectedLeader = self.iActiveLeader
 		self.listSelectedLeaders = []
 		#self.listSelectedLeaders.append(self.iSelectedLeader)
@@ -297,6 +294,9 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		if (self.iScreen < 0):
 			return
 						
+		self.objActiveLeader = gc.getPlayer(self.iActiveLeader)
+		self.iActiveTeam = self.objActiveLeader.getTeam()
+		self.objActiveTeam = gc.getTeam(self.iActiveTeam)
 		self.deleteAllWidgets()
 		
 		screen = self.getScreen()
@@ -473,14 +473,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		screen.addPanel(mainPanelName, "", "", True, True, iLeft, iTop, iWidth, iHeight, PanelStyles.PANEL_STYLE_EMPTY)
 
 		FavoriteCivicDetector.doUpdate()
-
-		# Checking whether the "Open Markets" UN resolution has passed which will be used in the rows
-		self.bOpenMarkets = False
-		for iVote in range(gc.getNumVoteInfos()):
-			if gc.getVoteInfo(iVote).isFreeTrade():
-				if gc.getGame().isVotePassed(iVote):
-					self.bOpenMarkets = True
-					break
 		
 		# display the active player's row at the top
 		self.drawInfoRow(screen, mainPanelName, self.iActiveLeader, PanelStyles.PANEL_STYLE_MAIN_BLACK25)
@@ -502,9 +494,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 	def drawInfoRow (self, screen, mainPanelName, iLoopPlayer, ePanelStyle):
 		objLoopPlayer = gc.getPlayer(iLoopPlayer)
+		iLoopTeam = objLoopPlayer.getTeam()
+		objLoopTeam = gc.getTeam(iLoopTeam)
 		bIsActivePlayer = (iLoopPlayer == self.iActiveLeader)
 		if (objLoopPlayer.isAlive()
-			#and (self.objActiveTeam.isHasMet(objLoopPlayer.getTeam()) or gc.getGame().isDebugMode())
+			#and (self.objActiveTeam.isHasMet(iLoopTeam) or gc.getGame().isDebugMode())
 			and not objLoopPlayer.isBarbarian()
 			and not objLoopPlayer.isMinorCiv()):
 			
@@ -518,11 +512,11 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 			# Panels always created but essentially blank if unmet
 			itemName = self.getNextWidgetName()
-			if (not self.objActiveTeam.isHasMet(objLoopPlayer.getTeam()) and not gc.getGame().isDebugMode()):
+			if (not self.objActiveTeam.isHasMet(iLoopTeam) and not gc.getGame().isDebugMode()):
 				screen.attachImageButton(playerPanelName, itemName, gc.getDefineSTRING("LEADERHEAD_RANDOM"), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_GENERAL, -1, -1, False)
 				return
 			else:
-				screen.attachImageButton(playerPanelName, itemName, objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+				screen.attachImageButton(playerPanelName, itemName, objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
 			#screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 					
 			infoPanelName = self.getNextWidgetName()
@@ -571,32 +565,25 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
-			# Trade (only if connected to trade network, has open borders agreement and foreign trade allowed for both players)
-			iTradeCommerce = -1
-			iTradeRoutes = -1
-			if (bIsActivePlayer
-					or (objLoopPlayer.canTradeNetworkWith(self.iActiveLeader)
-					and (self.bOpenMarkets or self.objActiveTeam.isOpenBorders(objLoopPlayer.getTeam()))
-					and not self.objActiveLeader.isNoForeignTrade()
-					and not objLoopPlayer.isNoForeignTrade())):
-				(iTradeCommerce,iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
-			if iTradeRoutes >= 0:
+			if (bIsActivePlayer or objLoopPlayer.canHaveTradeRoutesWith(self.iActiveLeader)):
+				(iTradeCommerce, iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
 				szTrade = u"%d" % (iTradeRoutes)
-			else:
-				szTrade = u""
-			itemName = self.getNextWidgetName()
-			screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-			# Trade has no useful widget so always disable hit testing.
-			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
-			if iTradeCommerce >= 0:
+				itemName = self.getNextWidgetName()
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 				szTrade = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
+				itemName = self.getNextWidgetName()
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			else:
-				szTrade = u""
-			itemName = self.getNextWidgetName()
-			screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-			# Trade has no useful widget so always disable hit testing.
-			screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
-
+				# cannot have trade routes
+				itemName = self.getNextWidgetName()
+				screen.attachTextGFC(infoPanelName, itemName, u"", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				itemName = self.getNextWidgetName()
+				screen.attachTextGFC(infoPanelName, itemName, u"", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+			
 			# Civics
 			for nCivicOption in range (gc.getNumCivicOptionInfos()):
 				nCivic = objLoopPlayer.getCivics (nCivicOption)

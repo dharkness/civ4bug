@@ -56,7 +56,7 @@
 					type="boolean" default="True" 
 					get="isShowCityCycleArrows" dirtyBit="MiscButtons"/>
 
-			<!-- progress bars -->
+			<!-- Progress Bar Tick Marks -->
 			<option id="ProgressBarsTickMarks" key="Tick Marks" 
 					type="boolean" default="True" 
 					get="isShowpBarTickMarks" dirtyBit="GameData"/>
@@ -65,14 +65,20 @@
 			<option id="FieldOfView" key="Field of View" 
 					type="boolean" default="True" 
 					get="isShowFieldOfView" dirtyBit="MiscButtons"/>
-
 			<option id="FieldOfView_Remember" key="Remember Field of View" 
 					type="boolean" default="True" 
 					get="isRememberFieldOfView"/>
-
 			<option id="FieldOfView_Value" key="Field of View Value"
 					type="string" default="42" 
 					get="getFieldOfView" set="setFieldOfView"/> 
+
+			<!-- Movement Points -->
+			<option id="UnitMovementPointsFraction" key="Unit Movement Points Fraction" 
+					type="boolean" default="True" 
+					get="isShowUnitMovementPointsFraction" dirtyBit="InfoPane"/>
+			<option id="StackMovementPoints" key="Stack Movement Points" 
+					type="boolean" default="True" 
+					get="isShowStackMovementPoints" dirtyBit="InfoPane"/>
 		</section>
 	</options>
 </mod>

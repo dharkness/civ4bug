@@ -3208,6 +3208,38 @@
 		<Italian>Riporta il valore assegnato al Campo visuale</Italian>
 		<Spanish>Stores the Field of View value</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__UNITMOVEMENTPOINTSFRACTION_TEXT</Tag>
+		<English>Fractional Movement Points</English>
+		<French>Fractional Movement Points</French>
+		<German>Fractional Movement Points</German>
+		<Italian>Fractional Movement Points</Italian>
+		<Spanish>Fractional Movement Points</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__UNITMOVEMENTPOINTSFRACTION_HOVER</Tag>
+		<English>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</English>
+		<French>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</French>
+		<German>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</German>
+		<Italian>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</Italian>
+		<Spanish>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKMOVEMENTPOINTS_TEXT</Tag>
+		<English>Stack Movement Points</English>
+		<French>Stack Movement Points</French>
+		<German>Stack Movement Points</German>
+		<Italian>Stack Movement Points</Italian>
+		<Spanish>Stack Movement Points</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKMOVEMENTPOINTS_HOVER</Tag>
+		<English>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</English>
+		<French>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</French>
+		<German>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</German>
+		<Italian>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Italian>
+		<Spanish>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Spanish>
+	</TEXT>
 	<!-- Strategy Overlay -->
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_TEXT</Tag>

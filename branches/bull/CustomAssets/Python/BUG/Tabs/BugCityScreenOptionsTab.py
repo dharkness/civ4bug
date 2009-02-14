@@ -40,4 +40,3 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "CityScreen__FoodAssist")
 		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
 		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)
-		
