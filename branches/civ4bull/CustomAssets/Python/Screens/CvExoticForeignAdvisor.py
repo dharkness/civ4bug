@@ -22,6 +22,7 @@ import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
 import re
+import BugDll
 import BugUtil
 import AttitudeUtil
 import BugCore
@@ -392,7 +393,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				screen.attachTextGFC(infoPanelName, "", szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer)[0], )), FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer)[0], )), FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
 
 				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_CIVICS_SCREEN_TITLE", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
@@ -569,12 +571,18 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				(iTradeCommerce, iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
 				szTrade = u"%d" % (iTradeRoutes)
 				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+				if not BugDll.isPresent():
+					# Trade has no useful widget so disable hit testing.
+					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 				szTrade = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
 				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+				if not BugDll.isPresent():
+					# Trade has no useful widget so disable hit testing.
+					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			else:
 				# cannot have trade routes
 				itemName = self.getNextWidgetName()
@@ -1015,7 +1023,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 						else: # won't trade
 							self.resIconGrid.addIcon( currentRow, self.wontTradeCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, *BugDll.widget("WIDGET_PEDIA_JUMP_TO_BONUS_TRADE", iLoopBonus, iLoopPlayer, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus, -1) )
 				if (self.RES_SHOW_ACTIVE_TRADE):
 					amount = 0
 					for iLoopDeal in range(gc.getGame().getIndexAfterLastDeal()):
@@ -1132,7 +1140,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 							else: # won't trade
 								self.techIconGrid.addIcon( currentRow, 5, gc.getTechInfo(iLoopTech).getButton()
-																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																					 , 64, *BugDll.widget("WIDGET_PEDIA_JUMP_TO_TECH_TRADE", iLoopTech, iLoopPlayer, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech, -1) )
 						elif (gc.getTeam(currentPlayer.getTeam()).isHasTech(iLoopTech) and activePlayer.canResearch(iLoopTech, False)):
 							self.techIconGrid.addIcon( currentRow, 6, gc.getTechInfo(iLoopTech).getButton()
 																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
