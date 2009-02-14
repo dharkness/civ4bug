@@ -190,3 +190,38 @@ def getConsoleMacro(argsList):
 	if (fxnKey==6): return "CvCameraControls.g_CameraControls.doZoomCamera(0.5, 0.15)"
 	if (fxnKey==7): return "CvCameraControls.g_CameraControls.doPitchCamera(0.5, 0.5)"
 	return ""
+
+# BUG - DLL - start
+g_options = None
+def getOption(id):
+	global g_options
+	if g_options is None:
+		import BugOptions
+		g_options = BugOptions.g_options
+		if g_options is None:
+			import BugUtil
+			BugUtil.warn("Cannot access BUG options")
+			return None
+	return g_options.getOption(id)
+
+def getOptionBOOL(argsList):
+	#import BugUtil
+	id = argsList[0]
+	#BugUtil.alert("checking option %s", id)
+	option = getOption(id)
+	if option:
+		#return bool(option.getValue())
+		val = bool(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		return val
+	else:
+		return False
+
+g_nameAndVersion = None
+def getModNameAndVersion():
+	global g_nameAndVersion
+	if g_nameAndVersion is None:
+		import CvModName
+		g_nameAndVersion = CvModName.getNameAndVersion()
+	return g_nameAndVersion
+# BUG - DLL - end
