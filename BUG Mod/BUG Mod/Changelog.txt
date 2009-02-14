@@ -11,8 +11,8 @@ New Features:
 - Added EventSigns: plots whose yields change due to random events marked on the map with signs
 - Added BUG Finance Advisor with breakdowns for Commerce and Income
 - Added Min/Max Commerce Rate buttons: set any commerce rate to 0% or 100% with one click
-- Added Gold Rate Warning: yellow gold rate when negative but not enough to cause a strike
-- Added Strategy Overlay: create a multicolored dot map in-game
+- Added Gold Rate Warning: yellow gold rate when negative but not enough to go below zero
+- Added Strategy Overlay: create a multicolored in-game dot map
 
 Improvements:
 
@@ -26,7 +26,7 @@ Improvements:
 - Advanced Scoreboard: option to show the rank of a Civ; layout character is "K"
 - Advanced Scoreboard: options for maximum players, line height, and research icon size
 - Civ4lert: alert for cities that will/have become pacified after capture or revolt
-- Civ4lert: alert for cities founded by non-vassal rivals
+- Civ4lert: alert for cities founded by known, non-vassal rivals
 - Civ4lert: alert for when rival will become a vassal, capitulate, or sign a peace treaty
 - Raw Yields: Split up Trade Routes total into Domestic, Foreign, and Overseas (foreign only) Trade
 - Sevopedia: Resource pages show all buildings they affect in the Buildings list--not just the buildings that supply the resource
