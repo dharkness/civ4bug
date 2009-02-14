@@ -9,7 +9,7 @@ New Features:
 - Tick Marks: Added whip threshold indicator to city production bar (look for yellow center tick mark)
 - Added FoodAssist: net food added to stores per turn and turns until starvation
 - Added EventSigns: plots whose yields change due to random events marked on the map with signs
-- Added BUG Finance Advisor with breakdowns for Commerce and Income
+- Added BUG Finance Advisor with detailed line items for Commerce and Income
 - Added Min/Max Commerce Rate buttons: set any commerce rate to 0% or 100% with one click
 - Added Gold Rate Warning: yellow gold rate when negative but not enough to go below zero
 - Added Strategy Overlay: create a multicolored in-game dot map
