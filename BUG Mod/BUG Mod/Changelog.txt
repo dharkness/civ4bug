@@ -20,7 +20,7 @@ Improvements:
 - CDA: Added a "whip anger" column to CDA (not added to any pages)
 - CDA: coloring options now allow reversed comparisons (i.e. higher numbers are worse)
 - Show attitudes in leaderhead hovers in Exotic Foreign Advisor (EFA) Info tab and Military Advisor (MA)
-- EFA Info tab: Added Domestic Trade total and detection of Mercantilism
+- EFA Info tab: Added Domestic Trade total and correct detection of possibility of trade routes
 - EFA Info tab: Added second trade column (for number of trade routes) to EFA Info Tab
 - Advanced Scoreboard: option to show Civ ID number; layout character is "I" but it's not in the default layout
 - Advanced Scoreboard: option to show the rank of a Civ; layout character is "K"
