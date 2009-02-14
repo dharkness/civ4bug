@@ -37,6 +37,8 @@ Improvements:
 - F9 / Charts now includes a 3-in-1 feature that displays 3 user selected charts
 - Added the ability to revert to the original BtS unit plot style
 - Added the ability to add the following options to the original BtS unit plot style (promo, mission, GG, wounded, upgrade)
+- Unit Info Pane: Added option to display moves left for a single unit using a fraction
+- Unit Info Pane: Added min/max moves left when multiple units selected
 
 Bug Fixes:
 
@@ -56,6 +58,8 @@ Bug Fixes:
 - Advanced Scoreboard: Fixed screen redraw after peace treaty is canceled
 - No more warning about xmllib being deprecated
 - Fixed bug with loading options when viewing Sevopedia from the MAIN MENU
+- PLE Unit Hover: Fixed calculation of Movement Points remaining
+- Unit Info Pane: Fixed calculation of Movement Points remaining
 
 
 FOR MODDERS

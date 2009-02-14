@@ -175,6 +175,8 @@ RAW_YIELD_HELP = ( "TXT_KEY_RAW_YIELD_VIEW_TRADE",
 DEFAULT_FIELD_OF_VIEW = 42
 # BUG - field of view slider - end
 
+HELP_TEXT_MINIMUM_WIDTH = 300
+
 g_pSelectedUnit = 0
 
 class CvMainInterface:
@@ -354,9 +356,11 @@ class CvMainInterface:
 		self.szSliderTextId = "FieldOfViewSliderText"
 		self.sFieldOfView_Text = ""
 		self.szSliderId = "FieldOfViewSlider"
+		self.iField_View_Prev = -1
 # BUG - field of view slider - end
 
-		self.iField_View_Prev = -1
+		
+
 ############## Basic operational functions ###################
 
 	# Returns True if the given filter is active
@@ -1912,15 +1916,15 @@ class CvMainInterface:
 		szStrength = u"<font=2>" + szCurrStrength + szMaxStrength + szTurnsToHeal + u"%c" % CyGame().getSymbolID(FontSymbols.STRENGTH_CHAR) + u"</font>\n" 
 			
 		# movement
-		iCurrMoves = pUnit.movesLeft() / gc.getMOVE_DENOMINATOR()
+		fCurrMoves = float(pUnit.movesLeft()) / gc.getMOVE_DENOMINATOR()
 		iMaxMoves = pUnit.baseMoves()
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
 			szAirRange 		= u", " + localText.getText("TXT_KEY_UNIT_AIR_RANGE", ( pUnit.airRange(), ) ) 
 		else:
 			szAirRange 		= u""
-		if ( iCurrMoves != iMaxMoves ):
-			szCurrMoves = u" %.1f" % float(iCurrMoves)
-			szMaxMoves 	= u" / %d" % iMaxMoves
+		if ( pUnit.movesLeft() != iMaxMoves * gc.getMOVE_DENOMINATOR() ):
+			szCurrMoves = u" %.1f" % fCurrMoves
+			szMaxMoves 	= u"/%d" % iMaxMoves
 		else:
 			szCurrMoves = u" %d" % iMaxMoves
 			szMaxMoves 	= u""
@@ -2271,7 +2275,7 @@ class CvMainInterface:
 		yResolution = self.yResolution
 		
 		# Help Text Area
-		screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+		screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 
 		# Center Left
 		screen.addPanel( "InterfaceCenterLeftBackgroundWidget", u"", u"", True, False, 0, 0, 258, yResolution-149, PanelStyles.PANEL_STYLE_STANDARD )
@@ -4868,20 +4872,22 @@ class CvMainInterface:
 					iGoldRate = pPlayer.calculateGoldRate()
 					if iGold < 0:
 						szText = BugUtil.getText("TXT_KEY_MISC_NEG_GOLD", iGold)
-						if iGold + iGoldRate >= 0:
-							szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
-						elif iGoldRate >= 0:
-							szText += BugUtil.getText("TXT_KEY_MISC_POS_WARNING_GOLD_PER_TURN", iGoldRate)
-						else:
-							szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
+						if iGoldRate != 0:
+							if iGold + iGoldRate >= 0:
+								szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
+							elif iGoldRate >= 0:
+								szText += BugUtil.getText("TXT_KEY_MISC_POS_WARNING_GOLD_PER_TURN", iGoldRate)
+							else:
+								szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
 					else:
 						szText = BugUtil.getText("TXT_KEY_MISC_POS_GOLD", iGold)
-						if iGoldRate >= 0:
-							szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
-						elif iGold + iGoldRate >= 0:
-							szText += BugUtil.getText("TXT_KEY_MISC_NEG_WARNING_GOLD_PER_TURN", iGoldRate)
-						else:
-							szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
+						if iGoldRate != 0:
+							if iGoldRate >= 0:
+								szText += BugUtil.getText("TXT_KEY_MISC_POS_GOLD_PER_TURN", iGoldRate)
+							elif iGold + iGoldRate >= 0:
+								szText += BugUtil.getText("TXT_KEY_MISC_NEG_WARNING_GOLD_PER_TURN", iGoldRate)
+							else:
+								szText += BugUtil.getText("TXT_KEY_MISC_NEG_GOLD_PER_TURN", iGoldRate)
 					if pPlayer.isStrike():
 						szText += BugUtil.getPlainText("TXT_KEY_MISC_STRIKE")
 				else:
@@ -6014,9 +6020,9 @@ class CvMainInterface:
 		
 			# Help Text Area
 			if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
-				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 			else:
-				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 
 			screen.hide( "InterfaceTopLeftBackgroundWidget" )
 			screen.hide( "InterfaceTopRightBackgroundWidget" )
@@ -6120,8 +6126,30 @@ class CvMainInterface:
 				pSelectedGroup = 0
 
 			if (CyInterface().getLengthSelectionList() > 1):
-			
-				screen.setText( "SelectedUnitLabel", "Background", localText.getText("TXT_KEY_UNIT_STACK", (CyInterface().getLengthSelectionList(), )), CvUtil.FONT_LEFT_JUSTIFY, 18, yResolution - 137, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_UNIT_NAME, -1, -1 )
+				
+# BUG - Stack Movement Display - start
+				szBuffer = localText.getText("TXT_KEY_UNIT_STACK", (CyInterface().getLengthSelectionList(), ))
+				if MainOpt.isShowStackMovementPoints():
+					iMinMoves = 100000
+					iMaxMoves = 0
+					for i in range(CyInterface().getLengthSelectionList()):
+						pUnit = CyInterface().getSelectionUnit(i)
+						if (pUnit is not None):
+							iLoopMoves = pUnit.movesLeft()
+							if (iLoopMoves > iMaxMoves):
+								iMaxMoves = iLoopMoves
+							if (iLoopMoves < iMinMoves):
+								iMinMoves = iLoopMoves
+					if (iMinMoves == iMaxMoves):
+						fMinMoves = float(iMinMoves) / gc.getMOVE_DENOMINATOR()
+						szBuffer += u" %.1f%c" % (fMinMoves, CyGame().getSymbolID(FontSymbols.MOVES_CHAR))
+					else:
+						fMinMoves = float(iMinMoves) / gc.getMOVE_DENOMINATOR()
+						fMaxMoves = float(iMaxMoves) / gc.getMOVE_DENOMINATOR()
+						szBuffer += u" %.1f - %.1f%c" % (fMinMoves, fMaxMoves, CyGame().getSymbolID(FontSymbols.MOVES_CHAR))
+				
+				screen.setText( "SelectedUnitLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 18, yResolution - 137, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_UNIT_NAME, -1, -1 )
+# BUG - Stack Movement Display - end
 				
 				if ((pSelectedGroup == 0) or (pSelectedGroup.getLengthMissionQueue() <= 1)):
 					if (pHeadSelectedUnit):
@@ -6192,17 +6220,29 @@ class CvMainInterface:
 
 					szLeftBuffer = u""
 					szRightBuffer = u""
-				
-					if ( (pHeadSelectedUnit.movesLeft() % gc.getMOVE_DENOMINATOR()) > 0 ):
-						iDenom = 1
-					else:
-						iDenom = 0
-					iCurrMoves = ((pHeadSelectedUnit.movesLeft() / gc.getMOVE_DENOMINATOR()) + iDenom )
+					
+# BUG - Unit Movement Fraction - start
 					szLeftBuffer = localText.getText("INTERFACE_PANE_MOVEMENT", ())
-					if (pHeadSelectedUnit.baseMoves() == iCurrMoves):
-						szRightBuffer = u"%d%c" %(pHeadSelectedUnit.baseMoves(), CyGame().getSymbolID(FontSymbols.MOVES_CHAR) )
+					if MainOpt.isShowUnitMovementPointsFraction():
+						szRightBuffer = u"%d%c" %(pHeadSelectedUnit.baseMoves(), CyGame().getSymbolID(FontSymbols.MOVES_CHAR))
+						if (pHeadSelectedUnit.movesLeft() == 0):
+							szRightBuffer = u"0/" + szRightBuffer
+						elif (pHeadSelectedUnit.movesLeft() == pHeadSelectedUnit.baseMoves() * gc.getMOVE_DENOMINATOR()):
+							pass
+						else:
+							fCurrMoves = float(pHeadSelectedUnit.movesLeft()) / gc.getMOVE_DENOMINATOR()
+							szRightBuffer = (u"%.1f/" % fCurrMoves) + szRightBuffer
 					else:
-						szRightBuffer = u"%d/%d%c" %(iCurrMoves, pHeadSelectedUnit.baseMoves(), CyGame().getSymbolID(FontSymbols.MOVES_CHAR) )
+						if ( (pHeadSelectedUnit.movesLeft() % gc.getMOVE_DENOMINATOR()) > 0 ):
+							iDenom = 1
+						else:
+							iDenom = 0
+						iCurrMoves = ((pHeadSelectedUnit.movesLeft() / gc.getMOVE_DENOMINATOR()) + iDenom )
+						if (pHeadSelectedUnit.baseMoves() == iCurrMoves):
+							szRightBuffer = u"%d%c" %(pHeadSelectedUnit.baseMoves(), CyGame().getSymbolID(FontSymbols.MOVES_CHAR) )
+						else:
+							szRightBuffer = u"%d/%d%c" %(iCurrMoves, pHeadSelectedUnit.baseMoves(), CyGame().getSymbolID(FontSymbols.MOVES_CHAR) )
+# BUG - Unit Movement Fraction - end
 
 					szBuffer = szLeftBuffer + "  " + szRightBuffer
 					screen.appendTableRow( "SelectedUnitText" )
@@ -6541,7 +6581,7 @@ class CvMainInterface:
 													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
 														szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
 														if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
-															cWorstEnemy =  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+															cWorstEnemy = u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 															szBuffer += cWorstEnemy
 															if (bAlignIcons):
 																scores.setWorstEnemy()
@@ -6671,12 +6711,12 @@ class CvMainInterface:
 		
 		# Positioning things based on the visibility of the globe
 		if kEngine.isGlobeviewUp():
-			screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+			screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 		else:
 			if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
-				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 172, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 			else:
-				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, 150 )
+				screen.setHelpTextArea( 350, FontTypes.SMALL_FONT, 7, yResolution - 50, -0.1, False, "", True, False, CvUtil.FONT_LEFT_JUSTIFY, HELP_TEXT_MINIMUM_WIDTH )
 
 		
 		# Set base Y position for the LayerOptions, if we find them	

@@ -57,3 +57,5 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
 		self.addCheckbox(screen, right, "MainInterface__CityArrows")
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
+		self.addCheckbox(screen, right, "MainInterface__UnitMovementPointsFraction")
+		self.addCheckbox(screen, right, "MainInterface__StackMovementPoints")
