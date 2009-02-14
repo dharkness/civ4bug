@@ -12,6 +12,7 @@
 
 from CvPythonExtensions import *
 import BugCore
+import BugDll
 import BugUtil
 import DealUtil
 import FontUtil
@@ -27,7 +28,7 @@ gc = CyGlobalContext()
 Z_DEPTH = -0.3
 
 # Columns IDs
-NUM_PARTS = 23
+NUM_PARTS = 24
 (
 	ALIVE,
 	WAR,
@@ -47,6 +48,7 @@ NUM_PARTS = 23
 	PACT,
 	RELIGION,
 	ATTITUDE,
+	WONT_TALK,
 	WORST_ENEMY,
 	WHEOOH,
 	WAITING,
@@ -86,8 +88,8 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHILMNOPRSTUVWZ*?
-	# FGJKQXY
+	# ABCDEHIKLMNOPRSTUVWZ*?
+	# FGJQXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
@@ -106,6 +108,7 @@ def init():
 	columns.append(Column('D', PACT, FIXED, smallSymbol(FontSymbols.DEFENSIVE_PACT_CHAR)))
 	columns.append(Column('R', RELIGION, DYNAMIC))
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
+	columns.append(Column('K', WONT_TALK, FIXED, smallText("!")))
 	columns.append(Column('H', WORST_ENEMY, FIXED, smallSymbol(FontSymbols.ANGRY_POP_CHAR)))
 	columns.append(Column('M', WHEOOH, FIXED, smallSymbol(FontSymbols.OCCUPATION_CHAR)))
 	columns.append(Column('*', WAITING, FIXED, smallText("*")))
@@ -247,7 +250,9 @@ class Scoreboard:
 		self._set(ESPIONAGE)
 		
 	def setTrade(self):
-		self._set(TRADE)
+		self._set(TRADE, True, 
+				  BugDll.widget("WIDGET_TRADE_ROUTES", self._activePlayer, self._currPlayerScore.getID(),
+								*self._getContactWidget()))
 		
 	def setBorders(self):
 		self._set(BORDERS, True, self._getDealWidget(TradeableItems.TRADE_OPEN_BORDERS))
@@ -260,6 +265,9 @@ class Scoreboard:
 		
 	def setAttitude(self, value):
 		self._set(ATTITUDE, smallText(value))
+		
+	def setWontTalk(self):
+		self._set(WONT_TALK)
 		
 	def setWorstEnemy(self):
 		self._set(WORST_ENEMY)
