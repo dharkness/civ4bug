@@ -42,6 +42,7 @@ Bug Fixes:
 
 - Advanced Scoreboard: Fixed offset for vassals when grouped
 - Advanced Scoreboard: Changed empty vassal indent to a bullet
+- Advanced Scoreboard: Changed vassal icon to a gold star for the active player
 - Autolog: Added checking of logging to all logging options which was previously ignored
 - Autolog: Fixed bug with Autolog onCityOffered logging which was misinterpreting a passed event argument
 - IconGrid: Added changes by DanF5771 (two widget data values instead of one)

@@ -15,7 +15,6 @@ import BugCore
 import BugUtil
 import DealUtil
 import FontUtil
-import PlayerUtil
 import CvUtil
 import re
 import string
@@ -72,6 +71,12 @@ TRADE_TYPES = (
 	TradeableItems.TRADE_PEACE_TREATY,
 )
 
+WAR_ICON = None
+PEACE_ICON = None
+
+MASTER_ICON = None
+ACTIVE_MASTER_ICON = None
+
 VASSAL_PREFIX = None
 VASSAL_POSTFIX = None
 
@@ -88,7 +93,7 @@ def init():
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
 	columns.append(Column('K', RANK, DYNAMIC))
 	columns.append(Column('I', ID, DYNAMIC))
-	columns.append(Column('V', MASTER, FIXED, smallSymbol(FontSymbols.SILVER_STAR_CHAR)))
+	columns.append(Column('V', MASTER, DYNAMIC))
 	columns.append(Column('C', NAME, DYNAMIC))
 	columns.append(Column('?', NOT_MET, FIXED, smallText("?")))
 	columns.append(Column('W', WAR, DYNAMIC))
@@ -110,6 +115,10 @@ def init():
 	global WAR_ICON, PEACE_ICON
 	WAR_ICON = smallSymbol(FontSymbols.WAR_CHAR)
 	PEACE_ICON = smallSymbol(FontSymbols.PEACE_CHAR)
+	
+	global MASTER_ICON, ACTIVE_MASTER_ICON
+	MASTER_ICON = smallSymbol(FontSymbols.SILVER_STAR_CHAR)
+	ACTIVE_MASTER_ICON = smallSymbol(FontSymbols.STAR_CHAR)
 	
 	global VASSAL_PREFIX, VASSAL_POSTFIX
 	VASSAL_PREFIX = smallSymbol(FontSymbols.BULLET_CHAR)
@@ -192,7 +201,10 @@ class Scoreboard:
 		self._set(ALIVE)
 		
 	def setMaster(self):
-		self._set(MASTER)
+		self._set(MASTER, MASTER_ICON)
+		
+	def setMasterSelf(self):
+		self._set(MASTER, ACTIVE_MASTER_ICON)
 		
 	def setScore(self, value):
 		self._set(SCORE, smallText(value))
@@ -262,6 +274,9 @@ class Scoreboard:
 	def setOOS(self, value):
 		self._set(OOS, smallText(value))
 		
+		
+	def _getContactWidget(self):
+		return (WidgetTypes.WIDGET_CONTACT_CIV, self._currPlayerScore.getID(), -1)
 		
 	def _getDealWidget(self, type):
 		# lookup the Deal containing the given tradeable item type
@@ -489,10 +504,14 @@ class TeamScores:
 			for eTeam in range( gc.getMAX_TEAMS() ):
 				teamScores = self._scoreboard.getTeamScores(eTeam)
 				if teamScores and self._team.isVassal(eTeam):
+					# teamScores is a master of self
 					teamScores.addVassal(self)
 					self._master = teamScores
 					for playerScore in teamScores._playerScores:
-						playerScore.set(MASTER)
+						if playerScore.isActive():
+							playerScore.set(MASTER, ACTIVE_MASTER_ICON)
+						else:
+							playerScore.set(MASTER, MASTER_ICON)
 					self._scoreboard._anyHas[MASTER] = True
 
 
@@ -518,6 +537,9 @@ class PlayerScore:
 	
 	def getID(self):
 		return self._player.getID()
+	
+	def isActive(self):
+		return self.getID() == gc.getGame().getActivePlayer()
 		
 	def sortKey(self):
 		if self._sortKey is None:
