@@ -11,6 +11,7 @@ Improvements:
 	- INFO page: Hover details for trade with each rival [DLL]
 	- RESOURCES page: Hover for bonuses the AI will not trade to you show the reason why [DLL]
 	- TECHS page: Hover for technologies the AI will not trade to you show the reason why [DLL]
+- Finance Advisor: Hover details for trade commerce and gold from specialists [DLL]
 
 Bug Fixes:
 
