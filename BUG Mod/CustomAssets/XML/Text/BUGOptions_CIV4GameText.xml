@@ -3213,7 +3213,7 @@
 		<English>Fractional Movement Points</English>
 		<French>Fractional Movement Points</French>
 		<German>Gebrochene Bewegungspunkte</German>
-		<Italian>Fractional Movement Points</Italian>
+		<Italian>Punti movimento decimali</Italian>
 		<Spanish>Fractional Movement Points</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3221,7 +3221,7 @@
 		<English>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</English>
 		<French>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</French>
 		<German>Zeigt die Bewegungspunkte einer einzelnen Einheit in der Detailanzeige mit Nachkommastellen an</German>
-		<Italian>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</Italian>
+		<Italian>Quando è selezionato, mostra nel Pannello delle Informazioni i Punti Movimento di una Unità come un numero con una cifra decimale.</Italian>
 		<Spanish>When checked, shows the Movement Points for a single unit as a fraction in the Info Pane.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3229,7 +3229,7 @@
 		<English>Stack Movement Points</English>
 		<French>Stack Movement Points</French>
 		<German>Einheitenverband-Bewegungspunkte</German>
-		<Italian>Stack Movement Points</Italian>
+		<Italian>Punti Movimento di gruppo</Italian>
 		<Spanish>Stack Movement Points</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3237,7 +3237,7 @@
 		<English>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</English>
 		<French>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</French>
 		<German>Zeigt die minimalen und maximalen Bewegungspunkte aller ausgewählten Einheiten in der Detailanzeige an</German>
-		<Italian>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Italian>
+		<Italian>Quando è selezionato, mostra nel Pannello delle Informazioni il valore minimo e quello massimo per i Punti Movimento del gruppo di Unità selezionate.</Italian>
 		<Spanish>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Spanish>
 	</TEXT>
 	<!-- Strategy Overlay -->
