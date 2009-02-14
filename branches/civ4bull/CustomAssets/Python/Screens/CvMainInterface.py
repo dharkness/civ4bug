@@ -7,6 +7,10 @@ import CvScreenEnums
 import CvEventInterface
 import time
 
+# BUG - DLL - start
+import BugDll
+# BUG - DLL - end
+
 # BUG - Options - start
 import BugCore
 import BugOptions
@@ -3177,11 +3181,17 @@ class CvMainInterface:
 						if MainOpt.isShowMinMaxCommerceButtons():
 							iMinMaxAdjustX = 20
 							szString = "MaxPercent" + str(eCommerce)
-							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, 100, ButtonStyles.BUTTON_STYLE_CITY_PLUS )
+							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, 
+												 *BugDll.widget("WIDGET_SET_PERCENT", eCommerce, 100, 
+												 				WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, 100, 
+												 				ButtonStyles.BUTTON_STYLE_CITY_PLUS) )
 							screen.show( szString )
 							screen.enable( szString, bEnable )
 							szString = "MinPercent" + str(eCommerce)
-							screen.setButtonGFC( szString, u"", "", 130, 50 + (19 * iCount), 20, 20, WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, -100, ButtonStyles.BUTTON_STYLE_CITY_MINUS )
+							screen.setButtonGFC( szString, u"", "", 130, 50 + (19 * iCount), 20, 20, 
+												 *BugDll.widget("WIDGET_SET_PERCENT", eCommerce, 0, 
+												 				WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, -100, 
+												 				ButtonStyles.BUTTON_STYLE_CITY_MINUS) )
 							screen.show( szString )
 							screen.enable( szString, bEnable )
 						else:
@@ -6575,6 +6585,16 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
+
+# BUG - Refuses to Talk - start
+												if (BugDll.isPresent()):  # and ScoreOpt.isShowRefusesToTalk()):
+													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
+														if (not gc.getPlayer(ePlayer).AI_isWillingToTalk(gc.getGame().getActivePlayer())):
+															cRefusesToTalk = u"!"
+															szBuffer += cRefusesToTalk
+															if (bAlignIcons):
+																scores.setWontTalk()
+# BUG - Refuses to Talk - end
 
 # BUG - Worst Enemy - start
 												if (ScoreOpt.isShowWorstEnemy()):

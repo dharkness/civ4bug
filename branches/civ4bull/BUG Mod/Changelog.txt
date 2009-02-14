@@ -2,6 +2,7 @@ Changes since BUG 3.6:
 
 New Features:
 - Added optional BUG DLL; features that require it are marked with [DLL]
+- Advanced Scoreboard: Added Refuse to Talk column (K) [DLL]
 
 Improvements:
 - BUG version is displayed when hovering over the flag [DLL]
