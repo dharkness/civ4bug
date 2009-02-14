@@ -40,7 +40,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		#self.addSpacer(screen, left, "StrategyOverlay_DotMap")
 		self.addCheckbox(screen, left, "StrategyOverlay__ShowDotMap")
 		self.addCheckbox(screen, left, "StrategyOverlay__DotMapDrawDots")
-		leftL, leftR = self.addTwoColumnLayout(screen, left, left)
+		leftL, leftR = self.addTwoColumnLayout(screen, left, "DotMapBrightness")
 		#self.addTextEdit(screen, leftL, leftR, "StrategyOverlay__DotMapDotIcon")
 		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapBrightness", False, False, False, "up", 0, 100)
 		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapHighlightBrightness", False, False, False, "up", 0, 100)
