@@ -149,23 +149,23 @@ class GameBuilder:
 			BugUtil.error("BugConfig - link option %s not found", linkId)
 			return None
 	
-	def createOption(self, id, type, key=None, default=None, andId=None, 
+	def createOption(self, id, type, key=None, default=None, andId=None, dll=None, 
 					 title=None, tooltip=None, dirtyBit=None, getter=None, setter=None, 
 					 attrs=None):
 		if type == "color":
-			return self.createOptionList(id, type, key, default, andId, type, None, None, title, tooltip, dirtyBit, getter, setter, attrs)
+			return self.createOptionList(id, type, key, default, andId, dll, type, None, None, title, tooltip, dirtyBit, getter, setter, attrs)
 		id = makeOptionId(self.mod._id, id)
 		andId = makeOptionId(self.mod._id, andId)
 		if key is None:
 			self.option = BugOptions.UnsavedOption(self.mod, id, type, 
-												   default, andId, title, tooltip, dirtyBit)
+												   default, andId, dll, title, tooltip, dirtyBit)
 		else:
 			self.option = BugOptions.IniOption(self.mod, id, self.iniFile, self.section, key, 
-											   type, default, andId, title, tooltip, dirtyBit)
+											   type, default, andId, dll, title, tooltip, dirtyBit)
 		self.addOption(self.option, getter, setter, attrs)
 		return self.option
 	
-	def createOptionList(self, id, type, key=None, default=None, andId=None, 
+	def createOptionList(self, id, type, key=None, default=None, andId=None, dll=None, 
 						 listType=None, values=None, format=None, 
 						 title=None, tooltip=None, dirtyBit=None, getter=None, setter=None, 
 						 attrs=None):
@@ -173,11 +173,11 @@ class GameBuilder:
 		andId = makeOptionId(self.mod._id, andId)
 		if key is None:
 			self.option = BugOptions.UnsavedListOption(self.mod, id, type, 
-													   default, andId, listType, values, format, 
+													   default, andId, dll, listType, values, format, 
 													   title, tooltip, dirtyBit)
 		else:
 			self.option = BugOptions.IniListOption(self.mod, id, self.iniFile, self.section, key, 
-												   type, default, andId, listType, values, format, 
+												   type, default, andId, dll, listType, values, format, 
 												   title, tooltip, dirtyBit)
 		self.addOption(self.option, getter, setter, attrs)
 		return self.option
@@ -324,6 +324,7 @@ KEY = "key"
 TYPE = "type"
 DEFAULT = "default"
 AND = "and"
+DLL = "dll"
 TITLE = "label"
 TOOLTIP = "help"
 DIRTYBIT = "dirtyBit"
@@ -472,12 +473,13 @@ class XmlParser(xmllib.XMLParser):
 			key = self.getAttribute(attrs, KEY)
 			default = self.getAttribute(attrs, DEFAULT)
 			andId = self.getAttribute(attrs, AND)
+			dll = self.getAttribute(attrs, DLL)
 			dirtyBit = self.getAttribute(attrs, DIRTYBIT)
 			title = self.getAttribute(attrs, TITLE)
 			tooltip = self.getAttribute(attrs, TOOLTIP)
 			getter = self.getAttribute(attrs, GETTER)
 			setter = self.getAttribute(attrs, SETTER)
-			option = g_builder.createOption(id, type, key, default, andId, title, tooltip, dirtyBit, getter, setter, attrs)
+			option = g_builder.createOption(id, type, key, default, andId, dll, title, tooltip, dirtyBit, getter, setter, attrs)
 	
 	def end_option(self):
 		pass
@@ -504,6 +506,7 @@ class XmlParser(xmllib.XMLParser):
 			listType = self.getAttribute(attrs, LISTTYPE)
 		default = self.getAttribute(attrs, DEFAULT)
 		andId = self.getAttribute(attrs, AND)
+		dll = self.getAttribute(attrs, DLL)
 		values = self.getAttribute(attrs, VALUES)
 		format = self.getAttribute(attrs, FORMAT)
 		dirtyBit = self.getAttribute(attrs, DIRTYBIT)
@@ -511,7 +514,7 @@ class XmlParser(xmllib.XMLParser):
 		tooltip = self.getAttribute(attrs, TOOLTIP)
 		getter = self.getAttribute(attrs, GETTER)
 		setter = self.getAttribute(attrs, SETTER)
-		self.option = g_builder.createOptionList(id, type, key, default, andId, listType, values, format, title, tooltip, dirtyBit, getter, setter, attrs)
+		self.option = g_builder.createOptionList(id, type, key, default, andId, dll, listType, values, format, title, tooltip, dirtyBit, getter, setter, attrs)
 	
 	def end_list(self):
 		self.option.createComparers()

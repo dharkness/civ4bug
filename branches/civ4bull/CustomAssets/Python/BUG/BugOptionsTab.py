@@ -217,6 +217,8 @@ class BugOptionsTab:
 			value = option.getRealValue()
 			screen.attachCheckBox(panel, control, option.getTitle(), self.callbackIFace, "handleBugCheckboxClicked", name, value)
 			screen.setToolTip(control, option.getTooltip())
+			if not option.isEnabled():
+				screen.setEnabled(control, False)
 			return control
 		else:
 			self.addMissingOption(screen, panel, name)
@@ -242,6 +244,9 @@ class BugOptionsTab:
 			screen.attachEdit(controlPanel, control, value, self.callbackIFace, "handleBugTextEditChange", name)
 			screen.setToolTip(control, option.getTooltip())
 			screen.setLayoutFlag(control, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+			if not option.isEnabled():
+				screen.setEnabled(control, False)
+			return control
 		else:
 			self.addMissingOption(screen, labelPanel, name)
 
@@ -269,6 +274,8 @@ class BugOptionsTab:
 			screen.attachDropDown(controlPanel, control, "", elements, self.callbackIFace, callback, name, index)
 			screen.setToolTip(control, option.getTooltip())
 			screen.setLayoutFlag(control, "LAYOUT_" + layout.upper())
+			if not option.isEnabled():
+				screen.setEnabled(control, False)
 			return control
 		else:
 			self.addMissingOption(screen, controlPanel, name)
@@ -287,8 +294,7 @@ class BugOptionsTab:
 		if (option is not None):
 			index = option.getIndex()
 			elements = tuple(option.getDisplayValues())
-			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, layout, elements, index, "handleBugIntDropdownChange")
-			return control
+			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, layout, elements, index, "handleBugIntDropdownChange")
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
@@ -297,8 +303,7 @@ class BugOptionsTab:
 		if (option is not None):
 			index = option.getIndex()
 			elements = tuple(option.getDisplayValues())
-			control = self.addDropdown(screen, labelPanel, controlPanel, name, spacer, layout, elements, index, "handleBugFloatDropdownChange")
-			return control
+			return self.addDropdown(screen, labelPanel, controlPanel, name, spacer, layout, elements, index, "handleBugFloatDropdownChange")
 		else:
 			self.addMissingOption(screen, controlPanel, name)
 
@@ -331,6 +336,8 @@ class BugOptionsTab:
 			screen.attachDropDown(dropPanel, dropControl, "", elements, self.callbackIFace, callback, dropName, index)
 			screen.setToolTip(dropControl, dropOption.getTooltip())
 			screen.setLayoutFlag(dropControl, "LAYOUT_" + layout.upper())
+			if not dropOption.isEnabled():
+				screen.setEnabled(dropControl, False)
 			return checkControl, dropControl
 		else:
 			if (checkOption is None):
@@ -413,6 +420,8 @@ class BugOptionsTab:
 			if fill:
 				screen.setControlFlag(control, "CF_SLIDER_FILL_" + fill.upper())
 			screen.setToolTip(control, option.getTooltip())
+			if not option.isEnabled():
+				screen.setEnabled(control, False)
 			return control
 		else:
 			self.addMissingOption(screen, controlPanel, name)

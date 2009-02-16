@@ -32,11 +32,13 @@
 ##      |         |         |         |         |            |
 ##      |   UnsavedOption   |     IniOption     |     LinkedListOption
 ##      |                   |                   |
+##      |                   |                   |
+##      |                   |                   |
 ##      |             BaseListOption            |
 ##      |                 |   |                 |
 ##      \--------+--------/   \--------+--------/
 ##               |                     |
-##       UnsavedListOption       IniListOptoin
+##       UnsavedListOption       IniListOption
 ##
 ## AbstractOption, BaseOption, BaseListOption, UnsavedMixin and IniMixin
 ## are abstract classes (cannot be instantiated as-is).
@@ -105,14 +107,23 @@ Each file can have multiple sections.
 
 from CvPythonExtensions import *
 import BugConfigTracker
+import BugDll
 import BugInit
 import BugPath
 import BugUtil
 import ColorUtil
 from configobj import ConfigObj
+import re
 import types
 
 MOD_OPTION_SEP = "__"
+
+# regular expressions used for DLL handling in tooltips
+
+RE_DLL_ALL_TAGS = re.compile(r"(\[DLL\].*\[/DLL\]|\[DLLERR\])", re.DOTALL)
+RE_DLL_START_END_TAGS = re.compile(r"\[/?DLL[= ]?[0-9]*\]")
+RE_DLL_MSG_TAG = re.compile(r"\[DLLMSG\]")
+RE_DLL_CAPTURE_VERSION_MESSAGE = re.compile(r"\[DLL[= ]([0-9]+)\](.*)\[/DLL\]", re.DOTALL)
 
 class Options(object):
 	"""Manages maps of Options and IniFiles, each indexed by a unique string ID."""
@@ -402,11 +413,22 @@ TYPE_MAP = { "boolean": lambda x: (isinstance(x, types.StringTypes) and x.lower(
 class AbstractOption(object):
 	"""Provides a basic interface and minimal abstract implementation for an option."""
 
-	def __init__(self, mod, id, andId=None):
+	def __init__(self, mod, id, andId=None, dll=None):
 		self.mod = mod
 		self.id = id
 		self.andId = andId
 		self.andOption = None
+		if dll:
+			self.dll = int(dll)
+			if self.dll <= 0:
+				BugUtil.warn("BugOptions - %s has invalid dll value %r, ignoring", id, dll)
+				self.dll = None
+		else:
+			self.dll = None
+		self.enabled = True
+		if self.dll > 0:
+			if not BugDll.isVersion(self.dll):
+				self.enabled = False
 	
 	def createLinkedOption(self, mod, id):
 		return LinkedOption(mod, id, self)
@@ -422,6 +444,24 @@ class AbstractOption(object):
 	
 	def getTrimmedID(self):
 		return self.id.replace(self.mod._id + MOD_OPTION_SEP, "")
+	
+	def getDll(self):
+		return self.dll
+	
+	def isDll(self):
+		return self.dll > 0
+	
+	def isEnabled(self):
+		return self.enabled
+	
+	def setEnabled(self, enabled):
+		self.enabled = enabled
+	
+	def enable(self):
+		self.setEnabled(True)
+	
+	def disable(self):
+		self.setEnabled(False)
 	
 	def getDefaultGetterName(self):
 		if self.isBoolean():
@@ -660,10 +700,10 @@ class BaseOption(AbstractOption):
 	  the option to force certain aspects of the interface to redraw themselves.
 	"""
 
-	def __init__(self, mod, id, type, default=None, andId=None, 
+	def __init__(self, mod, id, type, default=None, andId=None, dll=None, 
 				 title=None, tooltip=None, dirty=None):
 		"""Sets the important fields of the new Option."""
-		super(BaseOption, self).__init__(mod, id, andId)
+		super(BaseOption, self).__init__(mod, id, andId, dll)
 		
 		if type in TYPE_REPLACE:
 			type = TYPE_REPLACE[type]
@@ -707,6 +747,36 @@ class BaseOption(AbstractOption):
 	def translate(self):
 		self.title = BugUtil.getPlainText(self.xmlKey + "_TEXT", self.title)
 		self.tooltip = BugUtil.getPlainText(self.xmlKey + "_HOVER", self.tooltip)
+		if self.isDll():
+			if BugDll.isVersion(self.dll):
+				self.tooltip = RE_DLL_ALL_TAGS.sub("", self.tooltip)
+			else:
+				if not BugDll.isPresent():
+					dllText = BugUtil.getPlainText("TXT_KEY_BULL_REQUIRED")
+				else:
+					dllText = BugUtil.getPlainText("TXT_KEY_BULL_REQUIRED_NEWER")
+				if self.tooltip.find("[DLL") >= 0:
+					self.tooltip = RE_DLL_START_END_TAGS.sub("", self.tooltip)
+					self.tooltip = RE_DLL_MSG_TAG.sub(dllText, self.tooltip)
+				else:
+					self.tooltip += "\n" + dllText
+		elif self.tooltip.find("[DLL") >= 0:
+			if not BugDll.isPresent():
+				# no DLL, ignore all minimum versions and use standard error message
+				self.tooltip = RE_DLL_START_END_TAGS.sub("", self.tooltip)
+				self.tooltip = RE_DLL_MSG_TAG.sub(BugUtil.getPlainText("TXT_KEY_BULL_REQUIRED"), self.tooltip)
+			else:
+				dllText = BugUtil.getPlainText("TXT_KEY_BULL_REQUIRED_NEWER")
+				def repl(matchobj):
+					try:
+						if BugDll.isVersion(int(matchobj.group(1))):
+							return ""
+						else:
+							return RE_DLL_MSG_TAG.sub(dllText, matchobj.group(2))
+					except:
+						# invalid version
+						return ""
+				self.tooltip = RE_DLL_CAPTURE_VERSION_MESSAGE.sub(repl, self.tooltip)
 		self.translated = True
 	
 	def clearTranslation(self):
@@ -775,14 +845,14 @@ class BaseListOption(BaseOption):
 	when creating the dropdown listbox in the Options Screen.
 	"""
 
-	def __init__(self, mod, id, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, type=None, default=None, andId=None, dll=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
 		if type is None:
 			type = LIST_TYPE_DEFAULT_TYPE[listType]
 		if type not in TYPE_DEFAULT_LIST_TYPE:
 			raise BugUtil.ConfigError("Invalid option type for list: %s" % type)
-		super(BaseListOption, self).__init__(mod, id, type, default, andId, title, tooltip, dirty)
+		super(BaseListOption, self).__init__(mod, id, type, default, andId, dll, title, tooltip, dirty)
 		
 		if listType is None:
 			listType = TYPE_DEFAULT_LIST_TYPE[type]
@@ -960,17 +1030,17 @@ class UnsavedMixin(object):
 
 class UnsavedOption(UnsavedMixin, BaseOption):
 	
-	def __init__(self, mod, id, type, default=None, andId=None, 
+	def __init__(self, mod, id, type, default=None, andId=None, dll=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseOption.__init__(self, mod, id, type, default, andId, title, tooltip, dirty)
+		BaseOption.__init__(self, mod, id, type, default, andId, dll, title, tooltip, dirty)
 		UnsavedMixin.__init__(self, self.default)
 
 class UnsavedListOption(UnsavedMixin, BaseListOption):
 	
-	def __init__(self, mod, id, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, type=None, default=None, andId=None, dll=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseListOption.__init__(self, mod, id, type, default, andId, listType, values, format, title, tooltip, dirty)
+		BaseListOption.__init__(self, mod, id, type, default, andId, dll, listType, values, format, title, tooltip, dirty)
 		UnsavedMixin.__init__(self, self.default)
 
 
@@ -1039,17 +1109,17 @@ class IniMixin(object):
 
 class IniOption(IniMixin, BaseOption):
 	
-	def __init__(self, mod, id, file, section, key, type, default=None, andId=None, 
+	def __init__(self, mod, id, file, section, key, type, default=None, andId=None, dll=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseOption.__init__(self, mod, id, type, default, andId, title, tooltip, dirty)
+		BaseOption.__init__(self, mod, id, type, default, andId, dll, title, tooltip, dirty)
 		IniMixin.__init__(self, file, section, key)
 
 class IniListOption(IniMixin, BaseListOption):
 	
-	def __init__(self, mod, id, file, section, key, type=None, default=None, andId=None, 
+	def __init__(self, mod, id, file, section, key, type=None, default=None, andId=None, dll=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
-		BaseListOption.__init__(self, mod, id, type, default, andId, listType, values, format, title, tooltip, dirty)
+		BaseListOption.__init__(self, mod, id, type, default, andId, dll, listType, values, format, title, tooltip, dirty)
 		IniMixin.__init__(self, file, section, key)
 
 
