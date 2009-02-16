@@ -32,8 +32,10 @@
 from CvPythonExtensions import *
 import BugUtil
 
+gc = CyGlobalContext()
+
 IS_PRESENT = False
-VERSION = 0
+VERSION = -1
 
 def isPresent():
 	return IS_PRESENT
@@ -106,11 +108,16 @@ def widgetVersion(version, bugWidget, bugData1=None, bugData2=None, *args):
 		realArgs.extend(args)
 	return realArgs
 
+
 def init():
+	"""
+	Checks for the presence of the BUG DLL and grabs its Python API version if found.
+	"""
 	try:
-		global IS_PRESENT
-		WidgetTypes.WIDGET_SET_PERCENT
-		IS_PRESENT = True
-		BugUtil.debug("BUG DLL present")
-	except AttributeError:
+		if gc.isBull():
+			global IS_PRESENT, VERSION
+			IS_PRESENT = True
+			VERSION = gc.getBullApiVersion()
+			BugUtil.debug("%s %s, API version %d", gc.getBullName(), gc.getBullVersion(), VERSION)
+	except:
 		BugUtil.debug("BUG DLL not present")
