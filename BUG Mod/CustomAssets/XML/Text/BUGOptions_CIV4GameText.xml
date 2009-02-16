@@ -3049,11 +3049,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_HOVER</Tag>
-		<English>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</English>
-		<French>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</French>
+		<English>When checked, displays your gold rate in yellow if it is negative but not enough to drop your treasury below zero.</English>
+		<French>When checked, displays your gold rate in yellow if it is negative but not enough to drop your treasury below zero.</French>
 		<German>Färbt die Anzeige für "Gold/Runde" Gelb ein, wenn dessen Wert zwar negativ ist, den Goldvorrat in der nächsten Runde aber nicht unter 0 senken wird</German>
 		<Italian>Quando è selezionato, mostra il tasso di crescita dell'oro in giallo se è negativo ma non abbastanza da mandarvi in rosso.</Italian>
-		<Spanish>When checked, displays your gold rate in yellow if it is negative but not enough to cause a strike.</Spanish>
+		<Spanish>When checked, displays your gold rate in yellow if it is negative but not enough to drop your treasury below zero.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TEXT</Tag>
