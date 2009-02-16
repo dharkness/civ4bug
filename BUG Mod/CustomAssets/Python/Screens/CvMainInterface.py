@@ -3174,7 +3174,7 @@ class CvMainInterface:
 					if (gc.getActivePlayer().isCommerceFlexible(eCommerce) or (CyInterface().isCityScreenUp() and (eCommerce == CommerceTypes.COMMERCE_GOLD))):
 # BUG - Min/Max Sliders - start
 						bEnable = gc.getActivePlayer().isCommerceFlexible(eCommerce)
-						if MainOpt.isShowMinMaxCommerceButtons():
+						if MainOpt.isShowMinMaxCommerceButtons() and not CyInterface().isCityScreenUp():
 							iMinMaxAdjustX = 20
 							szString = "MaxPercent" + str(eCommerce)
 							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, 100, ButtonStyles.BUTTON_STYLE_CITY_PLUS )
