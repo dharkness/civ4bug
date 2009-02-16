@@ -88,8 +88,8 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHIKLMNOPRSTUVWZ*?!
-	# FGJQXY
+	# ABCDEFHIKLMNOPRSTUVWZ*?
+	# GJQXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
@@ -108,7 +108,7 @@ def init():
 	columns.append(Column('D', PACT, FIXED, smallSymbol(FontSymbols.DEFENSIVE_PACT_CHAR)))
 	columns.append(Column('R', RELIGION, DYNAMIC))
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
-	columns.append(Column('!', WONT_TALK, FIXED, smallText("!")))
+	columns.append(Column('F', WONT_TALK, FIXED, smallText("!")))
 	columns.append(Column('H', WORST_ENEMY, FIXED, smallSymbol(FontSymbols.ANGRY_POP_CHAR)))
 	columns.append(Column('M', WHEOOH, FIXED, smallSymbol(FontSymbols.OCCUPATION_CHAR)))
 	columns.append(Column('*', WAITING, FIXED, smallText("*")))
