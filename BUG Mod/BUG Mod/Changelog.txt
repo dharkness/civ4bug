@@ -40,6 +40,7 @@ Improvements:
 - Added the ability to add the following options to the original BtS unit plot style (promo, mission, GG, wounded, upgrade)
 - Unit Info Pane: Added option to display moves left for a single unit using a fraction
 - Unit Info Pane: Added min/max moves left when multiple units selected
+- added 'turns to next vote' and 'vote to next election' to members tab
 
 Bug Fixes:
 

@@ -560,6 +560,18 @@ class CvVictoryScreen:
 
 		iRow = screen.appendTableRow(szTable)
 
+		# add info about vote timing
+		iRow = screen.appendTableRow(szTable)
+		iVoteTimer = gc.getGame().getVoteTimer(iActiveVote)
+		sString = localText.getText("TXT_KEY_BUG_VICTORY_TURNS_NEXT_VOTE", (iVoteTimer,) )
+		sString = u"<font=2>" + sString + "</font>"
+		screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		iRow = screen.appendTableRow(szTable)
+		iSecGenTimer = gc.getGame().getSecretaryGeneralTimer(iActiveVote)
+		sString = localText.getText("TXT_KEY_BUG_VICTORY_VOTES_NEXT_ELECTION", (iSecGenTimer,) )
+		sString = u"<font=2>" + sString + "</font>"
+		screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 
 	def showMembersScreen_NonBUG(self):

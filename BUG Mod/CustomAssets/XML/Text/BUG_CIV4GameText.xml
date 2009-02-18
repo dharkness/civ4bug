@@ -1000,6 +1000,22 @@
 		</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_TURNS_NEXT_VOTE</Tag>
+		<English>Turns until next Vote: %d1</English>
+		<French>Turns until next Vote: %d1</French>
+		<German>Turns until next Vote: %d1</German>
+		<Italian>Turns until next Vote: %d1</Italian>
+		<Spanish>Turns until next Vote: %d1</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_VOTES_NEXT_ELECTION</Tag>
+		<English>Votes until next Election: %d1</English>
+		<French>Votes until next Election: %d1</French>
+		<German>Votes until next Election: %d1</German>
+		<Italian>Votes until next Election: %d1</Italian>
+		<Spanish>Votes until next Election: %d1</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>
 		<English>Non Member</English>
 		<French>Non Membres</French>
