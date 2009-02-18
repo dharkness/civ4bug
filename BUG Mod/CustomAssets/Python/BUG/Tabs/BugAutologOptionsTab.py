@@ -47,10 +47,11 @@ class BugAutologOptionsTab(BugOptionsTab.BugOptionsTab):
 		col1, col2, col3, col4 = self.addMultiColumnLayout(screen, right, 4, "Builds")
 		self.addCheckbox(screen, col1, "Autolog__LogTech")
 		self.addCheckbox(screen, col2, "Autolog__LogBuildStarted")
-		self.addCheckbox(screen, col3, "Autolog__LogBuildCompleted")		
+		self.addCheckbox(screen, col3, "Autolog__LogBuildCompleted")
 		self.addSpacer(screen, left, "Builds1")
 		self.addCheckbox(screen, col1, "Autolog__LogProjects")
 		self.addCheckbox(screen, col2, "Autolog__LogImprovements")
+		self.addCheckbox(screen, col3, "Autolog__LogSliders")
 		
 		screen.attachHSeparator(right, right + "Sep3a")
 		screen.attachHSeparator(left, left + "Sep3b")

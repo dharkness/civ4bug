@@ -385,6 +385,28 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			Logger.writeLog_pending("")
 			Logger.writeLog_pending(message, vBold=True, vUnderline=True)
 
+			if AutologOpt.isLogSliders():
+				pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
+				for iI in range( CommerceTypes.NUM_COMMERCE_TYPES ):
+					eCommerce = (iI + 1) % CommerceTypes.NUM_COMMERCE_TYPES
+
+					zDesc = gc.getCommerceInfo(CommerceTypes(eCommerce)).getDescription()
+					if (eCommerce == CommerceTypes.COMMERCE_GOLD):
+						zPercent = pPlayer.getCommercePercent(eCommerce)
+						zRate = pPlayer.calculateGoldRate()
+						zTotal = pPlayer.getGold()
+
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS", (zPercent, zDesc, zRate, zTotal))
+						Logger.writeLog(message, vColor="Blue")
+					else:
+						if pPlayer.isCommerceFlexible(eCommerce):
+							zPercent = pPlayer.getCommercePercent(eCommerce)
+							zRate = pPlayer.getCommerceRate(CommerceTypes(eCommerce))
+							zTotal = pPlayer.getGold()
+
+							message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS", (zPercent, zDesc, zRate))
+							Logger.writeLog(message, vColor="Blue")
+
 		self.bHumanPlaying = True
 		self.bHumanEndTurn = False
 		self.bAIsTurn = False
@@ -446,7 +468,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (self.bHumanEndTurn
 		and AutologOpt.isShowIBT()):
-			Logger.writeLog_pending_flush()
+#			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
 			Logger.writeLog_pending(BugUtil.getPlainText("TXT_KEY_AUTOLOG_OTHER_PLAYER_ACTIONS"), vBold=True)
 #			Logger.writeLog("Other Player Actions-:", vBold=True)

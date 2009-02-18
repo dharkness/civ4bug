@@ -201,6 +201,22 @@
         <Spanish>Contact made: %s1</Spanish>
     </TEXT> 
     <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS</Tag>
+        <English>%d1%% %s2: %d3 per turn, %d4 in the bank</English>
+        <French>%d1%% %s2: %d3 per turn, %d4 in the bank</French>
+        <German>%d1%% %s2: %d3 per turn, %d4 in the bank</German>
+        <Italian>%d1%% %s2: %d3 per turn, %d4 in the bank</Italian>
+        <Spanish>%d1%% %s2: %d3 per turn, %d4 in the bank</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS</Tag>
+        <English>%d1%% %s2: %d3 per turn</English>
+        <French>%d1%% %s2: %d3 per turn</French>
+        <German>%d1%% %s2: %d3 per turn</German>
+        <Italian>%d1%% %s2: %d3 per turn</Italian>
+        <Spanish>%d1%% %s2: %d3 per turn</Spanish>
+    </TEXT> 
+    <TEXT>
         <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS</Tag>
         <English>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</English>
         <French>While attacking %s1, %s2 (%s3/%d4) defeats %s5 %s6 (Prob Victory: %s7%s8)</French>
