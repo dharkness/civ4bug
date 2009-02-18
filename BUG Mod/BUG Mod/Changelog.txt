@@ -13,6 +13,7 @@ New Features:
 - Added Min/Max Commerce Rate buttons: set any commerce rate to 0% or 100% with one click
 - Added Gold Rate Warning: yellow gold rate when negative but not enough to go below zero
 - Added Strategy Overlay: create a multicolored in-game dot map
+- Log the current turn slider values (gold, science, culture, espionage)
 
 Improvements:
 
@@ -60,6 +61,7 @@ Bug Fixes:
 - Fixed bug with loading options when viewing Sevopedia from the MAIN MENU
 - PLE Unit Hover: Fixed calculation of Movement Points remaining
 - Unit Info Pane: Fixed calculation of Movement Points remaining
+- Logger: Fixed missing turn headers
 
 
 FOR MODDERS
