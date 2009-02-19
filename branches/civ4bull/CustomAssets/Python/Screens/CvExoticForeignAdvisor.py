@@ -22,10 +22,11 @@ import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
 import re
-import BugDll
-import BugUtil
 import AttitudeUtil
 import BugCore
+import BugDll
+import BugUtil
+import DealUtil
 import FavoriteCivicDetector
 
 # globals
@@ -380,7 +381,21 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				deal = gc.getGame().getDeal(i)
 
 				if (deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader and not deal.isNone()) or (deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader):
-					screen.appendListBoxString(dealPanelName, CyGameTextMgr().getDealString(deal, iLoopPlayer), WidgetTypes.WIDGET_DEAL_KILL, deal.getID(), -1, CvUtil.FONT_LEFT_JUSTIFY)
+					szDealText = CyGameTextMgr().getDealString(deal, iLoopPlayer)
+					if AdvisorOpt.isShowDealTurnsLeft():
+						if BugDll.isPresent():
+							if not deal.isCancelable(self.iActiveLeader, False):
+								if deal.isCancelable(self.iActiveLeader, True):
+									szDealText += u" %s" % BugUtil.getText("INTERFACE_CITY_TURNS", (deal.turnsToCancel(self.iActiveLeader),))
+								else:
+									# don't bother adding "This deal cannot be canceled" message
+									#szDealText += u" (%s)" % deal.getCannotCancelReason(self.iActiveLeader)
+									pass
+						else:
+							iTurns = DealUtil.Deal(deal).turnsToCancel(self.iActiveLeader)
+							if iTurns > 0:
+								szDealText += u" %s" % BugUtil.getText("INTERFACE_CITY_TURNS", (iTurns,))
+					screen.appendListBoxString(dealPanelName, szDealText, WidgetTypes.WIDGET_DEAL_KILL, deal.getID(), -1, CvUtil.FONT_LEFT_JUSTIFY)
 					iRow += 1
 
 #	RJG Start

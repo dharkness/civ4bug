@@ -26,6 +26,7 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugDll
 import PlayerUtil
 
 gc = CyGlobalContext()
@@ -128,6 +129,22 @@ class Deal(object):
 		return self.deal.isNone()
 	def getInitialGameTurn(self):
 		return self.deal.getInitialGameTurn()
+	def isCancelable(self, eByPlayer, bIgnoreWaitingPeriod=False):
+		if BugDll.isPresent():
+			return self.deal.isCancelable(eByPlayer, bIgnoreWaitingPeriod)
+		else:
+			return False
+	def getCannotCancelReason(self, eByPlayer):
+		if BugDll.isPresent():
+			return self.deal.getCannotCancelReason(eByPlayer)
+		else:
+			return ""
+	def turnsToCancel(self, eByPlayer=-1):
+		if BugDll.isPresent():
+			return self.deal.turnsToCancel(eByPlayer)
+		else:
+			# this is exactly what CvDeal does
+			return self.getInitialGameTurn() + gc.getDefineINT("PEACE_TREATY_LENGTH") - gc.getGame().getGameTurn()
 	def kill(self):
 		self.deal.kill()
 	

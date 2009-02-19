@@ -46,7 +46,7 @@
 					type="boolean" default="True" 
 					get="isBugFinanceAdvisor"/>
 
-			<!-- Exotic Foreign Advisor (F4) by Requies, Dresden -->
+			<!-- Exotic Foreign Advisor (F4) by Requies, Dresden, EmperorFool -->
 			<option id="EFAGlanceTab" key="EFA Glance" 
 					type="boolean" default="True" 
 					get="isShowGlance"/>
@@ -56,6 +56,9 @@
 			<option id="EFAImprovedInfo" key="EFA Improved Info" 
 					type="boolean" default="True" 
 					get="isUseImprovedEFAInfo"/>
+			<option id="EFADealTurnsLeft" key="EFA Deal Turns Left" 
+					type="boolean" default="True" 
+					get="isShowDealTurnsLeft"/>
 	
 			<!-- BUG Military Advisor (F5) by Ruff_Hi, EmperorFool -->
 			<option id="BugMA" key="BugMilitaryAdvisor" 

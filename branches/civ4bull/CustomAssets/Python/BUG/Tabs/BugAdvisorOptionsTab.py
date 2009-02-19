@@ -34,6 +34,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachHBox(left, comboBox)
 		self.addCheckbox(screen, comboBox, "Advisors__EFAGlanceTab")
 		self.addCheckbox(screen, comboBox, "Advisors__EFAGlanceSmilies")
+		self.addCheckbox(screen, left, "Advisors__EFADealTurnsLeft")
 		self.addCheckbox(screen, left, "Advisors__EFAImprovedInfo")
 		
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")

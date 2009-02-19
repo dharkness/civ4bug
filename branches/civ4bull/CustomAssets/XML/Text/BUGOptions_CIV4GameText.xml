@@ -3549,6 +3549,22 @@
 		<Spanish>When checked, uses improved Foreign Advisor 'Info' tab instead of default.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFADEALTURNSLEFT_TEXT</Tag>
+		<English>Deal Turns Left</English>
+		<French>Deal Turns Left</French>
+		<German>Deal Turns Left</German>
+		<Italian>Deal Turns Left</Italian>
+		<Spanish>Deal Turns Left</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFADEALTURNSLEFT_HOVER</Tag>
+		<English>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</English>
+		<French>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</French>
+		<German>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</German>
+		<Italian>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Italian>
+		<Spanish>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGMA_TEXT</Tag>
 		<English>BUG Military Advisor</English>
 		<French>BUG Military Advisor</French>
