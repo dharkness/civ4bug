@@ -206,16 +206,17 @@ def getOption(id):
 
 def getOptionBOOL(argsList):
 	#import BugUtil
-	id = argsList[0]
-	#BugUtil.alert("checking option %s", id)
-	option = getOption(id)
-	if option:
-		#return bool(option.getValue())
-		val = bool(option.getValue())
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %s", id, bool(default))
+	try:
+		option = getOption(id)
+		return bool(option.getValue())
+		#val = bool(option.getValue())
 		#BugUtil.alert("value = %s", val)
-		return val
-	else:
-		return False
+		#return val
+	except:
+		#BugUtil.alert("returning default %s", bool(default))
+		return default
 
 g_nameAndVersion = None
 def getModNameAndVersion():
