@@ -331,7 +331,57 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				xLink += self.DX_LINK
 	
 	def drawActive (self, bInitial):
-		CvForeignAdvisor.CvForeignAdvisor.drawActive (self)
+		screen = self.getScreen()
+
+		# Get the Players
+		playerActive = gc.getPlayer(self.iActiveLeader)
+					
+		# Put everything inside a main panel, so we get vertical scrolling
+		mainPanelName = self.getNextWidgetName()
+		screen.addPanel(mainPanelName, "", "", True, True, 50, 100, self.W_SCREEN - 100, self.H_SCREEN - 200, PanelStyles.PANEL_STYLE_EMPTY)
+
+		# loop through all players and sort them by number of active deals
+		listPlayers = [(0,0)] * gc.getMAX_PLAYERS()
+		nNumPLayers = 0
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			if (gc.getPlayer(iLoopPlayer).isAlive() and iLoopPlayer != self.iActiveLeader and not gc.getPlayer(iLoopPlayer).isBarbarian() and  not gc.getPlayer(iLoopPlayer).isMinorCiv()):
+				if (gc.getTeam(gc.getPlayer(iLoopPlayer).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam()) or gc.getGame().isDebugMode()):
+					nDeals = 0				
+					for i in range(gc.getGame().getIndexAfterLastDeal()):
+						deal = gc.getGame().getDeal(i)
+						if ((deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader) or (deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader)):
+							nDeals += 1
+					listPlayers[nNumPLayers] = (nDeals, iLoopPlayer)
+					nNumPLayers += 1
+		listPlayers.sort()
+		listPlayers.reverse()
+
+		# loop through all players and display leaderheads
+		for j in range (nNumPLayers):
+			iLoopPlayer = listPlayers[j][1]
+
+			# Player panel
+			playerPanelName = self.getNextWidgetName()
+			screen.attachPanel(mainPanelName, playerPanelName, gc.getPlayer(iLoopPlayer).getName(), "", False, True, PanelStyles.PANEL_STYLE_MAIN)
+
+			screen.attachLabel(playerPanelName, "", "   ")
+
+			screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+						
+			innerPanelName = self.getNextWidgetName()
+			screen.attachPanel(playerPanelName, innerPanelName, "", "", False, False, PanelStyles.PANEL_STYLE_EMPTY)
+
+			dealPanelName = self.getNextWidgetName()
+			screen.attachListBoxGFC(innerPanelName, dealPanelName, "", TableStyles.TABLE_STYLE_EMPTY)	
+			screen.enableSelect(dealPanelName, False)
+
+			iRow = 0
+			for i in range(gc.getGame().getIndexAfterLastDeal()):
+				deal = gc.getGame().getDeal(i)
+
+				if (deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader and not deal.isNone()) or (deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader):
+					screen.appendListBoxString(dealPanelName, CyGameTextMgr().getDealString(deal, iLoopPlayer), WidgetTypes.WIDGET_DEAL_KILL, deal.getID(), -1, CvUtil.FONT_LEFT_JUSTIFY)
+					iRow += 1
 
 #	RJG Start
 	def drawRelations (self, bInitial):
