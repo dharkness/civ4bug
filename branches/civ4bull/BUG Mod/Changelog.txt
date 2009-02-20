@@ -28,6 +28,13 @@ New Features:
 	- Deal class has new CvDeal functions, plus more
 	- Added several helpful module function for testing TradeableItems values
 
+New Events
+- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost)
+- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender)
+- combatRetreat(CyUnit pAttacker, CyUnit pDefender)
+- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage)
+- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage)
+
 Bug Fixes:
 
 
