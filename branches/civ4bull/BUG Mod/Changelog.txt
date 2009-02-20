@@ -20,6 +20,13 @@ FOR MODDERS
 
 New Features:
 - Added BugDll module for creating Python features that depend on the DLL but work gracefully without it.
+- Exposed several CvDeal functions:
+	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
+	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
+	- int turnsToCancel(PlayerTypes eByPlayer)
+- DealUtil
+	- Deal class has new CvDeal functions, plus more
+	- Added several helpful module function for testing TradeableItems values
 
 Bug Fixes:
 
