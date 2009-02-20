@@ -1,17 +1,17 @@
 Changes since BUG 3.6:
 
 New Features:
-- Added optional BUG DLL; features that require it are marked with [DLL]
-- Advanced Scoreboard: Added Refuse to Talk column (K) [DLL]
+- Added optional BUG DLL; features that require it are marked with [BULL]
+- Advanced Scoreboard: Added Refuse to Talk column (K) [BULL]
 
 Improvements:
-- BUG version is displayed when hovering over the flag [DLL]
-- Min/Max Commerce Rate buttons have more accurate hover text [DLL]
+- BUG version is displayed when hovering over the flag [BULL]
+- Min/Max Commerce Rate buttons have more accurate hover text [BULL]
 - Foreign Advisor
-	- INFO page: Hover details for trade with each rival [DLL]
-	- RESOURCES page: Hover for bonuses the AI will not trade to you show the reason why [DLL]
-	- TECHS page: Hover for technologies the AI will not trade to you show the reason why [DLL]
-- Finance Advisor: Hover details for trade commerce and gold from specialists [DLL]
+	- INFO page: Hover details for trade with each rival [BULL]
+	- RESOURCES page: Hover for bonuses the AI will not trade to you show the reason why [BULL]
+	- TECHS page: Hover for technologies the AI will not trade to you show the reason why [BULL]
+- Finance Advisor: Hover details for trade commerce and gold from specialists [BULL]
 
 Bug Fixes:
 
