@@ -1,16 +1,17 @@
 Changes since BUG 3.6:
 
 New Features:
-- Added optional BUG DLL; features that require it are marked with [BULL]
-- Advanced Scoreboard: Added Refuse to Talk column (K) [BULL]
+- Added BULL, the optional BUG DLL; features that require it are marked with [BULL]
+- Advanced Scoreboard: Added Refuses to Talk column (F) [BULL]
 
 Improvements:
-- BUG version is displayed when hovering over the flag [BULL]
+- BUG and BULL versions are displayed when hovering over your flag [BULL]
 - Min/Max Commerce Rate buttons have more accurate hover text [BULL]
 - Foreign Advisor
-	- INFO page: Hover details for trade with each rival [BULL]
-	- RESOURCES page: Hover for bonuses the AI will not trade to you show the reason why [BULL]
-	- TECHS page: Hover for technologies the AI will not trade to you show the reason why [BULL]
+	- ACTIVE: Added number of turns until you can cancel each deal
+	- INFO: Hover details for trade with each rival [BULL]
+	- RESOURCES: Hover for bonuses the AI will not trade to you show the reason why [BULL]
+	- TECHS: Hover for technologies the AI will not trade to you show the reason why [BULL]
 - Finance Advisor: Hover details for trade commerce and gold from specialists [BULL]
 
 Bug Fixes:
@@ -28,7 +29,7 @@ New Features:
 	- Deal class has new CvDeal functions, plus more
 	- Added several helpful module function for testing TradeableItems values
 
-New Events
+New Events:
 - unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost)
 - combatWithdrawal(CyUnit pAttacker, CyUnit pDefender)
 - combatRetreat(CyUnit pAttacker, CyUnit pDefender)
