@@ -1003,7 +1003,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_TURNS_NEXT_VOTE</Tag>
 		<English>Turns until next Vote: %d1</English>
 		<French>Turns until next Vote: %d1</French>
-		<German>Turns until next Vote: %d1</German>
+		<German>Nächste Abstimmung in %d1 [NUM1:Runde:Runden]</German>
 		<Italian>Turns until next Vote: %d1</Italian>
 		<Spanish>Turns until next Vote: %d1</Spanish>
 	</TEXT>
@@ -1011,7 +1011,7 @@
 		<Tag>TXT_KEY_BUG_VICTORY_VOTES_NEXT_ELECTION</Tag>
 		<English>Votes until next Election: %d1</English>
 		<French>Votes until next Election: %d1</French>
-		<German>Votes until next Election: %d1</German>
+		<German>Nächsten Wahl in %d1 [NUM1:Runde:Runden]</German>
 		<Italian>Votes until next Election: %d1</Italian>
 		<Spanish>Votes until next Election: %d1</Spanish>
 	</TEXT>
