@@ -1,6 +1,14 @@
 ## MapGenerator
 ##
-## Key to regenerate the map and (hopefully soon) HOF's MapFinder utility.
+## Shortcut to regenerate the map and start/stop HOF's MapFinder utility.
+##
+## Shortcuts:
+##
+##   ALT + G             regenerate()
+##   ALT + CTRL + G      startStop()
+##
+## Events:
+##   gameUpdate          cycle()
 ##
 ## Adapted from HOF Mod 3.13.001.
 ##
@@ -9,6 +17,7 @@
 ## Author: HOF Team, EmperorFool
 
 from CvPythonExtensions import *
+import BugCore
 import BugDll
 import BugUtil
 import CvCameraControls
@@ -18,20 +27,16 @@ import time
 
 gc = CyGlobalContext()
 cam = CvCameraControls.CvCameraControls()
+options = BugCore.game.MapFinder
 
 EVENT_MESSAGE_TIME = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 
 # Regenerate Map
 
-def canRegenerate():
-	if BugDll.isPresent():
-		return gc.getGame().canRegenerateMap()
-	return False
-
 def regenerate(argsList):
 	if BugDll.isPresent():
-		if canRegenerate():
-			if CyGame().regenerateMap():
+		if gc.getGame().canRegenerateMap():
+			if gc.getGame().regenerateMap():
 				cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 				centerCameraOnPlayer()
 				cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
@@ -138,58 +143,28 @@ TYPES_BY_CODE = {  # BasicPlot_TypesToCode
 	428 : ('water', TERRAIN_COAST, FEATURE_LAKE),
 }
 
-def getSaveFileName(pathName):
-	iActivePlayer = gc.getGame().getActivePlayer()
-	activePlayer = gc.getPlayer(iActivePlayer)
-	
-	objLeaderHead = gc.getLeaderHeadInfo (activePlayer.getLeaderType()).getText()
-	
-	difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
-	mapType = gc.getMap().getMapScriptName()
-	mapSize = gc.getWorldInfo(gc.getMap().getWorldSize()).getText()
-	mapClimate = gc.getClimateInfo(gc.getMap().getClimate()).getText()
-	mapLevel = gc.getSeaLevelInfo(gc.getMap().getSeaLevel()).getText()
-	era = gc.getEraInfo(gc.getGame().getStartEra()).getText()
-	speed = gc.getGameSpeedInfo(gc.getGame().getGameSpeedType()).getText()
-	turnYear = CyGameTextMgr().getTimeStr(gc.getGame().getGameTurn(), false)
-	
-	fileName = objLeaderHead[0:3]
-	fileName = fileName + '_' + difficulty[0:3]
-	fileName = fileName + '_' + mapSize[0:3]
-	fileName = fileName + '_' + mapType[0:3]
-	fileName = fileName + '_' + speed[0:3]
-	fileName = fileName + '_' + era[0:3]
-	fileName = fileName + '_' + turnYear.replace(" ", "-")
-	fileName = fileName + '_' + mapClimate[0:3]
-	fileName = fileName + '_' + mapLevel[0:3]
+bActive = False
+bChecking = False
+bSuccess = False
 
-	fileName = os.path.join(pathName, fileName)
-	baseFileName = CvUtil.convertToStr(fileName)
-	fileName = CvUtil.convertToStr(fileName + '_' + time.strftime("%b-%d-%Y_%H-%M-%S"))
-	return (fileName, baseFileName)
-
-def MapFinderRegenerator():
-	global bSuccess
-	i = 0
-	while True:
-		bSuccess = CyGame().regenerateMap()
-		yield i
-		i = i + 1
+iUpdateCounter = 0
+iRegenCount = 0
+iSavedCount = 0
 
 def startStop(argsList=None):
-	if not bActive:
-		start()
-	else:
-		stop()
-	return 1
+	if BugDll.isPresent():
+		if not bActive:
+			start()
+		else:
+			stop()
 
 def start():
 	global bActive, bChecking, iRegenCount, iSavedCount
-	cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 	bActive = True
 	bChecking = False
 	iRegenCount = 0
 	iSavedCount = 0
+	cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 
 def stop():
 	global bActive, bChecking
@@ -203,14 +178,14 @@ def cycle(argsList=None):
 		iUpdateCounter = iUpdateCounter + 1
 #		BugUtil.alert("check counter = %d", iUpdateCounter)
 		if (iUpdateCounter >= 1): centerCameraOnPlayer()
-		if (iUpdateCounter >= iUpdateDelay):
+		if (iUpdateCounter >= options.getUpdateScreenDelay()):
 			iUpdateCounter = 0
 			check(iRegenCount)
 	
 	if (bActive and not bChecking):
 		iUpdateCounter = iUpdateCounter + 1
 #		BugUtil.alert("next counter = %d", iUpdateCounter)
-		if (iUpdateCounter >= 4): # iUpdateDelay):
+		if (iUpdateCounter >= options.getUpdateScreenDelay()):
 			iUpdateCounter = 0
 			next()
 
@@ -218,11 +193,10 @@ def next():
 	global bActive, bSuccess, bChecking, iRegenCount
 	if not bActive: return
 
-	if CyGame().canRegenerateMap():
-		try: x = mfRegen.next()
-		except:	return
-
-		if not bSuccess:
+	if gc.getGame().canRegenerateMap():
+#		try: x = mfRegen.next()
+#		except:	return
+		if not gc.getGame().regenerateMap():
 			CyInterface().addMessage(gc.getGame().getActivePlayer(), True,
 				EVENT_MESSAGE_TIME, BugUtil.getPlainText('TXT_KEY_MAPFINDER_REGEN_FAILED') +
 				"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
@@ -246,11 +220,18 @@ def next():
 	bChecking = True
 	iRegenCount = iRegenCount + 1
 
+#def MapFinderRegenerator():
+#	global bSuccess
+#	i = 0
+#	while True:
+#		bSuccess = CyGame().regenerateMap()
+#		yield i
+#		i = i + 1
+
 def check(fNum):
 	global bActive, bChecking, iSavedCount
 	bSaveMap = False
-	sMFSavePath = "C:/Games/Civ4_Map_Finder/Saves" # hof.get_str('HOFUtil', 'MapFinderSavePath', 'Default')
-	if sMFSavePath == 'Default': pass # sMFSavePath = HOFContext.MapFinderDftSavePath
+	sMFSavePath = os.path.join(options.getPath(), "Saves")
 	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
 	
 	mr = {}
@@ -451,7 +432,7 @@ def check(fNum):
 		fp.close
 
 		fileNameX = str(fileName + "_" + str(fNum) + "_" + str(iSavedCount) + ".CivBeyondSwordSave")
-		CyGame().saveGame(fileNameX)
+		gc.getGame().saveGame(fileNameX)
 
 
 #	CyInterface().addImmediateMessage(BugUtil.getPlainText('TXT_KEY_MAPFINDER_ALTX_TO_STOP') +
@@ -467,10 +448,10 @@ def check(fNum):
 
 	if (bSaveMap):
 		fileNameX = str(fileName + "_" + str(fNum) + "_" + str(iSavedCount) + ".jpg")
-		CyGame().takeJPEGScreenShot(fileNameX)
+		gc.getGame().takeJPEGScreenShot(fileNameX)
 
-	if ((iRegenCount >= iRegenLimit) or
-	    (iSavedCount >= iSavedLimit)):
+	if ((iRegenCount >= options.getRegenLimit()) or
+	    (iSavedCount >= options.getSaveLimit())):
 		BugUtil.alert(BugUtil.getPlainText('TXT_KEY_MAPFINDER_STOPPED') +
 					"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
 					"=" + str(iRegenCount) +
@@ -480,13 +461,43 @@ def check(fNum):
 
 	bChecking = False
 
+def getSaveFileName(pathName):
+	iActivePlayer = gc.getGame().getActivePlayer()
+	activePlayer = gc.getPlayer(iActivePlayer)
+	
+	objLeaderHead = gc.getLeaderHeadInfo (activePlayer.getLeaderType()).getText()
+	
+	difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
+	mapType = gc.getMap().getMapScriptName()
+	mapSize = gc.getWorldInfo(gc.getMap().getWorldSize()).getText()
+	mapClimate = gc.getClimateInfo(gc.getMap().getClimate()).getText()
+	mapLevel = gc.getSeaLevelInfo(gc.getMap().getSeaLevel()).getText()
+	era = gc.getEraInfo(gc.getGame().getStartEra()).getText()
+	speed = gc.getGameSpeedInfo(gc.getGame().getGameSpeedType()).getText()
+	turnYear = CyGameTextMgr().getTimeStr(gc.getGame().getGameTurn(), false)
+	
+	fileName = objLeaderHead[0:3]
+	fileName = fileName + '_' + difficulty[0:3]
+	fileName = fileName + '_' + mapSize[0:3]
+	fileName = fileName + '_' + mapType[0:3]
+	fileName = fileName + '_' + speed[0:3]
+	fileName = fileName + '_' + era[0:3]
+	fileName = fileName + '_' + turnYear.replace(" ", "-")
+	fileName = fileName + '_' + mapClimate[0:3]
+	fileName = fileName + '_' + mapLevel[0:3]
+
+	fileName = os.path.join(pathName, fileName)
+	baseFileName = CvUtil.convertToStr(fileName)
+	fileName = CvUtil.convertToStr(fileName + '_' + time.strftime("%b-%d-%Y_%H-%M-%S"))
+	return (fileName, baseFileName)
+
+
 def getRuleSet():
 	global sMFRuleFile
 	ruleset = {}
 	ruleset['Range'] = 2
 	
-	sMFRuleFile = "C:/Games/Civ4_Map_Finder/Rules/Default.rul"  # hof.get_str('HOFUtil', 'MapFinderRuleFile', 'Default')
-	if sMFRuleFile == 'Default':  sMFRuleFile = HOFContext.MapFinderDftRuleFile
+	sMFRuleFile = options.getRuleFile()
 	if not os.path.isfile(sMFRuleFile):	return ruleset
 
 	iGrpSave = 0
@@ -518,9 +529,8 @@ def getCodeText():
 	lLang = []
 	CodeTextDict = {}
 	
-	iLang = CyGame().getCurrentLanguage()
-	sMFPath = "C:/Games/Civ4_Map_Finder"  # hof.get_str('HOFUtil', 'MapFinderPath', 'Default')
-	if sMFPath == 'Default': sMFPath = HOFContext.MapFinderDftPath
+	iLang = gc.getGame().getCurrentLanguage()
+	sMFPath = options.getPath()
 	CodeTextFile = os.path.join(sMFPath, 'MF_Text.dat')
 	if not os.path.isfile(CodeTextFile): 
 ##		displayMsg(BugUtil.getPlainText('TXT_KEY_MAPFINDER_INVALID_PATH') +
@@ -547,8 +557,7 @@ def getCodeText():
 def getCategory_Types():
 	Category_TypesDict = {}
 	
-	sMFPath = "C:/Games/Civ4_Map_Finder"  # hof.get_str('HOFUtil', 'MapFinderPath', 'Default')
-	if sMFPath == 'Default': sMFPath = HOFContext.MapFinderDftPath
+	sMFPath = options.getPath()
 	CatTypesFile  = os.path.join(sMFPath, 'MF_Cat_Rules.dat')
 	if not os.path.isfile(CatTypesFile):
 ##		displayMsg(BugUtil.getPlainText('TXT_KEY_MAPFINDER_INVALID_PATH') +
@@ -579,8 +588,7 @@ def getCategory_Types():
 def getCombo_Types():
 	Combo_TypesDict = {}
 
-	sMFPath = "C:/Games/Civ4_Map_Finder"  # hof.get_str('HOFUtil', 'MapFinderPath', 'Default')
-	if sMFPath == 'Default': sMFPath = HOFContext.MapFinderDftPath
+	sMFPath = options.getPath()
 	ComboTypesFile  = os.path.join(sMFPath, 'MF_Combo_Rules.dat')
 	if not os.path.isfile(ComboTypesFile):
 		return
@@ -599,21 +607,9 @@ def getCombo_Types():
 
 	return Combo_TypesDict
 
-mfRegen = MapFinderRegenerator()
+#mfRegen = MapFinderRegenerator()
 
 CodeText = getCodeText()
 Category_Types = getCategory_Types()
 Combo_Types = getCombo_Types()
-rs =  getRuleSet()
-
-iRegenCount = 0
-iRegenLimit = 10
-iSavedCount = 0
-iSavedLimit = 5
-
-iUpdateCounter = 0
-iUpdateDelay = 20
-
-bActive = False
-bChecking = False
-bSuccess = False
+rs = getRuleSet()

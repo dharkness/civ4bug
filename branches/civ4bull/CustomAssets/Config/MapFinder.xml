@@ -10,12 +10,25 @@
 	 name="MapFinder" 
 	 author="HOF Team, EmperorFool" 
 	 version="1.0" 
-	 date="01/05/2009">
+	 date="01/05/2009"
+	 dll="1">
 	
 	<options id="MapFinder" file="MapFinder.ini">
 		<section id="MapFinder">
 			<option id="Enabled" key="Enabled" 
-					type="boolean" default="True" dll="1"/>
+					type="boolean" default="True"/>
+			
+			<option id="Path" key="Path" 
+					type="string" default="C:\Games\Civ4_Map_Finder"/>
+			<option id="RuleFile" key="Rule File" 
+					type="string" default="Default.rul"/>
+			
+			<option id="UpdateScreenDelay" key="Update Screen Delay" 
+					type="int" default="2"/>
+			<option id="RegenLimit" key="Regen Limit" 
+					type="int" default="10"/>
+			<option id="SaveLimit" key="Save Limit" 
+					type="int" default="10"/>
 		</section>
 	</options>
 	
