@@ -2,6 +2,7 @@ Changes since BUG 3.6:
 
 New Features:
 - Added BULL, the optional BUG DLL; features that require it are marked with [BULL]
+	BULL features that don't require BUG are not listed here; see BULL's changelog
 - Advanced Scoreboard: Added Refuses to Talk column (F) [BULL]
 
 Improvements:
@@ -12,7 +13,8 @@ Improvements:
 	- INFO: Hover details for trade with each rival [BULL]
 	- RESOURCES: Hover for bonuses the AI will not trade to you show the reason why [BULL]
 	- TECHS: Hover for technologies the AI will not trade to you show the reason why [BULL]
-- Finance Advisor: Hover details for trade commerce and gold from specialists [BULL]
+- Finance Advisor
+	- Hover details for trade commerce and gold from specialists [BULL]
 
 Bug Fixes:
 
@@ -22,21 +24,21 @@ FOR MODDERS
 New Features:
 - Added BugDll module for creating Python features that depend on the DLL but work gracefully without it
 - Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
-	The <mod>, <option> and <list> are still created if the DLL isn't the correct version; the others are ignored
-- Exposed several CvDeal functions:
+	The <mod>, <option> and <list> elements are still created but marked if the DLL isn't the correct version; the others are ignored
+- Exposed and/or replicated several CvDeal functions:
 	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
 	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
 	- int turnsToCancel(PlayerTypes eByPlayer)
 - DealUtil
 	- Deal class has new CvDeal functions, plus more
-	- Added several helpful module function for testing TradeableItems values
+	- Added several helpful module functions for testing TradeableItems values
 
 New Events:
-- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost)
-- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender)
-- combatRetreat(CyUnit pAttacker, CyUnit pDefender)
-- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage)
-- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage)
+- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
+- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
+- combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
+- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
 
 Bug Fixes:
 - Removed firing of gameUpdate in updateScreen() as it seems to be fired by BTS now
