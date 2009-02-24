@@ -9,7 +9,8 @@ import CvUtil
 import ScreenInput
 
 import string
-import time
+#import time
+import math
 
 from PyHelpers import PyPlayer
 
@@ -436,6 +437,7 @@ class CvInfoScreen:
 #BUG: Change Graphs - start
 		self.SHOW_ALL = u"<font=2>" + localText.getText("TXT_KEY_SHOW_ALL", ()) + u"</font>"
 		self.SHOW_NONE = u"<font=2>" + localText.getText("TXT_KEY_SHOW_NONE", ()) + u"</font>"
+		self.LOG_SCALE = u"<font=2>" + localText.getText("TXT_KEY_LOGSCALE", ()) + u"</font>"
 
 		sTemp1 = [""] * self.NUM_SCORES
 		sTemp2 = [""] * self.NUM_SCORES
@@ -1081,8 +1083,12 @@ class CvInfoScreen:
 #		self.timer.start()
 
 		# Compute max and min
-		max = 1
-		min = 0
+		if AdvisorOpt.isGraphsLogScale():
+			max = 2
+			min = 1
+		else:
+			max = 1
+			min = 0
 		for p in self.aiPlayersMet:
 			for turn in range(firstTurn,lastTurn + 1):
 				score = self.getHistory(iGraphID, p, turn - startTurn)
@@ -1091,7 +1097,12 @@ class CvInfoScreen:
 				if (min > score):
 					min = score
 
-		yFactor = (1.0 * iH_GRAPH / (1.0 * (max - min)))
+		if AdvisorOpt.isGraphsLogScale():
+			yFactor = (1.0 * iH_GRAPH / (1.0 * (self.getLog10(max) - self.getLog10(min))))
+#			BugUtil.debug("Log10: %i %i --> %i %i", x0, y0, ix0, iy0)
+		else:
+			yFactor = (1.0 * iH_GRAPH / (1.0 * (max - min)))
+
 		xFactor = (1.0 * iW_GRAPH / (1.0 * (lastTurn - firstTurn)))
 
 		if (lastTurn - firstTurn > 10):
@@ -1131,7 +1142,10 @@ class CvInfoScreen:
 			while (turn >= firstTurn):
 
 				score = self.getHistory(iGraphID, p, turn - startTurn)
-				y = iH_GRAPH - int(yFactor * (score - min))
+				if AdvisorOpt.isGraphsLogScale():
+					y = iH_GRAPH - int(yFactor * (self.getLog10(score) - self.getLog10(min)))
+				else:
+					y = iH_GRAPH - int(yFactor * (score - min))
 				x = int(xFactor * (turn - firstTurn))
 
 				if x < oldX - iSmooth:
@@ -1192,9 +1206,13 @@ class CvInfoScreen:
 
 		if not AdvisorOpt.isGraphs():
 			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + self.iNumPlayersMet * self.H_LEGEND_TEXT + 3
+			if AdvisorOpt.isGraphsLogScale():
+				self.H_LEGEND += self.H_LEGEND_TEXT
 			self.Y_LEGEND = self.Y_GRAPH + self.H_GRAPH - self.H_LEGEND
 		else:
 			self.H_LEGEND = 2 * self.Y_LEGEND_MARGIN + (self.iNumPlayersMet + self.iNumPlayersMetNAEspionage + 4) * self.H_LEGEND_TEXT + 3
+			if AdvisorOpt.isGraphsLogScale():
+				self.H_LEGEND += self.H_LEGEND_TEXT
 
 			self.X_LEGEND = self.X_MARGIN + 5
 			if self.Graph_Status_Current == self.Graph_Status_1in1:
@@ -1289,6 +1307,12 @@ class CvInfoScreen:
 			screen.setText(self.sShowAllWidget, "", self.SHOW_ALL, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 			yText += self.H_LEGEND_TEXT
 			screen.setText(self.sShowNoneWidget, "", self.SHOW_NONE, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
+		if AdvisorOpt.isGraphsLogScale():
+			xShow = self.X_LEGEND + iW_LEGEND / 2
+			if AdvisorOpt.isGraphs():
+				yText += self.H_LEGEND_TEXT
+			screen.setLabel(self.getNextWidgetName(), "", self.LOG_SCALE, CvUtil.FONT_CENTER_JUSTIFY, xShow, yText, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 	def getPlayerName(self, ePlayer):
 		if (ScoreOpt.isUsePlayerName()):
@@ -2550,6 +2574,9 @@ class CvInfoScreen:
 			screen.addLineGFC(canvas, self.getNextLineName(), x0, y0 + 1, x1, y1 + 1, color)
 			screen.addLineGFC(canvas, self.getNextLineName(), x0 + 1, y0, x1 + 1, y1, color)
 		screen.addLineGFC(canvas, self.getNextLineName(), x0, y0, x1, y1, color)
+
+	def getLog10(self, x):
+		return math.log10(max(1,x))
 
 	def getTurnDate(self,turn):
 

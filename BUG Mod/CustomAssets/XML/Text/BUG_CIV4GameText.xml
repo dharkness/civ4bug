@@ -969,6 +969,14 @@
 		<Spanish>Show None</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_LOGSCALE</Tag>
+		<English>Log Scale</English>
+		<French>Log Scale</French>
+		<German>Log Scale</German>
+		<Italian>Log Scale</Italian>
+		<Spanish>Log Scale</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_CHART_HELP</Tag>
 		<English>Zoom in and out by clicking on the body of the chart</English>
 		<French>Zoom in and out by clicking on the body of the chart</French>

@@ -3637,6 +3637,22 @@
 		<Spanish>Graphs tab</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSLOGSCALE_HOVER</Tag>
+		<English>When checked, displays graphs are displayed in Log(10) scale.</English>
+		<French>When checked, displays graphs are displayed in Log(10) scale.</French>
+		<German>When checked, displays graphs are displayed in Log(10) scale.</German>
+		<Italian>When checked, displays graphs are displayed in Log(10) scale.</Italian>
+		<Spanish>When checked, displays graphs are displayed in Log(10) scale.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSLOGSCALE_TEXT</Tag>
+		<English>Graphs Log Scale</English>
+		<French>Graphs Log Scale</French>
+		<German>Graphs Log Scale</German>
+		<Italian>Graphs Log Scale</Italian>
+		<Spanish>Graphs Log Scale</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_HOVER</Tag>
 		<English>When checked, displays graphs in BUG format.</English>
 		<French>When checked, displays graphs in BUG format.</French>

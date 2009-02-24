@@ -82,6 +82,9 @@
 			<option id="BugGraphsTab" key="Graphs" 
 					type="boolean" default="True" 
 					get="isGraphs"/>
+			<option id="BugGraphsLogScale" key="Log Scale" 
+					type="boolean" default="False" 
+					get="isGraphsLogScale"/>
 			<option id="BugStatsTab" key="Improvements" 
 					type="boolean" default="True" 
 					get="isShowImprovements"/>
