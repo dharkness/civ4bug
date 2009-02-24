@@ -20,7 +20,9 @@ Bug Fixes:
 FOR MODDERS
 
 New Features:
-- Added BugDll module for creating Python features that depend on the DLL but work gracefully without it.
+- Added BugDll module for creating Python features that depend on the DLL but work gracefully without it
+- Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
+	The <mod>, <option> and <list> are still created if the DLL isn't the correct version; the others are ignored
 - Exposed several CvDeal functions:
 	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
 	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
