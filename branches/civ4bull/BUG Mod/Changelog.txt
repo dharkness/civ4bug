@@ -1,12 +1,20 @@
-Changes since BUG 3.6:
+CHANGES SINCE BUG 3.6:
+
+	*** BULL: The BUG DLL ***
+	
+	This is an optional component that, once installed, enables the features listed below marked [BULL].
+	Any features that don't require BUG are not listed here. Refer to BULL's changelog for more information.
 
 New Features:
-- Added BULL, the optional BUG DLL; features that require it are marked with [BULL]
-	BULL features that don't require BUG are not listed here; see BULL's changelog
-- Advanced Scoreboard: Added Refuses to Talk column (F) [BULL]
+
+- Regenerate map shortcut (ALT + G) [BULL]
+- MapFinder from HOF Mod: Press ALT + CTRL + G to start/stop [BULL]
+- Advanced Scoreboard
+	- Refuses to Talk column (F) [BULL]
 
 Improvements:
-- BUG and BULL versions are displayed when hovering over your flag [BULL]
+
+- BUG, BULL and Unofficial Patch versions are displayed when hovering over your flag [BULL]
 - Min/Max Commerce Rate buttons have more accurate hover text [BULL]
 - Foreign Advisor
 	- ACTIVE: Added number of turns until you can cancel each deal
@@ -18,34 +26,35 @@ Improvements:
 
 Bug Fixes:
 
-
+____________________
 FOR MODDERS
 
 New Features:
-- Added BugDll module for creating Python features that depend on the DLL but work gracefully without it
-- Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
+
+- BugDll module for creating Python features that depend on the DLL but work gracefully without it
+- "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
 	The <mod>, <option> and <list> elements are still created but marked if the DLL isn't the correct version; the others are ignored
-- Exposed and/or replicated several CvDeal functions:
-	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
-	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
-	- int turnsToCancel(PlayerTypes eByPlayer)
 - DealUtil
 	- Deal class has new CvDeal functions, plus more
 	- Added several helpful module functions for testing TradeableItems values
-
-New Events:
-- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
-- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
-- combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
-- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
-- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+- Exposed and/or replicated several CvDeal functions in DealUtil.Deal:
+	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
+	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
+	- int turnsToCancel(PlayerTypes eByPlayer)
+- Events
+	- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
+	- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
+	- combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
+	- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+	- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
 
 Bug Fixes:
+
 - Removed firing of gameUpdate in updateScreen() as it seems to be fired by BTS now
 
 
 ________________________________________________________________________________
-Changes since BUG 3.5.1:
+CHANGES SINCE BUG 3.5.1:
 
 New Features:
 
@@ -108,7 +117,7 @@ Bug Fixes:
 - PLE Unit Hover: Fixed calculation of Movement Points remaining
 - Unit Info Pane: Fixed calculation of Movement Points remaining
 
-
+____________________
 FOR MODDERS
 
 New Features:
