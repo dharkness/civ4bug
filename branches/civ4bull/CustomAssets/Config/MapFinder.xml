@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	MapFinder
+	by HOF Team, EmperorFool
+	
+	Copyright (c) 2009 The BUG Mod.
+-->
+<mod id="MapFinder" 
+	 module="MapFinder" 
+	 name="MapFinder" 
+	 author="HOF Team, EmperorFool" 
+	 version="1.0" 
+	 date="01/05/2009">
+	
+	<options id="MapFinder" file="MapFinder.ini">
+		<section id="MapFinder">
+			<option id="Enabled" key="Enabled" 
+					type="boolean" default="True" dll="1"/>
+		</section>
+	</options>
+	
+	<event type="gameUpdate" function="cycle"/>
+	
+	<shortcut key="Alt G" function="regenerate"/>
+	<shortcut key="Alt Ctrl G" function="startStop"/>
+	
+</mod>
