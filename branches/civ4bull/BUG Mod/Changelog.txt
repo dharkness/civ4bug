@@ -37,6 +37,7 @@ New Events:
 - combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage)
 
 Bug Fixes:
+- Removed firing of gameUpdate in updateScreen() as it seems to be fired by BTS now
 
 
 ________________________________________________________________________________

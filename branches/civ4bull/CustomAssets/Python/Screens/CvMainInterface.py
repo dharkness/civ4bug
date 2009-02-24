@@ -2924,7 +2924,7 @@ class CvMainInterface:
 
 # BUG - Event Manager - start
 		CvEventInterface.getEventManager().updateActiveTurn()
-		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
+#		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
