@@ -49,6 +49,23 @@ def isVersion(version):
 	else:
 		return IS_PRESENT
 
+def decode(value, noneIsZero=False):
+	if value:
+		if isinstance(value, int):
+			if value >= 1:
+				return value
+		else:
+			try:
+				version = int(value)
+				if version >= 1:
+					return version
+			except ValueError:
+				pass
+	if noneIsZero:
+		return 0
+	else:
+		return None
+
 
 def widget(bugWidget, bugData1=None, bugData2=None, *args):
 	return widgetVersion(VERSION, bugWidget, bugData1, bugData2, *args)

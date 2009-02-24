@@ -418,12 +418,9 @@ class AbstractOption(object):
 		self.id = id
 		self.andId = andId
 		self.andOption = None
-		if dll:
-			self.dll = int(dll)
-			if self.dll <= 0:
-				BugUtil.warn("BugOptions - %s has invalid dll value %r, ignoring", id, dll)
-				self.dll = None
-		else:
+		self.dll = BugDll.decode(dll)
+		if self.dll <= 0:
+			BugUtil.warn("BugOptions - %s has invalid dll value %r, ignoring", id, dll)
 			self.dll = None
 		self.enabled = True
 		if self.dll > 0:
