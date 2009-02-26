@@ -27,7 +27,7 @@ gc = CyGlobalContext()
 Z_DEPTH = -0.3
 
 # Columns IDs
-NUM_PARTS = 23
+NUM_PARTS = 24
 (
 	ALIVE,
 	WAR,
@@ -49,6 +49,7 @@ NUM_PARTS = 23
 	ATTITUDE,
 	WORST_ENEMY,
 	WHEOOH,
+	CITIES,
 	WAITING,
 	NET_STATS,
 	OOS
@@ -86,8 +87,8 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEHILMNOPRSTUVWZ*?
-	# FGJKQXY
+	# ABCDEHIKLMNOPQRSTUVWZ*?
+	# FGJXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
@@ -108,6 +109,7 @@ def init():
 	columns.append(Column('A', ATTITUDE, DYNAMIC))
 	columns.append(Column('H', WORST_ENEMY, FIXED, smallSymbol(FontSymbols.ANGRY_POP_CHAR)))
 	columns.append(Column('M', WHEOOH, FIXED, smallSymbol(FontSymbols.OCCUPATION_CHAR)))
+	columns.append(Column('Q', CITIES, DYNAMIC))
 	columns.append(Column('*', WAITING, FIXED, smallText("*")))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
@@ -227,6 +229,9 @@ class Scoreboard:
 	def setWHEOOH(self):
 		self._set(WHEOOH)
 		
+	def setNumCities(self, value):
+		self._set(CITIES, smallText(value))
+		
 	def setWar(self):
 		self._set(WAR, WAR_ICON)
 		
@@ -241,7 +246,7 @@ class Scoreboard:
 			self._set(RESEARCH, tech)
 		else:
 			self._set(RESEARCH, smallText(gc.getTechInfo(tech).getDescription()))
-		self._set(RESEARCH_TURNS, smallText(u" (%d)" % turns))
+		self._set(RESEARCH_TURNS, smallText(u"(%d)" % turns))
 		
 	def setEspionage(self):
 		self._set(ESPIONAGE)

@@ -6491,11 +6491,6 @@ class CvMainInterface:
 																if (bAlignIcons):
 																	scores.setPeace()
 																break
-													if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
-														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
-														szBuffer = szBuffer + szTempBuffer
-														if (bAlignIcons):
-															scores.setWHEOOH()
 													if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 														szBuffer = szBuffer + szTempBuffer
@@ -6539,7 +6534,8 @@ class CvMainInterface:
 														szBuffer = szBuffer + szTempBuffer
 														if (bAlignIcons):
 															scores.setResearch(gc.getPlayer(ePlayer).getCurrentResearch(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
-												
+												# BUG: ...end of indentation
+# BUG - Dead Civs - end
 # BUG - Power Rating - start
 												# if on, show according to espionage "see demographics" mission
 												if (bShowPower 
@@ -6565,7 +6561,6 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setPower(szTempBuffer)
 # BUG - Power Rating - end
-
 # BUG - Attitude Icons - start
 												if (ScoreOpt.isShowAttitude()):
 													if (not gc.getPlayer(ePlayer).isHuman()):
@@ -6575,7 +6570,6 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
-
 # BUG - Worst Enemy - start
 												if (ScoreOpt.isShowWorstEnemy()):
 													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
@@ -6586,9 +6580,21 @@ class CvMainInterface:
 															if (bAlignIcons):
 																scores.setWorstEnemy()
 # BUG - Worst Enemy - end
-												# BUG: ...end of indentation
-# BUG - Dead Civs - end
-	
+# BUG - WHEOOH - start
+												if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
+													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
+													szBuffer = szBuffer + szTempBuffer
+													if (bAlignIcons):
+														scores.setWHEOOH()
+# BUG - WHEOOH - end
+# BUG - Num Cities - start
+												if (PlayerUtil.canSeeCityList(ePlayer, PlayerUtil.getActivePlayerID())):
+													szTempBuffer = u"%d" % gc.getPlayer(ePlayer).getNumCities()
+													szBuffer = szBuffer + " " + szTempBuffer
+													if (bAlignIcons):
+														scores.setNumCities(szTempBuffer)
+# BUG - Num Cities - end
+											
 											if (CyGame().isNetworkMultiPlayer()):
 												szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
 												szBuffer = szBuffer + szTempBuffer

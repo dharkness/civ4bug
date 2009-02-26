@@ -1,8 +1,8 @@
-Changes since BUG 3.6:
+Changes in BUG ?.?:
 
 New Features:
 
--
+- Added number of cities to scoreboard (Q)
 
 Improvements:
 
@@ -24,7 +24,7 @@ Bug Fixes:
 
 
 
-Changes since BUG 3.5.1 to BUG 3.6:
+Changes in BUG 3.6:
 
 New Features:
 

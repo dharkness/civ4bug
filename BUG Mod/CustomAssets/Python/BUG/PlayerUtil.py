@@ -528,3 +528,26 @@ def isGivingFavoriteCivicDenial(playerOrID, askingPlayerOrID):
 				if denial == DenialTypes.DENIAL_FAVORITE_CIVIC:
 					return True
 	return False
+
+
+## Visibility
+
+def canSeeCityList(playerOrID, askingPlayerOrID):
+	"""
+	Returns True if askingPlayerOrID can see the list of playerOrID's cities.
+	
+	In the unmodified game, this is possible if the players have met and playerOrID
+	is not a vassal of another civ.
+	"""
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	if (askingPlayer.getID() == askingPlayer.getID()):
+		BugUtil.debug("canSeeCityList - can see our own cities")
+		return True
+	if (askedPlayer.isBarbarian() or askedPlayer.isMinorCiv() or not askedPlayer.isAlive() or not askingTeam.isHasMet(askedTeam.getID())):
+		BugUtil.debug("canSeeCityList - can't see unmet player cities")
+		return False
+	if (askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID())):
+		BugUtil.debug("canSeeCityList - can't see other rival's vassal's cities")
+		return False
+	return True

@@ -6,6 +6,7 @@ from CvPythonExtensions import *
 import CvUtil
 import PyHelpers
 import BugCore
+import PlayerUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -140,9 +141,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 		if (self.getCheckForForeignCities()):
 			if (iPlayer != iActivePlayer):
-				player = gc.getPlayer(iPlayer)
-				team = gc.getTeam(player.getTeam())
-				if (not player.isBarbarian() and not player.isMinorCiv() and player.isAlive() and team.isHasMet(gc.getPlayer(iActivePlayer).getTeam()) and not team.isAVassal()):
+				if (PlayerUtil.canSeeCityList(iPlayer, iActivePlayer)):
 					#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
 					iColor = gc.getInfoTypeForString("COLOR_MAGENTA")
 					if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
