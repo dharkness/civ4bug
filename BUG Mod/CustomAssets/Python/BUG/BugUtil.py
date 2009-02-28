@@ -4,70 +4,72 @@
 ##
 ## Text Formatting
 ##
-##   - getPlainText(key, default), getText(key, values, default)
-##     Retrieves a translated <TEXT> message from CyTranslator. If the key doesn't
+##   getPlainText(key, default, replaceFontTags)
+##   getText(key, values, default, replaceFontTags)
+##     Retrieves a translated <TEXT> message from CyTranslator. If <key> doesn't
 ##     exist, the default (if given) is returned. If no default is given, an
-##     error message is returned.
+##     error message is returned. If <replaceFontTags> is True (default True),
+##     the message is processed using FontUtil.replaceSymbols().
 ##
-##   - colorText(text, color)
+##   colorText(text, color)
 ##     Accepts both a string (e.g. "COLOR_RED") or integer color.
 ##
-##   - formatFloat(number, decimals)
-##     Returns number formatted as a string with <decimals> number of digits
+##   formatFloat(value, decimals=0)
+##     Returns <value> formatted as a string with <decimals> number of digits
 ##     after the decimal point (default 0).
 ##
 ## Logging
 ##
-##   See "BUG Core.xml" for options. They take effect during initialization.
-##   Until then, the defaults in this module are used.
+##     See "BUG Core.xml" for options. They take effect once it has been processed.
+##     Until then, the defaults in this module are used.
 ##
-##   - alert(message, args...)
+##   alert(message, args...)
 ##     Displays a formatted message on-screen. Use this sparingly as it's lame.
 ##
-##   - debug(message, args...) 
-##     info(message, args...) 
-##     warn(message, args...)
-##     error(message, args...)
+##   debug(message, args...) 
+##   info(message, args...) 
+##   warn(message, args...)
+##   error(message, args...)
 ##     Logs a message with optional arguments (percent substitutions) to the
 ##     screen and/or the debug file depending on the current level cutoffs.
 ##     e.g. BugUtil.warn("TradeUtil - unknown item type %d", trade.ItemType)
 ##
-##   - trace(message, detail?, stack?)
+##   trace(message, detail?, stack?)
 ##     Logs an exception message with optional detail and stacktrace (default on)
 ##
 ## Event Tracing (handleInput)
 ##
-##   - debugInput(inputClass, flags?)
+##   debugInput(inputClass, flags?)
 ##     Logs a DEBUG message detailing the input event.
 ##     If flags is given and True, calls debugInputFlags() as well.
 ##
-##   - debugInputFlags(inputClass)
+##   debugInputFlags(inputClass)
 ##     Logs a DEBUG message detailing the input event's flags, if any.
 ##
 ## Timing Code Execution
 ##
-##   - Timer class
+##   Timer class
 ##     Times single and multiple blocks of code and provides methods for logging
 ##     the individual and total times at DEBUG level.
 ##
 ## Binding and Calling Functions Dynamically
 ##
-##   - getFunction(module, functionOrClass, bind?, args..., kwargs...)
+##   getFunction(module, functionOrClass, bind?, args..., kwargs...)
 ##     Returns a Function object that can be used to dynamically call a function
 ##     or class constructor at a later time with the arguments provided when
 ##     the Function was created.
 ##
-##   - callFunction(module, functionOrClass, args..., kwargs...)
+##   callFunction(module, functionOrClass, args..., kwargs...)
 ##     Returns the result of calling the function bound using getFunction().
 ##
 ## Exception Classes
 ##
-##   - BugError, ConfigError
+##   BugError, ConfigError
 ##     Raise these in BUG Core code rather than generic exceptions.
 ##
-## Civ4 Helpers (move these)
+## Civ4 Helpers (move these to GameUtil)
 ##
-##   - isNoEspionage()
+##   isNoEspionage()
 ##     Returns True if running at least 3.17 and the No Espionage option is set
 ##     for the game in progress.
 ##
@@ -81,6 +83,7 @@ import time
 import traceback
 import types
 import ColorUtil
+import FontUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -88,14 +91,14 @@ interface = CyInterface()
 
 ## Getting translated text from CIV4GameText XML files and general formatting
 
-def getPlainText(key, default=None):
+def getPlainText(key, default=None, replaceFontTags=True):
 	"""
 	Looks up a translated message in XML without any replacement parameters.
 	If the key isn't found, the default is returned.
 	"""
-	return getText(key, (), default)
+	return getText(key, (), default, replaceFontTags)
 
-def getText(key, values=(), default=None):
+def getText(key, values=(), default=None, replaceFontTags=True):
 	"""
 	Looks up a translated message in XML with a tuple of replacement parameters.
 	It is safe to pass in a single value instead of tuple/list.
@@ -103,10 +106,12 @@ def getText(key, values=(), default=None):
 	"""
 	if values is None:
 		values = ()
-	elif not isinstance(values, tuple) and not isinstance(values, list):
+	elif not isinstance(values, (tuple, list)):
 		values = (values,)
 	text = localText.getText(key, values)
 	if (text and text != key):
+		if replaceFontTags:
+			text = FontUtil.replaceSymbols(text)
 		return text
 	else:
 		if default is not None:

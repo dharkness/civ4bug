@@ -18,6 +18,10 @@ New Features:
 
 -
 
+Improvements:
+
+- getText() and getPlainText() from BugUtil both replace [ICON_XXX] in the message
+
 Bug Fixes:
 
 -

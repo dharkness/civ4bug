@@ -1,6 +1,28 @@
 ## FontUtil
 ##
-## Utilities for dealing with FontSymbols.
+## Utilities for dealing with FontSymbols, "XXX_CHAR" keys, and "[ICON_XXX]" tags in XML messages.
+## "init.xml" adds most of the built-in and BUG-related symbol keys by using this module's functions.
+## You can add your own using the <symbol> XML entity.
+##
+## Getting Symbols
+##
+##   getSymbol(symbolOrKey)
+##     Returns a FontSymbols instance matching the given symbol or key.
+##     If passed a FontSymbols instance, it is returned. If a string, it is looked
+##     up in this modules list of known symbols.
+##
+##   getChar(symbolOrKey)
+##     Returns a string containing a single-character for the desired <symbolOrKey>.
+##
+##   getOrdinal(symbolOrKey)
+##     Returns the Unicode ordinal for the desired <symbolOrKey>.
+##
+## Message Processing
+##
+##   replaceSymbols(text, unknownReplacement)
+##     Returns a copy of <text> after replacing all occurrances of "[ICON_XXX]" with
+##     the symbols registered in this module. Any symbol that isn't found is replaced
+##     with <unknownReplacement> (default "").
 ##
 ## Notes
 ##   - Must be initialized externally by calling init()
@@ -12,11 +34,16 @@
 from CvPythonExtensions import *
 import CvUtil
 import BugUtil
+import re
+
+## constants
 
 UNKNOWN_CHAR = "?"
+SYMBOL_REGEXP = re.compile(r"\[ICON_([a-zA-Z0-9_]+)\]")
+
+## globals
 
 gc = CyGlobalContext()
-
 nextSymbolID = int(FontSymbols.MAX_NUM_SYMBOLS)
 
 # key -> symbol (FontSymbols)
@@ -27,6 +54,8 @@ symbolPrimaryKeys = {}
 symbolOrdinals = {}
 # symbol -> character (unicode string)
 symbolChars = {}
+
+## initialization and registration
 
 def init():
 	symbolNames = {}
@@ -53,7 +82,7 @@ def addBuiltinSymbol(key, symbol):
 	registerSymbol(key, symbol, gc.getGame().getSymbolID(symbol))
 
 def addOffsetSymbol(key, symbolOrKey, offset, name=None):
-	return addSymbol(key, getOrdinal(getSymbol(symbolOrKey)) + offset, name)
+	return addSymbol(key, getOrdinal(symbolOrKey) + offset, name)
 
 def addSymbol(key, ordinal, name=None):
 	global nextSymbolID
@@ -93,6 +122,8 @@ def registerSymbolSynonym(key, symbol, synonym):
 		keySymbols[synonym] = symbol
 
 
+## symbol lookup
+
 def getSymbol(symbolOrKey):
 	if isinstance(symbolOrKey, FontSymbols):
 		return symbolOrKey
@@ -115,3 +146,14 @@ def getChar(symbolOrKey):
 		return symbolChars[getSymbol(symbolOrKey)]
 	except KeyError:
 		raise BugUtil.ConfigError("unknown font symbol or key '%s'" % str(symbolOrKey))
+
+
+## message processing
+
+def replaceSymbols(text, unknownReplacement=""):
+	def replace(match):
+		try:
+			return getChar(match.group(1))
+		except BugUtil.ConfigError:
+			return unknownReplacement
+	return SYMBOL_REGEXP.sub(replace, text)
