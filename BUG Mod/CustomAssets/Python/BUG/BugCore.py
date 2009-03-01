@@ -6,6 +6,7 @@
 ##
 ## Author: EmperorFool
 
+import BugConfig
 import BugUtil
 
 MOD_OPTION_SEP = "__"
@@ -101,14 +102,14 @@ class Mod(object):
 		self._options[option.getID()] = option
 	
 	def _hasOption(self, id):
-		return id in self._options
+		return BugConfig.makeOptionId(self._id, id) in self._options
 	
 	def _getOption(self, id):
 		if not self._hasOption(id):
 			if self._inited:
 				BugUtil.error("BugCore - option %s not found", id)
 		else:
-			return self._options[id]  # BugOptions.getOption[self._id + "__" + id]
+			return self._options[BugConfig.makeOptionId(self._id, id)]
 	
 	def _initDone(self):
 		if self._inited:
@@ -123,10 +124,6 @@ class Mod(object):
 			# Try bare option
 			if self._hasOption(id):
 				return self._getOption(id)
-			# Try option with Mod ID prefix
-			fullId = self._id + MOD_OPTION_SEP + id
-			if self._hasOption(fullId):
-				return self._getOption(fullId)
 			# If not yet initialized, return False for getters and setters
 			if not self._inited:
 				if id.startswith("get") or id.startswith("is"):
