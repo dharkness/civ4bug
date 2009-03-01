@@ -266,7 +266,7 @@ def debugInput(inputClass, flags=False):
 		BugUtil.debugInput(inputClass)
 	"""
 	if inputClass.getNotifyCode() in INPUT_CODES:
-		debug("%s - %s #%d, data %d, widget %d %d %d",
+		alert("%s - %s #%d, data %d, widget %d %d %d",
 			INPUT_CODES[inputClass.getNotifyCode()], 
 			inputClass.getFunctionName(),
 			inputClass.getID(), 
@@ -322,7 +322,7 @@ def debugInputFlags(inputClass):
 			if flags & flag:
 				flagList.append(text)
 		if flagList:
-			debug("Flags - %s", ", ".join(flagList))
+			alert("Flags - %s", ", ".join(flagList))
 
 
 ## Timing Code Execution
