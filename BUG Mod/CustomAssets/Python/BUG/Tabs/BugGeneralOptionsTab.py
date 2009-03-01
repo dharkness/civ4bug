@@ -7,7 +7,6 @@
 ## Author: EmperorFool
 
 import BugOptionsTab
-import CvModName
 
 class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG General Options Screen Tab"
