@@ -60,7 +60,7 @@ def StartLogger(vsFileName):
 
 	Logger.setLogFileName(szfileName)
 	Logger.writeLog("")
-	Logger.writeLog("Logging by " + CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
+	Logger.writeLog("Logging by " + CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
 	Logger.writeLog("------------------------------------------------")
 	
 	zcurrturn = gc.getGame().getElapsedGameTurns() + AutologOpt.get4000BCTurn()
