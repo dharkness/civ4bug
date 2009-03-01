@@ -20,7 +20,9 @@ New Features:
 
 Improvements:
 
-- getText() and getPlainText() from BugUtil both replace [ICON_XXX] in the message
+- BugUtil
+	getText() and getPlainText() both replace [ICON_XXX] in the message
+	debugInput() prints to the screen using alert() instead of debug()
 
 Bug Fixes:
 
