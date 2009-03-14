@@ -142,6 +142,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		if (self.getCheckForForeignCities()):
 			if (iPlayer != iActivePlayer):
 				if (PlayerUtil.canSeeCityList(iPlayer, iActivePlayer)):
+					player = gc.getPlayer(iPlayer)
 					#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
 					iColor = gc.getInfoTypeForString("COLOR_MAGENTA")
 					if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):

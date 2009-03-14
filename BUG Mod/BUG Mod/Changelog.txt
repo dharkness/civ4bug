@@ -1,4 +1,4 @@
-Changes in BUG ?.?:
+Changes in SVN:
 
 New Features:
 
@@ -10,7 +10,8 @@ Improvements:
 
 Bug Fixes:
 
--
+- Fixed City Built event
+
 
 FOR MODDERS
 
