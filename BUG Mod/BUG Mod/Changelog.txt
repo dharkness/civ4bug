@@ -3,6 +3,7 @@ Changes in SVN:
 New Features:
 
 - Added number of cities to scoreboard (Q)
+- Included DanF5771's version of the Wonder tab on the info screen
 
 Improvements:
 

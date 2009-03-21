@@ -89,6 +89,13 @@ gc = CyGlobalContext()
 localText = CyTranslator()
 interface = CyInterface()
 
+## Display Year
+def getDisplayYear(vYear):
+	if (vYear < 0):
+		return str(-vYear) + getPlainText("TXT_KEY_AUTOLOG_BC")
+	else:
+		return str(vYear) + getPlainText("TXT_KEY_AUTOLOG_AD")
+
 ## Getting translated text from CIV4GameText XML files and general formatting
 
 def getPlainText(key, default=None, replaceFontTags=True):

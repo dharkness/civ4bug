@@ -29,11 +29,11 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-def iff(b, x, y):
-	if b:
-		return x
-	else:
-		return y
+#def iff(b, x, y):
+#	if b:
+#		return x
+#	else:
+#		return y
 
 class CvInfoScreen:
 	"Info Screen! Contains the Demographics, Wonders / Top Cities and Statistics Screens"
@@ -326,6 +326,11 @@ class CvInfoScreen:
 
 		self.iWonderID = -1			# BuildingType ID of the active wonder, e.g. Palace is 0, Globe Theater is 66
 		self.iActiveWonderCounter = 0		# Screen ID for this wonder (0, 1, 2, etc.) - different from the above variable
+
+		self.X_WONDERS_CHART = self.X_RIGHT_PANE + 20 #DanF
+		self.Y_WONDERS_CHART = self.Y_RIGHT_PANE + 60
+		self.W_WONDERS_CHART = 420
+		self.H_WONDERS_CHART = 540
 
 ############################################### STATISTICS ###############################################
 
@@ -1817,6 +1822,15 @@ class CvInfoScreen:
 
 	def drawWondersTab(self):
 
+		if AdvisorOpt.isShowInfoWonders():
+			self.X_DROPDOWN = self.X_RIGHT_PANE + 20 # the 3 is the 'fudge factor' due to the widgets not lining up perfectly    #DanF 240 + 3
+			self.Y_DROPDOWN = self.Y_RIGHT_PANE + 20
+			self.W_DROPDOWN = 420 #DanF 200
+		else:
+			self.X_DROPDOWN = self.X_RIGHT_PANE + 240 + 3 # the 3 is the 'fudge factor' due to the widgets not lining up perfectly
+			self.Y_DROPDOWN = self.Y_RIGHT_PANE + 20
+			self.W_DROPDOWN = 200
+
 		screen = self.getScreen()
 
 		self.szRightPaneWidget = self.getNextWidgetName()
@@ -1825,7 +1839,11 @@ class CvInfoScreen:
 
 		self.drawWondersDropdownBox()
 		self.calculateWondersList()
-		self.drawWondersList()
+
+		if AdvisorOpt.isShowInfoWonders():
+			self.drawWondersList_BUG()
+		else:
+			self.drawWondersList()
 
 	def drawWondersDropdownBox(self):
 		"Draws the Wonders Dropdown Box"
@@ -2209,10 +2227,10 @@ class CvInfoScreen:
 										self.aaWondersBeingBuilt.append([iBuildingProd, pPlayer.getCivilizationShortDescription(0)])
 
 								if (pCity.getNumBuilding(iBuildingLoop) > 0):
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):								
-										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationShortDescription(0),szCityName])
+									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):
+										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationShortDescription(0),szCityName, iPlayerLoop])
 									else:
-										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,localText.getText("TXT_KEY_UNKNOWN", ()),localText.getText("TXT_KEY_UNKNOWN", ())])
+										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,localText.getText("TXT_KEY_UNKNOWN", ()),localText.getText("TXT_KEY_UNKNOWN", ()), 18])
 	#								print("Adding World wonder to list: %s, %d, %s" %(pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationAdjective(0)))
 									self.iNumWonders += 1
 
@@ -2231,9 +2249,9 @@ class CvInfoScreen:
 
 	#								print("Adding National wonder to list: %s, %d, %s" %(pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationAdjective(0)))
 									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):								
-										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationShortDescription(0), szCityName])
+										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationShortDescription(0), szCityName, iPlayerLoop])
 									else:
-										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,localText.getText("TXT_KEY_UNKNOWN", ()), localText.getText("TXT_KEY_UNKNOWN", ())])
+										self.aaWondersBuilt.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,localText.getText("TXT_KEY_UNKNOWN", ()), localText.getText("TXT_KEY_UNKNOWN", ()), 18])
 									self.iNumWonders += 1
 
 		# This array used to store which players have already used up a team's slot so team projects don't get added to list more than once
@@ -2262,9 +2280,9 @@ class CvInfoScreen:
 							for iI in range(pTeam.getProjectCount(iProjectLoop)):
 
 								if (iTeamLoop == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iTeamLoop)):								
-									self.aaWondersBuilt.append([-9999,iProjectLoop,gc.getPlayer(iPlayerLoop).getCivilizationShortDescription(0),szCityName])
+									self.aaWondersBuilt.append([-9999,iProjectLoop,gc.getPlayer(iPlayerLoop).getCivilizationShortDescription(0),szCityName, iPlayerLoop])
 								else:
-									self.aaWondersBuilt.append([-9999,iProjectLoop,localText.getText("TXT_KEY_UNKNOWN", ()),localText.getText("TXT_KEY_UNKNOWN", ())])
+									self.aaWondersBuilt.append([-9999,iProjectLoop,localText.getText("TXT_KEY_UNKNOWN", ()),localText.getText("TXT_KEY_UNKNOWN", ()), 18])
 								self.iNumWonders += 1
 
 		# Sort wonders in order of date built
@@ -2273,6 +2291,70 @@ class CvInfoScreen:
 
 #		print("List of wonders/projects Built:")
 #		print(self.aaWondersBuilt)
+
+	def drawWondersList_BUG(self):
+
+		screen = self.getScreen()
+		szWondersTable = self.getNextWidgetName()
+		screen.addTableControlGFC(szWondersTable, 4, self.X_WONDERS_CHART, self.Y_WONDERS_CHART, self.W_WONDERS_CHART, self.H_WONDERS_CHART,
+					  True, True, 32,32, TableStyles.TABLE_STYLE_STANDARD)
+		screen.enableSort(szWondersTable)
+
+		sName = BugUtil.getPlainText("TXT_KEY_WONDER_NAME")
+		sDate = BugUtil.getPlainText("TXT_KEY_WONDER_DATE")
+		sOwner = BugUtil.getPlainText("TXT_KEY_WONDER_OWNER")
+		sCity = BugUtil.getPlainText("TXT_KEY_WONDER_CITY")
+
+		screen.setTableColumnHeader(szWondersTable, 0, sName, 140)
+		screen.setTableColumnHeader(szWondersTable, 1, sDate, 70)
+		screen.setTableColumnHeader(szWondersTable, 2, sOwner, 105)
+		screen.setTableColumnHeader(szWondersTable, 3, sCity, 100)
+
+		iWBB = len(self.aaWondersBeingBuilt)
+
+		for iWonderLoop in range(iWBB):
+
+			color = gc.getPlayerColorInfo(gc.getPlayer(self.iActivePlayer).getPlayerColor()).getColorTypePrimary()
+
+			iWonderType = self.aaWondersBeingBuilt[iWonderLoop][0]
+			if (self.szWonderDisplayMode == "Projects"):
+				pWonderInfo = gc.getProjectInfo(iWonderType)
+			else:
+				pWonderInfo = gc.getBuildingInfo(iWonderType)
+			
+			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
+			szTurnYearBuilt = u"<font=2>%c</font>" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
+			szWonderBuiltBy = localText.changeTextColor(self.aaWondersBeingBuilt[iWonderLoop][1], color)
+
+			screen.appendTableRow(szWondersTable)
+			screen.setTableText(szWondersTable, 0, iWonderLoop, szWonderName   , "", WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableInt (szWondersTable, 1, iWonderLoop, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(szWondersTable, 2, iWonderLoop, szWonderBuiltBy, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(szWondersTable, 3, iWonderLoop, ""             , "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		for iWonderLoop in range(self.iNumWonders):
+
+			color = gc.getPlayerColorInfo(gc.getPlayer(self.aaWondersBuilt[iWonderLoop][4]).getPlayerColor()).getColorTypePrimary()
+
+			iWonderType = self.aaWondersBuilt[iWonderLoop][1]
+			if (self.szWonderDisplayMode == "Projects"):
+				pWonderInfo = gc.getProjectInfo(iWonderType)
+				szTurnYearBuilt = ""
+			else:
+				pWonderInfo = gc.getBuildingInfo(iWonderType)
+				iTurnYearBuilt = self.aaWondersBuilt[iWonderLoop][0]
+				szTurnYearBuilt = BugUtil.getDisplayYear(iTurnYearBuilt)
+				szTurnYearBuilt = localText.changeTextColor(szTurnYearBuilt, color)
+
+			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
+			szWonderBuiltBy = localText.changeTextColor(self.aaWondersBuilt[iWonderLoop][2], color)
+			szWonderCity    = localText.changeTextColor(self.aaWondersBuilt[iWonderLoop][3], color)
+
+			screen.appendTableRow(szWondersTable)
+			screen.setTableText(szWondersTable, 0, iWonderLoop+iWBB, szWonderName   , "", WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableInt (szWondersTable, 1, iWonderLoop+iWBB, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(szWondersTable, 2, iWonderLoop+iWBB, szWonderBuiltBy, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(szWondersTable, 3, iWonderLoop+iWBB, szWonderCity   , "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 #############################################################################################################
 ################################################## STATISTICS ###############################################
@@ -2696,10 +2778,12 @@ class CvInfoScreen:
 					self.reset()
 
 					self.calculateWondersList()
-					self.determineListBoxContents()
+					if not AdvisorOpt.isShowInfoWonders():
+						self.determineListBoxContents()
 
 					# Change selected wonder to the one at the top of the new list
-					if (self.iNumWonders > 0):
+					if (self.iNumWonders > 0
+					and not AdvisorOpt.isShowInfoWonders()):
 						self.iWonderID = self.aiWonderListBoxIDs[0]
 
 					self.redrawContents()
@@ -2707,11 +2791,12 @@ class CvInfoScreen:
 				# Wonders ListBox
 				elif (szWidgetName == self.szWondersListBox):
 
-					self.reset()
-					self.iWonderID = self.aiWonderListBoxIDs[iSelected]
-					self.iActiveWonderCounter = iSelected
-					self.deleteAllWidgets(self.iNumWondersPermanentWidgets)
-					self.drawWondersList()
+					if not AdvisorOpt.isShowInfoWonders():
+						self.reset()
+						self.iWonderID = self.aiWonderListBoxIDs[iSelected]
+						self.iActiveWonderCounter = iSelected
+						self.deleteAllWidgets(self.iNumWondersPermanentWidgets)
+						self.drawWondersList()
 #					self.redrawContents()
 
 ################################## GRAPH TAB ###################################

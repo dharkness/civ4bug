@@ -3661,6 +3661,22 @@
 		<Spanish>When checked, displays graphs in BUG format.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERS_TEXT</Tag>
+		<English>Wonders tab</English>
+		<French>Wonders tab</French>
+		<German>Wonders tab</German>
+		<Italian>Wonders tab</Italian>
+		<Spanish>Wonders tab</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERS_HOVER</Tag>
+		<English>When checked, displays the BUG version of the Wonders tab.</English>
+		<French>When checked, displays the BUG version of the Wonders tab.</French>
+		<German>When checked, displays the BUG version of the Wonders tab.</German>
+		<Italian>When checked, displays the BUG version of the Wonders tab.</Italian>
+		<Spanish>When checked, displays the BUG version of the Wonders tab.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGSTATSTAB_TEXT</Tag>
 		<English>Stats tab</English>
 		<French>Stats tab</French>

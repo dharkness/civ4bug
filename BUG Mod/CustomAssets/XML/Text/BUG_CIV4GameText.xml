@@ -985,6 +985,41 @@
 		<Spanish>Zoom in and out by clicking on the body of the chart</Spanish>
 	</TEXT>
 
+	<!-- Wonders Screen -->
+
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_NAME</Tag>
+		<English>Name</English>
+		<French>Name</French>
+		<German>Name</German>
+		<Italian>Name</Italian>
+		<Spanish>Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_DATE</Tag>
+		<English>Date</English>
+		<French>Date</French>
+		<German>Date</German>
+		<Italian>Date</Italian>
+		<Spanish>Date</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_OWNER</Tag>
+		<English>Owner</English>
+		<French>Owner</French>
+		<German>Owner</German>
+		<Italian>Owner</Italian>
+		<Spanish>Owner</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_CITY</Tag>
+		<English>City</English>
+		<French>City</French>
+		<German>City</German>
+		<Italian>City</Italian>
+		<Spanish>City</Spanish>
+	</TEXT>
+
 	<!-- Victory Screen -->
 	
 	<TEXT>

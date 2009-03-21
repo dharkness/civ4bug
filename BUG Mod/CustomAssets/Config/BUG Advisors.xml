@@ -88,6 +88,9 @@
 			<option id="BugStatsTab" key="Improvements" 
 					type="boolean" default="True" 
 					get="isShowImprovements"/>
+			<option id="BugInfoWonders" key="Wonders" 
+					type="boolean" default="True" 
+					get="isShowInfoWonders"/>
 
 			<!-- Sevopedia (F12) by Sevo -->
 			<option id="Sevopedia" key="Sevopedia" 
