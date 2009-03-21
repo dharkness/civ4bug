@@ -3664,7 +3664,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERS_TEXT</Tag>
 		<English>Wonders tab</English>
 		<French>Wonders tab</French>
-		<German>Wonders tab</German>
+		<German>BUG Wunder</German>
 		<Italian>Wonders tab</Italian>
 		<Spanish>Wonders tab</Spanish>
 	</TEXT>
@@ -3672,7 +3672,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERS_HOVER</Tag>
 		<English>When checked, displays the BUG version of the Wonders tab.</English>
 		<French>When checked, displays the BUG version of the Wonders tab.</French>
-		<German>When checked, displays the BUG version of the Wonders tab.</German>
+		<German>Zeigt die entsprechende Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an</German>
 		<Italian>When checked, displays the BUG version of the Wonders tab.</Italian>
 		<Spanish>When checked, displays the BUG version of the Wonders tab.</Spanish>
 	</TEXT>

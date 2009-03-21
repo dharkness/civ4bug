@@ -999,7 +999,7 @@
 		<Tag>TXT_KEY_WONDER_DATE</Tag>
 		<English>Date</English>
 		<French>Date</French>
-		<German>Date</German>
+		<German>Errichtet</German>
 		<Italian>Date</Italian>
 		<Spanish>Date</Spanish>
 	</TEXT>
@@ -1007,7 +1007,7 @@
 		<Tag>TXT_KEY_WONDER_OWNER</Tag>
 		<English>Owner</English>
 		<French>Owner</French>
-		<German>Owner</German>
+		<German>Besitzer</German>
 		<Italian>Owner</Italian>
 		<Spanish>Owner</Spanish>
 	</TEXT>
@@ -1015,7 +1015,7 @@
 		<Tag>TXT_KEY_WONDER_CITY</Tag>
 		<English>City</English>
 		<French>City</French>
-		<German>City</German>
+		<German>Stadt</German>
 		<Italian>City</Italian>
 		<Spanish>City</Spanish>
 	</TEXT>
