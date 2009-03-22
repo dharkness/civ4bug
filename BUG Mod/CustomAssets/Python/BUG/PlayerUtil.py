@@ -541,7 +541,7 @@ def canSeeCityList(playerOrID, askingPlayerOrID):
 	"""
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
-	if (askingPlayer.getID() == askingPlayer.getID()):
+	if (askingPlayer.getID() == askedPlayer.getID()):
 		BugUtil.debug("canSeeCityList - can see our own cities")
 		return True
 	if (askedPlayer.isBarbarian() or askedPlayer.isMinorCiv() or not askedPlayer.isAlive() or not askingTeam.isHasMet(askedTeam.getID())):
