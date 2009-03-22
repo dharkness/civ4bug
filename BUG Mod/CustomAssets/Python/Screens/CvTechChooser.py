@@ -1059,8 +1059,8 @@ class CvTechChooser:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
-		BugUtil.debug("cvTechChooser: handleInput")
-		BugUtil.debugInput(inputClass)
+		#BugUtil.debug("cvTechChooser: handleInput")
+		#BugUtil.debugInput(inputClass)
 
 		# Get the screen
 		screen = self.getScreen()
