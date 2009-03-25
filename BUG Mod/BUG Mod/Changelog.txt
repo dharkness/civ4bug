@@ -4,6 +4,9 @@ New Features:
 
 - Added number of cities to scoreboard (Q)
 - Included DanF5771's version of the Wonder tab on the info screen
+- Constructed Wonders / Nat Wonders / Projects now shown for all Civs (if civ is known)
+- Wonders / Nat Wonders / Projects under construction now shown for all Civs (if enough EPs against Civ)
+
 
 Improvements:
 
