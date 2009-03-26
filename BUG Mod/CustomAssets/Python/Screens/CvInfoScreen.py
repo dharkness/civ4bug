@@ -2424,6 +2424,8 @@ class CvInfoScreen:
 
 	def drawWondersList_BUG(self):
 
+		self.szWondersListBox = self.getNextWidgetName()
+
 		screen = self.getScreen()
 		szWondersTable = self.getNextWidgetName()
 		screen.addTableControlGFC(szWondersTable, 4, self.X_WONDERS_CHART, self.Y_WONDERS_CHART, self.W_WONDERS_CHART, self.H_WONDERS_CHART,
