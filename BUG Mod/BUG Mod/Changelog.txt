@@ -7,10 +7,10 @@ New Features:
 - Constructed Wonders / Nat Wonders / Projects now shown for all Civs (if civ is known)
 - Wonders / Nat Wonders / Projects under construction now shown for all Civs (if enough EPs against Civ)
 
-
 Improvements:
 
 - Graphs (both BUG and Vanilla) now include a 'log scale' option
+- Logger now reports the amount of gold from pillages
 
 Bug Fixes:
 
