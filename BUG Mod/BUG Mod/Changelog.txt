@@ -15,6 +15,7 @@ Improvements:
 Bug Fixes:
 
 - Fixed City Built event
+- Changed Scoreboard items (WHEOOH, Number of Cities) so that they are optional
 
 
 FOR MODDERS

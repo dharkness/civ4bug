@@ -2222,6 +2222,22 @@
 		<Spanish>When checked, shows an orange fist icon when the AI is mobilizing for war (We Have Enough on Our Hands).</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__CITIES_TEXT</Tag>
+		<English>Number of Cities</English>
+		<French>Number of Cities</French>
+		<German>Number of Cities</German>
+		<Italian>Number of Cities</Italian>
+		<Spanish>Number of Cities</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_SCORES__CITIES_HOVER</Tag>
+		<English>When checked, shows a count of the number of cities for each leader.</English>
+		<French>When checked, shows a count of the number of cities for each leader.</French>
+		<German>When checked, shows a count of the number of cities for each leader.</German>
+		<Italian>When checked, shows a count of the number of cities for each leader.</Italian>
+		<Spanish>When checked, shows a count of the number of cities for each leader.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__ALIGNICONS_TEXT</Tag>
 		<English>Enabled</English>
 		<French>Activé</French>

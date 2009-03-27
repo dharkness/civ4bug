@@ -58,6 +58,9 @@
 			<option id="WHEOOH" key="WHEOOH" 
 					type="boolean" default="True" 
 					get="isShowWHEOOH" set="setShowWHEOOH" dirtyBit="Score"/>
+			<option id="Cities" key="Number of Cities" 
+					type="boolean" default="True" 
+					get="isShowCountCities" set="setShowCountCities" dirtyBit="Score"/>
 			
 			<!-- Advanced Layout -->
 			<option id="AlignIcons" key="Align Icons" 

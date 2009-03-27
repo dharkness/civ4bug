@@ -6581,18 +6581,20 @@ class CvMainInterface:
 																scores.setWorstEnemy()
 # BUG - Worst Enemy - end
 # BUG - WHEOOH - start
-												if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
-													szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
-													szBuffer = szBuffer + szTempBuffer
-													if (bAlignIcons):
-														scores.setWHEOOH()
+												if (ScoreOpt.isShowWHEOOH()):
+													if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setWHEOOH()
 # BUG - WHEOOH - end
 # BUG - Num Cities - start
-												if (PlayerUtil.canSeeCityList(ePlayer, PlayerUtil.getActivePlayerID())):
-													szTempBuffer = u"%d" % gc.getPlayer(ePlayer).getNumCities()
-													szBuffer = szBuffer + " " + szTempBuffer
-													if (bAlignIcons):
-														scores.setNumCities(szTempBuffer)
+												if (ScoreOpt.isShowCountCities()):
+													if (PlayerUtil.canSeeCityList(ePlayer, PlayerUtil.getActivePlayerID())):
+														szTempBuffer = u"%d" % gc.getPlayer(ePlayer).getNumCities()
+														szBuffer = szBuffer + " " + szTempBuffer
+														if (bAlignIcons):
+															scores.setNumCities(szTempBuffer)
 # BUG - Num Cities - end
 											
 											if (CyGame().isNetworkMultiPlayer()):
