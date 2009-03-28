@@ -780,7 +780,7 @@
         <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD</Tag>
         <English>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</English>
         <French>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</French>
-        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective][NUM4:en:en:en:en:en:en] %s2:3:UnitName zerstört (%s3 gold)</German>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört (%s3 Gold)</German>
         <Italian>[SPACE]è stato distrutto da %s2 %s1 (%s3 gold)</Italian>
         <Spanish>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</Spanish>
     </TEXT> 
@@ -788,7 +788,7 @@
         <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD</Tag>
         <English>[SPACE]was destroyed by %s1 %s2</English>
         <French>[SPACE]was destroyed by %s1 %s2</French>
-        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective][NUM4:en:en:en:en:en:en] %s2:3:UnitName zerstört</German>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört</German>
         <Italian>[SPACE]è stato distrutto da %s2 %s1</Italian>
         <Spanish>[SPACE]was destroyed by %s1 %s2</Spanish>
     </TEXT> 
