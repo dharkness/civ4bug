@@ -3613,6 +3613,22 @@
 		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires restart).</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGRELIGIOUSTAB_TEXT</Tag>
+		<English>Religious tab</English>
+		<French>Religious tab</French>
+		<German>Religious tab</German>
+		<Italian>Religious tab</Italian>
+		<Spanish>Religious tab</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGRELIGIOUSTAB_HOVER</Tag>
+		<English>When checked, displays extra information on the Religious tab.</English>
+		<French>When checked, displays extra information on the Religious tab.</French>
+		<German>When checked, displays extra information on the Religious tab.</German>
+		<Italian>When checked, displays extra information on the Religious tab.</Italian>
+		<Spanish>When checked, displays extra information on the Religious tab.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_TEXT</Tag>
 		<English>Victories tab</English>
 		<French>Victories tab</French>
@@ -4072,6 +4088,14 @@
 		<German>Technologiebaum [F6]:</German>
 		<Italian>Tecnologico [F6]:</Italian>
 		<Spanish>Technology [F6]:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_RELIGIOUS</Tag>
+		<English>Religious [F7]:</English>
+		<French>Religious [F7]:</French>
+		<German>Religious [F7]:</German>
+		<Italian>Religious [F7]:</Italian>
+		<Spanish>Religious [F7]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_VICTORY_CONDITIONS</Tag>

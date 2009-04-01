@@ -8,6 +8,7 @@ New Features:
 - Wonders / Nat Wonders / Projects under construction now shown for all Civs (if enough EPs against Civ)
 - Wonders / Nat Wonders / Projects includes 'zoom to city' button
 - info screen remembers the tab you were last looking at instead of defaulting to 'charts'
+- Added BUG Religious Advisor (F7) screen
 
 Improvements:
 

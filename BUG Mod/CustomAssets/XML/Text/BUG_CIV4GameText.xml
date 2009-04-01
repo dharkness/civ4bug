@@ -86,6 +86,22 @@
 		<Italian>Nessuna descrizione fornita.</Italian>
 		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_BUILDING_TEMPLE</Tag>
+		<English>Temples:</English>
+		<French>Temples:</French>
+		<German>Temples:</German>
+		<Italian>Temples:</Italian>
+		<Spanish>Temples:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_BUILDING_MONASTARY</Tag>
+		<English>Monastaries:</English>
+		<French>Monastaries:</French>
+		<German>Monastaries:</German>
+		<Italian>Monastaries:</Italian>
+		<Spanish>Monastaries:</Spanish>
+	</TEXT>
 	
 	<!-- Gold Rate Warning -->
 	

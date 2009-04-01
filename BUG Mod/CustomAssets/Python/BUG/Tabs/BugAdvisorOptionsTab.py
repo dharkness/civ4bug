@@ -43,6 +43,9 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
 		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
 
+		self.addLabel(screen, center, "Religious_Advisor", "Religious [F7]:")
+		self.addCheckbox(screen, center, "Advisors__BugReligiousTab")
+
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
 		self.addCheckbox(screen, center, "Advisors__BugMembersTab")

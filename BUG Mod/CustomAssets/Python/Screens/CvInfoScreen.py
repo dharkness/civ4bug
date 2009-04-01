@@ -2959,10 +2959,11 @@ class CvInfoScreen:
 
 				# BUG Wonders table
 				elif (szWidgetName == self.szWondersTable):
-					screen.hideScreen()
-					pPlayer = gc.getPlayer(inputClass.getData1())
-					pCity = pPlayer.getCity(inputClass.getData2())
-					CyCamera().JustLookAtPlot(pCity.plot())
+					if (inputClass.getMouseX() == 0):
+						screen.hideScreen()
+						pPlayer = gc.getPlayer(inputClass.getData1())
+						pCity = pPlayer.getCity(inputClass.getData2())
+						CyCamera().JustLookAtPlot(pCity.plot())
 
 
 

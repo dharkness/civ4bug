@@ -70,6 +70,11 @@
 					type="boolean" default="True" 
 					get="isWideTechScreen"/>
 	
+			<!-- BUG Religious (F7) by Ruff_Hi -->
+			<option id="BugReligiousTab" key="Religious" 
+					type="boolean" default="True" 
+					get="isReligious"/>
+
 			<!-- BUG Victories (F8) by Ruff_Hi -->
 			<option id="BugVictoriesTab" key="Victories" 
 					type="boolean" default="True" 
