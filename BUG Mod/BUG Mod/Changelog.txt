@@ -6,6 +6,8 @@ New Features:
 - Included DanF5771's version of the Wonder tab on the info screen
 - Constructed Wonders / Nat Wonders / Projects now shown for all Civs (if civ is known)
 - Wonders / Nat Wonders / Projects under construction now shown for all Civs (if enough EPs against Civ)
+- Wonders / Nat Wonders / Projects includes 'zoom to city' button
+- info screen remembers the tab you were last looking at instead of defaulting to 'charts'
 
 Improvements:
 
