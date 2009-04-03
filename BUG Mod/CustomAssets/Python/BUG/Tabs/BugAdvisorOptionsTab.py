@@ -39,11 +39,13 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
-		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
-		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
-		self.addCheckbox(screen, center, "Advisors__WideTechScreen")
+		self.addLabel(screen, left, "Technology_Advisor", "Technology [F6]:")
+		comboBox = "Advisors_ComboBoxTech"
+		screen.attachHBox(left, comboBox)
+		self.addCheckbox(screen, comboBox, "Advisors__GPTechPrefs")
+		self.addCheckbox(screen, comboBox, "Advisors__WideTechScreen")
 
-		self.addLabel(screen, center, "Religious_Advisor", "Religious [F7]:")
+		self.addLabel(screen, center, "Religious_Advisor", "Religion [F7]:")
 		self.addCheckbox(screen, center, "Advisors__BugReligiousTab")
 
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")

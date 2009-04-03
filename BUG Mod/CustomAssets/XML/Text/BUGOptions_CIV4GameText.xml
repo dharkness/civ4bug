@@ -3582,11 +3582,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__GPTECHPREFS_TEXT</Tag>
-		<English>Great Person Research</English>
-		<French>Recherche des Personnages Illustres</French>
+		<English>GP Research</English>
+		<French>Recherche des PI</French>
 		<German>GP-Technologien</German>
 		<Italian>Ricerche dei GP</Italian>
-		<Spanish>Great Person Research</Spanish>
+		<Spanish>GP Research</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__GPTECHPREFS_HOVER</Tag>
@@ -3598,11 +3598,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__WIDETECHSCREEN_TEXT</Tag>
-		<English>Wide Tech Screen</English>
-		<French>Ecran de Technologie Large</French>
+		<English>Widescreen</English>
+		<French>Ecran Large</French>
 		<German>Breitbild</German>
 		<Italian>Schermo ampio</Italian>
-		<Spanish>Wide Tech Screen</Spanish>
+		<Spanish>Widescreen</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__WIDETECHSCREEN_HOVER</Tag>
@@ -3614,17 +3614,17 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGRELIGIOUSTAB_TEXT</Tag>
-		<English>Religious tab</English>
-		<French>Religious tab</French>
-		<German>Religious tab</German>
-		<Italian>Religious tab</Italian>
-		<Spanish>Religious tab</Spanish>
+		<English>BUG Religion Advisor</English>
+		<French>BUG Religion Advisor</French>
+		<German>BUG Religionsberater</German>
+		<Italian>BUG Religion Advisor</Italian>
+		<Spanish>BUG Religion Advisor</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGRELIGIOUSTAB_HOVER</Tag>
 		<English>When checked, displays extra information on the Religious tab.</English>
 		<French>When checked, displays extra information on the Religious tab.</French>
-		<German>When checked, displays extra information on the Religious tab.</German>
+		<German>Zeigt zusätzliche Informationen auf der entsprechenden Seite des Religionsberaters an</German>
 		<Italian>When checked, displays extra information on the Religious tab.</Italian>
 		<Spanish>When checked, displays extra information on the Religious tab.</Spanish>
 	</TEXT>
@@ -4090,12 +4090,12 @@
 		<Spanish>Technology [F6]:</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_RELIGIOUS</Tag>
-		<English>Religious [F7]:</English>
-		<French>Religious [F7]:</French>
-		<German>Religious [F7]:</German>
-		<Italian>Religious [F7]:</Italian>
-		<Spanish>Religious [F7]:</Spanish>
+		<Tag>TXT_KEY_BUG_OPTLABEL_RELIGIOUS_ADVISOR</Tag>
+		<English>Religion [F7]:</English>
+		<French>Religion [F7]:</French>
+		<German>Religion [F7]:</German>
+		<Italian>Religion [F7]:</Italian>
+		<Spanish>Religion [F7]:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_VICTORY_CONDITIONS</Tag>

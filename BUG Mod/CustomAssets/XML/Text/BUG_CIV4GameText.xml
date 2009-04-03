@@ -90,7 +90,7 @@
 		<Tag>TXT_KEY_BUG_RELIGIOUS_CITY</Tag>
 		<English>Cities</English>
 		<French>Cities</French>
-		<German>Cities</German>
+		<German>Städte</German>
 		<Italian>Cities</Italian>
 		<Spanish>Cities</Spanish>
 	</TEXT>
@@ -98,7 +98,7 @@
 		<Tag>TXT_KEY_BUG_RELIGIOUS_TEMPLE</Tag>
 		<English>Temples:</English>
 		<French>Temples:</French>
-		<German>Temples:</German>
+		<German>Tempel:</German>
 		<Italian>Temples:</Italian>
 		<Spanish>Temples:</Spanish>
 	</TEXT>
@@ -106,7 +106,7 @@
 		<Tag>TXT_KEY_BUG_RELIGIOUS_MONASTARY</Tag>
 		<English>Monastaries:</English>
 		<French>Monastaries:</French>
-		<German>Monastaries:</German>
+		<German>Klöster:</German>
 		<Italian>Monastaries:</Italian>
 		<Spanish>Monastaries:</Spanish>
 	</TEXT>
@@ -114,7 +114,7 @@
 		<Tag>TXT_KEY_BUG_RELIGIOUS_MISSIONARY</Tag>
 		<English>Missionaries:</English>
 		<French>Missionaries:</French>
-		<German>Missionaries:</German>
+		<German>Missionare:</German>
 		<Italian>Missionaries:</Italian>
 		<Spanish>Missionaries:</Spanish>
 	</TEXT>
