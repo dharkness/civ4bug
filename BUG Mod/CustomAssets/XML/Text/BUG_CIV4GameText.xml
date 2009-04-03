@@ -87,7 +87,15 @@
 		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_BUILDING_TEMPLE</Tag>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_CITY</Tag>
+		<English>Cities</English>
+		<French>Cities</French>
+		<German>Cities</German>
+		<Italian>Cities</Italian>
+		<Spanish>Cities</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_TEMPLE</Tag>
 		<English>Temples:</English>
 		<French>Temples:</French>
 		<German>Temples:</German>
@@ -95,12 +103,20 @@
 		<Spanish>Temples:</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_BUILDING_MONASTARY</Tag>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_MONASTARY</Tag>
 		<English>Monastaries:</English>
 		<French>Monastaries:</French>
 		<German>Monastaries:</German>
 		<Italian>Monastaries:</Italian>
 		<Spanish>Monastaries:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_MISSIONARY</Tag>
+		<English>Missionaries:</English>
+		<French>Missionaries:</French>
+		<German>Missionaries:</German>
+		<Italian>Missionaries:</Italian>
+		<Spanish>Missionaries:</Spanish>
 	</TEXT>
 	
 	<!-- Gold Rate Warning -->
