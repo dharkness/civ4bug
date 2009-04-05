@@ -317,7 +317,15 @@ class CvInfoScreen:
 		self.W_SPECIAL_PANE = 420
 		self.H_SPECIAL_PANE = 140 - 15
 
-		self.szWonderDisplayMode = "World Wonders"
+		self.szWDM_WorldWonder = "World Wonders"
+		self.szWDM_NatnlWonder = "National Wonders"
+		self.szWDM_Project = "Projects"
+
+		self.BUGWorldWonderWidget = self.szWDM_WorldWonder + "Widget"
+		self.BUGNatWonderWidget = self.szWDM_NatnlWonder + "Widget"
+		self.BUGProjectWidget = self.szWDM_Project + "Widget"
+
+		self.szWonderDisplayMode = self.szWDM_WorldWonder
 
 		self.iWonderID = -1			# BuildingType ID of the active wonder, e.g. Palace is 0, Globe Theater is 66
 		self.iActiveWonderCounter = 0		# Screen ID for this wonder (0, 1, 2, etc.) - different from the above variable
@@ -478,6 +486,14 @@ class CvInfoScreen:
 		self.BUG_LEGEND_DEAD = localText.getText("TXT_KEY_BUG_DEAD_CIV", ())
 #BUG: Change Graphs - end
 
+		# world wonder / national wonder / projects icons / buttons
+		self.BUGWorldWonder_On = ArtFileMgr.getInterfaceArtInfo("BUG_WORLDWONDER_ON").getPath()
+		self.BUGWorldWonder_Off = ArtFileMgr.getInterfaceArtInfo("BUG_WORLDWONDER_OFF").getPath()
+		self.BUGNatWonder_On = ArtFileMgr.getInterfaceArtInfo("BUG_NATWONDER_ON").getPath()
+		self.BUGNatWonder_Off = ArtFileMgr.getInterfaceArtInfo("BUG_NATWONDER_OFF").getPath()
+		self.BUGProject_On = ArtFileMgr.getInterfaceArtInfo("BUG_PROJECT_ON").getPath()
+		self.BUGProject_Off = ArtFileMgr.getInterfaceArtInfo("BUG_PROJECT_OFF").getPath()
+
 	def reset(self):
 
 		# City Members
@@ -499,7 +515,7 @@ class CvInfoScreen:
 
 	def resetWonders(self):
 
-		self.szWonderDisplayMode = "World Wonders"
+		self.szWonderDisplayMode = self.szWDM_WorldWonder
 
 		self.iWonderID = -1			# BuildingType ID of the active wonder, e.g. Palace is 0, Globe Theater is 66
 		self.iActiveWonderCounter = 0		# Screen ID for this wonder (0, 1, 2, etc.) - different from the above variable
@@ -1851,30 +1867,53 @@ class CvInfoScreen:
 
 		screen = self.getScreen()
 
-		######################### Dropdown Box Widget #########################################
-
 		self.szWondersDropdownWidget = self.getNextWidgetName()
 
-		screen.addDropDownBoxGFC(self.szWondersDropdownWidget,
-			self.X_DROPDOWN, self.Y_DROPDOWN, self.W_DROPDOWN, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		if AdvisorOpt.isShowInfoWonders():
+			if self.szWonderDisplayMode == self.szWDM_WorldWonder:
+				sWW = self.BUGWorldWonder_On
+				sNW = self.BUGNatWonder_Off
+				sPj = self.BUGProject_Off
+				sDesc = localText.getText("TXT_KEY_TOP_CITIES_SCREEN_WORLD_WONDERS", ())
+			elif self.szWonderDisplayMode == self.szWDM_NatnlWonder:
+				sWW = self.BUGWorldWonder_Off
+				sNW = self.BUGNatWonder_On
+				sPj = self.BUGProject_Off
+				sDesc = localText.getText("TXT_KEY_TOP_CITIES_SCREEN_NATIONAL_WONDERS", ())
+			else:
+				sWW = self.BUGWorldWonder_Off
+				sNW = self.BUGNatWonder_Off
+				sPj = self.BUGProject_On
+				sDesc = localText.getText("TXT_KEY_PEDIA_CATEGORY_PROJECT", ())
 
-		if (self.szWonderDisplayMode == "World Wonders"):
-			bDefault = true
-		else:
-			bDefault = false
-		screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_TOP_CITIES_SCREEN_WORLD_WONDERS", ()), 0, 0, bDefault )
+			sDesc = u"<font=4>" + sDesc + u"</font>"
 
-		if (self.szWonderDisplayMode == "National Wonders"):
-			bDefault = true
-		else:
-			bDefault = false
-		screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_TOP_CITIES_SCREEN_NATIONAL_WONDERS", ()), 1, 1, bDefault )
+			screen.setImageButton(self.BUGWorldWonderWidget, sWW,  self.X_DROPDOWN +  0, self.Y_DROPDOWN, 24, 24, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.setImageButton(self.BUGNatWonderWidget, sNW,  self.X_DROPDOWN + 30, self.Y_DROPDOWN, 24, 24, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			screen.setImageButton(self.BUGProjectWidget, sPj,  self.X_DROPDOWN + 60, self.Y_DROPDOWN, 24, 24, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-		if (self.szWonderDisplayMode == "Projects"):
-			bDefault = true
+			screen.setLabel(self.getNextWidgetName(), "Background", sDesc, CvUtil.FONT_LEFT_JUSTIFY, self.X_DROPDOWN + 100, self.Y_DROPDOWN + 3, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		else:
-			bDefault = false
-		screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_PEDIA_CATEGORY_PROJECT", ()), 2, 2, bDefault )
+			screen.addDropDownBoxGFC(self.szWondersDropdownWidget,
+				self.X_DROPDOWN, self.Y_DROPDOWN, self.W_DROPDOWN, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+
+			if (self.szWonderDisplayMode == self.szWDM_WorldWonder):
+				bDefault = true
+			else:
+				bDefault = false
+			screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_TOP_CITIES_SCREEN_WORLD_WONDERS", ()), 0, 0, bDefault )
+
+			if (self.szWonderDisplayMode == self.szWDM_NatnlWonder):
+				bDefault = true
+			else:
+				bDefault = false
+			screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_TOP_CITIES_SCREEN_NATIONAL_WONDERS", ()), 1, 1, bDefault )
+
+			if (self.szWonderDisplayMode == self.szWDM_Project):
+				bDefault = true
+			else:
+				bDefault = false
+			screen.addPullDownString(self.szWondersDropdownWidget, localText.getText("TXT_KEY_PEDIA_CATEGORY_PROJECT", ()), 2, 2, bDefault )
 
 		return
 
@@ -1892,7 +1931,7 @@ class CvInfoScreen:
 		self.aiWonderBuiltBy = []
 		self.aszWonderCity = []
 
-		if (self.szWonderDisplayMode == "Projects"):
+		if (self.szWonderDisplayMode == self.szWDM_Project):
 
 	############### Create ListBox for Projects ###############
 
@@ -1994,7 +2033,7 @@ class CvInfoScreen:
 
 ############################################### DISPLAY PROJECT MODE ###############################################
 
-			if (self.szWonderDisplayMode == "Projects"):
+			if (self.szWonderDisplayMode == self.szWDM_Project):
 
 				pProjectInfo = gc.getProjectInfo(self.iWonderID)
 
@@ -2181,7 +2220,7 @@ class CvInfoScreen:
 			iPlayerTeam = pPlayer.getTeam()
 
 			# No barbs and only display national wonders for the active player's team
-			if (pPlayer and not pPlayer.isBarbarian() and ((self.szWonderDisplayMode != "National Wonders") or (iPlayerTeam == gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).getID()))):
+			if (pPlayer and not pPlayer.isBarbarian() and ((self.szWonderDisplayMode != self.szWDM_NatnlWonder) or (iPlayerTeam == gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).getID()))):
 
 				# Loop through this player's cities and determine if they have any wonders to display
 				apCityList = PyPlayer(iPlayerLoop).getCityList()
@@ -2195,7 +2234,7 @@ class CvInfoScreen:
 						szCityName = pCity.getName()
 
 					# Loop through projects to find any under construction
-					if (self.szWonderDisplayMode == "Projects"):
+					if (self.szWonderDisplayMode == self.szWDM_Project):
 						for iProjectLoop in range(gc.getNumProjectInfos()):
 
 							iProjectProd = pCity.getProductionProject()
@@ -2219,7 +2258,7 @@ class CvInfoScreen:
 							pBuilding = gc.getBuildingInfo(iBuildingLoop)
 
 							# World Wonder Mode
-							if (self.szWonderDisplayMode == "World Wonders" and isWorldWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType())):
+							if (self.szWonderDisplayMode == self.szWDM_WorldWonder and isWorldWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType())):
 
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
@@ -2238,7 +2277,7 @@ class CvInfoScreen:
 									self.iNumWonders += 1
 
 							# National/Team Wonder Mode
-							elif (self.szWonderDisplayMode == "National Wonders" and (isNationalWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()) or isTeamWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()))):
+							elif (self.szWonderDisplayMode == self.szWDM_NatnlWonder and (isNationalWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()) or isTeamWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()))):
 
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
@@ -2261,7 +2300,7 @@ class CvInfoScreen:
 		aiTeamsUsed = []
 
 		# Project Mode
-		if (self.szWonderDisplayMode == "Projects"):
+		if (self.szWonderDisplayMode == self.szWDM_Project):
 
 			# Loop through players to determine Projects
 			for iPlayerLoop in range(gc.getMAX_PLAYERS()):
@@ -2318,7 +2357,7 @@ class CvInfoScreen:
 					pCityPlot = CyMap().plot(pCity.getX(), pCity.getY())
 
 					# Loop through projects to find any under construction
-					if (self.szWonderDisplayMode == "Projects"):
+					if (self.szWonderDisplayMode == self.szWDM_Project):
 						for iProjectLoop in range(gc.getNumProjectInfos()):
 
 							iProjectProd = pCity.getProductionProject()
@@ -2345,7 +2384,7 @@ class CvInfoScreen:
 #							pBuilding = gc.getBuildingInfo(iBuildingLoop)
 
 							# World Wonder Mode
-							if (self.szWonderDisplayMode == "World Wonders" and isWorldWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType())):
+							if (self.szWonderDisplayMode == self.szWDM_WorldWonder and isWorldWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType())):
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
 									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam()):
@@ -2364,7 +2403,7 @@ class CvInfoScreen:
 									self.iNumWonders += 1
 
 							# National/Team Wonder Mode
-							elif (self.szWonderDisplayMode == "National Wonders" and (isNationalWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()) or isTeamWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()))):
+							elif (self.szWonderDisplayMode == self.szWDM_NatnlWonder and (isNationalWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()) or isTeamWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType()))):
 
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
@@ -2388,7 +2427,7 @@ class CvInfoScreen:
 		aiTeamsUsed = []
 
 		# Project Mode
-		if (self.szWonderDisplayMode == "Projects"):
+		if (self.szWonderDisplayMode == self.szWDM_Project):
 
 			# Loop through players to determine Projects
 			for iPlayerLoop in range(gc.getMAX_PLAYERS()):
@@ -2457,7 +2496,7 @@ class CvInfoScreen:
 
 			color = gc.getPlayerColorInfo(gc.getPlayer(iPlayer).getPlayerColor()).getColorTypePrimary()
 
-			if (self.szWonderDisplayMode == "Projects"):
+			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
@@ -2490,7 +2529,7 @@ class CvInfoScreen:
 
 			color = gc.getPlayerColorInfo(gc.getPlayer(iPlayer).getPlayerColor()).getColorTypePrimary()
 
-			if (self.szWonderDisplayMode == "Projects"):
+			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
@@ -2867,6 +2906,7 @@ class CvInfoScreen:
 
 		screen = self.getScreen()
 
+		szShortWidgetName = inputClass.getFunctionName()
 		szWidgetName = inputClass.getFunctionName() + str(inputClass.getID())
 		code = inputClass.getNotifyCode()
 
@@ -2885,6 +2925,8 @@ class CvInfoScreen:
 		elif (szWidgetName == self.graphRightButtonID and code == NotifyCode.NOTIFY_CLICKED):
 			self.slideGraph(2 * self.graphZoom / 5)
 			self.drawGraphs()
+
+		BugUtil.debug("A:" + szShortWidgetName)
 
 		# Dropdown Box/ ListBox
 		if (code == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
@@ -2913,40 +2955,12 @@ class CvInfoScreen:
 			if (self.iActiveTab == self.iTopCitiesID):
 
 				# Wonder type dropdown box
-				if (szWidgetName == self.szWondersDropdownWidget):
+				if (szWidgetName == self.szWondersDropdownWidget
+				or szShortWidgetName == self.BUGWorldWonderWidget
+				or szShortWidgetName == self.BUGNatWonderWidget
+				or szShortWidgetName == self.BUGProjectWidget):
 
-					# Reset wonders stuff so that when the type shown changes the old contents don't mess with things
-
-					self.iNumWonders = 0
-					self.iActiveWonderCounter = 0
-					self.iWonderID = -1
-					self.aaWondersBuilt = []
-					self.aaWondersBuilt_BUG = []
-
-					self.aaWondersBeingBuilt = []
-					self.aaWondersBeingBuilt_BUG = []
-
-					if (iSelected == 0):
-						self.szWonderDisplayMode = "World Wonders"
-
-					elif (iSelected == 1):
-						self.szWonderDisplayMode = "National Wonders"
-
-					elif (iSelected == 2):
-						self.szWonderDisplayMode = "Projects"
-
-					self.reset()
-
-					self.calculateWondersList()
-					if not AdvisorOpt.isShowInfoWonders():
-						self.determineListBoxContents()
-
-					# Change selected wonder to the one at the top of the new list
-					if (self.iNumWonders > 0
-					and not AdvisorOpt.isShowInfoWonders()):
-						self.iWonderID = self.aiWonderListBoxIDs[0]
-
-					self.redrawContents()
+					self.handleInput_Wonders(inputClass)
 
 				# Wonders ListBox
 				elif (szWidgetName == self.szWondersListBox):
@@ -3040,6 +3054,14 @@ class CvInfoScreen:
 				self.reset()
 				self.redrawContents()
 
+				# Wonder type dropdown box
+			elif (szShortWidgetName == self.BUGWorldWonderWidget
+			or szShortWidgetName == self.BUGNatWonderWidget
+			or szShortWidgetName == self.BUGProjectWidget):
+
+					self.handleInput_Wonders(inputClass)
+
+
 #BUG: Change Graphs - start
 			if AdvisorOpt.isGraphs():
 				for i in range(7):
@@ -3094,8 +3116,56 @@ class CvInfoScreen:
 
 		return 0
 
-	def update(self, fDelta):
+	def handleInput_Wonders (self, inputClass):
+		szShortWidgetName = inputClass.getFunctionName()
+		szWidgetName = inputClass.getFunctionName() + str(inputClass.getID())
+		code = inputClass.getNotifyCode()
+		iSelected = inputClass.getData()
 
+		# Reset wonders stuff so that when the type shown changes the old contents don't mess with things
+
+		self.iNumWonders = 0
+		self.iActiveWonderCounter = 0
+		self.iWonderID = -1
+		self.aaWondersBuilt = []
+		self.aaWondersBuilt_BUG = []
+
+		self.aaWondersBeingBuilt = []
+		self.aaWondersBeingBuilt_BUG = []
+
+		if szWidgetName == self.szWondersDropdownWidget:
+			if (iSelected == 0):
+				self.szWonderDisplayMode = self.szWDM_WorldWonder
+
+			elif (iSelected == 1):
+				self.szWonderDisplayMode = self.szWDM_NatnlWonder
+
+			elif (iSelected == 2):
+				self.szWonderDisplayMode = self.szWDM_Project
+		else:
+			if szShortWidgetName == self.BUGWorldWonderWidget:
+				self.szWonderDisplayMode = self.szWDM_WorldWonder
+			elif szShortWidgetName == self.BUGNatWonderWidget:
+				self.szWonderDisplayMode = self.szWDM_NatnlWonder
+			elif szShortWidgetName == self.BUGProjectWidget:
+				self.szWonderDisplayMode = self.szWDM_Project
+
+		self.reset()
+
+		self.calculateWondersList()
+		if not AdvisorOpt.isShowInfoWonders():
+			self.determineListBoxContents()
+
+		# Change selected wonder to the one at the top of the new list
+		if (self.iNumWonders > 0
+		and not AdvisorOpt.isShowInfoWonders()):
+			self.iWonderID = self.aiWonderListBoxIDs[0]
+
+		self.redrawContents()
+
+		return
+
+	def update(self, fDelta):
 		return
 
 	def determineKnownPlayers(self, iEndGame=0):
