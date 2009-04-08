@@ -193,12 +193,20 @@
         <Spanish>Other Player Actions:</Spanish>
     </TEXT> 
     <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT</Tag>
-        <English>Contact made: %s1 </English>
-        <French>Contact made: %s1</French>
-        <German>Kontakt aufgenommen: %s1</German>
-        <Italian>Civiltà contattata: %s1</Italian>
-        <Spanish>Contact made: %s1</Spanish>
+        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT_TEAM</Tag>
+        <English>Team contact made: %s1</English>
+        <French>Team contact made: %s1</French>
+        <German>Team kontakt aufgenommen: %s1</German>
+        <Italian>Team civiltà contattata: %s1</Italian>
+        <Spanish>Team contact made: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT_PLAYER</Tag>
+        <English>Player contact made: %s1 of %s2</English>
+        <French>Player contact made: %s1 of %s2</French>
+        <German>Player kontakt aufgenommen: %s1 of %s2</German>
+        <Italian>Player civiltà contattata: %s1 of %s2</Italian>
+        <Spanish>Player contact made: %s1 of %s2</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS</Tag>

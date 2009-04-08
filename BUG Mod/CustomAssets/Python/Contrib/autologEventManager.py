@@ -393,28 +393,6 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			Logger.writeLog_pending("")
 			Logger.writeLog_pending(message, vBold=True, vUnderline=True)
 
-			if AutologOpt.isLogSliders():
-				pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-				for iI in range( CommerceTypes.NUM_COMMERCE_TYPES ):
-					eCommerce = (iI + 1) % CommerceTypes.NUM_COMMERCE_TYPES
-
-					zDesc = gc.getCommerceInfo(CommerceTypes(eCommerce)).getDescription()
-					if (eCommerce == CommerceTypes.COMMERCE_GOLD):
-						zPercent = pPlayer.getCommercePercent(eCommerce)
-						zRate = pPlayer.calculateGoldRate()
-						zTotal = pPlayer.getGold()
-
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS", (zPercent, zDesc, zRate, zTotal))
-						Logger.writeLog(message, vColor="Blue")
-					else:
-						if pPlayer.isCommerceFlexible(eCommerce):
-							zPercent = pPlayer.getCommercePercent(eCommerce)
-							zRate = pPlayer.getCommerceRate(CommerceTypes(eCommerce))
-							zTotal = pPlayer.getGold()
-
-							message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS", (zPercent, zDesc, zRate))
-							Logger.writeLog(message, vColor="Blue")
-
 		self.bHumanPlaying = True
 		self.bHumanEndTurn = False
 		self.bAIsTurn = False
@@ -430,6 +408,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if not self.bHumanEndTurn:
 			return
+
+		self.logSliders()
 
 		if AutologOpt.isShowIBT():
 #			Logger.writeLog_pending_flush()
@@ -491,9 +471,28 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iTeamX,iHasMetTeamY = argsList
 			if (iTeamX == 0
 			and gc.getGame().getGameTurn() > 0):
-					civMet = PyPlayer(gc.getTeam(iHasMetTeamY).getLeaderID())
-					message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT", (civMet.getCivilizationName(), ))
-					Logger.writeLog(message, vColor="Brown")
+
+				sMsgArray = []
+				sLeader = gc.getTeam(iHasMetTeamY).getName()
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT_TEAM", (sLeader, ))
+#				Logger.writeLog(message)
+				sMsgArray.append(message)
+
+				for iPlayer in range(gc.getMAX_PLAYERS()):
+					if gc.getPlayer(iPlayer).getTeam() == iHasMetTeamY:
+						sLeader = gc.getLeaderHeadInfo(gc.getPlayer(iPlayer).getLeaderType()).getDescription()
+						sCivName = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
+
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT_PLAYER", (sLeader, sCivName))
+#						Logger.writeLog(message)
+						sMsgArray.append(message)
+
+				iLen = len(sMsgArray)
+				if iLen == 2:
+					Logger.writeLog(sMsgArray[1], vColor="Brown")
+				else:
+					for i in range(iLen):
+						Logger.writeLog(sMsgArray[i], vColor="Brown")
 
 	def onCombatLogCalc(self, argsList):
 		if (AutologOpt.isLogCombat()):
@@ -1621,3 +1620,30 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		Logger.writeLog("")
 
 		return 0
+
+	def logSliders(self):
+		if not AutologOpt.isLogSliders():
+			return
+
+		pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
+		for iI in range( CommerceTypes.NUM_COMMERCE_TYPES ):
+			eCommerce = (iI + 1) % CommerceTypes.NUM_COMMERCE_TYPES
+
+			zDesc = gc.getCommerceInfo(CommerceTypes(eCommerce)).getDescription()
+			if (eCommerce == CommerceTypes.COMMERCE_GOLD):
+				zPercent = pPlayer.getCommercePercent(eCommerce)
+				zRate = pPlayer.calculateGoldRate()
+				zTotal = pPlayer.getGold()
+
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS", (zPercent, zDesc, zRate, zTotal))
+				Logger.writeLog(message, vColor="Blue")
+			else:
+				if pPlayer.isCommerceFlexible(eCommerce):
+					zPercent = pPlayer.getCommercePercent(eCommerce)
+					zRate = pPlayer.getCommerceRate(CommerceTypes(eCommerce))
+					zTotal = pPlayer.getGold()
+
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS", (zPercent, zDesc, zRate))
+					Logger.writeLog(message, vColor="Blue")
+
+		return
