@@ -32,7 +32,7 @@ FOR MODDERS
 New Features:
 
 - BugDll module for creating Python features that depend on the DLL but work gracefully without it
-- "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
+- Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
 	The <mod>, <option> and <list> elements are still created but marked if the DLL isn't the correct version; the others are ignored
 - DealUtil
 	- Deal class has new CvDeal functions, plus more
