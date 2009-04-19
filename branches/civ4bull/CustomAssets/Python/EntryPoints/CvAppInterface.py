@@ -192,6 +192,9 @@ def getConsoleMacro(argsList):
 	return ""
 
 # BUG - DLL - start
+def isBug():
+	return True
+
 g_options = None
 def getOption(id):
 	global g_options
