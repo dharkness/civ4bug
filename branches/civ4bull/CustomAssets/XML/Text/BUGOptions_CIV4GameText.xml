@@ -8,7 +8,9 @@
 	This file is part of Civilization IV BUG Mod.
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
+
 <!-- Main Items -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TITLE</Tag>
 		<English>BUG Mod Options</English>
@@ -41,8 +43,11 @@
 		<Italian>Esci dalla schermata delle Opzioni del BUG Mod.</Italian>
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
+	
 <!-- Option Titles and Hovers -->
+
 	<!-- Logging -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CORE__SCREENLOGLEVEL_TEXT</Tag>
 		<English>Screen Logging Level</English>
@@ -107,7 +112,9 @@
 		<Italian>Quando è selezionato, ogni messaggio di log include l'ora corrente (nel formato HH:MM:SS).</Italian>
 		<Spanish>When checked, each log file message includes the current time in HH:MM:SS format.</Spanish>
 	</TEXT>
+	
 	<!-- Subversion -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CORE__CHECKFORUPDATES_TEXT</Tag>
 		<English>Check for Updates</English>
@@ -188,7 +195,9 @@
 		<Italian>Numero di revisione della versione SVN disponibile online del BUG Mod.</Italian>
 		<Spanish>Revision number of the BUG repository.</Spanish>
 	</TEXT>
+	
 	<!-- Alerts -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_REMINDER__ENABLED_TEXT</Tag>
 		<English>Enable Reminders [ALT + M]</English>
@@ -696,7 +705,9 @@
 		<Italian>Livello limite di popolazione per una Vittoria di Dominazione.</Italian>
 		<Spanish>Land threshold for Domination victory.</Spanish>
 	</TEXT>
+	
 	<!-- Autolog -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_AUTOLOG__ENABLED_TEXT</Tag>
 		<English>Enable Logging</English>
@@ -1800,6 +1811,65 @@
 		<Spanish>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Spanish>
 	</TEXT>
 	
+	<!-- Advanced Combat Odds -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_TEXT</Tag>
+		<English>Advanced Combat Odds</English>
+		<French>Advanced Combat Odds</French>
+		<German>Advanced Combat Odds</German>
+		<Italian>Advanced Combat Odds</Italian>
+		<Spanish>Advanced Combat Odds</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_HOVER</Tag>
+		<English>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</English>
+		<French>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</French>
+		<German>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</German>
+		<Italian>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Italian>
+		<Spanish>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_TEXT</Tag>
+		<English>Debug</English>
+		<French>Debug</French>
+		<German>Debug</German>
+		<Italian>Debug</Italian>
+		<Spanish>Debug</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_HOVER</Tag>
+		<English>When checked, shows debugging information in the combat odds calculations.</English>
+		<French>When checked, shows debugging information in the combat odds calculations.</French>
+		<German>When checked, shows debugging information in the combat odds calculations.</German>
+		<Italian>When checked, shows debugging information in the combat odds calculations.</Italian>
+		<Spanish>When checked, shows debugging information in the combat odds calculations.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_TEXT</Tag>
+		<English>Detail</English>
+		<French>Detail</French>
+		<German>Detail</German>
+		<Italian>Detail</Italian>
+		<Spanish>Detail</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_HOVER</Tag>
+		<English>Specifies the level of detail to show in the combat odds calculations.</English>
+		<French>Specifies the level of detail to show in the combat odds calculations.</French>
+		<German>Specifies the level of detail to show in the combat odds calculations.</German>
+		<Italian>Specifies the level of detail to show in the combat odds calculations.</Italian>
+		<Spanish>Specifies the level of detail to show in the combat odds calculations.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_LIST</Tag>
+		<English>Low|Medium|High|Extreme</English>
+		<French>Low|Medium|High|Extreme</French>
+		<German>Low|Medium|High|Extreme</German>
+		<Italian>Low|Medium|High|Extreme</Italian>
+		<Spanish>Low|Medium|High|Extreme</Spanish>
+	</TEXT>
+	
 	<!-- Better Espionage -->
 	
 	<TEXT>
@@ -1946,7 +2016,9 @@
 		<Italian>Colore utilizzato per le Missioni che potrai eseguire presto (perchè hai quasi abbastanza Punti Spionaggio contro il bersaglio).</Italian>
 		<Spanish>Color used for missions that you can perform soon (you have close to enough EPs against the target).</Spanish>
 	</TEXT>
+	
 	<!-- NJAGCM -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_NJAGC__ENABLED_TEXT</Tag>
 		<English>Enable NJAGC</English>
@@ -2299,7 +2371,9 @@
 		<Italian>Quando è selezionato, viene visualizzata la data in gioco e il numero di turni di Età dell'Oro rimasti.</Italian>
 		<Spanish>When checked, the in-game date and turns left in a Golden Age are displayed.</Spanish>
 	</TEXT>
+	
 	<!-- Scoreboard -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__SHOWMINOR_TEXT</Tag>
 		<English>Show Minor Civilizations</English>
@@ -2764,7 +2838,9 @@
 		<Italian>Consente di selezionare il colore con cui visualizzare il Rapporto di Forza nel Pannello del Punteggio quando è "basso".</Italian>
 		<Spanish>Color used for low power ratios.</Spanish>
 	</TEXT>
+	
 	<!-- Plot List Enhancements -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__ENABLED_TEXT</Tag>
 		<English>Enabled</English>
@@ -3285,7 +3361,9 @@
 		<Italian>Visualizza il movmento disponibile per una Unità quando premete il tasto [ALT] e posizionate il mouse sull'icona di tale Unità.</Italian>
 		<Spanish>Highlights the moves a unit can make when you hover the mouse over the unit's icon while holding [ALT].</Spanish>
 	</TEXT>
+	
 	<!-- Main Interface -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSKEY_TEXT</Tag>
 		<English>Options Shortcut Reminder</English>
@@ -3503,14 +3581,16 @@
 		<Italian>Quando è selezionato, mostra nel Pannello delle Informazioni il valore minimo e quello massimo per i Punti Movimento del gruppo di Unità selezionate.</Italian>
 		<Spanish>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Spanish>
 	</TEXT>
+	
 	<!-- Strategy Overlay -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_TEXT</Tag>
-		<English>Enable Strategy Layer</English>
-		<French>Enable Strategy Layer</French>
-		<German>Strategie-Overlay aktivieren</German>
-		<Italian>Abilita Livello Strategico</Italian>
-		<Spanish>Enable Strategy Layer</Spanish>
+		<English>Enabled</English>
+		<French>Activé</French>
+		<German>Aktivieren</German>
+		<Italian>Attivata</Italian>
+		<Spanish>Enabled</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_STRATEGYOVERLAY__ENABLED_HOVER</Tag>
@@ -3600,7 +3680,9 @@
 		<Italian>Determina la trasparenza della Città selezionata che viene posizionata.</Italian>
 		<Spanish>Determines the brightness of the highlighted city being placed.</Spanish>
 	</TEXT>
+	
 	<!-- EventSigns -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_EVENTSIGNS__ENABLED_TEXT</Tag>
 		<English>Event Signs</English>
@@ -3617,7 +3699,9 @@
 		<Italian>Quando è selezionato, le caselle che hanno avuto la propria resa produttiva modificata da un evento casuale vengono marcate sulla mappa con una indicazionedom di tale modifica.</Italian>
 		<Spanish>When checked, places signs on plots whose yields have changed because of random events.</Spanish>
 	</TEXT>
+	
 	<!-- TechWindow -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_TECHWINDOW__VIEWTYPE_TEXT</Tag>
 		<English>View</English>
@@ -3658,7 +3742,9 @@
 		<Italian>Quando è selezionato, include il testo della Civilopedia dopo la citazione per la tecnologia scoperta.</Italian>
 		<Spanish>When checked, includes the Civilopedia text after the quote for the discovered technology.</Spanish>
 	</TEXT>
+	
 	<!-- Advisors -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__CUSTDOMADV_TEXT</Tag>
 		<English>Customizable</English>
@@ -3972,7 +4058,9 @@
 		<Italian>Quando è selezionato, le liste di Unità, Edifici, Tecnologie ecc. sono ordinate.</Italian>
 		<Spanish>When checked, the lists of units, buildings, technologies, etc. are sorted.</Spanish>
 	</TEXT>
+	
 	<!-- Unit Naming -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__ENABLED_TEXT</Tag>
 		<English>Enabled</English>
@@ -4197,8 +4285,11 @@
 		<Italian>Inserisci la tua convenzione di denominazione personalizzata per le Unità di Combattimento da Assedio ('Combat[SIEGE]').</Italian>
 		<Spanish>Enter the user defined naming convention for combat units 'SIEGE'.</Spanish>
 	</TEXT>
+
 <!-- Tabs and Labels -->
+
 	<!-- General Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_GENERAL</Tag>
 		<English>General</English>
@@ -4217,11 +4308,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
-		<English>STRATEGY LAYER</English>
-		<French>STRATEGY LAYER</French>
-		<German>STRATEGIE-OVERLAY</German>
-		<Italian>LIVELLO STRATEGICO</Italian>
-		<Spanish>STRATEGY LAYER</Spanish>
+		<English>Strategy Layer:</English>
+		<French>Strategy Layer:</French>
+		<German>Strategy Layer:</German>
+		<Italian>Strategy Layer:</Italian>
+		<Spanish>Strategy Layer:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
@@ -4255,7 +4346,9 @@
 		<Italian>Il file 'BUG Mod.ini' non è stato trovato</Italian>
 		<Spanish>Cannot Find INI File</Spanish>
 	</TEXT>
+	
 	<!-- Advisors Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_ADVISORS</Tag>
 		<English>Advisors</English>
@@ -4352,7 +4445,9 @@
 		<Italian>Missioni:</Italian>
 		<Spanish>Missions:</Spanish>
 	</TEXT>
+	
 	<!-- City Screen Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_CITYSCREEN</Tag>
 		<English>City Screen</English>
@@ -4361,7 +4456,9 @@
 		<Italian>Città</Italian>
 		<Spanish>City Screen</Spanish>
 	</TEXT>
+	
 	<!-- Clock Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_NJAGC</Tag>
 		<English>Clock</English>
@@ -4386,7 +4483,9 @@
 		<Italian>Visualizzazione alternativa:</Italian>
 		<Spanish>Alternate View:</Spanish>
 	</TEXT>
+	
 	<!-- Scores Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_SCORES</Tag>
 		<English>Scoreboard</English>
@@ -4443,7 +4542,9 @@
 		<Italian>Ordine delle colonne:</Italian>
 		<Spanish>Column Order:</Spanish>
 	</TEXT>
+	
 	<!-- PLE Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_PLE</Tag>
 		<English>Plot List</English>
@@ -4484,7 +4585,9 @@
 		<Italian>Caratteristiche:</Italian>
 		<Spanish>Unit Specialties:</Spanish>
 	</TEXT>
+	
 	<!-- Alerts Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_ALERTS</Tag>
 		<English>Alerts</English>
@@ -4525,7 +4628,9 @@
 		<Italian>Vittoria di Dominazione:</Italian>
 		<Spanish>Victory:</Spanish>
 	</TEXT>
+	
 	<!-- Logging Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_AUTOLOG</Tag>
 		<English>Logging</English>
@@ -4582,7 +4687,9 @@
 		<Italian>Commercio:</Italian>
 		<Spanish>Trade and Demands:</Spanish>
 	</TEXT>
+	
 	<!-- Unit Naming Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_UNITNAMING</Tag>
 		<English>Unit Naming</English>
@@ -4591,7 +4698,9 @@
 		<Italian>Nomi Unità</Italian>
 		<Spanish>Unit Naming</Spanish>
 	</TEXT>
+	
 	<!-- System Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_SYSTEM</Tag>
 		<English>System</English>
@@ -4616,7 +4725,9 @@
 		<Italian>Output del debug:</Italian>
 		<Spanish>Debug Output:</Spanish>
 	</TEXT>
+	
 	<!-- Configuration Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_CONFIG</Tag>
 		<English>Config</English>
@@ -4673,7 +4784,9 @@
 		<Italian>File del Registro Automatico:</Italian>
 		<Spanish>Autolog File:</Spanish>
 	</TEXT>
+	
 	<!-- Credits Tab -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTTAB_CREDITS</Tag>
 		<English>Credits</English>
