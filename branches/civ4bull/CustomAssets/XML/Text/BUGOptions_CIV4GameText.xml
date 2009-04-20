@@ -1361,7 +1361,9 @@
 		<Italian>Quando è selezionato, il Registro Automatico registra le richieste di embargo commerciale delle altre Civiltà e le vostre risposte.</Italian>
 		<Spanish>When checked, will log AI requests to stop trading with a third party and your responses.</Spanish>
 	</TEXT>
+	
 	<!-- City Screen -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_TEXT</Tag>
 		<English>Raw Yields</English>
@@ -1538,7 +1540,268 @@
 		<Italian>Predefinito|Impilati|Galloni</Italian>
 		<Spanish>Default|Stacker|Chevron</Spanish>
 	</TEXT>
+	
+	<!-- City Bar -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__AIRPORTICONS_TEXT</Tag>
+		<English>Airport Icons</English>
+		<French>Airport Icons</French>
+		<German>Airport Icons</German>
+		<Italian>Airport Icons</Italian>
+		<Spanish>Airport Icons</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__AIRPORTICONS_HOVER</Tag>
+		<English>When checked, places an airport icon next to cities that have an airport.</English>
+		<French>When checked, places an airport icon next to cities that have an airport.</French>
+		<German>When checked, places an airport icon next to cities that have an airport.</German>
+		<Italian>When checked, places an airport icon next to cities that have an airport.</Italian>
+		<Spanish>When checked, places an airport icon next to cities that have an airport.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HEALTH_TEXT</Tag>
+		<English>Health</English>
+		<French>Health</French>
+		<German>Health</German>
+		<Italian>Health</Italian>
+		<Spanish>Health</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HEALTH_HOVER</Tag>
+		<English>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</English>
+		<French>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</French>
+		<German>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</German>
+		<Italian>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</Italian>
+		<Spanish>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HAPPINESS_TEXT</Tag>
+		<English>Happiness</English>
+		<French>Happiness</French>
+		<German>Happiness</German>
+		<Italian>Happiness</Italian>
+		<Spanish>Happiness</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HAPPINESS_HOVER</Tag>
+		<English>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</English>
+		<French>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</French>
+		<German>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</German>
+		<Italian>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Italian>
+		<Spanish>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYANGER_TEXT</Tag>
+		<English>Hurry Anger</English>
+		<French>Hurry Anger</French>
+		<German>Hurry Anger</German>
+		<Italian>Hurry Anger</Italian>
+		<Spanish>Hurry Anger</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYANGER_HOVER</Tag>
+		<English>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</English>
+		<French>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</French>
+		<German>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</German>
+		<Italian>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</Italian>
+		<Spanish>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__DRAFTANGER_TEXT</Tag>
+		<English>Draft Anger</English>
+		<French>Draft Anger</French>
+		<German>Draft Anger</German>
+		<Italian>Draft Anger</Italian>
+		<Spanish>Draft Anger</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__DRAFTANGER_HOVER</Tag>
+		<English>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</English>
+		<French>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</French>
+		<German>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</German>
+		<Italian>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</Italian>
+		<Spanish>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__FOODASSIST_TEXT</Tag>
+		<English>Growth Detail</English>
+		<French>Growth Detail</French>
+		<German>Growth Detail</German>
+		<Italian>Growth Detail</Italian>
+		<Spanish>Growth Detail</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__FOODASSIST_HOVER</Tag>
+		<English>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</English>
+		<French>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</French>
+		<German>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</German>
+		<Italian>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</Italian>
+		<Spanish>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEVALUES_TEXT</Tag>
+		<English>Base Values</English>
+		<French>Base Values</French>
+		<German>Base Values</German>
+		<Italian>Base Values</Italian>
+		<Spanish>Base Values</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEVALUES_HOVER</Tag>
+		<English>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</English>
+		<French>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</French>
+		<German>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</German>
+		<Italian>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</Italian>
+		<Spanish>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEPRODUCTION_TEXT</Tag>
+		<English>Base Production</English>
+		<French>Base Production</French>
+		<German>Base Production</German>
+		<Italian>Base Production</Italian>
+		<Spanish>Base Production</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEPRODUCTION_HOVER</Tag>
+		<English>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</English>
+		<French>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</French>
+		<German>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</German>
+		<Italian>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Italian>
+		<Spanish>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_TEXT</Tag>
+		<English>Hurry Detail</English>
+		<French>Hurry Detail</French>
+		<German>Hurry Detail</German>
+		<Italian>Hurry Detail</Italian>
+		<Spanish>Hurry Detail</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_HOVER</Tag>
+		<English>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</English>
+		<French>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</French>
+		<German>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</German>
+		<Italian>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</Italian>
+		<Spanish>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__TRADEDETAIL_TEXT</Tag>
+		<English>Trade</English>
+		<French>Trade</French>
+		<German>Trade</German>
+		<Italian>Trade</Italian>
+		<Spanish>Trade</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__TRADEDETAIL_HOVER</Tag>
+		<English>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</English>
+		<French>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</French>
+		<German>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</German>
+		<Italian>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</Italian>
+		<Spanish>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__COMMERCE_TEXT</Tag>
+		<English>Commerce</English>
+		<French>Commerce</French>
+		<German>Commerce</German>
+		<Italian>Commerce</Italian>
+		<Spanish>Commerce</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__COMMERCE_HOVER</Tag>
+		<English>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</English>
+		<French>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</French>
+		<German>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</German>
+		<Italian>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Italian>
+		<Spanish>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGICONS_TEXT</Tag>
+		<English>Building Icons</English>
+		<French>Building Icons</French>
+		<German>Building Icons</German>
+		<Italian>Building Icons</Italian>
+		<Spanish>Building Icons</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGICONS_HOVER</Tag>
+		<English>When checked, the list of buildings is shown using icons instead of their names.</English>
+		<French>When checked, the list of buildings is shown using icons instead of their names.</French>
+		<German>When checked, the list of buildings is shown using icons instead of their names.</German>
+		<Italian>When checked, the list of buildings is shown using icons instead of their names.</Italian>
+		<Spanish>When checked, the list of buildings is shown using icons instead of their names.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__CULTURETURNS_TEXT</Tag>
+		<English>Culture Turns</English>
+		<French>Culture Turns</French>
+		<German>Culture Turns</German>
+		<Italian>Culture Turns</Italian>
+		<Spanish>Culture Turns</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__CULTURETURNS_HOVER</Tag>
+		<English>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</English>
+		<French>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</French>
+		<German>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</German>
+		<Italian>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</Italian>
+		<Spanish>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__GREATPERSONTURNS_TEXT</Tag>
+		<English>Great Person Turns</English>
+		<French>Great Person Turns</French>
+		<German>Great Person Turns</German>
+		<Italian>Great Person Turns</Italian>
+		<Spanish>Great Person Turns</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__GREATPERSONTURNS_HOVER</Tag>
+		<English>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</English>
+		<French>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</French>
+		<German>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</German>
+		<Italian>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Italian>
+		<Spanish>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__SPECIALISTS_TEXT</Tag>
+		<English>Specialists</English>
+		<French>Specialists</French>
+		<German>Specialists</German>
+		<Italian>Specialists</Italian>
+		<Spanish>Specialists</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__SPECIALISTS_HOVER</Tag>
+		<English>When checked, shows icons for the city's specialists (both citizens and settled great people).</English>
+		<French>When checked, shows icons for the city's specialists (both citizens and settled great people).</French>
+		<German>When checked, shows icons for the city's specialists (both citizens and settled great people).</German>
+		<Italian>When checked, shows icons for the city's specialists (both citizens and settled great people).</Italian>
+		<Spanish>When checked, shows icons for the city's specialists (both citizens and settled great people).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HIDEINSTRUCTIONS_TEXT</Tag>
+		<English>Hide Instructions</English>
+		<French>Hide Instructions</French>
+		<German>Hide Instructions</German>
+		<Italian>Hide Instructions</Italian>
+		<Spanish>Hide Instructions</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HIDEINSTRUCTIONS_HOVER</Tag>
+		<English>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</English>
+		<French>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</French>
+		<German>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</German>
+		<Italian>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Italian>
+		<Spanish>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Spanish>
+	</TEXT>
+	
 	<!-- Better Espionage -->
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__ENABLED_TEXT</Tag>
 		<English>Better Espionage Screen</English>
