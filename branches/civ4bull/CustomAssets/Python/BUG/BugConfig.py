@@ -123,8 +123,7 @@ class GameBuilder:
 			return dll
 		if self.dll > dll:
 			BugUtil.warn("BugConfig - init object overrides mod DLL attribute with lower value")
-			return dll
-		return self.dll
+		return dll
 
 	def createBuilder(self, module, clazz=None, attrs=None):
 		if not clazz:
