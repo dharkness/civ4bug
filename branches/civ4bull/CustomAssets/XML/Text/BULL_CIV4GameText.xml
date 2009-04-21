@@ -13,7 +13,7 @@
 		<English>[NEWLINE]Hold &lt;CTRL> to see base values.</English>
 		<French>[NEWLINE]Hold &lt;CTRL> to see base values.</French>
 		<German>[NEWLINE]Hold &lt;CTRL> to see base values.</German>
-		<Italian>[NEWLINE]Hold &lt;CTRL> to see base values.</Italian>
+		<Italian>[NEWLINE]Tieni premuto &lt;CTRL> per visualizzare i valori base.</Italian>
 		<Spanish>[NEWLINE]Hold &lt;CTRL> to see base values.</Spanish>
 	</TEXT>
 	
@@ -109,7 +109,7 @@
 		<English>The Total Commerce from Domestic Trade Routes</English>
 		<French>The Total Commerce from Domestic Trade Routes</French>
 		<German>The Total Commerce from Domestic Trade Routes</German>
-		<Italian>The Total Commerce from Domestic Trade Routes</Italian>
+		<Italian>Commercio totale dalle rotte commerciali interne</Italian>
 		<Spanish>The Total Commerce from Domestic Trade Routes</Spanish>
 	</TEXT>
 	<TEXT>
@@ -117,7 +117,7 @@
 		<English>The Total Commerce from Foreign Trade Routes</English>
 		<French>The Total Commerce from Foreign Trade Routes</French>
 		<German>The Total Commerce from Foreign Trade Routes</German>
-		<Italian>The Total Commerce from Foreign Trade Routes</Italian>
+		<Italian>Commercio totale dalle rotte commerciali estere</Italian>
 		<Spanish>The Total Commerce from Foreign Trade Routes</Spanish>
 	</TEXT>
 	
@@ -126,7 +126,7 @@
 		<English>The Total Gold from Specialists</English>
 		<French>The Total Gold from Specialists</French>
 		<German>The Total Gold from Specialists</German>
-		<Italian>The Total Gold from Specialists</Italian>
+		<Italian>Oro totale dagli Specialisti</Italian>
 		<Spanish>The Total Gold from Specialists</Spanish>
 	</TEXT>
 	<TEXT>
@@ -142,7 +142,7 @@
 		<English>[NEWLINE]------------------------[NEWLINE]TOTAL SPECIALISTS: %d1[ICON_GOLD]</English>
 		<French>[NEWLINE]------------------------[NEWLINE]SP&#xC9;CIALISTES TOTAL : %d1[ICON_GOLD]</French>
 		<German>[NEWLINE]------------------------[NEWLINE]SPEZIALISTEN GESAMT: %d1[ICON_GOLD]</German>
-		<Italian>[NEWLINE]------------------------[NEWLINE]SPECIALISTI TOTALE: %d1[ICON_GOLD]</Italian>
+		<Italian>[NEWLINE]------------------------[NEWLINE]TOTALE SPECIALISTI: %d1[ICON_GOLD]</Italian>
 		<Spanish>[NEWLINE]------------------------[NEWLINE]ESPECIALISTAS TOTAL: %d1 [ICON_GOLD]</Spanish>
 	</TEXT>
 
@@ -153,7 +153,7 @@
 		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
 		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
 	<TEXT>
@@ -161,7 +161,7 @@
 		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
 		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
 	<TEXT>
@@ -169,7 +169,7 @@
 		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
 		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
 	<TEXT>
@@ -177,7 +177,7 @@
 		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
 		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
 
@@ -190,7 +190,7 @@
 		<English>Set %s1_CmrcType Rate to %d2_Value%%</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
 		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
 
@@ -241,7 +241,7 @@
         <English>Trade with %s1_PlyrName of %s2_CivName</English>
         <French>Commerce avec %%s1_PlyrName of %s2_CivName</French>
         <German>Handel mit %%s1_PlyrName of %s2_CivName</German>
-        <Italian>Commercio con %%s1_PlyrName of %s2_CivName</Italian>
+        <Italian>Commercio con %%s1_PlyrName (%s2_CivName)</Italian>
         <Spanish>Comercio con %%s1_PlyrName of %s2_CivName</Spanish>
     </TEXT>
     <TEXT>
@@ -249,7 +249,7 @@
         <English>No Trade with %s1_PlyrName of %s2_CivName</English>
         <French>Pas de Commerce avec %%s1_PlyrName of %s2_CivName</French>
         <German>Kein Handel mit %%s1_PlyrName of %s2_CivName</German>
-        <Italian>Non Commercio con %%s1_PlyrName of %s2_CivName</Italian>
+        <Italian>Nessun commercio con %%s1_PlyrName (%s2_CivName)</Italian>
         <Spanish>Ningún Comercio con %%s1_PlyrName of %s2_CivName</Spanish>
     </TEXT>
 	<TEXT>
@@ -282,7 +282,7 @@
         <English>[NEWLINE][ICON_BULLET]They are dead</English>
         <French>[NEWLINE][ICON_BULLET]They are dead</French>
         <German>[NEWLINE][ICON_BULLET]They are dead</German>
-        <Italian>[NEWLINE][ICON_BULLET]They are dead</Italian>
+        <Italian>[NEWLINE][ICON_BULLET]Scomparsi</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]They are dead</Spanish>
     </TEXT>
     <TEXT>
@@ -290,7 +290,7 @@
         <English>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</English>
         <French>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</French>
         <German>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</German>
-        <Italian>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</Italian>
+        <Italian>[NEWLINE][ICON_BULLET]Le vostre reti commerciali non sono collegate</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</Spanish>
     </TEXT>
     <TEXT>
@@ -298,7 +298,7 @@
         <English>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</English>
         <French>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</French>
         <German>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</German>
-        <Italian>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</Italian>
+        <Italian>[NEWLINE][ICON_BULLET]Non avete siglato un Accordo di Libero Scambio</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</Spanish>
     </TEXT>
     <TEXT>
@@ -306,7 +306,7 @@
         <English>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</English>
         <French>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</French>
         <German>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</German>
-        <Italian>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</Italian>
+        <Italian>[NEWLINE][ICON_BULLET]La tua Forma di Governo non consente il Commercio Estero</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Your civics don't allow Foreign Trade</Spanish>
     </TEXT>
     <TEXT>
@@ -315,7 +315,7 @@
         <English>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</English>
         <French>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</French>
         <German>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</German>
-        <Italian>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</Italian>
+        <Italian>[NEWLINE][ICON_BULLET]La loro Forma di Governo non consente il Commercio Estero</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</Spanish>
     </TEXT>
 
