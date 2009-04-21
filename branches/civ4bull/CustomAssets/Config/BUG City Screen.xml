@@ -73,12 +73,19 @@
 			</list>
 			
 			<!-- Production Decay by EmperorFool -->
-			<option id="ProductionDecayEnabled" key="Production Decay Enabled" dll="1" 
+			<option id="ProductionDecayHover" key="Production Decay Hover" dll="1" 
 					type="boolean" default="True" 
-					get="isShowProductionDecay" dirtyBit="CityScreen"/>
-			<option id="ProductionDecayThreshold" key="Production Decay Threshold" dll="1" 
-					type="int" default="50" 
-					get="getProductionDecayThreshold" dirtyBit="CityScreen"/>
+					get="isShowProductionDecayHover"/>
+			<option id="ProductionDecayHoverThreshold" key="Production Decay Hover Threshold" dll="1" 
+					type="int" default="5" 
+					get="getProductionDecayHoverThreshold" dirtyBit="CityScreen"/>
+					
+			<option id="ProductionDecayQueue" key="Production Decay Queue" dll="1" 
+					type="boolean" default="True" 
+					get="isShowProductionDecayQueue" dirtyBit="CityScreen"/>
+			<option id="ProductionDecayQueueThreshold" key="Production Decay Queue Threshold" dll="1" 
+					type="int" default="5" 
+					get="getProductionDecayQueueThreshold" dirtyBit="CityScreen"/>
 		</section>
 	</options>
 </mod>

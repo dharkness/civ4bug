@@ -6104,10 +6104,34 @@ class CvMainInterface:
 
 					if (CyInterface().getOrderNodeSave(i)):
 						szLeftBuffer = u"*" + szLeftBuffer
+					
+# BUG - Production Decay - start
+					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
+						eUnit = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getUnitProduction(eUnit) > 0:
+							if pHeadSelectedCity.isUnitProductionDecay(eUnit):
+								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+							elif pHeadSelectedCity.getUnitProductionTime(eUnit) > 0:
+								iDecayTurns = pHeadSelectedCity.getUnitProductionDecayTurns(eUnit)
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
+									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+# BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CONSTRUCT ):
 					szLeftBuffer = gc.getBuildingInfo(CyInterface().getOrderNodeData1(i)).getDescription()
 					szRightBuffer = "(" + str(pHeadSelectedCity.getBuildingProductionTurnsLeft(CyInterface().getOrderNodeData1(i), i)) + ")"
+
+# BUG - Production Decay - start
+					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
+						eBuilding = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getBuildingProduction(eBuilding) > 0:
+							if pHeadSelectedCity.isUnitProductionDecay(eBuilding):
+								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+							elif pHeadSelectedCity.getBuildingProductionTime(eBuilding) > 0:
+								iDecayTurns = pHeadSelectedCity.getBuildingProductionDecayTurns(eBuilding)
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
+									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+# BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CREATE ):
 					szLeftBuffer = gc.getProjectInfo(CyInterface().getOrderNodeData1(i)).getDescription()
