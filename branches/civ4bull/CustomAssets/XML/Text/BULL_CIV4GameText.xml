@@ -146,6 +146,41 @@
 		<Spanish>[NEWLINE]------------------------[NEWLINE]ESPECIALISTAS TOTAL: %d1 [ICON_GOLD]</Spanish>
 	</TEXT>
 
+<!-- Production Decay -->
+
+	<TEXT>
+		<Tag>TXT_KEY_PRODUCTION_DECAY</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</English>
+		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
+		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
+		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PRODUCTION_DECAY_PRODUCING</Tag>
+		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</English>
+		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
+		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
+		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PRODUCTION_DECAY_TURNS</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
+		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
+		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
+		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PRODUCTION_DECAY_TURNS_PRODUCING</Tag>
+		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
+		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
+		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
+		<Italian>Aumenta il ritmo %s1_CmrcType del %d2_Value%%</Italian>
+		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+	</TEXT>
+
 <!-- Main Interface -->
 
 	<!-- Min/Max Commerce Rate Buttons -->
