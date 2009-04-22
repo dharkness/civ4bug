@@ -1559,7 +1559,7 @@
 		<English>Airport Icons</English>
 		<French>Airport Icons</French>
 		<German>Airport Icons</German>
-		<Italian>Airport Icons</Italian>
+		<Italian>Icone Aeroporto</Italian>
 		<Spanish>Airport Icons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1567,7 +1567,7 @@
 		<English>When checked, places an airport icon next to cities that have an airport.</English>
 		<French>When checked, places an airport icon next to cities that have an airport.</French>
 		<German>When checked, places an airport icon next to cities that have an airport.</German>
-		<Italian>When checked, places an airport icon next to cities that have an airport.</Italian>
+		<Italian>Quando è selezionato, aggiunge una icona aeroportuale alle città che hanno un Aeroporto.</Italian>
 		<Spanish>When checked, places an airport icon next to cities that have an airport.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1575,7 +1575,7 @@
 		<English>Health</English>
 		<French>Health</French>
 		<German>Health</German>
-		<Italian>Health</Italian>
+		<Italian>Salute</Italian>
 		<Spanish>Health</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1583,7 +1583,7 @@
 		<English>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</English>
 		<French>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</French>
 		<German>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</German>
-		<Italian>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</Italian>
+		<Italian>Quando è selezionato, mostra la salute risultante([ICON_HEALTHY] o [ICON_UNHEALTHY]) per la città.</Italian>
 		<Spanish>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1591,7 +1591,7 @@
 		<English>Happiness</English>
 		<French>Happiness</French>
 		<German>Happiness</German>
-		<Italian>Happiness</Italian>
+		<Italian>Felicità</Italian>
 		<Spanish>Happiness</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1599,7 +1599,7 @@
 		<English>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</English>
 		<French>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</French>
 		<German>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</German>
-		<Italian>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Italian>
+		<Italian>Quando è selezionato, mostra la felicità risultante ([ICON_HAPPY] o [ICON_UNHAPPY]) per la città.</Italian>
 		<Spanish>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1607,7 +1607,7 @@
 		<English>Hurry Anger</English>
 		<French>Hurry Anger</French>
 		<German>Hurry Anger</German>
-		<Italian>Hurry Anger</Italian>
+		<Italian>Rabbia da sacrifici</Italian>
 		<Spanish>Hurry Anger</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1615,7 +1615,7 @@
 		<English>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</English>
 		<French>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</French>
 		<German>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</German>
-		<Italian>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</Italian>
+		<Italian>Quando è selezionato, mostra il numero di cittadini adirati ([ICON_ANGRYPOP]) a causa dei sacrifici ed il numero di turni prima che si pacifichino.</Italian>
 		<Spanish>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1623,7 +1623,7 @@
 		<English>Draft Anger</English>
 		<French>Draft Anger</French>
 		<German>Draft Anger</German>
-		<Italian>Draft Anger</Italian>
+		<Italian>Rabbia da coscrizione</Italian>
 		<Spanish>Draft Anger</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1631,7 +1631,7 @@
 		<English>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</English>
 		<French>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</French>
 		<German>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</German>
-		<Italian>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</Italian>
+		<Italian>Quando è selezionato, mostra il numero di cittadini adirati ([ICON_CITIZEN]) a causa della coscrizione ed il numero di turni prima che si pacifichino.</Italian>
 		<Spanish>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1639,7 +1639,7 @@
 		<English>Growth Detail</English>
 		<French>Growth Detail</French>
 		<German>Growth Detail</German>
-		<Italian>Growth Detail</Italian>
+		<Italian>Crescita dettagliata</Italian>
 		<Spanish>Growth Detail</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1647,7 +1647,7 @@
 		<English>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</English>
 		<French>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</French>
 		<German>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</German>
-		<Italian>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</Italian>
+		<Italian>Quando è selezionato, mostra più dettagli sulla crescita (crescita, decrescita, carestia, stagnazione).</Italian>
 		<Spanish>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1655,7 +1655,7 @@
 		<English>Base Values</English>
 		<French>Base Values</French>
 		<German>Base Values</German>
-		<Italian>Base Values</Italian>
+		<Italian>Valori base</Italian>
 		<Spanish>Base Values</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1663,7 +1663,7 @@
 		<English>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</English>
 		<French>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</French>
 		<German>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</German>
-		<Italian>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</Italian>
+		<Italian>Quando è selezionato, tenendo premuto CTRL mentre si posiziona il cursore su un oggetto ne mostra i valori base (privi di modificatori) di produzione, oro, commercio, mantenimento, grandi personaggi.</Italian>
 		<Spanish>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1671,7 +1671,7 @@
 		<English>Base Production</English>
 		<French>Base Production</French>
 		<German>Base Production</German>
-		<Italian>Base Production</Italian>
+		<Italian>Produzione base</Italian>
 		<Spanish>Base Production</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1679,7 +1679,7 @@
 		<English>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</English>
 		<French>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</French>
 		<German>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</German>
-		<Italian>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Italian>
+		<Italian>Quando è selezionato, mostra la produzione base (escluse le quote da surplus, sacrifici e abbattimento alberi) come aggiunta alla produzione del turno corrente.</Italian>
 		<Spanish>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1687,7 +1687,7 @@
 		<English>Hurry Detail</English>
 		<French>Hurry Detail</French>
 		<German>Hurry Detail</German>
-		<Italian>Hurry Detail</Italian>
+		<Italian>Accelerazione dettagliata</Italian>
 		<Spanish>Hurry Detail</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1695,7 +1695,7 @@
 		<English>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</English>
 		<French>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</French>
 		<German>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</German>
-		<Italian>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</Italian>
+		<Italian>Quando è selezionato, mostra il costo ([ICON_CITIZEN] o [ICON_GOLD]) ed il surplus ([ICON_PRODUCTION] e/o [ICON_GOLD]) per l'accelerazione (da sacrifici e/o pagamenti) per l'oggetto in produzione.</Italian>
 		<Spanish>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1703,7 +1703,7 @@
 		<English>Trade</English>
 		<French>Trade</French>
 		<German>Trade</German>
-		<Italian>Trade</Italian>
+		<Italian>Commercio</Italian>
 		<Spanish>Trade</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1711,7 +1711,7 @@
 		<English>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</English>
 		<French>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</French>
 		<German>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</German>
-		<Italian>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</Italian>
+		<Italian>Quando è selezionato, mostra dei subtotali per il commercio: totale, estero, ed oltremare. Quello estero include quello d'oltremare, e quello totale include entrambi.</Italian>
 		<Spanish>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1719,7 +1719,7 @@
 		<English>Commerce</English>
 		<French>Commerce</French>
 		<German>Commerce</German>
-		<Italian>Commerce</Italian>
+		<Italian>Oro</Italian>
 		<Spanish>Commerce</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1727,7 +1727,7 @@
 		<English>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</English>
 		<French>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</French>
 		<German>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</German>
-		<Italian>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Italian>
+		<Italian>Quando è selezionato, mostra l'oro totale ([ICON_COMMERCE]) prima dei singoli tipi ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], e [ICON_ESPIONAGE]).</Italian>
 		<Spanish>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1735,7 +1735,7 @@
 		<English>Building Icons</English>
 		<French>Building Icons</French>
 		<German>Building Icons</German>
-		<Italian>Building Icons</Italian>
+		<Italian>Icone di edifici</Italian>
 		<Spanish>Building Icons</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1743,7 +1743,7 @@
 		<English>When checked, the list of buildings is shown using icons instead of their names.</English>
 		<French>When checked, the list of buildings is shown using icons instead of their names.</French>
 		<German>When checked, the list of buildings is shown using icons instead of their names.</German>
-		<Italian>When checked, the list of buildings is shown using icons instead of their names.</Italian>
+		<Italian>Quando è selezionato, la lista degli edifici viene visualizzata con le rispettive icone invece dei nomi.</Italian>
 		<Spanish>When checked, the list of buildings is shown using icons instead of their names.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1751,7 +1751,7 @@
 		<English>Culture Turns</English>
 		<French>Culture Turns</French>
 		<German>Culture Turns</German>
-		<Italian>Culture Turns</Italian>
+		<Italian>Turni culturali</Italian>
 		<Spanish>Culture Turns</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1759,7 +1759,7 @@
 		<English>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</English>
 		<French>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</French>
 		<German>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</German>
-		<Italian>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</Italian>
+		<Italian>Quando è selezionato, mostra il numero di turni mancanti per la successiva espansione culturale ([ICON_CULTURE]).</Italian>
 		<Spanish>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1767,7 +1767,7 @@
 		<English>Great Person Turns</English>
 		<French>Great Person Turns</French>
 		<German>Great Person Turns</German>
-		<Italian>Great Person Turns</Italian>
+		<Italian>Turni dei Grandi Personaggi</Italian>
 		<Spanish>Great Person Turns</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1775,7 +1775,7 @@
 		<English>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</English>
 		<French>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</French>
 		<German>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</German>
-		<Italian>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Italian>
+		<Italian>Quando è selezionato, mostra il numero di turni necessario perchè la città generi il successivo Grande Personaggio([ICON_GREATPEOPLE]).</Italian>
 		<Spanish>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1783,7 +1783,7 @@
 		<English>Specialists</English>
 		<French>Specialists</French>
 		<German>Specialists</German>
-		<Italian>Specialists</Italian>
+		<Italian>Specialisti</Italian>
 		<Spanish>Specialists</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1791,7 +1791,7 @@
 		<English>When checked, shows icons for the city's specialists (both citizens and settled great people).</English>
 		<French>When checked, shows icons for the city's specialists (both citizens and settled great people).</French>
 		<German>When checked, shows icons for the city's specialists (both citizens and settled great people).</German>
-		<Italian>When checked, shows icons for the city's specialists (both citizens and settled great people).</Italian>
+		<Italian>Quando è selezionato, mostra delle icone per gli Specialisti in città (sia i Cittadini Specialisti che i Grandi Personaggi trasformati in Super-Specialisti).</Italian>
 		<Spanish>When checked, shows icons for the city's specialists (both citizens and settled great people).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1799,7 +1799,7 @@
 		<English>Hide Instructions</English>
 		<French>Hide Instructions</French>
 		<German>Hide Instructions</German>
-		<Italian>Hide Instructions</Italian>
+		<Italian>Nascondi Istruzioni</Italian>
 		<Spanish>Hide Instructions</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1807,7 +1807,7 @@
 		<English>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</English>
 		<French>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</French>
 		<German>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</German>
-		<Italian>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Italian>
+		<Italian>Quando è selezionato, nasconde le istruzioni per la selezione delle Città e mostrare i valori base per fare posto alle nuove informazioni.</Italian>
 		<Spanish>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Spanish>
 	</TEXT>
 	
@@ -1818,7 +1818,7 @@
 		<English>Advanced Combat Odds</English>
 		<French>Advanced Combat Odds</French>
 		<German>Advanced Combat Odds</German>
-		<Italian>Advanced Combat Odds</Italian>
+		<Italian>Probabilità di Combattimento Avanzate</Italian>
 		<Spanish>Advanced Combat Odds</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1826,7 +1826,7 @@
 		<English>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</English>
 		<French>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</French>
 		<German>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</German>
-		<Italian>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Italian>
+		<Italian>Quando è selezionato, consente di variare il livello di dettaglio mostrato per il calcolo delle Probabilità di Combattimento quando si posiziona il cursore per un movimento offensivo (utilizza il Mod "Advanced Combat Odds" di PieceOfMind).</Italian>
 		<Spanish>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1842,7 +1842,7 @@
 		<English>When checked, shows debugging information in the combat odds calculations.</English>
 		<French>When checked, shows debugging information in the combat odds calculations.</French>
 		<German>When checked, shows debugging information in the combat odds calculations.</German>
-		<Italian>When checked, shows debugging information in the combat odds calculations.</Italian>
+		<Italian>Quando è selezionato, mostra le informazioni di debug nel calcolo delle Probabilità di Combattimento.</Italian>
 		<Spanish>When checked, shows debugging information in the combat odds calculations.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1850,7 +1850,7 @@
 		<English>Detail</English>
 		<French>Detail</French>
 		<German>Detail</German>
-		<Italian>Detail</Italian>
+		<Italian>Dettagli</Italian>
 		<Spanish>Detail</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1858,7 +1858,7 @@
 		<English>Specifies the level of detail to show in the combat odds calculations.</English>
 		<French>Specifies the level of detail to show in the combat odds calculations.</French>
 		<German>Specifies the level of detail to show in the combat odds calculations.</German>
-		<Italian>Specifies the level of detail to show in the combat odds calculations.</Italian>
+		<Italian>Specifica il livello di dettaglio che deve essere utilizzato per la visualizzazione delle Probabilità di Combattimento.</Italian>
 		<Spanish>Specifies the level of detail to show in the combat odds calculations.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1866,7 +1866,7 @@
 		<English>Low|Medium|High|Extreme</English>
 		<French>Low|Medium|High|Extreme</French>
 		<German>Low|Medium|High|Extreme</German>
-		<Italian>Low|Medium|High|Extreme</Italian>
+		<Italian>Basso|Medio|Alto|Massimo</Italian>
 		<Spanish>Low|Medium|High|Extreme</Spanish>
 	</TEXT>
 	
@@ -2411,7 +2411,7 @@
 		<English>Tag as "DEAD"</English>
 		<French>Marquer "MORT"</French>
 		<German>Mit "TOT" markieren</German>
-		<Italian>Marca come "SCOMPARSE"</Italian>
+		<Italian>Marca come scomparse "X"</Italian>
 		<Spanish>Tag as "DEAD"</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2419,7 +2419,7 @@
 		<English>When checked, dead civilizations will be tagged as "DEAD" when shown.</English>
 		<French>En activant, les civilisations mortes seront marquées "MORT".</French>
 		<German>Markiert ausgelöschte Zivilisationen mit dem Attribut "TOT" in der Punkteanzeige, wenn diese angezeigt werden sollen</German>
-		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come "SCOMPARSA" nel Pannello del Punteggio.</Italian>
+		<Italian>Quando è selezionato, ogni Civiltà scomparsa verrà marcata come scomparsa ("X") nel Pannello del Punteggio.</Italian>
 		<Spanish>When checked, dead civilizations will be tagged as "DEAD" when shown.</Spanish>
 	</TEXT>
 	<TEXT>
