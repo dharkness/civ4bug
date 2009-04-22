@@ -1427,7 +1427,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__FOODASSIST_HOVER</Tag>
 		<English>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</English>
 		<French>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</French>
-		<German>Zeigt die (positive oder negative) Abweichung der erwirtschafteten Nahrungserträge pro Runde an und außerdem die Anzahl der Runden, bis eine Hngersnot ausbricht und der Nahrungsvorrat zu schrumpfen beginnt</German>
+		<German>Zeigt die (positive oder negative) Abweichung der erwirtschafteten Nahrungserträge pro Runde an und außerdem die Anzahl der Runden, bis eine Hungersnot ausbricht und der Nahrungsvorrat zu schrumpfen beginnt</German>
 		<Italian>Quando è selezionato, visualizza la differenza del cibo generato ogni turno (positiva o negativa); quando le risorse alimentari sono in riduzione, visualizza anche il numero di turni fino alla carestia.</Italian>
 		<Spanish>When checked, displays the food difference generated per turn (plus or minus) and the number of turns until starvation when the food supply is shrinking.</Spanish>
 	</TEXT>
@@ -1558,7 +1558,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__AIRPORTICONS_TEXT</Tag>
 		<English>Airport Icons</English>
 		<French>Airport Icons</French>
-		<German>Airport Icons</German>
+		<German>Flughafen-Symbol</German>
 		<Italian>Icone Aeroporto</Italian>
 		<Spanish>Airport Icons</Spanish>
 	</TEXT>
@@ -1566,7 +1566,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__AIRPORTICONS_HOVER</Tag>
 		<English>When checked, places an airport icon next to cities that have an airport.</English>
 		<French>When checked, places an airport icon next to cities that have an airport.</French>
-		<German>When checked, places an airport icon next to cities that have an airport.</German>
+		<German>Zeigt ein Flughafen-Symbol neben Städten an, die über einen Flughafen verfügen</German>
 		<Italian>Quando è selezionato, aggiunge una icona aeroportuale alle città che hanno un Aeroporto.</Italian>
 		<Spanish>When checked, places an airport icon next to cities that have an airport.</Spanish>
 	</TEXT>
@@ -1574,7 +1574,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HEALTH_TEXT</Tag>
 		<English>Health</English>
 		<French>Health</French>
-		<German>Health</German>
+		<German>Gesundheit</German>
 		<Italian>Salute</Italian>
 		<Spanish>Health</Spanish>
 	</TEXT>
@@ -1582,7 +1582,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HEALTH_HOVER</Tag>
 		<English>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</English>
 		<French>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</French>
-		<German>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</German>
+		<German>Zeigt die derzeitige Gesundheit ([ICON_HEALTHY] oder [ICON_UNHEALTHY]) einer Stadt an</German>
 		<Italian>Quando è selezionato, mostra la salute risultante([ICON_HEALTHY] o [ICON_UNHEALTHY]) per la città.</Italian>
 		<Spanish>When checked, shows the net health ([ICON_HEALTHY] or [ICON_UNHEALTHY]) for the city.</Spanish>
 	</TEXT>
@@ -1590,7 +1590,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HAPPINESS_TEXT</Tag>
 		<English>Happiness</English>
 		<French>Happiness</French>
-		<German>Happiness</German>
+		<German>Zufriedenheit</German>
 		<Italian>Felicità</Italian>
 		<Spanish>Happiness</Spanish>
 	</TEXT>
@@ -1598,7 +1598,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HAPPINESS_HOVER</Tag>
 		<English>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</English>
 		<French>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</French>
-		<German>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</German>
+		<German>Zeigt die derzeitige Zufriedenheit ([ICON_HAPPY] oder [ICON_UNHAPPY]) einer Stadt an</German>
 		<Italian>Quando è selezionato, mostra la felicità risultante ([ICON_HAPPY] o [ICON_UNHAPPY]) per la città.</Italian>
 		<Spanish>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Spanish>
 	</TEXT>
@@ -1606,7 +1606,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYANGER_TEXT</Tag>
 		<English>Hurry Anger</English>
 		<French>Hurry Anger</French>
-		<German>Hurry Anger</German>
+		<German>Zwangsarbeit</German>
 		<Italian>Rabbia da sacrifici</Italian>
 		<Spanish>Hurry Anger</Spanish>
 	</TEXT>
@@ -1614,7 +1614,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYANGER_HOVER</Tag>
 		<English>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</English>
 		<French>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</French>
-		<German>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</German>
+		<German>Zeigt die Anzahl der wegen Zwangsarbeit unzufriedenen Bürger ([ICON_ANGRYPOP]) und die Anzahl der verbleibenden Runden an, bis diese sich wieder beruhigt haben</German>
 		<Italian>Quando è selezionato, mostra il numero di cittadini adirati ([ICON_ANGRYPOP]) a causa dei sacrifici ed il numero di turni prima che si pacifichino.</Italian>
 		<Spanish>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to whipping and the number of turns left on the timer.</Spanish>
 	</TEXT>
@@ -1622,23 +1622,23 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__DRAFTANGER_TEXT</Tag>
 		<English>Draft Anger</English>
 		<French>Draft Anger</French>
-		<German>Draft Anger</German>
+		<German>Zwangsrekrutierung</German>
 		<Italian>Rabbia da coscrizione</Italian>
 		<Spanish>Draft Anger</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__DRAFTANGER_HOVER</Tag>
-		<English>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</English>
-		<French>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</French>
-		<German>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</German>
-		<Italian>Quando è selezionato, mostra il numero di cittadini adirati ([ICON_CITIZEN]) a causa della coscrizione ed il numero di turni prima che si pacifichino.</Italian>
-		<Spanish>When checked, shows the number of angry population ([ICON_CITIZEN]) due to drafting and the number of turns left on the timer.</Spanish>
+		<English>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</English>
+		<French>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</French>
+		<German>Zeigt die Anzahl der wegen Zwangsrekrutierung unzufriedenen Bürger ([ICON_ANGRYPOP]) und die Anzahl der verbleibenden Runden an, bis diese sich wieder beruhigt haben</German>
+		<Italian>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</Italian>
+		<Spanish>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__FOODASSIST_TEXT</Tag>
 		<English>Growth Detail</English>
 		<French>Growth Detail</French>
-		<German>Growth Detail</German>
+		<German>Wachstum</German>
 		<Italian>Crescita dettagliata</Italian>
 		<Spanish>Growth Detail</Spanish>
 	</TEXT>
@@ -1646,7 +1646,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__FOODASSIST_HOVER</Tag>
 		<English>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</English>
 		<French>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</French>
-		<German>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</German>
+		<German>Zeigt detailliertere Informationen über das Wachstum einer Stadt an (Zunahme, Abnahme, Hungersnot, Stagnation).</German>
 		<Italian>Quando è selezionato, mostra più dettagli sulla crescita (crescita, decrescita, carestia, stagnazione).</Italian>
 		<Spanish>When checked, shows more detailed information about growth (growing, shrinking, starvation, stagnation).</Spanish>
 	</TEXT>
@@ -1654,7 +1654,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEVALUES_TEXT</Tag>
 		<English>Base Values</English>
 		<French>Base Values</French>
-		<German>Base Values</German>
+		<German>Basiswerte</German>
 		<Italian>Valori base</Italian>
 		<Spanish>Base Values</Spanish>
 	</TEXT>
@@ -1662,7 +1662,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEVALUES_HOVER</Tag>
 		<English>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</English>
 		<French>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</French>
-		<German>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</German>
+		<German>Zeigt, wenn der Mauszeiger bei gedrückter [STRG]-Taste über eine Stadt bewegt wird, die Basiswerte (ohne Modifikatoren) der folgenden Güter an: Produktion, Handel, Wirtschaft, Unterhalt, Große Persönlichkeiten</German>
 		<Italian>Quando è selezionato, tenendo premuto CTRL mentre si posiziona il cursore su un oggetto ne mostra i valori base (privi di modificatori) di produzione, oro, commercio, mantenimento, grandi personaggi.</Italian>
 		<Spanish>When checked, holding CTRL while hovering shows the base (without modifiers) values for most items: production, trade, commerce, maintenance, great people.</Spanish>
 	</TEXT>
@@ -1670,7 +1670,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEPRODUCTION_TEXT</Tag>
 		<English>Base Production</English>
 		<French>Base Production</French>
-		<German>Base Production</German>
+		<German>Grundproduktion</German>
 		<Italian>Produzione base</Italian>
 		<Spanish>Base Production</Spanish>
 	</TEXT>
@@ -1678,7 +1678,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BASEPRODUCTION_HOVER</Tag>
 		<English>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</English>
 		<French>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</French>
-		<German>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</German>
+		<German>Zeigt die Grundproduktion (ohne Überschuss, Zwangsarbeit und Waldrodung) zusätzlich zur Produktion der derzeitigen Runde an</German>
 		<Italian>Quando è selezionato, mostra la produzione base (escluse le quote da surplus, sacrifici e abbattimento alberi) come aggiunta alla produzione del turno corrente.</Italian>
 		<Spanish>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Spanish>
 	</TEXT>
@@ -1686,7 +1686,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_TEXT</Tag>
 		<English>Hurry Detail</English>
 		<French>Hurry Detail</French>
-		<German>Hurry Detail</German>
+		<German>Produktionsbeschleunigung</German>
 		<Italian>Accelerazione dettagliata</Italian>
 		<Spanish>Hurry Detail</Spanish>
 	</TEXT>
@@ -1694,7 +1694,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_HOVER</Tag>
 		<English>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</English>
 		<French>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</French>
-		<German>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</German>
+		<German>Zeigt die Kosten ([ICON_CITIZEN] oder [ICON_GOLD]) und Überschüsse ([ICON_PRODUCTION] und/oder [ICON_GOLD]) einer Beschleunigung (Zwangsarbeit und/oder Kauf) der derzeitigen Produktion an</German>
 		<Italian>Quando è selezionato, mostra il costo ([ICON_CITIZEN] o [ICON_GOLD]) ed il surplus ([ICON_PRODUCTION] e/o [ICON_GOLD]) per l'accelerazione (da sacrifici e/o pagamenti) per l'oggetto in produzione.</Italian>
 		<Spanish>When checked, shows the cost ([ICON_CITIZEN] or [ICON_GOLD]) and overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) for hurrying (whip and/or buy) the item being produced.</Spanish>
 	</TEXT>
@@ -1702,7 +1702,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__TRADEDETAIL_TEXT</Tag>
 		<English>Trade</English>
 		<French>Trade</French>
-		<German>Trade</German>
+		<German>Handel</German>
 		<Italian>Commercio</Italian>
 		<Spanish>Trade</Spanish>
 	</TEXT>
@@ -1710,7 +1710,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__TRADEDETAIL_HOVER</Tag>
 		<English>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</English>
 		<French>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</French>
-		<German>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</German>
+		<German>Zeigt eine Aufschlüsselung des Handels in "Gesamt", "Ausland" und "Übersee" an, wobei der Wert für "Ausland" jenen für "Übersee" einschließt und "Gesamt" wiederum beide Werte in sich vereint</German>
 		<Italian>Quando è selezionato, mostra dei subtotali per il commercio: totale, estero, ed oltremare. Quello estero include quello d'oltremare, e quello totale include entrambi.</Italian>
 		<Spanish>When checked, shows breakdowns for trade: total, foreign, and foreign overseas. Each includes those after it: foreign includes foreign overseas, and total includes both foreign and foreign overseas.</Spanish>
 	</TEXT>
@@ -1718,7 +1718,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__COMMERCE_TEXT</Tag>
 		<English>Commerce</English>
 		<French>Commerce</French>
-		<German>Commerce</German>
+		<German>Wirtschaft</German>
 		<Italian>Oro</Italian>
 		<Spanish>Commerce</Spanish>
 	</TEXT>
@@ -1726,7 +1726,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__COMMERCE_HOVER</Tag>
 		<English>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</English>
 		<French>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</French>
-		<German>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</German>
+		<German>Zeigt das gesamte Wirtschaftseinkommen ([ICON_COMMERCE]) vor den einzelnen Einkommensarten ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE] und [ICON_ESPIONAGE]) an</German>
 		<Italian>Quando è selezionato, mostra l'oro totale ([ICON_COMMERCE]) prima dei singoli tipi ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], e [ICON_ESPIONAGE]).</Italian>
 		<Spanish>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Spanish>
 	</TEXT>
@@ -1734,7 +1734,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGICONS_TEXT</Tag>
 		<English>Building Icons</English>
 		<French>Building Icons</French>
-		<German>Building Icons</German>
+		<German>Gebäude-Symbole</German>
 		<Italian>Icone di edifici</Italian>
 		<Spanish>Building Icons</Spanish>
 	</TEXT>
@@ -1742,7 +1742,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGICONS_HOVER</Tag>
 		<English>When checked, the list of buildings is shown using icons instead of their names.</English>
 		<French>When checked, the list of buildings is shown using icons instead of their names.</French>
-		<German>When checked, the list of buildings is shown using icons instead of their names.</German>
+		<German>Zeigt die Liste der Gebäude mit Symbolen statt Text an</German>
 		<Italian>Quando è selezionato, la lista degli edifici viene visualizzata con le rispettive icone invece dei nomi.</Italian>
 		<Spanish>When checked, the list of buildings is shown using icons instead of their names.</Spanish>
 	</TEXT>
@@ -1750,7 +1750,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
 		<French>Culture Turns</French>
-		<German>Culture Turns</German>
+		<German>Kultur</German>
 		<Italian>Turni culturali</Italian>
 		<Spanish>Culture Turns</Spanish>
 	</TEXT>
@@ -1758,7 +1758,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__CULTURETURNS_HOVER</Tag>
 		<English>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</English>
 		<French>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</French>
-		<German>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</German>
+		<German>Zeigt die Anzahl der Runden an, bis sich die Kulturgrenzen ([ICON_CULTURE]) einer Stadt erweitern</German>
 		<Italian>Quando è selezionato, mostra il numero di turni mancanti per la successiva espansione culturale ([ICON_CULTURE]).</Italian>
 		<Spanish>When checked, shows the number of turns until the city's borders expand due to culture ([ICON_CULTURE]).</Spanish>
 	</TEXT>
@@ -1766,7 +1766,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__GREATPERSONTURNS_TEXT</Tag>
 		<English>Great Person Turns</English>
 		<French>Great Person Turns</French>
-		<German>Great Person Turns</German>
+		<German>Große Persönlichkeiten</German>
 		<Italian>Turni dei Grandi Personaggi</Italian>
 		<Spanish>Great Person Turns</Spanish>
 	</TEXT>
@@ -1774,7 +1774,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__GREATPERSONTURNS_HOVER</Tag>
 		<English>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</English>
 		<French>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</French>
-		<German>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</German>
+		<German>Zeigt die Anzahl der Runden an, bis eine Stadt eine Große Persönlichkeit ([ICON_GREATPEOPLE]) hervorbringt</German>
 		<Italian>Quando è selezionato, mostra il numero di turni necessario perchè la città generi il successivo Grande Personaggio([ICON_GREATPEOPLE]).</Italian>
 		<Spanish>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Spanish>
 	</TEXT>
@@ -1782,7 +1782,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__SPECIALISTS_TEXT</Tag>
 		<English>Specialists</English>
 		<French>Specialists</French>
-		<German>Specialists</German>
+		<German>Spezialisten</German>
 		<Italian>Specialisti</Italian>
 		<Spanish>Specialists</Spanish>
 	</TEXT>
@@ -1790,7 +1790,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__SPECIALISTS_HOVER</Tag>
 		<English>When checked, shows icons for the city's specialists (both citizens and settled great people).</English>
 		<French>When checked, shows icons for the city's specialists (both citizens and settled great people).</French>
-		<German>When checked, shows icons for the city's specialists (both citizens and settled great people).</German>
+		<German>Zeigt Symbole für die Spezialisten einer Stadt ab (sowohl für Bürger als auch für niedergelassene Große Persönlichkeiten)</German>
 		<Italian>Quando è selezionato, mostra delle icone per gli Specialisti in città (sia i Cittadini Specialisti che i Grandi Personaggi trasformati in Super-Specialisti).</Italian>
 		<Spanish>When checked, shows icons for the city's specialists (both citizens and settled great people).</Spanish>
 	</TEXT>
@@ -1798,7 +1798,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HIDEINSTRUCTIONS_TEXT</Tag>
 		<English>Hide Instructions</English>
 		<French>Hide Instructions</French>
-		<German>Hide Instructions</German>
+		<German>Hinweise verbergen</German>
 		<Italian>Nascondi Istruzioni</Italian>
 		<Spanish>Hide Instructions</Spanish>
 	</TEXT>
@@ -1806,7 +1806,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HIDEINSTRUCTIONS_HOVER</Tag>
 		<English>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</English>
 		<French>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</French>
-		<German>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</German>
+		<German>Verbirgt die Hinweise zur Auswahl von Städten und zur Anzeige der Basiswerte, um Platz für die neuen Informationen zu schaffen</German>
 		<Italian>Quando è selezionato, nasconde le istruzioni per la selezione delle Città e mostrare i valori base per fare posto alle nuove informazioni.</Italian>
 		<Spanish>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Spanish>
 	</TEXT>
@@ -1817,7 +1817,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_TEXT</Tag>
 		<English>Advanced Combat Odds</English>
 		<French>Advanced Combat Odds</French>
-		<German>Advanced Combat Odds</German>
+		<German>Erweiterte Siegchancen</German>
 		<Italian>Probabilità di Combattimento Avanzate</Italian>
 		<Spanish>Advanced Combat Odds</Spanish>
 	</TEXT>
@@ -1825,7 +1825,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_HOVER</Tag>
 		<English>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</English>
 		<French>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</French>
-		<German>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</German>
+		<German>Erlaubt die Anpassung des Detailgrads der Informationen, die bei der Berechnung der Siegchancen angezeigt werden, wenn der Mauszeiger für einen Angriff über eine feindliche Einheit bewegt wird (verwendet PieceOfMind's "Advanced Combat Odds"-Mos)</German>
 		<Italian>Quando è selezionato, consente di variare il livello di dettaglio mostrato per il calcolo delle Probabilità di Combattimento quando si posiziona il cursore per un movimento offensivo (utilizza il Mod "Advanced Combat Odds" di PieceOfMind).</Italian>
 		<Spanish>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Spanish>
 	</TEXT>
@@ -1841,7 +1841,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_HOVER</Tag>
 		<English>When checked, shows debugging information in the combat odds calculations.</English>
 		<French>When checked, shows debugging information in the combat odds calculations.</French>
-		<German>When checked, shows debugging information in the combat odds calculations.</German>
+		<German>Zeigt Debug-Information bei der Berechnung der Siegchancen an</German>
 		<Italian>Quando è selezionato, mostra le informazioni di debug nel calcolo delle Probabilità di Combattimento.</Italian>
 		<Spanish>When checked, shows debugging information in the combat odds calculations.</Spanish>
 	</TEXT>
@@ -1849,7 +1849,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_TEXT</Tag>
 		<English>Detail</English>
 		<French>Detail</French>
-		<German>Detail</German>
+		<German>Detailgrad</German>
 		<Italian>Dettagli</Italian>
 		<Spanish>Detail</Spanish>
 	</TEXT>
@@ -1857,7 +1857,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_HOVER</Tag>
 		<English>Specifies the level of detail to show in the combat odds calculations.</English>
 		<French>Specifies the level of detail to show in the combat odds calculations.</French>
-		<German>Specifies the level of detail to show in the combat odds calculations.</German>
+		<German>Bestimmt, mit welchem Detailgrad die Siegchancen angezeigt werden sollen</German>
 		<Italian>Specifica il livello di dettaglio che deve essere utilizzato per la visualizzazione delle Probabilità di Combattimento.</Italian>
 		<Spanish>Specifies the level of detail to show in the combat odds calculations.</Spanish>
 	</TEXT>
@@ -1865,7 +1865,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_LIST</Tag>
 		<English>Low|Medium|High|Extreme</English>
 		<French>Low|Medium|High|Extreme</French>
-		<German>Low|Medium|High|Extreme</German>
+		<German>Niedrig|Mittel|Hoch|Extrem</German>
 		<Italian>Basso|Medio|Alto|Massimo</Italian>
 		<Spanish>Low|Medium|High|Extreme</Spanish>
 	</TEXT>
@@ -3357,7 +3357,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__MOVE_HIGHLIGHTER_HOVER</Tag>
 		<English>Highlights the moves a unit can make when you hover the mouse over the unit's icon while holding [ALT].</English>
 		<French>Highlights the moves a unit can make when you hover the mouse over the unit's icon while holding [ALT].</French>
-		<German>Zeigt die Zugoptionen einer Einheit an, wenn bei gedrückter [ALT]-Taste der Mauszeiger über das Einheitensymbol bewegt wird</German>
+		<German>Zeigt die Zugoptionen einer Einheit an, wenn der Mauszeiger bei gedrückter [ALT]-Taste über das Einheitensymbol bewegt wird</German>
 		<Italian>Visualizza il movmento disponibile per una Unità quando premete il tasto [ALT] e posizionate il mouse sull'icona di tale Unità.</Italian>
 		<Spanish>Highlights the moves a unit can make when you hover the mouse over the unit's icon while holding [ALT].</Spanish>
 	</TEXT>
@@ -4310,8 +4310,8 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
 		<English>Strategy Layer:</English>
 		<French>Strategy Layer:</French>
-		<German>Strategy Layer:</German>
-		<Italian>Strategy Layer:</Italian>
+		<German>Strategie-Overlay:</German>
+		<Italian>Livello Strategico:</Italian>
 		<Spanish>Strategy Layer:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4455,6 +4455,22 @@
 		<German>Stadt-Bildschirm</German>
 		<Italian>Città</Italian>
 		<Spanish>City Screen</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR</Tag>
+		<English>City Bar Hover:</English>
+		<French>City Bar Hover:</French>
+		<German>Stadtbalken-Tooltip:</German>
+		<Italian>City Bar Hover:</Italian>
+		<Spanish>City Bar Hover:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYANGER</Tag>
+		<English>City Anger:</English>
+		<French>City Anger:</French>
+		<German>Unzufriedenheit:</German>
+		<Italian>City Anger:</Italian>
+		<Spanish>City Anger:</Spanish>
 	</TEXT>
 	
 	<!-- Clock Tab -->

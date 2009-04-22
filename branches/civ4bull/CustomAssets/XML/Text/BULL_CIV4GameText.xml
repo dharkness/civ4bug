@@ -10,11 +10,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_CITY_BAR_CTRL_BASE_VALUES</Tag>
-		<English>[NEWLINE]Hold &lt;CTRL> to see base values.</English>
-		<French>[NEWLINE]Hold &lt;CTRL> to see base values.</French>
-		<German>[NEWLINE]Hold &lt;CTRL> to see base values.</German>
-		<Italian>[NEWLINE]Tieni premuto &lt;CTRL> per visualizzare i valori base.</Italian>
-		<Spanish>[NEWLINE]Hold &lt;CTRL> to see base values.</Spanish>
+		<English>[NEWLINE]Hold &lt;CTRL&gt; to see base values.</English>
+		<French>[NEWLINE]Hold &lt;CTRL&gt; to see base values.</French>
+		<German>[NEWLINE][BOLD]&lt;STRG&gt;[\BOLD] drücken, um die Basiswerte zu sehen</German>
+		<Italian>[NEWLINE]Hold &lt;CTRL&gt; to see base values.</Italian>
+		<Spanish>[NEWLINE]Hold &lt;CTRL&gt; to see base values.</Spanish>
 	</TEXT>
 	
 	<!-- Food Assist -->
@@ -39,7 +39,7 @@
 		<Tag>TXT_KEY_CITY_BAR_FOOD_SHRINK</Tag>
 		<English>[NEWLINE]%d1 [ICON_BAD_FOOD]/Turn[NEWLINE][COLOR_YELLOW]Shrinking: %d2/%d3 [ICON_FOOD] (%d4 [NUM4:Turn:Turns])[COLOR_REVERT]</English>
 		<French>[NEWLINE]%d1 [ICON_BAD_FOOD]/tour[NEWLINE][COLOR_YELLOW]Rétrécissement : %d2/%d3 [ICON_FOOD] (%d4 [NUM4:tour:tours])[COLOR_REVERT]</French>
-		<German>[NEWLINE]%d1 [ICON_BAD_FOOD]/Runde[NEWLINE][COLOR_YELLOW]Schrumpfen: %d2/%d3 [ICON_FOOD] (%d4 [NUM4:Runde:Runden])[COLOR_REVERT]</German>
+		<German>[NEWLINE]%d1 [ICON_BAD_FOOD]/Runde[NEWLINE][COLOR_YELLOW]Schrumpfung: %d2/%d3 [ICON_FOOD] (%d4 [NUM4:Runde:Runden])[COLOR_REVERT]</German>
 		<Italian>[NEWLINE]%d1 [ICON_BAD_FOOD]/Turno[NEWLINE][COLOR_YELLOW]Crescita: %d2/%d3 [ICON_FOOD] (%d4 [NUM4:turno:turni])[COLOR_REVERT]</Italian>
 		<Spanish>[NEWLINE]%d1 [ICON_BAD_FOOD]/turno[NEWLINE][COLOR_YELLOW]Crecimiento: %d2/%d3 [ICON_FOOD] (%d4 [NUM4:turno:turnos])[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -108,7 +108,7 @@
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_DOMESTIC_TRADE</Tag>
 		<English>The Total Commerce from Domestic Trade Routes</English>
 		<French>The Total Commerce from Domestic Trade Routes</French>
-		<German>The Total Commerce from Domestic Trade Routes</German>
+		<German>Gesamteinkommen durch inländische Handelsverbindungen</German>
 		<Italian>Commercio totale dalle rotte commerciali interne</Italian>
 		<Spanish>The Total Commerce from Domestic Trade Routes</Spanish>
 	</TEXT>
@@ -116,7 +116,7 @@
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_FOREIGN_TRADE</Tag>
 		<English>The Total Commerce from Foreign Trade Routes</English>
 		<French>The Total Commerce from Foreign Trade Routes</French>
-		<German>The Total Commerce from Foreign Trade Routes</German>
+		<German>Gesamteinkommen durch ausländische Handelsverbindungen</German>
 		<Italian>Commercio totale dalle rotte commerciali estere</Italian>
 		<Spanish>The Total Commerce from Foreign Trade Routes</Spanish>
 	</TEXT>
@@ -125,7 +125,7 @@
 		<Tag>TXT_KEY_BUG_FINANCIAL_ADVISOR_SPECIALISTS</Tag>
 		<English>The Total Gold from Specialists</English>
 		<French>The Total Gold from Specialists</French>
-		<German>The Total Gold from Specialists</German>
+		<German>Gesamteinkommen durch Spezialisten</German>
 		<Italian>Oro totale dagli Specialisti</Italian>
 		<Spanish>The Total Gold from Specialists</Spanish>
 	</TEXT>
@@ -151,34 +151,34 @@
 	<TEXT>
 		<Tag>TXT_KEY_PRODUCTION_DECAY</Tag>
 		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</English>
-		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
-		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
-		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+		<French>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]%d1[ICON_PRODUCTION] gehen in dieser Runde verloren[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] this turn[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PRODUCTION_DECAY_PRODUCING</Tag>
 		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</English>
-		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
-		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
-		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+		<French>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]%d1[ICON_PRODUCTION] gehen verloren, falls nicht in dieser Runde produziert wird[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced this turn[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PRODUCTION_DECAY_TURNS</Tag>
 		<English>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
-		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
-		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
-		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+		<French>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]%d1[ICON_PRODUCTION] gehen in %d2 [NUM2:Runde:Runden] verloren[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]Will lose %d1[ICON_PRODUCTION] in %d2 [NUM2:turn:turns][COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PRODUCTION_DECAY_TURNS_PRODUCING</Tag>
 		<English>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</English>
-		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
-		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
-		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
-		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
+		<French>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]%d1[ICON_PRODUCTION] gehen verloren, falls für %d2 [NUM2:Runde:Runden] nicht produziert wird[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</Spanish>
 	</TEXT>
 
 <!-- Main Interface -->
@@ -189,7 +189,7 @@
 		<Tag>TXT_KEY_MISC_SET_RATE</Tag>
 		<English>Set %s1_CmrcType Rate to %d2_Value%%</English>
 		<French>Augmente la production (Taux : %s1_CmrcType) de %d2_Value%%</French>
-		<German>Wirtschaftsrate f&#252;r %s1_CmrcType um %d2_Value%% erh&#246;hen</German>
+		<German>Anteil für %s1_CmrcType auf %d2_Value%% ändern</German>
 		<Italian>Aumenta il %s1_CmrcType del %d2_Value%%</Italian>
 		<Spanish>Aumentar ritmo de %s1_CmrcType a %d2_Value%%</Spanish>
 	</TEXT>
@@ -202,7 +202,7 @@
 		<Tag>TXT_KEY_MISC_HELP_COMMERCE_SUBTOTAL_YIELD_FLOAT</Tag>
 		<English>-----------------------[NEWLINE]Base %s1_commerce_type: %s2 %F3</English>
 		<French>-----------------------[NEWLINE]Total partiel %s1_commerce_type : %s2 %F3</French>
-		<German>-----------------------[NEWLINE]%s1_commerce_type teilsumme: %s2 %F3</German>
+		<German>-----------------------[NEWLINE]%s1_commerce_type Basiswert: %s2 %F3</German>
 		<Italian>-----------------------[NEWLINE]%s1_commerce_type totale parziale: %s2 %F3</Italian>
 		<Spanish>-----------------------[NEWLINE]Subtotal %s1_commerce_type: %s2 %F3</Spanish>
 	</TEXT>
@@ -213,7 +213,7 @@
 		<Tag>TXT_KEY_MISC_HURRY_OVERFLOW</Tag>
 		<English>[ICON_BULLET]%s1 Overflow</English>
 		<French>[ICON_BULLET]%s1 Exc&#233;dent</French>
-		<German>[ICON_BULLET]%s1 &#220;berschuss</German>
+		<German>[ICON_BULLET]%s1 Überschuss</German>
 		<Italian>[ICON_BULLET]%s1 Eccedenza</Italian>
 		<Spanish>[ICON_BULLET]%s1 Exceso</Spanish>
 	</TEXT>
@@ -232,7 +232,7 @@
         <Tag>TXT_KEY_BUG_DOMESTIC_TRADE_HEADING</Tag>
         <English>Domestic Trade</English>
         <French>Commerce Domestique</French>
-        <German>Inländischer Handel</German>
+        <German>Binnenhandel</German>
         <Italian>Commercio Domestico</Italian>
         <Spanish>Comercio Doméstico</Spanish>
     </TEXT>
@@ -240,7 +240,7 @@
         <Tag>TXT_KEY_BUG_FOREIGN_TRADE_HEADING</Tag>
         <English>Trade with %s1_PlyrName of %s2_CivName</English>
         <French>Commerce avec %%s1_PlyrName of %s2_CivName</French>
-        <German>Handel mit %%s1_PlyrName of %s2_CivName</German>
+        <German>Handel mit %%s1_PlyrName (%s2_CivName)</German>
         <Italian>Commercio con %%s1_PlyrName (%s2_CivName)</Italian>
         <Spanish>Comercio con %%s1_PlyrName of %s2_CivName</Spanish>
     </TEXT>
@@ -248,7 +248,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_HEADING</Tag>
         <English>No Trade with %s1_PlyrName of %s2_CivName</English>
         <French>Pas de Commerce avec %%s1_PlyrName of %s2_CivName</French>
-        <German>Kein Handel mit %%s1_PlyrName of %s2_CivName</German>
+        <German>Kein Handel mit %%s1_PlyrName (%s2_CivName)</German>
         <Italian>Nessun commercio con %%s1_PlyrName (%s2_CivName)</Italian>
         <Spanish>Ningún Comercio con %%s1_PlyrName of %s2_CivName</Spanish>
     </TEXT>
@@ -256,7 +256,7 @@
 		<Tag>TXT_KEY_BUG_OVERLAND_TRADE</Tag>
 		<English>[NEWLINE]%d1[ICON_COMMERCE]: Continental trade from %d2 [NUM2:route:routes]</English>
 		<French>[NEWLINE]%d1[ICON_COMMERCE]: Commerce continental de %d2 [NUM2:route:routes]</French>
-		<German>[NEWLINE]%d1[ICON_COMMERCE]: Kontinentalhandel von %d2 [NUM2:weg:wege]</German>
+		<German>[NEWLINE]%d1[ICON_COMMERCE]: Kontinentalhandel (%d2 [NUM2:Handelsverbindung:Handelsverbindungen])</German>
 		<Italian>[NEWLINE]%d1[ICON_COMMERCE]: Commercio continentale da %d2 [NUM2:rotta:rotte]</Italian>
 		<Spanish>[NEWLINE]%d1[ICON_COMMERCE]: Comercio continental de %d2 [NUM2:ruta:rutas]</Spanish>
 	</TEXT>
@@ -264,7 +264,7 @@
 		<Tag>TXT_KEY_BUG_OVERSEAS_TRADE</Tag>
 		<English>[NEWLINE]%d1[ICON_COMMERCE]: Intercontinental trade from %d2 [NUM2:route:routes]</English>
 		<French>[NEWLINE]%d1[ICON_COMMERCE]: Commerce intercontinental de %d2 [NUM2:route:routes]</French>
-		<German>[NEWLINE]%d1[ICON_COMMERCE]: Interkontinentalhandel von %d2 [NUM2:weg:wege]</German>
+		<German>[NEWLINE]%d1[ICON_COMMERCE]: Interkontinentalhandel (%d2 [NUM2:Handelsverbindung:Handelsverbindungen])</German>
 		<Italian>[NEWLINE]%d1[ICON_COMMERCE]: Commercio intercontinentale da %d2 [NUM2:rotta:rotte]</Italian>
 		<Spanish>[NEWLINE]%d1[ICON_COMMERCE]: Comercio intercontinental de %d2 [NUM2:ruta:rutas]</Spanish>
 	</TEXT>
@@ -281,7 +281,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_DEAD</Tag>
         <English>[NEWLINE][ICON_BULLET]They are dead</English>
         <French>[NEWLINE][ICON_BULLET]They are dead</French>
-        <German>[NEWLINE][ICON_BULLET]They are dead</German>
+        <German>[NEWLINE][ICON_BULLET]Zivilisation ist ausgelöscht</German>
         <Italian>[NEWLINE][ICON_BULLET]Scomparsi</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]They are dead</Spanish>
     </TEXT>
@@ -289,7 +289,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_NETWORK_NOT_CONNECTED</Tag>
         <English>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</English>
         <French>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</French>
-        <German>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</German>
+        <German>[NEWLINE][ICON_BULLET]Keine Handelsverbindungen</German>
         <Italian>[NEWLINE][ICON_BULLET]Le vostre reti commerciali non sono collegate</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Your Trade Networks are not connected</Spanish>
     </TEXT>
@@ -297,7 +297,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_CLOSED_BORDERS</Tag>
         <English>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</English>
         <French>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</French>
-        <German>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</German>
+        <German>[NEWLINE][ICON_BULLET]Kein Abkommen über "Offene Grenzen"</German>
         <Italian>[NEWLINE][ICON_BULLET]Non avete siglato un Accordo di Libero Scambio</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]You have not signed an Open Borders agreement</Spanish>
     </TEXT>
@@ -305,7 +305,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_FOREIGN_YOU</Tag>
         <English>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</English>
         <French>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</French>
-        <German>[NEWLINE][ICON_BULLET]Your Civics don't allow Foreign Trade</German>
+        <German>[NEWLINE][ICON_BULLET]Eure Gesellschaftsform erlaubt keinen Außenhandel</German>
         <Italian>[NEWLINE][ICON_BULLET]La tua Forma di Governo non consente il Commercio Estero</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Your civics don't allow Foreign Trade</Spanish>
     </TEXT>
@@ -314,7 +314,7 @@
         <Tag>TXT_KEY_BUG_CANNOT_TRADE_FOREIGN_THEM</Tag>
         <English>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</English>
         <French>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</French>
-        <German>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</German>
+        <German>[NEWLINE][ICON_BULLET]Deren Gesellschaftsform erlaubt keinen Außenhandel</German>
         <Italian>[NEWLINE][ICON_BULLET]La loro Forma di Governo non consente il Commercio Estero</Italian>
         <Spanish>[NEWLINE][ICON_BULLET]Their Civics don't allow Foreign Trade</Spanish>
     </TEXT>
