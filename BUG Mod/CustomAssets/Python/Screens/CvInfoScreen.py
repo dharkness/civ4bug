@@ -2534,8 +2534,12 @@ class CvInfoScreen:
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
 
-			szTurnYearBuilt = BugUtil.getDisplayYear(iTurnYearBuilt)
-			szTurnYearBuilt = localText.changeTextColor(szTurnYearBuilt, color)
+			if iTurnYearBuilt == -9999:
+				szTurnYearBuilt = ""
+			else:
+				szTurnYearBuilt = BugUtil.getDisplayYear(iTurnYearBuilt)
+				szTurnYearBuilt = localText.changeTextColor(szTurnYearBuilt, color)
+
 			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
 			szWonderBuiltBy = localText.changeTextColor(sCivilization, color)
 

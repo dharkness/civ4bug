@@ -108,10 +108,10 @@ greek_array = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'The
 
 ordinal_array = 'th st nd rd th th th th th th'.split()
 
-def BUGPrint (stuff):
+#def BUGPrint (stuff):
 #	stuff = "UNEvMg: " + stuff
 #	print stuff
-	return
+#	return
 
 class UnitNameEventManager:
 
@@ -169,9 +169,9 @@ class UnitNameEventManager:
 		zsUnitCombat = lUnitReName.getUnitCombat(pUnit)
 		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
 
-#		BUGPrint("ERA(%s)" % (zsEra))
-#		BUGPrint("Combat(%s)" % (zsUnitCombat))
-#		BUGPrint("Class(%s)" % (zsUnitClass))
+		#BUGPrint("ERA(%s)" % (zsEra))
+		#BUGPrint("Combat(%s)" % (zsUnitCombat))
+		#BUGPrint("Class(%s)" % (zsUnitClass))
 
 		zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 		zsUnitNameConv = popupReturn.getEditBoxString(0)
@@ -225,37 +225,37 @@ class BuildUnitName(AbstractBuildUnitName):
 		pPlayer = gc.getPlayer(iPlayer)
 		lUnitReName = UnitReName()
 
-#		BUGPrint("onUnitBuild-A")
+		#BUGPrint("onUnitBuild-A")
 
 		if (pUnit == None
 		or pUnit.isNone()):
 			return
 
-#		BUGPrint("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), UnitNamingOpt.isEnabled()))
+		#BUGPrint("onUnitBuild-B %s %s %s" % (iPlayer, CyGame().getActivePlayer(), UnitNamingOpt.isEnabled()))
 
 		if not (iPlayer == CyGame().getActivePlayer()
 		and UnitNamingOpt.isEnabled()):
 			return
 
-#		BUGPrint("onUnitBuild-C")
+		#BUGPrint("onUnitBuild-C")
 
 		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 		zsUnitCombat = lUnitReName.getUnitCombat(pUnit)
 		zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
 
-#		BUGPrint("ERA(%s)" % (zsEra))
-#		BUGPrint("Combat(%s)" % (zsUnitCombat))
-#		BUGPrint("Class(%s)" % (zsUnitClass))
+		#BUGPrint("ERA(%s)" % (zsEra))
+		#BUGPrint("Combat(%s)" % (zsUnitCombat))
+		#BUGPrint("Class(%s)" % (zsUnitClass))
 
 		zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 		zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, True)
 
-#		BUGPrint("onUnitBuild-D")
+		#BUGPrint("onUnitBuild-D")
 
 		if not (zsUnitName == ""):
 			pUnit.setName(zsUnitName)
 
-#		BUGPrint("onUnitBuild-E")
+		#BUGPrint("onUnitBuild-E")
 
 		return
 
@@ -279,22 +279,22 @@ class UnitReName(object):
 		zsUnit = PyInfo.UnitInfo(pUnit.getUnitType()).getDescription()
 		zsCity = pCity.getName()
 
-#		BUGPrint("ERA(%s)" % (zsEra))
-#		BUGPrint("Civ(%s)" % (zsCiv))
-#		BUGPrint("Leader(%s)" % (zsLeader))
-#		BUGPrint("Combat(%s)" % (zsUnitCombat))
-#		BUGPrint("Class(%s)" % (zsUnitClass))
-#		BUGPrint("Type(%s)" % (zsUnitType))
-#		BUGPrint("Domain(%s)" % (zsUnitDomain))
-#		BUGPrint("Unit(%s)" % (zsUnit))
-#		BUGPrint("City(%s)" % (zsCity))
+		#BUGPrint("ERA(%s)" % (zsEra))
+		#BUGPrint("Civ(%s)" % (zsCiv))
+		#BUGPrint("Leader(%s)" % (zsLeader))
+		#BUGPrint("Combat(%s)" % (zsUnitCombat))
+		#BUGPrint("Class(%s)" % (zsUnitClass))
+		#BUGPrint("Type(%s)" % (zsUnitType))
+		#BUGPrint("Domain(%s)" % (zsUnitDomain))
+		#BUGPrint("Unit(%s)" % (zsUnit))
+		#BUGPrint("City(%s)" % (zsCity))
 
 		zsName = sUnitNameConv
 
 		#if zsName == "":
 		#zsName = "^ut^ ^cnt[r]^ Div ^tt1[s][5:7]^ : ^ct^ ^tt2[o][101]^"
 
-#		BUGPrint("UnitNameEM-A [" + zsName + "]")
+		#BUGPrint("UnitNameEM-A [" + zsName + "]")
 
 ##  - ^civ4^ - no naming convention, uses standard civ4
 #		check if Civ4 naming convention is required
@@ -306,14 +306,14 @@ class UnitReName(object):
 		if not (zsName.find("^rd^") == -1):
 			return RandomNameUtils.getRandomName()
 
-#		BUGPrint("UnitNameEM-B")
+		#BUGPrint("UnitNameEM-B")
 
 ##  - ^rc^ - random civ related name
 #		check if random civ related naming convention is required
 		if not (zsName.find("^rc^") == -1):
 			return RandomNameUtils.getRandomCivilizationName(pPlayer.getCivilizationType())
 
-#		BUGPrint("UnitNameEM-C [" + zsName + "]")
+		#BUGPrint("UnitNameEM-C [" + zsName + "]")
 
 ##  - ^ct^ - City
 ##  - ^cv^ - Civilization
@@ -329,7 +329,7 @@ class UnitReName(object):
 		zsName = zsName.replace("^dm^", zsUnitDomain)
 		zsName = zsName.replace("^ld^", zsLeader)
 
-#		BUGPrint("UnitNameEM-D [" + zsName + "]")
+		#BUGPrint("UnitNameEM-D [" + zsName + "]")
 
 #		check if there are any more codes to swap out, return if not
 		if (zsName.find("^") == -1):
@@ -343,7 +343,7 @@ class UnitReName(object):
 		elif zsSDKey == "UNITCITY": zsSDKey = zsSDKey + zsUnit + zsCity
 		elif zsSDKey == "DOMAIN":	zsSDKey = zsSDKey + zsUnitDomain
 
-#		BUGPrint("UnitNameEM-E [" + zsSDKey + "]")
+		#BUGPrint("UnitNameEM-E [" + zsSDKey + "]")
 
 #		see if we have already started this counter
 		if (sdEntityExists(sdGroup, zsSDKey) == False):
@@ -358,7 +358,7 @@ class UnitReName(object):
 		ziTT1 = sdGetVal(sdGroup, zsSDKey, "tt1")
 		ziTT2 = sdGetVal(sdGroup, zsSDKey, "tt2")
 
-#		BUGPrint("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]")
+		#BUGPrint("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]")
 
 #		increment count, adjust totals if required
 		if bIncrementCounter:
@@ -386,26 +386,32 @@ class UnitReName(object):
 ##    b. if it returns 'DEFAULT', then get the combat based naming convention
 ##    c. if naming convention is 'DEFAULT', get default naming convention
 
+		#BUGPrint("UnitNameEM-ini0 [isAdvanced?]")
 		if UnitNamingOpt.isAdvanced():
+			#BUGPrint("UnitNameEM-ini0 [isAdvanced-YES]")
 			era = Era[4:]
 			unitClass = UnitClass[10:]
+
 			zsUnitNameConv = UnitNamingOpt.getByEraAndClass(era, unitClass)
+
+			#BUGPrint("UnitNameEM-iniAdv [" + zsUnitNameConv + "]" + Era + "|" + unitClass + "|" + era + "|" + unitClass +"]")
 		else:
+			#BUGPrint("UnitNameEM-ini0 [isAdvanced-NO]")
 			zsUnitNameConv = "DEFAULT"
 
 		if not (zsUnitNameConv == "DEFAULT"):
 			return zsUnitNameConv
 
-#		BUGPrint("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:])
+		#BUGPrint("UnitNameEM-iniA [" + zsUnitNameConv + "]" + UnitCombat[11:])
 
 		zsUnitNameConv = UnitNamingOpt.getByCombatType(UnitCombat[11:])
 
-#		BUGPrint("UnitNameEM-iniB [" + zsUnitNameConv + "]")
+		#BUGPrint("UnitNameEM-iniB [" + zsUnitNameConv + "]")
 
 		if not (zsUnitNameConv == "DEFAULT"):
 			return zsUnitNameConv
 
-#		BUGPrint("UnitNameEM-iniC [" + zsUnitNameConv + "]")
+		#BUGPrint("UnitNameEM-iniC [" + zsUnitNameConv + "]")
 
 		zsUnitNameConv = UnitNamingOpt.getDefault()
 		return zsUnitNameConv
@@ -428,33 +434,35 @@ class UnitReName(object):
 
 
 	def getCounter(self, conv):
-##  - ^cnt[f]^ - count across all units (increments based on unit)
-##  - ^cntu[f]^ - count across same unit (increments based on unit)
-##  - ^cntct[f]^ - count across same city (increments based on unit)
-##  - ^cntuct[f]^ - count across same unit / city (increments based on unit)
-##  - ^cntc[f]^ - count across same combat type (increments based on combat type)
-##  - ^cntd[f]^ - count across same domain (increments based on domain)
+##  - ^cnt[f][r]^ - counting code, if the code isn't there - return 'ALL'
+##  - where
+##  -   r = 'a' means count across all units (just increments)
+##  -   r = 'u' means count across same unit (increments based on unit)
+##  -   r = 'c' means count across same city (increments based on city)
+##  -   r = 't' means count across same unit / city (increments based on unit / city)
+##  -   r = 'b' means count across same combat type (increments based on combat type)
+##  -   r = 'd' means count across same domain (increments based on domain)
+##  -   r = other, means count across units that have the same code
 
-		if not (conv.find("^cnt[") == -1):
+		ziStart = conv.find("^cnt[")
+		if (ziStart == -1):  # ie not found
 			return "ALL"
 
-		if not (conv.find("^cntu[") == -1):
-			return "UNIT"
+#		locate and extract the code
+		ziStart = conv.find("[", ziStart)
+		ziStart = conv.find("[", ziStart+1)
+		ziEnd = conv.find("]", ziStart+1)
+		zsValue = conv[ziStart+1:ziEnd]
 
-		if not (conv.find("^cntc[") == -1):
-			return "COMBAT"
+		#BUGPrint("UnitNameEM-E1 [" + conv  + "|" + str(ziStart)  + "|" + str(ziEnd)  + "|" + zsValue + "]")
 
-		if not (conv.find("^cntct[") == -1):
-			return "CITY"
-
-		if not (conv.find("^cntuct[") == -1):
-			return "UNITCITY"
-
-		if not (conv.find("^cntd[") == -1):
-			return "DOMAIN"
-
-		return "ALL"
-
+		if zsValue == "a": return "ALL"
+		if zsValue == "u": return "UNIT"
+		if zsValue == "c": return "CITY"
+		if zsValue == "t": return "UNITCITY"
+		if zsValue == "b": return "COMBAT"
+		if zsValue == "d": return "DOMAIN"
+		return zsValue
 
 	def getTotal1(self, conv):
 ##  - ^tt1[f][x:y]^ - total where the total is a random number between x and y (number)
@@ -527,21 +535,21 @@ class UnitReName(object):
 #		return if iCnt is negative (this means that the code is not in the unitnameconv)
 		if iCnt < 0: return conv
 
-#		BUGPrint("UnitNameEM-SCC [" + conv + "] [" + searchStr + "] [" + str(iCnt) + "]")
+		#BUGPrint("UnitNameEM-SCC [" + conv + "] [" + searchStr + "] [" + str(iCnt) + "]")
 
 		zsCntCode = self.getCountCode(conv, searchStr)
 
 		if zsCntCode == "": return conv
 
-#		BUGPrint("UnitNameEM-SCC [" + zsCntCode + "]")
+		#BUGPrint("UnitNameEM-SCC [" + zsCntCode + "]")
 
 		zsNumberFormat = self.getNumberFormat(conv, searchStr)
 
-#		BUGPrint("UnitNameEM-SCC [" + zsNumberFormat + "]")
+		#BUGPrint("UnitNameEM-SCC [" + zsNumberFormat + "]")
 
 		zsCnt = self.FormatNumber(zsNumberFormat, iCnt)
 
-#		BUGPrint("UnitNameEM-SCC [" + zsCnt + "]")
+		#BUGPrint("UnitNameEM-SCC [" + zsCnt + "]")
 
 		if zsCntCode == "":
 			return conv
