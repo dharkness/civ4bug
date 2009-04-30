@@ -39,6 +39,10 @@ def init():
 			name = symbolNames[symbol]
 			registerSymbolSynonym(key, symbol, name[:-5])
 			registerSymbolSynonym(key, symbol, name)
+#			del symbolNames[symbol]
+	# add the FontSymbols that aren't in CvUtil
+#	for symbol, name in symbolNames:
+#		addBuiltinSymbol()
 	
 	for count, getInfo in (
 		(YieldTypes.NUM_YIELD_TYPES, gc.getYieldInfo),
@@ -56,22 +60,31 @@ def addOffsetSymbol(key, symbolOrKey, offset, name=None):
 	return addSymbol(key, getOrdinal(getSymbol(symbolOrKey)) + offset, name)
 
 def addSymbol(key, ordinal, name=None):
-	global nextSymbolID
-	symbol = FontSymbols(nextSymbolID)
-	nextSymbolID += 1
-	registerSymbol(key, symbol, ordinal)
 	if not name:
 		name = key.upper().replace(" ", "_")
 	else:
 		name = name.upper().replace(" ", "_")
+	symbolName = name + "_CHAR"
+	symbol = findOrCreateSymbol(symbolName)
+	registerSymbol(key, symbol, ordinal)
 	registerSymbolSynonym(key, symbol, name)
-	name += "_CHAR"
-	registerSymbolSynonym(key, symbol, name)
-	if name in FontSymbols.__dict__:
-		BugUtil.warn("FontUtil - ignoring duplicate FontSymbols name %s", name)
-	else:
-		BugUtil.debug("FontUtil - mapping to FontSymbols.%s", name)
-		setattr(FontSymbols, name, symbol)
+	registerSymbolSynonym(key, symbol, symbolName)
+	return symbol
+
+def findOrCreateSymbol(name):
+	try:
+		symbol = getattr(FontSymbols, name)
+		if isinstance(symbol, FontSymbols):
+			BugUtil.debug("FontUtil - found FontSymbols name %s", name)
+			return symbol
+	except AttributeError:
+		pass
+	# create a FontSymbols enum for it
+	global nextSymbolID
+	symbol = FontSymbols(nextSymbolID)
+	nextSymbolID += 1
+	BugUtil.debug("FontUtil - created FontSymbols.%s", name)
+	setattr(FontSymbols, name, symbol)
 	return symbol
 
 def registerSymbol(key, symbol, ordinal):
