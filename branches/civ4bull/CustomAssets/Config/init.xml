@@ -157,8 +157,10 @@
 	
 	<!-- BULL Mods -->
 	
+	<load mod="BULL Actions"/>
 	<load mod="BULL City Bar"/>
-	<load mod="MapFinder"/>
+	<load mod="BULL Misc Hovers"/>
+	
 	<load mod="Advanced Combat Odds"/>
 	
 	
