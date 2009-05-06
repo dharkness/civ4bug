@@ -180,6 +180,17 @@
 		<Italian>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]Will lose %d1[ICON_PRODUCTION] if not produced for %d2 [NUM2:turn:turns][COLOR_REVERT]</Spanish>
 	</TEXT>
+	
+<!-- Miscellaneous Hovers -->
+
+	<TEXT>
+		<Tag>TXT_KEY_MISC_SPEEDS_UP</Tag>
+		<English>[NEWLINE][ICON_BULLET]Speeds up[SPACE]</English>
+		<French>[NEWLINE][ICON_BULLET]Accélère [SPACE]</French>
+		<German>[NEWLINE][ICON_BULLET]Beschleunigt[SPACE]</German>
+		<Italian>[NEWLINE][ICON_BULLET]Accelera[SPACE]</Italian>
+		<Spanish>[NEWLINE][ICON_BULLET]Acelera[SPACE]</Spanish>
+	</TEXT>
 
 <!-- Main Interface -->
 
@@ -205,6 +216,22 @@
 		<German>-----------------------[NEWLINE]%s1_commerce_type Basiswert: %s2 %F3</German>
 		<Italian>-----------------------[NEWLINE]%s1_commerce_type totale parziale: %s2 %F3</Italian>
 		<Spanish>-----------------------[NEWLINE]Subtotal %s1_commerce_type: %s2 %F3</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISC_HELP_BUILDING_ADDITIONAL_COMMERCE_FLOAT</Tag>
+		<English>[ICON_BULLET][COLOR_BUILDING_TEXT]%s1_building_type[COLOR_REVERT]: %s2 %F3</English>
+		<French>[ICON_BULLET]%s1_building_type : %s2 %F3</French>
+		<German>[ICON_BULLET]%s1_building_type: %s2 %F3</German>
+		<Italian>[ICON_BULLET]%s1_building_type: %s2 %F3</Italian>
+		<Spanish>[ICON_BULLET]%s1_building_type: %s2 %F3</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISC_HELP_BUILDING_ADDITIONAL_YIELD</Tag>
+		<English>[ICON_BULLET][COLOR_BUILDING_TEXT]%s1_building_type[COLOR_REVERT]: %D2 %F3</English>
+		<French>[ICON_BULLET]%s1_building_type : %s2 %F3</French>
+		<German>[ICON_BULLET]%s1_building_type: %s2 %F3</German>
+		<Italian>[ICON_BULLET]%s1_building_type: %s2 %F3</Italian>
+		<Spanish>[ICON_BULLET]%s1_building_type: %s2 %F3</Spanish>
 	</TEXT>
 
 <!-- Hurry Hover -->
