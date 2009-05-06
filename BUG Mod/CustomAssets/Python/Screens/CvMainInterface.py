@@ -856,30 +856,14 @@ class CvMainInterface:
 	def hidePlotListButtonPLEObjects(self, screen):
 		# hides all unit button objects
 		for i in range( self.iMaxPlotListIcons ):
-			# hide unit button
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
 			screen.hide( szString )
-			# hide colored spot
-			szStringIcon = szString+"Icon"
-			screen.hide( szStringIcon )
-			# hide health bar
-			szStringHealthBar = szString+"HealthBar"
-			screen.hide( szStringHealthBar )
-			# hide move bar
-			szStringMoveBar = szString+"MoveBar"
-			screen.hide( szStringMoveBar )
-			# hide promotion frame
-			szStringPromoFrame = szString+"PromoFrame"
-			screen.hide( szStringPromoFrame )
-			# hide mission info
-			szStringActionIcon = szString+"ActionIcon"
-			screen.hide( szStringActionIcon )
-			# hide upgrade arrow
-			szStringUpgrade = szString+"Upgrade"
-			screen.hide( szStringUpgrade )
-			# hide GG star
-			szStringUpgrade = szString+"GreatGeneral"
-			screen.hide( szStringUpgrade )
+			screen.hide( szString + "Icon" )
+			screen.hide( szString + "HealthBar" )
+			screen.hide( szString + "MoveBar" )
+			screen.hide( szString + "PromoFrame" )
+			screen.hide( szString + "ActionIcon" )
+			screen.hide( szString + "Upgrade" )
 
 		# hides all promotion and upgrade button objects
 		for nCol in range(self.getMaxCol()+1):
@@ -3510,33 +3494,6 @@ class CvMainInterface:
 		# hide all buttons
 		self.hidePlotListButtonPLEObjects(screen)
 		self.hideUnitInfoPane()
-
-		self.hidePlotListButtonNonPLEObjects(screen)
-
-	def hidePlotListButtonNonPLEObjects(self, screen):
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			for i in range(self.numPlotListButtons()):
-				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
-				screen.hide( szString )
-
-				szStringHealth = szString + "Health"
-				screen.hide( szStringHealth )
-
-				szStringIcon = szString + "Icon"
-				screen.hide( szStringIcon )
-
-				szStringPromoFrame = szString + "PromoFrame"
-				screen.hide( szStringPromoFrame )
-
-				szStringActionIcon = szString + "ActionIcon"
-				screen.hide( szStringActionIcon )
-
-				szStringUpgrade = szString + "Upgrade"
-				screen.hide( szStringUpgrade )
-
-				szStringUpgrade = szString + "GreatGeneral"
-				screen.hide( szStringUpgrade )
-		return 0
 
 	def updatePlotListButtons_Common( self, screen ):
 
