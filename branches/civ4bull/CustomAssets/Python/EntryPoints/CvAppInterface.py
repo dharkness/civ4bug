@@ -221,6 +221,48 @@ def getOptionBOOL(argsList):
 		#BugUtil.alert("returning default %s", bool(default))
 		return default
 
+def getOptionINT(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %d", id, int(default))
+	try:
+		option = getOption(id)
+		return int(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %d", int(default))
+		return default
+
+def getOptionFLOAT(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %f", id, float(default))
+	try:
+		option = getOption(id)
+		return float(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %f", float(default))
+		return default
+
+def getOptionSTRING(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %s", id, str(default))
+	try:
+		option = getOption(id)
+		return str(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %s", str(default))
+		return default
+
 g_nameAndVersion = None
 def getModNameAndVersion():
 	global g_nameAndVersion
