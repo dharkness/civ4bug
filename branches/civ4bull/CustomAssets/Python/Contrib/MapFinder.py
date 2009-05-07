@@ -20,38 +20,49 @@ from CvPythonExtensions import *
 import BugCore
 import BugDll
 import BugUtil
-import CvCameraControls
+#import CvCameraControls
 import CvUtil
 import os.path
 import time
 
 gc = CyGlobalContext()
-cam = CvCameraControls.CvCameraControls()
+#cam = CvCameraControls.CvCameraControls()
 options = BugCore.game.MapFinder
 
 EVENT_MESSAGE_TIME = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 
+
 # Regenerate Map
 
-def regenerate(argsList):
-	if BugDll.isPresent():
-		if gc.getGame().canRegenerateMap():
-			if gc.getGame().regenerateMap():
-				cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
-				centerCameraOnPlayer()
-				cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
-			else:
-				CyInterface().addMessage(gc.getGame().getActivePlayer(), True,
-										 EVENT_MESSAGE_TIME, "Regenerate Failed", #BugUtil.getPlainText(""),
-										 None, 0, None, gc.getInfoTypeForString("COLOR_NEGATIVE_TEXT"), -1, -1, False, False)
+def doRegenerate(argsList=None):
+	try:
+		regenerate()
+	except MapFinderError, e:
+		e.display()
+
+def canRegenerate():
+	enforceDll()
+	if gc.getGame().canRegenerateMap():
+		return True
+	else:
+		raise MapFinderError("TXT_KEY_MAPFINDER_CANNOT_REGENERATE")
+
+def regenerate():
+	if canRegenerate():
+		if gc.getGame().regenerateMap():
+			#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
+			centerCameraOnPlayer()
+			#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
 		else:
-			CyInterface().addMessage(gc.getGame().getActivePlayer(), True,
-									 EVENT_MESSAGE_TIME, "Can't Regenerate", #BugUtil.getPlainText(""),
-									 None, 0, None, gc.getInfoTypeForString("COLOR_WARNING_TEXT"), -1, -1, False, False)
+			raise MapFinderError("TXT_KEY_MAPFINDER_REGENERATE_FAILED")
 
 def centerCameraOnPlayer():
-	cam.centerCamera(gc.getActivePlayer().getStartingPlot())
-	#CyCamera().JustLookAtPlot(gc.getActivePlayer().getStartingPlot())
+	#cam.centerCamera(gc.getActivePlayer().getStartingPlot())
+	cam = CyCamera()
+	eSpeed = cam.GetCameraMovementSpeed()
+	cam.SetCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
+	cam.JustLookAtPlot(gc.getActivePlayer().getStartingPlot())
+	cam.SetCameraMovementSpeed(eSpeed)
 
 
 # Regeneration Loop
@@ -145,91 +156,83 @@ TYPES_BY_CODE = {  # BasicPlot_TypesToCode
 
 bActive = False
 bChecking = False
-bSuccess = False
 
 iUpdateCounter = 0
 iRegenCount = 0
 iSavedCount = 0
 
-def startStop(argsList=None):
-	if BugDll.isPresent():
-		if not bActive:
-			start()
-		else:
-			stop()
+def doStartStop(argsList=None):
+	try:
+		startStop()
+	except MapFinderError, e:
+		e.display()
+
+def startStop():
+	if not bActive:
+		start()
+	else:
+		stop()
 
 def start():
-	global bActive, bChecking, iRegenCount, iSavedCount
-	bActive = True
-	bChecking = False
-	iRegenCount = 0
-	iSavedCount = 0
-	cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
+	if canRegenerate():
+		setup()
+		global bActive, bChecking, iRegenCount, iSavedCount
+		bActive = True
+		bChecking = False
+		iRegenCount = 0
+		iSavedCount = 0
+		#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
+		global savedInterfaceMode
+		savedInterfaceMode = CyInterface().getShowInterface()
+		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_HIDE_ALL)
+		BugUtil.alert("MapFinder started")
 
 def stop():
 	global bActive, bChecking
 	bActive = False
 	bChecking = False
-	cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
+	#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
+	if savedInterfaceMode:
+		CyInterface().setShowInterface(savedInterfaceMode)
+	else:
+		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
+	BugUtil.alert("MapFinder stopped")
+#	BugUtil.getText('TXT_KEY_MAPFINDER_REGEN_FAILED') +
+#		"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
+#		"=" + str(HOFContext.iMapFinderRegenCount) +
+#		" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
+#		"=" + str(HOFContext.iMapFinderSavedCount), None,
+#		0, None, ColorTypes(-1), 0, 0, False, False)
 
 def cycle(argsList=None):
-	global iUpdateCounter
-	if (bActive and bChecking):
-		iUpdateCounter = iUpdateCounter + 1
-#		BugUtil.alert("check counter = %d", iUpdateCounter)
-		if (iUpdateCounter >= 1): centerCameraOnPlayer()
-		if (iUpdateCounter >= options.getUpdateScreenDelay()):
-			iUpdateCounter = 0
-			check(iRegenCount)
-	
-	if (bActive and not bChecking):
-		iUpdateCounter = iUpdateCounter + 1
-#		BugUtil.alert("next counter = %d", iUpdateCounter)
-		if (iUpdateCounter >= options.getUpdateScreenDelay()):
-			iUpdateCounter = 0
-			next()
+	if bActive:
+		try:
+			global iUpdateCounter
+			iUpdateCounter += 1
+#			BugUtil.alert("next counter = %d", iUpdateCounter)
+			if bChecking:
+				if iUpdateCounter >= 1:
+					centerCameraOnPlayer()
+				if iUpdateCounter >= options.getUpdateScreenDelay():
+					iUpdateCounter = 0
+					check()
+			else:
+				if iUpdateCounter >= options.getUpdateScreenDelay():
+					iUpdateCounter = 0
+					next()
+		except MapFinderError, e:
+			e.display()
+			stop()
 
 def next():
-	global bActive, bSuccess, bChecking, iRegenCount
-	if not bActive: return
+	if bActive and canRegenerate():
+		regenerate()
+		global bChecking, iRegenCount
+		bChecking = True
+		iRegenCount += 1
 
-	if gc.getGame().canRegenerateMap():
-#		try: x = mfRegen.next()
-#		except:	return
-		if not gc.getGame().regenerateMap():
-			CyInterface().addMessage(gc.getGame().getActivePlayer(), True,
-				EVENT_MESSAGE_TIME, BugUtil.getPlainText('TXT_KEY_MAPFINDER_REGEN_FAILED') +
-				"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
-				"=" + str(HOFContext.iMapFinderRegenCount) +
-				" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
-				"=" + str(HOFContext.iMapFinderSavedCount), None,
-				0, None, ColorTypes(-1), 0, 0, False, False)
-			stop()
-			return
-	else:
-		CyInterface().addMessage(gc.getGame().getActivePlayer(), True,
-			EVENT_MESSAGE_TIME, BugUtil.getPlainText('TXT_KEY_MAPFINDER_CANNOT_REGEN') +
-			"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
-			"=" + str(HOFContext.iMapFinderRegenCount) +
-			" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
-			"=" + str(HOFContext.iMapFinderSavedCount), None,
-			0, None, ColorTypes(-1), 0, 0, False, False)
-		stop()
-		return
-
-	bChecking = True
-	iRegenCount = iRegenCount + 1
-
-#def MapFinderRegenerator():
-#	global bSuccess
-#	i = 0
-#	while True:
-#		bSuccess = CyGame().regenerateMap()
-#		yield i
-#		i = i + 1
-
-def check(fNum):
-	global bActive, bChecking, iSavedCount
+def check():
+	global bActive, bChecking, iRegenCount, iSavedCount
 	bSaveMap = False
 	sMFSavePath = os.path.join(options.getPath(), "Saves")
 	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
@@ -252,10 +255,10 @@ def check(fNum):
 
 	lX = {}
 	lY = {}
-	if (rs['Range'] != 999):
+	if (Rules['Range'] != 999):
 
-		lMax = (rs['Range'] * 2) + 1
-		iX = iStartX - rs['Range']
+		lMax = (Rules['Range'] * 2) + 1
+		iX = iStartX - Rules['Range']
 		if (iX < 0):
 			if (bWrapX):
 				iX = iMaxX + iX
@@ -267,7 +270,7 @@ def check(fNum):
 			if iX > iMaxX: 0
 			if iX < 0: iMaxX
 
-		iY = iStartY - rs['Range']
+		iY = iStartY - Rules['Range']
 		if (iY < 0):
 			if (bWrapY):
 				iY = iMaxY + iY
@@ -287,13 +290,13 @@ def check(fNum):
 	for iY in range(0, iMaxY):
 		for iX in range(0, iMaxX):
 
-			if (rs['Range'] != 999):
+			if (Rules['Range'] != 999):
 ## HOF MOD V1.61.005
 				# skip if outside range
 				if iX not in lX.values(): continue
 				if iY not in lY.values(): continue
 			    # use fat-cross if over 1 range
-				if  (rs['Range'] > 1):
+				if  (Rules['Range'] > 1):
 					# fat cross, skip diagonal corners
 					if (iX == lX[1] and iY == lY[1]): continue
 					if (iX == lX[1] and iY == lY[lMax]): continue
@@ -388,7 +391,7 @@ def check(fNum):
 ## end HOF MOD V1.61.005
 
 	lPF = []
-	for g, r in rs.iteritems():
+	for g, r in Rules.iteritems():
 		if (g == 'Range'): continue
 		grp = True
 		for k, v in r.iteritems():
@@ -409,29 +412,29 @@ def check(fNum):
 	    
 	if (bSaveMap):
 		iSavedCount = iSavedCount + 1
-		reportFile = str(fileName + "_" + str(fNum) + "_" + str(iSavedCount) + ".txt")
-		sPath, sName = os.path.split(sMFRuleFile)
+		reportFile = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".txt")
+		ruleFile = options.getRuleFile()
 
-		fp = open(reportFile, "a")
+		file = open(reportFile, "a")
 
 ## HOF MOD V1.61.005
 		# don't change unless file format changes!
-		fp.write("HOF MOD V1.61.004,HOF MOD V1.61.005,\n")
+		file.write("HOF MOD V1.61.004,HOF MOD V1.61.005,\n")
 ## end HOF MOD V1.61.005
 
-		fp.write("Name,Name," + str(fileName) + "_" + str(fNum) + "_" + str(iSavedCount) + "\n")
-		fp.write("Rule File,Rule File," + str(sName) + "\n")
-		fp.write("Range,Range," + str(rs['Range']) + "\n")
+		file.write("Name,Name," + str(fileName) + "_" + str(iRegenCount) + "_" + str(iSavedCount) + "\n")
+		file.write("Rule File,Rule File," + str(ruleFile) + "\n")
+		file.write("Range,Range," + str(Rules['Range']) + "\n")
 
 		lKeys = mr.keys()
 		lKeys.sort()
 		for x in lKeys:
 			if (x < 900):
-				fp.write(str(x) + "," + str(CodeText[x]) + "," + str(mr[x]) + "\n")
+				file.write(str(x) + "," + str(CodeText[x]) + "," + str(mr[x]) + "\n")
 
-		fp.close
+		file.close()
 
-		fileNameX = str(fileName + "_" + str(fNum) + "_" + str(iSavedCount) + ".CivBeyondSwordSave")
+		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".CivBeyondSwordSave")
 		gc.getGame().saveGame(fileNameX)
 
 
@@ -447,7 +450,7 @@ def check(fNum):
 					"=" + str(iSavedCount), "")
 
 	if (bSaveMap):
-		fileNameX = str(fileName + "_" + str(fNum) + "_" + str(iSavedCount) + ".jpg")
+		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".jpg")
 		gc.getGame().takeJPEGScreenShot(fileNameX)
 
 	if ((iRegenCount >= options.getRegenLimit()) or
@@ -492,124 +495,117 @@ def getSaveFileName(pathName):
 	return (fileName, baseFileName)
 
 
-def getRuleSet():
-	global sMFRuleFile
-	ruleset = {}
-	ruleset['Range'] = 2
-	
-	sMFRuleFile = options.getRuleFile()
-	if not os.path.isfile(sMFRuleFile):	return ruleset
+def setup():
+	root = options.getPath()
+	if not os.path.isdir(root):
+		raise MapFinderError("TXT_KEY_MAPFINDER_INVALID_PATH", root)
+	loadCodeText(root)
+	loadCategoryTypes(root)
+	loadComboTypes(root)
+	loadRuleSet(root)
 
-	iGrpSave = 0
-	ruleset = {}
-	fp = open(sMFRuleFile, "r")
-	temp = fp.readline()
-	while (temp != ''):
-		(sGrp, sCat, sRule, sMin, sMax) = temp.split(",")
-		iGrp = int(sGrp.strip())
-		iCat = int(sCat.strip())
-		if (iGrp == 0):
-			ruleset['Range'] = iCat
-		else:
-			iRule = int(sRule.strip())
-			iMin = int(sMin.strip())
-			iMax = int(sMax.strip())
-			if (iGrp != iGrpSave):
-				ruleset[iGrp] = {iRule : (iMin, iMax)}
-			else:
-				ruleset[iGrp][iRule] = (iMin, iMax)
-		iGrpSave = iGrp
-		temp = fp.readline()
-	fp.close
-	fp = None
+def findSystemFile(root, file):
+	path = os.path.join(root, file)
+	if not os.path.isfile(path):
+		raise MapFinderError("TXT_KEY_MAPFINDER_INVALID_SYSTEM_FILE", file)
+	return path
 
-	return ruleset
-
-def getCodeText():
+def loadCodeText(root):
+	global CodeText
 	lLang = []
-	CodeTextDict = {}
-	
+	CodeText = {}
 	iLang = gc.getGame().getCurrentLanguage()
-	sMFPath = options.getPath()
-	CodeTextFile = os.path.join(sMFPath, 'MF_Text.dat')
-	if not os.path.isfile(CodeTextFile): 
-##		displayMsg(BugUtil.getPlainText('TXT_KEY_MAPFINDER_INVALID_PATH') +
-##			"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_ABORTING'))
-##		bActive = False
-##		bChecking = False
-		return
-
-	fp = open(CodeTextFile, "r")
-	temp = fp.readline()
+	path = findSystemFile(root, 'MF_Text.dat')
+	file = open(path, "r")
+	temp = file.readline()
 	while (temp != ''):
 		(sCat, sCode, sLang0,sLang1,sLang2,sLang3,sLang4) = temp.split(",")
 		iCat = int(sCat.strip())
 		iCode = int(sCode.strip())
 		lLang = [sLang0.strip(), sLang1.strip(), sLang2.strip(),
 					sLang3.strip(), sLang4.strip()]
-		CodeTextDict[iCode] = lLang[iLang]
-		temp = fp.readline()
-	fp.close
-	fp = None
+		CodeText[iCode] = lLang[iLang]
+		temp = file.readline()
+	file.close()
+	file = None
 
-	return CodeTextDict
-
-def getCategory_Types():
-	Category_TypesDict = {}
-	
-	sMFPath = options.getPath()
-	CatTypesFile  = os.path.join(sMFPath, 'MF_Cat_Rules.dat')
-	if not os.path.isfile(CatTypesFile):
-##		displayMsg(BugUtil.getPlainText('TXT_KEY_MAPFINDER_INVALID_PATH') +
-##			"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_ABORTING'))
-##		bActive = False
-##		bChecking = False
-		return
-
-	fp = open(CatTypesFile, "r")
-	temp = fp.readline()
+def loadCategoryTypes(root):
+	global Category_Types
+	Category_Types = {}
+	path = findSystemFile(root, 'MF_Cat_Rules.dat')
+	file = open(path, "r")
+	temp = file.readline()
 	iCatSave = -1
 	while (temp != ''):
 		(sCat, sRule) = temp.split(",")
 		iCat = int(sCat.strip())
 		iRule = int(sRule.strip())
 		if (iCat != iCatSave):
-			Category_TypesDict[iCat] = (iRule,)
+			Category_Types[iCat] = (iRule,)
 		else:
-		    Category_TypesDict[iCat] = Category_TypesDict[iCat] + (iRule,)
+		    Category_Types[iCat] = Category_Types[iCat] + (iRule,)
 
 		iCatSave = iCat
-		temp = fp.readline()
-	fp.close
-	fp = None
+		temp = file.readline()
+	file.close()
+	file = None
 
-	return Category_TypesDict
-
-def getCombo_Types():
-	Combo_TypesDict = {}
-
-	sMFPath = options.getPath()
-	ComboTypesFile  = os.path.join(sMFPath, 'MF_Combo_Rules.dat')
-	if not os.path.isfile(ComboTypesFile):
-		return
-
-	fp = open(ComboTypesFile, "r")
-	temp = fp.readline()
+def loadComboTypes(root):
+	global Combo_Types
+	Combo_Types = {}
+	path = findSystemFile(root, 'MF_Combo_Rules.dat')
+	file = open(path, "r")
+	temp = file.readline()
 	while (temp != ''):
 		(sCat, sBonus, sTerrain) = temp.split(",")
 		iCat = int(sCat.strip())
 		iBonus = int(sBonus.strip())
 		iTerrain = int(sTerrain.strip())
-		Combo_TypesDict[(iBonus, iTerrain)] = iCat
-		temp = fp.readline()
-	fp.close
-	fp = None
+		Combo_Types[(iBonus, iTerrain)] = iCat
+		temp = file.readline()
+	file.close()
+	file = None
 
-	return Combo_TypesDict
+def loadRuleSet(root):
+	global Rules
+	Rules = {}
+	Rules['Range'] = 2
+	path = os.path.join(root, "Rules", options.getRuleFile())
+	if not os.path.isfile(path):
+		raise MapFinderError("Invalid MapFinder rule file: %s", options.getRuleFile())
+	iGrpSave = 0
+	Rules = {}
+	file = open(path, "r")
+	temp = file.readline()
+	while (temp != ''):
+		(sGrp, sCat, sRule, sMin, sMax) = temp.split(",")
+		iGrp = int(sGrp.strip())
+		iCat = int(sCat.strip())
+		if (iGrp == 0):
+			Rules['Range'] = iCat
+		else:
+			iRule = int(sRule.strip())
+			iMin = int(sMin.strip())
+			iMax = int(sMax.strip())
+			if (iGrp != iGrpSave):
+				Rules[iGrp] = {iRule : (iMin, iMax)}
+			else:
+				Rules[iGrp][iRule] = (iMin, iMax)
+		iGrpSave = iGrp
+		temp = file.readline()
+	file.close()
+	file = None
 
-#mfRegen = MapFinderRegenerator()
 
-CodeText = getCodeText()
-Category_Types = getCategory_Types()
-Combo_Types = getCombo_Types()
-rs = getRuleSet()
+# common utility functions
+
+def enforceDll():
+	if not BugDll.isPresent():
+		raise MapFinderError("TXT_KEY_MAPFINDER_REQUIRES_BULL")
+
+class MapFinderError:
+	def __init__(self, key, *args):
+		self.key = key
+		self.args = args
+	def display(self):
+		BugUtil.error(BugUtil.getText(self.key, self.args))

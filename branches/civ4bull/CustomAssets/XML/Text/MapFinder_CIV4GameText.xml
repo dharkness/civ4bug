@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	Text strings for MapFinder
+
+	Copyright (c) 2009 The BUG Mod.
+  -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+
+	<!-- Error Messages -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_REQUIRES_BULL</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]MapFinder requires BULL to function[COLOR_REVERT]</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_CANNOT_REGENERATE</Tag>
+		<English>[COLOR_WARNING_TEXT]MapFinder cannot regenerate the map[COLOR_REVERT][NEWLINE]Exit to the main menu, start a new game, and try again.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_REGENERATE_FAILED</Tag>
+		<English>[COLOR_WARNING_TEXT]MapFinder failed to regenerate the map[COLOR_REVERT][NEWLINE]Exit to the main menu, start a new game, and try again.</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_PATH</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]MapFinder path is invalid: %s1[COLOR_REVERT]</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_SYSTEM_FILE</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]MapFinder system file not found: %s1[COLOR_REVERT]</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_RULE_FILE</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]MapFinder rule file not found: %s1[COLOR_REVERT]</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	
+	<!-- Status Messages -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_TOTAL_MAPS</Tag>
+		<English>Maps: %d1</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_TOTAL_SAVES</Tag>
+		<English>Saves: %d1</English>
+		<French></French>
+		<German></German>
+		<Italian></Italian>
+		<Spanish></Spanish>
+	</TEXT>
+
+</Civ4GameText>

@@ -26,7 +26,7 @@
 			<option id="UpdateScreenDelay" key="Update Screen Delay" 
 					type="int" default="2"/>
 			<option id="RegenLimit" key="Regen Limit" 
-					type="int" default="10"/>
+					type="int" default="2"/>
 			<option id="SaveLimit" key="Save Limit" 
 					type="int" default="10"/>
 		</section>
@@ -34,7 +34,7 @@
 	
 	<event type="gameUpdate" function="cycle"/>
 	
-	<shortcut key="Alt G" function="regenerate"/>
-	<shortcut key="Alt Ctrl G" function="startStop"/>
+	<shortcut key="Alt G" function="doRegenerate"/>
+	<shortcut key="Alt Ctrl G" function="doStartStop"/>
 	
 </mod>
