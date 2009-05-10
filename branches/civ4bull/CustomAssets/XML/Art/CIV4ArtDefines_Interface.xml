@@ -1637,6 +1637,33 @@
 
 <!-- BUG - Raw Yields - end -->			
 
+<!-- BUG - Wonders Tab - start -->			
+		<InterfaceArtInfo>
+			<Type>BUG_WORLDWONDER_OFF</Type>
+			<Path>Art/BUG/World_Off.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>BUG_WORLDWONDER_ON</Type>
+			<Path>Art/BUG/World_On.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>BUG_NATWONDER_OFF</Type>
+			<Path>Art/BUG/National_Off.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>BUG_NATWONDER_ON</Type>
+			<Path>Art/BUG/National_On.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>BUG_PROJECT_OFF</Type>
+			<Path>Art/BUG/Projects_Off.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
+			<Type>BUG_PROJECT_ON</Type>
+			<Path>Art/BUG/Projects_On.dds</Path>
+		</InterfaceArtInfo>
+<!-- BUG - Wonders Tab - end -->			
+
 		<InterfaceArtInfo>
 			<Type>QUESTION_MARK</Type>
 			<Path>Art/BUG/QuestionMark.dds</Path>

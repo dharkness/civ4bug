@@ -860,30 +860,14 @@ class CvMainInterface:
 	def hidePlotListButtonPLEObjects(self, screen):
 		# hides all unit button objects
 		for i in range( self.iMaxPlotListIcons ):
-			# hide unit button
 			szString = self.PLOT_LIST_BUTTON_NAME + str(i)
 			screen.hide( szString )
-			# hide colored spot
-			szStringIcon = szString+"Icon"
-			screen.hide( szStringIcon )
-			# hide health bar
-			szStringHealthBar = szString+"HealthBar"
-			screen.hide( szStringHealthBar )
-			# hide move bar
-			szStringMoveBar = szString+"MoveBar"
-			screen.hide( szStringMoveBar )
-			# hide promotion frame
-			szStringPromoFrame = szString+"PromoFrame"
-			screen.hide( szStringPromoFrame )
-			# hide mission info
-			szStringActionIcon = szString+"ActionIcon"
-			screen.hide( szStringActionIcon )
-			# hide upgrade arrow
-			szStringUpgrade = szString+"Upgrade"
-			screen.hide( szStringUpgrade )
-			# hide GG star
-			szStringUpgrade = szString+"GreatGeneral"
-			screen.hide( szStringUpgrade )
+			screen.hide( szString + "Icon" )
+			screen.hide( szString + "HealthBar" )
+			screen.hide( szString + "MoveBar" )
+			screen.hide( szString + "PromoFrame" )
+			screen.hide( szString + "ActionIcon" )
+			screen.hide( szString + "Upgrade" )
 
 		# hides all promotion and upgrade button objects
 		for nCol in range(self.getMaxCol()+1):
@@ -3178,7 +3162,7 @@ class CvMainInterface:
 					if (gc.getActivePlayer().isCommerceFlexible(eCommerce) or (CyInterface().isCityScreenUp() and (eCommerce == CommerceTypes.COMMERCE_GOLD))):
 # BUG - Min/Max Sliders - start
 						bEnable = gc.getActivePlayer().isCommerceFlexible(eCommerce)
-						if MainOpt.isShowMinMaxCommerceButtons():
+						if MainOpt.isShowMinMaxCommerceButtons() and not CyInterface().isCityScreenUp():
 							iMinMaxAdjustX = 20
 							szString = "MaxPercent" + str(eCommerce)
 							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, 
@@ -3520,33 +3504,6 @@ class CvMainInterface:
 		# hide all buttons
 		self.hidePlotListButtonPLEObjects(screen)
 		self.hideUnitInfoPane()
-
-		self.hidePlotListButtonNonPLEObjects(screen)
-
-	def hidePlotListButtonNonPLEObjects(self, screen):
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			for i in range(self.numPlotListButtons()):
-				szString = "PlotListButton" + str(j*self.numPlotListButtons()+i)
-				screen.hide( szString )
-
-				szStringHealth = szString + "Health"
-				screen.hide( szStringHealth )
-
-				szStringIcon = szString + "Icon"
-				screen.hide( szStringIcon )
-
-				szStringPromoFrame = szString + "PromoFrame"
-				screen.hide( szStringPromoFrame )
-
-				szStringActionIcon = szString + "ActionIcon"
-				screen.hide( szStringActionIcon )
-
-				szStringUpgrade = szString + "Upgrade"
-				screen.hide( szStringUpgrade )
-
-				szStringUpgrade = szString + "GreatGeneral"
-				screen.hide( szStringUpgrade )
-		return 0
 
 	def updatePlotListButtons_Common( self, screen ):
 
@@ -6525,11 +6482,6 @@ class CvMainInterface:
 																if (bAlignIcons):
 																	scores.setPeace()
 																break
-													if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
-														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
-														szBuffer = szBuffer + szTempBuffer
-														if (bAlignIcons):
-															scores.setWHEOOH()
 													if (gc.getPlayer(ePlayer).canTradeNetworkWith(gc.getGame().getActivePlayer()) and (ePlayer != gc.getGame().getActivePlayer())):
 														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.TRADE_CHAR))
 														szBuffer = szBuffer + szTempBuffer
@@ -6573,7 +6525,8 @@ class CvMainInterface:
 														szBuffer = szBuffer + szTempBuffer
 														if (bAlignIcons):
 															scores.setResearch(gc.getPlayer(ePlayer).getCurrentResearch(), gc.getPlayer(ePlayer).getResearchTurnsLeft(gc.getPlayer(ePlayer).getCurrentResearch(), True))
-												
+												# BUG: ...end of indentation
+# BUG - Dead Civs - end
 # BUG - Power Rating - start
 												# if on, show according to espionage "see demographics" mission
 												if (bShowPower 
@@ -6599,7 +6552,6 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setPower(szTempBuffer)
 # BUG - Power Rating - end
-
 # BUG - Attitude Icons - start
 												if (ScoreOpt.isShowAttitude()):
 													if (not gc.getPlayer(ePlayer).isHuman()):
@@ -6609,7 +6561,6 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
-
 # BUG - Refuses to Talk - start
 												if (BugDll.isPresent()):  # and ScoreOpt.isShowRefusesToTalk()):
 													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
@@ -6630,9 +6581,23 @@ class CvMainInterface:
 															if (bAlignIcons):
 																scores.setWorstEnemy()
 # BUG - Worst Enemy - end
-												# BUG: ...end of indentation
-# BUG - Dead Civs - end
-	
+# BUG - WHEOOH - start
+												if (ScoreOpt.isShowWHEOOH()):
+													if (PlayerUtil.isWHEOOH(ePlayer, PlayerUtil.getActivePlayerID())):
+														szTempBuffer = u"%c" %(CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR))
+														szBuffer = szBuffer + szTempBuffer
+														if (bAlignIcons):
+															scores.setWHEOOH()
+# BUG - WHEOOH - end
+# BUG - Num Cities - start
+												if (ScoreOpt.isShowCountCities()):
+													if (PlayerUtil.canSeeCityList(ePlayer, PlayerUtil.getActivePlayerID())):
+														szTempBuffer = u"%d" % gc.getPlayer(ePlayer).getNumCities()
+														szBuffer = szBuffer + " " + szTempBuffer
+														if (bAlignIcons):
+															scores.setNumCities(szTempBuffer)
+# BUG - Num Cities - end
+											
 											if (CyGame().isNetworkMultiPlayer()):
 												szTempBuffer = CyGameTextMgr().getNetStats(ePlayer)
 												szBuffer = szBuffer + szTempBuffer

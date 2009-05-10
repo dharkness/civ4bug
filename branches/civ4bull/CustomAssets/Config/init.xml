@@ -154,6 +154,7 @@
 	<load mod="FavoriteCivicDetector"/>
 	<load mod="EventSigns"/>
 	<load mod="Strategy Overlay"/>
+	<load mod="StatusDump"/>
 	
 	<!-- BULL Mods -->
 	

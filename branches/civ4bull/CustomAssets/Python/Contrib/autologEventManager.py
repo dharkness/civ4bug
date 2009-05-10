@@ -31,6 +31,14 @@ AutologOpt = BugCore.game.Autolog
 Logger = None
 lPercent = "%"
 
+import CvGameInterfaceFile
+import CvGameUtils
+normalGameUtils = CvGameInterfaceFile.GameUtils
+
+def gameUtils():
+	' replace normalGameUtils with your mod version'
+	return normalGameUtils
+
 def isLoggingOn():
 	return AutologOpt.isLoggingOn()
 
@@ -60,7 +68,7 @@ def StartLogger(vsFileName):
 
 	Logger.setLogFileName(szfileName)
 	Logger.writeLog("")
-	Logger.writeLog("Logging by " + CvModName.getNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
+	Logger.writeLog("Logging by " + CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
 	Logger.writeLog("------------------------------------------------")
 	
 	zcurrturn = gc.getGame().getElapsedGameTurns() + AutologOpt.get4000BCTurn()
@@ -401,6 +409,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		if not self.bHumanEndTurn:
 			return
 
+		self.logSliders()
+
 		if AutologOpt.isShowIBT():
 #			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
@@ -446,7 +456,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 		if (self.bHumanEndTurn
 		and AutologOpt.isShowIBT()):
-			Logger.writeLog_pending_flush()
+#			Logger.writeLog_pending_flush()
 			Logger.writeLog_pending("")
 			Logger.writeLog_pending(BugUtil.getPlainText("TXT_KEY_AUTOLOG_OTHER_PLAYER_ACTIONS"), vBold=True)
 #			Logger.writeLog("Other Player Actions-:", vBold=True)
@@ -461,9 +471,28 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			iTeamX,iHasMetTeamY = argsList
 			if (iTeamX == 0
 			and gc.getGame().getGameTurn() > 0):
-					civMet = PyPlayer(gc.getTeam(iHasMetTeamY).getLeaderID())
-					message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT", (civMet.getCivilizationName(), ))
-					Logger.writeLog(message, vColor="Brown")
+
+				sMsgArray = []
+				sLeader = gc.getTeam(iHasMetTeamY).getName()
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT_TEAM", (sLeader, ))
+#				Logger.writeLog(message)
+				sMsgArray.append(message)
+
+				for iPlayer in range(gc.getMAX_PLAYERS()):
+					if gc.getPlayer(iPlayer).getTeam() == iHasMetTeamY:
+						sLeader = gc.getLeaderHeadInfo(gc.getPlayer(iPlayer).getLeaderType()).getDescription()
+						sCivName = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
+
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_FIRST_CONTACT_PLAYER", (sLeader, sCivName))
+#						Logger.writeLog(message)
+						sMsgArray.append(message)
+
+				iLen = len(sMsgArray)
+				if iLen == 2:
+					Logger.writeLog(sMsgArray[1], vColor="Brown")
+				else:
+					for i in range(iLen):
+						Logger.writeLog(sMsgArray[i], vColor="Brown")
 
 	def onCombatLogCalc(self, argsList):
 		if (AutologOpt.isLogCombat()):
@@ -956,7 +985,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
 			message = message + zsLocn
-			message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
+
+			iPillageGold = gameUtils().getPillageGold()
+			if (iPillageGold == 0
+			or not self.bHumanPlaying):
+				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
+			else:
+				sPillageGold = "%i" % (iPillageGold)
+				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName(), sPillageGold))
 
 			if self.bHumanPlaying:
 				Logger.writeLog(message, vColor="DarkRed")
@@ -1584,3 +1620,30 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		Logger.writeLog("")
 
 		return 0
+
+	def logSliders(self):
+		if not AutologOpt.isLogSliders():
+			return
+
+		pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
+		for iI in range( CommerceTypes.NUM_COMMERCE_TYPES ):
+			eCommerce = (iI + 1) % CommerceTypes.NUM_COMMERCE_TYPES
+
+			zDesc = gc.getCommerceInfo(CommerceTypes(eCommerce)).getDescription()
+			if (eCommerce == CommerceTypes.COMMERCE_GOLD):
+				zPercent = pPlayer.getCommercePercent(eCommerce)
+				zRate = pPlayer.calculateGoldRate()
+				zTotal = pPlayer.getGold()
+
+				message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS", (zPercent, zDesc, zRate, zTotal))
+				Logger.writeLog(message, vColor="Blue")
+			else:
+				if pPlayer.isCommerceFlexible(eCommerce):
+					zPercent = pPlayer.getCommercePercent(eCommerce)
+					zRate = pPlayer.getCommerceRate(CommerceTypes(eCommerce))
+					zTotal = pPlayer.getGold()
+
+					message = BugUtil.getText("TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS", (zPercent, zDesc, zRate))
+					Logger.writeLog(message, vColor="Blue")
+
+		return

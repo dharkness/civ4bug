@@ -73,6 +73,11 @@
 					type="boolean" default="True" 
 					get="isWideTechScreen"/>
 	
+			<!-- BUG Religious (F7) by Ruff_Hi -->
+			<option id="BugReligiousTab" key="Religious" 
+					type="boolean" default="True" 
+					get="isReligious"/>
+
 			<!-- BUG Victories (F8) by Ruff_Hi -->
 			<option id="BugVictoriesTab" key="Victories" 
 					type="boolean" default="True" 
@@ -85,9 +90,15 @@
 			<option id="BugGraphsTab" key="Graphs" 
 					type="boolean" default="True" 
 					get="isGraphs"/>
+			<option id="BugGraphsLogScale" key="Log Scale" 
+					type="boolean" default="False" 
+					get="isGraphsLogScale"/>
 			<option id="BugStatsTab" key="Improvements" 
 					type="boolean" default="True" 
 					get="isShowImprovements"/>
+			<option id="BugInfoWonders" key="Wonders" 
+					type="boolean" default="True" 
+					get="isShowInfoWonders"/>
 
 			<!-- Sevopedia (F12) by Sevo -->
 			<option id="Sevopedia" key="Sevopedia" 

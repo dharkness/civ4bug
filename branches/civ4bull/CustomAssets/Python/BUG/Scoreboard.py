@@ -51,6 +51,7 @@ NUM_PARTS = 24
 	WONT_TALK,
 	WORST_ENEMY,
 	WHEOOH,
+	CITIES,
 	WAITING,
 	NET_STATS,
 	OOS
@@ -88,8 +89,8 @@ def init():
 	game = CyGame()
 	
 	# Used keys:
-	# ABCDEFHIKLMNOPRSTUVWZ*?
-	# GJQXY
+	# ABCDEFHIKLMNOPQRSTUVWZ*?
+	# GJXY
 	columns.append(Column('', ALIVE))
 	columns.append(Column('S', SCORE, DYNAMIC))
 	columns.append(Column('Z', SCORE_DELTA, DYNAMIC))
@@ -111,6 +112,7 @@ def init():
 	columns.append(Column('F', WONT_TALK, FIXED, smallText("!")))
 	columns.append(Column('H', WORST_ENEMY, FIXED, smallSymbol(FontSymbols.ANGRY_POP_CHAR)))
 	columns.append(Column('M', WHEOOH, FIXED, smallSymbol(FontSymbols.OCCUPATION_CHAR)))
+	columns.append(Column('Q', CITIES, DYNAMIC))
 	columns.append(Column('*', WAITING, FIXED, smallText("*")))
 	columns.append(Column('L', NET_STATS, DYNAMIC))
 	columns.append(Column('O', OOS, DYNAMIC))
@@ -230,6 +232,9 @@ class Scoreboard:
 	def setWHEOOH(self):
 		self._set(WHEOOH)
 		
+	def setNumCities(self, value):
+		self._set(CITIES, smallText(value))
+		
 	def setWar(self):
 		self._set(WAR, WAR_ICON)
 		
@@ -244,7 +249,7 @@ class Scoreboard:
 			self._set(RESEARCH, tech)
 		else:
 			self._set(RESEARCH, smallText(gc.getTechInfo(tech).getDescription()))
-		self._set(RESEARCH_TURNS, smallText(u" (%d)" % turns))
+		self._set(RESEARCH_TURNS, smallText(u"(%d)" % turns))
 		
 	def setEspionage(self):
 		self._set(ESPIONAGE)

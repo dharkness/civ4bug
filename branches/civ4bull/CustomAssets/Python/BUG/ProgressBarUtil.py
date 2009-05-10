@@ -47,8 +47,8 @@ class ProgressBar:
 			self.m_y3 = self.h - 4 - 5
 			self.m_y4 = self.h - 4
 		else:  # CENTER_MARKS
-			self.m_y1 = self.h / 2 - 4
-			self.m_y2 = self.h / 2 + 4
+			self.m_y1 = self.h / 2
+			self.m_y2 = self.h - 4
 			self.m_y3 = -1
 			self.m_y4 = -1
 

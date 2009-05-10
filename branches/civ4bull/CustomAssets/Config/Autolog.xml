@@ -102,6 +102,11 @@
 					get="isLogImprovements" set="setLogImprovements" 
 					label="Improvements" 
 					help="When checked, will log when your improvements are built or destroyed by you."/>
+			<option id="LogSliders" key="Sliders" 
+					type="boolean" default="True" and="LoggingOn" 
+					get="isLogSliders" set="setLogSliders" 
+					label="Sliders" 
+					help="When checked, will log the sliders each turn."/>
 			
 			<!-- Cities -->
 			<option id="LogCityFounded" key="City Founded" 

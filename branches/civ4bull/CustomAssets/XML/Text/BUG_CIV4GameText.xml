@@ -86,6 +86,38 @@
 		<Italian>Nessuna descrizione fornita.</Italian>
 		<Spanish>Ninguna descripciòn proporcionada.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_CITY</Tag>
+		<English>Cities</English>
+		<French>Cities</French>
+		<German>Städte</German>
+		<Italian>Cities</Italian>
+		<Spanish>Cities</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_TEMPLE</Tag>
+		<English>Temples:</English>
+		<French>Temples:</French>
+		<German>Tempel:</German>
+		<Italian>Temples:</Italian>
+		<Spanish>Temples:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_MONASTARY</Tag>
+		<English>Monastaries:</English>
+		<French>Monastaries:</French>
+		<German>Klöster:</German>
+		<Italian>Monastaries:</Italian>
+		<Spanish>Monastaries:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_RELIGIOUS_MISSIONARY</Tag>
+		<English>Missionaries:</English>
+		<French>Missionaries:</French>
+		<German>Missionare:</German>
+		<Italian>Missionaries:</Italian>
+		<Spanish>Missionaries:</Spanish>
+	</TEXT>
 	
 	<!-- Gold Rate Warning -->
 	
@@ -710,7 +742,7 @@
 	<TEXT>
 		<Tag>TXT_KEY_MILITARY_SITUATION_REPORT</Tag>
 		<English>Sit-Rep</English>
-		<French>Rapport de Situation</French>
+		<French>Rapport</French>
 		<German>Lagebericht</German>
 		<Italian>Rapporti</Italian>
 		<Spanish>Sit-Rep</Spanish>
@@ -988,12 +1020,55 @@
 		<Spanish>Show None</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_LOGSCALE</Tag>
+		<English>Log Scale</English>
+		<French>Log Scale</French>
+		<German>Log-Skala</German>
+		<Italian>Log Scale</Italian>
+		<Spanish>Log Scale</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_CHART_HELP</Tag>
 		<English>Zoom in and out by clicking on the body of the chart</English>
 		<French>Zoom in and out by clicking on the body of the chart</French>
 		<German>Mit einem Mausklick auf ein Diagramm kann zwischen der verkleinerten Ansicht und der Großansicht umgeschalten werden</German>
 		<Italian>Alterna i livelli di zoom cliccando sul grafico</Italian>
 		<Spanish>Zoom in and out by clicking on the body of the chart</Spanish>
+	</TEXT>
+
+	<!-- Wonders Screen -->
+
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_NAME</Tag>
+		<English>Name</English>
+		<French>Name</French>
+		<German>Name</German>
+		<Italian>Name</Italian>
+		<Spanish>Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_DATE</Tag>
+		<English>Date</English>
+		<French>Date</French>
+		<German>Errichtet</German>
+		<Italian>Date</Italian>
+		<Spanish>Date</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_OWNER</Tag>
+		<English>Owner</English>
+		<French>Owner</French>
+		<German>Besitzer</German>
+		<Italian>Owner</Italian>
+		<Spanish>Owner</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_WONDER_CITY</Tag>
+		<English>City</English>
+		<French>City</French>
+		<German>Stadt</German>
+		<Italian>City</Italian>
+		<Spanish>City</Spanish>
 	</TEXT>
 
 	<!-- Victory Screen -->
@@ -1017,6 +1092,22 @@
 			<Gender>Male</Gender>
 			<Plural>0</Plural>
 		</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_TURNS_NEXT_VOTE</Tag>
+		<English>Turns until next Vote: %d1</English>
+		<French>Turns until next Vote: %d1</French>
+		<German>Nächste Abstimmung in %d1 [NUM1:Runde:Runden]</German>
+		<Italian>Turns until next Vote: %d1</Italian>
+		<Spanish>Turns until next Vote: %d1</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_VICTORY_VOTES_NEXT_ELECTION</Tag>
+		<English>Votes until next Election: %d1</English>
+		<French>Votes until next Election: %d1</French>
+		<German>Nächsten Wahl in %d1 [NUM1:Runde:Runden]</German>
+		<Italian>Votes until next Election: %d1</Italian>
+		<Spanish>Votes until next Election: %d1</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_VOTESOURCE_NON_VOTING_MEMBER</Tag>

@@ -1,4 +1,7 @@
-CHANGES SINCE BUG 3.6:
+____________________________________________________________________________________________________
+BUG x.x released <date>
+
+CHANGES
 
 	*** BULL: The BUG DLL ***
 	
@@ -10,24 +13,44 @@ New Features:
 - Regenerate map shortcut (ALT + G) [BULL]
 - MapFinder from HOF Mod: Press ALT + CTRL + G to start/stop [BULL]
 - Advanced Scoreboard
-	- Refuses to Talk column (F) [BULL]
+	Refuses to Talk (F) [BULL]
+	Number of Cities (Q)
+- Info Screen (F9)
+	New expanded Wonders tab by DanF5771
+		Shows constructed items (all known rivals)
+		Shows items being built (must have enough EPs for City Visibility)
+		Zoom to City button
+	Remembers the selected tab like other screens
+- BUG Religious Advisor (F7)
 
 Improvements:
 
 - BUG, BULL and Unofficial Patch versions are displayed when hovering over your flag [BULL]
 - Min/Max Commerce Rate buttons have more accurate hover text [BULL]
 - Foreign Advisor
-	- ACTIVE: Added number of turns until you can cancel each deal
-	- INFO: Hover details for trade with each rival [BULL]
-	- RESOURCES: Hover for bonuses the AI will not trade to you show the reason why [BULL]
-	- TECHS: Hover for technologies the AI will not trade to you show the reason why [BULL]
+	ACTIVE: Added number of turns until you can cancel each deal
+	INFO: Hover details for trade with each rival [BULL]
+	RESOURCES: Hovers show the reason an AI won't trade [BULL]
+	TECHS: Hovers show the reason an AI won't trade [BULL]
 - Finance Advisor
-	- Hover details for trade commerce and gold from specialists [BULL]
+	Hover details for trade commerce and gold from specialists [BULL]
+- Graphs (both BUG and Vanilla) now include a 'log scale' option
+- Autolog
+	Amount of gold from pillages
+	Retreat and withdrawal [BULL]
+	Collateral and flanking damage [BULL]
+	Upgraded units [BULL]
+- Strategy Overlay
+	Configurable color palette
+	Multiplayer compatible
 
 Bug Fixes:
 
-____________________
-FOR MODDERS
+- Fixed City Built event
+- Changed Scoreboard items (WHEOOH, Number of Cities) so that they are optional
+
+
+MODDING
 
 New Features:
 
@@ -35,26 +58,33 @@ New Features:
 - Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
 	The <mod>, <option> and <list> elements are still created but marked if the DLL isn't the correct version; the others are ignored
 - DealUtil
-	- Deal class has new CvDeal functions, plus more
-	- Added several helpful module functions for testing TradeableItems values
+	Deal class has new CvDeal functions, plus more
+	Added several helpful module functions for testing TradeableItems values
 - Exposed and/or replicated several CvDeal functions in DealUtil.Deal:
-	- bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
-	- wstring getCannotCancelReason(PlayerTypes eByPlayer)
-	- int turnsToCancel(PlayerTypes eByPlayer)
+	bool isCancelable(PlayerTypes eByPlayer, bool bIgnoreWaitingPeriod=False)
+	wstring getCannotCancelReason(PlayerTypes eByPlayer)
+	int turnsToCancel(PlayerTypes eByPlayer)
 - Events
-	- unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
-	- combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
-	- combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
-	- combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
-	- combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+	unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
+	combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
+	combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
+	combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+	combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+
+Improvements:
+
+- BugUtil
+	getText() and getPlainText() both replace [ICON_XXX] in the message
 
 Bug Fixes:
 
 - Removed firing of gameUpdate in updateScreen() as it seems to be fired by BTS now
 
 
-________________________________________________________________________________
-CHANGES SINCE BUG 3.5.1:
+____________________________________________________________________________________________________
+BUG 3.6 released February 23, 2009
+
+CHANGES
 
 New Features:
 
@@ -69,6 +99,7 @@ New Features:
 - Added Min/Max Commerce Rate buttons: set any commerce rate to 0% or 100% with one click
 - Added Gold Rate Warning: yellow gold rate when negative but not enough to go below zero
 - Added Strategy Overlay: create a multicolored in-game dot map
+- Log the current turn slider values (gold, science, culture, espionage)
 
 Improvements:
 
@@ -95,6 +126,7 @@ Improvements:
 - Added the ability to add the following options to the original BtS unit plot style (promo, mission, GG, wounded, upgrade)
 - Unit Info Pane: Added option to display moves left for a single unit using a fraction
 - Unit Info Pane: Added min/max moves left when multiple units selected
+- added 'turns to next vote' and 'vote to next election' to members tab
 
 Bug Fixes:
 
@@ -116,9 +148,10 @@ Bug Fixes:
 - Fixed bug with loading options when viewing Sevopedia from the MAIN MENU
 - PLE Unit Hover: Fixed calculation of Movement Points remaining
 - Unit Info Pane: Fixed calculation of Movement Points remaining
+- Logger: Fixed missing turn headers
 
-____________________
-FOR MODDERS
+
+MODDING
 
 New Features:
 

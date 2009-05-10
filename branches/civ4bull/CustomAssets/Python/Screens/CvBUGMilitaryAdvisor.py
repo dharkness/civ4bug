@@ -129,6 +129,7 @@ class CvMilitaryAdvisor:
 		self.DX_LINK = 220
 		self.Y_LINK = 726
 		self.MARGIN = 20
+		self.SPACING = 40
 		
 		self.SETTINGS_PANEL_X1 = 50
 		self.SETTINGS_PANEL_X2 = 355
@@ -225,23 +226,26 @@ class CvMilitaryAdvisor:
 	
 		screen = self.getScreen()
 
-		xLink = self.X_LINK
+		xLink = self.MARGIN
 		if (self.iScreen != UNIT_LOCATION_SCREEN):
-			screen.setText(self.UNIT_LOC_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MILITARY_UNIT_LOCATION", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			szText = u"<font=4>" + localText.getText("TXT_KEY_MILITARY_UNIT_LOCATION", ()).upper() + "</font>"
 		else:
-			screen.setText(self.UNIT_LOC_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_UNIT_LOCATION", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		xLink += self.DX_LINK
+			szText = u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_UNIT_LOCATION", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>"
+		screen.setText(self.UNIT_LOC_TAB_ID, "", szText, CvUtil.FONT_LEFT_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		xLink += CyInterface().determineWidth(szText) + self.SPACING
 
 		if (self.iScreen != SITUATION_REPORT_SCREEN):
-			screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MILITARY_SITUATION_REPORT", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			szText = u"<font=4>" + localText.getText("TXT_KEY_MILITARY_SITUATION_REPORT", ()).upper() + "</font>"
 		else:
-			screen.setText(self.SIT_REP_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_SITUATION_REPORT", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		xLink += self.DX_LINK
+			szText = u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_SITUATION_REPORT", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>"
+		screen.setText(self.SIT_REP_TAB_ID, "", szText, CvUtil.FONT_LEFT_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		xLink += CyInterface().determineWidth(szText) + self.SPACING
 
 		if (self.iScreen != STRATEGIC_ADVANTAGES_SCREEN):
-			screen.setText(self.STRAT_ADV_TAB_ID, "", u"<font=4>" + localText.getText("TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES", ()).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			szText = u"<font=4>" + localText.getText("TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES", ()).upper() + "</font>"
 		else:
-			screen.setText(self.STRAT_ADV_TAB_ID, "", u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			szText = u"<font=4>" + localText.getColorText("TXT_KEY_MILITARY_STRATEGIC_ADVANTAGES", (), gc.getInfoTypeForString("COLOR_YELLOW")).upper() + "</font>"
+		screen.setText(self.STRAT_ADV_TAB_ID, "", szText, CvUtil.FONT_LEFT_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 #### Situation Report Tab ####
 
@@ -1089,19 +1093,21 @@ class CvMilitaryAdvisor:
 
 			screen = self.getScreen()
 
-			# set the location of the great general bar - just below the map
-			iPanel_X = self.X_MAP
-			iPanel_Y = self.Y_MAP + self.H_MAP
-			iPanel_W = self.W_MAP
-			iPanel_H = 30 + 2 * self.MAP_MARGIN
+			# move GG progress bar to lower panel
+			# by stmartin 02.18.09
+			iPanel_X = self.X_LINK + self.DX_LINK * 5 / 2 + 20
+			iPanel_Y = self.Y_EXIT - 5
+			iPanel_W = self.X_EXIT - iPanel_X - 100
+			iPanel_H = 45
 					
-			szPanel_ID = self.getNextWidgetName()
-			screen.addPanel(szPanel_ID, u"", "", False, False, iPanel_X, iPanel_Y, iPanel_W, iPanel_H, PanelStyles.PANEL_STYLE_MAIN)
+#			szPanel_ID = self.getNextWidgetName()
+#			screen.addPanel(szPanel_ID, u"", "", False, False, iPanel_X, iPanel_Y, iPanel_W, iPanel_H, PanelStyles.PANEL_STYLE_MAIN)
 
-			self.X_GREAT_GENERAL_BAR = iPanel_X + self.MAP_MARGIN
-			self.Y_GREAT_GENERAL_BAR = iPanel_Y + self.MAP_MARGIN
-			self.W_GREAT_GENERAL_BAR = iPanel_W - iPanel_X - self.MAP_MARGIN
-			self.H_GREAT_GENERAL_BAR = 30
+			self.X_GREAT_GENERAL_BAR = iPanel_X + 25
+			self.Y_GREAT_GENERAL_BAR = iPanel_Y + 8
+			self.W_GREAT_GENERAL_BAR = iPanel_W - 50
+			self.H_GREAT_GENERAL_BAR = 29
+			# end
 
 			iExperience = gc.getPlayer(self.iActivePlayer).getCombatExperience()
 			

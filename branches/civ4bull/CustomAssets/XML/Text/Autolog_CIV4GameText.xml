@@ -193,12 +193,36 @@
         <Spanish>Other Player Actions:</Spanish>
     </TEXT> 
     <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT</Tag>
-        <English>Contact made: %s1 </English>
-        <French>Contact made: %s1</French>
-        <German>Kontakt aufgenommen: %s1</German>
-        <Italian>Civiltà contattata: %s1</Italian>
-        <Spanish>Contact made: %s1</Spanish>
+        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT_TEAM</Tag>
+        <English>Team contact made: %s1</English>
+        <French>Team contact made: %s1</French>
+        <German>Kontakt aufgenommen (Team): %s1</German>
+        <Italian>Team civiltà contattata: %s1</Italian>
+        <Spanish>Team contact made: %s1</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_FIRST_CONTACT_PLAYER</Tag>
+        <English>Player contact made: %s1 of %s2</English>
+        <French>Player contact made: %s1 of %s2</French>
+        <German>Kontakt aufgenommen (Spieler): %s1 (%s2)</German>
+        <Italian>Player civiltà contattata: %s1 of %s2</Italian>
+        <Spanish>Player contact made: %s1 of %s2</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_COMMERCE_GOLD_SLIDERS</Tag>
+        <English>%d1%% %s2: %d3 per turn, %d4 in the bank</English>
+        <French>%d1%% %s2: %d3 per turn, %d4 in the bank</French>
+        <German>%d1%% %s2: %d3 pro Runde, %d4 Goldvorrat</German>
+        <Italian>%d1%% %s2: %d3 per turn, %d4 in the bank</Italian>
+        <Spanish>%d1%% %s2: %d3 per turn, %d4 in the bank</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_COMMERCE_OTHER_SLIDERS</Tag>
+        <English>%d1%% %s2: %d3 per turn</English>
+        <French>%d1%% %s2: %d3 per turn</French>
+        <German>%d1%% %s2: %d3 pro Runde</German>
+        <Italian>%d1%% %s2: %d3 per turn</Italian>
+        <Spanish>%d1%% %s2: %d3 per turn</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS</Tag>
@@ -761,10 +785,18 @@
         <Spanish>An improvement</Spanish>
     </TEXT> 
     <TEXT>
-        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY</Tag>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD</Tag>
+        <English>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</English>
+        <French>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</French>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört (%s3 Gold)</German>
+        <Italian>[SPACE]è stato distrutto da %s2 %s1 (%s3 gold)</Italian>
+        <Spanish>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</Spanish>
+    </TEXT> 
+    <TEXT>
+        <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD</Tag>
         <English>[SPACE]was destroyed by %s1 %s2</English>
         <French>[SPACE]was destroyed by %s1 %s2</French>
-        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective][NUM4:en:en:en:en:en:en] %s2:3:UnitName zerstört</German>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört</German>
         <Italian>[SPACE]è stato distrutto da %s2 %s1</Italian>
         <Spanish>[SPACE]was destroyed by %s1 %s2</Spanish>
     </TEXT> 

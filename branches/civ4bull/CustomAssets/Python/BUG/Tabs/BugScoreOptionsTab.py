@@ -48,6 +48,7 @@ class BugScoreOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, col3, "Scores__Attitude")
 		self.addCheckbox(screen, col3, "Scores__WorstEnemy")
 		self.addCheckbox(screen, col3, "Scores__WHEOOH")
+		self.addCheckbox(screen, col3, "Scores__Cities")
 		
 		screen.attachHSeparator(column, column + "Sep")
 		
