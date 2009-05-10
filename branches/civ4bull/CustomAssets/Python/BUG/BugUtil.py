@@ -39,12 +39,12 @@
 ##
 ## Event Tracing (handleInput)
 ##
-##   debugInput(inputClass, flags?)
-##     Logs a DEBUG message detailing the input event.
+##   debugInput(inputClass, flags?), alertInput(inputClass, flags?)
+##     Logs a DEBUG message / alert detailing the input event.
 ##     If flags is given and True, calls debugInputFlags() as well.
 ##
-##   debugInputFlags(inputClass)
-##     Logs a DEBUG message detailing the input event's flags, if any.
+##   debugInputFlags(inputClass), alertInputFlags(inputClass)
+##     Logs a DEBUG message / alert detailing the input event's flags, if any.
 ##
 ## Timing Code Execution
 ##
@@ -264,16 +264,36 @@ INPUT_CODES = {
 
 def debugInput(inputClass, flags=False):
 	"""
-	Prints a debug message detailing the given input event.
+	Logs a debug message detailing the given input event.
 	
-	Add this to the handleInput function to see all events as they occur.
+	Add this to the handleInput function to log all events to disk.
 	Pass True for flags to output the mouse flags, if any.
 	
 	def handleInput(self, inputClass):
 		BugUtil.debugInput(inputClass)
 	"""
+	logInput(debug, inputClass, flags)
+
+def alertInput(inputClass, flags=False):
+	"""
+	Prints a debug message to the screen detailing the given input event.
+	
+	Add this to the handleInput function to see all events as they occur.
+	Pass True for flags to output the mouse flags, if any.
+	
+	def handleInput(self, inputClass):
+		BugUtil.alertInput(inputClass)
+	"""
+	logInput(alert, inputClass, flags)
+
+def logInput(fxn, inputClass, flags=False):
+	"""
+	Prints or logs a debug message detailing the given input event.
+	
+	fxn should be alert() or debug().
+	"""
 	if inputClass.getNotifyCode() in INPUT_CODES:
-		alert("%s - %s #%d, data %d, widget %d %d %d",
+		fxn("%s - %s #%d, data %d, widget %d %d %d",
 			INPUT_CODES[inputClass.getNotifyCode()], 
 			inputClass.getFunctionName(),
 			inputClass.getID(), 
@@ -283,7 +303,7 @@ def debugInput(inputClass, flags=False):
 			inputClass.getData2()
 		)
 	if flags:
-		debugInputFlags(inputClass)
+		logInputFlags(fxn, inputClass)
 
 MOUSE_FLAGS = {
 	MouseFlags.MOUSE_CLICKED:			"Click",
@@ -317,10 +337,27 @@ MOUSE_FLAGS = {
 
 def debugInputFlags(inputClass):
 	"""
-	Prints a debug message detailing the given input event's mouse flags, if any.
+	Logs a debug message detailing the given input event's mouse flags, if any.
 	
 	def handleInput(self, inputClass):
 		BugUtil.debugInputFlags(inputClass)
+	"""
+	logInputFlags(debug, inputClass)
+
+def alertInputFlags(inputClass):
+	"""
+	Prints a debug message to the screen detailing the given input event's mouse flags, if any.
+	
+	def handleInput(self, inputClass):
+		BugUtil.alertInputFlags(inputClass)
+	"""
+	logInputFlags(alert, inputClass)
+
+def logInputFlags(fxn, inputClass):
+	"""
+	Prints or logs a debug message detailing the given input event's mouse flags, if any.
+	
+	fxn should be alert() or debug().
 	"""
 	flags = inputClass.getFlags()
 	if flags:
@@ -329,7 +366,7 @@ def debugInputFlags(inputClass):
 			if flags & flag:
 				flagList.append(text)
 		if flagList:
-			alert("Flags - %s", ", ".join(flagList))
+			fxn("Flags - %s", ", ".join(flagList))
 
 
 ## Timing Code Execution
