@@ -28,7 +28,7 @@ gc = CyGlobalContext()
 Z_DEPTH = -0.3
 
 # Columns IDs
-NUM_PARTS = 24
+NUM_PARTS = 25
 (
 	ALIVE,
 	WAR,
