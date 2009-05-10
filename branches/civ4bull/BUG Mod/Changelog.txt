@@ -42,7 +42,6 @@ Improvements:
 	Upgraded units [BULL]
 - Strategy Overlay
 	Configurable color palette
-	Multiplayer compatible
 
 Bug Fixes:
 
