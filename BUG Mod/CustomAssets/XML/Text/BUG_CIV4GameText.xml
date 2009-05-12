@@ -414,6 +414,25 @@
 		<Spanish>%s1 (%d2)   -%d3[ICON_GOLD]</Spanish>
 	</TEXT>
 	
+	<!-- Production Decay -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_PRODUCTION_DECAY_WARNING</Tag>
+		<English>[COLOR_YELLOW][BOLD]![\BOLD] [COLOR_REVERT]</English>
+		<French>[COLOR_YELLOW][BOLD]![\BOLD] [COLOR_REVERT]</French>
+		<German>[COLOR_YELLOW][BOLD]![\BOLD] [COLOR_REVERT]</German>
+		<Italian>[COLOR_YELLOW][BOLD]![\BOLD] [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_YELLOW][BOLD]![\BOLD] [COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN</Tag>
+		<English>[COLOR_WARNING_TEXT][BOLD]!![\BOLD] [COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT][BOLD]!![\BOLD] [COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT][BOLD]!![\BOLD] [COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT][BOLD]!![\BOLD] [COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT][BOLD]!![\BOLD] [COLOR_REVERT]</Spanish>
+	</TEXT>
+	
 	<!-- Military Advisor -->
 	
 	<!-- Unit Groupings -->
@@ -1385,6 +1404,25 @@
 		<German>(%d1 EP)</German>
 		<Italian>(%d1 XP)</Italian>
 		<Spanish>(%d1 PX)</Spanish>
+	</TEXT>
+	
+	<!-- BULL -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BULL_REQUIRED</Tag>
+		<English>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Für dieses Feature wird die BUG-DLL (BULL) benötigt.[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BULL_REQUIRED_NEWER</Tag>
+		<English>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]Für dieses Feature wird eine neuere Version der BUG-DLL (BULL) benötigt.[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</Spanish>
 	</TEXT>
 
 </Civ4GameText>

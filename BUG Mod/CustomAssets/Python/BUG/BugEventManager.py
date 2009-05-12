@@ -29,14 +29,14 @@
 ##
 ## * New events
 ##
-##   - BeginActivePlayerTurn
+##   - BeginActivePlayerTurn(ePlayer, iGameTurn)
 ##       Signifies the moment the active player can begin making their moves
 ##       Fired from CvMainInterface.updateScreen()
 ##
-##   - LanguageChanged 
+##   - LanguageChanged(iLanguage)
 ##       Fired from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
 ##
-##   - ResolutionChanged 
+##   - ResolutionChanged(iResolution)
 ##       Fired from CvOptionsScreenCallbackInterface.handleResolutionDropdownInput()
 ##
 ##   - PreGameStart
@@ -44,6 +44,21 @@
 ##
 ##   - PythonReloaded
 ##       Fired after Python modules have been reloaded while game is running
+##
+##   - unitUpgraded(pOldUnit, pNewUnit, iPrice) [BULL]
+##       Fired when a unit is upgraded
+##
+##   - combatWithdrawal(pAttacker, pDefender) [BULL]
+##       Fired when a unit withdraws from combat after doing maximum damage
+##
+##   - combatRetreat(pAttacker, pDefender) [BULL]
+##       Fired when a unit retreats from combat, escaping death
+##
+##   - combatLogCollateral(pAttacker, pDefender, iDamage) [BULL]
+##       Fired when a unit inflicts collateral damage to another unit
+##
+##   - combatLogFlanking(pAttacker, pDefender, iDamage) [BULL]
+##       Fired when a unit inflicts flanking damage to another unit
 ##
 ## * Fixed events
 ##
@@ -55,6 +70,7 @@
 ##       Fired from CvMainInterface.updateScreen() every 250 milliseconds
 ##
 ## * Events and their arguments are optionally logged.
+##
 ## * Added configure() to set the options.
 ##
 ## * Calls BugInit.init() once before "OnLoad" or "PreGameStart" events
@@ -62,9 +78,11 @@
 ##   Both must do it because "OnLoad" happens before "PreGameStart", but
 ##   the latter happens before "GameStart" (as expected).
 ##
+## Based on CvCustomEventManager by Gillmer J. Derge
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
-## Author: EmperorFool, Gillmer J. Derge
+## Author: EmperorFool
 
 from CvPythonExtensions import *
 import CvEventManager
@@ -141,12 +159,25 @@ class BugEventManager(CvEventManager.CvEventManager):
 		for eventType, eventHandler in self.EventHandlerMap.iteritems():
 			self.setEventHandler(eventType, eventHandler)
 		
-		# add new core events
+		# add new core events; see unused sample functions below for argument lists
 		self.addEvent("PreGameStart")
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("LanguageChanged")
 		self.addEvent("ResolutionChanged")
 		self.addEvent("PythonReloaded")
+		
+		# BULL events
+		self.addEvent("unitUpgraded")
+		self.addEvent("combatWithdrawal")
+		self.addEvent("combatRetreat")
+		self.addEvent("combatLogCollateral")
+		self.addEvent("combatLogFlanking")
+		
+		self.addEventHandler("unitUpgraded", self.onUnitUpgraded)
+		self.addEventHandler("combatWithdrawal", self.onCombatWithdrawal)
+		self.addEventHandler("combatRetreat", self.onCombatRetreat)
+		self.addEventHandler("combatLogCollateral", self.onCombatLogCollateral)
+		self.addEventHandler("combatLogFlanking", self.onCombatLogFlanking)
 		
 		self.addEventHandler("kbdEvent", self.onKbdEvent)
 		self.addEventHandler("OnLoad", self.resetActiveTurn)
@@ -384,6 +415,38 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def onResolutionChanged(self, argsList):
 		"""Called when the user changes their graphics resolution."""
 		iResolution = argsList[0]
+	
+	
+	def onUnitUpgraded(self, argsList):
+		"""Called when a unit is upgraded."""
+		pOldUnit, pNewUnit, iPrice = argsList[0][0]
+		BugUtil.debug("%s upgraded to %s for %d%c", 
+				pOldUnit.getName(), pNewUnit.getName(), iPrice, gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
+	
+	def onCombatWithdrawal(self, argslist):
+		"""Fired when a unit withdraws from combat after doing maximum damage."""
+		pAttacker, pDefender = argslist[0][0]
+		BugUtil.debug("%s withdraws from %s", 
+				pAttacker.getName(), pDefender.getName())
+	
+	def onCombatRetreat(self, argslist):
+		"""Fired when a unit retreats from combat, escaping death."""
+		pAttacker, pDefender = argslist[0][0]
+		BugUtil.debug("%s retreats from %s", 
+				pAttacker.getName(), pDefender.getName())
+	
+	def onCombatLogCollateral(self, argslist):
+		"""Fired when a unit inflicts collateral damage to another unit."""
+		pAttacker, pDefender, iDamage = argslist[0][0]
+		BugUtil.debug("%s bombards %s for %d HP", 
+				pAttacker.getName(), pDefender.getName(), iDamage)
+	
+	def onCombatLogFlanking(self, argslist):
+		"""Fired when a unit inflicts flanking damage to another unit."""
+		pAttacker, pDefender, iDamage = argslist[0][0]
+		BugUtil.debug("%s flanks %s for %d HP", 
+				pAttacker.getName(), pDefender.getName(), iDamage)
+
 
 EVENT_FUNCTION_MAP = {
 	"kbdEvent": BugEventManager._handleConsumableEvent,

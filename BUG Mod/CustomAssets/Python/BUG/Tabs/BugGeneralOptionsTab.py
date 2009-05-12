@@ -33,10 +33,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.addSpacer(screen, left, "General2")
 		
-		#self.addLabel(screen, left, "StrategyOverlay", "STRATEGY LAYER")
+		self.addLabel(screen, left, "StrategyOverlay", "Strategy Layer:")
 		self.addCheckbox(screen, left, "StrategyOverlay__Enabled")
-		
-		#self.addSpacer(screen, left, "StrategyOverlay_DotMap")
 		self.addCheckbox(screen, left, "StrategyOverlay__ShowDotMap")
 		self.addCheckbox(screen, left, "StrategyOverlay__DotMapDrawDots")
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "DotMapBrightness")
@@ -58,3 +56,5 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
 		self.addCheckbox(screen, right, "MainInterface__UnitMovementPointsFraction")
 		self.addCheckbox(screen, right, "MainInterface__StackMovementPoints")
+		
+		self.addCheckboxTextDropdown(screen, right, right, "ACO__Enabled", "ACO__Detail")

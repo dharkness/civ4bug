@@ -7,6 +7,10 @@ import CvScreenEnums
 import CvEventInterface
 import time
 
+# BUG - DLL - start
+import BugDll
+# BUG - DLL - end
+
 # BUG - Options - start
 import BugCore
 import BugOptions
@@ -2904,7 +2908,7 @@ class CvMainInterface:
 
 # BUG - Event Manager - start
 		CvEventInterface.getEventManager().updateActiveTurn()
-		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
+#		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -3161,11 +3165,17 @@ class CvMainInterface:
 						if MainOpt.isShowMinMaxCommerceButtons() and not CyInterface().isCityScreenUp():
 							iMinMaxAdjustX = 20
 							szString = "MaxPercent" + str(eCommerce)
-							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, 100, ButtonStyles.BUTTON_STYLE_CITY_PLUS )
+							screen.setButtonGFC( szString, u"", "", 70, 50 + (19 * iCount), 20, 20, 
+												 *BugDll.widget("WIDGET_SET_PERCENT", eCommerce, 100, 
+												 				WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, 100, 
+												 				ButtonStyles.BUTTON_STYLE_CITY_PLUS) )
 							screen.show( szString )
 							screen.enable( szString, bEnable )
 							szString = "MinPercent" + str(eCommerce)
-							screen.setButtonGFC( szString, u"", "", 130, 50 + (19 * iCount), 20, 20, WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, -100, ButtonStyles.BUTTON_STYLE_CITY_MINUS )
+							screen.setButtonGFC( szString, u"", "", 130, 50 + (19 * iCount), 20, 20, 
+												 *BugDll.widget("WIDGET_SET_PERCENT", eCommerce, 0, 
+												 				WidgetTypes.WIDGET_CHANGE_PERCENT, eCommerce, -100, 
+												 				ButtonStyles.BUTTON_STYLE_CITY_MINUS) )
 							screen.show( szString )
 							screen.enable( szString, bEnable )
 						else:
@@ -6051,10 +6061,34 @@ class CvMainInterface:
 
 					if (CyInterface().getOrderNodeSave(i)):
 						szLeftBuffer = u"*" + szLeftBuffer
+					
+# BUG - Production Decay - start
+					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
+						eUnit = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getUnitProduction(eUnit) > 0:
+							if pHeadSelectedCity.isUnitProductionDecay(eUnit):
+								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+							elif pHeadSelectedCity.getUnitProductionTime(eUnit) > 0:
+								iDecayTurns = pHeadSelectedCity.getUnitProductionDecayTurns(eUnit)
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
+									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+# BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CONSTRUCT ):
 					szLeftBuffer = gc.getBuildingInfo(CyInterface().getOrderNodeData1(i)).getDescription()
 					szRightBuffer = "(" + str(pHeadSelectedCity.getBuildingProductionTurnsLeft(CyInterface().getOrderNodeData1(i), i)) + ")"
+
+# BUG - Production Decay - start
+					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
+						eBuilding = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getBuildingProduction(eBuilding) > 0:
+							if pHeadSelectedCity.isUnitProductionDecay(eBuilding):
+								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+							elif pHeadSelectedCity.getBuildingProductionTime(eBuilding) > 0:
+								iDecayTurns = pHeadSelectedCity.getBuildingProductionDecayTurns(eBuilding)
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
+									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+# BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CREATE ):
 					szLeftBuffer = gc.getProjectInfo(CyInterface().getOrderNodeData1(i)).getDescription()
@@ -6527,6 +6561,16 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
+# BUG - Refuses to Talk - start
+												if (BugDll.isPresent()):  # and ScoreOpt.isShowRefusesToTalk()):
+													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
+														if (not gc.getPlayer(ePlayer).AI_isWillingToTalk(gc.getGame().getActivePlayer())):
+															cRefusesToTalk = u"!"
+															szBuffer += cRefusesToTalk
+															if (bAlignIcons):
+																scores.setWontTalk()
+# BUG - Refuses to Talk - end
+
 # BUG - Worst Enemy - start
 												if (ScoreOpt.isShowWorstEnemy()):
 													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):

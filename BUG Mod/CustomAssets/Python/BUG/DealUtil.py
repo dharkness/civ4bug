@@ -10,7 +10,7 @@
 ##     This should only be used with symmetrically tradeable types like open borders.
 ##
 ##   playerDeals(player ID)
-##     Used to iterate over all deals that the player participates in.
+##     Iterates over all deals in which the player participates.
 ##
 ## * New events
 ##
@@ -26,12 +26,23 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugDll
 import PlayerUtil
+
+
+## Constants
+
+GOLD_TRADE_ITEMS = (TradeableItems.TRADE_GOLD, TradeableItems.TRADE_GOLD_PER_TURN)
+VASSAL_TRADE_ITEMS = (TradeableItems.TRADE_VASSAL, TradeableItems.TRADE_SURRENDER)
+
+
+## Globals
 
 gc = CyGlobalContext()
 
 g_eventManager = None
 g_lastDealCount = 0
+
 
 ## Deal Functions
 
@@ -77,6 +88,50 @@ def findDealsByPlayerAndType(ePlayer, types):
 		for type in matches:
 			found.setdefault(deal.getOtherPlayer(), {})[type] = deal
 	return found
+
+
+## TradeableItem Functions
+
+def isAnnual(eItem):
+	return eItem in (
+		TradeableItems.TRADE_RESOURCES, 
+		TradeableItems.TRADE_GOLD_PER_TURN, 
+		TradeableItems.TRADE_VASSAL, 
+		TradeableItems.TRADE_SURRENDER, 
+		TradeableItems.TRADE_OPEN_BORDERS, 
+		TradeableItems.TRADE_DEFENSIVE_PACT, 
+		TradeableItems.TRADE_PERMANENT_ALLIANCE, 
+	)
+
+def isDual(eItem, bExcludePeace=False):
+	if bExcludePeace and eItem == TradeableItems.TRADE_PEACE_TREATY:
+		return False
+	return eItem in (
+		TradeableItems.TRADE_OPEN_BORDERS, 
+		TradeableItems.TRADE_DEFENSIVE_PACT, 
+		TradeableItems.TRADE_PERMANENT_ALLIANCE, 
+		TradeableItems.TRADE_PEACE_TREATY, 
+	)
+
+def hasData(eItem):
+	return eItem not in (
+		TradeableItems.TRADE_MAPS, 
+		TradeableItems.TRADE_VASSAL, 
+		TradeableItems.TRADE_SURRENDER, 
+		TradeableItems.TRADE_OPEN_BORDERS, 
+		TradeableItems.TRADE_DEFENSIVE_PACT, 
+		TradeableItems.TRADE_PERMANENT_ALLIANCE, 
+		TradeableItems.TRADE_PEACE_TREATY, 
+	)
+
+def isGold(eItem):
+	return eItem in GOLD_TRADE_ITEMS
+
+def isVassal(eItem):
+	return eItem in VASSAL_TRADE_ITEMS
+
+def isEndWar(eItem):
+	return eItem == TradeableItems.TRADE_PEACE_TREATY or isVassal(eItem)
 
 
 ## Initialization and Events
@@ -128,8 +183,38 @@ class Deal(object):
 		return self.deal.isNone()
 	def getInitialGameTurn(self):
 		return self.deal.getInitialGameTurn()
+	
+	def isCancelable(eByPlaye):
+		if BugDll.isPresent():
+			return self.deal.isCancelable(eByPlayer, bIgnoreWaitingPeriod)
+		else:
+			if self.isUncancelableVassalDeal(eByPlayer):
+				return False
+			return self.turnsToCancel(eByPlayer) <= 0
+	def getCannotCancelReason(self, eByPlayer):
+		if BugDll.isPresent():
+			return self.deal.getCannotCancelReason(eByPlayer)
+		else:
+			return ""
+	def turnsToCancel(self, eByPlayer=-1):
+		if BugDll.isPresent():
+			return self.deal.turnsToCancel(eByPlayer)
+		else:
+			# this is exactly what CvDeal does
+			return self.getInitialGameTurn() + gc.getDefineINT("PEACE_TREATY_LENGTH") - gc.getGame().getGameTurn()
 	def kill(self):
 		self.deal.kill()
+	
+	def isPeaceDeal():
+		return self.eitherHasType(TradeableItems.TRADE_PEACE_TREATY)
+	def isVassalDeal():
+		return self.eitherHasAnyType(VASSAL_TRADE_ITEMS)
+	def isUncancelableVassalDeal(eByPlayer):
+		"""
+		Note: Doesn't check if a surrendered vassal is not allowed to revolt.
+		"""
+		return ((eByPlayer == self.getOtherPlayer() and self.hasAnyType(VASSAL_TRADE_ITEMS)) or
+				(eByPlayer == self.getPlayer() and self.otherHasAnyType(VASSAL_TRADE_ITEMS)))
 	
 	def isReversed(self):
 		return False

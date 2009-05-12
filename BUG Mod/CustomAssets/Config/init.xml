@@ -137,6 +137,7 @@
 	<load mod="BUG Main Interface"/>
 	<load mod="BUG City Screen"/>
 	<load mod="BUG Advisors"/>
+	
 	<load mod="Better Espionage"/>
 	<load mod="All Eras Dawn of Man Screen"/>
 	<load mod="TechWindow"/>
@@ -153,21 +154,25 @@
 	<load mod="FavoriteCivicDetector"/>
 	<load mod="EventSigns"/>
 	<load mod="Strategy Overlay"/>
-	
 	<load mod="StatusDump"/>
 	
-	<!-- Options Screens -->
+	<!-- BULL Mods -->
 	
-	<!--screen id="BUGSimple">
-		<tab module="BugGeneralOptionsTab"/>
-		<tab module="BugAdvisorOptionsTab"/>
-	</screen-->
+	<load mod="BULL Actions"/>
+	<load mod="BULL City Bar"/>
+	<load mod="BULL Misc Hovers"/>
+	
+	<load mod="MapFinder"/>
+	<load mod="Advanced Combat Odds"/>
+	
+	
+	<!-- Options Screen -->
 	
 	<screen id="BUGFull">
 		<tab module="BugGeneralOptionsTab"/>
-		<tab module="BugAdvisorOptionsTab"/>
-		
 		<tab module="BugCityScreenOptionsTab"/>
+		
+		<tab module="BugAdvisorOptionsTab"/>
 		
 		<tab module="BugAlertsOptionsTab"/>
 		<tab module="BugScoreOptionsTab"/>

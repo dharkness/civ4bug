@@ -22,9 +22,11 @@ import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
 import re
-import BugUtil
 import AttitudeUtil
 import BugCore
+import BugDll
+import BugUtil
+import DealUtil
 import FavoriteCivicDetector
 
 # globals
@@ -330,7 +332,71 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				xLink += self.DX_LINK
 	
 	def drawActive (self, bInitial):
-		CvForeignAdvisor.CvForeignAdvisor.drawActive (self)
+		screen = self.getScreen()
+
+		# Get the Players
+		playerActive = gc.getPlayer(self.iActiveLeader)
+					
+		# Put everything inside a main panel, so we get vertical scrolling
+		mainPanelName = self.getNextWidgetName()
+		screen.addPanel(mainPanelName, "", "", True, True, 50, 100, self.W_SCREEN - 100, self.H_SCREEN - 200, PanelStyles.PANEL_STYLE_EMPTY)
+
+		# loop through all players and sort them by number of active deals
+		listPlayers = [(0,0)] * gc.getMAX_PLAYERS()
+		nNumPLayers = 0
+		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
+			if (gc.getPlayer(iLoopPlayer).isAlive() and iLoopPlayer != self.iActiveLeader and not gc.getPlayer(iLoopPlayer).isBarbarian() and  not gc.getPlayer(iLoopPlayer).isMinorCiv()):
+				if (gc.getTeam(gc.getPlayer(iLoopPlayer).getTeam()).isHasMet(gc.getPlayer(self.iActiveLeader).getTeam()) or gc.getGame().isDebugMode()):
+					nDeals = 0				
+					for i in range(gc.getGame().getIndexAfterLastDeal()):
+						deal = gc.getGame().getDeal(i)
+						if ((deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader) or (deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader)):
+							nDeals += 1
+					listPlayers[nNumPLayers] = (nDeals, iLoopPlayer)
+					nNumPLayers += 1
+		listPlayers.sort()
+		listPlayers.reverse()
+
+		# loop through all players and display leaderheads
+		for j in range (nNumPLayers):
+			iLoopPlayer = listPlayers[j][1]
+
+			# Player panel
+			playerPanelName = self.getNextWidgetName()
+			screen.attachPanel(mainPanelName, playerPanelName, gc.getPlayer(iLoopPlayer).getName(), "", False, True, PanelStyles.PANEL_STYLE_MAIN)
+
+			screen.attachLabel(playerPanelName, "", "   ")
+
+			screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, -1, False)
+						
+			innerPanelName = self.getNextWidgetName()
+			screen.attachPanel(playerPanelName, innerPanelName, "", "", False, False, PanelStyles.PANEL_STYLE_EMPTY)
+
+			dealPanelName = self.getNextWidgetName()
+			screen.attachListBoxGFC(innerPanelName, dealPanelName, "", TableStyles.TABLE_STYLE_EMPTY)	
+			screen.enableSelect(dealPanelName, False)
+
+			iRow = 0
+			for i in range(gc.getGame().getIndexAfterLastDeal()):
+				deal = gc.getGame().getDeal(i)
+
+				if (deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader and not deal.isNone()) or (deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader):
+					szDealText = CyGameTextMgr().getDealString(deal, iLoopPlayer)
+					if AdvisorOpt.isShowDealTurnsLeft():
+						if BugDll.isPresent():
+							if not deal.isCancelable(self.iActiveLeader, False):
+								if deal.isCancelable(self.iActiveLeader, True):
+									szDealText += u" %s" % BugUtil.getText("INTERFACE_CITY_TURNS", (deal.turnsToCancel(self.iActiveLeader),))
+								else:
+									# don't bother adding "This deal cannot be canceled" message
+									#szDealText += u" (%s)" % deal.getCannotCancelReason(self.iActiveLeader)
+									pass
+						else:
+							iTurns = DealUtil.Deal(deal).turnsToCancel(self.iActiveLeader)
+							if iTurns > 0:
+								szDealText += u" %s" % BugUtil.getText("INTERFACE_CITY_TURNS", (iTurns,))
+					screen.appendListBoxString(dealPanelName, szDealText, WidgetTypes.WIDGET_DEAL_KILL, deal.getID(), -1, CvUtil.FONT_LEFT_JUSTIFY)
+					iRow += 1
 
 #	RJG Start
 	def drawRelations (self, bInitial):
@@ -392,7 +458,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				screen.attachTextGFC(infoPanelName, "", szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer)[0], )), FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_FOREIGN_ADVISOR_TRADE", (self.calculateTrade (self.iActiveLeader, iLoopPlayer)[0], )), FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
 
 				screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_CIVICS_SCREEN_TITLE", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
@@ -569,12 +636,18 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				(iTradeCommerce, iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
 				szTrade = u"%d" % (iTradeRoutes)
 				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+				if not BugDll.isPresent():
+					# Trade has no useful widget so disable hit testing.
+					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 				szTrade = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
 				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
+									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+				if not BugDll.isPresent():
+					# Trade has no useful widget so disable hit testing.
+					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			else:
 				# cannot have trade routes
 				itemName = self.getNextWidgetName()
@@ -1015,7 +1088,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
 						else: # won't trade
 							self.resIconGrid.addIcon( currentRow, self.wontTradeCol, gc.getBonusInfo(iLoopBonus).getButton()
-													, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+													, 64, *BugDll.widget("WIDGET_PEDIA_JUMP_TO_BONUS_TRADE", iLoopBonus, iLoopPlayer, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus, -1) )
 				if (self.RES_SHOW_ACTIVE_TRADE):
 					amount = 0
 					for iLoopDeal in range(gc.getGame().getIndexAfterLastDeal()):
@@ -1132,7 +1205,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 							else: # won't trade
 								self.techIconGrid.addIcon( currentRow, 5, gc.getTechInfo(iLoopTech).getButton()
-																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+																					 , 64, *BugDll.widget("WIDGET_PEDIA_JUMP_TO_TECH_TRADE", iLoopTech, iLoopPlayer, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech, -1) )
 						elif (gc.getTeam(currentPlayer.getTeam()).isHasTech(iLoopTech) and activePlayer.canResearch(iLoopTech, False)):
 							self.techIconGrid.addIcon( currentRow, 6, gc.getTechInfo(iLoopTech).getButton()
 																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )

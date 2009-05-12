@@ -31,6 +31,7 @@ finally:
 	sys.stderr = stderr
 
 import BugCore
+import BugDll
 import BugInit
 import BugOptions
 import BugPath
@@ -101,11 +102,28 @@ class GameBuilder:
 		
 		self.attrs = attrs
 		self.mod = None
+		self.dll = None
 		self.iniFile = None
 		self.section = None
 		self.option = None
 		self.screen = None
 		self.symbol = None
+	
+	def isDllOkay(self, dll):
+		dll = self.resolveDll(dll)
+		if dll is not None:
+			return BugDll.isVersion(dll)
+		return True
+	
+	def resolveDll(self, dll):
+		dll = BugDll.decode(dll)
+		if dll is None:
+			return self.dll
+		if self.dll is None:
+			return dll
+		if self.dll > dll:
+			BugUtil.warn("BugConfig - init object overrides mod DLL attribute with lower value")
+		return dll
 
 	def createBuilder(self, module, clazz=None, attrs=None):
 		if not clazz:
@@ -115,9 +133,10 @@ class GameBuilder:
 	def loadMod(self, name):
 		BugInit.loadMod(name)
 	
-	def createMod(self, id, name, author=None, url=None, version=None, build=None, releaseDate=None, attrs=None):
+	def createMod(self, id, name, dll=None, author=None, url=None, version=None, build=None, releaseDate=None, attrs=None):
 		#self.mod = Mod(id, name, author, url, version, build, releaseDate, attrs)
 		self.mod = self.game._getMod(id)
+		self.dll = BugDll.decode(dll)
 		return self.mod
 	
 	
@@ -149,35 +168,37 @@ class GameBuilder:
 			BugUtil.error("BugConfig - link option %s not found", linkId)
 			return None
 	
-	def createOption(self, id, type, key=None, default=None, andId=None, 
+	def createOption(self, id, type, key=None, default=None, andId=None, dll=None, 
 					 title=None, tooltip=None, dirtyBit=None, getter=None, setter=None, 
 					 attrs=None):
 		if type == "color":
-			return self.createOptionList(id, type, key, default, andId, type, None, None, title, tooltip, dirtyBit, getter, setter, attrs)
+			return self.createOptionList(id, type, key, default, andId, dll, type, None, None, title, tooltip, dirtyBit, getter, setter, attrs)
 		id = makeOptionId(self.mod._id, id)
 		andId = makeOptionId(self.mod._id, andId)
+		dll = self.resolveDll(dll)
 		if key is None:
 			self.option = BugOptions.UnsavedOption(self.mod, id, type, 
-												   default, andId, title, tooltip, dirtyBit)
+												   default, andId, dll, title, tooltip, dirtyBit)
 		else:
 			self.option = BugOptions.IniOption(self.mod, id, self.iniFile, self.section, key, 
-											   type, default, andId, title, tooltip, dirtyBit)
+											   type, default, andId, dll, title, tooltip, dirtyBit)
 		self.addOption(self.option, getter, setter, attrs)
 		return self.option
 	
-	def createOptionList(self, id, type, key=None, default=None, andId=None, 
+	def createOptionList(self, id, type, key=None, default=None, andId=None, dll=None, 
 						 listType=None, values=None, format=None, 
 						 title=None, tooltip=None, dirtyBit=None, getter=None, setter=None, 
 						 attrs=None):
 		id = makeOptionId(self.mod._id, id)
 		andId = makeOptionId(self.mod._id, andId)
+		dll = self.resolveDll(dll)
 		if key is None:
 			self.option = BugOptions.UnsavedListOption(self.mod, id, type, 
-													   default, andId, listType, values, format, 
+													   default, andId, dll, listType, values, format, 
 													   title, tooltip, dirtyBit)
 		else:
 			self.option = BugOptions.IniListOption(self.mod, id, self.iniFile, self.section, key, 
-												   type, default, andId, listType, values, format, 
+												   type, default, andId, dll, listType, values, format, 
 												   title, tooltip, dirtyBit)
 		self.addOption(self.option, getter, setter, attrs)
 		return self.option
@@ -217,23 +238,36 @@ class GameBuilder:
 		return tab
 	
 	
-	def createInit(self, module, function="init", immediate=False, args=(), kwargs={}, attrs=None):
-		func = BugUtil.getFunction(module, function, *args, **kwargs)
-		if immediate:
-			func()
+	def createInit(self, module, function="init", dll=None, immediate=False, args=(), kwargs={}, attrs=None):
+		if self.isDllOkay(dll):
+			func = BugUtil.getFunction(module, function, *args, **kwargs)
+			if immediate:
+				func()
+			else:
+				BugInit.addInit(module, func)
 		else:
-			BugInit.addInit(module, func)
+			BugUtil.debug("BugConfig - ignoring init %s.%s, requires dll version %s", module, function, self.resolveDll(dll))
 	
-	def createEvent(self, eventType, module, function, args=(), kwargs={}, attrs=None):
-		self.eventManager.addEventHandler(eventType, BugUtil.getFunction(module, function, *args, **kwargs))
+	def createEvent(self, eventType, module, function, dll=None, args=(), kwargs={}, attrs=None):
+		if self.isDllOkay(dll):
+			self.eventManager.addEventHandler(eventType, BugUtil.getFunction(module, function, *args, **kwargs))
+		else:
+			BugUtil.debug("BugConfig - ignoring event %s, requires dll version %s", eventType, self.resolveDll(dll))
 	
-	def createEvents(self, module, function=None, args=(), kwargs={}, attrs=None):
-		if not function:
-			function = module
-		return BugUtil.callFunction(module, function, self.eventManager, *args, **kwargs)
+	def createEvents(self, module, function=None, dll=None, args=(), kwargs={}, attrs=None):
+		if self.isDllOkay(dll):
+			if not function:
+				function = module
+			return BugUtil.callFunction(module, function, self.eventManager, *args, **kwargs)
+		else:
+			BugUtil.debug("BugConfig - ignoring events from %s, requires dll version %s", module, self.resolveDll(dll))
+			return None
 	
-	def createShortcut(self, key, module, function, args=(), kwargs={}, attrs=None):
-		self.eventManager.addShortcutHandler(key, BugUtil.getFunction(module, function, *args, **kwargs))
+	def createShortcut(self, key, module, function, dll=None, args=(), kwargs={}, attrs=None):
+		if self.isDllOkay(dll):
+			self.eventManager.addShortcutHandler(key, BugUtil.getFunction(module, function, *args, **kwargs))
+		else:
+			BugUtil.debug("BugConfig - ignoring shortcut %s, requires dll version %s", key, self.resolveDll(dll))
 	
 	def createArgument(self, name, type=None, value=None, attrs=None):
 		if type:
@@ -355,6 +389,7 @@ OFFSET = "offset"
 MODULE = "module"
 CLASS = "class"
 FUNCTION = "function"
+DLL = "dll"
 
 class XmlParser(xmllib.XMLParser):
 
@@ -429,13 +464,14 @@ class XmlParser(xmllib.XMLParser):
 	def start_mod(self, attrs):
 		id = self.getRequiredAttribute(attrs, ID, MOD)
 		name = self.getAttribute(attrs, NAME)
+		dll = self.getAttribute(attrs, DLL)
 		author = self.getAttribute(attrs, AUTHOR)
 		version = self.getAttribute(attrs, VERSION)
 		build = self.getAttribute(attrs, BUILD)
 		date = self.getAttribute(attrs, DATE)
 		url = self.getAttribute(attrs, URL)
 		self.module = self.getAttribute(attrs, MODULE)
-		self.mod = g_builder.createMod(id, name, author, url, 
+		self.mod = g_builder.createMod(id, name, dll, author, url, 
 									   version, build, date, attrs)
 	
 	def end_mod(self):
@@ -472,12 +508,13 @@ class XmlParser(xmllib.XMLParser):
 			key = self.getAttribute(attrs, KEY)
 			default = self.getAttribute(attrs, DEFAULT)
 			andId = self.getAttribute(attrs, AND)
+			dll = self.getAttribute(attrs, DLL)
 			dirtyBit = self.getAttribute(attrs, DIRTYBIT)
 			title = self.getAttribute(attrs, TITLE)
 			tooltip = self.getAttribute(attrs, TOOLTIP)
 			getter = self.getAttribute(attrs, GETTER)
 			setter = self.getAttribute(attrs, SETTER)
-			option = g_builder.createOption(id, type, key, default, andId, title, tooltip, dirtyBit, getter, setter, attrs)
+			option = g_builder.createOption(id, type, key, default, andId, dll, title, tooltip, dirtyBit, getter, setter, attrs)
 	
 	def end_option(self):
 		pass
@@ -504,6 +541,7 @@ class XmlParser(xmllib.XMLParser):
 			listType = self.getAttribute(attrs, LISTTYPE)
 		default = self.getAttribute(attrs, DEFAULT)
 		andId = self.getAttribute(attrs, AND)
+		dll = self.getAttribute(attrs, DLL)
 		values = self.getAttribute(attrs, VALUES)
 		format = self.getAttribute(attrs, FORMAT)
 		dirtyBit = self.getAttribute(attrs, DIRTYBIT)
@@ -511,7 +549,7 @@ class XmlParser(xmllib.XMLParser):
 		tooltip = self.getAttribute(attrs, TOOLTIP)
 		getter = self.getAttribute(attrs, GETTER)
 		setter = self.getAttribute(attrs, SETTER)
-		self.option = g_builder.createOptionList(id, type, key, default, andId, listType, values, format, title, tooltip, dirtyBit, getter, setter, attrs)
+		self.option = g_builder.createOptionList(id, type, key, default, andId, dll, listType, values, format, title, tooltip, dirtyBit, getter, setter, attrs)
 	
 	def end_list(self):
 		self.option.createComparers()
@@ -560,12 +598,13 @@ class XmlParser(xmllib.XMLParser):
 		attrs, args, kwargs = self.endArgs()
 		module = self.getModuleAttribute(attrs, INIT)
 		function = self.getAttribute(attrs, FUNCTION, INIT)
+		dll = self.getAttribute(attrs, DLL)
 		immediate = self.getAttribute(attrs, IMMEDIATE, INIT)
 		if immediate:
 			immediate = immediate.lower() in TRUE_STRINGS
 		else:
 			immediate = False
-		g_builder.createInit(module, function, immediate, args, kwargs, attrs)
+		g_builder.createInit(module, function, dll, immediate, args, kwargs, attrs)
 	
 	def start_event(self, attrs):
 		self.startArgs(attrs)
@@ -575,7 +614,8 @@ class XmlParser(xmllib.XMLParser):
 		eventType = self.getRequiredAttribute(attrs, TYPE, EVENT)
 		module = self.getModuleAttribute(attrs, EVENT)
 		function = self.getRequiredAttribute(attrs, FUNCTION, EVENT)
-		g_builder.createEvent(eventType, module, function, args, kwargs, attrs)
+		dll = self.getAttribute(attrs, DLL)
+		g_builder.createEvent(eventType, module, function, dll, args, kwargs, attrs)
 	
 	def start_events(self, attrs):
 		self.startArgs(attrs)
@@ -585,7 +625,8 @@ class XmlParser(xmllib.XMLParser):
 		module = self.getModuleAttribute(attrs, EVENTS)
 		function = self.getAttribute(attrs, FUNCTION, module)
 		clazz = self.getAttribute(attrs, CLASS, function)
-		g_builder.createEvents(module, clazz, args, kwargs, attrs)
+		dll = self.getAttribute(attrs, DLL)
+		g_builder.createEvents(module, clazz, dll, args, kwargs, attrs)
 	
 	def start_shortcut(self, attrs):
 		self.startArgs(attrs)
@@ -595,7 +636,8 @@ class XmlParser(xmllib.XMLParser):
 		key = self.getRequiredAttribute(attrs, KEY, SHORTCUT)
 		module = self.getModuleAttribute(attrs, SHORTCUT)
 		function = self.getRequiredAttribute(attrs, FUNCTION, SHORTCUT)
-		g_builder.createShortcut(key, module, function, args, kwargs, attrs)
+		dll = self.getAttribute(attrs, DLL)
+		g_builder.createShortcut(key, module, function, dll, args, kwargs, attrs)
 	
 	
 	def start_arg(self, attrs):

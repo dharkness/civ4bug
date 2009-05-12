@@ -71,6 +71,21 @@
 				<choice id="Stacker" get="isCitySpecialist_Stacker"/>
 				<choice id="Chevron" get="isCitySpecialist_Chevron"/>
 			</list>
+			
+			<!-- Production Decay by EmperorFool -->
+			<option id="ProductionDecayHover" key="Production Decay Hover" dll="1" 
+					type="boolean" default="True" 
+					get="isShowProductionDecayHover"/>
+			<option id="ProductionDecayHoverThreshold" key="Production Decay Hover Threshold" dll="1" 
+					type="int" default="5" 
+					get="getProductionDecayHoverThreshold" dirtyBit="CityScreen"/>
+					
+			<option id="ProductionDecayQueue" key="Production Decay Queue" dll="1" 
+					type="boolean" default="True" 
+					get="isShowProductionDecayQueue" dirtyBit="CityScreen"/>
+			<option id="ProductionDecayQueueThreshold" key="Production Decay Queue Threshold" dll="1" 
+					type="int" default="5" 
+					get="getProductionDecayQueueThreshold" dirtyBit="CityScreen"/>
 		</section>
 	</options>
 </mod>

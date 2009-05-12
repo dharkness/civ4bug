@@ -190,3 +190,84 @@ def getConsoleMacro(argsList):
 	if (fxnKey==6): return "CvCameraControls.g_CameraControls.doZoomCamera(0.5, 0.15)"
 	if (fxnKey==7): return "CvCameraControls.g_CameraControls.doPitchCamera(0.5, 0.5)"
 	return ""
+
+# BUG - DLL - start
+def isBug():
+	return True
+
+g_options = None
+def getOption(id):
+	global g_options
+	if g_options is None:
+		import BugOptions
+		g_options = BugOptions.g_options
+		if g_options is None:
+			import BugUtil
+			BugUtil.warn("Cannot access BUG options")
+			return None
+	return g_options.getOption(id)
+
+def getOptionBOOL(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %s", id, bool(default))
+	try:
+		option = getOption(id)
+		return bool(option.getValue())
+		#val = bool(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %s", bool(default))
+		return default
+
+def getOptionINT(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %d", id, int(default))
+	try:
+		option = getOption(id)
+		return int(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %d", int(default))
+		return default
+
+def getOptionFLOAT(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %f", id, float(default))
+	try:
+		option = getOption(id)
+		return float(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %f", float(default))
+		return default
+
+def getOptionSTRING(argsList):
+	#import BugUtil
+	id, default = argsList
+	#BugUtil.alert("checking option %s with default %s", id, str(default))
+	try:
+		option = getOption(id)
+		return str(option.getValue())
+		#val = int(option.getValue())
+		#BugUtil.alert("value = %s", val)
+		#return val
+	except:
+		#BugUtil.alert("returning default %s", str(default))
+		return default
+
+g_nameAndVersion = None
+def getModNameAndVersion():
+	global g_nameAndVersion
+	if g_nameAndVersion is None:
+		import CvModName
+		g_nameAndVersion = CvModName.getNameAndVersion()
+	return g_nameAndVersion
+# BUG - DLL - end

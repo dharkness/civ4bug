@@ -149,7 +149,7 @@
 		<Tag>TXT_KEY_MAPFINDER_REGEN_FAILED</Tag>
 		<English>Ending: Regenerate Failed...</English>
 		<French>Fin : Régénération Échouée...</French>
-		<German>Beenden: Regenerieren erfolglos...</German>
+		<German>Beenden: Neuerstellung fehlgeschlagen...</German>
 		<Italian>Conclusione: rigenerazione fallita...</Italian>
 		<Spanish>Conclusión: Regenerado Fallado...</Spanish>
 	</TEXT>
@@ -173,7 +173,7 @@
 		<Tag>TXT_KEY_MAPFINDER_CANNOT_REGEN</Tag>
 		<English>Ending: Cannot Regenerate...</English>
 		<French>Fin : Ne peut pas Régénérer...</French>
-		<German>Beenden: Regenerieren nicht möglich...</German>
+		<German>Beenden: Neuerstellung nicht möglich...</German>
 		<Italian>Conclusione: non può rigenerare...</Italian>
 		<Spanish>Conclusión: No puede Regenerar...</Spanish>
 	</TEXT>
@@ -181,7 +181,7 @@
 		<Tag>TXT_KEY_MAPFINDER_ALTX_TO_STOP</Tag>
 		<English>Press Alt-X to stop MapFinder.</English>
 		<French>Poussez Alt-X pour arrêter MapFinder.</French>
-		<German>Drücken Sie [ALT-X], um den MapFinder zu beenden.</German>
+		<German>Drücken Sie [ALT + X], um MapFinder zu beenden.</German>
 		<Italian>Premi Alt-X per arrestare MapFinder.</Italian>
 		<Spanish>Presione el Alt-X-X para parar MapFinder.</Spanish>
 	</TEXT>
@@ -253,7 +253,7 @@
 		<Tag>TXT_KEY_MAPFINDER_ALTX_STOPPING</Tag>
 		<English>Alt-X command recieved. Stopping...</English>
 		<French>Recu la commande Alt-X. Arrêt...</French>
-		<German>[ALT-X]-Befehl erhalten. Beenden...</German>
+		<German>[ALT + X]-Befehl erhalten. Beenden...</German>
 		<Italian>Ordine Alt-X ricevuto. Arresto...</Italian>
 		<Spanish>El comando Alt-X recieved. El parar...</Spanish>
 	</TEXT>
