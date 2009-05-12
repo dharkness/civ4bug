@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	Advanced Combat Odds
+	by PieceOfMind
+
+	Copyright (c) 2009 The BUG Mod.
+-->
+<mod id="ACO" 
+	 name="Advanced Combat Odds" 
+	 author="PieceOfMind" 
+	 version="1.0" 
+	 date="04/18/2009" 
+	 url="http://forums.civfanatics.com/showthread.php?t=310415"
+	 dll="1">
+	 
+	<options id="ACO" file="Advanced Combat Odds">
+		<section id="ACO">
+			<option id="Enabled" type="boolean" default="True"/>
+			
+			<option id="Debug" type="boolean" default="False"/>
+			
+			<list   id="Detail" type="int" default="2"
+					listType="string" values="Low|Medium|High|Extreme"/>
+		</section>
+	</options>
+</mod>
