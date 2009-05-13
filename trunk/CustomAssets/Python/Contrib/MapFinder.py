@@ -59,10 +59,12 @@ def regenerate():
 def centerCameraOnPlayer():
 	#cam.centerCamera(gc.getActivePlayer().getStartingPlot())
 	cam = CyCamera()
-	eSpeed = cam.GetCameraMovementSpeed()
+#	eSpeed = cam.GetCameraMovementSpeed()
 	cam.SetCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
-	cam.JustLookAtPlot(gc.getActivePlayer().getStartingPlot())
-	cam.SetCameraMovementSpeed(eSpeed)
+	plot = gc.getActivePlayer().getStartingPlot()
+	BugUtil.alert("Starting Location = %d,%d", plot.getX(), plot.getY())
+	cam.JustLookAtPlot(plot)
+#	cam.SetCameraMovementSpeed(eSpeed)
 
 
 # Regeneration Loop
@@ -211,7 +213,7 @@ def cycle(argsList=None):
 			iUpdateCounter += 1
 #			BugUtil.alert("next counter = %d", iUpdateCounter)
 			if bChecking:
-				if iUpdateCounter >= 1:
+				if iUpdateCounter == 1:
 					centerCameraOnPlayer()
 				if iUpdateCounter >= options.getUpdateScreenDelay():
 					iUpdateCounter = 0
@@ -443,11 +445,11 @@ def check():
 #					"=" + str(iRegenCount) +
 #					" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
 #					"=" + str(iSavedCount), "")
-	CyInterface().addImmediateMessage("MapFinder running . . ." +
-					"\n" + "Count" +
-					"=" + str(iRegenCount) +
-					" " + "Saved" +
-					"=" + str(iSavedCount), "")
+	BugUtil.alert("MapFinder running . . ." +
+			"\n" + "Count" +
+			"=" + str(iRegenCount) +
+			" " + "Saved" +
+			"=" + str(iSavedCount))
 
 	if (bSaveMap):
 		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".jpg")
@@ -456,10 +458,10 @@ def check():
 	if ((iRegenCount >= options.getRegenLimit()) or
 	    (iSavedCount >= options.getSaveLimit())):
 		BugUtil.alert(BugUtil.getPlainText('TXT_KEY_MAPFINDER_STOPPED') +
-					"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
-					"=" + str(iRegenCount) +
-					" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
-					"=" + str(iSavedCount))
+				"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
+				"=" + str(iRegenCount) +
+				" " + BugUtil.getPlainText('TXT_KEY_MAPFINDER_SAVED') +
+				"=" + str(iSavedCount))
 		stop()
 
 	bChecking = False
