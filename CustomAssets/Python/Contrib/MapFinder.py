@@ -4,8 +4,8 @@
 ##
 ## Shortcuts:
 ##
-##   ALT + G             regenerate()
-##   ALT + CTRL + G      startStop()
+##   ALT + G             doRegenerate()
+##   ALT + CTRL + G      doStartStop()
 ##
 ## Events:
 ##   gameUpdate          cycle()
@@ -20,19 +20,26 @@ from CvPythonExtensions import *
 import BugCore
 import BugDll
 import BugUtil
-#import CvCameraControls
 import CvUtil
 import os.path
 import time
 
 gc = CyGlobalContext()
-#cam = CvCameraControls.CvCameraControls()
 options = BugCore.game.MapFinder
 
 EVENT_MESSAGE_TIME = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 
 
+def onGameUpdate(argsList=None):
+	if bCenterCamera:
+		centerCameraOnPlayer()
+	if bActive:
+		cycle()
+
+
 # Regenerate Map
+
+bCenterCamera = False
 
 def doRegenerate(argsList=None):
 	try:
@@ -50,17 +57,17 @@ def canRegenerate():
 def regenerate():
 	if canRegenerate():
 		if gc.getGame().regenerateMap():
-			#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
-			centerCameraOnPlayer()
-			#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
+			global bCenterCamera
+			bCenterCamera = True
 		else:
 			raise MapFinderError("TXT_KEY_MAPFINDER_REGENERATE_FAILED")
 
 def centerCameraOnPlayer():
-	#cam.centerCamera(gc.getActivePlayer().getStartingPlot())
+	global bCenterCamera
+	bCenterCamera = False
 	cam = CyCamera()
 #	eSpeed = cam.GetCameraMovementSpeed()
-	cam.SetCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
+#	cam.SetCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 	plot = gc.getActivePlayer().getStartingPlot()
 	BugUtil.alert("Starting Location = %d,%d", plot.getX(), plot.getY())
 	cam.JustLookAtPlot(plot)
@@ -183,21 +190,17 @@ def start():
 		bChecking = False
 		iRegenCount = 0
 		iSavedCount = 0
-		#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 		global savedInterfaceMode
 		savedInterfaceMode = CyInterface().getShowInterface()
-		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_HIDE_ALL)
+		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
 		BugUtil.alert("MapFinder started")
 
 def stop():
 	global bActive, bChecking
 	bActive = False
 	bChecking = False
-	#cam.setCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_NORMAL)
 	if savedInterfaceMode:
 		CyInterface().setShowInterface(savedInterfaceMode)
-	else:
-		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
 	BugUtil.alert("MapFinder stopped")
 #	BugUtil.getText('TXT_KEY_MAPFINDER_REGEN_FAILED') +
 #		"\n" + BugUtil.getPlainText('TXT_KEY_MAPFINDER_COUNT') +
@@ -206,15 +209,13 @@ def stop():
 #		"=" + str(HOFContext.iMapFinderSavedCount), None,
 #		0, None, ColorTypes(-1), 0, 0, False, False)
 
-def cycle(argsList=None):
+def cycle():
 	if bActive:
 		try:
 			global iUpdateCounter
 			iUpdateCounter += 1
 #			BugUtil.alert("next counter = %d", iUpdateCounter)
 			if bChecking:
-				if iUpdateCounter == 1:
-					centerCameraOnPlayer()
 				if iUpdateCounter >= options.getUpdateScreenDelay():
 					iUpdateCounter = 0
 					check()
