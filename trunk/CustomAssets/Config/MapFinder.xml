@@ -24,11 +24,11 @@
 					type="string" default="Default.rul"/>
 			
 			<option id="UpdateScreenDelay" key="Update Screen Delay" 
-					type="int" default="2"/>
+					type="int" default="5"/>
 			<option id="RegenLimit" key="Regen Limit" 
-					type="int" default="2"/>
+					type="int" default="100"/>
 			<option id="SaveLimit" key="Save Limit" 
-					type="int" default="10"/>
+					type="int" default="100"/>
 		</section>
 	</options>
 	
