@@ -62,6 +62,9 @@
 ##   callFunction(module, functionOrClass, args..., kwargs...)
 ##     Returns the result of calling the function bound using getFunction().
 ##
+##   deferCall(function)
+##     Calls the given function during the next GameUpdate event.
+##
 ## Exception Classes
 ##
 ##   BugError, ConfigError
@@ -72,6 +75,10 @@
 ##   isNoEspionage()
 ##     Returns True if running at least 3.17 and the No Espionage option is set
 ##     for the game in progress.
+##
+## Event Handlers
+##
+##   gameUpdate          onGameUpdate - Calls deferred functions from deferCall()
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -545,6 +552,31 @@ def callFunction(module, functionOrClass, *args, **kwargs):
 	func = getFunction(module, functionOrClass, True)
 	return func(*args, **kwargs)
 
+deferredCallQueue = []
+def deferCall(function, delay=0.0):
+	"""
+	Calls the given function during a future GameUpdate event after at least <delay> seconds.
+	"""
+	global deferredCallQueue
+	when = time.clock() + delay
+	entry = (when, function)
+	if deferredCallQueue:
+		for i in range(len(deferredCallQueue)):
+			if when < deferredCallQueue[i][0]:
+				break
+		deferredCallQueue.insert(i, entry)
+	else:
+		deferredCallQueue.append(entry)
+
+def onGameUpdate(argsList=None):
+	global deferredCallQueue
+	while deferredCallQueue:
+		when, func = deferredCallQueue[0]
+		if when > time.clock():
+			break
+		del deferredCallQueue[0]
+		debug("onGameUpdate - calling %s", func)
+		func()
 
 ## Exception Classes
 

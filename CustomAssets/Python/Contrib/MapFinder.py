@@ -30,16 +30,7 @@ options = BugCore.game.MapFinder
 EVENT_MESSAGE_TIME = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 
 
-def onGameUpdate(argsList=None):
-	if bCenterCamera:
-		centerCameraOnPlayer()
-	if bActive:
-		cycle()
-
-
 # Regenerate Map
-
-bCenterCamera = False
 
 def doRegenerate(argsList=None):
 	try:
@@ -56,20 +47,19 @@ def canRegenerate():
 
 def regenerate():
 	if canRegenerate():
+		if CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_SHOW:
+			CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
 		if gc.getGame().regenerateMap():
-			global bCenterCamera
-			bCenterCamera = True
+			BugUtil.deferCall(centerCameraOnPlayer)
 		else:
 			raise MapFinderError("TXT_KEY_MAPFINDER_REGENERATE_FAILED")
 
 def centerCameraOnPlayer():
-	global bCenterCamera
-	bCenterCamera = False
 	cam = CyCamera()
 #	eSpeed = cam.GetCameraMovementSpeed()
 #	cam.SetCameraMovementSpeed(CameraMovementSpeeds.CAMERAMOVEMENTSPEED_FAST)
 	plot = gc.getActivePlayer().getStartingPlot()
-	BugUtil.alert("Starting Location = %d,%d", plot.getX(), plot.getY())
+#	BugUtil.alert("Starting Location = %d,%d", plot.getX(), plot.getY())
 	cam.JustLookAtPlot(plot)
 #	cam.SetCameraMovementSpeed(eSpeed)
 
@@ -209,7 +199,7 @@ def stop():
 #		"=" + str(HOFContext.iMapFinderSavedCount), None,
 #		0, None, ColorTypes(-1), 0, 0, False, False)
 
-def cycle():
+def cycle(argsList=None):
 	if bActive:
 		try:
 			global iUpdateCounter
