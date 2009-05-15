@@ -2908,7 +2908,6 @@ class CvMainInterface:
 
 # BUG - Event Manager - start
 		CvEventInterface.getEventManager().updateActiveTurn()
-#		CvEventInterface.getEventManager().fireEvent("gameUpdate", ((-1,),))
 # BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
@@ -7010,17 +7009,15 @@ class CvMainInterface:
 
 # BUG - field of view slider - start
 	def setFieldofView(self, screen, bDefault):
-		if (bDefault
-		or not MainOpt.isShowFieldOfView()):
+		if bDefault or not MainOpt.isShowFieldOfView():
 			self._setFieldofView(screen, DEFAULT_FIELD_OF_VIEW)
 		else:
 			self._setFieldofView(screen, self.iField_View)
 
 	def _setFieldofView(self, screen, iFoV):
 		if self.iField_View_Prev != iFoV:
-			gc.setDefineFLOAT("FIELD_OF_VIEW",float(iFoV))
+			gc.setDefineFLOAT("FIELD_OF_VIEW", float(iFoV))
 			self.iField_View_Prev = iFoV
-			screen.setForcedRedraw(True)
 
 	def setFieldofView_Text(self, screen):
 		zsFieldOfView_Text = "%s [%i]" % (self.sFieldOfView_Text, self.iField_View)
