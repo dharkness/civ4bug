@@ -32,8 +32,6 @@
 		</section>
 	</options>
 	
-	<event type="gameUpdate" function="cycle"/>
-	
 	<shortcut key="Alt G" function="doRegenerate"/>
 	<shortcut key="Alt Ctrl G" function="doStartStop"/>
 	

@@ -74,6 +74,7 @@ Improvements:
 
 - BugUtil
 	getText() and getPlainText() both replace [ICON_XXX] in the message
+	Added deferCall() to call a function in a future gameUpdate event after an optional delay
 	Added alertInput() and alertInputFlags() that print to the screen using alert() instead of debug()
 
 Bug Fixes:
