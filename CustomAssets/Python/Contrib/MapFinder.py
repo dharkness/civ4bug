@@ -21,10 +21,10 @@ import CvUtil
 import os.path
 import time
 
+MINIMUM_SAVE_DELAY = 2.0
+
 gc = CyGlobalContext()
 options = BugCore.game.MapFinder
-
-EVENT_MESSAGE_TIME = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 
 
 # Regenerate Map
@@ -198,7 +198,10 @@ def regenerateAndCheck():
 		iRegenCount += 1
 		regenerate()
 		if check():
-			BugUtil.deferCall(save, options.getSaveDelay())
+			delay = options.getSaveDelay()
+			if delay < MINIMUM_SAVE_DELAY:
+				delay = MINIMUM_SAVE_DELAY
+			BugUtil.deferCall(save, delay)
 		else:
 			BugUtil.deferCall(next, options.getSkipDelay())
 	except MapFinderError, e:
