@@ -180,7 +180,7 @@ def start():
 		savedInterfaceMode = CyInterface().getShowInterface()
 		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
 		BugUtil.alert("MapFinder started")
-		BugUtil.deferCall(next)
+		BugUtil.deferCall(next, options.getRegenerationDelay())
 
 def stop():
 	global bActive
@@ -197,7 +197,7 @@ def next():
 		regenerate()
 		global iRegenCount
 		iRegenCount += 1
-		BugUtil.deferCall(check, 2)
+		BugUtil.deferCall(check, options.getVerificationDelay())
 	except MapFinderError, e:
 		e.display()
 		stop()
@@ -417,11 +417,11 @@ def check():
 		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".jpg")
 		gc.getGame().takeJPEGScreenShot(fileNameX)
 
-	if ((iRegenCount >= options.getRegenLimit()) or
+	if ((iRegenCount >= options.getRegenerationLimit()) or
 	    (iSavedCount >= options.getSaveLimit())):
 		stop()
 	else:
-		BugUtil.deferCall(next, 1)
+		BugUtil.deferCall(next, options.getRegenerationDelay())
 
 def getSaveFileName(pathName):
 	iActivePlayer = gc.getGame().getActivePlayer()
