@@ -180,7 +180,7 @@ def start():
 		savedInterfaceMode = CyInterface().getShowInterface()
 		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
 		BugUtil.alert("MapFinder started")
-		BugUtil.deferCall(next, options.getRegenerationDelay())
+		BugUtil.deferCall(regenerateAndCheck, options.getRegenerationDelay())
 
 def stop():
 	global bActive
@@ -189,27 +189,28 @@ def stop():
 		CyInterface().setShowInterface(savedInterfaceMode)
 	BugUtil.alert("MapFinder stopped - Count %d, Saved %d", iRegenCount, iSavedCount)
 
-def next():
+def regenerateAndCheck():
 	if not bActive:
-		# was stopped
+		# stopped
 		return
 	try:
-		regenerate()
 		global iRegenCount
 		iRegenCount += 1
-		BugUtil.deferCall(check, options.getVerificationDelay())
+		regenerate()
+		if check():
+			BugUtil.deferCall(save, options.getSaveDelay())
+		else:
+			BugUtil.deferCall(next, options.getSkipDelay())
 	except MapFinderError, e:
 		e.display()
 		stop()
 
+mr = None
 def check():
-	global bActive, iRegenCount, iSavedCount
+	global bActive, iRegenCount, iSavedCount, mr
 	if not bActive:
 		# was stopped
 		return
-	bSaveMap = False
-	sMFSavePath = os.path.join(options.getPath(), "Saves")
-	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
 	
 	mr = {}
 	for x in CodeText.iterkeys():
@@ -380,48 +381,63 @@ def check():
 		lPF.append(grp)
 
 	for i in range(len(lPF)):
-	    if (lPF[i]):
-	    	bSaveMap = True
-	    	break
-	    
-	if (bSaveMap):
-		iSavedCount = iSavedCount + 1
-		reportFile = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".txt")
-		ruleFile = options.getRuleFile()
+		if (lPF[i]):
+			return mr
+	return None
 
-		file = open(reportFile, "a")
+def save():
+	global bActive, iRegenCount, iSavedCount, mr
+	if not bActive:
+		# was stopped
+		return
+	
+	iSavedCount += 1
+	sMFSavePath = os.path.join(options.getPath(), "Saves")
+	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
+	fullFileName = fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount)
+	
+	# screenshot
+	screenFile = fullFileName + ".jpg"
+	gc.getGame().takeJPEGScreenShot(screenFile)
+	
+	# report file
+	reportFile = fullFileName + ".txt"
+	file = open(reportFile, "a")
+	ruleFile = options.getRuleFile()
 
 ## HOF MOD V1.61.005
-		# don't change unless file format changes!
-		file.write("HOF MOD V1.61.004,HOF MOD V1.61.005,\n")
+	# don't change unless file format changes!
+	file.write("HOF MOD V1.61.004,HOF MOD V1.61.005,\n")
 ## end HOF MOD V1.61.005
 
-		file.write("Name,Name," + str(fileName) + "_" + str(iRegenCount) + "_" + str(iSavedCount) + "\n")
-		file.write("Rule File,Rule File," + str(ruleFile) + "\n")
-		file.write("Range,Range," + str(Rules['Range']) + "\n")
+	file.write("Name,Name," + str(fileName) + "_" + str(iRegenCount) + "_" + str(iSavedCount) + "\n")
+	file.write("Rule File,Rule File," + str(ruleFile) + "\n")
+	file.write("Range,Range," + str(Rules['Range']) + "\n")
 
-		lKeys = mr.keys()
-		lKeys.sort()
-		for x in lKeys:
-			if (x < 900):
-				file.write(str(x) + "," + str(CodeText[x]) + "," + str(mr[x]) + "\n")
+	lKeys = mr.keys()
+	lKeys.sort()
+	for x in lKeys:
+		if (x < 900):
+			file.write(str(x) + "," + str(CodeText[x]) + "," + str(mr[x]) + "\n")
+	file.close()
 
-		file.close()
+	# saved game
+	saveFile = fullFileName + ".CivBeyondSwordSave"
+	gc.getGame().saveGame(saveFile)
+	
+	next()
 
-		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".CivBeyondSwordSave")
-		gc.getGame().saveGame(fileNameX)
-
-	BugUtil.alert("MapFinder running - Count %d, Saved %d", iRegenCount, iSavedCount)
-
-	if (bSaveMap):
-		fileNameX = str(fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount) + ".jpg")
-		gc.getGame().takeJPEGScreenShot(fileNameX)
-
+def next():
+	if not bActive:
+		# was stopped
+		return
 	if ((iRegenCount >= options.getRegenerationLimit()) or
 	    (iSavedCount >= options.getSaveLimit())):
 		stop()
 	else:
-		BugUtil.deferCall(next, options.getRegenerationDelay())
+		BugUtil.alert("MapFinder running - Count %d, Saved %d", iRegenCount, iSavedCount)
+		BugUtil.deferCall(regenerateAndCheck, options.getRegenerationDelay())
+
 
 def getSaveFileName(pathName):
 	iActivePlayer = gc.getGame().getActivePlayer()

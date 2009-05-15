@@ -25,8 +25,10 @@
 			
 			<option id="RegenerationDelay" key="Regeneration Delay" 
 					type="float" default="0.0"/>
-			<option id="VerificationDelay" key="Verification Delay" 
-					type="float" default="1.0"/>
+			<option id="SkipDelay" key="Skip Delay" 
+					type="float" default="0.25"/>
+			<option id="SaveDelay" key="Save Delay" 
+					type="float" default="2.0"/>
 			
 			<option id="RegenerationLimit" key="Regeneration Limit" 
 					type="int" default="1000"/>
