@@ -62,8 +62,14 @@
 ##   callFunction(module, functionOrClass, args..., kwargs...)
 ##     Returns the result of calling the function bound using getFunction().
 ##
-##   deferCall(function)
-##     Calls the given function during the next GameUpdate event.
+## Calling Functions in the Future
+##
+##   deferCall(function, delay=0.0)
+##     Calls the given function during a GameUpdate event after at least <delay> seconds.
+##
+##   doDeferredCalls()
+##     Calls the deferred functions whose delays have passed.
+##     Triggered by gameUpdate event; do not call directly.
 ##
 ## Exception Classes
 ##
@@ -78,7 +84,7 @@
 ##
 ## Event Handlers
 ##
-##   gameUpdate          onGameUpdate - Calls deferred functions from deferCall()
+##   gameUpdate          doDeferredCalls - Calls deferred functions from deferCall()
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -552,30 +558,46 @@ def callFunction(module, functionOrClass, *args, **kwargs):
 	func = getFunction(module, functionOrClass, True)
 	return func(*args, **kwargs)
 
+
+## Deferred Calls
+
 deferredCallQueue = []
 def deferCall(function, delay=0.0):
 	"""
 	Calls the given function during a future GameUpdate event after at least <delay> seconds.
 	"""
 	global deferredCallQueue
+	if delay < 0.0:
+		delay = 0.0
 	when = time.clock() + delay
 	entry = (when, function)
 	if deferredCallQueue:
 		for i in range(len(deferredCallQueue)):
 			if when < deferredCallQueue[i][0]:
-				break
-		deferredCallQueue.insert(i, entry)
-	else:
-		deferredCallQueue.append(entry)
+				deferredCallQueue.insert(i, entry)
+				return
+	deferredCallQueue.append(entry)
 
-def onGameUpdate(argsList=None):
+def doDeferredCalls(argsList=None):
 	global deferredCallQueue
+	# insert a marker so that items added during this round of calls will be processed on the next round
+	deferCall(None)
 	while deferredCallQueue:
 		when, func = deferredCallQueue[0]
+		if func is None:
+			del deferredCallQueue[0]
+			break
 		if when > time.clock():
+			warn("doDeferredCalls - entry inserted before marker")
+			for i, (when, func) in enumerate(deferredCallQueue):
+				if func is None:
+					del deferredCallQueue[i]
+					break
+			else:
+				error("doDeferredCalls - marker not found")
 			break
 		del deferredCallQueue[0]
-		debug("onGameUpdate - calling %s", func)
+		debug("doDeferredCalls - calling %s", func)
 		func()
 
 ## Exception Classes
