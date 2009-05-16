@@ -67,12 +67,14 @@ EventKeyUp=7
 SilentEvents = [EventEditCityName, EventEditUnitName]
 
 # BUG - Core - start
+
+# Event IDs
 BUG_FIRST_EVENT = 5050
 g_nextEventID = BUG_FIRST_EVENT
 g_bugEvents = {}
 def getNewEventID(name=None, silent=True):
-	"""Defines a new event and returns its unique ID to be passed to 
-	BugEventManager.beginEvent(id).
+	"""
+	Defines a new event and returns its unique ID to be passed to BugEventManager.beginEvent(id).
 	If name is given, it is stored in a map for lookup by ID later for debugging.
 	"""
 	global g_nextEventID
@@ -90,6 +92,18 @@ def getEventName(id):
 def addSilentEvent(id):
 	if id not in SilentEvents:
 		SilentEvents.append(id)
+
+# Screen IDs
+BUG_FIRST_SCREEN = 1000
+g_nextScreenID = BUG_FIRST_SCREEN
+def getNewScreenID():
+	"""
+	Returns the next unique screen ID to be used with CyGInterfaceScreen.
+	"""
+	global g_nextScreenID
+	id = g_nextScreenID
+	g_nextScreenID += 1
+	return id
 # BUG - Core - end
 
 # Popup defines (TODO: Expose these from C++)
