@@ -56,24 +56,74 @@
 		<Italian>[COLOR_NEGATIVE_TEXT]Il file delle regole di MapFinder non è stato trovato: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_NEGATIVE_TEXT]MapFinder rule file not found: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_INVALID_SAVE_PATH</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]MapFinder save file path is invalid: %s1[COLOR_REVERT]</English>
+		<French>[COLOR_NEGATIVE_TEXT]MapFinder save file path is invalid: %s1[COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]MapFinder-Dateipfad ist ungültig: %s1[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]Il percorso di MapFinder non è valido: %s1[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]MapFinder save file path is invalid: %s1[COLOR_REVERT]</Spanish>
+	</TEXT>
 	
-	<!-- Status Messages -->
+	<!-- Status Screen -->
 	
 	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_SCREEN_TITLE</Tag>
+		<English>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</English>
+		<French>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</French>
+		<German>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</German>
+		<Italian>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_TOTAL_MAPS</Tag>
-		<English>Maps: %d1</English>
-		<French>Maps: %d1</French>
-		<German>Karten: %d1</German>
-		<Italian>Mappe: %d1</Italian>
-		<Spanish>Maps: %d1</Spanish>
+		<English>Maps</English>
+		<French>Cartes</French>
+		<German>Karten</German>
+		<Italian>Mappe</Italian>
+		<Spanish>Mapas</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_TOTAL_SAVES</Tag>
-		<English>Saves: %d1</English>
-		<French>Saves: %d1</French>
-		<German>Spielstände: %d1</German>
-		<Italian>Salvataggi: %d1</Italian>
-		<Spanish>Saves: %d1</Spanish>
+		<English>Saves</English>
+		<French>Sauves</French>
+		<German>Spielstände</German>
+		<Italian>Salvataggi</Italian>
+		<Spanish>Ahorras</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_STOP_SHORTCUT</Tag>
+		<English>ALT + CTRL + G to Stop</English>
+		<French>ALT + CTRL + G pour arrêter</French>
+		<German>Drücken Sie [ALT + CTRL + G], um MapFinder zu beenden.</German>
+		<Italian>ALT + CTRL + G per arrestare</Italian>
+		<Spanish>ALT + CTRL + G para parar</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_REGNERATING</Tag>
+		<English>Regenerating Map...</English>
+		<French>Regenerating Map...</French>
+		<German>Regenerating Map...</German>
+		<Italian>Regenerating Map...</Italian>
+		<Spanish>Regenerating Map...</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_SAVING</Tag>
+		<English>Saving Game...</English>
+		<French>Saving Game...</French>
+		<German>Saving Game...</German>
+		<Italian>Saving Game...</Italian>
+		<Spanish>Saving Game...</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_STOPPED</Tag>
+		<English>MapFinder stopped</English>
+		<French>MapFinder arrêté</French>
+		<German>MapFinder wurde beendet</German>
+		<Italian>MapFinder arrestato</Italian>
+		<Spanish>MapFinder paró</Spanish>
 	</TEXT>
 
 </Civ4GameText>
