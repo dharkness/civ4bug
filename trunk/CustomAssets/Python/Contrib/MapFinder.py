@@ -9,6 +9,9 @@
 ##
 ## Adapted from HOF Mod 3.13.001.
 ##
+## Notes
+##   - May be initialized externally by calling init()
+##
 ## Copyright (c) 2009 The BUG Mod.
 ##
 ## Author: HOF Team, EmperorFool
@@ -18,6 +21,7 @@ import BugCore
 import BugDll
 import BugUtil
 import CvUtil
+import MapFinderStatusScreen
 import os.path
 import time
 
@@ -25,6 +29,16 @@ MINIMUM_SAVE_DELAY = 2.0
 
 gc = CyGlobalContext()
 options = BugCore.game.MapFinder
+
+
+# Initialization
+
+def init(minimumSaveDelay=0.0):
+	"""
+	Allows config XML to set the minimum delay.
+	"""
+	global MINIMUM_SAVE_DELAY
+	MINIMUM_SAVE_DELAY = minimumSaveDelay
 
 
 # Regenerate Map
@@ -46,12 +60,14 @@ def regenerate():
 	if canRegenerate():
 		if CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_SHOW:
 			CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
-		BugUtil.alert("Regenerating Map...")
+		BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_REGNERATING"))
+		# must defer to allow alert to appear
 		BugUtil.deferCall(regenerateForReal)
 
 def regenerateForReal():
 	if not gc.getGame().regenerateMap():
 		raise MapFinderError("TXT_KEY_MAPFINDER_REGENERATE_FAILED")
+	# must defer to allow screen to update before moving camera
 	BugUtil.deferCall(centerCameraOnPlayer)
 
 def centerCameraOnPlayer():
@@ -171,6 +187,7 @@ def startStop():
 
 def start():
 	if canRegenerate():
+		MapFinderStatusScreen.show()
 		setup()
 		global bActive, iRegenCount, iSavedCount
 		bActive = True
@@ -179,42 +196,84 @@ def start():
 		global savedInterfaceMode
 		savedInterfaceMode = CyInterface().getShowInterface()
 		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
-		BugUtil.alert("MapFinder started")
-		BugUtil.deferCall(regenerateAndCheck, options.getRegenerationDelay())
+#		BugUtil.alert("MapFinder started")
+		finderStartLoop()
 
 def stop():
 	global bActive
 	bActive = False
+	MapFinderStatusScreen.hide()
 	if savedInterfaceMode:
 		CyInterface().setShowInterface(savedInterfaceMode)
-	BugUtil.alert("MapFinder stopped - Count %d, Saved %d", iRegenCount, iSavedCount)
+	BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_STOPPED") + " - " + getCountsText())
 
-def regenerateAndCheck():
-	if not bActive:
-		# stopped
-		return
-	try:
+def getCountsText():
+	return (u"%s %d, %s %d" % 
+			(BugUtil.getPlainText("TXT_KEY_MAPFINDER_TOTAL_MAPS"), iRegenCount, 
+			 BugUtil.getPlainText("TXT_KEY_MAPFINDER_TOTAL_SAVES"), iSavedCount))
+
+
+def finderStartLoop():
+	BugUtil.deferCall(finderCanRegenerate, options.getRegenerationDelay())
+
+def finderCanRegenerate():
+	if bActive:
+		try:
+			if canRegenerate():
+				MapFinderStatusScreen.setStatus(BugUtil.getPlainText("TXT_KEY_MAPFINDER_REGNERATING"))
+				# must defer to allow screen to update
+				BugUtil.deferCall(finderRegenerate)
+		except MapFinderError, e:
+			e.display()
+			stop()
+
+def finderRegenerate():
+	if bActive:
+		try:
+			if not gc.getGame().regenerateMap():
+				raise MapFinderError("TXT_KEY_MAPFINDER_REGENERATE_FAILED")
+			# must defer to allow screen to update before moving camera
+			BugUtil.deferCall(finderCheck)
+		except MapFinderError, e:
+			e.display()
+			stop()
+
+def finderCheck():
+	centerCameraOnPlayer()
+	if bActive:
 		global iRegenCount
 		iRegenCount += 1
-		regenerate()
-		if check():
-			delay = options.getSaveDelay()
-			if delay < MINIMUM_SAVE_DELAY:
-				delay = MINIMUM_SAVE_DELAY
-			BugUtil.deferCall(save, delay)
+		MapFinderStatusScreen.update()
+		if matchRules():
+			finderSave()
 		else:
-			BugUtil.deferCall(next, options.getSkipDelay())
-	except MapFinderError, e:
-		e.display()
-		stop()
+			finderNext()
+
+def finderSave():
+	MapFinderStatusScreen.setStatus(BugUtil.getPlainText("TXT_KEY_MAPFINDER_SAVING"))
+	# must delay long enough to allow unrevealed tiles to disappear before taking the screenshot
+	delay = options.getSaveDelay()
+	if delay < MINIMUM_SAVE_DELAY:
+		delay = MINIMUM_SAVE_DELAY
+	BugUtil.deferCall(save, delay)
+
+def finderNext():
+	MapFinderStatusScreen.resetStatus()
+	BugUtil.deferCall(next, options.getSkipDelay())
+
+def next():
+	if bActive:
+		if ((iRegenCount >= options.getRegenerationLimit()) or
+		    (iSavedCount >= options.getSaveLimit())):
+			stop()
+		else:
+#			BugUtil.alert("MapFinder running - Count %d, Saved %d", iRegenCount, iSavedCount)
+			finderStartLoop()
+
 
 mr = None
-def check():
-	global bActive, iRegenCount, iSavedCount, mr
-	if not bActive:
-		# was stopped
-		return
-	
+def matchRules():
+	global mr
 	mr = {}
 	for x in CodeText.iterkeys():
 		mr[x] = 0
@@ -385,15 +444,11 @@ def check():
 
 	for i in range(len(lPF)):
 		if (lPF[i]):
-			return mr
-	return None
+			return True
+	return False
 
 def save():
-	global bActive, iRegenCount, iSavedCount, mr
-	if not bActive:
-		# was stopped
-		return
-	
+	global iRegenCount, iSavedCount, mr
 	iSavedCount += 1
 	sMFSavePath = os.path.join(options.getPath(), "Saves")
 	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
@@ -428,18 +483,9 @@ def save():
 	saveFile = fullFileName + ".CivBeyondSwordSave"
 	gc.getGame().saveGame(saveFile)
 	
+	MapFinderStatusScreen.update()
+	MapFinderStatusScreen.resetStatus()
 	next()
-
-def next():
-	if not bActive:
-		# was stopped
-		return
-	if ((iRegenCount >= options.getRegenerationLimit()) or
-	    (iSavedCount >= options.getSaveLimit())):
-		stop()
-	else:
-		BugUtil.alert("MapFinder running - Count %d, Saved %d", iRegenCount, iSavedCount)
-		BugUtil.deferCall(regenerateAndCheck, options.getRegenerationDelay())
 
 
 def getSaveFileName(pathName):
