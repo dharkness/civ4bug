@@ -15,6 +15,10 @@ New Features:
 - Advanced Scoreboard
 	Refuses to Talk (F) [BULL]
 	Number of Cities (Q)
+- Production Decay [BULL]
+	A yellow ! means an item in the build queue will start to decay after 5 turns of non-production
+	A red !! means an item will decay this turn if not produced
+	Hover for units/buildings shows actual decay amount and turns until it happens 
 - Info Screen (F9)
 	New expanded Wonders tab by DanF5771
 		Shows constructed items (all known rivals)
@@ -27,6 +31,8 @@ Improvements:
 
 - BUG, BULL and Unofficial Patch versions are displayed when hovering over your flag [BULL]
 - Min/Max Commerce Rate buttons have more accurate hover text [BULL]
+- City Screen
+	Added hover details for food rate [BULL]
 - Foreign Advisor
 	ACTIVE: Added number of turns until you can cancel each deal
 	INFO: Hover details for trade with each rival [BULL]
@@ -41,7 +47,7 @@ Improvements:
 	Collateral and flanking damage [BULL]
 	Upgraded units [BULL]
 - Strategy Overlay
-	Configurable color palette
+	Configurable color palette (not yet committed)
 
 Bug Fixes:
 

@@ -5284,6 +5284,7 @@ class CvMainInterface:
 					if (iFoodDifference > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_GROWING", (pHeadSelectedCity.getFoodTurnsLeft(), ))	
 					elif (iFoodDifference < 0):
+# BUG - Food Assist - start
 						if (CityScreenOpt.isShowFoodAssist()):
 							iTurnsToStarve = pHeadSelectedCity.getFood() / -iFoodDifference + 1
 							if iTurnsToStarve > 1:
@@ -5292,6 +5293,7 @@ class CvMainInterface:
 								szBuffer = localText.getText("INTERFACE_CITY_STARVING", ()) 
 						else:
 							szBuffer = localText.getText("INTERFACE_CITY_STARVING", ()) 
+# BUG - Food Assist - end
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_STAGNANT", ())	
 
@@ -5301,6 +5303,7 @@ class CvMainInterface:
 
 				if (not pHeadSelectedCity.isDisorder() and not pHeadSelectedCity.isFoodProduction()):
 				
+# BUG - Food Assist - start
 					if (CityScreenOpt.isShowFoodAssist()):
 						iFoodYield = pHeadSelectedCity.getYieldRate(YieldTypes.YIELD_FOOD)
 						iFoodEaten = pHeadSelectedCity.foodConsumption(False, 0)
@@ -5312,14 +5315,19 @@ class CvMainInterface:
 							szBuffer = localText.getText("INTERFACE_CITY_FOOD_SHRINK", (iFoodYield, iFoodEaten, iFoodYield - iFoodEaten))
 					else:
 						szBuffer = u"%d%c - %d%c" %(pHeadSelectedCity.getYieldRate(YieldTypes.YIELD_FOOD), gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar(), pHeadSelectedCity.foodConsumption(False, 0), CyGame().getSymbolID(FontSymbols.EATEN_FOOD_CHAR))
-					screen.setLabel( "PopulationInputText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, iCityCenterRow1X - 6, iCityCenterRow1Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "PopulationInputText" )
+# BUG - Food Assist - end
+# BUG - Food Rate Hover - start
+					# draw label below
 					
 				else:
-				
+
 					szBuffer = u"%d%c" %(iFoodDifference, gc.getYieldInfo(YieldTypes.YIELD_FOOD).getChar())
-					screen.setLabel( "PopulationInputText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, iCityCenterRow1X - 6, iCityCenterRow1Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-					screen.show( "PopulationInputText" )
+					# draw label below
+
+				screen.setLabel( "PopulationInputText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, iCityCenterRow1X - 6, iCityCenterRow1Y, -0.3, FontTypes.GAME_FONT, 
+						*BugDll.widget("WIDGET_FOOD_MOD_HELP", -1, -1) )
+				screen.show( "PopulationInputText" )
+# BUG - Food Rate Hover - end
 
 				if ((pHeadSelectedCity.badHealth(False) > 0) or (pHeadSelectedCity.goodHealth() >= 0)):
 					if (pHeadSelectedCity.healthRate(False, 0) < 0):
