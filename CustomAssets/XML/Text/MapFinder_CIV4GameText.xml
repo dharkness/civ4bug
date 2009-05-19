@@ -104,7 +104,7 @@
 		<Tag>TXT_KEY_MAPFINDER_REGNERATING</Tag>
 		<English>Regenerating Map...</English>
 		<French>Regenerating Map...</French>
-		<German>Regenerating Map...</German>
+		<German>Neuerstellung der Karte...</German>
 		<Italian>Regenerating Map...</Italian>
 		<Spanish>Regenerating Map...</Spanish>
 	</TEXT>
@@ -112,7 +112,7 @@
 		<Tag>TXT_KEY_MAPFINDER_SAVING</Tag>
 		<English>Saving Game...</English>
 		<French>Saving Game...</French>
-		<German>Saving Game...</German>
+		<German>Speicherung des Spiels...</German>
 		<Italian>Saving Game...</Italian>
 		<Spanish>Saving Game...</Spanish>
 	</TEXT>
