@@ -151,15 +151,14 @@ class BugEventManager(CvEventManager.CvEventManager):
 		# used to register shortcut handlers
 		self.shortcuts = {}
 		
-		# used for BeginActivePlayerTurn
-		self.iActiveTurn = -1
-		self.bEndTurnFired = False
+		# init fields for BeginActivePlayerTurn
+		self.resetActiveTurn()
 		
 		# map the initial EventHandlerMap values into the new data structure
 		for eventType, eventHandler in self.EventHandlerMap.iteritems():
 			self.setEventHandler(eventType, eventHandler)
 		
-		# add new core events; see unused sample functions below for argument lists
+		# add new core events; see unused sample handlers below for argument lists
 		self.addEvent("PreGameStart")
 		self.addEvent("BeginActivePlayerTurn")
 		self.addEvent("SwitchHotSeatPlayer")
@@ -167,22 +166,18 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("ResolutionChanged")
 		self.addEvent("PythonReloaded")
 		
+		# add events used by this event manager
+		self.addEventHandler("kbdEvent", self.onKbdEvent)
+		self.addEventHandler("OnLoad", self.resetActiveTurn)
+		self.addEventHandler("GameStart", self.resetActiveTurn)
+		self.addEventHandler("gameUpdate", self.onGameUpdate)
+		
 		# BULL events
 		self.addEvent("unitUpgraded")
 		self.addEvent("combatWithdrawal")
 		self.addEvent("combatRetreat")
 		self.addEvent("combatLogCollateral")
 		self.addEvent("combatLogFlanking")
-		
-		self.addEventHandler("unitUpgraded", self.onUnitUpgraded)
-		self.addEventHandler("combatWithdrawal", self.onCombatWithdrawal)
-		self.addEventHandler("combatRetreat", self.onCombatRetreat)
-		self.addEventHandler("combatLogCollateral", self.onCombatLogCollateral)
-		self.addEventHandler("combatLogFlanking", self.onCombatLogFlanking)
-		
-		self.addEventHandler("kbdEvent", self.onKbdEvent)
-		self.addEventHandler("OnLoad", self.resetActiveTurn)
-		self.addEventHandler("GameStart", self.resetActiveTurn)
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -369,27 +364,51 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self._handleDefaultEvent(eventType, argsList)
 	
 	
-	def resetActiveTurn(self, argsList):
+	def resetActiveTurn(self, argsList=None):
 		self.iActiveTurn = -1
+		self.eActivePlayer = -1
 		self.bEndTurnFired = False
 	
-	def updateActiveTurn(self):
-		"""Called from CvMainInterface.updateScreen() every 250 milliseconds."""
-		iGameTurn = gc.getGame().getGameTurn()
-		if self.iActiveTurn != iGameTurn:
-			self.iActiveTurn = iGameTurn
+	def checkActivePlayerTurnStart(self):
+		"""Fires the BeginActivePlayerTurn event if either the active player or game turn
+		have changed since the last check. This signifies that the active player is about
+		to be able to move their units.
+		
+		Called by onGameUpdate() when the End Turn Button is green.
+		"""
+		iTurn = gc.getGame().getGameTurn()
+		ePlayer = gc.getGame().getActivePlayer()
+		if self.iActiveTurn != iTurn or self.eActivePlayer != ePlayer:
+			self.iActiveTurn = iTurn
+			self.eActivePlayer = ePlayer
 			self.bEndTurnFired = False
-			self.fireEvent("BeginActivePlayerTurn", gc.getGame().getActivePlayer(), iGameTurn)
+			self.fireEvent("BeginActivePlayerTurn", ePlayer, iTurn)
 	
-	def updateEndTurn(self):
-		"""Called from CvMainInterface.updateScreen() when end turn button is shown."""
+	def checkActivePlayerTurnEnd(self):
+		"""Fires the endTurnReady event if it hasn't been fired since the active player's turn started.
+		
+		Called by onGameUpdate() when the End Turn Button is red.
+		"""
 		if not self.bEndTurnFired:
 			self.bEndTurnFired = True
 			self.fireEvent("endTurnReady", self.iActiveTurn)
 
+	
+# Used Event Handlers
+	
+	def onGameUpdate(self, argsList):
+		"""
+		Checks for active player turn begin/end.
+		"""
+		eState = CyInterface().getEndTurnState()
+		if eState == EndTurnButtonStates.END_TURN_GO:
+			self.checkActivePlayerTurnStart()
+		else:
+			self.checkActivePlayerTurnEnd()
 
 	def onKbdEvent(self, argsList):
-		"""Handles onKbdEvent by firing the keystroke's handler if it has one registered.
+		"""
+		Handles onKbdEvent by firing the keystroke's handler if it has one registered.
 		"""
 		eventType, key, mx, my, px, py = argsList
 		if eventType == self.EventKeyDown:
@@ -401,6 +420,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 					return 1
 		return 0
 	
+
+# Sample Event Handlers
+	
 	def onPreGameStart(self, argsList):
 		"""Fired from CvAppInterface.preGameStart()."""
 		pass
@@ -409,9 +431,13 @@ class BugEventManager(CvEventManager.CvEventManager):
 		"""Called when the active player can start their turn."""
 		ePlayer, iGameTurn = argsList
 	
+	def onEndTurnReady(self, argsList):
+		"""Called when the active player has moved their last waiting unit."""
+		ePlayer = argsList[0]
+	
 	def onSwitchHotSeatPlayer(self, argsList):
 		"""Called when a hot seat player's turn ends."""
-		ePlayer = argsList
+		ePlayer = argsList[0]
 	
 	def onLanguageChanged(self, argsList):
 		"""Called when the user changes their language selection."""

@@ -30,20 +30,43 @@ def init():
 def getLayer(id):
 	return g_layers[id]
 
-def onGameStart(argsList):
+def callEachLayer(func, *args):
 	for layer in g_layers.itervalues():
+		func(layer, *args)
+
+
+## Event Handlers
+
+def onGameStart(argsList):
+	def callReset(layer):
 		layer.reset()
+	callEachLayer(callReset)
 
 def onLoad(argsList):
-	for layer in g_layers.itervalues():
+	def callRead(layer):
 		layer.read()
+	callEachLayer(callRead)
 
 def onPreSave(argsList):
-	for layer in g_layers.itervalues():
+	def callWrite(layer):
 		layer.write()
+	callEachLayer(callWrite)
+
+def onBeginActivePlayerTurn(args):
+	def callBeginActivePlayerTurn(layer, ePlayer):
+		layer.onBeginActivePlayerTurn(ePlayer)
+	callEachLayer(callBeginActivePlayerTurn, args[0])
+
+def onSwitchHotSeatPlayer(args):
+	def callSwitchHotSeatPlayer(layer, ePlayer):
+		layer.onSwitchHotSeatPlayer(ePlayer)
+	callEachLayer(callSwitchHotSeatPlayer, args[0])
 
 def onEnabledOptionChanged(option, value):
 	pass
+
+
+## Base Strategy Layer Class
 
 class StrategyLayer(object):
 	"""
@@ -113,6 +136,12 @@ class StrategyLayer(object):
 			self.editing = False
 			return True
 		return False
+	
+	def onBeginActivePlayerTurn(self, ePlayer):
+		pass
+	
+	def onSwitchHotSeatPlayer(self, ePlayer):
+		pass
 
 
 ## ----------------------------------------------------------------------
@@ -157,23 +186,27 @@ def getDotMap():
 		BugUtil.error("CvStrategyOverlay has not been initialized")
 	return g_DotMap
 
-def toggleDotMapVisibility(args):
-	g_DotMap.toggleVisibility()
-	StratLayerOpt.setShowDotMap(g_DotMap.visible)
+def hideDotMap(args=None):
+	getDotMap().hide()
+	StratLayerOpt.setShowDotMap(False)
 
-def toggleDotMapEditMode(args):
-	g_DotMap.toggleEditing()
-	if not g_DotMap.editing and not StratLayerOpt.isShowDotMap():
-		g_DotMap.hide()
+def toggleDotMapVisibility(args=None):
+	getDotMap().toggleVisibility()
+	StratLayerOpt.setShowDotMap(getDotMap().visible)
+
+def toggleDotMapEditMode(args=None):
+	getDotMap().toggleEditing()
+	if not getDotMap().editing and not StratLayerOpt.isShowDotMap():
+		getDotMap().hide()
 
 def onShowDotMapOptionChanged(option, value):
 	if value:
-		g_DotMap.show()
+		getDotMap().show()
 	else:
-		g_DotMap.hide()
+		getDotMap().hide()
 
 def onDotMapOptionChanged(option, value):
-	g_DotMap.optionChanged(option, value)
+	getDotMap().optionChanged(option, value)
 
 class DotMapLayer(StrategyLayer):
 	"""
@@ -272,6 +305,13 @@ class DotMapLayer(StrategyLayer):
 		if super(DotMapLayer, self).freeze():
 			self.unhighlightCity()
 			CvOverlayScreenUtils.hideOverlayScreen()
+	
+	def onBeginActivePlayerTurn(self, ePlayer):
+		if StratLayerOpt.isShowDotMap():
+			self.show()
+	
+	def onSwitchHotSeatPlayer(self, ePlayer):
+		self.hide()
 	
 	
 	def hasCities(self, ePlayer):
