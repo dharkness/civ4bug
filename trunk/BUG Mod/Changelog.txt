@@ -53,7 +53,10 @@ Bug Fixes:
 
 - Fixed City Built event
 - Changed Scoreboard items (WHEOOH, Number of Cities) so that they are optional
-- Multiplayer
+- HotSeat
+	Strategy Layer is hidden while switching players
+	Civ4lerts and Reminders no longer show up while switching players
+	Civ4lerts now fire for all human players
 	Reminders that fired this turn no longer show in End Turn Text for next player
 
 
@@ -72,12 +75,12 @@ New Features:
 	wstring getCannotCancelReason(PlayerTypes eByPlayer)
 	int turnsToCancel(PlayerTypes eByPlayer)
 - Events
+	SwitchHotSeatPlayer(PlayerTypes ePlayer)
 	unitUpgraded(CyUnit pOldUnit, CyUnit pNewUnit, int iCost) [BULL]
 	combatWithdrawal(CyUnit pAttacker, CyUnit pDefender) [BULL]
 	combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
 	combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
 	combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
-	SwitchHotSeatPlayer(PlayerTypes ePlayer)
 - BugUtil
 	getText() and getPlainText() both replace [ICON_XXX] in the message
 	Added deferCall() to call a function in a future gameUpdate event after an optional delay
@@ -88,6 +91,9 @@ New Features:
 Bug Fixes:
 
 - Removed firing of gameUpdate in updateScreen() as it seems to be fired by BTS now
+- Active Player Turn
+	Moved checking for begin/end from CvMainInterface.updateScreen() to BugEventManager.onGameUpdate()
+	Now fires begin event when active player changes in addition to game turn for HotSeat games
 
 
 ____________________________________________________________________________________________________

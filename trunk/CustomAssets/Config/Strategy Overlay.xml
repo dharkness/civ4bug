@@ -49,6 +49,8 @@
 	<event type="OnLoad" function="onLoad"/>
 	<event type="PythonReloaded" function="onLoad"/>
 	<event type="OnPreSave" function="onPreSave"/>
+	<event type="BeginActivePlayerTurn" function="onBeginActivePlayerTurn"/>
+	<event type="SwitchHotSeatPlayer" function="onSwitchHotSeatPlayer"/>
 	
 	<shortcut key="Ctrl X | Ctrl F10" function="toggleDotMapVisibility"/>
 	<shortcut key="Alt X | Alt F10" function="toggleDotMapEditMode"/>

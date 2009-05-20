@@ -2911,13 +2911,12 @@ class CvMainInterface:
 		global g_szTimeText
 		global g_iTimeTextCounter
 
+#		BugUtil.debug("update - Turn %d, Player %d, Interface %d, End Turn Button %d ===", 
+#				gc.getGame().getGameTurn(), gc.getGame().getActivePlayer(), CyInterface().getShowInterface(), CyInterface().getEndTurnState())
+
 # BUG - Options - start
 		BugOptions.write()
 # BUG - Options - end
-
-# BUG - Event Manager - start
-		CvEventInterface.getEventManager().updateActiveTurn()
-# BUG - Event Manager - end
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
@@ -2974,9 +2973,6 @@ class CvMainInterface:
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True
 				elif ( CyInterface().shouldDisplayEndTurn() ):
-# BUG - Event Manager - start
-					CvEventInterface.getEventManager().updateEndTurn()
-# BUG - Event Manager - end
 # BUG - Reminders - start
 					if ( ReminderEventManager.g_turnReminderTexts ):
 						acOutput = u"%s" % ReminderEventManager.g_turnReminderTexts
@@ -3067,10 +3063,14 @@ class CvMainInterface:
 	# Will redraw the interface
 	def redraw( self ):
 
+#		BugUtil.debug("redraw - Turn %d, Player %d, Interface %d, End Turn Button %d", 
+#				gc.getGame().getGameTurn(), gc.getGame().getActivePlayer(), CyInterface().getShowInterface(), CyInterface().getEndTurnState())
+
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-		# field of view
+# BUG - Field of View - start
 		self.setFieldofView(screen, CyInterface().isCityScreenUp())
+# BUG - Field of View - end
 
 		# Check Dirty Bits, see what we need to redraw...
 		if (CyInterface().isDirty(InterfaceDirtyBits.PercentButtons_DIRTY_BIT) == True):
