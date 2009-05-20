@@ -10,6 +10,7 @@
 ##-------------------------------------------------------------------
 
 from CvPythonExtensions import *
+import CvMainInterface
 import CvUtil
 import Popup as PyPopup
 import BugCore
@@ -164,16 +165,26 @@ class ReminderEvent:
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
 		eventManager.addEventHandler("PythonReloaded", self.onLoadGame)
 		eventManager.addEventHandler("OnPreSave", self.onPreSave)
+		eventManager.addEventHandler("SwitchHotSeatPlayer", self.onSwitchHotSeatPlayer)
 		
 		self.reminderManager = reminderManager
 	
 	def createReminder(self):
 		g_eventMgr.beginEvent(STORE_EVENT_ID)
+	
+	def onSwitchHotSeatPlayer(self, argsList):
+		"Clears the end turn text so hot seat players don't see each others reminders."
+		ePlayer = argsList[0]
+		
+		global g_turnReminderTexts
+		g_turnReminderTexts = None
+		CvMainInterface.g_mainInterface.resetEndTurnObjects()
 
 	def onBeginActivePlayerTurn(self, argsList):
 		"Called at the start of the active player's turn."
 		iGameTurn = argsList[0]
 
+		global g_turnReminderTexts
 		g_turnReminderTexts = None
 		if (ReminderOpt.isEnabled()):
 			g_eventMgr.beginEvent(RECALL_EVENT_ID)

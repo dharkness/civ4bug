@@ -53,6 +53,8 @@ Bug Fixes:
 
 - Fixed City Built event
 - Changed Scoreboard items (WHEOOH, Number of Cities) so that they are optional
+- Multiplayer
+	Reminders that fired this turn no longer show in End Turn Text for next player
 
 
 MODDING
@@ -75,6 +77,7 @@ New Features:
 	combatRetreat(CyUnit pAttacker, CyUnit pDefender) [BULL]
 	combatLogCollateral(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
 	combatLogFlanking(CyUnit pAttacker, CyUnit pDefender, int iDamage) [BULL]
+	SwitchHotSeatPlayer(PlayerTypes ePlayer)
 - BugUtil
 	getText() and getPlainText() both replace [ICON_XXX] in the message
 	Added deferCall() to call a function in a future gameUpdate event after an optional delay
