@@ -419,7 +419,7 @@ class AbstractOption(object):
 		self.andId = andId
 		self.andOption = None
 		self.dll = BugDll.decode(dll)
-		if self.dll <= 0:
+		if self.dll is not None and self.dll <= 0:
 			BugUtil.warn("BugOptions - %s has invalid dll value %r, ignoring", id, dll)
 			self.dll = None
 		self.enabled = True
