@@ -58,6 +58,7 @@ Bug Fixes:
 	Civ4lerts and Reminders no longer show up while switching players
 	Civ4lerts now fire for all human players
 	Reminders that fired this turn no longer show in End Turn Text for next player
+- Sevopedia now opens from MAIN MENU without loading or starting a game
 
 
 MODDING
