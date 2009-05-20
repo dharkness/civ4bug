@@ -162,6 +162,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		# add new core events; see unused sample functions below for argument lists
 		self.addEvent("PreGameStart")
 		self.addEvent("BeginActivePlayerTurn")
+		self.addEvent("SwitchHotSeatPlayer")
 		self.addEvent("LanguageChanged")
 		self.addEvent("ResolutionChanged")
 		self.addEvent("PythonReloaded")
@@ -407,6 +408,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def onBeginActivePlayerTurn(self, argsList):
 		"""Called when the active player can start their turn."""
 		ePlayer, iGameTurn = argsList
+	
+	def onSwitchHotSeatPlayer(self, argsList):
+		"""Called when a hot seat player's turn ends."""
+		ePlayer = argsList
 	
 	def onLanguageChanged(self, argsList):
 		"""Called when the user changes their language selection."""

@@ -78,6 +78,10 @@
 ##
 ## Civ4 Helpers (move these to GameUtil)
 ##
+##   doHotSeatCheck(args)
+##     Called during EndPlayerTurn, fires SwitchHotSeatPlayer event during a hot seat
+##     game when the active player's turn ends.
+##
 ##   isNoEspionage()
 ##     Returns True if running at least 3.17 and the No Espionage option is set
 ##     for the game in progress.
@@ -95,6 +99,7 @@ import sys
 import time
 import traceback
 import types
+import BugEventManager
 import ColorUtil
 import FontUtil
 
@@ -102,12 +107,23 @@ gc = CyGlobalContext()
 localText = CyTranslator()
 interface = CyInterface()
 
+
+## Events
+
+def fireEvent(eventType, *args):
+	"""
+	Fires the given event using BugEventManager passing in all args as a list.
+	"""
+	BugEventManager.g_eventManager.fireEvent(eventType, *args)
+
 ## Display Year
+
 def getDisplayYear(vYear):
 	if (vYear < 0):
 		return str(-vYear) + getPlainText("TXT_KEY_AUTOLOG_BC")
 	else:
 		return str(vYear) + getPlainText("TXT_KEY_AUTOLOG_AD")
+
 
 ## Getting translated text from CIV4GameText XML files and general formatting
 
@@ -600,6 +616,7 @@ def doDeferredCalls(argsList=None):
 		debug("doDeferredCalls - calling %s", func)
 		func()
 
+
 ## Exception Classes
 
 class BugError(Exception):
@@ -620,6 +637,16 @@ class ConfigError(BugError):
 
 
 ## Civ4 Helpers
+
+def doHotSeatCheck(args):
+	"""
+	Called during EndPlayerTurn, fires SwitchHotSeatPlayer event during a hot seat
+	game when the active player's turn ends.
+	"""
+	iGameTurn, ePlayer = args
+	game = gc.getGame()
+	if game.isHotSeat() and ePlayer == game.getActivePlayer():
+		fireEvent("SwitchHotSeatPlayer", ePlayer)
 
 def isNoEspionage():
 	"""Returns True if using at least 3.17 and the 'No Espionage' option is enabled."""

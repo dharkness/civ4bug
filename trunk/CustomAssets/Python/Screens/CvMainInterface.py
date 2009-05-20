@@ -183,11 +183,20 @@ HELP_TEXT_MINIMUM_WIDTH = 300
 
 g_pSelectedUnit = 0
 
+# BUG - start
+g_mainInterface = None
+# BUG - end
+
 class CvMainInterface:
 	"Main Interface Screen"
 	
 	def __init__(self):
 	
+# BUG - start
+		global g_mainInterface
+		g_mainInterface = self
+# BUG - end
+		
 # BUG - PLE - start
 		self.PLOT_LIST_BUTTON_NAME 		= "MyPlotListButton"
 		self.PLOT_LIST_MINUS_NAME 		= "MyPlotListMinus"
@@ -3194,6 +3203,17 @@ class CvMainInterface:
 # BUG - Min/Max Sliders - end
 						
 		return 0
+
+# BUG - start
+	def resetEndTurnObjects(self):
+		"""
+		Clears the end turn text and hides it and the button.
+		"""
+		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+		screen.setEndTurnState( "EndTurnText", u"" )
+		screen.hideEndTurn( "EndTurnText" )
+		screen.hideEndTurn( "EndTurnButton" )
+# BUG - end
 
 	# Will update the end Turn Button
 	def updateEndTurnButton( self ):
