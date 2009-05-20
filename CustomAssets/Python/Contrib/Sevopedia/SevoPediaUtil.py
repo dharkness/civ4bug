@@ -6,6 +6,7 @@
 ##
 ## Author: EmperorFool
 
+import BugConfig
 import BugCore
 import BugOptions
 import BugUtil
@@ -16,10 +17,10 @@ sortOption = None
 
 if not AdvisorOpt._hasOption("Sevopedia"):
 	BugUtil.debug("BUG: creating stub Sevopedia option")
-	enabledOption = BugOptions.UnsavedOption(AdvisorOpt, "Sevopedia", "boolean", True)
+	enabledOption = BugOptions.UnsavedOption(AdvisorOpt, BugConfig.makeOptionId(AdvisorOpt._getID(), "Sevopedia"), "boolean", True)
 	AdvisorOpt._addOption(enabledOption)
 
 if not AdvisorOpt._hasOption("SevopediaSortItemList"):
 	BugUtil.debug("BUG: creating stub Sevopedia Sort option")
-	sortOption = BugOptions.UnsavedOption(AdvisorOpt, "SevopediaSortItemList", "boolean", True)
+	sortOption = BugOptions.UnsavedOption(AdvisorOpt, BugConfig.makeOptionId(AdvisorOpt._getID(), "SevopediaSortItemList"), "boolean", True)
 	AdvisorOpt._addOption(sortOption)
