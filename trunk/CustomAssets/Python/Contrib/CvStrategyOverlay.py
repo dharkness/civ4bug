@@ -62,6 +62,18 @@ def onSwitchHotSeatPlayer(args):
 		layer.onSwitchHotSeatPlayer(ePlayer)
 	callEachLayer(callSwitchHotSeatPlayer, args[0])
 
+MSG_ADD_CITY = 500
+MSG_REMOVE_CITY = 501
+def onModNetMessage(args):
+	iData1, iData2, iData3, iData4, iData5 = args
+	if iData1 == MSG_ADD_CITY:
+		getDotMap().addCityMessage(iData2, iData3, iData4, iData5)
+	elif iData1 == MSG_REMOVE_CITY:
+		getDotMap().removeCityMessage(iData2, iData3)
+	else:
+		return 0
+	return 1
+
 def onEnabledOptionChanged(option, value):
 	pass
 
@@ -342,18 +354,26 @@ class DotMapLayer(StrategyLayer):
 			for city in self.getCities(ePlayer).itervalues():
 				yield city
 	
+	
 	def addCityAt(self, point, color, layer):
 		"""
-		Adds the city to the data set and draws its dot and cross.
+		Sends a message to add a city for the active player at the given point.
 		"""
-		city = City(point, color, layer)
-		self.addCity(city)
+		CyMessageControl().sendModNetMessage(MSG_ADD_CITY, PlayerUtil.getActivePlayerID(), point[X] * 1000 + point[Y], color, layer)
 	
-	def addCity(self, city):
+	def addCityMessage(self, ePlayer, xy, color, layer):
+		"""
+		Processes a message to add a city.
+		"""
+		x = xy / 1000
+		y = xy % 1000
+		city = City((x, y), color, layer)
+		self.addCity(ePlayer, city)
+	
+	def addCity(self, ePlayer, city):
 		"""
 		Adds the city to the data set and draws its dot and cross.
 		"""
-		ePlayer = PlayerUtil.getActivePlayerID()
 		if self.hasCity(ePlayer, city.point):
 			oldCity = self.getCity(ePlayer, city.point)
 			if city == oldCity:
@@ -362,30 +382,43 @@ class DotMapLayer(StrategyLayer):
 		BugUtil.debug("DotMap - adding city %s", city)
 		self.getCities(ePlayer)[city.point] = city
 		self.dirty = True
-		self.drawCity(city, self.CROSS_ALPHA, self.DOT_ALPHA)
-		
+		if ePlayer == PlayerUtil.getActivePlayerID():
+			self.drawCity(city, self.CROSS_ALPHA, self.DOT_ALPHA)
+	
+	
 	def removeCityAt(self, point):
 		"""
-		Removes the city from the data set and erases its dot and cross.
+		Sends a message to remove the active player's city at the given point.
 		"""
-		self.removeCity(self.getCity(PlayerUtil.getActivePlayerID(), point))
-		
-	def removeCity(self, city):
-		"""
-		Removes the city from the data set and erases its dot and cross.
-		"""
-		if city:
-			BugUtil.debug("DotMap - removing city %s", city)
-			ePlayer = PlayerUtil.getActivePlayerID()
-			if self.hasCity(ePlayer, city.point):
-				del self.getCities(ePlayer)[city.point]
-				self.dirty = True
-				self.redrawCrosses(city.layer)
-				self.eraseDot(city, self.DOT_ALPHA)
-			else:
-				BugUtil.debug("City doesn't exist")
+		ePlayer = PlayerUtil.getActivePlayerID()
+		if self.hasCity(ePlayer, point):
+			CyMessageControl().sendModNetMessage(MSG_REMOVE_CITY, ePlayer, point[X] * 1000 + point[Y], -1, -1)
 		else:
 			self.freeze()
+	
+	def removeCityMessage(self, ePlayer, xy):
+		"""
+		Processes a message to remove a city.
+		"""
+		x = xy / 1000
+		y = xy % 1000
+		self.removeCity(ePlayer, (x, y))
+		
+	def removeCity(self, ePlayer, point):
+		"""
+		Removes the city from the data set and erases its dot and cross.
+		"""
+		BugUtil.debug("DotMap - removing city %s", point)
+		city = self.getCity(ePlayer, point)
+		if city:
+			del self.getCities(ePlayer)[point]
+			self.dirty = True
+			if ePlayer == PlayerUtil.getActivePlayerID():
+				self.redrawCrosses(city.layer)
+				self.eraseDot(city, self.DOT_ALPHA)
+		else:
+			BugUtil.debug("City doesn't exist")
+	
 	
 	def highlightCity(self, point, color):
 		"""
@@ -426,6 +459,7 @@ class DotMapLayer(StrategyLayer):
 			if city is not None:
 				self.drawCity(city, self.CROSS_ALPHA, self.DOT_ALPHA)
 			self.highlightedCity = None
+	
 	
 	def redrawCities(self):
 		"""
@@ -540,6 +574,7 @@ class DotMapLayer(StrategyLayer):
 	
 	def percentToAlpha(self, percent):
 		return min(100, max(0, percent)) / 100.0
+	
 	
 	def readOptions(self):
 		self.CROSS_ALPHA = self.percentToAlpha(StratLayerOpt.getDotMapBrightness())
