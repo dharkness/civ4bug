@@ -6109,7 +6109,7 @@ class CvMainInterface:
 					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
 						eBuilding = CyInterface().getOrderNodeData1(i)
 						if pHeadSelectedCity.getBuildingProduction(eBuilding) > 0:
-							if pHeadSelectedCity.isUnitProductionDecay(eBuilding):
+							if pHeadSelectedCity.isBuildingProductionDecay(eBuilding):
 								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
 							elif pHeadSelectedCity.getBuildingProductionTime(eBuilding) > 0:
 								iDecayTurns = pHeadSelectedCity.getBuildingProductionDecayTurns(eBuilding)
