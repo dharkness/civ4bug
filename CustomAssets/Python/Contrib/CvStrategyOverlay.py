@@ -378,7 +378,7 @@ class DotMapLayer(StrategyLayer):
 			oldCity = self.getCity(ePlayer, city.point)
 			if city == oldCity:
 				return
-			self.removeCity(oldCity)
+			self.removeCity(ePlayer, oldCity)
 		BugUtil.debug("DotMap - adding city %s", city)
 		self.getCities(ePlayer)[city.point] = city
 		self.dirty = True
