@@ -43,7 +43,46 @@
 		</section>
 	</options>
 	
-	<init/>
+	<init>
+		<arg name="paletteWidth" type="int" value="3"/>
+		<arg name="paletteColors" type="tuple">
+			"COLOR_PLAYER_BROWN",
+			"COLOR_PLAYER_PEACH",
+			"COLOR_PLAYER_PEACH_TEXT",
+			
+			"COLOR_PLAYER_PALE_RED",
+			"COLOR_RED",
+			"COLOR_PLAYER_PINK",
+
+			"COLOR_PLAYER_PALE_ORANGE",
+			"COLOR_PLAYER_ORANGE",
+			"COLOR_PLAYER_DARK_YELLOW",
+			
+			"COLOR_GREAT_PEOPLE_RATE",
+			"COLOR_YELLOW",
+			"COLOR_PLAYER_LIGHT_YELLOW",
+			
+			"COLOR_PLAYER_DARK_GREEN",
+			"COLOR_PLAYER_GREEN",
+			"COLOR_PLAYER_LIGHT_GREEN",
+			
+			"COLOR_PLAYER_DARK_CYAN",
+			"COLOR_PLAYER_MIDDLE_CYAN",
+			"COLOR_PLAYER_CYAN",
+			
+			"COLOR_PLAYER_DARK_BLUE",
+			"COLOR_PLAYER_BLUE",
+			"COLOR_PLAYER_LIGHT_BLUE",
+			
+			"COLOR_PLAYER_DARK_PURPLE",
+			"COLOR_MAGENTA",
+			"COLOR_PLAYER_PURPLE_TEXT",
+			
+			"COLOR_BLACK",
+			"COLOR_LIGHT_GREY",
+			"COLOR_WHITE"
+		</arg>
+	</init>
 	
 	<!-- Loading and Saving -->
 	<event type="GameStart" function="onGameStart"/>
