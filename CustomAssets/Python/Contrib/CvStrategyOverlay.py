@@ -19,12 +19,37 @@ import ColorUtil
 import CvOverlayScreenUtils
 import PlayerUtil
 
+COLOR_KEYS = None
+PALETTE_WIDTH = None
+
 gc = CyGlobalContext()
 StratLayerOpt = BugCore.game.StrategyOverlay
 
 g_layers = {}
 
-def init():
+def init(paletteWidth=3, paletteColors=None):
+	global COLOR_KEYS, PALETTE_WIDTH
+	
+	# setup palette width
+	if paletteWidth:
+		PALETTE_WIDTH = paletteWidth
+	else:
+		PALETTE_WIDTH = 10
+	
+	# setup palette colors
+	if paletteColors:
+		COLOR_KEYS = paletteColors
+	else:
+		PALETTE_WIDTH = 10  # override because it has 127 colors
+		COLOR_KEYS = []
+		try:
+			for index in range(200):
+				info = gc.getColorInfo(index)
+				COLOR_KEYS.append(info.getType())
+		except:
+			pass
+	
+	# create layers
 	DotMapLayer()
 
 def getLayer(id):
@@ -232,7 +257,7 @@ class DotMapLayer(StrategyLayer):
 		self.CITY_SAVE_ID = "CityDataDict"
 		self.HIGHLIGHT_CROSS_LAYER = 8
 		self.FIRST_CROSS_LAYER = 9
-		self.NUM_CROSS_LAYERS = len(ColorUtil.getColorKeys())
+		self.NUM_CROSS_LAYERS = 36 #len(COLOR_KEYS)
 		self.DOT_LAYER = PlotLandscapeLayers.PLOT_LANDSCAPE_LAYER_NUMPAD_HELP
 		self.NO_DOT_STYLE = PlotStyles.PLOT_STYLE_NONE
 		self.MAX_DOT_STYLE = PlotStyles.PLOT_STYLE_WAVES
@@ -263,11 +288,6 @@ class DotMapLayer(StrategyLayer):
 			self.dirty = False
 		else:
 			self.reset()
-#			player = gc.getPlayer(0)
-#			city = player.getCity(0)
-#			x = city.getX()
-#			y = city.getY()
-#			self.addCityAt((x + 1, y + 2), 2, self.FIRST_CROSS_LAYER)
 	
 	def updateData(self, data):
 		"""
@@ -281,6 +301,7 @@ class DotMapLayer(StrategyLayer):
 				# data in latest format
 				return data
 			else:
+				# old format, convert below
 				break
 		# find first living, human player and assign all data to them
 		# if none found, assign to player 0
@@ -292,8 +313,11 @@ class DotMapLayer(StrategyLayer):
 		newData = {}
 		cities = {}
 		newData[ePlayer] = cities
-		for point, colorLayer in data.iteritems():
-			cities[point] = City(point, colorLayer[0], colorLayer[1])
+		for point, (color, layer) in data.iteritems():
+			# use new point-based layer scheme
+			grid = 6
+			layer = (point[X] % grid) * grid + (point[Y] % grid)
+			cities[point] = City(point, color, layer)
 		return newData
 		
 	def write(self):
@@ -378,6 +402,7 @@ class DotMapLayer(StrategyLayer):
 			oldCity = self.getCity(ePlayer, city.point)
 			if city == oldCity:
 				return
+			BugUtil.debug("DotMap - replacing city at %s", city.point)
 			self.removeCity(ePlayer, oldCity)
 		BugUtil.debug("DotMap - adding city %s", city)
 		self.getCities(ePlayer)[city.point] = city
@@ -402,22 +427,21 @@ class DotMapLayer(StrategyLayer):
 		"""
 		x = xy / 1000
 		y = xy % 1000
-		self.removeCity(ePlayer, (x, y))
+		self.removeCity(ePlayer, self.getCity(ePlayer, (x, y)))
 		
-	def removeCity(self, ePlayer, point):
+	def removeCity(self, ePlayer, city):
 		"""
 		Removes the city from the data set and erases its dot and cross.
 		"""
-		BugUtil.debug("DotMap - removing city %s", point)
-		city = self.getCity(ePlayer, point)
 		if city:
-			del self.getCities(ePlayer)[point]
+			BugUtil.debug("DotMap - removing city %s", city)
+			del self.getCities(ePlayer)[city.point]
 			self.dirty = True
 			if ePlayer == PlayerUtil.getActivePlayerID():
 				self.redrawCrosses(city.layer)
 				self.eraseDot(city, self.DOT_ALPHA)
 		else:
-			BugUtil.debug("City doesn't exist")
+			BugUtil.warn("City doesn't exist")
 	
 	
 	def highlightCity(self, point, color):
@@ -523,7 +547,7 @@ class DotMapLayer(StrategyLayer):
 		Draws the cross for a single city.
 		"""
 		x, y = city.point
-		color = ColorUtil.indexToKey(city.color)
+		color = gc.getColorInfo(city.color).getType()
 		layer = city.layer
 		for dx, dy in self.BFC_OFFSETS:
 			CyEngine().fillAreaBorderPlotAlt(x + dx, y + dy, layer, color, alpha)
@@ -534,7 +558,7 @@ class DotMapLayer(StrategyLayer):
 		"""
 		if self.DRAW_DOTS:
 			x, y = city.point
-			color = ColorUtil.indexToKey(city.color)
+			color = gc.getColorInfo(city.color).getType()
 			CyEngine().addColoredPlotAlt(x, y, self.DOT_STYLE, self.DOT_LAYER, color, alpha)
 	
 	def eraseDot(self, city, alpha):
