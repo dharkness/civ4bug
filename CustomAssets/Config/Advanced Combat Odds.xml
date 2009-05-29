@@ -13,7 +13,7 @@
 	 url="http://forums.civfanatics.com/showthread.php?t=310415"
 	 dll="1">
 	 
-	<options id="ACO" file="Advanced Combat Odds">
+	<options id="ACO" file="Advanced Combat Odds.ini">
 		<section id="ACO">
 			<option id="Enabled" type="boolean" default="True"/>
 			
