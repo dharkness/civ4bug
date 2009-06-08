@@ -67,7 +67,7 @@ MODDING
 
 New Features:
 
-- BugDll module for creating Python features that depend on the DLL but work gracefully without it
+- Added BugDll module for creating Python features that depend on the DLL but work gracefully without it
 - Added "dll" attribute to <mod>, <option>, <list>, <init>, <event>, <events> and <shortcut>
 	The <mod>, <option> and <list> elements are still created but marked if the DLL isn't the correct version; the others are ignored
 - DealUtil
@@ -90,6 +90,9 @@ New Features:
 	Added alertInput() and alertInputFlags() that print to the screen using alert() instead of debug()
 - CvUtil
 	Added CvUtil.getNewScreenID() so mods don't have to hard-code screen IDs
+- BugPath
+	Completely rewritten to be easier to use
+	Exposed all variables through functions
 
 Bug Fixes:
 
