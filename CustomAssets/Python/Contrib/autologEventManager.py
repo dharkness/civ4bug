@@ -916,8 +916,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		'Improvement Built'
 		iImprovement, iX, iY = argsList
 
-		if (PyInfo.ImprovementInfo(iImprovement).getDescription() == "Tribal Village"
-		or PyInfo.ImprovementInfo(iImprovement).getDescription() == "City Ruins"):
+		if iImprovement in (-1, gc.getInfoTypeForString("IMPROVEMENT_GOODY_HUT"), gc.getInfoTypeForString("IMPROVEMENT_CITY_RUINS")):  
 			return
 
 		pPlot = CyMap().plot(iX,iY)
@@ -940,8 +939,7 @@ class AutoLogEvent(AbstractAutoLogEvent):
 		'Improvement Destroyed'
 		iImprovement, iOwner, iX, iY = argsList
 
-		if (PyInfo.ImprovementInfo(iImprovement).getDescription() == "Tribal Village"
-		or PyInfo.ImprovementInfo(iImprovement).getDescription() == "City Ruins"):
+		if iImprovement in (-1, gc.getInfoTypeForString("IMPROVEMENT_GOODY_HUT"), gc.getInfoTypeForString("IMPROVEMENT_CITY_RUINS")):  
 			return
 
 		pPlot = CyMap().plot(iX,iY)
