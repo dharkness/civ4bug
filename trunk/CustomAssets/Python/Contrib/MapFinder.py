@@ -173,6 +173,9 @@ bActive = False
 iRegenCount = 0
 iSavedCount = 0
 
+def isActive():
+	return bActive
+
 def doStartStop(argsList=None):
 	try:
 		startStop()
