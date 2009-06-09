@@ -11,7 +11,8 @@
 	 author="BUG Team, HOF Team" 
 	 version="1.0" 
 	 date="05/04/2009"
-	 url="">
+	 url=""
+	 dll="1">
 	 
 	<options id="AutoSave" file="AutoSave.ini">
 		<section id="AutoSave">
