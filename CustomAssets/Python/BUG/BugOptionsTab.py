@@ -2,18 +2,19 @@
 ##
 ## Base class for all tabs in the BUG Options Screen.
 ##
-## Copyright (c) 2007-2008 The BUG Mod.
+## Copyright (c) 2007 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 import BugOptions
 import BugUtil
-import ColorUtil
 
 g_options = BugOptions.getOptions()
 
 class BugOptionsTab:
-	"BUG Options Screen screen"
+	"""
+	Provides an API for building a single tab on the BUG Options Screen by placing UI controls.
+	"""
 	
 	def __init__(self, name, title):
 		self.name = name
