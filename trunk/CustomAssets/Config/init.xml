@@ -162,6 +162,7 @@
 	<load mod="BULL City Bar"/>
 	<load mod="BULL Misc Hovers"/>
 	
+	<load mod="AutoSave"/>
 	<load mod="MapFinder"/>
 	<load mod="Advanced Combat Odds"/>
 	
