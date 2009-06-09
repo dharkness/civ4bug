@@ -34,7 +34,6 @@ import BugCore
 import BugDll
 import BugInit
 import BugOptions
-import BugPath
 import BugUtil
 import FontUtil
 import InputUtil
