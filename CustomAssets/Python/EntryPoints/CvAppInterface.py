@@ -271,3 +271,15 @@ def getModNameAndVersion():
 		g_nameAndVersion = CvModName.getNameAndVersion()
 	return g_nameAndVersion
 # BUG - DLL - end
+
+# BUG - AutoSave - start
+def gameStartSave():
+	# called when the map is generated
+	import AutoSave
+	AutoSave.saveGameStart()
+
+def gameEndSave():
+	# called when the game ends
+	import AutoSave
+	AutoSave.saveGameEnd()
+# BUG - AutoSave - end

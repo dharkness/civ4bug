@@ -18,7 +18,7 @@ New Features:
 - Production Decay [BULL]
 	A yellow ! means an item in the build queue will start to decay after 5 turns of non-production
 	A red !! means an item will decay this turn if not produced
-	Hover for units/buildings shows actual decay amount and turns until it happens 
+	Hover for units/buildings shows actual decay amount and turns until it starts 
 - Info Screen (F9)
 	New expanded Wonders tab by DanF5771
 		Shows constructed items (all known rivals)
@@ -26,6 +26,7 @@ New Features:
 		Zoom to City button
 	Remembers the selected tab like other screens
 - BUG Religious Advisor (F7)
+- AutoSave: automatically save single-player games at start and/or end [BULL]
 
 Improvements:
 
@@ -61,6 +62,7 @@ Bug Fixes:
 - Multiplayer
 	Strategy Layer now saves all players' dotmaps
 - Sevopedia now opens from MAIN MENU without loading or starting a game
+- Fixed intermittent Vista "no interface" issue
 
 
 MODDING

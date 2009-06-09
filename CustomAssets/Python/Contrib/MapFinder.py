@@ -4,8 +4,8 @@
 ##
 ## Shortcuts:
 ##
-##   ALT + G             doRegenerate()
-##   ALT + CTRL + G      doStartStop()
+##   ALT + G           doRegenerate()
+##   ALT + CTRL + G	   doStartStop()
 ##
 ## Adapted from HOF Mod 3.13.001.
 ##
@@ -17,13 +17,12 @@
 ## Author: HOF Team, EmperorFool
 
 from CvPythonExtensions import *
+import AutoSave
 import BugCore
 import BugDll
 import BugUtil
-import CvUtil
 import MapFinderStatusScreen
 import os.path
-import time
 
 MINIMUM_SAVE_DELAY = 2.0
 
@@ -267,7 +266,7 @@ def finderNext():
 def next():
 	if bActive:
 		if ((iRegenCount >= options.getRegenerationLimit()) or
-		    (iSavedCount >= options.getSaveLimit())):
+			(iSavedCount >= options.getSaveLimit())):
 			stop()
 		else:
 #			BugUtil.alert("MapFinder running - Count %d, Saved %d", iRegenCount, iSavedCount)
@@ -335,7 +334,7 @@ def matchRules():
 				# skip if outside range
 				if iX not in lX.values(): continue
 				if iY not in lY.values(): continue
-			    # use fat-cross if over 1 range
+				# use fat-cross if over 1 range
 				if  (Rules['Range'] > 1):
 					# fat cross, skip diagonal corners
 					if (iX == lX[1] and iY == lY[1]): continue
@@ -362,13 +361,13 @@ def matchRules():
 					ip = CODES_BY_TYPES[(p, t, f)]
 					mr[ip] = mr[ip] + 1
 					for k, l in Category_Types.iteritems():
-					    if (ip in l): mr[k] = mr[k] + 1
+						if (ip in l): mr[k] = mr[k] + 1
 
 				ib = plot.getBonusType(iTeam) + 500
 				if mr.has_key(ib):
 					mr[ib] = mr[ib] + 1
 					for k, l in Category_Types.iteritems():
-					    if (ib in l): mr[k] = mr[k] + 1
+						if (ib in l): mr[k] = mr[k] + 1
 
 				# Base Commerce
 				xc = plot.calculateYield(YieldTypes.YIELD_COMMERCE, True)
@@ -386,16 +385,16 @@ def matchRules():
 				
 ## HOF MOD V1.61.005
 				if Combo_Types.has_key((ib, ip)):
-				    ic = Combo_Types[(ib, ip)]
-				    if mr.has_key(ic):
-				    	mr[ic] = mr[ic] + 1
-				    	
+					ic = Combo_Types[(ib, ip)]
+					if mr.has_key(ic):
+						mr[ic] = mr[ic] + 1
+						
 				# Starting Plot?
 				if iX == iStartX and iY == iStartY:
 					if Combo_Types.has_key((999, ip)):
-					    ic = Combo_Types[(999, ip)]
-					    if mr.has_key(ic):
-					    	mr[ic] = mr[ic] + 1
+						ic = Combo_Types[(999, ip)]
+						if mr.has_key(ic):
+							mr[ic] = mr[ic] + 1
 
 				if (plot.isRiver()):
 					mr[602] = mr[602] + 1
@@ -403,15 +402,15 @@ def matchRules():
 					if mr.has_key(ipr):
 						mr[ipr] = mr[ipr] + 1
 					if Combo_Types.has_key((ib, ipr)):
-					    ic = Combo_Types[(ib, ipr)]
-					    if mr.has_key(ic):
-					    	mr[ic] = mr[ic] + 1
-                    # Starting Plot?
+						ic = Combo_Types[(ib, ipr)]
+						if mr.has_key(ic):
+							mr[ic] = mr[ic] + 1
+					# Starting Plot?
 					if iX == iStartX and iY == iStartY:
 						if Combo_Types.has_key((999, ipr)):
-						    ic = Combo_Types[(999, ipr)]
-						    if mr.has_key(ic):
-						    	mr[ic] = mr[ic] + 1
+							ic = Combo_Types[(999, ipr)]
+							if mr.has_key(ic):
+								mr[ic] = mr[ic] + 1
 
 				if (plot.isFreshWater()):
 					mr[603] = mr[603] + 1
@@ -419,15 +418,15 @@ def matchRules():
 					if mr.has_key(ipf):
 						mr[ipf] = mr[ipf] + 1
 					if Combo_Types.has_key((ib, ipf)):
-					    ic = Combo_Types[(ib, ipf)]
-					    if mr.has_key(ic):
-					    	mr[ic] = mr[ic] + 1
-                    # Starting Plot?
+						ic = Combo_Types[(ib, ipf)]
+						if mr.has_key(ic):
+							mr[ic] = mr[ic] + 1
+					# Starting Plot?
 					if iX == iStartX and iY == iStartY:
 						if Combo_Types.has_key((999, ipf)):
-						    ic = Combo_Types[(999, ipf)]
-						    if mr.has_key(ic):
-						    	mr[ic] = mr[ic] + 1
+							ic = Combo_Types[(999, ipf)]
+							if mr.has_key(ic):
+								mr[ic] = mr[ic] + 1
 ## end HOF MOD V1.61.005
 
 	lPF = []
@@ -454,7 +453,7 @@ def save():
 	global iRegenCount, iSavedCount, mr
 	iSavedCount += 1
 	sMFSavePath = os.path.join(options.getPath(), "Saves")
-	(fileName, baseFileName) = getSaveFileName(sMFSavePath)
+	(fileName, _) = AutoSave.getSaveFileName(sMFSavePath)
 	fullFileName = fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount)
 	
 	# screenshot
@@ -491,37 +490,6 @@ def save():
 	next()
 
 
-def getSaveFileName(pathName):
-	iActivePlayer = gc.getGame().getActivePlayer()
-	activePlayer = gc.getPlayer(iActivePlayer)
-	
-	objLeaderHead = gc.getLeaderHeadInfo (activePlayer.getLeaderType()).getText()
-	
-	difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
-	mapType = gc.getMap().getMapScriptName()
-	mapSize = gc.getWorldInfo(gc.getMap().getWorldSize()).getText()
-	mapClimate = gc.getClimateInfo(gc.getMap().getClimate()).getText()
-	mapLevel = gc.getSeaLevelInfo(gc.getMap().getSeaLevel()).getText()
-	era = gc.getEraInfo(gc.getGame().getStartEra()).getText()
-	speed = gc.getGameSpeedInfo(gc.getGame().getGameSpeedType()).getText()
-	turnYear = CyGameTextMgr().getTimeStr(gc.getGame().getGameTurn(), false)
-	
-	fileName = objLeaderHead[0:3]
-	fileName = fileName + '_' + difficulty[0:3]
-	fileName = fileName + '_' + mapSize[0:3]
-	fileName = fileName + '_' + mapType[0:3]
-	fileName = fileName + '_' + speed[0:3]
-	fileName = fileName + '_' + era[0:3]
-	fileName = fileName + '_' + turnYear.replace(" ", "-")
-	fileName = fileName + '_' + mapClimate[0:3]
-	fileName = fileName + '_' + mapLevel[0:3]
-
-	fileName = os.path.join(pathName, fileName)
-	baseFileName = CvUtil.convertToStr(fileName)
-	fileName = CvUtil.convertToStr(fileName + '_' + time.strftime("%b-%d-%Y_%H-%M-%S"))
-	return (fileName, baseFileName)
-
-
 def setup():
 	root = options.getPath()
 	if not os.path.isdir(root):
@@ -544,15 +512,13 @@ def loadCodeText(root):
 	iLang = gc.getGame().getCurrentLanguage()
 	path = findSystemFile(root, 'MF_Text.dat')
 	file = open(path, "r")
-	temp = file.readline()
-	while (temp != ''):
-		(sCat, sCode, sLang0,sLang1,sLang2,sLang3,sLang4) = temp.split(",")
+	for temp in file:
+		(sCat, sCode, sLang0, sLang1, sLang2, sLang3, sLang4) = temp.split(",")
 		iCat = int(sCat.strip())
 		iCode = int(sCode.strip())
 		lLang = [sLang0.strip(), sLang1.strip(), sLang2.strip(),
 					sLang3.strip(), sLang4.strip()]
 		CodeText[iCode] = lLang[iLang]
-		temp = file.readline()
 	file.close()
 	file = None
 
@@ -561,19 +527,17 @@ def loadCategoryTypes(root):
 	Category_Types = {}
 	path = findSystemFile(root, 'MF_Cat_Rules.dat')
 	file = open(path, "r")
-	temp = file.readline()
 	iCatSave = -1
-	while (temp != ''):
+	for temp in file:
 		(sCat, sRule) = temp.split(",")
 		iCat = int(sCat.strip())
 		iRule = int(sRule.strip())
 		if (iCat != iCatSave):
 			Category_Types[iCat] = (iRule,)
 		else:
-		    Category_Types[iCat] = Category_Types[iCat] + (iRule,)
+			Category_Types[iCat] = Category_Types[iCat] + (iRule,)
 
 		iCatSave = iCat
-		temp = file.readline()
 	file.close()
 	file = None
 
@@ -582,14 +546,12 @@ def loadComboTypes(root):
 	Combo_Types = {}
 	path = findSystemFile(root, 'MF_Combo_Rules.dat')
 	file = open(path, "r")
-	temp = file.readline()
-	while (temp != ''):
+	for temp in file:
 		(sCat, sBonus, sTerrain) = temp.split(",")
 		iCat = int(sCat.strip())
 		iBonus = int(sBonus.strip())
 		iTerrain = int(sTerrain.strip())
 		Combo_Types[(iBonus, iTerrain)] = iCat
-		temp = file.readline()
 	file.close()
 	file = None
 
@@ -603,8 +565,7 @@ def loadRuleSet(root):
 	iGrpSave = 0
 	Rules = {}
 	file = open(path, "r")
-	temp = file.readline()
-	while (temp != ''):
+	for temp in file:
 		(sGrp, sCat, sRule, sMin, sMax) = temp.split(",")
 		iGrp = int(sGrp.strip())
 		iCat = int(sCat.strip())
@@ -619,7 +580,6 @@ def loadRuleSet(root):
 			else:
 				Rules[iGrp][iRule] = (iMin, iMax)
 		iGrpSave = iGrp
-		temp = file.readline()
 	file.close()
 	file = None
 
