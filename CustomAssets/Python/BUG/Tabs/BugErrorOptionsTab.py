@@ -11,7 +11,6 @@
 
 import BugOptionsTab
 import BugPath
-import CvModName
 
 class BugErrorOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG Error Options Screen Tab -- Displayed only when the INI file isn't found."
@@ -25,10 +24,7 @@ class BugErrorOptionsTab(BugOptionsTab.BugOptionsTab):
 		column = self.addOneColumnLayout(screen, panel)
 		
 		self.addLabel(screen, column, "FileNotFound", "File Not Found:")
-		self.addLabel(screen, column, "IniFilename", "\"" + CvModName.modName + ".ini\"")
+		self.addLabel(screen, column, "IniFilename", "\"" + BugPath.getModName() + ".ini\"")
 		
-		self.addLabel(screen, column, "SearchPaths", "Search Paths:")
-		pathNum = 0
-		for path in BugPath.iniFileSearchPaths:
-			pathNum += 1
-			self.addLabel(screen, column, "IniPath%d" % pathNum, path)
+		self.addLabel(screen, column, "DataDirectory", "Data Directory:")
+		self.addLabel(screen, column, "DataPath", BugPath.getDataDir())

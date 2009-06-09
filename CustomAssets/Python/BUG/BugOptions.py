@@ -261,7 +261,7 @@ class IniFile(object):
 
 	def read(self):
 		try:
-			self.path = BugPath.findIniFile(self.name)
+			self.path = BugPath.findSettingsFile(self.name)
 			if not self.path:
 				self.create()
 			else:
@@ -312,7 +312,7 @@ class IniFile(object):
 				except IOError:
 					BugUtil.error("BugOptions - failed writing INI file '%s'", self.path)
 		elif self.isLoaded():
-			self.path = BugPath.createIniFile(self.name)
+			self.path = BugPath.createSettingsFile(self.name)
 			BugUtil.debug("BugOptions - writing new INI file '%s'", self.name)
 			try:
 				file = open(self.path, "w")
