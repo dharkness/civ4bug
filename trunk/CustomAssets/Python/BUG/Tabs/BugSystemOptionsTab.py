@@ -1,6 +1,6 @@
 ## BugSystemOptionsTab
 ##
-## Tab for the BUG System Options (check for updates and SVN).
+## Tab for the BUG System Options (logging, updates, SVN, and system paths).
 ##
 ## Copyright (c) 2008 The BUG Mod.
 ##
@@ -28,12 +28,12 @@ class BugSystemOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, right, "Version", 
 					  CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
 		
-		screen.attachHSeparator(column, column + "Sep1")		
-		self.addLabel(screen, column, "Subversion", "Subversion (SVN):")
-		self.addCheckbox(screen, column, "Core__CheckForUpdates")
-		columnL, columnR = self.addTwoColumnLayout(screen, column, "Core")
-		self.addTextEdit(screen, columnL, columnR, "Core__LocalRoot")
-		self.addTextEdit(screen, columnL, columnR, "Core__RepositoryUrl")
+#		screen.attachHSeparator(column, column + "Sep1")		
+#		self.addLabel(screen, column, "Subversion", "Subversion (SVN):")
+#		self.addCheckbox(screen, column, "Core__CheckForUpdates")
+#		columnL, columnR = self.addTwoColumnLayout(screen, column, "Core")
+#		self.addTextEdit(screen, columnL, columnR, "Core__LocalRoot")
+#		self.addTextEdit(screen, columnL, columnR, "Core__RepositoryUrl")
 
 		screen.attachHSeparator(column, column + "Sep2")
 		self.addLabel(screen, column, "Debug_Logging", "Debugging Output:")
@@ -45,14 +45,14 @@ class BugSystemOptionsTab(BugOptionsTab.BugOptionsTab):
 		screen.attachHSeparator(column, column + "Sep3")
 		items = BugConfigTracker.combine()
 		itemNum = 0
-		first = True
+#		first = True
 		for item in items:
 			itemNum += 1
 			subitemNum = 0
-			if not first:
-				screen.attachHSeparator(column, "ItemSep-%d" % itemNum)
-			else:
-				first = False
+#			if not first:
+#				screen.attachHSeparator(column, "ItemSep-%d" % itemNum)
+#			else:
+#				first = False
 			self.addLabel(screen, column, item[0], item[0])
 			for value in item[1]:
 				subitemNum += 1
