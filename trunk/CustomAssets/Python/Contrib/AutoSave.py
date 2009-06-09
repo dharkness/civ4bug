@@ -23,6 +23,7 @@ import time
 import CvUtil
 import BugCore
 import BugPath
+import BugUtil
 import MapFinder
 import PlayerUtil
 
@@ -59,10 +60,19 @@ def saveGame(type=SINGLE, variant=None):
 	
 	All in the types except WORLDBUILDER allow the AUTO variant while only SINGLE allows QUICK.
 	"""
-	(fileName, _) = getSaveFileName(getSaveDir(type, variant))
-	fileName += ".CivBeyondSwordSave"
-	gc.getGame().saveGame(fileName)
-	return fileName
+	if _saveDir:
+		if variant:
+			BugUtil.debug("AutoSave - saving %s %s game", type, variant)
+		else:
+			BugUtil.debug("AutoSave - saving %s game", type)
+		(fileName, _) = getSaveFileName(getSaveDir(type, variant))
+		if fileName:
+			fileName += ".CivBeyondSwordSave"
+			gc.getGame().saveGame(fileName)
+			return fileName
+		else:
+			BugUtil.error("Could not build saved game file name")
+	return None
 
 def getSaveDir(type=SINGLE, variant=None):
 	if variant:
@@ -132,3 +142,5 @@ _saveDir = None
 def init():
 	global _saveDir
 	_saveDir = BugPath.join(BugPath.getRootDir(), "Saves")
+	if not _saveDir:
+		BugUtil.error("Could not find Saves directory")
