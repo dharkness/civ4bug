@@ -11,7 +11,6 @@
 import CvUtil
 import BugConfig
 import BugCore
-import BugOptions
 import BugPath
 import BugUtil
 
@@ -32,9 +31,6 @@ def init():
 		return
 	g_initRunning = True
 	
-	BugUtil.debug("BugInit - initializing...")
-	timer = BugUtil.Timer("BUG init")
-	
 	try:
 		# test to see if global context is ready
 		CvUtil.initDynamicFontIcons()
@@ -43,13 +39,21 @@ def init():
 		g_initRunning = False
 		return False
 	
+	BugUtil.debug("BugInit - initializing...")
+	timer = BugUtil.Timer("BUG init")
+	
+	BugPath.init()
+	timer.log("init paths").start()
+	
 	loadMod("init")
 	BugCore.initDone()
 	timer.log("read configs").start()
+	
 	callInits()
 	timer.log("call inits/events")
 	
 	timer.logTotal()
+	
 	g_initDone = True
 	g_initRunning = False
 	return True

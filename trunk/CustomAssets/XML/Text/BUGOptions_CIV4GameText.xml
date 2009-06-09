@@ -4824,12 +4824,28 @@
 		<Spanish>Config</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_CONFIG_SEARCH_PATHS</Tag>
-		<English>Search Paths:</English>
-		<French>Chemins de Recherche:</French>
-		<German>Erkannte Verzeichnispfade:</German>
-		<Italian>Percorsi di ricerca:</Italian>
-		<Spanish>Search Paths:</Spanish>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MOD_DIRECTORY</Tag>
+		<English>Mod Directory:</English>
+		<French>Mod Directory:</French>
+		<German>Mod Directory:</German>
+		<Italian>Mod Directory:</Italian>
+		<Spanish>Mod Directory:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ROOT_DIRECTORY</Tag>
+		<English>CivilizationIV.ini Directory:</English>
+		<French>CivilizationIV.ini Directory:</French>
+		<German>CivilizationIV.ini Directory:</German>
+		<Italian>CivilizationIV.ini Directory:</Italian>
+		<Spanish>CivilizationIV.ini Directory:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_SETTINGS_DIRECTORY</Tag>
+		<English>Settings Directory:</English>
+		<French>Settings Directory:</French>
+		<German>Settings Directory:</German>
+		<Italian>Settings Directory:</Italian>
+		<Spanish>Settings Directory:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ASSET_SEARCH_PATHS</Tag>
@@ -4838,14 +4854,6 @@
 		<German>"Assets"-Verzeichnisse:</German>
 		<Italian>Percorsi di ricerca di 'Assets':</Italian>
 		<Spanish>Asset Search Paths:</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_BUG_MOD_CONFIG</Tag>
-		<English>BUG Mod Options File:</English>
-		<French>Fichier d'Options du BUG Mod:</French>
-		<German>"BUG Mod"-Optionsdatei:</German>
-		<Italian>File delle opzioni del BUG Mod:</Italian>
-		<Spanish>BUG Mod Options File:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CDA_CONFIG</Tag>
