@@ -201,6 +201,7 @@ def alert(message, *args):
 
 def trace(message, detail=True, stack=True):
 	# TODO: register with ConfigTracker
+	logToScreen(message)
 	logToFile("TRACE: " + message)
 	if detail:
 		logToFile("  " + str(sys.exc_info()[1]))
