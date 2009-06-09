@@ -1,4 +1,4 @@
-## BugPath
+## BugConfigTracker
 ##
 ## Tracks the active configuration items like directory search paths and locations
 ## of loaded files.
