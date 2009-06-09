@@ -54,13 +54,15 @@ options = BugCore.game.AutoSave
 
 def saveGame(type=SINGLE, variant=None):
 	"""
-	Saves the current game to the folder designated by the type and optional variant.
+	Saves the current game to the folder designated by the type and optional variant
+	and returns the full path to it.
 	
 	All in the types except WORLDBUILDER allow the AUTO variant while only SINGLE allows QUICK.
 	"""
 	(fileName, _) = getSaveFileName(getSaveDir(type, variant))
 	fileName += ".CivBeyondSwordSave"
 	gc.getGame().saveGame(fileName)
+	return fileName
 
 def getSaveDir(type=SINGLE, variant=None):
 	if variant:
@@ -71,30 +73,34 @@ def getSaveDir(type=SINGLE, variant=None):
 def getSaveFileName(pathName):
 	if pathName:
 		activePlayer = PlayerUtil.getActivePlayer()
+		if not MapFinder.isActive() and options.isUsePlayerName():
+			fileName = activePlayer.getName()
+			turnYear = CyGameTextMgr().getTimeStr(gc.getGame().getGameTurn(), False)
+			fileName += '_' + turnYear.replace(" ", "-")
+		else:
+			objLeaderHead = gc.getLeaderHeadInfo (activePlayer.getLeaderType()).getText()
+			
+			game = gc.getGame()
+			map = gc.getMap()
+			
+			difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
+			mapType = map.getMapScriptName()
+			mapSize = gc.getWorldInfo(map.getWorldSize()).getText()
+			mapClimate = gc.getClimateInfo(map.getClimate()).getText()
+			mapLevel = gc.getSeaLevelInfo(map.getSeaLevel()).getText()
+			era = gc.getEraInfo(game.getStartEra()).getText()
+			speed = gc.getGameSpeedInfo(game.getGameSpeedType()).getText()
+			turnYear = CyGameTextMgr().getTimeStr(game.getGameTurn(), False)
 		
-		objLeaderHead = gc.getLeaderHeadInfo (activePlayer.getLeaderType()).getText()
-		
-		game = gc.getGame()
-		map = gc.getMap()
-		
-		difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
-		mapType = map.getMapScriptName()
-		mapSize = gc.getWorldInfo(map.getWorldSize()).getText()
-		mapClimate = gc.getClimateInfo(map.getClimate()).getText()
-		mapLevel = gc.getSeaLevelInfo(map.getSeaLevel()).getText()
-		era = gc.getEraInfo(game.getStartEra()).getText()
-		speed = gc.getGameSpeedInfo(game.getGameSpeedType()).getText()
-		turnYear = CyGameTextMgr().getTimeStr(game.getGameTurn(), False)
-	
-		fileName = objLeaderHead[0:3]
-		fileName = fileName + '_' + difficulty[0:3]
-		fileName = fileName + '_' + mapSize[0:3]
-		fileName = fileName + '_' + mapType[0:3]
-		fileName = fileName + '_' + speed[0:3]
-		fileName = fileName + '_' + era[0:3]
-		fileName = fileName + '_' + turnYear.replace(" ", "-")
-		fileName = fileName + '_' + mapClimate[0:3]
-		fileName = fileName + '_' + mapLevel[0:3]
+			fileName = objLeaderHead[0:3]
+			fileName += '_' + difficulty[0:3]
+			fileName += '_' + mapSize[0:3]
+			fileName += '_' + mapType[0:3]
+			fileName += '_' + speed[0:3]
+			fileName += '_' + era[0:3]
+			fileName += '_' + turnYear.replace(" ", "-")
+			fileName += '_' + mapClimate[0:3]
+			fileName += '_' + mapLevel[0:3]
 	
 		fileName = BugPath.join(pathName, fileName)
 		baseFileName = CvUtil.convertToStr(fileName)
@@ -116,7 +122,7 @@ def saveGameEnd():
 	"""
 	Saves the single-player game when the game ends.
 	"""
-	if not CyGame().isMultiplayer() and options.isCreateEndSave():
+	if not CyGame().isMultiplayer() and options.isCreateEndSave() and not MapFinder.isActive():
 		saveGame()
 
 
