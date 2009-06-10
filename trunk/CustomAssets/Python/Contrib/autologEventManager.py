@@ -18,7 +18,6 @@ import BugCore
 import BugUtil
 import CvModName
 import TradeUtil
-import string
 
 OPEN_LOG_EVENT_ID = CvUtil.getNewEventID("Autolog.OpenLog")
 CUSTOM_ENTRY_EVENT_ID = CvUtil.getNewEventID("Autolog.CustomEntry")
@@ -30,14 +29,6 @@ PyInfo = PyHelpers.PyInfo
 AutologOpt = BugCore.game.Autolog
 Logger = None
 lPercent = "%"
-
-import CvGameInterfaceFile
-import CvGameUtils
-normalGameUtils = CvGameInterfaceFile.GameUtils
-
-def gameUtils():
-	' replace normalGameUtils with your mod version'
-	return normalGameUtils
 
 def isLoggingOn():
 	return AutologOpt.isLoggingOn()
@@ -982,15 +973,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsCity = pPlot.getPlotCity()
 						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
-			message = message + zsLocn
-
-			iPillageGold = gameUtils().getPillageGold()
-			if (iPillageGold == 0
-			or not self.bHumanPlaying):
-				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
-			else:
-				sPillageGold = "%i" % (iPillageGold)
-				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName(), sPillageGold))
+			message += zsLocn
+			message += BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
 
 			if self.bHumanPlaying:
 				Logger.writeLog(message, vColor="DarkRed")
