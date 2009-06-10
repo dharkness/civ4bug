@@ -64,7 +64,7 @@
 		<French>*Conseils du BUG*: Quand une case est dans la Croix de Ville de plusieures villes, vous pouvez changez la ville à laquelle la case appartient en cliquant dessus dans l'écran de ville de la ville choisie.</French>
 		<German>[BUG] Tipp... Befindet sich ein Geländefeld im Einzugsbereich zweier Städte, lässt sich dessen Zugehörigkeit festlegen, indem es im Stadt-Bildschirm der betreffenden Stadt per Mausklick ausgewählt wird.</German>
 		<Italian>*Suggerimento del BUG Team*: Quando una casella appartiene all'area cittadina di due diverse città, puoi cambiare la sua appartenenza cliccando su di essa dalla Schermata Cittadina della città a cui vuoi che appartenga.</Italian>
-		<Spanish>*BUG Hint*: When a tile is in the City Cross of two different cities, you can change its ownership by clicking on that tile from the chosen city's City Screen.</Spanish>
+		<Spanish>*BUG Hint*: When a tile is in the City Cross of two different cities, you can change its city ownership by clicking on that tile from the chosen city's City Screen.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_2</Tag>
@@ -72,7 +72,7 @@
 		<French>*Conseils du BUG*: Il n'y a pas de déshonneur à accèder aux demandes de vos rivaux quand vous êtes faible. Ceci vous permettra de renforcer vos défenses pendant le temps qui vous profitez des relations améliorées de vos nations.</French>
 		<German>[BUG] Tipp... Es ist keine Schande, in einer unterlegenen Position den Forderungen von stärkeren Gegnern nachzukommen. Die durch die kurze Verbesserung der diplomatischen Beziehungen gewonnene Zeit kann genutzt werden, um die eigenen Verteidigungslinien zu verstärken.</German>
 		<Italian>*Suggerimento del BUG Team*: Quando sei debole, non c'è vergogna nell'accettare le pretese dei rivali. Ti concederà il tempo necessario per costruire le tue difese nel conseguente breve periodo di miglioramento dei rapporti fra le vostre nazioni.</Italian>
-		<Spanish>*BUG Hint*: When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short boost in attitude between your nations.</Spanish>
+		<Spanish>*BUG Hint*: When you're weak there is no shame in giving into rivals demands.  This will give you time to build your defenses as you enjoy the short improvement in relations between your nations.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_3</Tag>
@@ -88,7 +88,7 @@
 		<French>*Conseils du BUG*: Attendez pour promouvoir une unité pour le moment ou elle a besoin de soins. Quand vous promovez, choisissez les promotions en fonction de l'ennemi que vous encontrez.</French>
 		<German>[BUG] Tipp... Eine verfügbare Beförderung muss einer Einheit nicht sofort verliehen werden. Manchmal lohnt es sich zu warten, um im passenden Moment die bestgeeignete Beförderung und Bonusfähigkeit zu wählen. Eine Beförderung wirkt auf verletzte Einheiten übrigens heilsam.</German>
 		<Italian>*Suggerimento del BUG Team*: Risparmia le promozioni per accelerare la cura quando le tue unità vengono ferite, e quando le promuovi, ottimizza le tue unità contro il tipo di nemico che stai affrontando.</Italian>
-		<Spanish>*BUG Hint*: Save your promotions for when your unit is injured to speed up healing, and when you promote, tailor your unit for the type of enemy you are facing.</Spanish>
+		<Spanish>*BUG Hint*: Save your promotions for when your unit is injured to speed up healing, and when you promote, use them to tailor your unit for the type of enemy you are facing.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_5</Tag>
@@ -96,7 +96,7 @@
 		<French>*Conseils du BUG*: N'attaquez pas une ville sans machines de siège. Un Spadassin peut faire plus de dégats en rentrant par une brèche dans la muraille, qu'en essayant de l'escalader sous une pluie de flèches.</French>
 		<German>[BUG] Tipp... Für die Einnahme einer größeren Stadt sollten genügend Belagerungswaffen zur Verfügung stehen, um die Verteidigungsanlagen niederzureißen und die Verteidiger zu schwächen.</German>
 		<Italian>*Suggerimento del BUG Team*: Procurati sempre l'equipaggiamento d'assedio prima di assediare una città. Uno Spadaccino può fare più danni entrando da un buco nelle mura, che cercando di scavalcarle sotto una pioggia di frecce.</Italian>
-		<Spanish>*BUG Hint*: Always have siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Spanish>
+		<Spanish>*BUG Hint*: Always consider having siege equipment before attacking a city.  A Swordsman can do more damage entering through a hole in the wall, then trying to climb over it with arrows raining down from above.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_6</Tag>
@@ -112,7 +112,7 @@
 		<French>*Conseils du BUG*: Escortez toujours vos Colons. La nature peut être très dangereuse.</French>
 		<German>[BUG] Tipp... Wertvolle Einheiten ohne nennenswerte Verteidigungsfähigkeiten, wie Siedler und Galeonen, können leicht Opfer von Angriffen werden und verdienen deshalb auf fremdem Terrain einen Begleitschutz.</German>
 		<Italian>*Suggerimento del BUG Team*: Scorta sempre i tuoi Coloni. E' molto pericoloso vagare per le Terre Selvagge (specialmente quelle inesplorate).</Italian>
-		<Spanish>*BUG Hint*: Always escort your Settlers.  It's mighty dangerous out in the Wilderness.</Spanish>
+		<Spanish>*BUG Hint*: Always consider escorting your Settlers.  It's mighty dangerous out in the Wilderness.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_8</Tag>
@@ -136,7 +136,7 @@
 		<French>*Conseils du BUG*: Ne négligez pas votre Diplomatie! Faites attention aux Alertes qui arrivent et qui vous informent de ce qui est disponible.</French>
 		<German>[BUG] Tipp... Die Diplomatie sollte nicht vernachlässigt werden. Während einer Partie erscheinen ständig Meldungen, die die verfügbaren Handelswaren anderer Zivilisationen anzeigen.</German>
 		<Italian>*Suggerimento del BUG Team*: Non trascurare la Diplomazia!  Fai attenzione agli avvisi che compaiono per dirti cosa c'è di disponibile in giro.</Italian>
-		<Spanish>*BUG Hint*: Don't neglect your Diplomacy!  Pay attention to the Alerts that pop up, telling you what is available out there.</Spanish>
+		<Spanish>*BUG Hint*: Don't neglect your Diplomacy!  Pay attention to the information you gather, telling you what is available out there.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_11</Tag>
@@ -160,7 +160,7 @@
 		<French>*Conseils du BUG*: Formez des relations commerciales avec des nations qui s'agréent entre eux, pour éviter des pénalités diplomatiques.</French>
 		<German>[BUG] Tipp... Zwischen ähnlichen Zivilisationen sollten Handelsverbindungen geknüpft werden, um einen Diplomatiemalus zu vermeiden.</German>
 		<Italian>*Suggerimento del BUG Team*: Stabilisci relazioni mercantili con nazioni che vanno d'accordo per evitare penalità nei rapporti.</Italian>
-		<Spanish>*BUG Hint*: Form trade relations with nations that get along with each other to avoid an attitude penalty.</Spanish>
+		<Spanish>*BUG Hint*: Form trade relations with nations that get along with each other to avoid an diplomatic repercussions.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_14</Tag>
@@ -208,7 +208,7 @@
 		<French>*Conseils du BUG*: Parfois il vaut mieux arrêter un Eclaireur ou un Explorateur sur une fôret, une montagne ou une jungle et perdre un peu de mouvement pour gagner en sécurité.</French>
 		<German>[BUG] Tipp... Es kann sinnvoll sein, einen Späher oder Kundschafter eine Runde auf einem Wald-, Hügel- oder Dschungel-Geländefeld beenden zu lassen, um die überschüssigen Bewegungspunkte gegen größere Sicherheit einzutauschen.</German>
 		<Italian>*Suggerimento del BUG Team*: A volte è meglio fermare un Esploratore su una casella di collina, foresta o giungla e perdere il movimento extra in favore della prudenza.</Italian>
-		<Spanish>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and losing the extra movement in favor of safety.</Spanish>
+		<Spanish>*BUG Hint*: Sometimes it's better to stop a Scout or Explorer on a forest, hill, or jungle tile and lose the extra movement in favor of safety.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_HINT_20</Tag>
@@ -222,8 +222,16 @@
 		<Tag>TXT_KEY_BUG_HINT_21</Tag>
 		<English>*BUG Hint*: Be nice to your mother.</English>
 		<French>*BUG Hint*: Be nice to your mother.</French>
-		<German>*BUG Hint*: Be nice to your mother.</German>
+		<German>[BUG] Tipp... Sei nett zu deiner Mutter.</German>
 		<Italian>*BUG Hint*: Be nice to your mother.</Italian>
 		<Spanish>*BUG Hint*: Be nice to your mother.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_HINT_22</Tag>
+		<English>*BUG Hint*: The cake is a lie.</English>
+		<French>*BUG Hint*: The cake is a lie.</French>
+		<German>[BUG] Tipp... Der Kuchen ist eine Lüge.</German>
+		<Italian>*BUG Hint*: The cake is a lie.</Italian>
+		<Spanish>*BUG Hint*: The cake is a lie.</Spanish>
 	</TEXT>
 </Civ4GameText>
