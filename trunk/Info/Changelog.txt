@@ -63,6 +63,7 @@ Bug Fixes:
 	Strategy Layer now saves all players' dotmaps
 - Sevopedia now opens from MAIN MENU without loading or starting a game
 - Fixed intermittent Vista "no interface" issue
+- AutoLog no longer calls CvGameUtils.getPillageGold()
 
 
 MODDING
