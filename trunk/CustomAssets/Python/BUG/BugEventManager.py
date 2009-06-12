@@ -66,9 +66,6 @@
 ##       Signifies the moment the "End Turn" text is displayed on the screen
 ##       Fired from CvMainInterface.updateScreen()
 ##
-##   - gameUpdate
-##       Fired from CvMainInterface.updateScreen() every 250 milliseconds
-##
 ## * Events and their arguments are optionally logged.
 ##
 ## * Added configure() to set the options.
@@ -132,7 +129,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		
 		global g_eventManager
 		if g_eventManager is not None:
-			raise ConfigError("BugEventManager already created")
+			raise BugUtil.ConfigError("BugEventManager already created")
 		g_eventManager = self
 		
 		if logging is None:
@@ -186,9 +183,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 	def setNoLogEvents(self, noLogEvents):
 		if noLogEvents is not None:
 			try:
-				x = "gameUpdate" in noLogEvents
+				"gameUpdate" in noLogEvents
 			except:
-				raise ConfigError("noLogEvents must be tuple, list or set")
+				raise BugUtil.ConfigError("noLogEvents must be tuple, list or set")
 			else:
 				self.noLogEvents = noLogEvents
 
@@ -492,7 +489,7 @@ EVENT_FUNCTION_MAP = {
 
 def configure(logging=None, noLogEvents=None):
 	"""Sets the global event manager's logging options."""
-	if g_eventManager is not None:
+	if g_eventManager:
 		g_eventManager.setLogging(logging)
 		g_eventManager.setNoLogEvents(noLogEvents)
 	else:
