@@ -470,7 +470,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				# Don't show favorite civic if playing with Random Personalities.
 				if not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_RANDOM_PERSONALITIES):
 					nFavoriteCivic = objLeaderHead.getFavoriteCivic()
-					if nFavoriteCivic != -1:
+					if (nFavoriteCivic != -1) and (not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_RANDOM_PERSONALITIES)):
 						screen.attachTextGFC(infoPanelName, "", localText.getText("TXT_KEY_PEDIA_FAV_CIVIC", ()) + ":", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 						objCivicInfo = gc.getCivicInfo (nFavoriteCivic)
 						screen.attachImageButton (infoPanelName, "", objCivicInfo.getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_PEDIA_JUMP_TO_CIVIC, nFavoriteCivic, 1, False)
@@ -1193,7 +1193,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					for iLoopTech in range(gc.getNumTechInfos()):
 					
 						tradeData.iData = iLoopTech
-						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False)): # wants
+						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False) and activePlayer.getTradeDenial(iLoopPlayer, tradeData) == DenialTypes.NO_DENIAL): # wants
 							self.techIconGrid.addIcon( currentRow, 1, gc.getTechInfo(iLoopTech).getButton()
 																				 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 						elif currentPlayer.canResearch(iLoopTech, False):
@@ -1212,7 +1212,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				currentRow += 1
 		self.techIconGrid.refresh()
-													 
+
 
 
 	def initTechTable(self):

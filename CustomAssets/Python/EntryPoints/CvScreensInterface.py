@@ -343,6 +343,7 @@ def createCivilopedia():
 							})
 		global HandleNavigationMap
 		HandleNavigationMap = {
+							MAIN_INTERFACE : mainInterface,
 							PEDIA_MAIN : pediaMainScreen,
 							PEDIA_TECH : pediaMainScreen,
 							PEDIA_UNIT : pediaMainScreen,
