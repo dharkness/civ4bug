@@ -4827,7 +4827,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_MOD_DIRECTORY</Tag>
 		<English>Mod Directory:</English>
 		<French>Mod Directory:</French>
-		<German>Mod Directory:</German>
+		<German>Mod-Verzeichnis:</German>
 		<Italian>Mod Directory:</Italian>
 		<Spanish>Mod Directory:</Spanish>
 	</TEXT>
@@ -4835,7 +4835,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_ROOT_DIRECTORY</Tag>
 		<English>CivilizationIV.ini Directory:</English>
 		<French>CivilizationIV.ini Directory:</French>
-		<German>CivilizationIV.ini Directory:</German>
+		<German>CivilizationIV.ini:</German>
 		<Italian>CivilizationIV.ini Directory:</Italian>
 		<Spanish>CivilizationIV.ini Directory:</Spanish>
 	</TEXT>
@@ -4843,7 +4843,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_SETTINGS_DIRECTORY</Tag>
 		<English>Settings Directory:</English>
 		<French>Settings Directory:</French>
-		<German>Settings Directory:</German>
+		<German>Einstellungen:</German>
 		<Italian>Settings Directory:</Italian>
 		<Spanish>Settings Directory:</Spanish>
 	</TEXT>
