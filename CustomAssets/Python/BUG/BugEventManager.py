@@ -48,6 +48,9 @@
 ##   - unitUpgraded(pOldUnit, pNewUnit, iPrice) [BULL]
 ##       Fired when a unit is upgraded
 ##
+##   - unitCaptured(eOwner, eUnitType, pNewUnit) [BULL]
+##       Fired when a unit is captured
+##
 ##   - combatWithdrawal(pAttacker, pDefender) [BULL]
 ##       Fired when a unit withdraws from combat after doing maximum damage
 ##
@@ -171,6 +174,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 		
 		# BULL events
 		self.addEvent("unitUpgraded")
+		self.addEvent("unitCaptured")
 		self.addEvent("combatWithdrawal")
 		self.addEvent("combatRetreat")
 		self.addEvent("combatLogCollateral")
@@ -447,31 +451,38 @@ class BugEventManager(CvEventManager.CvEventManager):
 	
 	def onUnitUpgraded(self, argsList):
 		"""Called when a unit is upgraded."""
-		pOldUnit, pNewUnit, iPrice = argsList[0][0]
+		pOldUnit, pNewUnit, iPrice = argsList
 		BugUtil.debug("%s upgraded to %s for %d%c", 
 				pOldUnit.getName(), pNewUnit.getName(), iPrice, gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
 	
+	def onUnitCaptured(self, argsList):
+		"""Called when a unit is captured."""
+		eOwner, eUnitType, pNewUnit = argsList
+		BugUtil.debug("%s %s captured as %s by %s", 
+				gc.getPlayer(eOwner).getName(), gc.getUnitInfo(eUnitType).getDescription(), 
+				pNewUnit.getName(), gc.getPlayer(pNewUnit.getOwner()).getName())
+	
 	def onCombatWithdrawal(self, argslist):
 		"""Fired when a unit withdraws from combat after doing maximum damage."""
-		pAttacker, pDefender = argslist[0][0]
+		pAttacker, pDefender = argslist
 		BugUtil.debug("%s withdraws from %s", 
 				pAttacker.getName(), pDefender.getName())
 	
 	def onCombatRetreat(self, argslist):
 		"""Fired when a unit retreats from combat, escaping death."""
-		pAttacker, pDefender = argslist[0][0]
+		pAttacker, pDefender = argslist
 		BugUtil.debug("%s retreats from %s", 
 				pAttacker.getName(), pDefender.getName())
 	
 	def onCombatLogCollateral(self, argslist):
 		"""Fired when a unit inflicts collateral damage to another unit."""
-		pAttacker, pDefender, iDamage = argslist[0][0]
+		pAttacker, pDefender, iDamage = argslist
 		BugUtil.debug("%s bombards %s for %d HP", 
 				pAttacker.getName(), pDefender.getName(), iDamage)
 	
 	def onCombatLogFlanking(self, argslist):
 		"""Fired when a unit inflicts flanking damage to another unit."""
-		pAttacker, pDefender, iDamage = argslist[0][0]
+		pAttacker, pDefender, iDamage = argslist
 		BugUtil.debug("%s flanks %s for %d HP", 
 				pAttacker.getName(), pDefender.getName(), iDamage)
 
