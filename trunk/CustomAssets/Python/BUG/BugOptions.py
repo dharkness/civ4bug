@@ -266,11 +266,10 @@ class IniFile(object):
 				self.create()
 			else:
 				self.config = ConfigObj(self.path, encoding='utf_8')
-#			BugConfigTracker.add("BUG_Mod_Config", self.path)
 		except IOError:
 			self.path = None
 			self.config = None
-			BugUtil.error("BugOptions - error reading file '%s'", name)
+			BugUtil.trace("BugOptions - error reading file '%s'", self.name)
 	
 	def create(self):
 		BugUtil.debug("BugOptions - creating INI file '%s'", self.name)
@@ -310,17 +309,20 @@ class IniFile(object):
 					self.config.write()
 					self.dirty = False
 				except IOError:
-					BugUtil.error("BugOptions - failed writing INI file '%s'", self.path)
+					BugUtil.trace("BugOptions - failed writing INI file '%s'", self.path)
 		elif self.isLoaded():
 			self.path = BugPath.createSettingsFile(self.name)
-			BugUtil.debug("BugOptions - writing new INI file '%s'", self.name)
-			try:
-				file = open(self.path, "w")
-				self.config.write(file)
-				file.close()
-				self.dirty = False
-			except IOError:
-				BugUtil.error("BugOptions - failed creating INI file '%s'", self.path)
+			if self.path:
+				BugUtil.debug("BugOptions - writing new INI file '%s'", self.name)
+				try:
+					file = open(self.path, "w")
+					self.config.write(file)
+					file.close()
+					self.dirty = False
+				except IOError:
+					BugUtil.trace("BugOptions - failed creating INI file '%s'", self.path)
+			else:
+				BugUtil.error("BugOptions - Cannot locate settings folder")
 		else:
 			BugUtil.warn("BugOptions - INI file '%s' was never read", self.name)
 	
