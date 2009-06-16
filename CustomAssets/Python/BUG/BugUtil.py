@@ -54,13 +54,19 @@
 ##
 ## Binding and Calling Functions Dynamically
 ##
+##   lookupFunction(module, functionOrClass)
+##     Returns the actual function or class by looking it up in the module directly.
+##
+##   bindFunction(object, functionOrAttribute)
+##     Returns the actual function or attribute bound to the given object.
+##
 ##   getFunction(module, functionOrClass, bind?, args..., kwargs...)
 ##     Returns a Function object that can be used to dynamically call a function
 ##     or class constructor at a later time with the arguments provided when
 ##     the Function was created.
 ##
 ##   callFunction(module, functionOrClass, args..., kwargs...)
-##     Returns the result of calling the function bound using getFunction().
+##     Returns the result of calling the function bound using lookupFunction().
 ##
 ## Calling Functions in the Future
 ##
@@ -528,20 +534,14 @@ class Timer:
 class Function:
 	
 	def __init__(self, module, functionOrClass, *args, **kwargs):
-		self.module = module
-		self.functionOrClass = functionOrClass
+		self.__module__ = module
+		self.__name__ = functionOrClass
 		self.function = None
 		self.setArguments(*args, **kwargs)
 	
 	def bind(self):
-		try:
-			if self.function is None:
-				debug("BUG: binding %s.%s" % (self.module, self.functionOrClass))
-				self.function = getattr(__import__(self.module), self.functionOrClass)
-		except ImportError:
-			raise ConfigError("No such module '%s'" % self.module)
-		except AttributeError:
-			raise ConfigError("Module '%s' must define function or class '%s'" % (self.module, self.functionOrClass))
+		if self.function is None:
+			self.function = lookupFunction(self.__module__, self.__name__)
 	
 	def setArguments(self, *args, **kwargs):
 		self.args = args
@@ -560,10 +560,26 @@ class Function:
 	def __repr__(self):
 		if self.args or self.kwargs:
 			return "<func %s.%s (%r, %r)>" % \
-		   	   	   (self.module, self.functionOrClass, self.args, self.kwargs)
+		   	   	   (self.__module__, self.__name__, self.args, self.kwargs)
 		else:
 			return "<func %s.%s>" % \
-		   	   	   (self.module, self.functionOrClass)
+		   	   	   (self.__module__, self.__name__)
+
+def lookupFunction(module, name):
+	try:
+		debug("BUG: looking up %s.%s" % (module, name))
+		return getattr(__import__(module), name)
+	except ImportError:
+		raise ConfigError("No such module '%s'" % module)
+	except AttributeError:
+		raise ConfigError("Module '%s' must define function or class '%s'" % (module, name))
+
+def bindFunction(obj, name):
+	try:
+		debug("BUG: binding %s.%s to %s" % (obj.__class__, name, obj))
+		return getattr(obj, name)
+	except AttributeError:
+		raise ConfigError("Class '%s' must define function '%s'" % (obj.__class__, name))
 
 def getFunction(module, functionOrClass, bind=False, *args, **kwargs):
 	func = Function(module, functionOrClass, *args, **kwargs)
@@ -572,7 +588,7 @@ def getFunction(module, functionOrClass, bind=False, *args, **kwargs):
 	return func
 
 def callFunction(module, functionOrClass, *args, **kwargs):
-	func = getFunction(module, functionOrClass, True)
+	func = lookupFunction(module, functionOrClass)
 	return func(*args, **kwargs)
 
 
