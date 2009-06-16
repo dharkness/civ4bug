@@ -5,12 +5,6 @@
 ##
 ## TODO:
 ##  - Remove IniFile
-##  X Move Mod to BugOptions/BugGame
-##  - Add Mod.module; used as default wherever a module is required
-##		- <init>
-##		- <event>/<events>
-##  - Same for screens and tabs
-##  X Make sure inits run after options
 ##  ? Run events after options
 ##  - Change separator from "__" to "." (fix XML and tabs)
 ##
@@ -20,6 +14,16 @@
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
+import BugCore
+import BugDll
+import BugGameUtils
+import BugInit
+import BugOptions
+import BugUtil
+import CvEventInterface
+import CvScreensInterface
+import FontUtil
+import InputUtil
 
 # block error alert about xmllib deprecation
 try:
@@ -30,15 +34,6 @@ try:
 finally:
 	sys.stderr = stderr
 
-import BugCore
-import BugDll
-import BugInit
-import BugOptions
-import BugUtil
-import FontUtil
-import InputUtil
-import CvEventInterface
-import CvScreensInterface
 
 MOD_OPTION_SEP = "__"
 
@@ -121,7 +116,7 @@ class GameBuilder:
 		if self.dll is None:
 			return dll
 		if self.dll > dll:
-			BugUtil.warn("BugConfig - init object overrides mod DLL attribute with lower value")
+			BugUtil.warn("BugConfig - config element overrides <mod>.dll with lower value")
 		return dll
 
 	def createBuilder(self, module, clazz=None, attrs=None):
@@ -164,7 +159,7 @@ class GameBuilder:
 			self.addOption(link, getter, setter, attrs)
 			return link
 		else:
-			BugUtil.error("BugConfig - link option %s not found", linkId)
+			BugUtil.error("BugConfig - <option>.link %s not found", linkId)
 			return None
 	
 	def createOption(self, id, type, key=None, default=None, andId=None, dll=None, 
@@ -245,13 +240,13 @@ class GameBuilder:
 			else:
 				BugInit.addInit(module, func)
 		else:
-			BugUtil.debug("BugConfig - ignoring init %s.%s, requires dll version %s", module, function, self.resolveDll(dll))
+			BugUtil.debug("BugConfig - ignoring <init> %s.%s, requires dll version %s", module, function, self.resolveDll(dll))
 	
 	def createEvent(self, eventType, module, function, dll=None, args=(), kwargs={}, attrs=None):
 		if self.isDllOkay(dll):
 			self.eventManager.addEventHandler(eventType, BugUtil.getFunction(module, function, *args, **kwargs))
 		else:
-			BugUtil.debug("BugConfig - ignoring event %s, requires dll version %s", eventType, self.resolveDll(dll))
+			BugUtil.debug("BugConfig - ignoring <event> %s, requires dll version %s", eventType, self.resolveDll(dll))
 	
 	def createEvents(self, module, function=None, dll=None, args=(), kwargs={}, attrs=None):
 		if self.isDllOkay(dll):
@@ -259,14 +254,14 @@ class GameBuilder:
 				function = module
 			return BugUtil.callFunction(module, function, self.eventManager, *args, **kwargs)
 		else:
-			BugUtil.debug("BugConfig - ignoring events from %s, requires dll version %s", module, self.resolveDll(dll))
+			BugUtil.debug("BugConfig - ignoring <events> from %s, requires dll version %s", module, self.resolveDll(dll))
 			return None
 	
 	def createShortcut(self, key, module, function, dll=None, args=(), kwargs={}, attrs=None):
 		if self.isDllOkay(dll):
 			self.eventManager.addShortcutHandler(key, BugUtil.getFunction(module, function, *args, **kwargs))
 		else:
-			BugUtil.debug("BugConfig - ignoring shortcut %s, requires dll version %s", key, self.resolveDll(dll))
+			BugUtil.debug("BugConfig - ignoring <shortcut> %s, requires dll version %s", key, self.resolveDll(dll))
 	
 	def createArgument(self, name, type=None, value=None, attrs=None):
 		if type:
@@ -279,7 +274,7 @@ class GameBuilder:
 				elif type in TYPE_DEFAULT_FUNC:
 					return TYPE_DEFAULT_FUNC[type]()
 				else:
-					raise BugUtil.ConfigError("type %s requires a value" % type)
+					raise BugUtil.ConfigError("<arg>.type %s requires a value" % type)
 			else:
 				value = value.replace("\n", " ")
 				if type in TYPE_EVAL:
@@ -289,11 +284,49 @@ class GameBuilder:
 	def createFontSymbol(self, key, fromSymbolOrKey=None, offset=None, name=None, attrs=None):
 		if not fromSymbolOrKey:
 			if not self.symbol:
-				raise BugUtil.ConfigError("symbol %s requires an offset symbol" % key)
+				raise BugUtil.ConfigError("<symbol> %s requires an offset symbol" % key)
 			fromSymbolOrKey = self.symbol
 		if offset is None:
 			offset = 1
 		self.symbol = FontUtil.addOffsetSymbol(key, fromSymbolOrKey, offset, name)
+	
+	def createGameUtils(self, module, clazz=None, handlers=None, listeners=None, override=False, dll=None, attrs=None):
+		if self.isDllOkay(dll):
+			if not clazz and not handlers and not listeners:
+				raise BugUtil.ConfigError("<gameutils> must have class, handler, or listener attribute(s)")
+			if clazz:
+				utils = BugUtil.lookupFunction(module, clazz)()
+				if handlers or listeners:
+					if handlers:
+						for handler in handlers.replace(",", " ").split():
+							BugGameUtils.addHandler(BugUtil.bindFunction(utils, handler), override)
+					if listeners:
+						for listener in listeners.replace(",", " ").split():
+							func = None
+							if not listener.endswith(BugGameUtils.LISTENER_SUFFIX):
+								try:
+									func = BugUtil.bindFunction(utils, listener + BugGameUtils.LISTENER_SUFFIX)
+								except BugUtil.ConfigError:
+									pass
+							if not func:
+								try:
+									func = BugUtil.bindFunction(utils, listener)
+								except BugUtil.ConfigError:
+									raise BugUtil.ConfigError("Game utils %s.%s must define function %s or %sListener" % 
+											(module, clazz, listener, listener))
+							BugGameUtils.addListener(func)
+				else:
+					BugGameUtils.addUtils(utils, override)
+			else:
+				if handlers:
+					for handler in handlers.replace(",", " ").split():
+						BugGameUtils.addHandler(BugUtil.lookupFunction(module, handler), override)
+				if listeners:
+					for listener in listeners.replace(",", " ").split():
+						BugGameUtils.addListener(BugUtil.lookupFunction(module, listener))
+		else:
+			BugUtil.debug("BugConfig - ignoring <gameutils> from %s, requires dll version %s", module, self.resolveDll(dll))
+			return None
 
 def setGameBuilder(builder=None):
 	global g_builder
@@ -384,6 +417,11 @@ VALUE = "value"
 SYMBOL = "symbol"
 FROM = "from"
 OFFSET = "offset"
+
+GAMEUTILS = "game-utils"
+HANDLER = "handler"
+LISTENER = "listener"
+OVERRIDE = "override"
 
 MODULE = "module"
 CLASS = "class"
@@ -669,6 +707,21 @@ class XmlParser(xmllib.XMLParser):
 		symbol = g_builder.createFontSymbol(id, fromSymbolOrKey, offset, name, attrs)
 	
 	def end_symbol(self):
+		pass
+	
+	
+	def start_gameutils(self, attrs):
+		module = self.getModuleAttribute(attrs, GAMEUTILS)
+		clazz = self.getAttribute(attrs, CLASS)
+		handlers = self.getAttribute(attrs, HANDLER)
+		listeners = self.getAttribute(attrs, LISTENER)
+		override = self.getAttribute(attrs, OVERRIDE)
+		if override:
+			override = override.lower() in TRUE_STRINGS
+		dll = self.getAttribute(attrs, DLL)
+		g_builder.createGameUtils(module, clazz, handlers, listeners, override, dll, attrs)
+	
+	def end_gameutils(self):
 		pass
 	
 	
