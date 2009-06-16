@@ -30,6 +30,12 @@ AutologOpt = BugCore.game.Autolog
 Logger = None
 lPercent = "%"
 
+iLastPillageGold = None
+def doPillageGoldListener(argsList, value):
+	BugUtil.alert("Pillaged for %d gold", value)
+	global iLastPillageGold
+	iLastPillageGold = value
+
 def isLoggingOn():
 	return AutologOpt.isLoggingOn()
 
@@ -973,8 +979,14 @@ class AutoLogEvent(AbstractAutoLogEvent):
 						zsCity = pPlot.getPlotCity()
 						zsLocn = BugUtil.getText("TXT_KEY_AUTOLOG_NEAR", (zsCity.getName(), ))
 
-			message += zsLocn
-			message += BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
+			message = message + zsLocn
+
+			if (iLastPillageGold is None
+			or not self.bHumanPlaying):
+				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
+			else:
+				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName(), iLastPillageGold))
+			iLastPillageGold = None
 
 			if self.bHumanPlaying:
 				Logger.writeLog(message, vColor="DarkRed")

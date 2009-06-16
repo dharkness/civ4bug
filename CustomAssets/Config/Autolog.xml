@@ -6,6 +6,7 @@
 	Copyright (c) 2008 The BUG Mod.
 -->
 <mod id="Autolog" 
+	 module="autologEventManager"
 	 name="Autolog Mod" 
 	 author="eotinb, Ruff_Hi" 
 	 version="1.2" 
@@ -245,9 +246,11 @@
 		</section>
 	</options>
 	
-	<events module="autologEventManager">
+	<events>
 		<!--arg name="toggleKey" type="key" value="Alt L"/>
 		<arg name="entryKey" type="key" value="Alt E"/-->
 	</events>
+	
+	<gameutils listener="doPillageGoldListener"/>
 	
 </mod>
