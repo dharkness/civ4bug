@@ -23,7 +23,7 @@
 			"mouseEvent",
 			"kbdEvent"
 		</arg>
-	</init>	
+	</init>
 	
 	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
 	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
@@ -41,12 +41,12 @@
 	<!-- Civilization Core -->
 	
 	<!-- Domestic and Military Advisors and Civilopedia are chosen by options -->
-	<init module="CvScreensInterface" function="init"/>
+	<init module="CvScreensInterface"/>
 	
 	
 	<!-- Utility Modules -->
 	
-	<init module="FontUtil" function="init" immediate="True"/>
+	<init module="FontUtil" immediate="True"/>
 	<symbol id="war" from="COMMERCE_GOLD" offset="25"/>
 	<symbol id="peace"/>
 	<symbol id="space"/>  <!-- blank symbol the same size as other standard symbols -->
@@ -62,7 +62,7 @@
 	<symbol id="citizen" from="POWER" offset="1"/>
 	<symbol id="greatgeneral" name="GREAT_GENERAL"/>
 	
-	<init module="AttitudeUtil" function="init">
+	<init module="AttitudeUtil">
 		<!-- Furious, Annoyed, Cautious, Pleased, Friendly -->
 		<arg name="colors" type="tuple">
 			"COLOR_RED", 
@@ -99,7 +99,7 @@
 	<symbol id="pleased" name="ATTITUDE_PLEASED"/>
 	<symbol id="friendly" name="ATTITUDE_FRIENDLY"/>
 	
-	<init module="ColorUtil" function="init">
+	<init module="ColorUtil">
 		<!--
 			You can safely modify this list to change the color dropdown menus
 			for color options. You can change the text displayed in the menus by
@@ -124,12 +124,13 @@
 	
 	<events module="DealUtil" function="addEvents"/>
 	<events module="DiplomacyUtil" function="addEvents"/>
-	<init module="GGUtil" function="init"/>
-	<init module="GPUtil" function="init"/>
-	<init module="TechUtil" function="init"/>
-	<init module="TradeUtil" function="init"/>
-	<init module="TraitUtil" function="init"/>
-	<init module="UnitUtil" function="init"/>
+	<init module="GGUtil"/>
+	<init module="GPUtil"/>
+	<init module="TechUtil"/>
+	<init module="TradeUtil"/>
+	<init module="TraitUtil"/>
+	<init module="UnitUtil"/>
+    <gameutils module="WidgetUtil" handler="getWidgetHelp"/>
 	
 	
 	<!-- Mods -->
