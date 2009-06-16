@@ -786,11 +786,11 @@
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD</Tag>
-        <English>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</English>
-        <French>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</French>
-        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört (%s3 Gold)</German>
-        <Italian>[SPACE]è stato distrutto da %s2 %s1 (%s3 gold)</Italian>
-        <Spanish>[SPACE]was destroyed by %s1 %s2 (%s3 gold)</Spanish>
+        <English>[SPACE]was destroyed by %s1 %s2 (%d3 gold)</English>
+        <French>[SPACE]was destroyed by %s1 %s2 (%d3 gold)</French>
+        <German>[SPACE]wurde von [NUM2:einem:einer:einem:einigen:einigen:einigen] %[s1_civ_adjective]en %s2:3_UnitName zerstört (%d3 Gold)</German>
+        <Italian>[SPACE]è stato distrutto da %s2 %s1 (%d3 gold)</Italian>
+        <Spanish>[SPACE]was destroyed by %s1 %s2 (%d3 gold)</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD</Tag>
