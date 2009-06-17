@@ -2,15 +2,17 @@
 ##
 ## Utilities for dealing with Deals.
 ##
-##   formatDeal(CyDeal)
-##     Returns a plain text description of the given deal.
+##   Deal(CvDeal), ReversedDeal(CvDeal)
+##     Wrapper classes that provide a nicer interface than CvDeal.
+##     The reversed form makes the second player the primary player.
 ##
-##   findDealsByPlayerAndType(player ID, type(s))
-##     Returns a data structure holding the deals for a player that match the types.
+##   playerDeals(ePlayer)
+##     Iterates over all deals for <ePlayer>, returning Deal objects where <ePlayer>
+##     is always the primary player.
+##
+##   findDealsByPlayerAndType(ePlayer, type(s))
+##     Returns a data structure holding the Deals for <ePlayer> that match the types.
 ##     This should only be used with symmetrically tradeable types like open borders.
-##
-##   playerDeals(player ID)
-##     Iterates over all deals in which the player participates.
 ##
 ## * New events
 ##
@@ -28,6 +30,7 @@
 from CvPythonExtensions import *
 import BugDll
 import PlayerUtil
+import TradeUtil
 
 
 ## Constants
@@ -184,7 +187,7 @@ class Deal(object):
 	def getInitialGameTurn(self):
 		return self.deal.getInitialGameTurn()
 	
-	def isCancelable(eByPlaye):
+	def isCancelable(self, eByPlayer, bIgnoreWaitingPeriod=False):
 		if BugDll.isPresent():
 			return self.deal.isCancelable(eByPlayer, bIgnoreWaitingPeriod)
 		else:
@@ -205,11 +208,11 @@ class Deal(object):
 	def kill(self):
 		self.deal.kill()
 	
-	def isPeaceDeal():
+	def isPeaceDeal(self):
 		return self.eitherHasType(TradeableItems.TRADE_PEACE_TREATY)
-	def isVassalDeal():
+	def isVassalDeal(self):
 		return self.eitherHasAnyType(VASSAL_TRADE_ITEMS)
-	def isUncancelableVassalDeal(eByPlayer):
+	def isUncancelableVassalDeal(self, eByPlayer):
 		"""
 		Note: Doesn't check if a surrendered vassal is not allowed to revolt.
 		"""
@@ -256,9 +259,9 @@ class Deal(object):
 		return ("<deal %d [trades %d %s] [trades %d %s]>" % 
 				(self.getID(), 
 				self.getPlayer(), 
-				formatTrade(self.getPlayer(), [t for t in self.trades()]), 
+				TradeUtil.format(self.getPlayer(), [t for t in self.trades()]), 
 				self.getOtherPlayer(), 
-				formatTrade(self.getOtherPlayer(), [t for t in self.otherTrades()])))
+				TradeUtil.format(self.getOtherPlayer(), [t for t in self.otherTrades()])))
 
 class ReversedDeal(Deal):
 	"""A Deal where the basic and 'Other' functions are reversed."""
@@ -294,4 +297,4 @@ def test():
 	for player, deals in allDeals.iteritems():
 		print PlayerUtil.getPlayer(player).getName()
 		for type, deal in deals.iteritems():
-			print "%s: %r" % (TRADE_FORMATS[type].name, deal)
+			print "%s: %r" % (TradeUtil.TRADE_FORMATS[type].name, deal)
