@@ -282,4 +282,9 @@ def gameEndSave():
 	# called when the game ends
 	import AutoSave
 	AutoSave.saveGameEnd()
+
+def gameExitSave():
+	# called when the game ends
+	import AutoSave
+	AutoSave.saveGameExit()
 # BUG - AutoSave - end
