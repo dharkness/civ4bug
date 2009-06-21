@@ -103,6 +103,8 @@ def init():
 	for eUnit in range(NUM_UNITS):
 		getOlderUnits(eUnit)
 		getNewerUnits(eUnit)
+	
+	initOrders()
 
 def unitInfos():
 	"""Iterates through all CvUnitInfos."""
@@ -581,6 +583,10 @@ ORDERS_BY_AUTOMATION = {
 	AutomateTypes.AUTOMATE_CITY: ORDER_AUTO_CITY,
 	AutomateTypes.AUTOMATE_RELIGION: ORDER_AUTO_RELIGION,
 }
+MOVE_TO_MISSIONS = [
+	MissionTypes.MISSION_MOVE_TO, 
+	MissionTypes.MISSION_MOVE_TO_UNIT,
+]
 
 def getOrder(unit):
 	group = unit.getGroup()
@@ -593,7 +599,9 @@ def getOrder(unit):
 	if (group.getLengthMissionQueue() > 0):
 		# TODO: loop to find the first non-goto and check in ORDERS_BY_MISSION
 		eMissionType = group.getMissionType(0)
-		if eMissionType in (MissionTypes.MISSION_MOVE_TO, MissionTypes.MISSION_MOVE_TO_UNIT):
+		if eMissionType == MissionTypes.MISSION_BUILD:
+			return ORDER_BUILD
+		elif eMissionType in MOVE_TO_MISSIONS:
 			return ORDER_GOTO
 	elif (unit.isWaiting()):
 		if (unit.isFortifyable()):
@@ -601,3 +609,15 @@ def getOrder(unit):
 		else:
 			return ORDER_SLEEP
 	return ORDER_NONE
+
+def initOrders():
+	"""
+	Adds orders added by BULL.
+	"""
+	try:
+		ORDERS_BY_ACTIVITY[ActivityTypes.ACTIVITY_SENTRY_WHILE_HEAL] = ORDER_HEAL
+		ORDERS_BY_ACTIVITY[ActivityTypes.ACTIVITY_SENTRY_LAND_UNITS] = ORDER_SENTRY
+		ORDERS_BY_ACTIVITY[ActivityTypes.ACTIVITY_SENTRY_NAVAL_UNITS] = ORDER_SENTRY
+		MOVE_TO_MISSIONS.append(MissionTypes.MISSION_MOVE_TO_SENTRY)
+	except:
+		pass
