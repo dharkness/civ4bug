@@ -25,6 +25,7 @@ import MonkeyTools as mt
 import string
 from AStarTools import *
 import PyHelpers 
+import UnitUtil
 PyPlayer = PyHelpers.PyPlayer
 
 PleOpt = BugCore.game.PLE
@@ -1396,6 +1397,7 @@ class CvMainInterface:
 	def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y, iSize ):
 		# display the mission or activity info
 		if (self.bShowMissionInfo): 
+			# TODO: Switch to UnitUtil.getOrder()
 			# place the activity info below the unit icon.
 			szFileNameAction = ""
 			eActivityType = pLoopUnit.getGroup().getActivityType()
@@ -1436,10 +1438,12 @@ class CvMainInterface:
 				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_RELIGION").getPath()
 			# has unit a mission
 			elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
-				# is the mission a "move to" mission
 				eMissionType = pLoopUnit.getGroup().getMissionType(0)
-				if ( (eMissionType == MissionTypes.MISSION_MOVE_TO) or \
-					 (eMissionType == MissionTypes.MISSION_MOVE_TO_UNIT) ):
+				# is the mission to build an improvement
+				if (eMissionType == MissionTypes.MISSION_BUILD):
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BUILD").getPath()
+				# is the mission a "move to" mission
+				elif (eMissionType in UnitUtil.MOVE_TO_MISSIONS):
 					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
 			# if nothing of above, but unit is waiting -> unit is fortified
 			elif (pLoopUnit.isWaiting()):

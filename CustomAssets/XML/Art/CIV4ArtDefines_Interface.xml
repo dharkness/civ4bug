@@ -1464,6 +1464,10 @@
 			<Path>Art/PlotListEnhancements/medallion_action_heal.dds</Path>
 		</InterfaceArtInfo>
 		<InterfaceArtInfo>
+			<Type>OVERLAY_ACTION_BUILD</Type>
+			<Path>Art/PlotListEnhancements/medallion_action_build.dds</Path>
+		</InterfaceArtInfo>
+		<InterfaceArtInfo>
 			<Type>OVERLAY_ACTION_AUTO_BUILD</Type>
 			<Path>Art/PlotListEnhancements/medallion_action_auto_build.dds</Path>
 		</InterfaceArtInfo>
