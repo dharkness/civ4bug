@@ -577,7 +577,6 @@ def setDataDir(dir):
 			_settingsDir = settingsDir
 			_infoDir = join(dir, INFO_FOLDER)
 			BugConfigTracker.add("Settings_Directory", _settingsDir)
-			BugConfigTracker.add("Info_Directory", _infoDir)
 			return True
 	return False
 
