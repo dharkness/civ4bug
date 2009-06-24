@@ -25,28 +25,28 @@
 ##
 ## Registering GameUtils Classes
 ##
-##   <gameutils module="<module>" class="<class>"/>
-##
-##   addUtils(utils, override)
+##   addUtils(utils, override=False)
 ##     Adds all of the functions from <utils> as handlers and listeners. Every function
 ##     name must match the name of a callback (with "Listener" appended for listeners).
 ##     To ignore a function, begin its name with a single underscore ("_").
-##     If override (default False) is True, its handlers are placed before existing handlers.
+##     If <override> is True, its handlers are placed before existing handlers.
+##
+##       <gameutils module="<module>" class="<class>"
+##                  handlers="<func1> <func2>..." override="True|False"
+##                  listeners="<func1> <func2>..."/>
 ##
 ## Registering Handlers
 ##
-##   <gameutils module="<module>" handler="<name1> <name2> ..." override="True|False"/>
-##
-##   addHandler(func, override)
+##   addHandler(func, override=False)
 ##     Adds <func> as a handler for the callback with the same name.
-##     If override (default False) is True, it is placed before existing handlers.
+##     If <override> (default False) is True, it is placed before existing handlers.
 ##
-##   addNamedHandler(name, func, override)
+##   addNamedHandler(name, func, override=False)
 ##     Same as addHandler() above for callback <name>.
 ##
-## Registering Listeners
+##       <gameutils module="<module>" handlers="<func1> <func2> ..." override="True|False"/>
 ##
-##   <gameutils module="<module>" listener="<name1> <name2> ..."/>
+## Registering Listeners
 ##
 ##   addListener(func)
 ##     Adds <func> as a listener for the callback with the same name.
@@ -55,22 +55,32 @@
 ##   addNamedListener(name, func)
 ##     Same as addListener() above for callback <name>.
 ##
+##       <gameutils module="<module>" listeners="<func1> <func2> ..."/>
+##
+## Creating New Callbacks
+##
+##   createCallback(name, func, default=None)
+##     Creates a new callback <name> with base handler <func> and optional <default>.
+##
+##       <callback name="<name>" type="<type>" default="<default>" handler="<func>"/>
+##
 ## Setting Defaults
 ##
-##   TODO: <gameutils default="<name>" type="<type>" value="<value>"/>
-##
-##   setDefault(name, value)
-##     Sets the default for callback <name> to <value>.
+##   setDefault(name, default)
+##     Sets the default for callback <name> to <default>.
 ##     Use this only if you have defined new callbacks for your mod.
 ##
 ## Notes
-##   - Must be initialized externally by calling init()
+##
+##   Module must be initialized when it is loaded before BUG is initialized.
 ##
 ## Copyright (c) 2009 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugDll
+import BugConfig
 import BugUtil
 import CvGameUtils
 import types
@@ -121,8 +131,11 @@ def addNamedBoundListener(name, utils, func):
 	getDispatcher()._addBoundListener(name, utils, func)
 
 
-def setDefault(name, value):
-	getDispatcher()._setDefault(name, value)
+def createCallback(name, func, default=None):
+	getDispatcher()._createCallback(name, func, default)
+
+def setDefault(name, default):
+	getDispatcher()._setDefault(name, default)
 
 
 def getDispatcher():
@@ -139,7 +152,7 @@ class Dispatcher:
 		clazz = CvGameUtils.CvGameUtils
 		for name, func in clazz.__dict__.iteritems():
 			if not name.startswith("_") and isinstance(func, types.FunctionType):
-				self._createCallback(name, func)
+				self._createCallback(name, BugUtil.bindFunction(self._baseUtils, name))
 		
 		# setup defaults
 		self._setDefault("isVictory", True)
@@ -209,9 +222,12 @@ class Dispatcher:
 		self._setDefault("getWidgetHelp", u"")
 		self._setDefault("getUpgradePriceOverride", -1)
 	
-	def _createCallback(self, name, func):
-		BugUtil.debug("BugGameUtils - creating callback %s", name)
-		callback = Callback(name, self._baseUtils, func)
+	def _createCallback(self, name, func, default=None):
+		if default is not None:
+			BugUtil.debug("BugGameUtils - creating callback %s with default %s", name, default)
+		else:
+			BugUtil.debug("BugGameUtils - creating callback %s", name)
+		callback = Callback(name, func, default)
 		self._callbacks[name] = callback
 		setattr(self.__class__, name, callback)
 	
@@ -257,9 +273,8 @@ class Dispatcher:
 
 class Callback:
 	
-	def __init__(self, name, baseUtils, baseHandler, default=None):
+	def __init__(self, name, baseHandler, default=None):
 		self.name = name
-		self.baseUtils = baseUtils
 		self.baseHandler = baseHandler
 		self.default = default
 		self.handlers = []
@@ -281,10 +296,22 @@ class Callback:
 		BugUtil.debug("BugGameUtils - %s - adding %s listener", self.name, func.__module__)
 		self.listeners.append(func)
 	
-	def __call__(self, argsList):
+	def callHandler(self, handler, argsList):
+		if argsList is None:
+			return handler()
+		else:
+			return handler(argsList)
+	
+	def callListener(self, listener, argsList, result):
+		if argsList is None:
+			listener(result)
+		else:
+			listener(argsList, result)
+	
+	def __call__(self, argsList=None):
 		for handler in self.handlers:
 			BugUtil.debug("BugGameUtils - %s - dispatching to %s handler", self.name, handler.__module__)
-			result = handler(argsList)
+			result = self.callHandler(handler, argsList)
 			if result is not None and result != self.default:
 				break
 		else:
@@ -293,11 +320,105 @@ class Callback:
 				result = self.default
 			else:
 				BugUtil.debug("BugGameUtils - %s - dispatching to base handler", self.name)
-				result = self.baseHandler(self.baseUtils, argsList)
+				result = self.callHandler(self.baseHandler, argsList)
 		for listener in self.listeners:
 			BugUtil.debug("BugGameUtils - %s - calling %s listener", self.name, listener.__module__)
-			listener(argsList, result)
+			self.callListener(listener, argsList, result)
 		return result
+
+
+## Config Parser Handler
+
+class GameUtilsHandler(BugConfig.Handler):
+	
+	TAG = "gameutils"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, GameUtilsHandler.TAG, 
+				"module function class handler handlers listener listeners override dll",
+				CallbackHandler.TAG)
+		self.addAttribute("module", True, True)
+		self.addExcludedAttribute("function")
+		self.addAttribute("class", False, False, None, "function")
+		self.addExcludedAttribute("handler")
+		self.addAttribute("handlers", False, False, None, "handler")
+		self.addExcludedAttribute("listener")
+		self.addAttribute("listeners", False, False, None, "listener")
+		self.addAttribute("override", True, False, "false")
+		self.addAttribute("dll")
+	
+	def handle(self, element, module, clazz, handlers, listeners, override, dll):
+		override = self.isTrue(override)
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			if clazz:
+				utils = BugUtil.callFunction(module, clazz)
+				element.setState("gameutils", utils)
+				if handlers or listeners:
+					if handlers:
+						for handler in handlers.replace(",", " ").split():
+							addHandler(BugUtil.bindFunction(utils, handler), override)
+					if listeners:
+						for listener in listeners.replace(",", " ").split():
+							func = None
+							if not listener.endswith(LISTENER_SUFFIX):
+								try:
+									func = BugUtil.bindFunction(utils, listener + LISTENER_SUFFIX)
+								except BugUtil.ConfigError:
+									pass
+							if not func:
+								try:
+									func = BugUtil.bindFunction(utils, listener)
+								except BugUtil.ConfigError:
+									raise BugUtil.ConfigError("Game utils %s.%s must define function %s or %s", 
+											module, clazz, listener, listener + "Listener")
+							addListener(func)
+				else:
+					addUtils(utils, override)
+			else:
+				if handlers:
+					for handler in handlers.replace(",", " ").split():
+						addHandler(BugUtil.lookupFunction(module, handler), override)
+				if listeners:
+					for listener in listeners.replace(",", " ").split():
+						addListener(BugUtil.lookupFunction(module, listener))
+		else:
+			BugUtil.info("BugGameUtils - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, clazz, self.resolveDll(element, dll))
+
+class CallbackHandler(BugConfig.Handler):
+	
+	TAG = "callback"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, CallbackHandler.TAG, 
+				"name type default module handler listener dll")
+		self.addAttribute("name", True)
+		self.addAttribute("type")
+		self.addAttribute("default")
+		self.addAttribute("module", False, True)
+		self.addAttribute("handler", True, False, None, "name")
+		self.addAttribute("listener")
+		self.addAttribute("dll")
+	
+	def handle(self, element, name, type, default, module, handler, listener, dll):
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			utils = element.getState("gameutils")
+			if utils:
+				func = BugUtil.bindFunction(utils, handler)
+				if listener:
+					listenerFunc = BugUtil.bindFunction(utils, listener)
+			elif not module:
+				raise BugUtil.ConfigError("Element <%s> requires attribute module or be enclosed in <gameutils> that defines a class", element.tag)
+			else:
+				func = BugUtil.lookupFunction(module, handler)
+				if listener:
+					listenerFunc = BugUtil.lookupFunction(module, listener)
+			createCallback(name, func, self.createValue(type, default))
+			if listener:
+				addNamedListener(name, listenerFunc)
+		else:
+			BugUtil.info("BugGameUtils - ignoring <%s> %s, requires dll version %s", element.tag, name, self.resolveDll(element, dll))
 
 
 ## Initialization
@@ -306,3 +427,6 @@ def init():
 	BugUtil.debug("BugGameUtils - initializing")
 	global g_dispatcher
 	g_dispatcher = Dispatcher()
+
+# initialize once module has loaded
+init()

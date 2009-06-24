@@ -12,7 +12,7 @@
 	 date="06/09/2006" 
 	 url="http://hof.civfanatics.net/civ4/mod.php">
 	 
-	<option id="Enabled" link="Civ4lerts__Enabled"/>
+	<link id="Enabled" to="Civ4lerts__Enabled"/>
 	
 	<options id="MoreCiv4lerts" file="MoreCiv4lerts.ini">
 		<section id="MoreCiv4lerts">

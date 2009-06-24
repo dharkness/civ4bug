@@ -2,14 +2,34 @@
 ##
 ## Provides a top-level Game that manages the Mods and their Options.
 ##
+## TODO
+##   - Fix syntax error in _createParameterizedAccessorPair()
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
-import BugConfig
 import BugUtil
 
+
+## Fully-Qualifying Option IDs
+
 MOD_OPTION_SEP = "__"
+
+def makeOptionId(modId, optionId):
+	"""
+	Returns a fully-qualified option ID.
+	
+	Concatenates the mod and option ID with the separator ("__") if the option ID
+	doesn't already have one.
+	"""
+	if optionId is not None and modId is not None:
+		if optionId.find(MOD_OPTION_SEP) == -1:
+			return modId + MOD_OPTION_SEP + optionId
+	return optionId
+
+
+## Game and Mods
 
 class Game(object):
 	"""Manages a set of Mods."""
@@ -102,14 +122,14 @@ class Mod(object):
 		self._options[option.getID()] = option
 	
 	def _hasOption(self, id):
-		return BugConfig.makeOptionId(self._id, id) in self._options
+		return makeOptionId(self._id, id) in self._options
 	
 	def _getOption(self, id):
 		if not self._hasOption(id):
 			if self._inited:
 				BugUtil.error("BugCore - option %s not found", id)
 		else:
-			return self._options[BugConfig.makeOptionId(self._id, id)]
+			return self._options[makeOptionId(self._id, id)]
 	
 	def _initDone(self):
 		if self._inited:
@@ -134,7 +154,7 @@ class Mod(object):
 	
 	
 	def _createParameterizedAccessorPair(self, id, getter=None, setter=None, values=None):
-		id = self._id + MOD_OPTION_SEP + id
+		id = makeOptionId(self._id, id)
 		if getter:
 			if values is None:
 				def get(*args):
@@ -144,13 +164,13 @@ class Mod(object):
 					else:
 						return option.getValue()
 			else:
-				def equals(*args):
+				def get(*args):
 					option = self._getOption(id % args)
 					return option.getValue() in values
 			setattr(self, getter, get)
 		
 		if setter:
-			def set(*args):
+			def set(value, *args):
 				option = self._getOption(id % args)
 				option.setValue(value)
 			setattr(self, setter, set)

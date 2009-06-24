@@ -60,13 +60,13 @@
 ##   bindFunction(object, functionOrAttribute)
 ##     Returns the actual function or attribute bound to the given object.
 ##
+##   callFunction(module, functionOrClass, args..., kwargs...)
+##     Returns the result of calling the function bound using lookupFunction().
+##
 ##   getFunction(module, functionOrClass, bind?, args..., kwargs...)
 ##     Returns a Function object that can be used to dynamically call a function
 ##     or class constructor at a later time with the arguments provided when
 ##     the Function was created.
-##
-##   callFunction(module, functionOrClass, args..., kwargs...)
-##     Returns the result of calling the function bound using lookupFunction().
 ##
 ## Calling Functions in the Future
 ##
@@ -82,7 +82,7 @@
 ##   BugError, ConfigError
 ##     Raise these in BUG Core code rather than generic exceptions.
 ##
-## Civ4 Helpers (move these to GameUtil)
+## Civ4 Helpers
 ##
 ##   doHotSeatCheck(args)
 ##     Called during EndPlayerTurn, fires SwitchHotSeatPlayer event during a hot seat
@@ -96,31 +96,29 @@
 ##
 ##   gameUpdate          doDeferredCalls - Calls deferred functions from deferCall()
 ##
+## TODO
+##
+##   Move game checks to new module GameUtil
+##   Bring import of FontUtil back up top
+##   Split into multiple modules: LogUtil, TextUtil, TimeUtil, GameUtil, DeferUtil, FuncUtil
+##   Create module Bug for common classes like exceptions
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import ColorUtil
+import CvEventInterface
 import sys
 import time
 import traceback
 import types
-import BugEventManager
-import ColorUtil
-import FontUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
 interface = CyInterface()
 
-
-## Events
-
-def fireEvent(eventType, *args):
-	"""
-	Fires the given event using BugEventManager passing in all args as a list.
-	"""
-	BugEventManager.g_eventManager.fireEvent(eventType, *args)
 
 ## Display Year
 
@@ -153,6 +151,7 @@ def getText(key, values=(), default=None, replaceFontTags=True):
 	text = localText.getText(key, values)
 	if (text and text != key):
 		if replaceFontTags:
+			import FontUtil
 			text = FontUtil.replaceSymbols(text)
 		return text
 	else:
@@ -565,27 +564,30 @@ class Function:
 			return "<func %s.%s>" % \
 		   	   	   (self.__module__, self.__name__)
 
-def lookupFunction(module, name):
+def lookupFunction(module, functionOrClass):
+	debug("BUG: looking up %s.%s", module, functionOrClass)
 	try:
-		debug("BUG: looking up %s.%s" % (module, name))
-		return getattr(__import__(module), name)
+		return getattr(__import__(module), functionOrClass)
 	except ImportError:
-		raise ConfigError("No such module '%s'" % module)
+		raise ConfigError("No such module '%s'", module)
 	except AttributeError:
-		raise ConfigError("Module '%s' must define function or class '%s'" % (module, name))
+		raise ConfigError("Module '%s' must define function or class '%s'", module, functionOrClass)
 
-def bindFunction(obj, name):
+def bindFunction(obj, functionOrAttribute):
+	debug("BUG: binding %s.%s to %s", obj.__class__, functionOrAttribute, obj)
 	try:
-		debug("BUG: binding %s.%s to %s" % (obj.__class__, name, obj))
-		return getattr(obj, name)
+		return getattr(obj, functionOrAttribute)
 	except AttributeError:
-		raise ConfigError("Class '%s' must define function '%s'" % (obj.__class__, name))
+		raise ConfigError("Class '%s' must define function '%s'", obj.__class__, functionOrAttribute)
 
 def getFunction(module, functionOrClass, bind=False, *args, **kwargs):
-	func = Function(module, functionOrClass, *args, **kwargs)
-	if bind:
-		func.bind()
-	return func
+	if bind and not args and not kwargs:
+		return lookupFunction(module, functionOrClass)
+	else:
+		func = Function(module, functionOrClass, *args, **kwargs)
+		if bind:
+			func.bind()
+		return func
 
 def callFunction(module, functionOrClass, *args, **kwargs):
 	func = lookupFunction(module, functionOrClass)
@@ -638,7 +640,9 @@ def doDeferredCalls(argsList=None):
 
 class BugError(Exception):
 	"""Generic BUG-related error."""
-	def __init__(self, message):
+	def __init__(self, message, *args):
+		if args:
+			message = message % args
 		Exception.__init__(self, message)
 
 class ConfigError(BugError):
@@ -649,8 +653,8 @@ class ConfigError(BugError):
 	is allowed to continue so most problems can be reported at once. This may
 	result in false-positive errors being reported.
 	"""
-	def __init__(self, message):
-		BugError.__init__(self, message)
+	def __init__(self, message, *args):
+		BugError.__init__(self, message, *args)
 
 
 ## Civ4 Helpers
@@ -663,7 +667,7 @@ def doHotSeatCheck(args):
 	iGameTurn, ePlayer = args
 	game = gc.getGame()
 	if game.isHotSeat() and ePlayer == game.getActivePlayer():
-		fireEvent("SwitchHotSeatPlayer", ePlayer)
+		CvEventInterface.getEventManager().fireEvent("SwitchHotSeatPlayer", ePlayer)
 
 def isNoEspionage():
 	"""Returns True if using at least 3.17 and the 'No Espionage' option is enabled."""

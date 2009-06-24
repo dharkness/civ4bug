@@ -9,11 +9,15 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugConfig
+import BugCore
+import BugErrorOptionsTab
 import BugOptions
 import BugUtil
 import CvScreensInterface
 
-import BugErrorOptionsTab
+
+g_optionsScreen = CvScreensInterface.getBugOptionsScreen()
 
 class BugOptionsScreen:
 	"BUG Mod Options Screen"
@@ -68,5 +72,54 @@ class BugOptionsScreen:
 			self.interfaceScreen()
 
 
+## Event Handlers
+
 def clearAllTranslations(argsList=None):
-	CvScreensInterface.getBugOptionsScreen().clearAllTranslations()
+	g_optionsScreen.clearAllTranslations()
+
+
+## Configuration
+
+class ScreenConfig:
+	
+	def __init__(self, id):
+		self.id = id
+		self.tabs = []
+	
+	def addTab(self, tab):
+		self.tabs.append(tab)
+
+class ScreenHandler(BugConfig.Handler):
+	
+	TAG = "screen"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, ScreenHandler.TAG, "id", TabHandler.TAG)
+		self.addAttribute("id", True)
+	
+	def handle(self, element, id):
+		screen = ScreenConfig(id)
+		element.setState("options-screen", screen)
+		BugCore.game._addScreen(screen)
+
+class TabHandler(BugConfig.Handler):
+	
+	TAG = "tab"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, TabHandler.TAG, "id screen module class")
+		self.addAttribute("screen")
+		self.addAttribute("module", True, True)
+		self.addAttribute("class", True, False, None, "module")
+		self.addAttribute("id", True, False, None, "module")
+	
+	def handle(self, element, screenId, module, clazz, id):
+		if screenId:
+			screen = BugCore.game._getScreen(screenId)
+		else:
+			screen = element.getState("options-screen")
+		if not screen:
+			raise BugUtil.ConfigError("Element <%s> %s must be in <screen> or have screen attribute", id, element.tag)
+		screen.addTab(id)
+		tab = BugUtil.callFunction(module, clazz, g_optionsScreen)
+		g_optionsScreen.addTab(tab)
