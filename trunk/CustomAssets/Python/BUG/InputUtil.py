@@ -203,15 +203,16 @@ class ShortcutHandler(BugConfig.HandlerWithArgs):
 	TAG = "shortcut"
 	
 	def __init__(self):
-		BugConfig.HandlerWithArgs.__init__(self, ShortcutHandler.TAG, "key module function dll")
-		self.addAttribute("key", True)
+		BugConfig.HandlerWithArgs.__init__(self, ShortcutHandler.TAG, "key keys module function dll")
+		self.addExcludedAttribute("key")
+		self.addAttribute("keys", True, False, None, "key")
 		self.addAttribute("module", True, True)
 		self.addAttribute("function", True)
 		self.addAttribute("dll")
 	
-	def handle(self, element, key, module, function, dll):
+	def handle(self, element, keys, module, function, dll):
 		dll = BugDll.decode(dll)
 		if self.isDllOkay(element, dll):
-			CvEventInterface.getEventManager().addShortcutHandler(key, BugUtil.getFunction(module, function, *element.args, **element.kwargs))
+			CvEventInterface.getEventManager().addShortcutHandler(keys, BugUtil.getFunction(module, function, *element.args, **element.kwargs))
 		else:
-			BugUtil.info("InputUtil - ignoring <%s> %s, requires dll version %s", element.tag, key, self.resolveDll(element, dll))
+			BugUtil.info("InputUtil - ignoring <%s> %s, requires dll version %s", element.tag, keys, self.resolveDll(element, dll))
