@@ -29,7 +29,7 @@ g_optionsScreen = None
 def getOptionsScreen():
 	return g_optionsScreen
 
-def showOptionsScreen():
+def showOptionsScreen(argsList=None):
 	getOptionsScreen().interfaceScreen()
 
 

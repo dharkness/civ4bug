@@ -16,7 +16,7 @@ import BugPath
 import BugUtil
 import os
 
-def launch():
+def launch(argsList=None):
 	"Opens the mod's help file externally if it can be found or displays an error alert"
 	sLang = ["ENG", "FRA", "DEU", "ITA", "ESP"]
 	name = "BUG Mod Help-%s.chm" % (sLang[CyGame().getCurrentLanguage()])
