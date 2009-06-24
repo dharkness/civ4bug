@@ -11,8 +11,8 @@
 <bug>
 	
 	<config root="bug">
-		<config tag="mod" parents="xml" module="BugNewConfig" class="ModHandler"/>
-		<config tag="init" parents="mod" module="BugNewConfig" class="InitHandler"/>
+		<config tag="mod" parents="xml" module="BugConfig" class="ModHandler"/>
+		<config tag="init" parents="mod" module="BugConfig" class="InitHandler"/>
 		
 		<config tag="options" parents="mod" module="BugOptions" class="OptionsHandler">
 			<config tag="section" class="SectionHandler">
@@ -26,8 +26,8 @@
 		</config>
 		<config tag="link" parents="mod options section" module="BugOptions" class="LinkedOptionHandler"/>
 		
-		<config tag="events" parents="mod" module="BugNewConfig" class="EventsHandler"/>
-		<config tag="event" parents="mod" module="BugNewConfig" class="EventHandler"/>
+		<config tag="events" parents="mod" module="BugConfig" class="EventsHandler"/>
+		<config tag="event" parents="mod" module="BugConfig" class="EventHandler"/>
 		
 		<config tag="symbol" parents="mod" module="FontUtil" class="SymbolHandler"/>
 		<config tag="shortcut" parents="mod" module="InputUtil" class="ShortcutHandler"/>
