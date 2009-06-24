@@ -32,7 +32,6 @@ lPercent = "%"
 
 iLastPillageGold = None
 def doPillageGoldListener(argsList, value):
-	BugUtil.alert("Pillaged for %d gold", value)
 	global iLastPillageGold
 	iLastPillageGold = value
 
