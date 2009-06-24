@@ -227,12 +227,14 @@ def findMainModIniFile():
 	"""
 	if getModName():
 		return findSettingsFile(getModName() + ".ini")
+	BugUtil.warn("BugPath - mod name not set")
 	return None
 
 def findInfoFile(name, subdir=None):
 	"""
-	Locates and returns the path to the named niformational file or None if not found.
+	Locates and returns the path to the named informational file or None if not found.
 	"""
+	BugUtil.debug("BugPath - info file %s in %s/%s", name, getInfoDir(), subdir)
 	return getFilePath(getInfoDir(), name, subdir)
 
 
@@ -570,11 +572,12 @@ def setDataDir(dir):
 		settingsDir = join(dir, SETTINGS_FOLDER)
 		if isdir(settingsDir):
 			BugUtil.info("BugPath - data dir is '%s'", unicode(dir))
-			global _dataDir, _settingsDir
+			global _dataDir, _settingsDir, _infoDir
 			_dataDir = dir
 			_settingsDir = settingsDir
 			_infoDir = join(dir, INFO_FOLDER)
 			BugConfigTracker.add("Settings_Directory", _settingsDir)
+			BugConfigTracker.add("Info_Directory", _infoDir)
 			return True
 	return False
 
@@ -627,6 +630,7 @@ def getFilePath(root, name, subdir=None):
 		path = join(root, name)
 	if isfile(path):
 		return path
+	BugUtil.warn("BugPath - fail: %s", path)
 	return None
 
 def createFile(root, name, subdir=None):
