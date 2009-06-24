@@ -28,15 +28,10 @@
 	
 	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
 	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
+	<shortcut module="BugOptionsScreen" function="showOptionsScreen" keys="Alt Ctrl O | Alt J"/>
 	
-	<events module="HelpEventManager">
-		<!--arg type="key" value="Alt Ctrl F1"/-->
+	<shortcut module="BugHelp" function="launch" keys="Alt Ctrl F1"/>
 		<!--arg type="string" value="TXT_KEY_BUG_HELP_FILE"/-->
-	</events>
-	<events module="BugOptionsEventManager">
-		<!--arg type="key" value="Alt Ctrl O | Alt J"/-->
-		<!--arg type="string" value="BUGFull"/-->
-	</events>
 	
 	
 	<!-- Civilization Core -->

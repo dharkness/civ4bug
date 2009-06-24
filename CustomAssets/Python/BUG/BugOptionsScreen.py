@@ -4,7 +4,10 @@
 ##
 ## For input handlers see CvOptionsScreenCallbackInterface in Python/EntryPoints.
 ##
-## Copyright (c) 2007-2008 The BUG Mod.
+## Notes
+##   - Must be initialized when the module loads
+##
+## Copyright (c) 2007 The BUG Mod.
 ##
 ## Author: EmperorFool
 
@@ -14,10 +17,29 @@ import BugCore
 import BugErrorOptionsTab
 import BugOptions
 import BugUtil
-import CvScreensInterface
 
 
-g_optionsScreen = CvScreensInterface.getBugOptionsScreen()
+## Globals
+
+g_optionsScreen = None
+
+
+## Using and Showing
+
+def getOptionsScreen():
+	return g_optionsScreen
+
+def showOptionsScreen():
+	getOptionsScreen().interfaceScreen()
+
+
+## Event Handlers
+
+def clearAllTranslations(argsList=None):
+	g_optionsScreen.clearAllTranslations()
+
+
+## Class
 
 class BugOptionsScreen:
 	"BUG Mod Options Screen"
@@ -72,12 +94,6 @@ class BugOptionsScreen:
 			self.interfaceScreen()
 
 
-## Event Handlers
-
-def clearAllTranslations(argsList=None):
-	g_optionsScreen.clearAllTranslations()
-
-
 ## Configuration
 
 class ScreenConfig:
@@ -123,3 +139,12 @@ class TabHandler(BugConfig.Handler):
 		screen.addTab(id)
 		tab = BugUtil.callFunction(module, clazz, g_optionsScreen)
 		g_optionsScreen.addTab(tab)
+
+
+## Initialization
+
+def init():
+	global g_optionsScreen
+	g_optionsScreen = BugOptionsScreen()
+
+init()

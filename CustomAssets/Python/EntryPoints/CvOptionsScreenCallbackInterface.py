@@ -9,8 +9,8 @@ UserProfile = CyUserProfile()
 
 # BUG - Options - start
 import BugOptions
+import BugOptionsScreen
 import BugHelp
-import ColorUtil
 # BUG - Options - end
 
 # BUG - BugEventManager - start
@@ -511,7 +511,7 @@ def handleExitButtonInput ( argsList ):
 g_options = BugOptions.getOptions()
 
 def getBugOptionsScreen():
-	return CvScreensInterface.getBugOptionsScreen()
+	return BugOptionsScreen.getOptionsScreen()
 
 def handleBugExitButtonInput ( argsList ):
 	"Exits the screen after saving the options to disk"
