@@ -438,7 +438,7 @@ class AbstractOption(object):
 		return self.mod
 	
 	def getTrimmedID(self):
-		return unqualify(self.mod._id, self.id)
+		return unqualify(self.id)
 	
 	def getDll(self):
 		return self.dll
