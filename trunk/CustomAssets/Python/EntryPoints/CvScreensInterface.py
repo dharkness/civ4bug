@@ -48,7 +48,6 @@ from CvPythonExtensions import *
 
 # BUG - Options - end
 import BugCore
-import BugOptionsScreen
 AdvisorOpt = BugCore.game.Advisors
 TechWindowOpt = BugCore.game.TechWindow
 # BUG - Options - end
@@ -104,16 +103,6 @@ def showCorporationScreen():
 optionsScreen = CvOptionsScreen.CvOptionsScreen()
 def showOptionsScreen():
 	optionsScreen.interfaceScreen()
-
-# BUG - Options - start
-g_bugOptionsScreen = BugOptionsScreen.BugOptionsScreen()
-
-def getBugOptionsScreen():
-	return g_bugOptionsScreen
-
-def showBugOptionsScreen():
-	g_bugOptionsScreen.interfaceScreen()
-# BUG - Options - end
 
 #foreignAdvisor = CvForeignAdvisor.CvForeignAdvisor()
 foreignAdvisor = CvExoticForeignAdvisor.CvExoticForeignAdvisor()
