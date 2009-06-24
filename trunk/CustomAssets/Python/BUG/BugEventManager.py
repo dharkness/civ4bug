@@ -33,6 +33,9 @@
 ##       Signifies the moment the active player can begin making their moves
 ##       Fired from CvMainInterface.updateScreen()
 ##
+##   - SwitchHotSeatPlayer(ePlayer, iGameTurn)
+##       Signifies that the active player in a Hot Seat game has changed
+##
 ##   - LanguageChanged(iLanguage)
 ##       Fired from CvOptionsScreenCallbackInterface.handleLanguagesDropdownBoxInput()
 ##
