@@ -106,7 +106,7 @@ Each file can have multiple sections.
 """
 
 from CvPythonExtensions import *
-import BugConfigTracker
+import BugConfig
 import BugDll
 import BugInit
 import BugPath
@@ -140,7 +140,7 @@ class Options(object):
 		if (id in self.files):
 			return self.files[id]
 		else:
-			raise BugUtil.ConfigError("Missing file: %s" % id)
+			raise BugUtil.ConfigError("Missing file: %s", id)
 	
 	def addFile(self, file):
 		"""Adds the given IniFile to the dictionary."""
@@ -178,7 +178,7 @@ class Options(object):
 		if (id in self.options):
 			return self.options[id]
 		else:
-			raise BugUtil.ConfigError("Missing option: %s" % id)
+			raise BugUtil.ConfigError("Missing option: %s", id)
 
 	def addOption(self, option):
 		"""Adds an Option to the dictionary if its ID doesn't clash."""
@@ -238,9 +238,8 @@ def write():
 class IniFile(object):
 	"""Controls reading/writing an INI file and getting/setting Option values."""
 	
-	def __init__(self, id, mod, name):
+	def __init__(self, id, name):
 		self.id = id
-		self.mod = mod
 		self.name = name
 		self.path = None
 		self.config = None
@@ -283,8 +282,7 @@ class IniFile(object):
 	def fillComments(self):
 		print dir(self.config)
 		self.config.clearInitialComment()
-		self.config.addInitialComment(self.mod._id)
-		self.config.addInitialComment(self.name)
+		self.config.addInitialComment(self.id)
 		self.config.addInitialComment("")
 		self.config.addInitialComment(BugUtil.getPlainText("TXT_KEY_BUG_CREATED_BY_HEADER"))
 		self.config.addInitialComment()
@@ -707,7 +705,7 @@ class BaseOption(AbstractOption):
 		if type in TYPE_REPLACE:
 			type = TYPE_REPLACE[type]
 		if type not in TYPE_MAP:
-			raise BugUtil.ConfigError("Invalid option type: %s" % type)
+			raise BugUtil.ConfigError("Invalid option type: %s", type)
 		self.type = type
 		if default is not None:
 			self.default = self.asType(default)
@@ -847,16 +845,18 @@ class BaseListOption(BaseOption):
 	def __init__(self, mod, id, type=None, default=None, andId=None, dll=None, 
 				 listType="string", values=None, format=None, 
 				 title=None, tooltip=None, dirty=None):
-		if type is None:
+		if listType and listType not in LIST_TYPES:
+			raise BugUtil.ConfigError("Invalid option list type: %s", listType)
+		if not type:
+			if not listType:
+				raise BugUtil.ConfigError("Both types for option list are None")
 			type = LIST_TYPE_DEFAULT_TYPE[listType]
 		if type not in TYPE_DEFAULT_LIST_TYPE:
-			raise BugUtil.ConfigError("Invalid option type for list: %s" % type)
-		super(BaseListOption, self).__init__(mod, id, type, default, andId, dll, title, tooltip, dirty)
+			raise BugUtil.ConfigError("Invalid option type for list: %s", type)
 		
-		if listType is None:
+		super(BaseListOption, self).__init__(mod, id, type, default, andId, dll, title, tooltip, dirty)
+		if not listType:
 			listType = TYPE_DEFAULT_LIST_TYPE[type]
-		elif listType not in LIST_TYPES:
-			raise BugUtil.ConfigError("Invalid option list type: %s" % listType)
 		self.listType = listType
 		
 		if values is not None:
@@ -1236,13 +1236,227 @@ class LinkedListOption(LinkedOption):
 		return self.option.findClosestIndex(value)
 	
 	def setIndex(self, index, *args):
-		self.option.setIndex(value, *args)
+		self.option.setIndex(index, *args)
 
 
-def example():
-	g_game = BugOptions.getOptions()
-	ReminderMod = g_game.getReminder()
-	if ReminderMod.isEnabled():
-		ReminderMod.setEnabled(False)
-	if g_game.Reminder.Enabled:
-		g_game.Reminder.Enabled = False
+## Configuration
+
+def qualify(modId, optionId):
+	"""
+	Concatenates the mod and option ID with a separator if the option ID
+	doesn't already have one.
+	
+	Returns a fully qualified option ID.
+	"""
+	if optionId is not None and modId is not None:
+		if optionId.find(MOD_OPTION_SEP) == -1:
+			return modId + MOD_OPTION_SEP + optionId
+	return optionId
+
+
+class OptionsHandler(BugConfig.Handler):
+	
+	TAG = "options"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, self.TAG, "id file", SectionHandler.TAG)
+		self.addAttribute("id", True)
+		self.addAttribute("file", True)
+	
+	def handle(self, element, id, file):
+		ini = IniFile(id, file)
+		g_options.addFile(ini)
+		element.setState("ini", ini)
+	
+	def complete(self, element):
+		ini = element.getState("ini")
+		if ini:
+			ini.read()
+
+
+class SectionHandler(BugConfig.Handler):
+	
+	TAG = "section"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, self.TAG, "id name", (OptionHandler.TAG,))
+		self.addExcludedAttribute("id")
+		self.addAttribute("name", True, False, None, "id")
+	
+	def handle(self, element, name):
+		element.setState("ini-section", name)
+
+
+class BaseOptionHandler(BugConfig.Handler):
+	
+	def __init__(self, tag, validAttrs="", validChildren="", elementClass=BugConfig.Element):
+		BugConfig.Handler.__init__(self, tag, validAttrs, validChildren, elementClass)
+		self.addAttribute("id", True)
+	
+	def addOption(self, mod, option, getter, setter):
+		# TODO: move next two lines to BaseOption ctor?
+		g_options.addOption(option)
+		mod._addOption(option)
+		# TODO: add to option ctors
+		option.createAccessorPair(getter, setter)
+	
+	def createOption(self, element, id, type, key, default, andId, dll, title, tooltip, dirtyBit, getter, setter):
+		if type == "color":
+			return self.createListOption(element, id, type, key, default, andId, dll, title, tooltip, dirtyBit, getter, setter, type, None, None)
+		mod = element.getState("mod")
+		id = qualify(mod._id, id)
+		andId = qualify(mod._id, andId)
+		dll = self.resolveDll(element, dll)
+		if key:
+			ini = element.getState("ini")
+			section = element.getState("ini-section")
+			option = IniOption(mod, id, ini, section, key, type, default, andId, dll, title, tooltip, dirtyBit)
+		else:
+			option = UnsavedOption(mod, id, type, default, andId, dll, title, tooltip, dirtyBit)
+		self.addOption(mod, option, getter, setter)
+		element.setState("option", option)
+		return option
+	
+	def createListOption(self, element, id, type, key, default, andId, dll, title, tooltip, dirtyBit, getter, setter, listType, values, format):
+		mod = element.getState("mod")
+		id = qualify(mod._id, id)
+		andId = qualify(mod._id, andId)
+		dll = self.resolveDll(element, dll)
+		if key:
+			ini = element.getState("ini")
+			section = element.getState("ini-section")
+			option = IniListOption(mod, id, ini, section, key, type, default, andId, dll, listType, values, format, title, tooltip, dirtyBit)
+		else:
+			option = UnsavedListOption(mod, id, type, default, andId, dll, listType, values, format, title, tooltip, dirtyBit)
+		self.addOption(mod, option, getter, setter)
+		element.setState("option", option)
+		return option
+
+
+class OptionHandler(BaseOptionHandler):
+	
+	TAG = "option"
+	
+	def __init__(self):
+		BaseOptionHandler.__init__(self, self.TAG, "id type key default and dll title label tooltip help dirty dirtyBit get set args", ())
+		self.addAttribute("type", True)
+		self.addAttribute("key")
+		self.addAttribute("default")
+		self.addAttribute("and")
+		self.addAttribute("dll")
+		self.addExcludedAttribute("title")
+		self.addAttribute("label", False, False, None, "title")
+		self.addExcludedAttribute("tooltip")
+		self.addAttribute("help", False, False, None, "tooltip")
+		self.addExcludedAttribute("dirty")
+		self.addAttribute("dirtyBit", False, False, None, "dirtyBit")
+		self.addAttribute("get")
+		self.addAttribute("set")
+		self.addExcludedAttribute("args")
+	
+	def handle(self, element, id, type, key, default, andId, dll, label, help, dirtyBit, getter, setter):
+		self.createOption(element, id, type, key, default, andId, dll, label, help, dirtyBit, getter, setter)
+
+
+class ListOptionHandler(BaseOptionHandler):
+	
+	TAG = "list"
+	
+	def __init__(self):
+		BaseOptionHandler.__init__(self, self.TAG, "id type key default and dll title label tooltip help dirty dirtyBit get set args listType values format", ())
+		self.addAttribute("type")
+		self.addAttribute("key")
+		self.addAttribute("default")
+		self.addAttribute("and")
+		self.addAttribute("dll")
+		self.addExcludedAttribute("title")
+		self.addAttribute("label", False, False, None, "title")
+		self.addExcludedAttribute("tooltip")
+		self.addAttribute("help", False, False, None, "tooltip")
+		self.addExcludedAttribute("dirty")
+		self.addAttribute("dirtyBit", False, False, None, "dirtyBit")
+		self.addAttribute("get")
+		self.addAttribute("set")
+		self.addExcludedAttribute("args")
+		self.addAttribute("listType")
+		self.addAttribute("values")
+		self.addAttribute("format")
+	
+	def handle(self, element, id, type, key, default, andId, dll, label, help, dirtyBit, getter, setter, listType, values, format):
+		self.createListOption(element, id, type, key, default, andId, dll, label, help, dirtyBit, getter, setter, listType, values, format)
+	
+	def complete(self, element):
+		element.getState("option").createComparers()
+
+
+class ListChoiceHandler(BugConfig.Handler):
+	
+	TAG = "choice"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, self.TAG, "id get set", ())
+		self.addAttribute("id", True)
+		self.addAttribute("get")
+		self.addAttribute("set")
+	
+	def handle(self, element, id, getter, setter):
+		option = element.getState("option")
+		option.addValue(id, getter, setter)
+
+
+class LinkedOptionHandler(BaseOptionHandler):
+	
+	TAG = "link"
+	
+	def __init__(self):
+		BaseOptionHandler.__init__(self, self.TAG, "id to get set", ())
+		self.addAttribute("to", True)
+		self.addAttribute("get")
+		self.addAttribute("set")
+	
+	def handle(self, element, id, to, getter, setter):
+		mod = element.getState("mod")
+		id = qualify(mod._id, id)
+		to = qualify(mod._id, to)
+		option = g_options.getOption(to)
+		if option is not None:
+			link = option.createLinkedOption(mod, id)
+			self.addOption(mod, link, getter, setter)
+		else:
+			BugUtil.error("Option ID %s in element <%s> %s not found", to, element.tag, id)
+
+
+class ChangeHandler(BugConfig.Handler):
+	
+	TAG = "change"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, self.TAG, "dirtyBit module function")
+		self.addAttribute("dirtyBit")
+		self.addAttribute("module", False, True)
+		self.addAttribute("function")
+	
+	def handle(self, element, dirtyBit, module, function):
+		option = element.getState("option")
+		if dirtyBit:
+			option.addDirtyBit(dirtyBit)
+		elif module and function:
+			option.addDirtyFunction(BugUtil.getFunction(module, function, True))
+		else:
+			raise BugUtil.ConfigError("Element <%s> requires attribute dirtyBit or both module and function", element.tag)
+
+
+class AccessorHandler(BugConfig.Handler):
+	
+	TAG = "accessor"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, self.TAG, "id args get set", ())
+		self.addAttribute("id", True)
+		self.addAttribute("args")
+		self.addAttribute("get")
+		self.addAttribute("set")
+	
+	def handle(self, element, id, args, getter, setter):
+		mod = element.getState("mod")
+		mod._createParameterizedAccessorPair(id, getter, setter)

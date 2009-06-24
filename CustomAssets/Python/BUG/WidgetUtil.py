@@ -30,11 +30,16 @@
 ##
 ##       <widget name="<widget-name>" module="<module-name>" function="<function-name>"/>
 ##
+## Notes
+##
+##   Must register setWidgetHelp() as a BugGameUtils handler.
+##
 ## Copyright (c) 2009 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugConfig
 import BugUtil
 
 
@@ -46,34 +51,22 @@ def createWidget(name):
 	"""
 	Creates and returns the next unique WidgetTypes constant to be used with custom UI widgets.
 	
-	If <name> already exists, a warning is logged. Otherwise the new widget is
-	assigned to WidgetTypes.<name>.
+	If <name> already exists, a warning is logged and the widget is returned.
+	Otherwise the new widget is assigned to WidgetTypes.<name> and returned.
 	"""
-	global g_nextWidget
-	widget = WidgetTypes(g_nextWidget)
-	if name:
-		if hasattr(WidgetTypes, name):
-			BugUtil.warn("WidgetTypes.%s already exists", name)
-		else:
-			BugUtil.info("WidgetUtil - WidgetTypes.%s = %d", name, g_nextWidget)
-			setattr(WidgetTypes, name, widget)
-	g_nextWidget += 1
-	return widget
+	if hasattr(WidgetTypes, name):
+		BugUtil.warn("WidgetTypes.%s already exists", name)
+		return getattr(WidgetTypes, name)
+	else:
+		global g_nextWidget
+		BugUtil.info("WidgetUtil - WidgetTypes.%s = %d", name, g_nextWidget)
+		widget = WidgetTypes(g_nextWidget)
+		setattr(WidgetTypes, name, widget)
+		g_nextWidget += 1
+		return widget
 
 
-## Hover Text
-
-(
-	WIDGET_HELP_TEXT, 
-	WIDGET_HELP_XML, 
-	WIDGET_HELP_FUNCTION,
-) = range(3)
-
-WIDGET_HELP_TYPES = (
-	"Text",
-	"XML",
-	"Function",
-)
+## Hover Help Text
 
 g_widgetHelp = {}
 
@@ -81,13 +74,13 @@ def setWidgetHelpText(widget, text):
 	"""
 	Assigns the literal <text> to be used as the hover text for <widget>.
 	"""
-	setWidgetHelp(widget, WIDGET_HELP_TEXT, text)
+	_setWidgetHelp(widget, "Text", lambda *ignored: text)
 
 def setWidgetHelpXml(widget, key):
 	"""
 	Assigns the XML <key> to be used to lookup the translated hover text for <widget>.
 	"""
-	setWidgetHelp(widget, WIDGET_HELP_XML, key)
+	_setWidgetHelp(widget, "XML", lambda *ignored: BugUtil.getPlainText(key))
 
 def setWidgetHelpFunction(widget, func):
 	"""
@@ -101,33 +94,55 @@ def setWidgetHelpFunction(widget, func):
 		bOption             boolean
 	
 	The first three are the ones used when creating the UI widget.
-	I have no idea what <bOption> is or where it comes from.
+	I have no idea what <bOption> is or where it comes from as it's supplied by the EXE.
 	"""
-	setWidgetHelp(widget, WIDGET_HELP_FUNCTION, func)
+	_setWidgetHelp(widget, "Function", func)
 
-def setWidgetHelp(widget, type, value):
+def _setWidgetHelp(widget, type, func):
 	"""
-	Registers the hover text type and value for <widget> if it hasn't been already.
+	Registers the hover text <func> for <widget> if it hasn't been already.
+	
+	Do not call this function as it is used internally by the registration functions above.
 	"""
 	if widget in g_widgetHelp:
 		BugUtil.warn("WidgetTypes %d help already registered", widget)
 	else:
-		BugUtil.debug("WidgetUtil - registering %s hover help for WidgetTypes %d: %s", WIDGET_HELP_TYPES[type], widget, value)
-		g_widgetHelp[widget] = (type, value)
+		BugUtil.debug("WidgetUtil - registering %s hover help for WidgetTypes %d: %s", type, widget, func)
+		g_widgetHelp[widget] = func
 
 	
 def getWidgetHelp(argsList):
 	"""
 	Returns the hover help text for <eWidgetType> if registered, otherwise returns an empty string.
+	
+	This function is a BugGameUtils handler registered in init.xml.
 	"""
 	eWidgetType, iData1, iData2, bOption = argsList
-	entry = g_widgetHelp.get(eWidgetType)
-	if entry:
-		(type, value) = entry
-		if type == WIDGET_HELP_TEXT:
-			return value
-		elif type == WIDGET_HELP_XML:
-			return BugUtil.getPlainText(value)
-		elif type == WIDGET_HELP_FUNCTION:
-			return value(eWidgetType, iData1, iData2, bOption)
+	func = g_widgetHelp.get(eWidgetType)
+	if func:
+		return func(eWidgetType, iData1, iData2, bOption)
 	return u""
+
+
+## Configuration Handler
+
+class WidgetHandler(BugConfig.Handler):
+	
+	TAG = "widget"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, WidgetHandler.TAG, "name text xml module function")
+		self.addAttribute("name", True)
+		self.addAttribute("text")
+		self.addAttribute("xml")
+		self.addAttribute("module", False, True)
+		self.addAttribute("function")
+	
+	def handle(self, element, name, text, xml, module, function):
+		widget = createWidget(name)
+		if text:
+			setWidgetHelpText(widget, text)
+		elif xml:
+			setWidgetHelpXml(widget, xml)
+		elif module and function:
+			setWidgetHelpFunction(widget, BugUtil.lookupFunction(module, function))

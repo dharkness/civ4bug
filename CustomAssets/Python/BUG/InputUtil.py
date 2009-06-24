@@ -7,8 +7,11 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import types
+import BugConfig
+import BugDll
 import BugUtil
+import CvEventInterface
+import types
 
 KEY_MAP = {
 	"'": "APOSTROPHE",
@@ -191,3 +194,24 @@ def init():
 
 # initialize when the module is loaded
 init()
+
+
+## configuration handler
+
+class ShortcutHandler(BugConfig.HandlerWithArgs):
+	
+	TAG = "shortcut"
+	
+	def __init__(self):
+		BugConfig.HandlerWithArgs.__init__(self, ShortcutHandler.TAG, "key module function dll")
+		self.addAttribute("key", True)
+		self.addAttribute("module", True, True)
+		self.addAttribute("function", True)
+		self.addAttribute("dll")
+	
+	def handle(self, element, key, module, function, dll):
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			CvEventInterface.getEventManager().addShortcutHandler(key, BugUtil.getFunction(module, function, *element.args, **element.kwargs))
+		else:
+			BugUtil.info("InputUtil - ignoring <%s> %s, requires dll version %s", element.tag, key, self.resolveDll(element, dll))

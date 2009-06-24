@@ -32,8 +32,10 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import CvUtil
+import BugConfig
+import BugDll
 import BugUtil
+import CvUtil
 import re
 
 ## constants
@@ -48,10 +50,13 @@ nextSymbolID = int(FontSymbols.MAX_NUM_SYMBOLS)
 
 # key -> symbol (FontSymbols)
 keySymbols = {}
+
 # symbol -> primary key (string)
 symbolPrimaryKeys = {}
+
 # symbol -> ordinal (int)
 symbolOrdinals = {}
+
 # symbol -> character (unicode string)
 symbolChars = {}
 
@@ -170,3 +175,34 @@ def replaceSymbols(text, unknownReplacement=""):
 		except BugUtil.ConfigError:
 			return unknownReplacement
 	return SYMBOL_REGEXP.sub(replace, text)
+
+
+## configuration handler
+
+class SymbolHandler(BugConfig.Handler):
+	
+	TAG = "symbol"
+	
+	def __init__(self):
+		BugConfig.Handler.__init__(self, SymbolHandler.TAG, "id name from offset dll")
+		self.addAttribute("id", True)
+		self.addAttribute("name")
+		self.addAttribute("from")
+		self.addAttribute("offset")
+		self.addAttribute("dll")
+		self.lastSymbol = None
+	
+	def handle(self, element, id, name, fromKey, offset, dll):
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			if not fromKey:
+				if not self.lastSymbol:
+					raise BugUtil.ConfigError("<%s> %s requires an offset symbol" % (element.tag, id))
+				fromKey = self.lastSymbol
+			if offset is None:
+				offset = 1
+			else:
+				offset = int(offset)
+			self.lastSymbol = addOffsetSymbol(id, fromKey, offset, name)
+		else:
+			BugUtil.info("FontUtil - ignoring <%s> %s, requires dll version %s", element.tag, id, self.resolveDll(element, dll))

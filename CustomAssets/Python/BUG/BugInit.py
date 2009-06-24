@@ -63,7 +63,7 @@ def loadMod(name):
 	path = BugPath.findAssetFile(name + ".xml", "Config")
 	if path:
 		BugUtil.debug("BugInit - loading mod %s...", name)
-		parser = BugConfig.XmlParser()
+		parser = BugConfig.ConfigParser()
 		timer = BugUtil.Timer("load mod")
 		try:
 			parser.parse(path)

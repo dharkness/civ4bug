@@ -8,12 +8,13 @@
 -->
 <mod id="BUG" 
 	 name="BUG Mod" 
-	 version="3.5" 
+	 version="3.6" 
 	 build="1324" 
 	 date="08/17/2008">
 	
 	<!-- BUG Core -->
 	
+	<load mod="BUG Config"/>
 	<load mod="BUG Core"/>
 	
 	<init module="BugEventManager" function="configure" immediate="True">
