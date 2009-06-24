@@ -116,8 +116,6 @@ from configobj import ConfigObj
 import re
 import types
 
-MOD_OPTION_SEP = "__"
-
 # regular expressions used for DLL handling in tooltips
 
 RE_DLL_ALL_TAGS = re.compile(r"(\[DLL\].*\[/DLL\]|\[DLLERR\])", re.DOTALL)
@@ -440,7 +438,7 @@ class AbstractOption(object):
 		return self.mod
 	
 	def getTrimmedID(self):
-		return self.id.replace(self.mod._id + MOD_OPTION_SEP, "")
+		return unqualify(self.mod._id, self.id)
 	
 	def getDll(self):
 		return self.dll
@@ -1239,20 +1237,31 @@ class LinkedListOption(LinkedOption):
 		self.option.setIndex(index, *args)
 
 
-## Configuration
+## Option IDs
+
+MOD_OPTION_SEP = "__"
 
 def qualify(modId, optionId):
 	"""
-	Concatenates the mod and option ID with a separator if the option ID
-	doesn't already have one.
-	
-	Returns a fully qualified option ID.
+	Returns a fully qualified option ID by inserting the mod's ID if necessary.
 	"""
 	if optionId is not None and modId is not None:
 		if optionId.find(MOD_OPTION_SEP) == -1:
 			return modId + MOD_OPTION_SEP + optionId
 	return optionId
 
+def unqualify(optionId):
+	"""
+	Returns an unqualified option ID by removing the mod's ID if necessary.
+	"""
+	if optionId is not None:
+		pos = optionId.find(MOD_OPTION_SEP)
+		if pos >= 0:
+			return optionId[pos + 2:]
+	return optionId
+
+
+## Configuration
 
 class OptionsHandler(BugConfig.Handler):
 	

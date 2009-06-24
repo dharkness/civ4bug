@@ -9,24 +9,8 @@
 ##
 ## Author: EmperorFool
 
+import BugOptions
 import BugUtil
-
-
-## Fully-Qualifying Option IDs
-
-MOD_OPTION_SEP = "__"
-
-def makeOptionId(modId, optionId):
-	"""
-	Returns a fully-qualified option ID.
-	
-	Concatenates the mod and option ID with the separator ("__") if the option ID
-	doesn't already have one.
-	"""
-	if optionId is not None and modId is not None:
-		if optionId.find(MOD_OPTION_SEP) == -1:
-			return modId + MOD_OPTION_SEP + optionId
-	return optionId
 
 
 ## Game and Mods
@@ -118,18 +102,20 @@ class Mod(object):
 	def _getID(self):
 		return self._id
 	
+	def qualify(self, id):
+		return self.qualify(id)
+	
 	def _addOption(self, option):
 		self._options[option.getID()] = option
 	
 	def _hasOption(self, id):
-		return makeOptionId(self._id, id) in self._options
+		return self.qualify(id) in self._options
 	
 	def _getOption(self, id):
-		if not self._hasOption(id):
-			if self._inited:
-				BugUtil.error("BugCore - option %s not found", id)
-		else:
-			return self._options[makeOptionId(self._id, id)]
+		try:
+			return self._options[self.qualify(id)]
+		except KeyError:
+			raise BugUtil.ConfigError("Option %s not found in mod %s", id, self._id)
 	
 	def _initDone(self):
 		if self._inited:
@@ -154,7 +140,7 @@ class Mod(object):
 	
 	
 	def _createParameterizedAccessorPair(self, id, getter=None, setter=None, values=None):
-		id = makeOptionId(self._id, id)
+		id = BugOptions.qualify(self._id, id)
 		if getter:
 			if values is None:
 				def get(*args):
