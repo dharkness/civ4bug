@@ -9,17 +9,20 @@
 
 from CvPythonExtensions import *
 import BugUtil
-import CvUtil
 
-# Globals
-gc = CyGlobalContext()
-ArtFileMgr = CyArtFileMgr()
+# Constants
+
 SOLID_MARKS = 0
 TICK_MARKS = 1
 CENTER_MARKS = 2
 
-# Constants
-#BG = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTON_NULL").getPath()
+
+# Globals
+
+ArtFileMgr = CyArtFileMgr()
+
+
+# ProgressBar Class
 
 class ProgressBar:
 	def __init__(self, id, x, y, w, h, color, marks, forward):
