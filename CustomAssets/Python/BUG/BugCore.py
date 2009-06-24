@@ -103,7 +103,7 @@ class Mod(object):
 		return self._id
 	
 	def qualify(self, id):
-		return self.qualify(id)
+		return BugOptions.qualify(self._id, id)
 	
 	def _addOption(self, option):
 		self._options[option.getID()] = option
