@@ -14,6 +14,7 @@ import BugDll
 # BUG - Options - start
 import BugCore
 import BugOptions
+import BugUtil
 ClockOpt = BugCore.game.NJAGC
 ScoreOpt = BugCore.game.Scores
 MainOpt = BugCore.game.MainInterface
@@ -42,7 +43,7 @@ ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
 # BUG - 3.17 No Espionage - start
-import BugUtil
+import GameUtil
 # BUG - 3.17 No Espionage - end
 
 # BUG - Reminders - start
@@ -2418,7 +2419,7 @@ class CvMainInterface:
 		screen.hide( "InfoAdvisorButton" )
 
 # BUG - 3.17 No Espionage - start
-		if not BugUtil.isNoEspionage():
+		if GameUtil.isEspionage():
 			iBtnX += iBtnAdvance
 			screen.setImageButton( "EspionageAdvisorButton", "", iBtnX, iBtnY, iBtnWidth, iBtnWidth, WidgetTypes.WIDGET_ACTION, gc.getControlInfo(ControlTypes.CONTROL_ESPIONAGE_SCREEN).getActionInfoIndex(), -1 )
 			screen.setStyle( "EspionageAdvisorButton", "Button_HUDAdvisorEspionage_Style" )
@@ -6383,7 +6384,7 @@ class CvMainInterface:
 # BUG - Align Icons - end
 
 # BUG - 3.17 No Espionage - start
-				bNoEspionage = BugUtil.isNoEspionage()
+				bEspionage = GameUtil.isEspionage()
 # BUG - 3.17 No Espionage - end
 
 # BUG - Power Rating - start
@@ -6394,7 +6395,7 @@ class CvMainInterface:
 					iHighPowerColor = ScoreOpt.getHighPowerColor()
 					iLowPowerColor = ScoreOpt.getLowPowerColor()
 					
-					if (not bNoEspionage):
+					if (bEspionage):
 						iDemographicsMission = -1
 						for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 							if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
@@ -6548,14 +6549,14 @@ class CvMainInterface:
 														if (bAlignIcons):
 															scores.setReligion(szTempBuffer)
 													
-													if (not bNoEspionage and gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
+													if (bEspionage and gc.getTeam(eTeam).getEspionagePointsAgainstTeam(gc.getGame().getActiveTeam()) < gc.getTeam(gc.getGame().getActiveTeam()).getEspionagePointsAgainstTeam(eTeam)):
 														szTempBuffer = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 														szBuffer = szBuffer + szTempBuffer
 														if (bAlignIcons):
 															scores.setEspionage()
 												
 												bEspionageCanSeeResearch = False
-												if (not bNoEspionage):
+												if (bEspionage):
 													for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 														if (gc.getEspionageMissionInfo(iMissionLoop).isSeeResearch()):
 															bEspionageCanSeeResearch = gc.getActivePlayer().canDoEspionageMission(iMissionLoop, ePlayer, None, -1)
@@ -6573,7 +6574,7 @@ class CvMainInterface:
 												# if on, show according to espionage "see demographics" mission
 												if (bShowPower 
 													and (gc.getGame().getActivePlayer() != ePlayer
-														 and (bNoEspionage or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1)))):
+														 and (not bEspionage or gc.getActivePlayer().canDoEspionageMission(iDemographicsMission, ePlayer, None, -1)))):
 													iPower = gc.getPlayer(ePlayer).getPower()
 													if (iPower > 0): # avoid divide by zero
 														fPowerRatio = float(iPlayerPower) / float(iPower)
