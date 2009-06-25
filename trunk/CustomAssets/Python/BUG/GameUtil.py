@@ -22,6 +22,11 @@
 ##   isSaveVersionAtLeast(version)
 ##     Returns True if the saved game version is <version> or greater.
 ##
+## Game Values
+##
+##   getCultureThreshold(level)
+##     Returns the culture required to achieve the <level> for the current game speed.
+##
 ## Game Options
 ##
 ##   isEspionage()
@@ -62,6 +67,15 @@ def isSaveVersionAtLeast(version):
 	return getSaveVersion() >= version
 
 
+## Game Values
+
+def getCultureThreshold(level):
+	if isVersionAtLeast(319):
+		return gc.getGame().getCultureThreshold(level)
+	else:
+		return gc.getCultureLevelInfo(level).getSpeedThreshold(gc.getGame().getGameSpeedType())
+
+
 ## Game Options
 
 def isEspionage():
@@ -69,8 +83,5 @@ def isEspionage():
 	Returns True if using at least 3.17 and the 'No Espionage' option is not enabled.
 	"""
 	if isVersionAtLeast(317):
-		try:
-			return not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
-		except:
-			pass
+		return not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
 	return True

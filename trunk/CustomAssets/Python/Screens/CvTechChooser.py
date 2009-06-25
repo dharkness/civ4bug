@@ -38,6 +38,10 @@ UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIS
 				 "UNITCLASS_ARTIST", "UNITCLASS_PROPHET" ]
 # BUG - GP Tech Prefs - end
 
+# BUG - 3.19 No Espionage - start
+import GameUtil
+# BUG - 3.19 No Espionage - end
+
 class CvTechChooser:
 	"Tech Chooser Screen"
 
@@ -439,7 +443,10 @@ class CvTechChooser:
 			szFreeUnitButton = self.getNextWidgetName("FreeUnit")
 			eLoopUnit = gc.getCivilizationInfo(gc.getGame().getActiveCivilizationType()).getCivilizationUnits(gc.getTechInfo(i).getFirstFreeUnitClass())
 			if (eLoopUnit != -1):
-				if (gc.getUnitInfo(eLoopUnit).getEspionagePoints() == 0 or not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)):				
+# BUG - 3.19 No Espionage - start
+				# CvUnitInfo.getEspionagePoints() was added in 319
+				if (GameUtil.getVersion() < 319 or gc.getUnitInfo(eLoopUnit).getEspionagePoints() == 0 or not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)):				
+# BUG - 3.19 No Espionage - end
 					screen.addDDSGFCAt( szFreeUnitButton, szTechRecord, gc.getPlayer(gc.getGame().getActivePlayer()).getUnitButton(eLoopUnit), iX + fX, iY + Y_ROW, TEXTURE_SIZE, TEXTURE_SIZE, WidgetTypes.WIDGET_HELP_FREE_UNIT, eLoopUnit, i, False )
 					fX += X_INCREMENT
 
