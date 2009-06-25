@@ -289,11 +289,10 @@ def makeDir(name):
 	return path
 
 def findOrMakeDir(name):
-	"Locates or creates the specified directory."
-	dir = findDir(name)
-	if not dir:
-		return makeDir(name)
-	return dir
+	"""
+	Locates or creates the specified directory and returns the path to it.
+	"""
+	return findDir(name) or makeDir(name)
 
 
 ## Initialization
