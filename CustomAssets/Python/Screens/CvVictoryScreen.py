@@ -5,12 +5,16 @@ import CvUtil
 import ScreenInput
 import PyHelpers
 import time
-import ColorUtil
-import AttitudeUtil
-import TechUtil
 
+# BUG - start
+import AttitudeUtil
 import BugCore
+import BugUtil
+import ColorUtil
+import GameUtil
+import TechUtil
 AdvisorOpt = BugCore.game.Advisors
+# BUG - end
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -23,8 +27,6 @@ VICTORY_CONDITION_SCREEN = 0
 GAME_SETTINGS_SCREEN = 1
 UN_RESOLUTION_SCREEN = 2
 UN_MEMBERS_SCREEN = 3
-
-import BugUtil
 
 class CvVictoryScreen:
 	"Keeps track of victory conditions"
@@ -1199,7 +1201,9 @@ class CvVictoryScreen:
 					
 					iBestCulturePlayer = -1
 					bestCityCulture = 0
-					maxCityCulture = gc.getGame().getCultureThreshold(victory.getCityCulture())
+# BUG - 3.19 Culture Threshold - start
+					maxCityCulture = GameUtil.getCultureThreshold(victory.getCityCulture())
+# BUG - 3.19 Culture Threshold - end
 					for iLoopPlayer in range(gc.getMAX_PLAYERS()):
 						if (gc.getPlayer(iLoopPlayer).isAlive() and not gc.getPlayer(iLoopPlayer).isMinorCiv() and not gc.getPlayer(iLoopPlayer).isBarbarian()):
 							if (iLoopPlayer != self.iActivePlayer and (activePlayer.getTeam().isHasMet(gc.getPlayer(iLoopPlayer).getTeam()) or gc.getGame().isDebugMode())):
@@ -1283,7 +1287,7 @@ class CvVictoryScreen:
 # BUG Additions Start
 #	def getListCultureCities(self, iPlayer):
 	def getListCultureCities(self, iPlayer, victory):
-		maxCityCulture = gc.getGame().getCultureThreshold(victory.getCityCulture())
+		maxCityCulture = GameUtil.getCultureThreshold(victory.getCityCulture())
 # BUG Additions End
 
 		if iPlayer >= 0:
