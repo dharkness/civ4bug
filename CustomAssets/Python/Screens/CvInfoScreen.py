@@ -2904,6 +2904,10 @@ class CvInfoScreen:
 		self.nWidgetCount = iNumPermanentWidgets
 		self.yMessage = 5
 
+		screen.deleteWidget(self.BUGWorldWonderWidget)
+		screen.deleteWidget(self.BUGNatWonderWidget)
+		screen.deleteWidget(self.BUGProjectWidget)
+
 	# handle the input for this screen...
 	def handleInput (self, inputClass):
 #		BugUtil.debugInput(inputClass)
