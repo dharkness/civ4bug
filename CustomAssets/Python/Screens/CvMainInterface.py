@@ -6110,11 +6110,11 @@ class CvMainInterface:
 						eUnit = CyInterface().getOrderNodeData1(i)
 						if pHeadSelectedCity.getUnitProduction(eUnit) > 0:
 							if pHeadSelectedCity.isUnitProductionDecay(eUnit):
-								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+								szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN", (szLeftBuffer,))
 							elif pHeadSelectedCity.getUnitProductionTime(eUnit) > 0:
 								iDecayTurns = pHeadSelectedCity.getUnitProductionDecayTurns(eUnit)
-								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
-									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+								if iDecayTurns <= CityScreenOpt.getProductionDecayHoverUnitThreshold():
+									szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING", (szLeftBuffer,))
 # BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CONSTRUCT ):
@@ -6126,11 +6126,11 @@ class CvMainInterface:
 						eBuilding = CyInterface().getOrderNodeData1(i)
 						if pHeadSelectedCity.getBuildingProduction(eBuilding) > 0:
 							if pHeadSelectedCity.isBuildingProductionDecay(eBuilding):
-								szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN") + szLeftBuffer
+								szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN", (szLeftBuffer,))
 							elif pHeadSelectedCity.getBuildingProductionTime(eBuilding) > 0:
 								iDecayTurns = pHeadSelectedCity.getBuildingProductionDecayTurns(eBuilding)
-								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueThreshold():
-									szLeftBuffer = BugUtil.getPlainText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING") + szLeftBuffer
+								if iDecayTurns <= CityScreenOpt.getProductionDecayHoverBuildingThreshold():
+									szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING", (szLeftBuffer,))
 # BUG - Production Decay - end
 
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CREATE ):
