@@ -92,6 +92,8 @@
 ##     Returns True if running at least 3.17 and the No Espionage option is set
 ##     for the game in progress.
 ##
+##       Depreated: Use GameUtil.isEspionage() instead.
+##
 ## Event Handlers
 ##
 ##   gameUpdate          doDeferredCalls - Calls deferred functions from deferCall()
@@ -670,7 +672,11 @@ def doHotSeatCheck(args):
 		CvEventInterface.getEventManager().fireEvent("SwitchHotSeatPlayer", ePlayer)
 
 def isNoEspionage():
-	"""Returns True if using at least 3.17 and the 'No Espionage' option is enabled."""
+	"""
+	Returns True if using at least 3.17 and the 'No Espionage' option is enabled.
+	
+	Depreated: Use GameUtil.isEspionage() instead.
+	"""
 	try:
 		return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_ESPIONAGE)
 	except:

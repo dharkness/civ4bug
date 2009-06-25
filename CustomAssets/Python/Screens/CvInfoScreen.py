@@ -15,11 +15,12 @@ import math
 from PyHelpers import PyPlayer
 
 # BUG - 3.17 No Espionage - start
-import BugUtil
+import GameUtil
 # BUG - 3.17 No Espionage - end
 
 #BUG: Change Graphs - start
 import BugCore
+import BugUtil
 AdvisorOpt = BugCore.game.Advisors
 ScoreOpt = BugCore.game.Scores
 #BUG: Change Graphs - end
@@ -601,7 +602,7 @@ class CvInfoScreen:
 		self.iDemographicsMission = -1
 		self.iInvestigateCityMission = -1
 		# See if Espionage allows graph to be shown for each player
-		if (not BugUtil.isNoEspionage()):
+		if (GameUtil.isEspionage()):
 			for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
 				if (gc.getEspionageMissionInfo(iMissionLoop).isSeeDemographics()):
 					self.iDemographicsMission = iMissionLoop
@@ -740,7 +741,7 @@ class CvInfoScreen:
 		screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_POWER, 4, 4, False )
 		screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_CULTURE, 5, 5, False )
 #BUG - 3.17 No Espionage - start
-		if (not BugUtil.isNoEspionage()):
+		if (GameUtil.isEspionage()):
 			screen.addPullDownString(self.szGraphDropdownWidget, self.TEXT_ESPIONAGE, 6, 6, False )
 #BUG - 3.17 No Espionage - end
 
@@ -960,7 +961,7 @@ class CvInfoScreen:
 
 				iY = self.Y_MARGIN - 30
 				for i in range(7):
-					if BugUtil.isNoEspionage() and i == 7:
+					if i == 7 and not GameUtil.isEspionage():
 						continue
 
 					iX = self.X_GRAPH_TEXT[i]
@@ -972,7 +973,7 @@ class CvInfoScreen:
 
 			elif self.Graph_Status_Current == self.Graph_Status_7in1:
 				for i in range(7):
-					if BugUtil.isNoEspionage() and i == 7:
+					if i == 7 and not GameUtil.isEspionage():
 						continue
 
 					screen.hide(self.sGraphTextBannerWidget[i])
@@ -984,7 +985,7 @@ class CvInfoScreen:
 					screen.hide(self.sGraphTextBannerWidget[i])
 
 				for i in range(3):
-					if BugUtil.isNoEspionage() and i == 7:
+					if i == 7 and not GameUtil.isEspionage():
 						continue
 
 					self.drawGraph(i)
