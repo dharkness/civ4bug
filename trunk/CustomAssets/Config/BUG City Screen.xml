@@ -72,20 +72,20 @@
 				<choice id="Chevron" get="isCitySpecialist_Chevron"/>
 			</list>
 			
-			<!-- Production Decay by EmperorFool -->
+			<!-- Production Decay by EmperorFool [BULL] -->
 			<option id="ProductionDecayHover" key="Production Decay Hover" dll="1" 
-					type="boolean" default="True" 
-					get="isShowProductionDecayHover"/>
-			<option id="ProductionDecayHoverThreshold" key="Production Decay Hover Threshold" dll="1" 
-					type="int" default="5" 
-					get="getProductionDecayHoverThreshold" dirtyBit="CityScreen"/>
+					type="boolean" default="True" get="isShowProductionDecayHover"/>
+			<option id="ProductionDecayHoverBuildingThreshold" key="Production Decay Hover Building Threshold" dll="1" 
+					type="int" default="20"/>
+			<option id="ProductionDecayHoverUnitThreshold" key="Production Decay Hover Unit Threshold" dll="1" 
+					type="int" default="5"/>
 					
 			<option id="ProductionDecayQueue" key="Production Decay Queue" dll="1" 
-					type="boolean" default="True" 
-					get="isShowProductionDecayQueue" dirtyBit="CityScreen"/>
-			<option id="ProductionDecayQueueThreshold" key="Production Decay Queue Threshold" dll="1" 
-					type="int" default="5" 
-					get="getProductionDecayQueueThreshold" dirtyBit="CityScreen"/>
+					type="boolean" default="True" dirtyBit="CityScreen" get="isShowProductionDecayQueue"/>
+			<option id="ProductionDecayQueueBuildingThreshold" key="Production Decay Queue Building Threshold" dll="1" 
+					type="int" default="10" dirtyBit="CityScreen"/>
+			<option id="ProductionDecayQueueUnitThreshold" key="Production Decay Queue Unit Threshold" dll="1" 
+					type="int" default="5" dirtyBit="CityScreen"/>
 		</section>
 	</options>
 </mod>
