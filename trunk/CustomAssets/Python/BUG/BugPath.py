@@ -281,18 +281,19 @@ def makeDir(name):
 	path = join(getDataDir(), name)
 	if path and not isdir(path):
 		try:
+			BugUtil.info("BugPath - creating '%s'", path)
 			os.makedirs(path)
 			return path
 		except IOError:
 			BugUtil.trace("Cannot create directory '%s' in '%s", name, getDataDir())
-	return None
+	return path
 
 def findOrMakeDir(name):
 	"Locates or creates the specified directory."
 	dir = findDir(name)
 	if not dir:
 		return makeDir(name)
-	return None
+	return dir
 
 
 ## Initialization
