@@ -17,14 +17,10 @@
 		<section id="Unit">
 			<option id="UpdateUnitNameOnUpgrade" key="Update Name On Upgrade" 
 					type="boolean" default="True"/>
-			<option id="CollateralDamageLimit" key="Collateral Damage Limit" 
-					type="boolean" default="True"/>
 		</section>
 		
 		<section id="Building">
 			<option id="BuildingActualEffects" key="Building Actual Effects" 
-					type="boolean" default="True"/>
-			<option id="UniqueBuildings" key="Unique Buildings" 
 					type="boolean" default="True"/>
 		</section>
 		
@@ -41,7 +37,7 @@
 		</section>
 		
 		
-		<section id="Calculations">
+		<section id="City Screen">
 			<option id="BaseCommerce" key="Base Commerce" 
 					type="boolean" default="True"/>
 			<option id="GreatPeopleRateBreakdown" key="Great People Rate Breakdown" 
@@ -55,6 +51,10 @@
 					type="boolean" default="True"/>
 			<option id="BuildingAdditionalCommerce" key="Building Additional Commerce" 
 					type="boolean" default="True"/>
+			<option id="BuildingAdditionalHealth" key="Building Additional Health" 
+					type="boolean" default="True"/>
+			<option id="BuildingAdditionalHappiness" key="Building Additional Happiness" 
+					type="boolean" default="True"/>
 			<option id="BuildingAdditionalGreatPeople" key="Building Additional Great People" 
 					type="boolean" default="True"/>
 		</section>
@@ -63,6 +63,9 @@
 		<section id="Action Buttons">
 			<option id="HurryOverflow" key="Hurry Overflow" 
 					type="boolean" default="True"/>
+			<option id="HurryOverflowIncludeCurrent" key="Hurry Overflow Include Current" 
+					type="boolean" default="False"/>
+					
 			<option id="RemoveSpecialist" key="Remove Specialist" 
 					type="boolean" default="True"/>
 			<option id="CDAZoomCityDetails" key="CDA Zoom City Details" 

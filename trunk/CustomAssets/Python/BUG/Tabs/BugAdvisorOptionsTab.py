@@ -21,6 +21,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
+		self.addCheckbox(screen, left, "MiscHover__CDAZoomCityDetails")
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Advisors__CustDomAdv")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True, "LAYOUT_LEFT")
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceSides", True)
@@ -36,15 +37,18 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, comboBox, "Advisors__EFAGlanceSmilies")
 		self.addCheckbox(screen, left, "Advisors__EFADealTurnsLeft")
 		self.addCheckbox(screen, left, "Advisors__EFAImprovedInfo")
+		self.addCheckbox(screen, left, "MiscHover__TechTradeDenial")
+		self.addCheckbox(screen, left, "MiscHover__BonusTradeDenial")
 
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
-		self.addLabel(screen, left, "Technology_Advisor", "Technology [F6]:")
+		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
 		comboBox = "Advisors_ComboBoxTech"
-		screen.attachHBox(left, comboBox)
+		screen.attachHBox(center, comboBox)
 		self.addCheckbox(screen, comboBox, "Advisors__GPTechPrefs")
 		self.addCheckbox(screen, comboBox, "Advisors__WideTechScreen")
+		self.addCheckbox(screen, center, "MiscHover__SpedUpTechs")
 
 		self.addLabel(screen, center, "Religious_Advisor", "Religion [F7]:")
 		self.addCheckbox(screen, center, "Advisors__BugReligiousTab")

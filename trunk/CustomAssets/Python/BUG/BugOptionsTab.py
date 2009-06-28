@@ -9,7 +9,15 @@
 import BugOptions
 import BugUtil
 
+## Constants
+
+CHECKBOX_INDENT = 2
+
+## Globals
+
 g_options = BugOptions.getOptions()
+
+## Class
 
 class BugOptionsTab:
 	"""
@@ -211,11 +219,17 @@ class BugOptionsTab:
 			return button
 		return None
 
-	def addCheckbox (self, screen, panel, name):
+	def addCheckbox (self, screen, panel, name, spacer=False):
 		option = self.getOption(name)
 		if (option is not None):
 			control = name + "Check"
 			value = option.getRealValue()
+			if spacer:
+				hbox = name + "HBox"
+				screen.attachHBox(panel, hbox)
+				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+				self.addSpacer(screen, hbox, hbox, CHECKBOX_INDENT)
+				panel = hbox
 			screen.attachCheckBox(panel, control, option.getTitle(), self.callbackIFace, "handleBugCheckboxClicked", name, value)
 			screen.setToolTip(control, option.getTooltip())
 			if not option.isEnabled():
@@ -318,7 +332,7 @@ class BugOptionsTab:
 			self.addMissingOption(screen, controlPanel, name)
 	
 
-	def addCheckboxDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, callback):
+	def addCheckboxDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, callback, spacer=False):
 		"Adds a dropdown with a checkbox for a label."
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
@@ -330,7 +344,7 @@ class BugOptionsTab:
 				#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 				checkPanel = box
 				dropPanel = box
-			checkControl = self.addCheckbox(screen, checkPanel, checkName)
+			checkControl = self.addCheckbox(screen, checkPanel, checkName, spacer)
 			
 			# create dropdown
 			dropControl = dropName + "Dropdown"
@@ -346,13 +360,13 @@ class BugOptionsTab:
 			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
-	def addCheckboxTextDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="left"):
+	def addCheckboxTextDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="left", spacer=False):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
 		if (checkOption is not None and dropOption is not None):
 			index = dropOption.getIndex()
 			elements = tuple(dropOption.getDisplayValues())
-			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugDropdownChange")
+			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugDropdownChange", spacer)
 			return checkControl, dropControl
 		else:
 			if (checkOption is None):
@@ -360,13 +374,13 @@ class BugOptionsTab:
 			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
-	def addCheckboxIntDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="right"):
+	def addCheckboxIntDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="right", spacer=False):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
 		if (checkOption is not None and dropOption is not None):
 			index = dropOption.getIndex()
 			elements = tuple(dropOption.getDisplayValues())
-			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugIntDropdownChange")
+			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugIntDropdownChange", spacer)
 			return checkControl, dropControl
 		else:
 			if (checkOption is None):
@@ -374,13 +388,13 @@ class BugOptionsTab:
 			if (dropOption is None):
 				self.addMissingOption(screen, dropPanel, dropOption)
 
-	def addCheckboxFloatDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="right"):
+	def addCheckboxFloatDropdown (self, screen, checkPanel, dropPanel, checkName, dropName, layout="right", spacer=False):
 		checkOption = self.getOption(checkName)
 		dropOption = self.getOption(dropName)
 		if (checkOption is not None and dropOption is not None):
 			index = dropOption.getIndex()
 			elements = tuple(dropOption.getDisplayValues())
-			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugFloatDropdownChange")
+			checkControl, dropControl = self.addCheckboxDropdown(screen, checkPanel, dropPanel, checkName, dropName, layout, elements, index, "handleBugFloatDropdownChange", spacer)
 			return checkControl, dropControl
 		else:
 			if (checkOption is None):

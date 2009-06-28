@@ -21,30 +21,28 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
-		#self.addLabel(screen, left, "MainInterface", "MAIN INTERFACE")
 		self.addCheckbox(screen, left, "MainInterface__GPBar")
 		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		
 		self.addSpacer(screen, left, "General1")
 		
-		self.addCheckbox(screen, left, "MainInterface__FieldOfView")
-		self.addCheckbox(screen, left, "MainInterface__FieldOfView_Remember")
+		self.addLabel(screen, left, "AutoSave", "AutoSave:")
+		self.addCheckbox(screen, left, "AutoSave__CreateStartSave")
+		self.addCheckbox(screen, left, "AutoSave__CreateEndSave")
+		self.addCheckbox(screen, left, "AutoSave__CreateExitSave")
+		self.addCheckbox(screen, left, "AutoSave__UsePlayerName")
 		
 		self.addSpacer(screen, left, "General2")
 		
-		self.addLabel(screen, left, "StrategyOverlay", "Strategy Layer:")
-		self.addCheckbox(screen, left, "StrategyOverlay__Enabled")
-		self.addCheckbox(screen, left, "StrategyOverlay__ShowDotMap")
-		self.addCheckbox(screen, left, "StrategyOverlay__DotMapDrawDots")
-		leftL, leftR = self.addTwoColumnLayout(screen, left, "DotMapBrightness")
-		#self.addTextEdit(screen, leftL, leftR, "StrategyOverlay__DotMapDotIcon")
-		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapBrightness", False, False, False, "up", 0, 100)
-		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapHighlightBrightness", False, False, False, "up", 0, 100)
+		self.addLabel(screen, left, "Actions", "Actions:")
+		self.addCheckbox(screen, left, "Actions__SentryHealing")
+		self.addCheckbox(screen, left, "Actions__SentryHealingOnlyNeutral", True)
+		
 		
 		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")
 		self.addTextDropdown(screen, right, right, "TechWindow__ViewType", True)
-		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")		
+		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")
 		
 		self.addSpacer(screen, right, "General3")
 		
@@ -53,7 +51,6 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
 		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
 		self.addCheckbox(screen, right, "MainInterface__CityArrows")
-		self.addCheckbox(screen, right, "EventSigns__Enabled")
 		self.addCheckbox(screen, right, "MainInterface__UnitMovementPointsFraction")
 		self.addCheckbox(screen, right, "MainInterface__StackMovementPoints")
 		

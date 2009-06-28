@@ -20,9 +20,10 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		column = self.addOneColumnLayout(screen, panel)
 	
 		screen.attachHSeparator(column, column + "Sep1")
-		left, right = self.addTwoColumnLayout(screen, column, "Options")
+		left, center, right = self.addThreeColumnLayout(screen, column, "Options")
 		
 		self.addCheckbox(screen, left, "UnitNaming__Enabled")
+		self.addCheckbox(screen, center, "MiscHover__UpdateUnitNameOnUpgrade")
 		self.addCheckbox(screen, right, "UnitNaming__UseAdvanced")
 
 		columnL, columnR = self.addTwoColumnLayout(screen, column, "UnitNaming")
