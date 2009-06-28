@@ -65,7 +65,7 @@ class BugOptionsScreen:
 		title = BugUtil.getPlainText("TXT_KEY_BUG_OPT_TITLE", "BUG Mod Options")
 		self.pTabControl = CyGTabCtrl(title, False, False)
 		self.pTabControl.setModal(1)
-		self.pTabControl.setSize(900, 715)
+		self.pTabControl.setSize(950, 715)
 		self.pTabControl.setControlsExpanding(False)
 		self.pTabControl.setColumnLength(self.iScreenHeight)
 		

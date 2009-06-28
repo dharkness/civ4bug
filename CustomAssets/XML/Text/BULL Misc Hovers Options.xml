@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	BULL Miscellaneous Hovers
+	Options Game Text
+
+	Copyright (c) 2009 The BUG Mod.
+-->
+<Civ4GameText xmlns="http://www.firaxis.com">
+
+<!-- Unit -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UPDATEUNITNAMEONUPGRADE_TEXT</Tag>
+		<English>Upgrade Name</English>
+		<French>Upgrade Name</French>
+		<German>Upgrade Name</German>
+		<Italian>Upgrade Name</Italian>
+		<Spanish>Upgrade Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UPDATEUNITNAMEONUPGRADE_HOVER</Tag>
+		<English>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</English>
+		<French>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</French>
+		<German>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</German>
+		<Italian>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</Italian>
+		<Spanish>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</Spanish>
+	</TEXT>
+
+<!-- Building -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGACTUALEFFECTS_TEXT</Tag>
+		<English>Building</English>
+		<French>Building</French>
+		<German>Building</German>
+		<Italian>Building</Italian>
+		<Spanish>Building</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGACTUALEFFECTS_HOVER</Tag>
+		<English>When checked, the actual yield, commerce, happiness, health, and great people points the building will produce for the city are displayed in the building hover text.</English>
+		<French>When checked, the actual yield, commerce, happiness, health, and great people points the building will produce for the city are displayed in the building hover text.</French>
+		<German>When checked, the actual yield, commerce, happiness, health, and great people points the building will produce for the city are displayed in the building hover text.</German>
+		<Italian>When checked, the actual yield, commerce, happiness, health, and great people points the building will produce for the city are displayed in the building hover text.</Italian>
+		<Spanish>When checked, the actual yield, commerce, happiness, health, and great people points the building will produce for the city are displayed in the building hover text.</Spanish>
+	</TEXT>
+
+<!-- Tech -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__SPEDUPTECHS_TEXT</Tag>
+		<English>Speeds Up . . .</English>
+		<French>Speeds Up . . .</French>
+		<German>Speeds Up . . .</German>
+		<Italian>Speeds Up . . .</Italian>
+		<Spanish>Speeds Up . . .</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__SPEDUPTECHS_HOVER</Tag>
+		<English>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry wouldb e shown for Agriculture once you have acquired Hunting).</English>
+		<French>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry wouldb e shown for Agriculture once you have acquired Hunting).</French>
+		<German>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry wouldb e shown for Agriculture once you have acquired Hunting).</German>
+		<Italian>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry wouldb e shown for Agriculture once you have acquired Hunting).</Italian>
+		<Spanish>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry wouldb e shown for Agriculture once you have acquired Hunting).</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__TECHTRADEDENIAL_TEXT</Tag>
+		<English>Technology Trade Denial</English>
+		<French>Technology Trade Denial</French>
+		<German>Technology Trade Denial</German>
+		<Italian>Technology Trade Denial</Italian>
+		<Spanish>Technology Trade Denial</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__TECHTRADEDENIAL_HOVER</Tag>
+		<English>When checked, hovering over a technology in the "Won't Trade" column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</English>
+		<French>When checked, hovering over a technology in the &quot;Won't Trade&quot; column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</French>
+		<German>When checked, hovering over a technology in the &quot;Won't Trade&quot; column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</German>
+		<Italian>When checked, hovering over a technology in the &quot;Won't Trade&quot; column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</Italian>
+		<Spanish>When checked, hovering over a technology in the &quot;Won't Trade&quot; column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</Spanish>
+	</TEXT>
+
+<!-- Bonus -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BONUSTRADEDENIAL_TEXT</Tag>
+		<English>Resource Trade Denial</English>
+		<French>Resource Trade Denial</French>
+		<German>Resource Trade Denial</German>
+		<Italian>Resource Trade Denial</Italian>
+		<Spanish>Resource Trade Denial</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BONUSTRADEDENIAL_HOVER</Tag>
+		<English>When checked, hovering over a resource in the "Won't Trade" column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</English>
+		<French>When checked, hovering over a resource in the &quot;Won't Trade&quot; column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</French>
+		<German>When checked, hovering over a resource in the &quot;Won't Trade&quot; column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</German>
+		<Italian>When checked, hovering over a resource in the &quot;Won't Trade&quot; column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</Italian>
+		<Spanish>When checked, hovering over a resource in the &quot;Won't Trade&quot; column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</Spanish>
+	</TEXT>
+	
+
+<!-- City Screen -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BASECOMMERCE_TEXT</Tag>
+		<English>Commerce Subtotals</English>
+		<French>Commerce Subtotals</French>
+		<German>Commerce Subtotals</German>
+		<Italian>Commerce Subtotals</Italian>
+		<Spanish>Commerce Subtotals</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BASECOMMERCE_HOVER</Tag>
+		<English>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</English>
+		<French>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</French>
+		<German>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</German>
+		<Italian>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</Italian>
+		<Spanish>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__GREATPEOPLERATEBREAKDOWN_TEXT</Tag>
+		<English>Rate Breakdown</English>
+		<French>Rate Breakdown</French>
+		<German>Rate Breakdown</German>
+		<Italian>Rate Breakdown</Italian>
+		<Spanish>Rate Breakdown</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__GREATPEOPLERATEBREAKDOWN_HOVER</Tag>
+		<English>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</English>
+		<French>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</French>
+		<German>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</German>
+		<Italian>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</Italian>
+		<Spanish>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGSAVEDMAINTENANCE_TEXT</Tag>
+		<English>Maintenance</English>
+		<French>Maintenance</French>
+		<German>Maintenance</German>
+		<Italian>Maintenance</Italian>
+		<Spanish>Maintenance</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGSAVEDMAINTENANCE_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</English>
+		<French>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</French>
+		<German>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALFOOD_TEXT</Tag>
+		<English>Food</English>
+		<French>Food</French>
+		<German>Food</German>
+		<Italian>Food</Italian>
+		<Spanish>Food</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALFOOD_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALPRODUCTION_TEXT</Tag>
+		<English>Production</English>
+		<French>Production</French>
+		<German>Production</German>
+		<Italian>Production</Italian>
+		<Spanish>Production</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALPRODUCTION_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALCOMMERCE_TEXT</Tag>
+		<English>Commerce</English>
+		<French>Commerce</French>
+		<German>Commerce</German>
+		<Italian>Commerce</Italian>
+		<Spanish>Commerce</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALCOMMERCE_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALHEALTH_TEXT</Tag>
+		<English>Health</English>
+		<French>Health</French>
+		<German>Health</German>
+		<Italian>Health</Italian>
+		<Spanish>Health</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALHEALTH_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALHAPPINESS_TEXT</Tag>
+		<English>Happiness</English>
+		<French>Happiness</French>
+		<German>Happiness</German>
+		<Italian>Happiness</Italian>
+		<Spanish>Happiness</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALHAPPINESS_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALGREATPEOPLE_TEXT</Tag>
+		<English>Great People</English>
+		<French>Great People</French>
+		<German>Great People</German>
+		<Italian>Great People</Italian>
+		<Spanish>Great People</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALGREATPEOPLE_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</French>
+		<German>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</German>
+		<Italian>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</Spanish>
+	</TEXT>
+
+
+<!-- Action Buttons -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__HURRYOVERFLOW_TEXT</Tag>
+		<English>Whip Button</English>
+		<French>Whip Button</French>
+		<German>Whip Button</German>
+		<Italian>Whip Button</Italian>
+		<Spanish>Whip Button</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__HURRYOVERFLOW_HOVER</Tag>
+		<English>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</English>
+		<French>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</French>
+		<German>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</German>
+		<Italian>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</Italian>
+		<Spanish>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__HURRYOVERFLOWINCLUDECURRENT_TEXT</Tag>
+		<English>Include Current</English>
+		<French>Include Current</French>
+		<German>Include Current</German>
+		<Italian>Include Current</Italian>
+		<Spanish>Include Current</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__HURRYOVERFLOWINCLUDECURRENT_HOVER</Tag>
+		<English>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</English>
+		<French>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</French>
+		<German>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</German>
+		<Italian>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</Italian>
+		<Spanish>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVESPECIALIST_TEXT</Tag>
+		<English>Remove Specialist Button</English>
+		<French>Remove Specialist Button</French>
+		<German>Remove Specialist Button</German>
+		<Italian>Remove Specialist Button</Italian>
+		<Spanish>Remove Specialist Button</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVESPECIALIST_HOVER</Tag>
+		<English>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</English>
+		<French>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</French>
+		<German>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</German>
+		<Italian>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</Italian>
+		<Spanish></Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CDAZOOMCITYDETAILS_TEXT</Tag>
+		<English>Zoom to City Button</English>
+		<French>Zoom to City Button</French>
+		<German>Zoom to City Button</German>
+		<Italian>Zoom to City Button</Italian>
+		<Spanish>Zoom to City Button</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CDAZOOMCITYDETAILS_HOVER</Tag>
+		<English>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</English>
+		<French>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</French>
+		<German>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</German>
+		<Italian>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</Italian>
+		<Spanish>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</Spanish>
+	</TEXT>
+
+</Civ4GameText>

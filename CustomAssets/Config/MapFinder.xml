@@ -23,12 +23,15 @@
 			<option id="RuleFile" key="Rule File" 
 					type="string" default="Default.rul"/>
 			
-			<option id="RegenerationDelay" key="Regeneration Delay" 
-					type="float" default="0.0"/>
-			<option id="SkipDelay" key="Skip Delay" 
-					type="float" default="0.25"/>
-			<option id="SaveDelay" key="Save Delay" 
-					type="float" default="2.0"/>
+			<list   id="RegenerationDelay" key="Regeneration Delay" 
+					type="float" default="0.0" 
+					format="%.2f" values="0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0"/>
+			<list   id="SkipDelay" key="Skip Delay" 
+					type="float" default="0.25" 
+					format="%.2f" values="0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0"/>
+			<list   id="SaveDelay" key="Save Delay" 
+					type="float" default="2.0" 
+					format="%.2f" values="0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0"/>
 			
 			<option id="RegenerationLimit" key="Regeneration Limit" 
 					type="int" default="1000"/>

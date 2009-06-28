@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	BULL Actions
+	Options Game Text
+
+	Copyright (c) 2009 The BUG Mod.
+-->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__SENTRYHEALING_TEXT</Tag>
+		<English>Sentry While Healing</English>
+		<French>Sentry While Healing</French>
+		<German>Sentry While Healing</German>
+		<Italian>Sentry While Healing</Italian>
+		<Spanish>Sentry While Healing</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__SENTRYHEALING_HOVER</Tag>
+		<English>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</English>
+		<French>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</French>
+		<German>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</German>
+		<Italian>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</Italian>
+		<Spanish>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__SENTRYHEALINGONLYNEUTRAL_TEXT</Tag>
+		<English>Only Neutral Territory</English>
+		<French>Only Neutral Territory</French>
+		<German>Only Neutral Territory</German>
+		<Italian>Only Neutral Territory</Italian>
+		<Spanish>Only Neutral Territory</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__SENTRYHEALINGONLYNEUTRAL_HOVER</Tag>
+		<English>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</English>
+		<French>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</French>
+		<German>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</German>
+		<Italian>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Italian>
+		<Spanish>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Spanish>
+	</TEXT>
+</Civ4GameText>

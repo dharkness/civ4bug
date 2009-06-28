@@ -164,6 +164,7 @@
 	
 	<screen id="BUGFull">
 		<tab module="BugGeneralOptionsTab"/>
+		<tab module="BugMapOptionsTab"/>
 		<tab module="BugCityScreenOptionsTab"/>
 		
 		<tab module="BugAdvisorOptionsTab"/>

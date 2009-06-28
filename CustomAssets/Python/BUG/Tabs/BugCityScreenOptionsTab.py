@@ -1,6 +1,6 @@
 ## BugCityScreenOptionsTab
 ##
-## Tab for the BUG City Screen Options (City Screen).
+## Tab for the BUG City Screen Options.
 ##
 ## Copyright (c) 2007-2008 The BUG Mod.
 ##
@@ -21,44 +21,68 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		left, right = self.addTwoColumnLayout(screen, column, "Page", True)
 		
-		#self.addLabel(screen, left, "CityScreen", "CITY SCREEN")
-		self.addCheckbox(screen, left, "CityScreen__WhipAssist")
-		self.addCheckbox(screen, left, "CityScreen__WhipAssistOverflowCountCurrentProduction")
-		self.addCheckbox(screen, left, "CityScreen__Anger_Counter")
-		
-		self.addSpacer(screen, left, "CityScreen1")
+		#self.addCheckboxTextDropdown(screen, left, left, "CityScreen__RawYields", "CityScreen__RawYields_View")
 		self.addCheckbox(screen, left, "CityScreen__RawYields")
 		self.addTextDropdown(screen, left, left, "CityScreen__RawYields_View", True)
 		
+		self.addSpacer(screen, left, "CityScreen1")
+		self.addLabel(screen, left, "HurryDetail", "Hurry Detail:")
+		leftL, leftR = self.addTwoColumnLayout(screen, left, "WhipBuyInfo", False)
+		self.addCheckbox(screen, leftL, "CityScreen__WhipAssist")
+		self.addCheckbox(screen, leftR, "CityScreen__WhipAssistOverflowCountCurrentProduction")
+		self.addCheckbox(screen, leftL, "MiscHover__HurryOverflow")
+		self.addCheckbox(screen, leftR, "MiscHover__HurryOverflowIncludeCurrent")
+		self.addCheckbox(screen, leftL, "CityBar__HurryAssist")
+		self.addCheckbox(screen, leftR, "CityBar__HurryAssistIncludeCurrent")
+		
 		self.addSpacer(screen, left, "CityScreen2")
-		self.addLabel(screen, left, "Misc", "Misc:")
-		self.addCheckbox(screen, left, "CityScreen__CultureTurns")
+		self.addLabel(screen, left, "BuildingEffects", "Building Actual Effects in Hovers:")
+		leftL, leftR = self.addTwoColumnLayout(screen, left, "BuildingEffects", False)
+		self.addCheckbox(screen, leftL, "MiscHover__BuildingAdditionalFood")
+		self.addCheckbox(screen, leftL, "MiscHover__BuildingAdditionalProduction")
+		self.addCheckbox(screen, leftL, "MiscHover__BuildingAdditionalCommerce")
+		self.addCheckbox(screen, leftL, "MiscHover__BuildingSavedMaintenance")
+		self.addCheckbox(screen, leftR, "MiscHover__BuildingAdditionalHealth")
+		self.addCheckbox(screen, leftR, "MiscHover__BuildingAdditionalHappiness")
+		self.addCheckbox(screen, leftR, "MiscHover__BuildingAdditionalGreatPeople")
+		self.addCheckbox(screen, leftR, "MiscHover__BuildingActualEffects")
+		
+		self.addSpacer(screen, left, "CityScreen3")
+		self.addLabel(screen, left, "GreatPersonBar", "Great Person Bar:")
 		self.addCheckbox(screen, left, "CityScreen__GreatPersonTurns")
 		self.addCheckbox(screen, left, "CityScreen__GreatPersonInfo")
-		self.addCheckbox(screen, left, "CityScreen__FoodAssist")
-		self.addCheckbox(screen, left, "MainInterface__ProgressBarsTickMarks")
-		self.addTextDropdown(screen, left, left, "CityScreen__Specialists", True)
+		self.addCheckbox(screen, left, "MiscHover__GreatPeopleRateBreakdown")
 		
 		self.addLabel(screen, right, "Citybar", "City Bar Hover:")
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Right", False)
 		
-		self.addCheckbox(screen, rightL, "CityBar__BaseValues")
 		self.addCheckbox(screen, rightL, "CityBar__Health")
 		self.addCheckbox(screen, rightL, "CityBar__Happiness")
+		self.addCheckbox(screen, rightL, "CityBar__HurryAnger")
+		self.addCheckbox(screen, rightL, "CityBar__DraftAnger")
 		self.addCheckbox(screen, rightL, "CityBar__FoodAssist")
+		self.addCheckbox(screen, rightL, "CityBar__BaseValues")
 		self.addCheckbox(screen, rightL, "CityBar__BaseProduction")
 		self.addCheckbox(screen, rightL, "CityBar__TradeDetail")
 		self.addCheckbox(screen, rightL, "CityBar__Commerce")
-		self.addCheckbox(screen, rightL, "CityBar__CultureTurns")
-		self.addCheckbox(screen, rightL, "CityBar__GreatPersonTurns")
 		
-		self.addCheckbox(screen, rightR, "CityBar__HurryAssist")
-		self.addLabel(screen, rightR, "CityAnger", "City Anger:")
-		self.addCheckbox(screen, rightR, "CityBar__HurryAnger")
-		self.addCheckbox(screen, rightR, "CityBar__DraftAnger")
+		#self.addCheckbox(screen, rightR, "CityBar__AirportIcons")
 		
-		self.addSpacer(screen, rightR, "CityScreen3")
+		#self.addSpacer(screen, rightR, "CityScreen4")
+		self.addCheckbox(screen, rightR, "CityBar__CultureTurns")
+		self.addCheckbox(screen, rightR, "CityBar__GreatPersonTurns")
+		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")
 		self.addCheckbox(screen, rightR, "CityBar__Specialists")
-		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")		
-		self.addCheckbox(screen, rightR, "CityBar__AirportIcons")
+		
+		self.addSpacer(screen, rightR, "CityScreen5")
 		self.addCheckbox(screen, rightR, "CityBar__HideInstructions")
+		
+		self.addSpacer(screen, right, "CityScreen6")
+		self.addLabel(screen, right, "Misc", "Miscellaneous:")
+		self.addCheckbox(screen, right, "MiscHover__BaseCommerce")
+		self.addCheckbox(screen, right, "CityScreen__FoodAssist")
+		self.addCheckbox(screen, right, "CityScreen__Anger_Counter")
+		self.addCheckbox(screen, right, "CityScreen__CultureTurns")
+		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
+		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)
+		#self.addCheckbox(screen, right, "MiscHover__RemoveSpecialist")

@@ -39,6 +39,8 @@
 					
 			<option id="HurryAssist" key="Hurry Assist" 
 					type="boolean" default="True"/>
+			<option id="HurryAssistIncludeCurrent" key="Hurry Assist Include Current" 
+					type="boolean" default="False"/>
 					
 			<option id="TradeDetail" key="Trade Detail" 
 					type="boolean" default="True"/>

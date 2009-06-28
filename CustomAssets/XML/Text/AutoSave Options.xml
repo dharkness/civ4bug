@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	AutoSave
+	Options Game Text
+
+	Copyright (c) 2009 The BUG Mod.
+-->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATESTARTSAVE_TEXT</Tag>
+		<English>Start Save</English>
+		<French>Start Save</French>
+		<German>Start Save</German>
+		<Italian>Start Save</Italian>
+		<Spanish>Start Save</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATESTARTSAVE_HOVER</Tag>
+		<English>When checked, a saved game is created after (re)generating the map.</English>
+		<French>When checked, a saved game is created after (re)generating the map.</French>
+		<German>When checked, a saved game is created after (re)generating the map.</German>
+		<Italian>When checked, a saved game is created after (re)generating the map.</Italian>
+		<Spanish>When checked, a saved game is created after (re)generating the map.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATEENDSAVE_TEXT</Tag>
+		<English>End Save</English>
+		<French>End Save</French>
+		<German>End Save</German>
+		<Italian>End Save</Italian>
+		<Spanish>End Save</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATEENDSAVE_HOVER</Tag>
+		<English>When checked, a saved game is created when the game is won/lost.</English>
+		<French>When checked, a saved game is created when the game is won/lost.</French>
+		<German>When checked, a saved game is created when the game is won/lost.</German>
+		<Italian>When checked, a saved game is created when the game is won/lost.</Italian>
+		<Spanish>When checked, a saved game is created when the game is won/lost.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATEEXITSAVE_TEXT</Tag>
+		<English>Exit Save</English>
+		<French>Exit Save</French>
+		<German>Exit Save</German>
+		<Italian>Exit Save</Italian>
+		<Spanish>Exit Save</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__CREATEEXITSAVE_HOVER</Tag>
+		<English>When checked, a saved game is created when you exit using the menu's EXIT TO DESKTOP or EXIT TO MENU commands. [COLOR_YELLOW]The game is not saved automatically if you press ALT + F4.[COLOR_REVERT]</English>
+		<French>When checked, a saved game is created when you exit using the menu's EXIT TO DESKTOP or EXIT TO MENU commands. [COLOR_YELLOW]The game is not saved automatically if you press ALT + F4.[COLOR_REVERT]</French>
+		<German>When checked, a saved game is created when you exit using the menu's EXIT TO DESKTOP or EXIT TO MENU commands. [COLOR_YELLOW]The game is not saved automatically if you press ALT + F4.[COLOR_REVERT]</German>
+		<Italian>When checked, a saved game is created when you exit using the menu's EXIT TO DESKTOP or EXIT TO MENU commands. [COLOR_YELLOW]The game is not saved automatically if you press ALT + F4.[COLOR_REVERT]</Italian>
+		<Spanish>When checked, a saved game is created when you exit using the menu's EXIT TO DESKTOP or EXIT TO MENU commands. [COLOR_YELLOW]The game is not saved automatically if you press ALT + F4.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__USEPLAYERNAME_TEXT</Tag>
+		<English>Use Player Name</English>
+		<French>Use Player Name</French>
+		<German>Use Player Name</German>
+		<Italian>Use Player Name</Italian>
+		<Spanish>Use Player Name</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_AUTOSAVE__USEPLAYERNAME_HOVER</Tag>
+		<English>When checked, your player name is used for the saved game name along with the turn year. Otherwise the name is a concatenation of 3-letter versions of Leader Name, Difficulty, Map Size, Map Type, Speed, Era, Year, Climate and Sea Level. This setting does not affect MapFinder saves..</English>
+		<French>When checked, your player name is used for the saved game name along with the turn year. Otherwise the name is a concatenation of 3-letter versions of Leader Name, Difficulty, Map Size, Map Type, Speed, Era, Year, Climate and Sea Level. This setting does not affect MapFinder saves..</French>
+		<German>When checked, your player name is used for the saved game name along with the turn year. Otherwise the name is a concatenation of 3-letter versions of Leader Name, Difficulty, Map Size, Map Type, Speed, Era, Year, Climate and Sea Level. This setting does not affect MapFinder saves..</German>
+		<Italian>When checked, your player name is used for the saved game name along with the turn year. Otherwise the name is a concatenation of 3-letter versions of Leader Name, Difficulty, Map Size, Map Type, Speed, Era, Year, Climate and Sea Level. This setting does not affect MapFinder saves..</Italian>
+		<Spanish>When checked, your player name is used for the saved game name along with the turn year. Otherwise the name is a concatenation of 3-letter versions of Leader Name, Difficulty, Map Size, Map Type, Speed, Era, Year, Climate and Sea Level. This setting does not affect MapFinder saves..</Spanish>
+	</TEXT>
+</Civ4GameText>
