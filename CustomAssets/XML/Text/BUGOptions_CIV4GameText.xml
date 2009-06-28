@@ -4052,12 +4052,20 @@
 		<Spanish>MAIN INTERFACE</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
-		<English>Strategy Layer:</English>
-		<French>Strategy Layer:</French>
-		<German>Strategie-Overlay:</German>
-		<Italian>Livello Strategico:</Italian>
-		<Spanish>Strategy Layer:</Spanish>
+		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOSAVE</Tag>
+		<English>AutoSave:</English>
+		<French>AutoSave:</French>
+		<German>AutoSave:</German>
+		<Italian>AutoSave:</Italian>
+		<Spanish>AutoSave:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_ACTIONS</Tag>
+		<English>Actions:</English>
+		<French>Actions:</French>
+		<German>Actions:</German>
+		<Italian>Actions:</Italian>
+		<Spanish>Actions:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_TECHWINDOW</Tag>
@@ -4090,6 +4098,33 @@
 		<German>INI-Datei nicht gefunden</German>
 		<Italian>Il file 'BUG Mod.ini' non è stato trovato</Italian>
 		<Spanish>Cannot Find INI File</Spanish>
+	</TEXT>
+	
+	<!-- Map Tab -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_MAP</Tag>
+		<English>Map</English>
+		<French>Map</French>
+		<German>Map</German>
+		<Italian>Map</Italian>
+		<Spanish>Map</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_STRATEGYOVERLAY</Tag>
+		<English>Strategy Layer:</English>
+		<French>Strategy Layer:</French>
+		<German>Strategie-Overlay:</German>
+		<Italian>Livello Strategico:</Italian>
+		<Spanish>Strategy Layer:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_MAPFINDER</Tag>
+		<English>MapFinder:</English>
+		<French>MapFinder:</French>
+		<German>MapFinder:</German>
+		<Italian>MapFinder:</Italian>
+		<Spanish>MapFinder:</Spanish>
 	</TEXT>
 	
 	<!-- Advisors Tab -->
