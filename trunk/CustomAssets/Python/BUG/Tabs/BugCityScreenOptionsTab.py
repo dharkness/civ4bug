@@ -53,6 +53,20 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "CityScreen__GreatPersonInfo")
 		self.addCheckbox(screen, left, "MiscHover__GreatPeopleRateBreakdown")
 		
+		self.addSpacer(screen, left, "CityScreen4")
+		self.addLabel(screen, left, "ProductionDecay", "Production Decay:")
+		leftL, leftC, leftR = self.addThreeColumnLayout(screen, left, "ProductionDecay")
+		self.addSpacer(screen, leftL, "CityScreen41")
+		self.addCheckbox(screen, leftC, "CityScreen__ProductionDecayQueue")
+		self.addCheckbox(screen, leftR, "CityScreen__ProductionDecayHover")
+		#leftLL, leftLR = self.addTwoColumnLayout(screen, leftL, "ProductionDecayQueue")
+		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueUnitThreshold")
+		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueBuildingThreshold")
+		#leftRL, leftRR = self.addTwoColumnLayout(screen, leftR, "ProductionDecayHover")
+		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverUnitThreshold")
+		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverBuildingThreshold")
+		
+		
 		self.addLabel(screen, right, "Citybar", "City Bar Hover:")
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Right", False)
 		
@@ -67,8 +81,6 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, rightL, "CityBar__Commerce")
 		
 		#self.addCheckbox(screen, rightR, "CityBar__AirportIcons")
-		
-		#self.addSpacer(screen, rightR, "CityScreen4")
 		self.addCheckbox(screen, rightR, "CityBar__CultureTurns")
 		self.addCheckbox(screen, rightR, "CityBar__GreatPersonTurns")
 		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")

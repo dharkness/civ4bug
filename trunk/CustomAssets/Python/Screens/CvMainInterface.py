@@ -6113,7 +6113,7 @@ class CvMainInterface:
 								szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN", (szLeftBuffer,))
 							elif pHeadSelectedCity.getUnitProductionTime(eUnit) > 0:
 								iDecayTurns = pHeadSelectedCity.getUnitProductionDecayTurns(eUnit)
-								if iDecayTurns <= CityScreenOpt.getProductionDecayHoverUnitThreshold():
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueUnitThreshold():
 									szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING", (szLeftBuffer,))
 # BUG - Production Decay - end
 
@@ -6129,7 +6129,7 @@ class CvMainInterface:
 								szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_THIS_TURN", (szLeftBuffer,))
 							elif pHeadSelectedCity.getBuildingProductionTime(eBuilding) > 0:
 								iDecayTurns = pHeadSelectedCity.getBuildingProductionDecayTurns(eBuilding)
-								if iDecayTurns <= CityScreenOpt.getProductionDecayHoverBuildingThreshold():
+								if iDecayTurns <= CityScreenOpt.getProductionDecayQueueBuildingThreshold():
 									szLeftBuffer = BugUtil.getText("TXT_KEY_BUG_PRODUCTION_DECAY_WARNING", (szLeftBuffer,))
 # BUG - Production Decay - end
 

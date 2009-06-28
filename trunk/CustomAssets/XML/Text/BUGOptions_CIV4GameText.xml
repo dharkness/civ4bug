@@ -1552,6 +1552,103 @@
 		<Spanish>Default|Stacker|Chevron</Spanish>
 	</TEXT>
 	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUE_TEXT</Tag>
+		<English>Queue</English>
+		<French>Queue</French>
+		<German>Queue</German>
+		<Italian>Queue</Italian>
+		<Spanish>Queue</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUE_HOVER</Tag>
+		<English>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</English>
+		<French>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</French>
+		<German>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</German>
+		<Italian>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Italian>
+		<Spanish>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEUNITTHRESHOLD_TEXT</Tag>
+		<English>Unit Warning</English>
+		<French>Unit Warning</French>
+		<German>Unit Warning</German>
+		<Italian>Unit Warning</Italian>
+		<Spanish>Unit Warning</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEUNITTHRESHOLD_HOVER</Tag>
+		<English>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</English>
+		<French>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</French>
+		<German>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</German>
+		<Italian>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Italian>
+		<Spanish>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEBUILDINGTHRESHOLD_TEXT</Tag>
+		<English>Building Warning</English>
+		<French>Building Warning</French>
+		<German>Building Warning</German>
+		<Italian>Building Warning</Italian>
+		<Spanish>Building Warning</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEBUILDINGTHRESHOLD_HOVER</Tag>
+		<English>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</English>
+		<French>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</French>
+		<German>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</German>
+		<Italian>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Italian>
+		<Spanish>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVER_TEXT</Tag>
+		<English>Hover</English>
+		<French>Hover</French>
+		<German>Hover</German>
+		<Italian>Hover</Italian>
+		<Spanish>Hover</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVER_HOVER</Tag>
+		<English>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</English>
+		<French>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</French>
+		<German>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</German>
+		<Italian>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Italian>
+		<Spanish>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERUNITTHRESHOLD_TEXT</Tag>
+		<English>Unit Warning</English>
+		<French>Unit Warning</French>
+		<German>Unit Warning</German>
+		<Italian>Unit Warning</Italian>
+		<Spanish>Unit Warning</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERUNITTHRESHOLD_HOVER</Tag>
+		<English>Select the number of turns before a unit will decay at which time the decay information is first displayed.</English>
+		<French>Select the number of turns before a unit will decay at which time the decay information is first displayed.</French>
+		<German>Select the number of turns before a unit will decay at which time the decay information is first displayed.</German>
+		<Italian>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Italian>
+		<Spanish>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERBUILDINGTHRESHOLD_TEXT</Tag>
+		<English>Building Warning</English>
+		<French>Building Warning</French>
+		<German>Building Warning</German>
+		<Italian>Building Warning</Italian>
+		<Spanish>Building Warning</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERBUILDINGTHRESHOLD_HOVER</Tag>
+		<English>Select the number of turns before a building will decay at which time the decay information is first displayed.</English>
+		<French>Select the number of turns before a building will decay at which time the decay information is first displayed.</French>
+		<German>Select the number of turns before a building will decay at which time the decay information is first displayed.</German>
+		<Italian>Select the number of turns before a building will decay at which time the decay information is first displayed.</Italian>
+		<Spanish>Select the number of turns before a building will decay at which time the decay information is first displayed.</Spanish>
+	</TEXT>
+	
 	<!-- Better Espionage -->
 	
 	<TEXT>
@@ -4267,6 +4364,14 @@
 		<German>Building Actual Effects:</German>
 		<Italian>Building Actual Effects:</Italian>
 		<Spanish>Building Actual Effects:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PRODUCTIONDECAY</Tag>
+		<English>Production Decay:</English>
+		<French>Production Decay:</French>
+		<German>Production Decay:</German>
+		<Italian>Production Decay:</Italian>
+		<Spanish>Production Decay:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR</Tag>
