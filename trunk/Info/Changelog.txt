@@ -26,11 +26,11 @@ New Features:
 		Zoom to City button
 	Remembers the selected tab like other screens
 - BUG Religious Advisor (F7)
-- AutoSave: automatically save single-player games at start and/or end [BULL]
+- AutoSave: automatically save single-player games at start, end, and exit [BULL]
 
 Improvements:
 
-- BUG, BULL and Unofficial Patch versions are displayed when hovering over your flag [BULL]
+- BUG and BULL versions are displayed when hovering over your flag [BULL]
 - Min/Max Commerce Rate buttons have more accurate hover text [BULL]
 - City Screen
 	Added hover details for food rate [BULL]
