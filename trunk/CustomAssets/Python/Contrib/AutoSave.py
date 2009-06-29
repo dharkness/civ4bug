@@ -132,14 +132,14 @@ def saveGameEnd():
 	"""
 	Saves the single-player game when the game ends.
 	"""
-	if not CyGame().isGameMultiplayer() and options.isCreateEndSave() and not MapFinder.isActive():
+	if not CyGame().isGameMultiPlayer() and options.isCreateEndSave() and not MapFinder.isActive():
 		saveGame()
 
 def saveGameExit():
 	"""
 	Saves the single-player game when the player exits to the main menu or desktop.
 	"""
-	if not CyGame().isGameMultiplayer() and options.isCreateExitSave() and not MapFinder.isActive():
+	if not CyGame().isGameMultiPlayer() and options.isCreateExitSave() and not MapFinder.isActive():
 		saveGame()
 
 
