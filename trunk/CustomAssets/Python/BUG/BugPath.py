@@ -234,7 +234,6 @@ def findInfoFile(name, subdir=None):
 	"""
 	Locates and returns the path to the named informational file or None if not found.
 	"""
-	BugUtil.debug("BugPath - info file %s in %s/%s", name, getInfoDir(), subdir)
 	return getFilePath(getInfoDir(), name, subdir)
 
 
@@ -606,7 +605,7 @@ def initSearchPaths():
 	if _assetFileSearchPaths:
 		BugConfigTracker.add("Asset_Search_Paths", _assetFileSearchPaths)
 	else:
-		BugUtil.warn("No asset directories found")
+		BugUtil.error("No asset directories found")
 	_searchPathsInitDone = True
 
 def addAssetFileSearchPath(path):
@@ -623,13 +622,15 @@ def getFilePath(root, name, subdir=None):
 	"""
 	Returns the full path to the named file, or None if it doesn't exist.
 	"""
+	if not root:
+		BugUtil.warn("Invalid root directory looking for '%s'", unicode(name))
 	if subdir:
 		path = join(root, subdir, name)
 	else:
 		path = join(root, name)
 	if isfile(path):
 		return path
-	BugUtil.warn("BugPath - fail: %s", path)
+	BugUtil.debug("BugPath - not a file: '%s'", unicode(path))
 	return None
 
 def createFile(root, name, subdir=None):
