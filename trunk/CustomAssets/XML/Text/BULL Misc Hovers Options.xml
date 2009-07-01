@@ -7,6 +7,25 @@
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 
+<!-- Plot -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_TEXT</Tag>
+		<English>Partial Builds</English>
+		<French>Partial Builds</French>
+		<German>Partial Builds</German>
+		<Italian>Partial Builds</Italian>
+		<Spanish>Partial Builds</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_HOVER</Tag>
+		<English>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</English>
+		<French>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</French>
+		<German>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</German>
+		<Italian>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Italian>
+		<Spanish>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Spanish>
+	</TEXT>
+
 <!-- Unit -->
 
 	<TEXT>
@@ -19,7 +38,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UPDATEUNITNAMEONUPGRADE_HOVER</Tag>
-		<English>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</English>
+		<English>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</English>
 		<French>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</French>
 		<German>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</German>
 		<Italian>When checked, if a unit's name contains its type (e.g. &quot;Swordsman 5 of London&quot;), it is replaced by the new type when upgrading (e.g. &quot;Maceman 5 of London&quot;).</Italian>

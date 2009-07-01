@@ -57,6 +57,8 @@
 					
 			<option id="Specialists" key="Specialists" 
 					type="boolean" default="True"/>
+			<option id="RevoltChance" key="Revolt Chance" 
+					type="boolean" default="True"/>
 					
 			<option id="HideInstructions" key="Hide Instructions" 
 					type="boolean" default="True"/>

@@ -31,12 +31,12 @@ class BugMapOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addSlider(screen, leftL, leftR, "StrategyOverlay__DotMapHighlightBrightness", False, False, False, "up", 0, 100)
 		
 		
+		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "MainInterface__FieldOfView")
 		self.addCheckbox(screen, right, "MainInterface__FieldOfView_Remember", True)
 		
-		self.addSpacer(screen, right, "Map2")
-		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
+		self.addCheckbox(screen, right, "MiscHover__PartialBuilds")
 		self.addCheckbox(screen, right, "CityBar__AirportIcons")
 		
 		

@@ -85,6 +85,7 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, rightR, "CityBar__GreatPersonTurns")
 		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")
 		self.addCheckbox(screen, rightR, "CityBar__Specialists")
+		self.addCheckbox(screen, rightR, "CityBar__RevoltChance")
 		
 		self.addSpacer(screen, rightR, "CityScreen5")
 		self.addCheckbox(screen, rightR, "CityBar__HideInstructions")
