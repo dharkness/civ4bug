@@ -23,6 +23,7 @@
 		<Italian>Quando è selezionato, aggiunge una icona aeroportuale alle città che hanno un Aeroporto.</Italian>
 		<Spanish>When checked, places an airport icon above the city bars of cities that have an airport.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HEALTH_TEXT</Tag>
 		<English>Health</English>
@@ -55,6 +56,7 @@
 		<Italian>Quando è selezionato, mostra la felicità risultante ([ICON_HAPPY] o [ICON_UNHAPPY]) per la città.</Italian>
 		<Spanish>When checked, shows the net happiness ([ICON_HAPPY] or [ICON_UNHAPPY]) for the city.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYANGER_TEXT</Tag>
 		<English>Hurry Anger</English>
@@ -87,6 +89,7 @@
 		<Italian>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</Italian>
 		<Spanish>When checked, shows the number of angry population ([ICON_ANGRYPOP]) due to drafting and the number of turns left on the timer.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__FOODASSIST_TEXT</Tag>
 		<English>Growth Detail</English>
@@ -135,6 +138,7 @@
 		<Italian>Quando è selezionato, mostra la produzione base (escluse le quote da surplus, sacrifici e abbattimento alberi) come aggiunta alla produzione del turno corrente.</Italian>
 		<Spanish>When checked, shows base production (excludes overflow, whipping, and chopping) in addition to the current turn's production.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_TEXT</Tag>
 		<English>City Bar</English>
@@ -167,6 +171,7 @@
 		<Italian>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Italian>
 		<Spanish>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__TRADEDETAIL_TEXT</Tag>
 		<English>Trade</English>
@@ -199,6 +204,7 @@
 		<Italian>Quando è selezionato, mostra l'oro totale ([ICON_COMMERCE]) prima dei singoli tipi ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], e [ICON_ESPIONAGE]).</Italian>
 		<Spanish>When checked, the total commerce ([ICON_COMMERCE]) is shown before the individual commerce types ([ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE]).</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGICONS_TEXT</Tag>
 		<English>Building Icons</English>
@@ -215,6 +221,7 @@
 		<Italian>Quando è selezionato, la lista degli edifici viene visualizzata con le rispettive icone invece dei nomi.</Italian>
 		<Spanish>When checked, the list of buildings is shown using icons instead of their names.</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__CULTURETURNS_TEXT</Tag>
 		<English>Culture Turns</English>
@@ -247,6 +254,7 @@
 		<Italian>Quando è selezionato, mostra il numero di turni necessario perchè la città generi il successivo Grande Personaggio([ICON_GREATPEOPLE]).</Italian>
 		<Spanish>When checked, shows the number of turns until the city will create the next great person ([ICON_GREATPEOPLE]).</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__SPECIALISTS_TEXT</Tag>
 		<English>Specialists</English>
@@ -263,6 +271,23 @@
 		<Italian>Quando è selezionato, mostra delle icone per gli Specialisti in città (sia i Cittadini Specialisti che i Grandi Personaggi trasformati in Super-Specialisti).</Italian>
 		<Spanish>When checked, shows icons for the city's specialists (both citizens and settled great people).</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__REVOLTCHANCE_TEXT</Tag>
+		<English>Revolt Chance</English>
+		<French>Revolt Chance</French>
+		<German>Revolt Chance</German>
+		<Italian>Revolt Chance</Italian>
+		<Spanish>Revolt Chance</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__REVOLTCHANCE_HOVER</Tag>
+		<English>When checked, shows the probability that the city will revolt due to cultural pressure.</English>
+		<French>When checked, shows the probability that the city will revolt due to cultural pressure.</French>
+		<German>When checked, shows the probability that the city will revolt due to cultural pressure.</German>
+		<Italian>When checked, shows the probability that the city will revolt due to cultural pressure.</Italian>
+		<Spanish>When checked, shows the probability that the city will revolt due to cultural pressure.</Spanish>
+	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HIDEINSTRUCTIONS_TEXT</Tag>
 		<English>Hide Instructions</English>

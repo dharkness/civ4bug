@@ -6,6 +6,9 @@
 	Copyright (c) 2009 The BUG Mod.
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
+
+<!-- Sentry Healing -->
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACTIONS__SENTRYHEALING_TEXT</Tag>
 		<English>Sentry While Healing</English>
@@ -38,4 +41,40 @@
 		<Italian>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Italian>
 		<Spanish>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Spanish>
 	</TEXT>
+
+<!-- PreChop -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__PRECHOPFORESTS_TEXT</Tag>
+		<English>PreChop Forests</English>
+		<French>PreChop Forests</French>
+		<German>PreChop Forests</German>
+		<Italian>PreChop Forests</Italian>
+		<Spanish>PreChop Forests</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__PRECHOPFORESTS_HOVER</Tag>
+		<English>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</English>
+		<French>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</French>
+		<German>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</German>
+		<Italian>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</Italian>
+		<Spanish>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__PRECHOPIMPROVEMENTS_TEXT</Tag>
+		<English>PreChop Improvements</English>
+		<French>PreChop Improvements</French>
+		<German>PreChop Improvements</German>
+		<Italian>PreChop Improvements</Italian>
+		<Spanish>PreChop Improvements</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__PRECHOPIMPROVEMENTS_HOVER</Tag>
+		<English>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</English>
+		<French>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</French>
+		<German>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</German>
+		<Italian>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</Italian>
+		<Spanish>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</Spanish>
+	</TEXT>
+
 </Civ4GameText>

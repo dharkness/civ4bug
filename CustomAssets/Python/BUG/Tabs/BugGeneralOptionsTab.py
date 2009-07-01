@@ -21,8 +21,9 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
-		self.addCheckbox(screen, left, "MainInterface__GPBar")
-		self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
+		self.addCheckboxTextDropdown(screen, left, left, "MainInterface__GPBar", "MainInterface__GPBar_Types")
+		#self.addCheckbox(screen, left, "MainInterface__GPBar")
+		#self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
 		
 		self.addSpacer(screen, left, "General1")
@@ -38,6 +39,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Actions", "Actions:")
 		self.addCheckbox(screen, left, "Actions__SentryHealing")
 		self.addCheckbox(screen, left, "Actions__SentryHealingOnlyNeutral", True)
+		self.addCheckbox(screen, left, "Actions__PreChopForests")
+		self.addCheckbox(screen, left, "Actions__PreChopImprovements")
 		
 		
 		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")

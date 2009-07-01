@@ -14,6 +14,11 @@
 	 dll="1">
 	 
 	<options id="MiscHover" file="BUG Misc Hovers.ini">
+		<section id="Plot">
+			<option id="PartialBuilds" key="Plot Partial Builds" 
+					type="boolean" default="True"/>
+		</section>
+		
 		<section id="Unit">
 			<option id="UpdateUnitNameOnUpgrade" key="Update Name On Upgrade" 
 					type="boolean" default="True"/>
