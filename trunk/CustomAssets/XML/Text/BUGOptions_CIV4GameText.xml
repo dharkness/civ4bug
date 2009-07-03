@@ -1436,7 +1436,7 @@
 		<English>Production Bar</English>
 		<French>Production Bar</French>
 		<German>Produktionsbalken</German>
-		<Italian>Production Bar</Italian>
+		<Italian>Barra di Produzione</Italian>
 		<Spanish>Production Bar</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1452,7 +1452,7 @@
 		<English>Include Current</English>
 		<French>Include Current</French>
 		<German>Aktuelle Runde einbeziehen</German>
-		<Italian>Comprendente corrente</Italian>
+		<Italian>Include corrente</Italian>
 		<Spanish>Include Current</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1557,7 +1557,7 @@
 		<English>Queue</English>
 		<French>Queue</French>
 		<German>Produktionsliste</German>
-		<Italian>Queue</Italian>
+		<Italian>Coda</Italian>
 		<Spanish>Queue</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1565,7 +1565,7 @@
 		<English>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</English>
 		<French>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</French>
 		<German>Zeigt ein gelbes Ausrufezeichen (!) bei Projekten in der Produktionsliste an, deren Produktionsfortschritt demnächst verfällt, da sie zu lange in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden. Zwei rote Ausrufezeichen (!!) zeigen an, dass der Produktionsfortschritt eines Projekts in dieser Runde verfällt, falls es nicht weiter produziert wird</German>
-		<Italian>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Italian>
+		<Italian>Quando è selezionato, mostra un punto esclamativo (!) giallo per gli oggetti nella coda di produzione che sono prossimi a perdere la produzione accumulata a causa della eccessiva permanenza nella coda senza ulteriore aggiunta di [ICON_PRODUCTION]. Due punti esclamativi rossi indicano che l'oggetto nella coda perderà la produzione accumulata nel turno in corso a meno che non venga posizionato in testa alla coda produttiva.</Italian>
 		<Spanish>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1573,7 +1573,7 @@
 		<English>Unit Warning</English>
 		<French>Unit Warning</French>
 		<German>Einheiten-Warnung</German>
-		<Italian>Unit Warning</Italian>
+		<Italian>Avviso per le Unità</Italian>
 		<Spanish>Unit Warning</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1581,7 +1581,7 @@
 		<English>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</English>
 		<French>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</French>
 		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt einer produzierten Einheit verfällt und ein gelbes Ausrufezeichen angezeigt wird (Produktionsfortschritte bei Einheiten verfallen, wenn sie 10 Runden in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden)</German>
-		<Italian>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Italian>
+		<Italian>Inserisci il numero di turni prima che una Unità in coda perda la produzione accumulata mancanti i quali verrà visualizzato il punto esclamativo giallo di avvertimento. Le Unità perdono la produzione accumulata dopo essere state nella coda di produzione per 10 turni senza aggiunte di [ICON_PRODUCTION].</Italian>
 		<Spanish>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1589,7 +1589,7 @@
 		<English>Building Warning</English>
 		<French>Building Warning</French>
 		<German>Gebäude-Warnung</German>
-		<Italian>Building Warning</Italian>
+		<Italian>Avviso per gli Edifici</Italian>
 		<Spanish>Building Warning</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1597,7 +1597,7 @@
 		<English>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</English>
 		<French>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</French>
 		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt eines produzierten Gebäudes verfällt und ein gelbes Ausrufezeichen angezeigt wird (Produktionsfortschritte bei Gebäuden verfallen, wenn sie 50 Runden in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden; bei Projekten geschieht dies nie)</German>
-		<Italian>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Italian>
+		<Italian>Inserisci il numero di turni prima che un Edificio in coda perda la produzione accumulata mancanti i quali verrà visualizzato il punto esclamativo giallo di avvertimento. Gli Edifici perdono la produzione accumulata dopo essere state nella coda di produzione per 50 turni senza aggiunte di [ICON_PRODUCTION]; i Progetti invece non perdono mai la produzione accumulata.</Italian>
 		<Spanish>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1605,7 +1605,7 @@
 		<English>Hover</English>
 		<French>Hover</French>
 		<German>Tooltip</German>
-		<Italian>Hover</Italian>
+		<Italian>Testo a comparsa</Italian>
 		<Spanish>Hover</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1613,7 +1613,7 @@
 		<English>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</English>
 		<French>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</French>
 		<German>Zeigt im Tooltip von Einheiten und Gebäuden in der Produktionsliste die Anzahl der Runden an, bis ein Produktionsfortschritt verfällt und wie viele [ICON_PRODUCTION] dann verloren gehen</German>
-		<Italian>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Italian>
+		<Italian>Quando è selezionato, mostra nel testo a comparsa delle Unità e degli Edifici in coda di produzione il numero di turni prima che perdano la produzione accumulata e l'ammontare di tale perdita.</Italian>
 		<Spanish>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1621,7 +1621,7 @@
 		<English>Unit Warning</English>
 		<French>Unit Warning</French>
 		<German>Einheiten-Warnung</German>
-		<Italian>Unit Warning</Italian>
+		<Italian>Avviso per le Unità</Italian>
 		<Spanish>Unit Warning</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1629,7 +1629,7 @@
 		<English>Select the number of turns before a unit will decay at which time the decay information is first displayed.</English>
 		<French>Select the number of turns before a unit will decay at which time the decay information is first displayed.</French>
 		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt einer produzierten Einheit verfällt und ein gelbes Ausrufezeichen angezeigt wird</German>
-		<Italian>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Italian>
+		<Italian>Inserisci il numero di turni prima che una Unità in coda perda la produzione accumulata mancanti i quali verranno visualizzate per la prima volta le informazioni relative.</Italian>
 		<Spanish>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1637,7 +1637,7 @@
 		<English>Building Warning</English>
 		<French>Building Warning</French>
 		<German>Gebäude-Warnung</German>
-		<Italian>Building Warning</Italian>
+		<Italian>Avviso per gli Edifici</Italian>
 		<Spanish>Building Warning</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1645,7 +1645,7 @@
 		<English>Select the number of turns before a building will decay at which time the decay information is first displayed.</English>
 		<French>Select the number of turns before a building will decay at which time the decay information is first displayed.</French>
 		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt eines produzierten Gebäudes verfällt und ein gelbes Ausrufezeichen angezeigt wird</German>
-		<Italian>Select the number of turns before a building will decay at which time the decay information is first displayed.</Italian>
+		<Italian>Inserisci il numero di turni prima che un Edificio in coda perda la produzione accumulata mancanti i quali verranno visualizzate per la prima volta le informazioni relative.</Italian>
 		<Spanish>Select the number of turns before a building will decay at which time the decay information is first displayed.</Spanish>
 	</TEXT>
 	
@@ -2342,7 +2342,7 @@
 		<English>Number of Cities</English>
 		<French>Number of Cities</French>
 		<German>Anzahl der Städte</German>
-		<Italian>Number of Cities</Italian>
+		<Italian>Numero di Città</Italian>
 		<Spanish>Number of Cities</Spanish>
 	</TEXT>
 	<TEXT>
@@ -2350,7 +2350,7 @@
 		<English>When checked, shows a count of the number of cities for each leader.</English>
 		<French>When checked, shows a count of the number of cities for each leader.</French>
 		<German>Zeigt für jede Zivilisation die Anzahl ihrer Städte an</German>
-		<Italian>When checked, shows a count of the number of cities for each leader.</Italian>
+		<Italian>Quando è selezionato, mostra il numero di Città per ogni Civiltà.</Italian>
 		<Spanish>When checked, shows a count of the number of cities for each leader.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3696,7 +3696,7 @@
 		<English>Deal Turns Left</English>
 		<French>Deal Turns Left</French>
 		<German>Vertragskündigungen</German>
-		<Italian>Deal Turns Left</Italian>
+		<Italian>Turni di Accordo rimasti</Italian>
 		<Spanish>Deal Turns Left</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3704,7 +3704,7 @@
 		<English>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</English>
 		<French>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</French>
 		<German>Zeigt an, wie viele Runden noch verbleiben, bis ein Vertrag im Auslandsberater unter "Aktiv" gekündigt werden kann</German>
-		<Italian>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Italian>
+		<Italian>Quando è selezionato, mostra quanti turni sono rimasti prima che si possa annullare un accordo.</Italian>
 		<Spanish>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3760,7 +3760,7 @@
 		<English>BUG Religion Advisor</English>
 		<French>BUG Religion Advisor</French>
 		<German>BUG Religionsberater</German>
-		<Italian>BUG Religion Advisor</Italian>
+		<Italian>Consigliere Religioso</Italian>
 		<Spanish>BUG Religion Advisor</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3768,7 +3768,7 @@
 		<English>When checked, displays extra information on the Religious tab.</English>
 		<French>When checked, displays extra information on the Religious tab.</French>
 		<German>Zeigt zusätzliche Informationen auf der entsprechenden Seite des Religionsberaters an</German>
-		<Italian>When checked, displays extra information on the Religious tab.</Italian>
+		<Italian>Quando è selezionato, mostra informazioni aggiuntive nella schermata del Consigliere Religioso.</Italian>
 		<Spanish>When checked, displays extra information on the Religious tab.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3812,35 +3812,35 @@
 		<Spanish>Graphs tab</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSLOGSCALE_HOVER</Tag>
-		<English>When checked, displays graphs are displayed in Log(10) scale.</English>
-		<French>When checked, displays graphs are displayed in Log(10) scale.</French>
-		<German>Zeigt Diagramme in einer logarithmischen Darstellung an</German>
-		<Italian>When checked, displays graphs are displayed in Log(10) scale.</Italian>
-		<Spanish>When checked, displays graphs are displayed in Log(10) scale.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_HOVER</Tag>
+		<English>When checked, displays graphs in BUG format.</English>
+		<French>When checked, displays graphs in BUG format.</French>
+		<German>Zeigt die Diagramme auf der entsprechenden Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an.</German>
+		<Italian>Quando è selezionato, mostra la Scheda dei Grafici nel formato modificato del BUG Mod.</Italian>
+		<Spanish>When checked, displays graphs in BUG format.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSLOGSCALE_TEXT</Tag>
 		<English>Graphs Log Scale</English>
 		<French>Graphs Log Scale</French>
 		<German>Log-Skala</German>
-		<Italian>Graphs Log Scale</Italian>
+		<Italian>Scala logaritmica</Italian>
 		<Spanish>Graphs Log Scale</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSTAB_HOVER</Tag>
-		<English>When checked, displays graphs in BUG format.</English>
-		<French>When checked, displays graphs in BUG format.</French>
-		<German>Zeigt die Diagramme auf der entsprechenden Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an</German>
-		<Italian>Quando è selezionato, mostra la Scheda dei Grafici nel formato modificato del BUG Mod</Italian>
-		<Spanish>When checked, displays graphs in BUG format.</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGGRAPHSLOGSCALE_HOVER</Tag>
+		<English>When checked, displays graphs are displayed in Log(10) scale.</English>
+		<French>When checked, displays graphs are displayed in Log(10) scale.</French>
+		<German>Zeigt Diagramme in einer logarithmischen Darstellung an</German>
+		<Italian>Quando è selezionato, mostra i Grafici in scala logaritmica (su base 10).</Italian>
+		<Spanish>When checked, displays graphs are displayed in Log(10) scale.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERS_TEXT</Tag>
 		<English>Wonders tab</English>
 		<French>Wonders tab</French>
 		<German>BUG Wunder</German>
-		<Italian>Wonders tab</Italian>
+		<Italian>Scheda Meraviglie</Italian>
 		<Spanish>Wonders tab</Spanish>
 	</TEXT>
 	<TEXT>
@@ -3848,7 +3848,7 @@
 		<English>When checked, displays the BUG version of the Wonders tab.</English>
 		<French>When checked, displays the BUG version of the Wonders tab.</French>
 		<German>Zeigt die entsprechende Seite des Info-Bildschirms in einer übersichtlicheren Anordnung an</German>
-		<Italian>When checked, displays the BUG version of the Wonders tab.</Italian>
+		<Italian>Quando è selezionato, mostra la Scheda delle Meraviglie nel formato modificato del BUG Mod.</Italian>
 		<Spanish>When checked, displays the BUG version of the Wonders tab.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4153,7 +4153,7 @@
 		<English>AutoSave:</English>
 		<French>AutoSave:</French>
 		<German>Automatisches Speichern:</German>
-		<Italian>AutoSave:</Italian>
+		<Italian>Salvataggio automatico:</Italian>
 		<Spanish>AutoSave:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4161,7 +4161,7 @@
 		<English>Actions:</English>
 		<French>Actions:</French>
 		<German>Aktionen:</German>
-		<Italian>Actions:</Italian>
+		<Italian>Azioni:</Italian>
 		<Spanish>Actions:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4204,7 +4204,7 @@
 		<English>Map</English>
 		<French>Map</French>
 		<German>Karte</German>
-		<Italian>Map</Italian>
+		<Italian>Mappa</Italian>
 		<Spanish>Map</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4279,7 +4279,7 @@
 		<English>Religion [F7]:</English>
 		<French>Religion [F7]:</French>
 		<German>Religion [F7]:</German>
-		<Italian>Religion [F7]:</Italian>
+		<Italian>Religioso [F7]:</Italian>
 		<Spanish>Religion [F7]:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4354,7 +4354,7 @@
 		<English>Great Person Bar:</English>
 		<French>Great Person Bar:</French>
 		<German>Anzeige für Große Persönlichkeit-Punkte:</German>
-		<Italian>Great Person Bar:</Italian>
+		<Italian>Barra dei Grandi Personaggi:</Italian>
 		<Spanish>Great Person Bar:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4362,7 +4362,7 @@
 		<English>Building Actual Effects:</English>
 		<French>Building Actual Effects:</French>
 		<German>Tatsächliche Gebäude-Effekte:</German>
-		<Italian>Building Actual Effects:</Italian>
+		<Italian>Effetti degli Edifici:</Italian>
 		<Spanish>Building Actual Effects:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4370,7 +4370,7 @@
 		<English>Production Decay:</English>
 		<French>Production Decay:</French>
 		<German>Verfall des Produktionsfortschritts:</German>
-		<Italian>Production Decay:</Italian>
+		<Italian>Decadimento della Produzione:</Italian>
 		<Spanish>Production Decay:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4378,7 +4378,7 @@
 		<English>City Bar Hover:</English>
 		<French>City Bar Hover:</French>
 		<German>Stadtbalken-Tooltip:</German>
-		<Italian>City Bar Hover:</Italian>
+		<Italian>Testo della Barra Cittadina:</Italian>
 		<Spanish>City Bar Hover:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4386,7 +4386,7 @@
 		<English>City Anger:</English>
 		<French>City Anger:</French>
 		<German>Unzufriedenheit:</German>
-		<Italian>City Anger:</Italian>
+		<Italian>Rabbia Cittadina:</Italian>
 		<Spanish>City Anger:</Spanish>
 	</TEXT>
 	
@@ -4674,7 +4674,7 @@
 		<English>Mod Directory:</English>
 		<French>Mod Directory:</French>
 		<German>Mod-Verzeichnis:</German>
-		<Italian>Mod Directory:</Italian>
+		<Italian>Directory del Mod:</Italian>
 		<Spanish>Mod Directory:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4682,7 +4682,7 @@
 		<English>CivilizationIV.ini Directory:</English>
 		<French>CivilizationIV.ini Directory:</French>
 		<German>CivilizationIV.ini:</German>
-		<Italian>CivilizationIV.ini Directory:</Italian>
+		<Italian>Directory di CivilizationIV.ini:</Italian>
 		<Spanish>CivilizationIV.ini Directory:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -4690,7 +4690,7 @@
 		<English>Settings Directory:</English>
 		<French>Settings Directory:</French>
 		<German>Einstellungen:</German>
-		<Italian>Settings Directory:</Italian>
+		<Italian>Directory dei Settings:</Italian>
 		<Spanish>Settings Directory:</Spanish>
 	</TEXT>
 	<TEXT>

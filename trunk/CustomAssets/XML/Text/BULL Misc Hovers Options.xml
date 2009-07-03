@@ -14,7 +14,7 @@
 		<English>Partial Builds</English>
 		<French>Partial Builds</French>
 		<German>Unvollständige Bauten</German>
-		<Italian>Partial Builds</Italian>
+		<Italian>Costruzione parziale</Italian>
 		<Spanish>Partial Builds</Spanish>
 	</TEXT>
 	<TEXT>
@@ -22,7 +22,7 @@
 		<English>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</English>
 		<French>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</French>
 		<German>Zeigt, wenn der Mauszeiger über ein Geländefeld mit teilweise fertig gestellten Bauten (Modernisierungen, Straßen und Waldrodungen) bewegt wird, an, wie viele Runden ein Bautrupp noch benötigt, um sie fertig zu stellen, wenn der Bautrupp diese Aktionen beherrscht</German>
-		<Italian>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Italian>
+		<Italian>Quando è selezionato, posizionare il cursore su una casella che contiene costruzioni (miglioramenti, strade, eccetera) parzialmente completate mostrerà quanti turni di lavoro sono necessari per completare l'opera.</Italian>
 		<Spanish>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Spanish>
 	</TEXT>
 
@@ -33,7 +33,7 @@
 		<English>Upgrade Name</English>
 		<French>Upgrade Name</French>
 		<German>Modernisierung berücksichtigen</German>
-		<Italian>Upgrade Name</Italian>
+		<Italian>Aggiornamento del nome</Italian>
 		<Spanish>Upgrade Name</Spanish>
 	</TEXT>
 	<TEXT>
@@ -41,7 +41,7 @@
 		<English>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</English>
 		<French>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</French>
 		<German>Falls der Einheitentyp im Namen einer Einheit vorkommt, wird dieser bei einer Modernisierung mit der neuen Bezeichnung ersetzt (beispielsweise wird aus "Schwertkämpfer 5 aus London" dann "Axtkämpfer 5 aus London")</German>
-		<Italian>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</Italian>
+		<Italian>Quando è selezionato, se il nome di una Unità contiene il suo tipo (p. es. "Arciere I di Roma"), questo viene rimpiazzato dal nuovo tipo quando l'Unità viene aggiornata (p. es. "Balestriere I di Roma").</Italian>
 		<Spanish>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</Spanish>
 	</TEXT>
 
@@ -52,7 +52,7 @@
 		<English>Building</English>
 		<French>Building</French>
 		<German>Gebäude</German>
-		<Italian>Building</Italian>
+		<Italian>Edifici</Italian>
 		<Spanish>Building</Spanish>
 	</TEXT>
 	<TEXT>
@@ -60,7 +60,7 @@
 		<English>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</English>
 		<French>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</French>
 		<German>Zeigt die tatsächlichen Erträge von [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY] und [ICON_GREATPEOPLE] an, die ein Gebäude für eine Stadt erzeugt, wenn der Mauszeiger über ein Gebäudesymbol bewegt wird</German>
-		<Italian>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</Italian>
+		<Italian>Quando è selezionato, nel testo a comparsa degli Edifici della Città viene mostrata la resa effettiva in [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY] e [ICON_GREATPEOPLE] prodotta dagli edifici stessi.</Italian>
 		<Spanish>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</Spanish>
 	</TEXT>
 
@@ -71,7 +71,7 @@
 		<English>Speeds Up ...</English>
 		<French>Speeds Up ...</French>
 		<German>Beschleunigt ...</German>
-		<Italian>Speeds Up ...</Italian>
+		<Italian>Accelera ...</Italian>
 		<Spanish>Speeds Up ...</Spanish>
 	</TEXT>
 	<TEXT>
@@ -79,7 +79,7 @@
 		<English>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry would be shown for Agriculture once you have acquired Hunting).</English>
 		<French>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry would be shown for Agriculture once you have acquired Hunting).</French>
 		<German>Zeigt Technologien an, die durch das Vorhandensein der Technologie beschleunigt würden, über der sich der Mauszeiger befindet (beispielsweise würde "Tierzucht" bei "Landwirtschaft" erscheinen, wenn bereits "Jagd" erforscht wäre)</German>
-		<Italian>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry would be shown for Agriculture once you have acquired Hunting).</Italian>
+		<Italian>Quando è selezionato, nel testo a comparsa di una Tecnologia vengono mostrate le Tecnologie che risultano accelerate dall'acquisizione della Tecnologia in questione (p. es. una volta acquisita la tecnologia 'Caccia', se posizionerete il cursore sulla tecnologia 'Agricoltura' vi verrà ricordato che questa accelererà la tecnologia 'Allevamento di animali').</Italian>
 		<Spanish>When checked, displays the technologies that will be sped up by acquiring the technology you are hovering over (e.g. Animal Husbandry would be shown for Agriculture once you have acquired Hunting).</Spanish>
 	</TEXT>
 	<TEXT>
@@ -87,7 +87,7 @@
 		<English>Technology Trade Denial</English>
 		<French>Technology Trade Denial</French>
 		<German>Verweigerung von Technologien</German>
-		<Italian>Technology Trade Denial</Italian>
+		<Italian>Rifiuto di commercio di Tecnologie</Italian>
 		<Spanish>Technology Trade Denial</Spanish>
 	</TEXT>
 	<TEXT>
@@ -95,7 +95,7 @@
 		<English>When checked, hovering over a technology in the "Won't Trade" column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</English>
 		<French>When checked, hovering over a technology in the "Won't Trade" column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</French>
 		<German>Zeigt die Gründe für die Verweigerung eines Handels an, wenn der Mauszeiger über eine Technologie in der Spalte "Unverhandelbar" auf der Seite "Technologien" des Auslandsberaters bewegt wird</German>
-		<Italian>When checked, hovering over a technology in the "Won't Trade" column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</Italian>
+		<Italian>Quando è selezionato, posizionando il cursore su una Tecnologia nella colonna 'Non commercia' della pagina delle Tecnologie del Consigliere Estero verrà visualizzata la ragione per cui l'AI rifiuta di commerciare tale Tecnologia.</Italian>
 		<Spanish>When checked, hovering over a technology in the "Won't Trade" column of the Foreign Advisor's TECHS page will show you the AI's reason for denying the trade.</Spanish>
 	</TEXT>
 
@@ -106,7 +106,7 @@
 		<English>Resource Trade Denial</English>
 		<French>Resource Trade Denial</French>
 		<German>Verweigerung von Ressourcen</German>
-		<Italian>Resource Trade Denial</Italian>
+		<Italian>Rifiuto di commercio di Risosre</Italian>
 		<Spanish>Resource Trade Denial</Spanish>
 	</TEXT>
 	<TEXT>
@@ -114,7 +114,7 @@
 		<English>When checked, hovering over a resource in the "Won't Trade" column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</English>
 		<French>When checked, hovering over a resource in the "Won't Trade" column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</French>
 		<German>Zeigt die Gründe für die Verweigerung eines Handels an, wenn der Mauszeiger über eine Ressource in der Spalte "Unverhandelbar" auf der Seite "Ressourcen" des Auslandsberaters bewegt wird</German>
-		<Italian>When checked, hovering over a resource in the "Won't Trade" column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</Italian>
+		<Italian>Quando è selezionato, posizionando il cursore su una Risorsa nella colonna 'Non commercia' della pagina delle Risorse del Consigliere Estero verrà visualizzata la ragione per cui l'AI rifiuta di commerciare tale Risorsa.</Italian>
 		<Spanish>When checked, hovering over a resource in the "Won't Trade" column of the Foreign Advisor's RESOURCES page will show you the AI's reason for denying the trade.</Spanish>
 	</TEXT>
 	
@@ -126,7 +126,7 @@
 		<English>Commerce Subtotals</English>
 		<French>Commerce Subtotals</French>
 		<German>Einkommen mit Zwischensummen</German>
-		<Italian>Commerce Subtotals</Italian>
+		<Italian>Subtotali del Commercio</Italian>
 		<Spanish>Commerce Subtotals</Spanish>
 	</TEXT>
 	<TEXT>
@@ -134,7 +134,7 @@
 		<English>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</English>
 		<French>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</French>
 		<German>Zeigt im Tooltip jeder Einkommensart eine Zwischensumme (Gesamtertrag vor Modifikatoren) an, falls dies erforderlich ist</German>
-		<Italian>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</Italian>
+		<Italian>Quando è selezionato, nel testo a comparsa di ogni tipo di Commercio viene mostrato (quando necessario) il relativo subtotale (il totale prima dei modificatori).</Italian>
 		<Spanish>When checked, the subtotal (total before modifiers) is shown when necessary for each commerce type in its hover.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -142,7 +142,7 @@
 		<English>Rate Breakdown</English>
 		<French>Rate Breakdown</French>
 		<German>Aufschlüsselung der Rate</German>
-		<Italian>Rate Breakdown</Italian>
+		<Italian>Natalità dei Grandi Personaggi</Italian>
 		<Spanish>Rate Breakdown</Spanish>
 	</TEXT>
 	<TEXT>
@@ -150,7 +150,7 @@
 		<English>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</English>
 		<French>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</French>
 		<German>Zeigt im Tooltip die [ICON_GREATPEOPLE]/Runde für jede einzelne Art Große Persönlichkeit an</German>
-		<Italian>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</Italian>
+		<Italian>Quando è selezionato, nel testo a comparsa di ogni tipo di Grande Personaggio viene mostrato il tasso individuale di [ICON_GREATPEOPLE] per turno.</Italian>
 		<Spanish>When checked, displays the individual [ICON_GREATPEOPLE] rate per turn for each type in the hover.</Spanish>
 	</TEXT>
 	
@@ -159,7 +159,7 @@
 		<English>Maintenance</English>
 		<French>Maintenance</French>
 		<German>Unterhaltskosten</German>
-		<Italian>Maintenance</Italian>
+		<Italian>Mantenimento</Italian>
 		<Spanish>Maintenance</Spanish>
 	</TEXT>
 	<TEXT>
@@ -167,7 +167,7 @@
 		<English>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</English>
 		<French>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf die Unterhaltskosten ([ICON_BADGOLD]) haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano il mantenimento ([ICON_BADGOLD]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -175,7 +175,7 @@
 		<English>Food</English>
 		<French>Food</French>
 		<German>Nahrung</German>
-		<Italian>Food</Italian>
+		<Italian>Cibo</Italian>
 		<Spanish>Food</Spanish>
 	</TEXT>
 	<TEXT>
@@ -183,7 +183,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_FOOD]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la crescita alimentare ([ICON_FOOD]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_FOOD] rate and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -191,7 +191,7 @@
 		<English>Production</English>
 		<French>Production</French>
 		<German>Produktion</German>
-		<Italian>Production</Italian>
+		<Italian>Produzione</Italian>
 		<Spanish>Production</Spanish>
 	</TEXT>
 	<TEXT>
@@ -199,7 +199,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_PRODUCTION]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la produzione ([ICON_PRODUCTION]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_PRODUCTION] rate and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -207,7 +207,7 @@
 		<English>Commerce</English>
 		<French>Commerce</French>
 		<German>Einkommen</German>
-		<Italian>Commerce</Italian>
+		<Italian>Commercio</Italian>
 		<Spanish>Commerce</Spanish>
 	</TEXT>
 	<TEXT>
@@ -215,7 +215,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_COMMERCE]/Runde, [ICON_GOLD]/Runde, [ICON_RESEARCH]/Runde, [ICON_CULTURE]/Runde und [ICON_ESPIONAGE]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la crescita commerciale ([ICON_COMMERCE], [ICON_GOLD]), scientifica ([ICON_RESEARCH]), culturale ([ICON_CULTURE]) e spionistica ([ICON_ESPIONAGE]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_COMMERCE], [ICON_GOLD], [ICON_RESEARCH], [ICON_CULTURE], and [ICON_ESPIONAGE] rates and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -223,7 +223,7 @@
 		<English>Health</English>
 		<French>Health</French>
 		<German>Gesundheit</German>
-		<Italian>Health</Italian>
+		<Italian>Salute</Italian>
 		<Spanish>Health</Spanish>
 	</TEXT>
 	<TEXT>
@@ -231,7 +231,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_HEALTHY]/Runde und [ICON_UNHEALTHY]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la situazione sanitaria ([ICON_HEALTHY] e [ICON_UNHEALTHY]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_HEALTHY] and [ICON_UNHEALTHY] rates and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -239,7 +239,7 @@
 		<English>Happiness</English>
 		<French>Happiness</French>
 		<German>Zufriedenheit</German>
-		<Italian>Happiness</Italian>
+		<Italian>Felicità</Italian>
 		<Spanish>Happiness</Spanish>
 	</TEXT>
 	<TEXT>
@@ -247,7 +247,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_HAPPY]/Runde und [ICON_UNHAPPY]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano il gradimento ([ICON_HAPPY] e [ICON_UNHAPPY]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_HAPPY] and [ICON_UNHAPPY] rates and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -255,7 +255,7 @@
 		<English>Great People</English>
 		<French>Great People</French>
 		<German>Große Persönlichkeiten</German>
-		<Italian>Great People</Italian>
+		<Italian>Grandi Personaggi</Italian>
 		<Spanish>Great People</Spanish>
 	</TEXT>
 	<TEXT>
@@ -263,7 +263,7 @@
 		<English>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</English>
 		<French>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</French>
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_GREATPEOPLE]/Runde haben und welchen genau</German>
-		<Italian>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</Italian>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la natalità dei Grandi Personaggi ([ICON_GREATPEOPLE]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</Spanish>
 	</TEXT>
 
@@ -275,7 +275,7 @@
 		<English>Whip Button</English>
 		<French>Whip Button</French>
 		<German>Zwangsarbeit-Schaltfläche</German>
-		<Italian>Whip Button</Italian>
+		<Italian>Bottone dei sacrifici</Italian>
 		<Spanish>Whip Button</Spanish>
 	</TEXT>
 	<TEXT>
@@ -283,7 +283,7 @@
 		<English>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</English>
 		<French>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</French>
 		<German>Zeigt im Tooltip der Schaltfläche für den Einsatz von Zwangsarbeit zur Produktionsbeschleunigung den Überschuss an ([ICON_PRODUCTION] und [ICON_GOLD]), der durch deren Einsatz erzeugt wird</German>
-		<Italian>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</Italian>
+		<Italian>Quando è selezionato, il testo a comparsa del Bottone dei Sacrifici mostra il surplus ([ICON_PRODUCTION] e [ICON_GOLD]) generato dall'accelerazione mediante sacrifici.</Italian>
 		<Spanish>When checked, the Whip Button hover includes the overflow ([ICON_PRODUCTION] and [ICON_GOLD]) created by applying the whip.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -291,7 +291,7 @@
 		<English>Include Current</English>
 		<French>Include Current</French>
 		<German>Aktuelle Runde einbeziehen</German>
-		<Italian>Include Current</Italian>
+		<Italian>Includi corrente</Italian>
 		<Spanish>Include Current</Spanish>
 	</TEXT>
 	<TEXT>
@@ -299,7 +299,7 @@
 		<English>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</English>
 		<French>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</French>
 		<German>Bezieht [ICON_PRODUCTION]/Runde einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ein, da der Einsatz von Zwangsarbeit normalerweise die Rate beeinflusst und damit auch den tatsächlichen Überschuss verändern kann</German>
-		<Italian>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</Italian>
+		<Italian>Quando è selezionato, il calcolo del surplus da sacrifici include il tasso di produzione ([ICON_PRODUCTION]) corrente. Poichè l'accelerazione solitamente influenza tale tasso, il surplus effettivo può differire da quello mostrato.</Italian>
 		<Spanish>When checked, the whip overflow calculation includes the current [ICON_PRODUCTION] rate. Since applying the whip usually affects the rate, the actual overflow may be different.</Spanish>
 	</TEXT>
 	
@@ -308,7 +308,7 @@
 		<English>Remove Specialist Button</English>
 		<French>Remove Specialist Button</French>
 		<German>"Spezialist entfernen"-Schaltfläche</German>
-		<Italian>Remove Specialist Button</Italian>
+		<Italian>Bottone rimozione Specialisti</Italian>
 		<Spanish>Remove Specialist Button</Spanish>
 	</TEXT>
 	<TEXT>
@@ -316,7 +316,7 @@
 		<English>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</English>
 		<French>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</French>
 		<German>Zeigt im Tooltip der Schaltfläche "Spezialist entfernen" dieselben Informationen über einen Spezialisten an wie bei der Schaltfläche "Spezialist hinzufügen"</German>
-		<Italian>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</Italian>
+		<Italian>Quando è selezionato, il testo a comparsa del Bottone di rimozione degli Specialisti include le stesse informazioni mostrate da quello del Bottone di aggiunta degli Specialisti.</Italian>
 		<Spanish>When checked, the hover text for the Remove Specialist button includes the same specialist information shown on the Add Specialist button.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -324,7 +324,7 @@
 		<English>Zoom to City Button</English>
 		<French>Zoom to City Button</French>
 		<German>Zur Stadt zoomen</German>
-		<Italian>Zoom to City Button</Italian>
+		<Italian>Bottone di Zoom Cittadino</Italian>
 		<Spanish>Zoom to City Button</Spanish>
 	</TEXT>
 	<TEXT>
@@ -332,7 +332,7 @@
 		<English>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</English>
 		<French>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</French>
 		<German>Zeigt im Tooltip der Schaltfläche "Zur Stadt zoomen" dieselben ausführlichen Informationen an, wie wenn der Mauszeiger über einen Stadtbalken auf der Karte bewegt würde</German>
-		<Italian>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</Italian>
+		<Italian>Quando è selezionato, il testo a comparsa del Bottone di Zoom Cittadino nella schermata del 'Consigliere Interno' include informazioni dettagliate sulla Città, come quelle visualizzate quando si posiziona il cursore sulla Barra Cittadina sulla mappa.</Italian>
 		<Spanish>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</Spanish>
 	</TEXT>
 

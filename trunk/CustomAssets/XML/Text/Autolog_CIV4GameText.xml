@@ -197,7 +197,7 @@
         <English>Team contact made: %s1</English>
         <French>Team contact made: %s1</French>
         <German>Kontakt aufgenommen (Team): %s1</German>
-        <Italian>Team civiltà contattata: %s1</Italian>
+        <Italian>Squadra contattata: %s1</Italian>
         <Spanish>Team contact made: %s1</Spanish>
     </TEXT> 
     <TEXT>
@@ -205,7 +205,7 @@
         <English>Player contact made: %s1 of %s2</English>
         <French>Player contact made: %s1 of %s2</French>
         <German>Kontakt aufgenommen (Spieler): %s1 (%s2)</German>
-        <Italian>Player civiltà contattata: %s1 of %s2</Italian>
+        <Italian>Giocatore contattato: %s1 of %s2</Italian>
         <Spanish>Player contact made: %s1 of %s2</Spanish>
     </TEXT> 
     <TEXT>
@@ -213,7 +213,7 @@
         <English>%d1%% %s2: %d3 per turn, %d4 in the bank</English>
         <French>%d1%% %s2: %d3 per turn, %d4 in the bank</French>
         <German>%d1%% %s2: %d3 pro Runde, %d4 Goldvorrat</German>
-        <Italian>%d1%% %s2: %d3 per turn, %d4 in the bank</Italian>
+        <Italian>%d1%% %s2: %d3 per turno, %d4 in banca</Italian>
         <Spanish>%d1%% %s2: %d3 per turn, %d4 in the bank</Spanish>
     </TEXT> 
     <TEXT>
@@ -221,7 +221,7 @@
         <English>%d1%% %s2: %d3 per turn</English>
         <French>%d1%% %s2: %d3 per turn</French>
         <German>%d1%% %s2: %d3 pro Runde</German>
-        <Italian>%d1%% %s2: %d3 per turn</Italian>
+        <Italian>%d1%% %s2: %d3 per turno</Italian>
         <Spanish>%d1%% %s2: %d3 per turn</Spanish>
     </TEXT> 
     <TEXT>
