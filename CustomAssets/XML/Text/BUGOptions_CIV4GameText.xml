@@ -1387,7 +1387,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_HOVER</Tag>
 		<English>When checked, the raw breakdowns for [ICON_FOOD], [ICON_PRODUCTION], and [ICON_COMMERCE] are displayed in the trade routes table.</English>
 		<French>When checked, the raw breakdowns for [ICON_FOOD], [ICON_PRODUCTION], and [ICON_COMMERCE] are displayed in the trade routes table.</French>
-		<German>Zeigt eine Aufschlüsselung der Erträge von Nahrung, Produktion und Wirtschaft im Stadt-Bildschirm über dem Handelseinkommen an</German>
+		<German>Zeigt eine Aufschlüsselung der Erträge von [ICON_FOOD], [ICON_PRODUCTION] und [ICON_COMMERCE] im Stadt-Bildschirm über dem Handelseinkommen an</German>
 		<Italian>Quando è selezionato, i valori grezzi di Cibo, Produzione e Commerci) vengono mostrati nel pannello delle vie commerciali.</Italian>
 		<Spanish>When checked, the raw breakdowns for [ICON_FOOD], [ICON_PRODUCTION], and [ICON_COMMERCE] are displayed in the trade routes table.</Spanish>
 	</TEXT>
@@ -1435,7 +1435,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_TEXT</Tag>
 		<English>Production Bar</English>
 		<French>Production Bar</French>
-		<German>Production Bar</German>
+		<German>Produktionsbalken</German>
 		<Italian>Production Bar</Italian>
 		<Spanish>Production Bar</Spanish>
 	</TEXT>
@@ -1443,7 +1443,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSIST_HOVER</Tag>
 		<English>When checked, displays the [ICON_CITIZEN] cost and [ICON_PRODUCTION]/[ICON_GOLD] overflow for whipping and/or the [ICON_GOLD] cost for buying the item being produced in the Production Bar.</English>
 		<French>When checked, displays the [ICON_CITIZEN] cost and [ICON_PRODUCTION]/[ICON_GOLD] overflow for whipping and/or the [ICON_GOLD] cost for buying the item being produced in the Production Bar.</French>
-		<German>Zeigt die Anzahl der Bürger, die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss an Produktion sowie die Kosten an, die anfallen, wenn das derzeitige Bauprojekt mit einer Goldzahlung beschleunigt werden kann</German>
+		<German>Zeigt im Produktionsbalken die Anzahl der [ICON_CITIZEN], die für eine Beschleunigung der Produktion geopfert werden müssen, und den daraus entstehenden Überschuss ([ICON_PRODUCTION] und/oder [ICON_GOLD]) sowie die Kosten an, die anfallen, wenn das derzeitige Bauprojekt mit [ICON_GOLD] beschleunigt werden kann</German>
 		<Italian>Quando è selezionato, la Barra della Pruduzione della Schermata Cittadina mostra il costo in popolazione ed il surplus di produzione per l'accelerazione di produzione mediante sacrifici e il costo in oro per l'accelerazione di produzione mediante pagamenti relativi all'oggetto attualmente costruito.</Italian>
 		<Spanish>When checked, displays the [ICON_CITIZEN] cost and [ICON_PRODUCTION]/[ICON_GOLD] overflow for whipping and/or the [ICON_GOLD] cost for buying the item being produced in the Production Bar.</Spanish>
 	</TEXT>
@@ -1451,7 +1451,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_TEXT</Tag>
 		<English>Include Current</English>
 		<French>Include Current</French>
-		<German>Include Current</German>
+		<German>Aktuelle Runde einbeziehen</German>
 		<Italian>Comprendente corrente</Italian>
 		<Spanish>Include Current</Spanish>
 	</TEXT>
@@ -1459,7 +1459,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__WHIPASSISTOVERFLOWCOUNTCURRENTPRODUCTION_HOVER</Tag>
 		<English>When checked, whip production overflow estimates will include the city's current [ICON_PRODUCTION].</English>
 		<French>When checked, whip production overflow estimates will include the city's current [ICON_PRODUCTION].</French>
-		<German>Bezieht die Produktion einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ein</German>
+		<German>Bezieht [ICON_PRODUCTION] einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ein</German>
 		<Italian>Quando è selezionato, la stima del surplus di produzione include la produzione corrente della Città.</Italian>
 		<Spanish>When checked, whip production overflow estimates will include the city's current [ICON_PRODUCTION].</Spanish>
 	</TEXT>
@@ -1483,7 +1483,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONTURNS_TEXT</Tag>
 		<English>Turns Until Birth</English>
 		<French>Turns Until Birth</French>
-		<German>Große Persönlichkeit-Punkte (verbleibende Runden)</German>
+		<German>Runden bis zum Erscheinen</German>
 		<Italian>Turni per la nascita di un Grande Personaggio</Italian>
 		<Spanish>Turns Until Birth</Spanish>
 	</TEXT>
@@ -1491,7 +1491,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONTURNS_HOVER</Tag>
 		<English>When checked, displays the number of turns until the city will produce a [ICON_GREATPEOPLE].</English>
 		<French>When checked, displays the number of turns until the city will produce a [ICON_GREATPEOPLE].</French>
-		<German>Zeigt in der Anzeige der Große Persönlichkeit-Punkte die Anzahl der Runden an, bis eine Stadt eine Große Persönlichkeit hervorbringt</German>
+		<German>Zeigt in der Anzeige der Große Persönlichkeit-Punkte die Anzahl der Runden an, bis eine Stadt eine Große Persönlichkeit ([ICON_GREATPEOPLE]) hervorbringt</German>
 		<Italian>Quando è selezionato, viene visualizzato il numero di turni mancanti alla successiva nascita di un Grande Personaggio.</Italian>
 		<Spanish>When checked, displays the number of turns until the city will produce a [ICON_GREATPEOPLE].</Spanish>
 	</TEXT>
@@ -1499,7 +1499,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONINFO_TEXT</Tag>
 		<English>Types and Percentages</English>
 		<French>Types and Percentages</French>
-		<German>Informationen über Große Persönlichkeiten</German>
+		<German>Art und Wahrscheinlichkeit</German>
 		<Italian>Informazioni sui Grandi Personaggi</Italian>
 		<Spanish>Types and Percentages</Spanish>
 	</TEXT>
@@ -1507,7 +1507,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__GREATPERSONINFO_HOVER</Tag>
 		<English>When checked, displays the percentage chance and type of each possible [ICON_GREATPEOPLE] on the bar. The number shown is controlled by the General setting.</English>
 		<French>When checked, displays the percentage chance and type of each possible [ICON_GREATPEOPLE] on the bar. The number shown is controlled by the General setting.</French>
-		<German>Zeigt zusätzliche Information über zukünftige Große Persönlichkeiten an</German>
+		<German>Zeigt die Wahrscheinlichkeit des Erscheinens der verschiedenen Arten von Großen Persönlichkeiten ([ICON_GREATPEOPLE]) an</German>
 		<Italian>Quando è selezionato, vengono visualizzate informazioni aggiuntive sui Grandi Personaggi.</Italian>
 		<Spanish>When checked, displays the percentage chance and type of each possible [ICON_GREATPEOPLE] on the bar. The number shown is controlled by the General setting.</Spanish>
 	</TEXT>
@@ -1556,7 +1556,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUE_TEXT</Tag>
 		<English>Queue</English>
 		<French>Queue</French>
-		<German>Queue</German>
+		<German>Produktionsliste</German>
 		<Italian>Queue</Italian>
 		<Spanish>Queue</Spanish>
 	</TEXT>
@@ -1564,7 +1564,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUE_HOVER</Tag>
 		<English>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</English>
 		<French>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</French>
-		<German>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</German>
+		<German>Zeigt ein gelbes Ausrufezeichen (!) bei Projekten in der Produktionsliste an, deren Produktionsfortschritt demnächst verfällt, da sie zu lange in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden. Zwei rote Ausrufezeichen (!!) zeigen an, dass der Produktionsfortschritt eines Projekts in dieser Runde verfällt, falls es nicht weiter produziert wird</German>
 		<Italian>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Italian>
 		<Spanish>When checked, displays a yellow exclamation point (!) next to items in the build queue that are close to decaying from being left in the queue without adding [ICON_PRODUCTION] for too long. Two red exclamation points signify that the item will decay this turn if it is not first in the queue.</Spanish>
 	</TEXT>
@@ -1572,7 +1572,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEUNITTHRESHOLD_TEXT</Tag>
 		<English>Unit Warning</English>
 		<French>Unit Warning</French>
-		<German>Unit Warning</German>
+		<German>Einheiten-Warnung</German>
 		<Italian>Unit Warning</Italian>
 		<Spanish>Unit Warning</Spanish>
 	</TEXT>
@@ -1580,7 +1580,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEUNITTHRESHOLD_HOVER</Tag>
 		<English>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</English>
 		<French>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</French>
-		<German>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</German>
+		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt einer produzierten Einheit verfällt und ein gelbes Ausrufezeichen angezeigt wird (Produktionsfortschritte bei Einheiten verfallen, wenn sie 10 Runden in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden)</German>
 		<Italian>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Italian>
 		<Spanish>Select the number of turns before a unit will decay at which time a yellow exclamation mark is shown. Units decay after being in the queue without adding [ICON_PRODUCTION] for 10 turns.</Spanish>
 	</TEXT>
@@ -1588,7 +1588,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEBUILDINGTHRESHOLD_TEXT</Tag>
 		<English>Building Warning</English>
 		<French>Building Warning</French>
-		<German>Building Warning</German>
+		<German>Gebäude-Warnung</German>
 		<Italian>Building Warning</Italian>
 		<Spanish>Building Warning</Spanish>
 	</TEXT>
@@ -1596,7 +1596,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUEBUILDINGTHRESHOLD_HOVER</Tag>
 		<English>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</English>
 		<French>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</French>
-		<German>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</German>
+		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt eines produzierten Gebäudes verfällt und ein gelbes Ausrufezeichen angezeigt wird (Produktionsfortschritte bei Gebäuden verfallen, wenn sie 50 Runden in der Liste stehen, ohne dass weitere [ICON_PRODUCTION] auf sie verwendet wurden; bei Projekten geschieht dies nie)</German>
 		<Italian>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Italian>
 		<Spanish>Select the number of turns before a building will decay at which time a yellow exclamation mark is shown. Buildings decay after being in the queue without adding [ICON_PRODUCTION] for 50 turns. Projects never decay.</Spanish>
 	</TEXT>
@@ -1604,7 +1604,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVER_TEXT</Tag>
 		<English>Hover</English>
 		<French>Hover</French>
-		<German>Hover</German>
+		<German>Tooltip</German>
 		<Italian>Hover</Italian>
 		<Spanish>Hover</Spanish>
 	</TEXT>
@@ -1612,7 +1612,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVER_HOVER</Tag>
 		<English>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</English>
 		<French>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</French>
-		<German>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</German>
+		<German>Zeigt im Tooltip von Einheiten und Gebäuden in der Produktionsliste die Anzahl der Runden an, bis ein Produktionsfortschritt verfällt und wie viele [ICON_PRODUCTION] dann verloren gehen</German>
 		<Italian>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Italian>
 		<Spanish>When checked, displays the number of turns before and amount of decay in the hover text for units and buildings in the build queue.</Spanish>
 	</TEXT>
@@ -1620,7 +1620,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERUNITTHRESHOLD_TEXT</Tag>
 		<English>Unit Warning</English>
 		<French>Unit Warning</French>
-		<German>Unit Warning</German>
+		<German>Einheiten-Warnung</German>
 		<Italian>Unit Warning</Italian>
 		<Spanish>Unit Warning</Spanish>
 	</TEXT>
@@ -1628,7 +1628,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERUNITTHRESHOLD_HOVER</Tag>
 		<English>Select the number of turns before a unit will decay at which time the decay information is first displayed.</English>
 		<French>Select the number of turns before a unit will decay at which time the decay information is first displayed.</French>
-		<German>Select the number of turns before a unit will decay at which time the decay information is first displayed.</German>
+		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt einer produzierten Einheit verfällt und ein gelbes Ausrufezeichen angezeigt wird</German>
 		<Italian>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Italian>
 		<Spanish>Select the number of turns before a unit will decay at which time the decay information is first displayed.</Spanish>
 	</TEXT>
@@ -1636,7 +1636,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERBUILDINGTHRESHOLD_TEXT</Tag>
 		<English>Building Warning</English>
 		<French>Building Warning</French>
-		<German>Building Warning</German>
+		<German>Gebäude-Warnung</German>
 		<Italian>Building Warning</Italian>
 		<Spanish>Building Warning</Spanish>
 	</TEXT>
@@ -1644,7 +1644,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYHOVERBUILDINGTHRESHOLD_HOVER</Tag>
 		<English>Select the number of turns before a building will decay at which time the decay information is first displayed.</English>
 		<French>Select the number of turns before a building will decay at which time the decay information is first displayed.</French>
-		<German>Select the number of turns before a building will decay at which time the decay information is first displayed.</German>
+		<German>Bestimmt die Anzahl der Runden, bevor der Produktionsfortschritt eines produzierten Gebäudes verfällt und ein gelbes Ausrufezeichen angezeigt wird</German>
 		<Italian>Select the number of turns before a building will decay at which time the decay information is first displayed.</Italian>
 		<Spanish>Select the number of turns before a building will decay at which time the decay information is first displayed.</Spanish>
 	</TEXT>
@@ -3703,7 +3703,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFADEALTURNSLEFT_HOVER</Tag>
 		<English>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</English>
 		<French>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</French>
-		<German>Zeigt an, wieviele Runden noch verbleiben, bis ein Vertrag im Auslandsberater unter "Aktiv" gekündigt werden kann</German>
+		<German>Zeigt an, wie viele Runden noch verbleiben, bis ein Vertrag im Auslandsberater unter "Aktiv" gekündigt werden kann</German>
 		<Italian>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Italian>
 		<Spanish>When checked, shows how many turns are left before you can cancel each deal on the 'Active' tab.</Spanish>
 	</TEXT>
@@ -3921,19 +3921,19 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__USEADVANCED_TEXT</Tag>
-		<English>Use Advanced Methods (see ini file for Era_UnitClass options)</English>
-		<French>Utiliser la Méthode Avancée (voir le fichier INI pour les options Era_UnitClass)</French>
-		<German>Erweitertes System verwenden (siehe INI-Datei für "Era_UnitClass"-Optionen)</German>
+		<English>Use Advanced Methods</English>
+		<French>Utiliser la Méthode Avancée</French>
+		<German>Erweitertes System verwenden</German>
 		<Italian>Usa le convenzioni di denominazione avanzate per le varie Ere</Italian>
-		<Spanish>Use Advanced Methods (see ini file for Era_UnitClass options)</Spanish>
+		<Spanish>Use Advanced Methods</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__USEADVANCED_HOVER</Tag>
-		<English>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</English>
-		<French>En activant, les conventions de noms du fichier 'Adv Unit Naming.ini' seront utilisées.</French>
-		<German>Verwendet die erweiterten Benennungsregeln, die sich in der Datei "Adv Unit Naming.ini" befinden</German>
+		<English>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used  (see ini file for Era_UnitClass options).</English>
+		<French>En activant, les conventions de noms du fichier 'Adv Unit Naming.ini' seront utilisées  (voir le fichier INI pour les options Era_UnitClass).</French>
+		<German>Verwendet die erweiterten Benennungsregeln, die sich in der Datei "Adv Unit Naming.ini" befinden  (siehe INI-Datei für "Era_UnitClass"-Optionen)</German>
 		<Italian>Quando è selezionato, vengono utilizzate le convenzioni di denominazione avanzate definite nel file 'Adv Unit Naming.ini', che consentono impostazioni differenziate per le varie Ere.</Italian>
-		<Spanish>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used.</Spanish>
+		<Spanish>When checked, the advanced naming conventions in 'Adv Unit Naming.ini' file will be used  (see ini file for Era_UnitClass options).</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_UNITNAMING__DEFAULT_TEXT</Tag>
@@ -4152,7 +4152,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOSAVE</Tag>
 		<English>AutoSave:</English>
 		<French>AutoSave:</French>
-		<German>AutoSave:</German>
+		<German>Automatisches Speichern:</German>
 		<Italian>AutoSave:</Italian>
 		<Spanish>AutoSave:</Spanish>
 	</TEXT>
@@ -4160,7 +4160,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_ACTIONS</Tag>
 		<English>Actions:</English>
 		<French>Actions:</French>
-		<German>Actions:</German>
+		<German>Aktionen:</German>
 		<Italian>Actions:</Italian>
 		<Spanish>Actions:</Spanish>
 	</TEXT>
@@ -4203,7 +4203,7 @@
 		<Tag>TXT_KEY_BUG_OPTTAB_MAP</Tag>
 		<English>Map</English>
 		<French>Map</French>
-		<German>Map</German>
+		<German>Karte</German>
 		<Italian>Map</Italian>
 		<Spanish>Map</Spanish>
 	</TEXT>
@@ -4353,7 +4353,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_GREATPERSONBAR</Tag>
 		<English>Great Person Bar:</English>
 		<French>Great Person Bar:</French>
-		<German>Great Person Bar:</German>
+		<German>Anzeige für Große Persönlichkeit-Punkte:</German>
 		<Italian>Great Person Bar:</Italian>
 		<Spanish>Great Person Bar:</Spanish>
 	</TEXT>
@@ -4361,7 +4361,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_BUILDINGEFFECTS</Tag>
 		<English>Building Actual Effects:</English>
 		<French>Building Actual Effects:</French>
-		<German>Building Actual Effects:</German>
+		<German>Tatsächliche Gebäude-Effekte:</German>
 		<Italian>Building Actual Effects:</Italian>
 		<Spanish>Building Actual Effects:</Spanish>
 	</TEXT>
@@ -4369,7 +4369,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_PRODUCTIONDECAY</Tag>
 		<English>Production Decay:</English>
 		<French>Production Decay:</French>
-		<German>Production Decay:</German>
+		<German>Verfall des Produktionsfortschritts:</German>
 		<Italian>Production Decay:</Italian>
 		<Spanish>Production Decay:</Spanish>
 	</TEXT>

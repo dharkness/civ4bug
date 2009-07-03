@@ -143,7 +143,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSIST_TEXT</Tag>
 		<English>City Bar</English>
 		<French>City Bar</French>
-		<German>City Bar</German>
+		<German>Stadtbalken</German>
 		<Italian>City Bar</Italian>
 		<Spanish>City Bar</Spanish>
 	</TEXT>
@@ -159,7 +159,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSISTINCLUDECURRENT_TEXT</Tag>
 		<English>Include Current</English>
 		<French>Include Current</French>
-		<German>Include Current</German>
+		<German>Aktuelle Runde einbeziehen</German>
 		<Italian>Include Current</Italian>
 		<Spanish>Include Current</Spanish>
 	</TEXT>
@@ -167,7 +167,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__HURRYASSISTINCLUDECURRENT_HOVER</Tag>
 		<English>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</English>
 		<French>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</French>
-		<German>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</German>
+		<German>Bezieht [ICON_PRODUCTION] einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ([ICON_PRODUCTION] und/oder [ICON_GOLD]) ein, der aus der Produktionsbeschleunigung durch Zwangsarbeit entsteht</German>
 		<Italian>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Italian>
 		<Spanish>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Spanish>
 	</TEXT>
@@ -275,7 +275,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__REVOLTCHANCE_TEXT</Tag>
 		<English>Revolt Chance</English>
 		<French>Revolt Chance</French>
-		<German>Revolt Chance</German>
+		<German>Unruhe-Wahrscheinlichkeit</German>
 		<Italian>Revolt Chance</Italian>
 		<Spanish>Revolt Chance</Spanish>
 	</TEXT>
@@ -283,7 +283,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__REVOLTCHANCE_HOVER</Tag>
 		<English>When checked, shows the probability that the city will revolt due to cultural pressure.</English>
 		<French>When checked, shows the probability that the city will revolt due to cultural pressure.</French>
-		<German>When checked, shows the probability that the city will revolt due to cultural pressure.</German>
+		<German>Zeigt die Wahrscheinlichkeit an, dass in einer Stadt auf Grund von kulturellem Druck Unruhen ausbrechen</German>
 		<Italian>When checked, shows the probability that the city will revolt due to cultural pressure.</Italian>
 		<Spanish>When checked, shows the probability that the city will revolt due to cultural pressure.</Spanish>
 	</TEXT>
