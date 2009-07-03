@@ -91,7 +91,7 @@
 		<English>Cities</English>
 		<French>Cities</French>
 		<German>Städte</German>
-		<Italian>Cities</Italian>
+		<Italian>Città</Italian>
 		<Spanish>Cities</Spanish>
 	</TEXT>
 	<TEXT>
@@ -99,7 +99,7 @@
 		<English>Temples:</English>
 		<French>Temples:</French>
 		<German>Tempel:</German>
-		<Italian>Temples:</Italian>
+		<Italian>Templi:</Italian>
 		<Spanish>Temples:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -107,7 +107,7 @@
 		<English>Monastaries:</English>
 		<French>Monastaries:</French>
 		<German>Klöster:</German>
-		<Italian>Monastaries:</Italian>
+		<Italian>Monasteri:</Italian>
 		<Spanish>Monastaries:</Spanish>
 	</TEXT>
 	<TEXT>
@@ -115,7 +115,7 @@
 		<English>Missionaries:</English>
 		<French>Missionaries:</French>
 		<German>Missionare:</German>
-		<Italian>Missionaries:</Italian>
+		<Italian>Missionari:</Italian>
 		<Spanish>Missionaries:</Spanish>
 	</TEXT>
 	
@@ -1024,7 +1024,7 @@
 		<English>Log Scale</English>
 		<French>Log Scale</French>
 		<German>Log-Skala</German>
-		<Italian>Log Scale</Italian>
+		<Italian>Scala logaritmica</Italian>
 		<Spanish>Log Scale</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1043,7 +1043,7 @@
 		<English>Name</English>
 		<French>Name</French>
 		<German>Name</German>
-		<Italian>Name</Italian>
+		<Italian>Nome</Italian>
 		<Spanish>Name</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1051,7 +1051,7 @@
 		<English>Date</English>
 		<French>Date</French>
 		<German>Errichtet</German>
-		<Italian>Date</Italian>
+		<Italian>Data</Italian>
 		<Spanish>Date</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1059,7 +1059,7 @@
 		<English>Owner</English>
 		<French>Owner</French>
 		<German>Besitzer</German>
-		<Italian>Owner</Italian>
+		<Italian>Proprietario</Italian>
 		<Spanish>Owner</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1067,7 +1067,7 @@
 		<English>City</English>
 		<French>City</French>
 		<German>Stadt</German>
-		<Italian>City</Italian>
+		<Italian>Città</Italian>
 		<Spanish>City</Spanish>
 	</TEXT>
 
@@ -1098,7 +1098,7 @@
 		<English>Turns until next Vote: %d1</English>
 		<French>Turns until next Vote: %d1</French>
 		<German>Nächste Abstimmung in %d1 [NUM1:Runde:Runden]</German>
-		<Italian>Turns until next Vote: %d1</Italian>
+		<Italian>Turni alla prossima Votazione: %d1</Italian>
 		<Spanish>Turns until next Vote: %d1</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1106,7 +1106,7 @@
 		<English>Votes until next Election: %d1</English>
 		<French>Votes until next Election: %d1</French>
 		<German>Nächsten Wahl in %d1 [NUM1:Runde:Runden]</German>
-		<Italian>Votes until next Election: %d1</Italian>
+		<Italian>Voti alla prossima Elezione: %d1</Italian>
 		<Spanish>Votes until next Election: %d1</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1146,7 +1146,7 @@
 		<English>Diplomatic Victory</English>
 		<French>Victoire diplomatique</French>
 		<German>Diplomatischer Sieg</German>
-		<Italian>vittoria diplomatica</Italian>
+		<Italian>Vittoria Diplomatica</Italian>
 		<Spanish>La victoria diplomática</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1413,7 +1413,7 @@
 		<English>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Für dieses Feature wird die BUG-DLL (BULL) benötigt.[COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_WARNING_TEXT]Questa caratteristica richiede la libreria DLL del BUG Mod ('BULL').[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]This feature requires the BUG DLL (BULL).[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
@@ -1421,7 +1421,7 @@
 		<English>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</French>
 		<German>[COLOR_WARNING_TEXT]Für dieses Feature wird eine neuere Version der BUG-DLL (BULL) benötigt.[COLOR_REVERT]</German>
-		<Italian>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</Italian>
+		<Italian>[COLOR_WARNING_TEXT]Questa caratteristica richiede una nuova versione della libreria DLL del BUG Mod ('BULL').[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]This feature requires a newer version of the BUG DLL (BULL).[COLOR_REVERT]</Spanish>
 	</TEXT>
 

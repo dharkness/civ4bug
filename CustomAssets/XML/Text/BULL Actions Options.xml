@@ -14,7 +14,7 @@
 		<English>Sentry While Healing</English>
 		<French>Sentry While Healing</French>
 		<German>Wache bei Heilung</German>
-		<Italian>Sentry While Healing</Italian>
+		<Italian>Sentinella durante la guarigione</Italian>
 		<Spanish>Sentry While Healing</Spanish>
 	</TEXT>
 	<TEXT>
@@ -22,7 +22,7 @@
 		<English>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</English>
 		<French>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</French>
 		<German>Veranlasst Einheiten, die sich gerade heilen, bei Gefahr aktiv zu werden</German>
-		<Italian>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</Italian>
+		<Italian>Quando è selezionato, le Unità che hanno ricevuto l'ordine di curarsi si riattiveranno quando avvertono un pericolo, fungendo da sentinelle.</Italian>
 		<Spanish>When checked, units ordered to heal will awaken when they spot danger, acting like sentries.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -30,7 +30,7 @@
 		<English>Only Neutral Territory</English>
 		<French>Only Neutral Territory</French>
 		<German>Nur in neutralem Gebiet</German>
-		<Italian>Only Neutral Territory</Italian>
+		<Italian>Solo in territorio neutrale</Italian>
 		<Spanish>Only Neutral Territory</Spanish>
 	</TEXT>
 	<TEXT>
@@ -38,7 +38,7 @@
 		<English>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</English>
 		<French>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</French>
 		<German>Falls die Option "Wache bei Heilung" gewählt wurde, werden Einheiten nur bei Gefahr aktiv, wenn sie sich in neutralem Gebiet befinden (verhindert beispielsweise, dass sich heilende Einheiten während eines Angriffs auf eine feindliche Stadt oder verteidigende Einheiten in befreundetem Gebiet jede Runde wieder aktiv werden)</German>
-		<Italian>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Italian>
+		<Italian>Quando è selezionato, se è stata abilitata l'opzione 'Sentinella durante la guarigione', le Unità che hanno ricevuto l'ordine di curarsi si riattiveranno quando avvertono un pericolo solamente se si trovano in territorio neutrale. Ciò vi eviterà alle vostre forze d'attacco di attivarsi ogni turno in prossimità di una Città nemica ed alle vostre forze di difesa di riattivarsi in territorio nemico.</Italian>
 		<Spanish>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Spanish>
 	</TEXT>
 
@@ -49,7 +49,7 @@
 		<English>PreChop Forests</English>
 		<French>PreChop Forests</French>
 		<German>Warten vor Abholzung</German>
-		<Italian>PreChop Forests</Italian>
+		<Italian>Disboscamento incompleto</Italian>
 		<Spanish>PreChop Forests</Spanish>
 	</TEXT>
 	<TEXT>
@@ -57,7 +57,7 @@
 		<English>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</English>
 		<French>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</French>
 		<German>Stoppt Bautrupps, die die Aktion "Wald abholzen" ausführen, 1 Runde, bevor die Aktion beendet wird, und lässt sie auf einen weiteren Befehl warten</German>
-		<Italian>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</Italian>
+		<Italian>Quando è selezionato, i Lavoratori a cui è stato ordinato di tagliare una Foresta si fermeranno quando mancherà un turno al completamento dell'incarico. Per terminare il disboscamento è necessario impartire nuovamente l'ordine.</Italian>
 		<Spanish>When checked, Workers ordered to chop a forest will stop with 1 turn remaining. Issue the order again to finish the chop.</Spanish>
 	</TEXT>
 	<TEXT>
@@ -65,7 +65,7 @@
 		<English>PreChop Improvements</English>
 		<French>PreChop Improvements</French>
 		<German>Warten vor Fertigstellung</German>
-		<Italian>PreChop Improvements</Italian>
+		<Italian>Miglioramento con disboscamento incompleto</Italian>
 		<Spanish>PreChop Improvements</Spanish>
 	</TEXT>
 	<TEXT>
@@ -73,7 +73,7 @@
 		<English>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</English>
 		<French>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</French>
 		<German>Stoppt Bautrupps, die eine Modernisierung auf einem Wald-Geländefeld errichten und diesen damit entfernen würden, 1 Runde, bevor die Aktion beendet wird, und lässt sie auf einen weiteren Befehl warten</German>
-		<Italian>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</Italian>
+		<Italian>Quando è selezionato, i Lavoratori a cui è stato ordinato di tagliare una Foresta e successivamente costruire un miglioramento si fermeranno quando mancherà un turno al completamento dell'incarico. Per terminare la costruzione è necessario impartire nuovamente l'ordine.</Italian>
 		<Spanish>When checked, Workers ordered to build an improvement that will remove a forest will stop with 1 turn remaining. Issue the order again to finish the improvement.</Spanish>
 	</TEXT>
 

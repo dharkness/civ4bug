@@ -144,7 +144,7 @@
 		<English>City Bar</English>
 		<French>City Bar</French>
 		<German>Stadtbalken</German>
-		<Italian>City Bar</Italian>
+		<Italian>Barra Cittadina</Italian>
 		<Spanish>City Bar</Spanish>
 	</TEXT>
 	<TEXT>
@@ -160,7 +160,7 @@
 		<English>Include Current</English>
 		<French>Include Current</French>
 		<German>Aktuelle Runde einbeziehen</German>
-		<Italian>Include Current</Italian>
+		<Italian>Includi corrente</Italian>
 		<Spanish>Include Current</Spanish>
 	</TEXT>
 	<TEXT>
@@ -168,7 +168,7 @@
 		<English>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</English>
 		<French>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</French>
 		<German>Bezieht [ICON_PRODUCTION] einer Stadt aus der aktuellen Runde in die Berechnung des Produktionsüberschusses ([ICON_PRODUCTION] und/oder [ICON_GOLD]) ein, der aus der Produktionsbeschleunigung durch Zwangsarbeit entsteht</German>
-		<Italian>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Italian>
+		<Italian>Quando è selezionato, include il turno corrente quando calcola il surplus ([ICON_PRODUCTION] e/o [ICON_GOLD]) per l'accelerazione da sacrifici.</Italian>
 		<Spanish>When checked, includes the current turn's production when calculating overflow ([ICON_PRODUCTION] and/or [ICON_GOLD]) from hurrying with the whip.</Spanish>
 	</TEXT>
 	
@@ -276,7 +276,7 @@
 		<English>Revolt Chance</English>
 		<French>Revolt Chance</French>
 		<German>Unruhe-Wahrscheinlichkeit</German>
-		<Italian>Revolt Chance</Italian>
+		<Italian>Possibilità di Rivolta</Italian>
 		<Spanish>Revolt Chance</Spanish>
 	</TEXT>
 	<TEXT>
@@ -284,7 +284,7 @@
 		<English>When checked, shows the probability that the city will revolt due to cultural pressure.</English>
 		<French>When checked, shows the probability that the city will revolt due to cultural pressure.</French>
 		<German>Zeigt die Wahrscheinlichkeit an, dass in einer Stadt auf Grund von kulturellem Druck Unruhen ausbrechen</German>
-		<Italian>When checked, shows the probability that the city will revolt due to cultural pressure.</Italian>
+		<Italian>Quando è selezionato, mostra la probabilità che la Città si rivolti a causa della pressione culturale.</Italian>
 		<Spanish>When checked, shows the probability that the city will revolt due to cultural pressure.</Spanish>
 	</TEXT>
 	
@@ -301,7 +301,7 @@
 		<English>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</English>
 		<French>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</French>
 		<German>Verbirgt die Hinweise zur Auswahl von Städten und zur Anzeige der Basiswerte, um Platz für die neuen Informationen zu schaffen</German>
-		<Italian>Quando è selezionato, nasconde le istruzioni per la selezione delle Città e mostrare i valori base per fare posto alle nuove informazioni.</Italian>
+		<Italian>Quando è selezionato, nasconde le istruzioni per la selezione delle Città e mostra i valori base per fare posto alle nuove informazioni.</Italian>
 		<Spanish>When checked, hides the instructions for selecting cities and showing base values to make room for the new information.</Spanish>
 	</TEXT>
 
