@@ -95,7 +95,7 @@
 		<Tag>TXT_KEY_MAPFINDER_STOP_SHORTCUT</Tag>
 		<English>ALT + CTRL + G to Stop</English>
 		<French>ALT + CTRL + G pour arrêter</French>
-		<German>Drücken Sie [ALT + CTRL + G], um MapFinder zu beenden.</German>
+		<German>Drücken Sie [STRG + ALT + G], um MapFinder zu beenden.</German>
 		<Italian>ALT + CTRL + G per arrestare</Italian>
 		<Spanish>ALT + CTRL + G para parar</Spanish>
 	</TEXT>
@@ -112,7 +112,7 @@
 		<Tag>TXT_KEY_MAPFINDER_SAVING</Tag>
 		<English>Saving Game...</English>
 		<French>Saving Game...</French>
-		<German>Speicherung des Spiels...</German>
+		<German>Speicherung der Partie...</German>
 		<Italian>Salvataggio partita...</Italian>
 		<Spanish>Saving Game...</Spanish>
 	</TEXT>
