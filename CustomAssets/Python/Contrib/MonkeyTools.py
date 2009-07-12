@@ -243,8 +243,8 @@ def getPromotionInfoText(pUnit):
 			if len(szTemp) > 0:
 				szTemp += u", "
 			szTemp += gc.getFeatureInfo(ii).getDescription()
-		if len(szTemp) > 0:
-			szPromotionInfo += localText.getText("TXT_KEY_PROMOTION_DOUBLE_MOVE_TEXT", (szTemp, )) + "\n"
+	if len(szTemp) > 0:
+		szPromotionInfo += localText.getText("TXT_KEY_PROMOTION_DOUBLE_MOVE_TEXT", (szTemp, )) + "\n"
 	if iVisibilityChange > 0:
 		szPromotionInfo += localText.getText("TXT_KEY_PROMOTION_VISIBILITY_TEXT", (iVisibilityChange, )) + "\n"
 	if iMovesChange > 0:
