@@ -17,14 +17,19 @@ localText = CyTranslator()
 
 iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
 sFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
-screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
+#screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
 # constants
-sUpdateShow = "SHOW"
-sUpdateShowIf = "SHOWIF"
-sUpdateHide = "HIDE"
-sUpdateNothing = "NOTHING"
+(sUpdateShow,
+ sUpdateShowIf,
+ sUpdateHide,
+ sUpdateNothing,
+) = range(4)
+
+
 sBupStringBase = "BUGUnitPlotString"
+cUplSize = 34
+cUplSpacing = 3
 
 def updatePLEOptions():
 	# Capture these for looping over the plot's units
@@ -49,15 +54,15 @@ def updatePLEOptions():
 
 class UnitList:
 	def __init__(self, vScreen, vCols, vRows, yRes):
-		screen = vScreen
-		iCols = vCols
-		iRows = vRows
+		self.screen = vScreen
+		self.iCols = vCols
+		self.iRows = vRows
+		self.sBupPanel = sBupStringBase + "BackgroundPanel"
 
-		_x = 315 - 3
-		_y = yRes - 169 - 3 + (1 - vRows) * 34
-		_w = vCols * 34 + 3
-		_h = vRows * 34 + 3
-		sBupPanel = sBupStringBase + "BackgroundPanel"
+		_x = 315 - cUplSpacing
+		_y = yRes - 169 - cUplSpacing + (1 - vRows) * cUplSize
+		_w = vCols * cUplSize + cUplSpacing
+		_h = vRows * cUplSize + cUplSpacing
 		screen.addPanel(sBupPanel, u"", u"", True, False, _x, _y, _w, _h, PanelStyles.PANEL_STYLE_EMPTY)
 
 		UnitPlots = []
@@ -109,22 +114,24 @@ class UnitList:
 
 class UnitPlot:
 	def __init__(self, vBupPanel, iIndex, x, y):
-		sBupString = sBupStringBase + str(iIndex)
+		self.sBupString = sBupStringBase + str(iIndex)
 		xPixel = _getxPixel(x)
 		yPixel = _getyPixel(x)
 
 		# add promo frame
-		screen.addDDSGFCAt(sBupString + "PromoFrame", vBupPanel, sFileNamePromo, xPixel + 2, yPixel + 2, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, False )
-		screen.hide(sBupString + "PromoFrame")
+		screen.addDDSGFCAt(_getPromoString(), vBupPanel, sFileNamePromo, xPixel + 2, yPixel + 2, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, False )
+		screen.hide(_getPromoString())
 
 
 	def _getxPixel(self, x):
-		return x * 34 + 3
+		return x * cUplSize + cUplSpacing
 
 	def _getyPixel(self, y):
-		return y * 34 + 3
+		return y * cUplSize + cUplSpacing
 
-#		_updatePromo(sBupString + "PromoFrame", None, None, sUpdateNew)
+#		_updatePromo(_getPromoString(), None, None, sUpdateNew)
+#cUplSize = 34
+#cUplSpacing = 3
 
 
 
@@ -150,25 +157,28 @@ class UnitPlot:
 
 
 
-	def update(self, pUnit):
-		pPrevUnit = pCurrUnit
-		pCurrUnit = UnitDisplay(pUnit)
+	def reset(self):
+		pCurrUnit = None
+
+	def refresh(self, pUnit):  # or should this be draw()?
+		self.pPrevUnit = pCurrUnit
+		self.pCurrUnit = UnitDisplay(pUnit)
 
 		# Unit Plot
-		if pCurrUnit == None:
-			if pPrevUnit != None:
+		if self.pCurrUnit == None:
+			if self.pPrevUnit != None:
 				# current unit is blank, previous unit was not blank
-				_updatePromo(sBupString + "PromoFrame", pCurrUnit, pPrevUnit, sUpdateHide)
+				_hidePromo()
 			else:
 				# current unit is blank, previous unit was blank
-				_updatePromo(sBupString + "PromoFrame", pCurrUnit, pPrevUnit, sUpdateNothing)
+				# nothing to do
 		else:
-			if pPrevUnit != None:
+			if self.pPrevUnit != None:
 				# current unit is not blank, previous unit was not blank
-				_updatePromo(sBupString + "PromoFrame", pCurrUnit, pPrevUnit, sUpdateShowIf)
+				_updatePromo()
 			else:
 				# current unit is not blank, previous unit was blank
-				_updatePromo(sBupString + "PromoFrame", pCurrUnit, pPrevUnit, sUpdateShow)
+				_showPromo()
 
 
 
@@ -177,33 +187,24 @@ class UnitPlot:
 
 
 
-	def _updatePromo(self, vString, pCurrUnit, pPrevUnit, sUpdate):
-		if sUpdate == sUpdateNothing:
-			return
 
-		if sUpdate == sUpdateHide:
-			screen.hide(vString)
-			return
 
-		if sUpdate == sUpdateShow:
-			screen.show(vString)
-			return
+	def _getPromoString():
+		return self.sBupString + "PromoFrame"
 
-		if pCurrUnit.bPromo == None:
-			if pPrevUnit.bPromo != None:
-				_updatePromo(vString, pCurrUnit, pPrevUnit, sUpdateHide)
-				return
-			else:
-				_updatePromo(vString, pCurrUnit, pPrevUnit, sUpdateNothing)
-				return
-		else:
-			if pPrevUnit.bPromo != None:
-				#_updatePromo(vString, pCurrUnit, pPrevUnit, sUpdateShowIf)
-				return
-			else:
-				_updatePromo(vString, pCurrUnit, pPrevUnit, sUpdateShow)
-				return
+	def _updatePromo():
+		if not self.pPrevUnit.bPromo:
+			self._showPromo()
+		elif not self.pCurrUnit.bPromo:
+			self._hidePromo()
 
+	def _hidePromo():
+		if self.pPrevUnit.bPromo:
+			self.screen.hide(_getPromoString())
+
+	def _showPromo():
+		if self.pCurrUnit.bPromo:
+			self.screen.show(_getPromoString())
 
 
 class UnitDisplay:
