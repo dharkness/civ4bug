@@ -3526,8 +3526,12 @@ class CvMainInterface:
 
 	def updatePlotListButtons_Hide( self, screen ):
 		# hide all buttons
-		self.hidePlotListButtonPLEObjects(screen)
-		self.hideUnitInfoPane()
+		if PleOpt.isPLE_Style():
+			if (not self.bPLEHide):
+				self.hidePlotListButtonPLEObjects(screen)
+			self.hideUnitInfoPane()
+		else:
+			self.hidePlotListButton_Orig(screen)
 
 	def updatePlotListButtons_Common( self, screen ):
 
@@ -3585,6 +3589,19 @@ class CvMainInterface:
 				screen.hide( "InterfaceUnitModel" )
 		else:
 			screen.hide( "InterfaceUnitModel" )
+
+	# hides all plot list objects
+	def hidePlotListButton_Orig(self, screen):
+		# hides all unit button objects
+		for i in range( self.iMaxPlotListIcons ):
+			szString = "PlotListButton" + str(i)
+			screen.hide( szString )
+			screen.hide( szString + "Icon" )
+			screen.hide( szString + "Health" )
+			screen.hide( szString + "MoveBar" )
+			screen.hide( szString + "PromoFrame" )
+			screen.hide( szString + "ActionIcon" )
+			screen.hide( szString + "Upgrade" )
 
 	def updatePlotListButtons_Orig( self, screen ):
 
