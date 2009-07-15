@@ -168,8 +168,8 @@ class UnitPlot:
 		if self.pCurrUnit == None:
 			if self.pPrevUnit != None:
 				# current unit is blank, previous unit was not blank
-				_hidePromo()
-			else:
+				_erasePromo()
+			#else:
 				# current unit is blank, previous unit was blank
 				# nothing to do
 		else:
@@ -178,12 +178,50 @@ class UnitPlot:
 				_updatePromo()
 			else:
 				# current unit is not blank, previous unit was blank
+				_drawPromo()
+
+
+
+
+
+
+
+
+
+
+	def _updatePromo():
+		if not self.pPrevUnit.bPromo:
+			self._showPromo()
+		elif not self.pCurrUnit.bPromo:
+			self._hidePromo()
+
+	def _drawPromo():
+		# test if you really want to show it
+		if self.pPrevUnit == None:
+			if self.pCurrUnit.bPromo:
+				_showPromo()
+		else:
+			if (self.pCurrUnit.bPromo
+			and not self.pPrevUnit.bPromo):
 				_showPromo()
 
+	def _erasePromo():
+		# test if you really want to hide it
+		if self.pCurrUnit == None:
+			if self.pPrevUnit.bPromo:
+				_hidePromo()
+		else:
+			if (self.pPrevUnit.bPromo
+			and not self.pCurrUnit.bPromo):
+				_hidePromo()
 
+	def _hidePromo():
+		# just hide the stupid thing
+		self.screen.hide(_getPromoString())
 
-
-
+	def _showPromo():
+		# just show the stupid thing
+		self.screen.show(_getPromoString())
 
 
 
@@ -192,19 +230,8 @@ class UnitPlot:
 	def _getPromoString():
 		return self.sBupString + "PromoFrame"
 
-	def _updatePromo():
-		if not self.pPrevUnit.bPromo:
-			self._showPromo()
-		elif not self.pCurrUnit.bPromo:
-			self._hidePromo()
 
-	def _hidePromo():
-		if self.pPrevUnit.bPromo:
-			self.screen.hide(_getPromoString())
 
-	def _showPromo():
-		if self.pCurrUnit.bPromo:
-			self.screen.show(_getPromoString())
 
 
 class UnitDisplay:
