@@ -348,7 +348,10 @@ class CvMainInterface:
 		self.iLoopCnt 				= 0
 		self.bPLEHide 				= False
 		self.bUpdatePLEUnitList 	= True
-		
+
+		self.bPLECurrentlyShowing	= False
+		self.bVanCurrentlyShowing	= False
+
 		self.dUnitPromoList			= {}
 		self.dUnitUpgradeList		= {}		
 		
@@ -3520,18 +3523,29 @@ class CvMainInterface:
 
 		if PleOpt.isPLE_Style():
 			self.updatePlotListButtons_PLE(screen)
+			self.bPLECurrentlyShowing = True
 		else:
 			self.updatePlotListButtons_Orig(screen)
+			self.bVanCurrentlyShowing = True
 		return 0
 
 	def updatePlotListButtons_Hide( self, screen ):
 		# hide all buttons
-		if PleOpt.isPLE_Style():
-			if (not self.bPLEHide):
-				self.hidePlotListButtonPLEObjects(screen)
+		if self.bPLECurrentlyShowing:
+			self.hidePlotListButtonPLEObjects(screen)
 			self.hideUnitInfoPane()
-		else:
+			self.bPLECurrentlyShowing = False
+
+		if self.bVanCurrentlyShowing:
 			self.hidePlotListButton_Orig(screen)
+			self.bVanCurrentlyShowing = False
+
+#		if PleOpt.isPLE_Style():
+#			if (not self.bPLEHide):
+#				self.hidePlotListButtonPLEObjects(screen)
+#			self.hideUnitInfoPane()
+#		else:
+#			self.hidePlotListButton_Orig(screen)
 
 	def updatePlotListButtons_Common( self, screen ):
 
@@ -5487,6 +5501,11 @@ class CvMainInterface:
 # BUG - Anger Display - end
 					else:
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY_NO_UNHAPPY", (pHeadSelectedCity.happyLevel(), ))
+
+# BUG - Anger Display - start
+				if pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer():
+					bShowAngerCounter = False
+# BUG - Anger Display - end
 
 # BUG - Anger Display - start
 					if (CityScreenOpt.isShowAngerCounter()
