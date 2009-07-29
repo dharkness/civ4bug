@@ -2,10 +2,10 @@
 
 modName = "BUG Mod"
 displayName = "BUG Mod"
-modVersion = "3.6 [Build 1695]"
+modVersion = "4.0 [Build 1886]"
 
 civName = "BtS"
-civVersion = "3.13-3.17"
+civVersion = "3.13-3.19"
 
 def getName():
 	return modName
