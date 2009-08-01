@@ -1,5 +1,5 @@
 ____________________________________________________________________________________________________
-BUG x.x released <date>
+BUG x.x unreleased
 
 CHANGES
 
@@ -11,13 +11,13 @@ CHANGES
 New Features:
 
 - Regenerate map shortcut (ALT + G) [BULL]
-- MapFinder from HOF Mod: Press ALT + CTRL + G to start/stop [BULL]
+- MapFinder from HOF Mod: ALT + CTRL + G to start/stop [BULL]
 - Advanced Scoreboard
 	Refuses to Talk (F) [BULL]
 	Number of Cities (Q)
 - Production Decay [BULL]
 	A yellow ! means an item in the build queue will start to decay after 5 turns of non-production
-	A red !! means an item will decay this turn if not produced
+	A red !! means an item will decay this turn
 	Hover for units/buildings shows actual decay amount and turns until it starts 
 - Info Screen (F9)
 	New expanded Wonders tab by DanF5771
@@ -25,8 +25,9 @@ New Features:
 		Shows items being built (must have enough EPs for City Visibility)
 		Zoom to City button
 	Remembers the selected tab like other screens
-- BUG Religious Advisor (F7)
+- BUG Religious Advisor (F7) shows which buildings have been or are being built for the state religion 
 - AutoSave: automatically save single-player games at start, end, and exit [BULL]
+    You must use ESC : Exit to Main Menu or Desktop; ALT + F4 won't save
 
 Improvements:
 
@@ -48,7 +49,8 @@ Improvements:
 	Collateral and flanking damage [BULL]
 	Upgraded units [BULL]
 - Strategy Overlay
-	Configurable color palette (not yet committed)
+	Configurable color palette
+	Outlines using the same color now overlap instead of merging into a single outline
 
 Bug Fixes:
 
