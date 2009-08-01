@@ -27,7 +27,7 @@ New Features:
 	Remembers the selected tab like other screens
 - BUG Religious Advisor (F7) shows which buildings have been or are being built for the state religion 
 - AutoSave: automatically save single-player games at start, end, and exit [BULL]
-    You must use ESC : Exit to Main Menu or Desktop; ALT + F4 won't save
+	You must use ESC : Exit to Main Menu or Desktop; ALT + F4 won't save
 
 Improvements:
 
@@ -211,8 +211,8 @@ New Features:
 
 - New Font File includes citizen icon, great general icon, and blank icon
 - Created FontUtil for adding new constants to FontSymbols
-    Define symbols in XML: <symbol id [name] [from] [offset]/>
-    Provides getChar(symbol) for easier access to unicode string for symbol
+	Define symbols in XML: <symbol id [name] [from] [offset]/>
+	Provides getChar(symbol) for easier access to unicode string for symbol
 - CvMainInterface.updateScreen() fires gameUpdate event (not fired by Civ4)
 - Added <shortcut> tag to XML configuration to create keyboard shortcuts
 - Added module attribute to <mod> element that is used as default for module attributes in all child elements
@@ -221,7 +221,7 @@ New Features:
 Bug Fixes:
 
 - Reloading Python modules now works!
-    Added PythonReloaded event fired after reloading (good time to call onLoad handler for mods that store data)
+	Added PythonReloaded event fired after reloading (good time to call onLoad handler for mods that store data)
 - Fixed bug where Trade.findTypes() from TradeUtil.py was returning a list of types rather than a list of trades with that type
 - Fixed DealCanceled event
 - Option dirty bits and change functions are no longer set/called during initialization
