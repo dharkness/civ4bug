@@ -853,7 +853,7 @@
         <English>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</English>
         <French>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</French>
         <German>Diplomatie: %s1 (%s2) bietet %s4 (%s5) einen Handel an (%s3 gegen %s6)</German>
-        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) %s3 in cambio di %s6</Italian>
+        <Italian>%s1 (%s2) ha offerto a %s4 (%s5) %s3 in cambio di %s6</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to trade %s3 to %s4 (%s5) for %s6</Spanish>
     </TEXT> 
     <TEXT>
@@ -861,7 +861,7 @@
         <English>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</French>
         <German>Diplomatie: %s1 (%s2) bietet %s4 (%s5) die Stadt %s3 an</German>
-        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) la Città di %s3</Italian>
+        <Italian>%s1 (%s2) ha offerto a %s4 (%s5) la Città di %s3</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to give the city %s3 to %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -869,7 +869,7 @@
         <English>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</English>
         <French>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</French>
         <German>Diplomatie: %s1 (%s2) bietet %s4 (%s5) Hilfe (%s3) an</German>
-        <Italian>%s1 (%s2) ha oferto a %s4 (%s5) il suo aiuto (%s3)</Italian>
+        <Italian>%s1 (%s2) ha offerto a %s4 (%s5) il suo aiuto (%s3)</Italian>
         <Spanish>Diplomacy: %s1 (%s2) offers to give help (%s3) to %s4 (%s5)</Spanish>
     </TEXT> 
     <TEXT>
@@ -965,7 +965,7 @@
         <English>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) gives %s5</English>
         <French>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) gives %s5</French>
         <German>Diplomatie: %s1 (%s2) fordert von %s3 (%s4) Tribut (%s5)</German>
-        <Italian> %s1 (%s2) ha chiesto a %s3 (%s4) il psagamento di un tributo consistente in %s5</Italian>
+        <Italian> %s1 (%s2) ha chiesto a %s3 (%s4) il pagamento di un tributo consistente in %s5</Italian>
         <Spanish>Diplomacy (Tribute Demand): %s1 (%s2) demands that %s3 (%s4) gives %s5</Spanish>
     </TEXT> 
     <TEXT>
