@@ -66,6 +66,7 @@ Bug Fixes:
 - Sevopedia now opens from MAIN MENU without loading or starting a game
 - Fixed intermittent Vista "no interface" issue
 - AutoLog no longer calls CvGameUtils.getPillageGold()
+- Anger Counter on City Screen hidden when investigating foreign cities
 
 
 MODDING
