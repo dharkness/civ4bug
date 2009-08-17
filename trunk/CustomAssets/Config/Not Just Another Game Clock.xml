@@ -25,7 +25,7 @@
 					label="Display Era" 
 					help="When checked, the current era is displayed to the left of the research bar."/>
 			<option id="ShowEraColor" key="Show Reflect Era In Turn Color" 
-					type="boolean" default="True" 
+					type="boolean" default="False" 
 					get="isUseEraColor" set="setUseEraColor" dirtyBit="GameData" 
 					label="Use Era-Related Colors" 
 					help="When checked, the game date and era are displayed using a color for each era."/>
