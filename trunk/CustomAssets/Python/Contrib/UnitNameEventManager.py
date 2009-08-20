@@ -12,12 +12,15 @@
 ##  - ^cb^ - combat type (Melee)
 ##  - ^dm^ - domain (Water)
 ##  - ^ld^ - leader
-##  - ^cnt[f]^ - count across all units (increments based on unit)
-##  - ^cntu[f]^ - count across same unit (increments based on unit)
-##  - ^cntct[f]^ - count across same city (increments based on unit)
-##  - ^cntuct[f]^ - count across same unit / city (increments based on unit)
-##  - ^cntc[f]^ - count across same combat type (increments based on combat type)
-##  - ^cntd[f]^ - count across same domain (increments based on domain)
+##  - ^cnt[f][r]^ - counting code, if the code isn't there - return 'ALL'
+##  - where
+##  -   r = 'a' means count across all units (just increments)
+##  -   r = 'u' means count across same unit (increments based on unit)
+##  -   r = 'c' means count across same city (increments based on city)
+##  -   r = 't' means count across same unit / city (increments based on unit / city)
+##  -   r = 'b' means count across same combat type (increments based on combat type)
+##  -   r = 'd' means count across same domain (increments based on domain)
+##  -   r = other, means count across units that have the same code
 ##  - ^tt1[f][x:y]^ - total where the total is a random number between x and y (number)
 ##  - ^tt2[f][x]^ - total count (starts at x, incremented by 1 each time ^tt is reset to 1)
 ##

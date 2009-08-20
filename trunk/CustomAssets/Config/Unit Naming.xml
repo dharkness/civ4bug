@@ -20,7 +20,7 @@
 					type="boolean" default="False" 
 					get="isAdvanced" set="setAdvanced"/>
 			<option id="Default" key="Default" 
-					type="string" default="^ut^ ^cntu[n]^ (^ct^)"/>
+					type="string" default="^ut^ ^cnt[n][u]^ (^ct^)"/>
 			
 			<option id="Combat_None" key="CombatNone" 
 					type="string" default="DEFAULT"/>
