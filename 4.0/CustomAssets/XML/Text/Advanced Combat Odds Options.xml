@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	Advanced Combat Odds
+	Options Game Text
+
+	Copyright (c) 2009 The BUG Mod.
+-->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_TEXT</Tag>
+		<English>Advanced Combat Odds</English>
+		<French>Advanced Combat Odds</French>
+		<German>Erweiterte Siegchancen</German>
+		<Italian>Probabilità di Combattimento Avanzate</Italian>
+		<Spanish>Advanced Combat Odds</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_HOVER</Tag>
+		<English>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</English>
+		<French>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</French>
+		<German>Erlaubt die Anpassung des Detailgrads der Informationen, die bei der Berechnung der Siegchancen angezeigt werden, wenn der Mauszeiger für einen Angriff über eine feindliche Einheit bewegt wird (verwendet PieceOfMind's "Advanced Combat Odds"-Mos)</German>
+		<Italian>Quando è selezionato, consente di variare il livello di dettaglio mostrato per il calcolo delle Probabilità di Combattimento quando si posiziona il cursore per un movimento offensivo (utilizza il Mod "Advanced Combat Odds" di PieceOfMind).</Italian>
+		<Spanish>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_TEXT</Tag>
+		<English>Debug</English>
+		<French>Debug</French>
+		<German>Debug</German>
+		<Italian>Debug</Italian>
+		<Spanish>Debug</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_HOVER</Tag>
+		<English>When checked, shows debugging information in the combat odds calculations.</English>
+		<French>When checked, shows debugging information in the combat odds calculations.</French>
+		<German>Zeigt Debug-Information bei der Berechnung der Siegchancen an</German>
+		<Italian>Quando è selezionato, mostra le informazioni di debug nel calcolo delle Probabilità di Combattimento.</Italian>
+		<Spanish>When checked, shows debugging information in the combat odds calculations.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_TEXT</Tag>
+		<English>Detail</English>
+		<French>Detail</French>
+		<German>Detailgrad</German>
+		<Italian>Dettagli</Italian>
+		<Spanish>Detail</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_HOVER</Tag>
+		<English>Specifies the level of detail to show in the combat odds calculations.</English>
+		<French>Specifies the level of detail to show in the combat odds calculations.</French>
+		<German>Bestimmt, mit welchem Detailgrad die Siegchancen angezeigt werden sollen</German>
+		<Italian>Specifica il livello di dettaglio che deve essere utilizzato per la visualizzazione delle Probabilità di Combattimento.</Italian>
+		<Spanish>Specifies the level of detail to show in the combat odds calculations.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACO__DETAIL_LIST</Tag>
+		<English>Low|Medium|High|Extreme</English>
+		<French>Low|Medium|High|Extreme</French>
+		<German>Niedrig|Mittel|Hoch|Extrem</German>
+		<Italian>Basso|Medio|Alto|Massimo</Italian>
+		<Spanish>Low|Medium|High|Extreme</Spanish>
+	</TEXT>
+</Civ4GameText>
