@@ -59,10 +59,8 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addSpacer(screen, leftL, "CityScreen41")
 		self.addCheckbox(screen, leftC, "CityScreen__ProductionDecayQueue")
 		self.addCheckbox(screen, leftR, "CityScreen__ProductionDecayHover")
-		#leftLL, leftLR = self.addTwoColumnLayout(screen, leftL, "ProductionDecayQueue")
 		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueUnitThreshold")
 		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueBuildingThreshold")
-		#leftRL, leftRR = self.addTwoColumnLayout(screen, leftR, "ProductionDecayHover")
 		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverUnitThreshold")
 		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverBuildingThreshold")
 		
@@ -87,7 +85,9 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addSpacer(screen, rightR, "CityScreen5")
 		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")
 		self.addCheckbox(screen, rightR, "CityBar__Specialists")
+		self.addCheckbox(screen, rightR, "CityBar__RevoltChance")
 		self.addCheckbox(screen, rightR, "CityBar__HideInstructions")
+		# EF: Airport Icons option is on Map tab
 		#self.addCheckbox(screen, rightR, "CityBar__AirportIcons")
 		
 		self.addSpacer(screen, right, "CityScreen6")
