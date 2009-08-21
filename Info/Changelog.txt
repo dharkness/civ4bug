@@ -3,6 +3,32 @@ BUG x.x unreleased
 
 CHANGES
 
+New Features:
+
+Improvements:
+
+Bug Fixes:
+
+- MapFinder
+	Status panel title color
+- Unit Naming
+	Default naming convention matches new unit counting codes
+
+
+MODDING
+
+New Features:
+
+Improvements:
+
+Bug Fixes:
+
+
+____________________________________________________________________________________________________
+BUG 4.0 released August 16, 2009
+
+CHANGES
+
 	*** BULL: The BUG DLL ***
 	
 	This is an optional component that, once installed, enables the features listed below marked [BULL].
@@ -66,7 +92,9 @@ Bug Fixes:
 - Sevopedia now opens from MAIN MENU without loading or starting a game
 - Fixed intermittent Vista "no interface" issue
 - AutoLog no longer calls CvGameUtils.getPillageGold()
+	Fixes an OOS error when some players have different Autolog settings
 - Anger Counter on City Screen hidden when investigating foreign cities
+- Era and game date colors are disabled by default
 
 
 MODDING
