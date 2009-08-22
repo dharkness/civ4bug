@@ -17,6 +17,9 @@
 		<section id="Bar">
 			<option id="AirportIcons" key="Airport Icons" 
 					type="boolean" default="True"/>
+					
+			<option id="StarvationTurns" key="Starvation Turns" 
+					type="boolean" default="True"/>
 		</section>
 		
 		<section id="Hover">

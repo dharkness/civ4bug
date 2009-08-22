@@ -38,6 +38,7 @@ class BugMapOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
 		self.addCheckbox(screen, right, "MiscHover__PartialBuilds")
 		self.addCheckbox(screen, right, "CityBar__AirportIcons")
+		self.addCheckbox(screen, right, "CityBar__StarvationTurns")
 		
 		
 		screen.attachHSeparator(column, column + "Sep1")
