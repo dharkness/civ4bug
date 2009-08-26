@@ -123,6 +123,9 @@
 	<init module="TraitUtil"/>
 	<init module="UnitUtil"/>
     <gameutils module="WidgetUtil" handler="getWidgetHelp"/>
+    
+	<event type="OnLoad" module="CvTechChooser" function="resetTechPrefs"/>
+	<event type="GameStart" module="CvTechChooser" function="resetTechPrefs"/>
 	
 	
 	<!-- Mods -->
