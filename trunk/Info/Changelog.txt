@@ -10,9 +10,11 @@ Improvements:
 Bug Fixes:
 
 - MapFinder
-	Status panel title color
+	Status panel title
 - Unit Naming
 	Default naming convention matches new unit counting codes
+- Technology Advisor
+	Great Person Bulbed Techs are reset when a game is started or loaded
 
 
 MODDING

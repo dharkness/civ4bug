@@ -42,6 +42,9 @@ UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIS
 import GameUtil
 # BUG - 3.19 No Espionage - end
 
+def resetTechPrefs(args=[]):
+	CvScreensInterface.techChooser.resetTechPrefs()
+
 class CvTechChooser:
 	"Tech Chooser Screen"
 
@@ -57,7 +60,7 @@ class CvTechChooser:
 
 # BUG - GP Tech Prefs - start
 		self.bPrefsShowing = False
-		self.pPrefs = None
+		self.resetTechPrefs()
 # BUG - GP Tech Prefs - end
 
 		self.PIXEL_INCREMENT = 7
@@ -182,15 +185,13 @@ class CvTechChooser:
 
 		self.X_SELECT_TAB = 30
 		self.X_TRADE_TAB = 165
-#		self.X_TOP_CITIES_TAB = 425
-#		self.X_STATS_TAB = 663
 		self.Y_TABS = 730
 
 		self.sTechSelectTab = self.getNextWidgetName("TechSelectTab")
 		self.sTechTradeTab = self.getNextWidgetName("TechTradeTab")
 		self.sTechTabID = self.sTechSelectTab
 
-# reset widget array so that the above never get deleted
+		# reset widget array so that the above never get deleted
 		self.nWidgetCount = 0
 		self.sWidgets = []
 
@@ -208,15 +209,9 @@ class CvTechChooser:
 		self.BOX_INCREMENT_WIDTH = 27 # Used to be 33 #Should be a multiple of 3...
 		self.DrawTechChooser(screen, self.TabPanels[0], True, True, True, True, True, True)
 
-
-
-
 		self.BOX_INCREMENT_WIDTH = 12 # Used to be 33 #Should be a multiple of 3...
 		self.DrawTechChooser(screen, self.TabPanels[1], True, False, True, False, False, True)
 		self.BOX_INCREMENT_WIDTH = 27 # Used to be 33 #Should be a multiple of 3...
-#	def DrawTechChooser(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails, bANDPreReq, bORPreReq):
-
-
 
 	def ShowTab(self):
 		BugUtil.debug("cvTechChooser: ShowTab")
@@ -226,10 +221,9 @@ class CvTechChooser:
 		for tp in self.TabPanels:
 			screen.hide(tp)
 
-# remove these 2 lines when we return to multi-tab screen and uncomment out the 10 below.
+		# remove these 2 lines when we return to multi-tab screen and uncomment out the 10 below.
 		screen.show(self.TabPanels[0])
 		screen.setFocus(self.TabPanels[0])
-
 
 #		if(self.sTechTabID == self.sTechSelectTab):
 #			screen.setText(self.sTechSelectTab, "", "Tech Select", CvUtil.FONT_LEFT_JUSTIFY, self.X_SELECT_TAB, self.Y_TABS, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
@@ -242,8 +236,6 @@ class CvTechChooser:
 #			screen.setText(self.sTechTradeTab, "", "Tech Trade - under development", CvUtil.FONT_LEFT_JUSTIFY, self.X_TRADE_TAB, self.Y_TABS, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 #			screen.show(self.TabPanels[1])
 #			screen.setFocus(self.TabPanels[1])
-
-		return
 
 
 	def DrawTechChooser(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails, bANDPreReq, bORPreReq):
@@ -264,7 +256,6 @@ class CvTechChooser:
 		screen.moveToFront( "AddTechButton" )
 
 		self.timer.logSpan("total")
-		return
 
 	def placeTechs(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails):
 		BugUtil.debug("cvTechChooser: placeTechs")
@@ -965,6 +956,9 @@ class CvTechChooser:
 		return
 
 # BUG - GP Tech Prefs - start
+	def resetTechPrefs (self):
+		self.pPrefs = TechPrefs.TechPrefs()
+	
 	def updateTechPrefs (self):
 		BugUtil.debug("cvTechChooser: updateTechPrefs")
 
@@ -1014,7 +1008,7 @@ class CvTechChooser:
 
 		# Remove any techs researched since last call, creating tree if necessary
 		if (not self.pPrefs):
-			self.pPrefs = TechPrefs.TechPrefs()
+			self.resetTechPrefs()
 		self.pPrefs.removeKnownTechs()
 
 		# Add all techs in research queue to set of soon-to-be-known techs
