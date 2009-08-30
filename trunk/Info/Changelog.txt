@@ -13,6 +13,8 @@ Bug Fixes:
 	Status panel title
 - Unit Naming
 	Default naming convention matches new unit counting codes
+- Customizable Domestic Advisor
+	Culture levels under No Espionage are now correct
 - Technology Advisor
 	Great Person Bulbed Techs are reset when a game is started or loaded
 
