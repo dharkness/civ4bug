@@ -64,20 +64,17 @@ from CvPythonExtensions import *
 
 import PyHelpers
 import CvUtil
-import ScreenInput
 import CvScreenEnums
 import CvEventInterface
-import CvEventManager
 import Popup as PyPopup
 
-import CvEventInterface
 import BugPath
 import BugConfigTracker
 import BugUtil
 import FontUtil
+import GameUtil
 
 import math
-import os.path
 
 PyPlayer = PyHelpers.PyPlayer
 
@@ -918,14 +915,13 @@ class CvCustomizableDomesticAdvisor:
 		# Cultural Levels Text
 		screen.setText (self.CULTURE_TEXT_NAME, "Background", self.cultureIcon, CvUtil.FONT_LEFT_JUSTIFY, self.nCultureLevelX, self.nCultureLevelY, self.Z_TEXT, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
-		nGameSpeed = CyGame().getGameSpeedType()
 		# Start with 2 because we need it farther from the icon.
 		iCount = 2
 		# For each cultural level
 		for i in range (gc.getNumCultureLevelInfos()):
 			pCultureLevel = gc.getCultureLevelInfo (i)
 			# Get the value
-			nValue = pCultureLevel.getSpeedThreshold(nGameSpeed)
+			nValue = GameUtil.getCultureThreshold(i)
 			# Only show non-zero levels
 			if (nValue != 0):
 				# Set text
