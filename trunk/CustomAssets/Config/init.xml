@@ -13,22 +13,6 @@
 	<load mod="BUG Config"/>
 	<load mod="BUG Core"/>
 	
-	<init module="BugEventManager" function="configure" immediate="True">
-		<arg name="logging" type="boolean" value="False"/>
-		<arg name="noLogEvents" type="set">
-			"gameUpdate",
-			"mouseEvent",
-			"kbdEvent"
-		</arg>
-	</init>
-	
-	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
-	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
-	<shortcut module="BugOptionsScreen" function="showOptionsScreen" keys="Alt Ctrl O | Alt J"/>
-	
-	<shortcut module="BugHelp" function="launch" keys="Alt Ctrl F1"/>
-		<!--arg type="string" value="TXT_KEY_BUG_HELP_FILE"/-->
-	
 	
 	<!-- Civilization Core -->
 	
