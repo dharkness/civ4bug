@@ -483,7 +483,6 @@ class CvReligionScreen:
 					# check for missionaries
 					for i in range(ReligionUtil.getNumUnitTypes()):
 						iUnit = ReligionUtil.getUnit(iReligion, i)
-						BugUtil.debug("looking for unit %i: %i", i, iUnit)
 						if pLoopCity.GetCy().getFirstUnitOrder(iUnit) != -1:
 							sUnit = self.objectUnderConstruction
 						elif pLoopCity.GetCy().canTrain(iUnit, False, False):
@@ -495,7 +494,6 @@ class CvReligionScreen:
 					# check for temples, cathedral, monasteries, shrine
 					for i in range(ReligionUtil.getNumBuildingTypes()):
 						iBldg = ReligionUtil.getBuilding(iReligion, i)
-						BugUtil.debug("looking for building %i: %i", i, iBldg)
 						sBldg = self.calculateBuilding(pLoopCity, iBldg)
 						screen.setTableText(self.TABLE_ID, self.COL_FIRST_BUILDING + i, iCity, sBldg, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 
