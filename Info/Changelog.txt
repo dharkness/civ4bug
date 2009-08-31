@@ -17,11 +17,17 @@ Bug Fixes:
 	Culture levels under No Espionage are now correct
 - Technology Advisor
 	Great Person Bulbed Techs are reset when a game is started or loaded
+- Religion Advisor
+	Shows new religions and types of religious buildings/units from mods
+	Top area not yet scrollable
 
 
 MODDING
 
 New Features:
+
+- ReligionUtil
+	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
 
 Improvements:
 
