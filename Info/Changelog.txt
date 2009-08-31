@@ -31,6 +31,9 @@ New Features:
 
 Improvements:
 
+- BugGameUtils
+	Each callback's dispatch logging is now optional via "log" XML attribute
+
 Bug Fixes:
 
 

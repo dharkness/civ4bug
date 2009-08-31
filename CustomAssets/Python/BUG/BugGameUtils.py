@@ -89,50 +89,51 @@ import types
 ## Constants and Globals
 
 LISTENER_SUFFIX = "Listener"
+DEFAULT_LOGGING = False
 
 g_dispatcher = None
 
 
 ## Configuration
 
-def addUtils(utils, override=False):
-	getDispatcher()._addUtils(utils)
+def addUtils(utils, override=False, log=None):
+	getDispatcher()._addUtils(utils, log)
 
 
-def addHandler(func, override=False):
-	addNamedHandler(func.__name__, func, override)
+def addHandler(func, override=False, log=None):
+	addNamedHandler(func.__name__, func, override, log)
 
-def addNamedHandler(name, func, override=False):
-	getDispatcher()._addHandler(name, func, override)
+def addNamedHandler(name, func, override=False, log=None):
+	getDispatcher()._addHandler(name, func, override, log)
 
-def addBoundHandler(utils, func, override=False):
-	addNamedBoundHandler(func.__name__, utils, func, override)
+def addBoundHandler(utils, func, override=False, log=None):
+	addNamedBoundHandler(func.__name__, utils, func, override, log)
 
-def addNamedBoundHandler(name, utils, func, override=False):
-	getDispatcher()._addBoundHandler(name, func, override)
+def addNamedBoundHandler(name, utils, func, override=False, log=None):
+	getDispatcher()._addBoundHandler(name, func, override, log)
 
 
-def addListener(func):
+def addListener(func, log=None):
 	name = func.__name__
 	if name.endswith(LISTENER_SUFFIX):
 		name = name[:-len(LISTENER_SUFFIX)]
-	addNamedListener(name, func)
+	addNamedListener(name, func, log)
 
-def addNamedListener(name, func):
-	getDispatcher()._addListener(name, func)
+def addNamedListener(name, func, log=None):
+	getDispatcher()._addListener(name, func, log)
 
-def addBoundListener(utils, func):
+def addBoundListener(utils, func, log=None):
 	name = func.__name__
 	if name.endswith(LISTENER_SUFFIX):
 		name = name[:-len(LISTENER_SUFFIX)]
-	addNamedBoundListener(name, utils, func)
+	addNamedBoundListener(name, utils, func, log)
 
-def addNamedBoundListener(name, utils, func):
-	getDispatcher()._addBoundListener(name, utils, func)
+def addNamedBoundListener(name, utils, func, log=None):
+	getDispatcher()._addBoundListener(name, utils, func, log)
 
 
-def createCallback(name, func, default=None):
-	getDispatcher()._createCallback(name, func, default)
+def createCallback(name, func, default=None, log=None):
+	getDispatcher()._createCallback(name, func, default, log)
 
 def setDefault(name, default):
 	getDispatcher()._setDefault(name, default)
@@ -146,13 +147,17 @@ def getDispatcher():
 
 class Dispatcher:
 	
-	def __init__(self):
+	def __init__(self, log=None):
+		if log is None:
+			self._log = DEFAULT_LOGGING
+		else:
+			self._log = log
 		self._callbacks = {}
 		self._baseUtils = CvGameUtils.CvGameUtils()
 		clazz = CvGameUtils.CvGameUtils
 		for name, func in clazz.__dict__.iteritems():
 			if not name.startswith("_") and isinstance(func, types.FunctionType):
-				self._createCallback(name, BugUtil.bindFunction(self._baseUtils, name))
+				self._createCallback(name, BugUtil.bindFunction(self._baseUtils, name), None, self._log)
 		
 		# setup defaults
 		self._setDefault("isVictory", True)
@@ -222,12 +227,14 @@ class Dispatcher:
 		self._setDefault("getWidgetHelp", u"")
 		self._setDefault("getUpgradePriceOverride", -1)
 	
-	def _createCallback(self, name, func, default=None):
+	def _createCallback(self, name, func, default=None, log=None):
+		if log is None:
+			log = self._log
 		if default is not None:
 			BugUtil.debug("BugGameUtils - creating callback %s with default %s", name, default)
 		else:
 			BugUtil.debug("BugGameUtils - creating callback %s", name)
-		callback = Callback(name, func, default)
+		callback = Callback(name, func, default, log)
 		self._callbacks[name] = callback
 		setattr(self.__class__, name, callback)
 	
@@ -241,27 +248,27 @@ class Dispatcher:
 	def _setDefault(self, name, default):
 		self._getCallback(name).setDefault(default)
 	
-	def _addHandler(self, name, func, override=False):
-		self._getCallback(name).addHandler(func)
+	def _addHandler(self, name, func, override=False, log=None):
+		self._getCallback(name).addHandler(func, override, log)
 	
-	def _addBoundHandler(self, name, utils, func, override=False):
-		self._addHandler(name, self._bind(utils, func), override)
+	def _addBoundHandler(self, name, utils, func, override=False, log=None):
+		self._addHandler(name, self._bind(utils, func), override, log)
 	
-	def _addListener(self, name, func):
-		self._getCallback(name).addListener(func)
+	def _addListener(self, name, func, log=None):
+		self._getCallback(name).addListener(func, log)
 	
-	def _addBoundListener(self, name, utils, func):
-		self._addListener(name, self._bind(utils, func))
+	def _addBoundListener(self, name, utils, func, log=None):
+		self._addListener(name, self._bind(utils, func), log)
 	
-	def _addUtils(self, utils, override=False):
+	def _addUtils(self, utils, override=False, log=None):
 		clazz = utils.__class__
 		BugUtil.debug("BugGameUtils - registering %s.%s", clazz.__module__, clazz.__name__)
 		for name, func in clazz.__dict__.iteritems():
 			if not name.startswith("_") and isinstance(func, types.FunctionType):
 				if name.endswith(LISTENER_SUFFIX):
-					self._addBoundListener(name[:-len(LISTENER_SUFFIX)], utils, func)
+					self._addBoundListener(name[:-len(LISTENER_SUFFIX)], utils, func, log)
 				else:
-					self._addBoundHandler(name, utils, func, override)
+					self._addBoundHandler(name, utils, func, override, log)
 	
 	def _bind(self, utils, func):
 		bound = lambda *args: func(utils, *args)
@@ -273,10 +280,11 @@ class Dispatcher:
 
 class Callback:
 	
-	def __init__(self, name, baseHandler, default=None):
+	def __init__(self, name, baseHandler, default=None, log=False):
 		self.name = name
 		self.baseHandler = baseHandler
 		self.default = default
+		self.log = log
 		self.handlers = []
 		self.listeners = []
 	
@@ -284,17 +292,24 @@ class Callback:
 		BugUtil.debug("BugGameUtils - %s - setting default to %s", self.name, default)
 		self.default = default
 	
-	def addHandler(self, func, override=False):
+	def addHandler(self, func, override=False, log=None):
 		if override:
 			BugUtil.debug("BugGameUtils - %s - overriding %s handler", self.name, func.__module__)
 			self.handlers.insert(0, func)
 		else:
 			BugUtil.debug("BugGameUtils - %s - adding %s handler", self.name, func.__module__)
 			self.handlers.append(func)
+		self.setLogging(log)
 	
-	def addListener(self, func):
+	def addListener(self, func, log=None):
 		BugUtil.debug("BugGameUtils - %s - adding %s listener", self.name, func.__module__)
 		self.listeners.append(func)
+		self.setLogging(log)
+	
+	def setLogging(self, log=None):
+		if log is not None:
+			self.log = log
+			BugUtil.debug("BugGameUtils - callback %s logging is now %s", self.name, self.log)
 	
 	def callHandler(self, handler, argsList):
 		if argsList is None:
@@ -310,19 +325,19 @@ class Callback:
 	
 	def __call__(self, argsList=None):
 		for handler in self.handlers:
-			BugUtil.debug("BugGameUtils - %s - dispatching to %s handler", self.name, handler.__module__)
+			if self.log: BugUtil.debug("BugGameUtils - %s - dispatching to %s handler", self.name, handler.__module__)
 			result = self.callHandler(handler, argsList)
 			if result is not None and result != self.default:
 				break
 		else:
 			if self.default is not None:
-				BugUtil.debug("BugGameUtils - %s - using default %s", self.name, self.default)
+				if self.log: BugUtil.debug("BugGameUtils - %s - using default %s", self.name, self.default)
 				result = self.default
 			else:
-				BugUtil.debug("BugGameUtils - %s - dispatching to base handler", self.name)
+				if self.log: BugUtil.debug("BugGameUtils - %s - dispatching to base handler", self.name)
 				result = self.callHandler(self.baseHandler, argsList)
 		for listener in self.listeners:
-			BugUtil.debug("BugGameUtils - %s - calling %s listener", self.name, listener.__module__)
+			if self.log: BugUtil.debug("BugGameUtils - %s - calling %s listener", self.name, listener.__module__)
 			self.callListener(listener, argsList, result)
 		return result
 
@@ -335,7 +350,7 @@ class GameUtilsHandler(BugConfig.Handler):
 	
 	def __init__(self):
 		BugConfig.Handler.__init__(self, GameUtilsHandler.TAG, 
-				"module function class handler handlers listener listeners override dll",
+				"module function class handler handlers listener listeners override log dll",
 				CallbackHandler.TAG)
 		self.addAttribute("module", True, True)
 		self.addExcludedAttribute("function")
@@ -345,9 +360,10 @@ class GameUtilsHandler(BugConfig.Handler):
 		self.addExcludedAttribute("listener")
 		self.addAttribute("listeners", False, False, None, "listener")
 		self.addAttribute("override", True, False, "false")
+		self.addAttribute("log")
 		self.addAttribute("dll")
 	
-	def handle(self, element, module, clazz, handlers, listeners, override, dll):
+	def handle(self, element, module, clazz, handlers, listeners, override, log, dll):
 		override = self.isTrue(override)
 		dll = BugDll.decode(dll)
 		if self.isDllOkay(element, dll):
@@ -357,7 +373,7 @@ class GameUtilsHandler(BugConfig.Handler):
 				if handlers or listeners:
 					if handlers:
 						for handler in handlers.replace(",", " ").split():
-							addHandler(BugUtil.bindFunction(utils, handler), override)
+							addHandler(BugUtil.bindFunction(utils, handler), override, log)
 					if listeners:
 						for listener in listeners.replace(",", " ").split():
 							func = None
@@ -372,16 +388,16 @@ class GameUtilsHandler(BugConfig.Handler):
 								except BugUtil.ConfigError:
 									raise BugUtil.ConfigError("Game utils %s.%s must define function %s or %s", 
 											module, clazz, listener, listener + "Listener")
-							addListener(func)
+							addListener(func, log)
 				else:
-					addUtils(utils, override)
+					addUtils(utils, override, log)
 			else:
 				if handlers:
 					for handler in handlers.replace(",", " ").split():
-						addHandler(BugUtil.lookupFunction(module, handler), override)
+						addHandler(BugUtil.lookupFunction(module, handler), override, log)
 				if listeners:
 					for listener in listeners.replace(",", " ").split():
-						addListener(BugUtil.lookupFunction(module, listener))
+						addListener(BugUtil.lookupFunction(module, listener), log)
 		else:
 			BugUtil.info("BugGameUtils - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, clazz, self.resolveDll(element, dll))
 
@@ -391,16 +407,17 @@ class CallbackHandler(BugConfig.Handler):
 	
 	def __init__(self):
 		BugConfig.Handler.__init__(self, CallbackHandler.TAG, 
-				"name type default module handler listener dll")
+				"name type default module handler listener log dll")
 		self.addAttribute("name", True)
 		self.addAttribute("type")
 		self.addAttribute("default")
 		self.addAttribute("module", False, True)
 		self.addAttribute("handler", True, False, None, "name")
 		self.addAttribute("listener")
+		self.addAttribute("log")
 		self.addAttribute("dll")
 	
-	def handle(self, element, name, type, default, module, handler, listener, dll):
+	def handle(self, element, name, type, default, module, handler, listener, log, dll):
 		dll = BugDll.decode(dll)
 		if self.isDllOkay(element, dll):
 			utils = element.getState("gameutils")
@@ -414,19 +431,19 @@ class CallbackHandler(BugConfig.Handler):
 				func = BugUtil.lookupFunction(module, handler)
 				if listener:
 					listenerFunc = BugUtil.lookupFunction(module, listener)
-			createCallback(name, func, self.createValue(type, default))
+			createCallback(name, func, self.createValue(type, default), log)
 			if listener:
-				addNamedListener(name, listenerFunc)
+				addNamedListener(name, listenerFunc, log)
 		else:
 			BugUtil.info("BugGameUtils - ignoring <%s> %s, requires dll version %s", element.tag, name, self.resolveDll(element, dll))
 
 
 ## Initialization
 
-def init():
+def init(log=None):
 	BugUtil.debug("BugGameUtils - initializing")
 	global g_dispatcher
-	g_dispatcher = Dispatcher()
+	g_dispatcher = Dispatcher(log)
 
 # initialize once module has loaded
 init()
