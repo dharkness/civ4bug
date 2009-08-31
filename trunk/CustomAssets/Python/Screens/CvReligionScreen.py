@@ -1,5 +1,9 @@
 ## Sid Meier's Civilization 4
 ## Copyright Firaxis Games 2005
+##
+## Scrolling aspect by johny smith in http://forums.civfanatics.com/showthread.php?t=260697&highlight=scrolling+religion
+## Inspiration from zappara to handle new religions, extended to handle new types of buildings and units
+
 from CvPythonExtensions import *
 import PyHelpers
 import CvUtil
@@ -9,9 +13,9 @@ import CvScreenEnums
 # BUG - start
 import BugUtil
 import BugCore
-AdvisorOpt = BugCore.game.Advisors
 import PlayerUtil
 import ReligionUtil
+AdvisorOpt = BugCore.game.Advisors
 # BUG - end
 
 PyPlayer = PyHelpers.PyPlayer
@@ -446,11 +450,11 @@ class CvReligionScreen:
 
 			# columns for units (missionaries)
 			for type in ReligionUtil.getUnitTypes():
-				screen.setTableColumnHeader(self.TABLE_ID, self.COL_FIRST_UNIT + type.index, type.icon, 30)
+				screen.setTableColumnHeader(self.TABLE_ID, self.COL_FIRST_UNIT + type.index, u"<font=2>%s</font>" % type.icon, 30)
 
 			# columns for buildings (temples, monasteries, cathedral, shrine)
 			for type in ReligionUtil.getBuildingTypes():
-				screen.setTableColumnHeader(self.TABLE_ID, self.COL_FIRST_BUILDING + type.index, type.icon, 30)
+				screen.setTableColumnHeader(self.TABLE_ID, self.COL_FIRST_BUILDING + type.index, u"<font=2>%s</font>" % type.icon, 30)
 
 			# column for religious impact
 			screen.setTableColumnHeader(self.TABLE_ID, self.COL_EFFECTS, "", 400)
