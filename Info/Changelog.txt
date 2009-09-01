@@ -37,6 +37,8 @@ Improvements:
 
 - BugGameUtils
 	Each callback's dispatch logging is now optional via "log" XML attribute
+- Foreign Advisor
+	TECHS: Added a status column that shows WAR or Forced Peace with an AI.  Shows 'refuses to talk' [BULL]
 
 Bug Fixes:
 
