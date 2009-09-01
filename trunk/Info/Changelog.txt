@@ -21,7 +21,9 @@ Bug Fixes:
 - Technology Advisor (F6)
 	Great Person Bulbed Techs are reset when a game is started or loaded
 - Info Screen (F9)
-	Completed projects no longer show an invalid date
+	Projects List
+		Hover shows project instead of building; click goes to correct Civilopedia entry
+		Completed projects no longer show an invalid date or city name
 
 
 MODDING
