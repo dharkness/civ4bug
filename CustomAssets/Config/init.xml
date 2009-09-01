@@ -102,6 +102,7 @@
 	<events module="DiplomacyUtil" function="addEvents"/>
 	<init module="GGUtil"/>
 	<init module="GPUtil"/>
+	<init module="ReligionUtil"/>
 	<init module="TechUtil"/>
 	<init module="TradeUtil"/>
 	<init module="TraitUtil"/>

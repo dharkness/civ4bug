@@ -284,10 +284,8 @@ class CvReligionScreen:
 			iMonastery = [0] * self.NUM_RELIGIONS
 			iMissionaries_Active = [0] * self.NUM_RELIGIONS
 			iMissionaries_Construct = [0] * self.NUM_RELIGIONS
-			iCitiesMax = len(cityList)
 			
-			for iCity in range(iCitiesMax):
-				pLoopCity = cityList[iCity]
+			for pLoopCity in cityList:
 				lHolyCity = pLoopCity.getHolyCity()
 				lReligions = pLoopCity.getReligions()
 
@@ -319,7 +317,7 @@ class CvReligionScreen:
 
 			# number of cities...
 			iY = self.Y_INFLUENCE + 20
-			sCities = "%s [%i]:" % (self.szCities, iCitiesMax)
+			sCities = "%s [%i]:" % (self.szCities, len(cityList))
 			screen.setLabelAt("", szArea, sCities, CvUtil.FONT_LEFT_JUSTIFY, self.LEFT_EDGE_TEXT, iY, self.DZ, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 			xLoop = self.X_RELIGION_START
