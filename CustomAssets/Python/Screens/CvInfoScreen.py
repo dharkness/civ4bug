@@ -2370,12 +2370,6 @@ class CvInfoScreen:
 								and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
 									self.aaWondersBeingBuilt_BUG.append([iProjectLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
-								if (pCity.getNumBuilding(iProjectLoop) > 0):
-									if (iPlayerTeam == self.iActiveTeam or self.pActiveTeam.isHasMet(iPlayerTeam)):
-										self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,True,pPlayer.getCivilizationShortDescription(0),pCity,iPlayerLoop])
-									else:
-										self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity,18])
-
 					# Loop through buildings
 					else:
 						for iBuildingLoop in range(gc.getNumBuildingInfos()):
@@ -2448,9 +2442,9 @@ class CvInfoScreen:
 							for iI in range(pTeam.getProjectCount(iProjectLoop)):
 
 								if (iTeamLoop == self.iActiveTeam or self.pActiveTeam.isHasMet(iTeamLoop)):
-									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,True,gc.getPlayer(iPlayerLoop).getCivilizationShortDescription(0),pCity, iPlayerLoop])
+									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,True,gc.getPlayer(iPlayerLoop).getCivilizationShortDescription(0),None, iPlayerLoop])
 								else:
-									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity, 18])
+									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),None, 9999])
 								self.iNumWonders += 1
 
 		# Sort wonders in order of date built
@@ -2497,28 +2491,31 @@ class CvInfoScreen:
 
 			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
+				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROJECT
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
+				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING
 
 			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
 			szTurnYearBuilt = u"<font=2>%c</font>" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
 			szWonderBuiltBy = localText.changeTextColor(sCivilization, color)
 
 			# Check to see if active player can see this city
-			szCityName = ""
-			if pCity.isRevealed(gc.getGame().getActiveTeam()):
+			if pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
 				szCityName = localText.changeTextColor(pCity.getName(), color)
+			else:
+				szCityName = ""
 
 			screen.appendTableRow(self.szWondersTable)
 			screen.setTableText(self.szWondersTable, 0, iWonderLoop, ""             , zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, pCity.getOwner(), pCity.getID(), CvUtil.FONT_LEFT_JUSTIFY)
-			screen.setTableText(self.szWondersTable, 1, iWonderLoop, szWonderName   , "", WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			screen.setTableInt (self.szWondersTable, 2, iWonderLoop, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(self.szWondersTable, 1, iWonderLoop, szWonderName   , "", iWidget, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableInt (self.szWondersTable, 2, iWonderLoop, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_CENTER_JUSTIFY)
 			screen.setTableText(self.szWondersTable, 3, iWonderLoop, szWonderBuiltBy, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			screen.setTableText(self.szWondersTable, 4, iWonderLoop, szCityName     , "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 		for iWonderLoop in range(self.iNumWonders):
 
-#			self.aaWondersBeingBuilt_BUG contains the following:
+#			self.aaWondersBuilt_BUG contains the following:
 			iTurnYearBuilt = self.aaWondersBuilt_BUG[iWonderLoop][0]
 			iWonderType = self.aaWondersBuilt_BUG[iWonderLoop][1]
 			bKnown = self.aaWondersBuilt_BUG[iWonderLoop][2]
@@ -2530,8 +2527,10 @@ class CvInfoScreen:
 
 			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
+				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROJECT
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
+				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING
 
 			if iTurnYearBuilt == -9999:
 				szTurnYearBuilt = ""
@@ -2543,15 +2542,16 @@ class CvInfoScreen:
 			szWonderBuiltBy = localText.changeTextColor(sCivilization, color)
 
 			# Check to see if active player can see this city
-			szCityName = ""
-			if pCity.isRevealed(gc.getGame().getActiveTeam()):
+			if pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
 				szCityName = localText.changeTextColor(pCity.getName(), color)
+			else:
+				szCityName = ""
 
 			screen.appendTableRow(self.szWondersTable)
-			if bKnown and pCity.isRevealed(gc.getGame().getActiveTeam()):
+			if bKnown and pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
 				screen.setTableText(self.szWondersTable, 0, iWonderLoop+iWBB, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, pCity.getOwner(), pCity.getID(), CvUtil.FONT_LEFT_JUSTIFY)
-			screen.setTableText(self.szWondersTable, 1, iWonderLoop+iWBB, szWonderName   , "", WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
-			screen.setTableInt (self.szWondersTable, 2, iWonderLoop+iWBB, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableText(self.szWondersTable, 1, iWonderLoop+iWBB, szWonderName   , "", iWidget, iWonderType, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			screen.setTableInt (self.szWondersTable, 2, iWonderLoop+iWBB, szTurnYearBuilt, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 			screen.setTableText(self.szWondersTable, 3, iWonderLoop+iWBB, szWonderBuiltBy, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			screen.setTableText(self.szWondersTable, 4, iWonderLoop+iWBB, szCityName     , "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
