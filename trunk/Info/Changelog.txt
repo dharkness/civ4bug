@@ -7,19 +7,21 @@ New Features:
 
 Improvements:
 
+- Religion Advisor (F7)
+	Shows new religions and types of religious buildings/units from mods
+
 Bug Fixes:
 
 - MapFinder
-	Status panel title
+	Status panel title displays correctly
 - Unit Naming
 	Default naming convention matches new unit counting codes
-- Customizable Domestic Advisor
+- Customizable Domestic Advisor (F1)
 	Culture levels under No Espionage are now correct
-- Technology Advisor
+- Technology Advisor (F6)
 	Great Person Bulbed Techs are reset when a game is started or loaded
-- Religion Advisor
-	Shows new religions and types of religious buildings/units from mods
-	Top area not yet scrollable
+- Info Screen (F9)
+	Completed projects no longer show an invalid date
 
 
 MODDING
