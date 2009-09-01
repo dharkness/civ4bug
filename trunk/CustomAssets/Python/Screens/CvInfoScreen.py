@@ -2341,8 +2341,6 @@ class CvInfoScreen:
 		self.aaWondersBuilt_BUG = []
 		self.iNumWonders = 0
 
-		self.pActivePlayer = gc.getPlayer(CyGame().getActivePlayer())
-
 		# Loop through players to determine Wonders
 		for iPlayerLoop in range(gc.getMAX_PLAYERS()):
 
@@ -2365,18 +2363,18 @@ class CvInfoScreen:
 
 							# Project is being constructed
 							if (iProjectProd == iProjectLoop):
-								if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam()):
+								if (iPlayerTeam == self.iActiveTeam):
 									self.aaWondersBeingBuilt_BUG.append([iProjectLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
-								if (gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)
+								if (self.pActiveTeam.isHasMet(iPlayerTeam)
 								and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
 									self.aaWondersBeingBuilt_BUG.append([iProjectLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 								if (pCity.getNumBuilding(iProjectLoop) > 0):
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):
-										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iProjectLoop),iProjectLoop,True,pPlayer.getCivilizationShortDescription(0),pCity,iPlayerLoop])
+									if (iPlayerTeam == self.iActiveTeam or self.pActiveTeam.isHasMet(iPlayerTeam)):
+										self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,True,pPlayer.getCivilizationShortDescription(0),pCity,iPlayerLoop])
 									else:
-										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iProjectLoop),iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity,18])
+										self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity,18])
 
 					# Loop through buildings
 					else:
@@ -2388,15 +2386,15 @@ class CvInfoScreen:
 							if (self.szWonderDisplayMode == self.szWDM_WorldWonder and isWorldWonderClass(gc.getBuildingInfo(iBuildingLoop).getBuildingClassType())):
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam()):
+									if (iPlayerTeam == self.iActiveTeam):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
-									if (gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)
+									if (self.pActiveTeam.isHasMet(iPlayerTeam)
 									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 								if (pCity.getNumBuilding(iBuildingLoop) > 0):
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):
+									if (iPlayerTeam == self.iActiveTeam or self.pActiveTeam.isHasMet(iPlayerTeam)):
 										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,True,pPlayer.getCivilizationShortDescription(0),pCity, iPlayerLoop])
 									else:
 										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity, 18])
@@ -2409,16 +2407,16 @@ class CvInfoScreen:
 								# Is this city building a wonder?
 								if (iBuildingProd == iBuildingLoop):
 									# Only show our wonders under construction
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam()):
+									if (iPlayerTeam == self.iActiveTeam):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
-									if (gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)
+									if (self.pActiveTeam.isHasMet(iPlayerTeam)
 									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 								if (pCity.getNumBuilding(iBuildingLoop) > 0):
 	#								print("Adding National wonder to list: %s, %d, %s" %(pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationAdjective(0)))
-									if (iPlayerTeam == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iPlayerTeam)):
+									if (iPlayerTeam == self.iActiveTeam or self.pActiveTeam.isHasMet(iPlayerTeam)):
 										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,True,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 									else:
 										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()), pCity, 18])
@@ -2449,7 +2447,7 @@ class CvInfoScreen:
 
 							for iI in range(pTeam.getProjectCount(iProjectLoop)):
 
-								if (iTeamLoop == gc.getPlayer(self.iActivePlayer).getTeam() or gc.getTeam(gc.getPlayer(self.iActivePlayer).getTeam()).isHasMet(iTeamLoop)):
+								if (iTeamLoop == self.iActiveTeam or self.pActiveTeam.isHasMet(iTeamLoop)):
 									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,True,gc.getPlayer(iPlayerLoop).getCivilizationShortDescription(0),pCity, iPlayerLoop])
 								else:
 									self.aaWondersBuilt_BUG.append([-9999,iProjectLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()),pCity, 18])
