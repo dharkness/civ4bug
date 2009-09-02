@@ -2267,11 +2267,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DISPLAYNAME_LIST</Tag>
-		<English>Leader|Civilization|Both</English>
-		<French>Dirigeant|Civilisation|Les Deux</French>
-		<German>Oberhaupt|Zivilisation|Beides</German>
-		<Italian>Leader|Civiltà|Entrambi</Italian>
-		<Spanish>Leader|Civilization|Both</Spanish>
+		<English>Leader|Civilization|Short Civ|Leader + Civ|Leader + Short Civ</English>
+		<French>Dirigeant|Civilisation|Short Civ|Leader + Civ|Leader + Short Civ</French>
+		<German>Oberhaupt|Zivilisation|Short Civ|Leader + Civ|Leader + Short Civ</German>
+		<Italian>Leader|Civiltà|Short Civ|Leader + Civ|Leader + Short Civ</Italian>
+		<Spanish>Leader|Civilization|Short Civ|Leader + Civ|Leader + Short Civ</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_SCORES__USEPLAYERNAME_TEXT</Tag>
