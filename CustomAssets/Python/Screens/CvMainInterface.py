@@ -4942,7 +4942,7 @@ class CvMainInterface:
 					else:
 						xCoord = screen.centerX(512)
 
-					yCoord = 3
+					yCoord = 5  # Ruff: this use to be 3 but I changed it so it lines up with the Great Person Bar
 					szText = localText.getText("INTERFACE_ANARCHY", (gc.getPlayer(ePlayer).getAnarchyTurns(), ))
 					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
 # BUG - Bars on single line for higher resolution screens - end
@@ -4965,7 +4965,7 @@ class CvMainInterface:
 						szResearchBar = "ResearchBar"
 						xCoord = screen.centerX(512)
 
-					yCoord = 3
+					yCoord = 5  # Ruff: this use to be 3 but I changed it so it lines up with the Great Person Bar
 					screen.setText( "ResearchText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
 					screen.show( "ResearchText" )
 # BUG - Bars on single line for higher resolution screens - end
@@ -6460,12 +6460,19 @@ class CvMainInterface:
 												szPlayerName = gc.getPlayer(ePlayer).getName()
 											else:
 												szPlayerName = gc.getLeaderHeadInfo(gc.getPlayer(ePlayer).getLeaderType()).getDescription()
-											szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
 											if (ScoreOpt.isShowBothNames()):
+												szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+												szPlayerName = szPlayerName + "/" + szCivName
+											elif (ScoreOpt.isShowBothNamesShort()):
+												szCivName = gc.getPlayer(ePlayer).getCivilizationDescription(0)
 												szPlayerName = szPlayerName + "/" + szCivName
 											elif (ScoreOpt.isShowLeaderName()):
 												szPlayerName = szPlayerName
+											elif (ScoreOpt.isShowCivName()):
+												szCivName = gc.getPlayer(ePlayer).getCivilizationShortDescription(0)
+												szPlayerName = szCivName
 											else:
+												szCivName = gc.getPlayer(ePlayer).getCivilizationDescription(0)
 												szPlayerName = szCivName
 											
 											if (not gc.getPlayer(ePlayer).isAlive() and ScoreOpt.isShowDeadTag()):

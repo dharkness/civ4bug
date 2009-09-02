@@ -9,6 +9,10 @@ Improvements:
 
 - Religion Advisor (F7)
 	Shows new religions and types of religious buildings/units from mods
+- Foreign Advisor
+	TECHS: Added a status column that shows WAR or Forced Peace with an AI.  Shows 'refuses to talk' [BULL]
+- Main Interface - Scoreboard
+	Added the ability to select a Civilizations 'short' description
 
 Bug Fixes:
 
@@ -24,6 +28,8 @@ Bug Fixes:
 	Projects List
 		Hover shows project instead of building; click goes to correct Civilopedia entry
 		Completed projects no longer show an invalid date or city name
+- Main Interface - Tech Progress Bar
+	Moved the Tech text down 2 pixels so that it now lines up with the GG and GP bars
 
 
 MODDING
@@ -37,8 +43,6 @@ Improvements:
 
 - BugGameUtils
 	Each callback's dispatch logging is now optional via "log" XML attribute
-- Foreign Advisor
-	TECHS: Added a status column that shows WAR or Forced Peace with an AI.  Shows 'refuses to talk' [BULL]
 
 Bug Fixes:
 
