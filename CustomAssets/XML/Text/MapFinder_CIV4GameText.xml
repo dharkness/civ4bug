@@ -69,11 +69,11 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_SCREEN_TITLE</Tag>
-		<English>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</English>
-		<French>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</French>
-		<German>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</German>
-		<Italian>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</Spanish>
+		<English>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</English>
+		<French>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</French>
+		<German>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</German>
+		<Italian>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_TOTAL_MAPS</Tag>
