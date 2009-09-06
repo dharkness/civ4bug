@@ -58,11 +58,19 @@
 ##
 ## Cities
 ##
-##   getReligions(city)
+##   getCityReligions(city)
 ##     Returns a list of religion IDs that are present in <city>.
 ##
-##   getHolyReligions(city)
+##   getCityHolyReligions(city)
 ##     Returns a list of religion IDs for which <city> is the holy city.
+##
+## Players
+##
+##   getPlayerReligions(player)
+##     Returns a list of religion IDs that are present in at least one of <player>'s cities.
+##
+##   getPlayerHolyReligions(player)
+##     Returns a list of religion IDs for which <player> owns the holy city.
 ##
 ## MODDERS
 ##
@@ -283,7 +291,7 @@ def isMissionary(info, iReligion):
 
 ## Cities
 
-def getReligions(city):
+def getCityReligions(city):
 	"""
 	Returns a list of religion IDs that are present in <city>.
 	"""
@@ -293,13 +301,36 @@ def getReligions(city):
 			religions.append(eReligion)
 	return religions
 
-def getHolyReligions(city):
+def getCityHolyReligions(city):
 	"""
 	Returns a list of religion IDs for which <city> is the holy city.
 	"""
 	religions = []
 	for eReligion in range(NUM_RELIGIONS):
 		if city.isHolyCityByType(eReligion):
+			religions.append(eReligion)
+	return religions
+
+
+## Players
+
+def getPlayerReligions(player):
+	"""
+	Returns a list of religion IDs that are present in at least one of <player>'s cities.
+	"""
+	religions = []
+	for eReligion in range(NUM_RELIGIONS):
+		if player.getHasReligionCount(eReligion) > 0:
+			religions.append(eReligion)
+	return religions
+
+def getPlayerHolyReligions(player):
+	"""
+	Returns a list of religion IDs for which <player> owns the holy city.
+	"""
+	religions = []
+	for eReligion in range(NUM_RELIGIONS):
+		if player.hasHolyCity(eReligion):
 			religions.append(eReligion)
 	return religions
 
