@@ -16,7 +16,7 @@
 ##
 ##   getNumBuildingTypes()
 ##     Returns the number of religious building types.
-##     Thie is normally 4 for Temple, Cathedral, Monastery, Shrine.
+##     This is normally 4 for Temple, Cathedral, Monastery, Shrine.
 ##
 ##   getBuildingTypes():
 ##     Returns the BuildingTypes in order.
@@ -55,6 +55,14 @@
 ##   UNIT_MISSIONARY
 ##     Each unit type defined gets a module-level constant.
 ##     The description is added to "UNIT_" after making it uppercase and replacing spaces with underscores (_)
+##
+## Cities
+##
+##   getReligions(city)
+##     Returns a list of religion IDs that are present in <city>.
+##
+##   getHolyReligions(city)
+##     Returns a list of religion IDs for which <city> is the holy city.
 ##
 ## MODDERS
 ##
@@ -271,6 +279,29 @@ def isMissionary(info, iReligion):
 #	Returns True if <info> is the Inquisitor for <iReligion>.
 #	"""
 #	return info.getReligionRemoves(iReligion)
+
+
+## Cities
+
+def getReligions(city):
+	"""
+	Returns a list of religion IDs that are present in <city>.
+	"""
+	religions = []
+	for eReligion in range(NUM_RELIGIONS):
+		if city.isHasReligion(eReligion):
+			religions.append(eReligion)
+	return religions
+
+def getHolyReligions(city):
+	"""
+	Returns a list of religion IDs for which <city> is the holy city.
+	"""
+	religions = []
+	for eReligion in range(NUM_RELIGIONS):
+		if city.isHolyCityByType(eReligion):
+			religions.append(eReligion)
+	return religions
 
 
 ## Initialization
