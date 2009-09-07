@@ -1527,6 +1527,38 @@
 		<Spanish>When checked, puts anger countdown on city screen.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTRELIGIONS_TEXT</Tag>
+		<English>Only Present Religions</English>
+		<French>Only Present Religions</French>
+		<German>Only Present Religions)</German>
+		<Italian>Only Present Religions</Italian>
+		<Spanish>Only Present Religions</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTRELIGIONS_HOVER</Tag>
+		<English>When checked, displays only the religions that are present in the city and allows for more than seven religions.</English>
+		<French>When checked, displays only the religions that are present in the city and allows for more than seven religions.</French>
+		<German>When checked, displays only the religions that are present in the city and allows for more than seven religions.</German>
+		<Italian>When checked, displays only the religions that are present in the city and allows for more than seven religions.</Italian>
+		<Spanish>When checked, displays only the religions that are present in the city and allows for more than seven religions.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTCORPORATIONS_TEXT</Tag>
+		<English>Only Present Corporations</English>
+		<French>Only Present Corporations</French>
+		<German>Only Present Corporations)</German>
+		<Italian>Only Present Corporations</Italian>
+		<Spanish>Only Present Corporations</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTCORPORATIONS_HOVER</Tag>
+		<English>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</English>
+		<French>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</French>
+		<German>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</German>
+		<Italian>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</Italian>
+		<Spanish>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__SPECIALISTS_TEXT</Tag>
 		<English>City Specialists</English>
 		<French>Spécialistes</French>
