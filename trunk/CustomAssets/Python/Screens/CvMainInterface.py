@@ -3024,7 +3024,7 @@ class CvMainInterface:
 
 # BUG - NJAGC - start
 		global g_bShowTimeTextAlt
-		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
+		if (CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY  and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
 			if (ClockOpt.isEnabled()):
 				if (ClockOpt.isShowEra()):
 					screen.show( "EraText" )
@@ -3277,7 +3277,8 @@ class CvMainInterface:
 		xResolution = screen.getXResolution()
 
 # BUG - Great Person Bar - start
-		self.updateGreatPersonBar(screen)
+		if ( CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY  and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_ADVANCED_START):
+			self.updateGreatPersonBar(screen)
 # BUG - Great Person Bar - end
 
 		if ( CyInterface().shouldDisplayFlag() and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
@@ -3310,9 +3311,6 @@ class CvMainInterface:
 			screen.hide( "MilitaryAdvisorButton" )
 			screen.hide( "VictoryAdvisorButton" )
 			screen.hide( "InfoAdvisorButton" )
-# BUG - NJAGC - start
-			screen.hide( "EraText" )
-# BUG - NJAGC - end
 # BUG - City Arrows - start
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
