@@ -1530,7 +1530,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTRELIGIONS_TEXT</Tag>
 		<English>Only Present Religions</English>
 		<French>Only Present Religions</French>
-		<German>Only Present Religions)</German>
+		<German>Nur vorhandene Religionen</German>
 		<Italian>Only Present Religions</Italian>
 		<Spanish>Only Present Religions</Spanish>
 	</TEXT>
@@ -1538,7 +1538,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTRELIGIONS_HOVER</Tag>
 		<English>When checked, displays only the religions that are present in the city and allows for more than seven religions.</English>
 		<French>When checked, displays only the religions that are present in the city and allows for more than seven religions.</French>
-		<German>When checked, displays only the religions that are present in the city and allows for more than seven religions.</German>
+		<German>Zeigt nur die in einer Stadt vorhandenen Religionen an und erlaubt die Darstellung von mehr als sieben Religionen</German>
 		<Italian>When checked, displays only the religions that are present in the city and allows for more than seven religions.</Italian>
 		<Spanish>When checked, displays only the religions that are present in the city and allows for more than seven religions.</Spanish>
 	</TEXT>
@@ -1546,7 +1546,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTCORPORATIONS_TEXT</Tag>
 		<English>Only Present Corporations</English>
 		<French>Only Present Corporations</French>
-		<German>Only Present Corporations)</German>
+		<German>Nur vorhandene Kapitalgesellschaften</German>
 		<Italian>Only Present Corporations</Italian>
 		<Spanish>Only Present Corporations</Spanish>
 	</TEXT>
@@ -1554,7 +1554,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__ONLYPRESENTCORPORATIONS_HOVER</Tag>
 		<English>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</English>
 		<French>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</French>
-		<German>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</German>
+		<German>Zeigt nur die in einer Stadt vorhandenen Kapitalgesellschaften an und erlaubt die Darstellung von mehr als sieben Kapitalgesellschaften</German>
 		<Italian>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</Italian>
 		<Spanish>When checked, displays only the corporations that are present in the city and allows for more than seven corporations.</Spanish>
 	</TEXT>
@@ -3806,7 +3806,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_TEXT</Tag>
 		<English>Show Religions</English>
 		<French>Show Religions</French>
-		<German>Show Religions</German>
+		<German>Anzeige Religionen</German>
 		<Italian>Show Religions</Italian>
 		<Spanish>Show Religions</Spanish>
 	</TEXT>
@@ -3814,7 +3814,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_LIST</Tag>
 		<English>All|Founded|Player's</English>
 		<French>All|Founded|Player's</French>
-		<German>All|Founded|Player's</German>
+		<German>Alle|Gegründete|Eigene</German>
 		<Italian>All|Founded|Player's</Italian>
 		<Spanish>All|Founded|Player's</Spanish>
 	</TEXT>
@@ -3822,7 +3822,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_HOVER</Tag>
 		<English>Select which religions should be shown in the top area of the Religion Advisor.</English>
 		<French>Select which religions should be shown in the top area of the Religion Advisor.</French>
-		<German>Select which religions should be shown in the top area of the Religion Advisor.</German>
+		<German>Bestimmt, welche Religionen in der oberen Hälfte des  Religionsberaters angezeigt werden sollen</German>
 		<Italian>Select which religions should be shown in the top area of the Religion Advisor.</Italian>
 		<Spanish>Select which religions should be shown in the top area of the Religion Advisor.</Spanish>
 	</TEXT>
