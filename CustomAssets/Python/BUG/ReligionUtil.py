@@ -12,6 +12,12 @@
 ##   isValid(iReligion)
 ##     Returns True if <iReligion> is a valid religion (not None or NO_RELIGION).
 ##
+##   getAllReligions()
+##     Returns a tuple containing all valid religion IDs (0, 1, ..., NUM_RELIGIONS-1).
+##
+##   getFoundedReligions()
+##     Returns a list of religion IDs that have been founded.
+##
 ## Buildings
 ##
 ##   getNumBuildingTypes()
@@ -98,6 +104,7 @@ import FontUtil
 gc = CyGlobalContext()
 
 NUM_RELIGIONS = -1
+ALL_RELIGIONS = None
 
 NUM_BUILDING_TYPES = 0
 BUILDINGS = []
@@ -129,6 +136,23 @@ def isValid(iReligion):
 	Returns True if <iReligion> is a valid religion (not None or NO_RELIGION).
 	"""
 	return iReligion > -1 and iReligion < NUM_RELIGIONS
+
+def getAllReligions():
+	"""
+	Returns a tuple containing all valid religion IDs (0, 1, ..., NUM_RELIGIONS-1).
+	"""
+	return ALL_RELIGIONS
+
+def getFoundedReligions():
+	"""
+	Returns a list of religion IDs that have been founded.
+	"""
+	religions = []
+	game = gc.getGame()
+	for iReligion in ALL_RELIGIONS:
+		if game.getReligionGameTurnFounded(iReligion) >= 0:
+			religions.append(iReligion)
+	return religions
 
 
 ## Buildings
@@ -349,9 +373,10 @@ def init():
 # MOD: Add a BuildingType() call for each new religious unit type you define
 #	UnitType("Inquisitor", FontUtil.getChar("religion"), isInquisitor)
 	
-	global NUM_RELIGIONS
+	global NUM_RELIGIONS, ALL_RELIGIONS
 	NUM_RELIGIONS = gc.getNumReligionInfos()
-	for iReligion in range(NUM_RELIGIONS):
+	ALL_RELIGIONS = range(NUM_RELIGIONS)
+	for iReligion in ALL_RELIGIONS:
 		BUILDINGS_BY_RELIGION.append([-1] * NUM_BUILDING_TYPES)
 		UNITS_BY_RELIGION.append([-1] * NUM_UNIT_TYPES)
 	
