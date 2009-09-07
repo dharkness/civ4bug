@@ -77,6 +77,13 @@
 			<option id="BugReligiousTab" key="Religious" 
 					type="boolean" default="True" 
 					get="isReligious"/>
+			<list   id="ShowReligions" key="Show Religions" 
+					type="int" default="0" listType="string" 
+					get="getShowReligions">
+				<choice id="All" get="isShowAllReligions isShowFoundedReligions isShowPlayerReligions"/>
+				<choice id="Founded" get="isShowFoundedReligions"/>
+				<choice id="Player" get="isShowPlayerReligions"/>
+			</list>
 
 			<!-- BUG Victories (F8) by Ruff_Hi -->
 			<option id="BugVictoriesTab" key="Victories" 
