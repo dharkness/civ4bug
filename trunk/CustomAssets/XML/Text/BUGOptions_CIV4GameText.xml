@@ -3803,6 +3803,30 @@
 		<Spanish>When checked, displays extra information on the Religious tab.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_TEXT</Tag>
+		<English>Show Religions</English>
+		<French>Show Religions</French>
+		<German>Show Religions</German>
+		<Italian>Show Religions</Italian>
+		<Spanish>Show Religions</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_LIST</Tag>
+		<English>All|Founded|Player's</English>
+		<French>All|Founded|Player's</French>
+		<German>All|Founded|Player's</German>
+		<Italian>All|Founded|Player's</Italian>
+		<Spanish>All|Founded|Player's</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_HOVER</Tag>
+		<English>Select which religions should be shown in the top area of the Religion Advisor.</English>
+		<French>Select which religions should be shown in the top area of the Religion Advisor.</French>
+		<German>Select which religions should be shown in the top area of the Religion Advisor.</German>
+		<Italian>Select which religions should be shown in the top area of the Religion Advisor.</Italian>
+		<Spanish>Select which religions should be shown in the top area of the Religion Advisor.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGVICTORIESTAB_TEXT</Tag>
 		<English>Victories tab</English>
 		<French>Victories tab</French>

@@ -22,9 +22,9 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
 		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Advisors__CustDomAdv")
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True, "LAYOUT_LEFT")
+		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True)
 		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceSides", True)
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True, "LAYOUT_LEFT")
+		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True)
 		self.addCheckbox(screen, left, "MiscHover__CDAZoomCityDetails")
 
 		self.addLabel(screen, left, "Finance_Advisor", "Finance [F2]:")
@@ -43,6 +43,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, left, "Military_Advisor", "Military [F5]:")
 		self.addCheckbox(screen, left, "Advisors__BugMA")
 
+
 		self.addLabel(screen, center, "Technology_Advisor", "Technology [F6]:")
 		self.addCheckbox(screen, center, "Advisors__GPTechPrefs")
 		self.addCheckbox(screen, center, "MiscHover__SpedUpTechs")
@@ -50,6 +51,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addLabel(screen, center, "Religious_Advisor", "Religion [F7]:")
 		self.addCheckbox(screen, center, "Advisors__BugReligiousTab")
+		self.addTextDropdown(screen, center, center, "Advisors__ShowReligions", True)
 
 		self.addLabel(screen, center, "Victory_Conditions", "Victory [F8]:")
 		self.addCheckbox(screen, center, "Advisors__BugVictoriesTab")
@@ -61,9 +63,10 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "Advisors__BugStatsTab")
 		self.addCheckbox(screen, center, "Advisors__BugInfoWonders")
 
-		self.addLabel(screen, center, "Sevopedia", "Sevopedia [F12]:")
-		self.addCheckbox(screen, center, "Advisors__Sevopedia")
-		self.addCheckbox(screen, center, "Advisors__SevopediaSortItemList")
+
+		self.addLabel(screen, right, "Sevopedia", "Sevopedia [F12]:")
+		self.addCheckbox(screen, right, "Advisors__Sevopedia")
+		self.addCheckbox(screen, right, "Advisors__SevopediaSortItemList")
 
 		self.addLabel(screen, right, "Espionage_Screen", "Espionage [CTRL + E]:")
 		self.addCheckbox(screen, right, "BetterEspionage__Enabled")
