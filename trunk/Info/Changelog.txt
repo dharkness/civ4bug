@@ -35,6 +35,8 @@ Bug Fixes:
 	Projects List
 		Hover shows project instead of building; click goes to correct Civilopedia entry
 		Completed projects no longer show an invalid date or city name
+- Logger
+	Suppresses the nationality of non-player Privateers
 
 
 MODDING

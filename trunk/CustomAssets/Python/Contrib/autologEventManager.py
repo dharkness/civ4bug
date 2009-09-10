@@ -515,24 +515,27 @@ class AutoLogEvent(AbstractAutoLogEvent):
 				winnerHealth = float(pWinner.baseCombatStr()) * float(pWinner.currHitPoints()) / float(pWinner.maxHitPoints())
 				zsBattleLocn = self.getUnitLocation(pWinner)
 
+				playerXDesc = PyPlayer(pWinner.getVisualOwner()).getCivilizationAdjective()
+				playerYDesc = PyPlayer(pLoser.getVisualOwner()).getCivilizationAdjective()
+
 				if (pWinner.getOwner() == CyGame().getActivePlayer()):
 					if (self.bHumanPlaying):
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS", (zsBattleLocn, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getNameKey(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_DEFEATS", (zsBattleLocn, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerYDesc, pLoser.getNameKey(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleWonAttacking = self.iBattleWonAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS", (zsBattleLocn, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerY.getCivilizationAdjective(), pLoser.getNameKey(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_DEFEATS", (zsBattleLocn, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), playerYDesc, pLoser.getNameKey(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleWonDefending = self.iBattleWonDefending + 1
 
 					Logger.writeLog(message, vColor="DarkRed")
 
 				else:
 					if (self.bHumanPlaying):
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES", (zsBattleLocn, pLoser.getNameKey(), playerX.getCivilizationAdjective(), pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_ATTACKING_LOSES", (zsBattleLocn, pLoser.getNameKey(), playerXDesc, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleLostAttacking = self.iBattleLostAttacking + 1
 					else:
 						self.fOdds = 100 - self.fOdds
-						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES", (zsBattleLocn, pLoser.getNameKey(), playerX.getCivilizationAdjective(), pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
+						message = BugUtil.getText("TXT_KEY_AUTOLOG_WHILE_DEFENDING_LOSES", (zsBattleLocn, pLoser.getNameKey(), playerXDesc, pWinner.getNameKey(), BugUtil.formatFloat(winnerHealth, 2), pWinner.baseCombatStr(), BugUtil.formatFloat(self.fOdds, 1), lPercent))
 						self.iBattleLostDefending = self.iBattleLostDefending + 1
 
 					Logger.writeLog(message, vColor="Red")
