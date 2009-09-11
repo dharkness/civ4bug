@@ -4,8 +4,9 @@
 ##
 ## Shortcuts:
 ##
-##   ALT + G           doRegenerate()
-##   ALT + CTRL + G	   doStartStop()
+##   ALT + G                   doRegenerate()
+##   ALT + CTRL + G	           doStart()
+##   ALT + CTRL + SHIFT + G    doStop()
 ##
 ## Adapted from HOF Mod 3.13.001.
 ##
@@ -168,6 +169,7 @@ TYPES_BY_CODE = {  # BasicPlot_TypesToCode
 }
 
 bActive = False
+savedInterfaceMode = None
 
 iRegenCount = 0
 iSavedCount = 0
@@ -175,39 +177,53 @@ iSavedCount = 0
 def isActive():
 	return bActive
 
-def doStartStop(argsList=None):
+def doStart(argsList=None):
 	try:
-		startStop()
+		if not bActive:
+			start()
+		else:
+			BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_ALREADY_RUNNING"))
+	except MapFinderError, e:
+		MapFinderStatusScreen.hide()
+		e.display()
+
+def doStop(argsList=None):
+	try:
+		if bActive:
+			stop()
+		else:
+			BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_NOT_RUNNING"))
 	except MapFinderError, e:
 		e.display()
 
-def startStop():
-	if not bActive:
-		start()
-	else:
-		stop()
-
 def start():
 	if canRegenerate():
-		MapFinderStatusScreen.show()
 		setup()
+		MapFinderStatusScreen.show()
 		global bActive, iRegenCount, iSavedCount
 		bActive = True
 		iRegenCount = 0
 		iSavedCount = 0
-		global savedInterfaceMode
-		savedInterfaceMode = CyInterface().getShowInterface()
-		CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
-#		BugUtil.alert("MapFinder started")
+		showInterface()
 		finderStartLoop()
 
 def stop():
 	global bActive
 	bActive = False
 	MapFinderStatusScreen.hide()
+	restoreInterface()
+	BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_STOPPED") + " - " + getCountsText())
+
+def showInterface():
+	global savedInterfaceMode
+	if not savedInterfaceMode:
+		savedInterfaceMode = CyInterface().getShowInterface()
+	CyInterface().setShowInterface(InterfaceVisibility.INTERFACE_SHOW)
+
+def restoreInterface():
+	global savedInterfaceMode
 	if savedInterfaceMode:
 		CyInterface().setShowInterface(savedInterfaceMode)
-	BugUtil.alert(BugUtil.getPlainText("TXT_KEY_MAPFINDER_STOPPED") + " - " + getCountsText())
 
 def getCountsText():
 	return (u"%s %d, %s %d" % 

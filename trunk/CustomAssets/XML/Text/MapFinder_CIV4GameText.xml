@@ -69,11 +69,11 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_SCREEN_TITLE</Tag>
-		<English>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</English>
-		<French>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</French>
-		<German>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</German>
-		<Italian>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_HIGHLIGHT]MapFinder[COLOR_REVERT]</Spanish>
+		<English>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</English>
+		<French>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</French>
+		<German>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</German>
+		<Italian>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_HIGHLIGHT_TEXT]MapFinder[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_TOTAL_MAPS</Tag>
@@ -93,11 +93,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_STOP_SHORTCUT</Tag>
-		<English>ALT + CTRL + G to Stop</English>
-		<French>ALT + CTRL + G pour arrêter</French>
-		<German>Drücken Sie [STRG + ALT + G], um MapFinder zu beenden.</German>
-		<Italian>ALT + CTRL + G per arrestare</Italian>
-		<Spanish>ALT + CTRL + G para parar</Spanish>
+		<English>ALT + CTRL + SHIFT + G to Stop</English>
+		<French>ALT + CTRL + SHIFT + G pour arrêter</French>
+		<German>Drücken Sie [STRG + ALT + SHIFT + G], um MapFinder zu beenden.</German>
+		<Italian>ALT + CTRL + SHIFT + G per arrestare</Italian>
+		<Spanish>ALT + CTRL + SHIFT + G para parar</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -117,6 +117,22 @@
 		<Spanish>Saving Game...</Spanish>
 	</TEXT>
 	
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_ALREADY_RUNNING</Tag>
+		<English>[COLOR_WARNING_TEXT]MapFinder is already running[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]MapFinder est déjà lancé[COLOR_REVERT]</French>
+		<German>[COLOR_WARNING_TEXT]MapFinder läuft bereits[COLOR_REVERT]</German>
+		<Italian>[COLOR_WARNING_TEXT]MapFinder è già in esecuzione[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]MapFinder ya está en ejecución[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MAPFINDER_NOT_RUNNING</Tag>
+		<English>[COLOR_WARNING_TEXT]MapFinder is not running[COLOR_REVERT]</English>
+		<French>[COLOR_WARNING_TEXT]MapFinder n'est pas en marche[COLOR_REVERT]</French>
+		<German>M[COLOR_WARNING_TEXT]apFinder wird nicht ausgeführt[COLOR_REVERT]</German>
+		<Italian>M[COLOR_WARNING_TEXT]apFinder non è in esecuzione[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]MapFinder no está funcionando[COLOR_REVERT]</Spanish>
+	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_MAPFINDER_STOPPED</Tag>
 		<English>MapFinder stopped</English>

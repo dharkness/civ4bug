@@ -45,6 +45,7 @@
 	</init>
 	
 	<shortcut key="Alt G" function="doRegenerate"/>
-	<shortcut key="Alt Ctrl G" function="doStartStop"/>
+	<shortcut key="Alt Ctrl G" function="doStart"/>
+	<shortcut key="Alt Ctrl Shift G" function="doStop"/>
 	
 </mod>
