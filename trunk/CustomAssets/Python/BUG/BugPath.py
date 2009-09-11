@@ -597,7 +597,8 @@ def initSearchPaths():
 		join(getModDir(), ASSETS_FOLDER),
 		join(getAppDir(), ASSETS_FOLDER),
 	]
-	if not isNoCustomAssets():
+	# EF: Mod's no longer access CustomAssets folder; too many issues
+	if not isNoCustomAssets() and not isMod():
 		assetDirs.insert(0, join(getRootDir(), CUSTOM_ASSETS_FOLDER))
 	for dir in assetDirs:
 		addAssetFileSearchPath(dir)
