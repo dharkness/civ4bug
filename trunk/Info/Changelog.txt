@@ -15,16 +15,12 @@ Improvements:
 	Shows new religions and types of religious buildings/units from mods
 	Added johny smith's scrolling panel for mods with more than seven religions
 	Added option to limit the religions shown in the top area to only those that are founded or available for conversion
+- MapFinder
+	Added ALT + CTRL + SHIFT + G to stop
 
 Bug Fixes:
 
 - BUFFY and Single-Player BUG can coexist; set NoCustomAssets to 1 in BUFFY's INI file
-- MapFinder
-	Status panel title displays correctly
-- Unit Naming
-	Default naming convention matches new unit counting codes
-- Logger
-	Suppresses the nationality of rival Privateers
 - Main Interface
 	Moved the Tech text down 2 pixels so that it now lines up with the GG and GP bars
 	Era Text and Great Person Bar hidden in Hide Interface and WorldBuilder modes
@@ -38,6 +34,12 @@ Bug Fixes:
 	Projects List
 		Hover shows project instead of building; click goes to correct Civilopedia entry
 		Completed projects no longer show an invalid date or city name
+- MapFinder
+	Status panel title displays correctly
+- Unit Naming
+	Default naming convention matches new unit counting codes
+- Logger
+	Suppresses the nationality of rival Privateers
 
 
 MODDING
