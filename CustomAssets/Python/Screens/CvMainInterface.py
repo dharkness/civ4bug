@@ -41,6 +41,10 @@ import Scoreboard
 import PlayerUtil
 # BUG - Align Icons - end
 
+# BUG - Refuses to Talk - start
+import DiplomacyUtil
+# BUG - Refuses to Talk - end
+
 # globals
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
@@ -6879,13 +6883,11 @@ class CvMainInterface:
 															scores.setAttitude(cAtt)
 # BUG - Attitude Icons - end
 # BUG - Refuses to Talk - start
-												if (BugDll.isPresent()):  # and ScoreOpt.isShowRefusesToTalk()):
-													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
-														if (not gc.getPlayer(ePlayer).AI_isWillingToTalk(gc.getGame().getActivePlayer())):
-															cRefusesToTalk = u"!"
-															szBuffer += cRefusesToTalk
-															if (bAlignIcons):
-																scores.setWontTalk()
+												if (not DiplomacyUtil.isWillingToTalk(ePlayer, gc.getGame().getActivePlayer())):
+													cRefusesToTalk = u"!"
+													szBuffer += cRefusesToTalk
+													if (bAlignIcons):
+														scores.setWontTalk()
 # BUG - Refuses to Talk - end
 
 # BUG - Worst Enemy - start

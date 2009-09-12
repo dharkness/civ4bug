@@ -27,6 +27,7 @@ import BugCore
 import BugDll
 import BugUtil
 import DealUtil
+import DiplomacyUtil
 import FavoriteCivicDetector
 import FontUtil
 
@@ -1208,10 +1209,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 # BUG - AI status - end
 				zsStatus = ""
-				if (BugDll.isPresent()):  # and ScoreOpt.isShowRefusesToTalk()):
-					if (not currentPlayer.isHuman()):
-						if (not currentPlayer.AI_isWillingToTalk(activePlayer)):
-							zsStatus += u"!"
+				if not DiplomacyUtil.isWillingToTalk(currentPlayer, activePlayer):
+					zsStatus += u"!"
 
 				if (currentTeam.isAtWar(iActiveTeam)):
 					zsStatus += self.WAR_ICON

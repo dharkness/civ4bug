@@ -3,6 +3,14 @@
 ## Utilities for handling and dispatching Diplomacy events and acquiring
 ## proposed trades from the (unmoddable) CyDiplomacy screen.
 ##
+## Contacting Rivals
+##
+##   canContact(playerOrID, toPlayerOrID)
+##     Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s attitude.
+##
+##   isWillingToTalk(playerOrID, toPlayerOrID)
+##     Returns True if <player> is willing to talk to <toPlayer>.
+##
 ## TODO: switch to init()
 ##
 ## Notes
@@ -13,10 +21,12 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import AttitudeUtil
 import BugUtil
+import BugDll
+import GameUtil
 import PlayerUtil
 import TradeUtil
-import string
 
 MAX_TRADE_DATA = 50  # avoid an infinite loop
 
@@ -26,6 +36,54 @@ diplo = CyDiplomacy()
 # comment-type -> ( event-type , trade-type )
 g_eventsByCommentType = {}
 g_eventManager = None
+
+
+## Contacting Rivals
+
+def canContact(playerOrID, toPlayerOrID):
+	"""
+	Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s attitude.
+	
+	- They must not be the same player
+	- <toPlayer> must be alive, not minor, and not a barbarian
+	- Their teams must have met
+	- If they are at war, they must be able to sign a peace deal (no Always War or Permanent War/Peace options)
+	- <toPlayer> must be willing to talk
+	"""
+	playerID, player = PlayerUtil.getPlayerAndID(playerOrID)
+	toPlayerID, toPlayer = PlayerUtil.getPlayerAndID(toPlayerOrID)
+	if playerID == toPlayerID:
+		return False
+	if not toPlayer.isAlive() or toPlayer.isBarbarian() or toPlayer.isMinorCiv():
+		return False
+	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and not (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
+		return False
+	# the following players must be reversed (is toPlayer willing to talk to player?)
+	return isWillingToTalk(toPlayerOrID, playerOrID)
+
+def isWillingToTalk(playerOrID, toPlayerOrID):
+	"""
+	Returns True if <player> is willing to talk to <toPlayer>.
+	
+	- Every player is willing to talk to themselves
+	- All human players are willing to talk
+	- Uses BUG DLL if present, otherwise scans attitude hover text
+	  for "Refuses to Talk!!!" in the current language
+	"""
+	playerID, player = PlayerUtil.getPlayerAndID(playerOrID)
+	toPlayerID = PlayerUtil.getPlayerID(toPlayerOrID)
+	if playerID == toPlayerID or player.isHuman():
+		# all players talk to themselves, and all humans talk
+		return True
+	if BugDll.isPresent():
+		return player.AI_isWillingToTalk(toPlayerID)
+	else:
+		hover = AttitudeUtil.getAttitudeString(playerID, toPlayerID)
+		if hover:
+			return (hover.find(BugUtil.getPlainText("TXT_KEY_MISC_REFUSES_TO_TALK")) == -1)
+		else:
+			# haven't met yet
+			return False
 
 
 ## Event Initialization
@@ -92,7 +150,7 @@ class DiploEvent:
 		self.comment = comment
 		self.eComment = gc.getInfoTypeForString(comment)
 		if self.eComment == -1:
-			raise ConfigError("invalid comment type %s" % comment)
+			raise BugUtil.ConfigError("invalid comment type %s" % comment)
 		self.event = event
 		self.sendFromPlayer = sendFromPlayer
 		self.sendToPlayer = sendToPlayer

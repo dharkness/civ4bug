@@ -8,6 +8,7 @@ New Features:
 Improvements:
 
 - Scoreboard
+	Refuses to Talk now works when BULL is not installed
 	Added the ability to select a Civilization's 'short' description (e.g. "English Empire")
 - Foreign Advisor (F4)
 	TECHS: Added a status column that shows WAR or Forced Peace with an AI.  Shows 'refuses to talk' [BULL]
@@ -47,6 +48,8 @@ MODDING
 
 New Features:
 
+- DiplomacyUtil
+	Added canContact() and isWillingToTalk()
 - ReligionUtil
 	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
 
@@ -54,6 +57,12 @@ Improvements:
 
 - BugGameUtils
 	Each callback's dispatch logging is now optional via "log" XML attribute
+- GameUtil
+	Added checks for more game options used by diplomacy/trade changes
+- GPUtil
+	Added specific instructions for adding new GP types
+- TradeUtil
+	Added functions to get lists of valid trading partners for the different tradable items
 
 Bug Fixes:
 
