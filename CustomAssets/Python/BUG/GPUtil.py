@@ -2,30 +2,31 @@
 ##
 ## Utilities for dealing with Great People.
 ##
+## MODDERS
+##
+##   There are four places where you must add information about your new great people.
+##   This is also necessary if you assign GP points to buildings that don't normally get them,
+##   for example GG points to Heroic Epic.
+##
+##     1. Unit Type
+##     2. Named constant
+##     3. Color
+##     4. Icon (font glyph or string)
+##
 ## Notes
 ##   - Must be initialized externally by calling init()
 ##
-## Copyright (c) 2007-2008 The BUG Mod.
+## Copyright (c) 2007-2009 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
 
-# All seven GP types
-
-GP_SPY = 0
-GP_ENGINEER = GP_SPY + 1
-GP_MERCHANT = GP_ENGINEER + 1
-GP_SCIENTIST = GP_MERCHANT + 1
-GP_ARTIST = GP_SCIENTIST + 1
-GP_PROPHET = GP_ARTIST + 1
-
-NUM_GP = GP_PROPHET + 1
-
-# List of GP to show in the GP Bars
+# Unit Type of each great person that can gain GP points
 
 g_gpBarList = (
 	"UNIT_GREAT_SPY",
@@ -33,10 +34,27 @@ g_gpBarList = (
 	"UNIT_MERCHANT",
 	"UNIT_SCIENTIST",
 	"UNIT_ARTIST",
-	"UNIT_PROPHET"
+	"UNIT_PROPHET",
+# MOD: specify the unit type (XML key) for each new great person (1)
+	#"UNIT_DOCTOR",
 )
 
-# Maps GP type to unit ID and color to show in GP Bar (thus no GG here)
+# Named constants for each great person and total number of GP types
+# These must be in the exact same order as the list above
+
+NUM_GP = len(g_gpBarList)
+(
+	GP_SPY,
+	GP_ENGINEER,
+	GP_MERCHANT,
+	GP_SCIENTIST,
+	GP_ARTIST,
+	GP_PROPHET,
+# MOD: define a constant for each new great person in same order as above (2)
+	#GP_DOCTOR,
+) = range(NUM_GP)
+
+# Maps GP type to unit ID and color to show in GP Bar
 
 g_gpUnitTypes = None
 g_gpColors = None
@@ -56,6 +74,8 @@ def init():
 	g_gpColors[GP_SCIENTIST] = gc.getInfoTypeForString("COLOR_RESEARCH_STORED")
 	g_gpColors[GP_ARTIST] = gc.getInfoTypeForString("COLOR_CULTURE_STORED")
 	g_gpColors[GP_PROPHET] = gc.getInfoTypeForString("COLOR_BLUE")
+	# MOD: specify color for each new great person (3)
+	#g_gpColors[GP_DOCTOR] = gc.getInfoTypeForString("COLOR_WHITE")
 	
 	global g_unitIcons
 	g_unitIcons = {}
@@ -65,6 +85,8 @@ def init():
 	g_unitIcons[g_gpUnitTypes[GP_SCIENTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar())
 	g_unitIcons[g_gpUnitTypes[GP_ARTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar())
 	g_unitIcons[g_gpUnitTypes[GP_PROPHET]] = u"%c" % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR)
+	# MOD: specify icon (font glyph) for each new great person (4)
+	#g_unitIcons[g_gpUnitTypes[GP_DOCTOR]] = u"%c" % CyGame().getSymbolID(FontSymbols.HEALTHY_CHAR)
 
 def getUnitType(gpType):
 	return g_gpUnitTypes[gpType]
@@ -73,7 +95,11 @@ def getColor(gpType):
 	return g_gpColors[gpType]
 
 def getUnitIcon(iUnit):
-	return g_unitIcons[iUnit]
+	try:
+		return g_unitIcons[iUnit]
+	except:
+		BugUtil.warn("no GP icon for unit %d", iUnit)
+		return u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
 
 def findNextCity():
 	iMinTurns = None
