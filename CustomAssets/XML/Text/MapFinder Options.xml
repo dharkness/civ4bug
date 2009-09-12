@@ -33,11 +33,27 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAPFINDER__PATH_HOVER</Tag>
-		<English>Enter the full path to the MapFinder directory. It must contain the "Rules" and "Saves" folders.</English>
-		<French>Enter the full path to the MapFinder directory. It must contain the "Rules" and "Saves" folders.</French>
-		<German>Eingabe des vollständigen Pfades zum MapFinder-Verzeichnis (muss die Verzeichnisse "Rules" und "Saves" beinhalten)</German>
-		<Italian>Inserisci il percorso completo della cartella di MapFinder; deve contenere le cartelle "Rules" e "Saves".</Italian>
-		<Spanish>Enter the full path to the MapFinder directory. It must contain the "Rules" and "Saves" folders.</Spanish>
+		<English>Enter the full path to the MapFinder directory. It must contain the "Rules" folder.</English>
+		<French>Enter the full path to the MapFinder directory. It must contain the "Rules" folder.</French>
+		<German>Eingabe des vollständigen Pfades zum MapFinder-Verzeichnis (muss die Verzeichnisse "Rules" beinhalt)</German>
+		<Italian>Inserisci il percorso completo della cartella di MapFinder; deve contenere le cartel "Rules".</Italian>
+		<Spanish>Enter the full path to the MapFinder directory. It must contain the "Rules" folder.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAPFINDER__SAVEPATH_TEXT</Tag>
+		<English>Save Path</English>
+		<French>Save Path</French>
+		<German>Save Pfad</German>
+		<Italian>Save Percorso</Italian>
+		<Spanish>Save Path</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAPFINDER__SAVEPATH_HOVER</Tag>
+		<English>Enter the full path where maps matching your rules should be saved.</English>
+		<French>Enter the full path where maps matching your rules should be saved.</French>
+		<German>Enter the full path where maps matching your rules should be saved.</German>
+		<Italian>Enter the full path where maps matching your rules should be saved.</Italian>
+		<Spanish>Enter the full path where maps matching your rules should be saved.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAPFINDER__RULEFILE_TEXT</Tag>
