@@ -2,6 +2,37 @@
 ##
 ## Utilities for dealing with Trades and TradeData.
 ##
+## Trading
+##
+##   getTechTradePartners(playerOrID)
+##     Returns a list of player IDs that can trade technologies with <player>.
+##
+##   getGoldTradePartners(playerOrID)
+##     Returns a list of player IDs that can trade gold with <player>.
+##
+##   getOpenBordersTradePartners(playerOrID)
+##     Returns a list of player IDs that can sign an Open Borders agreement with <player>.
+##
+##   getDefensivePactTradePartners(playerOrID)
+##     Returns a list of player IDs that can sign a Defensive Pact with <player>.
+##
+##   getPermanentAllianceTradePartners(playerOrID)
+##     Returns a list of player IDs that can sign a Permanent Alliance with <player>.
+##
+##   getTradePartners(playerOrID, testFunction)
+##     Returns a list of player IDs that can trade with <player>.
+##
+##   canTradeTechs(fromTeamOrID, toTeamOrID)
+##     Returns True if <fromTeam> can trade technologies to <toTeam>.
+##
+##   canTradeGold(fromTeamOrID, toTeamOrID)
+##     Returns True if <fromTeam> can trade gold to <toTeam>.
+##
+## Trade Routes
+##
+##   calculateTradeRoutes(playerOrID)
+##     Returns a list containing the total values for trade routes.
+##
 ##   format(player or ID, TradeData(s))
 ##     Returns a plain text description of the given tradeable item(s).
 ##
@@ -18,6 +49,8 @@
 
 from CvPythonExtensions import *
 import BugUtil
+import DiplomacyUtil
+import GameUtil
 import PlayerUtil
 
 gc = CyGlobalContext()
@@ -32,9 +65,130 @@ MAX_TRADE_ROUTES = gc.getDefineINT("MAX_TRADE_ROUTES")
 TRADE_FORMATS = {}
 
 
-## Trade Route functions
+## Trading functions
+
+def getTechTradePartners(playerOrID):
+	"""
+	Returns a list of player IDs that can trade technologies with <player>.
+	"""
+	if not GameUtil.isTechTrading():
+		return ()
+	return getTradePartners(playerOrID, lambda fromTeam, toTeam: fromTeam.isTechTrading() or toTeam.isTechTrading())
+
+def getGoldTradePartners(playerOrID):
+	"""
+	Returns a list of player IDs that can trade gold with <player>.
+	"""
+	return getTradePartners(playerOrID, lambda fromTeam, toTeam: fromTeam.isGoldTrading() or toTeam.isGoldTrading())
+
+
+def getOpenBordersTradePartners(playerOrID):
+	"""
+	Returns a list of player IDs that can sign an Open Borders agreement with <player>.
+	"""
+	return getTradePartners(playerOrID, canSignOpenBorders)
+
+def canSignOpenBorders(fromTeam, toTeam):
+	"""
+	Returns True if the two CyTeams can sign an Open Borders agreement.
+	"""
+	if fromTeam.isOpenBorders(toTeam.getID()) or toTeam.isOpenBorders(fromTeam.getID()):
+		return False
+	return fromTeam.isOpenBordersTrading() or toTeam.isOpenBordersTrading()
+
+def getDefensivePactTradePartners(playerOrID):
+	"""
+	Returns a list of player IDs that can sign a Defensive Pact with <player>.
+	"""
+	return getTradePartners(playerOrID, canSignOpenBorders)
+
+def canSignDefensivePact(fromTeam, toTeam):
+	"""
+	Returns True if the two CyTeams can sign a Defensive Pact.
+	"""
+	if fromTeam.isDefensivePact(toTeam.getID()) or toTeam.isDefensivePact(fromTeam.getID()):
+		return False
+	return fromTeam.isDefensivePactTrading() or toTeam.isDefensivePactTrading()
+
+def getPermanentAllianceTradePartners(playerOrID):
+	"""
+	Returns a list of player IDs that can sign a Permanent Alliance with <player>.
+	"""
+	return getTradePartners(playerOrID, canSignOpenBorders)
+
+def canSignPermanentAlliance(fromTeam, toTeam):
+	"""
+	Returns True if the two CyTeams can sign a Permanent Alliance.
+	"""
+	if fromTeam.getID() == toTeam.getID():
+		return False
+	return fromTeam.isPermanentAllianceTrading() or toTeam.isPermanentAllianceTrading()
+
+
+def getTradePartners(playerOrID, testFunction):
+	"""
+	Returns a list of player IDs that can trade with <player>.
+	"""
+	playerID, player = PlayerUtil.getPlayer(playerOrID)
+	team = PlayerUtil.getTeam(player.getTeam())
+	partners = []
+	for partner in PlayerUtil.players(True, None, False, False):
+		if partner.getID() != playerID and team.isHasMet(partner.getTeam()):
+			if DiplomacyUtil.canContact(player, partner):
+				if testFunction(team, PlayerUtil.getTeam(partner.getTeam())):
+					partners.append(partner.getID())
+	return partners
+
+def canTradeTechs(fromTeamOrID, toTeamOrID):
+	"""
+	Returns True if <fromTeam> can trade technologies to <toTeam>.
+	
+	- No Tech Trading must be disabled
+	- The teams must have met
+	- One or both teams must possess technology trading ability
+	- If at war, the teams must be able to sign a peace deal
+	"""
+	fromTeam = PlayerUtil.getTeam(fromTeamOrID)
+	toTeamID, toTeam = PlayerUtil.getTeamAndID(toTeamOrID)
+	if not GameUtil.isTechTrading():
+		return False
+	if not fromTeam.isHasMet(toTeamID):
+		return False
+	if not fromTeam.isTechTrading() and not toTeam.isTechTrading():
+		return False
+	if fromTeam.isAtWar(toTeamID) and not (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
+		return False
+	return True
+
+def canTradeGold(fromTeamOrID, toTeamOrID):
+	"""
+	Returns True if <fromTeam> can trade gold to <toTeam>.
+	
+	- The teams must have met
+	- One or both teams must possess gold trading ability
+	- If at war, the teams must be able to sign a peace deal
+	"""
+	fromTeam = PlayerUtil.getTeam(fromTeamOrID)
+	toTeamID, toTeam = PlayerUtil.getTeamAndID(toTeamOrID)
+	if not fromTeam.isHasMet(toTeamID):
+		return False
+	if not fromTeam.isGoldTrading() and not toTeam.isGoldTrading():
+		return False
+	if fromTeam.isAtWar(toTeamID) and not (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
+		return False
+	return True
+
+
+## Trade Route Functions
 
 def calculateTradeRoutes(playerOrID):
+	"""
+	Returns a list of trade route totals broken down into four categories: 
+	domestic continental, domestic overseas, foreign continenal, foreign overseas.
+	
+	As I only recently realized that the Custom House applies to *all* foreign trade, 
+	the overseas categories are pointless and may be removed soon.
+	"""
 	tradeTotals = [0, 0, 0, 0]
 	for city in PlayerUtil.playerCities(playerOrID):
 		eTeam = city.getTeam()
