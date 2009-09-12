@@ -17,6 +17,7 @@ Improvements:
 	Added option to limit the religions shown in the top area to only those that are founded or available for conversion
 - MapFinder
 	Added ALT + CTRL + SHIFT + G to stop
+	Added separate Save path
 
 Bug Fixes:
 

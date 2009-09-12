@@ -20,6 +20,8 @@
 			
 			<option id="Path" key="Path" 
 					type="string" default="C:\Program Files\Civ4_Map_Finder"/>
+			<option id="SavePath" key="Save Path" 
+					type="string" default="C:\Program Files\Civ4_Map_Finder\Saves"/>
 			<option id="RuleFile" key="Rule File" 
 					type="string" default="Default.rul"/>
 			

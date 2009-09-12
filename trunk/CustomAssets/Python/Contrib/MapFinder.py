@@ -468,7 +468,7 @@ def matchRules():
 def save():
 	global iRegenCount, iSavedCount, mr
 	iSavedCount += 1
-	sMFSavePath = os.path.join(options.getPath(), "Saves")
+	sMFSavePath = options.getSavePath()
 	(fileName, _) = AutoSave.getSaveFileName(sMFSavePath)
 	fullFileName = fileName + "_" + str(iRegenCount) + "_" + str(iSavedCount)
 	
@@ -510,6 +510,9 @@ def setup():
 	root = options.getPath()
 	if not os.path.isdir(root):
 		raise MapFinderError("TXT_KEY_MAPFINDER_INVALID_PATH", root)
+	saves = options.getSavePath()
+	if not os.path.isdir(saves):
+		raise MapFinderError("TXT_KEY_MAPFINDER_INVALID_SAVE_PATH", saves)
 	loadCodeText(root)
 	loadCategoryTypes(root)
 	loadComboTypes(root)
