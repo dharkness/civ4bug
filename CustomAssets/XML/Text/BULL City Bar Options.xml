@@ -27,7 +27,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNS_TEXT</Tag>
 		<English>Turns to Starvation</English>
 		<French>Turns to Starvation</French>
-		<German>Turns to Starvation</German>
+		<German>Runden bis Hungersnot</German>
 		<Italian>Turns to Starvation</Italian>
 		<Spanish>Turns to Starvation</Spanish>
 	</TEXT>
@@ -35,7 +35,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNS_HOVER</Tag>
 		<English>When checked, shows how many turns until a city will lose population if it is shrinking.</English>
 		<French>When checked, shows how many turns until a city will lose population if it is shrinking.</French>
-		<German>When checked, shows how many turns until a city will lose population if it is shrinking.</German>
+		<German>Zeigt an, in wie vielen Runden eine Stadt einen Bürger verliert, falls ihre Bevölkerung schrumpft</German>
 		<Italian>When checked, shows how many turns until a city will lose population if it is shrinking.</Italian>
 		<Spanish>When checked, shows how many turns until a city will lose population if it is shrinking.</Spanish>
 	</TEXT>
