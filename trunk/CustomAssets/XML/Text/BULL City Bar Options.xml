@@ -24,7 +24,7 @@
 		<Spanish>When checked, places an airport icon above the city bars of cities that have an airport.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNSLEFT_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNS_TEXT</Tag>
 		<English>Turns to Starvation</English>
 		<French>Turns to Starvation</French>
 		<German>Turns to Starvation</German>
@@ -32,7 +32,7 @@
 		<Spanish>Turns to Starvation</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNSLEFT_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__STARVATIONTURNS_HOVER</Tag>
 		<English>When checked, shows how many turns until a city will lose population if it is shrinking.</English>
 		<French>When checked, shows how many turns until a city will lose population if it is shrinking.</French>
 		<German>When checked, shows how many turns until a city will lose population if it is shrinking.</German>
