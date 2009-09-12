@@ -43,9 +43,12 @@ class BugMapOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		screen.attachHSeparator(column, column + "Sep1")
 		
-		self.addLabel(screen, column, "MapFinder", "MapFinder:")
-		self.addCheckbox(screen, column, "MapFinder__Enabled")
+		left, right = self.addTwoColumnLayout(screen, column, "MapFinderEnabled", True)
+		self.addLabel(screen, left, "MapFinder", "MapFinder:")
+		self.addCheckbox(screen, right, "MapFinder__Enabled")
+		
 		self.addTextEdit(screen, column, column, "MapFinder__Path")
+		self.addTextEdit(screen, column, column, "MapFinder__SavePath")
 		
 		left, right = self.addTwoColumnLayout(screen, column, "MapFinder", True)
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "MapFinderDelays")
