@@ -51,6 +51,8 @@ MODDING
 
 New Features:
 
+- BugUtil
+	Added escapeXml() to replace <, >, and & with their XML entities
 - DiplomacyUtil
 	Added canContact() and isWillingToTalk()
 - ReligionUtil
@@ -58,6 +60,8 @@ New Features:
 
 Improvements:
 
+- BugEventManager
+	Exceptions from event handlers are caught and logged, and the next handler is called
 - BugGameUtils
 	Each callback's dispatch logging is now optional via "log" XML attribute
 - GameUtil
@@ -69,7 +73,10 @@ Improvements:
 
 Bug Fixes:
 
-- BugPath ignores CustomAssets folder when running as a Mod; too many issues
+- BugPath
+	Ignores CustomAssets folder when running as a Mod; too many issues
+- BugUtil
+	Alert/trace messages to the screen are XML-escaped
 
 
 ____________________________________________________________________________________________________
