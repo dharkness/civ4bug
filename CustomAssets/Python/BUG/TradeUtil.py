@@ -234,6 +234,7 @@ def initFractionalTrade():
 	try:
 		TRADE_PROFIT_FUNC = CyCity.calculateTradeProfitTimes100
 		FRACTIONAL_TRADE = True
+		BugUtil.debug("TradeUtil - Fractional Trade Routes active")
 	except:
 		TRADE_PROFIT_FUNC = CyCity.calculateTradeProfit
 		FRACTIONAL_TRADE = False
