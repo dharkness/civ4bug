@@ -34,17 +34,23 @@
 					type="boolean" default="True" 
 					get="isUseDefaultFileName" set="setUseDefaultFileName" 
 					label="Use Default File Name" 
-					help="When checked, the default (playername.txt) will be used, ignores log file name option."/>
+					help="When checked, the default (playername.txt) will be used, ignores log file name option.">
+				<change module="autologEventManager" function="setDefaultFileName"/>
+			</option>
 			<option id="FilePath" key="File Path" 
 					type="string" default="" 
 					get="getFilePath" set="setFilePath" 
 					label="Path" 
-					help="Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank)."/>
+					help="Directory where log file resides (fully qualified path, i.e. C:\folder\subfolder or blank).">
+				<change module="autologEventManager" function="setFilePath"/>
+			</option>
 			<option id="FileName" key="File Name" 
 					type="string" default="autolog.txt" 
 					get="getFileName" set="setFileName" 
 					label="File" 
-					help="Name of log file. If there is no file of this name in the directory above, one will be created."/>
+					help="Name of log file. If there is no file of this name in the directory above, one will be created.">
+				<change module="autologEventManager" function="setFileName"/>
+			</option>
 			
 			<!-- Log format -->
 			<list   id="Format" key="Format Style" 

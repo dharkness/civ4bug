@@ -16,7 +16,6 @@ import autolog
 import time
 import BugCore
 import BugUtil
-import CvModName
 import TradeUtil
 
 OPEN_LOG_EVENT_ID = CvUtil.getNewEventID("Autolog.OpenLog")
@@ -41,8 +40,16 @@ def isLoggingOn():
 def setLoggingOn(value):
 	AutologOpt.setLoggingOn(value)
 
-def StartLogger(vsFileName):
+def setFileName(option, value):
+	Logger.setLogFileName(value)
 
+def setFilePath(option, value):
+	Logger.setLogFilePath(value)
+
+def setDefaultFileName(option, value):
+	pass
+
+def StartLogger(vsFileName):
 	if (not vsFileName):
 		vsFileName = Logger.getLogFileName()
 
@@ -52,7 +59,7 @@ def StartLogger(vsFileName):
 		szfileName = gc.getPlayer(ePlayer).getName()
 	else:
 		szfileName = vsFileName
-
+	
 	ziStyle = AutologOpt.getFormatStyle()
 #	' valid styles are plain (0), html (1), forum with " for color(2) or forum without " for color(3)'
 	if (ziStyle == 1):
@@ -61,30 +68,8 @@ def StartLogger(vsFileName):
 	else:
 		if not (szfileName.endswith(".txt")):
 			szfileName = szfileName + ".txt"
-
+	
 	Logger.setLogFileName(szfileName)
-	Logger.writeLog("")
-	Logger.writeLog("Logging by " + CvModName.getDisplayNameAndVersion() + " (" + CvModName.getCivNameAndVersion() + ")")
-	Logger.writeLog("------------------------------------------------")
-	
-	zcurrturn = gc.getGame().getElapsedGameTurns() + AutologOpt.get4000BCTurn()
-	zmaxturn = gc.getGame().getMaxTurns()
-	zyear = gc.getGame().getGameTurnYear()
-	if (zyear < 0):
-		zyear = str(-zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_BC")
-	else:
-		zyear = str(zyear) + BugUtil.getPlainText("TXT_KEY_AUTOLOG_AD")
-	zCurrDateTime = time.strftime("%d-%b-%Y %H:%M:%S")
-
-	if (zmaxturn == 0):
-		zsTurn = "%i" % (zcurrturn)
-	else:
-		zsTurn = "%i/%i" % (zcurrturn, zmaxturn)
-				
-	message = BugUtil.getText("TXT_KEY_AUTOLOG_TURN", (zsTurn, zyear, zCurrDateTime))
-	
-	Logger.writeLog(message, vBold=True, vUnderline=True)
-
 	if (not AutologOpt.isSilent()):
 		message = BugUtil.getText("TXT_KEY_AUTOLOG_LOGGING_GAME", (szfileName, ))
 		CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, message, None, 2, None, ColorTypes(8), 0, 0, False, False)
