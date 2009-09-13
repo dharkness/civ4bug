@@ -49,6 +49,7 @@ Bug Fixes:
 - Unit Naming
 	Default naming convention matches new unit counting codes
 - Logger
+	File name and path changes take effect immediately
 	Suppresses the nationality of rival Privateers
 
 
