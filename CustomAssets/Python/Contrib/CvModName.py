@@ -2,7 +2,7 @@
 
 modName = "BUG Mod"
 displayName = "BUG Mod"
-modVersion = "4.0 [Build 1886]"
+modVersion = "4.0 [Build 1944]"
 
 civName = "BtS"
 civVersion = "3.13-3.19"
