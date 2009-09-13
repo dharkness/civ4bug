@@ -34,6 +34,9 @@
 					get="isShowTechTradeAlert" set="setShowTechTradeAlert" 
 					label="Technologies" 
 					help="."/>
+			<option id="MapTrade" key="Map Trades" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowMapTradeAlert" set="setShowMapTradeAlert"/>
 			
 			<!-- Diplomacy -->
 			<option id="OpenBordersTrade" key="Open Borders Trades" 
