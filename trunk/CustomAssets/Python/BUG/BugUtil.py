@@ -259,9 +259,15 @@ def log(level, message, args=()):
 			logToFile(LEVEL_PREFIXES[level] + message)
 
 def logToScreen(message):
-	interface.addImmediateMessage(escapeXml(message), "")
+	"""
+	Displays the message in the on-screen message area.
+	"""
+	interface.addImmediateMessage(message, "")
 
 def logToFile(message):
+	"""
+	Writes the message to the debug log with a time stamp if that option is enabled.
+	"""
 	if logTime:
 		message = time.asctime()[11:20] + message
 	sys.stdout.write(message + "\n")
