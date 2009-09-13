@@ -56,7 +56,7 @@ def canContact(playerOrID, toPlayerOrID):
 		return False
 	if not toPlayer.isAlive() or toPlayer.isBarbarian() or toPlayer.isMinorCiv():
 		return False
-	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and not (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
+	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
 		return False
 	# the following players must be reversed (is toPlayer willing to talk to player?)
 	return isWillingToTalk(toPlayerOrID, playerOrID)
