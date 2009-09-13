@@ -104,7 +104,7 @@
 		<Tag>TXT_KEY_MORECIV4LERTS_MAP</Tag>
 		<English>[COLOR_TECH_TEXT]Will Trade Map: %s1[COLOR_REVERT]</English>
 		<French>[COLOR_TECH_TEXT]Will Trade Map : %s1[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Will Trade Map: %s1[COLOR_REVERT]</German>
+		<German>[COLOR_TECH_TEXT]Wird Karten handeln: %s1[COLOR_REVERT]</German>
 		<Italian>[COLOR_TECH_TEXT]Will Trade Map: %s1[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_TECH_TEXT]Will Trade Map: %s1[COLOR_REVERT]</Spanish>
 	</TEXT>
