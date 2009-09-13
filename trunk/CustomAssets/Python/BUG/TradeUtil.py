@@ -30,8 +30,15 @@
 ##
 ## Trade Routes
 ##
-##   calculateTradeRoutes(playerOrID)
-##     Returns a list containing the total values for trade routes.
+##   isFractionalTrade()
+##     Returns True of BULL is active with Fractional Trade
+##
+##   calculateTradeRoutes(playerOrID, withPlayerOrID=None)
+##     Returns the domestic and foreign trade route yields and counts for <playerOrID>:
+##     domestic yield, domestic count, foreign yield, and foreign count.
+##     If <withPlayerOrID> is given, only counts trade routes to their cities.
+##
+## TradeData
 ##
 ##   format(player or ID, TradeData(s))
 ##     Returns a plain text description of the given tradeable item(s).
@@ -61,6 +68,8 @@ FOREIGN_TRADE = 2
 FOREIGN_OVERSEAS_TRADE = 3
 
 MAX_TRADE_ROUTES = gc.getDefineINT("MAX_TRADE_ROUTES")
+FRACTIONAL_TRADE = False
+TRADE_PROFIT_FUNC = None
 
 TRADE_FORMATS = {}
 
@@ -179,36 +188,55 @@ def canTradeGold(fromTeamOrID, toTeamOrID):
 	return True
 
 
-## Trade Route Functions
+## Trade Routes
 
-def calculateTradeRoutes(playerOrID):
+def isFractionalTrade():
+	return FRACTIONAL_TRADE
+
+def getTradeProfitFunc():
+	return TRADE_PROFIT_FUNC
+
+def calculateTradeRouteYield(city, route, yieldType):
+	return city.calculateTradeYield(yieldType, TRADE_PROFIT_FUNC(city, city.getTradeCity(route)))
+
+def calculateTradeRoutes(playerOrID, withPlayerOrID=None):
 	"""
-	Returns a list of trade route totals broken down into four categories: 
-	domestic continental, domestic overseas, foreign continenal, foreign overseas.
-	
-	As I only recently realized that the Custom House applies to *all* foreign trade, 
-	the overseas categories are pointless and may be removed soon.
+	Returns the domestic and foreign trade route yields and counts for <playerOrID>:
+	domestic yield, domestic count, foreign yield, and foreign count.
+	If <withPlayerOrID> is given, only counts trade routes to their cities.
 	"""
-	tradeTotals = [0, 0, 0, 0]
+	domesticTrade = 0
+	domesticCount = 0
+	foreignTrade = 0
+	foreignCount = 0
+	withPlayerID = PlayerUtil.getPlayerID(withPlayerOrID)
 	for city in PlayerUtil.playerCities(playerOrID):
 		eTeam = city.getTeam()
-		areaID = city.area().getID()
 		for i in range(city.getTradeRoutes()):    # MAX_TRADE_ROUTES):
 			tradeCity = city.getTradeCity(i)
-			if tradeCity and tradeCity.getOwner() >= 0:
-				trade = city.calculateTradeYield(YieldTypes.YIELD_COMMERCE, city.calculateTradeProfit(tradeCity))
-				overseas = tradeCity.area().getID() != areaID
+			if tradeCity and tradeCity.getOwner() >= 0 and (withPlayerID == -1 or withPlayerID == tradeCity.getOwner()):
+				trade = city.calculateTradeYield(YieldTypes.YIELD_COMMERCE, TRADE_PROFIT_FUNC(city, tradeCity))
 				if tradeCity.getTeam() == eTeam:
-					if overseas:
-						tradeTotals[DOMESTIC_OVERSEAS_TRADE] += trade
-					else:
-						tradeTotals[DOMESTIC_TRADE] += trade
+					domesticTrade += trade
+					domesticCount += 1
 				else:
-					if overseas:
-						tradeTotals[FOREIGN_OVERSEAS_TRADE] += trade
-					else:
-						tradeTotals[FOREIGN_TRADE] += trade
-	return tradeTotals
+					foreignTrade += trade
+					foreignCount += 1
+	return domesticTrade, domesticCount, foreignTrade, foreignCount
+
+def initFractionalTrade():
+	"""
+	Sets the global fractional trade constants by testing for the function it adds.
+	
+	Fractional Trade is an optional compile-time feature of BULL.
+	"""
+	global FRACTIONAL_TRADE, TRADE_PROFIT_FUNC
+	try:
+		TRADE_PROFIT_FUNC = CyCity.calculateTradeProfitTimes100
+		FRACTIONAL_TRADE = True
+	except:
+		TRADE_PROFIT_FUNC = CyCity.calculateTradeProfit
+		FRACTIONAL_TRADE = False
 
 
 ## Trade Class
@@ -297,8 +325,7 @@ def format(player, trade):
 		BugUtil.warn("TradeUtil - unknown item type %d", trade.ItemType)
 		return ""
 
-def init():
-	"""Performs one-time initialization after the game starts up."""
+def initTradableItems():
 	addSimpleTrade("gold", TradeableItems.TRADE_GOLD, "TXT_KEY_TRADE_GOLD_NUM")
 	addSimpleTrade("gold per turn", TradeableItems.TRADE_GOLD_PER_TURN, "TXT_KEY_TRADE_GOLD_PER_TURN_NUM")
 	addPlainTrade("map", TradeableItems.TRADE_MAPS, "TXT_KEY_TRADE_WORLD_MAP_STRING")
@@ -418,6 +445,16 @@ class ComplexTradeFormat(BaseTradeFormat):
 		return "%s"
 	def getParameters(self, player, trade):
 		return trade.iData
+
+
+## Initialization
+
+def init():
+	"""
+	Performs one-time initialization after the game starts up.
+	"""
+	initFractionalTrade()
+	initTradableItems()
 
 
 ## Testing

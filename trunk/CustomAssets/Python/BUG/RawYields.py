@@ -10,11 +10,12 @@
 from CvPythonExtensions import *
 import CvUtil
 import BugUtil
+import TradeUtil
 
 gc = CyGlobalContext()
 
 # Types
-NUM_TYPES = 12
+NUM_TYPES = 11
 (
 	WORKED_TILES,
 	CITY_TILES,
@@ -23,7 +24,6 @@ NUM_TYPES = 12
 	
 	DOMESTIC_TRADE,
 	FOREIGN_TRADE, # excludes overseas trade
-	FOREIGN_OVERSEAS_TRADE,
 	
 	BUILDINGS,
 	CORPORATIONS,
@@ -51,7 +51,6 @@ LABEL_KEYS = ("TXT_KEY_CONCEPT_WORKED_TILES",
 			  "TXT_KEY_CONCEPT_ALL_TILES",
 			  "TXT_KEY_CONCEPT_DOMESTIC_TRADE",
 			  "TXT_KEY_CONCEPT_FOREIGN_TRADE",
-			  "TXT_KEY_CONCEPT_FOREIGN_OVERSEAS_TRADE",
 			  "TXT_KEY_CONCEPT_BUILDINGS",
 			  "TXT_KEY_CONCEPT_CORPORATIONS",
 			  "TXT_KEY_CONCEPT_SPECIALISTS",
@@ -108,9 +107,6 @@ class Tracker:
 	def addForeignTrade(self, iValue):
 		"""Excludes overseas trade."""
 		self._addYield(YieldTypes.YIELD_COMMERCE, FOREIGN_TRADE, iValue)
-	
-	def addForeignOverseasTrade(self, iValue):
-		self._addYield(YieldTypes.YIELD_COMMERCE, FOREIGN_OVERSEAS_TRADE, iValue)
 	
 	def processCity(self, pCity):
 		"""
@@ -184,8 +180,15 @@ class Tracker:
 		iTotal = self.getYield(eYield, eTileType)
 		self.appendTable(screen, table, False, BugUtil.getText(LABEL_KEYS[eTileType], (self.tileCounts[eTileType],)), eYield, iTotal)
 		
-		# Other types
-		for eType in (DOMESTIC_TRADE, FOREIGN_TRADE, FOREIGN_OVERSEAS_TRADE, BUILDINGS, CORPORATIONS, SPECIALISTS):
+		# Trade
+		for eType in (DOMESTIC_TRADE, FOREIGN_TRADE):
+			iValue = self.getYield(eYield, eType)
+			if iValue != 0:
+				self.appendTable(screen, table, False, BugUtil.getPlainText(LABEL_KEYS[eType]), eYield, iValue, TradeUtil.isFractionalTrade())
+		iTotal += (self.getYield(eYield, DOMESTIC_TRADE) + self.getYield(eYield, FOREIGN_TRADE)) // 100
+		
+		# Buildings, Corporations, Specialists
+		for eType in (BUILDINGS, CORPORATIONS, SPECIALISTS):
 			iValue = self.getYield(eYield, eType)
 			if iValue != 0:
 				iTotal += iValue
@@ -221,7 +224,7 @@ class Tracker:
 		self.appendTableTotal(screen, table, eYield, iTotal)
 		#self.appendTable(screen, table, True, BugUtil.getPlainText("TXT_KEY_CONCEPT_TOTAL"), eYield, iTotal)
 	
-	def appendTable(self, screen, table, bTotal, heading, eYield, iValue):
+	def appendTable(self, screen, table, bTotal, heading, eYield, iValue, bFraction=False):
 		"""
 		Appends the given yield value to the table control.
 		If bTotal is True, the heading is colored yellow and there's no + sign on the value.
@@ -231,8 +234,15 @@ class Tracker:
 		if bTotal:
 			heading = u"<color=205,180,55,255>%s</color>" % heading
 			value = u"<color=205,180,55,255>%d</color>" % iValue
+			if bFraction:
+				value = u"<color=205,180,55,255>%d.%2d</color>" % (iValue // 100, iValue % 100)
+			else:
+				value = u"<color=205,180,55,255>%d</color>" % iValue
 		else:
-			value = u"%+d" % iValue
+			if bFraction:
+				value = u"%+d.%2d" % (iValue // 100, iValue % 100)
+			else:
+				value = u"%+d" % iValue
 		screen.setTableText(table, HEADING_COLUMN, self.iRow, u"<font=1>%s</font>" % (heading), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 		screen.setTableText(table, VALUE_COLUMN, self.iRow, u"<font=1>%s%c</font>" % (value, cYield), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 		self.iRow += 1

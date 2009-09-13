@@ -166,11 +166,11 @@ class BugFinanceAdvisor:
 		iCommerce += iWorkedTiles
 		
 		# trade
-		trade = TradeUtil.calculateTradeRoutes(player)
-		iDomesticTrade = trade[TradeUtil.DOMESTIC_TRADE] + trade[TradeUtil.DOMESTIC_OVERSEAS_TRADE]
-		iForeignTrade = trade[TradeUtil.FOREIGN_TRADE] + trade[TradeUtil.FOREIGN_OVERSEAS_TRADE]
+		iDomesticTrade, _, iForeignTrade, _ = TradeUtil.calculateTradeRoutes(player)
 		
 		if iDomesticTrade > 0:
+			if TradeUtil.isFractionalTrade():
+				iDomesticTrade //= 100
 			yLocation += self.Y_SPACING
 			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_DOMESTIC_TRADE", ()) + "</font>", CvUtil.FONT_LEFT_JUSTIFY, self.X_SLIDERS + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, 
 							*BugDll.widget("WIDGET_HELP_FINANCE_DOMESTIC_TRADE", self.iActiveLeader, 1) )
@@ -179,6 +179,8 @@ class BugFinanceAdvisor:
 			iCommerce += iDomesticTrade
 		
 		if iForeignTrade > 0:
+			if TradeUtil.isFractionalTrade():
+				iForeignTrade //= 100
 			yLocation += self.Y_SPACING
 			screen.setLabel(self.getNextWidgetName(), "Background", u"<font=3>" + localText.getText("TXT_KEY_CONCEPT_FOREIGN_TRADE", ()) + "</font>", CvUtil.FONT_LEFT_JUSTIFY, self.X_SLIDERS + self.TEXT_MARGIN, yLocation + self.TEXT_MARGIN, self.Z_CONTROLS + self.DZ, FontTypes.GAME_FONT, 
 							*BugDll.widget("WIDGET_HELP_FINANCE_FOREIGN_TRADE", self.iActiveLeader, 1) )

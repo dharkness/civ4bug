@@ -5,6 +5,9 @@ CHANGES
 
 New Features:
 
+- Fractional Trade Routes [BULL]
+	If enabled in BULL, shows fractional values for Trade Routes and their totals
+
 Improvements:
 
 - Scoreboard
