@@ -22,6 +22,10 @@ Improvements:
 - MapFinder
 	Added ALT + CTRL + SHIFT + G to stop
 	Added separate Save path
+- Civ4lerts
+	Added alert when rivals will trade their map
+	Trade alerts suspended when an AI refuses to talk
+	TODO: Alert when an AI stops refusing to talk
 
 Bug Fixes:
 
@@ -57,6 +61,8 @@ New Features:
 	Added canContact() and isWillingToTalk()
 - ReligionUtil
 	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
+- TradeUtil
+	Added functions to get lists of valid trading partners for the different tradable items
 
 Improvements:
 
@@ -68,8 +74,6 @@ Improvements:
 	Added checks for more game options used by diplomacy/trade changes
 - GPUtil
 	Added specific instructions for adding new GP types
-- TradeUtil
-	Added functions to get lists of valid trading partners for the different tradable items
 
 Bug Fixes:
 

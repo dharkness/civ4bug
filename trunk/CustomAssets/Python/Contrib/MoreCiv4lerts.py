@@ -3,10 +3,10 @@
 ## Based upon Gillmer J. Derge's Civ4lerts.py
 
 from CvPythonExtensions import *
-import CvUtil
 import PyHelpers
 import BugCore
 import PlayerUtil
+import TradeUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -57,11 +57,19 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		eventManager.addEventHandler("cityBuilt", self.OnCityBuilt)
 		eventManager.addEventHandler("cityRazed", self.OnCityRazed)
 		eventManager.addEventHandler("cityLost", self.OnCityLost)
+		
+		eventManager.addEventHandler("GameStart", self.reset)
+		eventManager.addEventHandler("OnLoad", self.reset)
 
 		self.eventMgr = eventManager
+		self.options = BugCore.game.MoreCiv4lerts
+		self.reset()
+	
+	def reset(self, argsList=None):
 		self.CurrAvailTechTrades = {}
 		self.PrevAvailTechTrades = {}
 		self.PrevAvailOpenBordersTrades = set()
+		self.PrevAvailMapTrades = set()
 		self.PrevAvailDefensivePactTrades = set()
 		self.PrevAvailPermanentAllianceTrades = set()
 		self.PrevAvailVassalTrades = set()
@@ -70,8 +78,6 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.lastDomLimitMsgTurn = 0
 		self.lastPopCount = 0
 		self.lastLandCount = 0
-		
-		self.options = BugCore.game.MoreCiv4lerts
 
 	def getCheckForDomPopVictory(self):
 		return self.options.isShowDomPopAlert()
@@ -88,8 +94,11 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def getCheckForCityBorderExpansion(self):
 		return self.options.isShowCityPendingExpandBorderAlert()
 
-	def getCheckForNewTrades(self):
+	def getCheckForTechs(self):
 		return self.options.isShowTechTradeAlert()
+	
+	def getCheckForMap(self):
+		return self.options.isShowMapTradeAlert()
 
 	def getCheckForOpenBorders(self):
 		return self.options.isShowOpenBordersTradeAlert()
@@ -115,13 +124,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def getCheckForForeignCities(self):
 		return self.options.isShowCityFoundedAlert()
 
-	def getDoChecks(self):
-		return self.getCheckForDomVictory() or self.getCheckForCityBorderExpansion() or self.getCheckForNewTrades()
-
 	def onBeginActivePlayerTurn(self, argsList):
 		"Called when the active player can start making their moves."
 		iGameTurn = argsList[0]
-		if (not self.getDoChecks()): return
 		iPlayer = gc.getGame().getActivePlayer()
 		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
 
@@ -276,15 +281,15 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	
 		#save turn num
 		if (self.getCheckForDomVictory()):
-		    self.lastDomLimitMsgTurn = currentTurn
+			self.lastDomLimitMsgTurn = currentTurn
 
-		# new trades
-		if (BeginTurn and self.getCheckForNewTrades()):
+		# tech trades
+		if (BeginTurn and self.getCheckForTechs()):
 			researchTechs = set()
 			for iTech in range(gc.getNumTechInfos()):
 				if (activePlayer.canResearch(iTech, True)):
 					researchTechs.add(iTech)
-			techsByPlayer = self.getTechForTrade(activePlayer, activeTeam)
+			techsByPlayer = self.getTechTrades(activePlayer, activeTeam)
 			for iLoopPlayer, currentTechs in techsByPlayer.iteritems():
 
 				#Did he have trades avail last turn
@@ -315,6 +320,15 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 			self.PrevAvailTechTrades = techsByPlayer
 
 		else: pass #end new trades if
+		
+		if (BeginTurn and self.getCheckForMap()):
+			currentTrades = self.getMapTrades(activePlayer, activeTeam)
+			newTrades = currentTrades.difference(self.PrevAvailMapTrades)
+			self.PrevAvailMapTrades = currentTrades
+			if (newTrades):
+				players = self.buildPlayerString(newTrades)
+				message = localText.getText("TXT_KEY_MORECIV4LERTS_MAP", (players,))
+				self._addMessageNoIcon(iActivePlayer, message)
 		
 		if (BeginTurn and self.getCheckForOpenBorders()):
 			currentTrades = self.getOpenBordersTrades(activePlayer, activeTeam)
@@ -370,158 +384,103 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				message = localText.getText("TXT_KEY_MORECIV4LERTS_PEACE_TREATY", (players,))
 				self._addMessageNoIcon(iActivePlayer, message)
 
-	def getTechForTrade(self, player, team):
-		iTeamID = team.getID()
+	def getTechTrades(self, player, team):
 		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_TECHNOLOGIES
 		techsByPlayer = {}
-
-		for iLoopPlayer in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayer)
-			loopTeam = gc.getTeam(loopPlayer.getTeam())
-
-			if (loopPlayer.isBarbarian()): continue
-			if (loopPlayer.isMinorCiv()): continue
-			if (not loopPlayer.isAlive()): continue
-			if (iLoopPlayer != iPlayerID and loopTeam.isHasMet(iTeamID)):
-				if (team.isTechTrading() or loopTeam.isTechTrading()):
-					techsToTrade = set()
-					for iLoopTech in range(gc.getNumTechInfos()):
-						tradeData.iData = iLoopTech
-						if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
-							if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-								techsToTrade.add(iLoopTech)
-					techsByPlayer[iLoopPlayer] = techsToTrade
+		for loopPlayer in TradeUtil.getTechTradePartners(player):
+			techsToTrade = set()
+			for iLoopTech in range(gc.getNumTechInfos()):
+				tradeData.iData = iLoopTech
+				if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+					if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+						techsToTrade.add(iLoopTech)
+			techsByPlayer[loopPlayer.getID()] = techsToTrade
 		return techsByPlayer
 
-	def getOpenBordersTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getMapTrades(self, player, team):
+		iPlayerID = player.getID()
+		tradeData = TradeData()
+		tradeData.ItemType = TradeableItems.TRADE_MAPS
+		currentTrades = set()
+		for loopPlayer in TradeUtil.getMapTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
+		return currentTrades
+
+	def getOpenBordersTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_OPEN_BORDERS
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (activeTeam.isOpenBorders(iLoopTeamID) or loopTeam.isOpenBorders(iActiveTeamID)):
-					continue
-				if (activeTeam.isOpenBordersTrading() or loopTeam.isOpenBordersTrading()):
-					#tradeData.iData = None
-					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-							currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getOpenBordersTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 
-	def getDefensivePactTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getDefensivePactTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_DEFENSIVE_PACT
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (activeTeam.isDefensivePact(iLoopTeamID) or loopTeam.isDefensivePact(iActiveTeamID)):
-					continue
-				if (activeTeam.isDefensivePactTrading() or loopTeam.isDefensivePactTrading()):
-					#tradeData.iData = None
-					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-							currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getDefensivePactTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 
-	def getPermanentAllianceTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getPermanentAllianceTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_PERMANENT_ALLIANCE
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				# Once teams sign a PA, they become a single team
-				#if (activeTeam.isDefensivePact(iLoopTeamID) or loopTeam.isDefensivePact(iActiveTeamID)):
-				#	continue
-				if (activeTeam.isPermanentAllianceTrading() or loopTeam.isPermanentAllianceTrading()):
-					#tradeData.iData = None
-					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-							currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getPermanentAllianceTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 
-	def getVassalTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getVassalTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_VASSAL
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-						currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getVassalTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 
-	def getSurrenderTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getSurrenderTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_SURRENDER
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-					if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-						currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getCapitulationTradePartners(player):
+			#tradeData.iData = None
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 
-	def getPeaceTrades(self, activePlayer, activeTeam):
-		iActivePlayerID = activePlayer.getID()
-		iActiveTeamID = activeTeam.getID()
+	def getPeaceTrades(self, player, team):
+		iPlayerID = player.getID()
 		tradeData = TradeData()
 		tradeData.ItemType = TradeableItems.TRADE_PEACE_TREATY
 		tradeData.iData = PEACE_TREATY_LENGTH
 		currentTrades = set()
-		
-		for iLoopPlayerID in range(gc.getMAX_PLAYERS()):
-			loopPlayer = gc.getPlayer(iLoopPlayerID)
-			iLoopTeamID = loopPlayer.getTeam()
-			loopTeam = gc.getTeam(iLoopTeamID)
-			if (loopPlayer.isBarbarian() or loopPlayer.isMinorCiv() or not loopPlayer.isAlive()):
-				continue
-			if (iLoopPlayerID != iActivePlayerID and loopTeam.isHasMet(iActiveTeamID)):
-				if (loopTeam.isAtWar(iActiveTeamID)):
-					if (loopPlayer.canTradeItem(iActivePlayerID, tradeData, False)):
-						if (loopPlayer.getTradeDenial(iActivePlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
-							currentTrades.add(iLoopPlayerID)
+		for loopPlayer in TradeUtil.getPeaceTradePartners(player):
+			if (loopPlayer.canTradeItem(iPlayerID, tradeData, False)):
+				if (loopPlayer.getTradeDenial(iPlayerID, tradeData) == DenialTypes.NO_DENIAL): # will trade
+					currentTrades.add(loopPlayer.getID())
 		return currentTrades
 	
 	def buildTechString(self, techs):

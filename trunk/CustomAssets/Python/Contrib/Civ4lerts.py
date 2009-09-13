@@ -70,6 +70,8 @@ __version__ = "$Revision: 1.2 $"
 from CvPythonExtensions import *
 import BugCore
 import BugUtil
+import PlayerUtil
+import TradeUtil
 
 
 # Must set alerts to "not immediate" to have icons show up
@@ -723,30 +725,18 @@ class GoldTrade(AbstractStatefulAlert):
 	def onBeginActivePlayerTurn(self, argsList):
 		if (not Civ4lertsOpt.isShowGoldTradeAlert()):
 			return
-		
-		turn = argsList[0]
-		player = gc.getGame().getActivePlayer()
-		team = gc.getTeam(gc.getPlayer(player).getTeam())
-		for rival in range(gc.getMAX_PLAYERS()):
-			if (rival == player): continue
-			rivalPlayer = gc.getPlayer(rival)
-			rivalTeam = gc.getTeam(rivalPlayer.getTeam())
-			# TODO: does this need to check for war or trade denial?
-			if (team.isHasMet(rivalPlayer.getTeam())
-			and (team.isGoldTrading() or rivalTeam.isGoldTrading())):
-				oldMaxGoldTrade = self._getMaxGoldTrade(player, rival)
-				newMaxGoldTrade = rivalPlayer.AI_maxGoldTrade(player)
-				deltaMaxGoldTrade = newMaxGoldTrade - oldMaxGoldTrade
-				if (deltaMaxGoldTrade >= Civ4lertsOpt.getGoldTradeThreshold()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_GOLD_TRADE",
-							(gc.getPlayer(rival).getName(),
-							 newMaxGoldTrade))
-					addMessageNoIcon(player, message)
-					self._setMaxGoldTrade(player, rival, newMaxGoldTrade)
-				else:
-					maxGoldTrade = min(oldMaxGoldTrade, newMaxGoldTrade)
-					self._setMaxGoldTrade(player, rival, maxGoldTrade)
+		playerID = PlayerUtil.getActivePlayerID()
+		for rival in TradeUtil.getGoldTradePartners(playerID):
+			rivalID = rival.getID()
+			oldMaxGoldTrade = self._getMaxGoldTrade(playerID, rivalID)
+			newMaxGoldTrade = rival.AI_maxGoldTrade(playerID)
+			deltaMaxGoldTrade = newMaxGoldTrade - oldMaxGoldTrade
+			if deltaMaxGoldTrade >= Civ4lertsOpt.getGoldTradeThreshold():
+				message = localText.getText("TXT_KEY_CIV4LERTS_ON_GOLD_TRADE", (rival.getName(), newMaxGoldTrade))
+				addMessageNoIcon(playerID, message)
+				self._setMaxGoldTrade(playerID, rivalID, newMaxGoldTrade)
+			elif newMaxGoldTrade < oldMaxGoldTrade:
+				self._setMaxGoldTrade(playerID, rivalID, newMaxGoldTrade)
 
 	def _reset(self):
 		self.maxGoldTrade = {}
@@ -772,30 +762,19 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 	def onBeginActivePlayerTurn(self, argsList):
 		if (not Civ4lertsOpt.isShowGoldPerTurnTradeAlert()):
 			return
-		
-		turn = argsList[0]
-		player = gc.getGame().getActivePlayer()
-		team = gc.getTeam(gc.getPlayer(player).getTeam())
-		for rival in range(gc.getMAX_PLAYERS()):
-			if (rival == player): continue
-			rivalPlayer = gc.getPlayer(rival)
-			rivalTeam = gc.getTeam(rivalPlayer.getTeam())
-			# TODO: does this need to check for war or trade denial?
-			if (team.isHasMet(rivalPlayer.getTeam())
-				and (team.isGoldTrading() or rivalTeam.isGoldTrading())):
-				oldMaxGoldPerTurnTrade = self._getMaxGoldPerTurnTrade(player, rival)
-				newMaxGoldPerTurnTrade = rivalPlayer.AI_maxGoldPerTurnTrade(player)
-				deltaMaxGoldPerTurnTrade = newMaxGoldPerTurnTrade - oldMaxGoldPerTurnTrade
-				if (deltaMaxGoldPerTurnTrade >= Civ4lertsOpt.getGoldPerTurnTradeThreshold()):
-					message = localText.getText(
-							"TXT_KEY_CIV4LERTS_ON_GOLD_PER_TURN_TRADE",
-							(gc.getPlayer(rival).getName(),
-							 newMaxGoldPerTurnTrade))
-					addMessageNoIcon(player, message)
-					self._setMaxGoldPerTurnTrade(player, rival, newMaxGoldPerTurnTrade)
-				else:
-					maxGoldPerTurnTrade = min(oldMaxGoldPerTurnTrade, newMaxGoldPerTurnTrade)
-					self._setMaxGoldPerTurnTrade(player, rival, maxGoldPerTurnTrade)
+		playerID = PlayerUtil.getActivePlayerID()
+		for rival in TradeUtil.getGoldTradePartners(playerID):
+			rivalID = rival.getID()
+			oldMaxGoldPerTurnTrade = self._getMaxGoldPerTurnTrade(playerID, rivalID)
+			newMaxGoldPerTurnTrade = rival.AI_maxGoldPerTurnTrade(playerID)
+			deltaMaxGoldPerTurnTrade = newMaxGoldPerTurnTrade - oldMaxGoldPerTurnTrade
+			if (deltaMaxGoldPerTurnTrade >= Civ4lertsOpt.getGoldPerTurnTradeThreshold()):
+				message = localText.getText("TXT_KEY_CIV4LERTS_ON_GOLD_PER_TURN_TRADE", (rival.getName(), newMaxGoldPerTurnTrade))
+				addMessageNoIcon(playerID, message)
+				self._setMaxGoldPerTurnTrade(playerID, rivalID, newMaxGoldPerTurnTrade)
+			else:
+				maxGoldPerTurnTrade = min(oldMaxGoldPerTurnTrade, newMaxGoldPerTurnTrade)
+				self._setMaxGoldPerTurnTrade(playerID, rivalID, maxGoldPerTurnTrade)
 
 	def _reset(self):
 		self.maxGoldPerTurnTrade = {}

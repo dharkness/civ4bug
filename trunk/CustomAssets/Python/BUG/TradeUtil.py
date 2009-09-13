@@ -78,7 +78,7 @@ TRADE_FORMATS = {}
 
 def getTechTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can trade technologies with <player>.
+	Returns a list of CyPlayers that can trade technologies with <player>.
 	"""
 	if not GameUtil.isTechTrading():
 		return ()
@@ -86,14 +86,20 @@ def getTechTradePartners(playerOrID):
 
 def getGoldTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can trade gold with <player>.
+	Returns a list of CyPlayers that can trade gold with <player>.
 	"""
 	return getTradePartners(playerOrID, lambda fromTeam, toTeam: fromTeam.isGoldTrading() or toTeam.isGoldTrading())
+
+def getMapTradePartners(playerOrID):
+	"""
+	Returns a list of CyPlayers that can trade maps with <player>.
+	"""
+	return getTradePartners(playerOrID, lambda fromTeam, toTeam: fromTeam.isMapTrading() or toTeam.isMapTrading())
 
 
 def getOpenBordersTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can sign an Open Borders agreement with <player>.
+	Returns a list of CyPlayers that can sign an Open Borders agreement with <player>.
 	"""
 	return getTradePartners(playerOrID, canSignOpenBorders)
 
@@ -107,7 +113,7 @@ def canSignOpenBorders(fromTeam, toTeam):
 
 def getDefensivePactTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can sign a Defensive Pact with <player>.
+	Returns a list of CyPlayers that can sign a Defensive Pact with <player>.
 	"""
 	return getTradePartners(playerOrID, canSignOpenBorders)
 
@@ -121,7 +127,7 @@ def canSignDefensivePact(fromTeam, toTeam):
 
 def getPermanentAllianceTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can sign a Permanent Alliance with <player>.
+	Returns a list of CyPlayers that can sign a Permanent Alliance with <player>.
 	"""
 	return getTradePartners(playerOrID, canSignOpenBorders)
 
@@ -134,18 +140,52 @@ def canSignPermanentAlliance(fromTeam, toTeam):
 	return fromTeam.isPermanentAllianceTrading() or toTeam.isPermanentAllianceTrading()
 
 
-def getTradePartners(playerOrID, testFunction):
+def getPeaceTradePartners(playerOrID):
 	"""
-	Returns a list of player IDs that can trade with <player>.
+	Returns a list of CyPlayers that can sign a peace treaty with <player>.
 	"""
-	playerID, player = PlayerUtil.getPlayer(playerOrID)
+	return getTradePartners(playerOrID, lambda fromTeam, toTeam: toTeam.isAtWar(fromTeam.getID()))
+
+def getVassalTradePartners(playerOrID):
+	"""
+	Returns a list of CyPlayers that can become a vassal of <player>.
+	"""
+	return getTradePartners(playerOrID, canAcceptVassal, False)
+
+def getCapitulationTradePartners(playerOrID):
+	"""
+	Returns a list of CyPlayers that can capitulate to <player>.
+	"""
+	return getTradePartners(playerOrID, canAcceptVassal, True)
+
+def canAcceptVassal(masterTeam, vassalTeam, bAtWar):
+	"""
+	Returns True if <vassalTeam> can become a vassal of <masterTeam>.
+	
+	Pass True for <bAtWar> to test for capitulation and False to test for peaceful vassalage.
+	"""
+	if masterTeam.getID() == vassalTeam.getID():
+		return False
+	if masterTeam.isAVassal() or vassalTeam.isAVassal():
+		return False
+	if masterTeam.isAtWar(vassalTeam.getID()) != bAtWar:
+		return False
+	# master must possess tech
+	return masterTeam.isVassalStateTrading()
+
+
+def getTradePartners(playerOrID, testFunction, *args):
+	"""
+	Returns a list of CyPlayers that can trade with <player>.
+	"""
+	playerID, player = PlayerUtil.getPlayerAndID(playerOrID)
 	team = PlayerUtil.getTeam(player.getTeam())
 	partners = []
 	for partner in PlayerUtil.players(True, None, False, False):
 		if partner.getID() != playerID and team.isHasMet(partner.getTeam()):
 			if DiplomacyUtil.canContact(player, partner):
-				if testFunction(team, PlayerUtil.getTeam(partner.getTeam())):
-					partners.append(partner.getID())
+				if testFunction(team, PlayerUtil.getTeam(partner.getTeam()), *args):
+					partners.append(partner)
 	return partners
 
 def canTradeTechs(fromTeamOrID, toTeamOrID):
