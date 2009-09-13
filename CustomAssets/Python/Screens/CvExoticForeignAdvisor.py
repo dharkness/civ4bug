@@ -21,7 +21,6 @@ import IconGrid_BUG
 import CvForeignAdvisor
 import DomPyHelpers
 import TechTree
-import re
 import AttitudeUtil
 import BugCore
 import BugDll
@@ -30,6 +29,7 @@ import DealUtil
 import DiplomacyUtil
 import FavoriteCivicDetector
 import FontUtil
+import TradeUtil
 
 # globals
 gc = CyGlobalContext()
@@ -649,29 +649,27 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
+			# Trade
 			if (bIsActivePlayer or objLoopPlayer.canHaveTradeRoutesWith(self.iActiveLeader)):
 				(iTradeCommerce, iTradeRoutes) = self.calculateTrade (self.iActiveLeader, iLoopPlayer)
-				szTrade = u"%d" % (iTradeRoutes)
-				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
-									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
-				if not BugDll.isPresent():
-					# Trade has no useful widget so disable hit testing.
-					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
-				szTrade = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
-				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, szTrade, FontTypes.GAME_FONT, 
-									 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
-				if not BugDll.isPresent():
-					# Trade has no useful widget so disable hit testing.
-					screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
+				if TradeUtil.isFractionalTrade():
+					iTradeCommerce //= 100
+				szTradeYield = u"%d %c" % (iTradeCommerce, gc.getYieldInfo(YieldTypes.YIELD_COMMERCE).getChar())
+				szTradeRoutes = u"%d" % (iTradeRoutes)
 			else:
-				# cannot have trade routes
-				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, u"", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+				szTradeYield = u"-"
+				szTradeRoutes = u"-"
+			itemName = self.getNextWidgetName()
+			screen.attachTextGFC(infoPanelName, itemName, szTradeRoutes, FontTypes.GAME_FONT, 
+								 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+			if not BugDll.isPresent():
+				# Trade has no useful widget so disable hit testing.
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
-				itemName = self.getNextWidgetName()
-				screen.attachTextGFC(infoPanelName, itemName, u"", FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+			itemName = self.getNextWidgetName()
+			screen.attachTextGFC(infoPanelName, itemName, szTradeYield, FontTypes.GAME_FONT, 
+								 *BugDll.widget("WIDGET_TRADE_ROUTES", self.iActiveLeader, iLoopPlayer))
+			if not BugDll.isPresent():
+				# Trade has no useful widget so disable hit testing.
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 			
 			# Civics
@@ -724,32 +722,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 	def calculateTrade (self, nPlayer, nTradePartner):
 		# Trade status...
-		nTotalTradeProfit = 0
-		nNumberRoutes = 0
-
-		pPlayer = PyPlayer(nPlayer)
-
-		# Loop through the cities
-		cityList = pPlayer.getCityList()
-		for i in range(len(cityList)):
-			pLoopCity = PyCity( nPlayer, cityList[i].getID() )
-
-			# For each trade route possible
-			for nTradeRoute in range (gc.getDefineINT("MAX_TRADE_ROUTES")):
-				# Get the next trade city
-				pTradeCity = pLoopCity.getTradeCity(nTradeRoute)
-				# Not quite sure what this does but it's in the MainInterface
-				# and I pretty much C&Ped :p
-				if (pTradeCity and pTradeCity.getOwner() == nTradePartner):
-					nNumberRoutes += 1
-					for j in range( YieldTypes.NUM_YIELD_TYPES ):
-						nTradeProfit = pLoopCity.calculateTradeYield(j, pLoopCity.calculateTradeProfit(pTradeCity))
-
-						# If the TradeProfit is greater than 0 and it to the total
-						if ( nTradeProfit > 0):
-							nTotalTradeProfit += nTradeProfit
-
-		return (nTotalTradeProfit, nNumberRoutes)
+		iDomesticYield, iDomesticCount, iForeignYield, iForeignCount = TradeUtil.calculateTradeRoutes(nPlayer, nTradePartner)
+		return iDomesticYield + iForeignYield, iDomesticCount + iForeignCount
 
 	def drawGlance (self, bInitial):
 #		ExoticForPrint ("Entered drawGlance")

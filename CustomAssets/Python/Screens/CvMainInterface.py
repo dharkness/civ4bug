@@ -45,6 +45,10 @@ import PlayerUtil
 import DiplomacyUtil
 # BUG - Refuses to Talk - end
 
+# BUG - Fractional Trade - start
+import TradeUtil
+# BUG - Fractional Trade - end
+
 # globals
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
@@ -5745,23 +5749,29 @@ class CvMainInterface:
 						szRightBuffer = u""
 
 						for j in range( YieldTypes.NUM_YIELD_TYPES ):
-							iTradeProfit = pHeadSelectedCity.calculateTradeYield(j, pHeadSelectedCity.calculateTradeProfit(pLoopCity))
+# BUG - Fractional Trade - start
+							iTradeProfit = TradeUtil.calculateTradeRouteYield(pHeadSelectedCity, i, j)
 
 							if (iTradeProfit != 0):
 								if ( iTradeProfit > 0 ):
-									szTempBuffer = u"%s%d%c" %( "+", iTradeProfit, gc.getYieldInfo(j).getChar() )
+									if TradeUtil.isFractionalTrade():
+										szTempBuffer = u"%s%d.%2d%c" %( "+", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
+									else:
+										szTempBuffer = u"%s%d%c" %( "+", iTradeProfit, gc.getYieldInfo(j).getChar() )
 									szRightBuffer = szRightBuffer + szTempBuffer
 								else:
-									szTempBuffer = u"%s%d%c" %( "", iTradeProfit, gc.getYieldInfo(j).getChar() )
+									if TradeUtil.isFractionalTrade():
+										szTempBuffer = u"%s%d.%2d%c" %( "", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
+									else:
+										szTempBuffer = u"%s%d%c" %( "", iTradeProfit, gc.getYieldInfo(j).getChar() )
 									szRightBuffer = szRightBuffer + szTempBuffer
+# BUG - Fractional Trade - end
 # BUG - Raw Yields - start
 								if (j == YieldTypes.YIELD_COMMERCE):
 									if pHeadSelectedCity.getTeam() == pLoopCity.getTeam():
 										self.yields.addDomesticTrade(iTradeProfit)
-									elif pHeadSelectedCity.area().getID() == pLoopCity.area().getID():
-										self.yields.addForeignTrade(iTradeProfit)
 									else:
-										self.yields.addForeignOverseasTrade(iTradeProfit)
+										self.yields.addForeignTrade(iTradeProfit)
 
 						if (not bShowRawYields):
 							screen.appendTableRow( "TradeRouteTable" )
