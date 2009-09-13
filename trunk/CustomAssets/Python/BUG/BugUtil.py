@@ -18,6 +18,9 @@
 ##     Returns <value> formatted as a string with <decimals> number of digits
 ##     after the decimal point (default 0).
 ##
+##   escapeXml(obj)
+##     Performs XML escape processing, replacing <, >, and & with their XML entities.
+##
 ## Logging
 ##
 ##     See "BUG Core.xml" for options. They take effect once it has been processed.
@@ -131,7 +134,7 @@ def getDisplayYear(vYear):
 		return str(vYear) + getPlainText("TXT_KEY_AUTOLOG_AD")
 
 
-## Getting translated text from CIV4GameText XML files and general formatting
+## Text Formatting and Processing
 
 def getPlainText(key, default=None, replaceFontTags=True):
 	"""
@@ -164,7 +167,9 @@ def getText(key, values=(), default=None, replaceFontTags=True):
 			return "XML key %s not found" % key
 
 def colorText(text, color):
-	"""Applies the color (string or int) to text and returns the resulting string."""
+	"""
+	Applies the color (string or int) to text and returns the resulting string.
+	"""
 	if text is not None and color is not None:
 		if isinstance(color, types.StringTypes):
 			color = ColorUtil.keyToType(color)
@@ -181,6 +186,12 @@ def formatFloat(number, decimals=0):
 		return "%f" % number
 	else:
 		return ("%." + str(decimals) + "f") % number
+
+def escapeXml(obj):
+	"""
+	Performs XML escape processing, replacing <, >, and & with their XML entities.
+	"""
+	return str(obj).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 ## Logging to the Screen and Debug File
@@ -206,14 +217,14 @@ logTime = True
 def alert(message, *args):
 	logToScreen(message % args)
 
-def trace(message, detail=True, stack=True):
+def trace(message, *args):
 	# TODO: register with ConfigTracker
+	if args:
+		message = message % args
 	logToScreen(message)
 	logToFile("TRACE: " + message)
-	if detail:
-		logToFile("  " + str(sys.exc_info()[1]))
-	if stack:
-		traceback.print_exc()
+	logToFile("TRACE: " + str(sys.exc_info()[1]))
+	traceback.print_exc()
 
 def debug(message, *args):
 	"""Logs a message at DEBUG level."""
@@ -248,7 +259,7 @@ def log(level, message, args=()):
 			logToFile(LEVEL_PREFIXES[level] + message)
 
 def logToScreen(message):
-	interface.addImmediateMessage(message, "")
+	interface.addImmediateMessage(escapeXml(message), "")
 
 def logToFile(message):
 	if logTime:
