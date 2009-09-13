@@ -337,7 +337,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 				try:
 					eventHandler(argsList)
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
+					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
 
 	def _handleConsumableEvent(self, eventType, argsList):
 		"""Handles events that can be consumed by the handlers, such as
@@ -354,7 +354,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 					if (result > 0):
 						return result
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
+					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
 		return 0
 
 	# TODO: this probably needs to be more complex
@@ -368,7 +368,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 				try:
 					result += eventHandler(argsList)
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
+					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
 		return result
 
 	def _handleInitBugEvent(self, eventType, argsList):
