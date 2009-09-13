@@ -5439,7 +5439,7 @@ class CvMainInterface:
 
 # BUG - Progress Bar - Tick Marks - start
 				if MainOpt.isShowpBarTickMarks():
-					self.pBarPopulationBar.drawTickMarks(screen, pHeadSelectedCity.getFood(), pHeadSelectedCity.growthThreshold(), iFoodDifference, iFoodDifference,False)
+					self.pBarPopulationBar.drawTickMarks(screen, pHeadSelectedCity.getFood(), pHeadSelectedCity.growthThreshold(), iFoodDifference, iFoodDifference, False)
 # BUG - Progress Bar - Tick Marks - end
 
 				if (pHeadSelectedCity.getOrderQueueLength() > 0):
@@ -5535,21 +5535,12 @@ class CvMainInterface:
 					screen.show( "ProductionBar" )
 
 # BUG - Progress Bar - Tick Marks - start
-#					BugUtil.debug("tick mark test: getName %s", pHeadSelectedCity.getName())
-#					BugUtil.debug("tick mark test: getProduction %i", pHeadSelectedCity.getProduction())
-#					BugUtil.debug("tick mark test: getProductionModifier %i", pHeadSelectedCity.getProductionModifier())
-#					BugUtil.debug("tick mark test: getProductionNeeded %i", pHeadSelectedCity.getProductionNeeded())
-#					BugUtil.debug("tick mark test: getProductionTurnsLeft %i", pHeadSelectedCity.getProductionTurnsLeft())
-#					BugUtil.debug("tick mark test: getCurrentProductionDifference TT %i", pHeadSelectedCity.getCurrentProductionDifference(True, True))
-#					BugUtil.debug("tick mark test: getCurrentProductionDifference FT %i", pHeadSelectedCity.getCurrentProductionDifference(False, True))
-#					BugUtil.debug("tick mark test: getCurrentProductionDifference TF %i", pHeadSelectedCity.getCurrentProductionDifference(True, False))
-#					BugUtil.debug("tick mark test: getCurrentProductionDifference FF %i", pHeadSelectedCity.getCurrentProductionDifference(False, False))
 					if MainOpt.isShowpBarTickMarks():
 						if (pHeadSelectedCity.isProductionProcess()):
 							iFirst = 0
 							iRate = 0
 						elif (pHeadSelectedCity.isFoodProduction() and (iProductionDiffJustFood > 0)):
-							iFirst = pHeadSelectedCity.getCurrentProductionDifference(True, True)  # ignore food, overflow
+							iFirst = pHeadSelectedCity.getCurrentProductionDifference(False, True)
 							iRate = pHeadSelectedCity.getCurrentProductionDifference(False, False)
 						else:
 							iFirst = pHeadSelectedCity.getCurrentProductionDifference(True, True)
