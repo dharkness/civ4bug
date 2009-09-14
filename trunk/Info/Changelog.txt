@@ -5,6 +5,8 @@ CHANGES
 
 New Features:
 
+- Civ4lerts
+	Added alert when a rival's worst enemy changes
 - Fractional Trade Routes [BULL]
 	If enabled in BULL, shows fractional values for Trade Routes and their totals
 
@@ -57,10 +59,12 @@ MODDING
 
 New Features:
 
+- AttitudeUtil
+	Added functions to determine worst enemies
 - BugUtil
 	Added escapeXml() to replace <, >, and & with their XML entities
 - DiplomacyUtil
-	Added canContact() and isWillingToTalk()
+	Added functions to detect when a rival refuses to talk
 - ReligionUtil
 	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
 - TradeUtil

@@ -545,6 +545,22 @@
 		<Spanish>Determines the threshold for gold per turn that will display an alert.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__WORSTENEMY_TEXT</Tag>
+		<English>Worst Enemy</English>
+		<French>Pire Ennemi</French>
+		<German>Euch Treiben</German>
+		<Italian>Peggiori Nemici</Italian>
+		<Spanish>Peor Enemigo</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__WORSTENEMY_HOVER</Tag>
+		<English>When checked, displays an alert when a civilization's worst enemy changes.</English>
+		<French>When checked, displays an alert when a civilization's worst enemy changes.</French>
+		<German>When checked, displays an alert when a civilization's worst enemy changes.</German>
+		<Italian>When checked, displays an alert when a civilization's worst enemy changes.</Italian>
+		<Spanish>When checked, displays an alert when a civilization's worst enemy changes.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__OPENBORDERSTRADE_TEXT</Tag>
 		<English>Open Borders</English>
 		<French>Frontières Ouvertes</French>

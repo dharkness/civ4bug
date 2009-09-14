@@ -33,6 +33,31 @@
 	</TEXT>
 	
 	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_YOU_WORST_ENEMY</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</English>
+		<French>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_WORST_ENEMY</Tag>
+		<English>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</English>
+		<French>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</French>
+		<German>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</German>
+		<Italian>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_WARNING_TEXT]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY</Tag>
+		<English>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_GOLD_TRADE</Tag>
 		<English>[COLOR_YIELD_COMMERCE]%s1 has %d2 gold available for trade.[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_COMMERCE]%s1 a %d2 pièces d'or disponible pour le commerce.[COLOR_REVERT]</French>
@@ -76,11 +101,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 will become healthy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 deviendra sain au prochain tour.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde gesund.[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 diventerà salubre al prossimo turno.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá sano el próximo turno.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 will become healthy on the next turn.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 deviendra sain au prochain tour.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Bevölkerung von %s1 wird nächste Runde gesund.[COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 diventerà salubre al prossimo turno.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 se volverá sano el próximo turno.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -93,11 +118,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HAPPY</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 will become happy on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 deviendra heureux au prochain tour.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 wird nächste Runde zufrieden.[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 diventerà felice al prossimo turno.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 se volverá feliz el próximo turno.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 will become happy on the next turn.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 deviendra heureux au prochain tour.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Bevölkerung von %s1 wird nächste Runde zufrieden.[COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 diventerà felice al prossimo turno.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 se volverá feliz el próximo turno.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -110,11 +135,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_HEALTHY</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 has become healthy.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 est devenu sain.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 ist gesund![COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 è diventata salubre.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto sano.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 has become healthy.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 est devenu sain.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Bevölkerung von %s1 ist gesund![COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 è diventata salubre.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 se ha vuelto sano.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -127,11 +152,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_HAPPY</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 has become happy.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 est devenu heureux.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Bevölkerung von %s1 ist zufrieden![COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 è diventata felice.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 se ha vuelto feliz.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 has become happy.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 est devenu heureux.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Bevölkerung von %s1 ist zufrieden![COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 è diventata felice.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 se ha vuelto feliz.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -153,19 +178,19 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PENDING_PACIFIED</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 will be pacified on the next turn.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 sera apaisée sur le prochain tour.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Unruhen in %s1 werden nächste Runde enden.[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 sarà pacificata al turno seguente.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 será pacificado en la vuelta siguiente.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 will be pacified on the next turn.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 sera apaisée sur le prochain tour.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Unruhen in %s1 werden nächste Runde enden.[COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 sarà pacificata al turno seguente.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 será pacificado en la vuelta siguiente.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_CITY_PACIFIED</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 has been pacified.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 a été apaisée.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]Die Unruhen in %s1 sind beendet![COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 è stata pacificata.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]Se ha pacificado %s1.[COLOR_REVERT]</Spanish>
+		<English>[COLOR_POSITIVE_TEXT]%s1 has been pacified.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 a été apaisée.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Die Unruhen in %s1 sind beendet![COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 è stata pacificata.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]Se ha pacificado %s1.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>

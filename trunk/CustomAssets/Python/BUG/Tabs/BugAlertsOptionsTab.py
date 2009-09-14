@@ -42,6 +42,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		# Diplomacy
 		self.addLabel(screen, center, "Alerts_Diplomacy", "Diplomacy:")
+		self.addCheckbox(screen, center, "Civ4lerts__WorstEnemy")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__OpenBordersTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__DefensivePactTrade")
 		self.addCheckbox(screen, center, "MoreCiv4lerts__PermanentAllianceTrade")
