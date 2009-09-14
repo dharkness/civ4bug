@@ -12,6 +12,7 @@
 from CvPythonExtensions import *
 import BugUtil
 import FontUtil
+import PlayerUtil
 import re
 
 NUM_ATTITUDES = 5
@@ -59,6 +60,9 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
+
+## Initialization
+
 def init (colors=DEFAULT_COLORS, modifiers=None):
 	"""Initializes this module, raising ConfigError if any problems occur."""
 	# create font icons for each attitude level
@@ -85,6 +89,9 @@ def init (colors=DEFAULT_COLORS, modifiers=None):
 		global ATTITUDE_MODIFIERS
 		ATTITUDE_MODIFIERS = tuple(modifiers)
 	initModifiers()
+
+
+## Attitude
 
 def hasAttitude (nPlayer, nTarget):
 	"""Returns True if nTarget can see nPlayer's attitude toward them."""
@@ -156,10 +163,8 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 	
 	pPlayer = gc.getPlayer(nPlayer)
 	pTarget = gc.getPlayer(nTarget)
-	if bWorstEnemy:
-		szWorstEnemy = pPlayer.getWorstEnemyName()
-		if szWorstEnemy and pTarget.getName() == szWorstEnemy:
-			szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+	if bWorstEnemy and isWorstEnemy(pPlayer, pTarget):
+		szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 	
 	if bWarPeace:
 		nTeam = pPlayer.getTeam()
@@ -326,10 +331,8 @@ class Attitude:
 
 			pThisPlayer = gc.getPlayer(self.iThisPlayer)
 			pTargetPlayer = gc.getPlayer(self.iTargetPlayer)
-			if bWorstEnemy:
-				szWorstEnemy = pThisPlayer.getWorstEnemyName()
-				if szWorstEnemy and pTargetPlayer.getName() == szWorstEnemy:
-					szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+			if bWorstEnemy and isWorstEnemy(pThisPlayer, pTargetPlayer):
+				szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 
 			if bWarPeace:
 				iThisTeam = pThisPlayer.getTeam()
@@ -353,3 +356,67 @@ class Attitude:
 			return szText
 		return ""
 	
+
+## Worst Enemy
+##
+## Each non-human team has a worst enemy team.
+## CyPlayer.getWorstEnemyName() returns the names of everyone on their hated team separated by slashes (/).
+
+def isWorstEnemy(playerOrID, enemyOrID):
+	"""
+	Returns True if <enemy> is one of the worst enemies of <player>'s team.
+	"""
+	player = PlayerUtil.getPlayer(playerOrID)
+	enemy = PlayerUtil.getPlayer(enemyOrID)
+	return not player.isHuman() and player.getID() != enemy.getID() and player.getWorstEnemyName().find(enemy.getName()) != -1
+
+def getWorstEnemies(playerOrID):
+	"""
+	Returns a list containing the player IDs that are worst enemies of <player>'s team.
+	"""
+	eTeam = getWorstEnemyTeam(playerOrID)
+	enemies = []
+	if eTeam != -1:
+		for player in PlayerUtil.teamPlayers(eTeam, True):
+			enemies.append(player.getID())
+	return enemies
+
+def getWorstEnemyTeam(playerOrID):
+	"""
+	Returns the team ID that is the worst enemy of <player>'s team.
+	
+	If <player>'s team has no worst enemy, returns -1.
+	"""
+	player = PlayerUtil.getPlayer(playerOrID)
+	worstEnemyName = player.getWorstEnemyName()
+	if worstEnemyName:
+		for team in PlayerUtil.teams():
+			if team.getName() == worstEnemyName:
+				return team.getID()
+	return -1
+
+def getWorstEnemyTeams():
+	"""
+	Returns a dictionary of the team IDs that are each team's worst enemy.
+	
+	The key is team ID; the value is the worst enemy team ID.
+	If a team has no worst enemy, -1 is stored as its value.
+	Ignores dead, human, barbarian, and minor teams.
+	"""
+	namesToID = {}
+	for team in PlayerUtil.teams():
+		namesToID[team.getName()] = team.getID()
+	enemies = {}
+	for player in PlayerUtil.players(True, False, False, False):
+		eTeam = player.getTeam()
+		if eTeam not in enemies:
+			worstEnemyName = player.getWorstEnemyName()
+			if worstEnemyName:
+				if worstEnemyName in namesToID:
+					enemies[eTeam] = namesToID[worstEnemyName]
+				else:
+					BugUtil.warn("Cannot find team \"%s\"", worstEnemyName)
+					enemies[eTeam] = -1
+			else:
+				enemies[eTeam] = -1
+	return enemies
