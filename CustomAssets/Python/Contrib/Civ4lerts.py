@@ -68,6 +68,7 @@ __version__ = "$Revision: 1.2 $"
 
 
 from CvPythonExtensions import *
+import AttitudeUtil
 import BugCore
 import BugUtil
 import PlayerUtil
@@ -90,6 +91,8 @@ localText = CyTranslator()
 Civ4lertsOpt = BugCore.game.Civ4lerts
 
 
+## Initialization
+
 class Civ4lerts:
 
 	def __init__(self, eventManager):
@@ -106,8 +109,10 @@ class Civ4lerts:
 		
 		GoldTrade(eventManager)
 		GoldPerTurnTrade(eventManager)
+		WorstEnemy(eventManager)
 
-### Displaying alerts on-screen
+
+## Displaying Alert Messages
 
 def addMessageNoIcon(iPlayer, message):
 	"Displays an on-screen message with no popup icon."
@@ -144,12 +149,12 @@ def addMessage(iPlayer, szString, szIcon, iFlashX=-1, iFlashY=-1, bOffArrow=Fals
 							 iFlashX, iFlashY, bOffArrow, bOnArrow)
 
 
-### Abstract and Core Classes
+## Base Alert Class
 
 class AbstractStatefulAlert:
 	"""
 	Provides a base class and several convenience functions for 
-	implementing an alert that retains state information between turns.
+	implementing an alert that retains state between turns.
 	"""
 	def __init__(self, eventManager):
 		eventManager.addEventHandler("GameStart", self.onGameStart)
@@ -171,6 +176,9 @@ class AbstractStatefulAlert:
 	def _reset(self):
 		"Resets the state for this alert."
 		pass
+
+
+## City Alert Managers
 
 class AbstractCityAlertManager(AbstractStatefulAlert):
 	"""
@@ -200,6 +208,13 @@ class AbstractCityAlertManager(AbstractStatefulAlert):
 		iPlayer = gc.getGame().getActivePlayer()
 		if (iPlayer == city.getOwner()):
 			self._discardCity(city)
+	
+	def checkAllActivePlayerCities(self):
+		"Loops over active player's cities, telling each alert to perform its check."
+		ePlayer, player = PlayerUtil.getActivePlayerAndID()
+		for city in PlayerUtil.playerCities(player):
+			for alert in self.alerts:
+				alert.checkCity(city.getID(), city, ePlayer, player)
 
 	def _init(self):
 		"Initializes each alert."
@@ -232,15 +247,7 @@ class BeginActivePlayerTurnCityAlertManager(AbstractCityAlertManager):
 	
 	def onBeginActivePlayerTurn(self, argsList):
 		"Loops over active player's cities, telling each to perform its check."
-		iTurn = argsList[0]
-		iPlayer = gc.getGame().getActivePlayer()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (city and not city.isNone()):
-				for alert in self.alerts:
-					iCityID = city.getID()
-					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
+		self.checkAllActivePlayerCities()
 
 class EndTurnReadyCityAlertManager(AbstractCityAlertManager):
 	"""
@@ -253,16 +260,10 @@ class EndTurnReadyCityAlertManager(AbstractCityAlertManager):
 	
 	def onEndTurnReady(self, argsList):
 		"Loops over active player's cities, telling each to perform its check."
-		iTurn = argsList[0]
-		iPlayer = gc.getGame().getActivePlayer()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (city and not city.isNone()):
-				for alert in self.alerts:
-					iCityID = city.getID()
-					alert.checkCity(iTurn, iCityID, city, iPlayer, player)
+		self.checkAllActivePlayerCities()
 
+
+## City Alerts
 
 class AbstractCityAlert:
 	"""
@@ -273,7 +274,7 @@ class AbstractCityAlert:
 		"Performs static initialization that doesn't require game data."
 		pass
 	
-	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+	def checkCity(self, iCityID, city, iPlayer, player):
 		"Checks the city, updates its tracked state and possibly displays an alert."
 		pass
 	
@@ -284,11 +285,9 @@ class AbstractCityAlert:
 	def reset(self):
 		"Clears state kept for each city."
 		self._beforeReset()
-		player = gc.getActivePlayer()
-		for iCity in range(player.getNumCities()):
-			city = player.getCity(iCity)
-			if (city and not city.isNone()):
-				self.resetCity(city)
+		player = PlayerUtil.getActivePlayer()
+		for city in PlayerUtil.playerCities(player):
+			self.resetCity(city)
 	
 	def _beforeReset(self):
 		"Performs clearing of state before looping over cities."
@@ -312,7 +311,7 @@ class AbstractCityTestAlert(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 
-	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+	def checkCity(self, iCityID, city, iPlayer, player):
 		message = None
 		passes = self._passesTest(city)
 		passed = iCityID in self.cities
@@ -372,8 +371,7 @@ class AbstractCityTestAlert(AbstractCityAlert):
 		"Returns a tuple of the message and icon to use for the pending alert."
 		return (None, None)
 
-
-### Population
+# Population
 
 class CityPendingGrowth(AbstractCityAlert):
 	"""
@@ -383,7 +381,7 @@ class CityPendingGrowth(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 	
-	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+	def checkCity(self, iCityID, city, iPlayer, player):
 		if (Civ4lertsOpt.isShowCityPendingGrowthAlert()):
 			iFoodRate = city.foodDifference(True)
 			if (iFoodRate > 0 and city.getFoodTurnsLeft() == 1 
@@ -408,7 +406,7 @@ class CityGrowth(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 	
-	def checkCity(self, iTurn, iCityID, city, iPlayer, player):
+	def checkCity(self, iCityID, city, iPlayer, player):
 		if (iCityID not in self.populations):
 			self.resetCity(city)
 		else:
@@ -459,7 +457,7 @@ class CityGrowth(AbstractCityAlert):
 			del self.CityWhipCounter[cityID]
 			del self.CityConscriptCounter[cityID]
 
-### Happiness and Healthiness
+# Happiness and Healthiness
 
 class CityHappiness(AbstractCityTestAlert):
 	"""
@@ -574,8 +572,7 @@ class CityHealthiness(AbstractCityTestAlert):
 			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_HEALTHY", (city.getName(), )),
 					HEALTHY_ICON)
 
-
-### Anarchy
+# Occupation
 
 class CityOccupation(AbstractCityTestAlert):
 	"""
@@ -614,8 +611,7 @@ class CityOccupation(AbstractCityTestAlert):
 			return (localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_PENDING_PACIFIED", (city.getName(), )),
 					HAPPY_ICON)
 
-
-### Hurrying Production
+# Hurrying Production
 
 class AbstractCanHurry(AbstractCityTestAlert):
 	"""
@@ -627,6 +623,8 @@ class AbstractCanHurry(AbstractCityTestAlert):
 		AbstractCityTestAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("cityBuildingUnit", self.onCityBuildingUnit)
 		eventManager.addEventHandler("cityBuildingBuilding", self.onCityBuildingBuilding)
+		eventManager.addEventHandler("cityBuildingProject", self.onCityBuildingProject)
+		eventManager.addEventHandler("cityBuildingProcess", self.onCityBuildingProcess)
 	
 	def init(self, szHurryType):
 		AbstractCityAlert.init(self)
@@ -638,6 +636,14 @@ class AbstractCanHurry(AbstractCityTestAlert):
 
 	def onCityBuildingBuilding(self, argsList):
 		city, iBuilding = argsList
+		self._onItemStarted(city)
+
+	def onCityBuildingProject(self, argsList):
+		city, iProject = argsList
+		self._onItemStarted(city)
+
+	def onCityBuildingProcess(self, argsList):
+		city, iProcess = argsList
 		self._onItemStarted(city)
 
 	def _onItemStarted(self, city):
@@ -668,14 +674,15 @@ class AbstractCanHurry(AbstractCityTestAlert):
 		return (None, None)
 
 class CanHurryPopulation(AbstractCanHurry):
-#   Displays an alert when a city can hurry using population.
-
+	"""
+	Displays an alert when a city can hurry using population.
+	"""
 	def __init__(self, eventManager): 
 		AbstractCanHurry.__init__(self, eventManager)
-	
+		
 	def init(self):
 		AbstractCanHurry.init(self, "HURRY_POPULATION")
-
+		
 	def _isShowAlert(self, passes):
 		return passes and Civ4lertsOpt.isShowCityCanHurryPopAlert()
 	
@@ -690,13 +697,13 @@ class CanHurryPopulation(AbstractCanHurry):
 		iOverflow =  100 * iMaxOverflow / city.getBaseYieldRateModifier(gc.getInfoTypeForString("YIELD_PRODUCTION"), city.getProductionModifier())
 		if (iOverflowGold > 0):
 			return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP_PLUS_GOLD", (city.getName(), info.getDescription(), iPop, iOverflow, iAnger, iOverflowGold))
-
 		else:
 			return localText.getText("TXT_KEY_CIV4LERTS_ON_CITY_CAN_HURRY_POP", (city.getName(), info.getDescription(), iPop, iOverflow, iAnger))
 
 class CanHurryGold(AbstractCanHurry):
-#   Displays an alert when a city can hurry using gold.
-
+	"""
+	Displays an alert when a city can hurry using gold.
+	"""
 	def __init__(self, eventManager): 
 		AbstractCanHurry.__init__(self, eventManager)
 
@@ -712,12 +719,13 @@ class CanHurryGold(AbstractCanHurry):
 								 (city.getName(), info.getDescription(), iGold))
 
 
-### Trading Gold
+## Trading Gold
 
 class GoldTrade(AbstractStatefulAlert):
-#   Displays an alert when a civilization has a significant increase
-#	in gold available for trade since the last alert.
-
+	"""
+	Displays an alert when a civilization has a significant increase
+	in gold available for trade since the last alert.
+	"""
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
@@ -752,9 +760,10 @@ class GoldTrade(AbstractStatefulAlert):
 		self.maxGoldTrade[player][rival] = value
 
 class GoldPerTurnTrade(AbstractStatefulAlert):
-#   Displays an alert when a civilization has a significant increase
-#   in gold per turn available for trade since the last alert.
-
+	"""
+	Displays an alert when a civilization has a significant increase
+	in gold per turn available for trade since the last alert.
+	"""
 	def __init__(self, eventManager):
 		AbstractStatefulAlert.__init__(self, eventManager)
 		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
@@ -788,3 +797,92 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 	
 	def _setMaxGoldPerTurnTrade(self, player, rival, value):
 		self.maxGoldPerTurnTrade[player][rival] = value
+
+
+## Worst Enemy
+
+class WorstEnemy(AbstractStatefulAlert):
+	"""
+	Displays an alert when a civilization's worst enemy changes.
+	"""
+	def __init__(self, eventManager):
+		AbstractStatefulAlert.__init__(self, eventManager)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
+
+# EF: the worst enemy is updated at the end of each team's turn, so these are pointless
+#		eventManager.addEventHandler("changeWar", self.onChangeWar)
+#		eventManager.addEventHandler("firstContact", self.onFirstContact)
+#		eventManager.addEventHandler("cityRazed", self.onCityRazed)
+#		eventManager.addEventHandler("vassalState", self.onVassalState)
+#		eventManager.addEventHandler("playerChangeStateReligion", self.onPlayerChangeStateReligion)
+
+	def onBeginActivePlayerTurn(self, argsList):
+		self.check()
+
+	def onFirstContact(self, argsList):
+		eTeam, eRivalTeam = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(eTeam, eRivalTeam)
+
+	def onChangeWar(self, argsList):
+		bIsWar, eTeam, eRivalTeam = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(eTeam, eRivalTeam)
+		
+	def onCityRazed(self, argsList):
+		city, ePlayer = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(PlayerUtil.getPlayerTeamID(city.getOwner()), PlayerUtil.getPlayerTeamID(ePlayer))
+	
+	def onVassalState(self, argsList):
+		eMaster, eVassal, bVassal = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(eMaster, eVassal)
+		
+	def onPlayerChangeStateReligion(self, argsList):
+		ePlayer, eNewReligion, eOldReligion = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(PlayerUtil.getPlayerTeamID(ePlayer))
+	
+	def checkIfIsAnyOrHasMetAllTeams(self, *eTeams):
+		"""
+		Calls check() only if the active team is any or has met all of the given teams.
+		"""
+		eActiveTeam, activeTeam = PlayerUtil.getActiveTeamAndID()
+		for eTeam in eTeams:
+			if eActiveTeam != eTeam and not activeTeam.isHasMet(eTeam):
+				return
+		self.check()
+
+	def check(self):
+		if (not Civ4lertsOpt.isShowWorstEnemyAlert()):
+			return
+		eActivePlayer = PlayerUtil.getActivePlayerID()
+		eActiveTeam, activeTeam = PlayerUtil.getActiveTeamAndID()
+		enemies = AttitudeUtil.getWorstEnemyTeams()
+		newEnemies = {}
+		for eTeam, eOldEnemy in self.enemies.iteritems():
+			if activeTeam.isHasMet(eTeam):
+				if eTeam in enemies:
+					eNewEnemy = enemies[eTeam]
+				else:
+					eNewEnemy = -1
+				if eOldEnemy != eNewEnemy:
+					if eNewEnemy == -1:
+						if activeTeam.isHasMet(eOldEnemy):
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY", gc.getTeam(eTeam).getName())
+							addMessageNoIcon(eActivePlayer, message)
+							self.enemies[eTeam] = eNewEnemy
+					else:
+						if eActiveTeam == eNewEnemy or activeTeam.isHasMet(eNewEnemy):
+							self.enemies[eTeam] = eNewEnemy
+							if eNewEnemy not in newEnemies:
+								newEnemies[eNewEnemy] = gc.getTeam(eTeam).getName()
+							else:
+								newEnemies[eNewEnemy] += u", " + gc.getTeam(eTeam).getName()
+		for eEnemy, haters in newEnemies.iteritems():
+			if eActiveTeam == eEnemy:
+				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_YOU_WORST_ENEMY", haters)
+			else:
+				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_WORST_ENEMY", (gc.getTeam(eEnemy).getName(), haters))
+			addMessageNoIcon(eActivePlayer, message)
+
+	def _reset(self):
+		self.enemies = {}
+		for eTeam in range(gc.getMAX_TEAMS()):
+			self.enemies[eTeam] = -1
