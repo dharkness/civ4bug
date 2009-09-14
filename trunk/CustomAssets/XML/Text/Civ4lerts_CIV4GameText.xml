@@ -36,7 +36,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_YOU_WORST_ENEMY</Tag>
 		<English>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</English>
 		<French>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</French>
-		<German>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</German>
+		<German>[COLOR_NEGATIVE_TEXT]Ihr seid der Erzfeind von %s1.[COLOR_REVERT]</German>
 		<Italian>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_NEGATIVE_TEXT]You are the worst enemy of %s1.[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -44,7 +44,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_WORST_ENEMY</Tag>
 		<English>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</English>
 		<French>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</German>
+		<German>[COLOR_YIELD_FOOD]%s1 ist der Erzfeind von %s2.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -52,7 +52,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY</Tag>
 		<English>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</English>
 		<French>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</French>
-		<German>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</German>
+		<German>[COLOR_POSITIVE_TEXT]%s1 hat keinen Erzfeind.[COLOR_REVERT]</German>
 		<Italian>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_POSITIVE_TEXT]%s1 has no worst enemy.[COLOR_REVERT]</Spanish>
 	</TEXT>
