@@ -41,6 +41,10 @@ import Scoreboard
 import PlayerUtil
 # BUG - Align Icons - end
 
+# BUG - Worst Enemy - start
+import AttitudeUtil
+# BUG - Refuses to Talk - end
+
 # BUG - Refuses to Talk - start
 import DiplomacyUtil
 # BUG - Refuses to Talk - end
@@ -6893,13 +6897,11 @@ class CvMainInterface:
 
 # BUG - Worst Enemy - start
 												if (ScoreOpt.isShowWorstEnemy()):
-													if (not gc.getPlayer(ePlayer).isHuman() and gc.getGame().getActivePlayer() != ePlayer):
-														szWorstEnemy = gc.getPlayer(ePlayer).getWorstEnemyName()
-														if (szWorstEnemy and gc.getActivePlayer().getName() == szWorstEnemy):
-															cWorstEnemy = u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
-															szBuffer += cWorstEnemy
-															if (bAlignIcons):
-																scores.setWorstEnemy()
+													if (AttitudeUtil.isWorstEnemy(ePlayer, gc.getGame().getActivePlayer())):
+														cWorstEnemy = u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+														szBuffer += cWorstEnemy
+														if (bAlignIcons):
+															scores.setWorstEnemy()
 # BUG - Worst Enemy - end
 # BUG - WHEOOH - start
 												if (ScoreOpt.isShowWHEOOH()):
