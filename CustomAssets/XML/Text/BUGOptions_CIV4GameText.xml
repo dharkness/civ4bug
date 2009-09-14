@@ -492,7 +492,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__MAPTRADE_HOVER</Tag>
 		<English>When checked, displays an alert when a civilization is willing to trade their map.</English>
 		<French>When checked, displays an alert when a civilization is willing to trade their map.</French>
-		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation Karte handeln möchte</German>
+		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation ihre Karte handeln möchte</German>
 		<Italian>Quando è selezionato, viene visualizzato un avviso quando una Civiltà è disponibile a commerciare Cartas.</Italian>
 		<Spanish>When checked, displays an alert when a civilization is willing to trade their map.</Spanish>
 	</TEXT>
@@ -564,7 +564,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__WORSTENEMY_TEXT</Tag>
 		<English>Worst Enemy</English>
 		<French>Pire Ennemi</French>
-		<German>Euch Treiben</German>
+		<German>Erzfeind</German>
 		<Italian>Peggiori Nemici</Italian>
 		<Spanish>Peor Enemigo</Spanish>
 	</TEXT>
@@ -572,7 +572,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__WORSTENEMY_HOVER</Tag>
 		<English>When checked, displays an alert when a civilization's worst enemy changes.</English>
 		<French>When checked, displays an alert when a civilization's worst enemy changes.</French>
-		<German>When checked, displays an alert when a civilization's worst enemy changes.</German>
+		<German>Lässt eine Warnung erscheinen, wenn der Erzfeind einer Zivilisation wechselt</German>
 		<Italian>When checked, displays an alert when a civilization's worst enemy changes.</Italian>
 		<Spanish>When checked, displays an alert when a civilization's worst enemy changes.</Spanish>
 	</TEXT>
