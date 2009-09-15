@@ -102,6 +102,9 @@
 					help="."/>
 			
 			<!-- Diplomacy -->
+			<option id="RefusesToTalk" key="Refuses To Talk" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowRefusesToTalkAlert" set="setShowRefusesToTalkAlert"/>
 			<option id="WorstEnemy" key="Worst Enemy" 
 					type="boolean" default="True" and="Enabled" 
 					get="isShowWorstEnemyAlert" set="setShowWorstEnemyAlert"/>
