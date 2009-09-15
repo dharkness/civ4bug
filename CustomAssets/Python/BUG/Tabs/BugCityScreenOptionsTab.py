@@ -83,6 +83,7 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, rightR, "CityBar__DraftAnger")
 		
 		self.addSpacer(screen, rightR, "CityScreen5")
+		self.addCheckbox(screen, rightR, "CityBar__BuildingActualEffects")
 		self.addCheckbox(screen, rightR, "CityBar__BuildingIcons")
 		self.addCheckbox(screen, rightR, "CityBar__Specialists")
 		self.addCheckbox(screen, rightR, "CityBar__RevoltChance")
