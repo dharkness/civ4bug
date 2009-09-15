@@ -71,6 +71,7 @@ from CvPythonExtensions import *
 import AttitudeUtil
 import BugCore
 import BugUtil
+import DiplomacyUtil
 import PlayerUtil
 import TradeUtil
 
@@ -109,6 +110,7 @@ class Civ4lerts:
 		
 		GoldTrade(eventManager)
 		GoldPerTurnTrade(eventManager)
+		RefusesToTalk(eventManager)
 		WorstEnemy(eventManager)
 
 
@@ -799,7 +801,68 @@ class GoldPerTurnTrade(AbstractStatefulAlert):
 		self.maxGoldPerTurnTrade[player][rival] = value
 
 
-## Worst Enemy
+## Diplomacy
+
+class RefusesToTalk(AbstractStatefulAlert):
+	"""
+	Displays an alert when a civilization cuts off or reestablishes communication.
+	"""
+	def __init__(self, eventManager):
+		AbstractStatefulAlert.__init__(self, eventManager)
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
+		eventManager.addEventHandler("changeWar", self.onChangeWar)
+		eventManager.addEventHandler("cityRazed", self.onCityRazed)
+		eventManager.addEventHandler("DealCanceled", self.onDealCanceled)
+		eventManager.addEventHandler("EmbargoAccepted", self.onEmbargoAccepted)
+
+	def onBeginActivePlayerTurn(self, argsList):
+		self.check()
+
+	def onChangeWar(self, argsList):
+		bIsWar, eTeam, eRivalTeam = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(eTeam, eRivalTeam)
+		
+	def onCityRazed(self, argsList):
+		city, ePlayer = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(PlayerUtil.getPlayerTeamID(city.getOwner()), PlayerUtil.getPlayerTeamID(ePlayer))
+		
+	def onDealCanceled(self, argsList):
+		eOfferPlayer, eTargetPlayer, pTrade = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(PlayerUtil.getPlayerTeamID(eOfferPlayer), PlayerUtil.getPlayerTeamID(eTargetPlayer))
+		
+	def onEmbargoAccepted(self, argsList):
+		eOfferPlayer, eTargetPlayer, pTrade = argsList
+		self.checkIfIsAnyOrHasMetAllTeams(PlayerUtil.getPlayerTeamID(eOfferPlayer), PlayerUtil.getPlayerTeamID(eTargetPlayer))
+	
+	def checkIfIsAnyOrHasMetAllTeams(self, *eTeams):
+		"""
+		Calls check() only if the active team is any or has met all of the given teams.
+		"""
+		eActiveTeam, activeTeam = PlayerUtil.getActiveTeamAndID()
+		for eTeam in eTeams:
+			if eActiveTeam != eTeam and not activeTeam.isHasMet(eTeam):
+				return
+		self.check()
+
+	def check(self):
+		if (not Civ4lertsOpt.isShowRefusesToTalkAlert()):
+			return
+		eActivePlayer = PlayerUtil.getActivePlayerID()
+		newRefusals = set()
+		for player in PlayerUtil.players(True, False, False, False):
+			if not DiplomacyUtil.isWillingToTalk(player, eActivePlayer):
+				newRefusals.add(player.getID())
+		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_WILLING_TO_TALK", self.refusals.difference(newRefusals))
+		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK", newRefusals.difference(self.refusals))
+		self.refusals = newRefusals
+	
+	def display(self, eActivePlayer, key, players):
+		for ePlayer in players:
+			message = BugUtil.getText(key, gc.getPlayer(ePlayer).getName())
+			addMessageNoIcon(eActivePlayer, message)
+
+	def _reset(self):
+		self.refusals = set()
 
 class WorstEnemy(AbstractStatefulAlert):
 	"""

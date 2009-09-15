@@ -6,6 +6,7 @@ CHANGES
 New Features:
 
 - Civ4lerts
+	Added alert when a rival's willingness to talk changes
 	Added alert when a rival's worst enemy changes
 - Fractional Trade Routes [BULL]
 	If enabled in BULL, shows fractional values for Trade Routes and their totals

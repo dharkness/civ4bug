@@ -22,14 +22,21 @@
 
 
 <Civ4GameText xmlns="http://www.firaxis.com">
-	<!-- CIV4LERTS TEXT -->
 	<TEXT>
-		<Tag>TXT_KEY_CIV4LERTS_ON_WILL_NEGOTIATE</Tag>
-		<English>[COLOR_TECH_TEXT]%s1 is willing to negotiate.[COLOR_REVERT]</English>
-		<French>[COLOR_TECH_TEXT]%s1 est disposé à négocier.[COLOR_REVERT]</French>
-		<German>[COLOR_TECH_TEXT]%s1 ist bereit zu verhandeln.[COLOR_REVERT]</German>
-		<Italian>[COLOR_TECH_TEXT]%s1 è disposto a negoziare.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_TECH_TEXT]%s1 está dispuesto a negociar.[COLOR_REVERT]</Spanish>
+		<Tag>TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK</Tag>
+		<English>[COLOR_NEGATIVE_TEXT]%s1 refuses to talk.[COLOR_REVERT]</English>
+		<French>[COLOR_NEGATIVE_TEXT]%s1 refuse de vous parler.[COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]%s1 ist nicht gespr&#228;chsbereit.[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]%s1 rifiuta di parlare.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]%s1 se niega a hablar.[COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV4LERTS_ON_WILLING_TO_TALK</Tag>
+		<English>[COLOR_POSITIVE_TEXT]%s1 is willing to negotiate.[COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]%s1 est disposé à négocier.[COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]%s1 ist bereit zu verhandeln.[COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]%s1 è disposto a negoziare.[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]%s1 está dispuesto a negociar.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	
 	<TEXT>
@@ -46,7 +53,7 @@
 		<French>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</French>
 		<German>[COLOR_YIELD_FOOD]%s1 ist der Erzfeind von %s2.[COLOR_REVERT]</German>
 		<Italian>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_WARNING_TEXT]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Spanish>
+		<Spanish>[COLOR_YIELD_FOOD]%s1 is the worst enemy of %s2.[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY</Tag>
