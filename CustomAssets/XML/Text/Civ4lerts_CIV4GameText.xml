@@ -26,7 +26,7 @@
 		<Tag>TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK</Tag>
 		<English>[COLOR_NEGATIVE_TEXT]%s1 refuses to talk.[COLOR_REVERT]</English>
 		<French>[COLOR_NEGATIVE_TEXT]%s1 refuse de vous parler.[COLOR_REVERT]</French>
-		<German>[COLOR_NEGATIVE_TEXT]%s1 ist nicht gespr&#228;chsbereit.[COLOR_REVERT]</German>
+		<German>[COLOR_NEGATIVE_TEXT]%s1 ist nicht gesprächsbereit.[COLOR_REVERT]</German>
 		<Italian>[COLOR_NEGATIVE_TEXT]%s1 rifiuta di parlare.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_NEGATIVE_TEXT]%s1 se niega a hablar.[COLOR_REVERT]</Spanish>
 	</TEXT>
