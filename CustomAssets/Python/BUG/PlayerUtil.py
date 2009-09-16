@@ -46,12 +46,18 @@
 ##   isWHEOOH(playerOrID, askingPlayerOrID)
 ##     Returns various information regarding the war situation for the given player.
 ##
+## Visibility
+##
+##   canSeeCityList(playerOrID, askingPlayerOrID)
+##     Returns True if askingPlayerOrID can see the list of playerOrID's cities.
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import BugUtil
+import DiplomacyUtil
+import GameUtil
 
 gc = CyGlobalContext()
 
@@ -537,17 +543,15 @@ def canSeeCityList(playerOrID, askingPlayerOrID):
 	Returns True if askingPlayerOrID can see the list of playerOrID's cities.
 	
 	In the unmodified game, this is possible if the players have met and playerOrID
-	is not a vassal of another civ.
+	is not a vassal of another civ. You must be able to contact (trade with) the
+	player, and OCC must be disabled.
 	"""
+	if GameUtil.isOCC():
+		return False
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
-	if (askingPlayer.getID() == askedPlayer.getID()):
-		BugUtil.debug("canSeeCityList - can see our own cities")
+	if askingPlayer.getID() == askedPlayer.getID():
 		return True
-	if (askedPlayer.isBarbarian() or askedPlayer.isMinorCiv() or not askedPlayer.isAlive() or not askingTeam.isHasMet(askedTeam.getID())):
-		BugUtil.debug("canSeeCityList - can't see unmet player cities")
+	if askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID()):
 		return False
-	if (askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID())):
-		BugUtil.debug("canSeeCityList - can't see other rival's vassal's cities")
-		return False
-	return True
+	return DiplomacyUtil.canContact(askingPlayer, askedPlayer)

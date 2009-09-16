@@ -42,7 +42,7 @@ g_eventManager = None
 
 def canContact(playerOrID, toPlayerOrID):
 	"""
-	Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s attitude.
+	Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s willingness to talk.
 	
 	- They must not be the same player
 	- <toPlayer> must be alive, not minor, and not a barbarian
@@ -55,6 +55,8 @@ def canContact(playerOrID, toPlayerOrID):
 	if playerID == toPlayerID:
 		return False
 	if not toPlayer.isAlive() or toPlayer.isBarbarian() or toPlayer.isMinorCiv():
+		return False
+	if not PlayerUtil.getPlayerTeam(player).isHasMet(toPlayer.getTeam()):
 		return False
 	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
 		return False
