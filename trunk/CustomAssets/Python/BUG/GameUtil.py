@@ -150,6 +150,12 @@ def isNoTechBrokering():
 	"""
 	return not gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_TECH_BROKERING)
 
+def isOCC():
+	"""
+	Returns True if the One City Challenge option is enabled.
+	"""
+	return gc.getGame().isOption(GameOptionTypes.GAMEOPTION_ONE_CITY_CHALLENGE)
+
 def isAlwaysWar():
 	"""
 	Returns True if the Always War option is enabled.
