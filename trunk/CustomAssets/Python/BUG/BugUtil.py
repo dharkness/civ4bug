@@ -153,6 +153,9 @@ def getText(key, values=(), default=None, replaceFontTags=True):
 		values = ()
 	elif not isinstance(values, (tuple, list)):
 		values = (values,)
+	if isinstance(key, unicode):
+		warn("getText - received Unicode key %s", key)
+		key = str(key)
 	text = localText.getText(key, values)
 	if (text and text != key):
 		if replaceFontTags:
