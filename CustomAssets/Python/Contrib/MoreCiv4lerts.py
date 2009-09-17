@@ -131,7 +131,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), True)
 
 	def OnCityAcquired(self, argsList):
-		owner,playerType,city,bConquest,bTrade = argsList
+		owner, playerType, city, bConquest, bTrade = argsList
 		iPlayer = city.getOwner()
 		if (not self.getCheckForDomVictory()): return
 		if (iPlayer == gc.getGame().getActivePlayer()):
@@ -146,11 +146,12 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 				self.CheckForAlerts(iPlayer, PyPlayer(iPlayer).getTeam(), False)
 		if (self.getCheckForForeignCities()):
 			if (iPlayer != iActivePlayer):
-				if (PlayerUtil.canSeeCityList(iPlayer, iActivePlayer)):
+				bRevealed = city.isRevealed(gc.getActivePlayer().getTeam(), False)
+				if (bRevealed or PlayerUtil.canSeeCityList(iPlayer)):
 					player = gc.getPlayer(iPlayer)
 					#iColor = gc.getPlayerColorInfo(player.getPlayerColor()).getColorTypePrimary()
 					iColor = gc.getInfoTypeForString("COLOR_MAGENTA")
-					if (city.isRevealed(gc.getActivePlayer().getTeam(), False)):
+					if (bRevealed):
 						message = localText.getText("TXT_KEY_MORECIV4LERTS_CITY_FOUNDED", (player.getName(), city.getName()))
 						self._addMessageAtCity(iActivePlayer, message, "Art/Interface/Buttons/Actions/foundcity.dds", city, iColor)
 					else:
