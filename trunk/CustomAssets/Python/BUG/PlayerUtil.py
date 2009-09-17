@@ -56,6 +56,7 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugUtil
 import DiplomacyUtil
 import GameUtil
 
@@ -272,74 +273,6 @@ def matchPlayerOrTeam(teamOrPlayer, alive=None, human=None, barbarian=None, mino
 			and (minor is None or minor == teamOrPlayer.isMinorCiv()))
 
 
-## Units and Cities
-
-def playerUnits(playerOrID, testFunc=None):
-	"""
-	Creates an iterator for the CyUnits owned by the given player.
-	
-	If testFunc is given, only units for which it returns True are returned.
-	
-	for unit in PlayerUtil.playerUnits(PlayerUtil.getActivePlayerID()):
-		...
-	"""
-	ePlayer, player = getPlayerAndID(playerOrID)
-	unit, iter = player.firstUnit(False)
-	while unit:
-		if not unit.isDead() and (testFunc is None or testFunc(unit)):
-			yield unit
-		unit, iter = player.nextUnit(iter, False)
-
-def getPlayerUnits(playerOrID, testFunc=None):
-	"""
-	Creates and returns a list containing all the CyUnits owned by the given player.
-	
-	If testFunc is given, only units for which it returns True are returned.
-	"""
-	return [unit for unit in playerUnits(playerOrID, testFunc)]
-
-def playerCities(playerOrID, testFunc=None):
-	"""
-	Creates an iterator for the CyCity objects owned by the given player.
-	
-	If testFunc is given, only cities for which it returns True are returned.
-	
-	for city in PlayerUtil.playerCities(PlayerUtil.getActivePlayerID()):
-		...
-	"""
-	ePlayer, player = getPlayerAndID(playerOrID)
-	city, iter = player.firstCity(False)
-	while city:
-		if not city.isNone() and city.getOwner() == ePlayer and (testFunc is None or testFunc(city)):
-			yield city
-		city, iter = player.nextCity(iter, False)
-
-def getPlayerCities(playerOrID, testFunc=None):
-	"""
-	Creates and returns a list containing all the CyCitys owned by the given player.
-	
-	If testFunc is given, only cities for which it returns True are returned.
-	"""
-	return [city for city in playerCities(playerOrID, testFunc)]
-
-def isSaltWaterPort(city, askingTeamOrID=None):
-	"""
-	Returns True if the asking team can tell that the CyCity is on the coast
-	of the sea.
-	
-	If askingTeamOrID is None, the result is as if the owner of the city is asking.
-	"""
-	if city:
-		eAskingTeam = getTeamID(askingTeamOrID)
-		map = CyMap()
-		for eDirection in range(DirectionTypes.NUM_DIRECTION_TYPES):
-			plot = plotDirection(city.getX(), city.getY(), DirectionTypes(eDirection))
-			if eAskingTeam != -1 and not plot.isRevealed(eAskingTeam, False):
-				continue
-			if plot.isWater() and not plot.isLake():
-				return True
-	return False
-
 ## Player Information
 
 def getStateReligion(playerOrID):
@@ -536,22 +469,113 @@ def isGivingFavoriteCivicDenial(playerOrID, askingPlayerOrID):
 	return False
 
 
-## Visibility
+## Cities
 
-def canSeeCityList(playerOrID, askingPlayerOrID):
+def canSeeCityList(playerOrID):
 	"""
-	Returns True if askingPlayerOrID can see the list of playerOrID's cities.
+	Returns True if the active player can see the list of <player>'s cities.
 	
-	In the unmodified game, this is possible if the players have met and playerOrID
-	is not a vassal of another civ. You must be able to contact (trade with) the
-	player, and OCC must be disabled.
+	In the unmodified game, this is possible if the players have met and <player>
+	is not a vassal of a rival. They must be able to contact (trade with)
+	<player>, and OCC must be disabled.
 	"""
 	if GameUtil.isOCC():
 		return False
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
-	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	askingPlayer, askingTeam = getActivePlayerAndTeam()
 	if askingPlayer.getID() == askedPlayer.getID():
 		return True
 	if askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID()):
 		return False
 	return DiplomacyUtil.canContact(askingPlayer, askedPlayer)
+
+def getNumCities(playerOrID):
+	"""
+	Returns the actual number of cities owned by <player>.
+	"""
+	return getPlayer(playerOrID).getNumCities()
+
+def getNumRevealedCities(playerOrID):
+	"""
+	Returns the number of cities owned by <player> that are revealed to the active player.
+	
+	The capital city is always counted since you can assume it exists.
+	"""
+	player = getPlayer(playerOrID)
+	eActiveTeam = getActiveTeamID()
+	count = 0
+	for city in playerCities(player):
+		if city.isRevealed(eActiveTeam, False):
+			count += 1
+	if not player.getCapitalCity().isRevealed(eActiveTeam, False):
+		count += 1
+	return count
+
+def playerCities(playerOrID, testFunc=None):
+	"""
+	Creates an iterator for the CyCity objects owned by the given player.
+	
+	If testFunc is given, only cities for which it returns True are returned.
+	
+	for city in PlayerUtil.playerCities(PlayerUtil.getActivePlayerID()):
+		...
+	"""
+	player = getPlayer(playerOrID)
+	city, iter = player.firstCity(False)
+	while city:
+		if not city.isNone() and (testFunc is None or testFunc(city)):
+			yield city
+		city, iter = player.nextCity(iter, False)
+
+def getPlayerCities(playerOrID, testFunc=None):
+	"""
+	Creates and returns a list containing all the CyCitys owned by the given player.
+	
+	If testFunc is given, only cities for which it returns True are returned.
+	"""
+	return [city for city in playerCities(playerOrID, testFunc)]
+
+def isSaltWaterPort(city, askingTeamOrID=None):
+	"""
+	Returns True if the asking team can tell that the CyCity is on the coast
+	of the sea.
+	
+	If askingTeamOrID is None, the result is as if the owner of the city is asking.
+	"""
+	if city:
+		eAskingTeam = getTeamID(askingTeamOrID)
+		map = CyMap()
+		for eDirection in range(DirectionTypes.NUM_DIRECTION_TYPES):
+			plot = plotDirection(city.getX(), city.getY(), DirectionTypes(eDirection))
+			if eAskingTeam != -1 and not plot.isRevealed(eAskingTeam, False):
+				continue
+			if plot.isWater() and not plot.isLake():
+				return True
+	return False
+
+
+## Units
+
+def playerUnits(playerOrID, testFunc=None):
+	"""
+	Creates an iterator for the CyUnits owned by the given player.
+	
+	If testFunc is given, only units for which it returns True are returned.
+	
+	for unit in PlayerUtil.playerUnits(PlayerUtil.getActivePlayerID()):
+		...
+	"""
+	player = getPlayer(playerOrID)
+	unit, iter = player.firstUnit(False)
+	while unit:
+		if not unit.isDead() and (testFunc is None or testFunc(unit)):
+			yield unit
+		unit, iter = player.nextUnit(iter, False)
+
+def getPlayerUnits(playerOrID, testFunc=None):
+	"""
+	Creates and returns a list containing all the CyUnits owned by the given player.
+	
+	If testFunc is given, only units for which it returns True are returned.
+	"""
+	return [unit for unit in playerUnits(playerOrID, testFunc)]

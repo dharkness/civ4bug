@@ -6913,11 +6913,13 @@ class CvMainInterface:
 # BUG - WHEOOH - end
 # BUG - Num Cities - start
 												if (ScoreOpt.isShowCountCities()):
-													if (PlayerUtil.canSeeCityList(ePlayer, PlayerUtil.getActivePlayerID())):
-														szTempBuffer = u"%d" % gc.getPlayer(ePlayer).getNumCities()
-														szBuffer = szBuffer + " " + szTempBuffer
-														if (bAlignIcons):
-															scores.setNumCities(szTempBuffer)
+													if (PlayerUtil.canSeeCityList(ePlayer)):
+														szTempBuffer = u"%d" % PlayerUtil.getNumCities(ePlayer)
+													else:
+														szTempBuffer = BugUtil.colorText(u"%d" % PlayerUtil.getNumRevealedCities(ePlayer), "COLOR_CYAN")
+													szBuffer = szBuffer + " " + szTempBuffer
+													if (bAlignIcons):
+														scores.setNumCities(szTempBuffer)
 # BUG - Num Cities - end
 											
 											if (CyGame().isNetworkMultiPlayer()):
