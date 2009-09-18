@@ -1056,15 +1056,14 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				self.resIconGrid.addIcon( currentRow, self.leaderCol
 										, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
 										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader )
-# 				for i in range(4):
-# 					for iLoopBonus in range(gc.getNumBonusInfos()):
-# 						self.resIconGrid.addIcon( currentRow, i + 1, gc.getBonusInfo(iLoopBonus).getButton()
-# 												, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, iLoopBonus )
+				
+				# gold
+				if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
+					sAmount = str(gc.getPlayer(iLoopPlayer).AI_maxGoldPerTurnTrade(self.iActiveLeader))
+					self.resIconGrid.setText(currentRow, self.canPayCol, sAmount)
+				
+				# bonuses
 				for iLoopBonus in range(gc.getNumBonusInfos()):
-					if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
-						sAmount = str(gc.getPlayer(iLoopPlayer).AI_maxGoldPerTurnTrade(self.iActiveLeader))
-						self.resIconGrid.setText(currentRow, self.canPayCol, sAmount)
-					
 					tradeData.iData = iLoopBonus
 					if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False)):
 						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, (not currentPlayer.isHuman()))): # surplus
