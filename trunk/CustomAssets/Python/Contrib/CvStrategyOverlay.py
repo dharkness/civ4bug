@@ -15,7 +15,6 @@ from CvPythonExtensions import *
 from SdToolkit import *
 import BugCore
 import BugUtil
-import ColorUtil
 import CvOverlayScreenUtils
 import PlayerUtil
 
@@ -71,6 +70,8 @@ def onLoad(argsList):
 	def callRead(layer):
 		layer.read()
 	callEachLayer(callRead)
+	if StratLayerOpt.getShowDotMap():
+		getDotMap().redrawCities()
 
 def onPreSave(argsList):
 	def callWrite(layer):
@@ -283,6 +284,7 @@ class DotMapLayer(StrategyLayer):
 	
 	def read(self):
 		data = sdGetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID)
+		self.clearCityLayers()
 		if data is not None:
 			self.cities = self.updateData(data)
 			self.dirty = False
