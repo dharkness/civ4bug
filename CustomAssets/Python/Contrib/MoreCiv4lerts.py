@@ -68,6 +68,7 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 	def reset(self, argsList=None):
 		self.CurrAvailTechTrades = {}
 		self.PrevAvailTechTrades = {}
+		self.PrevAvailBonusTrades = {}
 		self.PrevAvailOpenBordersTrades = set()
 		self.PrevAvailMapTrades = set()
 		self.PrevAvailDefensivePactTrades = set()
@@ -96,6 +97,9 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
 	def getCheckForTechs(self):
 		return self.options.isShowTechTradeAlert()
+	
+	def getCheckForBonuses(self):
+		return self.options.isShowBonusTradeAlert()
 	
 	def getCheckForMap(self):
 		return self.options.isShowMapTradeAlert()
@@ -322,6 +326,37 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 
 		else: pass #end new trades if
 		
+		# bonus trades
+		if (BeginTurn and self.getCheckForBonuses()):
+			desiredBonuses = TradeUtil.getDesiredBonuses(activePlayer)
+			tradesByPlayer = self.getBonusTrades(activePlayer, activeTeam)
+			for iLoopPlayer, currentTrades in tradesByPlayer.iteritems():
+
+				#Did he have trades avail last turn
+				if (self.PrevAvailBonusTrades.has_key(iLoopPlayer)):
+					previousTrades = self.PrevAvailBonusTrades[iLoopPlayer]
+				else:
+					previousTrades = set()
+					
+				#Determine new bonuses
+				newTrades = currentTrades.difference(previousTrades).intersection(desiredBonuses)
+				if (newTrades):
+					szNewTrades = self.buildBonusString(newTrades)
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_NEW_BONUS_AVAIL",	
+												(gc.getPlayer(iLoopPlayer).getName(), szNewTrades))
+					self._addMessageNoIcon(iActivePlayer, message)
+				
+				#Determine removed bonuses
+				removedTrades = previousTrades.difference(currentTrades).intersection(desiredBonuses)
+				if (removedTrades):
+					szRemovedTrades = self.buildBonusString(removedTrades)
+					message = localText.getText("TXT_KEY_MORECIV4LERTS_BONUS_NOT_AVAIL",	
+												(gc.getPlayer(iLoopPlayer).getName(), szRemovedTrades))
+					self._addMessageNoIcon(iActivePlayer, message)
+
+			#save curr trades for next time
+			self.PrevAvailBonusTrades = tradesByPlayer
+		
 		if (BeginTurn and self.getCheckForMap()):
 			currentTrades = self.getMapTrades(activePlayer, activeTeam)
 			newTrades = currentTrades.difference(self.PrevAvailMapTrades)
@@ -399,6 +434,13 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 						techsToTrade.add(iLoopTech)
 			techsByPlayer[loopPlayer.getID()] = techsToTrade
 		return techsByPlayer
+
+	def getBonusTrades(self, player, team):
+		bonusesByPlayer = {}
+		for loopPlayer in TradeUtil.getBonusTradePartners(player):
+			will, wont = TradeUtil.getTradeableBonuses(loopPlayer, player)
+			bonusesByPlayer[loopPlayer.getID()] = will
+		return bonusesByPlayer
 
 	def getMapTrades(self, player, team):
 		iPlayerID = player.getID()
@@ -485,18 +527,15 @@ class MoreCiv4lertsEvent( AbstractMoreCiv4lertsEvent):
 		return currentTrades
 	
 	def buildTechString(self, techs):
-		szTechs = u""
-		for iTech in techs:
-			tech = gc.getTechInfo(iTech)
-			if (szTechs):
-				szTechs += u", "
-			szTechs += tech.getDescription()
-		return szTechs
+		return self.buildItemString(techs, gc.getTechInfo, CvTechInfo.getDescription)
+	
+	def buildBonusString(self, bonuses):
+		return self.buildItemString(bonuses, gc.getBonusInfo, CvBonusInfo.getDescription)
 
 	def buildPlayerString(self, players):
-		szPlayers = u""
-		for iPlayer in players:
-			if (szPlayers):
-				szPlayers += u", "
-			szPlayers += PyPlayer(iPlayer).getName()
-		return szPlayers
+		return self.buildItemString(players, gc.getPlayer, CyPlayer.getName)
+	
+	def buildItemString(self, items, getItemFunc, getNameFunc):
+		names = [getNameFunc(getItemFunc(eItem)) for eItem in items]
+		names.sort()
+		return u", ".join(names)

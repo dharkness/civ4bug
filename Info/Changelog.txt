@@ -5,30 +5,29 @@ CHANGES
 
 New Features:
 
+- Scoreboard
+	Added Short Description column (e.g. "English Empire")
+- City Screen
+	If Fractional Trade Routes is enabled, shows two decimal places for Trade Route values [BULL]
+- Foreign Advisor (F4)
+	TECHS: Added a status column that shows War, Forced Peace, and Refuses to Talk
+- Religion Advisor (F7)
+	Added option to limit the religions shown in the top area to only those that are founded or available for conversion
+	Added johny smith's scrolling panel for mods with more than seven religions
+	Shows new religions and religious buildings/units types from mods
 - Civ4lerts
-	Added alert when a rival's willingness to talk changes
-	Added alert when a rival's worst enemy changes
-- Fractional Trade Routes [BULL]
-	If enabled in BULL, shows fractional values for Trade Routes and their totals
+	Added Refuses to Talk alert
+	Added Worst Enemy alert
+	Added Resource Trade alert
+	Added Map Trade alert
 
 Improvements:
 
 - Scoreboard
-	Refuses to Talk now works when BULL is not installed
-	Added the ability to select a Civilization's 'short' description (e.g. "English Empire")
-- Foreign Advisor (F4)
-	TECHS: Added a status column that shows WAR or Forced Peace with an AI.  Shows 'refuses to talk' [BULL]
-- Religion Advisor (F7)
-	Shows new religions and types of religious buildings/units from mods
-	Added johny smith's scrolling panel for mods with more than seven religions
-	Added option to limit the religions shown in the top area to only those that are founded or available for conversion
+	Refuses to Talk now works without BULL
 - MapFinder
 	Added ALT + CTRL + SHIFT + G to stop
 	Added separate Save path
-- Civ4lerts
-	Added alert when rivals will trade their map
-	Trade alerts suspended when an AI refuses to talk
-	TODO: Alert when an AI stops refusing to talk
 
 Bug Fixes:
 
@@ -54,6 +53,8 @@ Bug Fixes:
 		Completed projects no longer show an invalid date or city name
 - MapFinder
 	Status panel title displays correctly
+- Civ4lerts
+	Trade alerts suspended when an AI Refuses to Talk
 - Unit Naming
 	Default naming convention matches new unit counting codes
 - Logger
@@ -74,12 +75,14 @@ New Features:
 - ReligionUtil
 	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
 - TradeUtil
-	Added functions to get lists of valid trading partners for the different tradable items
+	Added functions to get lists of valid trading partners for the different tradeable items
+	Added calculateTradeRouteYield(), calculateTotalTradeRouteYield(), and calculateTradeRoutes()
+	Added functions to handle Fractional Trade Routes
 
 Improvements:
 
 - BugEventManager
-	Exceptions from event handlers are caught and logged, and the next handler is called
+	Exceptions from event handlers are caught and logged, and the next handler is called instead of aborting the event
 - BugGameUtils
 	Each callback's dispatch logging is now optional via "log" XML attribute
 - GameUtil
@@ -90,9 +93,7 @@ Improvements:
 Bug Fixes:
 
 - BugPath
-	Ignores CustomAssets folder when running as a Mod; too many issues
-- BugUtil
-	Alert/trace messages to the screen are XML-escaped
+	Ignores CustomAssets folder when running as a Mod due to too many issues
 
 
 ____________________________________________________________________________________________________

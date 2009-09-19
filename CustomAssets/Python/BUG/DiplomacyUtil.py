@@ -6,7 +6,8 @@
 ## Contacting Rivals
 ##
 ##   canContact(playerOrID, toPlayerOrID)
-##     Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s attitude.
+##     Returns True if <player> can attempt to contact <toPlayer> given game settings, 
+##     initial contact, and war-time situation.
 ##
 ##   isWillingToTalk(playerOrID, toPlayerOrID)
 ##     Returns True if <player> is willing to talk to <toPlayer>.
@@ -42,13 +43,13 @@ g_eventManager = None
 
 def canContact(playerOrID, toPlayerOrID):
 	"""
-	Returns True if <player> can contact <toPlayer> given game settings, war-time situation, and <toPlayer>'s willingness to talk.
+	Returns True if <player> can attempt to contact <toPlayer> given game settings, 
+	initial contact, and war-time situation.
 	
 	- They must not be the same player
 	- <toPlayer> must be alive, not minor, and not a barbarian
 	- Their teams must have met
 	- If they are at war, they must be able to sign a peace deal (no Always War or Permanent War/Peace options)
-	- <toPlayer> must be willing to talk
 	"""
 	playerID, player = PlayerUtil.getPlayerAndID(playerOrID)
 	toPlayerID, toPlayer = PlayerUtil.getPlayerAndID(toPlayerOrID)
@@ -60,8 +61,7 @@ def canContact(playerOrID, toPlayerOrID):
 		return False
 	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
 		return False
-	# the following players must be reversed (is toPlayer willing to talk to player?)
-	return isWillingToTalk(toPlayerOrID, playerOrID)
+	return True
 
 def isWillingToTalk(playerOrID, toPlayerOrID):
 	"""

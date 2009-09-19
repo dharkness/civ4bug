@@ -161,6 +161,22 @@
 		<Spanish>When checked, displays an alert when a civilization is willing to trade technologies.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__BONUSTRADE_TEXT</Tag>
+		<English>Resources</English>
+		<French>Resources</French>
+		<German>Resources</German>
+		<Italian>Resources</Italian>
+		<Spanish>Resources</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__BONUSTRADE_HOVER</Tag>
+		<English>When checked, displays an alert when a civilization is willing to trade resources.</English>
+		<French>When checked, displays an alert when a civilization is willing to trade resources.</French>
+		<German>Lässt eine Warnung erscheinen, wenn eine Zivilisation Ressourcen handeln möchte</German>
+		<Italian>Quando è selezionato, viene visualizzato un avviso quando una Civiltà è disponibile a commerciare Risorse.</Italian>
+		<Spanish>When checked, displays an alert when a civilization is willing to trade resources.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MORECIV4LERTS__MAPTRADE_TEXT</Tag>
 		<English>Maps</English>
 		<French>Cartes</French>

@@ -56,8 +56,7 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-import BugUtil
-import DiplomacyUtil
+import TradeUtil
 import GameUtil
 
 gc = CyGlobalContext()
@@ -487,7 +486,7 @@ def canSeeCityList(playerOrID):
 		return True
 	if askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID()):
 		return False
-	return DiplomacyUtil.canContact(askingPlayer, askedPlayer)
+	return TradeUtil.canTrade(askingPlayer, askedPlayer)
 
 def getNumCities(playerOrID):
 	"""

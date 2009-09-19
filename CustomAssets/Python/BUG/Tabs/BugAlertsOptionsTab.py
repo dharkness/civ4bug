@@ -54,6 +54,7 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		# Trades
 		self.addLabel(screen, right, "Alerts_Trade", "Trading:")
 		self.addCheckbox(screen, right, "MoreCiv4lerts__TechTrade")
+		self.addCheckbox(screen, right, "MoreCiv4lerts__BonusTrade")
 		self.addCheckbox(screen, right, "MoreCiv4lerts__MapTrade")
 		
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Alerts_Trade_Column")
