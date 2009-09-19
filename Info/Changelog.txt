@@ -76,7 +76,7 @@ New Features:
 - ReligionUtil
 	Makes adding religions and new types of religious buildings/units to the Religion Advisor a snap
 - TradeUtil
-	Added functions to get lists of valid trading partners for the different tradeable items
+	Added functions to get lists of valid trading partners for the various tradeable items
 	Added calculateTradeRouteYield(), calculateTotalTradeRouteYield(), and calculateTradeRoutes()
 	Added functions to handle Fractional Trade Routes
 
