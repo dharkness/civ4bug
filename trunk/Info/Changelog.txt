@@ -8,6 +8,7 @@ New Features:
 - Scoreboard
 	Added Short Description column (e.g. "English Empire")
 - City Screen
+	Added option to show only religions and corporations present in the city plus allows for more than seven of each
 	If Fractional Trade Routes is enabled, shows two decimal places for Trade Route values [BULL]
 - Foreign Advisor (F4)
 	TECHS: Added a status column that shows War, Forced Peace, and Refuses to Talk
