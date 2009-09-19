@@ -62,7 +62,6 @@ class BugAlertsOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckboxIntDropdown(screen, rightL, rightR, "Civ4lerts__GoldPerTurnTrade", "Civ4lerts__GoldPerTurnTradeThresh", "LAYOUT_LEFT")
 		
 		# Victories
-		self.addSpacer(screen, right, "Alerts_Victory")
 		self.addLabel(screen, right, "Alerts_Victory", "Victory:")
 		
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Alerts_Victory_Column")
