@@ -847,10 +847,10 @@ class RefusesToTalk(AbstractStatefulAlert):
 	def check(self):
 		if (not Civ4lertsOpt.isShowRefusesToTalkAlert()):
 			return
-		eActivePlayer = PlayerUtil.getActivePlayerID()
+		eActivePlayer, activePlayer = PlayerUtil.getActivePlayerAndID()
 		newRefusals = set()
 		for player in PlayerUtil.players(True, False, False, False):
-			if not DiplomacyUtil.isWillingToTalk(player, eActivePlayer):
+			if DiplomacyUtil.canContact(activePlayer, player) and not DiplomacyUtil.isWillingToTalk(player, eActivePlayer):
 				newRefusals.add(player.getID())
 		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_WILLING_TO_TALK", self.refusals.difference(newRefusals))
 		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK", newRefusals.difference(self.refusals))
@@ -858,8 +858,10 @@ class RefusesToTalk(AbstractStatefulAlert):
 	
 	def display(self, eActivePlayer, key, players):
 		for ePlayer in players:
-			message = BugUtil.getText(key, gc.getPlayer(ePlayer).getName())
-			addMessageNoIcon(eActivePlayer, message)
+			player = gc.getPlayer(ePlayer)
+			if player.isAlive():
+				message = BugUtil.getText(key, player.getName())
+				addMessageNoIcon(eActivePlayer, message)
 
 	def _reset(self):
 		self.refusals = set()

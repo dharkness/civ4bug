@@ -31,9 +31,10 @@
 			<!-- Trade -->
 			<option id="TechTrade" key="CheckForNewTrades" 
 					type="boolean" default="True" and="Enabled" 
-					get="isShowTechTradeAlert" set="setShowTechTradeAlert" 
-					label="Technologies" 
-					help="."/>
+					get="isShowTechTradeAlert" set="setShowTechTradeAlert"/>
+			<option id="BonusTrade" key="CheckForNewBonuses" 
+					type="boolean" default="True" and="Enabled" 
+					get="isShowBonusTradeAlert" set="setShowBonusTradeAlert"/>
 			<option id="MapTrade" key="Map Trades" 
 					type="boolean" default="True" and="Enabled" 
 					get="isShowMapTradeAlert" set="setShowMapTradeAlert"/>
