@@ -277,7 +277,7 @@ def getDesiredBonuses(playerOrID):
 	"""
 	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
 	bonuses = set()
-	for eBonus in range(gc.getNUM_CORPORATION_PREREQ_BONUSES()):
+	for eBonus in range(gc.getNumBonusInfos()):
 		if player.getNumAvailableBonuses(eBonus) == 0:
 			eObsoleteTech = gc.getBonusInfo(eBonus).getTechObsolete()
 			if eObsoleteTech == -1 or not team.isHasTech(eObsoleteTech):
