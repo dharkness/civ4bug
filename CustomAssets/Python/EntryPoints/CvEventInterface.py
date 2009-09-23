@@ -19,8 +19,8 @@ try:
 	s = set()
 except:
 	import sets
-	__builtins__.set = sets.Set
-	__builtins__.frozenset = sets.ImmutableSet
+	setattr(__builtins__, "set", sets.Set)
+	setattr(__builtins__, "frozenset", sets.ImmutableSet)
 # BUG - Mac - end
 
 # **********************************
