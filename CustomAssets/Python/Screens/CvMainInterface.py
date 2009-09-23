@@ -14,6 +14,7 @@ import BugDll
 # BUG - Options - start
 import BugCore
 import BugOptions
+import BugPath
 import BugUtil
 ClockOpt = BugCore.game.NJAGC
 ScoreOpt = BugCore.game.Scores
@@ -3017,7 +3018,10 @@ class CvMainInterface:
 					bShow = True
 # BUG - Options - start
 				elif ( MainOpt.isShowOptionsKeyReminder() ):
-					acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
+					if BugPath.isMac():
+						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER_MAC", ())
+					else:
+						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True

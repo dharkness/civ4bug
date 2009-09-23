@@ -17,6 +17,15 @@
 		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER_MAC</Tag>
+		<English>Press [BOLD]ALT + CMD + O[\BOLD] to customize the BUG Mod</English>
+		<French>Poussez sur [BOLD]ALT + CMD + O[\BOLD] pour configurer le BUG Mod</French>
+		<German>[BOLD]&lt;CMD + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
+		<Italian>Premi [BOLD]CMD+ALT+O[\BOLD] per personalizzare il BUG Mod</Italian>
+		<Spanish>Press [BOLD]ALT + CMD + O[\BOLD] to customize the BUG Mod</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_BUG_CREATED_BY_HEADER</Tag>
 		<English>Created by The BUG Mod.</English>
 		<French>Created by The BUG Mod.</French>

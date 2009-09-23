@@ -84,9 +84,10 @@ VASSAL_PREFIX = None
 VASSAL_POSTFIX = None
 
 def init():
-	"""Initializes the strings used to display the scoreboard."""
+	"""
+	Initializes the strings used to display the scoreboard.
+	"""
 	global columns
-	game = CyGame()
 	
 	# Used keys:
 	# ABCDEFHIKLMNOPQRSTUVWZ*?
@@ -166,13 +167,12 @@ class Column:
 	
 	def isSpecial(self):
 		return self.type == SPECIAL
-	
-	def isDynamic(self):
-		return self.type == DYNAMIC
 
 
 class Scoreboard:
-	"""Holds and builds the ScoreCards."""
+	"""
+	Holds and builds the ScoreCards.
+	"""
 	
 	def __init__(self):
 		self._activePlayer = gc.getGame().getActivePlayer()
@@ -306,10 +306,14 @@ class Scoreboard:
 		
 		
 	def assignRanks(self):
-		"""Assigns a rank from 1 to N based on score.
-		As the player scores are currently reversed, this is done in reverse order."""
+		"""
+		Assigns a rank from 1 to N based on score.
+		As the player scores are currently reversed, this is done in reverse order.
+		"""
 		rank = 0
-		for playerScore in reversed(self._playerScores):
+		indexes = range(len(self._playerScores))
+		indexes.reverse()
+		for playerScore in indexes:
 			if not playerScore.has(NOT_MET) or not playerScore.value(NOT_MET):
 				rank += 1
 				playerScore.set(RANK, smallText(BugUtil.colorText(u"%d" % rank, ScoreOpt.getRankColor())))
