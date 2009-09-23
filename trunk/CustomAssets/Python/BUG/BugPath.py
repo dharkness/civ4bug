@@ -6,6 +6,9 @@
 ## while those ending in "Folder" or "Name" are the base name of the file/folder.
 ## All directory functions return valid directories or the Python None value if not found.
 ##
+## isMac()
+##   Returns True if running on a Mac operating system.
+##
 ## isMod()
 ##   Returns True if running as a mod, False otherwise.
 ##
@@ -85,6 +88,13 @@ MY_DOCUMENTS_FOLDER_REG_KEYS = (
 	("Vista", r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders", "Personal"),
 )
 MY_GAMES_FOLDER = "My Games"
+
+
+def isMac():
+	"""
+	Returns True if running on a Mac operating system.
+	"""
+	return sys.platform == 'darwin'
 
 
 ## Mod Info, Folder and Path Accessors
@@ -303,7 +313,8 @@ def init():
 	BugUtil.debug("BugPath - initializing...")
 	initAppFolder()
 	initModName()
-	initModFolder()
+# EF: delay until later since Mac crashes otherwise
+#	initModFolder()
 	initNoCustomAssetsSetting()
 	initRootFolder()
 	initDataFolder()
@@ -327,11 +338,15 @@ def initAppFolder():
 	
 	# Determine the app directory that holds the executable and Mods
 	# as well as the folder name inside MY_GAMES_FOLDER that holds CustomAssets and Mods.
-	if isfile(sys.executable):
-		#BugUtil.debug("BugPath - exe is '%s'", sys.executable)
-		_appDir = dirname(sys.executable)
+	if isMac():
+		_appDir = os.getcwd()
+	else:
+		if isfile(sys.executable):
+			#BugUtil.debug("BugPath - exe is '%s'", sys.executable)
+			_appDir = dirname(sys.executable)
+	if _appDir:
 		_appFolder = basename(_appDir)
-		BugUtil.info("BugPath - app dir is '%s'", unicode(_appDir))
+		BugUtil.info("BugPath - app dir is '%s'", _appDir)
 		BugUtil.debug("BugPath - app folder is '%s'", _appFolder)
 	else:
 		BugUtil.warn("BugPath - no executable found")
@@ -380,7 +395,7 @@ def initModFolder():
 		from CvPythonExtensions import CyReplayInfo
 		replay = CyReplayInfo()
 		replay.createInfo(0)
-		modDir = replay.getModName()
+		modDir = replay.getModName().replace('\\', r'/')
 	except:
 		BugUtil.trace("replay not ready")
 	else:
@@ -405,13 +420,13 @@ def initModFolder():
 	_modFolderInitDone = True
 
 def setModDir(dir):
-	BugUtil.debug("BugPath - checking mod dir '%s'", unicode(dir))
+	BugUtil.debug("BugPath - checking mod dir '%s'", dir)
 	if isdir(dir):
 		global _isMod, _modDir, _modFolder
 		_isMod = True
 		_modDir = dir
 		_modFolder = basename(dir)
-		BugUtil.info("BugPath - mod dir is '%s'", unicode(dir))
+		BugUtil.info("BugPath - mod dir is '%s'", dir)
 		BugUtil.debug("BugPath - mod folder is '%s'", _modFolder)
 		BugConfigTracker.add("Mod_Directory", _modDir)
 		return True
@@ -477,7 +492,7 @@ def initRootFolder():
 		BugUtil.trace("Error accessing directory from CvAltRoot.py: [%d] %s", errno, strerror)
 	
 	# user dir
-	if (sys.platform == 'darwin'):
+	if isMac():
 		# Mac OS X
 		if not setUserDir(join(os.environ['HOME'], "Documents")):
 			BugUtil.warn("Cannot find user's Documents folder")
@@ -507,7 +522,10 @@ def initRootFolder():
 	# try to determine missing dir from other dir
 	if not _rootDir:
 		if _userDir:
-			setRootDir(join(_userDir, getAppFolder()))
+			if isMac():
+				setRootDir(join(_userDir, "Civilization IV " + getAppFolder()))
+			else:
+				setRootDir(join(_userDir, getAppFolder()))
 	else:
 		if not _userDir:
 			setUserDir(dirname(_rootDir))
@@ -517,21 +535,21 @@ def initRootFolder():
 	_rootFolderInitDone = True
 
 def setRootDir(dir):
-	BugUtil.debug("BugPath - Checking root dir '%s'", unicode(dir))
+	BugUtil.debug("BugPath - Checking root dir '%s'", dir)
 	if isdir(dir) and isfile(join(dir, "CivilizationIV.ini")):
 		global _rootDir
 		_rootDir = dir
-		BugUtil.info("BugPath - root dir is '%s'", unicode(dir))
+		BugUtil.info("BugPath - root dir is '%s'", dir)
 		BugConfigTracker.add("Root_Directory", _rootDir)
 		return True
 	return False
 
 def setUserDir(dir):
-	BugUtil.debug("BugPath - Checking user dir '%s'", unicode(dir))
+	BugUtil.debug("BugPath - Checking user dir '%s'", dir)
 	if isdir(dir):
 		global _userDir
 		_userDir = dir
-		BugUtil.info("BugPath - user dir is '%s'", unicode(dir))
+		BugUtil.info("BugPath - user dir is '%s'", dir)
 		return True
 	return False
 
@@ -567,10 +585,10 @@ def initDataFolder():
 
 def setDataDir(dir):
 	if isdir(dir):
-		BugUtil.debug("BugPath - Checking data dir '%s'", unicode(dir))
+		BugUtil.debug("BugPath - Checking data dir '%s'", dir)
 		settingsDir = join(dir, SETTINGS_FOLDER)
 		if isdir(settingsDir):
-			BugUtil.info("BugPath - data dir is '%s'", unicode(dir))
+			BugUtil.info("BugPath - data dir is '%s'", dir)
 			global _dataDir, _settingsDir, _infoDir
 			_dataDir = dir
 			_settingsDir = settingsDir
@@ -624,14 +642,14 @@ def getFilePath(root, name, subdir=None):
 	Returns the full path to the named file, or None if it doesn't exist.
 	"""
 	if not root:
-		BugUtil.warn("Invalid root directory looking for '%s'", unicode(name))
+		BugUtil.warn("Invalid root directory looking for '%s'", name)
 	if subdir:
 		path = join(root, subdir, name)
 	else:
 		path = join(root, name)
 	if isfile(path):
 		return path
-	BugUtil.debug("BugPath - not a file: '%s'", unicode(path))
+	BugUtil.debug("BugPath - not a file: '%s'", path)
 	return None
 
 def createFile(root, name, subdir=None):

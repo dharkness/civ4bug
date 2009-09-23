@@ -273,6 +273,8 @@ def logToFile(message):
 	"""
 	if logTime:
 		message = time.asctime()[11:20] + message
+	if isinstance(message, unicode):
+		message = message.encode("iso8859")
 	sys.stdout.write(message + "\n")
 
 def readLoggingOptions(option=None, value=None):
