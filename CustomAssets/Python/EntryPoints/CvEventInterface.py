@@ -10,19 +10,6 @@
 # No other modules should import this
 
 
-# BUG - Mac - start
-# Mac Civ4 uses Python 2.3 which doesn't have set() or frozenset()
-# Substitute the ones from the sets module
-import BugPath
-
-try:
-	s = set()
-except:
-	import sets
-	setattr(__builtins__, "set", sets.Set)
-	setattr(__builtins__, "frozenset", sets.ImmutableSet)
-# BUG - Mac - end
-
 # **********************************
 # GJD modifications start here
 # **********************************
