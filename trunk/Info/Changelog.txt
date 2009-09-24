@@ -5,6 +5,7 @@ CHANGES
 
 New Features:
 
+- Mac support
 - Scoreboard
 	Added Short Description column (e.g. "English Empire")
 - City Screen
