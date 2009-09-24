@@ -3724,10 +3724,11 @@ def OutputMessage(message):
 
 import os
 import os.path
+import sys
 
 if (sys.platform == 'darwin'):
 	def regRead(registry, path, field):
-		""
+		return ""
 else:
 	import _winreg
 	def regRead(registry, path, field):
