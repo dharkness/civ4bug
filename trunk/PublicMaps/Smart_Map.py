@@ -3724,17 +3724,19 @@ def OutputMessage(message):
 
 import os
 import os.path
-import _winreg
 
-def regRead(registry, path, field):
-    pathKey = _winreg.OpenKey(registry, path)
-    try:
-        fieldValue = _winreg.QueryValueEx(pathKey, field)
-        return fieldValue[0]
-    finally:
-        pathKey.Close()
-
-
+if (sys.platform == 'darwin'):
+	def regRead(registry, path, field):
+		""
+else:
+	import _winreg
+	def regRead(registry, path, field):
+		pathKey = _winreg.OpenKey(registry, path)
+		try:
+			fieldValue = _winreg.QueryValueEx(pathKey, field)
+			return fieldValue[0]
+		finally:
+			pathKey.Close()
 	
 def civFilePath():
 	try:
