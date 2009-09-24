@@ -55,5 +55,6 @@ def initAfterReload():
 		getEventManager().fireEvent("PythonReloaded")
 
 # initialize BUG after Python modules have been reloaded
+import BugPath
 if not BugPath.isMac():
 	initAfterReload()
