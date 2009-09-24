@@ -311,9 +311,9 @@ class Scoreboard:
 		As the player scores are currently reversed, this is done in reverse order.
 		"""
 		rank = 0
-		indexes = range(len(self._playerScores))
-		indexes.reverse()
-		for playerScore in indexes:
+		scores = list(self._playerScores)
+		scores.reverse()
+		for playerScore in scores:
 			if not playerScore.has(NOT_MET) or not playerScore.value(NOT_MET):
 				rank += 1
 				playerScore.set(RANK, smallText(BugUtil.colorText(u"%d" % rank, ScoreOpt.getRankColor())))
