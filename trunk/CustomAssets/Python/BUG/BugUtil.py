@@ -71,6 +71,11 @@
 ##     or class constructor at a later time with the arguments provided when
 ##     the Function was created.
 ##
+## Python
+##
+##   fixSets(namespace):
+##     If running on a Mac, imports "set" and "frozenset" from the sets module.
+##
 ## Calling Functions in the Future
 ##
 ##   deferCall(function, delay=0.0)
@@ -616,6 +621,23 @@ def getFunction(module, functionOrClass, bind=False, *args, **kwargs):
 def callFunction(module, functionOrClass, *args, **kwargs):
 	func = lookupFunction(module, functionOrClass)
 	return func(*args, **kwargs)
+
+
+## Python
+
+def fixSets(namespace):
+	"""
+	If running on a Mac, imports "set" and "frozenset" from the sets module.
+	
+	Usage:
+	  fixSets(globals())
+	"""
+	try:
+		set
+	except:
+		import sets
+		namespace["set"] = sets.Set
+		namespace["frozenset"] = sets.ImmutableSet
 
 
 ## Deferred Calls
