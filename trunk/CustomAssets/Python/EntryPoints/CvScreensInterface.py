@@ -49,6 +49,7 @@ from CvPythonExtensions import *
 # BUG - Options - end
 import BugCore
 AdvisorOpt = BugCore.game.Advisors
+CustDomAdvOpt = BugCore.game.CustDomAdv
 TechWindowOpt = BugCore.game.TechWindow
 # BUG - Options - end
 
@@ -135,7 +136,7 @@ def createDomesticAdvisor():
 	"""Creates the correct Domestic Advisor based on an option."""
 	global domesticAdvisor
 	if domesticAdvisor is None:
-		if (AdvisorOpt.isCustDomAdv()):
+		if (CustDomAdvOpt.isEnabled()):
 			import CvCustomizableDomesticAdvisor
 			domesticAdvisor = CvCustomizableDomesticAdvisor.CvCustomizableDomesticAdvisor()
 		else:

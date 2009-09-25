@@ -119,6 +119,7 @@
 	<load mod="BUG City Screen"/>
 	<load mod="BUG Advisors"/>
 	
+	<load mod="Customizable Domestic Advisor"/>
 	<load mod="Better Espionage"/>
 	<load mod="All Eras Dawn of Man Screen"/>
 	<load mod="TechWindow"/>

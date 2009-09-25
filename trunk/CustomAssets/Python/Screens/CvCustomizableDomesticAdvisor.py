@@ -68,8 +68,9 @@ import CvScreenEnums
 import CvEventInterface
 import Popup as PyPopup
 
-import BugPath
 import BugConfigTracker
+import BugCore
+import BugPath
 import BugUtil
 import FontUtil
 import GameUtil
@@ -78,13 +79,9 @@ import math
 
 PyPlayer = PyHelpers.PyPlayer
 
-
-# BUG - Options - start
-import BugCore
 CityScreenOpt = BugCore.game.CityScreen
-AdvisorOpt = BugCore.game.Advisors
+AdvisorOpt = BugCore.game.CustDomAdv
 MainOpt = BugCore.game.MainInterface
-# BUG - Options - end
 
 # Needed to save changes
 import pickle
@@ -113,10 +110,20 @@ localText = CyTranslator()
 
 # hack to force repositioning if resolution (or language) changes
 g_bMustCreatePositions = True
-
 def forcePositionCalc (*args):
 	global g_bMustCreatePositions
 	g_bMustCreatePositions = True
+
+# used to access the customizing flag
+g_advisor = None
+def isCustomizing():
+	return g_advisor.customizing
+
+def getEditWidgetText(eWidgetType, iData1, iData2, bOption):
+	if isCustomizing():
+		return BugUtil.getPlainText("TXT_KEY_CDA_STOP_EDITING")
+	else:
+		return BugUtil.getPlainText("TXT_KEY_CDA_START_EDITING")
 
 # Class CvDomesticAdvisor
 # Class
@@ -187,6 +194,9 @@ class CvCustomizableDomesticAdvisor:
 
 		self.customizing = False
 		self.currentPageNum = 0
+		
+		global g_advisor
+		g_advisor = self
 
 		# Special Class variables
 
@@ -696,14 +706,14 @@ class CvCustomizableDomesticAdvisor:
 		""" Calculates the basic positions to draw on. """
 
 		# Borders from BUG Options
-		nBorderTop = [0, 23, 52, 105][AdvisorOpt.getCDASpaceTop()]
+		nBorderTop = [0, 23, 52, 105][AdvisorOpt.getSpaceTop()]
 		nBorderBottom = 177
 		# If the min/max commerce buttons are shown, we need more space on the left
 		nBorderLeft = 110
 		if (MainOpt.isShowMinMaxCommerceButtons()):
 			nBorderLeft = 150
-		nBorderLeft = [0, 20, 40, nBorderLeft, nBorderLeft][AdvisorOpt.getCDASpaceSides()]
-		nBorderRight = [0, 20, 40, nBorderLeft, 20][AdvisorOpt.getCDASpaceSides()]
+		nBorderLeft = [0, 20, 40, nBorderLeft, nBorderLeft][AdvisorOpt.getSpaceSides()]
+		nBorderRight = [0, 20, 40, nBorderLeft, 20][AdvisorOpt.getSpaceSides()]
 
 		# Location/Size of the Overall Screen
 		self.nScreenX = nBorderLeft
@@ -888,28 +898,28 @@ class CvCustomizableDomesticAdvisor:
 		x = self.X_SPECIAL + self.PAGES_DD_W + 10
 
 		# Buttons to switch screens
-		screen.setImageButton( self.PREV_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.PREV_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_PREV_PAGE, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.NEXT_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_NEXT_PAGE, -1, -1 )
 		x += self.nControlSize + 12
-		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
+		screen.addCheckBoxGFC(self.START_CUSTOMIZING_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_FOREIGN").getPath(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_EDIT_PAGE, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.RENAME_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BTN_EVENT_LOG").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_RENAME_PAGE, -1, -1 )
 		x += self.nControlSize + 2
 		info = gc.getSpecialistInfo(gc.getInfoTypeForString("SPECIALIST_CITIZEN"))
-		screen.addCheckBoxGFC(self.TOGGLE_SPECS_NAME, info.getTexture(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
+		screen.addCheckBoxGFC(self.TOGGLE_SPECS_NAME, info.getTexture(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_TOGGLE_SPECIALISTS, -1, -1, ButtonStyles.BUTTON_STYLE_IMAGE )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.ADD_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_ADD_PAGE, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.DEL_PAGE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_REMOVE_PAGE, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.PAGE_UP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_PAGE_UP, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.PAGE_DOWN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_PAGE_DOWN, -1, -1 )
 		x += self.nControlSize + 12
-		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.SAVE_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_MENU_ICON").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_SAVE, -1, -1 )
 		x += self.nControlSize + 2
-		screen.setImageButton( self.RELOAD_PAGES_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.RELOAD_PAGES_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), x, self.Y_SPECIAL, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_RELOAD, -1, -1 )
 		x += self.nControlSize + 2
 
 		# Cultural Levels Text
@@ -1071,17 +1081,17 @@ class CvCustomizableDomesticAdvisor:
 		screen = self.getScreen()
 		
 		x = self.nTableX + self.nHalfTableWidth - self.nControlSize
-		screen.setImageButton( self.COLUMNDN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.COLUMNDN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_UP, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.COLUMNUP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.COLUMNUP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_DOWN, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.DELCOLUMN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.DELCOLUMN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_REMOVE_COLUMN, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.ADDCOLUMN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.ADDCOLUMN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_ADD_COLUMN, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.COLUMN_WIDEN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.COLUMN_WIDEN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_RIGHT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_EXPAND_COLUMN, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.COLUMN_SHRINK_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setImageButton( self.COLUMN_SHRINK_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_LEFT").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_SHRINK_COLUMN, -1, -1 )
 		
 		self.hideCustomizationControls()
 
@@ -1334,8 +1344,8 @@ class CvCustomizableDomesticAdvisor:
 
 		szReturn = u""
 # BUG - Production Grouping - start
-		bProdColors = AdvisorOpt.isCDAProdColors()
-		bProdIcons = AdvisorOpt.isCDAProdIcons()
+		bProdColors = AdvisorOpt.isProductionGroupingColors()
+		bProdIcons = AdvisorOpt.isProductionGroupingIcons()
 # BUG - Production Grouping - end
 
 		# If there's something in the queue,
@@ -2089,7 +2099,7 @@ class CvCustomizableDomesticAdvisor:
 			screen.hide(szName)
 
 		# Fill the pages drop down
-		screen.addDropDownBoxGFC(self.PAGES_DD_NAME, self.X_SPECIAL, self.Y_SPECIAL, self.PAGES_DD_W, WidgetTypes.WIDGET_GENERAL, -1, -1, FontTypes.GAME_FONT)
+		screen.addDropDownBoxGFC(self.PAGES_DD_NAME, self.X_SPECIAL, self.Y_SPECIAL, self.PAGES_DD_W, WidgetTypes.WIDGET_CDA_SELECT_PAGE, -1, -1, FontTypes.GAME_FONT)
 		for i, p in enumerate(self.PAGES):
 			screen.addPullDownString(self.PAGES_DD_NAME, p["name"], i, i, i == self.currentPageNum )
 
