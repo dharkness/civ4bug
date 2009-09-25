@@ -20,7 +20,7 @@
 ##     Uses <TEXT> CIV4GameText.xml element matching <key> for the hover text of <widget>.
 ##     This form allows you to use translated strings as it's looked up each time it's shown.
 ##
-##       <widget name="<widget-name>" key="<key>"/>
+##       <widget name="<widget-name>" xml="<key>"/>
 ##
 ##   setWidgetHelpFunction(widget, func)
 ##     Calls <func> to get the hover text of <widget> each time it's shown.

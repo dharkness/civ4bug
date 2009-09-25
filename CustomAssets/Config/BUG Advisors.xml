@@ -16,31 +16,6 @@
 	 
 	<options id="Advisors" file="BUG Advisors.ini">
 		<section id="Advisors">
-			<!-- Customizable Domestic Advisor (F1) by Taelis, pages by Cammagno -->
-			<option id="CustDomAdv" key="CustDomAdv" 
-					type="boolean" default="True" 
-					get="isCustDomAdv"/>
-			<list	id="CDASpaceTop" key="CDASpaceTop"
-					type="int" listType="string" 
-					values="None|Small|Medium|Large" default="1"
-					get="getCDASpaceTop">
-				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
-			</list>
-			<list	id="CDASpaceSides" key="CDASpaceSides"
-					type="int" listType="string" 
-					values="None|Small|Medium|Large|LargeLeft" default="1"
-					get="getCDASpaceSides">
-				<change module="CvCustomizableDomesticAdvisor" function="forcePositionCalc"/>
-			</list>
-			<list	id="CDAProdGroup" key="CDA Production Grouping"
-					type="int" default="3" listType="string" 
-					get="getCDAProdGroup">
-				<choice id="None" get="isCDAProdNone"/>
-				<choice id="Icons" get="isCDAProdIcons"/>
-				<choice id="Colors" get="isCDAProdColors"/>
-				<choice id="Both" get="isCDAProdIcons isCDAProdColors"/>
-			</list>
-
 			<!-- Finance Advisor by EmperorFool -->
 			<option id="BugFinanceAdvisor" key="BUG Finance Advisor" 
 					type="boolean" default="True" 
