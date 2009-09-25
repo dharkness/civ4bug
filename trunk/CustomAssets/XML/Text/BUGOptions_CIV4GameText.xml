@@ -1841,7 +1841,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DISPLAYNAME_HOVER</Tag>
 		<English>Determines how civilizations are labeled on the scoreboard.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Leader[COLOR_REVERT] - Name of the leader or player (Victoria or EmperorFool).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Civilization[COLOR_REVERT] - Name of the civilization (England).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Description[COLOR_REVERT] - Descriptive name of the civilization (English Empire).</English>
 		<French>Determine comment les civilisations sont affichées sur le panneau des scores.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Leader[COLOR_REVERT] - Name of the leader or player (Victoria or EmperorFool).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Civilization[COLOR_REVERT] - Name of the civilization (England).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Description[COLOR_REVERT] - Descriptive name of the civilization (English Empire).</French>
-		<German>Bestimmt den Namen, mit dem Zivilisationen in der Punkteanzeige angezeigt werden[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Leader[COLOR_REVERT] - Name of the leader or player (Victoria or EmperorFool).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Civilization[COLOR_REVERT] - Name of the civilization (England).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Description[COLOR_REVERT] - Descriptive name of the civilization (English Empire).</German>
+		<German>Bestimmt den Namen, mit dem Zivilisationen in der Punkteanzeige angezeigt werden:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Oberhaupt[COLOR_REVERT] - Name des Oberhaupts oder Spielers (Victoria oder EmperorFool)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Zivilisation (Ziv)[COLOR_REVERT] - Name der Zivilisation (England)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Ziv-Beschreibung[COLOR_REVERT] - Beschreibender Name der Zivilisation (Reich der Engländer)</German>
 		<Italian>Determina come le Civiltà vengono identificate nel Pannello del Punteggio.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Leader[COLOR_REVERT] - Name of the leader or player (Victoria or EmperorFool).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Civilization[COLOR_REVERT] - Name of the civilization (England).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Description[COLOR_REVERT] - Descriptive name of the civilization (English Empire).</Italian>
 		<Spanish>Determines how civilizations are labeled on the scoreboard.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Leader[COLOR_REVERT] - Name of the leader or player (Victoria or EmperorFool).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Civilization[COLOR_REVERT] - Name of the civilization (England).[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Description[COLOR_REVERT] - Descriptive name of the civilization (English Empire).</Spanish>
 	</TEXT>
@@ -1849,7 +1849,7 @@
 		<Tag>TXT_KEY_BUG_OPT_SCORES__DISPLAYNAME_LIST</Tag>
 		<English>Leader|Civilization|Civ Description|Leader / Civ|Leader / Civ Desc</English>
 		<French>Leader|Civilization|Civ Description|Leader / Civ|Leader / Civ Desc</French>
-		<German>Oberhaupt|Zivilisation|Ziv-Kürzel|Oberhaupt + Ziv|Oberhaupt + Ziv-Kürzel</German>
+		<German>Oberhaupt|Zivilisation|Ziv-Beschreibung|Oberhaupt / Zivilisation|Oberhaupt / Ziv-Beschreibung</German>
 		<Italian>Leader|Civiltà|Short Civ|Leader + Civ|Leader + Short Civ</Italian>
 		<Spanish>Leader|Civilization|Civ Description|Leader / Civ|Leader / Civ Desc</Spanish>
 	</TEXT>
@@ -3355,7 +3355,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWRELIGIONS_TEXT</Tag>
 		<English>Show Religions</English>
 		<French>Show Religions</French>
-		<German>Anzeige Religionen</German>
+		<German>Anzeige</German>
 		<Italian>Show Religions</Italian>
 		<Spanish>Show Religions</Spanish>
 	</TEXT>
