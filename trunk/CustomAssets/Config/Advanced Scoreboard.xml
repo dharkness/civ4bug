@@ -43,9 +43,9 @@
 					get="getDisplayName" set="setDisplayName" dirtyBit="Score">
 				<choice id="Leader" get="isShowLeaderName" set="setShowLeaderName"/>
 				<choice id="Civilization" get="isShowCivName" set="setShowCivName"/>
-				<choice id="Short Civ" get="isShowCivNameShort" set="setShowShortCivNameShort"/>
-				<choice id="Leader + Civ" get="isShowBothNames" set="setShowBothNames"/>
-				<choice id="Leader + Short Civ" get="isShowBothNamesShort" set="setShowBothNamesShort"/>
+				<choice id="CivDescription" get="isShowCivNameShort" set="setShowShortCivNameShort"/>
+				<choice id="LeaderAndCivilization" get="isShowBothNames" set="setShowBothNames"/>
+				<choice id="LeaderAndCivDescription" get="isShowBothNamesShort" set="setShowBothNamesShort"/>
 			</list>
 			<option id="UsePlayerName" key="Use Player Name" 
 					type="boolean" default="True" 
