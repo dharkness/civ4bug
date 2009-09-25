@@ -34,6 +34,8 @@ Improvements:
 
 - Scoreboard
 	Refuses to Talk now works without BULL
+- Customizable Domestic Advisor (F1)
+	Added hover help text to buttons
 - MapFinder
 	Added ALT + CTRL + SHIFT + G to stop
 	Added separate Save path
