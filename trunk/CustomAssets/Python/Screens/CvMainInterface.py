@@ -5754,13 +5754,13 @@ class CvMainInterface:
 							if (iTradeProfit != 0):
 								if ( iTradeProfit > 0 ):
 									if TradeUtil.isFractionalTrade():
-										szTempBuffer = u"%s%d.%2d%c" %( "+", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
+										szTempBuffer = u"%s%d.%02d%c" %( "+", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
 									else:
 										szTempBuffer = u"%s%d%c" %( "+", iTradeProfit, gc.getYieldInfo(j).getChar() )
 									szRightBuffer = szRightBuffer + szTempBuffer
 								else:
 									if TradeUtil.isFractionalTrade():
-										szTempBuffer = u"%s%d.%2d%c" %( "", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
+										szTempBuffer = u"%s%d.%02d%c" %( "", iTradeProfit // 100,  iTradeProfit % 100, gc.getYieldInfo(j).getChar() )
 									else:
 										szTempBuffer = u"%s%d%c" %( "", iTradeProfit, gc.getYieldInfo(j).getChar() )
 									szRightBuffer = szRightBuffer + szTempBuffer
