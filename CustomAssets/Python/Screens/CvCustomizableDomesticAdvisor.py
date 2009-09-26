@@ -1081,9 +1081,9 @@ class CvCustomizableDomesticAdvisor:
 		screen = self.getScreen()
 		
 		x = self.nTableX + self.nHalfTableWidth - self.nControlSize
-		screen.setImageButton( self.COLUMNDN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_UP, -1, -1 )
+		screen.setImageButton( self.COLUMNDN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_DOWNARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_DOWN, -1, -1 )
 		x -= self.nControlSize + 2
-		screen.setImageButton( self.COLUMNUP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_DOWN, -1, -1 )
+		screen.setImageButton( self.COLUMNUP_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_GENERAL_UPARROW").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_MOVE_COLUMN_UP, -1, -1 )
 		x -= self.nControlSize + 2
 		screen.setImageButton( self.DELCOLUMN_NAME, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), x, self.nCustomizeControlY, self.nControlSize, self.nControlSize, WidgetTypes.WIDGET_CDA_REMOVE_COLUMN, -1, -1 )
 		x -= self.nControlSize + 2
