@@ -5,11 +5,19 @@
 ## Notes
 ##   - Must be initialized externally by calling init()
 ##
+## TODO
+##   - Use PlayerUtil
+##
 ## Copyright (c) 2008 The BUG Mod.
 ##
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+
+# BUG - Mac Support - start
+import BugUtil
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
 
 NUM_TECHS = -1
 NUM_AND_PREREQS = -1

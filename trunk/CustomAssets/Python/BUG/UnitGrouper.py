@@ -10,6 +10,10 @@ from CvPythonExtensions import *
 import BugUtil
 import UnitUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 # globals
 gc = CyGlobalContext()
 

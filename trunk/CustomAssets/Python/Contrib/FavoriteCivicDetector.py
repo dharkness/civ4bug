@@ -18,6 +18,10 @@ import BugUtil
 import PlayerUtil
 import SdToolKit
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 # globals
 gc = CyGlobalContext()
 localText = CyTranslator()

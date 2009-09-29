@@ -16,6 +16,10 @@ import TechUtil
 AdvisorOpt = BugCore.game.Advisors
 # BUG - end
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 PyPlayer = PyHelpers.PyPlayer
 
 # globals

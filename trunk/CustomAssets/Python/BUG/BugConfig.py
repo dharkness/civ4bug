@@ -38,6 +38,10 @@ import BugUtil
 import CvEventInterface
 import types
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 
 # Constants
 

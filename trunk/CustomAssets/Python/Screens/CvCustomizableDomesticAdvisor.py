@@ -75,6 +75,10 @@ import BugUtil
 import FontUtil
 import GameUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 import math
 
 PyPlayer = PyHelpers.PyPlayer

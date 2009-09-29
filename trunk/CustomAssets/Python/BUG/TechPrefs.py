@@ -8,6 +8,11 @@
 
 from CvPythonExtensions import *
 
+# BUG - Mac Support - start
+import BugUtil
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 gc = CyGlobalContext()
 
 # see gc.getNumFlavorTypes() and gc.getFlavorTypes()

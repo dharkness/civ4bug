@@ -10,6 +10,11 @@ from CvPythonExtensions import *
 
 import CvUtil
 
+# BUG - Mac Support - start
+import BugUtil
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 # globals
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()

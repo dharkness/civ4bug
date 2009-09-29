@@ -24,6 +24,10 @@
 
 import BugUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 
 ## Type Constants
 

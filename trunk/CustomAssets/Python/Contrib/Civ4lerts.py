@@ -75,6 +75,9 @@ import DiplomacyUtil
 import PlayerUtil
 import TradeUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
 
 # Must set alerts to "not immediate" to have icons show up
 # Need a healthy person icon

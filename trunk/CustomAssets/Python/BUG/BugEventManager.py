@@ -93,6 +93,10 @@ import BugUtil
 import InputUtil
 import types
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 DEFAULT_LOGGING = False
 DEFAULT_NOLOG_EVENTS = set((
 	"gameUpdate",
