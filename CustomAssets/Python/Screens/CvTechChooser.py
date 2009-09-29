@@ -42,6 +42,10 @@ UNIT_CLASSES = [ "UNITCLASS_ENGINEER", "UNITCLASS_MERCHANT", "UNITCLASS_SCIENTIS
 import GameUtil
 # BUG - 3.19 No Espionage - end
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 def resetTechPrefs(args=[]):
 	CvScreensInterface.techChooser.resetTechPrefs()
 

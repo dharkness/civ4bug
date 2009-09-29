@@ -10,6 +10,10 @@ from CvPythonExtensions import *
 import BugUtil
 import PlayerUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 gc = CyGlobalContext()
 
 NUM_UNITS = 0

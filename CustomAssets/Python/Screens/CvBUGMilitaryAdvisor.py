@@ -33,6 +33,10 @@ import PlayerUtil
 import UnitGrouper
 import UnitUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 PyPlayer = PyHelpers.PyPlayer
 
 # globals

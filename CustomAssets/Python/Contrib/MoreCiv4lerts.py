@@ -8,6 +8,11 @@ import BugCore
 import PlayerUtil
 import TradeUtil
 
+# BUG - Mac Support - start
+import BugUtil
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 gc = CyGlobalContext()
 localText = CyTranslator()
 PyGame = PyHelpers.PyGame()

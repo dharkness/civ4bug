@@ -104,6 +104,10 @@ import DiplomacyUtil
 import GameUtil
 import PlayerUtil
 
+# BUG - Mac Support - start
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 gc = CyGlobalContext()
 
 CORP_BONUSES = {}

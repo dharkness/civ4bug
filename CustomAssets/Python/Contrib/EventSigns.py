@@ -17,6 +17,11 @@ import BugCore
 import BugOptions
 EventSignsOpt = BugCore.game.EventSigns
 
+# BUG - Mac Support - start
+import BugUtil
+BugUtil.fixSets(globals())
+# BUG - Mac Support - end
+
 # civ globals
 gc = CyGlobalContext()
 engine = CyEngine()
