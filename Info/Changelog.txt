@@ -3,10 +3,11 @@ BUG Change Log
 This file lists the new features and fixes contained in each BUG release.
 
 Note: Changes marked [BULL] only take effect when the optional BUG DLL is installed.
+      BULL features that don't require BUG to are not listed here.
 
 
 ____________________________________________________________________________________________________
-BUG x.x unreleased
+BUG 4.1 released September 29th, 2009
 
 CHANGES
 
