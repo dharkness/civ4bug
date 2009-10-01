@@ -179,7 +179,8 @@ def createHoverText(pCity, iTurns):
 	
 	percents = calcPercentages(pCity)
 	if (len(percents) > 0):
-		percents.sort(reverse=True)
+		percents.sort()
+		percents.reverse()
 		for iPercent, iUnit in percents:
 #			iUnit = getUnitType(gpType)
 			szText += u"\n%s - %d%%" % (gc.getUnitInfo(iUnit).getDescription(), iPercent)
@@ -214,7 +215,8 @@ def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarType
 				else:
 					szText = sGreatPeopleChar
 		else:
-			lPercents.sort(reverse=True)
+			lPercents.sort()
+			lPercents.reverse()
 			if (bGPBarTypesOne or len(lPercents) == 1):
 				iPercent, iUnit = lPercents[0]
 				pInfo = gc.getUnitInfo(iUnit)

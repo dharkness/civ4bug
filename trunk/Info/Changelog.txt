@@ -20,6 +20,8 @@ Bug Fixes:
 - Customizable Domestic Advisor
 	Fixed options on Advsors tab
 	Fixed Zoom to City Button Details option title
+- Mac
+	Fixed reverse list sorting in GPUtil
 
 
 MODDING
