@@ -401,12 +401,6 @@ def init():
 					BugUtil.debug("ReligionUtil.init - %s %s is %i: %s", 
 								gc.getReligionInfo(iReligion).getDescription(), type.description, iUnit, unit.getDescription())
 					break
-	
-	for iReligion in range(NUM_RELIGIONS):
-		for index in range(NUM_BUILDING_TYPES):
-			BugUtil.debug("FUCK - %i bldg %i = %i", iReligion, index, getBuilding(iReligion, index))
-		for index in range(NUM_UNIT_TYPES):
-			BugUtil.debug("FUCK - %i unit %i = %i", iReligion, index, getUnit(iReligion, index))
 
 
 ## Building and Unit Types
