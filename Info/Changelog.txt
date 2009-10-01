@@ -7,6 +7,31 @@ Note: Changes marked [BULL] only take effect when the optional BUG DLL is instal
 
 
 ____________________________________________________________________________________________________
+BUG 4.1.1 unreleased
+
+CHANGES
+
+New Features:
+
+Improvements:
+
+Bug Fixes:
+
+- Customizable Domestic Advisor
+	Fixed options on Advsors tab
+	Fixed Zoom to City Button Details option title
+
+
+MODDING
+
+New Features:
+
+Improvements:
+
+Bug Fixes:
+
+
+____________________________________________________________________________________________________
 BUG 4.1 released September 29th, 2009
 
 CHANGES

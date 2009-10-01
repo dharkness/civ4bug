@@ -20,11 +20,11 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 
 		self.addLabel(screen, left, "Domestic_Advisor", "Domestic [F1]:")
-		self.addCheckbox(screen, left, "Advisors__CustDomAdv")
+		self.addCheckbox(screen, left, "CustDomAdv__Enabled")
 		leftL, leftR = self.addTwoColumnLayout(screen, left, "Advisors__CustDomAdv")
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceTop", True)
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDASpaceSides", True)
-		self.addTextDropdown(screen, leftL, leftR, "Advisors__CDAProdGroup", True)
+		self.addTextDropdown(screen, leftL, leftR, "CustDomAdv__SpaceTop", True)
+		self.addTextDropdown(screen, leftL, leftR, "CustDomAdv__SpaceSides", True)
+		self.addTextDropdown(screen, leftL, leftR, "CustDomAdv__ProdGroup", True)
 		self.addCheckbox(screen, left, "MiscHover__CDAZoomCityDetails")
 
 		self.addLabel(screen, left, "Finance_Advisor", "Finance [F2]:")
