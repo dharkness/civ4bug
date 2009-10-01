@@ -321,11 +321,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CDAZOOMCITYDETAILS_TEXT</Tag>
-		<English>Zoom to City Button</English>
-		<French>Zoom to City Button</French>
+		<English>Zoom to City Details</English>
+		<French>Zoom to City Details</French>
 		<German>Zur Stadt zoomen</German>
 		<Italian>Bottone di Zoom Cittadino</Italian>
-		<Spanish>Zoom to City Button</Spanish>
+		<Spanish>Zoom to City Details</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CDAZOOMCITYDETAILS_HOVER</Tag>
