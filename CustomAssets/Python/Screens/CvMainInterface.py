@@ -2704,7 +2704,7 @@ class CvMainInterface:
 
 # BUG - Great Person Bar - start
 		xCoord += 7 + 100
-		screen.addStackedBarGFC( "GreatPersonBar", xCoord, 27, 380, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar", xCoord, 27, 380, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GP_PROGRESS_BAR, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -2730,7 +2730,7 @@ class CvMainInterface:
 		screen.hide( "ResearchBar-w" )
 
 		xCoord += 6 + 487
-		screen.addStackedBarGFC( "GreatPersonBar-w", xCoord, 2, 320, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.addStackedBarGFC( "GreatPersonBar-w", xCoord, 2, 320, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GP_PROGRESS_BAR, -1, -1 )
 		screen.setStackedBarColors( "GreatPersonBar-w", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_STORED") )
 		screen.setStackedBarColors( "GreatPersonBar-w", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_GREAT_PEOPLE_RATE") )
 		screen.setStackedBarColors( "GreatPersonBar-w", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -5026,14 +5026,7 @@ class CvMainInterface:
 # BUG - Great Person Bar - start
 	def updateGreatPersonBar(self, screen):
 		if (not CyInterface().isCityScreenUp() and MainOpt.isShowGPProgressBar()):
-			pHeadSelectedCity = CyInterface().getHeadSelectedCity()
-			if (pHeadSelectedCity and pHeadSelectedCity.getTeam() == gc.getGame().getActiveTeam()):
-				pGPCity = pHeadSelectedCity
-				iGPTurns = GPUtil.getCityTurns(pGPCity)
-			else:
-				pGPCity, iGPTurns = GPUtil.findNextCity()
-				if (not pGPCity):
-					pGPCity, iGPP = GPUtil.findMaxCity()
+			pGPCity, iGPTurns = GPUtil.getDisplayCity()
 			szText = GPUtil.getGreatPeopleText(pGPCity, iGPTurns, GP_BAR_WIDTH, MainOpt.isGPBarTypesNone(), MainOpt.isGPBarTypesOne(), True)
 			szText = u"<font=2>%s</font>" % (szText)
 			if (pGPCity):
@@ -5052,7 +5045,7 @@ class CvMainInterface:
 				xCoord = 268 + (xResolution - 1024) / 2 + 100 + 7 + 380 / 2
 				yCoord = 30
 
-			screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, iCityID, -1 )
+			screen.setText( "GreatPersonBarText", "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, xCoord, yCoord, -0.4, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GP_PROGRESS_BAR, -1, -1 )
 			if (not pGPCity):
 				screen.setHitTest( "GreatPersonBarText", HitTestTypes.HITTEST_NOHIT )
 			screen.show( "GreatPersonBarText" )

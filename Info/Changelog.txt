@@ -15,6 +15,9 @@ New Features:
 
 Improvements:
 
+- Great Person Progress Bar
+	Added hover text displaying full details
+
 Bug Fixes:
 
 - Customizable Domestic Advisor
