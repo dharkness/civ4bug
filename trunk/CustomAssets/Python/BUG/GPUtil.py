@@ -22,6 +22,7 @@
 
 from CvPythonExtensions import *
 import BugUtil
+import PlayerUtil
 
 gc = CyGlobalContext()
 localText = CyTranslator()
@@ -59,6 +60,9 @@ NUM_GP = len(g_gpBarList)
 g_gpUnitTypes = None
 g_gpColors = None
 g_unitIcons = None
+
+
+# Information
 
 def init():
 	global g_gpUnitTypes
@@ -101,63 +105,74 @@ def getUnitIcon(iUnit):
 		BugUtil.warn("no GP icon for unit %d", iUnit)
 		return u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
 
+
+# Getting Progress
+
+def getDisplayCity():
+	"""
+	Returns the city to display in the progress bar.
+	"""
+	pHeadSelectedCity = CyInterface().getHeadSelectedCity()
+	if (pHeadSelectedCity and pHeadSelectedCity.getTeam() == gc.getGame().getActiveTeam()):
+		city = pHeadSelectedCity
+		iTurns = getCityTurns(city)
+	else:
+		city, iTurns = findNextCity()
+		if not city:
+			city, iGPP = findMaxCity()
+			iTurns = None
+	return (city, iTurns)
+
 def findNextCity():
 	iMinTurns = None
 	iTurns = 0
-	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-	iThreshold = pPlayer.greatPeopleThreshold(False)
-	pBestCity = None
-	
-	for iCity in range(pPlayer.getNumCities()):
-		pCity = pPlayer.getCity(iCity)
-		if (pCity):
-			iRate = pCity.getGreatPeopleRate()
-			if (iRate > 0):
-				iProgress = pCity.getGreatPeopleProgress()
-				iTurns = (iThreshold - iProgress + iRate - 1) / iRate
-				if (iMinTurns is None or iTurns < iMinTurns):
-					iMinTurns = iTurns
-					pBestCity = pCity
-	return (pBestCity, iMinTurns)
+	player = gc.getPlayer(gc.getGame().getActivePlayer())
+	iThreshold = player.greatPeopleThreshold(False)
+	bestCity = None
+	for city in PlayerUtil.playerCities(player):
+		iRate = city.getGreatPeopleRate()
+		if (iRate > 0):
+			iProgress = city.getGreatPeopleProgress()
+			iTurns = (iThreshold - iProgress + iRate - 1) / iRate
+			if (iMinTurns is None or iTurns < iMinTurns):
+				iMinTurns = iTurns
+				bestCity = city
+	return (bestCity, iMinTurns)
 
 def findMaxCity():
 	iMaxProgress = 0
-	pPlayer = gc.getPlayer(gc.getGame().getActivePlayer())
-	pBestCity = None
-	
-	for iCity in range(pPlayer.getNumCities()):
-		pCity = pPlayer.getCity(iCity)
-		if (pCity):
-			iProgress = pCity.getGreatPeopleProgress()
-			if (iProgress > iMaxProgress):
-				iMaxProgress = iProgress
-				pBestCity = pCity
-	return (pBestCity, iMaxProgress)
+	player = gc.getPlayer(gc.getGame().getActivePlayer())
+	bestCity = None
+	for city in PlayerUtil.playerCities(player):
+		iProgress = city.getGreatPeopleProgress()
+		if (iProgress > iMaxProgress):
+			iMaxProgress = iProgress
+			bestCity = city
+	return (bestCity, iMaxProgress)
 
-def getCityTurns(pCity):
-	if (pCity):
-		pPlayer = gc.getPlayer(pCity.getOwner())
-		iThreshold = pPlayer.greatPeopleThreshold(False)
-		iRate = pCity.getGreatPeopleRate()
+def getCityTurns(city):
+	if (city):
+		player = gc.getPlayer(city.getOwner())
+		iThreshold = player.greatPeopleThreshold(False)
+		iRate = city.getGreatPeopleRate()
 		if (iRate > 0):
-			iProgress = pCity.getGreatPeopleProgress()
+			iProgress = city.getGreatPeopleProgress()
 			iTurns = (iThreshold - iProgress + iRate - 1) / iRate
 			return iTurns
 	return None
 
-def calcPercentages(pCity):
+def calcPercentages(city):
 	# Calc total rate
 	iTotal = 0
 	for iUnit in g_gpUnitTypes:
-		iTotal += pCity.getGreatPeopleUnitProgress(iUnit)
-	
+		iTotal += city.getGreatPeopleUnitProgress(iUnit)
 	# Calc individual percentages based on rates and total
 	percents = []
 	if (iTotal > 0):
 		iLeftover = 100
 		for iUnit in range(gc.getNumUnitInfos()):
 #			iUnit = getUnitType(gpType)
-			iProgress = pCity.getGreatPeopleUnitProgress(iUnit)
+			iProgress = city.getGreatPeopleUnitProgress(iUnit)
 			if (iProgress > 0):
 				iPercent = 100 * iProgress / iTotal
 				iLeftover -= iPercent
@@ -167,51 +182,60 @@ def calcPercentages(pCity):
 			percents[0] = (percents[0][0] + iLeftover, percents[0][1])
 	return percents
 
-def createHoverText(pCity, iTurns):
-	if (not pCity):
-		return None
-	iProgress = pCity.getGreatPeopleProgress()
-	iThreshold = gc.getPlayer(pCity.getOwner()).greatPeopleThreshold(False)
-	szText = localText.getText("TXT_KEY_MISC_GREAT_PERSON", (iProgress, iThreshold))
-	iRate = pCity.getGreatPeopleRate()
+
+# Displaying Progress
+
+def getHoverText(eWidgetType, iData1, iData2, bOption):
+	city, iTurns = getDisplayCity()
+	if (not city):
+		# no rate or progress in any city and no city selected
+		return localText.getText("TXT_KEY_MISC_GREAT_PERSON", (0, PlayerUtil.getActivePlayer().greatPeopleThreshold(False)))
+	iThreshold = gc.getPlayer(city.getOwner()).greatPeopleThreshold(False)
+	iProgress = city.getGreatPeopleProgress()
+	iRate = city.getGreatPeopleRate()
+	szText = BugUtil.colorText(city.getName(), "COLOR_HIGHLIGHT_TEXT")
 	szText += u"\n"
-	szText += localText.getText("INTERFACE_CITY_TURNS", (iTurns,))
+	szText += localText.getText("TXT_KEY_MISC_GREAT_PERSON", (iProgress, iThreshold))
+	if (iRate > 0):
+		szText += u"\n"
+		szText += localText.getText("INTERFACE_CITY_TURNS", (iTurns,))
 	
-	percents = calcPercentages(pCity)
+	percents = calcPercentages(city)
 	if (len(percents) > 0):
 		percents.sort()
 		percents.reverse()
+		szText += u"\n"
 		for iPercent, iUnit in percents:
 #			iUnit = getUnitType(gpType)
-			szText += u"\n%s - %d%%" % (gc.getUnitInfo(iUnit).getDescription(), iPercent)
+			szText += u"\n%s%s - %d%%" % (getUnitIcon(iUnit), gc.getUnitInfo(iUnit).getDescription(), iPercent)
 	return szText
 
-def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypesOne, bIncludeCityName):
+def getGreatPeopleText(city, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypesOne, bIncludeCityName):
 	sGreatPeopleChar = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
-	if (not pCity):
+	if (not city):
 		szText = localText.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
 	elif (bGPBarTypesNone):
 		if (iGPTurns):
 			if (bIncludeCityName):
-				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 			else:
 				szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 		else:
 			if (bIncludeCityName):
-				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 			else:
 				szText = sGreatPeopleChar
 	else:
-		lPercents = calcPercentages(pCity)
+		lPercents = calcPercentages(city)
 		if (len(lPercents) == 0):
 			if (iGPTurns):
 				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 				else:
 					szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 			else:
 				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 				else:
 					szText = sGreatPeopleChar
 		else:
@@ -222,23 +246,23 @@ def getGreatPeopleText(pCity, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarType
 				pInfo = gc.getUnitInfo(iUnit)
 				if (iGPTurns):
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), pCity.getName(), iGPTurns))
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), city.getName(), iGPTurns))
 					else:
 						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (pInfo.getDescription(), iGPTurns))
 				else:
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (pInfo.getDescription(), pCity.getName()))
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (pInfo.getDescription(), city.getName()))
 					else:
 						szText = unicode(pInfo.getDescription())
 			else:
 				if (iGPTurns):
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, pCity.getName(), iGPTurns))
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 					else:
 						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 				else:
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, pCity.getName()))
+						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 					else:
 						szText = sGreatPeopleChar + u":"
 				szTypes = ""

@@ -81,4 +81,6 @@
 					get="isShowStackMovementPoints" dirtyBit="InfoPane"/>
 		</section>
 	</options>
+	
+	<widget name="WIDGET_GP_PROGRESS_BAR" module="GPUtil" function="getHoverText"/>
 </mod>
