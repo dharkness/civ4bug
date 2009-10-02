@@ -17,14 +17,16 @@ Improvements:
 
 - Great Person Progress Bar
 	Added hover text displaying full details
+- Info Screen [F9]
+	Added hover help text to WONDERS tab buttons
 
 Bug Fixes:
 
+- Mac
+	Fixed reverse list sorting in GPUtil
 - Customizable Domestic Advisor
 	Fixed options on Advsors tab
 	Fixed Zoom to City Button Details option title
-- Mac
-	Fixed reverse list sorting in GPUtil
 - Added missing 3.19 change with liberating cities during wartime
 
 
