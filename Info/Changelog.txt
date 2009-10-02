@@ -13,6 +13,9 @@ CHANGES
 
 New Features:
 
+- SevoPedia
+	Tech page shows Civilizations that start with the tech
+
 Improvements:
 
 - Great Person Progress Bar
