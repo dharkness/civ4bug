@@ -3,7 +3,7 @@ BUG Change Log
 This file lists the new features and fixes contained in each BUG release.
 
 Note: Changes marked [BULL] only take effect when the optional BUG DLL is installed.
-      BULL features that don't require BUG to are not listed here.
+      BULL features that don't require BUG are not listed here.
 
 
 ____________________________________________________________________________________________________
@@ -25,6 +25,7 @@ Bug Fixes:
 	Fixed Zoom to City Button Details option title
 - Mac
 	Fixed reverse list sorting in GPUtil
+- Added missing 3.19 change with liberating cities during wartime
 
 
 MODDING
