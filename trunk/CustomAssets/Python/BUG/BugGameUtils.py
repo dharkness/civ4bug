@@ -261,14 +261,20 @@ class Dispatcher:
 		self._addListener(name, self._bind(utils, func), log)
 	
 	def _addUtils(self, utils, override=False, log=None):
+		"""
+		Registers all of the handler and listener functions in <utils> that match existing callbacks.
+		"""
 		clazz = utils.__class__
 		BugUtil.debug("BugGameUtils - registering %s.%s", clazz.__module__, clazz.__name__)
 		for name, func in clazz.__dict__.iteritems():
 			if not name.startswith("_") and isinstance(func, types.FunctionType):
 				if name.endswith(LISTENER_SUFFIX):
-					self._addBoundListener(name[:-len(LISTENER_SUFFIX)], utils, func, log)
+					name = name[:-len(LISTENER_SUFFIX)]
+					if name in self._callbacks:
+						self._addBoundListener(name, utils, func, log)
 				else:
-					self._addBoundHandler(name, utils, func, override, log)
+					if name in self._callbacks:
+						self._addBoundHandler(name, utils, func, override, log)
 	
 	def _bind(self, utils, func):
 		bound = lambda *args: func(utils, *args)
