@@ -118,7 +118,7 @@ def default(type):
 	try:
 		form, default = DEFAULTS[type]
 	except KeyError:
-		raise BugUtil.ConfigError("Invalid type for default(): %s", type)
+		raise BugUtil.ConfigError("Invalid type %s", type)
 	else:
 		if form == DEFAULT_CONSTANT:
 			return default
@@ -161,7 +161,8 @@ def to(type, value, noneIsDefault=True, emptyIsDefault=True):
 	Converts <value> from a string to <type>.
 	
 	If <type> is None or empty (""), the value is evaluated directly using eval();
-	otherwise <type> is normalized first.
+	otherwise <type> is normalized first. If <value> is None or empty ("") as well,
+	the special value None is returned.
 	
 	If <value> is None or empty (""), the default is used based on the optional parameters.
 	
@@ -171,13 +172,20 @@ def to(type, value, noneIsDefault=True, emptyIsDefault=True):
 		if not value:
 			if (value is None and noneIsDefault) or (value == "" and emptyIsDefault):
 				return default(type)
-			return None
+			else:
+				return None
 		else:
 			try:
 				return CONVERT_FROM_STRING[normalize(type)](value.replace("\r\n", " "))
 			except KeyError:
 				raise BugUtil.ConfigError("Invalid type %s", type)
+			except:
+				raise BugUtil.ConfigError("Invalid %s: %s", type, value)
 	else:
-		if (value is None and noneIsDefault) or (value == "" and emptyIsDefault):
-			raise BugUtil.ConfigError("to() requires a type and/or value")
-		return eval(value)
+		if value:
+			try:
+				return eval(value)
+			except:
+				raise BugUtil.ConfigError("Invalid expression %s", value)
+		else:
+			return None

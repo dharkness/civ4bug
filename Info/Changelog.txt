@@ -43,6 +43,7 @@ Bug Fixes:
 
 - GameUtils
 	Fixed problem when using <callback> element to define new callbacks
+	New <callback>s no longer require a default value (omit both "type" and "default")
 
 
 ____________________________________________________________________________________________________
