@@ -37,6 +37,9 @@ MODDING
 
 New Features:
 
+- Events
+	playerRevolution(ePlayer, iAnarchyTurns, leOldCivics, leNewCivics) [BULL]
+
 Improvements:
 
 Bug Fixes:
