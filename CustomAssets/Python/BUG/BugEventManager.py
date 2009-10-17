@@ -27,7 +27,7 @@
 ##   - addShortcutHandler(keys, function)
 ##       Adds a handler for the given keyboard shortcut(s)
 ##
-## * New events
+## * New BUG events
 ##
 ##   - BeginActivePlayerTurn(ePlayer, iGameTurn)
 ##       Signifies the moment the active player can begin making their moves
@@ -48,28 +48,33 @@
 ##   - PythonReloaded
 ##       Fired after Python modules have been reloaded while game is running
 ##
-##   - unitUpgraded(pOldUnit, pNewUnit, iPrice) [BULL]
+## * New BULL events
+##
+##   - unitUpgraded(pOldUnit, pNewUnit, iPrice)
 ##       Fired when a unit is upgraded
 ##
-##   - unitCaptured(eOwner, eUnitType, pNewUnit) [BULL]
+##   - unitCaptured(eOwner, eUnitType, pNewUnit)
 ##       Fired when a unit is captured
 ##
-##   - combatWithdrawal(pAttacker, pDefender) [BULL]
+##   - combatWithdrawal(pAttacker, pDefender)
 ##       Fired when a unit withdraws from combat after doing maximum damage
 ##
-##   - combatRetreat(pAttacker, pDefender) [BULL]
+##   - combatRetreat(pAttacker, pDefender)
 ##       Fired when a unit retreats from combat, escaping death
 ##
-##   - combatLogCollateral(pAttacker, pDefender, iDamage) [BULL]
+##   - combatLogCollateral(pAttacker, pDefender, iDamage)
 ##       Fired when a unit inflicts collateral damage to another unit
 ##
-##   - combatLogFlanking(pAttacker, pDefender, iDamage) [BULL]
+##   - combatLogFlanking(pAttacker, pDefender, iDamage)
 ##       Fired when a unit inflicts flanking damage to another unit
+##
+##   - playerRevolution(ePlayer, iAnarchyTurns, leOldCivics, leNewCivics)
+##       Fired when a player begins revolution to new civics
 ##
 ## * Fixed events
 ##
 ##   - endTurnReady
-##       Signifies the moment the "End Turn" text is displayed on the screen
+##       Signifies the first time the "End Turn" text is displayed on the screen
 ##       Fired from CvMainInterface.updateScreen()
 ##
 ## * Events and their arguments are optionally logged.
@@ -186,6 +191,9 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("combatRetreat")
 		self.addEvent("combatLogCollateral")
 		self.addEvent("combatLogFlanking")
+		self.addEvent("playerRevolution")
+		
+		self.addEventHandler("playerRevolution", self.onPlayerRevolution)
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -478,29 +486,38 @@ class BugEventManager(CvEventManager.CvEventManager):
 				gc.getPlayer(eOwner).getName(), gc.getUnitInfo(eUnitType).getDescription(), 
 				pNewUnit.getName(), gc.getPlayer(pNewUnit.getOwner()).getName())
 	
-	def onCombatWithdrawal(self, argslist):
+	def onCombatWithdrawal(self, argsList):
 		"""Fired when a unit withdraws from combat after doing maximum damage."""
-		pAttacker, pDefender = argslist
+		pAttacker, pDefender = argsList
 		BugUtil.debug("%s withdraws from %s", 
 				pAttacker.getName(), pDefender.getName())
 	
-	def onCombatRetreat(self, argslist):
+	def onCombatRetreat(self, argsList):
 		"""Fired when a unit retreats from combat, escaping death."""
-		pAttacker, pDefender = argslist
+		pAttacker, pDefender = argsList
 		BugUtil.debug("%s retreats from %s", 
 				pAttacker.getName(), pDefender.getName())
 	
-	def onCombatLogCollateral(self, argslist):
+	def onCombatLogCollateral(self, argsList):
 		"""Fired when a unit inflicts collateral damage to another unit."""
-		pAttacker, pDefender, iDamage = argslist
+		pAttacker, pDefender, iDamage = argsList
 		BugUtil.debug("%s bombards %s for %d HP", 
 				pAttacker.getName(), pDefender.getName(), iDamage)
 	
-	def onCombatLogFlanking(self, argslist):
+	def onCombatLogFlanking(self, argsList):
 		"""Fired when a unit inflicts flanking damage to another unit."""
-		pAttacker, pDefender, iDamage = argslist
+		pAttacker, pDefender, iDamage = argsList
 		BugUtil.debug("%s flanks %s for %d HP", 
 				pAttacker.getName(), pDefender.getName(), iDamage)
+	
+	
+	def onPlayerRevolution(self, argsList):
+		ePlayer, iAnarchyTurns, leOldCivics, leNewCivics = argsList
+		civics = []
+		for eOldCivic, eNewCivic in zip(leOldCivics, leNewCivics):
+			if eOldCivic != eNewCivic:
+				civics.append(gc.getCivicInfo(eNewCivic).getDescription())
+		BugUtil.debug("Revolution for %s, %d turns: %s", gc.getPlayer(ePlayer).getName(), iAnarchyTurns, ", ".join(civics))
 
 
 EVENT_FUNCTION_MAP = {
