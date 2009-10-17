@@ -968,8 +968,8 @@ class AutoLogEvent(AbstractAutoLogEvent):
 
 			message = message + zsLocn
 
-			if (iLastPillageGold is None
-			or not self.bHumanPlaying):
+			global iLastPillageGold
+			if (iLastPillageGold is None or not self.bHumanPlaying):
 				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_NOGOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName()))
 			else:
 				message = message + BugUtil.getText("TXT_KEY_AUTOLOG_IMPROVEMENT_DESTROYED_BY_GOLD", (PyPlayer(iOwner).getCivilizationAdjective(), pUnit.getName(), iLastPillageGold))
