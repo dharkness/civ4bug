@@ -41,6 +41,9 @@ Improvements:
 
 Bug Fixes:
 
+- GameUtils
+	Fixed problem when using <callback> element to define new callbacks
+
 
 ____________________________________________________________________________________________________
 BUG 4.1 released September 29th, 2009
