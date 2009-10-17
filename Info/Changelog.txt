@@ -28,9 +28,10 @@ Bug Fixes:
 - Mac
 	Fixed reverse list sorting in GPUtil
 - Customizable Domestic Advisor
-	Fixed options on Advsors tab
+	Fixed options on Advisors tab
 	Fixed Zoom to City Button Details option title
-- Added missing 3.19 change with liberating cities during wartime
+- Added missing 3.19 change with liberating cities during war-time
+- AutoLog correctly displays pillaging entries
 
 
 MODDING
