@@ -71,6 +71,7 @@ from CvPythonExtensions import *
 import AttitudeUtil
 import BugCore
 import BugUtil
+import CityUtil
 import DiplomacyUtil
 import PlayerUtil
 import TradeUtil
@@ -388,15 +389,13 @@ class CityPendingGrowth(AbstractCityAlert):
 	
 	def checkCity(self, iCityID, city, iPlayer, player):
 		if (Civ4lertsOpt.isShowCityPendingGrowthAlert()):
-			iFoodRate = city.foodDifference(True)
-			if (iFoodRate > 0 and city.getFoodTurnsLeft() == 1 
-			and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+			if (CityUtil.willGrowThisTurn(city)):
 				message = localText.getText(
 						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_GROWTH",
 						(city.getName(), city.getPopulation() + 1))
 				icon = "Art/Interface/Symbols/Food/food05.dds"
 				addMessageAtCity(iPlayer, message, icon, city)
-			elif (iFoodRate < 0 and city.getFood() // -iFoodRate == 0):
+			elif (CityUtil.willShrinkThisTurn(city)):
 				message = localText.getText(
 						"TXT_KEY_CIV4LERTS_ON_CITY_PENDING_SHRINKAGE",
 						(city.getName(), city.getPopulation() - 1))
@@ -481,9 +480,9 @@ class CityHappiness(AbstractCityTestAlert):
 		return city.angryPopulation(0) > 0
 
 	def _willPassTest(self, city):
-		if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+		if (CityUtil.willGrowThisTurn(city)):
 			iExtra = 1
-		elif (city.getFoodTurnsLeft() == -1):
+		elif (CityUtil.willShrinkThisTurn(city)):
 			iExtra = -1
 		else:
 			iExtra = 0
@@ -543,9 +542,9 @@ class CityHealthiness(AbstractCityTestAlert):
 		return city.healthRate(False, 0) < 0
 
 	def _willPassTest(self, city):
-		if (city.getFoodTurnsLeft() == 1 and not city.isFoodProduction() and not city.AI_isEmphasize(5)):
+		if (CityUtil.willGrowThisTurn(city)):
 			iExtra = 1
-		elif (city.getFoodTurnsLeft() == -1):
+		elif (CityUtil.willShrinkThisTurn(city)):
 			iExtra = -1
 		else:
 			iExtra = 0

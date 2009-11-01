@@ -364,6 +364,14 @@
 	<!-- Food Assist -->
 	
 	<TEXT>
+		<Tag>INTERFACE_CITY_GROWTH</Tag>
+		<English>[COLOR_POSITIVE_TEXT]Growth![COLOR_REVERT]</English>
+		<French>[COLOR_POSITIVE_TEXT]Croissance![COLOR_REVERT]</French>
+		<German>[COLOR_POSITIVE_TEXT]Wachstum![COLOR_REVERT]</German>
+		<Italian>[COLOR_POSITIVE_TEXT]Crescita![COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_POSITIVE_TEXT]Crecimiento![COLOR_REVERT]</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>INTERFACE_CITY_SHRINKING</Tag>
 		<English>[COLOR_YELLOW]Shrinking (%d1 [NUM1:Turn:Turns])[COLOR_REVERT]</English>
 		<French>[COLOR_YELLOW]Rétrécissement (%d1 [NUM1:tour:tours])[COLOR_REVERT]</French>
