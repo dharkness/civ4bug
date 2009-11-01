@@ -32,7 +32,9 @@ Bug Fixes:
 	Fixed options on Advisors tab
 	Fixed Zoom to City Button Details option title
 - Added missing 3.19 change with liberating cities during war-time
-- AutoLog correctly displays pillaging entries
+- AutoLog
+	Pillaging entries work and show correct gold amount
+	Peace offer entries work
 - Civ4lerts
 	Fixed how growth, happiness, and health alerts determine whether or not a city will grow
 

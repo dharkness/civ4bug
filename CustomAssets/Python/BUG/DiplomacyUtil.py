@@ -256,11 +256,10 @@ def onHelpOffered(argsList):
 
 def onPeaceOffered(argsList):
 	#BugUtil.debug("DiplomacyUtil::onPeaceOffered %s" %(str(argsList)))
-	eOfferPlayer, eTargetPlayer, pTrade = argsList
-	BugUtil.debug("DiplomacyUtil - %s offers peace to %s: %r",
+	eOfferPlayer, eTargetPlayer = argsList
+	BugUtil.debug("DiplomacyUtil - %s offers peace to %s",
 			PlayerUtil.getPlayer(eOfferPlayer).getName(), 
-			PlayerUtil.getPlayer(eTargetPlayer).getName(),
-			pTrade)
+			PlayerUtil.getPlayer(eTargetPlayer).getName())
 
 def onVassalOffered(argsList):
 	#BugUtil.debug("DiplomacyUtil::onVassalOffered %s" %(str(argsList)))

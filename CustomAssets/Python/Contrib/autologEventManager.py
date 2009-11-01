@@ -1058,30 +1058,13 @@ class AutoLogEvent(AbstractAutoLogEvent):
 			Logger.writeLog(message, vColor="Navy")
 	
 	def onPeaceOffered(self, argsList):
-		eOfferPlayer, eTargetPlayer, pTrade = argsList
+		eOfferPlayer, eTargetPlayer = argsList
 		if AutologOpt.isLogTradeOffer():
 			pTargetPlayer = gc.getPlayer(eTargetPlayer)
 			pOfferPlayer = gc.getPlayer(eOfferPlayer)
-			szOfferItems = ""
-			szTargetItems = ""
-			message = ""
-			if eOfferPlayer == pTrade.getPlayer():
-				for i in range(pTrade.getCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getTrade(i)) + ", "
-				for i in range(pTrade.getOtherCount()):
-					szTargetItems = szTargetItems + TradeUtil.format(eTargetPlayer, pTrade.getOtherTrade(i)) + ", "
-			else:
-				for i in range(pTrade.getOtherCount()):
-					szOfferItems = szOfferItems + TradeUtil.format(eOfferPlayer, pTrade.getOtherTrade(i)) + ", "
-				for i in range(pTrade.getCount()):
-					szTargetItems = szTargetItems + TradeUtil.format(eTargetPlayer, pTrade.getTrade(i)) + ", "
-			szOfferItems = szOfferItems.rstrip(", ")
-			szTargetItems = szTargetItems.rstrip(", ")
 			message = BugUtil.getText("TXT_KEY_AUTOLOG_DIPLO_PEACE_OFFER", 
 									(pOfferPlayer.getName(), pOfferPlayer.getCivilizationShortDescription(0),
-									szOfferItems,
-									pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0),
-									szTargetItems))
+									pTargetPlayer.getName(), pTargetPlayer.getCivilizationShortDescription(0)))
 			Logger.writeLog(message, vColor="Navy")
 	
 	def onVassalOffered(self, argsList):
