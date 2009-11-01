@@ -27,6 +27,7 @@ Bug Fixes:
 
 - Mac
 	Fixed reverse list sorting in GPUtil
+	Fixed random crash when using Strategy Layer
 - Customizable Domestic Advisor
 	Fixed options on Advisors tab
 	Fixed Zoom to City Button Details option title

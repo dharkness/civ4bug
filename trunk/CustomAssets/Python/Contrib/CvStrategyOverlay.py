@@ -14,6 +14,7 @@
 from CvPythonExtensions import *
 from SdToolkit import *
 import BugCore
+import BugPath
 import BugUtil
 import CvOverlayScreenUtils
 import PlayerUtil
@@ -112,6 +113,7 @@ class StrategyLayer(object):
 	"""
 	def __init__(self, id):
 		self.MOD_SAVE_ID = "StrategyOverlay"
+		self.INVISIBLE_COLOR = NiColorA(0, 0, 0, 0)
 		self.id = id
 		self.visible = False
 		self.editing = False
@@ -560,8 +562,12 @@ class DotMapLayer(StrategyLayer):
 		"""
 		if self.DRAW_DOTS:
 			x, y = city.point
-			color = gc.getColorInfo(city.color).getType()
-			CyEngine().addColoredPlotAlt(x, y, self.DOT_STYLE, self.DOT_LAYER, color, alpha)
+			colorInfo = gc.getColorInfo(city.color)
+			if BugPath.isMac():
+				color = colorInfo.getColor()
+				CyEngine().addColoredPlot(x, y, NiColorA(color.r, color.g, color.b, alpha), self.DOT_LAYER)
+			else:
+				CyEngine().addColoredPlotAlt(x, y, self.DOT_STYLE, self.DOT_LAYER, colorInfo.getType(), alpha)
 	
 	def eraseDot(self, city, alpha):
 		"""
@@ -569,7 +575,10 @@ class DotMapLayer(StrategyLayer):
 		"""
 		if self.DRAW_DOTS:
 			x, y = city.point
-			CyEngine().addColoredPlotAlt(x, y, self.NO_DOT_STYLE, self.DOT_LAYER, "", alpha)
+			if BugPath.isMac():
+				CyEngine().addColoredPlot(x, y, self.INVISIBLE_COLOR, self.DOT_LAYER)
+			else:
+				CyEngine().addColoredPlotAlt(x, y, self.NO_DOT_STYLE, self.DOT_LAYER, "", alpha)
 	
 	def clearCityLayers(self):
 		"""
