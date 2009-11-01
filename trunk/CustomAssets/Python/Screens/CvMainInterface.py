@@ -16,6 +16,7 @@ import BugCore
 import BugOptions
 import BugPath
 import BugUtil
+import CityUtil
 ClockOpt = BugCore.game.NJAGC
 ScoreOpt = BugCore.game.Scores
 MainOpt = BugCore.game.MainInterface
@@ -5350,11 +5351,13 @@ class CvMainInterface:
 				screen.setStyle( "CityNameText", "Button_Stone_Style" )
 				screen.show( "CityNameText" )
 
-				if ( (iFoodDifference != 0) or not (pHeadSelectedCity.isFoodProduction() ) ):
-					if (iFoodDifference > 0):
+# BUG - Food Assist - start
+				if ( CityUtil.willGrowThisTurn(pHeadSelectedCity) or (iFoodDifference != 0) or not (pHeadSelectedCity.isFoodProduction() ) ):
+					if (CityUtil.willGrowThisTurn(pHeadSelectedCity)):
+						szBuffer = localText.getText("INTERFACE_CITY_GROWTH", ())
+					elif (iFoodDifference > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_GROWING", (pHeadSelectedCity.getFoodTurnsLeft(), ))	
 					elif (iFoodDifference < 0):
-# BUG - Food Assist - start
 						if (CityScreenOpt.isShowFoodAssist()):
 							iTurnsToStarve = pHeadSelectedCity.getFood() / -iFoodDifference + 1
 							if iTurnsToStarve > 1:

@@ -32,6 +32,8 @@ Bug Fixes:
 	Fixed Zoom to City Button Details option title
 - Added missing 3.19 change with liberating cities during war-time
 - AutoLog correctly displays pillaging entries
+- Civ4lerts
+	Fixed how growth, happiness, and health alerts determine whether or not a city will grow
 
 
 MODDING
@@ -40,6 +42,8 @@ New Features:
 
 - Events
 	playerRevolution(ePlayer, iAnarchyTurns, leOldCivics, leNewCivics) [BULL]
+- CityUtil
+	Use willGrowThisTurn() and willShrinkThisTurn() instead of CyCity.getFoodTurnsLeft()
 
 Improvements:
 
