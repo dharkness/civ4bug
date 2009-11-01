@@ -874,11 +874,11 @@
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_PEACE_OFFER</Tag>
-        <English>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</English>
-        <French>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</French>
-        <German>Diplomatie: %s1 (%s2) bietet %s4 (%s5) einen Friedensvertrag an</German>
-        <Italian>%s1 (%s2) ha fatto una proposta di pace a %s4 (%s5)</Italian>
-        <Spanish>Diplomacy: %s1 (%s2) offers to make peace with %s4 (%s5)</Spanish>
+        <English>Diplomacy: %s1 (%s2) offers to make peace with %s3 (%s4)</English>
+        <French>Diplomacy: %s1 (%s2) offers to make peace with %s3 (%s4)</French>
+        <German>Diplomatie: %s1 (%s2) bietet %s3 (%s4) einen Friedensvertrag an</German>
+        <Italian>%s1 (%s2) ha fatto una proposta di pace a %s3 (%s4)</Italian>
+        <Spanish>Diplomacy: %s1 (%s2) offers to make peace with %s3 (%s4)</Spanish>
     </TEXT> 
     <TEXT>
         <Tag>TXT_KEY_AUTOLOG_DIPLO_VASSAL_OFFER</Tag>
