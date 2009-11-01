@@ -1,4 +1,4 @@
-## BugUtil
+## GameUtil
 ##
 ## Collection of utility functions for dealing with the game and its options.
 ##
