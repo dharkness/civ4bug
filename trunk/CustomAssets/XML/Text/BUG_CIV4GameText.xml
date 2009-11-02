@@ -365,11 +365,11 @@
 	
 	<TEXT>
 		<Tag>INTERFACE_CITY_GROWTH</Tag>
-		<English>[COLOR_POSITIVE_TEXT]Growth![COLOR_REVERT]</English>
-		<French>[COLOR_POSITIVE_TEXT]Croissance![COLOR_REVERT]</French>
-		<German>[COLOR_POSITIVE_TEXT]Wachstum![COLOR_REVERT]</German>
-		<Italian>[COLOR_POSITIVE_TEXT]Crescita![COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_POSITIVE_TEXT]Crecimiento![COLOR_REVERT]</Spanish>
+		<English>Growth!</English>
+		<French>Croissance!</French>
+		<German>Wachstum!</German>
+		<Italian>Crescita!</Italian>
+		<Spanish>Crecimiento!</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>INTERFACE_CITY_SHRINKING</Tag>
