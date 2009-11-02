@@ -28,6 +28,8 @@ Bug Fixes:
 - Mac
 	Fixed reverse list sorting in GPUtil
 	Fixed random crash when using Strategy Layer
+- City Screen
+	Fixed display of food bar text when city is already over threshold
 - Customizable Domestic Advisor
 	Fixed options on Advisors tab
 	Fixed Zoom to City Button Details option title
