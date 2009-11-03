@@ -25,20 +25,23 @@ Improvements:
 
 Bug Fixes:
 
-- Mac
-	Fixed reverse list sorting in GPUtil
-	Fixed random crash when using Strategy Layer
 - City Screen
 	Fixed display of food bar text when city is already over threshold
 - Customizable Domestic Advisor
 	Fixed options on Advisors tab
 	Fixed Zoom to City Button Details option title
-- Added missing 3.19 change with liberating cities during war-time
 - AutoLog
 	Pillaging entries work and show correct gold amount
 	Peace offer entries work
+- AutoSave
+	Fixed invalid save file names when starting from a scenario
 - Civ4lerts
-	Fixed how growth, happiness, and health alerts determine whether or not a city will grow
+	Growth, happiness, and health alerts correctly detect when a city will grow next turn
+- General
+	Added missing 3.19 change with liberating cities during war-time
+- Mac
+	Fixed reverse list sorting in GPUtil
+	Fixed random crash when using Strategy Layer
 
 
 MODDING
