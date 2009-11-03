@@ -19,6 +19,7 @@
 ## Author: Ruff_Hi, EmperorFool
 
 from CvPythonExtensions import *
+import os.path
 import time
 import CvUtil
 import BugCore
@@ -94,7 +95,7 @@ def getSaveFileName(pathName):
 			map = gc.getMap()
 			
 			difficulty = gc.getHandicapInfo(activePlayer.getHandicapType()).getText()
-			mapType = map.getMapScriptName()
+			mapType = os.path.basename(map.getMapScriptName())
 			mapSize = gc.getWorldInfo(map.getWorldSize()).getText()
 			mapClimate = gc.getClimateInfo(map.getClimate()).getText()
 			mapLevel = gc.getSeaLevelInfo(map.getSeaLevel()).getText()
