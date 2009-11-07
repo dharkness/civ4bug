@@ -62,6 +62,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "Advisors__BugGraphsLogScale")
 		self.addCheckbox(screen, center, "Advisors__BugStatsTab")
 		self.addCheckbox(screen, center, "Advisors__BugInfoWonders")
+		self.addCheckbox(screen, center, "Advisors__BugInfoWondersPlayerColor", True)
 
 
 		self.addLabel(screen, right, "Sevopedia", "Sevopedia [F12]:")
