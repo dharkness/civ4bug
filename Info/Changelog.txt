@@ -22,6 +22,9 @@ Improvements:
 	Added hover text displaying full details
 - Info Screen [F9]
 	Added hover help text to WONDERS tab buttons
+- Options
+	Shortcut Reminder message turns itself off the first time you open the Options screen
+	If you turn it back on in the System tab, it will remain on as before
 
 Bug Fixes:
 
@@ -56,7 +59,7 @@ New Features:
 Improvements:
 
 - Options
-	Options Key Reminder message uses CvModName.modName instead of "BUG Mod"
+	Shortcut Reminder message uses CvModName.modName instead of "BUG Mod"
 
 Bug Fixes:
 
