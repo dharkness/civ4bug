@@ -2483,11 +2483,16 @@ class CvInfoScreen:
 
 #			self.aaWondersBeingBuilt_BUG contains the following:
 			iWonderType = self.aaWondersBeingBuilt_BUG[iWonderLoop][0]
-			sCivilization = self.aaWondersBeingBuilt_BUG[iWonderLoop][1]
+			szWonderBuiltBy = self.aaWondersBeingBuilt_BUG[iWonderLoop][1]
 			pCity = self.aaWondersBeingBuilt_BUG[iWonderLoop][2]
 			iPlayer = self.aaWondersBeingBuilt_BUG[iWonderLoop][3]
 
-			color = gc.getPlayerColorInfo(gc.getPlayer(iPlayer).getPlayerColor()).getColorTypePrimary()
+			color = -1
+			ePlayerColor = gc.getPlayer(iPlayer).getPlayerColor()
+			if ePlayerColor != -1:
+				playerColor = gc.getPlayerColorInfo(ePlayerColor)
+				if playerColor:
+					color = playerColor.getColorTypePrimary()
 
 			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
@@ -2496,15 +2501,18 @@ class CvInfoScreen:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
 				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING
 
-			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
+			szWonderName = pWonderInfo.getDescription()
 			szTurnYearBuilt = u"<font=2>%c</font>" % gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar()
-			szWonderBuiltBy = localText.changeTextColor(sCivilization, color)
 
 			# Check to see if active player can see this city
 			if pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
-				szCityName = localText.changeTextColor(pCity.getName(), color)
+				szCityName = pCity.getName()
 			else:
-				szCityName = ""
+				szCityName = u""
+
+			if AdvisorOpt.isWonderListUsePlayerColor():
+				szWonderBuiltBy = localText.changeTextColor(szWonderBuiltBy, color)
+				szCityName = localText.changeTextColor(szCityName, color)
 
 			screen.appendTableRow(self.szWondersTable)
 			screen.setTableText(self.szWondersTable, 0, iWonderLoop, ""             , zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, pCity.getOwner(), pCity.getID(), CvUtil.FONT_LEFT_JUSTIFY)
@@ -2519,11 +2527,16 @@ class CvInfoScreen:
 			iTurnYearBuilt = self.aaWondersBuilt_BUG[iWonderLoop][0]
 			iWonderType = self.aaWondersBuilt_BUG[iWonderLoop][1]
 			bKnown = self.aaWondersBuilt_BUG[iWonderLoop][2]
-			sCivilization = self.aaWondersBuilt_BUG[iWonderLoop][3]
+			szWonderBuiltBy = self.aaWondersBuilt_BUG[iWonderLoop][3]
 			pCity = self.aaWondersBuilt_BUG[iWonderLoop][4]
 			iPlayer = self.aaWondersBuilt_BUG[iWonderLoop][5]
 
-			color = gc.getPlayerColorInfo(gc.getPlayer(iPlayer).getPlayerColor()).getColorTypePrimary()
+			color = -1
+			ePlayerColor = gc.getPlayer(iPlayer).getPlayerColor()
+			if ePlayerColor != -1:
+				playerColor = gc.getPlayerColorInfo(ePlayerColor)
+				if playerColor:
+					color = playerColor.getColorTypePrimary()
 
 			if (self.szWonderDisplayMode == self.szWDM_Project):
 				pWonderInfo = gc.getProjectInfo(iWonderType)
@@ -2531,22 +2544,23 @@ class CvInfoScreen:
 			else:
 				pWonderInfo = gc.getBuildingInfo(iWonderType)
 				iWidget = WidgetTypes.WIDGET_PEDIA_JUMP_TO_BUILDING
-
+			szWonderName = pWonderInfo.getDescription()
+			
 			if iTurnYearBuilt == -9999:
-				szTurnYearBuilt = ""
+				szTurnYearBuilt = u""
 			else:
 				szTurnYearBuilt = BugUtil.getDisplayYear(iTurnYearBuilt)
-				szTurnYearBuilt = localText.changeTextColor(szTurnYearBuilt, color)
-
-			szWonderName    = localText.changeTextColor(pWonderInfo.getDescription(), color)
-			szWonderBuiltBy = localText.changeTextColor(sCivilization, color)
 
 			# Check to see if active player can see this city
 			if pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
-				szCityName = localText.changeTextColor(pCity.getName(), color)
+				szCityName = pCity.getName()
 			else:
-				szCityName = ""
+				szCityName = u""
 
+			if AdvisorOpt.isWonderListUsePlayerColor():
+				szWonderBuiltBy = localText.changeTextColor(szWonderBuiltBy, color)
+				szCityName = localText.changeTextColor(szCityName, color)
+			
 			screen.appendTableRow(self.szWondersTable)
 			if bKnown and pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
 				screen.setTableText(self.szWondersTable, 0, iWonderLoop+iWBB, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, pCity.getOwner(), pCity.getID(), CvUtil.FONT_LEFT_JUSTIFY)

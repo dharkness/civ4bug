@@ -21,6 +21,7 @@ Improvements:
 - Great Person Progress Bar
 	Added hover text displaying full details
 - Info Screen [F9]
+	Made colors optional on WONDERS list
 	Added hover help text to WONDERS tab buttons
 - Options
 	Shortcut Reminder message turns itself off the first time you open the Options screen

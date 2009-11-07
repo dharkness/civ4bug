@@ -48,7 +48,7 @@
 					type="boolean" default="True" 
 					get="isWideTechScreen"/>
 	
-			<!-- BUG Religious (F7) by Ruff_Hi -->
+			<!-- BUG Religion Advisor (F7) by Ruff_Hi -->
 			<option id="BugReligiousTab" key="Religious" 
 					type="boolean" default="True" 
 					get="isReligious"/>
@@ -60,7 +60,7 @@
 				<choice id="Player" get="isShowPlayerReligions"/>
 			</list>
 
-			<!-- BUG Victories (F8) by Ruff_Hi -->
+			<!-- BUG Victory Advisor (F8) by Ruff_Hi -->
 			<option id="BugVictoriesTab" key="Victories" 
 					type="boolean" default="True" 
 					get="isVictories"/>
@@ -68,7 +68,7 @@
 					type="boolean" default="True" 
 					get="isMembers"/>
 	
-			<!-- BUG Info (F9) by Ruff_Hi -->
+			<!-- BUG Info Screen (F9) by Ruff_Hi -->
 			<option id="BugGraphsTab" key="Graphs" 
 					type="boolean" default="True" 
 					get="isGraphs"/>
@@ -81,6 +81,9 @@
 			<option id="BugInfoWonders" key="Wonders" 
 					type="boolean" default="True" 
 					get="isShowInfoWonders"/>
+			<option id="BugInfoWondersPlayerColor" key="Wonders Player Color" 
+					type="boolean" default="True" 
+					get="isWonderListUsePlayerColor"/>
 
 			<!-- Sevopedia (F12) by Sevo -->
 			<option id="Sevopedia" key="Sevopedia" 
