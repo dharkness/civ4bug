@@ -19,7 +19,7 @@
 			<!-- Options Screen Shortcut Reminder -->
 			<option id="OptionsKey" key="Options Shortcut Reminder" 
 					type="boolean" default="True" 
-					get="isShowOptionsKeyReminder" dirtyBit="GameData"/>
+					get="isShowOptionsKeyReminder" set="setShowOptionsKeyReminder" dirtyBit="GameData"/>
 			
 			<!-- Gold Rate Warning -->
 			<option id="GoldRateWarning" key="Gold Rate Warning" 
