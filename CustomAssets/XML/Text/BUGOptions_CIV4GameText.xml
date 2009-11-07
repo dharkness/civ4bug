@@ -3371,7 +3371,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERSPLAYERCOLOR_TEXT</Tag>
 		<English>Use Player Color</English>
 		<French>Use Player Color</French>
-		<German>Use Player Color</German>
+		<German>Spielerfarben</German>
 		<Italian>Use Player Color</Italian>
 		<Spanish>Use Player Color</Spanish>
 	</TEXT>
@@ -3379,7 +3379,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGINFOWONDERSPLAYERCOLOR_HOVER</Tag>
 		<English>When checked, displays wonders on the BUG version of the Wonders tab using the owning player's color.</English>
 		<French>When checked, displays wonders on the BUG version of the Wonders tab using the owning player's color.</French>
-		<German>When checked, displays wonders on the BUG version of the Wonders tab using the owning player's color.</German>
+		<German>Färbt die Wundernamen auf der von BUG veränderten Wunder-Seite in der Farbe des jeweiligen Spielers ein</German>
 		<Italian>When checked, displays wonders on the BUG version of the Wonders tab using the owning player's color.</Italian>
 		<Spanish>When checked, displays wonders on the BUG version of the Wonders tab using the owning player's color.</Spanish>
 	</TEXT>
