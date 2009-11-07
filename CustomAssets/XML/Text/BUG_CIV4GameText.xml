@@ -10,19 +10,19 @@
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER</Tag>
-		<English>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</English>
-		<French>Poussez sur [BOLD]ALT + CTRL + O[\BOLD] pour configurer le BUG Mod</French>
-		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
-		<Italian>Premi [BOLD]CTRL+ALT+O[\BOLD] per personalizzare il BUG Mod</Italian>
-		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize the BUG Mod</Spanish>
+		<English>Press [BOLD]ALT + CTRL + O[\BOLD] to customize %s1</English>
+		<French>Poussez sur [BOLD]ALT + CTRL + O[\BOLD] pour configurer %s1</French>
+		<German>[BOLD]&lt;STRG + ALT + O&gt;[\BOLD] drücken, um %s1 anzupassen...</German>
+		<Italian>Premi [BOLD]CTRL+ALT+O[\BOLD] per personalizzare %s1</Italian>
+		<Spanish>Press [BOLD]ALT + CTRL + O[\BOLD] to customize %s1</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTIONS_KEY_REMINDER_MAC</Tag>
-		<English>Press [BOLD]ALT + CMD + O[\BOLD] to customize the BUG Mod</English>
-		<French>Poussez sur [BOLD]ALT + CMD + O[\BOLD] pour configurer le BUG Mod</French>
-		<German>[BOLD]&lt;CMD + ALT + O&gt;[\BOLD] drücken, um die BUG Mod anzupassen...</German>
-		<Italian>Premi [BOLD]CMD+ALT+O[\BOLD] per personalizzare il BUG Mod</Italian>
-		<Spanish>Press [BOLD]ALT + CMD + O[\BOLD] to customize the BUG Mod</Spanish>
+		<English>Press [BOLD]ALT + CMD + O[\BOLD] to customize %s1</English>
+		<French>Poussez sur [BOLD]ALT + CMD + O[\BOLD] pour configurer %s1</French>
+		<German>[BOLD]&lt;CMD + ALT + O&gt;[\BOLD] drücken, um %s1 anzupassen...</German>
+		<Italian>Premi [BOLD]CMD+ALT+O[\BOLD] per personalizzare %s1</Italian>
+		<Spanish>Press [BOLD]ALT + CMD + O[\BOLD] to customize %s1</Spanish>
 	</TEXT>
 	
 	<TEXT>
