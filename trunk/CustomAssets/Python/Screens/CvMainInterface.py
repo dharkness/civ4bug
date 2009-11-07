@@ -3020,9 +3020,9 @@ class CvMainInterface:
 # BUG - Options - start
 				elif ( MainOpt.isShowOptionsKeyReminder() ):
 					if BugPath.isMac():
-						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER_MAC", ())
+						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER_MAC", (BugPath.getModName(),))
 					else:
-						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", ())
+						acOutput = localText.getText("TXT_KEY_BUG_OPTIONS_KEY_REMINDER", (BugPath.getModName(),))
 					#screen.modifyLabel( "EndTurnText", acOutput, CvUtil.FONT_CENTER_JUSTIFY )
 					screen.setEndTurnState( "EndTurnText", acOutput )
 					bShow = True

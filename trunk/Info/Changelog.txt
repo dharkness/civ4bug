@@ -14,7 +14,7 @@ CHANGES
 New Features:
 
 - SevoPedia
-	Tech page shows Civilizations that start with the tech
+	Technology page shows Civilizations that start with it
 
 Improvements:
 
@@ -54,6 +54,9 @@ New Features:
 	Use willGrowThisTurn() and willShrinkThisTurn() instead of CyCity.getFoodTurnsLeft()
 
 Improvements:
+
+- Options
+	Options Key Reminder message uses CvModName.modName instead of "BUG Mod"
 
 Bug Fixes:
 
