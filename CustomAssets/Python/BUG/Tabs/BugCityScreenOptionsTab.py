@@ -65,7 +65,7 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverBuildingThreshold")
 		
 		
-		self.addLabel(screen, right, "Citybar", "City Bar Hover:")
+		self.addLabel(screen, right, "CitybarHover", "City Bar Hover:")
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Right", False)
 		
 		self.addCheckbox(screen, rightL, "CityBar__BaseValues")
