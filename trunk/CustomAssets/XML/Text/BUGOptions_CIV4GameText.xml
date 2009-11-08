@@ -3748,6 +3748,14 @@
 		<Spanish>Strategy Layer:</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR</Tag>
+		<English>City Bar:</English>
+		<French>City Bar:</French>
+		<German>Stadtbalken:</German>
+		<Italian>Barra Cittadina:</Italian>
+		<Spanish>City Bar:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAPFINDER</Tag>
 		<English>MapFinder:</English>
 		<French>MapFinder:</French>
@@ -3906,7 +3914,7 @@
 		<Spanish>Production Decay:</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR</Tag>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR_HOVER</Tag>
 		<English>City Bar Hover:</English>
 		<French>City Bar Hover:</French>
 		<German>Stadtbalken-Tooltip:</German>

@@ -10,6 +10,22 @@
 <!-- Plot -->
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LATLONGCOORDS_TEXT</Tag>
+		<English>Longitude &amp; Latitude</English>
+		<French>Longitude &amp; Latitude</French>
+		<German>Longitude &amp; Latitude</German>
+		<Italian>Longitude &amp; Latitude</Italian>
+		<Spanish>Longitude &amp; Latitude</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_HOVER</Tag>
+		<English>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</English>
+		<French>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</French>
+		<German>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</German>
+		<Italian>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</Italian>
+		<Spanish>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_TEXT</Tag>
 		<English>Partial Builds</English>
 		<French>Partial Builds</French>
