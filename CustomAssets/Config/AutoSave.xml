@@ -17,16 +17,16 @@
 	<options id="AutoSave" file="AutoSave.ini">
 		<section id="AutoSave">
 			<option id="CreateStartSave" key="Create Start Save" 
-				type="boolean" default="False"/>
+					type="boolean" default="False"/>
 
 			<option id="CreateEndSave" key="Create End Save" 
-				type="boolean" default="False"/>
+					type="boolean" default="False"/>
 
 			<option id="CreateExitSave" key="Create Exit Save" 
-				type="boolean" default="False"/>
+					type="boolean" default="False"/>
 
 			<option id="UsePlayerName" key="Use Player Name" 
-				type="boolean" default="False"/>
+					type="boolean" default="False"/>
 		</section>
 	</options>
 	
