@@ -151,7 +151,8 @@ def addMessage(iPlayer, szString, szIcon, iFlashX=-1, iFlashY=-1, bOffArrow=Fals
 	"""
 	eventMessageTimeLong = gc.getDefineINT("EVENT_MESSAGE_TIME_LONG")
 	CyInterface().addMessage(iPlayer, True, eventMessageTimeLong,
-							 szString, None, 0, szIcon, ColorTypes(-1),
+							 szString, None, InterfaceMessageTypes.MESSAGE_TYPE_INFO, 
+							 szIcon, ColorTypes(-1),
 							 iFlashX, iFlashY, bOffArrow, bOnArrow)
 
 
