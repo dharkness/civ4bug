@@ -16,11 +16,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_HOVER</Tag>
-		<English>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</English>
-		<French>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</French>
-		<German>Erlaubt die Anpassung des Detailgrads der Informationen, die bei der Berechnung der Siegchancen angezeigt werden, wenn der Mauszeiger für einen Angriff über eine feindliche Einheit bewegt wird (verwendet PieceOfMind's "Advanced Combat Odds"-Mos)</German>
-		<Italian>Quando è selezionato, consente di variare il livello di dettaglio mostrato per il calcolo delle Probabilità di Combattimento quando si posiziona il cursore per un movimento offensivo (utilizza il Mod "Advanced Combat Odds" di PieceOfMind).</Italian>
-		<Spanish>When checked, allows you to change the level of detail displayed in the combat odds calculations when hovering over an attack move using PieceOfMind's ACO.</Spanish>
+		<English>When checked, PieceOfMind's ACO shows more detailed combat odds information when you hover over a unit to attack.</English>
+		<French>When checked, PieceOfMind's ACO shows more detailed combat odds information when you hover over a unit to attack.</French>
+		<German>When checked, PieceOfMind's ACO shows more detailed combat odds information when you hover over a unit to attack.</German>
+		<Italian>When checked, PieceOfMind's ACO shows more detailed combat odds information when you hover over a unit to attack.</Italian>
+		<Spanish>When checked, PieceOfMind's ACO shows more detailed combat odds information when you hover over a unit to attack.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__DEBUG_TEXT</Tag>
@@ -318,11 +318,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__SHOWTOTALDEFENSEMODIFIER_HOVER</Tag>
-		<English>Select when to show the sum of all defense modifiers.</English>
-		<French>Select when to show the sum of all defense modifiers.</French>
-		<German>Select when to show the sum of all defense modifiers.</German>
-		<Italian>Select when to show the sum of all defense modifiers.</Italian>
-		<Spanish>Select when to show the sum of all defense modifiers.</Spanish>
+		<English>Select when to show the total defense modifiers (includes attacker's non-combat modifiers that apply to the defender).</English>
+		<French>Select when to show the total defense modifiers (includes attacker's non-combat modifiers that apply to the defender).</French>
+		<German>Select when to show the total defense modifiers (includes attacker's non-combat modifiers that apply to the defender).</German>
+		<Italian>Select when to show the total defense modifiers (includes attacker's non-combat modifiers that apply to the defender).</Italian>
+		<Spanish>Select when to show the total defense modifiers (includes attacker's non-combat modifiers that apply to the defender).</Spanish>
 	</TEXT>
 	
 	<TEXT>
