@@ -21,40 +21,78 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
 		
-		self.addCheckboxTextDropdown(screen, left, left, "MainInterface__GPBar", "MainInterface__GPBar_Types")
-		#self.addCheckbox(screen, left, "MainInterface__GPBar")
-		#self.addTextDropdown(screen, left, left, "MainInterface__GPBar_Types", True)
-		self.addCheckbox(screen, left, "MainInterface__Combat_Counter")
-		
+		self.createGreatPersonGeneralPanel(screen, left)
 		self.addSpacer(screen, left, "General1")
-		
-		self.addLabel(screen, left, "AutoSave", "AutoSave:")
-		self.addCheckbox(screen, left, "AutoSave__CreateStartSave")
-		self.addCheckbox(screen, left, "AutoSave__CreateEndSave")
-		self.addCheckbox(screen, left, "AutoSave__CreateExitSave")
-		self.addCheckbox(screen, left, "AutoSave__UsePlayerName")
-		
+		self.createAutoSavePanel(screen, left)
 		self.addSpacer(screen, left, "General2")
+		self.createActionsPanel(screen, left)
 		
-		self.addLabel(screen, left, "Actions", "Actions:")
-		self.addCheckbox(screen, left, "Actions__SentryHealing")
-		self.addCheckbox(screen, left, "Actions__SentryHealingOnlyNeutral", True)
-		self.addCheckbox(screen, left, "Actions__PreChopForests")
-		self.addCheckbox(screen, left, "Actions__PreChopImprovements")
-		
-		
-		self.addLabel(screen, right, "TechWindow", "Tech Splash Screen:")
-		self.addTextDropdown(screen, right, right, "TechWindow__ViewType", True)
-		self.addCheckbox(screen, right, "TechWindow__CivilopediaText")
-		
+		self.createTechSplashPanel(screen, right)
 		self.addSpacer(screen, right, "General3")
+		self.createMiscellaneousPanel(screen, right)
+		self.addSpacer(screen, right, "General4")
+		self.createAdvancedCombatOddsPanel(screen, right)
 		
-		self.addLabel(screen, right, "Misc", "Misc:")
-		self.addCheckbox(screen, right, "MainInterface__GoldRateWarning")
-		self.addCheckbox(screen, right, "MainInterface__MinMax_Commerce")
-		self.addCheckbox(screen, right, "MainInterface__ProgressBarsTickMarks")
-		self.addCheckbox(screen, right, "MainInterface__CityArrows")
-		self.addCheckbox(screen, right, "MainInterface__UnitMovementPointsFraction")
-		self.addCheckbox(screen, right, "MainInterface__StackMovementPoints")
+	def createGreatPersonGeneralPanel(self, screen, panel):
+		self.addCheckboxTextDropdown(screen, panel, panel, "MainInterface__GPBar", "MainInterface__GPBar_Types")
+		#self.addCheckbox(screen, panel, "MainInterface__GPBar")
+		#self.addTextDropdown(screen, panel, panel, "MainInterface__GPBar_Types", True)
+		self.addCheckbox(screen, panel, "MainInterface__Combat_Counter")
 		
-		self.addCheckboxTextDropdown(screen, right, right, "ACO__Enabled", "ACO__Detail")
+	def createAutoSavePanel(self, screen, panel):
+		self.addLabel(screen, panel, "AutoSave", "AutoSave:")
+		self.addCheckbox(screen, panel, "AutoSave__CreateStartSave")
+		self.addCheckbox(screen, panel, "AutoSave__CreateEndSave")
+		self.addCheckbox(screen, panel, "AutoSave__CreateExitSave")
+		self.addCheckbox(screen, panel, "AutoSave__UsePlayerName")
+		
+	def createActionsPanel(self, screen, panel):
+		self.addLabel(screen, panel, "Actions", "Actions:")
+		self.addCheckbox(screen, panel, "Actions__SentryHealing")
+		self.addCheckbox(screen, panel, "Actions__SentryHealingOnlyNeutral", True)
+		self.addCheckbox(screen, panel, "Actions__PreChopForests")
+		self.addCheckbox(screen, panel, "Actions__PreChopImprovements")
+		
+	def createTechSplashPanel(self, screen, panel):
+		self.addLabel(screen, panel, "TechWindow", "Tech Splash Screen:")
+		self.addTextDropdown(screen, panel, panel, "TechWindow__ViewType", True)
+		self.addCheckbox(screen, panel, "TechWindow__CivilopediaText")
+		
+	def createMiscellaneousPanel(self, screen, panel):
+		self.addLabel(screen, panel, "Misc", "Misc:")
+		self.addCheckbox(screen, panel, "MainInterface__GoldRateWarning")
+		self.addCheckbox(screen, panel, "MainInterface__MinMax_Commerce")
+		self.addCheckbox(screen, panel, "MainInterface__ProgressBarsTickMarks")
+		self.addCheckbox(screen, panel, "MainInterface__CityArrows")
+		self.addCheckbox(screen, panel, "MainInterface__UnitMovementPointsFraction")
+		self.addCheckbox(screen, panel, "MainInterface__StackMovementPoints")
+		
+	def createAdvancedCombatOddsPanel(self, screen, panel):
+		self.addLabel(screen, panel, "ACO", "Advanced Combat Odds:")
+		self.addCheckbox(screen, panel, "ACO__Enabled")
+
+		self.addCheckbox(screen, panel, "ACO__ForceOriginalOdds")
+		self.addCheckbox(screen, panel, "ACO__IgnoreBarbFreeWins")
+		
+		self.addCheckbox(screen, panel, "ACO__SwapViews")
+		self.addCheckbox(screen, panel, "ACO__MergeShortBars")
+		self.addCheckbox(screen, panel, "ACO__ShowModifierLabels")
+		
+		left, right =  self.addTwoColumnLayout(screen, panel, "ACO")
+		self.addTextDropdown(screen, left, right, "ACO__ShowBasicInfo")
+		self.addTextDropdown(screen, left, right, "ACO__ShowAttackerInfo")
+		self.addTextDropdown(screen, left, right, "ACO__ShowDefenderInfo")
+		
+		self.addTextDropdown(screen, left, right, "ACO__ShowSurvivalOdds")
+		self.addTextDropdown(screen, left, right, "ACO__ShowUnharmedOdds")
+		self.addTextDropdown(screen, left, right, "ACO__ShowAverageHealth")
+		self.addTextDropdown(screen, left, right, "ACO__ShowAttackerHealthBars")
+		self.addTextDropdown(screen, left, right, "ACO__ShowDedenderHealthBars")
+		
+		self.addTextDropdown(screen, left, right, "ACO__ShowUnroundedExperience")
+		self.addTextDropdown(screen, left, right, "ACO__ShowExperienceRange")
+		
+		self.addTextDropdown(screen, left, right, "ACO__ShowDefenseModifiers")
+		self.addTextDropdown(screen, left, right, "ACO__ShowTotalDefenseModifier")
+		
+		self.addTextDropdown(screen, left, right, "ACO__ShowShiftInstructions")
