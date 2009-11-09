@@ -164,6 +164,8 @@ Improvements:
 	Added checks for more game options used by diplomacy/trade changes
 - GPUtil
 	Added specific instructions for adding new GP types
+- Options
+	You can reuse a list option's display values from XML for another option by putting its ID in the values attribute 
 
 Bug Fixes:
 

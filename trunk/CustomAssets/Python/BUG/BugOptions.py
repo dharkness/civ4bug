@@ -857,6 +857,7 @@ class BaseListOption(BaseOption):
 			listType = TYPE_DEFAULT_LIST_TYPE[type]
 		self.listType = listType
 		
+		self.valuesXmlKey = None
 		if values is not None:
 			self.setValues(values)
 		else:
@@ -893,7 +894,11 @@ class BaseListOption(BaseOption):
 	def setValues(self, values):
 		if isinstance(values, str):
 			if self.isStringList():
-				self.values = values.split("|")
+				if values.find("|") != -1:
+					self.values = values.split("|")
+				else:
+					self.values = []
+					self.valuesXmlKey = "TXT_KEY_BUG_OPT_" + values.upper()
 			elif self.isIntList():
 				self.values = map(lambda x: int(x), values.replace(",", " ").split())
 			elif self.isFloatList():
@@ -968,8 +973,11 @@ class BaseListOption(BaseOption):
 	
 	def translate(self):
 		if self.isStringList():
-			list = BugUtil.getPlainText(self.xmlKey + "_LIST")
-			if (list):
+			if self.valuesXmlKey:
+				list = BugUtil.getPlainText(self.valuesXmlKey + "_LIST")
+			else:
+				list = BugUtil.getPlainText(self.xmlKey + "_LIST")
+			if list:
 				self.displayValues = list.split("|")
 			else:
 				self.displayValues = self.values
