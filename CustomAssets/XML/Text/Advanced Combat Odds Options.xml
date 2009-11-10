@@ -269,11 +269,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__SHOWUNROUNDEDEXPERIENCE_HOVER</Tag>
-		<English>Select when to show the probability bars of each possible ending health for the defender.</English>
-		<French>Select when to show the probability bars of each possible ending health for the defender.</French>
-		<German>Select when to show the probability bars of each possible ending health for the defender.</German>
-		<Italian>Select when to show the probability bars of each possible ending health for the defender.</Italian>
-		<Spanish>Select when to show the probability bars of each possible ending health for the defender.</Spanish>
+		<English>Select when to show the unrounded XP values in addition to the actual rounded values the units will gain.</English>
+		<French>Select when to show the unrounded XP values in addition to the actual rounded values the units will gain.</French>
+		<German>Select when to show the unrounded XP values in addition to the actual rounded values the units will gain.</German>
+		<Italian>Select when to show the unrounded XP values in addition to the actual rounded values the units will gain.</Italian>
+		<Spanish>Select when to show the unrounded XP values in addition to the actual rounded values the units will gain.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__SHOWEXPERIENCERANGE_TEXT</Tag>
