@@ -30,8 +30,6 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.createTechSplashPanel(screen, right)
 		self.addSpacer(screen, right, "General3")
 		self.createMiscellaneousPanel(screen, right)
-		self.addSpacer(screen, right, "General4")
-		self.createAdvancedCombatOddsPanel(screen, right)
 		
 	def createGreatPersonGeneralPanel(self, screen, panel):
 		self.addCheckboxTextDropdown(screen, panel, panel, "MainInterface__GPBar", "MainInterface__GPBar_Types")
@@ -66,33 +64,3 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, panel, "MainInterface__CityArrows")
 		self.addCheckbox(screen, panel, "MainInterface__UnitMovementPointsFraction")
 		self.addCheckbox(screen, panel, "MainInterface__StackMovementPoints")
-		
-	def createAdvancedCombatOddsPanel(self, screen, panel):
-		self.addLabel(screen, panel, "ACO", "Advanced Combat Odds:")
-		self.addCheckbox(screen, panel, "ACO__Enabled")
-
-		self.addCheckbox(screen, panel, "ACO__ForceOriginalOdds")
-		self.addCheckbox(screen, panel, "ACO__IgnoreBarbFreeWins")
-		
-		self.addCheckbox(screen, panel, "ACO__SwapViews")
-		self.addCheckbox(screen, panel, "ACO__MergeShortBars")
-		self.addCheckbox(screen, panel, "ACO__ShowModifierLabels")
-		
-		left, right =  self.addTwoColumnLayout(screen, panel, "ACO")
-		self.addTextDropdown(screen, left, right, "ACO__ShowBasicInfo")
-		self.addTextDropdown(screen, left, right, "ACO__ShowAttackerInfo")
-		self.addTextDropdown(screen, left, right, "ACO__ShowDefenderInfo")
-		
-		self.addTextDropdown(screen, left, right, "ACO__ShowSurvivalOdds")
-		self.addTextDropdown(screen, left, right, "ACO__ShowUnharmedOdds")
-		self.addTextDropdown(screen, left, right, "ACO__ShowAverageHealth")
-		self.addTextDropdown(screen, left, right, "ACO__ShowAttackerHealthBars")
-		self.addTextDropdown(screen, left, right, "ACO__ShowDedenderHealthBars")
-		
-		self.addTextDropdown(screen, left, right, "ACO__ShowUnroundedExperience")
-		self.addTextDropdown(screen, left, right, "ACO__ShowExperienceRange")
-		
-		self.addTextDropdown(screen, left, right, "ACO__ShowDefenseModifiers")
-		self.addTextDropdown(screen, left, right, "ACO__ShowTotalDefenseModifier")
-		
-		self.addTextDropdown(screen, left, right, "ACO__ShowShiftInstructions")
