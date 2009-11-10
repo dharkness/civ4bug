@@ -19,7 +19,7 @@ class BugPleOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		left, center, right = self.addThreeColumnLayout(screen, panel, panel, True)
 
-#		self.addCheckbox(screen, left, "PLE__Enabled")
+		#self.addCheckbox(screen, left, "PLE__Enabled")
 		self.addCheckbox(screen, left, "PLE__PLE_Style")
 
 		self.addCheckbox(screen, left, "PLE__Show_Buttons")

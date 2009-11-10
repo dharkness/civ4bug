@@ -3728,6 +3728,17 @@
 		<Italian>Il file 'BUG Mod.ini' non è stato trovato</Italian>
 		<Spanish>Cannot Find INI File</Spanish>
 	</TEXT>
+	
+	<!-- ACO Tab -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_ACO</Tag>
+		<English>Advanced Combat Odds</English>
+		<French>Advanced Combat Odds</French>
+		<German>Erweiterte Siegchancen</German>
+		<Italian>Probabilità di Combattimento Avanzate</Italian>
+		<Spanish>Advanced Combat Odds</Spanish>
+	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_ACO</Tag>
 		<English>Advanced Combat Odds:</English>
