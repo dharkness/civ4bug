@@ -1,13 +1,33 @@
-BUG Change Log
+CHANGELOG for BUG
+=================
 
-This file lists the new features and fixes contained in each BUG release.
+1. Introduction
+
+* BUG 4.2
+* BUG 4.1
+* BUG 4.0
+* BUG 3.6
+
+
+____________________________________________________________________________________________________
+1. INTRODUCTION
+
+This file lists the new features and fixes contained in each BUG release. The changes for each 
+release are grouped into two major sections--Changes and Modding--and within each section further 
+into New Features, Improvements, and Bug Fixes.
+
+The Changes sections are for end-users and list the visible changes in BULL. New Features cover 
+major new additions that add completely new functionality. Improvements are smaller changes made 
+to existing features. And Bug Fixes cover fixes to broken features in both BTS and BULL.
+
+The Modding sections are mostly of interest to Python modders merging BUG into their own mods.
 
 Note: Changes marked [BULL] only take effect when the optional BUG DLL is installed.
       BULL features that don't require BUG are not listed here.
 
 
 ____________________________________________________________________________________________________
-BUG 4.1.1 unreleased
+BUG 4.2 released November 15th, 2009
 
 CHANGES
 
