@@ -8,11 +8,11 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_TEXT</Tag>
-		<English>Enabled</English>
-		<French>Activé</French>
-		<German>Aktivieren</German>
-		<Italian>Attivato</Italian>
-		<Spanish>Enabled</Spanish>
+		<English>Advanced Combat Odds</English>
+		<French>Advanced Combat Odds</French>
+		<German>Erweiterte Siegchancen</German>
+		<Italian>Probabilità di Combattimento Avanzate</Italian>
+		<Spanish>Advanced Combat Odds</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ACO__ENABLED_HOVER</Tag>
