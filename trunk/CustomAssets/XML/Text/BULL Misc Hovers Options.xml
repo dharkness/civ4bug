@@ -11,11 +11,11 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LATLONGCOORDS_TEXT</Tag>
-		<English>Longitude &#038; Latitude</English>
-		<French>Longitude &#038; Latitude</French>
-		<German>Längen- &#038; Breitengrad</German>
-		<Italian>Longitude &#038; Latitude</Italian>
-		<Spanish>Longitude &#038; Latitude</Spanish>
+		<English>Longitude / Latitude</English>
+		<French>Longitude / Latitude</French>
+		<German>Längen- / Breitengrad</German>
+		<Italian>Longitude / Latitude</Italian>
+		<Spanish>Longitude / Latitude</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LATLONGCOORDS_HOVER</Tag>
