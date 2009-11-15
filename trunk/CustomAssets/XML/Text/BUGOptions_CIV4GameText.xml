@@ -3729,25 +3729,6 @@
 		<Spanish>Cannot Find INI File</Spanish>
 	</TEXT>
 	
-	<!-- ACO Tab -->
-	
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTTAB_ACO</Tag>
-		<English>Advanced Combat Odds</English>
-		<French>Advanced Combat Odds</French>
-		<German>Erweiterte Siegchancen</German>
-		<Italian>Probabilità di Combattimento Avanzate</Italian>
-		<Spanish>Advanced Combat Odds</Spanish>
-	</TEXT>
-	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_ACO</Tag>
-		<English>Advanced Combat Odds:</English>
-		<French>Advanced Combat Odds:</French>
-		<German>Erweiterte Siegchancen:</German>
-		<Italian>Probabilità di Combattimento Avanzate:</Italian>
-		<Spanish>Advanced Combat Odds:</Spanish>
-	</TEXT>
-	
 	<!-- Map Tab -->
 	
 	<TEXT>
@@ -4076,6 +4057,17 @@
 		<German>Spezialfähigkeiten:</German>
 		<Italian>Caratteristiche:</Italian>
 		<Spanish>Unit Specialties:</Spanish>
+	</TEXT>
+	
+	<!-- ACO Tab -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTTAB_ACO</Tag>
+		<English>Odds</English>
+		<French>Odds</French>
+		<German>Chancen</German>
+		<Italian>Probabilità</Italian>
+		<Spanish>Odds</Spanish>
 	</TEXT>
 	
 	<!-- Alerts Tab -->
