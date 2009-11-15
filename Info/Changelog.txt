@@ -23,10 +23,9 @@ Improvements:
 - Info Screen [F9]
 	Made colors optional on WONDERS list
 	Added hover help text to WONDERS tab buttons
-- Options
-	Shortcut Reminder message turns itself off the first time you open the Options screen
+- Option Shortcut Reminder
+	Message turns itself off the first time you open the Options screen
 	If you turn it back on in the System tab, it will remain on as before
-	Moved Advanced Combat Odds options to their own tab [BULL]
 
 Bug Fixes:
 
