@@ -2774,7 +2774,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TEXT</Tag>
 		<English>Great Person</English>
 		<French>Personnages Illustres</French>
-		<German>Große Persönlichkeit-Punkte</German>
+		<German>Große Persönlichkeiten</German>
 		<Italian>Grandi Personaggi</Italian>
 		<Spanish>Great Person</Spanish>
 	</TEXT>
@@ -2814,7 +2814,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_TEXT</Tag>
 		<English>Great General</English>
 		<French>G&#233;n&#233;ral Illustre</French>
-		<German>Großen General</German>
+		<German>Großer General</German>
 		<Italian>Grande Generale</Italian>
 		<Spanish>Great General</Spanish>
 	</TEXT>
@@ -4073,7 +4073,7 @@
 		<Tag>TXT_KEY_BUG_OPTTAB_ACO</Tag>
 		<English>Odds</English>
 		<French>Odds</French>
-		<German>Chancen</German>
+		<German>Siegchancen</German>
 		<Italian>Probabilità</Italian>
 		<Spanish>Odds</Spanish>
 	</TEXT>
