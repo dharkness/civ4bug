@@ -2772,11 +2772,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_TEXT</Tag>
-		<English>Great Person Progress Bar</English>
-		<French>Barre de Progrès des Personnages Illustres</French>
-		<German>Anzeige für Große Persönlichkeit-Punkte</German>
-		<Italian>Barra dei Grandi Personaggi</Italian>
-		<Spanish>Great Person Progress Bar</Spanish>
+		<English>Great Person</English>
+		<French>Personnages Illustres</French>
+		<German>Große Persönlichkeit-Punkte</German>
+		<Italian>Grandi Personaggi</Italian>
+		<Spanish>Great Person</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GPBAR_HOVER</Tag>
@@ -2812,11 +2812,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_TEXT</Tag>
-		<English>Great General Progress Bar</English>
-		<French>Barre de Progrès des G&#233;n&#233;ral Illustre</French>
-		<German>Anzeige für Großen General</German>
-		<Italian>Barra del Grande Generale</Italian>
-		<Spanish>Great General Progress Bar</Spanish>
+		<English>Great General</English>
+		<French>G&#233;n&#233;ral Illustre</French>
+		<German>Großen General</German>
+		<Italian>Grande Generale</Italian>
+		<Spanish>Great General</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__COMBAT_COUNTER_HOVER</Tag>
@@ -3679,6 +3679,14 @@
 		<German>HAUPTBILDSCHIRM</German>
 		<Italian>INTERFACCIA PRINCIPALE</Italian>
 		<Spanish>MAIN INTERFACE</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PROGRESSBARS</Tag>
+		<English>Progress Bars:</English>
+		<French>Progress Bars:</French>
+		<German>Fortschrittsbalken:</German>
+		<Italian>Progressi Barra:</Italian>
+		<Spanish>Progress Bars:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOSAVE</Tag>

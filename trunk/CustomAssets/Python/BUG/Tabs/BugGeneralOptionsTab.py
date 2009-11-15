@@ -23,15 +23,16 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.createGreatPersonGeneralPanel(screen, left)
 		self.addSpacer(screen, left, "General1")
-		self.createAutoSavePanel(screen, left)
+		self.createTechSplashPanel(screen, left)
 		self.addSpacer(screen, left, "General2")
 		self.createActionsPanel(screen, left)
 		
-		self.createTechSplashPanel(screen, right)
+		self.createAutoSavePanel(screen, right)
 		self.addSpacer(screen, right, "General3")
 		self.createMiscellaneousPanel(screen, right)
 		
 	def createGreatPersonGeneralPanel(self, screen, panel):
+		self.addLabel(screen, panel, "ProgressBars", "Progress Bars:")
 		self.addCheckboxTextDropdown(screen, panel, panel, "MainInterface__GPBar", "MainInterface__GPBar_Types")
 		#self.addCheckbox(screen, panel, "MainInterface__GPBar")
 		#self.addTextDropdown(screen, panel, panel, "MainInterface__GPBar_Types", True)
