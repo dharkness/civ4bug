@@ -11,14 +11,14 @@
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LATLONGCOORDS_TEXT</Tag>
-		<English>Longitude &amp; Latitude</English>
-		<French>Longitude &amp; Latitude</French>
-		<German>Längen- &amp; Breitengrad</German>
-		<Italian>Longitude &amp; Latitude</Italian>
-		<Spanish>Longitude &amp; Latitude</Spanish>
+		<English>Longitude &#038; Latitude</English>
+		<French>Longitude &#038; Latitude</French>
+		<German>Längen- &#038; Breitengrad</German>
+		<Italian>Longitude &#038; Latitude</Italian>
+		<Spanish>Longitude &#038; Latitude</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LATLONGCOORDS_HOVER</Tag>
 		<English>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</English>
 		<French>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</French>
 		<German>Zeigt bei zentrierter Karte den Längen- und Breitengrad eines Geländefeldes an, wenn der Mauszeiger darüber bewegt wird</German>
