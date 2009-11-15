@@ -19,7 +19,6 @@ class BugUnitNameOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 	
-		screen.attachHSeparator(column, column + "Sep1")
 		left, center, right = self.addThreeColumnLayout(screen, column, "Options")
 		
 		self.addCheckbox(screen, left, "UnitNaming__Enabled")
