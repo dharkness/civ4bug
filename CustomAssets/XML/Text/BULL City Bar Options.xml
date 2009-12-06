@@ -163,7 +163,7 @@
 		<Spanish>Building Actual Effects</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGACTUALEFFECTS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYBAR__BUILDINGACTUALEFFECTS_HOVER</Tag>
 		<English>When checked and a city is constructing a building, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] it will produce are displayed.</English>
 		<French>When checked and a city is constructing a building, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] it will produce are displayed.</French>
 		<German>Zeigt die effektiven Erträge von [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY] und [ICON_GREATPEOPLE] eines Gebäudes an, das gerade errichtet wird</German>
