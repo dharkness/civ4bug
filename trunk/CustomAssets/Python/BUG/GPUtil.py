@@ -22,6 +22,7 @@
 
 from CvPythonExtensions import *
 import BugUtil
+import FontUtil
 import PlayerUtil
 
 gc = CyGlobalContext()
@@ -36,6 +37,7 @@ g_gpBarList = (
 	"UNIT_SCIENTIST",
 	"UNIT_ARTIST",
 	"UNIT_PROPHET",
+	"UNIT_GREAT_GENERAL",
 # MOD: specify the unit type (XML key) for each new great person (1)
 	#"UNIT_DOCTOR",
 )
@@ -51,6 +53,7 @@ NUM_GP = len(g_gpBarList)
 	GP_SCIENTIST,
 	GP_ARTIST,
 	GP_PROPHET,
+	GP_GENERAL,
 # MOD: define a constant for each new great person in same order as above (2)
 	#GP_DOCTOR,
 ) = range(NUM_GP)
@@ -78,19 +81,21 @@ def init():
 	g_gpColors[GP_SCIENTIST] = gc.getInfoTypeForString("COLOR_RESEARCH_STORED")
 	g_gpColors[GP_ARTIST] = gc.getInfoTypeForString("COLOR_CULTURE_STORED")
 	g_gpColors[GP_PROPHET] = gc.getInfoTypeForString("COLOR_BLUE")
+	g_gpColors[GP_GENERAL] = gc.getInfoTypeForString("COLOR_RED")
 	# MOD: specify color for each new great person (3)
 	#g_gpColors[GP_DOCTOR] = gc.getInfoTypeForString("COLOR_WHITE")
 	
 	global g_unitIcons
 	g_unitIcons = {}
-	g_unitIcons[g_gpUnitTypes[GP_SPY]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
-	g_unitIcons[g_gpUnitTypes[GP_ENGINEER]] = u"%c" %(gc.getYieldInfo(YieldTypes.YIELD_PRODUCTION).getChar())
-	g_unitIcons[g_gpUnitTypes[GP_MERCHANT]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar())
-	g_unitIcons[g_gpUnitTypes[GP_SCIENTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_RESEARCH).getChar())
-	g_unitIcons[g_gpUnitTypes[GP_ARTIST]] = u"%c" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getChar())
-	g_unitIcons[g_gpUnitTypes[GP_PROPHET]] = u"%c" % CyGame().getSymbolID(FontSymbols.RELIGION_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_SPY]] = FontUtil.getChar(FontSymbols.COMMERCE_ESPIONAGE_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_ENGINEER]] = FontUtil.getChar(FontSymbols.YIELD_PRODUCTION_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_MERCHANT]] = FontUtil.getChar(FontSymbols.COMMERCE_GOLD_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_SCIENTIST]] = FontUtil.getChar(FontSymbols.COMMERCE_RESEARCH_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_ARTIST]] = FontUtil.getChar(FontSymbols.COMMERCE_CULTURE_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_PROPHET]] = FontUtil.getChar(FontSymbols.RELIGION_CHAR)
+	g_unitIcons[g_gpUnitTypes[GP_GENERAL]] = FontUtil.getChar(FontSymbols.GREAT_GENERAL_CHAR)
 	# MOD: specify icon (font glyph) for each new great person (4)
-	#g_unitIcons[g_gpUnitTypes[GP_DOCTOR]] = u"%c" % CyGame().getSymbolID(FontSymbols.HEALTHY_CHAR)
+	#g_unitIcons[g_gpUnitTypes[GP_DOCTOR]] = FontUtil.getChar(FontSymbols.HEALTHY_CHAR)
 
 def getUnitType(gpType):
 	return g_gpUnitTypes[gpType]
