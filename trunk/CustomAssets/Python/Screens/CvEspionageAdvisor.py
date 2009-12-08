@@ -8,10 +8,11 @@ import ScreenInput
 import CvScreenEnums
 
 # BUG - Better Espionage - start
-import ColorUtil
-import BugUtil
-import FontUtil
 import BugCore
+import BugUtil
+import ColorUtil
+import FontUtil
+import SpyUtil
 EspionageOpt = BugCore.game.BetterEspionage
 # BUG - Better Espionage - end
 
@@ -25,18 +26,6 @@ ESPIONAGE_GLANCE_TAB = 1
 
 CITYMISSION_CITY = 0
 CITYMISSION_MISSION = 1
-
-import SdToolKit
-sdEcho			= SdToolKit.sdEcho
-sdModInit		= SdToolKit.sdModInit
-sdModLoad		= SdToolKit.sdModLoad
-sdModSave		= SdToolKit.sdModSave
-sdEntityInit	= SdToolKit.sdEntityInit
-sdEntityExists	= SdToolKit.sdEntityExists
-sdEntityWipe	= SdToolKit.sdEntityWipe
-sdGetVal		= SdToolKit.sdGetVal
-sdSetVal		= SdToolKit.sdSetVal
-sdGroup			= "EspionagePoints"
 
 class CvEspionageAdvisor:
 
@@ -654,16 +643,8 @@ class CvEspionageAdvisor:
 			screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_EPoints, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EP Spending Against (Points per turn)
-			szName = "AmountAgainstText%d" %(iPlayerID)
-			zsSDKey = "%i-%i" %(iPlayerID, self.iActivePlayer)
-			if (sdEntityExists(sdGroup, zsSDKey) == False): #create record if it doesn't exist
-				zDic = {'Prior':0}
-				sdEntityInit(sdGroup, zsSDKey, zDic)
-
-			iPrior = sdGetVal(sdGroup, zsSDKey, "Prior")
-			iSpending = iTargetEPs - iPrior
-			if (iPrior > 0
-			and iSpending > 0):
+			iSpending = SpyUtil.getDifferenceByPlayer(iPlayerID, self.iActivePlayer)
+			if iSpending is not None:
 				szText = u"<font=2><color=0,255,0,0>(+%i)</color></font>" %(iSpending)
 			else:
 				szText = u""
@@ -739,13 +720,16 @@ class CvEspionageAdvisor:
 	def drawGlanceTab(self):
 		return
 
+	def getEspionageModifier(self, iTeamID, iTargetTeamID):
+		return 0
+	
 	def getEspionageMultiplier(self, iCurrentPlayer, iTargetPlayer):
 		pCurrentPlayer = gc.getPlayer(iCurrentPlayer)
 		iCurrentTeamID = pCurrentPlayer.getTeam()
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		iTargetTeamID = pTargetPlayer.getTeam()
 
-		iMultiplier = getEspionageModifier(iCurrentTeamID, iTargetTeamID)
+		iMultiplier = self.getEspionageModifier(iCurrentTeamID, iTargetTeamID)
 		return iMultiplier
 
 	def getEspionageMultiplierText(self, iCurrentPlayer, iTargetPlayer):
@@ -754,7 +738,7 @@ class CvEspionageAdvisor:
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		iTargetTeamID = pTargetPlayer.getTeam()
 
-		iMultiplier = getEspionageModifier(iCurrentTeamID, iTargetTeamID)
+		iMultiplier = self.getEspionageModifier(iCurrentTeamID, iTargetTeamID)
 		szMultiplier = localText.getText("TXT_KEY_ESPIONAGE_COST", (iMultiplier, ))
 
 		if self.getCounterEspionageTurnsLeft(iCurrentPlayer, iTargetPlayer) > 0:
