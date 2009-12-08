@@ -74,8 +74,8 @@
 		</section>
 	</options>
 	
-	<event type="GameStart" module="SpyUtil" function="clear"/>
-	<event type="OnLoad" module="SpyUtil" function="load"/>
-	<event type="PythonReloaded" module="SpyUtil" function="load"/>
-	<event type="OnPreSave" module="SpyUtil" function="store"/>
+	<event type="GameStart" module="SpyUtil" function="onGameStart"/>
+	<event type="OnLoad" module="SpyUtil" function="onGameLoad"/>
+	<event type="PythonReloaded" module="SpyUtil" function="onPythonReloaded"/>
+	<event type="BeginPlayerTurn" module="SpyUtil" function="onBeginPlayerTurn"/>
 </mod>

@@ -16,8 +16,8 @@ gc = CyGlobalContext()
 
 ## Tracking Values for Previous and Current Turns
 
-g_previousGameTurn = None
-g_previousValues = None
+g_iTurn = None
+g_values = None
 
 def getDifferenceByPlayer(playerOrID, targetPlayerOrID=None):
 	if targetPlayerOrID is None:
@@ -31,22 +31,24 @@ def getDifferenceByTeam(teamOrID, targetTeamOrID=None):
 		eTargetTeam = PlayerUtil.getActiveTeamID()
 	else:
 		eTargetTeam = PlayerUtil.getTeamID(targetTeamOrID)
-	iPrevious = getPreviousValue(eTeam, eTargetTeam)
+	iPrevious = getPreviousValueByTeam(eTeam, eTargetTeam)
 	if iPrevious is not None:
 		return team.getEspionagePointsAgainstTeam(eTargetTeam) - iPrevious
 
-def getPreviousValue(teamOrID, targetTeamOrID=None):
-	if g_previousGameTurn == gc.getGame().getGameTurn():
+def getPreviousValueByTeam(teamOrID, targetTeamOrID=None):
+	if g_iTurn is None:
+		load()
+	if g_iTurn == gc.getGame().getGameTurn() - 1 and g_values:
 		eTeam = PlayerUtil.getTeamID(teamOrID)
 		if targetTeamOrID is None:
 			eTargetTeam = PlayerUtil.getActiveTeamID()
 		else:
 			eTargetTeam = PlayerUtil.getTeamID(targetTeamOrID)
-		if eTeam in g_previousValues:
-			return g_previousValues[eTeam][eTargetTeam]
+		if eTeam in g_values:
+			return g_values[eTeam][eTargetTeam]
 	return None
 
-def getCurrentValues():
+def getCurrentValuesByTeam():
 	valuesByTeam = {}
 	for team in PlayerUtil.teams(True, None, False):
 		valuesByTeam[team.getID()] = values = []
@@ -64,35 +66,54 @@ SD_VERSION_ID = "version"
 SD_TURN_ID = "turn"
 SD_VALUES_ID = "values"
 
-def clear(argsList=None):
-	global g_previousValues, g_previousGameTurn
-	g_previousGameTurn = None
-	g_previousValues = None
+def clear():
+	global g_values, g_iTurn
+	g_iTurn = gc.getGame().getGameTurn() - 1
+	g_values = None
 
-def load(argsList=None):
-	global g_previousValues, g_previousGameTurn
+def load():
+	global g_values, g_iTurn
 	clear()
 	data = SdToolKit.sdModLoad(SD_MOD_ID)
 	BugUtil.debug("SpyUtil - loaded: %s", data)
 	if SD_VERSION_ID in data:
 		if data[SD_VERSION_ID] == 1:
-			g_previousGameTurn = data[SD_TURN_ID]
-			g_previousValues = data[SD_VALUES_ID]
-			if g_previousGameTurn != gc.getGame().getGameTurn():
-				clear()
-				BugUtil.warn("SpyUtil - incorrect previous game turn found, resetting")
+			g_iTurn = data[SD_TURN_ID]
+			if g_iTurn != gc.getGame().getGameTurn() - 1:
+				BugUtil.warn("SpyUtil - incorrect previous game turn found, ignoring")
+			else:
+				g_values = data[SD_VALUES_ID]
 		elif data[SD_VERSION_ID] > 1:
-			BugUtil.warn("SpyUtil - newer data storage format detected, resetting")
-			clear()
+			BugUtil.warn("SpyUtil - newer format version detected, ignoring")
+	else:
+		BugUtil.debug("SpyUtil - no data found")
 
-def store(argsList=None):
-	global g_previousValues, g_previousGameTurn
-	g_previousGameTurn = gc.getGame().getGameTurn()
-	g_previousValues = getCurrentValues()
+def store():
+	global g_values, g_iTurn
+	g_iTurn = gc.getGame().getGameTurn()
+	g_values = getCurrentValuesByTeam()
 	data = {
 		SD_VERSION_ID: STORAGE_VERSION,
-		SD_TURN_ID: g_previousGameTurn,
-		SD_VALUES_ID: g_previousValues
+		SD_TURN_ID: g_iTurn,
+		SD_VALUES_ID: g_values
 	}
 	SdToolKit.sdModSave(SD_MOD_ID, data)
 	BugUtil.debug("SpyUtil - stored: %s", data)
+
+
+## Event Handlers
+
+def onGameStart(argsList):
+	clear()
+
+def onGameLoad(argsList):
+	load()
+
+def onPythonReloaded(argsList):
+	load()
+
+def onBeginPlayerTurn(argsList):
+	iGameTurn, iPlayer = argsList
+	if iPlayer != PlayerUtil.getActivePlayerID():
+		return
+	store()
