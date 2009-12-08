@@ -73,4 +73,9 @@
 					help="Color used for missions that you can perform soon (you have close to enough EPs against the target)."/>
 		</section>
 	</options>
+	
+	<event type="GameStart" module="SpyUtil" function="clear"/>
+	<event type="OnLoad" module="SpyUtil" function="load"/>
+	<event type="PythonReloaded" module="SpyUtil" function="load"/>
+	<event type="OnPreSave" module="SpyUtil" function="store"/>
 </mod>
