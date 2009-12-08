@@ -1248,6 +1248,22 @@
 		<Spanish>When checked, uses Almightix's Better Espionage Screen.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__SHOWCALCULATEDINFORMATION_TEXT</Tag>
+		<English>Show Calculated Information</English>
+		<French>Show Calculated Information</French>
+		<German>Show Calculated Information</German>
+		<Italian>Show Calculated Information</Italian>
+		<Spanish>Show Calculated Information</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__SHOWCALCULATEDINFORMATION_HOVER</Tag>
+		<English>When checked, shows calculated espionage information.</English>
+		<French>When checked, shows calculated espionage information.</French>
+		<German>When checked, shows calculated espionage information.</German>
+		<Italian>When checked, shows calculated espionage information.</Italian>
+		<Spanish>When checked, shows calculated espionage information.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__DEFAULTRATIOCOLOR_TEXT</Tag>
 		<English>Ratio Color</English>
 		<French>Couleur de Pro Rata</French>

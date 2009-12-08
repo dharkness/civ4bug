@@ -71,6 +71,7 @@ class BugAdvisorOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		self.addLabel(screen, right, "Espionage_Screen", "Espionage [CTRL + E]:")
 		self.addCheckbox(screen, right, "BetterEspionage__Enabled")
+		self.addCheckbox(screen, right, "BetterEspionage__ShowCalculatedInformation")
 
 		self.addLabel(screen, right, "Espionage_Ratio", "Ratio:")
 		rightL, rightR = self.addTwoColumnLayout(screen, right, "Espionage_Screen_Column")
