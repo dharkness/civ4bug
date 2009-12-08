@@ -720,16 +720,13 @@ class CvEspionageAdvisor:
 	def drawGlanceTab(self):
 		return
 
-	def getEspionageModifier(self, iTeamID, iTargetTeamID):
-		return 0
-	
 	def getEspionageMultiplier(self, iCurrentPlayer, iTargetPlayer):
 		pCurrentPlayer = gc.getPlayer(iCurrentPlayer)
 		iCurrentTeamID = pCurrentPlayer.getTeam()
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		iTargetTeamID = pTargetPlayer.getTeam()
 
-		iMultiplier = self.getEspionageModifier(iCurrentTeamID, iTargetTeamID)
+		iMultiplier = getEspionageModifier(iCurrentTeamID, iTargetTeamID)
 		return iMultiplier
 
 	def getEspionageMultiplierText(self, iCurrentPlayer, iTargetPlayer):
@@ -738,7 +735,7 @@ class CvEspionageAdvisor:
 		pTargetPlayer = gc.getPlayer(iTargetPlayer)
 		iTargetTeamID = pTargetPlayer.getTeam()
 
-		iMultiplier = self.getEspionageModifier(iCurrentTeamID, iTargetTeamID)
+		iMultiplier = getEspionageModifier(iCurrentTeamID, iTargetTeamID)
 		szMultiplier = localText.getText("TXT_KEY_ESPIONAGE_COST", (iMultiplier, ))
 
 		if self.getCounterEspionageTurnsLeft(iCurrentPlayer, iTargetPlayer) > 0:
