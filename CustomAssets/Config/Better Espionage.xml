@@ -6,6 +6,7 @@
 	Copyright (c) 2008 The BUG Mod.
 -->
 <mod id="BetterEspionage" 
+	 module="EspionageEventManager"
 	 name="Better Espionage Screen" 
 	 author="Almightix, EmperorFool" 
 	 version="1.1" 
@@ -19,6 +20,12 @@
 					dirtyBit="Espionage_Advisor" 
 					label="Better Espionage Screen" 
 					help="When checked, uses Almightix's Better Espionage Screen."/>
+			
+			<option id="ShowCalculatedInformation" key="Show Calculated Information" 
+					type="boolean" default="False" 
+					dirtyBit="Espionage_Advisor" 
+					label="Show Calculated Information" 
+					help="When checked, shows calculated espionage information."/>
 			
 			<option id="DefaultRatioColor" key="Default Ratio Color" 
 					type="color" default="COLOR_CYAN" 
