@@ -426,10 +426,7 @@ class CvEspionageAdvisor:
 			self.W_NAME_PANEL = 220
 			self.H_NAME_PANEL = 30
 
-
 		return
-
-
 
 	def drawMissionTab_LeftLeaderPanal(self, screen):
 		pActivePlayer = gc.getPlayer(self.iActivePlayer)
@@ -643,11 +640,18 @@ class CvEspionageAdvisor:
 			screen.setLabelAt( szName, attach, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_EPoints, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EP Spending Against (Points per turn)
+			szName = "AmountAgainstText%d" %(iPlayerID)
 			iSpending = SpyUtil.getDifferenceByPlayer(iPlayerID, self.iActivePlayer)
-			if iSpending is not None:
-				szText = u"<font=2><color=0,255,0,0>(+%i)</color></font>" %(iSpending)
-			else:
+			if (iSpending is None
+			or iSpending == 0):
 				szText = u""
+			else:
+				if iSpending > 0:
+					szText = u"<font=2>(+%i)</font>" %(iSpending)
+					szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREEN"))
+				else:
+					szText = u"<font=2>(-%i)</font>" %(iSpending)
+					szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
 			screen.deleteWidget(szName)
 			screen.setLabelAt( szName, attach, szText, CvUtil.FONT_LEFT_JUSTIFY, self.LeaderPanel_X_EPointsTurn, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
@@ -947,7 +951,8 @@ class CvEspionageAdvisor:
 		szName = "AmountText%d" %(iPlayerID)
 		iSpending = pActivePlayer.getEspionageSpending(iTargetTeam)
 		if (iSpending > 0):
-			szText = u"<font=2><color=0,255,0,0>(+%i)</color></font>" %(iSpending)
+			szText = u"<font=2>(+%i)</font>" %(iSpending)
+			szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREEN"))
 		else:
 			szText = u""
 		screen.deleteWidget(szName)

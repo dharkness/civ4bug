@@ -23,7 +23,7 @@ def getDifferenceByPlayer(playerOrID, targetPlayerOrID=None):
 	if targetPlayerOrID is None:
 		return getDifferenceByTeam(PlayerUtil.getPlayerTeam(playerOrID))
 	else:
-		return getDifferenceByTeam(PlayerUtil.getPlayerTeam(playerOrID), PlayerUtil.getPlayerTeamID(playerOrID))
+		return getDifferenceByTeam(PlayerUtil.getPlayerTeam(playerOrID), PlayerUtil.getPlayerTeamID(targetPlayerOrID))
 
 def getDifferenceByTeam(teamOrID, targetTeamOrID=None):
 	eTeam, team = PlayerUtil.getTeamAndID(teamOrID)
@@ -36,6 +36,7 @@ def getDifferenceByTeam(teamOrID, targetTeamOrID=None):
 		return team.getEspionagePointsAgainstTeam(eTargetTeam) - iPrevious
 
 def getPreviousValueByTeam(teamOrID, targetTeamOrID=None):
+	global g_values, g_iTurn
 	if g_iTurn is None:
 		load()
 	if g_iTurn == gc.getGame().getGameTurn() - 1 and g_values:
