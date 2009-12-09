@@ -625,7 +625,7 @@ class CvEspionageAdvisor:
 	def showCounterEspionage(self, screen, szLeaderPanel, iCounterEspTurns, iRow):
 		szName = self.getNextWidgetName()
 		if iCounterEspTurns > 0:
-			szText = u"<font=2>[%i]</font>" %(iCounterEsp)
+			szText = u"<font=2>[%i]</font>" %(iCounterEspTurns)
 		else:
 			szText = u""
 		screen.setLabelAt(szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_CounterEP, iRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
