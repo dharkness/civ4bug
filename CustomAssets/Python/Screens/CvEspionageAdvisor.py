@@ -32,7 +32,7 @@ CITYMISSION_MISSION = 1
 ## BUG Screen Class - Start
 
 class BugTab:
-	def __init__(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bEnabled, bActive, sDraw, sRefresh, WidgetType):
+	def __init__(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType):
 		self.widget_id = sWidgetId
 		self.txt_key = sTxt_Key
 		self.font = sFont
@@ -40,6 +40,7 @@ class BugTab:
 		self.X = iX
 		self.Y = iY
 		self.Z = iZ
+		self.show = bShow
 		self.enabled = bEnabled
 		self.active = bActive
 		self.DrawProc = sDraw
@@ -53,6 +54,9 @@ class BugTab:
 		self.enabled = bEnabled
 
 	def getLabel(self):
+		if not self.show:
+			return ""
+
 		szText = u"<font=%s>" %(self.font)
 		if self.upper:
 			szText += localText.getText(self.txt_key, ()).upper()
@@ -79,10 +83,10 @@ class BugScreen:
 		self.BGkey = sFile_Key
 
 	def addTitle(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ):
-		self.Title = BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, True, False, None, None, WidgetTypes.WIDGET_GENERAL)
+		self.Title = BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, True, True, False, None, None, WidgetTypes.WIDGET_GENERAL)
 
-	def addTab(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bEnabled, bActive, sDraw, sRefresh, WidgetType):
-		self.tabs.append(BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bEnabled, bActive, sDraw, sRefresh, WidgetType))
+	def addTab(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType):
+		self.tabs.append(BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType))
 
 	def evenlySpaceTabs(self):
 		if len(self.tabs) <= 2:
@@ -103,6 +107,11 @@ class BugScreen:
 		for tab in self.tabs:
 			tab.setStatus(tab.widget_id == sActiveWidget)
 
+	def getActiveTab(self):
+		for tab in self.tabs:
+			if tab.active:
+				return tab.widget_id
+		return None
 
 	def draw(self):
 		self.screen.setDimensions(self.screen.centerX(0), self.screen.centerY(0), self.width, self.height)
@@ -115,9 +124,21 @@ class BugScreen:
 
 		# Title
 		self.screen.setLabel(self.Title.widget_id, self.widget_id + "TopPanel", self.Title.getLabel(), CvUtil.FONT_CENTER_JUSTIFY,
-						self.Title.X, self.Title.Y, self.Title.Z, FontTypes.TITLE_FONT, self.Title.WidgetType, -1, -1)
+							 self.Title.X, self.Title.Y, self.Title.Z, FontTypes.TITLE_FONT, self.Title.WidgetType, -1, -1)
 
-#		self.drawTabs()
+	def drawActiveTab(self):
+		for tab in self.tabs:
+			if tab.active:
+				if not tab.DrawProc == None:
+					tab.DrawProc ()
+				break
+
+	def refreshActiveTab(self):
+		for tab in self.tabs:
+			if tab.active:
+				if not tab.RefreshProc == None:
+					tab.RefreshProc ()
+				break
 
 	def drawTabs(self):
 		# Tabs
@@ -193,7 +214,6 @@ class CvEspionageAdvisor:
 		self.iActiveCityID = -1
 		self.iActiveMissionID = -1
 
-		self.iActiveTab = ESPIONAGE_MISSION_TAB
 		self.drawMissionTabConstantsDone = 0
 		self.CityMissionToggle = CITYMISSION_CITY
 
@@ -219,53 +239,20 @@ class CvEspionageAdvisor:
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen( PopupStates.POPUPSTATE_IMMEDIATE, False)
 
-		if (self.iActiveTab < 0
-		or  self.iActiveTab > 1):
-			self.iActiveTab = ESPIONAGE_MISSION_TAB
-
-
-
 # attempting to call BugScreen class here
 
 		self.EPScreen = BugScreen(self.SCREEN_NAME, screen, self.W_SCREEN, self.H_SCREEN)
 		self.EPScreen.addBackground(self.BACKGROUND_ID, "SCREEN_BG_OPAQUE")
 		self.EPScreen.addTitle(self.WIDGET_HEADER, "TXT_KEY_ESPIONAGE_SCREEN", "4b", True, self.X_SCREEN, self.Y_TITLE, self.Z_CONTROLS)
-		self.EPScreen.addTab(self.MissionsTabWidget, "TXT_KEY_ESPIONAGE_MISSIONS_TAB", "4", True, 50, self.Y_EXIT, 0, True, True, None, None, WidgetTypes.WIDGET_GENERAL)
-		self.EPScreen.addTab(self.SpyvSpyTabWidget, "TXT_KEY_ESPIONAGE_SPYVSPY_TAB", "4", False, 350, self.Y_EXIT, 0, True, False, None, None, WidgetTypes.WIDGET_GENERAL)
-		self.EPScreen.addTab(self.EXIT_ID, "TXT_KEY_PEDIA_SCREEN_EXIT", "4", True, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, True, False, None, None, WidgetTypes.WIDGET_CLOSE_SCREEN)
+
+		bShow = EspionageOpt.isEnabled()
+		self.EPScreen.addTab(self.MissionsTabWidget, "TXT_KEY_ESPIONAGE_MISSIONS_TAB", "4", True, 50, self.Y_EXIT, 0, bShow, True, True, self.drawMissionTab, self.refreshMissionTab, WidgetTypes.WIDGET_GENERAL)
+		self.EPScreen.addTab(self.SpyvSpyTabWidget, "TXT_KEY_ESPIONAGE_SPYVSPY_TAB", "4", False, 350, self.Y_EXIT, 0, bShow, True, False, self.drawGlanceTab, None, WidgetTypes.WIDGET_GENERAL)
+		self.EPScreen.addTab(self.EXIT_ID, "TXT_KEY_PEDIA_SCREEN_EXIT", "4", True, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, True, True, False, None, None, WidgetTypes.WIDGET_CLOSE_SCREEN)
 
 #		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
 		self.EPScreen.draw()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		# Set the background and exit button, and show the screen
-#		screen.setDimensions(screen.centerX(0), screen.centerY(0), self.W_SCREEN, self.H_SCREEN)
-
-#		screen.addDDSGFC(self.BACKGROUND_ID, ArtFileMgr.getInterfaceArtInfo("SCREEN_BG_OPAQUE").getPath(), 0, 0, self.W_SCREEN, self.H_SCREEN, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-#		screen.addPanel( "TechTopPanel", u"", u"", True, False, 0, 0, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_TOPBAR )
-#		screen.addPanel( "TechBottomPanel", u"", u"", True, False, 0, 713, self.W_SCREEN, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
-
-#		screen.showWindowBackground(False)
-#		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
-
-		# Header...
-#		screen.setLabel(self.WIDGET_HEADER, "Background", u"<font=4b>" + localText.getText("TXT_KEY_ESPIONAGE_SCREEN", ()).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, self.X_SCREEN, self.Y_TITLE, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 		if (CyGame().isDebugMode()):
 			self.iDebugDropdownID = 554
@@ -282,40 +269,23 @@ class CvEspionageAdvisor:
 
 		self.deleteAllWidgets()
 
-		BugUtil.debug("CvEspionage Advisor: Active Tab %i", self.iActiveTab)
 		screen = self.getScreen()
 
 		if not EspionageOpt.isEnabled():
 			self.CityMissionToggle = CITYMISSION_CITY
-			self.iActiveTab = ESPIONAGE_MISSION_TAB
+			self.EPScreen.updateTabStatus(self.MissionsTabWidget)
 
 		# draw tab details
-		if self.iActiveTab == ESPIONAGE_MISSION_TAB:
-			self.drawMissionTab()
-			self.refreshMissionTab()
-		elif self.iActiveTab == ESPIONAGE_GLANCE_TAB:
-			self.drawGlanceTab()
-
-
+		self.EPScreen.drawActiveTab()
+		self.EPScreen.refreshActiveTab()
 
 		# draw tabs
-		if EspionageOpt.isEnabled():
-			self.EPScreen.drawTabs()
-#			szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_MISSIONS_TAB", ()).upper() + u"</font>"
-#			if self.iActiveTab == ESPIONAGE_MISSION_TAB:
-#				szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
-#			screen.setText(self.MissionsTabWidget, "", szText, CvUtil.FONT_LEFT_JUSTIFY, 50, self.Y_EXIT, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
-
-#			szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_SPYVSPY_TAB", ()).upper() + u"</font>"
-#			szText = u"<font=4>" + localText.getText("TXT_KEY_ESPIONAGE_SPYVSPY_TAB", ()) + u"</font>"
-#			if self.iActiveTab == ESPIONAGE_GLANCE_TAB:
-#				szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
-#			screen.setText(self.SpyvSpyTabWidget, "", szText, CvUtil.FONT_LEFT_JUSTIFY, 350, self.Y_EXIT, 0, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		self.EPScreen.drawTabs()
 
 	def drawMissionTab(self):
 		screen = self.getScreen()
 
-		BugUtil.debug("CvEspionage Advisor: drawMissionsTab")
+#		BugUtil.debug("CvEspionage Advisor: drawMissionsTab")
 
 		pActivePlayer = gc.getPlayer(self.iActivePlayer)
 		pActiveTeam = gc.getTeam(pActivePlayer.getTeam())
@@ -509,9 +479,6 @@ class CvEspionageAdvisor:
 			self.Y_MISSIONS_COSTS_LIST = self.Y_MISSIONS_LIST
 			self.W_MISSIONS_COSTS_LIST = self.W_EFFECTS_COSTS_LIST
 			self.H_MISSIONS_COSTS_LIST = self.H_MISSIONS_LIST
-
-#ruff_hi - needed for when I add the second tab
-#CyInterface().determineWidth(szText)
 
 			############################
 			#### Left Leaders Panel
@@ -811,9 +778,6 @@ class CvEspionageAdvisor:
 
 
 	def refreshMissionTab(self):
-		if self.iActiveTab != ESPIONAGE_MISSION_TAB:
-			return
-
 		if (self.iTargetPlayer != -1):
 			# Create a new screen, called EspionageAdvisor, using the file EspionageAdvisor.py for input
 			screen = self.getScreen()
@@ -1076,8 +1040,6 @@ class CvEspionageAdvisor:
 		return
 
 
-
-
 	# returns a unique ID for a widget in this screen
 	def getNextWidgetName(self):
 		szName = self.WIDGET_ID + str(self.nWidgetCount)
@@ -1111,27 +1073,26 @@ class CvEspionageAdvisor:
 				CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, True)
 
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
-			BugUtil.debug("CvEspionage Advisor: NotifyCode.NOTIFY_CLICKED %s %s %s", icFunctionName, self.MissionsTabWidget, self.SpyvSpyTabWidget)
-			if (("%s%d" %(icFunctionName, inputClass.getID()) == self.szMissionsTitleText
-			or   "%s%d" %(icFunctionName, inputClass.getID()) == self.szCitiesTitleText)
-			and EspionageOpt.isEnabled()):
-				if self.CityMissionToggle == CITYMISSION_MISSION:
-					self.CityMissionToggle = CITYMISSION_CITY
-					self.drawContents()
-					return 0
-				else:
-					self.CityMissionToggle = CITYMISSION_MISSION
-					self.drawContents()
-					return 0
-			elif (icFunctionName == self.MissionsTabWidget):
-				BugUtil.debug("CvEspionage Advisor: Change to Mission Tab")
-				self.iActiveTab = ESPIONAGE_MISSION_TAB
+			if self.EPScreen.getActiveTab() == self.MissionsTabWidget:
+				if (("%s%d" %(icFunctionName, inputClass.getID()) == self.szMissionsTitleText
+				or   "%s%d" %(icFunctionName, inputClass.getID()) == self.szCitiesTitleText)
+				and EspionageOpt.isEnabled()):
+					if self.CityMissionToggle == CITYMISSION_MISSION:
+						self.CityMissionToggle = CITYMISSION_CITY
+						self.drawContents()
+						return 0
+					else:
+						self.CityMissionToggle = CITYMISSION_MISSION
+						self.drawContents()
+						return 0
+
+			if (icFunctionName == self.MissionsTabWidget):
+#				BugUtil.debug("CvEspionage Advisor: Change to Mission Tab")
 				self.EPScreen.updateTabStatus(self.MissionsTabWidget)
 				self.drawContents()
 				return 0
 			elif (icFunctionName == self.SpyvSpyTabWidget):
-				BugUtil.debug("CvEspionage Advisor: Change to Spy v Spy Tab")
-				self.iActiveTab = ESPIONAGE_GLANCE_TAB
+#				BugUtil.debug("CvEspionage Advisor: Change to Spy v Spy Tab")
 				self.EPScreen.updateTabStatus(self.SpyvSpyTabWidget)
 				self.drawContents()
 				return 0
@@ -1191,5 +1152,5 @@ class CvEspionageAdvisor:
 	def update(self, fDelta):
 		if (CyInterface().isDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT) == True):
 			CyInterface().setDirty(InterfaceDirtyBits.Espionage_Advisor_DIRTY_BIT, False)
-			self.refreshMissionTab()
+			self.EPScreen.refreshActiveTab()
 		return
