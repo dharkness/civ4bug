@@ -5512,11 +5512,11 @@ class CvMainInterface:
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY_NO_UNHAPPY", (pHeadSelectedCity.happyLevel(), ))
 
 # BUG - Anger Display - start
-				if (CityScreenOpt.isShowAngerCounter()
-				and pHeadSelectedCity.getOwner() == gc.getGame().getActivePlayer()):
-					iAngerTimer = max(pHeadSelectedCity.getHurryAngerTimer(), pHeadSelectedCity.getConscriptAngerTimer())
-					if iAngerTimer > 0:
-						szBuffer += u" (%i)" % iAngerTimer
+					if (CityScreenOpt.isShowAngerCounter()
+					and pHeadSelectedCity.getTeam() == gc.getGame().getActiveTeam()):
+						iAngerTimer = max(pHeadSelectedCity.getHurryAngerTimer(), pHeadSelectedCity.getConscriptAngerTimer())
+						if iAngerTimer > 0:
+							szBuffer += u" (%i)" % iAngerTimer
 # BUG - Anger Display - end
 
 					screen.setLabel( "HappinessText", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, xResolution - iCityCenterRow1X + 6, iCityCenterRow2Y, -0.3, FontTypes.GAME_FONT, WidgetTypes.WIDGET_HELP_HAPPINESS, -1, -1 )
