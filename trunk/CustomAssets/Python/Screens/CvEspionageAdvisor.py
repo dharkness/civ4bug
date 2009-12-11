@@ -13,6 +13,7 @@ import BugUtil
 import ColorUtil
 import FontUtil
 import SpyUtil
+import BugScreen
 EspionageOpt = BugCore.game.BetterEspionage
 # BUG - Better Espionage - end
 
@@ -21,157 +22,8 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-ESPIONAGE_MISSION_TAB = 0
-ESPIONAGE_GLANCE_TAB = 1
-
 CITYMISSION_CITY = 0
 CITYMISSION_MISSION = 1
-
-
-
-## BUG Screen Class - Start
-
-class BugTab:
-	def __init__(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType):
-		self.widget_id = sWidgetId
-		self.txt_key = sTxt_Key
-		self.font = sFont
-		self.upper = bUpper
-		self.X = iX
-		self.Y = iY
-		self.Z = iZ
-		self.show = bShow
-		self.enabled = bEnabled
-		self.active = bActive
-		self.DrawProc = sDraw
-		self.RefreshProc = sRefresh
-		self.WidgetType = WidgetType
-
-	def setStatus(self, bActive):
-		self.active = bActive
-
-	def setEnabled(self, bEnabled):
-		self.enabled = bEnabled
-
-	def getLabel(self):
-		if not self.show:
-			return ""
-
-		szText = u"<font=%s>" %(self.font)
-		if self.upper:
-			szText += localText.getText(self.txt_key, ()).upper()
-		else:
-			szText += localText.getText(self.txt_key, ())
-		szText += u"</font>"
-		if not self.enabled:
-			szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREY"))
-		elif self.active:
-			szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
-		return szText
-
-
-class BugScreen:
-	def __init__(self, sWidgetId, screen, iWidth, iHeight):
-		self.widget_id = sWidgetId
-		self.screen = screen
-		self.width = iWidth
-		self.height = iHeight
-		self.tabs = []
-
-	def addBackground(self, sWidgetID, sFile_Key):
-		self.BGwidget_Id = sWidgetID
-		self.BGkey = sFile_Key
-
-	def addTitle(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ):
-		self.Title = BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, True, True, False, None, None, WidgetTypes.WIDGET_GENERAL)
-
-	def addTab(self, sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType):
-		self.tabs.append(BugTab(sWidgetId, sTxt_Key, sFont, bUpper, iX, iY, iZ, bShow, bEnabled, bActive, sDraw, sRefresh, WidgetType))
-
-	def evenlySpaceTabs(self):
-		if len(self.tabs) <= 2:
-			return
-
-		sparewidth = self.tabs[len(self.tabs)].Y - self.tabs[0].Y
-		for tab in self.tabs:
-			sparewidth -= CyInterface().determineWidth(tab.getLabel())
-
-		sparewidth = sparewidth / (len(self.tabs) - 1)
-
-		for itab in range(len(self.tabs)):
-			if (itab == 0 or itab == len(self.tabs)):
-				continue
-			self.tabs[itab].Y = self.tabs[itab - 1].Y + CyInterface().determineWidth(self.tabs[itab - 1].getLabel()) + sparewidth
-
-	def updateTabStatus(self, sActiveWidget):
-		for tab in self.tabs:
-			tab.setStatus(tab.widget_id == sActiveWidget)
-
-	def getActiveTab(self):
-		for tab in self.tabs:
-			if tab.active:
-				return tab.widget_id
-		return None
-
-	def draw(self):
-		self.screen.setDimensions(self.screen.centerX(0), self.screen.centerY(0), self.width, self.height)
-
-		self.screen.addDDSGFC(self.BGwidget_Id, ArtFileMgr.getInterfaceArtInfo(self.BGkey).getPath(), 0, 0, self.width, self.height, WidgetTypes.WIDGET_GENERAL, -1, -1 )
-		self.screen.addPanel(self.widget_id + "TopPanel", u"", u"", True, False, 0, 0, self.width, 55, PanelStyles.PANEL_STYLE_TOPBAR )
-		self.screen.addPanel(self.widget_id + "BottomPanel", u"", u"", True, False, 0, 713, self.width, 55, PanelStyles.PANEL_STYLE_BOTTOMBAR )
-
-		self.screen.showWindowBackground(False)
-
-		# Title
-		self.screen.setLabel(self.Title.widget_id, self.widget_id + "TopPanel", self.Title.getLabel(), CvUtil.FONT_CENTER_JUSTIFY,
-							 self.Title.X, self.Title.Y, self.Title.Z, FontTypes.TITLE_FONT, self.Title.WidgetType, -1, -1)
-
-	def drawActiveTab(self):
-		for tab in self.tabs:
-			if tab.active:
-				if not tab.DrawProc == None:
-					tab.DrawProc ()
-				break
-
-	def refreshActiveTab(self):
-		for tab in self.tabs:
-			if tab.active:
-				if not tab.RefreshProc == None:
-					tab.RefreshProc ()
-				break
-
-	def drawTabs(self):
-		# Tabs
-		itab = 0
-		for tab in self.tabs:
-			if itab + 1 == len(self.tabs):
-				justify = CvUtil.FONT_RIGHT_JUSTIFY
-			else:
-				justify = CvUtil.FONT_LEFT_JUSTIFY
-			self.screen.setText(tab.widget_id, self.widget_id + "BottomPanel", tab.getLabel(), justify,
-						   tab.X, tab.Y, tab.Z, FontTypes.TITLE_FONT, tab.WidgetType, -1, -1 )
-			itab += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## BUG Screen Class - End
-
 
 class CvEspionageAdvisor:
 
@@ -241,7 +93,7 @@ class CvEspionageAdvisor:
 
 # attempting to call BugScreen class here
 
-		self.EPScreen = BugScreen(self.SCREEN_NAME, screen, self.W_SCREEN, self.H_SCREEN)
+		self.EPScreen = BugScreen.BugScreen(self.SCREEN_NAME, screen, self.W_SCREEN, self.H_SCREEN)
 		self.EPScreen.addBackground(self.BACKGROUND_ID, "SCREEN_BG_OPAQUE")
 		self.EPScreen.addTitle(self.WIDGET_HEADER, "TXT_KEY_ESPIONAGE_SCREEN", "4b", True, self.X_SCREEN, self.Y_TITLE, self.Z_CONTROLS)
 
@@ -249,7 +101,7 @@ class CvEspionageAdvisor:
 		self.EPScreen.addTab(self.MissionsTabWidget, "TXT_KEY_ESPIONAGE_MISSIONS_TAB", "4", True, 50, self.Y_EXIT, 0, bShow, True, True, self.drawMissionTab, self.refreshMissionTab, WidgetTypes.WIDGET_GENERAL)
 		self.EPScreen.addTab(self.SpyvSpyTabWidget, "TXT_KEY_ESPIONAGE_SPYVSPY_TAB", "4", False, 350, self.Y_EXIT, 0, bShow, True, False, self.drawGlanceTab, None, WidgetTypes.WIDGET_GENERAL)
 		self.EPScreen.addTab(self.EXIT_ID, "TXT_KEY_PEDIA_SCREEN_EXIT", "4", True, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, True, True, False, None, None, WidgetTypes.WIDGET_CLOSE_SCREEN)
-
+		self.EPScreen.evenlySpaceTabs()
 #		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
 
 		self.EPScreen.draw()
