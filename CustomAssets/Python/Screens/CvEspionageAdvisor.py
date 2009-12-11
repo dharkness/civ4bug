@@ -76,6 +76,11 @@ class CvEspionageAdvisor:
 		self.iDecreaseButtonID = 556
 		self.iLeaderImagesID = 456
 
+		# mission / city widgets - initialized to avoid errors with 'handle input'
+		# they get set to proper values in def drawMissionTab(self)
+		self.szMissionsTitleText = ""
+		self.szCitiesTitleText = ""
+
 	def getScreen(self):
 		return CyGInterfaceScreen(self.SCREEN_NAME, CvScreenEnums.ESPIONAGE_ADVISOR)
 
