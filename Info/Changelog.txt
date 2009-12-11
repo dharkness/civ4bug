@@ -40,6 +40,10 @@ New Features:
 
 Bug Fixes:
 
+- City Screen
+	Happiness and unhappiness are shown for foreign cities
+	Whip/Draft Anger is shown for team member cities
+
 
 MODDING
 
