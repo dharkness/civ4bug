@@ -1251,7 +1251,7 @@
 		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__SHOWCALCULATEDINFORMATION_TEXT</Tag>
 		<English>Show Calculated Information</English>
 		<French>Show Calculated Information</French>
-		<German>Show Calculated Information</German>
+		<German>Errechnete Informationen</German>
 		<Italian>Show Calculated Information</Italian>
 		<Spanish>Show Calculated Information</Spanish>
 	</TEXT>
@@ -1259,7 +1259,7 @@
 		<Tag>TXT_KEY_BUG_OPT_BETTERESPIONAGE__SHOWCALCULATEDINFORMATION_HOVER</Tag>
 		<English>When checked, shows calculated espionage information.</English>
 		<French>When checked, shows calculated espionage information.</French>
-		<German>When checked, shows calculated espionage information.</German>
+		<German>Zeigt errechnete Spionage-Informationen an</German>
 		<Italian>When checked, shows calculated espionage information.</Italian>
 		<Spanish>When checked, shows calculated espionage information.</Spanish>
 	</TEXT>

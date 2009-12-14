@@ -1260,7 +1260,7 @@
 		<Tag>TXT_KEY_ESPIONAGE_MISSIONS_TAB</Tag>
 		<English>Missions</English>
 		<French>Missions</French>
-		<German>Missions</German>
+		<German>Missionen</German>
 		<Italian>Missions</Italian>
 		<Spanish>Missions</Spanish>
 	</TEXT>
@@ -1268,7 +1268,7 @@
 		<Tag>TXT_KEY_ESPIONAGE_SPYVSPY_TAB</Tag>
 		<English>Spy v Spy</English>
 		<French>Spy v Spy</French>
-		<German>Spy v Spy</German>
+		<German>Gegenspionage</German>
 		<Italian>Spy v Spy</Italian>
 		<Spanish>Spy v Spy</Spanish>
 	</TEXT>
