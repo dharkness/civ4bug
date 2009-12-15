@@ -152,7 +152,7 @@ def getPlayerAndTeamIDs(playerOrID):
 
 def getPlayerAndTeamAndIDs(playerOrID):
 	"""Returns the Player ID, CyPlayer, Team ID and CyTeam for the given player."""
-	ePlayer, player = getPlayer(playerOrID)
+	ePlayer, player = getPlayerAndID(playerOrID)
 	if player:
 		eTeam = player.getTeam()
 		return ePlayer, player, eTeam, gc.getTeam(eTeam)
