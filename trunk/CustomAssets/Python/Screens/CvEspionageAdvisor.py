@@ -535,11 +535,10 @@ class CvEspionageAdvisor:
 				or iSpending == 0):
 					szText = u""
 				else:
+					szText = u"<font=2>(%+i)</font>" %(iSpending)
 					if iSpending > 0:
-						szText = u"<font=2>(+%i)</font>" %(iSpending)
 						szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREEN"))
 					else:
-						szText = u"<font=2>(-%i)</font>" %(iSpending)
 						szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
 				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.LeaderPanel_X_EPointsTurn, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
