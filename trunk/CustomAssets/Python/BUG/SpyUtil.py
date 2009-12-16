@@ -19,6 +19,12 @@ gc = CyGlobalContext()
 g_iTurn = None
 g_values = None
 
+def getSpending(playerOrID):
+	iTotal = 0
+	for targetTeam in PlayerUtil.teams(True, None, False):
+		iTotal += getDifferenceByTeam(PlayerUtil.getPlayerTeam(playerOrID), targetTeam.getID())
+	return iTotal
+
 def getDifferenceByPlayer(playerOrID, targetPlayerOrID=None):
 	if targetPlayerOrID is None:
 		return getDifferenceByTeam(PlayerUtil.getPlayerTeam(playerOrID))
@@ -34,6 +40,8 @@ def getDifferenceByTeam(teamOrID, targetTeamOrID=None):
 	iPrevious = getPreviousValueByTeam(eTeam, eTargetTeam)
 	if iPrevious is not None:
 		return team.getEspionagePointsAgainstTeam(eTargetTeam) - iPrevious
+	else:
+		return 0
 
 def getPreviousValueByTeam(teamOrID, targetTeamOrID=None):
 	global g_values, g_iTurn

@@ -67,6 +67,7 @@ class CvEspionageAdvisor:
 		self.iActiveMissionID = -1
 
 		self.drawMissionTabConstantsDone = 0
+		self.drawSpyvSpyTabConstantsDone = 0
 		self.CityMissionToggle = CITYMISSION_CITY
 
 		self.MissionsTabWidget = self.SCREEN_NAME + "MissionTab"
@@ -80,6 +81,8 @@ class CvEspionageAdvisor:
 		# they get set to proper values in def drawMissionTab(self)
 		self.szMissionsTitleText = ""
 		self.szCitiesTitleText = ""
+
+		self.EPScreenTab = -1
 
 	def getScreen(self):
 		return CyGInterfaceScreen(self.SCREEN_NAME, CvScreenEnums.ESPIONAGE_ADVISOR)
@@ -104,10 +107,17 @@ class CvEspionageAdvisor:
 
 		bShow = EspionageOpt.isEnabled()
 		self.EPScreen.addTab(self.MissionsTabWidget, "TXT_KEY_ESPIONAGE_MISSIONS_TAB", "4", True, 50, self.Y_EXIT, 0, bShow, True, True, self.drawMissionTab, self.refreshMissionTab, WidgetTypes.WIDGET_GENERAL)
-		self.EPScreen.addTab(self.SpyvSpyTabWidget, "TXT_KEY_ESPIONAGE_SPYVSPY_TAB", "4", False, 350, self.Y_EXIT, 0, bShow, True, False, self.drawGlanceTab, None, WidgetTypes.WIDGET_GENERAL)
+		self.EPScreen.addTab(self.SpyvSpyTabWidget, "TXT_KEY_ESPIONAGE_SPYVSPY_TAB", "4", False, 350, self.Y_EXIT, 0, bShow, True, False, self.drawSpyvSpyTab, None, WidgetTypes.WIDGET_GENERAL)
 		self.EPScreen.addTab(self.EXIT_ID, "TXT_KEY_PEDIA_SCREEN_EXIT", "4", True, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, True, True, False, None, None, WidgetTypes.WIDGET_CLOSE_SCREEN)
 		self.EPScreen.evenlySpaceTabs()
-#		screen.setText(self.EXIT_ID, "Background", u"<font=4>" + localText.getText("TXT_KEY_PEDIA_SCREEN_EXIT", ()).upper() + "</font>", CvUtil.FONT_RIGHT_JUSTIFY, self.X_EXIT, self.Y_EXIT, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_CLOSE_SCREEN, -1, -1 )
+
+		if (self.EPScreenTab == -1
+		or self.EPScreenTab == 1):
+			self.EPScreen.updateTabStatus(self.MissionsTabWidget)
+			self.EPScreenTab = 1
+		elif self.EPScreenTab == 2:
+			self.EPScreen.updateTabStatus(self.SpyvSpyTabWidget)
+			self.EPScreenTab = 2
 
 		self.EPScreen.draw()
 
@@ -151,12 +161,12 @@ class CvEspionageAdvisor:
 
 		self.szLeftPaneWidget = self.getNextWidgetName()
 		screen.addPanel( self.szLeftPaneWidget, "", "", true, true,
-			self.X_LEFT_PANE, self.Y_LEFT_PANE, self.W_LEFT_PANE, self.H_LEFT_PANE, PanelStyles.PANEL_STYLE_MAIN )
+			self.X_LEFT_PANE, self.Y_LEFT_PANE, self.W_LEFT_PANE, self.H_LEFT_PANE, PanelStyles.PANEL_STYLE_MAIN)
 
 		self.szScrollPanel = self.getNextWidgetName()
 		screen.addPanel( self.szScrollPanel, "", "", true, true,
 			self.X_SCROLL, self.Y_SCROLL, self.W_SCROLL, self.H_SCROLL, PanelStyles.PANEL_STYLE_EMPTY)
-		
+
 		self.aiKnownPlayers = []
 		self.aiUnknownPlayers = []
 		self.iNumEntries= 0
@@ -257,26 +267,27 @@ class CvEspionageAdvisor:
 		else:
 			self.drawMissionTabConstantsDone = 1
 
-		self.LeaderPanelTopRow = 0
-		self.LeaderPanelBottomRow = 15
-		self.LeaderPanelMiddle = 6
-		self.LeaderPanel_X_LeaderIcon = 21
-		self.LeaderPanel_X_LeaderNamePanel = 5
-		self.LeaderPanel_X_LeaderName = 55
-		self.LeaderPanel_X_Multiplier = 190
-		self.LeaderPanel_X_CounterEP = 220
-		self.LeaderPanel_X_EPoints = 300
-		self.LeaderPanel_X_PassiveMissions = 380
-		self.LeaderPanel_X_WghtInc = 53
-		self.LeaderPanel_X_WghtDec = 68
-		self.LeaderPanel_X_Wght = 85
-		self.LeaderPanel_X_EPointsTurn = self.LeaderPanel_X_EPoints + 4
-		self.LeaderPanel_X_EspionageIcon = 3
+		self.MissionLeaderPanel_X_LeaderIcon = 21
+		self.MissionLeaderPanel_X_LeaderNamePanel = 5
+		self.MissionLeaderPanel_X_LeaderName = 55
+		self.MissionLeaderPanel_X_Multiplier = 190
+		self.MissionLeaderPanel_X_CounterEP = 220
+		self.MissionLeaderPanel_X_EPoints = 300
+		self.MissionLeaderPanel_X_PassiveMissions = 380
+		self.MissionLeaderPanel_X_WghtInc = 53
+		self.MissionLeaderPanel_X_WghtDec = 68
+		self.MissionLeaderPanel_X_Wght = 85
+		self.MissionLeaderPanel_X_EPointsTurn = self.MissionLeaderPanel_X_EPoints + 4
+		self.MissionLeaderPanel_X_EspionageIcon = 3
 
 		if EspionageOpt.isEnabled():
-			self.LeaderPanel_X_EPointsTurn = self.LeaderPanel_X_EPoints + 4
+			self.MissionLeaderPanel_X_EPointsTurn = self.MissionLeaderPanel_X_EPoints + 4
 		else:
-			self.LeaderPanel_X_EPointsTurn = 247
+			self.MissionLeaderPanel_X_EPointsTurn = 247
+
+		self.MissionLeaderPanelTopRow = 0
+		self.MissionLeaderPanelBottomRow = 15
+		self.MissionLeaderPanelMiddle = 6
 
 		# mission constants
 		for iMissionLoop in range(gc.getNumEspionageMissionInfos()):
@@ -421,7 +432,7 @@ class CvEspionageAdvisor:
 		pActiveTeam = gc.getTeam(pActivePlayer.getTeam())
 
 		# the following are needed for each leader
-		self.LeaderPanelWidgets = [""] * gc.getMAX_PLAYERS()  # updated by refresh
+		self.MissionLeaderPanelWidgets = [""] * gc.getMAX_PLAYERS()  # updated by refresh
 		self.EPWeightWidgets = [""] * gc.getMAX_PLAYERS()     # updated by refresh
 		self.EPSpendingWidgets = [""] * gc.getMAX_PLAYERS()   # updated by refresh
 		self.EPIconWidgets = [""] * gc.getMAX_PLAYERS()       # updated by refresh
@@ -444,7 +455,7 @@ class CvEspionageAdvisor:
 
 			# leader panel / container
 			szLeaderPanel = self.getNextWidgetName()
-			self.LeaderPanelWidgets[iPlayerID] = szLeaderPanel
+			self.MissionLeaderPanelWidgets[iPlayerID] = szLeaderPanel
 
 			screen.attachPanel(self.szScrollPanel, szLeaderPanel, "", "", True, False, PanelStyles.PANEL_STYLE_STANDARD)
 
@@ -461,14 +472,14 @@ class CvEspionageAdvisor:
 			self.LeaderImageWidgets[iPlayerID] = szName  # updated by handle input so needs to be stored
 
 			screen.addCheckBoxGFCAt(szLeaderPanel, szName, gc.getLeaderHeadInfo(gc.getPlayer(iPlayerID).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(),
-				self.LeaderPanel_X_LeaderIcon, self.LeaderPanelTopRow, 32, 32, WidgetTypes.WIDGET_GENERAL, self.iLeaderImagesID, iPlayerID, ButtonStyles.BUTTON_STYLE_LABEL, False)
+				self.MissionLeaderPanel_X_LeaderIcon, self.MissionLeaderPanelTopRow, 32, 32, WidgetTypes.WIDGET_GENERAL, self.iLeaderImagesID, iPlayerID, ButtonStyles.BUTTON_STYLE_LABEL, False)
 			if (self.iTargetPlayer == iPlayerID):
 				screen.setState(szName, true)
 
 			# leader name
 			szName = self.getNextWidgetName()
 			screen.attachPanelAt( szLeaderPanel, szName, "", "", true, false, PanelStyles.PANEL_STYLE_MAIN,
-				self.LeaderPanel_X_LeaderNamePanel, self.LeaderPanelTopRow, self.W_NAME_PANEL, self.H_NAME_PANEL, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				self.MissionLeaderPanel_X_LeaderNamePanel, self.MissionLeaderPanelTopRow, self.W_NAME_PANEL, self.H_NAME_PANEL, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 			szName = self.getNextWidgetName()
 
@@ -479,7 +490,7 @@ class CvEspionageAdvisor:
 				szTempBuffer = u"<color=%d,%d,%d,%d>%s (%s)</color>" %(pTargetPlayer.getPlayerTextColorR(), pTargetPlayer.getPlayerTextColorG(), pTargetPlayer.getPlayerTextColorB(), pTargetPlayer.getPlayerTextColorA(), pTargetPlayer.getName(), szMultiplier)
 
 			szText = u"<font=2>" + szTempBuffer + "</font>"
-			screen.setLabelAt( szName, szLeaderPanel, szText, 0, self.LeaderPanel_X_LeaderName, self.LeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+			screen.setLabelAt( szName, szLeaderPanel, szText, 0, self.MissionLeaderPanel_X_LeaderName, self.MissionLeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EPoints Multiplier
 			if EspionageOpt.isEnabled():
@@ -494,7 +505,7 @@ class CvEspionageAdvisor:
 				elif (iRatioColor >= 0):
 					szText = localText.changeTextColor(szText, iRatioColor)
 
-				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_Multiplier, self.LeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_Multiplier, self.MissionLeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EPoints Multiplier Against
 			if (EspionageOpt.isEnabled()
@@ -502,30 +513,30 @@ class CvEspionageAdvisor:
 				iMultiplier = self.getEspionageMultiplier(iPlayerID, self.iActivePlayer)
 				szName = self.getNextWidgetName()
 				szText = u"<font=2>%i%s</font>" %(iMultiplier, "%")
-				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_Multiplier, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_Multiplier, self.MissionLeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# Counter Espionage (both for and against)
 			if EspionageOpt.isEnabled():
 				# for
 				iCounterEsp = self.getCounterEspionageTurnsLeft(self.iActivePlayer, iPlayerID)
-				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.LeaderPanelTopRow)
+				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.MissionLeaderPanelTopRow)
 
 				# against
 				iCounterEsp = self.getCounterEspionageTurnsLeft(iPlayerID, self.iActivePlayer)
-				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.LeaderPanelBottomRow)
+				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.MissionLeaderPanelBottomRow)
 
 			# EPs
 			szName = self.getNextWidgetName()
 			iPlayerEPs = self.getPlayerEPs(self.iActivePlayer, iPlayerID)
 			szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (iPlayerEPs ,)) + "</font>"
-			screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_EPoints, self.LeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+			screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_EPoints, self.MissionLeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EPs Against
 			if EspionageOpt.isEnabled():
 				szName = self.getNextWidgetName()  #"PointsAgainstText%d" %(iPlayerID)
 				iTargetEPs = self.getPlayerEPs(iPlayerID, self.iActivePlayer)
 				szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (iTargetEPs, )) + "</font>"
-				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_EPoints, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_EPoints, self.MissionLeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EP Spending Against (Points per turn)
 			if EspionageOpt.isEnabled():
@@ -535,32 +546,33 @@ class CvEspionageAdvisor:
 				or iSpending == 0):
 					szText = u""
 				else:
-					szText = u"<font=2>(%+i)</font>" %(iSpending)
 					if iSpending > 0:
+						szText = u"<font=2>(+%i)</font>" %(iSpending)
 						szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREEN"))
 					else:
+						szText = u"<font=2>(%i)</font>" %(iSpending)
 						szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
-				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.LeaderPanel_X_EPointsTurn, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.MissionLeaderPanel_X_EPointsTurn, self.MissionLeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EP Weights
 			iSize = 16
 			szName = self.getNextWidgetName()
-			screen.setImageButtonAt( szName, szLeaderPanel, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), self.LeaderPanel_X_WghtInc, self.LeaderPanelBottomRow, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iIncreaseButtonID, iPlayerID );
+			screen.setImageButtonAt( szName, szLeaderPanel, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_PLUS").getPath(), self.MissionLeaderPanel_X_WghtInc, self.MissionLeaderPanelBottomRow, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iIncreaseButtonID, iPlayerID );
 			szName = self.getNextWidgetName()
-			screen.setImageButtonAt( szName, szLeaderPanel, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), self.LeaderPanel_X_WghtDec, self.LeaderPanelBottomRow, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iDecreaseButtonID, iPlayerID );
+			screen.setImageButtonAt( szName, szLeaderPanel, ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_MINUS").getPath(), self.MissionLeaderPanel_X_WghtDec, self.MissionLeaderPanelBottomRow, iSize, iSize, WidgetTypes.WIDGET_GENERAL, self.iDecreaseButtonID, iPlayerID );
 
 			# Symbols for 'Demographics' and 'Research'
 			if EspionageOpt.isEnabled():
 				# Active Player
 				iDemoCost = pActivePlayer.getEspionageMissionCost(self.MissionSeeDemo, iPlayerID, None, -1)
 				iTechCost = pActivePlayer.getEspionageMissionCost(self.MissionSeeResearch, iPlayerID, None, -1)
-				self.showPassiveMissionIcons(screen, szLeaderPanel, iPlayerEPs, iDemoCost, iTechCost, self.LeaderPanelTopRow)
+				self.showPassiveMissionIcons(screen, szLeaderPanel, iPlayerEPs, iDemoCost, iTechCost, self.MissionLeaderPanelTopRow)
 
 				# Target Player
 				if EspionageOpt.isShowCalculatedInformation():
 					iDemoCost = pTargetPlayer.getEspionageMissionCost(self.MissionSeeDemo, self.iActivePlayer, None, -1)
 					iTechCost = pTargetPlayer.getEspionageMissionCost(self.MissionSeeResearch, self.iActivePlayer, None, -1)
-					self.showPassiveMissionIcons(screen, szLeaderPanel, iTargetEPs, iDemoCost, iTechCost, self.LeaderPanelBottomRow)
+					self.showPassiveMissionIcons(screen, szLeaderPanel, iTargetEPs, iDemoCost, iTechCost, self.MissionLeaderPanelBottomRow)
 
 		for iPlayerID in self.aiUnknownPlayers:
 			szLeaderPanel = self.getNextWidgetName()
@@ -610,7 +622,7 @@ class CvEspionageAdvisor:
 			szText = u"<font=2>[%i]</font>" %(iCounterEspTurns)
 		else:
 			szText = u""
-		screen.setLabelAt(szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.LeaderPanel_X_CounterEP, iRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+		screen.setLabelAt(szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_CounterEP, iRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 
 	def showPassiveMissionIcons(self, screen, szLeaderPanel, iEPoints, iDemoCost, iTechCost, iRow):
 		# can see demographics icon
@@ -626,7 +638,7 @@ class CvEspionageAdvisor:
 			szText += FontUtil.getChar("space")
 
 		szName = self.getNextWidgetName()
-		screen.setLabelAt(szName, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.LeaderPanel_X_PassiveMissions, iRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+		screen.setLabelAt(szName, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.MissionLeaderPanel_X_PassiveMissions, iRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 
 
@@ -763,38 +775,38 @@ class CvEspionageAdvisor:
 		pTargetPlayer = gc.getPlayer(iPlayerID)
 		iTargetTeam = pTargetPlayer.getTeam()
 
-		szLeaderPanel = self.LeaderPanelWidgets[iPlayerID]
+		szLeaderPanel = self.MissionLeaderPanelWidgets[iPlayerID]
 		szEPWeight = self.EPWeightWidgets[iPlayerID]
 		szEPSpending = self.EPSpendingWidgets[iPlayerID]
 		szEPIcon = self.EPIconWidgets[iPlayerID]
 
 		# EP Weight
 		szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_SCREEN_SPENDING_WEIGHT", ()) + ": %d</font>" %(pActivePlayer.getEspionageSpendingWeightAgainstTeam(iTargetTeam))
-		screen.setLabelAt(szEPWeight, szLeaderPanel, szText, 0, self.LeaderPanel_X_Wght, self.LeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+		screen.setLabelAt(szEPWeight, szLeaderPanel, szText, 0, self.MissionLeaderPanel_X_Wght, self.MissionLeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 		# EP Spending (Points per turn)
 		iSpending = pActivePlayer.getEspionageSpending(iTargetTeam)
 		if EspionageOpt.isEnabled():
-			iY = self.LeaderPanelTopRow
+			iY = self.MissionLeaderPanelTopRow
 			if (iSpending > 0):
 				szText = u"<font=2>(+%i)</font>" %(iSpending)
 				szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_GREEN"))
 			else:
 				szText = u""
 		else:
-			iY = self.LeaderPanelBottomRow
+			iY = self.MissionLeaderPanelBottomRow
 			if (iSpending > 0):
 				szText = u"<font=2><color=0,255,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (iSpending, )))
 			else:
 				szText = u"<font=2><color=192,0,0,0>%s</color></font>" %(localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS_PER_TURN", (iSpending, )))
-		screen.setLabelAt(szEPSpending, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.LeaderPanel_X_EPointsTurn, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+		screen.setLabelAt(szEPSpending, szLeaderPanel, szText, CvUtil.FONT_LEFT_JUSTIFY, self.MissionLeaderPanel_X_EPointsTurn, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 		# Espionage Icon
 		if (iSpending > 0):
 			szText = u"<font=2>%c</font>" %(gc.getCommerceInfo(CommerceTypes.COMMERCE_ESPIONAGE).getChar())
 		else:
 			szText = u""
-		screen.setLabelAt(szEPIcon, szLeaderPanel, szText, 0, self.LeaderPanel_X_EspionageIcon, self.LeaderPanelMiddle, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+		screen.setLabelAt(szEPIcon, szLeaderPanel, szText, 0, self.MissionLeaderPanel_X_EspionageIcon, self.MissionLeaderPanelMiddle, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 
 	def getCityNameText(self, pCity, iActivePlayer, iTargetPlayer):
@@ -891,9 +903,171 @@ class CvEspionageAdvisor:
 
 
 
+	def drawSpyvSpyTab(self):
+		screen = self.getScreen()
 
-	def drawGlanceTab(self):
+#		BugUtil.debug("CvEspionage Advisor: drawSpyvSpyTab")
+
+		pActivePlayer = gc.getPlayer(self.iActivePlayer)
+		pActiveTeam = gc.getTeam(pActivePlayer.getTeam())
+
+		self.aiKnownPlayers = []
+		self.aiUnknownPlayers = []
+
+		# add current player
+		self.aiKnownPlayers.append(self.iActivePlayer)
+		self.iNumEntries = 1
+
+		# add known players
+		for iLoop in range(gc.getMAX_PLAYERS()):
+			pPlayer = gc.getPlayer(iLoop)
+			if (self.iActivePlayer != iLoop
+			and not pPlayer.isBarbarian()):
+				if (pPlayer.isAlive()):
+					if (pActiveTeam.isHasMet(pPlayer.getTeam())):
+						self.aiKnownPlayers.append(iLoop)
+						self.iNumEntries = self.iNumEntries + 1
+
+		# fill out to 16 possible players
+		while(self.iNumEntries < 16):
+			self.iNumEntries = self.iNumEntries + 1
+			self.aiUnknownPlayers.append(self.iNumEntries)
+
+		self.drawSpyvSpyTabConstants()
+
+		# add background panel
+		self.szSvSPaneWidget = self.getNextWidgetName()
+		screen.addPanel(self.szSvSPaneWidget, "", "", true, true,
+			self.X_SvS_PANE, self.Y_SvS_PANE, self.W_SvS_PANE, self.H_SvS_PANE, PanelStyles.PANEL_STYLE_MAIN)
+
+		# add scrolling panel
+		self.szSvSScrollPanel = self.getNextWidgetName()
+		screen.addPanel(self.szSvSScrollPanel, "", "", true, true,
+			self.X_SvS_SCROLL, self.Y_SvS_SCROLL, self.W_SvS_SCROLL, self.H_SvS_SCROLL, PanelStyles.PANEL_STYLE_EMPTY)
+
+		# add left column leader panel
+		self.szLeftLeaderPanel = self.getNextWidgetName()
+		screen.addPanel(self.szLeftLeaderPanel, "", "", true, true,
+			self.X_SvS_LEFT_LEADER, self.Y_SvS_LEFT_LEADER, self.W_SvS_LEFT_LEADER, self.H_SvS_LEFT_LEADER, PanelStyles.PANEL_STYLE_STANDARD)
+
+		# add top column leader panel
+		self.szTopLeaderPanel = self.getNextWidgetName()
+		screen.addPanel(self.szTopLeaderPanel, "", "", true, true,
+			self.X_SvS_TOP_LEADER, self.Y_SvS_TOP_LEADER, self.W_SvS_TOP_LEADER, self.H_SvS_TOP_LEADER, PanelStyles.PANEL_STYLE_STANDARD)
+
+		iRow = 0
+		for iRowPlayerID in self.aiKnownPlayers:
+			iRow += 1
+
+			sLeaderButton = gc.getLeaderHeadInfo(gc.getPlayer(iRowPlayerID).getLeaderType()).getButton()
+
+			# left leader icon
+			screen.setImageButton(self.getNextWidgetName(), sLeaderButton,
+								  self.X_SvS_LEFT_LEADER + 2, self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL + 3, self.SvS_IconSize, self.SvS_IconSize, WidgetTypes.WIDGET_LEADERHEAD, iRowPlayerID, -1)
+
+			# show total EP spending over the last turn
+			iSpending = SpyUtil.getSpending(iRowPlayerID)
+			szText = self.formatSpending(iSpending)
+			iX = self.X_SvS_LEFT_LEADER + self.W_SvS_LEFT_LEADER - 10
+			iY = self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL + self.H_SvS_CELL / 2 - 6
+			screen.setLabel(self.getNextWidgetName(), "", szText, CvUtil.FONT_RIGHT_JUSTIFY, iX, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
+			# top leader icon
+			screen.setImageButton(self.getNextWidgetName(), sLeaderButton,
+								  self.X_SvS_TOP_LEADER + (iRow - 1) * self.W_SvS_CELL + self.W_SvS_CELL / 2 - self.SvS_IconSize / 2, self.Y_SvS_TOP_LEADER + 3, self.SvS_IconSize, self.SvS_IconSize, WidgetTypes.WIDGET_LEADERHEAD, iRowPlayerID, -1)
+
+			# add a horizontal panel to make the table easier to read
+			if iRow % 2 == 0: # every even number
+				iY = self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL
+				screen.addPanel(self.getNextWidgetName(), "", "", true, true,
+					self.X_SvS_TOP_LEADER, iY, self.W_SvS_TOP_LEADER, self.H_SvS_TOP_LEADER, PanelStyles.PANEL_STYLE_STANDARD)
+
+			iCol = 0
+			for iColPlayerID in self.aiKnownPlayers:
+				iCol += 1
+
+				pActivePlayer = gc.getPlayer(self.iActivePlayer)
+				pActiveTeamID = pActivePlayer.getTeam()
+				pActiveTeam = gc.getTeam(pActiveTeamID)
+
+				pColPlayer = gc.getPlayer(iColPlayerID)
+				pColTeamID = pColPlayer.getTeam()
+				pColTeam = gc.getTeam(pColTeamID)
+
+				pRowPlayer = gc.getPlayer(iRowPlayerID)
+				pRowTeamID = pRowPlayer.getTeam()
+				pRowTeam = gc.getTeam(pRowTeamID)
+
+				if pColTeamID == pRowTeamID: # rol and col player are on the same team
+					continue
+
+				# check that everyone has met - show the EP spending
+				if (pActiveTeam.isHasMet(pColPlayer.getTeam())
+				and pActiveTeam.isHasMet(pRowPlayer.getTeam())
+				and pColTeam.isHasMet(pRowPlayer.getTeam())):
+					# EPs per turn
+					iSpending = SpyUtil.getDifferenceByPlayer(iRowPlayerID, iColPlayerID)
+					szText = self.formatSpending(iSpending)
+					iX = self.X_SvS_TOP_LEADER + (iCol - 1) * self.W_SvS_CELL + self.W_SvS_CELL / 2
+					iY = self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL + self.H_SvS_CELL / 2 - 6
+					screen.setLabel(self.getNextWidgetName(), "", szText, CvUtil.FONT_CENTER_JUSTIFY, iX, iY, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
+
 		return
+
+
+
+
+	def drawSpyvSpyTabConstants(self):
+		# don't skip this segment as some of the constants are dynamic :)
+
+		# skip this is we have already done it
+#		if self.drawSpyvSpyTabConstantsDone == 1:
+#			return
+		self.drawSpyvSpyTabConstantsDone = 1
+
+		self.X_SvS_PANE = 5
+		self.Y_SvS_PANE = 45
+		self.W_SvS_PANE = self.W_SCREEN - 2 * self.X_SvS_PANE
+		self.H_SvS_PANE = self.H_SCREEN - 2 * self.Y_SvS_PANE
+
+#		self.H_SCREEN = 768
+
+		self.X_SvS_SCROLL = self.X_SvS_PANE + 10
+		self.Y_SvS_SCROLL = self.Y_SvS_PANE + 10
+		self.W_SvS_SCROLL = self.W_SvS_PANE - 20
+		self.H_SvS_SCROLL = self.H_SvS_PANE - 20
+
+		iNumPlayers = len(self.aiKnownPlayers)
+		if iNumPlayers > 12:
+			self.W_SvS_CELL = 50
+			self.H_SvS_CELL = 35
+			self.SvS_IconSize = 32
+		elif iNumPlayers >= 9:
+			self.W_SvS_CELL = 70
+			self.H_SvS_CELL = 50
+			self.SvS_IconSize = 48
+		else:
+			self.W_SvS_CELL = 100
+			self.H_SvS_CELL = 70
+			self.SvS_IconSize = 64
+
+		self.X_SvS_LEFT_LEADER = self.X_SvS_SCROLL
+		self.Y_SvS_LEFT_LEADER = self.Y_SvS_SCROLL + self.H_SvS_CELL
+		self.W_SvS_LEFT_LEADER = 2 * self.W_SvS_CELL
+		self.H_SvS_LEFT_LEADER = self.H_SvS_CELL * len(self.aiKnownPlayers)
+
+		self.X_SvS_TOP_LEADER = self.X_SvS_SCROLL + self.W_SvS_LEFT_LEADER
+		self.Y_SvS_TOP_LEADER = self.Y_SvS_SCROLL
+		self.W_SvS_TOP_LEADER = self.W_SvS_CELL * len(self.aiKnownPlayers)
+		self.H_SvS_TOP_LEADER = self.H_SvS_CELL
+
+	def formatSpending(self, iSpending):
+		if iSpending == 0:
+			return u"<font=2>-</font>"
+		elif iSpending > 0:
+			return localText.changeTextColor(u"<font=2>+%i</font>" %(iSpending), gc.getInfoTypeForString("COLOR_GREEN"))
+		else:
+			return localText.changeTextColor(u"<font=2>%i</font>" %(iSpending), gc.getInfoTypeForString("COLOR_YELLOW"))
 
 
 	# returns a unique ID for a widget in this screen
@@ -945,11 +1119,13 @@ class CvEspionageAdvisor:
 			if (icFunctionName == self.MissionsTabWidget):
 #				BugUtil.debug("CvEspionage Advisor: Change to Mission Tab")
 				self.EPScreen.updateTabStatus(self.MissionsTabWidget)
+				self.EPScreenTab = 1
 				self.drawContents()
 				return 0
 			elif (icFunctionName == self.SpyvSpyTabWidget):
 #				BugUtil.debug("CvEspionage Advisor: Change to Spy v Spy Tab")
 				self.EPScreen.updateTabStatus(self.SpyvSpyTabWidget)
+				self.EPScreenTab = 2
 				self.drawContents()
 				return 0
 
