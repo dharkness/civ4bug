@@ -966,7 +966,7 @@ class CvEspionageAdvisor:
 								  self.X_SvS_LEFT_LEADER + 2, self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL + 3, self.SvS_IconSize, self.SvS_IconSize, WidgetTypes.WIDGET_LEADERHEAD, iRowPlayerID, -1)
 
 			# show total EP spending over the last turn
-			iSpending = SpyUtil.getSpending(iRowPlayerID)
+			iSpending = SpyUtil.getSpending(iRowPlayerID, self.iActivePlayer)
 			szText = self.formatSpending(iSpending)
 			iX = self.X_SvS_LEFT_LEADER + self.W_SvS_LEFT_LEADER - 10
 			iY = self.Y_SvS_LEFT_LEADER + (iRow - 1) * self.H_SvS_CELL + self.H_SvS_CELL / 2 - 6
