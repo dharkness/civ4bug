@@ -164,7 +164,7 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 	pPlayer = gc.getPlayer(nPlayer)
 	pTarget = gc.getPlayer(nTarget)
 	if bWorstEnemy and isWorstEnemy(pPlayer, pTarget):
-		szText +=  u"%c" %(CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
+		szText +=  FontUtil.getChar("angry pop")
 	
 	if bWarPeace:
 		nTeam = pPlayer.getTeam()
@@ -172,7 +172,7 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 		nTargetTeam = pTarget.getTeam()
 		pTargetTeam = gc.getTeam(nTargetTeam)
 		if pTeam.isAtWar(nTargetTeam):
-			szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 25)
+			szText += FontUtil.getChar("war")
 		elif gc.getGame().getActiveTeam() in (nTeam, nTargetTeam):
 			bPeace = False
 			if pTeam.isForcePeace(nTargetTeam):
@@ -183,7 +183,7 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 						bPeace = True
 						break
 			if bPeace:
-				szText += u"%c" % (gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar() + 26)
+				szText += FontUtil.getChar("peace")
 	
 	return szText
 
