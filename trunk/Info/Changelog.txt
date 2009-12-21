@@ -35,9 +35,14 @@ CHANGES
 New Features:
 
 - Espionage Advisor
-	New layout shows EPs spent against you and icons for passive missions 
+	New layout shows EPs spent against you and icons for passive missions
 	Can swap cities and missions lists to see cost in each city for a single mission
 	New GLANCE-style tab shows EPs spending on and by each rival you've met
+
+Improvements:
+
+- Foreign Advisor
+	Can select how to display attitudes: numbers, smilies, or both
 
 Bug Fixes:
 
