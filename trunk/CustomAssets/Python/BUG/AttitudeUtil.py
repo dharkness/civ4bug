@@ -164,7 +164,7 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 	pPlayer = gc.getPlayer(nPlayer)
 	pTarget = gc.getPlayer(nTarget)
 	if bWorstEnemy and isWorstEnemy(pPlayer, pTarget):
-		szText +=  FontUtil.getChar("angry pop")
+		szText +=  FontUtil.getChar("angrypop")
 	
 	if bWarPeace:
 		nTeam = pPlayer.getTeam()
