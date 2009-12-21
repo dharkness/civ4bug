@@ -336,11 +336,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			szScreen = self.ORDER_LIST[i]
 
 # BUG - optional glance - start
-			zbBuildScreen = True
-			if szScreen == "GLANCE":
-				zbBuildScreen = AdvisorOpt.isShowGlance()
-
-			if zbBuildScreen:				
+			if szScreen != "GLANCE" or AdvisorOpt.isShowGlance():
 # BUG - optional glance - end, next 5 lines indented once
 				if (self.iScreen != self.SCREEN_DICT[szScreen]):
 					screen.setText (szTextId, "", u"<font=4>" + localText.getText (self.TXT_KEY_DICT[szScreen], ()).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_FOREIGN_ADVISOR, self.SCREEN_DICT[szScreen], -1)
