@@ -332,17 +332,17 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		xLink = self.DX_LINK / 2;
 
 		for i in range (len (self.ORDER_LIST)):
-			szTextId = self.getNextWidgetName()
 			szScreen = self.ORDER_LIST[i]
-
-# BUG - optional glance - start
-			if szScreen != "GLANCE" or AdvisorOpt.isShowGlance():
-# BUG - optional glance - end, next 5 lines indented once
-				if (self.iScreen != self.SCREEN_DICT[szScreen]):
-					screen.setText (szTextId, "", u"<font=4>" + localText.getText (self.TXT_KEY_DICT[szScreen], ()).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_FOREIGN_ADVISOR, self.SCREEN_DICT[szScreen], -1)
-				else:
-					screen.setText (szTextId, "", u"<font=4>" + localText.getColorText (self.TXT_KEY_DICT[szScreen], (), gc.getInfoTypeForString ("COLOR_YELLOW")).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_FOREIGN_ADVISOR, -1, -1)
-				xLink += self.DX_LINK
+# BUG - Glance Tab - start
+			if szScreen == "GLANCE" and not AdvisorOpt.isShowGlance():
+				continue # skip the GLANCE label
+# BUG - Glance Tab - end
+			szTextId = self.getNextWidgetName()
+			if (self.iScreen != self.SCREEN_DICT[szScreen]):
+				screen.setText (szTextId, "", u"<font=4>" + localText.getText (self.TXT_KEY_DICT[szScreen], ()).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_FOREIGN_ADVISOR, self.SCREEN_DICT[szScreen], -1)
+			else:
+				screen.setText (szTextId, "", u"<font=4>" + localText.getColorText (self.TXT_KEY_DICT[szScreen], (), gc.getInfoTypeForString ("COLOR_YELLOW")).upper() + u"</font>", CvUtil.FONT_CENTER_JUSTIFY, xLink, self.Y_LINK, 0, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_FOREIGN_ADVISOR, -1, -1)
+			xLink += self.DX_LINK
 	
 	def drawActive (self, bInitial):
 		screen = self.getScreen()
