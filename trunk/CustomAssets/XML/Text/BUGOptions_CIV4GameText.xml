@@ -3179,7 +3179,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAGLANCEATTITUDES_LIST</Tag>
 		<English>Numbers|Smilies|Both</English>
 		<French>Numbers|Smileys|Both</French>
-		<German>Numbers|Smilies|Both</German>
+		<German>Zahlen|Smilies|Beides</German>
 		<Italian>Numbers|Icone|Both</Italian>
 		<Spanish>Numbers|Smilies|Both</Spanish>
 	</TEXT>
@@ -3187,7 +3187,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__EFAGLANCEATTITUDES_HOVER</Tag>
 		<English>Select how to display AI attitudes on the GLANCE tab: numbers, smilies, or both.</English>
 		<French>Sélectionnez le mode d'afficher des attitudes d'AI sur l'onglet GLANCE: nombres, des smileys, ou les deux.</French>
-		<German>Wählen Sie wie die KI Einstellungen auf der Registerkarte Anzeige BLICK: Zahlen, Smilies, oder beide</German>
+		<German>Bestimmt, wie im Kurzüberblick die Einstellung anderer Zivilisationen gegenüber der eigenen dargestellt werden</German>
 		<Italian>Selezionare la modalità di visualizzazione atteggiamenti AI sulla scheda GLANCE: i numeri, faccine, o entrambi.</Italian>
 		<Spanish>Select how to display AI attitudes on the GLANCE tab: numbers, smilies, or both.</Spanish>
 	</TEXT>
