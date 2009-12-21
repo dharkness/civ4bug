@@ -144,27 +144,17 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 	if nAttitude == None:
 		return None
 	
-	if bNumber:
-		szText = str (nAttitude)
-		if nAttitude > 0:
-			szText = "+" + szText
-		if bSmily:
-			szText = "[" + szText + "] "
-		else:
-			szText = "<font=3>   " + szText + "</font> "
-	else:
-		szText = ""
-	
-	iColor = getAttitudeColor (nPlayer, nTarget)
-	szText = BugUtil.colorText(szText, iColor)
-	
+	szText = []
 	if bSmily:
-		szText = getAttitudeIcon(nPlayer, nTarget) + " " + szText
+		szText.append(getAttitudeIcon(nPlayer, nTarget))
+	if bNumber:
+		szText.append(BugUtil.colorText(u"%+d" % nAttitude, getAttitudeColor(nPlayer, nTarget)))
 	
+	szIcons = u""
 	pPlayer = gc.getPlayer(nPlayer)
 	pTarget = gc.getPlayer(nTarget)
 	if bWorstEnemy and isWorstEnemy(pPlayer, pTarget):
-		szText +=  FontUtil.getChar("angrypop")
+		szIcons += FontUtil.getChar("angrypop")
 	
 	if bWarPeace:
 		nTeam = pPlayer.getTeam()
@@ -172,7 +162,7 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 		nTargetTeam = pTarget.getTeam()
 		pTargetTeam = gc.getTeam(nTargetTeam)
 		if pTeam.isAtWar(nTargetTeam):
-			szText += FontUtil.getChar("war")
+			szIcons += FontUtil.getChar("war")
 		elif gc.getGame().getActiveTeam() in (nTeam, nTargetTeam):
 			bPeace = False
 			if pTeam.isForcePeace(nTargetTeam):
@@ -183,9 +173,11 @@ def getAttitudeText (nPlayer, nTarget, bNumber, bSmily, bWorstEnemy, bWarPeace):
 						bPeace = True
 						break
 			if bPeace:
-				szText += FontUtil.getChar("peace")
+				szIcons += FontUtil.getChar("peace")
+	if szIcons:
+		szText.append(szIcons)
 	
-	return szText
+	return u" ".join(szText)
 
 def initModifiers (argsList=None):
 	""" Creates the dictionary that maps strings to modifier keys. """
