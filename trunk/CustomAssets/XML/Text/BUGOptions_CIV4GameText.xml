@@ -2327,6 +2327,34 @@
 		<Italian>Quando è selezionato, mostra al di sopra dei pulsanti di azione i pulsanti per modificare i raggruppamenti ed i filtri.</Italian>
 		<Spanish>When checked, the buttons for changing the view, grouping and filter modes are displayed above the action buttons.</Spanish>
 	</TEXT>
+
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_LIST</Tag>
+		<English>PLE|Vanilla|BUG</English>
+		<French>PLE|Vanilla|BUG</French>
+		<German>PLE|Vanilla|BUG</German>
+		<Italian>PLE|Vanilla|BUG</Italian>
+		<Spanish>PLE|Vanilla|BUG</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_TEXT</Tag>
+		<English>Draw Method</English>
+		<French>Draw Method</French>
+		<German>Draw Method</German>
+		<Italian>Draw Method</Italian>
+		<Spanish>Draw Method</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_HOVER</Tag>
+		<English>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</English>
+		<French>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</French>
+		<German>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</German>
+		<Italian>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</Italian>
+		<Spanish>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</Spanish>
+	</TEXT>
+
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_PLE__FILTER_BEHAVIOR_TEXT</Tag>
 		<English>Filter Behavior</English>

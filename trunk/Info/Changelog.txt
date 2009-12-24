@@ -47,6 +47,9 @@ Improvements:
 - Technology Chooser
 	Added color coded shadow where the color is linked to the technology's era
 
+- Main Interface
+	Unit Plot drawing improvements (pre-work only at the moment)
+
 Bug Fixes:
 
 - City Screen

@@ -17,6 +17,11 @@
 			<option id="Enabled" key="Enabled" 
 					type="boolean" default="True"/>
 			
+			<list   id="Draw_Method" key="Draw Method" 
+					type="int" default="1" listType="string" 
+					values="PLE|VAN|NEW BUG" 
+					get="getDrawMethod" />
+
 			<option id="PLE_Style" key="PLE Style" 
 					type="boolean" default="True"
 					get="isPLE_Style" dirtyBit="PlotListButtons"/>
