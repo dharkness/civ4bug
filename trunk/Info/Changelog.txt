@@ -44,6 +44,9 @@ Improvements:
 - Foreign Advisor
 	Can select how to display attitudes: numbers, smilies, or both
 
+- Technology Chooser
+	Added color coded shadow where the color is linked to the technology's era
+
 Bug Fixes:
 
 - City Screen

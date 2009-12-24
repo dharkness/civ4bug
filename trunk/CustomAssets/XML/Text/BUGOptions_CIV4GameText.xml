@@ -3271,6 +3271,25 @@
 		<Italian>Quando è selezionato, la larghezza della schermata del Consigliere Tecnologico è legata alla risoluzione dello schermo (è richiesto un riavvio perchè il cambiamento abbia effetto).</Italian>
 		<Spanish>When checked, the width of the tech screen will be linked to your screen resolution (requires restart).</Spanish>
 	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWTECHERA_TEXT</Tag>
+		<English>Show Era</English>
+		<French>Show Era</French>
+		<German>Show Era</German>
+		<Italian>Show Era</Italian>
+		<Spanish>Show Era</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWTECHERA_HOVER</Tag>
+		<English>When selected, shows the technology's associated era.</English>
+		<French>When selected, shows the technology's associated era.</French>
+		<German>When selected, shows the technology's associated era.</German>
+		<Italian>When selected, shows the technology's associated era.</Italian>
+		<Spanish>When selected, shows the technology's associated era.</Spanish>
+	</TEXT>
+
+
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__BUGRELIGIOUSTAB_TEXT</Tag>
 		<English>BUG Religion Advisor</English>

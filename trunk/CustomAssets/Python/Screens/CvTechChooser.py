@@ -25,6 +25,7 @@ localText = CyTranslator()
 import TechPrefs
 import BugCore
 BugOpt = BugCore.game.Advisors
+ClockOpt = BugCore.game.NJAGC
 
 import BugUtil
 
@@ -45,6 +46,9 @@ import GameUtil
 # BUG - Mac Support - start
 BugUtil.fixSets(globals())
 # BUG - Mac Support - end
+
+def getEraDescription(eWidgetType, iData1, iData2, bOption):
+	return gc.getEraInfo(iData1).getDescription()
 
 def resetTechPrefs(args=[]):
 	CvScreensInterface.techChooser.resetTechPrefs()
@@ -85,8 +89,8 @@ class CvTechChooser:
 
 	# Screen construction function
 	def interfaceScreen(self):
-		BugUtil.debug("CvTechChooser: interfacescreen")
-		self.timer = BugUtil.Timer("CvTechChooser")
+#		BugUtil.debug("CvTechChooser: interfacescreen")
+#		self.timer = BugUtil.Timer("CvTechChooser")
 
 		if ( CyGame().isPitbossHost() ):
 			return
@@ -172,7 +176,8 @@ class CvTechChooser:
 
 		self.TabPanels = ["TechList", "TechTrade"]
 
-		screen.addScrollPanel(self.TabPanels[0], u"", iX, 64, iW, yPanelHeight - 142, PanelStyles.PANEL_STYLE_EXTERNAL )
+#		screen.addScrollPanel(self.TabPanels[0], u"", iX, 64, iW, yPanelHeight - 142, PanelStyles.PANEL_STYLE_EXTERNAL )
+		screen.addScrollPanel(self.TabPanels[0], u"", iX, 56, iW, yPanelHeight - 134, PanelStyles.PANEL_STYLE_EXTERNAL )
 		screen.setActivation(self.TabPanels[0], ActivationTypes.ACTIVATE_NORMAL )
 
 		screen.addScrollPanel(self.TabPanels[1], u"", 80, 64, xPanelWidth - 80, yPanelHeight - 142, PanelStyles.PANEL_STYLE_EXTERNAL )
@@ -206,7 +211,7 @@ class CvTechChooser:
 		return
 
 	def ConstructTabs(self):
-		BugUtil.debug("cvTechChooser: ConstructTabs")
+#		BugUtil.debug("cvTechChooser: ConstructTabs")
 
 		screen = self.getScreen()
 
@@ -218,7 +223,7 @@ class CvTechChooser:
 		self.BOX_INCREMENT_WIDTH = 27 # Used to be 33 #Should be a multiple of 3...
 
 	def ShowTab(self):
-		BugUtil.debug("cvTechChooser: ShowTab")
+#		BugUtil.debug("cvTechChooser: ShowTab")
 
 		screen = self.getScreen()
 
@@ -243,9 +248,9 @@ class CvTechChooser:
 
 
 	def DrawTechChooser(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails, bANDPreReq, bORPreReq):
-		BugUtil.debug("cvTechChooser: DrawTechChooser (%s)", sPanel)
-		self.timer.reset()
-		self.timer.start()
+#		BugUtil.debug("cvTechChooser: DrawTechChooser (%s)", sPanel)
+#		self.timer.reset()
+#		self.timer.start()
 
 		# Place the tech blocks
 		self.placeTechs(screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails)
@@ -259,10 +264,10 @@ class CvTechChooser:
 
 		screen.moveToFront( "AddTechButton" )
 
-		self.timer.logSpan("total")
+#		self.timer.logSpan("total")
 
 	def placeTechs(self, screen, sPanel, bTechPanel, bTechName, bTechIcon, bTechDetails):
-		BugUtil.debug("cvTechChooser: placeTechs")
+#		BugUtil.debug("cvTechChooser: placeTechs")
 
 		iMaxX = 0
 		iMaxY = 0
@@ -288,6 +293,14 @@ class CvTechChooser:
 				iMaxX = iX + self.getXStart()
 			if ( iMaxY < iY + ( self.BOX_INCREMENT_HEIGHT * self.PIXEL_INCREMENT ) ):
 				iMaxY = iY + ( self.BOX_INCREMENT_HEIGHT * self.PIXEL_INCREMENT )
+
+# BUG - Tech Era Colors - start
+			szTechRecordShadow = sPanelWidget + "TechRecordShadow" + str(i)
+			iShadowOffset = 9
+			screen.attachPanelAt( sPanel, szTechRecordShadow, u"", u"", True, False, PanelStyles.PANEL_STYLE_TECH, iX - 6 + iShadowOffset, iY - 6 + iShadowOffset, self.getXStart() + 6, 12 + ( self.BOX_INCREMENT_HEIGHT * self.PIXEL_INCREMENT ), WidgetTypes.WIDGET_TECH_CHOOSER_ERA, gc.getTechInfo(i).getEra(), -1 )
+			self.setTechPanelShadowColor(screen, szTechRecordShadow, gc.getTechInfo(i).getEra())
+			screen.hide( szTechRecordShadow )
+# BUG - Tech Era Colors - end
 
 			screen.attachPanelAt( sPanel, szTechRecord, u"", u"", True, False, PanelStyles.PANEL_STYLE_TECH, iX - 6, iY - 6, self.getXStart() + 6, 12 + ( self.BOX_INCREMENT_HEIGHT * self.PIXEL_INCREMENT ), WidgetTypes.WIDGET_TECH_TREE, i, -1 )
 			screen.setActivation( szTechRecord, ActivationTypes.ACTIVATE_MIMICPARENTFOCUS)
@@ -331,8 +344,13 @@ class CvTechChooser:
 				self.addIconsToTechPanel(screen, i, X_START, iX, iY, szTechRecord)
 
 			if bTechPanel:
+				if BugOpt.isShowTechEra():
+					screen.show( szTechRecordShadow )
+				else:
+					screen.hide( szTechRecordShadow )
 				screen.show( szTechRecord )
 			else:
+				screen.hide( szTechRecordShadow )
 				screen.hide( szTechRecord )
 
 		screen.setViewMin( sPanel, iMaxX + 20, iMaxY + 20 )
@@ -340,7 +358,7 @@ class CvTechChooser:
 		return
 
 	def addIconsToTechPanel(self, screen, i, fX, iX, iY, szTechRecord):
-		BugUtil.debug("cvTechChooser: addIconsToTechPanel")
+#		BugUtil.debug("cvTechChooser: addIconsToTechPanel")
 
 		j = 0
 		k = 0
@@ -774,7 +792,7 @@ class CvTechChooser:
 
 	# Will update the tech records based on color, researching, researched, queued, etc.
 	def updateTechRecords (self, bForce):
-		BugUtil.debug("cvTechChooser: updateTechRecords")
+#		BugUtil.debug("cvTechChooser: updateTechRecords")
 
 		# If we are the Pitboss, we don't want to put up an interface at all
 		if ( CyGame().isPitbossHost() ):
@@ -864,9 +882,21 @@ class CvTechChooser:
 		self.updateTechPrefs()
 # BUG - GP Tech Prefs - end
 
+# BUG - Tech Era Colors - start
+	def setTechPanelShadowColor(self, screen, sPanel, iEra):
+		szEra = gc.getEraInfo(iEra).getType()
+		iColor = ClockOpt.getEraColor(szEra)
+		if iColor != -1:
+			color = gc.getColorInfo(iColor)
+			if color:
+				rgb = color.getColor() # NiColorA object
+				if rgb:
+					screen.setPanelColor(sPanel, int(100 * rgb.r), int(100 * rgb.g), int(100 * rgb.b))
+# BUG - Tech Era Colors - end
+
 	# Will draw the arrows
 	def drawArrows(self, screen, sPanel, bANDPreReq, bORPreReq):
-		BugUtil.debug("cvTechChooser: drawArrows")
+#		BugUtil.debug("cvTechChooser: drawArrows")
 
 		iLoop = 0
 
@@ -964,7 +994,7 @@ class CvTechChooser:
 		self.pPrefs = TechPrefs.TechPrefs()
 	
 	def updateTechPrefs (self):
-		BugUtil.debug("cvTechChooser: updateTechPrefs")
+#		BugUtil.debug("cvTechChooser: updateTechPrefs")
 
 		# If we are the Pitboss, we don't want to put up an interface at all
 		if ( CyGame().isPitbossHost() ):
@@ -1065,8 +1095,8 @@ class CvTechChooser:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
-		#BugUtil.debug("cvTechChooser: handleInput")
-		#BugUtil.debugInput(inputClass)
+#		BugUtil.debug("cvTechChooser: handleInput")
+#		BugUtil.debugInput(inputClass)
 
 		# Get the screen
 		screen = self.getScreen()
@@ -1076,7 +1106,7 @@ class CvTechChooser:
 		# Advanced Start Stuff
 		pPlayer = gc.getPlayer(self.iCivSelected)
 		if (pPlayer.getAdvancedStartPoints() >= 0):
-			BugUtil.debug("cvTechChooser: handleInput - advancedstart")
+#			BugUtil.debug("cvTechChooser: handleInput - advancedstart")
 			# Add tech button
 			if (inputClass.getFunctionName() == "AddTechButton"):
 				if (pPlayer.getAdvancedStartTechCost(self.m_iSelectedTech, true) != -1):
@@ -1093,11 +1123,10 @@ class CvTechChooser:
 		' Calls function mapped in TechChooserInputMap'
 		# only get from the map if it has the key
 		if ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED ):
-			BugUtil.debug("cvTechChooser: handleInput - dropdown")
+#			BugUtil.debug("cvTechChooser: handleInput - dropdown")
 			self.CivDropDown( inputClass )
 			return 1
 
-# tjp
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
 			if szWidgetName == self.sTechSelectTab:
 				self.sTechTabID = self.sTechSelectTab
@@ -1119,10 +1148,10 @@ class CvTechChooser:
 		return szName
 
 	def deleteWidgets(self):
-		BugUtil.debug("cvTechChooser: deleteWidgets %i %i", self.nWidgetCount, len(self.sWidgets))
+#		BugUtil.debug("cvTechChooser: deleteWidgets %i %i", self.nWidgetCount, len(self.sWidgets))
 		screen = self.getScreen()
 		for w in self.sWidgets:
-			BugUtil.debug("cvTechChooser: deleteWidgets '%s'", w)
+#			BugUtil.debug("cvTechChooser: deleteWidgets '%s'", w)
 			screen.deleteWidget(w)
 
 		self.nWidgetCount = 0
