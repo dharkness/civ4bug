@@ -3276,7 +3276,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWTECHERA_TEXT</Tag>
 		<English>Show Era</English>
 		<French>Show Era</French>
-		<German>Show Era</German>
+		<German>Epoche anzeigen</German>
 		<Italian>Show Era</Italian>
 		<Spanish>Show Era</Spanish>
 	</TEXT>
@@ -3284,7 +3284,7 @@
 		<Tag>TXT_KEY_BUG_OPT_ADVISORS__SHOWTECHERA_HOVER</Tag>
 		<English>When selected, shows the technology's associated era.</English>
 		<French>When selected, shows the technology's associated era.</French>
-		<German>When selected, shows the technology's associated era.</German>
+		<German>Zeigt jeweils die Epoche an, zu der eine Technologie gehört</German>
 		<Italian>When selected, shows the technology's associated era.</Italian>
 		<Spanish>When selected, shows the technology's associated era.</Spanish>
 	</TEXT>
