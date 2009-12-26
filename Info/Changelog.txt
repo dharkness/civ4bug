@@ -38,15 +38,13 @@ New Features:
 	New layout shows EPs spent against you and icons for passive missions
 	Can swap cities and missions lists to see cost in each city for a single mission
 	New GLANCE-style tab shows EPs spending on and by each rival you've met
+- Technology Chooser
+	Added color-coded shadow denoting each technology's era
 
 Improvements:
 
 - Foreign Advisor
 	Can select how to display attitudes: numbers, smilies, or both
-
-- Technology Chooser
-	Added color coded shadow where the color is linked to the technology's era
-
 - Main Interface
 	Unit Plot drawing improvements (pre-work only at the moment)
 
@@ -55,9 +53,10 @@ Bug Fixes:
 - City Screen
 	Happiness and unhappiness are shown for foreign cities
 	Whip/Draft Anger is shown for team member cities
-
 - Victory Screen
-	Removed election statistical error random calculation if game is multiplayer
+	Changed random "polling error" on MEMBERS tab to use asynchronous RNG to fix OOS error
+- Unit Naming
+	Changed random name generator to use asynchronous RNG to fix OOS error
 
 MODDING
 
