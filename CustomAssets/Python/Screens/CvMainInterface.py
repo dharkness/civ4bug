@@ -55,6 +55,8 @@ import DiplomacyUtil
 import TradeUtil
 # BUG - Fractional Trade - end
 
+import BugUnitPlot
+
 # globals
 gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
@@ -408,6 +410,7 @@ class CvMainInterface:
 		self.szSliderId = "FieldOfViewSlider"
 		self.iField_View_Prev = -1
 # BUG - field of view slider - end
+
 
 		
 
@@ -2289,6 +2292,11 @@ class CvMainInterface:
 		self.pBarProductionBar_Whip.addBarItem("ProductionText")
 # BUG - Progress Bar - Tick Marks - end
 
+# BUG - BUG unit plot draw method - start
+# bug unit panel
+		self.BupPanel = BugUnitPlot.BupPanel(screen, screen.getYResolution(), self.numPlotListButtons(), gc.getMAX_PLOT_LIST_ROWS())
+# BUG - BUG unit plot draw method - end
+
 	def interfaceScreen (self):
 		"""
 		Draw all of the screen elements.
@@ -3558,7 +3566,7 @@ class CvMainInterface:
 
 		self.updatePlotListButtons_Common(screen)
 
-# BUG - draw method
+# BUG - draw methods
 		self.sDrawMethod = self.DRAW_METHODS[PleOpt.getDrawMethod()]
 		if self.sDrawMethod == self.DRAW_METHOD_PLE:
 			self.updatePlotListButtons_PLE(screen)
@@ -3569,7 +3577,7 @@ class CvMainInterface:
 		else:  # self.DRAW_METHOD_BUG
 			self.updatePlotListButtons_BUG(screen)
 			self.bBUGCurrentlyShowing = True
-# BUG - draw method
+# BUG - draw methods
 
 		return 0
 
@@ -3592,11 +3600,11 @@ class CvMainInterface:
 			self.hidePlotListButton_Orig(screen)
 			self.bVanCurrentlyShowing = False
 
-# BUG - draw method
+# BUG - BUG unit plot draw method - start
 		if self.bBUGCurrentlyShowing:
 			self.hidePlotListButton_BUG(screen)
 			self.bBUGCurrentlyShowing = False
-# BUG - draw method
+# BUG - BUG unit plot draw method - end
 
 	def updatePlotListButtons_Common( self, screen ):
 
@@ -3796,120 +3804,156 @@ class CvMainInterface:
 
 		return 0
 
-# BUG - draw method
+# BUG - BUG unit plot draw method - start
 	def updatePlotListButtons_BUG( self, screen ):
 
 # need to put in something similar to 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 
-		xResolution = screen.getXResolution()
+#		xResolution = screen.getXResolution()
 		yResolution = screen.getYResolution()
 
 		pPlot = CyInterface().getSelectionPlot()
 
-		for i in range(gc.getNumPromotionInfos()):
-			szName = "PromotionButton" + str(i)
-			screen.moveToFront( szName )
+#		for i in range(gc.getNumPromotionInfos()):
+#			szName = "PromotionButton" + str(i)
+#			screen.moveToFront( szName )
 
-		screen.hide( "PlotListMinus" )
-		screen.hide( "PlotListPlus" )
+#		screen.hide( "PlotListMinus" )
+#		screen.hide( "PlotListPlus" )
 
-		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
+		BugUtil.debug("updatePlotListButtons_BUG - A")
 
-			iVisibleUnits = CyInterface().getNumVisibleUnits()
-			iCount = -(CyInterface().getPlotListColumn())
+		# skip this if we don't need to display any units
+		if not (pPlot
+		and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL
+		and CyEngine().isGlobeviewUp() == False):
+#		if (not pPlot
+#		or CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE_ALL
+#		or CyEngine().isGlobeviewUp() == True):
+			return 0
 
-			bLeftArrow = False
-			bRightArrow = False
+		BugUtil.debug("updatePlotListButtons_BUG - B")
 
-			if (CyInterface().isCityScreenUp()):
-				iMaxRows = 1
-				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
-				iCount += iSkipped
-			else:
-				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
-				iCount += CyInterface().getPlotListOffset()
-				iSkipped = 0
+		self.BupPanel.flushUnits()
 
-			CyInterface().cacheInterfacePlotUnits(pPlot)
-			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
-				pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
-				if (pLoopUnit):
+		CyInterface().cacheInterfacePlotUnits(pPlot)
+		for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
+			pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
+			if (pLoopUnit):
+				self.BupPanel.addUnit(pLoopUnit)
 
-					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
-						bLeftArrow = True
-					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
-						bRightArrow = True
+		BugUtil.debug("updatePlotListButtons_BUG - C")
 
-					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
-						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
+		self.BupPanel.Draw()
 
-						elif (pLoopUnit.canMove()):
-							if (pLoopUnit.hasMoved()):
-								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
-							else:
-								szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
-						else:
-							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
 
-						szString = "PlotListButton" + str(iCount)
-						screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
-						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
-							bEnable = True
-						else:
-							bEnable = False
-						screen.enable(szString, bEnable)
 
-						if (pLoopUnit.IsSelected()):
-							screen.setState(szString, True)
-						else:
-							screen.setState(szString, False)
-						screen.show( szString )
+#
 
-						# place the health bar
-						if (pLoopUnit.isFighting()):
-							bShowHealth = False
-						elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
-							bShowHealth = pLoopUnit.canAirAttack()
-						else:
-							bShowHealth = pLoopUnit.canFight()
 
-						if bShowHealth:
-							szStringHealth = szString + "Health"
-							screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
-							if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-							elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
-							else:
-								screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
-							screen.show( szStringHealth )
 
-						# Adds the overlay first
-						szStringIcon = szString + "Icon"
-						screen.changeDDSGFC( szStringIcon, szFileName )
-						screen.show( szStringIcon )
 
-						if bEnable:
-							x = 315 + ((iCount % self.numPlotListButtons()) * 34)
-							y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
 
-							self.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y + 4 )
-							self.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
-							self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
-							self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y - 22, 12)
 
-					iCount = iCount + 1
 
-			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
-				screen.enable("PlotListMinus", bLeftArrow)
-				screen.show( "PlotListMinus" )
+#		iVisibleUnits = CyInterface().getNumVisibleUnits()
+#		iCount = -(CyInterface().getPlotListColumn())
 
-				screen.enable("PlotListPlus", bRightArrow)
-				screen.show( "PlotListPlus" )
+#		bLeftArrow = False
+#		bRightArrow = False
+
+#		if (CyInterface().isCityScreenUp()):
+#			iMaxRows = 1
+#			iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
+#			iCount += iSkipped
+#		else:
+#			iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
+#			iCount += CyInterface().getPlotListOffset()
+#			iSkipped = 0
+
+#		CyInterface().cacheInterfacePlotUnits(pPlot)
+#		for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
+#			pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
+#			if (pLoopUnit):
+
+#				if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
+#					bLeftArrow = True
+#				elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
+#					bRightArrow = True
+
+#				if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
+#					if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+#						szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
+
+#					elif (pLoopUnit.canMove()):
+#						if (pLoopUnit.hasMoved()):
+#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_HASMOVED").getPath()
+#						else:
+#							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_MOVE").getPath()
+#					else:
+#						szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
+
+#					szString = "PlotListButton" + str(iCount)
+#					screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
+#					if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
+#						bEnable = True
+#					else:
+#						bEnable = False
+#					screen.enable(szString, bEnable)
+
+#					if (pLoopUnit.IsSelected()):
+#						screen.setState(szString, True)
+#					else:
+#						screen.setState(szString, False)
+#					screen.show( szString )
+
+#					# place the health bar
+#					if (pLoopUnit.isFighting()):
+#						bShowHealth = False
+#					elif (pLoopUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
+#						bShowHealth = pLoopUnit.canAirAttack()
+#					else:
+#						bShowHealth = pLoopUnit.canFight()
+
+#					if bShowHealth:
+#						szStringHealth = szString + "Health"
+#						screen.setBarPercentage( szStringHealth, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
+#						if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+#							screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+#						elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+#							screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+#						else:
+#							screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))
+#						screen.show( szStringHealth )
+
+#					# Adds the overlay first
+#					szStringIcon = szString + "Icon"
+#					screen.changeDDSGFC( szStringIcon, szFileName )
+#					screen.show( szStringIcon )
+
+#					if bEnable:#
+#						x = 315 + ((iCount % self.numPlotListButtons()) * 34)
+#						y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+
+#						self.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y + 4 )
+#						self.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
+#						self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
+#						self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y - 22, 12)
+
+#				iCount = iCount + 1
+
+#		if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
+#			screen.enable("PlotListMinus", bLeftArrow)
+#			screen.show( "PlotListMinus" )
+
+#			screen.enable("PlotListPlus", bRightArrow)
+#			screen.show( "PlotListPlus" )
+#		else:
+#			screen.hide( "PlotListMinus" )
+#			screen.hide( "PlotListPlus" )
 
 		return 0
-# BUG - draw method
+# BUG - BUG unit plot draw method - end
 
 	def updatePlotListButtons_PLE( self, screen ):
 
