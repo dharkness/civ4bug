@@ -220,15 +220,16 @@ def generateCivilizationName(iCivilizationType):
 	strPre = ""
 	strMid = ""
 	strEnd = ""
+	random = gc.getASyncRand()
 	
 	if(len(civilizationNameHash[strCivilizationType]["PRE"]) > 0):
-		strPre = civilizationNameHash[strCivilizationType]["PRE"][gc.getGame().getMapRand().get(len(civilizationNameHash[strCivilizationType]["PRE"]), "Random Name")]
+		strPre = civilizationNameHash[strCivilizationType]["PRE"][random.get(len(civilizationNameHash[strCivilizationType]["PRE"]), "Random Name")]
 
 	if(len(civilizationNameHash[strCivilizationType]["MID"]) > 0):
-		strMid = civilizationNameHash[strCivilizationType]["MID"][gc.getGame().getMapRand().get(len(civilizationNameHash[strCivilizationType]["MID"]), "Random Name")]	
+		strMid = civilizationNameHash[strCivilizationType]["MID"][random.get(len(civilizationNameHash[strCivilizationType]["MID"]), "Random Name")]	
 
 	if(len(civilizationNameHash[strCivilizationType]["END"]) > 0):	
-		strEnd = civilizationNameHash[strCivilizationType]["END"][gc.getGame().getMapRand().get(len(civilizationNameHash[strCivilizationType]["END"]), "Random Name")]	
+		strEnd = civilizationNameHash[strCivilizationType]["END"][random.get(len(civilizationNameHash[strCivilizationType]["END"]), "Random Name")]	
 	
 	strName = string.capwords(strPre+strMid+strEnd)
 	
@@ -239,14 +240,15 @@ def generateCivilizationName(iCivilizationType):
 def getRandomName():
 
 	unitName = ""
+	random = gc.getASyncRand()
 	
-	firstName = firstNameList[gc.getGame().getMapRand().get(len(firstNameList), "Random Name")]
-	lastName = lastNamesList[gc.getGame().getMapRand().get(len(lastNamesList), "Random Name")]
+	firstName = firstNameList[random.get(len(firstNameList), "Random Name")]
+	lastName = lastNamesList[random.get(len(lastNamesList), "Random Name")]
 
 	unitName = firstName + " " + lastName
 
 	if(len(unitName) < 14):
-		middleName = middleNameList[gc.getGame().getMapRand().get(len(middleNameList), "Random Name")]
+		middleName = middleNameList[random.get(len(middleNameList), "Random Name")]
 		unitName = firstName + " " + middleName + " " + lastName
 		
 
