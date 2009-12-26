@@ -560,7 +560,7 @@ class CvVictoryScreen:
 			screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 
 			# BUG Poll statistical error
-			iRandError = 3.5 + gc.getGame().get(10, "Election Results Statistical Error") / 10.0
+			iRandError = 3.5 + gc.getASyncRand().get(10, "Election Results Statistical Error") / 10.0
 			
 			sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (self.formatPercent(iRandError), ))
 			iRow = screen.appendTableRow(szTable)
