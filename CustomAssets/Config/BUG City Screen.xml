@@ -20,14 +20,23 @@
 			<option id="RawYields" key="Raw Yields" 
 					type="boolean" default="True" 
 					get="isShowRawYields" dirtyBit="CityScreen"/>
-			<list   id="RawYields_View" key="Raw Yields View" 
+			<list   id="RawYieldsView" key="Raw Yields View" 
 					type="int" default="0" listType="string" 
 					values="Trade Routes|Food|Production|Commerce" 
 					get="getRawYieldsDefaultView" dirtyBit="CityScreen">
-				<choice id="TradeRoutes" get="isRawYieldsDefaultView_TradeRoutes"/>
-				<choice id="Food" get="isRawYieldsDefaultView_Food"/>
-				<choice id="Production" get="isRawYieldsDefaultView_Production"/>
-				<choice id="Commerce" get="isRawYieldsDefaultView_Commerce"/>
+				<choice id="TradeRoutes" get="isRawYieldsDefaultViewTradeRoutes"/>
+				<choice id="Food" get="isRawYieldsDefaultViewFood"/>
+				<choice id="Production" get="isRawYieldsDefaultViewProduction"/>
+				<choice id="Commerce" get="isRawYieldsDefaultViewCommerce"/>
+			</list>
+			<list   id="RawYieldsTiles" key="Raw Yields Tiles" 
+					type="int" default="0" listType="string" 
+					values="Worked|City|Owned" 
+					get="getRawYieldsDefaultTiles" dirtyBit="CityScreen">
+				<choice id="Worked" get="isRawYieldsDefaultTilesWorked"/>
+				<choice id="City" get="isRawYieldsDefaultTilesCity"/>
+				<choice id="Owned" get="isRawYieldsDefaultTilesOwned"/>
+				<!--choice id="All" get="isRawYieldsDefaultTilesAll"/-->
 			</list>
 			
 			<!-- FoodAssist by EmperorFool -->

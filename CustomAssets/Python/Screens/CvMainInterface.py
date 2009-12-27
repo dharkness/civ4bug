@@ -2209,9 +2209,9 @@ class CvMainInterface:
 		self.yResolution = screen.getYResolution()
 		
 # BUG - Raw Yields - begin
-		global g_bYieldView
-		global g_iYieldType
+		global g_bYieldView, g_iYieldType, g_iYieldTiles
 		g_bYieldView, g_iYieldType = RawYields.getViewAndType(CityScreenOpt.getRawYieldsDefaultView())
+		g_iYieldTiles = CityScreenOpt.getRawYieldsDefaultTiles()
 # BUG - Raw Yields - end
 
 # BUG - PLE - begin
