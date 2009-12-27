@@ -23,7 +23,8 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		#self.addCheckboxTextDropdown(screen, left, left, "CityScreen__RawYields", "CityScreen__RawYields_View")
 		self.addCheckbox(screen, left, "CityScreen__RawYields")
-		self.addTextDropdown(screen, left, left, "CityScreen__RawYields_View", True)
+		self.addTextDropdown(screen, left, left, "CityScreen__RawYieldsView", True)
+		self.addTextDropdown(screen, left, left, "CityScreen__RawYieldsTiles", True)
 		
 		self.addSpacer(screen, left, "CityScreen1")
 		self.addLabel(screen, left, "HurryDetail", "Hurry Detail:")

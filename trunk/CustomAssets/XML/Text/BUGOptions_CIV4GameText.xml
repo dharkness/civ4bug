@@ -940,7 +940,7 @@
 		<Spanish>When checked, the raw breakdowns for [ICON_FOOD], [ICON_PRODUCTION], and [ICON_COMMERCE] are displayed in the trade routes table.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_TEXT</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSVIEW_TEXT</Tag>
 		<English>Default View</English>
 		<French>Default View</French>
 		<German>Standardanzeige</German>
@@ -948,7 +948,7 @@
 		<Spanish>Default View</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSVIEW_HOVER</Tag>
 		<English>Determines the Raw Yields view used when Civ is started.</English>
 		<French>Determines the Raw Yields view used when Civ is started.</French>
 		<German>Bestimmt, welche Ertr‰ge beim Aufruf des Stadt-Bildschirms standardm‰ﬂig angezeigt werden sollen</German>
@@ -956,12 +956,36 @@
 		<Spanish>Determines the Raw Yields view used when Civ is started.</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDS_VIEW_LIST</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSVIEW_LIST</Tag>
 		<English>Trade Routes|Food|Production|Commerce</English>
 		<French>Trade Routes|Food|Production|Commerce</French>
 		<German>Handelsverbindungen|Nahrung|Produktion|Wirtschaft</German>
 		<Italian>Rotte Commerciali|Cibo|Produzione|Commercio</Italian>
 		<Spanish>Trade Routes|Food|Production|Commerce</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_TEXT</Tag>
+		<English>Default Tiles</English>
+		<French>Default Tiles</French>
+		<German>Count Tiles</German>
+		<Italian>Default Tiles</Italian>
+		<Spanish>Default Tiles</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_HOVER</Tag>
+		<English>Select which tiles to count in Raw Yields when Civ is started.</English>
+		<French>Select which tiles to count in Raw Yields when Civ is started.</French>
+		<German>Select which tiles to count in Raw Yields when Civ is started.</German>
+		<Italian>Select which tiles to count in Raw Yields when Civ is started.</Italian>
+		<Spanish>Select which tiles to count in Raw Yields when Civ is started.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_LIST</Tag>
+		<English>Worked|City|Owned</English>
+		<French>Worked|City|Owned</French>
+		<German>Worked|City|Owned</German>
+		<Italian>Worked|City|Owned</Italian>
+		<Spanish>Worked|City|Owned</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__FOODASSIST_TEXT</Tag>
