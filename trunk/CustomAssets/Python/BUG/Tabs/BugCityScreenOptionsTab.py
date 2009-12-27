@@ -103,3 +103,4 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "CityScreen__OnlyPresentCorporations")
 		self.addTextDropdown(screen, right, right, "CityScreen__Specialists", True)
 		#self.addCheckbox(screen, right, "MiscHover__RemoveSpecialist")
+		self.addCheckbox(screen, right, "CityScreen__ProductionPopupTrainUnitsForever")

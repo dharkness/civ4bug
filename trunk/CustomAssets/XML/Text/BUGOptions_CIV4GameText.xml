@@ -1253,6 +1253,23 @@
 		<Spanish>Select the number of turns before a building will decay at which time the decay information is first displayed.</Spanish>
 	</TEXT>
 	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_TEXT</Tag>
+		<English>Train Units Forever</English>
+		<French>Train Units Forever</French>
+		<German>Train Units Forever</German>
+		<Italian>Train Units Forever</Italian>
+		<Spanish>Train Units Forever</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_HOVER</Tag>
+		<English>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</English>
+		<French>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</French>
+		<German>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</German>
+		<Italian>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Italian>
+		<Spanish>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Spanish>
+	</TEXT>
+	
 	<!-- Better Espionage -->
 	
 	<TEXT>
