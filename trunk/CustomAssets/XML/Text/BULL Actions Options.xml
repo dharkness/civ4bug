@@ -6,6 +6,25 @@
 	Copyright (c) 2009 The BUG Mod.
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
+	
+<!-- Declare War -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__DECLAREWARUNITS_TEXT</Tag>
+		<English>Declare War by Moving</English>
+		<French>Declare War by Moving</French>
+		<German>Declare War by Moving</German>
+		<Italian>Declare War by Moving</Italian>
+		<Spanish>Declare War by Moving</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__DECLAREWARUNITS_HOVER</Tag>
+		<English>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</English>
+		<French>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</French>
+		<German>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</German>
+		<Italian>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</Italian>
+		<Spanish>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</Spanish>
+	</TEXT>
 
 <!-- Sentry Healing -->
 
