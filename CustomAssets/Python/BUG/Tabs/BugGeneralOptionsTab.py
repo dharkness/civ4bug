@@ -47,6 +47,7 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 	def createActionsPanel(self, screen, panel):
 		self.addLabel(screen, panel, "Actions", "Actions:")
+		self.addCheckbox(screen, panel, "Actions__DeclareWarUnits")
 		self.addCheckbox(screen, panel, "Actions__SentryHealing")
 		self.addCheckbox(screen, panel, "Actions__SentryHealingOnlyNeutral", True)
 		self.addCheckbox(screen, panel, "Actions__PreChopForests")
