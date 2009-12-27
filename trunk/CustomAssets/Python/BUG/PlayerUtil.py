@@ -426,18 +426,26 @@ def isWHEOOH(playerOrID, askingPlayerOrID):
 	In game terms, this is the case if the player gives the TOO_MANY_WARS denial type
 	for a request to go to war against another civ.
 	"""
-	tradeData = TradeData()
-	tradeData.ItemType = TradeableItems.TRADE_WAR
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	if askingTeam.isAtWar(askedTeam.getID()):
+		# can't see status of players you are fighting
+		return False
+	tradeData = TradeData()
+	tradeData.ItemType = TradeableItems.TRADE_WAR
 	for player in players(alive=True, barbarian=False, minor=False):
+		if player.getTeam() == askingPlayer.getTeam() or player.getTeam() == askedPlayer.getTeam():
+			# won't DoW your team or their team
+			continue
 		if (askingPlayer.getID() == player.getID()
 				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			# won't DoW yourself or someone you haven't met
 			continue
 		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
 				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+			# won't DoW themselves, someone they are fighting, or someone they haven't met
 			continue
-		tradeData.iData = player.getID()
+		tradeData.iData = player.getTeam()
 		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
 			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
 			if denial == DenialTypes.DENIAL_TOO_MANY_WARS:
