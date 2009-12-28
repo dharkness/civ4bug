@@ -7,18 +7,18 @@
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 	
-<!-- Declare War -->
+<!-- Ask Declare War -->
 	
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_ACTIONS__DECLAREWARUNITS_TEXT</Tag>
-		<English>Declare War by Moving</English>
-		<French>Declare War by Moving</French>
-		<German>Declare War by Moving</German>
-		<Italian>Declare War by Moving</Italian>
-		<Spanish>Declare War by Moving</Spanish>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__ASKDECLAREWARUNITS_TEXT</Tag>
+		<English>Offer to Declare War</English>
+		<French>Offer to Declare War</French>
+		<German>Offer to Declare War</German>
+		<Italian>Offer to Declare War</Italian>
+		<Spanish>Offer to Declare War</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_ACTIONS__DECLAREWARUNITS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__ASKDECLAREWARUNITS_HOVER</Tag>
 		<English>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</English>
 		<French>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</French>
 		<German>When checked, gives you the option to declare war when moving into a tile containing a rival unit. Always gives the option when moving into rival territory without open borders.</German>
