@@ -324,7 +324,7 @@ def getVassals(playerOrID, askingPlayerOrID):
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
 	for player in players(alive=True, barbarian=False, minor=False):
-		if (askedPlayer.getID() != player.getID() and 
+		if (askedPlayer.getTeam() != player.getTeam() and 
 				(askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
 			team = getPlayerTeam(player)
 			if team.isAVassal() and team.isVassal(askedTeam.getID()):
@@ -341,7 +341,7 @@ def getDefensivePacts(playerOrID, askingPlayerOrID):
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
 	for player in players(alive=True, barbarian=False, minor=False):
-		if (askedPlayer.getID() != player.getID() and 
+		if (askedPlayer.getTeam() != player.getTeam() and 
 				(askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
 			if askedTeam.isDefensivePact(player.getTeam()):
 				pacts.append(player)
@@ -353,23 +353,25 @@ def getPossibleEmbargos(playerOrID, askingPlayerOrID):
 	
 	The askingPlayerOrID is used to limit the list to players they have met.
 	"""
+	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
+	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
+	if askingTeam.isAtWar(askedTeam.getID()):
+		# can't see status of players you are fighting
+		return ()
 	embargos = []
 	tradeData = TradeData()
 	tradeData.ItemType = TradeableItems.TRADE_EMBARGO
-	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
-	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
 	for player in players(alive=True, barbarian=False, minor=False):
-		if (askingPlayer.getID() == player.getID()
-				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+		eTeam = player.getTeam()
+		if eTeam == askingPlayer.getTeam() or eTeam == askedPlayer.getTeam() or askedTeam.isAtWar(eTeam):
+			# won't embargo your team, their team, or a team they are fighting
 			continue
-		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
-				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
+		if not ((askingTeam.isHasMet(eTeam) and askedTeam.isHasMet(eTeam)) or gc.getGame().isDebugMode()):
+			# won't embargo someone you or they haven't met
 			continue
-		tradeData.iData = player.getID()
-		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
-			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
-			if denial == DenialTypes.NO_DENIAL:
-				embargos.append(player)
+		tradeData.iData = eTeam
+		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, True):
+			embargos.append(player)
 	return embargos
 
 
@@ -407,18 +409,14 @@ def getPossibleWars(playerOrID, askingPlayerOrID):
 	tradeData = TradeData()
 	tradeData.ItemType = TradeableItems.TRADE_WAR
 	for player in players(alive=True, barbarian=False, minor=False):
-		if player.getTeam() == askingPlayer.getTeam() or player.getTeam() == askedPlayer.getTeam():
-			# won't DoW your team or their team
+		eTeam = player.getTeam()
+		if eTeam == askingPlayer.getTeam() or eTeam == askedPlayer.getTeam() or askedTeam.isAtWar(eTeam):
+			# won't DoW your team, their team, or a team they are fighting
 			continue
-		if (askingPlayer.getID() == player.getID()
-				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
-			# won't DoW yourself or someone you haven't met
+		if not ((askingTeam.isHasMet(eTeam) and askedTeam.isHasMet(eTeam)) or gc.getGame().isDebugMode()):
+			# won't DoW someone you or they haven't met
 			continue
-		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
-				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
-			# won't DoW themselves, someone they are fighting, or someone they haven't met
-			continue
-		tradeData.iData = player.getTeam()
+		tradeData.iData = eTeam
 		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
 			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
 			if denial == DenialTypes.NO_DENIAL:
@@ -442,18 +440,14 @@ def isWHEOOH(playerOrID, askingPlayerOrID):
 	tradeData = TradeData()
 	tradeData.ItemType = TradeableItems.TRADE_WAR
 	for player in players(alive=True, barbarian=False, minor=False):
-		if player.getTeam() == askingPlayer.getTeam() or player.getTeam() == askedPlayer.getTeam():
-			# won't DoW your team or their team
+		eTeam = player.getTeam()
+		if eTeam == askingPlayer.getTeam() or eTeam == askedPlayer.getTeam() or askedTeam.isAtWar(eTeam):
+			# won't DoW your team, their team, or a team they are fighting
 			continue
-		if (askingPlayer.getID() == player.getID()
-				or not (askingTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
-			# won't DoW yourself or someone you haven't met
+		if not ((askingTeam.isHasMet(eTeam) and askedTeam.isHasMet(eTeam)) or gc.getGame().isDebugMode()):
+			# won't DoW someone you or they haven't met
 			continue
-		if (player.getID() == askedPlayer.getID() or askedTeam.isAtWar(player.getTeam())
-				or not (askedTeam.isHasMet(player.getTeam()) or gc.getGame().isDebugMode())):
-			# won't DoW themselves, someone they are fighting, or someone they haven't met
-			continue
-		tradeData.iData = player.getTeam()
+		tradeData.iData = eTeam
 		if askedPlayer.canTradeItem(askingPlayer.getID(), tradeData, False):
 			denial = askedPlayer.getTradeDenial(askingPlayer.getID(), tradeData)
 			if denial == DenialTypes.DENIAL_TOO_MANY_WARS:
