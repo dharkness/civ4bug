@@ -965,17 +965,17 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_TEXT</Tag>
-		<English>Default Tiles</English>
-		<French>Default Tiles</French>
+		<English>Count Tiles</English>
+		<French>Count Tiles</French>
 		<German>Count Tiles</German>
-		<Italian>Default Tiles</Italian>
-		<Spanish>Default Tiles</Spanish>
+		<Italian>Count Tiles</Italian>
+		<Spanish>Count Tiles</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_HOVER</Tag>
 		<English>Select which tiles to count in Raw Yields when Civ is started.</English>
 		<French>Select which tiles to count in Raw Yields when Civ is started.</French>
-		<German>Select which tiles to count in Raw Yields when Civ is started.</German>
+		<German>Bestimmt, welche Geländefelder in die Berechnung der Roherträge einfließen sollen, wenn das Spiel gestartet wird</German>
 		<Italian>Select which tiles to count in Raw Yields when Civ is started.</Italian>
 		<Spanish>Select which tiles to count in Raw Yields when Civ is started.</Spanish>
 	</TEXT>
@@ -983,7 +983,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__RAWYIELDSTILES_LIST</Tag>
 		<English>Worked|City|Owned</English>
 		<French>Worked|City|Owned</French>
-		<German>Worked|City|Owned</German>
+		<German>Bearbeitet|Stadt|Besitz</German>
 		<Italian>Worked|City|Owned</Italian>
 		<Spanish>Worked|City|Owned</Spanish>
 	</TEXT>
@@ -1257,7 +1257,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_TEXT</Tag>
 		<English>Train Units Forever</English>
 		<French>Train Units Forever</French>
-		<German>Train Units Forever</German>
+		<German>Unendliche Einheitenproduktion</German>
 		<Italian>Train Units Forever</Italian>
 		<Spanish>Train Units Forever</Spanish>
 	</TEXT>
@@ -1265,7 +1265,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_HOVER</Tag>
 		<English>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</English>
 		<French>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</French>
-		<German>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</German>
+		<German>Lässt eine Stadt wiederholt jene Einheit produzieren, die im Stadt-Baumenü ausgewählt wurde</German>
 		<Italian>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Italian>
 		<Spanish>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Spanish>
 	</TEXT>
@@ -2374,7 +2374,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_LIST</Tag>
 		<English>PLE|Vanilla|BUG</English>
 		<French>PLE|Vanilla|BUG</French>
-		<German>PLE|Vanilla|BUG</German>
+		<German>PLE|Standard|BUG</German>
 		<Italian>PLE|Vanilla|BUG</Italian>
 		<Spanish>PLE|Vanilla|BUG</Spanish>
 	</TEXT>
@@ -2382,7 +2382,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_TEXT</Tag>
 		<English>Draw Method</English>
 		<French>Draw Method</French>
-		<German>Draw Method</German>
+		<German>Anzeigemethode</German>
 		<Italian>Draw Method</Italian>
 		<Spanish>Draw Method</Spanish>
 	</TEXT>
@@ -2390,7 +2390,7 @@
 		<Tag>TXT_KEY_BUG_OPT_PLE__DRAW_METHOD_HOVER</Tag>
 		<English>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</English>
 		<French>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</French>
-		<German>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</German>
+		<German>Bestimmt die Anzeigemethode:[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - Einsatz der von der ursprünglichen PLE-Mod verwendeten Anzeigemethode[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Standard[COLOR_REVERT] - Einsatz der regulären Anzeigemethode des Spiels[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - Einsatz der Anzeigemethode, die momentan vom Team der BUG Mod entwickelt wird, um nur die grafischen Elemente neu zu laden, die sich verändert haben</German>
 		<Italian>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</Italian>
 		<Spanish>Sets the draw method.[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]PLE[COLOR_REVERT] - uses the 'draw' code that was originally provided by the PLE enhancement[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]Vanilla[COLOR_REVERT] - uses the 'draw' code that was in the original game (or close enough)[NEWLINE][ICON_BULLET][COLOR_HIGHLIGHT_TEXT]BUG[COLOR_REVERT] - uses the 'draw' code that is currently being developed by the BUG team to only redraw those graphical items that have changed</Spanish>
 	</TEXT>
