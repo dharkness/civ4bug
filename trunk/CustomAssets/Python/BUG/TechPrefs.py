@@ -21,15 +21,16 @@ NUM_FLAVORS = 8
 FLAVORS = [ "Military", "Religion", "Production",
 			"Gold", "Science", "Culture",
 			"Growth", "Espionage" ]
-
-FLAVOR_MILITARY = 0
-FLAVOR_RELIGION = 1
-FLAVOR_PRODUCTION = 2
-FLAVOR_GOLD = 3
-FLAVOR_SCIENCE = 4
-FLAVOR_CULTURE = 5
-FLAVOR_GROWTH = 6
-FLAVOR_ESPIONAGE = 7
+(
+	FLAVOR_MILITARY,
+	FLAVOR_RELIGION,
+	FLAVOR_PRODUCTION,
+	FLAVOR_GOLD,
+	FLAVOR_SCIENCE,
+	FLAVOR_CULTURE,
+	FLAVOR_GROWTH,
+	FLAVOR_ESPIONAGE,
+) = range(NUM_FLAVORS)
 
 class TechPrefs:
 
@@ -65,11 +66,14 @@ class TechPrefs:
 					pTech.addOrPrereq(self.getTech(pPrereqTech))
 		
 		# sort each flavor's list of techs by decreasing preference: reverse flavor value, tech number
+		# and create a copy that doesn't get trimmed as techs are researched
+		self.lAllTechsByFlavor = {}
 		for iFlavor in range(NUM_FLAVORS):
 			lTechs = self.lTechsByFlavor[iFlavor]
 ##			print "%s has %d techs" % (FLAVORS[iFlavor], len(lTechs))
 			lTechs.sort()
 			self.lTechsByFlavor[iFlavor] = [ pTech for _, _, pTech in lTechs ]
+			self.lAllTechsByFlavor[iFlavor] = tuple(self.lTechsByFlavor[iFlavor])
 		
 ##		print "---- Techs with Flavor ----"
 ##		for pTech in self.mTechs.values():
@@ -175,6 +179,31 @@ class TechPrefs:
 				return pTech
 		return None
 
+	def getAllFlavorTechs(self, iFlavor):
+		"""Returns a list of all techs in the flavor's list."""
+		lTechs = []
+		for pTech in self.lAllTechsByFlavor[iFlavor]:
+			lTechs.append(pTech)
+		return lTechs
+
+	def getRemainingFlavorTechs(self, iFlavor):
+		"""Returns a list of techs in the flavor's list that haven't been researched yet."""
+		lTechs = []
+		for pTech in self.lTechsByFlavor[iFlavor]:
+			BugUtil.debug("checking %s", pTech.getName())
+			if (pTech.getID() in self.mTechs):
+				BugUtil.debug("bingo")
+				lTechs.append(pTech)
+		return lTechs
+
+	def getFutureFlavorTechs(self, iFlavor, sTechs):
+		"""Returns a list of techs in the flavor's list that haven't been researched yet and aren't in <sTechs>."""
+		lTechs = []
+		for pTech in self.lTechsByFlavor[iFlavor]:
+			if (pTech.getID() in self.mTechs and pTech not in sTechs):
+				lTechs.append(pTech)
+		return lTechs
+
 
 	def printFlavorTechs(self, iFlavor):
 		"""Prints the techs in the flavor's list."""
@@ -214,6 +243,15 @@ class Tech:
 
 	def getName(self):
 		return self.getInfo().getDescription()
+	
+	def __hash__(self):
+		return hash(self.iTech)
+	
+	def __eq__(self, other):
+		return self.iTech == other.iTech
+	
+	def __cmp__(self, other):
+		return self.iTech - other.iTech
 
 
 	def setFlavorValue(self, iFlavor, iValue):
