@@ -47,11 +47,39 @@ import GameUtil
 BugUtil.fixSets(globals())
 # BUG - Mac Support - end
 
+# BUG - Tech Era Colors - start
 def getEraDescription(eWidgetType, iData1, iData2, bOption):
 	return gc.getEraInfo(iData1).getDescription()
+# BUG - Tech Era Colors - end
 
+# BUG - GP Tech Prefs - start
 def resetTechPrefs(args=[]):
 	CvScreensInterface.techChooser.resetTechPrefs()
+
+def getAllTechPrefsHover(widgetType, iData1, iData2, bOption):
+	BugUtil.debug("getAllTechPrefsHover")
+	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getAllFlavorTechs(iData1))
+
+def getCurrentTechPrefsHover(widgetType, iData1, iData2, bOption):
+	BugUtil.debug("getCurrentTechPrefsHover")
+	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getRemainingFlavorTechs(iData1))
+
+def getFutureTechPrefsHover(widgetType, iData1, iData2, bOption):
+	BugUtil.debug("getFutureTechPrefsHover")
+	pPlayer = gc.getPlayer(CvScreensInterface.techChooser.iCivSelected)
+	sTechs = set()
+	for i in range(gc.getNumTechInfos()):
+		if (pPlayer.isResearchingTech(i)):
+			sTechs.add(CvScreensInterface.techChooser.pPrefs.getTech(i))
+	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getFutureFlavorTechs(iData1, sTechs))
+
+def buildTechPrefsHover(lTechs):
+	szText = u""
+	for pTech in lTechs:
+		BugUtil.debug("button: %s", pTech.getInfo().getButton())
+		szText += u"<img=%s size=24></img>" % pTech.getInfo().getButton().replace(" ", "_")
+	return szText
+# BUG - GP Tech Prefs - end
 
 class CvTechChooser:
 	"Tech Chooser Screen"
@@ -1037,7 +1065,7 @@ class CvTechChooser:
 			pUnitInfo = gc.getUnitInfo(iUnitType)
 			iX = PREF_ICON_LEFT
 			iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE
-			screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_PEDIA_JUMP_TO_UNIT, iUnitType, -1 )
+			screen.addDDSGFC( "GreatPerson" + str(f), pUnitInfo.getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_PREFS_ALL, f, -1 )
 		self.bPrefsShowing = True
 
 		# Remove any techs researched since last call, creating tree if necessary
@@ -1062,9 +1090,9 @@ class CvTechChooser:
 			iX = PREF_ICON_LEFT + 3 * PREF_ICON_SIZE / 2
 			iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE
 			if (pTech):
-				screen.addDDSGFC( szButtonName, pTech.getInfo().getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_TREE, pTech.getID(), -1 )
+				screen.addDDSGFC( szButtonName, pTech.getInfo().getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_PREFS_CURRENT, f, -1 )
 			else:
-				screen.addDDSGFC( szButtonName, self.NO_TECH_ART, iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.addDDSGFC( szButtonName, self.NO_TECH_ART, iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_PREFS_CURRENT, f, -1 )
 			screen.show( szButtonName )
 
 			# Tech GP will pop once selected techs are researched
@@ -1073,9 +1101,9 @@ class CvTechChooser:
 			iX = PREF_ICON_LEFT + 3 * PREF_ICON_SIZE / 2
 			iY = PREF_ICON_TOP + 4 * i * PREF_ICON_SIZE + 3 * PREF_ICON_SIZE / 2
 			if (pTech):
-				screen.addDDSGFC( szButtonName, pTech.getInfo().getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_TREE, pTech.getID(), -1 )
+				screen.addDDSGFC( szButtonName, pTech.getInfo().getButton(), iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_PREFS_FUTURE, f, -1 )
 			else:
-				screen.addDDSGFC( szButtonName, self.NO_TECH_ART, iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_GENERAL, -1, -1 )
+				screen.addDDSGFC( szButtonName, self.NO_TECH_ART, iX, iY, PREF_ICON_SIZE, PREF_ICON_SIZE, WidgetTypes.WIDGET_TECH_PREFS_FUTURE, f, -1 )
 			screen.show( szButtonName )
 # BUG - GP Tech Prefs - end
 

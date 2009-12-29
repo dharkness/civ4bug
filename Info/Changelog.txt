@@ -43,12 +43,14 @@ New Features:
 
 Improvements:
 
-- Foreign Advisor
-	Can select how to display attitudes: numbers, smilies, or both
 - Main Interface
 	Unit Plot drawing improvements (pre-work only at the moment)
 - City Screen
 	Can select which tiles to count in Raw Yields when Civ starts
+- Foreign Advisor
+	Can select how to display attitudes: numbers, smilies, or both
+- Technology Chooser
+	Added hover to GP Research icons showing the preferred order
 
 Bug Fixes:
 
