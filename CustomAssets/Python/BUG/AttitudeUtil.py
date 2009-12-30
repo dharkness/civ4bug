@@ -358,9 +358,9 @@ def isWorstEnemy(playerOrID, enemyOrID):
 	"""
 	Returns True if <enemy> is one of the worst enemies of <player>'s team.
 	"""
-	player = PlayerUtil.getPlayer(playerOrID)
-	enemy = PlayerUtil.getPlayer(enemyOrID)
-	return not player.isHuman() and player.getID() != enemy.getID() and player.getWorstEnemyName().find(enemy.getName()) != -1
+	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
+	enemy, enemyTeam = PlayerUtil.getPlayerAndTeam(enemyOrID)
+	return not team.isHuman() and team.getID() != enemyTeam.getID() and player.getWorstEnemyName().find(enemy.getName()) != -1
 
 def getWorstEnemies(playerOrID):
 	"""
@@ -379,12 +379,13 @@ def getWorstEnemyTeam(playerOrID):
 	
 	If <player>'s team has no worst enemy, returns -1.
 	"""
-	player = PlayerUtil.getPlayer(playerOrID)
-	worstEnemyName = player.getWorstEnemyName()
-	if worstEnemyName:
-		for team in PlayerUtil.teams():
-			if team.getName() == worstEnemyName:
-				return team.getID()
+	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
+	if not team.isHuman():
+		worstEnemyName = player.getWorstEnemyName()
+		if worstEnemyName:
+			for team in PlayerUtil.teams():
+				if team.getName() == worstEnemyName:
+					return team.getID()
 	return -1
 
 def getWorstEnemyTeams():
@@ -402,7 +403,11 @@ def getWorstEnemyTeams():
 	for player in PlayerUtil.players(True, False, False, False):
 		eTeam = player.getTeam()
 		if eTeam not in enemies:
-			worstEnemyName = player.getWorstEnemyName()
+			team = gc.getTeam(eTeam)
+			if team.isHuman():
+				worstEnemyName = player.getWorstEnemyName()
+			else:
+				worstEnemyName = None
 			if worstEnemyName:
 				if worstEnemyName in namesToID:
 					enemies[eTeam] = namesToID[worstEnemyName]
