@@ -54,8 +54,9 @@ Improvements:
 
 Bug Fixes:
 
-- WHEOOH
-	Works correctly in team games and hides status of rivals you are fighting
+- Team Games
+	WHEOOH works correctly and hides status of rivals you are fighting
+	Worst Enemy no longer shown for humans' teammates
 - City Screen
 	Happiness and unhappiness are shown for foreign cities
 	Whip/Draft Anger is shown for team member cities
