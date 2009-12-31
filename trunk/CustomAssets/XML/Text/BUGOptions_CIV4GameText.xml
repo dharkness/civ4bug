@@ -1254,20 +1254,36 @@
 	</TEXT>
 	
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_TEXT</Tag>
-		<English>Train Units Forever</English>
-		<French>Train Units Forever</French>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINCIVILIANUNITSFOREVER_TEXT</Tag>
+		<English>Train Civilian Units Forever</English>
+		<French>Train Civilian Units Forever</French>
 		<German>Unendliche Einheitenproduktion</German>
-		<Italian>Train Units Forever</Italian>
-		<Spanish>Train Units Forever</Spanish>
+		<Italian>Train Civilian Units Forever</Italian>
+		<Spanish>Train Civilian Units Forever</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINUNITSFOREVER_HOVER</Tag>
-		<English>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</English>
-		<French>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</French>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINCIVILIANUNITSFOREVER_HOVER</Tag>
+		<English>When checked, selecting a civilian unit in the Choose Production popup sets the city to train that unit repeatedly.</English>
+		<French>When checked, selecting a civilian unit in the Choose Production popup sets the city to train that unit repeatedly.</French>
 		<German>Lässt eine Stadt wiederholt jene Einheit produzieren, die im Stadt-Baumenü ausgewählt wurde</German>
-		<Italian>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Italian>
-		<Spanish>When checked, selecting a unit in the Choose Production popup sets the city to train that unit repeatedly.</Spanish>
+		<Italian>When checked, selecting a civilian unit in the Choose Production popup sets the city to train that unit repeatedly.</Italian>
+		<Spanish>When checked, selecting a civilian unit in the Choose Production popup sets the city to train that unit repeatedly.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINMILITARYUNITSFOREVER_TEXT</Tag>
+		<English>Train Military Units Forever</English>
+		<French>Train Military Units Forever</French>
+		<German>Unendliche Einheitenproduktion</German>
+		<Italian>Train Military Units Forever</Italian>
+		<Spanish>Train Military Units Forever</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONPOPUPTRAINMILITARYUNITSFOREVER_HOVER</Tag>
+		<English>When checked, selecting a military unit in the Choose Production popup sets the city to train that unit repeatedly.</English>
+		<French>When checked, selecting a military unit in the Choose Production popup sets the city to train that unit repeatedly.</French>
+		<German>Lässt eine Stadt wiederholt jene Einheit produzieren, die im Stadt-Baumenü ausgewählt wurde</German>
+		<Italian>When checked, selecting a military unit in the Choose Production popup sets the city to train that unit repeatedly.</Italian>
+		<Spanish>When checked, selecting a military unit in the Choose Production popup sets the city to train that unit repeatedly.</Spanish>
 	</TEXT>
 	
 	<!-- Better Espionage -->
