@@ -44,7 +44,7 @@ g_eventManager = None
 def canContact(playerOrID, toPlayerOrID):
 	"""
 	Returns True if <player> can attempt to contact <toPlayer> given game settings, 
-	initial contact, and war-time situation.
+	initial contact, and war-time situation without regard to willingness to talk.
 	
 	- They must not be the same player
 	- <toPlayer> must be alive, not minor, and not a barbarian
@@ -71,6 +71,8 @@ def isWillingToTalk(playerOrID, toPlayerOrID):
 	- All human players are willing to talk
 	- Uses BUG DLL if present, otherwise scans attitude hover text
 	  for "Refuses to Talk!!!" in the current language
+	
+	Note: This function does not check if the two players can make contact.
 	"""
 	playerID, player = PlayerUtil.getPlayerAndID(playerOrID)
 	toPlayerID = PlayerUtil.getPlayerID(toPlayerOrID)
