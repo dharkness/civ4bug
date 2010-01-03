@@ -355,8 +355,7 @@ def getPossibleEmbargos(playerOrID, askingPlayerOrID):
 	"""
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
-	if askingTeam.isAtWar(askedTeam.getID()):
-		# can't see status of players you are fighting
+	if not TradeUtil.canTrade(askingPlayer, askedPlayer):
 		return ()
 	embargos = []
 	tradeData = TradeData()
@@ -401,8 +400,7 @@ def getPossibleWars(playerOrID, askingPlayerOrID):
 	"""
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
-	if askingTeam.isAtWar(askedTeam.getID()):
-		# can't see status of players you are fighting
+	if not TradeUtil.canTrade(askingPlayer, askedPlayer):
 		return (False, ())
 	wheooh = False
 	wars = []
@@ -430,12 +428,11 @@ def isWHEOOH(playerOrID, askingPlayerOrID):
 	Returns True if askingPlayerOrID can see that playerOrID is WHEOOH.
 	
 	In game terms, this is the case if the player gives the TOO_MANY_WARS denial type
-	for a request to go to war against another civ.
+	for a request to go to war against a rival.
 	"""
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getPlayerAndTeam(askingPlayerOrID)
-	if askingTeam.isAtWar(askedTeam.getID()):
-		# can't see status of players you are fighting
+	if not TradeUtil.canTrade(askingPlayer, askedPlayer):
 		return False
 	tradeData = TradeData()
 	tradeData.ItemType = TradeableItems.TRADE_WAR
