@@ -16,7 +16,7 @@
 		<Spanish>Enable Civ4lerts</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__CIV4LERTS_HOVER</Tag>
+		<Tag>TXT_KEY_BUG_OPT_CIV4LERTS__ENABLED_HOVER</Tag>
 		<English>When checked, messages are displayed to alert you to various pending and existing conditions using Dr. Elmer Jiggle's Civ4lerts mod.</English>
 		<French>En activant, des messages apparaissent pour vous informer de l'état de plusieurs éléments du jeu, grâce au mod Civ4lerts de Dr. Elmer Jiggle.</French>
 		<German>Lässt Warnungen erscheinen, die bevorstehende oder bereits eingetretene Ereignisse melden (verwendet Dr. Elmer Jiggles "Civ4lerts"-Mod)</German>
