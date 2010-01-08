@@ -14,11 +14,9 @@ import SdToolKit
 
 # Bug Options
 import BugCore
-import BugOptions
 EventSignsOpt = BugCore.game.EventSigns
 
 # BUG - Mac Support - start
-import BugUtil
 BugUtil.fixSets(globals())
 # BUG - Mac Support - end
 
@@ -80,7 +78,7 @@ def addSign (pPlot, ePlayer, szCaption):
 	return True
 
 def updateCurrentSigns ():
-	""" Updates gCurrentSigns global with all current signs on map. Remeber to clear when done."""
+	""" Updates gCurrentSigns global with all current signs on map. Remember to clear when done."""
 	global gCurrentSigns
 	gCurrentSigns = MapSigns()
 	for iSign in range(engine.getNumSigns()):
@@ -336,7 +334,6 @@ class PlotSigns:
 
 	def removeSign(self, ePlayer):
 		""" Removes Caption for a given player on this plot. """
-		szCaption = ""
 		if ePlayer in self.signDict:
 			del self.signDict[ePlayer] 
 		else:
