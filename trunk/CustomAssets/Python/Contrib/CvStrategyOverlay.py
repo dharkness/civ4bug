@@ -578,7 +578,7 @@ class DotMapLayer(StrategyLayer):
 			if BugPath.isMac():
 				CyEngine().addColoredPlot(x, y, self.INVISIBLE_COLOR, self.DOT_LAYER)
 			else:
-				CyEngine().addColoredPlotAlt(x, y, self.NO_DOT_STYLE, self.DOT_LAYER, "", alpha)
+				CyEngine().addColoredPlotAlt(x, y, self.NO_DOT_STYLE, self.DOT_LAYER, "COLOR_BLACK", alpha)
 	
 	def clearCityLayers(self):
 		"""
