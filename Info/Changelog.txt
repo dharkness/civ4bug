@@ -57,6 +57,8 @@ Bug Fixes:
 - Team Games
 	WHEOOH works correctly and won't check if a rival will DoW on their or your teammates
 	Worst Enemy no longer shown for humans' teammates
+- Strategy Layer
+	Fixed random crash on WIndows Vista/7
 - City Screen
 	Happiness and unhappiness are shown for foreign cities
 	Whip/Draft Anger is shown for team member cities
