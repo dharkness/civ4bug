@@ -12,12 +12,16 @@
 import CvUtil
 from CvPythonExtensions import *
 
+# BUG - 3.17 - start
+import GameUtil
+# BUG - 3.17 - end
+
 # BUG - EventSigns - Start
 # EventSigns: Modified applySaltpeter and added generic callbacks for any other events
 #             which change plot yields in order to add landmarks or signs to the map.
 import BugCore
-import BugOptions
 import EventSigns
+import PlayerUtil
 EventSignsOpt = BugCore.game.EventSigns
 
 engine = CyEngine()
@@ -61,14 +65,15 @@ def canTriggerBlessedSea(argsList):
 	if (iOurLandmasses > iOurMaxLandmass):
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		player = gc.getPlayer(kTriggeredData.ePlayer)
 		if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEY')) == 0:
 			if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CARAVEL')) == 0:
 				if player.getUnitClassCount(CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_GALLEON')) == 0:
 					return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 			
 	return true
 
@@ -1860,8 +1865,9 @@ def canTriggerTheHuns(argsList):
 	if not bFoundValid:
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		# Can we build the counter unit?		
 		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_SPEARMAN')
 		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
@@ -1879,7 +1885,7 @@ def canTriggerTheHuns(argsList):
 
 		if not bFound:
 			return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -1974,8 +1980,9 @@ def canTriggerTheVandals(argsList):
 	if not bFoundValid:
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		# Can we build the counter unit?		
 		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
 		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
@@ -1993,7 +2000,7 @@ def canTriggerTheVandals(argsList):
 
 		if not bFound:
 			return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2088,8 +2095,9 @@ def canTriggerTheGoths(argsList):
 	if not bFoundValid:
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		# Can we build the counter unit?		
 		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_CHARIOT')
 		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
@@ -2107,7 +2115,7 @@ def canTriggerTheGoths(argsList):
 
 		if not bFound:
 			return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2202,8 +2210,9 @@ def canTriggerThePhilistines(argsList):
 	if not bFoundValid:
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		# Can we build the counter unit?		
 		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_AXEMAN')
 		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
@@ -2221,7 +2230,7 @@ def canTriggerThePhilistines(argsList):
 
 		if not bFound:
 			return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -2316,8 +2325,9 @@ def canTriggerTheVedicAryans(argsList):
 	if not bFoundValid:
 		return false
 
-# EventSigns - 3.13 vs 3.17 - Start
-	if (gc.getDefineINT("CIV4_VERSION") >= 317):
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
 		# Can we build the counter unit?		
 		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_ARCHER')
 		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
@@ -2335,7 +2345,7 @@ def canTriggerTheVedicAryans(argsList):
 
 		if not bFound:
 			return false
-# EventSigns - 3.13 vs 3.17 - End
+# BUG - 3.17 - End
 
 #	Find an eligible plot
 	map = gc.getMap()	
@@ -4169,7 +4179,8 @@ def canTriggerImpeachmentCity(argsList):
 		return true
 	return false
 
-######### EventSigns: Event Landmark functions #########
+
+# BUG - Event Signs - start
 
 def clearSignsAndLandmarks(pPlot):
 	""" Removes any current landmarks or signs from a plot.
@@ -4182,7 +4193,7 @@ def clearSignsAndLandmarks(pPlot):
 	If I could resolve that issue, this function would actually be used. ;)
 	"""
 	for iPlayer in range(gc.getMAX_PLAYERS()):
-		engine.removeSign(pPlot,iPlayer)
+		engine.removeSign(pPlot, iPlayer)
 	engine.removeLandmark(pPlot)
 	# Don't even know what this does; it was the last of my failed attempts to force the signs to show.
 	#engine.setDirty(EngineDirtyBits.GlobeTexture_DIRTY_BIT, True)
@@ -4225,14 +4236,9 @@ def placeLandmark(pPlot, sEventType, iFood, iProd, iComm, bIsSign, iSignOwner):
 	if (bIsSign):
 		if (iSignOwner == -1):
 			# add signs for all valid human players who are still alive.
-			for iPlayer in range(gc.getMAX_PLAYERS()):
-				pPlayer = gc.getPlayer(iPlayer)
-				iTeam = pPlayer.getTeam()
-				if ( (not pPlayer.isNone()) and (pPlayer.isHuman()) and (pPlayer.isAlive()) ):
-					EventSigns.addSign(pPlot, iPlayer, sCaption)
+			for pPlayer in PlayerUtil.players(human=True, alive=True):
+				EventSigns.addSign(pPlot, pPlayer.getID(), sCaption)
 		else:
-			pPlayer = gc.getPlayer(iSignOwner)
-			iTeam = pPlayer.getTeam()
 			EventSigns.addSign(pPlot, iSignOwner, sCaption)
 	else:
 		engine.addLandmark(pPlot, sCaption)
@@ -4255,3 +4261,4 @@ def applyLandmarkFromEvent(argsList):
 
 	return True
 
+# BUG - Event Signs - end
