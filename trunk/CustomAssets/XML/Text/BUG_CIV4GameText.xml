@@ -1272,6 +1272,14 @@
 		<Italian>Spy v Spy</Italian>
 		<Spanish>Spy v Spy</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_ESPIONAGE_AI_SPENDING_TOGGLE</Tag>
+		<English>Show AI Espionage</English>
+		<French>Show AI Espionage</French>
+		<German>Show AI Espionage</German>
+		<Italian>Show AI Espionage</Italian>
+		<Spanish>Show AI Espionage</Spanish>
+	</TEXT>
 
 	<!-- BUG Finance Advisor -->
 	
