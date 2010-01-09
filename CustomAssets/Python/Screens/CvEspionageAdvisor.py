@@ -66,6 +66,9 @@ class CvEspionageAdvisor:
 		self.iActiveCityID = -1
 		self.iActiveMissionID = -1
 
+		self.bShowAISpending = True
+		self.ShowAISpendingWidget = ""
+
 		self.drawMissionTabConstantsDone = 0
 		self.drawSpyvSpyTabConstantsDone = 0
 		self.CityMissionToggle = CITYMISSION_CITY
@@ -449,6 +452,13 @@ class CvEspionageAdvisor:
 			iGoodRatioColor = EspionageOpt.getGoodRatioColor()
 			iBadRatioColor = EspionageOpt.getBadRatioColor()
 
+			# show AI spending toggle
+			self.ShowAISpendingWidget = self.getNextWidgetName()
+			szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_AI_SPENDING_TOGGLE", ()) + "</font>"
+			if self.bShowAISpending:
+				szText = localText.changeTextColor(szText, gc.getInfoTypeForString("COLOR_YELLOW"))
+			screen.setText(self.ShowAISpendingWidget, "Background", szText, CvUtil.FONT_RIGHT_JUSTIFY, self.X_LEFT_PANE + self.W_LEFT_PANE - 20, self.Y_LEFT_PANE + 8, self.Z_CONTROLS, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1)
+
 		for iPlayerID in self.aiKnownPlayers:
 			pTargetPlayer = gc.getPlayer(iPlayerID)
 			iTargetTeam = pTargetPlayer.getTeam()
@@ -509,7 +519,8 @@ class CvEspionageAdvisor:
 
 			# EPoints Multiplier Against
 			if (EspionageOpt.isEnabled()
-			and EspionageOpt.isShowCalculatedInformation()):
+			and EspionageOpt.isShowCalculatedInformation()
+			and self.bShowAISpending):
 				iMultiplier = self.getEspionageMultiplier(iPlayerID, self.iActivePlayer)
 				szName = self.getNextWidgetName()
 				szText = u"<font=2>%i%s</font>" %(iMultiplier, "%")
@@ -522,8 +533,9 @@ class CvEspionageAdvisor:
 				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.MissionLeaderPanelTopRow)
 
 				# against
-				iCounterEsp = self.getCounterEspionageTurnsLeft(iPlayerID, self.iActivePlayer)
-				self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.MissionLeaderPanelBottomRow)
+				if self.bShowAISpending:
+					iCounterEsp = self.getCounterEspionageTurnsLeft(iPlayerID, self.iActivePlayer)
+					self.showCounterEspionage(screen, szLeaderPanel, iCounterEsp, self.MissionLeaderPanelBottomRow)
 
 			# EPs
 			szName = self.getNextWidgetName()
@@ -532,14 +544,16 @@ class CvEspionageAdvisor:
 			screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_EPoints, self.MissionLeaderPanelTopRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EPs Against
-			if EspionageOpt.isEnabled():
+			if (EspionageOpt.isEnabled()
+			and self.bShowAISpending):
 				szName = self.getNextWidgetName()  #"PointsAgainstText%d" %(iPlayerID)
 				iTargetEPs = self.getPlayerEPs(iPlayerID, self.iActivePlayer)
 				szText = u"<font=2>" + localText.getText("TXT_KEY_ESPIONAGE_NUM_EPS", (iTargetEPs, )) + "</font>"
 				screen.setLabelAt( szName, szLeaderPanel, szText, CvUtil.FONT_RIGHT_JUSTIFY, self.MissionLeaderPanel_X_EPoints, self.MissionLeaderPanelBottomRow, self.Z_CONTROLS, FontTypes.TITLE_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 );
 
 			# EP Spending Against (Points per turn)
-			if EspionageOpt.isEnabled():
+			if (EspionageOpt.isEnabled()
+			and self.bShowAISpending):
 				szName = self.getNextWidgetName()  #"AmountAgainstText%d" %(iPlayerID)
 				iSpending = SpyUtil.getDifferenceByPlayer(iPlayerID, self.iActivePlayer)
 				if (iSpending is None
@@ -569,7 +583,8 @@ class CvEspionageAdvisor:
 				self.showPassiveMissionIcons(screen, szLeaderPanel, iPlayerEPs, iDemoCost, iTechCost, self.MissionLeaderPanelTopRow)
 
 				# Target Player
-				if EspionageOpt.isShowCalculatedInformation():
+				if (EspionageOpt.isShowCalculatedInformation()
+				and self.bShowAISpending):
 					iDemoCost = pTargetPlayer.getEspionageMissionCost(self.MissionSeeDemo, self.iActivePlayer, None, -1)
 					iTechCost = pTargetPlayer.getEspionageMissionCost(self.MissionSeeResearch, self.iActivePlayer, None, -1)
 					self.showPassiveMissionIcons(screen, szLeaderPanel, iTargetEPs, iDemoCost, iTechCost, self.MissionLeaderPanelBottomRow)
@@ -1115,6 +1130,11 @@ class CvEspionageAdvisor:
 						self.CityMissionToggle = CITYMISSION_MISSION
 						self.drawContents()
 						return 0
+				if "%s%d" %(icFunctionName, inputClass.getID()) == self.ShowAISpendingWidget:  # toggle show AI spending
+#					BugUtil.debug("CvEspionage Advisor: toggle show AI spending")
+					self.bShowAISpending = not self.bShowAISpending
+					self.drawContents()
+					return 0
 
 			if (icFunctionName == self.MissionsTabWidget):
 #				BugUtil.debug("CvEspionage Advisor: Change to Mission Tab")
