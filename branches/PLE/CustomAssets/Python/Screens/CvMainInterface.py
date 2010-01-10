@@ -304,8 +304,20 @@ class CvMainInterface:
 #########################################################################################
 #########################################################################################
 
+	def numPlotListButtonsPerRow(self):
+		return self.m_iNumPlotListButtonsPerRow
+
+# I know that this is redundent, but CyInterface().getPlotListOffset() (and prob the column one too)
+# uses this function
+# it is also used in "...\EntryPoints\CvScreensInterface.py" too
 	def numPlotListButtons(self):
-		return self.m_iNumPlotListButtons
+		return self.m_iNumPlotListButtonsPerRow
+
+	def numPlotListRows(self):
+		return gc.getMAX_PLOT_LIST_ROWS()
+
+	def numPlotListButtons_Total(self):
+		return self.numPlotListButtonsPerRow() * self.numPlotListRows()
 
 	def initState (self, screen=None):
 		"""
@@ -328,7 +340,7 @@ class CvMainInterface:
 # BUG - Raw Yields - end
 
 # BUG - PLE - begin
-		self.PLE.PLE_CalcConstants()
+		self.PLE.PLE_CalcConstants(screen)
 # BUG - PLE - end
 
 		# Set up our global variables...
@@ -389,11 +401,11 @@ class CvMainInterface:
 		self.pBarProductionBar_Whip.addBarItem("ProductionText")
 # BUG - Progress Bar - Tick Marks - end
 
-		self.m_iNumPlotListButtons = (self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
+		self.m_iNumPlotListButtonsPerRow = (self.xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
 
 # BUG - BUG unit plot draw method - start
 # bug unit panel
-		self.BupPanel = BugUnitPlot.BupPanel(screen, screen.getYResolution(), self.numPlotListButtons(), gc.getMAX_PLOT_LIST_ROWS())
+		self.BupPanel = BugUnitPlot.BupPanel(screen, screen.getYResolution(), self.numPlotListButtonsPerRow(), self.numPlotListRows())
 # BUG - BUG unit plot draw method - end
 
 	def interfaceScreen (self):
@@ -450,7 +462,7 @@ class CvMainInterface:
 		
 		# Top Bar
 
-		# SF CHANGE		
+		# SF CHANGE
 		screen.addPanel( "CityScreenTopWidget", u"", u"", True, False, 0, -2, xResolution, 41, PanelStyles.PANEL_STYLE_STANDARD )
 
 		screen.setStyle( "CityScreenTopWidget", "Panel_TopBar_Style" )
@@ -627,22 +639,21 @@ class CvMainInterface:
 		# *********************************************************************************
 
 # BUG - PLE - begin
-		for j in range(gc.getMAX_PLOT_LIST_ROWS()):
-			yRow = (j - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+		for j in range(self.numPlotListRows()):
+			yRow = (j - self.numPlotListRows() + 1) * 34
 			yPixel = yResolution - 169 + yRow - 3
 			xPixel = 315 - 3
-			xWidth = self.numPlotListButtons() * 34 + 3
+			xWidth = self.numPlotListButtonsPerRow() * 34 + 3
 			yHeight = 32 + 3
-		
+
 			szStringPanel = "PlotListPanel" + str(j)
 			screen.addPanel(szStringPanel, u"", u"", True, False, xPixel, yPixel, xWidth, yHeight, PanelStyles.PANEL_STYLE_EMPTY)
 
-			for i in range(self.numPlotListButtons()):
-				k = j*self.numPlotListButtons()+i
-				
+			for i in range(self.numPlotListButtonsPerRow()):
+				k = j * self.numPlotListButtonsPerRow() + i
+
 				xOffset = i * 34
-				#tjp
-				szString = "PlotList_Button" + str(k)
+				szString = "PlotListButton" + str(k)
 
 # BUG - plot list - start
 				szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
@@ -1033,7 +1044,7 @@ class CvMainInterface:
 		# Find out our resolution
 		xResolution = screen.getXResolution()
 		yResolution = screen.getYResolution()
-		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
+#		self.m_iNumPlotListButtons = (xResolution - (iMultiListXL+iMultiListXR) - 68) / 34
 		
 		# This should recreate the minimap on load games and returns if already exists -JW
 		screen.initMinimap( xResolution - 210, xResolution - 9, yResolution - 131, yResolution - 9, -0.1 )
@@ -1640,6 +1651,8 @@ class CvMainInterface:
 #		return 0
 
 	def updatePlotListButtons_Hide( self, screen ):
+		BugUtil.debug("updatePlotListButtons_Hide - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+
 		# hide all buttons
 		if self.bPLECurrentlyShowing:
 			self.PLE.hidePlotListButtonPLEObjects(screen)
@@ -1707,9 +1720,10 @@ class CvMainInterface:
 
 	# hides all plot list objects
 	def hidePlotListButton_Orig(self, screen):
+		BugUtil.debug("hidePlotListButton_Orig - %i", self.numPlotListButtons_Total())
 		# hides all unit button objects
-		for i in range( self.iMaxPlotListIcons ):
-			szString = "PlotList_Button" + str(i)
+		for i in range( self.numPlotListButtons_Total() ):
+			szString = "PlotListButton" + str(i)
 			screen.hide( szString )
 			screen.hide( szString + "Icon" )
 			screen.hide( szString + "Health" )
@@ -1720,16 +1734,18 @@ class CvMainInterface:
 
 # BUG - draw method
 	def hidePlotListButton_BUG(self, screen):
+		self.BupPanel.Hide()
+#		return
 		# hides all unit button objects
-		for i in range( self.iMaxPlotListIcons ):
-			szString = "PlotList_Button" + str(i)
-			screen.hide( szString )
-			screen.hide( szString + "Icon" )
-			screen.hide( szString + "Health" )
-			screen.hide( szString + "MoveBar" )
-			screen.hide( szString + "PromoFrame" )
-			screen.hide( szString + "ActionIcon" )
-			screen.hide( szString + "Upgrade" )
+#		for i in range( self.iMaxPlotListIcons ):
+#			szString = "PlotListButton" + str(i)
+#			screen.hide( szString )
+#			screen.hide( szString + "Icon" )
+#			screen.hide( szString + "Health" )
+#			screen.hide( szString + "MoveBar" )
+#			screen.hide( szString + "PromoFrame" )
+#			screen.hide( szString + "ActionIcon" )
+#			screen.hide( szString + "Upgrade" )
 # BUG - draw method
 
 
@@ -1749,6 +1765,9 @@ class CvMainInterface:
 		screen.hide( "PlotListMinus" )
 		screen.hide( "PlotListPlus" )
 
+#tjp
+		BugUtil.debug("updatePlotListButtons_Orig - column %i, offset %i", CyInterface().getPlotListColumn(), CyInterface().getPlotListOffset())
+
 		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
 
 			iVisibleUnits = CyInterface().getNumVisibleUnits()
@@ -1759,10 +1778,10 @@ class CvMainInterface:
 
 			if (CyInterface().isCityScreenUp()):
 				iMaxRows = 1
-				iSkipped = (gc.getMAX_PLOT_LIST_ROWS() - 1) * self.numPlotListButtons()
+				iSkipped = (self.numPlotListRows() - 1) * self.numPlotListButtonsPerRow()
 				iCount += iSkipped
 			else:
-				iMaxRows = gc.getMAX_PLOT_LIST_ROWS()
+				iMaxRows = self.numPlotListRows()
 				iCount += CyInterface().getPlotListOffset()
 				iSkipped = 0
 
@@ -1773,10 +1792,10 @@ class CvMainInterface:
 
 					if ((iCount == 0) and (CyInterface().getPlotListColumn() > 0)):
 						bLeftArrow = True
-					elif ((iCount == (gc.getMAX_PLOT_LIST_ROWS() * self.numPlotListButtons() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
+					elif ((iCount == (self.numPlotListRows() * self.numPlotListButtonsPerRow() - 1)) and ((iVisibleUnits - iCount - CyInterface().getPlotListColumn() + iSkipped) > 1)):
 						bRightArrow = True
 
-					if ((iCount >= 0) and (iCount <  self.numPlotListButtons() * gc.getMAX_PLOT_LIST_ROWS())):
+					if ((iCount >= 0) and (iCount <  self.numPlotListButtonsPerRow() * self.numPlotListRows())):
 						if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
 							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_FORTIFY").getPath()
 
@@ -1788,7 +1807,7 @@ class CvMainInterface:
 						else:
 							szFileName = ArtFileMgr.getInterfaceArtInfo("OVERLAY_NOMOVE").getPath()
 
-						szString = "PlotList_Button" + str(iCount)
+						szString = "PlotListButton" + str(iCount)
 						screen.changeImageButton( szString, gc.getUnitInfo(pLoopUnit.getUnitType()).getButton() )
 						if ( pLoopUnit.getOwner() == gc.getGame().getActivePlayer() ):
 							bEnable = True
@@ -1827,17 +1846,17 @@ class CvMainInterface:
 						screen.show( szStringIcon )
 
 						if bEnable:
-							x = 315 + ((iCount % self.numPlotListButtons()) * 34)
-							y = yResolution - 169 + (iCount / self.numPlotListButtons() - gc.getMAX_PLOT_LIST_ROWS() + 1) * 34
+							x = 315 + ((iCount % self.numPlotListButtonsPerRow()) * 34)
+							y = yResolution - 169 + (iCount / self.numPlotListButtonsPerRow() - self.numPlotListRows() + 1) * 34
 
-							self.PLE.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y + 4 )
-							self.PLE.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
-							self.PLE.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
-							self.PLE.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y - 22, 12)
+							self.PLE._displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y + 4 )
+							self.PLE._displayUnitPlotList_Promo( screen, pLoopUnit, szString )
+							self.PLE._displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
+							self.PLE._displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y - 22, 12)
 
 					iCount = iCount + 1
 
-			if (iVisibleUnits > self.numPlotListButtons() * iMaxRows):
+			if (iVisibleUnits > self.numPlotListButtonsPerRow() * iMaxRows):
 				screen.enable("PlotListMinus", bLeftArrow)
 				screen.show( "PlotListMinus" )
 
@@ -1876,7 +1895,7 @@ class CvMainInterface:
 
 		BugUtil.debug("updatePlotListButtons_BUG - B")
 
-		self.BupPanel.flushUnits()
+#		self.BupPanel.clearUnits()
 
 		CyInterface().cacheInterfacePlotUnits(pPlot)
 		for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
@@ -1886,6 +1905,7 @@ class CvMainInterface:
 
 		BugUtil.debug("updatePlotListButtons_BUG - C")
 
+#		self.BupPanel.UpdateBUGOptions()
 		self.BupPanel.Draw()
 
 
@@ -5271,9 +5291,9 @@ class CvMainInterface:
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
-			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName())):	
+			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName())):
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName())(inputClass)
-			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName() + "1")):	
+			if (self.MainInterfaceInputMap.has_key(inputClass.getFunctionName() + "1")):
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName() + "1")(inputClass)
 # BUG - PLE - end
 

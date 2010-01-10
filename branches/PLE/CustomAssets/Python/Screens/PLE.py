@@ -9,8 +9,11 @@ import MonkeyTools as mt
 import UnitUtil
 import string
 
+import BugUtil
 import BugCore
 PleOpt = BugCore.game.PLE
+
+import BugUnitPlot
 
 # globals
 gc = CyGlobalContext()
@@ -137,7 +140,6 @@ class PLE:
 		self.dPLEUnitInfo 			= {}
 
 		self.iLoopCnt 				= 0
-	#		self.bPLEHide 				= False
 
 		self.dUnitPromoList			= {}
 		self.dUnitUpgradeList		= {}
@@ -166,27 +168,32 @@ class PLE:
 		self.bHideHealthBarWhileFighting = False
 		self.bShowMoveBar = False
 
-		self.bPLEHide = True
+		self.bPLEShowing = True
 
-	def PLE_CalcConstants(self):
-			self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
-			self.sPLEMode = self.PLE_MODE_MULTILINE
-			self.nPLEGrpMode = self.PLE_GRP_UNITTYPE
-			self.nPLELastGrpMode = self.nPLEGrpMode
-			self.sPLEMode = self.PLE_VIEW_MODES[PleOpt.getDefaultViewMode()]
-			self.nPLEGrpMode = self.PLE_GROUP_MODES[PleOpt.getDefaultGroupMode()]
-			self.setPLEUnitList(True)
+	def PLE_CalcConstants(self, screen):
+		self.xResolution = screen.getXResolution()
+		self.yResolution = screen.getYResolution()
 
-			self.pOldPlot = 0
+		self.iMaxPlotListIcons = self.getMaxCol() * self.getMaxRow()
+		self.sPLEMode = self.PLE_MODE_MULTILINE
+		self.nPLEGrpMode = self.PLE_GRP_UNITTYPE
+		self.nPLELastGrpMode = self.nPLEGrpMode
+		self.sPLEMode = self.PLE_VIEW_MODES[PleOpt.getDefaultViewMode()]
+		self.nPLEGrpMode = self.PLE_GROUP_MODES[PleOpt.getDefaultGroupMode()]
+		self.setPLEUnitList(True)
 
-			self.CFG_INFOPANE_PIX_PER_LINE_1 			= 24
-			self.CFG_INFOPANE_PIX_PER_LINE_2 			= 19
-			self.CFG_INFOPANE_DX 					    = 290
+		self.pOldPlot = 0
 
-			self.CFG_INFOPANE_Y		 			= self.yResolution - PleOpt.getInfoPaneY()
-			self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1 - 2
-			self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
-			self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
+		self.CFG_INFOPANE_PIX_PER_LINE_1 			= 24
+		self.CFG_INFOPANE_PIX_PER_LINE_2 			= 19
+		self.CFG_INFOPANE_DX 					    = 290
+
+		self.CFG_INFOPANE_Y		 			= self.yResolution - PleOpt.getInfoPaneY()
+		self.CFG_INFOPANE_BUTTON_SIZE		= self.CFG_INFOPANE_PIX_PER_LINE_1 - 2
+		self.CFG_INFOPANE_BUTTON_PER_LINE	= self.CFG_INFOPANE_DX / self.CFG_INFOPANE_BUTTON_SIZE
+		self.CFG_INFOPANE_Y2				= self.CFG_INFOPANE_Y + 105
+
+		self.listPLEButtons = [(0,0,0)] * self.iMaxPlotListIcons
 
 
 	def updatePlotListButtons_PLE( self, screen, xResolution, yResolution ):
@@ -361,7 +368,7 @@ class PLE:
 								bDownArrow = True
 							if ((nRow >= self.getMaxRow()) > 0):
 								bUpArrow = True
-								
+
 							if (self.nPLEGrpMode == self.PLE_GRP_UNITTYPE):
 								if ((iLastUnitType != UnitTypes.NO_UNIT)):
 									if (iActUnitType != iLastUnitType):
@@ -399,7 +406,7 @@ class PLE:
 									self.displayUnitUpgrades(screen, pLoopUnit, nRow, nCol)
 
 						iCount += 1
-						
+
 						iLastUnitType 	= iActUnitType
 						iLastGroupID  	= iActGroupID
 						bFirstLoop 		= false
@@ -804,7 +811,7 @@ class PLE:
 				self.highlightMoves(id)
 			return 1
 		elif ( inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF ):
-			self.hideUnitInfoPane()	
+			self.hideUnitInfoPane()
 			if mt.bAlt():
 				self.dehighlightMoves()
 			return 1
@@ -884,20 +891,20 @@ class PLE:
 	def setupPLEFilterButtons(self, screen):
 		screen.setState(self.PLE_FILTER_CANMOVE, self.isPLEFilter(self.nPLEFilterModeCanMove))
 		screen.setState(self.PLE_FILTER_CANTMOVE, self.isPLEFilter(self.nPLEFilterModeCantMove))
-		
+
 		screen.setState(self.PLE_FILTER_NOTWOUND, self.isPLEFilter(self.nPLEFilterModeNotWound))
 		screen.setState(self.PLE_FILTER_WOUND, self.isPLEFilter(self.nPLEFilterModeWound))
-		
+
 		screen.setState(self.PLE_FILTER_LAND, self.isPLEFilter(self.nPLEFilterModeLand))
 		screen.setState(self.PLE_FILTER_SEA, self.isPLEFilter(self.nPLEFilterModeSea))
 		screen.setState(self.PLE_FILTER_AIR, self.isPLEFilter(self.nPLEFilterModeAir))
 
 		screen.setState(self.PLE_FILTER_MIL, self.isPLEFilter(self.nPLEFilterModeMil))
 		screen.setState(self.PLE_FILTER_DOM, self.isPLEFilter(self.nPLEFilterModeDom))
-		
+
 		screen.setState(self.PLE_FILTER_OWN, self.isPLEFilter(self.nPLEFilterModeOwn))
 		screen.setState(self.PLE_FILTER_FOREIGN, self.isPLEFilter(self.nPLEFilterModeForeign))
-		
+
 		return 0
 
 	# Displays the plot list switches (views, filters, groupings)
@@ -910,27 +917,27 @@ class PLE:
 	#			screen.show(self.PLE_MODE_MULTILINE)
 	#			screen.show(self.PLE_MODE_STACK_VERT)
 	#			screen.show(self.PLE_MODE_STACK_HORIZ)
-			
+
 			# show PLE filter switches
 			screen.show(self.PLE_RESET_FILTERS)
-			
+
 			self.setupPLEFilterButtons(screen)
 			screen.show(self.PLE_FILTER_CANMOVE)
 			screen.show(self.PLE_FILTER_CANTMOVE)
-			
+
 			screen.show(self.PLE_FILTER_NOTWOUND)
 			screen.show(self.PLE_FILTER_WOUND)
-			
+
 			screen.show(self.PLE_FILTER_LAND)
 			screen.show(self.PLE_FILTER_SEA)
 			screen.show(self.PLE_FILTER_AIR)
-			
+
 			screen.show(self.PLE_FILTER_MIL)
 			screen.show(self.PLE_FILTER_DOM)
-			
+
 			screen.show(self.PLE_FILTER_OWN)
 			screen.show(self.PLE_FILTER_FOREIGN)
-			
+
 			# show PLE grouping switches
 			self.setupPLEGroupModeButtons(screen)
 			screen.show(self.PLE_GRP_UNITTYPE)
@@ -938,12 +945,12 @@ class PLE:
 			screen.show(self.PLE_GRP_PROMO)
 			screen.show(self.PLE_GRP_UPGRADE)
 
-			self.bPLEHide = False
+			self.bPLEShowing = True
 
 
 	# hides all plot list switches (views, filters, groupings) and all the other objects
 	def hidePlotListButtonPLEObjects(self, screen):
-		if not self.bPLEHide:
+		if not self.bPLEShowing:
 			return
 
 		# hides all unit button objects
@@ -989,17 +996,17 @@ class PLE:
 		screen.hide(self.PLE_FILTER_LAND)
 		screen.hide(self.PLE_FILTER_SEA)
 		screen.hide(self.PLE_FILTER_AIR)
-		screen.hide(self.PLE_FILTER_MIL)	
+		screen.hide(self.PLE_FILTER_MIL)
 		screen.hide(self.PLE_FILTER_DOM)
-		screen.hide(self.PLE_FILTER_OWN)	
-		screen.hide(self.PLE_FILTER_FOREIGN)	
+		screen.hide(self.PLE_FILTER_OWN)
+		screen.hide(self.PLE_FILTER_FOREIGN)
 		# hide PLE group switches
-		screen.hide(self.PLE_GRP_UNITTYPE)	
-		screen.hide(self.PLE_GRP_GROUPS)	
-		screen.hide(self.PLE_GRP_PROMO)	
-		screen.hide(self.PLE_GRP_UPGRADE)	
+		screen.hide(self.PLE_GRP_UNITTYPE)
+		screen.hide(self.PLE_GRP_GROUPS)
+		screen.hide(self.PLE_GRP_PROMO)
+		screen.hide(self.PLE_GRP_UPGRADE)
 		
-		self.bPLEHide = True
+		self.bPLEShowing = False
 		
 	# prepares the display of the mode, view, grouping, filter  switches
 	def preparePlotListObjects(self, screen):
@@ -1011,7 +1018,7 @@ class PLE:
 		iMovementColor = PleOpt.getFullMovementColor()
 		iHasMovedColor = PleOpt.getHasMovedColor()
 		iNoMovementColor = PleOpt.getNoMovementColor()
-		
+
 		szFileNamePromo = ArtFileMgr.getInterfaceArtInfo("OVERLAY_PROMOTION_FRAME").getPath()
 		szFileNameGovernor = ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_GOVERNOR").getPath()
 		szFileNameHilite = ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath()
@@ -1029,7 +1036,7 @@ class PLE:
 
 			# place the plot list unit button
 			screen.addCheckBoxGFC( szString, szFileNameGovernor, szFileNameHilite, x, y, 32, 32, WidgetTypes.WIDGET_GENERAL, i, -1, ButtonStyles.BUTTON_STYLE_LABEL )
-#tjp			screen.hide( szString )
+			screen.hide( szString )
 
 			# place/init the health bar. Important to have it at last place within the for loop.
 			szStringHealthBar = szString + "HealthBar"
@@ -1368,7 +1375,7 @@ class PLE:
 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 		iCount = self.getI(nRow, nCol)
 		self.listPLEButtons[iCount] = ( pLoopUnit, nRow, nCol )
-		self.bPLEHide = False
+		self.bPLEShowing = True
 
 		x = self.getX( nCol )
 		y = self.getY( nRow )
@@ -1396,12 +1403,12 @@ class PLE:
 		screen.show( szString )
 
 		if bEnable:
-			self.displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y )
-			self.displayUnitPlotList_Promo( screen, pLoopUnit, szString )
-			self.displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
-			self.displayUnitPlotList_HealthBar( screen, pLoopUnit, szString )
-			self.displayUnitPlotList_MoveBar( screen, pLoopUnit, szString )
-			self.displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y, 16 )
+			self._displayUnitPlotList_Dot( screen, pLoopUnit, szString, iCount, x, y )
+			self._displayUnitPlotList_Promo( screen, pLoopUnit, szString )
+			self._displayUnitPlotList_Upgrade( screen, pLoopUnit, szString, iCount, x, y )
+			self._displayUnitPlotList_HealthBar( screen, pLoopUnit, szString )
+			self._displayUnitPlotList_MoveBar( screen, pLoopUnit, szString )
+			self._displayUnitPlotList_Mission( screen, pLoopUnit, szString, iCount, x, y, 16 )
 
 		return 0
 
@@ -1414,181 +1421,6 @@ class PLE:
 		self.bShowHealthBar = PleOpt.isShowHealthBar()
 		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
 		self.bShowMoveBar = PleOpt.isShowMoveBar()
-
-	def displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y ):
-		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon.
-		xSize = 12
-		ySize = 12
-		xOffset = 0
-		yOffset = 0
-		if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
-			# fortified
-			szDotState = "OVERLAY_FORTIFY"
-		elif (pLoopUnit.canMove()):
-			if (pLoopUnit.hasMoved()):
-				# unit moved, but some movement points are left
-				szDotState = "OVERLAY_HASMOVED"
-			else:
-				# unit did not move yet
-				szDotState = "OVERLAY_MOVE"
-		else:
-			# unit has no movement points left
-			szDotState = "OVERLAY_NOMOVE"
-
-		# Wounded units will get a darker colored button.
-		if (self.bShowWoundedIndicator) and (pLoopUnit.isHurt()):
-			szDotState += "_INJURED"
-
-		# Units lead by a GG will get a star instead of a dot.
-		if (self.bShowGreatGeneralIndicator):
-			# is unit lead by a GG?
-			iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
-			if (iLeaderPromo != -1 and pLoopUnit.isHasPromotion(iLeaderPromo)):
-				szDotState += "_GG"
-				xSize = 16
-				ySize = 16
-				xOffset = -3
-				yOffset = -3
-
-		szFileNameState = ArtFileMgr.getInterfaceArtInfo(szDotState).getPath()
-
-		# display the colored spot icon
-		szStringIcon = szString+"Icon"
-		screen.addDDSGFC( szStringIcon, szFileNameState, x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-		screen.show( szStringIcon )
-
-		return 0
-
-	def displayUnitPlotList_Promo( self, screen, pLoopUnit, szString ):
-		if (self.bShowPromotionIndicator):
-			# can unit be promoted ?
-			if (pLoopUnit.isPromotionReady()):
-				# place the promotion frame
-				szStringPromoFrame = szString+"PromoFrame"
-				screen.show( szStringPromoFrame )
-
-		return 0
-
-	def displayUnitPlotList_Upgrade( self, screen, pLoopUnit, szString, iCount, x, y ):
-		if (self.bShowUpgradeIndicator):
-			# can unit be upgraded ?
-			if (mt.checkAnyUpgrade(pLoopUnit)):
-				# place the upgrade arrow
-				szStringUpgrade = szString+"Upgrade"
-				szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
-				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-				screen.show( szStringUpgrade )
-
-		return 0
-
-	def displayUnitPlotList_HealthBar( self, screen, pLoopUnit, szString ):
-		if (self.bShowHealthBar and pLoopUnit.maxHitPoints()
-		and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
-			# place the health bar
-			szStringHealthBar = szString+"HealthBar"
-			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
-			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )
-
-			# EF: Colors are set by user instead
-			#if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
-			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
-			#elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
-			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
-			#else:
-			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
-
-			screen.show( szStringHealthBar )
-
-		return 0
-
-	def displayUnitPlotList_MoveBar( self, screen, pLoopUnit, szString ):
-		if (self.bShowMoveBar):
-			# place the move bar
-			szStringMoveBar = szString+"MoveBar"
-			if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 0.0 )
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 0.0 )
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
-			else:
-				fMaxMoves = float(pLoopUnit.baseMoves())
-				#fCurrMoves = fMaxMoves - (pLoopUnit.getMoves() / float(gc.getMOVE_DENOMINATOR())) 
-				fCurrMoves = float(pLoopUnit.movesLeft()) / float(gc.getMOVE_DENOMINATOR()) 
-				# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
-				if (fMaxMoves):
-					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, fCurrMoves / fMaxMoves )
-				else:
-					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 1.0 )
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 1.0 )
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
-			screen.show( szStringMoveBar )
-
-		return 0
-
-	def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y, iSize ):
-		# display the mission or activity info
-		if (self.bShowMissionInfo): 
-			# TODO: Switch to UnitUtil.getOrder()
-			# place the activity info below the unit icon.
-			szFileNameAction = ""
-			eActivityType = pLoopUnit.getGroup().getActivityType()
-			eAutomationType = pLoopUnit.getGroup().getAutomateType()
-
-			# is unit on air intercept mission
-			if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_INTERCEPT").getPath()
-			# is unit on boat patrol coast mission
-			elif (eActivityType == ActivityTypes.ACTIVITY_PATROL):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
-			# is unit on boat blockade mission
-			elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PLUNDER").getPath()
-			# is unit fortified for healing (wake up when healed)
-			elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
-			# is unit sentry (wake up when enemy in sight)
-			elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
-			# is the turn for this unit skipped (wake up next turn)
-			elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
-			# has unit exploration mission
-			elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
-			# is unit automated generally (only worker units)
-			elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
-			# is unit automated for nearest city (only worker units)
-			elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
-			# is unit automated for network (only worker units)
-			elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
-			# is unit automated spread religion (only missionary units)
-			elif (eAutomationType == AutomateTypes.AUTOMATE_RELIGION):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_RELIGION").getPath()
-			# has unit a mission
-			elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
-				eMissionType = pLoopUnit.getGroup().getMissionType(0)
-				# is the mission to build an improvement
-				if (eMissionType == MissionTypes.MISSION_BUILD):
-					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BUILD").getPath()
-				# is the mission a "move to" mission
-				elif (eMissionType in UnitUtil.MOVE_TO_MISSIONS):
-					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
-			# if nothing of above, but unit is waiting -> unit is fortified
-			elif (pLoopUnit.isWaiting()):
-				if (pLoopUnit.isFortifyable()):
-					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
-				else:
-					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SLEEP").getPath()
-
-			# display the mission icon
-			if (szFileNameAction != ""):
-				szStringActionIcon = szString+"ActionIcon"
-				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, iSize, iSize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-				screen.show( szStringActionIcon )
-
-		return 0
 
 	# checks if the unit matches actual filter conditions
 	def checkDisplayFilter(self, pUnit):
@@ -1767,7 +1599,7 @@ class PLE:
 				self.lPLEUnitList.append( lUnitInfo )
 				self.dPLEUnitInfo[ pUnit.getID() ] = lUnitInfo
 		# sort list
-		self.lPLEUnitList.sort()			
+		self.lPLEUnitList.sort()
 		
 	# replaces the buggy civ 4 version.
 	def getInterfacePlotUnit(self, i):
@@ -1900,10 +1732,10 @@ class PLE:
 			idButton = self.getI(0, idUnit)
 		pUnit 		= self.listPLEButtons[idButton][0]
 		iPromo		= self.dUnitPromoList[idUnit][idPromo-1]
-		
+
 		# promo info
 		szPromoInfo = u"<font=2>" + mt.removeLinks(CyGameTextMgr().getPromotionHelp(iPromo, false)) + u"</font>\n"
-		
+
 		# unit level 
 		iLevel = pUnit.getLevel()
 		iMaxLevel = mt.GetPossiblePromotions(pUnit.experienceNeeded(), pUnit.getExperience())
@@ -2004,23 +1836,27 @@ class PLE:
 	def showUnitInfoPane(self, id):
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
-		pUnit 			= self.listPLEButtons[id][0]
-		iUnitType 		= pUnit.getUnitType()
-		pUnitTypeInfo 	= gc.getUnitInfo(iUnitType)
-		eUnitDomain 	= pUnitTypeInfo.getDomainType()
+		pUnit = self.listPLEButtons[id][0]
+		try:
+			iUnitType = pUnit.getUnitType()
+		except:
+			return
+
+		pUnitTypeInfo = gc.getUnitInfo(iUnitType)
+		eUnitDomain = pUnitTypeInfo.getDomainType()
 
 		#mt.debug("id:%i; iUnit:%i"%(id, iUnit))
-		
+
 		# get units owner name if its not a player unit
 		if (pUnit.getOwner() != gc.getGame().getActivePlayer()):
 			pOwner = gc.getPlayer(pUnit.getOwner())
 			szOwner = u"<font=2> [" + localText.changeTextColor(pOwner.getName(), pOwner.getPlayerColor()) + u"]</font>"
 		else:
 			szOwner = u""
-				
+
 		# unit type description + unit name (if given)
 		szUnitName = u"<font=2>" + localText.changeTextColor(pUnit.getName(), PleOpt.getUnitNameColor()) + szOwner + u"</font>\n"
-			
+
 		# strength 
 		if (eUnitDomain == DomainTypes.DOMAIN_AIR):
 			fCurrStrength 	= float(pUnit.airBaseCombatStr() * pUnit.currHitPoints()) / pUnit.maxHitPoints()
@@ -2285,3 +2121,185 @@ class PLE:
 
 	def getPLEUnitList(self):
 		return self.bUpdatePLEUnitList
+
+
+
+
+
+
+
+
+	def _displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y ):
+		# this if statement and everything inside, handles the display of the colored buttons in the upper left corner of each unit icon.
+		xSize = 12
+		ySize = 12
+		xOffset = 0
+		yOffset = 0
+		if ((pLoopUnit.getTeam() != gc.getGame().getActiveTeam()) or pLoopUnit.isWaiting()):
+			# fortified
+			szDotState = "OVERLAY_FORTIFY"
+		elif (pLoopUnit.canMove()):
+			if (pLoopUnit.hasMoved()):
+				# unit moved, but some movement points are left
+				szDotState = "OVERLAY_HASMOVED"
+			else:
+				# unit did not move yet
+				szDotState = "OVERLAY_MOVE"
+		else:
+			# unit has no movement points left
+			szDotState = "OVERLAY_NOMOVE"
+
+		# Wounded units will get a darker colored button.
+		if (self.bShowWoundedIndicator) and (pLoopUnit.isHurt()):
+			szDotState += "_INJURED"
+
+		# Units lead by a GG will get a star instead of a dot.
+		if (self.bShowGreatGeneralIndicator):
+			# is unit lead by a GG?
+			iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
+			if (iLeaderPromo != -1 and pLoopUnit.isHasPromotion(iLeaderPromo)):
+				szDotState += "_GG"
+				xSize = 16
+				ySize = 16
+				xOffset = -3
+				yOffset = -3
+
+		szFileNameState = ArtFileMgr.getInterfaceArtInfo(szDotState).getPath()
+
+		# display the colored spot icon
+		szStringIcon = szString+"Icon"
+		screen.addDDSGFC( szStringIcon, szFileNameState, x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		screen.show( szStringIcon )
+
+		return 0
+
+	def _displayUnitPlotList_Promo( self, screen, pLoopUnit, szString ):
+		if (self.bShowPromotionIndicator):
+			# can unit be promoted ?
+			if (pLoopUnit.isPromotionReady()):
+				# place the promotion frame
+				szStringPromoFrame = szString+"PromoFrame"
+				screen.show( szStringPromoFrame )
+
+		return 0
+
+	def _displayUnitPlotList_Upgrade( self, screen, pLoopUnit, szString, iCount, x, y ):
+		if (self.bShowUpgradeIndicator):
+			# can unit be upgraded ?
+			if (mt.checkAnyUpgrade(pLoopUnit)):
+				# place the upgrade arrow
+				szStringUpgrade = szString+"Upgrade"
+				szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
+				screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.show( szStringUpgrade )
+
+		return 0
+
+	def _displayUnitPlotList_HealthBar( self, screen, pLoopUnit, szString ):
+		if (self.bShowHealthBar and pLoopUnit.maxHitPoints()
+		and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
+			# place the health bar
+			szStringHealthBar = szString+"HealthBar"
+			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
+			screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )
+
+			# EF: Colors are set by user instead
+			#if (pLoopUnit.getDamage() >= ((pLoopUnit.maxHitPoints() * 2) / 3)):
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RED"))
+			#elif (pLoopUnit.getDamage() >= (pLoopUnit.maxHitPoints() / 3)):
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_YELLOW"))
+			#else:
+			#	screen.setStackedBarColors(szStringHealthBar, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_GREEN"))	
+
+			screen.show( szStringHealthBar )
+
+		return 0
+
+	def _displayUnitPlotList_MoveBar( self, screen, pLoopUnit, szString ):
+		if (self.bShowMoveBar):
+			# place the move bar
+			szStringMoveBar = szString+"MoveBar"
+			if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 0.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 0.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
+			else:
+				fMaxMoves = float(pLoopUnit.baseMoves())
+				#fCurrMoves = fMaxMoves - (pLoopUnit.getMoves() / float(gc.getMOVE_DENOMINATOR())) 
+				fCurrMoves = float(pLoopUnit.movesLeft()) / float(gc.getMOVE_DENOMINATOR()) 
+				# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
+				if (fMaxMoves):
+					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, fCurrMoves / fMaxMoves )
+				else:
+					screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 1.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 1.0 )
+				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
+			screen.show( szStringMoveBar )
+
+		return 0
+
+	def _displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y, iSize ):
+		# display the mission or activity info
+		if (self.bShowMissionInfo): 
+			# TODO: Switch to UnitUtil.getOrder()
+			# place the activity info below the unit icon.
+			szFileNameAction = ""
+			eActivityType = pLoopUnit.getGroup().getActivityType()
+			eAutomationType = pLoopUnit.getGroup().getAutomateType()
+
+			# is unit on air intercept mission
+			if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_INTERCEPT").getPath()
+			# is unit on boat patrol coast mission
+			elif (eActivityType == ActivityTypes.ACTIVITY_PATROL):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
+			# is unit on boat blockade mission
+			elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PLUNDER").getPath()
+			# is unit fortified for healing (wake up when healed)
+			elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
+			# is unit sentry (wake up when enemy in sight)
+			elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
+			# is the turn for this unit skipped (wake up next turn)
+			elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
+			# has unit exploration mission
+			elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
+			# is unit automated generally (only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
+			# is unit automated for nearest city (only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
+			# is unit automated for network (only worker units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
+			# is unit automated spread religion (only missionary units)
+			elif (eAutomationType == AutomateTypes.AUTOMATE_RELIGION):
+				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_RELIGION").getPath()
+			# has unit a mission
+			elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
+				eMissionType = pLoopUnit.getGroup().getMissionType(0)
+				# is the mission to build an improvement
+				if (eMissionType == MissionTypes.MISSION_BUILD):
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BUILD").getPath()
+				# is the mission a "move to" mission
+				elif (eMissionType in UnitUtil.MOVE_TO_MISSIONS):
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
+			# if nothing of above, but unit is waiting -> unit is fortified
+			elif (pLoopUnit.isWaiting()):
+				if (pLoopUnit.isFortifyable()):
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
+				else:
+					szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SLEEP").getPath()
+
+			# display the mission icon
+			if (szFileNameAction != ""):
+				szStringActionIcon = szString+"ActionIcon"
+				screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, iSize, iSize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+				screen.show( szStringActionIcon )
+
+		return 0
