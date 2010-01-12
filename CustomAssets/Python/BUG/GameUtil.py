@@ -8,12 +8,12 @@
 ##     Returns the running BTS version as an integer (e.g. 317).
 ##
 ##   isVersion(version)
-##     Returns True if the BTS version is exactly <version>.
-##
-##   isVersionAtLeast(version)
 ##     Returns True if the BTS version is <version> or greater.
 ##
-##   isVersionBetween(version)
+##   isVersionExactly(version)
+##     Returns True if the BTS version is exactly <version>.
+##
+##   isVersionBetween(min, max)
 ##     Returns True if the game version is at least <min> but less than <max>.
 ##
 ##
@@ -21,12 +21,12 @@
 ##     Returns the saved game version as an integer (e.g. 301).
 ##
 ##   isSaveVersion(version)
-##     Returns True if the saved game version is exactly <version>.
-##
-##   isSaveVersionAtLeast(version)
 ##     Returns True if the saved game version is <version> or greater.
 ##
-##   isSaveVersionBetween(version)
+##   isSaveVersionExactly(version)
+##     Returns True if the saved game version is exactly <version>.
+##
+##   isSaveVersionBetween(min, max)
 ##     Returns True if the saved game version is at least <min> but less than <max>.
 ##
 ## Game Values
