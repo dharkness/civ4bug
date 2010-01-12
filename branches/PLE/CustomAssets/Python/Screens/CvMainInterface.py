@@ -311,7 +311,7 @@ class CvMainInterface:
 # uses this function
 # it is also used in "...\EntryPoints\CvScreensInterface.py" too
 	def numPlotListButtons(self):
-		return self.m_iNumPlotListButtonsPerRow
+		return self.numPlotListButtonsPerRow()
 
 	def numPlotListRows(self):
 		return gc.getMAX_PLOT_LIST_ROWS()
@@ -1734,8 +1734,8 @@ class CvMainInterface:
 
 # BUG - draw method
 	def hidePlotListButton_BUG(self, screen):
-		self.BupPanel.Hide()
-#		return
+#		self.BupPanel.Hide()
+		return
 		# hides all unit button objects
 #		for i in range( self.iMaxPlotListIcons ):
 #			szString = "PlotListButton" + str(i)
@@ -1897,6 +1897,8 @@ class CvMainInterface:
 
 #		self.BupPanel.clearUnits()
 
+		self.BupPanel.addPlot(pPlot.getX(), pPlot.getY())
+
 		CyInterface().cacheInterfacePlotUnits(pPlot)
 		for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
 			pLoopUnit = CyInterface().getCachedInterfacePlotUnit(i)
@@ -1906,7 +1908,10 @@ class CvMainInterface:
 		BugUtil.debug("updatePlotListButtons_BUG - C")
 
 #		self.BupPanel.UpdateBUGOptions()
+
+		timer = BugUtil.Timer("draw plot list")
 		self.BupPanel.Draw()
+		timer.log()
 
 
 

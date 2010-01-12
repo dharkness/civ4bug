@@ -92,58 +92,70 @@ class BupPanel:
 		self.BupUnits = []
 		self.BupUnitsPrior = []
 
+		self.PriorPlotX = 0
+		self.PriorPlotY = 0
+		self.PlotX = 0
+		self.PlotY = 0
+
 #	def setCellSpacing(self, iSpacing):
 #		self.BupCellSpacing = iSpacing
 
-		self.bShowWoundedIndicator = True
-		self.bShowGreatGeneralIndicator = True
-		self.bShowPromotionIndicator = True
-		self.bShowUpgradeIndicator = True
-		self.bShowMissionInfo = True
-		self.bShowHealthBar = True
-		self.bHideHealthBarWhileFighting = True
-		self.bShowMoveBar = True
+#		self.bShowWoundedIndicator = True
+#		self.bShowGreatGeneralIndicator = True
+#		self.bShowPromotionIndicator = True
+#		self.bShowUpgradeIndicator = True
+#		self.bShowMissionInfo = True
+#		self.bShowHealthBar = True
+#		self.bHideHealthBarWhileFighting = True
+#		self.bShowMoveBar = True
 
-	def UpdateBUGOptions(self):
-		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
-		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
-		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
-		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
-		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
-		self.bShowHealthBar = PleOpt.isShowHealthBar()
-		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
-		self.bShowMoveBar = PleOpt.isShowMoveBar()
+#	def UpdateBUGOptions(self):
+#		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
+#		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
+#		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
+#		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
+#		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
+#		self.bShowHealthBar = PleOpt.isShowHealthBar()
+#		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
+#		self.bShowMoveBar = PleOpt.isShowMoveBar()
 
 	def Draw(self):
 #		self.screen.show(self.sBupPanel)
 
-		iIndex = 0
-		while iIndex <= self.MaxCells:
-			szBupCell = self._getCellWidget(iIndex)
-			self.screen.hide(szBupCell)
-			self.screen.hide(szBupCell + "Dot")
-			self.screen.hide(szBupCell + "PromoFrame")
-			self.screen.hide(szBupCell + "Upgrade")
-			self.screen.hide(szBupCell + "Mission")
-			iIndex += 1
+#		self.Hide()
+#		iIndex = 0
+#		while iIndex <= self.MaxCells:
+#			self.screen.hide(szBupCell)
+#			self.screen.hide(szBupCell + "Dot")
+#			self.screen.hide(szBupCell + "PromoFrame")
+#			self.screen.hide(szBupCell + "Upgrade")
+#			self.screen.hide(szBupCell + "Mission")
+#			iIndex += 1
+
+		if self._hasPlotChanged():
+#			BugUtil.debug("BupPanel plot has changed!")
+			self.BupUnitsPrior = []
+			self.Hide()
 
 		iIndex = CyInterface().getPlotListOffset()
 		iMaxUnits = max(len(self.BupUnits), len(self.BupUnitsPrior))
 		for iUnit in range(iMaxUnits):
+			szBupCell = self._getCellWidget(iIndex)
+
 			if iUnit < len(self.BupUnits):
 				cBupUnit = self.BupUnits[iUnit]
 			else:
-				cBupUnit = None
+				self._hideCell(szBupCell)
+				continue
+
 			if iUnit < len(self.BupUnitsPrior):
 				pBupUnit = self.BupUnitsPrior[iUnit]
 			else:
 				pBupUnit = None
 
-			szBupCell = self._getCellWidget(iIndex)
-			self._drawUnitIcon(cBupUnit, pBupUnit, szBupCell)
+			self._updateUnitIcon(cBupUnit, pBupUnit, szBupCell)
 
-			if (cBupUnit is not None
-			and cBupUnit.Owner == gc.getGame().getActivePlayer()):
+			if cBupUnit.Owner == gc.getGame().getActivePlayer():
 				iX = self._getX(self._getCol(iIndex))
 				iY = self._getY(self._getRow(iIndex))
 
@@ -152,10 +164,10 @@ class BupPanel:
 
 #def displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y, bShowWoundedIndicator, bShowGreatGeneralIndicator ):
 
-				self._drawDot(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY + 4)
-				self._drawPromo(cBupUnit, pBupUnit, szBupCell)
-				self._drawUpgrade(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
-				self._drawMission(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
+				self._updateDot(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY + 4)
+				self._updatePromo(cBupUnit, pBupUnit, szBupCell)
+				self._updateUpgrade(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
+				self._updateMission(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
 
 #				displayUnitPlotList_Mission( self.screen, pBupUnit, szBupCell, iIndex, iX, iY - 22, 12)
 
@@ -169,21 +181,37 @@ class BupPanel:
 		for iUnit in range(len(self.BupUnits)):
 			self.BupUnitsPrior.append(self.BupUnits[iUnit])
 
+		self.BupUnits = []
 
 
 
+
+	def addPlot(self, X, Y):
+#		BugUtil.debug("BupPanel addPlot 1) %i %i %i %i", self.PlotX, self.PlotY, self.PriorPlotX, self.PriorPlotY)
+		self.PriorPlotX = self.PlotX
+		self.PriorPlotY = self.PlotY
+		self.PlotX = X
+		self.PlotY = Y
+#		BugUtil.debug("BupPanel addPlot 2) %i %i %i %i", self.PlotX, self.PlotY, self.PriorPlotX, self.PriorPlotY)
+
+	def _hasPlotChanged(self):
+		return not (self.PlotX == self.PriorPlotX and self.PlotY == self.PriorPlotY)
 
 
 	def Hide(self):
+		BugUtil.debug("BupPanel Hide!")
 		iIndex = 0
 		while iIndex <= self.MaxCells:
-			szBupCell = self._getCellWidget(iIndex)
-			self.screen.hide(szBupCell)
-			self.screen.hide(szBupCell + "Dot")
-			self.screen.hide(szBupCell + "PromoFrame")
-			self.screen.hide(szBupCell + "Upgrade")
-			self.screen.hide(szBupCell + "Mission")
+			BugUtil.debug("BupPanel hiding %i", iIndex)
+			self._hideCell(self._getCellWidget(iIndex))
 			iIndex += 1
+
+	def _hideCell(self, szCell):
+		self.screen.hide(szCell)
+		self.screen.hide(szCell + "Dot")
+		self.screen.hide(szCell + "PromoFrame")
+		self.screen.hide(szCell + "Upgrade")
+		self.screen.hide(szCell + "Mission")
 
 	def addUnit(self, pUnit):
 		self.BupUnits.append(BupUnit(pUnit))
@@ -197,47 +225,101 @@ class BupPanel:
 #		self.BupUnitsPrior = []
 
 
-	def _drawUnitIcon(self, cBupUnit, pBupUnit, szBupCell):
-		if cBupUnit is not None:
-			self.screen.changeImageButton(szBupCell, gc.getUnitInfo(cBupUnit.UnitType).getButton())
-			self.screen.enable(szBupCell, cBupUnit.Owner == gc.getGame().getActivePlayer())
-			self.screen.setState(szBupCell, cBupUnit.isSelected)
-			self.screen.show(szBupCell)
+	def _updateUnitIcon(self, cBupUnit, pBupUnit, szCell):
+		if pBupUnit is None:
+			self._drawUnitIcon(cBupUnit, szCell)
+			return
 
-	def _drawDot(self, cBupUnit, pBupUnit, szString, iCount, x, y):
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if (cBupUnit.UnitType	!= pBupUnit.UnitType
+		or cBupUnit.Owner		!= pBupUnit.Owner
+		or cBupUnit.isSelected	!= pBupUnit.isSelected):
+			self._drawUnitIcon(cBupUnit, szCell)
+
+	def _drawUnitIcon(self, cBupUnit, szCell):
+		self.screen.changeImageButton(szCell, gc.getUnitInfo(cBupUnit.UnitType).getButton())
+		self.screen.enable(szCell, cBupUnit.Owner == gc.getGame().getActivePlayer())
+		self.screen.setState(szCell, cBupUnit.isSelected)
+		self.screen.show(szCell)
+
+
+	def _updateDot(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
+		if pBupUnit is None:
+			self._drawDot(cBupUnit, szCell, iCount, x, y)
+			return
+
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if cBupUnit.DotStatus != pBupUnit.DotStatus:
+			self._drawDot(cBupUnit, szCell, iCount, x, y)
+
+	def _drawDot(self, cBupUnit, szCell, iCount, x, y):
 		# handles the display of the colored buttons in the upper left corner of each unit icon.
-		if cBupUnit is not None:
-			# Units lead by a GG will get a star instead of a dot - and the location and size of star differs
-			if (PleOpt.isShowGreatGeneralIndicator()
-			and cBupUnit.isLeadByGreatGeneral):
-				xSize = 16
-				ySize = 16
-				xOffset = -3
-				yOffset = -3
+		# Units lead by a GG will get a star instead of a dot - and the location and size of star differs
+		if (PleOpt.isShowGreatGeneralIndicator()
+		and cBupUnit.isLeadByGreatGeneral):
+			xSize = 16
+			ySize = 16
+			xOffset = -3
+			yOffset = -3
+		else:
+			xSize = 12
+			ySize = 12
+			xOffset = 0
+			yOffset = 0
+
+		# display the colored spot icon
+		self.screen.addDDSGFC(szCell + "Dot", getArt(cBupUnit.DotStatus), x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+
+
+	def _updatePromo(self, cBupUnit, pBupUnit, szCell):
+		if pBupUnit is None:
+			self._drawPromo(cBupUnit, szCell)
+			return
+
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if cBupUnit.isPromotionReady != pBupUnit.isPromotionReady:
+			self._drawPromo(cBupUnit, szCell)
+
+	def _drawPromo(self, cBupUnit, szCell):
+		if PleOpt.isShowPromotionIndicator():
+			if cBupUnit.isPromotionReady:
+				self.screen.show(szCell + "PromoFrame")
 			else:
-				xSize = 12
-				ySize = 12
-				xOffset = 0
-				yOffset = 0
+				self.screen.hide(szCell + "PromoFrame")
 
-			# display the colored spot icon
-			self.screen.addDDSGFC(szString + "Dot", getArt(cBupUnit.DotStatus), x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 
-	def _drawPromo(self, cBupUnit, pBupUnit, szString):
-		if (PleOpt.isShowPromotionIndicator()
-		and cBupUnit.isPromotionReady):
-			self.screen.show(szString + "PromoFrame")
+	def _updateUpgrade(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
+		if pBupUnit is None:
+			self._drawUpgrade(cBupUnit, szCell, iCount, x, y)
+			return
 
-	def _drawUpgrade(self, cBupUnit, pBupUnit, szString, iCount, x, y):
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if cBupUnit.isCanUpgrade != pBupUnit.isCanUpgrade:
+			self._drawUpgrade(cBupUnit, szCell, iCount, x, y)
+
+	def _drawUpgrade(self, cBupUnit, szCell, iCount, x, y):
 		if (cBupUnit.isCanUpgrade):
 			# place the upgrade arrow
-			self.screen.addDDSGFC(szString + "Upgrade", getArt("OVERLAY_UPGRADE"), x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+			self.screen.addDDSGFC(szCell + "Upgrade", getArt("OVERLAY_UPGRADE"), x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
+		else:
+			self.screen.hide(szCell + "Upgrade")
 
-	def _drawMission(self, cBupUnit, pBupUnit, szString, iCount, x, y):
+
+	def _updateMission(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
+		if pBupUnit is None:
+			self._drawMission(cBupUnit, szCell, iCount, x, y)
+			return
+
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if cBupUnit.Mission != pBupUnit.Mission:
+			self._drawMission(cBupUnit, szCell, iCount, x, y)
+
+	def _drawMission(self, cBupUnit, szCell, iCount, x, y):
 		if PleOpt.isShowMissionInfo():
 			if cBupUnit.Mission != "":
-#				sMission = getArt(cBupUnit.Mission)
-				self.screen.addDDSGFC(szString + "Mission", getArt(cBupUnit.Mission), x+20, y+20, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1)
+				self.screen.addDDSGFC(szCell + "Mission", getArt(cBupUnit.Mission), x+20, y+20, 12, 12, WidgetTypes.WIDGET_GENERAL, iCount, -1)
+			else:
+				self.screen.hide(szCell + "Mission")
 
 
 
