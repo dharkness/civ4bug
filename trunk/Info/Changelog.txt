@@ -55,17 +55,16 @@ Improvements:
 Bug Fixes:
 
 - Team Games
-	WHEOOH works correctly and won't check if a rival will DoW on their or your teammates
+	WHEOOH works correctly and won't check if a rival will DoW on your teammates or theirs
 	Worst Enemy no longer shown for humans' teammates
 - Strategy Layer
-	Fixed random crash on WIndows Vista/7
+	Fixed random crash on Windows Vista/7
 - City Screen
 	Happiness and unhappiness are shown for foreign cities
-	Whip/Draft Anger is shown for team member cities
-- Victory Screen
-	Changed random "polling error" on MEMBERS tab to use asynchronous RNG to fix OOS error
-- Unit Naming
-	Changed random name generator to use asynchronous RNG to fix OOS error
+	Whip/Draft Anger is shown for teammates' cities
+- Multiplayer OOS Errors
+	Changed random "polling error" on F8:MEMBERS tab to use asynchronous RNG
+	Changed random unit name generator to use asynchronous RNG
 
 MODDING
 
