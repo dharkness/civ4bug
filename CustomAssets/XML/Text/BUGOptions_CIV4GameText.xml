@@ -3024,6 +3024,7 @@
 		<Italian>Riporta il valore assegnato al Campo visuale</Italian>
 		<Spanish>Stores the Field of View value</Spanish>
 	</TEXT>
+	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__UNITMOVEMENTPOINTSFRACTION_TEXT</Tag>
 		<English>Fractional Movement Points</English>
@@ -3055,6 +3056,31 @@
 		<German>Zeigt die minimalen und maximalen Bewegungspunkte aller ausgewählten Einheiten in der Detailanzeige an</German>
 		<Italian>Quando è selezionato, mostra nel Pannello delle Informazioni il valore minimo e quello massimo per i Punti Movimento del gruppo di Unità selezionate.</Italian>
 		<Spanish>When checked, shows the minimum and maximum Movement Points for all selected units in the Info Pane.</Spanish>
+	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_TEXT</Tag>
+		<English>Build/Action Icon Size</English>
+		<French>Build/Action Icon Size</French>
+		<German>Build/Action Icon Size</German>
+		<Italian>Build/Action Icon Size</Italian>
+		<Spanish>Build/Action Icon Size</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_HOVER</Tag>
+		<English>Determines the size of the build and action buttons in the bottom center of the screen.</English>
+		<French>Determines the size of the build and action buttons in the bottom center of the screen.</French>
+		<German>Determines the size of the build and action buttons in the bottom center of the screen.</German>
+		<Italian>Determines the size of the build and action buttons in the bottom center of the screen.</Italian>
+		<Spanish>Determines the size of the build and action buttons in the bottom center of the screen.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_LIST</Tag>
+		<English>Small|Medium|Large</English>
+		<French>Small|Medium|Large</French>
+		<German>Small|Medium|Large</German>
+		<Italian>Small|Medium|Large</Italian>
+		<Spanish>Small|Medium|Large</Spanish>
 	</TEXT>
 	
 	<!-- Strategy Overlay -->
