@@ -34,6 +34,8 @@ CHANGES
 
 New Features:
 
+- Main Interface
+	Can choose from three sizes for the build/action buttons
 - Espionage Advisor
 	New layout shows EPs spent against you and icons for passive missions
 	Can swap cities and missions lists to see cost in each city for a single mission
