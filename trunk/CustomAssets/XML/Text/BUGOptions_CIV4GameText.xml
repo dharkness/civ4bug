@@ -42,6 +42,14 @@
 		<Italian>Esci dalla schermata delle Opzioni del BUG Mod.</Italian>
 		<Spanish>Exits the BUG Options screen.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTIONS_SCREEN_HOVER</Tag>
+		<English>Shows the BUG Option Screen.</English>
+		<French>Shows the BUG Option Screen.</French>
+		<German>Shows the BUG Option Screen.</German>
+		<Italian>Shows the BUG Option Screen.</Italian>
+		<Spanish>Shows the BUG Option Screen.</Spanish>
+	</TEXT>
 	
 <!-- Option Titles and Hovers -->
 
