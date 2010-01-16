@@ -70,16 +70,27 @@ class BupPanel:
 			screen.addDDSGFC(szStringPromoFrame, sPromoFrame, iX, iY, 32, 32, WidgetTypes.WIDGET_GENERAL, iIndex, -1 )
 			screen.hide(szStringPromoFrame)
 
+
+			# unit icon
+			screen.addCheckBoxGFC(szBupCell, sTexture, sHiLiteTexture, iX, iY, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, ButtonStyles.BUTTON_STYLE_LABEL)
+			screen.hide(szBupCell)
+
+			# health bar
+			szStringHealth = szBupCell + "Health"
+			screen.addStackedBarGFC(szStringHealth, iX, iY + 23, 32, 11, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_GENERAL, iIndex, -1 )
+			screen.hide(szStringHealth)
+
+			self.BupCell_Displayed.append(False)
+
+
 #VOID addDDSGFC(STRING szName, STRING szTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2)
 #VOID addDDSGFCAt(STRING szName, STRING szAttachTo, STRING szTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, BOOL bOption)
 #VOID addCheckBoxGFC(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
 #VOID addCheckBoxGFCAt(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
 #VOID attachCheckBoxGFC(STRING szAttachTo, STRING szName, STRING szTexture, STRING szHiliteTexture, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
+#VOID addStackedBarGFC(STRING szName, INT iX, INT iY, INT iWidth, INT iHeight, INT iNumBars, WidgetType eWidgetType, INT iData1, INT iData2)
 
-			screen.addCheckBoxGFC(szBupCell, sTexture, sHiLiteTexture, iX, iY, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, ButtonStyles.BUTTON_STYLE_LABEL)
-			screen.hide(szBupCell)
 
-			self.BupCell_Displayed.append(False)
 
 		# the little white arrows?
 		screen.setButtonGFC(sBupStringBase + "Minus", u"", "", 315 + (xRes - (iMulti) - 68), yRes - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT)
@@ -173,6 +184,7 @@ class BupPanel:
 				self._updatePromo(cBupUnit, pBupUnit, szBupCell)
 				self._updateUpgrade(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
 				self._updateMission(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
+				self._updateHealthBar(cBupUnit, pBupUnit, szBupCell)
 
 			iIndex += 1
 
@@ -233,6 +245,7 @@ class BupPanel:
 			self.screen.hide(szCell + "PromoFrame")
 			self.screen.hide(szCell + "Upgrade")
 			self.screen.hide(szCell + "Mission")
+			self.screen.hide(szCell + "Health")
 
 			self.BupCell_Displayed[iIndex] = False
 
@@ -357,6 +370,37 @@ class BupPanel:
 				self.screen.hide(szCell + "Mission")
 
 
+############## health bar ##############
+
+	def _updateHealthBar(self, cBupUnit, pBupUnit, szCell):
+		if pBupUnit is None:
+			self._drawHealthBar(cBupUnit, szCell)
+			return
+
+		# if we get to here, then we have a unit in cBupUnit and pBupUnit
+		if (cBupUnit.currHitPoints != pBupUnit.currHitPoints
+		or not pBupUnit.isShowHealth):
+			self._drawHealthBar(cBupUnit, szCell)
+
+	def _drawHealthBar(self, cBupUnit, szCell):
+		if (PleOpt.isShowHealthBar()
+		and cBupUnit.isShowHealth):
+			if cBupUnit.currHitPoints < (cBupUnit.maxHitPoints * 2) / 3:
+				sColor = "COLOR_RED"
+			elif cBupUnit.currHitPoints < cBupUnit.maxHitPoints / 3:
+				sColor = "COLOR_YELLOW"
+			elif cBupUnit.currHitPoints < cBupUnit.maxHitPoints:
+				sColor = "COLOR_PLAYER_LIGHT_GREEN"
+			else:
+				sColor = "COLOR_GREEN"
+
+			szStringHealth = szCell + "Health"
+			self.screen.setBarPercentage(szStringHealth, InfoBarTypes.INFOBAR_STORED, float(cBupUnit.currHitPoints) / float(cBupUnit.maxHitPoints))
+			self.screen.setStackedBarColors(szStringHealth, InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString(sColor))
+			self.screen.show(szStringHealth)
+
+
+
 
 
 
@@ -421,6 +465,18 @@ class BupUnit:
 			self.isCanUpgrade = mt.checkAnyUpgrade(pUnit)
 		else:
 			self.isCanUpgrade = False
+
+		# health
+		self.currHitPoints = pUnit.currHitPoints()
+		self.maxHitPoints = pUnit.maxHitPoints()
+		if (pUnit.isFighting()):
+			self.isShowHealth = False
+		elif (pUnit.getDomainType() == DomainTypes.DOMAIN_AIR):
+			self.isShowHealth = pUnit.canAirAttack()
+		else:
+			self.isShowHealth = pUnit.canFight()
+
+
 
 #		self.isCanUpgrade = PleOpt.isShowUpgradeIndicator() or mt.checkAnyUpgrade(pUnit)
 
