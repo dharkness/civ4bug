@@ -20,74 +20,72 @@ ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
 iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
-#screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
-
-# constants
-#(sUpdateShow,
-# sUpdateShowIf,
-# sUpdateHide,
-# sUpdateNothing,
-#) = range(4)
-
-
 sBupStringBase = "BUGUnitPlotString"
 cBupCellSize = 34
 cBupCellSpacing = 3
 
 class BupPanel:
-	def __init__(self, screen, yRes, iVanCols, iVanRows):
+	def __init__(self, screen, xRes, yRes, iMulti, iVanCols, iVanRows):
 		self.CellSpacing = cBupCellSpacing
 		self.MaxCells = iVanCols * iVanRows
 		self.Rows = iVanRows
 		self.Cols = iVanCols
 
-		BugUtil.debug("BupPanel %i %i %i", yRes, iVanCols, iVanRows)
+#		BugUtil.debug("BupPanel %i %i %i", yRes, iVanCols, iVanRows)
 
 		self.screen = screen
+
+		# we scrapped the panel concept
+		# initially, the thought was to put everything on a single panel and then just show / hide
+		# the panel for quick showing and hiding
+		# however, some of the graphics aren't attached to anything so we just went with throwing them
+		# straight onto the main interface screen
+
+		# however, the panel location values are still used to help locate the cells
+		# SO DON'T DELETE THEM!
 		self.xPanel = 315 - cBupCellSpacing
 		self.yPanel = yRes - 169 + (1 - iVanRows) * cBupCellSize - cBupCellSpacing
 		self.wPanel = iVanCols * cBupCellSize + cBupCellSpacing
 		self.hPanel = iVanRows * cBupCellSize + cBupCellSpacing
-#		self.sBupPanel = sBupStringBase + "BackgroundPanel"
 
-		BugUtil.debug("BupPanel %i %i %i %i", self.xPanel, self.yPanel, self.wPanel, self.hPanel)
-
-#		self.screen.addPanel(self.sBupPanel, u"", u"", True, False, self.xPanel, self.yPanel, self.wPanel, self.hPanel, PanelStyles.PANEL_STYLE_MAIN)  #PanelStyles.PANEL_STYLE_EMPTY
-#		self.screen.addPanel(self.sBupPanel, u"", u"", True, False, self.xPanel, self.yPanel, self.wPanel, self.hPanel, PanelStyles.PANEL_STYLE_EMPTY)
-#		self.screen.hide(self.sBupPanel)
+#		BugUtil.debug("BupPanel %i %i %i %i", self.xPanel, self.yPanel, self.wPanel, self.hPanel)
 
 		sTexture = getArt("INTERFACE_BUTTONS_GOVERNOR")
 		sHiLiteTexture = getArt("BUTTON_HILITE_SQUARE")
-		sFileNamePromo = getArt("OVERLAY_PROMOTION_FRAME")
+		sPromoFrame = getArt("OVERLAY_PROMOTION_FRAME")
+
+		self.BupCell_Displayed = []
 
 		for iIndex in range(self.MaxCells):
 			szBupCell = self._getCellWidget(iIndex)
 			iX = self._getX(self._getCol(iIndex))
 			iY = self._getY(self._getRow(iIndex))
 
-			BugUtil.debug("BupPanel MaxCells %i %i %i %i %i", iIndex, self._getCol(iIndex), self._getRow(iIndex), self._getX(self._getCol(iIndex)), self._getY(self._getRow(iIndex)))
+#			BugUtil.debug("BupPanel MaxCells %i %i %i %i %i", iIndex, self._getCol(iIndex), self._getRow(iIndex), self._getX(self._getCol(iIndex)), self._getY(self._getRow(iIndex)))
 
-			# place/init the promotion frame. Important to have it at first place within the for loop.
+			# place/init the promotion frame.
+			# Important to have it at first place within the for loop
+			# so that it sits behind the unit icon button
 			szStringPromoFrame = szBupCell + "PromoFrame"
-			screen.addDDSGFC(szStringPromoFrame, sFileNamePromo, iX, iY, 32, 32, WidgetTypes.WIDGET_GENERAL, iIndex, -1 )
+			screen.addDDSGFC(szStringPromoFrame, sPromoFrame, iX, iY, 32, 32, WidgetTypes.WIDGET_GENERAL, iIndex, -1 )
 			screen.hide(szStringPromoFrame)
 
 #VOID addDDSGFC(STRING szName, STRING szTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2)
 #VOID addDDSGFCAt(STRING szName, STRING szAttachTo, STRING szTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, BOOL bOption)
 #VOID addCheckBoxGFC(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
 #VOID addCheckBoxGFCAt(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
+#VOID attachCheckBoxGFC(STRING szAttachTo, STRING szName, STRING szTexture, STRING szHiliteTexture, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
 
 			screen.addCheckBoxGFC(szBupCell, sTexture, sHiLiteTexture, iX, iY, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, ButtonStyles.BUTTON_STYLE_LABEL)
 			screen.hide(szBupCell)
 
-#			screen.attachCheckBoxGFC(self.sBupPanel, szBupCell, sTexture, sHiLiteTexture, 32, 32, WidgetTypes.WIDGET_PLOT_LIST, iIndex, -1, ButtonStyles.BUTTON_STYLE_LABEL)
+			self.BupCell_Displayed.append(False)
 
-#VOID attachCheckBoxGFC(STRING szAttachTo, STRING szName, STRING szTexture, STRING szHiliteTexture, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
-#VOID addCheckBoxGFC(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
-#VOID addCheckBoxGFCAt(STRING szName, STRING szTexture, STRING szHiliteTexture, INT iX, INT iY, INT iWidth, INT iHeight, WidgetType eWidgetType, INT iData1, INT iData2, ButtonStyle eStyle)
-
-
-
+		# the little white arrows?
+		screen.setButtonGFC(sBupStringBase + "Minus", u"", "", 315 + (xRes - (iMulti) - 68), yRes - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT)
+		screen.setButtonGFC(sBupStringBase + "Plus", u"", "",  298 + (xRes - (iMulti) - 34), yRes - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT)
+		screen.hide(sBupStringBase + "Minus")
+		screen.hide(sBupStringBase + "Plus")
 
 		self.BupUnits = []
 		self.BupUnitsPrior = []
@@ -97,94 +95,112 @@ class BupPanel:
 		self.PlotX = 0
 		self.PlotY = 0
 
-#	def setCellSpacing(self, iSpacing):
-#		self.BupCellSpacing = iSpacing
-
-#		self.bShowWoundedIndicator = True
-#		self.bShowGreatGeneralIndicator = True
-#		self.bShowPromotionIndicator = True
-#		self.bShowUpgradeIndicator = True
-#		self.bShowMissionInfo = True
-#		self.bShowHealthBar = True
-#		self.bHideHealthBarWhileFighting = True
-#		self.bShowMoveBar = True
-
-#	def UpdateBUGOptions(self):
-#		self.bShowWoundedIndicator = PleOpt.isShowWoundedIndicator()
-#		self.bShowGreatGeneralIndicator = PleOpt.isShowGreatGeneralIndicator()
-#		self.bShowPromotionIndicator = PleOpt.isShowPromotionIndicator()
-#		self.bShowUpgradeIndicator = PleOpt.isShowUpgradeIndicator()
-#		self.bShowMissionInfo = PleOpt.isShowMissionInfo()
-#		self.bShowHealthBar = PleOpt.isShowHealthBar()
-#		self.bHideHealthBarWhileFighting = PleOpt.isHideHealthFighting()
-#		self.bShowMoveBar = PleOpt.isShowMoveBar()
+		self.PriorCityUp = False
 
 	def Draw(self):
-#		self.screen.show(self.sBupPanel)
 
-#		self.Hide()
-#		iIndex = 0
-#		while iIndex <= self.MaxCells:
-#			self.screen.hide(szBupCell)
-#			self.screen.hide(szBupCell + "Dot")
-#			self.screen.hide(szBupCell + "PromoFrame")
-#			self.screen.hide(szBupCell + "Upgrade")
-#			self.screen.hide(szBupCell + "Mission")
-#			iIndex += 1
+		# set L+R arrows to 'off'
+		bLeftArrow = False
+		bRightArrow = False
+		self.screen.hide(sBupStringBase + "Minus")
+		self.screen.hide(sBupStringBase + "Plus")
 
-		if self._hasPlotChanged():
-#			BugUtil.debug("BupPanel plot has changed!")
+		# kill off the prior units and delete all of the unit plot list if the plot has changed
+		if (self._hasPlotChanged()
+		or CyInterface().isCityScreenUp() != self.PriorCityUp):
+#			BugUtil.debug("BupPanel plot has changed or CityScreenUp status has changed - %s %s", CyInterface().isCityScreenUp(), self.PriorCityUp)
 			self.BupUnitsPrior = []
 			self.Hide()
 
-		iIndex = CyInterface().getPlotListOffset()
-		iMaxUnits = max(len(self.BupUnits), len(self.BupUnitsPrior))
+# todo: still need to put in something to handle the column value (ie when you have more units that can fit on the screen)
+
+		iVisibleUnits = CyInterface().getNumVisibleUnits()
+		iIndex = -(CyInterface().getPlotListColumn())
+
+
+		if (CyInterface().isCityScreenUp()):
+			iMaxRows = 1
+			iSkippedCells = (self._getMaxRows() - 1) * self._getMaxCols()
+			iIndex += iSkippedCells
+		else:
+			iMaxRows = self._getMaxRows()
+			iSkippedCells = 0
+			iIndex += CyInterface().getPlotListOffset()
+
+		iMaxUnits = max(len(self.BupUnits), \
+						len(self.BupUnitsPrior))
+
+		iMaxUnits = min(iMaxUnits, \
+						iMaxRows * self._getMaxCols())
+
+# put in an override if the number of units exceeds the screen maximum
+# or if the city screen is up (max = units per row)
+# also need some code to control those pesky little arrows
+
 		for iUnit in range(iMaxUnits):
 			szBupCell = self._getCellWidget(iIndex)
 
 			if iUnit < len(self.BupUnits):
 				cBupUnit = self.BupUnits[iUnit]
 			else:
-				self._hideCell(szBupCell)
+				# current unit is blank!
+				self._hideCell(iIndex, szBupCell)
+				iIndex += 1
 				continue
 
+			# do we have to turn the arrows on?
+			if iIndex == 0: # looking at the top left cell
+				if CyInterface().getPlotListColumn() > 0: # still have units to show
+					bLeftArrow = True
+			elif iIndex == self.MaxCells - 1: # the bottom right cell
+				if (iVisibleUnits - iIndex - CyInterface().getPlotListColumn() + iSkippedCells) > 1: # more units to show to right
+					bRightArrow = True
+
+			# prior unit doesn't exist - just need to draw the new unit
+			# this is handled below in the '_update*' functions
 			if iUnit < len(self.BupUnitsPrior):
 				pBupUnit = self.BupUnitsPrior[iUnit]
 			else:
 				pBupUnit = None
 
-			self._updateUnitIcon(cBupUnit, pBupUnit, szBupCell)
+			self._updateUnitIcon(cBupUnit, pBupUnit, iIndex, szBupCell)
 
 			if cBupUnit.Owner == gc.getGame().getActivePlayer():
 				iX = self._getX(self._getCol(iIndex))
 				iY = self._getY(self._getRow(iIndex))
-
-#		self.xPanel = 315 - cBupCellSpacing
-#		self.yPanel = yRes - 169 + (1 - iVanRows) * cBupCellSize - cBupCellSpacing
-
-#def displayUnitPlotList_Dot( self, screen, pLoopUnit, szString, iCount, x, y, bShowWoundedIndicator, bShowGreatGeneralIndicator ):
 
 				self._updateDot(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY + 4)
 				self._updatePromo(cBupUnit, pBupUnit, szBupCell)
 				self._updateUpgrade(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
 				self._updateMission(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
 
-#				displayUnitPlotList_Mission( self.screen, pBupUnit, szBupCell, iIndex, iX, iY - 22, 12)
-
-
-
-
 			iIndex += 1
 
+
+		# phew, finally finished all the units
+		# do we have to show the arrows?
+		# only if there are more visible units than there are cells
+		if iVisibleUnits > iMaxRows * self._getMaxCols():
+			self.screen.enable(sBupStringBase + "Minus", bLeftArrow)
+			self.screen.enable(sBupStringBase + "Plus", bRightArrow)
+			self.screen.show(sBupStringBase + "Minus")
+			self.screen.show(sBupStringBase + "Plus")
+
 		# save the current units for next time
+#		self.BupUnitsPrior = self.BupUnits
 		self.BupUnitsPrior = []
 		for iUnit in range(len(self.BupUnits)):
 			self.BupUnitsPrior.append(self.BupUnits[iUnit])
 
+		# empty the current units
+		# maininterface will reload them prior to calling .Draw()
 		self.BupUnits = []
 
+		self.PriorCityUp = CyInterface().isCityScreenUp()
 
 
+
+############## plot ##############
 
 	def addPlot(self, X, Y):
 #		BugUtil.debug("BupPanel addPlot 1) %i %i %i %i", self.PlotX, self.PlotY, self.PriorPlotX, self.PriorPlotY)
@@ -195,23 +211,33 @@ class BupPanel:
 #		BugUtil.debug("BupPanel addPlot 2) %i %i %i %i", self.PlotX, self.PlotY, self.PriorPlotX, self.PriorPlotY)
 
 	def _hasPlotChanged(self):
+#		BugUtil.debug("BupPanel _hasPlotChanged %i %i %i %i %s", self.PlotX, self.PlotY, self.PriorPlotX, self.PriorPlotY, not (self.PlotX == self.PriorPlotX and self.PlotY == self.PriorPlotY))
 		return not (self.PlotX == self.PriorPlotX and self.PlotY == self.PriorPlotY)
 
 
+############## hide ##############
+
 	def Hide(self):
-		BugUtil.debug("BupPanel Hide!")
+#		BugUtil.debug("BupPanel Hide!")
 		iIndex = 0
-		while iIndex <= self.MaxCells:
-			BugUtil.debug("BupPanel hiding %i", iIndex)
-			self._hideCell(self._getCellWidget(iIndex))
+		while iIndex < self.MaxCells:
+			self._hideCell(iIndex, self._getCellWidget(iIndex))
 			iIndex += 1
 
-	def _hideCell(self, szCell):
-		self.screen.hide(szCell)
-		self.screen.hide(szCell + "Dot")
-		self.screen.hide(szCell + "PromoFrame")
-		self.screen.hide(szCell + "Upgrade")
-		self.screen.hide(szCell + "Mission")
+	def _hideCell(self, iIndex, szCell):
+		if self.BupCell_Displayed[iIndex]:
+#			BugUtil.debug("BupPanel hiding %i", iIndex)
+
+			self.screen.hide(szCell)
+			self.screen.hide(szCell + "Dot")
+			self.screen.hide(szCell + "PromoFrame")
+			self.screen.hide(szCell + "Upgrade")
+			self.screen.hide(szCell + "Mission")
+
+			self.BupCell_Displayed[iIndex] = False
+
+
+############## add and clear units ##############
 
 	def addUnit(self, pUnit):
 		self.BupUnits.append(BupUnit(pUnit))
@@ -220,28 +246,31 @@ class BupPanel:
 		self.BupUnits = []
 		self.BupUnitsPrior = []
 
-#	def clearAllUnits(self):
-#		self.BupUnits = []
-#		self.BupUnitsPrior = []
 
 
-	def _updateUnitIcon(self, cBupUnit, pBupUnit, szCell):
+############## unit icon ##############
+
+	def _updateUnitIcon(self, cBupUnit, pBupUnit, iIndex, szCell):
 		if pBupUnit is None:
-			self._drawUnitIcon(cBupUnit, szCell)
+			self._drawUnitIcon(cBupUnit, iIndex, szCell)
 			return
 
 		# if we get to here, then we have a unit in cBupUnit and pBupUnit
 		if (cBupUnit.UnitType	!= pBupUnit.UnitType
 		or cBupUnit.Owner		!= pBupUnit.Owner
 		or cBupUnit.isSelected	!= pBupUnit.isSelected):
-			self._drawUnitIcon(cBupUnit, szCell)
+			self._drawUnitIcon(cBupUnit, iIndex, szCell)
 
-	def _drawUnitIcon(self, cBupUnit, szCell):
+	def _drawUnitIcon(self, cBupUnit, iIndex, szCell):
 		self.screen.changeImageButton(szCell, gc.getUnitInfo(cBupUnit.UnitType).getButton())
 		self.screen.enable(szCell, cBupUnit.Owner == gc.getGame().getActivePlayer())
 		self.screen.setState(szCell, cBupUnit.isSelected)
 		self.screen.show(szCell)
 
+		self.BupCell_Displayed[iIndex] = True
+
+
+############## dot (or star for GG) ##############
 
 	def _updateDot(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
 		if pBupUnit is None:
@@ -271,6 +300,8 @@ class BupPanel:
 		self.screen.addDDSGFC(szCell + "Dot", getArt(cBupUnit.DotStatus), x-3+xOffset, y-7+yOffset, xSize, ySize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
 
 
+############## promotion available ##############
+
 	def _updatePromo(self, cBupUnit, pBupUnit, szCell):
 		if pBupUnit is None:
 			self._drawPromo(cBupUnit, szCell)
@@ -288,6 +319,8 @@ class BupPanel:
 				self.screen.hide(szCell + "PromoFrame")
 
 
+############## upgrade ##############
+
 	def _updateUpgrade(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
 		if pBupUnit is None:
 			self._drawUpgrade(cBupUnit, szCell, iCount, x, y)
@@ -304,6 +337,8 @@ class BupPanel:
 		else:
 			self.screen.hide(szCell + "Upgrade")
 
+
+############## mission ##############
 
 	def _updateMission(self, cBupUnit, pBupUnit, szCell, iCount, x, y):
 		if pBupUnit is None:
@@ -332,6 +367,9 @@ class BupPanel:
 	def _getMaxRows(self):
 		return self.Rows
 
+	def _getMaxCells(self):
+		return self.Rows
+
 	def _getRow(self, i):
 #		return self._getMaxRows() - i / self._getMaxCols() - 1
 		return i / self._getMaxCols()
@@ -339,14 +377,14 @@ class BupPanel:
 	def _getCol(self, i):
 		return i % self._getMaxCols()
 
-	def _getX(self, nCol):
+	def _getX(self, nCol): # measures from the top left of screen!
 		return nCol * cBupCellSize + self.xPanel
 
-	def _getY(self, nRow):
+	def _getY(self, nRow): # measures from the top left of screen!
 		return nRow * cBupCellSize + self.yPanel
 
 	def _getCellWidget(self, index):
-		return sBupStringBase + "BackgroundCell" + str(index)
+		return sBupStringBase + "Cell" + str(index)
 
 #	def _getIndex(self, nRow, nCol):
 #		return ( nRow * self.getMaxCol() ) + ( nCol % self.getMaxCol() )
@@ -354,49 +392,6 @@ class BupPanel:
 ############## functions for visual objects (show and hide) ######################
 		
 	# PLE Grouping Mode Switcher 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -409,28 +404,25 @@ class BupUnit:
 		self.UnitType = pUnit.getUnitType()
 		self.Owner = pUnit.getOwner()
 		self.isSelected = pUnit.IsSelected()
-
 		self.isFortified = pUnit.getTeam() != gc.getGame().getActiveTeam() or pUnit.isWaiting()
 		self.isMoved = pUnit.canMove() and pUnit.hasMoved()
 		self.isMove = pUnit.canMove() and not pUnit.hasMoved()
 		self.isNotMove = not pUnit.canMove()
 		self.isHurt = pUnit.isHurt()
+		self.isPromotionReady = pUnit.isPromotionReady()
 
-		iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
+#		iLeaderPromo = gc.getInfoTypeForString('PROMOTION_LEADER')
 		self.isLeadByGreatGeneral = iLeaderPromo != -1 and pUnit.isHasPromotion(iLeaderPromo)
-
-
-
 
 		self.DotStatus = self._getDotStatus()
 		self.Mission = self._getMission(pUnit)
-
-		self.isPromotionReady = pUnit.isPromotionReady()
 
 		if PleOpt.isShowUpgradeIndicator():
 			self.isCanUpgrade = mt.checkAnyUpgrade(pUnit)
 		else:
 			self.isCanUpgrade = False
+
+#		self.isCanUpgrade = PleOpt.isShowUpgradeIndicator() or mt.checkAnyUpgrade(pUnit)
 
 	def _getDotStatus(self):
 		sDotStatus = ""
@@ -529,127 +521,7 @@ class BupUnit:
 
 
 
-def displayUnitPlotList_Promo( self, screen, pLoopUnit, szString ):
-	if (self.bShowPromotionIndicator):
-		# can unit be promoted ?
-		if (pLoopUnit.isPromotionReady()):
-			# place the promotion frame
-			szStringPromoFrame = szString+"PromoFrame"
-			screen.show( szStringPromoFrame )
 
-	return 0
-
-def displayUnitPlotList_Upgrade( self, screen, pLoopUnit, szString, iCount, x, y ):
-	if (self.bShowUpgradeIndicator):
-		# can unit be upgraded ?
-		if (mt.checkAnyUpgrade(pLoopUnit)):
-			# place the upgrade arrow
-			szStringUpgrade = szString+"Upgrade"
-			szFileNameUpgrade = ArtFileMgr.getInterfaceArtInfo("OVERLAY_UPGRADE").getPath()	
-			screen.addDDSGFC( szStringUpgrade, szFileNameUpgrade, x+2, y+14, 8, 16, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-			screen.show( szStringUpgrade )
-
-	return 0
-
-def displayUnitPlotList_HealthBar( self, screen, pLoopUnit, szString ):
-	if (self.bShowHealthBar and pLoopUnit.maxHitPoints()
-	and not (pLoopUnit.isFighting() and self.bHideHealthBarWhileFighting)):
-		# place the health bar
-		szStringHealthBar = szString+"HealthBar"
-		screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_STORED, float( pLoopUnit.currHitPoints() ) / float( pLoopUnit.maxHitPoints() ) )
-		screen.setBarPercentage( szStringHealthBar, InfoBarTypes.INFOBAR_RATE, float(1.0) )
-		screen.show( szStringHealthBar )
-
-	return 0
-
-def displayUnitPlotList_MoveBar( self, screen, pLoopUnit, szString ):
-	if (self.bShowMoveBar):
-		# place the move bar
-		szStringMoveBar = szString+"MoveBar"
-		if (pLoopUnit.movesLeft() == 0 or pLoopUnit.baseMoves() == 0):
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 0.0 )
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 0.0 )
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
-		else:
-			fMaxMoves = float(pLoopUnit.baseMoves())
-			#fCurrMoves = fMaxMoves - (pLoopUnit.getMoves() / float(gc.getMOVE_DENOMINATOR())) 
-			fCurrMoves = float(pLoopUnit.movesLeft()) / float(gc.getMOVE_DENOMINATOR()) 
-			# mt.debug("c/m/r:%f/%f/%f"%(fCurrMoves, fMaxMoves, float( fCurrMoves ) / float( fMaxMoves ) ))
-			if (fMaxMoves):
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, fCurrMoves / fMaxMoves )
-			else:
-				screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_STORED, 1.0 )
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_RATE, 1.0 )
-			screen.setBarPercentage( szStringMoveBar, InfoBarTypes.INFOBAR_EMPTY, 1.0 )
-		screen.show( szStringMoveBar )
-
-	return 0
-
-def displayUnitPlotList_Mission( self, screen, pLoopUnit, szString, iCount, x, y, iSize ):
-	# display the mission or activity info
-	if (self.bShowMissionInfo): 
-		# TODO: Switch to UnitUtil.getOrder()
-		# place the activity info below the unit icon.
-		szFileNameAction = ""
-		eActivityType = pLoopUnit.getGroup().getActivityType()
-		eAutomationType = pLoopUnit.getGroup().getAutomateType()
-
-		# is unit on air intercept mission
-		if (eActivityType == ActivityTypes.ACTIVITY_INTERCEPT):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_INTERCEPT").getPath()
-		# is unit on boat patrol coast mission
-		elif (eActivityType == ActivityTypes.ACTIVITY_PATROL):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PATROL").getPath()
-		# is unit on boat blockade mission
-		elif (eActivityType == ActivityTypes.ACTIVITY_PLUNDER):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_PLUNDER").getPath()
-		# is unit fortified for healing (wake up when healed)
-		elif (eActivityType == ActivityTypes.ACTIVITY_HEAL):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_HEAL").getPath()
-		# is unit sentry (wake up when enemy in sight)
-		elif (eActivityType == ActivityTypes.ACTIVITY_SENTRY):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SENTRY").getPath()
-		# is the turn for this unit skipped (wake up next turn)
-		elif (eActivityType == ActivityTypes.ACTIVITY_HOLD):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SKIP").getPath()
-		# has unit exploration mission
-		elif (eAutomationType == AutomateTypes.AUTOMATE_EXPLORE):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_EXPLORE").getPath()
-		# is unit automated generally (only worker units)
-		elif (eAutomationType == AutomateTypes.AUTOMATE_BUILD):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_BUILD").getPath()
-		# is unit automated for nearest city (only worker units)
-		elif (eAutomationType == AutomateTypes.AUTOMATE_CITY):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_CITY").getPath()
-		# is unit automated for network (only worker units)
-		elif (eAutomationType == AutomateTypes.AUTOMATE_NETWORK):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_NETWORK").getPath()
-		# is unit automated spread religion (only missionary units)
-		elif (eAutomationType == AutomateTypes.AUTOMATE_RELIGION):
-			szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_AUTO_RELIGION").getPath()
-		# has unit a mission
-		elif (pLoopUnit.getGroup().getLengthMissionQueue() > 0):
-			eMissionType = pLoopUnit.getGroup().getMissionType(0)
-			# is the mission to build an improvement
-			if (eMissionType == MissionTypes.MISSION_BUILD):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_BUILD").getPath()
-			# is the mission a "move to" mission
-			elif (eMissionType in UnitUtil.MOVE_TO_MISSIONS):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_GOTO").getPath()
-		# if nothing of above, but unit is waiting -> unit is fortified
-		elif (pLoopUnit.isWaiting()):
-			if (pLoopUnit.isFortifyable()):
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_FORTIFY").getPath()
-			else:
-				szFileNameAction = ArtFileMgr.getInterfaceArtInfo("OVERLAY_ACTION_SLEEP").getPath()
-
-		# display the mission icon
-		if (szFileNameAction != ""):
-			szStringActionIcon = szString+"ActionIcon"
-			screen.addDDSGFC( szStringActionIcon, szFileNameAction, x+20, y+20, iSize, iSize, WidgetTypes.WIDGET_GENERAL, iCount, -1 )
-			screen.show( szStringActionIcon )
-
-	return 0
 
 def getArt(sArt):
 	return ArtFileMgr.getInterfaceArtInfo(sArt).getPath()
@@ -657,30 +529,3 @@ def getArt(sArt):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#		UnitPlots = []
-#		for i in range(vCols * vRows):
-#			UnitPlots.append(UnitPlot(sBupPanel, i, _getx(i), _gety(i)))
-
-#	def _getx(self, iIndex):
-#		_col = iIndex % iCols
-#		return _col - 1
-
-#	def _gety(self, iIndex):
-#		_row = iIndex / iCols
-#		return iRows - irow
-
-#	def _getIndex(self, x, y):
-#		return (iRows - y) * iCols + x - 1

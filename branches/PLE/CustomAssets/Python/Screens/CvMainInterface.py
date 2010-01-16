@@ -405,7 +405,7 @@ class CvMainInterface:
 
 # BUG - BUG unit plot draw method - start
 # bug unit panel
-		self.BupPanel = BugUnitPlot.BupPanel(screen, screen.getYResolution(), self.numPlotListButtonsPerRow(), self.numPlotListRows())
+		self.BupPanel = BugUnitPlot.BupPanel(screen, screen.getXResolution(), screen.getYResolution(), iMultiListXL+iMultiListXR, self.numPlotListButtonsPerRow(), self.numPlotListRows())
 # BUG - BUG unit plot draw method - end
 
 	def interfaceScreen (self):
