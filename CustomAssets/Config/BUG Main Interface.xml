@@ -93,4 +93,5 @@
 	</options>
 	
 	<widget name="WIDGET_GP_PROGRESS_BAR" module="GPUtil" function="getHoverText"/>
+	<widget name="WIDGET_BUG_OPTION_SCREEN" xml="TXT_KEY_BUG_OPTIONS_SCREEN_HOVER"/>
 </mod>
