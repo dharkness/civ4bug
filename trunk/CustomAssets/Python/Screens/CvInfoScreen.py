@@ -2367,7 +2367,8 @@ class CvInfoScreen:
 									self.aaWondersBeingBuilt_BUG.append([iProjectLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 								if (self.pActiveTeam.isHasMet(iPlayerTeam)
-								and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
+								and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)
+								and pCity.isRevealed(gc.getGame().getActiveTeam())):
 									self.aaWondersBeingBuilt_BUG.append([iProjectLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 					# Loop through buildings
@@ -2384,7 +2385,8 @@ class CvInfoScreen:
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 									if (self.pActiveTeam.isHasMet(iPlayerTeam)
-									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
+									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)
+									and pCity.isRevealed(gc.getGame().getActiveTeam())):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 								if (pCity.getNumBuilding(iBuildingLoop) > 0):
@@ -2405,16 +2407,20 @@ class CvInfoScreen:
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
 									if (self.pActiveTeam.isHasMet(iPlayerTeam)
-									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)):
+									and self.pActivePlayer.canDoEspionageMission(self.iInvestigateCityMission, pCity.getOwner(), pCity.plot(), -1)
+									and pCity.isRevealed(gc.getGame().getActiveTeam())):
 										self.aaWondersBeingBuilt_BUG.append([iBuildingLoop,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
 
+								# Has this city built a wonder?
 								if (pCity.getNumBuilding(iBuildingLoop) > 0):
-	#								print("Adding National wonder to list: %s, %d, %s" %(pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,pPlayer.getCivilizationAdjective(0)))
-									if (iPlayerTeam == self.iActiveTeam or self.pActiveTeam.isHasMet(iPlayerTeam)):
+									if (iPlayerTeam == self.iActiveTeam):
 										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,True,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
-									else:
-										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,False,localText.getText("TXT_KEY_UNKNOWN", ()), pCity, 18])
-									self.iNumWonders += 1
+										self.iNumWonders += 1
+
+									elif (self.pActiveTeam.isHasMet(iPlayerTeam)
+									and pCity.isRevealed(gc.getGame().getActiveTeam())):
+										self.aaWondersBuilt_BUG.append([pCity.getBuildingOriginalTime(iBuildingLoop),iBuildingLoop,True,pPlayer.getCivilizationShortDescription(0), pCity, iPlayerLoop])
+										self.iNumWonders += 1
 
 		# This array used to store which players have already used up a team's slot so team projects don't get added to list more than once
 		aiTeamsUsed = []
@@ -2560,7 +2566,7 @@ class CvInfoScreen:
 			if AdvisorOpt.isWonderListUsePlayerColor():
 				szWonderBuiltBy = localText.changeTextColor(szWonderBuiltBy, color)
 				szCityName = localText.changeTextColor(szCityName, color)
-			
+
 			screen.appendTableRow(self.szWondersTable)
 			if bKnown and pCity and pCity.isRevealed(gc.getGame().getActiveTeam()):
 				screen.setTableText(self.szWondersTable, 0, iWonderLoop+iWBB, "", zoomArt, WidgetTypes.WIDGET_ZOOM_CITY, pCity.getOwner(), pCity.getID(), CvUtil.FONT_LEFT_JUSTIFY)
