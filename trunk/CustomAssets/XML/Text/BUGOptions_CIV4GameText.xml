@@ -46,7 +46,7 @@
 		<Tag>TXT_KEY_BUG_OPTIONS_SCREEN_HOVER</Tag>
 		<English>Shows the BUG Option Screen.</English>
 		<French>Shows the BUG Option Screen.</French>
-		<German>Shows the BUG Option Screen.</German>
+		<German>Ruft den Optionsbildschirm der BUG Mod auf</German>
 		<Italian>Shows the BUG Option Screen.</Italian>
 		<Spanish>Shows the BUG Option Screen.</Spanish>
 	</TEXT>
@@ -3070,7 +3070,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_TEXT</Tag>
 		<English>Build/Action Icon Size</English>
 		<French>Build/Action Icon Size</French>
-		<German>Build/Action Icon Size</German>
+		<German>Größe der Bau-/Befehlssymbole</German>
 		<Italian>Build/Action Icon Size</Italian>
 		<Spanish>Build/Action Icon Size</Spanish>
 	</TEXT>
@@ -3078,7 +3078,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_HOVER</Tag>
 		<English>Determines the size of the build and action buttons in the bottom center of the screen.</English>
 		<French>Determines the size of the build and action buttons in the bottom center of the screen.</French>
-		<German>Determines the size of the build and action buttons in the bottom center of the screen.</German>
+		<German>Bestimmt die Größe der Bau- und Befehlssymbole im Menü am unteren Bildschirmrand</German>
 		<Italian>Determines the size of the build and action buttons in the bottom center of the screen.</Italian>
 		<Spanish>Determines the size of the build and action buttons in the bottom center of the screen.</Spanish>
 	</TEXT>
@@ -3086,7 +3086,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_LIST</Tag>
 		<English>Small|Medium|Large</English>
 		<French>Small|Medium|Large</French>
-		<German>Small|Medium|Large</German>
+		<German>Klein|Mittel|Groß</German>
 		<Italian>Small|Medium|Large</Italian>
 		<Spanish>Small|Medium|Large</Spanish>
 	</TEXT>
