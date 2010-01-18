@@ -68,6 +68,8 @@ Bug Fixes:
 - Multiplayer OOS Errors
 	Changed random "polling error" on F8:MEMBERS tab to use asynchronous RNG
 	Changed random unit name generator to use asynchronous RNG
+- Scoreboard
+	You can always see how many cities your teammates have
 
 MODDING
 

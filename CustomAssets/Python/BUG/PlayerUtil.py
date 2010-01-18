@@ -483,13 +483,13 @@ def canSeeCityList(playerOrID):
 	
 	In the unmodified game, this is possible if the players have met and <player>
 	is not a vassal of a rival. They must be able to contact (trade with)
-	<player>, and OCC must be disabled.
+	<player>, and OCC must be disabled. You can always see a teammate's cities.
 	"""
 	if GameUtil.isOCC():
 		return False
 	askedPlayer, askedTeam = getPlayerAndTeam(playerOrID)
 	askingPlayer, askingTeam = getActivePlayerAndTeam()
-	if askingPlayer.getID() == askedPlayer.getID():
+	if askingPlayer.getTeam() == askedPlayer.getTeam():
 		return True
 	if askedTeam.isAVassal() and not askedTeam.isVassal(askingTeam.getID()):
 		return False
