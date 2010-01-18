@@ -73,11 +73,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGACTUALEFFECTS_HOVER</Tag>
-		<English>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</English>
-		<French>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</French>
-		<German>Zeigt die tatsächlichen Erträge von [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY] und [ICON_GREATPEOPLE] an, die ein Gebäude für eine Stadt erzeugt, wenn der Mauszeiger über ein Gebäudesymbol bewegt wird</German>
-		<Italian>Quando è selezionato, nel testo a comparsa degli Edifici della Città viene mostrata la resa effettiva in [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY] e [ICON_GREATPEOPLE] prodotta dagli edifici stessi.</Italian>
-		<Spanish>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], and [ICON_GREATPEOPLE] the building will produce for the city are displayed in the building hover text.</Spanish>
+		<English>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], [ICON_GREATPEOPLE], and [ICON_DEFENSE] the building will produce for the city are displayed in the building hover text.</English>
+		<French>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], [ICON_GREATPEOPLE], and [ICON_DEFENSE] the building will produce for the city are displayed in the building hover text.</French>
+		<German>Zeigt die tatsächlichen Erträge von [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], ICON_GREATPEOPLE] und [ICON_DEFENSE] an, die ein Gebäude für eine Stadt erzeugt, wenn der Mauszeiger über ein Gebäudesymbol bewegt wird</German>
+		<Italian>Quando è selezionato, nel testo a comparsa degli Edifici della Città viene mostrata la resa effettiva in [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], [ICON_GREATPEOPLE] e [ICON_DEFENSE] prodotta dagli edifici stessi.</Italian>
+		<Spanish>When checked, the actual yield of [ICON_COMMERCE], [ICON_HAPPY], [ICON_HEALTHY], [ICON_GREATPEOPLE], and [ICON_DEFENSE] the building will produce for the city are displayed in the building hover text.</Spanish>
 	</TEXT>
 
 <!-- Tech -->
@@ -180,11 +180,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGSAVEDMAINTENANCE_HOVER</Tag>
-		<English>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</English>
-		<French>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</French>
-		<German>Zeigt die Gebäude an, die Einfluss auf die Unterhaltskosten ([ICON_BADGOLD]) haben und welchen genau</German>
-		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano il mantenimento ([ICON_BADGOLD]) e l'ammontare con cui lo fanno.</Italian>
-		<Spanish>When checked, displays the buildings that will affect maintenance costs ([ICON_BADGOLD]) and by how much.</Spanish>
+		<English>When checked, displays the buildings that will affect maintenance costs ([ICON_GOLD]) and by how much.</English>
+		<French>When checked, displays the buildings that will affect maintenance costs ([ICON_GOLD]) and by how much.</French>
+		<German>Zeigt die Gebäude an, die Einfluss auf die Unterhaltskosten ([ICON_GOLD]) haben und welchen genau</German>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano il mantenimento ([ICON_GOLD]) e l'ammontare con cui lo fanno.</Italian>
+		<Spanish>When checked, displays the buildings that will affect maintenance costs ([ICON_GOLD]) and by how much.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALFOOD_TEXT</Tag>
@@ -281,6 +281,22 @@
 		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_GREATPEOPLE]/Runde haben und welchen genau</German>
 		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la natalità dei Grandi Personaggi ([ICON_GREATPEOPLE]) e l'ammontare con cui lo fanno.</Italian>
 		<Spanish>When checked, displays the buildings that will affect the [ICON_GREATPEOPLE] rate and by how much.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALDEFENSE_TEXT</Tag>
+		<English>City Defense</English>
+		<French>City Defense</French>
+		<German>Stadtverteidigung</German>
+		<Italian>Difesa citt&#224;</Italian>
+		<Spanish>City Defense</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__BUILDINGADDITIONALDEFENSE_HOVER</Tag>
+		<English>When checked, displays the buildings that will affect the [ICON_DEFENSE] of the city and from bombardment and by how much.</English>
+		<French>When checked, displays the buildings that will affect the [ICON_DEFENSE] of the city and from bombardment and by how much.</French>
+		<German>Zeigt die Gebäude an, die Einfluss auf [ICON_DEFENSE]/Runde haben und welchen genau</German>
+		<Italian>Quando è selezionato, vengono visualizzati gli edifici che influenzano la natalità dei Grandi Personaggi ([ICON_DEFENSE]) e l'ammontare con cui lo fanno.</Italian>
+		<Spanish>When checked, displays the buildings that will affect the [ICON_DEFENSE] of the city and from bombardment and by how much.</Spanish>
 	</TEXT>
 
 
