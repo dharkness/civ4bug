@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+	BUFFY
+	by BUG Mod
+
+	Copyright (c) 2008 The BUG Mod.
+-->
+<mod id="BUFFY" 
+	 name="BUFFY" 
+	 author="BUG Team" 
+	 version="1.0" 
+	 date="05/04/2009"
+	 dll="1">
+	 
+	<option id="Enabled" type="boolean" default="True"/>
+	
+	<options id="BUFFY" file="BUFFY.ini">
+		<section id="BUFFY">
+			<option id="WarningsDawnOfMan" key="Show BUFFY Warnings on Dawn of Man" 
+				type="boolean" default="True" and="Enabled"/>
+			<option id="WarningsSettings" key="Show BUFFY Warnings on Settings" 
+				type="boolean" default="True" and="Enabled"/>
+		</section>
+	</options>
+
+	<init module="GameSetUpCheck"/>
+</mod>
