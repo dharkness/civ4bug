@@ -74,6 +74,12 @@ Bug Fixes:
 MODDING
 
 New Features:
+- Folding in BUFFY items
+	isBUFFY() function
+	Separate code under 'settings' in the Victory screen (displays a HOF warning, if required)
+	Dawn of Man screen (displays HOF warnings, if any)
+	GameSetUpCheck (contains HOF checks)
+	RandomEventInterface (changes barbarian events to work off Priesthood for BUFFY)
 
 Improvements:
 
