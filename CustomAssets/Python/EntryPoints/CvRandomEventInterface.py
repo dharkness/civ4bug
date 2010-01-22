@@ -24,6 +24,10 @@ import EventSigns
 import PlayerUtil
 EventSignsOpt = BugCore.game.EventSigns
 
+# required to change an event for BUFFY
+# used in canTriggerTheVedicAryans(argsList):
+import Buffy
+
 engine = CyEngine()
 # BUG - EventSigns - End
 
@@ -2301,8 +2305,17 @@ def canTriggerTheVedicAryans(argsList):
 			
 #   At least one civ on the board must know Polytheism.
 	bFoundValid = false
-	iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_POLYTHEISM')
-	for iPlayer in range(gc.getMAX_CIV_PLAYERS()):			
+
+	# BUFFY 3.19.003 - start
+	# required to change an event for BUFFY
+	# changes one of the key techs to priesthood instead of polytheism
+	if Buffy.isPresent():
+		iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_PRIESTHOOD')
+	else:
+		iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_POLYTHEISM')
+	# BUFFY 3.19.003 - start
+
+	for iPlayer in range(gc.getMAX_CIV_PLAYERS()):
 		loopPlayer = gc.getPlayer(iPlayer)
 		if loopPlayer.isAlive():
 			if gc.getTeam(loopPlayer.getTeam()).isHasTech(iTech):
