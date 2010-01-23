@@ -43,6 +43,8 @@ New Features:
 	New GLANCE-style tab shows EPs spending on and by each rival you've met
 - Technology Chooser
 	Added color-coded shadow denoting each technology's era
+- BUFFY
+	Barbarian events require Priesthood
 
 Improvements:
 
@@ -74,14 +76,14 @@ Bug Fixes:
 MODDING
 
 New Features:
-- Folding in BUFFY items
-	isBUFFY() function
-	Separate code under 'settings' in the Victory screen (displays a HOF warning, if required)
-	Dawn of Man screen (displays HOF warnings, if any)
-	GameSetUpCheck (contains HOF checks)
-	RandomEventInterface (changes barbarian events to work off Priesthood for BUFFY)
+
+- BUFFY
+	Merged BUFFY code into BUG; BUFFY.isBUFFY() function tells if BUFFY is active
 
 Improvements:
+
+- Translation
+	Split CIV4GameText XML files for Options into individual files matching the Config folder
 
 Bug Fixes:
 
