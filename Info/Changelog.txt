@@ -87,6 +87,9 @@ Improvements:
 
 Bug Fixes:
 
+- BugPath
+	Added safeDebugPath() and safeInfoPath() to safely log paths that might contain non-Latin characters
+
 
 ____________________________________________________________________________________________________
 BUG 4.2 released November 15th, 2009

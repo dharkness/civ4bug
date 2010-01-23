@@ -290,7 +290,7 @@ def makeDir(name):
 	path = join(getDataDir(), name)
 	if path and not isdir(path):
 		try:
-			BugUtil.info("BugPath - creating '%s'", path)
+			safeInfoPath("BugPath - creating '%s'", path)
 			os.makedirs(path)
 			return path
 		except IOError:
@@ -346,8 +346,8 @@ def initAppFolder():
 			_appDir = dirname(sys.executable)
 	if _appDir:
 		_appFolder = basename(_appDir)
-		BugUtil.info("BugPath - app dir is '%s'", _appDir)
-		BugUtil.debug("BugPath - app folder is '%s'", _appFolder)
+		safeInfoPath("BugPath - app dir is '%s'", _appDir)
+		safeDebugPath("BugPath - app folder is '%s'", _appFolder)
 	else:
 		BugUtil.warn("BugPath - no executable found")
 	_appFolderInitDone = True
@@ -368,7 +368,7 @@ def initModName():
 	try:
 		import CvModName
 		_modName = CvModName.modName
-		BugUtil.info("BugPath - mod name is '%s'", _modName)
+		safeInfoPath("BugPath - mod name is '%s'", _modName)
 	except ImportError:
 		BugUtil.error("CvModName.py module not present")
 	except AttributeError:
@@ -420,14 +420,14 @@ def initModFolder():
 	_modFolderInitDone = True
 
 def setModDir(dir):
-	BugUtil.debug("BugPath - checking mod dir '%s'", dir)
+	safeDebugPath("BugPath - checking mod dir '%s'", dir)
 	if isdir(dir):
 		global _isMod, _modDir, _modFolder
 		_isMod = True
 		_modDir = dir
 		_modFolder = basename(dir)
-		BugUtil.info("BugPath - mod dir is '%s'", dir)
-		BugUtil.debug("BugPath - mod folder is '%s'", _modFolder)
+		safeInfoPath("BugPath - mod dir is '%s'", dir)
+		safeDebugPath("BugPath - mod folder is '%s'", _modFolder)
 		BugConfigTracker.add("Mod_Directory", _modDir)
 		return True
 	return False
@@ -514,7 +514,7 @@ def initRootFolder():
 				pass
 			else:
 				if setUserDir(join(myDocuments, MY_GAMES_FOLDER)):
-					BugUtil.info("BugPath - found valid Windows %s My Documents folder registry key", version)
+					safeInfoPath("BugPath - found valid Windows %s My Documents folder registry key", version)
 					break
 		else:
 			BugUtil.debug("BugPath - no valid My Documents registry key")
@@ -535,21 +535,21 @@ def initRootFolder():
 	_rootFolderInitDone = True
 
 def setRootDir(dir):
-	BugUtil.debug("BugPath - Checking root dir '%s'", dir)
+	safeDebugPath("BugPath - Checking root dir '%s'", dir)
 	if isdir(dir) and isfile(join(dir, "CivilizationIV.ini")):
 		global _rootDir
 		_rootDir = dir
-		BugUtil.info("BugPath - root dir is '%s'", dir)
+		safeInfoPath("BugPath - root dir is '%s'", dir)
 		BugConfigTracker.add("Root_Directory", _rootDir)
 		return True
 	return False
 
 def setUserDir(dir):
-	BugUtil.debug("BugPath - Checking user dir '%s'", dir)
+	safeDebugPath("BugPath - Checking user dir '%s'", dir)
 	if isdir(dir):
 		global _userDir
 		_userDir = dir
-		BugUtil.info("BugPath - user dir is '%s'", dir)
+		safeInfoPath("BugPath - user dir is '%s'", dir)
 		return True
 	return False
 
@@ -585,10 +585,10 @@ def initDataFolder():
 
 def setDataDir(dir):
 	if isdir(dir):
-		BugUtil.debug("BugPath - Checking data dir '%s'", dir)
+		safeDebugPath("BugPath - Checking data dir '%s'", dir)
 		settingsDir = join(dir, SETTINGS_FOLDER)
 		if isdir(settingsDir):
-			BugUtil.info("BugPath - data dir is '%s'", dir)
+			safeInfoPath("BugPath - data dir is '%s'", dir)
 			global _dataDir, _settingsDir, _infoDir
 			_dataDir = dir
 			_settingsDir = settingsDir
@@ -649,7 +649,7 @@ def getFilePath(root, name, subdir=None):
 		path = join(root, name)
 	if isfile(path):
 		return path
-	BugUtil.debug("BugPath - not a file: '%s'", path)
+	safeDebugPath("BugPath - not a file: '%s'", path)
 	return None
 
 def createFile(root, name, subdir=None):
@@ -691,3 +691,18 @@ def isfile(path):
 	if path is None:
 		return False
 	return os.path.isfile(path)
+
+
+## Non-English-Safe Logging
+
+def safeDebugPath(message, path):
+	try:
+		BugUtil.debug(message, path)
+	except:
+		pass
+
+def safeInfoPath(message, path):
+	try:
+		BugUtil.info(message, path)
+	except:
+		pass
