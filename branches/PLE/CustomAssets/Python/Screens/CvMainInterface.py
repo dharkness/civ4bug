@@ -1765,7 +1765,6 @@ class CvMainInterface:
 		screen.hide( "PlotListMinus" )
 		screen.hide( "PlotListPlus" )
 
-#tjp
 		BugUtil.debug("updatePlotListButtons_Orig - column %i, offset %i", CyInterface().getPlotListColumn(), CyInterface().getPlotListOffset())
 
 		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
@@ -1871,7 +1870,7 @@ class CvMainInterface:
 # need to put in something similar to 	def displayUnitPlotListObjects( self, screen, pLoopUnit, nRow, nCol ):
 
 #		xResolution = screen.getXResolution()
-		yResolution = screen.getYResolution()
+#		yResolution = screen.getYResolution()
 
 		pPlot = CyInterface().getSelectionPlot()
 
@@ -1885,12 +1884,14 @@ class CvMainInterface:
 		BugUtil.debug("updatePlotListButtons_BUG - A")
 
 		# skip this if we don't need to display any units
-		if not (pPlot
-		and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL
-		and CyEngine().isGlobeviewUp() == False):
-#		if (not pPlot
-#		or CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE_ALL
-#		or CyEngine().isGlobeviewUp() == True):
+#		if not (pPlot
+#		and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL
+#		and CyEngine().isGlobeviewUp() == False):
+		if (not pPlot
+		or CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_HIDE_ALL
+		or CyEngine().isGlobeviewUp() == True):
+			self.BupPanel.clearUnits()
+			self.BupPanel.Hide()
 			return 0
 
 		BugUtil.debug("updatePlotListButtons_BUG - B")
