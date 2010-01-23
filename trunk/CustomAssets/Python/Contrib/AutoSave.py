@@ -102,21 +102,23 @@ def getSaveFileName(pathName):
 			era = gc.getEraInfo(game.getStartEra()).getText()
 			speed = gc.getGameSpeedInfo(game.getGameSpeedType()).getText()
 			turnYear = CyGameTextMgr().getTimeStr(game.getGameTurn(), False)
-		
+			turnYear = turnYear.replace(" ", "-")
+			turnYear = turnYear.replace(",", "-")
+
 			fileName = objLeaderHead[0:3]
 			fileName += '_' + difficulty[0:3]
 			fileName += '_' + mapSize[0:3]
 			fileName += '_' + mapType[0:3]
 			fileName += '_' + speed[0:3]
 			fileName += '_' + era[0:3]
-			fileName += '_' + turnYear.replace(" ", "-")
+			fileName += '_' + turnYear
 			fileName += '_' + mapClimate[0:3]
 			fileName += '_' + mapLevel[0:3]
-	
+
 		fileName = BugPath.join(pathName, fileName)
 		baseFileName = CvUtil.convertToStr(fileName)
 		fileName = CvUtil.convertToStr(fileName + '_' + time.strftime("%b-%d-%Y_%H-%M-%S"))
-	
+
 		return (fileName, baseFileName)
 
 
