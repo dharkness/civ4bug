@@ -12,7 +12,7 @@
 	 date="05/04/2009">
 
 	<!-- This must be set to True when building a BUFFY release -->
-	<option id="Enabled" type="boolean" default="True"/>
+	<option id="Enabled" type="boolean" default="False"/>
 	
 	<options id="BUFFY" file="BUFFY.ini">
 		<section id="BUFFY">
