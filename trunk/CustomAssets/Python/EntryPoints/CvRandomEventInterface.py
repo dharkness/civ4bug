@@ -2309,7 +2309,7 @@ def canTriggerTheVedicAryans(argsList):
 	# BUFFY 3.19.003 - start
 	# required to change an event for BUFFY
 	# changes one of the key techs to priesthood instead of polytheism
-	if Buffy.isPresent():
+	if Buffy.isEnabled():
 		iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_PRIESTHOOD')
 	else:
 		iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_POLYTHEISM')

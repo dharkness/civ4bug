@@ -7,6 +7,7 @@
 ## Author: EmperorFool
 
 import BugOptionsTab
+import Buffy
 
 class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 	"BUG General Options Screen Tab"
@@ -29,6 +30,9 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		
 		self.createAutoSavePanel(screen, right)
 		self.addSpacer(screen, right, "General3")
+		if Buffy.isEnabled():
+			self.createBuffyPanel(screen, right)
+			self.addSpacer(screen, right, "General4")
 		self.createMiscellaneousPanel(screen, right)
 		
 	def createGreatPersonGeneralPanel(self, screen, panel):
@@ -57,6 +61,11 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addLabel(screen, panel, "TechWindow", "Tech Splash Screen:")
 		self.addTextDropdown(screen, panel, panel, "TechWindow__ViewType", True)
 		self.addCheckbox(screen, panel, "TechWindow__CivilopediaText")
+	
+	def createBuffyPanel(self, screen, panel):
+		self.addLabel(screen, panel, "BUFFY", "BUFFY:")
+		self.addCheckbox(screen, panel, "BUFFY__WarningsDawnOfMan")
+		self.addCheckbox(screen, panel, "BUFFY__WarningsSettings")
 		
 	def createMiscellaneousPanel(self, screen, panel):
 		self.addLabel(screen, panel, "Misc", "Misc:")

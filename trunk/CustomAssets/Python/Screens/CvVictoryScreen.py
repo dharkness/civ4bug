@@ -9,10 +9,13 @@ import time
 # BUG - start
 import AttitudeUtil
 import BugCore
+import BugPath
 import BugUtil
 import ColorUtil
 import GameUtil
+import PlayerUtil
 import TechUtil
+
 AdvisorOpt = BugCore.game.Advisors
 # BUG - end
 
@@ -583,7 +586,6 @@ class CvVictoryScreen:
 
 			# BUG Poll statistical error
 			iRandError = 3.5 + gc.getASyncRand().get(10, "Election Results Statistical Error") / 10.0
-			
 			sString = localText.getText("TXT_KEY_BUG_VICTORY_BUG_POLL_ERROR", (self.formatPercent(iRandError), ))
 			iRow = screen.appendTableRow(szTable)
 			screen.setTableText(szTable, 0, iRow, sString, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
@@ -731,12 +733,8 @@ class CvVictoryScreen:
 		showHOFSettingChecks = BUFFYOpt.isWarningsSettings()
 		self.getBuffyWarningText()
 
-		if (gc.getMap().getMapScriptName().upper().find('GOTM') != -1
-		or  gc.getMap().getMapScriptName().upper().find('WOTM') != -1
-		or  gc.getMap().getMapScriptName().upper().find('BOTM') != -1):
-			showHOFSettingChecks = False
-
-		if not Buffy.isPresent():
+		# EF: Mac only?
+		if showHOFSettingChecks and GameSetUpCheck.isXOTMScenario():
 			showHOFSettingChecks = False
 		## End HOF MOD V1.61.001  3/8
 
@@ -747,36 +745,39 @@ class CvVictoryScreen:
 		szSettingsTable = self.getNextWidgetName()
 		screen.addListBoxGFC(szSettingsTable, "", self.SETTINGS_PANEL_X1 + self.MARGIN, self.SETTINGS_PANEL_Y + self.MARGIN, self.SETTINGS_PANEL_WIDTH - 2*self.MARGIN, self.SETTINGS_PANEL_HEIGHT - 2*self.MARGIN, TableStyles.TABLE_STYLE_EMPTY)
 		screen.enableSelect(szSettingsTable, False)
-
+		
+		if showHOFSettingChecks and BugPath.isMac():
+			failedHOFChecks = True
+			showHOFSettingChecks = False
+			screen.appendListBoxStringNoUpdate(szSettingsTable, self.BuffyWarningMac, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_LEADER_CIV_DESCRIPTION", (activePlayer.getNameKey(), activePlayer.getCivilizationShortDescriptionKey())), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, u"     (" + CyGameTextMgr().parseLeaderTraits(activePlayer.getLeaderType(), activePlayer.getCivilizationType(), True, False) + ")", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_DIFFICULTY", (gc.getHandicapInfo(activePlayer.getHandicapType()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+
 		screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 #		screen.appendListBoxStringNoUpdate(szSettingsTable, gc.getMap().getMapScriptName(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
 		## Start HOF MOD V1.61.001  4/8
-		if (showHOFSettingChecks
-		and not GameSetUpCheck.hofAllowedMapScripts.has_key(gc.getMap().getMapScriptName())):
-			screen.appendListBoxString(szSettingsTable, gc.getMap().getMapScriptName() + " " + self.BuffyWarningNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+		if (showHOFSettingChecks and not GameSetUpCheck.isMapScriptOK()):
+			screen.appendListBoxStringNoUpdate(szSettingsTable, gc.getMap().getMapScriptName() + " " + self.BuffyWarningNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 			failedHOFChecks = True
 		else:
-			screen.appendListBoxString(szSettingsTable, gc.getMap().getMapScriptName(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+			screen.appendListBoxStringNoUpdate(szSettingsTable, gc.getMap().getMapScriptName(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
-		if (showHOFSettingChecks
-		and GameSetUpCheck.getBalanced()):
-			screen.appendListBoxString(szSettingsTable, self.BuffyWarningBalancedResoucesNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+		if (showHOFSettingChecks and GameSetUpCheck.getBalanced()):
+			screen.appendListBoxStringNoUpdate(szSettingsTable, self.BuffyWarningBalancedResoucesNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 			failedHOFChecks = True
 
-		if (showHOFSettingChecks
-		and not GameSetUpCheck.getWorldWrapSettingOK()):
+		if (showHOFSettingChecks and not GameSetUpCheck.getWorldWrapSettingOK()):
 			text = localText.getText(worldWrapString[GameSetUpCheck.getWorldWrap()],())
 			text += " " + self.BuffyWarningNotAllowed
-			screen.appendListBoxString(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+			screen.appendListBoxStringNoUpdate(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 			failedHOFChecks = True
 		else:
 			text = localText.getText(worldWrapString[GameSetUpCheck.getWorldWrap()],())
-			screen.appendListBoxString(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+			screen.appendListBoxStringNoUpdate(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		## End HOF MOD V1.61.001  4/8
 
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_MAP_SIZE", (gc.getWorldInfo(gc.getMap().getWorldSize()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
@@ -786,25 +787,21 @@ class CvVictoryScreen:
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_STARTING_ERA", (gc.getEraInfo(gc.getGame().getStartEra()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		screen.appendListBoxStringNoUpdate(szSettingsTable, localText.getText("TXT_KEY_SETTINGS_GAME_SPEED", (gc.getGameSpeedInfo(gc.getGame().getGameSpeedType()).getTextKey(), )), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
-		screen.updateListBox(szSettingsTable)
-
 		## Start HOF MOD V1.61.001  5/8
 		if showHOFSettingChecks:
-			missingVCs = ""
-			missingVCCount = 0
+			text = None
 			for iVCLoop in range(gc.getNumVictoryInfos()):
 				if not gc.getGame().isVictoryValid(iVCLoop):
-					missingVCCount += 1
-					if missingVCCount>1:
+					if text is not None:
 						text += ", "
 					else:
 						text = self.BuffyWarningVictoryConditions + " "
 					text += gc.getVictoryInfo(iVCLoop).getDescription()
-			if missingVCCount>0:
+			if text is not None:
 				failedHOFChecks = True
-				screen.appendListBoxString(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
-				screen.appendListBoxString(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
-
+				screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				screen.appendListBoxStringNoUpdate(szSettingsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+			
 			if GameSetUpCheck.crcResult != 0:
 				failedHOFChecks = True
 				if GameSetUpCheck.crcResult==1:
@@ -813,9 +810,11 @@ class CvVictoryScreen:
 					text = self.BuffyWarningCheckSumDifferent
 				else:
 					text = self.BuffyWarningCheckSumFailed
-				screen.appendListBoxString(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
-				screen.appendListBoxString(szSettingsTable, BugUtil.colorText(text, "COLOR_WARNING_TEXT"), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				screen.appendListBoxStringNoUpdate(szSettingsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				screen.appendListBoxStringNoUpdate(szSettingsTable, BugUtil.colorText(text, "COLOR_WARNING_TEXT"), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		## End HOF MOD V1.61.001  5/8
+
+		screen.updateListBox(szSettingsTable)
 
 		szOptionsPanel = self.getNextWidgetName()
 		screen.addPanel(szOptionsPanel, localText.getText("TXT_KEY_MAIN_MENU_CUSTOM_SETUP_OPTIONS", ()).upper(), "", True, True, self.SETTINGS_PANEL_X2, self.SETTINGS_PANEL_Y - 10, self.SETTINGS_PANEL_WIDTH, self.SETTINGS_PANEL_HEIGHT, PanelStyles.PANEL_STYLE_MAIN)
@@ -824,58 +823,40 @@ class CvVictoryScreen:
 		screen.enableSelect(szOptionsTable, False)
 
 		## Start HOF MOD V1.61.001  6/8
-		if (showHOFSettingChecks
-		and gc.getGame().isGameMultiPlayer()):
-			screen.appendListBoxString(szOptionsTable, self.BuffyWarningMultiPlayerNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+		if (showHOFSettingChecks and gc.getGame().isGameMultiPlayer()):
+			screen.appendListBoxStringNoUpdate(szOptionsTable, self.BuffyWarningMultiPlayerNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 			failedHOFChecks = True
 
 		if showHOFSettingChecks:
-			bLinesAdded = False
-
-			# First show settings that can be any state, or that must be checked and are.
-			for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
-				if GameSetUpCheck.hofGameOptionRequirements[i]>=0 and gc.getGame().isOption(i):
-					screen.appendListBoxString(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-					bLinesAdded = True
-
-			# Now show settings that must be unchecked.
-			bHeaderAdded = False
-			for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
-				BugUtil.debug("CvVictoryScreen: GameOptionTypes %i", i)
-				if GameSetUpCheck.hofGameOptionRequirements[i]==-1 and gc.getGame().isOption(i):
-					if not bHeaderAdded:
-						if bLinesAdded:
-							screen.appendListBoxString(szOptionsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						screen.appendListBoxString(szOptionsTable, self.BuffyWarningMustNotBeChecked, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						bHeaderAdded = True
-						bLinesAdded = True
-						failedHOFChecks = True
-					screen.appendListBoxString(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-			# Now show settings that must be checked.
-			bHeaderAdded = False
-			for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
-				if GameSetUpCheck.hofGameOptionRequirements[i]==1 and not gc.getGame().isOption(i):
-					if not bHeaderAdded:
-						if bLinesAdded:
-							screen.appendListBoxString(szOptionsTable, " ", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						screen.appendListBoxString(szOptionsTable, self.BuffyWarningMustBeChecked, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-						bHeaderAdded = True
-						bLinesAdded = True
-						failedHOFChecks = True
-					screen.appendListBoxString(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
-
-			dllPath = gc.getGame().getDLLPath()
-			exePath = gc.getGame().getExePath()
-			dllPathThenUp3 = os.path.split(os.path.split(os.path.split(dllPath)[0])[0])[0]
-			if dllPathThenUp3 != exePath:
+			invalidOptions = GameSetUpCheck.getInvalidGameOptions()
+			if len(invalidOptions) > 0:
 				failedHOFChecks = True
-				text = "\n" + self.BuffyWarningInstallLocation + "\n" + exePath + "\Mods"
-				screen.appendListBoxString(szOptionsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
+					szDescription = gc.getGameOptionInfo(i).getDescription()
+					if i not in invalidOptions:
+						if gc.getGame().isOption(i):
+							screen.appendListBoxStringNoUpdate(szOptionsTable, szDescription, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+					else:
+						if invalidOptions[i]:
+							screen.appendListBoxStringNoUpdate(szOptionsTable, BugUtil.colorText(szDescription, "COLOR_YELLOW") + u" " + self.BuffyWarningRequired, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+						else:
+							screen.appendListBoxStringNoUpdate(szOptionsTable, szDescription + u" " + self.BuffyWarningNotAllowed, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+			else:
+				for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
+					screen.appendListBoxStringNoUpdate(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 		else:
 			for i in range(GameOptionTypes.NUM_GAMEOPTION_TYPES):
 				if gc.getGame().isOption(i):
 					screen.appendListBoxStringNoUpdate(szOptionsTable, gc.getGameOptionInfo(i).getDescription(), WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+
+		if showHOFSettingChecks and not Buffy.isDllPresent():
+			failedHOFChecks = True
+			screen.appendListBoxStringNoUpdate(szOptionsTable, "\n" + self.BuffyWarningNoDll, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+		
+		if showHOFSettingChecks and not Buffy.isDllInCorrectPath():
+			failedHOFChecks = True
+			text = "\n" + self.BuffyWarningInstallLocation + "\n" + gc.getGame().getExePath() + "\Mods"
+			screen.appendListBoxStringNoUpdate(szOptionsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
 		if (gc.getGame().isOption(GameOptionTypes.GAMEOPTION_ADVANCED_START)):
 			szNumPoints = u"%s %d" % (localText.getText("TXT_KEY_ADVANCED_START_POINTS", ()), gc.getGame().getNumAdvancedStartPoints())
@@ -908,43 +889,32 @@ class CvVictoryScreen:
 
 		## Start HOF MOD V1.61.001  7/8
 		if showHOFSettingChecks:
-			civCounts = []
-			for iLoopLeader in range(gc.getNumLeaderHeadInfos()):
-				civCounts.append(0)
+			civCounts = [0] * gc.getNumLeaderHeadInfos()
+			opponentCount = -1
+			for player in PlayerUtil.players(barbarian=False, minor=False):
+				civCounts[player.getLeaderType()] += 1
+				opponentCount += 1
 
-			opponentCount = 0
-			for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
-				player = gc.getPlayer(iLoopPlayer)
-				if (player.isEverAlive() and not player.isBarbarian() and not player.isMinorCiv()):
-					civCounts[player.getLeaderType()] += 1
-					if iLoopPlayer != self.iActivePlayer:
-						opponentCount += 1
-
-			if (opponentCount<GameSetUpCheck.minHOFOpponents[gc.getMap().getWorldSize()] or opponentCount>GameSetUpCheck.maxHOFOpponents[gc.getMap().getWorldSize()]):
+			if (GameSetUpCheck.isMapSizeOK() and not GameSetUpCheck.isOpponentCountOK(opponentCount)):
 				failedHOFChecks = True
 				zsMapSize = localText.getText("TXT_KEY_SETTINGS_MAP_SIZE", (gc.getWorldInfo(gc.getMap().getWorldSize()).getTextKey(), ))
+				minOpponents, maxOpponents = GameSetUpCheck.getValidOpponentCountRange()
+				if (opponentCount < minOpponents):
+					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_TOO_FEW_OPPONENTS", (minOpponents, zsMapSize))
+				elif (opponentCount > maxOpponents):
+					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_TOO_MANY_OPPONENTS", (maxOpponents, zsMapSize))
+				screen.appendListBoxStringNoUpdate(szCivsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
-				if opponentCount<GameSetUpCheck.minHOFOpponents[gc.getMap().getWorldSize()]:
-					zsOpponents = "%i" % (GameSetUpCheck.minHOFOpponents[gc.getMap().getWorldSize()])
-					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_TOO_FEW_OPPONENTS", (zsOpponents, zsMapSize))
-
-				if opponentCount>GameSetUpCheck.maxHOFOpponents[gc.getMap().getWorldSize()]:
-					zsOpponents = "%i" % (GameSetUpCheck.maxHOFOpponents[gc.getMap().getWorldSize()])
-					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_TOO_MANY_OPPONENTS", (zsOpponents, zsMapSize))
-
-				screen.appendListBoxString(szCivsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
-
-			for iLoopCivs in range(len(civCounts)):
-				if civCounts[iLoopCivs]>1:
+			for iLoopCivs, count in enumerate(civCounts):
+				if count > 1:
 					failedHOFChecks = True
 					zsLeader = gc.getLeaderHeadInfo(iLoopCivs).getText()
-					zsTimes = str(civCounts[iLoopCivs])
-					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_MULT_LEADERS", (zsLeader, zsTimes))
-					screen.appendListBoxString(szCivsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+					text = BugUtil.getText("TXT_KEY_BUFFYWARNING_MULT_LEADERS", (zsLeader, count))
+					screen.appendListBoxStringNoUpdate(szCivsTable, text, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 
 			if gc.getGame().isTeamGame():
 				failedHOFChecks = True
-				screen.appendListBoxString(szCivsTable, self.BuffyWarningNoTeams, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
+				screen.appendListBoxStringNoUpdate(szCivsTable, self.BuffyWarningNoTeams, WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY )
 		## End HOF MOD V1.61.001  7/8
 
 		for iLoopPlayer in range(gc.getMAX_CIV_PLAYERS()):
@@ -978,15 +948,16 @@ class CvVictoryScreen:
 		self.BuffyWarning = BugUtil.getText("TXT_KEY_BUFFYWARNING")
 		self.BuffyWarningNotValid = BugUtil.getText("TXT_KEY_BUFFYWARNING_NOT_VALID")
 		self.BuffyWarningNoTeams = BugUtil.getText("TXT_KEY_BUFFYWARNING_NO_TEAMS")
+		self.BuffyWarningMac = BugUtil.getText("TXT_KEY_BUFFYWARNING_MAC")
 		self.BuffyWarningInstallLocation = BugUtil.getText("TXT_KEY_BUFFYWARNING_INSTALL_LOCATION")
-		self.BuffyWarningMustBeChecked = BugUtil.getText("TXT_KEY_BUFFYWARNING_MUST_BE_CHECKED")
-		self.BuffyWarningMustNotBeChecked = BugUtil.getText("TXT_KEY_BUFFYWARNING_MUST_NOT_BE_CHECKED")
 		self.BuffyWarningMultiPlayerNotAllowed = BugUtil.getText("TXT_KEY_BUFFYWARNING_MULTI_PLAYER_NOT_ALLOWED")
+		self.BuffyWarningNoDll = BugUtil.getText("TXT_KEY_BUFFYWARNING_DLL_MISSING")
 		self.BuffyWarningSkippedCheckSum = BugUtil.getText("TXT_KEY_BUFFYWARNING_CHECKSUM_SKIPPED")
 		self.BuffyWarningCheckSumMissing = BugUtil.getText("TXT_KEY_BUFFYWARNING_CHECKSUM_MISSING")
 		self.BuffyWarningCheckSumDifferent = BugUtil.getText("TXT_KEY_BUFFYWARNING_CHECKSUM_DIFFERENT")
 		self.BuffyWarningCheckSumFailed = BugUtil.getText("TXT_KEY_BUFFYWARNING_CHECKSUM_FAILED")
 		self.BuffyWarningVictoryConditions = BugUtil.getText("TXT_KEY_BUFFYWARNING_VICTORY_CONDITIONS")
+		self.BuffyWarningRequired = BugUtil.getText("TXT_KEY_BUFFYWARNING_REQUIRED")
 		self.BuffyWarningNotAllowed = BugUtil.getText("TXT_KEY_BUFFYWARNING_NOT_ALLOWED")
 		self.BuffyWarningBalancedResoucesNotAllowed = BugUtil.getText("TXT_KEY_BUFFYWARNING_BALANCED_RESOUCES_NOT_ALLOWED")
 
