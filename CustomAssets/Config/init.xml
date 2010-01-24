@@ -155,6 +155,10 @@
 	<load mod="MapFinder"/>
 	<load mod="Advanced Combat Odds"/>
 	
+	<!-- BUFFY -->
+	
+	<load mod="BUFFY"/>
+	
 	
 	<!-- Options Screen -->
 	

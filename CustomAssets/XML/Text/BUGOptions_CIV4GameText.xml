@@ -104,12 +104,12 @@
 		<Spanish>Tech Splash Screen:</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_CITYSCREEN</Tag>
-		<English>CITY SCREEN</English>
-		<French>ECRAN DE VILLE</French>
-		<German>STADT-BILDSCHIRM</German>
-		<Italian>CITTA'</Italian>
-		<Spanish>CITY SCREEN</Spanish>
+		<Tag>TXT_KEY_BUG_OPTLABEL_BUFFY</Tag>
+		<English>BUFFY:</English>
+		<French>BUFFY:</French>
+		<German>BUFFY:</German>
+		<Italian>BUFFY:</Italian>
+		<Spanish>BUFFY:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MISC</Tag>

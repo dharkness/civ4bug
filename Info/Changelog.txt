@@ -78,7 +78,7 @@ MODDING
 New Features:
 
 - BUFFY
-	Merged BUFFY code into BUG; BUFFY.isBUFFY() function tells if BUFFY is active
+	Merged BUFFY code into BUG
 
 Improvements:
 

@@ -2,10 +2,6 @@
 ## Copyright Firaxis Games 2005
 
 import CvUtil
-## HOF MOD
-import BugCore
-import GameSetUpCheck
-## end HOF MOD
 from CvPythonExtensions import *
 
 ArtFileMgr = CyArtFileMgr()
@@ -14,6 +10,8 @@ gc = CyGlobalContext()
 
 ## HOF MOD
 import Buffy
+import BugCore
+import GameSetUpCheck
 BUFFYOpt = BugCore.game.BUFFY
 ## end HOF MOD
 
@@ -104,8 +102,7 @@ class CvDawnOfMan:
 		szMainPanel = "DawnOfManMainPanel"
 
 ## HOF MOD
-		if (Buffy.isPresent()
-		and BUFFYOpt.isWarningsDawnOfMan()
+		if (BUFFYOpt.isWarningsDawnOfMan()
 		and not GameSetUpCheck.settingsOK()):
 			self.HOF_WARNING_PANEL_X = self.X_HEADER_PANEL
 			self.HOF_WARNING_PANEL_Y = self.Y_MAIN_PANEL+self.H_MAIN_PANEL-30

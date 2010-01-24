@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!--
 	BUFFY
-	by BUG Mod
+	by BUFFY Team
 
-	Copyright (c) 2008 The BUG Mod.
+	Copyright (c) 2009 The BUG Mod.
 -->
 <mod id="BUFFY" 
 	 name="BUFFY" 
-	 author="BUG Team" 
-	 version="1.0" 
-	 date="05/04/2009"
-	 dll="1">
-	 
+	 author="BUFFY Team" 
+	 version="3.19.003" 
+	 date="05/04/2009">
+
+	<!-- This must be set to True when building a BUFFY release -->
 	<option id="Enabled" type="boolean" default="True"/>
 	
 	<options id="BUFFY" file="BUFFY.ini">
@@ -23,5 +23,6 @@
 		</section>
 	</options>
 
+	<init module="Buffy"/>
 	<init module="GameSetUpCheck"/>
 </mod>
