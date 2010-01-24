@@ -678,7 +678,7 @@ class CvMainInterface:
 # BUG - PLE - end
 
 
-		# End Turn Text		
+		# End Turn Text
 		screen.setLabel( "EndTurnText", "Background", u"", CvUtil.FONT_CENTER_JUSTIFY, 0, yResolution - 188, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_GENERAL, -1, -1 )
 		screen.setHitTest( "EndTurnText", HitTestTypes.HITTEST_NOHIT )
 
@@ -1874,14 +1874,21 @@ class CvMainInterface:
 
 		pPlot = CyInterface().getSelectionPlot()
 
-#		for i in range(gc.getNumPromotionInfos()):
-#			szName = "PromotionButton" + str(i)
-#			screen.moveToFront( szName )
+		# this moves the promotions for the unit shown in the
+		# bottom left so that they sit on top of the unit picture
+		for i in range(gc.getNumPromotionInfos()):
+			szName = "PromotionButton" + str(i)
+			screen.moveToFront( szName )
 
 #		screen.hide( "PlotListMinus" )
 #		screen.hide( "PlotListPlus" )
 
 		BugUtil.debug("updatePlotListButtons_BUG - A")
+
+
+#		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
+
+
 
 		# skip this if we don't need to display any units
 #		if not (pPlot
