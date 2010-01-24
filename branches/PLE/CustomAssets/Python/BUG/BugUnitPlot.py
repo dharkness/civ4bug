@@ -244,9 +244,12 @@ class BupPanel:
 			self.screen.hide(szCell + "PromoFrame")
 			self.screen.hide(szCell + "Upgrade")
 			self.screen.hide(szCell + "Mission")
-			self.screen.hide(szCell + "Health")
 
 			self.BupCell_Displayed[iIndex] = False
+
+		# the health bar is shown for all units
+		# not just the current players unit
+		self.screen.hide(szCell + "Health")
 
 
 ############## add and clear units ##############
@@ -267,16 +270,19 @@ class BupPanel:
 			self._drawUnitIcon(cBupUnit, iIndex, szCell)
 			return
 
+#		BugUtil.debug("BupPanel _updateUnitIcon %s %s", cBupUnit.isSelected, pBupUnit.isSelected)
+
 		# if we get to here, then we have a unit in cBupUnit and pBupUnit
 		if (cBupUnit.UnitType	!= pBupUnit.UnitType
-		or cBupUnit.Owner		!= pBupUnit.Owner
-		or cBupUnit.isSelected	!= pBupUnit.isSelected):
+		or cBupUnit.Owner		!= pBupUnit.Owner):
 			self._drawUnitIcon(cBupUnit, iIndex, szCell)
+
+		if self.BupCell_Displayed[iIndex]:
+			self.screen.setState(szCell, cBupUnit.isSelected)
 
 	def _drawUnitIcon(self, cBupUnit, iIndex, szCell):
 		self.screen.changeImageButton(szCell, gc.getUnitInfo(cBupUnit.UnitType).getButton())
 		self.screen.enable(szCell, cBupUnit.Owner == gc.getGame().getActivePlayer())
-		self.screen.setState(szCell, cBupUnit.isSelected)
 		self.screen.show(szCell)
 
 		self.BupCell_Displayed[iIndex] = True
