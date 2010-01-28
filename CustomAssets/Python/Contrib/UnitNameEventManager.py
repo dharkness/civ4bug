@@ -307,14 +307,17 @@ class UnitReName(object):
 ##  - ^rd^ - random name
 #		check if random naming convention is required
 		if not (zsName.find("^rd^") == -1):
-			return RandomNameUtils.getRandomName()
+			zsRandomName = RandomNameUtils.getRandomName()
+			zsName = zsName.replace("^rd^", zsRandomName)
+
 
 		#BUGPrint("UnitNameEM-B")
 
 ##  - ^rc^ - random civ related name
 #		check if random civ related naming convention is required
 		if not (zsName.find("^rc^") == -1):
-			return RandomNameUtils.getRandomCivilizationName(pPlayer.getCivilizationType())
+			zsRandomName = RandomNameUtils.getRandomCivilizationName(pPlayer.getCivilizationType())
+			zsName = zsName.replace("^rc^", zsRandomName)
 
 		#BUGPrint("UnitNameEM-C [" + zsName + "]")
 
@@ -561,20 +564,19 @@ class UnitReName(object):
 
 
 	def FormatNumber(self, fmt, i):
+		if (i < 1):
+			# ensure i is not under lower bound; each format enforces its own upper bound when necessary
+			i = 1
 		if (fmt == "s"):     # silent
 			return ""
 		elif (fmt == "a"):   # lower case alpha
-			i = ((i + 1) % 26) - 1
-			return chr(96+i)
+			return chr(97 + ((i - 1) % 26))
 		elif (fmt == "A"):   # upper case alpha
-			i = ((i + 1) % 26) - 1
-			return chr(64+i)
+			return chr(65 + ((i - 1) % 26))
 		elif (fmt == "p"):   # phonetic
-			i = ((i + 1) % 26) - 1
-			return phonetic_array[i]
+			return phonetic_array[(i - 1) % 26]
 		elif (fmt == "g"):   # greek
-			i = ((i + 1) % 24) - 1
-			return greek_array[i]
+			return greek_array[(i - 1) % 24]
 		elif (fmt == "n"):   # number    
 			return str(i)
 		elif (fmt == "o"):   # ordinal
