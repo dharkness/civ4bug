@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!--
-	BUG Option Screen Text
+	BUG Option Screen
+	Title, Button, Tab, and Label Translations
 
 	Copyright (c) 2007, BUG Mod.
 
@@ -64,20 +65,20 @@
 		<Spanish>General</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_BUG_OPTLABEL_MAININTERFACE</Tag>
-		<English>MAIN INTERFACE</English>
-		<French>INTERFACE CENTRALE</French>
-		<German>HAUPTBILDSCHIRM</German>
-		<Italian>INTERFACCIA PRINCIPALE</Italian>
-		<Spanish>MAIN INTERFACE</Spanish>
-	</TEXT>
-	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_PROGRESSBARS</Tag>
 		<English>Progress Bars:</English>
 		<French>Progress Bars:</French>
 		<German>Fortschrittsbalken:</German>
 		<Italian>Progressi Barra:</Italian>
 		<Spanish>Progress Bars:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_LEADERHEADS</Tag>
+		<English>Leaderhead Icons:</English>
+		<French>Leaderhead Icons:</French>
+		<German>Leaderhead Icons:</German>
+		<Italian>Leaderhead Icons:</Italian>
+		<Spanish>Leaderhead Icons:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_AUTOSAVE</Tag>

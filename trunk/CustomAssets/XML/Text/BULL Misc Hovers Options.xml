@@ -7,6 +7,42 @@
 -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 
+<!-- Leaderhead -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADWORSTENEMY_TEXT</Tag>
+		<English>Worst Enemy</English>
+		<French>Worst Enemy</French>
+		<German>Worst Enemy</German>
+		<Italian>Worst Enemy</Italian>
+		<Spanish>Worst Enemy</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADWORSTENEMY_HOVER</Tag>
+		<English>When checked, the worst enemy of each AI rival is shown in the hover text for their icon.</English>
+		<French>When checked, the worst enemy of each AI rival is shown in the hover text for their icon.</French>
+		<German>When checked, the worst enemy of each AI rival is shown in the hover text for their icon.</German>
+		<Italian>When checked, the worst enemy of each AI rival is shown in the hover text for their icon.</Italian>
+		<Spanish>When checked, the worst enemy of each AI rival is shown in the hover text for their icon.</Spanish>
+	</TEXT>
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADDEFENSIVEPACTS_TEXT</Tag>
+		<English>Defensive Pacts</English>
+		<French>Defensive Pacts</French>
+		<German>Defensive Pacts</German>
+		<Italian>Defensive Pacts</Italian>
+		<Spanish>Defensive Pacts</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADDEFENSIVEPACTS_HOVER</Tag>
+		<English>When checked, the defensive pacts of each rival are shown in the hover text for their icon.</English>
+		<French>When checked, the defensive pacts of each rival are shown in the hover text for their icon.</French>
+		<German>When checked, the defensive pacts of each rival are shown in the hover text for their icon.</German>
+		<Italian>When checked, the defensive pacts of each rival are shown in the hover text for their icon.</Italian>
+		<Spanish>When checked, the defensive pacts of each rival are shown in the hover text for their icon.</Spanish>
+	</TEXT>
+
 <!-- Plot -->
 
 	<TEXT>
