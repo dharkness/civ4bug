@@ -20,16 +20,18 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		panel = self.createMainPanel(screen)
 		column = self.addOneColumnLayout(screen, panel)
 		
-		left, right = self.addTwoColumnLayout(screen, column, "Top", True)
+		left, center, right = self.addThreeColumnLayout(screen, column, "Top", True)
 		
 		self.createGreatPersonGeneralPanel(screen, left)
 		self.addSpacer(screen, left, "General1")
 		self.createTechSplashPanel(screen, left)
 		self.addSpacer(screen, left, "General2")
-		self.createActionsPanel(screen, left)
+		self.createLeaderheadPanel(screen, left)
 		
-		self.createAutoSavePanel(screen, right)
-		self.addSpacer(screen, right, "General3")
+		self.createAutoSavePanel(screen, center)
+		self.addSpacer(screen, center, "General3")
+		self.createActionsPanel(screen, center)
+		
 		if Buffy.isEnabled():
 			self.createBuffyPanel(screen, right)
 			self.addSpacer(screen, right, "General4")
@@ -41,6 +43,11 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		#self.addCheckbox(screen, panel, "MainInterface__GPBar")
 		#self.addTextDropdown(screen, panel, panel, "MainInterface__GPBar_Types", True)
 		self.addCheckbox(screen, panel, "MainInterface__Combat_Counter")
+		
+	def createLeaderheadPanel(self, screen, panel):
+		self.addLabel(screen, panel, "Leaderheads", "Leaderhead Icons:")
+		self.addCheckbox(screen, panel, "MiscHover__LeaderheadWorstEnemy")
+		self.addCheckbox(screen, panel, "MiscHover__LeaderheadDefensivePacts")
 		
 	def createAutoSavePanel(self, screen, panel):
 		self.addLabel(screen, panel, "AutoSave", "AutoSave:")
