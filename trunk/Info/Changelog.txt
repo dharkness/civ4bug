@@ -56,6 +56,8 @@ Improvements:
 	Can select how to display attitudes: numbers, smilies, or both
 - Technology Chooser
 	Added hover to GP Research icons showing the preferred order
+- Unit Naming
+	Random names can now be mixed with other naming codes or static text
 
 Bug Fixes:
 
@@ -72,6 +74,8 @@ Bug Fixes:
 	Changed random unit name generator to use asynchronous RNG
 - Scoreboard
 	You can always see how many cities your teammates have
+- Unit Naming
+	Phonetic and Greek naming codes now start at first element (alpha)
 
 MODDING
 
