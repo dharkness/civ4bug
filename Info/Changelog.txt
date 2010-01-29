@@ -57,6 +57,7 @@ Improvements:
 - Technology Chooser
 	Added hover to GP Research icons showing the preferred order
 - Unit Naming
+	Unnamed initial units are named when you found your capital
 	Random names can now be mixed with other naming codes or static text
 
 Bug Fixes:
