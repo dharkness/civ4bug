@@ -71,10 +71,8 @@ from CvPythonExtensions import *
 import CvUtil
 import BugUtil
 import PyHelpers
-import BugPath
-import BugConfigTracker
 import BugCore
-from configobj import ConfigObj
+import PlayerUtil
 import Roman
 import RandomNameUtils
 import random
@@ -203,6 +201,7 @@ class BuildUnitName(AbstractBuildUnitName):
 
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
 		eventManager.addEventHandler("unitBuilt", self.onUnitBuilt)
+		eventManager.addEventHandler("cityBuilt", self.onCityBuilt)
 
 		self.eventMgr = eventManager
 		self.config = None
@@ -262,6 +261,43 @@ class BuildUnitName(AbstractBuildUnitName):
 
 		return
 
+	def onCityBuilt(self, argsList):
+		"""
+		If this is the first city founded, apply naming to each unit without a name.
+		"""
+		pCity = argsList[0]
+		pPlayer = gc.getPlayer(pCity.getOwner())
+		if not pCity.isCapital():
+			BugUtil.alert("not capital")
+		if pPlayer.getNumCities() == 1:
+			BugUtil.alert("> 1 city")
+		if pCity.getOwner() == PlayerUtil.getActivePlayerID():
+			BugUtil.alert("not active player") 
+		if UnitNamingOpt.isEnabled():
+			BugUtil.alert("disabled")
+		if not (pCity.isCapital() 
+		and pPlayer.getNumCities() == 1
+		and pCity.getOwner() == PlayerUtil.getActivePlayerID() 
+		and UnitNamingOpt.isEnabled()):
+			return
+		lUnitReName = UnitReName()
+		
+		for pUnit in PlayerUtil.playerUnits(pPlayer):
+			BugUtil.alert("Name = %s", pUnit.getNameNoDesc())
+			if pUnit.getNameNoDesc() == "" or pUnit.getNameNoDesc() == gc.getUnitInfo(pUnit.getUnitType()).getName():
+				zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+				zsUnitCombat = lUnitReName.getUnitCombat(pUnit)
+				zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
+				
+				#BUGPrint("ERA(%s)" % (zsEra))
+				#BUGPrint("Combat(%s)" % (zsUnitCombat))
+				#BUGPrint("Class(%s)" % (zsUnitClass))
+				
+				zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+				zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, True)
+				
+				if zsUnitName:
+					pUnit.setName(zsUnitName)
 
 
 
