@@ -41,7 +41,7 @@
 		<Tag>TXT_KEY_BUFFYWARNING_MAC</Tag>
 		<English>[COLOR_WARNING_TEXT]Mac Players cannot submit HoF Entries[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]Mac Players cannot submit HoF Entries[COLOR_REVERT]</French>
-		<German>[COLOR_WARNING_TEXT]Mac Players cannot submit HoF Entries[COLOR_REVERT]</German>
+		<German>[COLOR_WARNING_TEXT]Mac-Spieler können keine HoF-Ergebnisse einreichen[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]Mac Players cannot submit HoF Entries[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]Mac Players cannot submit HoF Entries[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -97,7 +97,7 @@
 		<Tag>TXT_KEY_BUFFYWARNING_DLL_MISSING</Tag>
 		<English>[COLOR_WARNING_TEXT]The BUFFY DLL is missing.[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT]The BUFFY DLL is missing.[COLOR_REVERT]</French>
-		<German>[COLOR_WARNING_TEXT]The BUFFY DLL is missing.[COLOR_REVERT]</German>
+		<German>[COLOR_WARNING_TEXT]Die BUFFY-DLL fehlt[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT]The BUFFY DLL is missing.[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT]The BUFFY DLL is missing.[COLOR_REVERT]</Spanish>
 	</TEXT>
@@ -145,7 +145,7 @@
 		<Tag>TXT_KEY_BUFFYWARNING_REQUIRED</Tag>
 		<English>[COLOR_WARNING_TEXT](Required)[COLOR_REVERT]</English>
 		<French>[COLOR_WARNING_TEXT](Required)[COLOR_REVERT]</French>
-		<German>[COLOR_WARNING_TEXT](Required)[COLOR_REVERT]</German>
+		<German>[COLOR_WARNING_TEXT](erforderlich)[COLOR_REVERT]</German>
 		<Italian>[COLOR_WARNING_TEXT](Required)[COLOR_REVERT]</Italian>
 		<Spanish>[COLOR_WARNING_TEXT](Required)[COLOR_REVERT]</Spanish>
 	</TEXT>
