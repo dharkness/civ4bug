@@ -44,7 +44,7 @@ New Features:
 - Technology Chooser
 	Added color-coded shadow denoting each technology's era
 - BUFFY
-	Barbarian events require Priesthood
+	Barbarian Uprising events require Priesthood
 
 Improvements:
 
