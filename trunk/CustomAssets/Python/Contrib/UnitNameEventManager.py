@@ -202,6 +202,7 @@ class BuildUnitName(AbstractBuildUnitName):
 		eventManager.addEventHandler("kbdEvent", self.onKbdEvent)
 		eventManager.addEventHandler("unitBuilt", self.onUnitBuilt)
 		eventManager.addEventHandler("cityBuilt", self.onCityBuilt)
+		eventManager.addEventHandler("goodyReceived", self.onGoodyReceived)
 
 		self.eventMgr = eventManager
 		self.config = None
@@ -267,37 +268,51 @@ class BuildUnitName(AbstractBuildUnitName):
 		"""
 		pCity = argsList[0]
 		pPlayer = gc.getPlayer(pCity.getOwner())
-		if not pCity.isCapital():
-			BugUtil.alert("not capital")
-		if pPlayer.getNumCities() == 1:
-			BugUtil.alert("> 1 city")
-		if pCity.getOwner() == PlayerUtil.getActivePlayerID():
-			BugUtil.alert("not active player") 
-		if UnitNamingOpt.isEnabled():
-			BugUtil.alert("disabled")
 		if not (pCity.isCapital() 
 		and pPlayer.getNumCities() == 1
 		and pCity.getOwner() == PlayerUtil.getActivePlayerID() 
 		and UnitNamingOpt.isEnabled()):
 			return
 		lUnitReName = UnitReName()
-		
+		zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 		for pUnit in PlayerUtil.playerUnits(pPlayer):
-			BugUtil.alert("Name = %s", pUnit.getNameNoDesc())
-			if pUnit.getNameNoDesc() == "" or pUnit.getNameNoDesc() == gc.getUnitInfo(pUnit.getUnitType()).getName():
-				zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+			if pUnit.getNameNoDesc() == "":
 				zsUnitCombat = lUnitReName.getUnitCombat(pUnit)
 				zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
-				
-				#BUGPrint("ERA(%s)" % (zsEra))
-				#BUGPrint("Combat(%s)" % (zsUnitCombat))
-				#BUGPrint("Class(%s)" % (zsUnitClass))
-				
 				zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
 				zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, True)
-				
 				if zsUnitName:
 					pUnit.setName(zsUnitName)
+
+	def onGoodyReceived(self, argsList):
+		"""
+		Name free units from goody huts.
+		"""
+		iPlayer, pPlot, pUnit, iGoodyType = argsList
+		goody = gc.getGoodyInfo(iGoodyType)
+		if goody.getUnitClassType() != -1:
+			if iPlayer == PlayerUtil.getActivePlayerID() and UnitNamingOpt.isEnabled():
+				pPlayer = gc.getPlayer(iPlayer)
+				pCity = pPlayer.getCapitalCity()
+				if pCity is None or pCity.isNone():
+					class EmpireAsCity:
+						def __init__(self, name):
+							self.name = name
+						def getName(self):
+							return self.name
+					pCity = EmpireAsCity(pPlayer.getCivilizationShortDescription(0))
+				lUnitReName = UnitReName()
+				zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
+				for i in range(pPlot.getNumUnits()):
+					pUnit = pPlot.getUnit(i)
+					if pUnit and not pUnit.isNone() and pUnit.getOwner() == iPlayer:
+						if pUnit.getNameNoDesc() == "":
+							zsUnitCombat = lUnitReName.getUnitCombat(pUnit)
+							zsUnitClass = gc.getUnitClassInfo(pUnit.getUnitClassType()).getType()
+							zsUnitNameConv = lUnitReName.getUnitNameConvFromIniFile(zsEra, zsUnitClass, zsUnitCombat)
+							zsUnitName = lUnitReName.getUnitName(zsUnitNameConv, pUnit, pCity, True)
+							if zsUnitName:
+								pUnit.setName(zsUnitName)
 
 
 
