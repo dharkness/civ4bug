@@ -268,9 +268,9 @@ def log(level, message, args=()):
 
 def logToScreen(message):
 	"""
-	Displays the message in the on-screen message area.
+	Displays the message in the on-screen message area after escaping < and >.
 	"""
-	interface.addImmediateMessage(message, "")
+	interface.addImmediateMessage(escapeXml(message), "")
 
 def logToFile(message):
 	"""
