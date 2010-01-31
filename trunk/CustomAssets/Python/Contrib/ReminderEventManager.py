@@ -177,7 +177,7 @@ class ReminderEventManager:
 	def addReminder(self, playerID, reminder):
 		if hasNetMessage():
 			player = gc.getPlayer(playerID)
-			player.addReminder(reminder.turn, str(reminder.message))
+			player.addReminder(reminder.turn, reminder.message)
 		else:
 			self.reminders.push(playerID, reminder)
 	
