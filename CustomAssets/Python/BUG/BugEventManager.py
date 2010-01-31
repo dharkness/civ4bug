@@ -21,6 +21,12 @@
 ##   - fireEvent(eventType, args...)
 ##       Fires an event from Python, building an argList from the arguments passed in
 ##
+##   - setPopupHandler(eventType, handler)
+##       Sets the handler for the given popup event type
+##
+##   - setPopupHandlers(eventType, name, beginFunction, applyFunction)
+##       Calls setPopupHandler() with a composed handler tuple
+##
 ##   - removePopupHandler(eventType)
 ##       Removes the handlers for a popup event (int)
 ##
@@ -273,20 +279,26 @@ class BugEventManager(CvEventManager.CvEventManager):
 		else:
 			self.EventHandlerMap[eventType] = []
 	
-	def setPopupHandler(self, eventType, popupHandler):
+	def setPopupHandler(self, eventType, handler):
 		"""Removes all previously installed popup handlers for the given 
-		event type and installs a new handler.
+		event type and installs a new pair of handlers.
 		
 		The eventType should be an integer.  It must be unique with respect
 		to the integers assigned to built in events.  The popupHandler should
-		be a list made up of (name, beginFunction, applyFunction).  The name
+		be a list made up of (name, applyFunction, beginFunction).  The name
 		is used in debugging output.  The begin and apply functions are invoked
 		by beginEvent and applyEvent, respectively, to manage a popup dialog
 		in response to the event.
 
 		"""
-		BugUtil.debug("BugEventManager - setting popup handler for event %d", eventType)
-		self.Events[eventType] = popupHandler
+		BugUtil.debug("BugEventManager - setting popup handler for event %s (%d)", handler[0], eventType)
+		self.Events[eventType] = handler
+	
+	def setPopupHandlers(self, eventType, name, beginFunction, applyFunction):
+		"""Builds a handler tuple to pass to setPopupHandler().
+		
+		"""
+		self.setPopupHandler(eventType, (name, applyFunction, beginFunction))
 	
 	def removePopupHandler(self, eventType):
 		"""Removes all previously installed popup handlers for the given 
@@ -349,7 +361,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 				try:
 					eventHandler(argsList)
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
+					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
 
 	def _handleConsumableEvent(self, eventType, argsList):
 		"""Handles events that can be consumed by the handlers, such as
@@ -366,7 +378,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 					if (result > 0):
 						return result
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
+					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
 		return 0
 
 	# TODO: this probably needs to be more complex
@@ -380,7 +392,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 				try:
 					result += eventHandler(argsList)
 				except:
-					BugUtil.trace("Error in %s event handler %s", eventType, BugUtil.escapeXml(eventHandler))
+					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
 		return result
 
 	def _handleInitBugEvent(self, eventType, argsList):
