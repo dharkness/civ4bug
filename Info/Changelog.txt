@@ -50,6 +50,8 @@ Improvements:
 
 - Main Interface
 	Unit Plot drawing improvements (pre-work only at the moment)
+- Great Person Bar
+	Added city's total GP/Turn to hover.
 - City Screen
 	Can select which tiles to count in Raw Yields when Civ starts
 - Foreign Advisor

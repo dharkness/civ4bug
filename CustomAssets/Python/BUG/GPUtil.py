@@ -26,10 +26,11 @@ import FontUtil
 import PlayerUtil
 
 gc = CyGlobalContext()
-localText = CyTranslator()
+
+# Generic GP icon
+g_gpIcon = None
 
 # Unit Type of each great person that can gain GP points
-
 g_gpBarList = (
 	"UNIT_GREAT_SPY",
 	"UNIT_ENGINEER",
@@ -44,7 +45,6 @@ g_gpBarList = (
 
 # Named constants for each great person and total number of GP types
 # These must be in the exact same order as the list above
-
 NUM_GP = len(g_gpBarList)
 (
 	GP_SPY,
@@ -58,8 +58,7 @@ NUM_GP = len(g_gpBarList)
 	#GP_DOCTOR,
 ) = range(NUM_GP)
 
-# Maps GP type to unit ID and color to show in GP Bar
-
+# Map each GP type to unit ID, color, and icon to show in GP Bar
 g_gpUnitTypes = None
 g_gpColors = None
 g_unitIcons = None
@@ -68,6 +67,9 @@ g_unitIcons = None
 # Information
 
 def init():
+	global g_gpIcon
+	g_gpIcon = FontUtil.getChar("greatpeople")
+	
 	global g_gpUnitTypes
 	g_gpUnitTypes = [None] * NUM_GP
 	for i, s in enumerate(g_gpBarList):
@@ -194,16 +196,16 @@ def getHoverText(eWidgetType, iData1, iData2, bOption):
 	city, iTurns = getDisplayCity()
 	if (not city):
 		# no rate or progress in any city and no city selected
-		return localText.getText("TXT_KEY_MISC_GREAT_PERSON", (0, PlayerUtil.getActivePlayer().greatPeopleThreshold(False)))
+		return BugUtil.getText("TXT_KEY_MISC_GREAT_PERSON", (0, PlayerUtil.getActivePlayer().greatPeopleThreshold(False)))
 	iThreshold = gc.getPlayer(city.getOwner()).greatPeopleThreshold(False)
 	iProgress = city.getGreatPeopleProgress()
 	iRate = city.getGreatPeopleRate()
 	szText = BugUtil.colorText(city.getName(), "COLOR_HIGHLIGHT_TEXT")
 	szText += u"\n"
-	szText += localText.getText("TXT_KEY_MISC_GREAT_PERSON", (iProgress, iThreshold))
+	szText += BugUtil.getText("TXT_KEY_MISC_GREAT_PERSON", (iProgress, iThreshold))
 	if (iRate > 0):
-		szText += u"\n"
-		szText += localText.getText("INTERFACE_CITY_TURNS", (iTurns,))
+		szText += u"\n%d%s%s " % (iRate, g_gpIcon, BugUtil.getPlainText("TXT_KEY_PER_TURN"))
+		szText += BugUtil.getText("INTERFACE_CITY_TURNS", (iTurns,))
 	
 	percents = calcPercentages(city)
 	if (len(percents) > 0):
@@ -218,16 +220,16 @@ def getHoverText(eWidgetType, iData1, iData2, bOption):
 def getGreatPeopleText(city, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypesOne, bIncludeCityName):
 	sGreatPeopleChar = u"%c" % CyGame().getSymbolID(FontSymbols.GREAT_PEOPLE_CHAR)
 	if (not city):
-		szText = localText.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
+		szText = BugUtil.getText("INTERFACE_GREAT_PERSON_NONE", (sGreatPeopleChar, ))
 	elif (bGPBarTypesNone):
 		if (iGPTurns):
 			if (bIncludeCityName):
-				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
+				szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 			else:
-				szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
+				szText = BugUtil.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 		else:
 			if (bIncludeCityName):
-				szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
+				szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 			else:
 				szText = sGreatPeopleChar
 	else:
@@ -235,12 +237,12 @@ def getGreatPeopleText(city, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypes
 		if (len(lPercents) == 0):
 			if (iGPTurns):
 				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
+					szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 				else:
-					szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
+					szText = BugUtil.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 			else:
 				if (bIncludeCityName):
-					szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
+					szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 				else:
 					szText = sGreatPeopleChar
 		else:
@@ -251,23 +253,23 @@ def getGreatPeopleText(city, iGPTurns, iGPBarWidth, bGPBarTypesNone, bGPBarTypes
 				pInfo = gc.getUnitInfo(iUnit)
 				if (iGPTurns):
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), city.getName(), iGPTurns))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (pInfo.getDescription(), city.getName(), iGPTurns))
 					else:
-						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (pInfo.getDescription(), iGPTurns))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_TURNS", (pInfo.getDescription(), iGPTurns))
 				else:
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (pInfo.getDescription(), city.getName()))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY", (pInfo.getDescription(), city.getName()))
 					else:
 						szText = unicode(pInfo.getDescription())
 			else:
 				if (iGPTurns):
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY_TURNS", (sGreatPeopleChar, city.getName(), iGPTurns))
 					else:
-						szText = localText.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_TURNS", (sGreatPeopleChar, iGPTurns))
 				else:
 					if (bIncludeCityName):
-						szText = localText.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
+						szText = BugUtil.getText("INTERFACE_GREAT_PERSON_CITY", (sGreatPeopleChar, city.getName()))
 					else:
 						szText = sGreatPeopleChar + u":"
 				szTypes = ""
