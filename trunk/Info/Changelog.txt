@@ -60,6 +60,8 @@ Improvements:
 	Unnamed initial units are named when you found your capital
 	Units from tribal villages (goody huts) are named
 	Random names can now be mixed with other naming codes or static text
+- Reminders
+	Saved for all players in multiplayer games [BULL]
 
 Bug Fixes:
 
@@ -90,6 +92,8 @@ Improvements:
 
 - Translation
 	Split CIV4GameText XML files for Options into individual files matching the Config folder
+- BugEventManager
+	Added addPopupHandlers() that takes the name and functions as parameters instead of a single tuple
 
 Bug Fixes:
 
