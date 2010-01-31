@@ -15,11 +15,13 @@ import CvUtil
 import Popup as PyPopup
 import BugCore
 import BugUtil
+import PlayerUtil
 import SdToolKit
 import autolog
 
 SD_MOD_ID = "Reminders"
-SD_QUEUE_ID = "queue"
+SD_QUEUES_ID = "queues"
+SD_QUEUE_ID = "queue" # old format saves a single queue
 
 STORE_EVENT_ID = CvUtil.getNewEventID("Reminder.Store")
 RECALL_EVENT_ID = CvUtil.getNewEventID("Reminder.Recall")
@@ -31,34 +33,45 @@ ReminderOpt = BugCore.game.Reminder
 g_eventMgr = None
 g_autolog = None
 
+g_reminders = None
+
 # Used to display flashing end-of-turn text
 g_turnReminderTexts = None
 
+# Used to receive network messages
+g_hasNetMessage = hasattr(CyPlayer, "addReminder")
+def hasNetMessage():
+	return g_hasNetMessage
+def netAddReminder(args):
+	playerID, turn, message = args
+	g_reminders.push(playerID, Reminder(turn, message))
+# expose to DLL
+import CvAppInterface
+CvAppInterface.netAddReminder = netAddReminder
+
+# Shortcut - Create Reminder
 def createReminder(argsList):
 	g_eventMgr.beginEvent(STORE_EVENT_ID)
 
 class ReminderEventManager:
 
 	def __init__(self, eventManager):
-
 		global g_autolog
 		g_autolog = autolog.autologInstance()
-		
 		global g_eventMgr
 		g_eventMgr = eventManager
-		ReminderEvent(eventManager, self)
-
-		self.reminders = ReminderQueue()
-		self.endOfTurnReminders = ReminderQueue()
-		self.reminder = None
-
-		# additions to self.Events
-		moreEvents = {
-			STORE_EVENT_ID       : ('', self.__eventReminderStoreApply,  self.__eventReminderStoreBegin),
-			RECALL_EVENT_ID      : ('', self.__eventReminderRecallApply, self.__eventReminderRecallBegin),
-			RECALL_AGAIN_EVENT_ID : ('', self.__eventReminderRecallAgainApply, self.__eventReminderRecallAgainBegin),
-		}
-		eventManager.Events.update(moreEvents)
+		self.initReminders()
+		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
+		eventManager.addEventHandler("EndGameTurn", self.onEndGameTurn)
+		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
+		eventManager.addEventHandler("GameStart", self.onGameStart)
+		eventManager.addEventHandler("OnLoad", self.onLoadGame)
+		eventManager.addEventHandler("PythonReloaded", self.onLoadGame)
+		eventManager.addEventHandler("OnPreSave", self.onPreSave)
+		eventManager.addEventHandler("SwitchHotSeatPlayer", self.onSwitchHotSeatPlayer)
+		eventManager.setPopupHandlers(STORE_EVENT_ID, 'Reminder.Store', self.__eventReminderStoreBegin, self.__eventReminderStoreApply)
+		eventManager.setPopupHandlers(RECALL_EVENT_ID, 'Reminder.Recall', self.__eventReminderRecallBegin, self.__eventReminderRecallApply)
+		eventManager.setPopupHandlers(RECALL_AGAIN_EVENT_ID, 'Reminder.RecallAgain', self.__eventReminderRecallAgainBegin, self.__eventReminderRecallAgainApply)
 
 	def __eventReminderStoreBegin(self, argsList):
 		header = BugUtil.getPlainText("TXT_KEY_REMINDER_HEADER")
@@ -76,12 +89,15 @@ class ReminderEventManager:
 
 	def __eventReminderStoreApply(self, playerID, userData, popupReturn):
 		if (popupReturn.getButtonClicked() != 1):
-			reminderTurn = popupReturn.getSpinnerWidgetValue(0) + gc.getGame().getGameTurn()
-			reminderText = popupReturn.getEditBoxString(1)
-			reminder = Reminder(reminderTurn, reminderText)
-			self.reminders.push(reminder)
-			if (g_autolog.isLogging() and ReminderOpt.isAutolog()):
-				g_autolog.writeLog("Reminder: On Turn %d, %s" % (reminderTurn, reminderText))
+			turns = popupReturn.getSpinnerWidgetValue(0)
+			if turns < 0:
+				BugUtil.error("Invalid number of turns (%d) for reminder", turns)
+			else:
+				reminderTurn = turns + gc.getGame().getGameTurn()
+				reminderText = popupReturn.getEditBoxString(1)
+				self.addReminder(playerID, Reminder(reminderTurn, reminderText))
+				if (g_autolog.isLogging() and ReminderOpt.isAutolog()):
+					g_autolog.writeLog("Reminder: On Turn %d, %s" % (reminderTurn, reminderText))
 
 	def __eventReminderRecallBegin(self, argsList):
 		self.showReminders(False)
@@ -89,7 +105,8 @@ class ReminderEventManager:
 	def __eventReminderRecallApply(self, playerID, userData, popupReturn):
 		if (popupReturn.getButtonClicked() != 1):
 			if (self.reminder):
-				self.endOfTurnReminders.push(self.reminder)
+				self.reminder.turn = gc.getGame().getGameTurn()
+				self.addReminder(playerID, self.reminder)
 				self.reminder = None
 
 	def __eventReminderRecallAgainBegin(self, argsList):
@@ -100,33 +117,30 @@ class ReminderEventManager:
 			if (self.reminder):
 				# Put it back into the queue for next turn
 				self.reminder.turn += 1
-				self.reminders.push(self.reminder)
+				self.addReminder(playerID, self.reminder)
 				self.reminder = None
 
 	def showReminders(self, endOfTurn):
 		global g_turnReminderTexts
 		thisTurn = gc.getGame().getGameTurn()
 		if (endOfTurn):
-			queue = self.endOfTurnReminders
 			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
 			eventId = RECALL_AGAIN_EVENT_ID
 		else:
 			g_turnReminderTexts = ""
-			queue = self.reminders
-			# endTurnReady isn't firing :(
 			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_END_TURN_PROMPT")
 			eventId = RECALL_EVENT_ID
-#			prompt = BugUtil.getPlainText("TXT_KEY_REMIND_NEXT_TURN_PROMPT")
-#			eventId = RECALL_AGAIN_EVENT_ID
 		yes = BugUtil.getPlainText("TXT_KEY_POPUP_YES")
 		no = BugUtil.getPlainText("TXT_KEY_POPUP_NO")
+		queue = self.reminders.get(PlayerUtil.getActivePlayerID())
 		while (not queue.isEmpty()):
 			nextTurn = queue.nextTurn()
 			if (nextTurn > thisTurn):
 				break
 			elif (nextTurn < thisTurn):
 				# invalid (lost) reminder
-				queue.pop()
+				reminder = queue.pop()
+				BugUtil.warn("Reminder - skipped turn %d: %s", reminder.turn, reminder.message)
 			else:
 				self.reminder = queue.pop()
 				if (g_autolog.isLogging() and ReminderOpt.isAutolog()):
@@ -136,7 +150,7 @@ class ReminderEventManager:
 						g_turnReminderTexts += ", "
 					g_turnReminderTexts += self.reminder.message
 				if (ReminderOpt.isShowMessage()):
-					CyInterface().addMessage(CyGame().getActivePlayer(), True, 10, self.reminder.message, 
+					CyInterface().addMessage(PlayerUtil.getActivePlayerID(), True, 10, self.reminder.message, 
 											 None, 0, None, ColorTypes(8), 0, 0, False, False)
 				if (ReminderOpt.isShowPopup()):
 					popup = PyPopup.PyPopup(eventId, EventContextTypes.EVENTCONTEXT_SELF)
@@ -146,106 +160,192 @@ class ReminderEventManager:
 					popup.addButton(no)
 					popup.launch(False)
 
+	def initReminders(self):
+		self.setReminders(Reminders())
+		self.reminder = None
+	
+	def setReminders(self, queues):
+		self.reminders = queues
+		global g_reminders
+		g_reminders = queues
+
 	def clearReminders(self):
 		self.reminders.clear()
-		self.endOfTurnReminders.clear()
 		global g_turnReminderTexts
 		g_turnReminderTexts = None
 	
-	def setReminders(self, queue):
-		self.reminders = queue
-
-
-class ReminderEvent:
-
-	def __init__(self, eventManager, reminderManager):
-		eventManager.addEventHandler("BeginActivePlayerTurn", self.onBeginActivePlayerTurn)
-		eventManager.addEventHandler("endTurnReady", self.onEndTurnReady)
-		eventManager.addEventHandler("GameStart", self.onGameStart)
-		eventManager.addEventHandler("OnLoad", self.onLoadGame)
-		eventManager.addEventHandler("PythonReloaded", self.onLoadGame)
-		eventManager.addEventHandler("OnPreSave", self.onPreSave)
-		eventManager.addEventHandler("SwitchHotSeatPlayer", self.onSwitchHotSeatPlayer)
-		
-		self.reminderManager = reminderManager
+	def addReminder(self, playerID, reminder):
+		if hasNetMessage():
+			player = gc.getPlayer(playerID)
+			player.addReminder(reminder.turn, str(reminder.message))
+		else:
+			self.reminders.push(playerID, reminder)
 	
 	def createReminder(self):
 		g_eventMgr.beginEvent(STORE_EVENT_ID)
 	
 	def onSwitchHotSeatPlayer(self, argsList):
-		"Clears the end turn text so hot seat players don't see each others reminders."
+		"""
+		Clears the end turn text so hot seat players don't see each other's reminders.
+		"""
 		ePlayer = argsList[0]
-		
 		global g_turnReminderTexts
 		g_turnReminderTexts = None
-		CvMainInterface.g_mainInterface.resetEndTurnObjects()
 
 	def onBeginActivePlayerTurn(self, argsList):
-		"Called at the start of the active player's turn."
+		"""
+		Display the active player's reminders.
+		"""
 		iGameTurn = argsList[0]
-
 		global g_turnReminderTexts
 		g_turnReminderTexts = None
 		if (ReminderOpt.isEnabled()):
 			g_eventMgr.beginEvent(RECALL_EVENT_ID)
 
-	def onEndTurnReady(self, argsList):
+	def onEndGameTurn(self, argsList):
+		"""
+		Clears reminders up to and including the turn that just ended for all players.
+		"""
 		iGameTurn = argsList[0]
-		
+		self.reminders.clearBefore(iGameTurn + 1)
+
+	def onEndTurnReady(self, argsList):
+		"""
+		Display reminders set to repeat this turn.
+		"""
+		iGameTurn = argsList[0]
 		if (ReminderOpt.isEnabled()):
 			g_eventMgr.beginEvent(RECALL_AGAIN_EVENT_ID)
 
 	def onGameStart(self, argsList):
-		'Called when a new game is started'
-		self.reminderManager.clearReminders()
+		"""
+		Clear all reminders.
+		"""
+		self.clearReminders()
 
 	def onLoadGame(self, argsList):
-		'Called when a game is loaded'
-		self.reminderManager.clearReminders()
-		queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
-		if (queue):
-			self.reminderManager.setReminders(queue)
+		"""
+		Load saved reminders.
+		"""
+		self.clearReminders()
+		queues = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUES_ID)
+		if queues:
+			self.setReminders(queues)
+		else:
+			# check for old save format (single queue)
+			queue = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_QUEUE_ID)
+			if queue:
+				BugUtil.info("Reminder - Converting single-queue format")
+				self.setReminders(Reminders(queue))
+				SdToolKit.sdDelGlobal(SD_MOD_ID, SD_QUEUE_ID)
 
 	def onPreSave(self, argsList):
-		"Called before a game is actually saved"
-		if (not self.reminderManager.reminders.isEmpty()):
-			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUE_ID, self.reminderManager.reminders)
+		"""
+		Save reminders.
+		"""
+		if self.reminders.isEmpty():
+			SdToolKit.sdDelGlobal(SD_MOD_ID, SD_QUEUES_ID)
+		else:
+			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_QUEUES_ID, self.reminders)
 
 
 class Reminder(object):
-
 	def __init__(self, turn, message):
 		self.turn = turn
 		self.message = message
 
-
 class ReminderQueue(object):
-
 	def __init__(self):
-		self.queue = []
-
+		self.clear()
 	def clear(self):
 		self.queue = []
-
+	def clearBefore(self, turn, log=False):
+		while not self.isEmpty() and self.nextTurn() < turn:
+			reminder = self.pop()
+			if log:
+				BugUtil.warn("Reminder - skipped turn %d: %s", reminder.turn, reminder.message)
 	def size(self):
 		return len(self.queue)
-
 	def isEmpty(self):
-		return len(self.queue) == 0
-
+		return self.size() == 0
 	def nextTurn(self):
-		if (self.isEmpty()):
+		reminder = self.peek()
+		if reminder:
+			return reminder.turn
+		else:
 			return -1
-		return self.queue[0].turn
-
 	def push(self, reminder):
 		for i, r in enumerate(self.queue):
 			if (reminder.turn < r.turn):
 				self.queue.insert(i, reminder)
-				return
-		self.queue.append(reminder)
-
+				break
+		else:
+			self.queue.append(reminder)
 	def pop(self):
-		if (self.isEmpty()):
+		if self.isEmpty():
 			return None
-		return self.queue.pop(0)
+		else:
+			return self.queue.pop(0)
+	def peek(self):
+		if self.isEmpty():
+			return None
+		else:
+			return self.queue[0]
+
+class EmptyQueue(object):
+	def clear(self):
+		BugUtil.warn("Cannot call EmptyQueue.clear()")
+	def clearBefore(self, turn, log=False):
+		pass
+	def size(self):
+		return 0
+	def isEmpty(self):
+		return True
+	def nextTurn(self):
+		return -1
+	def push(self, reminder):
+		BugUtil.error("Cannot call EmptyQueue.push()")
+	def pop(self):
+		return None
+	def peek(self):
+		return None
+EMPTY_QUEUE = EmptyQueue()
+
+class Reminders(object):
+	def __init__(self, queue=None):
+		self.clear()
+		if queue:
+			self.queues[PlayerUtil.getActivePlayerID()] = queue
+	def clear(self):
+		self.queues = {}
+	def clearBefore(self, turn, log=False):
+		for queue in self.queues.itervalues():
+			queue.clearBefore(turn, log)
+	def exists(self, playerID):
+		return playerID in self.queues
+	def get(self, playerID):
+		if self.exists(playerID):
+			return self.queues[playerID]
+		else:
+			return EMPTY_QUEUE
+	def getForUpdate(self, playerID):
+		if self.exists(playerID):
+			return self.queues[playerID]
+		else:
+			queue = self.queues[playerID] = ReminderQueue()
+			return queue
+	def size(self, playerID=None):
+		if playerID:
+			return self.get(playerID).size()
+		else:
+			return len(self.queues)
+	def isEmpty(self, playerID=None):
+		return self.size(playerID) == 0
+	def nextTurn(self, playerID):
+		return self.get(playerID).nextTurn()
+	def push(self, playerID, reminder):
+		self.getForUpdate(playerID).push(reminder)
+	def pop(self, playerID):
+		self.get(playerID).pop()
+	def peek(self, playerID):
+		return self.get(playerID).peek()
