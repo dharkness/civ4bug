@@ -155,6 +155,8 @@ New Features:
 	playerRevolution(ePlayer, iAnarchyTurns, leOldCivics, leNewCivics) [BULL]
 - CityUtil
 	Use willGrowThisTurn() and willShrinkThisTurn() instead of CyCity.getFoodTurnsLeft()
+- BugUtil
+	Added lookupModule() to acquire a module without looking up a function
 
 Improvements:
 
@@ -164,6 +166,7 @@ Improvements:
 Bug Fixes:
 
 - GameUtils
+	<gameutils> now auto-detects module-level handlers and listeners (omit "class")
 	Fixed problem when using <callback> element to define new callbacks
 	New <callback>s no longer require a default value (omit both "type" and "default")
 
