@@ -1324,11 +1324,18 @@ class BaseOptionHandler(BugConfig.Handler):
 		id = qualify(mod._id, id)
 		andId = qualify(mod._id, andId)
 		dll = self.resolveDll(element, dll)
+		option = None
 		if key:
 			ini = element.getState("ini")
-			section = element.getState("ini-section")
-			option = IniOption(mod, id, ini, section, key, type, default, andId, dll, title, tooltip, dirtyBit)
-		else:
+			if not ini:
+				BugUtil.warn("BugConfig - <option> %s outside <options> element has a key attribute; making it unsaved", id)
+			else:
+				section = element.getState("ini-section")
+				if not section:
+					BugUtil.warn("BugConfig - <option> %s inside <options> element must be inside a <section> element; making it unsaved", id)
+				else:
+					option = IniOption(mod, id, ini, section, key, type, default, andId, dll, title, tooltip, dirtyBit)
+		if option is None:
 			option = UnsavedOption(mod, id, type, default, andId, dll, title, tooltip, dirtyBit)
 		self.addOption(mod, option, getter, setter)
 		element.setState("option", option)
@@ -1339,11 +1346,18 @@ class BaseOptionHandler(BugConfig.Handler):
 		id = qualify(mod._id, id)
 		andId = qualify(mod._id, andId)
 		dll = self.resolveDll(element, dll)
+		option = None
 		if key:
 			ini = element.getState("ini")
-			section = element.getState("ini-section")
-			option = IniListOption(mod, id, ini, section, key, type, default, andId, dll, listType, values, format, title, tooltip, dirtyBit)
-		else:
+			if not ini:
+				BugUtil.warn("BugConfig - <list> %s outside <options> element has a key attribute; making it unsaved", id)
+			else:
+				section = element.getState("ini-section")
+				if not section:
+					BugUtil.warn("BugConfig - <list> %s inside <options> element must be inside a <section> element; making it unsaved", id)
+				else:
+					option = IniListOption(mod, id, ini, section, key, type, default, andId, dll, listType, values, format, title, tooltip, dirtyBit)
+		if option is None:
 			option = UnsavedListOption(mod, id, type, default, andId, dll, listType, values, format, title, tooltip, dirtyBit)
 		self.addOption(mod, option, getter, setter)
 		element.setState("option", option)
