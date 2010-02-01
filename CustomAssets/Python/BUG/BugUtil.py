@@ -579,7 +579,7 @@ class Function:
 		self.bind()
 		if args or kwargs:
 			self.setArguments(*args, **kwargs)
-		debug("BUG: calling %r" % self)
+		debug("BugUtil - calling %r" % self)
 		return self.function(*self.args, **self.kwargs)
 	
 	def __call__(self, *args, **kwargs):
@@ -593,17 +593,24 @@ class Function:
 			return "<func %s.%s>" % \
 		   	   	   (self.__module__, self.__name__)
 
-def lookupFunction(module, functionOrClass):
-	debug("BUG: looking up %s.%s", module, functionOrClass)
+def lookupModule(module, log=True):
+	if log:
+		debug("BugUtil - looking up %s", module)
 	try:
-		return getattr(__import__(module), functionOrClass)
+		return __import__(module)
 	except ImportError:
 		raise ConfigError("No such module '%s'", module)
+
+def lookupFunction(module, functionOrClass, log=True):
+	if log:
+		debug("BugUtil - looking up %s.%s", module, functionOrClass)
+	try:
+		return getattr(lookupModule(module, False), functionOrClass)
 	except AttributeError:
 		raise ConfigError("Module '%s' must define function or class '%s'", module, functionOrClass)
 
 def bindFunction(obj, functionOrAttribute):
-	debug("BUG: binding %s.%s to %s", obj.__class__, functionOrAttribute, obj)
+	debug("BugUtil - binding %s.%s to %s", obj.__class__, functionOrAttribute, obj)
 	try:
 		return getattr(obj, functionOrAttribute)
 	except AttributeError:

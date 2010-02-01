@@ -96,8 +96,11 @@ g_dispatcher = None
 
 ## Configuration
 
-def addUtils(utils, override=False, log=None):
-	getDispatcher()._addUtils(utils, log)
+def addModuleUtils(utils, override=False, log=None):
+	getDispatcher()._addModuleUtils(utils, log)
+
+def addClassUtils(utils, override=False, log=None):
+	getDispatcher()._addClassUtils(utils, log)
 
 
 def addHandler(func, override=False, log=None):
@@ -260,7 +263,22 @@ class Dispatcher:
 	def _addBoundListener(self, name, utils, func, log=None):
 		self._addListener(name, self._bind(utils, func), log)
 	
-	def _addUtils(self, utils, override=False, log=None):
+	def _addModuleUtils(self, utils, override=False, log=None):
+		"""
+		Registers all of the handler and listener functions in <utils> that match existing callbacks.
+		"""
+		BugUtil.debug("BugGameUtils - registering %s", utils.__name__)
+		for name, func in utils.__dict__.iteritems():
+			if not name.startswith("_") and isinstance(func, types.FunctionType):
+				if name.endswith(LISTENER_SUFFIX):
+					name = name[:-len(LISTENER_SUFFIX)]
+					if name in self._callbacks:
+						self._addListener(name, func, log)
+				else:
+					if name in self._callbacks:
+						self._addHandler(name, func, override, log)
+	
+	def _addClassUtils(self, utils, override=False, log=None):
 		"""
 		Registers all of the handler and listener functions in <utils> that match existing callbacks.
 		"""
@@ -396,14 +414,17 @@ class GameUtilsHandler(BugConfig.Handler):
 											module, clazz, listener, listener + "Listener")
 							addListener(func, log)
 				else:
-					addUtils(utils, override, log)
+					addClassUtils(utils, override, log)
 			else:
-				if handlers:
-					for handler in handlers.replace(",", " ").split():
-						addHandler(BugUtil.lookupFunction(module, handler), override, log)
-				if listeners:
-					for listener in listeners.replace(",", " ").split():
-						addListener(BugUtil.lookupFunction(module, listener), log)
+				if handlers or listeners:
+					if handlers:
+						for handler in handlers.replace(",", " ").split():
+							addHandler(BugUtil.lookupFunction(module, handler), override, log)
+					if listeners:
+						for listener in listeners.replace(",", " ").split():
+							addListener(BugUtil.lookupFunction(module, listener), log)
+				else:
+					addModuleUtils(BugUtil.lookupModule(module), override, log)
 		else:
 			BugUtil.info("BugGameUtils - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, clazz, self.resolveDll(element, dll))
 
