@@ -162,14 +162,18 @@ Improvements:
 
 - Options
 	Shortcut Reminder message uses CvModName.modName instead of "BUG Mod"
+- GameUtils
+	<gameutils> now auto-detects module-level handlers and listeners (omit "class")
+	Logs a warning if a listener returns a value or all handlers return None
+	Traps and logs exceptions raised by handlers and listeners
 
 Bug Fixes:
 
 - GameUtils
-	<gameutils> now auto-detects module-level handlers and listeners (omit "class")
 	Fixed problem when using <callback> element to define new callbacks
 	New <callback>s no longer require a default value (omit both "type" and "default")
-	Logs a warning if a listener returns a value
+	Logs a warning if a listener returns a value or all handlers return None
+	Traps and logs exceptions raised by handlers and listeners 
 
 
 ____________________________________________________________________________________________________
