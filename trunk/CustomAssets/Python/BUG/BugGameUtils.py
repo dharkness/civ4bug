@@ -343,9 +343,11 @@ class Callback:
 	
 	def callListener(self, listener, argsList, result):
 		if argsList is None:
-			listener(result)
+			ignored = listener(result)
 		else:
-			listener(argsList, result)
+			ignored = listener(argsList, result)
+		if ignored is not None:
+			BugUtil.warn("BugGameUtils - %s - ignoring %s listener's return value %r", self.name, listener.__module__, ignored)
 	
 	def __call__(self, argsList=None):
 		for handler in self.handlers:
