@@ -690,7 +690,8 @@ class CvEspionageAdvisor:
 						pCity = pyCity.GetCy()
 						szCityName = self.getCityNameText(pCity, self.iActivePlayer, self.iTargetPlayer)
 
-						if (EspionageOpt.isEnabled()
+						if ((EspionageOpt.isEnabled()
+							and pCity.isRevealed(pActivePlayer.getTeam(), false))
 						or (not EspionageOpt.isEnabled()
 							and pCity.isRevealed(pActivePlayer.getTeam(), false))):
 							screen.appendListBoxString(self.CityListBoxWidget, szCityName, WidgetTypes.WIDGET_GENERAL, pCity.getID(), 0, CvUtil.FONT_LEFT_JUSTIFY )
@@ -776,13 +777,14 @@ class CvEspionageAdvisor:
 
 					for pyCity in apCityList:
 						pCity = pyCity.GetCy()
-
-						szTable = self.MissionsTableWidget
-						szText, szCost = self.getTableTextCost(self.iActivePlayer, self.iTargetPlayer, self.iActiveMissionID, pCity.getID())
-						iRow = screen.appendTableRow(szTable)
-						screen.setTableText(szTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
 						if (pCity.isRevealed(pActivePlayer.getTeam(), false)):
-							screen.setTableText(szTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+
+							szTable = self.MissionsTableWidget
+							szText, szCost = self.getTableTextCost(self.iActivePlayer, self.iTargetPlayer, self.iActiveMissionID, pCity.getID())
+							iRow = screen.appendTableRow(szTable)
+							screen.setTableText(szTable, 0, iRow, szText, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
+							if (pCity.isRevealed(pActivePlayer.getTeam(), false)):
+								screen.setTableText(szTable, 2, iRow, szCost, "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
 
 		return 0
 
