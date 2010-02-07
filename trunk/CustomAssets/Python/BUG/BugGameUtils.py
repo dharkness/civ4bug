@@ -23,10 +23,11 @@
 ## a <gameutils> element. If it specifies a "class" attribute, only the listed
 ## handlers and listeners will be registered.
 ##
-## Registering GameUtils Classes
+## Automatically Registering GameUtils
 ##
-##   addUtils(utils, override=False)
-##     Adds all of the functions from <utils> as handlers and listeners. Every function
+##   addModuleUtils(utils, override=False)
+##   addClassUtils(utils, override=False)
+##     Adds all of the functions from <utils> as handlers and listeners. Every handler
 ##     name must match the name of a callback (with "Listener" appended for listeners).
 ##     To ignore a function, begin its name with a single underscore ("_").
 ##     If <override> is True, its handlers are placed before existing handlers.
@@ -63,8 +64,6 @@
 ##     Creates a new callback <name> with base handler <func> and optional <default>.
 ##
 ##       <callback name="<name>" type="<type>" default="<default>" handler="<func>"/>
-##
-## Setting Defaults
 ##
 ##   setDefault(name, default)
 ##     Sets the default for callback <name> to <default>.
