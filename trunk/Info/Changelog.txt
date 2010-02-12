@@ -82,6 +82,7 @@ Bug Fixes:
 	You can always see how many cities your teammates have
 - Unit Naming
 	Phonetic and Greek naming codes now start at first element (alpha)
+	Domain code (^dm^) uses translated description (Water) instead of XML key (DOMAIN_WATER)
 
 MODDING
 
