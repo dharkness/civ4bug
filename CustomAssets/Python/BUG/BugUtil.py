@@ -652,7 +652,7 @@ def fixSets(namespace):
 deferredCallQueue = []
 def deferCall(function, delay=0.0):
 	"""
-	Calls the given function during a future GameUpdate event after at least <delay> seconds.
+	Calls the given function during a future gameUpdate event after at least <delay> seconds.
 	"""
 	global deferredCallQueue
 	if delay < 0.0:
@@ -667,26 +667,30 @@ def deferCall(function, delay=0.0):
 	deferredCallQueue.append(entry)
 
 def doDeferredCalls(argsList=None):
+	"""
+	Calls deferred calls whose timers have expired.
+	"""
 	global deferredCallQueue
-	# insert a marker so that items added during this round of calls will be processed on the next round
-	deferCall(None)
-	while deferredCallQueue:
-		when, func = deferredCallQueue[0]
-		if func is None:
+	if deferredCallQueue:
+		# insert a marker so that items added during this round of calls will be processed on the next round
+		deferCall(None)
+		while deferredCallQueue:
+			when, func = deferredCallQueue[0]
+			if func is None:
+				del deferredCallQueue[0]
+				break
+			if when > time.clock():
+				warn("doDeferredCalls - entry inserted before marker")
+				for i, (when, func) in enumerate(deferredCallQueue):
+					if func is None:
+						del deferredCallQueue[i]
+						break
+				else:
+					error("doDeferredCalls - marker not found")
+				break
 			del deferredCallQueue[0]
-			break
-		if when > time.clock():
-			warn("doDeferredCalls - entry inserted before marker")
-			for i, (when, func) in enumerate(deferredCallQueue):
-				if func is None:
-					del deferredCallQueue[i]
-					break
-			else:
-				error("doDeferredCalls - marker not found")
-			break
-		del deferredCallQueue[0]
-		debug("doDeferredCalls - calling %s", func)
-		func()
+			debug("doDeferredCalls - calling %s", func)
+			func()
 
 
 ## Exception Classes
