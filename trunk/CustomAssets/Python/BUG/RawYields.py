@@ -105,7 +105,6 @@ class Tracker:
 		self._addYield(YieldTypes.YIELD_COMMERCE, DOMESTIC_TRADE, iValue)
 	
 	def addForeignTrade(self, iValue):
-		"""Excludes overseas trade."""
 		self._addYield(YieldTypes.YIELD_COMMERCE, FOREIGN_TRADE, iValue)
 	
 	def processCity(self, pCity):
@@ -185,7 +184,10 @@ class Tracker:
 			iValue = self.getYield(eYield, eType)
 			if iValue != 0:
 				self.appendTable(screen, table, False, BugUtil.getPlainText(LABEL_KEYS[eType]), eYield, iValue, TradeUtil.isFractionalTrade())
-		iTotal += (self.getYield(eYield, DOMESTIC_TRADE) + self.getYield(eYield, FOREIGN_TRADE)) // 100
+		iValue = self.getYield(eYield, DOMESTIC_TRADE) + self.getYield(eYield, FOREIGN_TRADE)
+		if TradeUtil.isFractionalTrade():
+			iValue //= 100
+		iTotal += iValue
 		
 		# Buildings, Corporations, Specialists
 		for eType in (BUILDINGS, CORPORATIONS, SPECIALISTS):
@@ -235,12 +237,14 @@ class Tracker:
 			heading = u"<color=205,180,55,255>%s</color>" % heading
 			value = u"<color=205,180,55,255>%d</color>" % iValue
 			if bFraction:
-				value = u"<color=205,180,55,255>%d.%2d</color>" % (iValue // 100, iValue % 100)
+				# showing fraction doesn't fit in column
+				value = u"<color=205,180,55,255>%d</color>" % (iValue // 100)
 			else:
 				value = u"<color=205,180,55,255>%d</color>" % iValue
 		else:
 			if bFraction:
-				value = u"%+d.%2d" % (iValue // 100, iValue % 100)
+				# showing fraction doesn't fit in column
+				value = u"%+d" % (iValue // 100)
 			else:
 				value = u"%+d" % iValue
 		screen.setTableText(table, HEADING_COLUMN, self.iRow, u"<font=1>%s</font>" % (heading), "", WidgetTypes.WIDGET_GENERAL, -1, -1, CvUtil.FONT_LEFT_JUSTIFY)
