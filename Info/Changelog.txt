@@ -99,7 +99,9 @@ Improvements:
 - BugEventManager
 	Added addPopupHandlers() that takes the name and functions as parameters instead of a single tuple
 - Configuration
-	Added a warning when you specify a key for an <option> or <list> that is outside an <options> or <section> element.
+	Added a warning when you specify a key for an <option> or <list> that is outside an <options> or <section> element
+- DllUtil
+	widget() now accepts an existing WidgetType as the first parameter when you only need the data values to vary
 
 Bug Fixes:
 
