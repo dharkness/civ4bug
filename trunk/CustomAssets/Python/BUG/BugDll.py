@@ -107,7 +107,10 @@ def widgetVersion(version, bugWidget, bugData1=None, bugData2=None, *args):
 	handled = False
 	if isVersion(version):
 		try:
-			realArgs.append(getattr(WidgetTypes, bugWidget))
+			if isinstance(bugWidget, WidgetTypes):
+				realArgs.append(bugWidget)
+			else:
+				realArgs.append(getattr(WidgetTypes, bugWidget))
 			if bugData1 is not None:
 				realArgs.append(bugData1)
 			if bugData2 is not None:
