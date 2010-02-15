@@ -29,6 +29,7 @@ import re
 import IconGrid_BUG
 import AttitudeUtil
 import BugUtil
+import BugDll
 import PlayerUtil
 import UnitGrouper
 import UnitUtil
@@ -144,6 +145,7 @@ class CvMilitaryAdvisor:
 								
 		self.nWidgetCount = 0
 		self.iActivePlayer = -1
+		self.iActiveLeaderWidget = -1
 
 		self.minimapInitialized = False
 		self.iScreen = UNIT_LOCATION_SCREEN
@@ -166,6 +168,13 @@ class CvMilitaryAdvisor:
 #		self.RESOURCE_ICON_SIZE = 34
 
 		self.szMaybeButton = ArtFileMgr.getInterfaceArtInfo("QUESTION_MARK").getPath()
+	
+	def setActivePlayer(self, iActivePlayer):
+		self.iActivePlayer = iActivePlayer
+		if BugDll.isVersion(2):
+			self.iActiveLeaderWidget = -1
+		else:
+			self.iActiveLeaderWidget = iActivePlayer
 
 						
 	def getScreen(self):
@@ -200,7 +209,7 @@ class CvMilitaryAdvisor:
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
 
-		self.iActivePlayer = CyGame().getActivePlayer()
+		self.setActivePlayer(CyGame().getActivePlayer())
 		if self.iScreen == -1:
 			self.iScreen = UNIT_LOCATION_SCREEN
 
@@ -322,7 +331,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.Col_Leader,
 										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(), 64, 
-										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActivePlayer)
+										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget)
 
 				# add worst enemy
 				self.Grid_WorstEnemy(iRow, iLoopPlayer)
@@ -577,17 +586,7 @@ class CvMilitaryAdvisor:
 			pass
 			#self.iconGrid.addIcon(iRow, self.Col_WEnemy,
 			#						ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
-			#						WidgetTypes.WIDGET_GENERAL, -1)
-
-	def GetDeclareWar(self, iRow, iPlayer):
-		# this module will check if the iPlayer will declare war
-		# on the other leaders.  We cannot check if the iPlayer, the iActivePlayer
-		# and the iTargetPlayer don't all know each other.
-		# However, the code wouldn't have got this far if the iPlayer didn't know the iActivePlayer
-		# so we only need to check if the iPlayer and the iActivePlayer both know the iTargetPlayer.
-
-		# also need to check on vassal state - will do that later
-		return iLeaderWars
+			#						WidgetTypes.WIDGET_GENERAL, -1, -1)
 
 
 #### Strategic Advantages Tab ####
@@ -691,7 +690,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.SA_Col_Leader,
 						gc.getLeaderHeadInfo(player.getLeaderType()).getButton(), 64, 
-						WidgetTypes.WIDGET_LEADERHEAD, player.getID(), self.iActivePlayer)
+						WidgetTypes.WIDGET_LEADERHEAD, player.getID(), self.iActiveLeaderWidget)
 				
 				# add bonus and unit icons
 				self.addStratAdvBonuses(activePlayer, player, iRow)
