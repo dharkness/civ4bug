@@ -22,6 +22,12 @@
 ##   - widgetVersion(version, bugWidget, bugData1=None, bugData2=None, *args)
 ##     Same as widget() but also checks the BUG DLL version as per isVersion().
 ##
+##   - isWidget(widget, bugWidget)
+##     Returns True if <bugWidget> exists and matches <widget>
+##
+##   - isWidgetVersion(version, widget, bugWidget)
+##     Same as isWidget() but also checks the BUG DLL version as per isVersion().
+##
 ## Notes
 ##   - Must be initialized externally by calling init()
 ##
@@ -127,6 +133,24 @@ def widgetVersion(version, bugWidget, bugData1=None, bugData2=None, *args):
 	if args:
 		realArgs.extend(args)
 	return realArgs
+
+
+def isWidget(widget, bugWidget):
+	return isWidgetVersion(VERSION, widget, bugWidget)
+
+def isWidgetVersion(version, widget, bugWidget):
+	"""
+	Returns True if <widget> has the same value as <bugWidget>, False otherwise.
+	
+	If the BUG DLL isn't present, doesn't have the correct version, or the widget
+	doesn't exist, False is safely returned.
+	"""
+	if isVersion(version):
+		try:
+			return widget == getattr(WidgetTypes, bugWidget)
+		except:
+			pass
+	return False
 
 
 def init():
