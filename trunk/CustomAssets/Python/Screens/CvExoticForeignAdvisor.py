@@ -45,12 +45,13 @@ AdvisorOpt = BugCore.game.Advisors
 (iTechColLeader,
  iTechColStatus,
  iTechColWants,
+ iTechColCantYou,
  iTechColResearch,
  iTechColGold,
  iTechColWill,
  iTechColWont,
- iTechColCant,
-) = range(8)
+ iTechColCantThem,
+) = range(9)
 
 # Debugging help
 def ExoticForPrint (stuff):
@@ -1205,9 +1206,13 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						if (activePlayer.canTradeItem(iLoopPlayer, tradeData, False) and activePlayer.getTradeDenial(iLoopPlayer, tradeData) == DenialTypes.NO_DENIAL): # wants
 							self.techIconGrid.addIcon( currentRow, iTechColWants, gc.getTechInfo(iLoopTech).getButton()
 																				 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+						elif (gc.getTeam(activePlayer.getTeam()).isHasTech(iLoopTech) and currentPlayer.canResearch(iLoopTech, False)):
+							self.techIconGrid.addIcon( currentRow, iTechColCantYou, gc.getTechInfo(iLoopTech).getButton()
+																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 						elif currentPlayer.canResearch(iLoopTech, False):
 							self.techIconGrid.addIcon( currentRow, iTechColResearch, gc.getTechInfo(iLoopTech).getButton()
 																			, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
+						
 						if (currentPlayer.canTradeItem(self.iActiveLeader, tradeData, False)):
 							if (currentPlayer.getTradeDenial(self.iActiveLeader, tradeData) == DenialTypes.NO_DENIAL): # will trade
 								self.techIconGrid.addIcon( currentRow, iTechColWill, gc.getTechInfo(iLoopTech).getButton()
@@ -1216,7 +1221,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 								self.techIconGrid.addIcon( currentRow, iTechColWont, gc.getTechInfo(iLoopTech).getButton()
 																					 , 64, *BugDll.widget("WIDGET_PEDIA_JUMP_TO_TECH_TRADE", iLoopTech, iLoopPlayer, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech, -1) )
 						elif (gc.getTeam(currentPlayer.getTeam()).isHasTech(iLoopTech) and activePlayer.canResearch(iLoopTech, False)):
-							self.techIconGrid.addIcon( currentRow, iTechColCant, gc.getTechInfo(iLoopTech).getButton()
+							self.techIconGrid.addIcon( currentRow, iTechColCantThem, gc.getTechInfo(iLoopTech).getButton()
 																					 , 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_TECH, iLoopTech )
 
 				currentRow += 1
@@ -1236,6 +1241,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					IconGrid_BUG.GRID_TEXT_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
+					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_TEXT_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
 					IconGrid_BUG.GRID_MULTI_LIST_COLUMN,
@@ -1253,12 +1259,13 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 #		self.techIconGrid.setHeader( iTechColStatus, "" )
 		self.techIconGrid.setTextColWidth( iTechColStatus, self.TECH_STATUS_COL_WIDTH )
 		self.techIconGrid.setHeader( iTechColWants, localText.getText("TXT_KEY_FOREIGN_ADVISOR_WANTS", ()) )
+		self.techIconGrid.setHeader( iTechColCantYou, localText.getText("TXT_KEY_FOREIGN_ADVISOR_CANT_TRADE", ()) )
 		self.techIconGrid.setHeader( iTechColResearch, localText.getText("TXT_KEY_FOREIGN_ADVISOR_CAN_RESEARCH", ()) )
 		self.techIconGrid.setHeader( iTechColGold, (u"%c" % gc.getCommerceInfo(CommerceTypes.COMMERCE_GOLD).getChar()) )
 		self.techIconGrid.setTextColWidth( iTechColGold, self.TECH_GOLD_COL_WIDTH )
 		self.techIconGrid.setHeader( iTechColWill, localText.getText("TXT_KEY_FOREIGN_ADVISOR_FOR_TRADE_2", ()) )
 		self.techIconGrid.setHeader( iTechColWont, localText.getText("TXT_KEY_FOREIGN_ADVISOR_NOT_FOR_TRADE_2", ()) )
-		self.techIconGrid.setHeader( iTechColCant, localText.getText("TXT_KEY_FOREIGN_ADVISOR_CANT_TRADE", ()) )
+		self.techIconGrid.setHeader( iTechColCantThem, localText.getText("TXT_KEY_FOREIGN_ADVISOR_CANT_TRADE", ()) )
 		
 		gridWidth = self.techIconGrid.getPrefferedWidth()
 		gridHeight = self.techIconGrid.getPrefferedHeight()
