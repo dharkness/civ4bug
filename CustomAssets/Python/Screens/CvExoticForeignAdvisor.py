@@ -205,13 +205,6 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 											 "TECH"]
 
 		self.iDefaultScreen = self.SCREEN_DICT["RELATIONS"]
-	
-	def setActiveLeader (self, iActiveLeader):
-		self.iActiveLeader = iActiveLeader
-		if BugDll.isVersion(2):
-			self.iActiveLeaderWidget = -1
-		else:
-			self.iActiveLeaderWidget = iActiveLeader
 						
 	def interfaceScreen (self, iScreen):
 	
@@ -246,7 +239,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen( PopupStates.POPUPSTATE_IMMEDIATE, False)
 	
-		self.setActiveLeader(CyGame().getActivePlayer())
+		self.iActiveLeader = CyGame().getActivePlayer()
 		self.iSelectedLeader = self.iActiveLeader
 		self.listSelectedLeaders = []
 		#self.listSelectedLeaders.append(self.iSelectedLeader)
@@ -461,7 +454,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				playerPanelName = self.getNextWidgetName()
 				screen.attachPanel(mainPanelName, playerPanelName, gc.getPlayer(iLoopPlayer).getName(), "", False, True, PanelStyles.PANEL_STYLE_MAIN)
 
-				screen.attachImageButton(playerPanelName, "", objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget, False)
+				screen.attachImageButton(playerPanelName, "", objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_CUSTOM, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
 						
 				infoPanelName = self.getNextWidgetName()
 				screen.attachPanel(playerPanelName, infoPanelName, "", "", False, False, PanelStyles.PANEL_STYLE_EMPTY)
@@ -603,7 +596,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				screen.attachImageButton(playerPanelName, itemName, gc.getDefineSTRING("LEADERHEAD_RANDOM"), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_GENERAL, -1, -1, False)
 				return
 			else:
-				screen.attachImageButton(playerPanelName, itemName, objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget, False)
+				screen.attachImageButton(playerPanelName, itemName, objLeaderHead.getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
 			#screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 					
 			infoPanelName = self.getNextWidgetName()
@@ -615,7 +608,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				szAttStr = "<font=2>" + objAttitude.getText(True, True, False, False) + "</font>"
 			else:
 				szAttStr = ""
-			screen.attachTextGFC(infoPanelName, itemName, szAttStr, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			screen.attachTextGFC(infoPanelName, itemName, szAttStr, FontTypes.GAME_FONT, 
+								*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, self.iActiveLeader, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader))
 			# Disable the widget if this is active player since it's a blank string.
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
@@ -647,7 +641,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			else:
 				szPlayerReligion = ""
 			
-			screen.attachTextGFC(infoPanelName, itemName, szPlayerReligion, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+			screen.attachTextGFC(infoPanelName, itemName, szPlayerReligion, FontTypes.GAME_FONT, 
+								*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, self.iActiveLeader, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader))
 			# Disable the widget if this is active player since we don't have diplo info.
 			if bIsActivePlayer:
 				screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
@@ -720,7 +715,8 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 						else:
 							szDiplo = ""
 						itemName = self.getNextWidgetName()
-						screen.attachTextGFC(infoPanelName, itemName, szDiplo, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader)
+						screen.attachTextGFC(infoPanelName, itemName, szDiplo, FontTypes.GAME_FONT, 
+								*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, self.iActiveLeader, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader))
 						#screen.setHitTest(itemName, HitTestTypes.HITTEST_NOHIT)
 
 	def calculateTrade (self, nPlayer, nTradePartner):
@@ -789,7 +785,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			if self.ltPlayerMet[iLoopPlayer]:
 				if (iLoopPlayer != self.iActiveLeader):
 					szName = self.getNextWidgetName()
-					screen.addCheckBoxGFCAt(panelName, szName, gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET, self.GLANCE_BUTTON_SIZE, self.GLANCE_BUTTON_SIZE, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget, ButtonStyles.BUTTON_STYLE_LABEL, False)
+					screen.addCheckBoxGFCAt(panelName, szName, gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), ArtFileMgr.getInterfaceArtInfo("BUTTON_HILITE_SQUARE").getPath(), self.X_GLANCE_OFFSET + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET, self.GLANCE_BUTTON_SIZE, self.GLANCE_BUTTON_SIZE, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, ButtonStyles.BUTTON_STYLE_LABEL, False)
 					if (self.iSelectedLeader == iLoopPlayer):
 						screen.setState(szName, True)
 					else:
@@ -837,13 +833,14 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 							szText = AttitudeUtil.getAttitudeText(j, iLoopPlayer, AdvisorOpt.isShowGlanceNumbers(), AdvisorOpt.isShowGlanceSmilies(), True, True)
 						else:
 							szText = ""
-						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET - 2 + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + self.Y_Text_Offset, -0.1, FontTypes.GAME_FONT, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer)
+						screen.setTextAt (szName, playerPanelName, szText, CvUtil.FONT_CENTER_JUSTIFY, self.X_GLANCE_OFFSET - 2 + (self.X_Spread * nCount), self.Y_GLANCE_OFFSET + self.Y_Text_Offset, -0.1, FontTypes.GAME_FONT, 
+								*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", j, iLoopPlayer, WidgetTypes.WIDGET_LEADERHEAD, j, iLoopPlayer))
 						nCount += 1
 
 			if nCount > 8:
-				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget, False)
+				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_32, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
 			else:
-				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget, False)
+				screen.attachImageButton(playerPanelName, "", gc.getLeaderHeadInfo(gc.getPlayer(iLoopPlayer).getLeaderType()).getButton(), GenericButtonSizes.BUTTON_SIZE_46, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader, False)
 
 	def loadColIntoList (self, ltPlayers, ltTarget, nCol):
 		nCount = 0
@@ -1058,7 +1055,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 				self.resIconGrid.appendRow(currentPlayer.getName(), message)
 				self.resIconGrid.addIcon( currentRow, self.leaderCol
 										, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget )
+										, 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader )
 				
 				# gold
 				if (gc.getTeam(activePlayer.getTeam()).isGoldTrading() or gc.getTeam(currentPlayer.getTeam()).isGoldTrading()):
@@ -1181,7 +1178,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 
 				self.techIconGrid.appendRow(currentPlayer.getName(), message)
 				self.techIconGrid.addIcon( currentRow, iTechColLeader, gc.getLeaderHeadInfo(currentPlayer.getLeaderType()).getButton()
-										 , 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget )
+										 , 64, WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeader )
 
 # BUG - AI status - end
 				zsStatus = ""
@@ -1280,7 +1277,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 	# Handles the input for this screen...
 	def handleInput (self, inputClass):
 		if (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED):
-			if (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
+			if (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD or BugDll.isWidgetVersion(2, inputClass.getButtonType(), "WIDGET_LEADERHEAD_RELATIONS")):
 				if (inputClass.getFlags() & MouseFlags.MOUSE_LBUTTONUP):
 					self.iSelectedLeader = inputClass.getData1()
 					self.drawContents(False)
@@ -1301,13 +1298,13 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 ##########################################
 ### END CHANGES ENHANCED INTERFACE MOD ###
 ##########################################
-			 
+		
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_LISTBOX_ITEM_SELECTED):
 			if (inputClass.getFunctionName() + str(inputClass.getID()) == self.getWidgetName(self.DEBUG_DROPDOWN_ID)):
 				print 'debug dropdown event'
 				szName = self.getWidgetName(self.DEBUG_DROPDOWN_ID)
 				iIndex = self.getScreen().getSelectedPullDownID(szName)
-				self.setActiveLeader(self.getScreen().getPullDownData(szName, iIndex))
+				self.iActiveLeader = self.getScreen().getPullDownData(szName, iIndex)
 				self.drawContents(True)
 				return 1
 		elif (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CHARACTER):

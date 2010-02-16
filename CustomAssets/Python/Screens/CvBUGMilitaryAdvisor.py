@@ -145,7 +145,6 @@ class CvMilitaryAdvisor:
 								
 		self.nWidgetCount = 0
 		self.iActivePlayer = -1
-		self.iActiveLeaderWidget = -1
 
 		self.minimapInitialized = False
 		self.iScreen = UNIT_LOCATION_SCREEN
@@ -168,13 +167,6 @@ class CvMilitaryAdvisor:
 #		self.RESOURCE_ICON_SIZE = 34
 
 		self.szMaybeButton = ArtFileMgr.getInterfaceArtInfo("QUESTION_MARK").getPath()
-	
-	def setActivePlayer(self, iActivePlayer):
-		self.iActivePlayer = iActivePlayer
-		if BugDll.isVersion(2):
-			self.iActiveLeaderWidget = -1
-		else:
-			self.iActiveLeaderWidget = iActivePlayer
 
 						
 	def getScreen(self):
@@ -209,7 +201,7 @@ class CvMilitaryAdvisor:
 		screen.setRenderInterfaceOnly(True);
 		screen.showScreen(PopupStates.POPUPSTATE_IMMEDIATE, False)
 
-		self.setActivePlayer(CyGame().getActivePlayer())
+		self.iActivePlayer = CyGame().getActivePlayer()
 		if self.iScreen == -1:
 			self.iScreen = UNIT_LOCATION_SCREEN
 
@@ -331,7 +323,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.Col_Leader,
 										gc.getLeaderHeadInfo(pPlayer.getLeaderType()).getButton(), 64, 
-										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActiveLeaderWidget)
+										WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, self.iActivePlayer)
 
 				# add worst enemy
 				self.Grid_WorstEnemy(iRow, iLoopPlayer)
@@ -342,28 +334,32 @@ class CvMilitaryAdvisor:
 				for pLoopPlayer in pActiveWars:
 					self.iconGrid.addIcon(iRow, self.Col_Curr_Wars, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID())
+											*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, pLoopPlayer.getID(),
+																WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID()))
 
 				# show vassals
 				if bVassals:
 					for pLoopPlayer in pVassals[iLoopPlayer]:
 						self.iconGrid.addIcon(iRow, self.Col_Vassals, 
 												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID())
+												*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, pLoopPlayer.getID(),
+																	WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID()))
 
 				# show defensive pacts
 				if bDefPacts:
 					for pLoopPlayer in pDefPacts[iLoopPlayer]:
 						self.iconGrid.addIcon(iRow, self.Col_DefPacts, 
 												gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-												WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID())
+												*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, pLoopPlayer.getID(),
+																	WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID()))
 
 				# show players that the current player will declare on
 				bWHEOOH, pPossibleWars = PlayerUtil.getPossibleWars(iLoopPlayer, self.iActivePlayer)
 				for pLoopPlayer in pPossibleWars:
 					self.iconGrid.addIcon(iRow, self.Col_WillDeclareOn, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID())
+											*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, pLoopPlayer.getID(),
+																WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID()))
 				# show WHEOOH
 				if bWHEOOH:
 					sWHEOOH = u" %c" % CyGame().getSymbolID(FontSymbols.OCCUPATION_CHAR)
@@ -375,7 +371,8 @@ class CvMilitaryAdvisor:
 				for pLoopPlayer in pPossibleEmbargos:
 					self.iconGrid.addIcon(iRow, self.Col_WillEmbargo, 
 											gc.getLeaderHeadInfo (pLoopPlayer.getLeaderType()).getButton(), 32, 
-											WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID())
+											*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLoopPlayer, pLoopPlayer.getID(),
+																WidgetTypes.WIDGET_LEADERHEAD, iLoopPlayer, pLoopPlayer.getID()))
 
 				self.iconGrid.setText(iRow, self.Col_WHEOOH, sWHEOOH, 3)
 
@@ -580,13 +577,24 @@ class CvMilitaryAdvisor:
 		pWorstEnemy = PlayerUtil.getWorstEnemy(iLeader, self.iActivePlayer)
 		if pWorstEnemy:
 			self.iconGrid.addIcon(iRow, self.Col_WEnemy,
-									gc.getLeaderHeadInfo(pWorstEnemy.getLeaderType()).getButton(), 45, 
-									WidgetTypes.WIDGET_LEADERHEAD, iLeader, pWorstEnemy.getID())
+									gc.getLeaderHeadInfo(pWorstEnemy.getLeaderType()).getButton(), 45,  
+									*BugDll.widgetVersion(2, "WIDGET_LEADERHEAD_RELATIONS", iLeader, pWorstEnemy.getID(),
+														WidgetTypes.WIDGET_LEADERHEAD, iLeader, pWorstEnemy.getID()))
 		else:
 			pass
 			#self.iconGrid.addIcon(iRow, self.Col_WEnemy,
 			#						ArtFileMgr.getInterfaceArtInfo("INTERFACE_BUTTONS_CANCEL").getPath(), 35, 
-			#						WidgetTypes.WIDGET_GENERAL, -1, -1)
+			#						WidgetTypes.WIDGET_GENERAL, -1)
+
+	def GetDeclareWar(self, iRow, iPlayer):
+		# this module will check if the iPlayer will declare war
+		# on the other leaders.  We cannot check if the iPlayer, the iActivePlayer
+		# and the iTargetPlayer don't all know each other.
+		# However, the code wouldn't have got this far if the iPlayer didn't know the iActivePlayer
+		# so we only need to check if the iPlayer and the iActivePlayer both know the iTargetPlayer.
+
+		# also need to check on vassal state - will do that later
+		return iLeaderWars
 
 
 #### Strategic Advantages Tab ####
@@ -690,7 +698,7 @@ class CvMilitaryAdvisor:
 				# add leaderhead icon
 				self.iconGrid.addIcon(iRow, self.SA_Col_Leader,
 						gc.getLeaderHeadInfo(player.getLeaderType()).getButton(), 64, 
-						WidgetTypes.WIDGET_LEADERHEAD, player.getID(), self.iActiveLeaderWidget)
+						WidgetTypes.WIDGET_LEADERHEAD, player.getID(), self.iActivePlayer)
 				
 				# add bonus and unit icons
 				self.addStratAdvBonuses(activePlayer, player, iRow)
@@ -1190,7 +1198,7 @@ class CvMilitaryAdvisor:
 				return 1
 
 			# RJG Start - following line added as per RJG (http://forums.civfanatics.com/showpost.php?p=6997192&postcount=16)
-			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD):
+			elif (inputClass.getButtonType() == WidgetTypes.WIDGET_LEADERHEAD or BugDll.isWidgetVersion(2, inputClass.getButtonType(), "WIDGET_LEADERHEAD_RELATIONS")):
 				if (inputClass.getFlags() & MouseFlags.MOUSE_RBUTTONUP):
 					if (self.iActivePlayer != inputClass.getData1()):
 						self.getScreen().hideScreen()
