@@ -1,9 +1,9 @@
 CHANGELOG for BUG
 =================
 
-1. Introduction
+* Introduction
 
-* BUG x.x
+* BUG 4.3
 * BUG 4.2
 * BUG 4.1
 * BUG 4.0
@@ -11,7 +11,7 @@ CHANGELOG for BUG
 
 
 ____________________________________________________________________________________________________
-1. INTRODUCTION
+INTRODUCTION
 
 This file lists the new features and fixes contained in each BUG release. The changes for each 
 release are grouped into two major sections--Changes and Modding--and within each section further 
@@ -28,7 +28,7 @@ Note: Changes marked [BULL] only take effect when the optional BUG DLL is instal
 
 
 ____________________________________________________________________________________________________
-BUG x.x unreleased
+BUG 4.3 released February 16th, 2010
 
 CHANGES
 
