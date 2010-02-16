@@ -10,6 +10,23 @@
 <!-- Leaderhead -->
 
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADHIDDENATTITUDE_TEXT</Tag>
+		<English>Hidden Attitude</English>
+		<French>Hidden Attitude</French>
+		<German>Hidden Attitude</German>
+		<Italian>Hidden Attitude</Italian>
+		<Spanish>Hidden Attitude</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADHIDDENATTITUDE_HOVER</Tag>
+		<English>When checked, displays the hidden attitude modifiers (possibly spoiler).</English>
+		<French>When checked, displays the hidden attitude modifiers (possibly spoiler).</French>
+		<German>When checked, displays the hidden attitude modifiers (possibly spoiler).</German>
+		<Italian>When checked, displays the hidden attitude modifiers (possibly spoiler).</Italian>
+		<Spanish>When checked, displays the hidden attitude modifiers (possibly spoiler).</Spanish>
+	</TEXT>
+
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__LEADERHEADWORSTENEMY_TEXT</Tag>
 		<English>Worst Enemy</English>
 		<French>Worst Enemy</French>

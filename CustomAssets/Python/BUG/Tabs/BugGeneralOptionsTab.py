@@ -45,7 +45,8 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, panel, "MainInterface__Combat_Counter")
 		
 	def createLeaderheadPanel(self, screen, panel):
-		self.addLabel(screen, panel, "Leaderheads", "Leaderhead Icons:")
+		self.addLabel(screen, panel, "Leaderheads", "Leaderheads:")
+		self.addCheckbox(screen, panel, "MiscHover__LeaderheadHiddenAttitude")
 		self.addCheckbox(screen, panel, "MiscHover__LeaderheadWorstEnemy")
 		self.addCheckbox(screen, panel, "MiscHover__LeaderheadDefensivePacts")
 		
