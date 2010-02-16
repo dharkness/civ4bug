@@ -56,6 +56,7 @@ Improvements:
 	Can select which tiles to count in Raw Yields when Civ starts
 - Foreign Advisor
 	Can select how to display attitudes: numbers, smilies, or both
+	Shows technologies that you cannot trade to rivals
 - Technology Chooser
 	Added hover to GP Research icons showing the preferred order
 - Unit Naming
