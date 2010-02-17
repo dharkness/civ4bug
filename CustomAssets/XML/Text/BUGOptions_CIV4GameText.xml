@@ -306,12 +306,20 @@
 		<Spanish>Building Actual Effects:</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_PRODUCTIONQUEUE</Tag>
+		<English>Production Queue:</English>
+		<French>Production Queue:</French>
+		<German>Production Queue:</German>
+		<Italian>Production Queue:</Italian>
+		<Spanish>Production Queue:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_PRODUCTIONDECAY</Tag>
-		<English>Production Decay:</English>
-		<French>Production Decay:</French>
-		<German>Verfall des Produktionsfortschritts:</German>
-		<Italian>Decadimento della Produzione:</Italian>
-		<Spanish>Production Decay:</Spanish>
+		<English>Decay:</English>
+		<French>Decay:</French>
+		<German>Verfall:</German>
+		<Italian>Decadimento:</Italian>
+		<Spanish>Decay:</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYBAR_HOVER</Tag>

@@ -57,13 +57,14 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, left, "MiscHover__GreatPeopleRateBreakdown")
 		
 		self.addSpacer(screen, left, "CityScreen4")
-		self.addLabel(screen, left, "ProductionDecay", "Production Decay:")
+		self.addLabel(screen, left, "ProductionQueue", "Production Queue:")
+		self.addCheckbox(screen, left, "CityScreen__ProductionStarted")
 		leftL, leftC, leftR = self.addThreeColumnLayout(screen, left, "ProductionDecay")
-		self.addSpacer(screen, leftL, "CityScreen41")
+		self.addLabel(screen, leftL, "ProductionDecay", "Decay:")
 		self.addCheckbox(screen, leftC, "CityScreen__ProductionDecayQueue")
 		self.addCheckbox(screen, leftR, "CityScreen__ProductionDecayHover")
-		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueUnitThreshold")
-		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueBuildingThreshold")
+		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueUnitThreshold", True)
+		self.addIntDropdown(screen, leftL, leftC, "CityScreen__ProductionDecayQueueBuildingThreshold", True)
 		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverUnitThreshold")
 		self.addIntDropdown(screen, None, leftR, "CityScreen__ProductionDecayHoverBuildingThreshold")
 		
