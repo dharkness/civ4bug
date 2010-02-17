@@ -189,10 +189,16 @@ class BugOptionsTab:
 		return columns
 
 
-	def addLabel (self, screen, panel, name, title=None, tooltip=None):
+	def addLabel (self, screen, panel, name, title=None, tooltip=None, spacer=False):
 		key = "TXT_KEY_BUG_OPTLABEL_" + name.upper()
 		title = BugUtil.getPlainText(key, title)
 		#tooltip = BugUtil.getPlainText(key + "_HOVER", tooltip)
+		if spacer:
+			hbox = name + "HBox"
+			screen.attachHBox(panel, hbox)
+			#screen.setLayoutFlag(box, "LAYOUT_SIZE_HPREFERREDEXPANDING")
+			self.addSpacer(screen, hbox, hbox, CHECKBOX_INDENT)
+			panel = hbox
 		if (title):
 			label = name + "_Label"
 			screen.attachLabel(panel, label, title)
