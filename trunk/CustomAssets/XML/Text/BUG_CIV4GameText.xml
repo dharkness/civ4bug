@@ -996,7 +996,34 @@
 		<Spanish>Show reminder again next turn?</Spanish>
 	</TEXT>
 	
-	<!--Fix for Overlap in Foreign Advisor Tab in Italian Translation-->
+	<!-- Tech Prefs -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_TECH_PREFS_ALL</Tag>
+		<English>Research Preference Order</English>
+		<French>Research Preference Order</French>
+		<German>Research Preference Order</German>
+		<Italian>Research Preference Order</Italian>
+		<Spanish>Research Preference Order</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_TECH_PREFS_CURRENT</Tag>
+		<English>Current Technologies</English>
+		<French>Current Technologies</French>
+		<German>Current Technologies</German>
+		<Italian>Current Technologies</Italian>
+		<Spanish>Current Technologies</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_TECH_PREFS_FUTURE</Tag>
+		<English>Future Technologies</English>
+		<French>Future Technologies</French>
+		<German>Future Technologies</German>
+		<Italian>Future Technologies</Italian>
+		<Spanish>Future Technologies</Spanish>
+	</TEXT>
+	
+	<!-- Fix for Overlap in Foreign Advisor Tab in Italian Translation -->
 	
 	<TEXT>
 		<Tag>TXT_KEY_FOREIGN_ADVISOR_INFO</Tag>
@@ -1007,7 +1034,7 @@
 		<Spanish>Info.</Spanish>
 	</TEXT>
 	
-	<!--Fix for wrong translation of "Power" in German, Italian and Spanish language-->
+	<!-- Fix for wrong translation of "Power" in German, Italian and Spanish language -->
 	
 	<TEXT>
 		<Tag>TXT_KEY_POWER</Tag>

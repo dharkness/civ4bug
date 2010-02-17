@@ -186,13 +186,27 @@ class TechPrefs:
 			lTechs.append(pTech)
 		return lTechs
 
+	def getCurrentFlavorTechs(self, iFlavor):
+		"""Returns a list of techs in the flavor's list that are researchable now."""
+		lTechs = []
+		for pTech in self.lTechsByFlavor[iFlavor]:
+			if (pTech.canResearch()):
+				lTechs.append(pTech)
+		return lTechs
+
+	def getCurrentWithFlavorTechs(self, iFlavor, sTechs):
+		"""Returns a list of techs in the flavor's list that are researchable once sTechs have been researched."""
+		lTechs = []
+		for pTech in self.lTechsByFlavor[iFlavor]:
+			if (pTech not in sTechs and pTech.canResearchWith(sTechs)):
+				lTechs.append(pTech)
+		return lTechs
+
 	def getRemainingFlavorTechs(self, iFlavor):
 		"""Returns a list of techs in the flavor's list that haven't been researched yet."""
 		lTechs = []
 		for pTech in self.lTechsByFlavor[iFlavor]:
-			BugUtil.debug("checking %s", pTech.getName())
 			if (pTech.getID() in self.mTechs):
-				BugUtil.debug("bingo")
 				lTechs.append(pTech)
 		return lTechs
 
