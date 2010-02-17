@@ -89,6 +89,10 @@
 				<choice id="Chevron" get="isCitySpecialist_Chevron"/>
 			</list>
 			
+			<!-- Production Started by EmperorFool -->
+			<option id="ProductionStarted" key="Production Started" 
+					type="boolean" default="True" dirtyBit="InfoPane" get="isShowProductionStarted"/>
+			
 			<!-- Production Decay by EmperorFool [BULL] -->
 			<!-- Queue -->
 			<option id="ProductionDecayQueue" key="Production Decay Queue" dll="1" 
@@ -109,7 +113,7 @@
 					type="int" default="5"
 					values="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10"/>
 			
-			<!-- Production Popup -->
+			<!-- Production Popup by EmperorFool -->
 			<option id="ProductionPopupTrainCivilianUnitsForever" key="Production Popup Train Civilian Units Forever" dll="1" 
 					type="boolean" default="False" get="isProductionPopupTrainCivilianUnitsForever"/>
 			<option id="ProductionPopupTrainMilitaryUnitsForever" key="Production Popup Train Military Units Forever" dll="1" 

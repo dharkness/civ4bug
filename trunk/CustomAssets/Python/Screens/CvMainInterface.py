@@ -6632,6 +6632,13 @@ class CvMainInterface:
 
 					if (CyInterface().getOrderNodeSave(i)):
 						szLeftBuffer = u"*" + szLeftBuffer
+
+# BUG - Production Started - start
+					if CityScreenOpt.isShowProductionStarted():
+						eUnit = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getUnitProduction(eUnit) > 0:
+							szRightBuffer = BugUtil.colorText(szRightBuffer, "COLOR_CYAN")
+# BUG - Production Started - end
 					
 # BUG - Production Decay - start
 					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():
@@ -6648,6 +6655,13 @@ class CvMainInterface:
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_CONSTRUCT ):
 					szLeftBuffer = gc.getBuildingInfo(CyInterface().getOrderNodeData1(i)).getDescription()
 					szRightBuffer = "(" + str(pHeadSelectedCity.getBuildingProductionTurnsLeft(CyInterface().getOrderNodeData1(i), i)) + ")"
+
+# BUG - Production Started - start
+					if CityScreenOpt.isShowProductionStarted():
+						eBuilding = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getBuildingProduction(eBuilding) > 0:
+							szRightBuffer = BugUtil.colorText(szRightBuffer, "COLOR_CYAN")
+# BUG - Production Started - end
 
 # BUG - Production Decay - start
 					if BugDll.isPresent() and CityScreenOpt.isShowProductionDecayQueue():

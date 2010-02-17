@@ -240,6 +240,23 @@
 	</TEXT>
 	
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONSTARTED_TEXT</Tag>
+		<English>Color Started Items</English>
+		<French>Color Started Items</French>
+		<German>Color Started Items</German>
+		<Italian>Color Started Items</Italian>
+		<Spanish>Color Started Items</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONSTARTED_HOVER</Tag>
+		<English>When checked, displays the remaining turns in cyan for items that have been started.</English>
+		<French>When checked, displays the remaining turns in cyan for items that have been started.</French>
+		<German>When checked, displays the remaining turns in cyan for items that have been started.</German>
+		<Italian>When checked, displays the remaining turns in cyan for items that have been started.</Italian>
+		<Spanish>When checked, displays the remaining turns in cyan for items that have been started.</Spanish>
+	</TEXT>
+	
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONDECAYQUEUE_TEXT</Tag>
 		<English>Queue</English>
 		<French>Queue</French>

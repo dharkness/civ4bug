@@ -37,6 +37,9 @@ New Features:
 
 Improvements:
 
+- Production Queue
+	Items that have hammers invested already are drawn in cyan
+
 Bug Fixes:
 
 MODDING
