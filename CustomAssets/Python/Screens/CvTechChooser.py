@@ -57,27 +57,23 @@ def resetTechPrefs(args=[]):
 	CvScreensInterface.techChooser.resetTechPrefs()
 
 def getAllTechPrefsHover(widgetType, iData1, iData2, bOption):
-	BugUtil.debug("getAllTechPrefsHover")
-	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getAllFlavorTechs(iData1))
+	return buildTechPrefsHover("TXT_KEY_BUG_TECH_PREFS_ALL", CvScreensInterface.techChooser.pPrefs.getAllFlavorTechs(iData1))
 
 def getCurrentTechPrefsHover(widgetType, iData1, iData2, bOption):
-	BugUtil.debug("getCurrentTechPrefsHover")
-	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getRemainingFlavorTechs(iData1))
+	return buildTechPrefsHover("TXT_KEY_BUG_TECH_PREFS_CURRENT", CvScreensInterface.techChooser.pPrefs.getCurrentFlavorTechs(iData1))
 
 def getFutureTechPrefsHover(widgetType, iData1, iData2, bOption):
-	BugUtil.debug("getFutureTechPrefsHover")
 	pPlayer = gc.getPlayer(CvScreensInterface.techChooser.iCivSelected)
 	sTechs = set()
 	for i in range(gc.getNumTechInfos()):
 		if (pPlayer.isResearchingTech(i)):
 			sTechs.add(CvScreensInterface.techChooser.pPrefs.getTech(i))
-	return buildTechPrefsHover(CvScreensInterface.techChooser.pPrefs.getFutureFlavorTechs(iData1, sTechs))
+	return buildTechPrefsHover("TXT_KEY_BUG_TECH_PREFS_FUTURE", CvScreensInterface.techChooser.pPrefs.getCurrentWithFlavorTechs(iData1, sTechs))
 
-def buildTechPrefsHover(lTechs):
-	szText = u""
+def buildTechPrefsHover(key, lTechs):
+	szText = BugUtil.getPlainText(key) + "\n"
 	for pTech in lTechs:
-		BugUtil.debug("button: %s", pTech.getInfo().getButton())
-		szText += u"<img=%s size=24></img>" % pTech.getInfo().getButton().replace(" ", "_")
+		szText += "<img=%s size=24></img>" % pTech.getInfo().getButton().replace(" ", "_")
 	return szText
 # BUG - GP Tech Prefs - end
 

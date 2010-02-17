@@ -39,6 +39,8 @@ Improvements:
 
 - Production Queue
 	Items that have hammers invested already are drawn in cyan
+- Great Person Tech Prefs
+	Added headings and limited Current and Future techs to those that can be researched
 
 Bug Fixes:
 
