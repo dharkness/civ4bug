@@ -71,6 +71,22 @@
 ##     or class constructor at a later time with the arguments provided when
 ##     the Function was created.
 ##
+## Exporting Functions to Other Modules
+##
+##   export(function, toModule, asName)
+##     Makes <function> available in <toModule> as <asName>.
+##
+##   exportFunction(module, name, toModule, asName)
+##     Makes <module>.<name> available in <toModule> as <asName>.
+##
+##   extend(function, toModule, asName)
+##     Exports a lambda function to <toModule> as <asName> that calls <function>,
+##     passing the original function from <toModule> and the received arguments.
+##
+##   extendFunction(module, name, toModule, asName)
+##     Exports a lambda function to <toModule> as <asName> that calls <module>.<name>,
+##     passing the original function from <toModule> and the received arguments.
+##
 ## Python
 ##
 ##   fixSets(namespace):
@@ -628,6 +644,54 @@ def getFunction(module, functionOrClass, bind=False, *args, **kwargs):
 def callFunction(module, functionOrClass, *args, **kwargs):
 	func = lookupFunction(module, functionOrClass)
 	return func(*args, **kwargs)
+
+
+## Exporting Functions to Other Modules
+##
+## Copying function definitions from one module to another, mostly to EntryPoint modules,
+## so they can be called from within that module without needing to import the source module.
+
+def export(function, toModule, asName=None, log=True):
+	"""
+	Makes <function> available in the toModule named <toModule> as <asName>.
+	"""
+	mod = lookupModule(toModule, False)
+	if asName is None:
+		asName = function.__name__
+	if log:
+		if asName != function.__name__:
+			debug("BugUtil - exporting %s.%s as %s.%s", function.__module__, function.__name__, toModule, asName)
+		else:
+			debug("BugUtil - exporting %s.%s to %s", function.__module__, asName, toModule)
+	setattr(mod, asName, function)
+
+def exportFunction(module, name, toModule, asName=None, log=True):
+	if asName is None:
+		asName = name
+	export(lookupFunction(module, name, False), toModule, asName, log)
+
+def extend(function, toModule, asName=None, log=True):
+	"""
+	Exports a lambda function to <toModule> as <asName> that calls <function>,
+	passing the original function from <toModule> and the received arguments.
+	"""
+	if asName is None:
+		asName = function.__name__
+	originalFunc = lookupFunction(toModule, asName, False)
+	newFunc = lambda argsList: function(originalFunc, argsList)
+	newFunc.__module__ = function.__module__
+	newFunc.__name__ = function.__name__
+	if log:
+		if asName != function.__name__:
+			debug("BugUtil - extending %s.%s over %s.%s", function.__module__, function.__name__, toModule, asName)
+		else:
+			debug("BugUtil - extending %s.%s over %s", function.__module__, asName, toModule)
+	export(newFunc, toModule, asName, False)
+
+def extendFunction(module, name, toModule, asName=None, log=True):
+	if asName is None:
+		asName = name
+	extend(lookupFunction(module, name, False), toModule, asName, log)
 
 
 ## Python

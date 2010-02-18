@@ -48,6 +48,9 @@ MODDING
 
 New Features:
 
+- BugUtil
+	Added export(), exportFunction(), extend(), and extendFunction() for injecting functions into EntryPoint modules
+
 Improvements:
 
 Bug Fixes:
