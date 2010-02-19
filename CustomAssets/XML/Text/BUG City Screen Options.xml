@@ -243,7 +243,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONSTARTED_TEXT</Tag>
 		<English>Color Started Items</English>
 		<French>Color Started Items</French>
-		<German>Color Started Items</German>
+		<German>Baufortschritt einfärben</German>
 		<Italian>Color Started Items</Italian>
 		<Spanish>Color Started Items</Spanish>
 	</TEXT>
@@ -251,7 +251,7 @@
 		<Tag>TXT_KEY_BUG_OPT_CITYSCREEN__PRODUCTIONSTARTED_HOVER</Tag>
 		<English>When checked, displays the remaining turns in cyan for items that have been started.</English>
 		<French>When checked, displays the remaining turns in cyan for items that have been started.</French>
-		<German>When checked, displays the remaining turns in cyan for items that have been started.</German>
+		<German>Färbt die bis zur Fertigstellung eines Projekts verbleibenden Runden Blau ein</German>
 		<Italian>When checked, displays the remaining turns in cyan for items that have been started.</Italian>
 		<Spanish>When checked, displays the remaining turns in cyan for items that have been started.</Spanish>
 	</TEXT>

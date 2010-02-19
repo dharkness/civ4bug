@@ -1002,7 +1002,7 @@
 		<Tag>TXT_KEY_BUG_TECH_PREFS_ALL</Tag>
 		<English>Research Preference Order</English>
 		<French>Research Preference Order</French>
-		<German>Research Preference Order</German>
+		<German>Forschungsprioritäten</German>
 		<Italian>Research Preference Order</Italian>
 		<Spanish>Research Preference Order</Spanish>
 	</TEXT>
@@ -1010,7 +1010,7 @@
 		<Tag>TXT_KEY_BUG_TECH_PREFS_CURRENT</Tag>
 		<English>Current Technologies</English>
 		<French>Current Technologies</French>
-		<German>Current Technologies</German>
+		<German>Derzeitige Technologien</German>
 		<Italian>Current Technologies</Italian>
 		<Spanish>Current Technologies</Spanish>
 	</TEXT>
@@ -1018,7 +1018,7 @@
 		<Tag>TXT_KEY_BUG_TECH_PREFS_FUTURE</Tag>
 		<English>Future Technologies</English>
 		<French>Future Technologies</French>
-		<German>Future Technologies</German>
+		<German>Zukünftige Technologien</German>
 		<Italian>Future Technologies</Italian>
 		<Spanish>Future Technologies</Spanish>
 	</TEXT>
