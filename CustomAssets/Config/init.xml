@@ -107,6 +107,9 @@
 	
 	<events module="DealUtil" function="addEvents"/>
 	<events module="DiplomacyUtil" function="addEvents"/>
+	<extend how="after" module="DiplomacyUtil" function="handleAIComment" to="CvDiplomacyInterface" as="beginDiplomacy"/>
+	<extend how="after" module="DiplomacyUtil" function="handleUserResponse" to="CvDiplomacyInterface" as="handleUserResponse"/>
+	
 	<init module="GGUtil"/>
 	<init module="GPUtil"/>
 	<init module="ReligionUtil"/>

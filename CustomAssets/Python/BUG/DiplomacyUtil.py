@@ -212,11 +212,23 @@ class DiploEvent:
 
 ## Event Dispatching
 
-def handleAIComment(eComment, args):
+def handleAIComment(argsList):
+	eComment = argsList[0]
+	commentArgsSize = argsList[1]
+	if commentArgsSize:
+		args = argsList[2:]
+	else:
+		args=[]
 	dispatchEvent(eComment, diplo.getWhoTradingWith(), 
 			PlayerUtil.getActivePlayerID(), args)
 
-def handleUserResponse(eComment, args):
+def handleUserResponse(argsList):
+	eComment = argsList[0]
+	commentArgsSize = argsList[1]
+	if commentArgsSize:
+		args = argsList[2:]
+	else:
+		args=[]
 	dispatchEvent(eComment, PlayerUtil.getActivePlayerID(), 
 			diplo.getWhoTradingWith(), args)
 
