@@ -55,6 +55,10 @@ New Features:
 
 Improvements:
 
+- Removed Unused Modules
+	CvAppInterface and CvOptionsScreenCallbackInterface
+	If your mod needs to add code to any of these modules, use <export> and <extend> or use the original BTS modules as a base
+
 Bug Fixes:
 
 

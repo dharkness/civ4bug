@@ -36,12 +36,19 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+import BugOptions
 import BugUtil
 
 gc = CyGlobalContext()
 
 IS_PRESENT = False
 VERSION = -1
+
+
+## General and Versions
+
+def isBug():
+	return True
 
 def isPresent():
 	return IS_PRESENT
@@ -72,6 +79,8 @@ def decode(value, noneIsZero=False):
 	else:
 		return None
 
+
+## Widgets
 
 def widget(bugWidget, bugData1=None, bugData2=None, *args):
 	return widgetVersion(VERSION, bugWidget, bugData1, bugData2, *args)
@@ -151,6 +160,27 @@ def isWidgetVersion(version, widget, bugWidget):
 		except:
 			pass
 	return False
+
+
+## Accessing Options
+
+def getOptionBOOL(argsList):
+	return castOptionValue(bool, *argsList)
+
+def getOptionINT(argsList):
+	return castOptionValue(int, *argsList)
+
+def getOptionFLOAT(argsList):
+	return castOptionValue(float, *argsList)
+
+def getOptionSTRING(argsList):
+	return castOptionValue(str, *argsList)
+
+def castOptionValue(func, id, default):
+	try:
+		return func(BugOptions.getOption(id).getValue())
+	except:
+		return default
 
 
 def init():

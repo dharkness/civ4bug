@@ -79,6 +79,7 @@
 		</arg>
 	</init>
 	
+	<!-- BUG Options Screen UI control handlers -->
 	<export module="BugOptionsScreen" function="handleBugExitButtonInput" to="CvOptionsScreenCallbackInterface"/>
 	<export module="BugOptionsScreen" function="handleBugHelpButtonInput" to="CvOptionsScreenCallbackInterface"/>
 	<export module="BugOptionsScreen" function="handleBugCheckboxClicked" to="CvOptionsScreenCallbackInterface"/>
@@ -88,6 +89,8 @@
 	<export module="BugOptionsScreen" function="handleBugFloatDropdownChange" to="CvOptionsScreenCallbackInterface"/>
 	<export module="BugOptionsScreen" function="handleBugColorDropdownChange" to="CvOptionsScreenCallbackInterface"/>
 	<export module="BugOptionsScreen" function="handleBugSliderChanged" to="CvOptionsScreenCallbackInterface"/>
+	
+	<!-- Civ4 Options Screen UI control handlers -->
 	<extend module="BugOptionsScreen" function="handleLanguagesDropdownBoxInput" to="CvOptionsScreenCallbackInterface"/>
 	<extend module="BugOptionsScreen" function="handleResolutionDropdownInput" to="CvOptionsScreenCallbackInterface"/>
 	

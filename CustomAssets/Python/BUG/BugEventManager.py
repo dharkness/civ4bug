@@ -543,6 +543,8 @@ EVENT_FUNCTION_MAP = {
 }
 
 
+## Initialization
+
 def configure(logging=None, noLogEvents=None):
 	"""Sets the global event manager's logging options."""
 	if g_eventManager:
@@ -550,6 +552,15 @@ def configure(logging=None, noLogEvents=None):
 		g_eventManager.setNoLogEvents(noLogEvents)
 	else:
 		BugUtil.error("BugEventManager - BugEventManager not setup before configure()")
+
+def hookupPreGameStartEvent():
+	BugUtil.extend(preGameStart, "CvAppInterface", "preGameStart")
+
+def preGameStart(originalFunc):
+	g_eventManager.fireEvent("PreGameStart")
+	originalFunc()
+
+hookupPreGameStartEvent()
 
 g_initDone = False
 def initBug():
