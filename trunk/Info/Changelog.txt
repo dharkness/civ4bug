@@ -50,6 +50,8 @@ New Features:
 
 - BugUtil
 	Added export(), exportFunction(), extend(), and extendFunction() for injecting functions into EntryPoint modules
+- Configuration
+	Added <export> and <extend> XML elements that call exportFunction() and extendFunction() respectively
 
 Improvements:
 

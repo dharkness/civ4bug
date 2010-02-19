@@ -12,9 +12,13 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
+from CvOptionsScreen import CvOptionsScreen
+import CvEventInterface
+import CvOptionsScreenCallbackInterface
 import BugConfig
 import BugCore
 import BugErrorOptionsTab
+import BugHelp
 import BugOptions
 import BugUtil
 
@@ -44,6 +48,68 @@ def showOptionsScreen(argsList=None):
 
 def clearAllTranslations(argsList=None):
 	g_optionsScreen.clearAllTranslations()
+
+
+## Control Callback Handlers
+
+def handleBugExitButtonInput(argsList):
+	"Exits the screen after saving the options to disk"
+	#szName = argsList[0]
+	getOptionsScreen().close()
+	return 1
+		
+def handleBugHelpButtonInput(argsList):
+	"Opens the BUG help file"
+	#szName = argsList[0]
+	BugHelp.launch()
+	return 1
+
+def handleBugCheckboxClicked(argsList):
+	value, name = argsList
+	getOptionsScreen().setOptionValue(name, value)
+	return 1
+
+def handleBugTextEditChange(argsList):
+	value, name = argsList
+	getOptionsScreen().setOptionValue(name, value)
+	return 1
+
+def handleBugDropdownChange(argsList):
+	iIndex, name = argsList
+	getOptionsScreen().setOptionIndex(name, iIndex)
+	return 1
+
+def handleBugIntDropdownChange(argsList):
+	iIndex, name = argsList
+	getOptionsScreen().setOptionIndex(name, iIndex)
+	return 1
+
+def handleBugFloatDropdownChange(argsList):
+	iIndex, name = argsList
+	getOptionsScreen().setOptionIndex(name, iIndex)
+	return 1
+
+def handleBugColorDropdownChange(argsList):
+	iIndex, name = argsList
+	getOptionsScreen().setOptionIndex(name, iIndex)
+	return 1
+
+def handleBugSliderChanged(argsList):
+	value, name = argsList
+	getOptionsScreen().setOptionValue(name, value)
+	return 1
+
+def handleLanguagesDropdownBoxInput(originalFunc, argsList):
+	originalFunc(argsList)
+	value, name = argsList
+	CvEventInterface.getEventManager().fireEvent("LanguageChanged", value)
+	return 1
+
+def handleResolutionDropdownInput(argsList):
+	CvOptionsScreenCallbackInterface.handleResolutionDropdownInput(argsList)
+	value, name = argsList
+	CvEventInterface.getEventManager().fireEvent("ResolutionChanged", value)
+	return 1
 
 
 ## Class
@@ -99,6 +165,16 @@ class BugOptionsScreen:
 		if self.reopen:
 			self.reopen = False
 			self.interfaceScreen()
+	
+	def setOptionValue(self, name, value):
+		option = self.options.getOption(name)
+		if (option is not None):
+			option.setValue(value)
+	
+	def setOptionIndex(self, name, index):
+		option = self.options.getOption(name)
+		if (option is not None):
+			option.setIndex(index)
 
 
 ## Configuration

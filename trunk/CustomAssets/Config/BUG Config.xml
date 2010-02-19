@@ -14,6 +14,9 @@
 		<config tag="mod" parents="xml" module="BugConfig" class="ModHandler"/>
 		<config tag="init" parents="mod" module="BugConfig" class="InitHandler"/>
 		
+		<config tag="export" parents="mod" module="BugConfig" class="ExportHandler"/>
+		<config tag="extend" parents="mod" module="BugConfig" class="ExtendHandler"/>
+		
 		<config tag="options" parents="mod" module="BugOptions" class="OptionsHandler">
 			<config tag="section" class="SectionHandler">
 				<config tag="option" parents="bug mod options" class="OptionHandler"/>
