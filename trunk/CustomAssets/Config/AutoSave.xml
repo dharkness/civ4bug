@@ -31,4 +31,8 @@
 	</options>
 	
 	<init/>
+	
+	<export function="saveGameStart" to="CvAppInterface" as="gameStartSave"/>
+	<export function="saveGameEnd" to="CvAppInterface" as="gameEndSave"/>
+	<export function="saveGameExit" to="CvAppInterface" as="gameExitSave"/>
 </mod>

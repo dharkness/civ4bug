@@ -147,6 +147,7 @@
 	
 	<!-- BULL -->
 	
+	<load mod="BULL Core"/>
 	<load mod="BULL Actions"/>
 	<load mod="BULL City Bar"/>
 	<load mod="BULL Misc Hovers"/>

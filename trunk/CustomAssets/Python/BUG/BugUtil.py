@@ -678,7 +678,7 @@ def extend(function, toModule, asName=None, log=True):
 	if asName is None:
 		asName = function.__name__
 	originalFunc = lookupFunction(toModule, asName, False)
-	newFunc = lambda argsList: function(originalFunc, argsList)
+	newFunc = lambda *args: function(originalFunc, *args)
 	newFunc.__module__ = function.__module__
 	newFunc.__name__ = function.__name__
 	if log:
