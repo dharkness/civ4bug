@@ -79,6 +79,18 @@
 		</arg>
 	</init>
 	
+	<export module="BugOptionsScreen" function="handleBugExitButtonInput" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugHelpButtonInput" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugCheckboxClicked" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugTextEditChange" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugDropdownChange" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugIntDropdownChange" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugFloatDropdownChange" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugColorDropdownChange" to="CvOptionsScreenCallbackInterface"/>
+	<export module="BugOptionsScreen" function="handleBugSliderChanged" to="CvOptionsScreenCallbackInterface"/>
+	<extend module="BugOptionsScreen" function="handleLanguagesDropdownBoxInput" to="CvOptionsScreenCallbackInterface"/>
+	<extend module="BugOptionsScreen" function="handleResolutionDropdownInput" to="CvOptionsScreenCallbackInterface"/>
+	
 	<event type="gameUpdate" module="BugUtil" function="doDeferredCalls"/>
 	<event type="BeginPlayerTurn" module="BugUtil" function="doHotSeatCheck"/>
 	<event type="SwitchHotSeatPlayer" module="CvMainInterface" function="onSwitchHotSeatPlayer"/>

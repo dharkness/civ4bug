@@ -566,6 +566,44 @@ class EventHandler(HandlerWithArgs):
 		else:
 			BugUtil.info("BugConfig - ignoring <%s> %s, requires dll version %s", element.tag, type, self.resolveDll(element, dll))
 
+class ExportHandler(Handler):
+	
+	TAG = "export"
+	
+	def __init__(self):
+		Handler.__init__(self, self.TAG, "module function to as dll")
+		self.addAttribute("module", True, True)
+		self.addAttribute("function", True)
+		self.addAttribute("to", True)
+		self.addAttribute("as", True, False, None, "function")
+		self.addAttribute("dll")
+	
+	def handle(self, element, module, function, toModule, asName, dll):
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			BugUtil.exportFunction(module, function, toModule, asName)
+		else:
+			BugUtil.info("BugConfig - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, function, self.resolveDll(element, dll))
+
+class ExtendHandler(Handler):
+	
+	TAG = "extend"
+	
+	def __init__(self):
+		Handler.__init__(self, self.TAG, "module function to as dll")
+		self.addAttribute("module", True, True)
+		self.addAttribute("function", True)
+		self.addAttribute("to", True)
+		self.addAttribute("as", True, False, None, "function")
+		self.addAttribute("dll")
+	
+	def handle(self, element, module, function, toModule, asName, dll):
+		dll = BugDll.decode(dll)
+		if self.isDllOkay(element, dll):
+			BugUtil.extendFunction(module, function, toModule, asName)
+		else:
+			BugUtil.info("BugConfig - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, function, self.resolveDll(element, dll))
+
 
 ## Initialization
 
