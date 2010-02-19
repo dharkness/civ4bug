@@ -42,6 +42,7 @@ class BugACOOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addSpacer(screen, leftR, "ACO_Tab1.2")
 		self.addTextDropdown(screen, leftL, leftR, "ACO__ShowShiftInstructions")
 		
+		self.addSpacer(screen, right, "ACO_Tab2")
 		rightL, rightR =  self.addTwoColumnLayout(screen, right, "ACO2")
 		self.addTextDropdown(screen, rightL, rightR, "ACO__ShowSurvivalOdds")
 		self.addTextDropdown(screen, rightL, rightR, "ACO__ShowUnharmedOdds")
