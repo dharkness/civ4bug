@@ -44,6 +44,9 @@ Improvements:
 
 Bug Fixes:
 
+- Random Events
+	Fixed culture-level checking in Partisans random event; event is now possible on 3.19 and above
+
 
 MODDING
 
