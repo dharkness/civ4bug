@@ -670,7 +670,11 @@ def exportFunction(module, name, toModule, asName=None, log=True):
 		asName = name
 	export(lookupFunction(module, name, False), toModule, asName, log)
 
-def extend(function, toModule, asName=None, log=True):
+EXTEND_BEFORE = "before"
+EXTEND_AFTER = "after"
+EXTEND_INSTEAD = "instead"
+
+def extend(function, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 	"""
 	Exports a lambda function to <toModule> as <asName> that calls <function>,
 	passing the original function from <toModule> and the received arguments.
@@ -678,7 +682,14 @@ def extend(function, toModule, asName=None, log=True):
 	if asName is None:
 		asName = function.__name__
 	originalFunc = lookupFunction(toModule, asName, False)
-	newFunc = lambda *args: function(originalFunc, *args)
+	if how == EXTEND_INSTEAD:
+		newFunc = lambda *args: function(originalFunc, *args)
+	elif how == EXTEND_BEFORE:
+		newFunc = lambda *args: (function(*args), originalFunc(*args))[1]
+	elif how == EXTEND_AFTER:
+		newFunc = lambda *args: (originalFunc(*args), function(*args))[1]
+	else:
+		raise ConfigError("Invalid how '%s' in extend()" % how)
 	newFunc.__module__ = function.__module__
 	newFunc.__name__ = function.__name__
 	if log:
@@ -688,7 +699,7 @@ def extend(function, toModule, asName=None, log=True):
 			debug("BugUtil - extending %s.%s over %s", function.__module__, asName, toModule)
 	export(newFunc, toModule, asName, False)
 
-def extendFunction(module, name, toModule, asName=None, log=True):
+def extendFunction(module, name, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 	if asName is None:
 		asName = name
 	extend(lookupFunction(module, name, False), toModule, asName, log)
