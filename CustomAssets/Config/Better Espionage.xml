@@ -6,9 +6,9 @@
 	Copyright (c) 2008 The BUG Mod.
 -->
 <mod id="BetterEspionage" 
-	 module="EspionageEventManager"
+	 module="SpyUtil"
 	 name="Better Espionage Screen" 
-	 author="Almightix, EmperorFool" 
+	 author="Almightix, Ruff_Hi, EmperorFool" 
 	 version="1.1" 
 	 date="07/29/2007" 
 	 url="http://forums.civfanatics.com/showthread.php?t=234523">
@@ -74,8 +74,8 @@
 		</section>
 	</options>
 	
-	<event type="GameStart" module="SpyUtil" function="onGameStart"/>
-	<event type="OnLoad" module="SpyUtil" function="onGameLoad"/>
-	<event type="PythonReloaded" module="SpyUtil" function="onPythonReloaded"/>
-	<event type="BeginPlayerTurn" module="SpyUtil" function="onBeginPlayerTurn"/>
+	<event type="GameStart" function="onGameStart"/>
+	<event type="OnLoad" function="onGameLoad"/>
+	<event type="PythonReloaded" function="onPythonReloaded"/>
+	<event type="BeginPlayerTurn" function="onBeginPlayerTurn"/>
 </mod>

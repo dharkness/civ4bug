@@ -67,6 +67,9 @@ Improvements:
 
 Bug Fixes:
 
+- Better Espionage
+	Removed unused EspionageEventManager
+
 
 ____________________________________________________________________________________________________
 BUG 4.3 released February 16th, 2010
