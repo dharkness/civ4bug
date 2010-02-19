@@ -590,17 +590,18 @@ class ExtendHandler(Handler):
 	TAG = "extend"
 	
 	def __init__(self):
-		Handler.__init__(self, self.TAG, "module function to as dll")
+		Handler.__init__(self, self.TAG, "how module function to as dll")
+		self.addAttribute("when", True, False, BugUtil.EXTEND_INSTEAD)
 		self.addAttribute("module", True, True)
 		self.addAttribute("function", True)
 		self.addAttribute("to", True)
 		self.addAttribute("as", True, False, None, "function")
 		self.addAttribute("dll")
 	
-	def handle(self, element, module, function, toModule, asName, dll):
+	def handle(self, element, how, module, function, toModule, asName, dll):
 		dll = BugDll.decode(dll)
 		if self.isDllOkay(element, dll):
-			BugUtil.extendFunction(module, function, toModule, asName)
+			BugUtil.extendFunction(module, function, toModule, asName, how)
 		else:
 			BugUtil.info("BugConfig - ignoring <%s> %s.%s, requires dll version %s", element.tag, module, function, self.resolveDll(element, dll))
 

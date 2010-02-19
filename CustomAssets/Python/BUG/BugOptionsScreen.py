@@ -99,14 +99,12 @@ def handleBugSliderChanged(argsList):
 	getOptionsScreen().setOptionValue(name, value)
 	return 1
 
-def handleLanguagesDropdownBoxInput(originalFunc, argsList):
-	originalFunc(argsList)
+def handleLanguagesDropdownBoxInput(argsList):
 	value, name = argsList
 	CvEventInterface.getEventManager().fireEvent("LanguageChanged", value)
 	return 1
 
 def handleResolutionDropdownInput(argsList):
-	CvOptionsScreenCallbackInterface.handleResolutionDropdownInput(argsList)
 	value, name = argsList
 	CvEventInterface.getEventManager().fireEvent("ResolutionChanged", value)
 	return 1
