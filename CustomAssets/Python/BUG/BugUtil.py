@@ -699,10 +699,28 @@ def extend(function, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 			debug("BugUtil - extending %s.%s %s %s", function.__module__, asName, how, toModule)
 	export(newFunc, toModule, asName, False)
 
+def extendBefore(function, toModule, asName=None, log=True):
+	extend(function, toModule, asName, EXTEND_BEFORE, log)
+
+def extendAfter(function, toModule, asName=None, log=True):
+	extend(function, toModule, asName, EXTEND_AFTER, log)
+
+def extendInstead(function, toModule, asName=None, log=True):
+	extend(function, toModule, asName, EXTEND_INSTEAD, log)
+
 def extendFunction(module, name, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 	if asName is None:
 		asName = name
 	extend(lookupFunction(module, name, False), toModule, asName, how, log)
+
+def extendBeforeFunction(module, name, toModule, asName=None, log=True):
+	extendFunction(module, name, toModule, asName, EXTEND_BEFORE, log)
+
+def extendAfterFunction(module, name, toModule, asName=None, log=True):
+	extendFunction(module, name, toModule, asName, EXTEND_AFTER, log)
+
+def extendInsteadFunction(module, name, toModule, asName=None, log=True):
+	extendFunction(module, name, toModule, asName, EXTEND_INSTEAD, log)
 
 
 ## Python
