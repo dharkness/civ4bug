@@ -591,7 +591,7 @@ class ExtendHandler(Handler):
 	
 	def __init__(self):
 		Handler.__init__(self, self.TAG, "how module function to as dll")
-		self.addAttribute("when", True, False, BugUtil.EXTEND_INSTEAD)
+		self.addAttribute("how", True, False, BugUtil.EXTEND_INSTEAD)
 		self.addAttribute("module", True, True)
 		self.addAttribute("function", True)
 		self.addAttribute("to", True)

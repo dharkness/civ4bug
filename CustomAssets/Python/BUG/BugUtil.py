@@ -694,15 +694,15 @@ def extend(function, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 	newFunc.__name__ = function.__name__
 	if log:
 		if asName != function.__name__:
-			debug("BugUtil - extending %s.%s over %s.%s", function.__module__, function.__name__, toModule, asName)
+			debug("BugUtil - extending %s.%s %s %s.%s", function.__module__, function.__name__, how, toModule, asName)
 		else:
-			debug("BugUtil - extending %s.%s over %s", function.__module__, asName, toModule)
+			debug("BugUtil - extending %s.%s %s %s", function.__module__, asName, how, toModule)
 	export(newFunc, toModule, asName, False)
 
 def extendFunction(module, name, toModule, asName=None, how=EXTEND_INSTEAD, log=True):
 	if asName is None:
 		asName = name
-	extend(lookupFunction(module, name, False), toModule, asName, log)
+	extend(lookupFunction(module, name, False), toModule, asName, how, log)
 
 
 ## Python
