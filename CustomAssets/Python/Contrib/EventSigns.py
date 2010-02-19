@@ -10,6 +10,9 @@
 from CvPythonExtensions import *
 
 import BugUtil
+import CvUtil
+import PlayerUtil
+import CvRandomEventInterface
 import SdToolKit
 
 # Bug Options
@@ -96,6 +99,89 @@ def clearCurrentSigns ():
 	""" Resets gCurrentSigns global; should always be called when finished after an update. """
 	global gCurrentSigns
 	gCurrentSigns = None
+
+
+def clearSignsAndLandmarks(pPlot):
+	""" Removes any current landmarks or signs from a plot.
+
+	In order to place a new sign or landmark I'd like to remove any pre-existing sign
+	or landmark on the plot. However, there seems to be some delay or synch issue.
+	Every attempt I have thus far made would remove the old one but the new one would
+	not show up. So for now, I am not removing old signs/landmarks and thus the event
+	will only place the sign/landmark on a plot if there isn't already one there.
+	If I could resolve that issue, this function would actually be used. ;)
+	"""
+	for iPlayer in range(gc.getMAX_PLAYERS()):
+		engine.removeSign(pPlot, iPlayer)
+	engine.removeLandmark(pPlot)
+	# Don't even know what this does; it was the last of my failed attempts to force the signs to show.
+	#engine.setDirty(EngineDirtyBits.GlobeTexture_DIRTY_BIT, True)
+	return true
+
+def placeLandmark(pPlot, sEventType, iFood, iProd, iComm, bIsSign, iSignOwner):
+	""" Places a landmark on a plot identifying a yield change with a short description.
+
+	Parameters:
+	* pPlot is the CyPlot object for the plot to mark.
+	* sEventType is the str key for the event which is used to get the sign's descriptive caption.
+	* iFood, iProd, and iComm are the integer yield changes which will be noted on the caption.
+	* bIsSign will be True if we want a team-specific sign and False if we want a generic landmark.
+	* iSignOwner is the player number for the visibility of the sign. If it's -1, all players get one.
+	Note that iSignOwner is unused if bIsSign is False since everyone can see landmarks.
+	"""
+	# Bail out early if EventSigns are disabled
+	if not EventSignsOpt.isEnabled(): return False
+	
+	# Bail out if there are no yield changes
+	if iFood == 0 and iProd == 0 and iComm == 0: return False
+
+	# This next bit is unused; see the docstring at the start of that function for why.
+	#clearSignsAndLandmarks(pPlot)
+
+	sCaptionFood = ""
+	sCaptionProd = ""
+	sCaptionComm = ""
+	sCaptionDesc = localText.getText("TXT_KEY_SIGN_" + sEventType, ())
+
+	# Note the extra spaces added for separation after each yield adjustment; you can remove them
+	# if you want a more condensed sign; the reason they are here instead of in the XML formats
+	# is because I couldn't come up with a simple way to make them appear only if the yield changes.
+	if (iFood != 0):
+		sCaptionFood = localText.getText("TXT_KEY_SIGN_FORMAT_FOOD", (iFood, )) + u" "
+	if (iProd != 0):
+		sCaptionProd = localText.getText("TXT_KEY_SIGN_FORMAT_PROD", (iProd, )) + u" "
+	if (iComm != 0):
+		sCaptionComm = localText.getText("TXT_KEY_SIGN_FORMAT_COMM", (iComm, )) + u" "
+
+	sCaption = localText.getText("TXT_KEY_SIGN_FORMAT_OVERVIEW", (sCaptionFood, sCaptionProd, sCaptionComm, sCaptionDesc))
+
+	if (bIsSign):
+		if (iSignOwner == -1):
+			# add signs for all valid human players who are still alive.
+			for pPlayer in PlayerUtil.players(human=True, alive=True):
+				addSign(pPlot, pPlayer.getID(), sCaption)
+		else:
+			addSign(pPlot, iSignOwner, sCaption)
+	else:
+		engine.addLandmark(pPlot, sCaption)
+
+	return True
+
+def applyLandmarkFromEvent(argsList):
+	""" Generic event callback function to place signs/landmarks when event changes plot yields """
+	iEvent = argsList[0]
+	kTriggeredData = argsList[1]
+
+	event = gc.getEventInfo(iEvent)
+	iFood = event.getPlotExtraYield(YieldTypes.YIELD_FOOD)
+	iProd = event.getPlotExtraYield(YieldTypes.YIELD_PRODUCTION)
+	iComm = event.getPlotExtraYield(YieldTypes.YIELD_COMMERCE)
+
+	if ( (iFood != 0) or (iProd != 0) or (iComm != 0) ):
+		pPlot = gc.getMap().plot(kTriggeredData.iPlotX, kTriggeredData.iPlotY)
+		placeLandmark(pPlot, event.getType(), iFood, iProd, iComm, True, -1)
+
+	return True
 
 
 class MapSigns:
@@ -416,3 +502,56 @@ class EventSignsEventHandler:
 		if g_bForceUpdate:
 			gSavedSigns.processSigns(g_bShowSigns)
 			g_bForceUpdate = False
+
+
+## Random Event Callbacks
+
+# This is the only current event which has a pre-defined callback since it may change the
+# yields of more than one plot. So in this function we will essentially duplicate what the 
+# generic landmark event processor does where necessary here. Additions marked with "EventSigns" comments.
+
+def applySaltpeter(argsList):
+	iEvent = argsList[0]
+	kTriggeredData = argsList[1]
+
+	# EventSigns start -- setup
+	event = gc.getEventInfo(iEvent)
+	iFood = event.getPlotExtraYield(YieldTypes.YIELD_FOOD)
+	iProd = event.getPlotExtraYield(YieldTypes.YIELD_PRODUCTION)
+	iComm = event.getPlotExtraYield(YieldTypes.YIELD_COMMERCE)
+	sEventType = event.getType()
+	# EventSigns end
+
+	map = gc.getMap()
+	
+	player = gc.getPlayer(kTriggeredData.ePlayer)
+
+	plot = gc.getMap().plot(kTriggeredData.iPlotX, kTriggeredData.iPlotY)
+	if (plot == None):
+		return
+	# EventSigns start -- Add landmark for initial plot, if there is still a yield change
+	placeLandmark(plot, sEventType, iFood, iProd, iComm, True, -1)
+	# EventSigns end
+		
+	iForest = CvUtil.findInfoTypeNum(gc.getFeatureInfo,gc.getNumFeatureInfos(),'FEATURE_FOREST')
+	
+	listPlots = []
+	for i in range(map.numPlots()):
+		loopPlot = map.plotByIndex(i)
+		if (loopPlot.getOwner() == kTriggeredData.ePlayer and loopPlot.getFeatureType() == iForest and loopPlot.isHills()):
+			iDistance = plotDistance(kTriggeredData.iPlotX, kTriggeredData.iPlotY, loopPlot.getX(), loopPlot.getY())
+			if iDistance > 0:
+				listPlots.append((iDistance, loopPlot))
+
+	listPlots.sort()
+	
+	iCount = CvRandomEventInterface.getSaltpeterNumExtraPlots()
+	for loopPlot in listPlots:
+		if iCount == 0:
+			break
+		iCount -= 1
+		gc.getGame().setPlotExtraYield(loopPlot[1].getX(), loopPlot[1].getY(), YieldTypes.YIELD_COMMERCE, 1)
+		CyInterface().addMessage(kTriggeredData.ePlayer, false, gc.getEVENT_MESSAGE_TIME(), localText.getText("TXT_KEY_EVENT_SALTPETER_DISCOVERED", ()), "", InterfaceMessageTypes.MESSAGE_TYPE_INFO, None, gc.getInfoTypeForString("COLOR_WHITE"), loopPlot[1].getX(), loopPlot[1].getY(), true, true)
+		# EventSigns start -- Add landmark for other plots, if there is still a yield change
+		placeLandmark(loopPlot[1], sEventType, iFood, iProd, iComm, True, -1)
+		# EventSigns end

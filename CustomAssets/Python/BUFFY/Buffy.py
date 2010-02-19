@@ -13,6 +13,8 @@ from CvPythonExtensions import *
 import BugCore
 import BugPath
 import BugUtil
+import CvUtil
+import GameUtil
 import os.path
 
 gc = CyGlobalContext()
@@ -21,6 +23,9 @@ options = BugCore.game.BUFFY
 IS_ACTIVE = False
 IS_DLL_PRESENT = False
 IS_DLL_IN_CORRECT_PATH = False
+
+
+## Checking Status
 
 def isEnabled():
 	return options.isEnabled()
@@ -48,6 +53,9 @@ def isDllInCorrectPath():
 	"""
 	return IS_DLL_IN_CORRECT_PATH
 
+
+## Initialization
+
 def init():
 	"""
 	Checks for the presence of the BUFFY DLL and sets the global flags.
@@ -72,3 +80,80 @@ def init():
 						pass # DLL path is borked
 			except:
 				BugUtil.info("BUFFY is not active (no DLL)")
+
+
+## Random Event Changes
+
+def canTriggerTheVedicAryans(argsList):
+
+	kTriggeredData = argsList[0]
+	player = gc.getPlayer(kTriggeredData.ePlayer)
+	
+#   If Barbarians are disabled in this game, this event will not occur.
+	if gc.getGame().isOption(GameOptionTypes.GAMEOPTION_NO_BARBARIANS):
+		return false
+			
+#   At least one civ on the board must know Polytheism.
+	bFoundValid = false
+
+# BUFFY 3.19.003 - start
+	# changes one of the key techs to Priesthood instead of Polytheism
+	if isEnabled():
+		iTech = gc.getInfoTypeForString('TECH_PRIESTHOOD')
+	else:
+		iTech = gc.getInfoTypeForString('TECH_POLYTHEISM')
+# BUFFY 3.19.003 - end
+
+	for iPlayer in range(gc.getMAX_CIV_PLAYERS()):
+		loopPlayer = gc.getPlayer(iPlayer)
+		if loopPlayer.isAlive():
+			if gc.getTeam(loopPlayer.getTeam()).isHasTech(iTech):
+				bFoundValid = true
+				break
+				
+	if not bFoundValid:
+		return false
+					
+#   At least one civ on the board must know Archery.
+	bFoundValid = false
+	iTech = CvUtil.findInfoTypeNum(gc.getTechInfo, gc.getNumTechInfos(), 'TECH_ARCHERY')
+	for iPlayer in range(gc.getMAX_CIV_PLAYERS()):			
+		loopPlayer = gc.getPlayer(iPlayer)
+		if loopPlayer.isAlive():
+			if gc.getTeam(loopPlayer.getTeam()).isHasTech(iTech):
+				bFoundValid = true
+				break
+				
+	if not bFoundValid:
+		return false
+
+# BUG - 3.17 - Start
+	if (GameUtil.isVersion(317)):
+		# rest indented but unchanged
+		# Can we build the counter unit?		
+		iCounterUnitClass = CvUtil.findInfoTypeNum(gc.getUnitClassInfo, gc.getNumUnitClassInfos(), 'UNITCLASS_ARCHER')
+		iCounterUnit = gc.getCivilizationInfo(player.getCivilizationType()).getCivilizationUnits(iCounterUnitClass)
+		if iCounterUnit == -1:
+			return false
+
+		(loopCity, iter) = player.firstCity(false)
+		bFound = false
+		while(loopCity):
+			if (loopCity.canTrain(iCounterUnit, false, false)):
+				bFound = true
+				break
+
+			(loopCity, iter) = player.nextCity(iter, false)
+
+		if not bFound:
+			return false
+# BUG - 3.17 - End
+
+#	Find an eligible plot
+	map = gc.getMap()	
+	for i in range(map.numPlots()):
+		plot = map.plotByIndex(i)
+		if (plot.getOwner() == -1 and not plot.isWater() and not plot.isImpassable() and plot.area().getCitiesPerPlayer(kTriggeredData.ePlayer) > 0 and plot.isAdjacentPlayer(kTriggeredData.ePlayer, true)):
+			return true
+
+	return false

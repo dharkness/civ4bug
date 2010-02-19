@@ -7,6 +7,7 @@
 -->
 <mod id="EventSigns" 
 	 name="EventSigns" 
+	 module="EventSigns" 
 	 author="Dresden" 
 	 version="2.0" 
 	 date="11/7/2008"
@@ -22,6 +23,9 @@
 		</section>
 	</options>
 
-	<events module="EventSigns" class="EventSignsEventHandler"/>
+	<events class="EventSignsEventHandler"/>
+	
+	<export function="applyLandmarkFromEvent" to="CvRandomEventInterface"/>
+	<export function="applySaltpeter" to="CvRandomEventInterface"/>
 
 </mod>
