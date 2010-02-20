@@ -6679,6 +6679,13 @@ class CvMainInterface:
 					szLeftBuffer = gc.getProjectInfo(CyInterface().getOrderNodeData1(i)).getDescription()
 					szRightBuffer = "(" + str(pHeadSelectedCity.getProjectProductionTurnsLeft(CyInterface().getOrderNodeData1(i), i)) + ")"
 
+# BUG - Production Started - start
+					if BugDll.isVersion(3) and CityScreenOpt.isShowProductionStarted():
+						eProject = CyInterface().getOrderNodeData1(i)
+						if pHeadSelectedCity.getProjectProduction(eProject) > 0:
+							szRightBuffer = BugUtil.colorText(szRightBuffer, "COLOR_CYAN")
+# BUG - Production Started - end
+
 				elif ( CyInterface().getOrderNodeType(i) == OrderTypes.ORDER_MAINTAIN ):
 					szLeftBuffer = gc.getProcessInfo(CyInterface().getOrderNodeData1(i)).getDescription()
 
