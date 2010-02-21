@@ -2406,6 +2406,7 @@ class CvMainInterface:
 		iBtnAdvance = 25
 		iBtnY = 27
 		iBtnX = 27
+		iBtnX = 10  # moving the log button left = BUG Option Button
 		
 		# Turn log Button
 		screen.setImageButton( "TurnLogButton", "", iBtnX, iBtnY - 2, iBtnWidth, iBtnWidth, WidgetTypes.WIDGET_ACTION, gc.getControlInfo(ControlTypes.CONTROL_TURN_LOG).getActionInfoIndex(), -1 )
@@ -2895,15 +2896,16 @@ class CvMainInterface:
 		screen.hide("RawYieldsOwnedTiles6")
 # BUG - Raw Yields - end
 
-# BUG - BUG Options Screen - Start
+# BUG - BUG Option Button - Start
 		iBtnWidth	= 28
 		iBtnY = 27
 		iBtnX = 27
+		iBtnX = 10
 
 		sBUGOptionsScreenButton = ArtFileMgr.getInterfaceArtInfo("BUG_OPTIONS_SCREEN_BUTTON").getPath()
 		screen.setImageButton("BUGOptionsScreenWidget", sBUGOptionsScreenButton,  iBtnX + 30, iBtnY - 2, iBtnWidth, iBtnWidth, WidgetTypes.WIDGET_BUG_OPTION_SCREEN, -1, -1)
 		screen.hide("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - End
 
 		screen.addPanel( "BuildingListBackground", u"", u"", True, False, 10, 287, 238, 30, PanelStyles.PANEL_STYLE_STANDARD )
 		screen.setStyle( "BuildingListBackground", "Panel_City_Header_Style" )
@@ -3367,9 +3369,9 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
+# BUG - BUG Option Button - Start
 			screen.hide("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - End
 # BUG - field of view slider - start
 			screen.hide(self.szSliderTextId)
 			screen.hide(self.szSliderId)
@@ -3400,9 +3402,9 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
+# BUG - BUG Option Button - Start
 			screen.hide("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - End
 # BUG - field of view slider - start
 			screen.hide(self.szSliderTextId)
 			screen.hide(self.szSliderId)
@@ -3433,9 +3435,10 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
-			screen.show("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+			if MainOpt.isShowOptionsButton():
+				screen.show("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 # BUG - field of view slider - start
 			screen.hide(self.szSliderTextId)
 			screen.hide(self.szSliderId)
@@ -3453,9 +3456,9 @@ class CvMainInterface:
 			screen.moveToFront( "MilitaryAdvisorButton" )
 			screen.moveToFront( "VictoryAdvisorButton" )
 			screen.moveToFront( "InfoAdvisorButton" )
-# BUG - BUG Options Screen - Start
-			screen.moveToFront("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+#			screen.moveToFront("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 
 
 		elif (CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_ADVANCED_START):		
@@ -3483,9 +3486,9 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
+# BUG - BUG Option Button - Start
 			screen.hide("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - End
 
 		elif ( CyEngine().isGlobeviewUp() ):
 			screen.hide( "InterfaceLeftBackgroundWidget" )
@@ -3512,9 +3515,10 @@ class CvMainInterface:
 			screen.hide( "MainCityScrollMinus" )
 			screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
-			screen.show("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+			if MainOpt.isShowOptionsButton():
+				screen.show("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 # BUG - field of view slider - start
 			screen.hide(self.szSliderTextId)
 			screen.hide(self.szSliderId)
@@ -3532,9 +3536,9 @@ class CvMainInterface:
 			screen.moveToFront( "MilitaryAdvisorButton" )
 			screen.moveToFront( "VictoryAdvisorButton" )
 			screen.moveToFront( "InfoAdvisorButton" )
-# BUG - BUG Options Screen - Start
-			screen.moveToFront("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+#			screen.moveToFront("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 
 		else:
 			screen.show( "InterfaceLeftBackgroundWidget" )
@@ -3565,9 +3569,10 @@ class CvMainInterface:
 				screen.hide( "MainCityScrollMinus" )
 				screen.hide( "MainCityScrollPlus" )
 # BUG - City Arrows - end
-# BUG - BUG Options Screen - Start
-			screen.show("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+			if MainOpt.isShowOptionsButton():
+				screen.show("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 # BUG - field of view slider - start
 			if (MainOpt.isShowFieldOfView()):
 				screen.show(self.szSliderTextId)
@@ -3589,9 +3594,9 @@ class CvMainInterface:
 			screen.moveToFront( "MilitaryAdvisorButton" )
 			screen.moveToFront( "VictoryAdvisorButton" )
 			screen.moveToFront( "InfoAdvisorButton" )
-# BUG - BUG Options Screen - Start
-			screen.moveToFront("BUGOptionsScreenWidget")
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - Start
+#			screen.moveToFront("BUGOptionsScreenWidget")
+# BUG - BUG Option Button - End
 
 		screen.updateMinimapVisibility()
 
@@ -7546,12 +7551,12 @@ class CvMainInterface:
 				return self.MainInterfaceInputMap.get(inputClass.getFunctionName() + "1")(inputClass)
 # BUG - PLE - end
 
-# BUG - BUG Options Screen - Start
+# BUG - BUG Option Button - Start
 			if inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED:
 				if inputClass.getFunctionName() == "BUGOptionsScreenWidget":
 					BugOptionsScreen.showOptionsScreen()
 					return 1
-# BUG - BUG Options Screen - End
+# BUG - BUG Option Button - End
 
 
 # BUG - Raw Yields - start

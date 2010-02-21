@@ -47,6 +47,10 @@ Bug Fixes:
 - Random Events
 	Fixed culture-level checking in Partisans random event; event is now possible on 3.19 and above
 
+Changes:
+- Main Interface
+	Mode the BUG Option button optional
+	Moved the BUG Option button slightly left
 
 MODDING
 

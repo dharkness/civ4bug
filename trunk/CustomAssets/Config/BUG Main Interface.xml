@@ -21,6 +21,11 @@
 					type="boolean" default="True" 
 					get="isShowOptionsKeyReminder" set="setShowOptionsKeyReminder" dirtyBit="GameData"/>
 			
+			<!-- Options Screen Button -->
+			<option id="OptionsButton" key="Options Button" 
+					type="boolean" default="True" 
+					get="isShowOptionsButton" set="setShowOptionsButton" dirtyBit="GameData"/>
+
 			<!-- Gold Rate Warning -->
 			<option id="GoldRateWarning" key="Gold Rate Warning" 
 					type="boolean" default="True" 

@@ -23,6 +23,7 @@ class BugSystemOptionsTab(BugOptionsTab.BugOptionsTab):
 
 		left, right = self.addTwoColumnLayout(screen, column, "Bottom", False)
 		self.addCheckbox(screen, left, "MainInterface__OptionsKey")
+		self.addCheckbox(screen, left, "MainInterface__OptionsButton")
 		screen.setLayoutFlag(right, "LAYOUT_RIGHT")
 		screen.setLayoutFlag(right, "LAYOUT_SIZE_HPREFERREDEXPANDING")
 		self.addLabel(screen, right, "Version", 
