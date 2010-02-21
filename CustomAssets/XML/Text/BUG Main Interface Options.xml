@@ -23,6 +23,22 @@
 		<Spanish>When checked, displays a message about Alt + Ctrl + O when a game is started or loaded.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSBUTTON_TEXT</Tag>
+		<English>Options Button</English>
+		<French>Options Button</French>
+		<German>Options Button</German>
+		<Italian>Options Button</Italian>
+		<Spanish>Options Button</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSKEY_HOVER</Tag>
+		<English>When checked, shows the BUG Option Screen button.</English>
+		<French>When checked, shows the BUG Option Screen button.</French>
+		<German>When checked, shows the BUG Option Screen button.</German>
+		<Italian>When checked, shows the BUG Option Screen button.</Italian>
+		<Spanish>When checked, shows the BUG Option Screen button.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__GOLDRATEWARNING_TEXT</Tag>
 		<English>Gold Rate Warning</English>
 		<French>Gold Rate Warning</French>
