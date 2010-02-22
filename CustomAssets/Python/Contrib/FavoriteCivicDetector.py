@@ -1,15 +1,13 @@
-## Sid Meier's Civilization 4
-## Copyright Firaxis Games 2005
-##
-## FavoriteCivicDetector.py for the BUG Mod by Dresden
-## Much of this is based on the BUG Reminder code by Ruff & EF
-## which in turn extended work of eotinb and Gillmer J. Derge
+## FavoriteCivicDetector
 ##
 ## Keeps track of changing Diplomacy modifiers to guess what an
 ## AI's favorite civic is. The intended use is for the Foreign Advisor
 ## to figure out and then display the correct favorite civic of an
 ## AI leader when playing with the Random Personalities option.
 ##
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: Dresden
 
 from CvPythonExtensions import *
 
@@ -24,7 +22,6 @@ BugUtil.fixSets(globals())
 
 # globals
 gc = CyGlobalContext()
-localText = CyTranslator()
 
 # for sdtoolkit
 SD_MOD_ID = "FavoriteCivicDetector"
@@ -294,20 +291,11 @@ class FavoriteCivicDetector:
 	def __init__(self, eventManager):
 		BugUtil.debug("FavoriteCivicDetector.__init__(). Resetting data and initing event manager.")
 		initHelpers()
-		initData()
-		FavoriteCivicDetectorEvent(eventManager, self)
-
-class FavoriteCivicDetectorEvent:
-	def __init__(self, eventManager, dataManager):
-		## Init event handlers
 		eventManager.addEventHandler('BeginActivePlayerTurn', self.onBeginActivePlayerTurn)
 		eventManager.addEventHandler("GameStart", self.onGameStart)
 		eventManager.addEventHandler("OnLoad", self.onLoadGame)
 		eventManager.addEventHandler("OnPreSave", self.onPreSave)
 		eventManager.addEventHandler("CivicDemanded", self.onCivicDemanded)
-
-		self.eventMgr = eventManager
-		self.dataMgr = dataManager
 		
 	def onBeginActivePlayerTurn(self, argsList):
 		""" Called when the active player can start making their moves. """
@@ -335,7 +323,6 @@ class FavoriteCivicDetectorEvent:
 			if (data):
 				global gFavoriteByPlayer
 				gFavoriteByPlayer = data
-				SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, None)
 				#BugUtil.debug("Data Loaded:")
 				#dump()
 			else:

@@ -9,7 +9,7 @@
 from CvPythonExtensions import *
 import BugUtil
 import PlayerUtil
-import SdToolKit
+import BugData
 
 gc = CyGlobalContext()
 
@@ -90,7 +90,7 @@ def clear():
 def load():
 	global g_values, g_iTurn
 	clear()
-	data = SdToolKit.sdModLoad(SD_MOD_ID)
+	data = BugData.getTable(SD_MOD_ID).data
 	BugUtil.debug("SpyUtil - loaded: %s", data)
 	if SD_VERSION_ID in data:
 		if data[SD_VERSION_ID] == 1:
@@ -113,7 +113,7 @@ def store():
 		SD_TURN_ID: g_iTurn,
 		SD_VALUES_ID: g_values
 	}
-	SdToolKit.sdModSave(SD_MOD_ID, data)
+	BugData.getTable(SD_MOD_ID).setData(data)
 	BugUtil.debug("SpyUtil - stored: %s", data)
 
 

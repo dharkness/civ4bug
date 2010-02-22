@@ -100,6 +100,7 @@
 
 from CvPythonExtensions import *
 import CvEventManager
+import BugData
 import BugUtil
 import InputUtil
 import types
@@ -381,6 +382,13 @@ class BugEventManager(CvEventManager.CvEventManager):
 					BugUtil.trace("Error in %s event handler %s", eventType, eventHandler)
 		return 0
 
+	def _handleOnPreSaveEvent(self, eventType, argsList):
+		"""Tells BugData to save all script data after other handlers have been called.
+		This won't work as a normal handler because it must be done after other handlers. 
+		"""
+		self._handleDefaultEvent(eventType, argsList)
+		BugData.save()
+
 	# TODO: this probably needs to be more complex
 	def _handleOnSaveEvent(self, eventType, argsList):
 		"""Handles OnSave events by concatenating the results obtained
@@ -535,6 +543,7 @@ class BugEventManager(CvEventManager.CvEventManager):
 EVENT_FUNCTION_MAP = {
 	"kbdEvent": BugEventManager._handleConsumableEvent,
 	"mouseEvent": BugEventManager._handleConsumableEvent,
+	"OnPreSave": BugEventManager._handleOnPreSaveEvent,
 	"OnSave": BugEventManager._handleOnSaveEvent,
 	"OnLoad": BugEventManager._handleInitBugEvent,
 	"PreGameStart": BugEventManager._handleInitBugEvent,

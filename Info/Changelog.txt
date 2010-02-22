@@ -38,19 +38,25 @@ New Features:
 Improvements:
 
 - Production Queue
-	Items that have hammers invested already are drawn in cyan
+	Items that have hammers invested already are drawn in cyan (projects only work with BULL)
 - Great Person Tech Prefs
 	Added headings and limited Current and Future techs to those that can be researched
+- Unit Naming
+	Can use multiple counters for a single naming code
 
 Bug Fixes:
 
 - Random Events
 	Fixed culture-level checking in Partisans random event; event is now possible on 3.19 and above
+- Unit Naming
+	Civilization name code uses adjective as described in hover help as opposed to noun form (English vs. England)
 
 Changes:
+
 - Main Interface
-	Mode the BUG Option button optional
-	Moved the BUG Option button slightly left
+	BUG Options Screen button is now optional
+	Moved the BUG Options Screen button slightly left
+
 
 MODDING
 
@@ -62,6 +68,8 @@ New Features:
 	Added export(), exportFunction(), extend(), and extendFunction() for injecting functions into EntryPoints modules
 - Configuration
 	Added <export> and <extend> XML elements that call exportFunction() and extendFunction() respectively
+- BugData
+	New API for storing data in CyGame's script data that is 100% compatible with SdToolKit
 
 Improvements:
 

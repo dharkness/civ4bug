@@ -77,23 +77,10 @@ import Roman
 import RandomNameUtils
 import random
 import Popup as PyPopup
+import BugData
 
-#######SD Tool Kit#######
 
-import SdToolKit
-sdEcho			= SdToolKit.sdEcho
-sdModInit		= SdToolKit.sdModInit
-sdModLoad		= SdToolKit.sdModLoad
-sdModSave		= SdToolKit.sdModSave
-sdEntityInit	= SdToolKit.sdEntityInit
-sdEntityExists	= SdToolKit.sdEntityExists
-sdEntityWipe	= SdToolKit.sdEntityWipe
-sdGetVal		= SdToolKit.sdGetVal
-sdSetVal		= SdToolKit.sdSetVal
-sdGroup			= "UnitCnt"
-
-############################
-
+SD_MOD_ID = "UnitCnt"
 RENAME_EVENT_ID = CvUtil.getNewEventID("UnitNaming.Rename")
 
 gc = CyGlobalContext()
@@ -300,7 +287,7 @@ class BuildUnitName(AbstractBuildUnitName):
 							self.name = name
 						def getName(self):
 							return self.name
-					pCity = EmpireAsCity(pPlayer.getCivilizationShortDescription(0))
+					pCity = EmpireAsCity(pPlayer.getCivilizationAdjective(0))
 				lUnitReName = UnitReName()
 				zsEra = gc.getEraInfo(pPlayer.getCurrentEra()).getType()
 				for i in range(pPlot.getNumUnits()):
@@ -323,10 +310,10 @@ class UnitReName(object):
 		iPlayer = pUnit.getOwner()
 		pPlayer = gc.getPlayer(iPlayer)
 		
-		zsCiv = gc.getPlayer(iPlayer).getCivilizationShortDescription(0)
-		zsLeader = gc.getPlayer(iPlayer).getName()
+		zsCiv = pPlayer.getCivilizationAdjective(0)
+		zsLeader = pPlayer.getName()
 		zsUnitCombat = self.getUnitCombat(pUnit)
-		zsUnitDomain = gc.getDomainInfo(pUnit.getDomainType()).getDescription()
+		zsUnitDomain = BugUtil.getPlainText("TXT_KEY_BUG_UNIT_NAMING_" + gc.getDomainInfo(pUnit.getDomainType()).getType())
 		zsUnit = PyInfo.UnitInfo(pUnit.getUnitType()).getDescription()
 		zsCity = pCity.getName()
 
@@ -383,52 +370,51 @@ class UnitReName(object):
 		#BUGPrint("UnitNameEM-D [" + zsName + "]")
 
 #		check if there are any more codes to swap out, return if not
-		if (zsName.find("^") == -1):
-			return zsName
-
-#		determine what I am counting across
-		zsSDKey = self.getCounter(zsName)
-		if zsSDKey == "UNIT":		zsSDKey = zsSDKey + zsUnit
-		elif zsSDKey == "COMBAT":	zsSDKey = zsSDKey + zsUnitCombat
-		elif zsSDKey == "CITY":		zsSDKey = zsSDKey + zsCity
-		elif zsSDKey == "UNITCITY": zsSDKey = zsSDKey + zsUnit + zsCity
-		elif zsSDKey == "DOMAIN":	zsSDKey = zsSDKey + zsUnitDomain
-
-		#BUGPrint("UnitNameEM-E [" + zsSDKey + "]")
-
-#		see if we have already started this counter
-		if (sdEntityExists(sdGroup, zsSDKey) == False):
-			#Since no record create entries
-			ziTT1 = self.getTotal1(zsName)
-			ziTT2 = self.getTotal2(zsName)
-			zDic = {'cnt':0, 'tt1':ziTT1, 'tt2':ziTT2}
-			sdEntityInit(sdGroup, zsSDKey, zDic)
-
-#		get the count values
-		ziCnt = sdGetVal(sdGroup, zsSDKey, "cnt")
-		ziTT1 = sdGetVal(sdGroup, zsSDKey, "tt1")
-		ziTT2 = sdGetVal(sdGroup, zsSDKey, "tt2")
-
-		#BUGPrint("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]")
-
-#		increment count, adjust totals if required
-		if bIncrementCounter:
-			ziCnt = ziCnt + 1
-			if (ziCnt > ziTT1
-			and ziTT1 > 0):
-				ziCnt = 1
+		counters = BugData.getGameData().getTable(SD_MOD_ID)
+		while zsName.find("^cnt") != -1:
+#			determine what I am counting across
+			zsSDKey = self.getCounter(zsName)
+			if zsSDKey == "UNIT":		zsSDKey = zsSDKey + zsUnit
+			elif zsSDKey == "COMBAT":	zsSDKey = zsSDKey + zsUnitCombat
+			elif zsSDKey == "CITY":		zsSDKey = zsSDKey + zsCity
+			elif zsSDKey == "UNITCITY": zsSDKey = zsSDKey + zsUnit + zsCity
+			elif zsSDKey == "DOMAIN":	zsSDKey = zsSDKey + zsUnitDomain
+	
+			#BUGPrint("UnitNameEM-E [" + zsSDKey + "]")
+	
+#			see if we have already started this counter
+			if (not counters.hasTable(zsSDKey)):
+				#Since no record create entries
+				ziCnt = 0
 				ziTT1 = self.getTotal1(zsName)
-				ziTT2 = ziTT2 + 1
+				ziTT2 = self.getTotal2(zsName)
+				counter = counters.getTable(zsSDKey)
+			else:
+#				get the count values
+				counter = counters.getTable(zsSDKey)
+				ziCnt = counter["cnt"]
+				ziTT1 = counter["tt1"]
+				ziTT2 = counter["tt2"]
 
-#		store the new values
-		sdSetVal(sdGroup, zsSDKey, "cnt", ziCnt)
-		sdSetVal(sdGroup, zsSDKey, "tt1", ziTT1)
-		sdSetVal(sdGroup, zsSDKey, "tt2", ziTT2)
+			#BUGPrint("UnitNameEM-F [" + str(ziCnt) + "] [" + str(ziTT1) + "] [" + str(ziTT2) + "]")
 
-#		swap out the count code items for count value
-		zsName = self.swapCountCode(zsName, "^cnt", ziCnt)
-		zsName = self.swapCountCode(zsName, "^tt1", ziTT1)
-		zsName = self.swapCountCode(zsName, "^tt2", ziTT2)
+#			increment count, adjust totals if required
+			if bIncrementCounter:
+				ziCnt = ziCnt + 1
+				if (ziCnt > ziTT1
+				and ziTT1 > 0):
+					ziCnt = 1
+					ziTT1 = self.getTotal1(zsName)
+					ziTT2 = ziTT2 + 1
+#				store the new values
+				counter["cnt"] = ziCnt
+				counter["tt1"] = ziTT1
+				counter["tt2"] = ziTT2
+
+#			swap out the count code items for count value
+			zsName = self.swapCountCode(zsName, "^cnt", ziCnt)
+			zsName = self.swapCountCode(zsName, "^tt1", ziTT1)
+			zsName = self.swapCountCode(zsName, "^tt2", ziTT2)
 
 		return zsName
 	

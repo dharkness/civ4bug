@@ -12,12 +12,12 @@
 #-------------------------------------------------------------------------------
 
 from CvPythonExtensions import *
-from SdToolkit import *
 import BugCore
 import BugPath
 import BugUtil
 import CvOverlayScreenUtils
 import PlayerUtil
+import SdToolKit
 
 COLOR_KEYS = None
 PALETTE_WIDTH = None
@@ -285,7 +285,7 @@ class DotMapLayer(StrategyLayer):
 		self.dirty = False
 	
 	def read(self):
-		data = sdGetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID)
+		data = SdToolKit.sdGetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID)
 		self.clearCityLayers()
 		if data is not None:
 			self.cities = self.updateData(data)
@@ -326,7 +326,7 @@ class DotMapLayer(StrategyLayer):
 		
 	def write(self):
 		if self.dirty:
-			sdSetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID, self.cities)
+			SdToolKit.sdSetGlobal(self.MOD_SAVE_ID, self.CITY_SAVE_ID, self.cities)
 			self.dirty = False
 	
 	def show(self):
