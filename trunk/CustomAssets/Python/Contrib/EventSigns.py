@@ -78,6 +78,7 @@ def addSign (pPlot, ePlayer, szCaption):
 		return False
 	gSavedSigns.storeSign(pPlot, ePlayer, szCaption)
 	gSavedSigns.displaySign(pPlot, ePlayer)
+	SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gSavedSigns)
 	return True
 
 def updateCurrentSigns ():
@@ -462,13 +463,10 @@ class EventSignsEventHandler:
 		""" Called when a game is loaded """
 		BugUtil.debug("EventSignsEventHandler.onLoadGame()")
 		initOptions()
-		## Clean up after early development mistake
-		SdToolKit.sdDelGlobal(SD_MOD_ID, 'data')
 		data = SdToolKit.sdGetGlobal(SD_MOD_ID, SD_VAR_ID)
 		if (data):
 			global gSavedSigns
 			gSavedSigns = data
-			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, None)
 			BugUtil.debug("EventSigns Data Loaded:\n %s" % (gSavedSigns))
 		else:
 			BugUtil.debug("EventSigns has no saved data. Initializing new data.")
@@ -480,9 +478,8 @@ class EventSignsEventHandler:
 	def onPreSave(self, argsList):
 		""" Called before a game is actually saved """
 		#BugUtil.debug("EventSignsEventHandler.onPreSave()")
-		if (gSavedSigns and (not gSavedSigns.isEmpty())):
-			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gSavedSigns)
-			#BugUtil.debug("Data Saved to sdtoolkit\n %s" % (gSavedSigns))
+#		if (gSavedSigns and (not gSavedSigns.isEmpty())):
+#			SdToolKit.sdSetGlobal(SD_MOD_ID, SD_VAR_ID, gSavedSigns)
 
 	def onPlotRevealed(self, argsList):
 		""" Called when plot is revealed to team. """

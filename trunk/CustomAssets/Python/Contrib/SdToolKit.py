@@ -1,6 +1,3 @@
-## Sid Meier's Civilization 4
-## Copyright Firaxis Games 2005
-##
 ## sdToolKit by Stone-D (Laga Mahesa)
 ## Copyright Laga Mahesa 2005
 ##
@@ -8,34 +5,25 @@
 ## lmahesa@(yahoo|hotmail|gmail).com
 ##
 ## Version 1.22
+##
+## Rewritten to use BugData by EmperorFool
 
 
 from CvPythonExtensions import *
-import CvUtil
-import sys
-import cPickle as pickle
-
-# BUG - start
 import BugUtil
-# BUG - end
-	
+import BugData
+
+GLOBALS_KEY = 'Global'
+
 gc = CyGlobalContext()
-CyGameInstance = gc.getGame()
+
 
 ################# SD-UTILITY-PACK ###################
 #-=-=-=-=-=-=-=-= BASIC-UTILITIES =-=-=-=-=-=-=-=-=-#
+
 def sdEcho( echoString ):
-# BUG - start
 	BugUtil.debug("SdToolKit: %s" %(echoString))
-	#printToScr = True
-	#printToLog = True
-	#message = "%s" %(echoString)
-	#if (printToScr):
-	#	CyInterface().addImmediateMessage(message,"")
-	#if (printToLog):
-	#	CvUtil.pyPrint(message)
 	return 0
-# BUG - end
 
 def sdGetTimeInt( turn ):
 	TurnTable = CyGameTextMgr().getTimeStr(turn, false).split(' ')
@@ -69,46 +57,16 @@ def sdGameYearsInt():
 
 #   Initializes a central reservoir of custom variables for your mod's use. 'ModID' should be your mod's name.
 def sdModInit( ModID ):
-	try:
-		cyTable = pickle.loads( CyGameInstance.getScriptData() )
-	except:
-		cyTable = {}
-	if ( not cyTable.has_key(ModID) ):
-		cyTable = sdModFixCase(ModID, cyTable) # Check for capitalization difference and fix in case of permanent change.
-	if ( not cyTable.has_key(ModID) ):
-		cyTable[ModID] = pickle.dumps({})      # Initialize with an empty table.
-		sdEcho('Mod Data Initialized : %s %s' %(ModID, cyTable.has_key(ModID)))
-	CyGameInstance.setScriptData( pickle.dumps(cyTable) )
-	return {}
-
-#   For internal use. You should not use this function.
-def sdModFixCase( ModID, cyTable ):
-	for i, k in enumerate(cyTable):
-		if (k.upper() == ModID.upper()):
-			szStringData = cyTable[k]
-			cyTable[ModID] = szStringData
-			del cyTable[k]
-			sdEcho('Mod Data Fixed : %s : %s (was %s)' %(ModID, cyTable.has_key(ModID), k))
-			break
-	return cyTable
+	return sdModLoad(ModID)
 
 #   Loads previously initialized data from the central reservoir.
 def sdModLoad( ModID ):
-	try:
-		cyTable = pickle.loads( CyGameInstance.getScriptData() )
-		mTable  = pickle.loads(cyTable[ModID])
-	except:
-		mTable  = sdModInit(ModID)
-	return mTable
+	return BugData.getTable(ModID).data
 
 #   Saves a mod's entire variable data to the central reservoir.
 def sdModSave( ModID, mTable ):
-	try:
-		cyTable = pickle.loads( CyGameInstance.getScriptData() )
-	except:
-		cyTable = sdModInit(ModID)
-	cyTable[ModID] = pickle.dumps(mTable)
-	CyGameInstance.setScriptData( pickle.dumps(cyTable) )
+	table = BugData.getTable(ModID)
+	table.setData(mTable)
 	return 0
 
 
@@ -117,52 +75,34 @@ def sdModSave( ModID, mTable ):
 #   sdEntityInit( 'MyModName', 'UniqueName', Template_dictionary )
 #   Initializes a unique data entity (city, unit, plot).
 def sdEntityInit( ModID, entity, eTable ):
-	mTable = sdModLoad(ModID)
-	mTable[entity] = pickle.dumps(eTable)
-	sdModSave(ModID, mTable)
+	table = BugData.getTable(ModID, entity)
+	table.setData(eTable)
 	return 0
 
 #   sdEntityWipe( 'MyModName', 'UniqueName' )
 #   Removes an entity that has been previously initialized by sdEntityInit.
 #   Returns int 0 on failure, int 1 on success.
 def sdEntityWipe( ModID, entity ):
-	mTable = sdModLoad(ModID)
-	if ( mTable.has_key(entity) ):
-		del mTable[entity]
-		sdModSave(ModID, mTable)
-		# sdEcho('Entity Wiped : %s' %(entity))
-		return 1
-	# sdEcho('Entity Wipe FAILED : %s. Did it exist?' %(entity))
-	return 0
+	return BugData.deleteTable(ModID)
 
 #   sdEntityExists( 'MyModName', 'UniqueName' )
 #   Checks whether or not an entity has been initialized by sdEntityInit.
 #   Returns bool False on failure, bool True on success.
 def sdEntityExists( ModID, entity ):
-	mTable = sdModLoad(ModID)
-	if ( mTable.has_key(entity) ):
-		return True
-	return False
+	return BugData.hasTable(ModID, entity)
 
 #   sdGetVal( 'MyModName', 'UniqueName', 'VariableName' )
 #   Fetches a specific variable's value from the entity's data set.
 def sdGetVal( ModID, entity, var ):
-	mTable = sdModLoad(ModID)
-	eTable = pickle.loads(mTable[entity])
-#	sdEcho('%s : Load : %s, %s = %d' %(ModID, entity, var, eTable[var]))
-	return eTable[var]
+	return BugData.getTable(ModID, entity)[var]
 
 #   sdSetVal( 'MyModName', 'UniqueName', 'VariableName', any_value )
 #   Stores a specific variable's value within the entity's data set.
 #   Returns bool False on failure, bool True on success.
 def sdSetVal( ModID, entity, var, val ):
-	mTable = sdModLoad(ModID)
-	if ( mTable.has_key(entity) ):
-		eTable         = pickle.loads(mTable[entity])
-		eTable[var]    = val
-		mTable[entity] = pickle.dumps(eTable)
-		sdModSave(ModID, mTable)
-		# sdEcho('%s : sdSetVal : %s, %s = %d' %(ModID, entity, var, eTable[var]))
+	table = BugData.findTable(ModID, entity)
+	if table:
+		table[var] = val
 		return True
 	return False
 
@@ -170,52 +110,31 @@ def sdSetVal( ModID, entity, var, val ):
 #   Removes a specific variable from the entity's data set.
 #   Returns bool False on failure, bool True on success.
 def sdDelVal( ModID, entity, var ):
-	mTable = sdModLoad(ModID)
-	if ( mTable.has_key(entity) ):
-		eTable         = pickle.loads(mTable[entity])
-		if ( eTable.has_key(var) ):
-			del eTable[var]
-			mTable[entity] = pickle.dumps(eTable)
-			sdModSave(ModID, mTable)
-			# sdEcho('%s : sdDelVal : %s, %s' %(ModID, entity, var))
-			return True
+	table = BugData.findTable(ModID, entity)
+	if table and var in table:
+		del table[var]
+		return True
 	return False
 
 #   sdGetGlobal( 'MyModName', 'GlobalVariableName' )
 #   Fetches a specific variable's value from the mod's global data set.
 def sdGetGlobal( ModID, var ):
-	szGlobal = 'Global'
-	mTable   = sdModLoad(ModID)
-	if ( mTable.has_key(szGlobal) ):
-		eTable    = pickle.loads(mTable[szGlobal])
-		if ( eTable.has_key(var) ):
-			# sdEcho('%s : sdGetGlobal : %s, %s = %d' %(ModID, szGlobal, var, eTable[var]))
-			return eTable[var]
+	table = BugData.findTable(ModID, GLOBALS_KEY)
+	if table and var in table:
+		return table[var]
+	return None
 
 #   sdSetGlobal( 'MyModName', 'GlobalVariableName', any_value )
 #   Stores a specific variable's value within the mod's global data set.
 def sdSetGlobal( ModID, var, val ):
-	szGlobal = 'Global'
-	mTable           = sdModLoad(ModID)
-	if ( mTable.has_key(szGlobal) ):
-		eTable   = pickle.loads(mTable[szGlobal])
-	else:
-		eTable   = {}
-	eTable[var]      = val
-	mTable[szGlobal] = pickle.dumps(eTable)
-	sdModSave(ModID, mTable)
+	BugData.getTable(ModID, GLOBALS_KEY)[var] = val
 
 #   sdDelGlobal( 'MyModName', 'GlobalVariableName' )
 #   Removes a specific variable from the mod's global data set.
 #   Returns bool False on failure, bool True on success.
 def sdDelGlobal( ModID, var ):
-	szGlobal = 'Global'
-	mTable           = sdModLoad(ModID)
-	if ( mTable.has_key(szGlobal) ):
-		eTable           = pickle.loads(mTable[szGlobal])
-		if ( eTable.has_key(var) ):
-			del eTable[var]
-			mTable[szGlobal] = pickle.dumps(eTable)
-			sdModSave(ModID, mTable)
-			return True
+	table = BugData.findTable(ModID, GLOBALS_KEY)
+	if table and var in table:
+		del table[var]
+		return True
 	return False

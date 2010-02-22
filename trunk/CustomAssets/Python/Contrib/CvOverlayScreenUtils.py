@@ -1,31 +1,28 @@
-###############################################
-## CvOverlayScreenUtils.py
-## Created on : 10-20-08
-## By Del69 for Strategy Overlay mod
+## CvOverlayScreenUtils
 ##
-## Class derived from CvScreenUtils for custom handling of CvOverlayScreen
-## Placed in CustomAssets/Python/Contrib for Bug mod use
-###############################################
+## Controls the Strategy Overlay and provides as-yet unused sign overlay.
+##
+## Copyright (c) 2008 The BUG Mod.
+##
+## Author: Del69, EmperorFool
+
 from CvPythonExtensions import *
 import CvDotMapOverlayScreen
-import CvScreenUtils
-import CvEventInterface
-import InputUtil
 import BugUtil
 import CvUtil
-from SdToolkit import *
-#-------------------------------------------------------------------------------
-# Screen Enum
-#-------------------------------------------------------------------------------
+
+## Constants
+
 STRATEGY_OVERLAY_SCREEN = CvUtil.getNewScreenID()
-#-------------------------------------------------------------------------------
-# Globals
-#-------------------------------------------------------------------------------
-gc = CyGlobalContext()
-keys = None
 #GROUP_SIGNTXT = 0
 
+## Globals
+
+gc = CyGlobalContext()
+keys = None
+
 overlayScreen = CvDotMapOverlayScreen.CvDotMapOverlayScreen(STRATEGY_OVERLAY_SCREEN)
+
 def showOverlayScreen():
 	"""
 	Shows the Overlay Screen from CvDotMapOverlayScreen.py
@@ -70,31 +67,7 @@ def hideOverlayScreen():
 #		CyEngine().addSign(plot, player, signText)
 #		overlayScreen.saveSign(x, y, signText, player)
 #	else:
-#		sdEcho("Invalid sign x,y")
-
-def createEvents(eventManager):
-	"""
-	Initial configuration of the list of HotKeys to open the screen
-	"""
-	global keys
-	keys = keyList
-#	eventManager.setPopupHandler(CvDotMapOverlayScreen.EventOverlayAddSign, ("OverlayAddSign", applyAddSignEvent, beginAddSignEvent))
-
-def onKbdEvent(argsList):
-	"""
-	Event handler for keyboard events, checks keys against the hotkey list and opens the screen or closes it on match
-	"""
-	eventType, key, mouseX, mouseY, plotX, plotY = argsList
-	eventManager = CvEventInterface.getEventManager()
-	if ( eventType == eventManager.EventKeyDown ):
-		stroke = InputUtil.Keystroke(key, eventManager.bAlt, eventManager.bCtrl, eventManager.bShift)
-		if stroke in keys:
-			if overlayScreen.isOpen():
-				hideOverlayScreen()
-			else:
-				showOverlayScreen()
-			return 1
-	return 0
+#		BugUtil.debug("Invalid sign x,y")
 
 
 
@@ -250,12 +223,12 @@ class OverlaySign:
 			if gc.getMap().plot(self.plotX,self.plotY):
 				self.plot = gc.getMap().plot(self.plotX,self.plotY)
 			else:
-				sdEcho("Invalid Plot for sign at " + str(self.plotX) + "," + str(self.plotY))
+				BugUtil.debug("Invalid Plot for sign at " + str(self.plotX) + "," + str(self.plotY))
 			self.playerType = gc.getGame().getActivePlayer()
-			CyEngine().addSign(plot,self.playerType,self.text)
+			CyEngine().addSign(self.plot,self.playerType,self.text)
 			self.isAdded = True
 		else:
-			sdEcho("Tried to add sign already added to interface")
+			BugUtil.debug("Tried to add sign already added to interface")
 
 	def removeSign(self):
 		"""
@@ -265,8 +238,4 @@ class OverlaySign:
 			CyEngine().removeSign(self.plot, self.playerType)
 			self.isAdded = False
 		else:
-			sdEcho("Tried to remove sign not added to interface")
-
-
-
-# call CvEventInterface.getEventManager().beginEvent(EventOverlayAddSign)
+			BugUtil.debug("Tried to remove sign not added to interface")

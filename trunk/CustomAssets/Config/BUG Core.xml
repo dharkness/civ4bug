@@ -71,7 +71,7 @@
 	<init module="BugUtil" function="readLoggingOptions" immediate="true"/>
     <init module="BugDll" immediate="true"/>
 	<init module="BugEventManager" function="configure" immediate="true">
-		<arg name="logging" type="boolean" value="false"/>
+		<arg name="logging" type="boolean" value="true"/>
 		<arg name="noLogEvents" type="set">
 			"gameUpdate",
 			"mouseEvent",
@@ -97,6 +97,11 @@
 	<event type="gameUpdate" module="BugUtil" function="doDeferredCalls"/>
 	<event type="BeginPlayerTurn" module="BugUtil" function="doHotSeatCheck"/>
 	<event type="SwitchHotSeatPlayer" module="CvMainInterface" function="onSwitchHotSeatPlayer"/>
+	
+	<!-- Game ScriptData -->
+	<event type="GameStart" module="BugData" function="onGameStart"/>
+	<event type="OnLoad" module="BugData" function="onGameLoad"/>
+	<!--event type="OnPreSave" module="BugData" function="onPreSave"/-->
 	
 	<event type="LanguageChanged" module="BugOptions" function="clearAllTranslations"/>
 	<event type="LanguageChanged" module="BugOptionsScreen" function="clearAllTranslations"/>
