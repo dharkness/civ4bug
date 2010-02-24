@@ -26,7 +26,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSBUTTON_TEXT</Tag>
 		<English>Options Button</English>
 		<French>Options Button</French>
-		<German>Options Button</German>
+		<German>Optionsschaltfläche</German>
 		<Italian>Options Button</Italian>
 		<Spanish>Options Button</Spanish>
 	</TEXT>
@@ -34,7 +34,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__OPTIONSBUTTON_HOVER</Tag>
 		<English>When checked, shows the BUG Option Screen button.</English>
 		<French>When checked, shows the BUG Option Screen button.</French>
-		<German>When checked, shows the BUG Option Screen button.</German>
+		<German>Zeigt die Schaltfläche zum Aufruf des Optionensbildschirms der BUG Mod an</German>
 		<Italian>When checked, shows the BUG Option Screen button.</Italian>
 		<Spanish>When checked, shows the BUG Option Screen button.</Spanish>
 	</TEXT>
