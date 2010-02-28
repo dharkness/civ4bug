@@ -175,15 +175,18 @@ class BupPanel:
 
 			self._updateUnitIcon(cBupUnit, pBupUnit, iIndex, szBupCell)
 
-			if cBupUnit.Owner == gc.getGame().getActivePlayer():
-				iX = self._getX(self._getCol(iIndex))
-				iY = self._getY(self._getRow(iIndex))
+			iX = self._getX(self._getCol(iIndex))
+			iY = self._getY(self._getRow(iIndex))
 
-				self._updateDot(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY + 4)
+			if cBupUnit.Owner == gc.getGame().getActivePlayer():
 				self._updatePromo(cBupUnit, pBupUnit, szBupCell)
 				self._updateUpgrade(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
 				self._updateMission(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY)
-				self._updateHealthBar(cBupUnit, pBupUnit, szBupCell)
+
+			# the health bar and dot are shown for all units
+			# not just the current player's units
+			self._updateDot(cBupUnit, pBupUnit, szBupCell, iIndex, iX, iY + 4)
+			self._updateHealthBar(cBupUnit, pBupUnit, szBupCell)
 
 			iIndex += 1
 
@@ -244,12 +247,9 @@ class BupPanel:
 			self.screen.hide(szCell + "PromoFrame")
 			self.screen.hide(szCell + "Upgrade")
 			self.screen.hide(szCell + "Mission")
+			self.screen.hide(szCell + "Health")
 
 			self.BupCell_Displayed[iIndex] = False
-
-		# the health bar is shown for all units
-		# not just the current players unit
-		self.screen.hide(szCell + "Health")
 
 
 ############## add and clear units ##############
@@ -266,8 +266,13 @@ class BupPanel:
 ############## unit icon ##############
 
 	def _updateUnitIcon(self, cBupUnit, pBupUnit, iIndex, szCell):
+		# note that 'State' is always updated as the unit icon is a check box
+		# and clicking on a check box changes the display state, even if the unit state is unchanged
+		# ie ctrl-click on a selected unit should highlight all of that type of unit
+		# but if we don't update the state, then the highlighted unit would show as unselected (turned off by the click)
 		if pBupUnit is None:
 			self._drawUnitIcon(cBupUnit, iIndex, szCell)
+			self.screen.setState(szCell, cBupUnit.isSelected)
 			return
 
 #		BugUtil.debug("BupPanel _updateUnitIcon %s %s", cBupUnit.isSelected, pBupUnit.isSelected)
@@ -284,6 +289,7 @@ class BupPanel:
 		self.screen.changeImageButton(szCell, gc.getUnitInfo(cBupUnit.UnitType).getButton())
 		self.screen.enable(szCell, cBupUnit.Owner == gc.getGame().getActivePlayer())
 		self.screen.show(szCell)
+#		self.screen.setState(szCell, cBupUnit.isSelected)
 
 		self.BupCell_Displayed[iIndex] = True
 

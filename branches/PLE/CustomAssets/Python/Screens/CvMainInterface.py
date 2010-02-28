@@ -229,7 +229,7 @@ class CvMainInterface:
 		self.DRAW_METHODS = (self.DRAW_METHOD_PLE, 
 							 self.DRAW_METHOD_VAN,
 							 self.DRAW_METHOD_BUG)
-		self.sDrawMethod = self.DRAW_METHOD_PLE
+#		self.sDrawMethod = self.DRAW_METHOD_PLE
 # BUG - draw method
 
 
@@ -1207,9 +1207,11 @@ class CvMainInterface:
 			self.updateInfoPaneStrings()
 			CyInterface().setDirty(InterfaceDirtyBits.InfoPane_DIRTY_BIT, False)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT) == True ):
+			BugUtil.debug("dirty PlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 			# Plot List Buttons Dirty
 			self.updatePlotListButtons()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, False)
+			BugUtil.debug("dirty PlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.SelectionButtons_DIRTY_BIT) == True ):
 			# Selection Buttons Dirty
 			self.updateSelectionButtons()
@@ -1620,6 +1622,7 @@ class CvMainInterface:
 
 	# Update plot List Buttons
 	def updatePlotListButtons( self ):
+		BugUtil.debug("updatePlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
@@ -1628,11 +1631,11 @@ class CvMainInterface:
 		self.updatePlotListButtons_Common(screen)
 
 # BUG - draw methods
-		self.sDrawMethod = self.DRAW_METHODS[PleOpt.getDrawMethod()]
-		if self.sDrawMethod == self.DRAW_METHOD_PLE:
+		sDrawMethod = self.DRAW_METHODS[PleOpt.getDrawMethod()]
+		if sDrawMethod == self.DRAW_METHOD_PLE:
 			self.PLE.updatePlotListButtons_PLE(screen, self.xResolution, self.yResolution)
 			self.bPLECurrentlyShowing = True
-		elif self.sDrawMethod == self.DRAW_METHOD_VAN:
+		elif sDrawMethod == self.DRAW_METHOD_VAN:
 			self.updatePlotListButtons_Orig(screen)
 			self.bVanCurrentlyShowing = True
 		else:  # self.DRAW_METHOD_BUG
@@ -1640,6 +1643,7 @@ class CvMainInterface:
 			self.bBUGCurrentlyShowing = True
 # BUG - draw methods
 
+		BugUtil.debug("updatePlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 		return 0
 
 #		if PleOpt.isPLE_Style():
@@ -1655,16 +1659,19 @@ class CvMainInterface:
 
 		# hide all buttons
 		if self.bPLECurrentlyShowing:
+			BugUtil.debug("updatePlotListButtons_Hide - hiding PLE")
 			self.PLE.hidePlotListButtonPLEObjects(screen)
 			self.PLE.hideUnitInfoPane()
 			self.bPLECurrentlyShowing = False
 
 		if self.bVanCurrentlyShowing:
+			BugUtil.debug("updatePlotListButtons_Hide - hiding Vanilla")
 			self.hidePlotListButton_Orig(screen)
 			self.bVanCurrentlyShowing = False
 
 # BUG - BUG unit plot draw method - start
 		if self.bBUGCurrentlyShowing:
+			BugUtil.debug("updatePlotListButtons_Hide - hiding BUG")
 			self.hidePlotListButton_BUG(screen)
 			self.bBUGCurrentlyShowing = False
 # BUG - BUG unit plot draw method - end
@@ -1734,7 +1741,10 @@ class CvMainInterface:
 
 # BUG - draw method
 	def hidePlotListButton_BUG(self, screen):
-#		self.BupPanel.Hide()
+		if self.DRAW_METHODS[PleOpt.getDrawMethod()] != self.DRAW_METHOD_BUG:
+			self.BupPanel.clearUnits()
+			self.BupPanel.Hide()
+
 		return
 		# hides all unit button objects
 #		for i in range( self.iMaxPlotListIcons ):
