@@ -43,6 +43,8 @@ Improvements:
 	Added headings and limited Current and Future techs to those that can be researched
 - Unit Naming
 	Can use multiple counters for a single naming code
+- BUG Button
+	Added option to hide the button and moved it slightly left
 
 Bug Fixes:
 
@@ -50,13 +52,6 @@ Bug Fixes:
 	Fixed culture-level checking in Partisans random event; event is now possible on 3.19 and above
 - Unit Naming
 	Civilization name code uses adjective as described in hover help as opposed to noun form (English vs. England)
-
-Changes:
-
-- Main Interface
-	BUG Options Screen button is now optional
-	Moved the BUG Options Screen button slightly left
-	BUG Options Screen button changed to install logo
 
 
 MODDING
