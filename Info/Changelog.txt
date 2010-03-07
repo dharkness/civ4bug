@@ -45,6 +45,8 @@ Improvements:
 	Can use multiple counters for a single naming code
 - BUG Button
 	Added option to hide the button and moved it slightly left
+- Translations
+	Added several improved Spanish translations by Gerard
 
 Bug Fixes:
 
