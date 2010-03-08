@@ -360,7 +360,7 @@ def isWorstEnemy(playerOrID, enemyOrID):
 	"""
 	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
 	enemy, enemyTeam = PlayerUtil.getPlayerAndTeam(enemyOrID)
-	return not team.isHuman() and team.getID() != enemyTeam.getID() and player.getWorstEnemyName().find(enemy.getName()) != -1
+	return not team.isHuman() and team.getID() != enemyTeam.getID() and getWorstEnemyTeam(player) == enemy.getID()
 
 def getWorstEnemies(playerOrID):
 	"""
@@ -369,7 +369,7 @@ def getWorstEnemies(playerOrID):
 	eTeam = getWorstEnemyTeam(playerOrID)
 	enemies = []
 	if eTeam != -1:
-		for player in PlayerUtil.teamPlayers(eTeam, True):
+		for player in PlayerUtil.teamPlayers(eTeam, alive=True, barbarian=False):
 			enemies.append(player.getID())
 	return enemies
 
@@ -383,7 +383,7 @@ def getWorstEnemyTeam(playerOrID):
 	if not team.isHuman():
 		worstEnemyName = player.getWorstEnemyName()
 		if worstEnemyName:
-			for team in PlayerUtil.teams():
+			for team in PlayerUtil.teams(alive=True, barbarian=False):
 				if team.getName() == worstEnemyName:
 					return team.getID()
 	return -1

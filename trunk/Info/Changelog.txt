@@ -79,6 +79,8 @@ Bug Fixes:
 
 - Better Espionage
 	Removed unused EspionageEventManager
+- AttitudeUtil
+	Limits Worst Enemy checks to teams that are alive
 
 
 ____________________________________________________________________________________________________
