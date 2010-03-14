@@ -143,11 +143,11 @@ def createDomesticAdvisor():
 			import CvDomesticAdvisor
 			domesticAdvisor = CvDomesticAdvisor.CvDomesticAdvisor()
 		HandleInputMap[DOMESTIC_ADVISOR] = domesticAdvisor
+# BUG - CustDomAdv - end
 
 def showDomesticAdvisor(argsList):
 	if (-1 != CyGame().getActivePlayer()):
 		domesticAdvisor.interfaceScreen()
-# BUG - CustDomAdv - end
 
 # BUG - Military Advisor - start
 militaryAdvisor = None
