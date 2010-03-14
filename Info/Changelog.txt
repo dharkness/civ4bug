@@ -47,6 +47,7 @@ Improvements:
 	Added option to hide the button and moved it slightly left
 - Translations
 	Added several improved Spanish translations by Gerard
+- BUG Unit Plot Lists ... uses the BUG team developed 'draw' code - newly developed so it might be a little unstable but does promise greatly enhanced performance (ie speed) when dealing with large stacks
 
 Bug Fixes:
 
