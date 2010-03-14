@@ -49,7 +49,7 @@ class StatusDumpEvent(AbstractStatusDumpEvent):
 	def onKbdEvent(self, argsList):
 		eventType,key,mx,my,px,py = argsList
 
-		BugUtil.debug("StatusDump-Start-1")
+#		BugUtil.debug("StatusDump-Start-1")
 
 		if (eventType == self.eventMgr.EventKeyDown
 		and int(key) == int(InputTypes.KB_D)
