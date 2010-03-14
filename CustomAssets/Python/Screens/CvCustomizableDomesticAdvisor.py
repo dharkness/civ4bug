@@ -112,7 +112,7 @@ gc = CyGlobalContext()
 ArtFileMgr = CyArtFileMgr()
 localText = CyTranslator()
 
-# hack to force repositioning if resolution (or language) changes
+# Reposition if resolution (or language) changes
 g_bMustCreatePositions = True
 def forcePositionCalc (*args):
 	global g_bMustCreatePositions
@@ -123,15 +123,15 @@ g_advisor = None
 def isCustomizing():
 	return g_advisor.customizing
 
-def getEditWidgetText(eWidgetType, iData1, iData2, bOption):
+# widget help text
+def getEditHelpText(eWidgetType, iData1, iData2, bOption):
 	if isCustomizing():
 		return BugUtil.getPlainText("TXT_KEY_CDA_STOP_EDITING")
 	else:
 		return BugUtil.getPlainText("TXT_KEY_CDA_START_EDITING")
 
+
 # Class CvDomesticAdvisor
-# Class
-# Class
 
 class CvCustomizableDomesticAdvisor:
 	"""Special Domestic Advisor Screen"""
