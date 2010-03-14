@@ -899,15 +899,15 @@ class CvMainInterface:
 
 		screen.setButtonGFC( "MainCityScrollPlus", u"", "", xResolution - 255, yResolution - 165, 32, 32, WidgetTypes.WIDGET_CITY_SCROLL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
 		screen.hide( "MainCityScrollPlus" )
-# BUG - City Arrows - end		
+# BUG - City Arrows - end
 
 # BUG - PLE - begin
-#		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
-#		screen.hide( "PlotListMinus" )
-#
-#		screen.setButtonGFC( "PlotListPlus", u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
-#		screen.hide( "PlotListPlus" )
-		
+		screen.setButtonGFC( "PlotListMinus", u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
+		screen.hide( "PlotListMinus" )
+
+		screen.setButtonGFC( "PlotListPlus", u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_PLOT_LIST_SHIFT, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
+		screen.hide( "PlotListPlus" )
+
 		screen.setButtonGFC( self.PLE.PLOT_LIST_MINUS_NAME, u"", "", 315 + ( xResolution - (iMultiListXL+iMultiListXR) - 68 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_GENERAL, -1, -1, ButtonStyles.BUTTON_STYLE_ARROW_LEFT )
 		screen.hide( self.PLE.PLOT_LIST_MINUS_NAME )
 		screen.setButtonGFC( self.PLE.PLOT_LIST_PLUS_NAME, u"", "", 298 + ( xResolution - (iMultiListXL+iMultiListXR) - 34 ), yResolution - 171, 32, 32, WidgetTypes.WIDGET_GENERAL, 1, -1, ButtonStyles.BUTTON_STYLE_ARROW_RIGHT )
@@ -1207,11 +1207,11 @@ class CvMainInterface:
 			self.updateInfoPaneStrings()
 			CyInterface().setDirty(InterfaceDirtyBits.InfoPane_DIRTY_BIT, False)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT) == True ):
-			BugUtil.debug("dirty PlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+#			BugUtil.debug("dirty PlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 			# Plot List Buttons Dirty
 			self.updatePlotListButtons()
 			CyInterface().setDirty(InterfaceDirtyBits.PlotListButtons_DIRTY_BIT, False)
-			BugUtil.debug("dirty PlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+#			BugUtil.debug("dirty PlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 		if ( CyInterface().isDirty(InterfaceDirtyBits.SelectionButtons_DIRTY_BIT) == True ):
 			# Selection Buttons Dirty
 			self.updateSelectionButtons()
@@ -1622,7 +1622,7 @@ class CvMainInterface:
 
 	# Update plot List Buttons
 	def updatePlotListButtons( self ):
-		BugUtil.debug("updatePlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+#		BugUtil.debug("updatePlotListButtons start - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 
@@ -1643,7 +1643,7 @@ class CvMainInterface:
 			self.bBUGCurrentlyShowing = True
 # BUG - draw methods
 
-		BugUtil.debug("updatePlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+#		BugUtil.debug("updatePlotListButtons end - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 		return 0
 
 #		if PleOpt.isPLE_Style():
@@ -1655,23 +1655,23 @@ class CvMainInterface:
 #		return 0
 
 	def updatePlotListButtons_Hide( self, screen ):
-		BugUtil.debug("updatePlotListButtons_Hide - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
+#		BugUtil.debug("updatePlotListButtons_Hide - %s %s %s", self.bVanCurrentlyShowing, self.bPLECurrentlyShowing, self.bBUGCurrentlyShowing)
 
 		# hide all buttons
 		if self.bPLECurrentlyShowing:
-			BugUtil.debug("updatePlotListButtons_Hide - hiding PLE")
+#			BugUtil.debug("updatePlotListButtons_Hide - hiding PLE")
 			self.PLE.hidePlotListButtonPLEObjects(screen)
 			self.PLE.hideUnitInfoPane()
 			self.bPLECurrentlyShowing = False
 
 		if self.bVanCurrentlyShowing:
-			BugUtil.debug("updatePlotListButtons_Hide - hiding Vanilla")
+#			BugUtil.debug("updatePlotListButtons_Hide - hiding Vanilla")
 			self.hidePlotListButton_Orig(screen)
 			self.bVanCurrentlyShowing = False
 
 # BUG - BUG unit plot draw method - start
 		if self.bBUGCurrentlyShowing:
-			BugUtil.debug("updatePlotListButtons_Hide - hiding BUG")
+#			BugUtil.debug("updatePlotListButtons_Hide - hiding BUG")
 			self.hidePlotListButton_BUG(screen)
 			self.bBUGCurrentlyShowing = False
 # BUG - BUG unit plot draw method - end
@@ -1727,7 +1727,7 @@ class CvMainInterface:
 
 	# hides all plot list objects
 	def hidePlotListButton_Orig(self, screen):
-		BugUtil.debug("hidePlotListButton_Orig - %i", self.numPlotListButtons_Total())
+#		BugUtil.debug("hidePlotListButton_Orig - %i", self.numPlotListButtons_Total())
 		# hides all unit button objects
 		for i in range( self.numPlotListButtons_Total() ):
 			szString = "PlotListButton" + str(i)
@@ -1793,6 +1793,8 @@ class CvMainInterface:
 				iMaxRows = self.numPlotListRows()
 				iCount += CyInterface().getPlotListOffset()
 				iSkipped = 0
+
+			BugUtil.debug("updatePlotListButtons_Orig - iCount(%i), iSkipped(%i)", iCount, iSkipped)
 
 			CyInterface().cacheInterfacePlotUnits(pPlot)
 			for i in range(CyInterface().getNumCachedInterfacePlotUnits()):
@@ -1865,7 +1867,9 @@ class CvMainInterface:
 
 					iCount = iCount + 1
 
+#			BugUtil.debug("updatePlotListButtons_Orig - vis units(%i), buttons per row(%i), max rows(%i)", iVisibleUnits, self.numPlotListButtonsPerRow(), iMaxRows)
 			if (iVisibleUnits > self.numPlotListButtonsPerRow() * iMaxRows):
+#				BugUtil.debug("updatePlotListButtons_Orig - show arrows %s %s", bLeftArrow, bRightArrow)
 				screen.enable("PlotListMinus", bLeftArrow)
 				screen.show( "PlotListMinus" )
 
@@ -1893,7 +1897,7 @@ class CvMainInterface:
 #		screen.hide( "PlotListMinus" )
 #		screen.hide( "PlotListPlus" )
 
-		BugUtil.debug("updatePlotListButtons_BUG - A")
+#		BugUtil.debug("updatePlotListButtons_BUG - A")
 
 
 #		if ( pPlot and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyEngine().isGlobeviewUp() == False):
@@ -1911,7 +1915,7 @@ class CvMainInterface:
 			self.BupPanel.Hide()
 			return 0
 
-		BugUtil.debug("updatePlotListButtons_BUG - B")
+#		BugUtil.debug("updatePlotListButtons_BUG - B")
 
 #		self.BupPanel.clearUnits()
 
@@ -1923,7 +1927,7 @@ class CvMainInterface:
 			if (pLoopUnit):
 				self.BupPanel.addUnit(pLoopUnit)
 
-		BugUtil.debug("updatePlotListButtons_BUG - C")
+#		BugUtil.debug("updatePlotListButtons_BUG - C")
 
 #		self.BupPanel.UpdateBUGOptions()
 
@@ -5309,7 +5313,7 @@ class CvMainInterface:
 
 	# Will handle the input for this screen...
 	def handleInput (self, inputClass):
-		#BugUtil.debugInput(inputClass)
+#		BugUtil.debugInput(inputClass)
 # BUG - PLE - start
 		if  (inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_ON) or \
 			(inputClass.getNotifyCode() == NotifyCode.NOTIFY_CURSOR_MOVE_OFF) or \
