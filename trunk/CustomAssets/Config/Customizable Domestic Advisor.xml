@@ -47,7 +47,7 @@
 	<widget name="WIDGET_CDA_PREV_PAGE" xml="TXT_KEY_CDA_PREV_PAGE"/>
 	<widget name="WIDGET_CDA_NEXT_PAGE" xml="TXT_KEY_CDA_NEXT_PAGE"/>
 	
-	<widget name="WIDGET_CDA_EDIT_PAGE" function="getEditWidgetText"/>
+	<widget name="WIDGET_CDA_EDIT_PAGE" function="getEditHelpText"/>
 	<widget name="WIDGET_CDA_SAVE" xml="TXT_KEY_CDA_SAVE"/>
 	<widget name="WIDGET_CDA_RELOAD" xml="TXT_KEY_CDA_RELOAD"/>
 	
