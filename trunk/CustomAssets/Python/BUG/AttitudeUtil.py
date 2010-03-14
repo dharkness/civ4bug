@@ -395,6 +395,8 @@ def getWorstEnemyTeams():
 	The key is team ID; the value is the worst enemy team ID.
 	If a team has no worst enemy, -1 is stored as its value.
 	Ignores dead, human, barbarian, and minor teams.
+	
+	Loops over players because CyTeam does not have getWorstEnemyName().
 	"""
 	namesToID = {}
 	for team in PlayerUtil.teams():
@@ -404,7 +406,7 @@ def getWorstEnemyTeams():
 		eTeam = player.getTeam()
 		if eTeam not in enemies:
 			team = gc.getTeam(eTeam)
-			if team.isHuman():
+			if not team.isHuman():
 				worstEnemyName = player.getWorstEnemyName()
 			else:
 				worstEnemyName = None
