@@ -222,6 +222,7 @@ class CvCustomizableDomesticAdvisor:
 				("BASE_COMMERCE",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_COMMERCE,			None,									None,						"u\"B\" + self.commerceIcon"),
 				("BASE_FOOD",				38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_FOOD,				None,									None,						"u\"B\" + self.foodIcon"),
 				("BASE_PRODUCTION",			38,		"int",	None,					CyCity.getBaseYieldRate, YieldTypes.YIELD_PRODUCTION,		None,									None,						"u\"B\" + self.hammerIcon"),
+				("CONSCRIPT_ANGER",			38,		"int",	None,					None,					0,									self.calculateConscriptAnger,			None,						"u\"D\" + self.unhappyIcon"),
 				("CONSCRIPT_UNIT",			90,		"text",	None,					None,					0,									self.calculateConscriptUnit,			None,						"localText.getText(\"TXT_KEY_CONCEPT_DRAFT\", ()).upper()"),
 				("COULD_CONSCRIPT_UNIT",	90,		"text",	None,					None,					0,									self.calculatePotentialConscriptUnit,	None,						"localText.getText(\"TXT_KEY_CONCEPT_DRAFT\", ()).upper() + u\"#\""),
 				("CORPORATIONS",			90,		"text",	None,					None,					0,									self.calculateCorporations,				None,						"localText.getText(\"TXT_KEY_CONCEPT_CORPORATIONS\", ()).upper()"),
@@ -1482,7 +1483,7 @@ class CvCustomizableDomesticAdvisor:
 	def calculateWhipAnger (self, city, szKey, arg):
 		
 		iAnger = city.getHurryAngerTimer()
-		if (city.canHurry(self.HURRY_TYPE_POP, False) or iAnger > 0):
+		if (iAnger > 0 or city.canHurry(self.HURRY_TYPE_POP, False)):
 			return iAnger
 		else:
 			return self.objectNotPossible
@@ -1491,6 +1492,14 @@ class CvCustomizableDomesticAdvisor:
 		
 		if (city.canHurry(self.HURRY_TYPE_GOLD, False)):
 			return unicode(city.hurryGold(self.HURRY_TYPE_GOLD))
+		else:
+			return self.objectNotPossible
+
+	def calculateConscriptAnger (self, city, szKey, arg):
+		
+		iAnger = city.getConscriptAngerTimer()
+		if (iAnger > 0 or city.canConscript()):
+			return iAnger
 		else:
 			return self.objectNotPossible
 
