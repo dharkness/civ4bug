@@ -9,6 +9,9 @@ import MonkeyTools as mt
 import UnitUtil
 import string
 
+import PyHelpers 
+PyPlayer = PyHelpers.PyPlayer
+
 import BugUtil
 import BugCore
 PleOpt = BugCore.game.PLE
