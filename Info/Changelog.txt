@@ -55,8 +55,9 @@ Bug Fixes:
 	Fixed culture-level checking in Partisans random event; event is now possible on 3.19 and above
 - Unit Naming
 	Civilization name code uses adjective as described in hover help as opposed to noun form (English vs. England)
-- Civ4lerts
-	Worst Enemy alert ignores human teams instead of AIs
+- Worst Enemy
+	Fixed check in games with multiple players on a team
+	Alert ignores human teams instead of AIs
 
 
 MODDING
