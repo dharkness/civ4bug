@@ -360,7 +360,7 @@ def isWorstEnemy(playerOrID, enemyOrID):
 	"""
 	player, team = PlayerUtil.getPlayerAndTeam(playerOrID)
 	enemy, enemyTeam = PlayerUtil.getPlayerAndTeam(enemyOrID)
-	return not team.isHuman() and team.getID() != enemyTeam.getID() and getWorstEnemyTeam(player) == enemy.getID()
+	return not team.isHuman() and team.getID() != enemyTeam.getID() and getWorstEnemyTeam(player) == enemyTeam.getID()
 
 def getWorstEnemies(playerOrID):
 	"""
