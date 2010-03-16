@@ -142,10 +142,14 @@ class BupPanel:
 			iMaxRows = 1
 			iSkippedCells = (self._getMaxRows() - 1) * self._getMaxCols()
 			iIndex += iSkippedCells
+			iFirstPlot = iSkippedCells
+			iLastPlot = iFirstPlot + self._getMaxCols() - 1
 		else:
 			iMaxRows = self._getMaxRows()
 			iSkippedCells = 0
 			iIndex += self.PlotListOffset
+			iFirstPlot = 0
+			iLastPlot = self._getMaxRows() * self._getMaxCols() - 1
 
 		iMaxUnits = max(len(self.BupUnits), \
 						len(self.BupUnits_Prior))
@@ -158,6 +162,7 @@ class BupPanel:
 		BugUtil.debug("BupPanel max rows(%i), skipped(%i), index(%i)", iMaxRows, iSkippedCells, iIndex)
 		BugUtil.debug("BupPanel plotlistoffset, current(%i), prior(%i)", self.PlotListOffset, self.PlotListOffset_Prior)
 		BugUtil.debug("BupPanel plotlistcolumn, current(%i), prior(%i)", CyInterface().getPlotListColumn(), self.PlotListColumn_Prior)
+		BugUtil.debug("BupPanel first(%i), last(%i)", iFirstPlot, iLastPlot)
 
 
 
@@ -171,8 +176,8 @@ class BupPanel:
 			BugUtil.debug("BupPanel index(%i), iUnit(%i), iUnit_Prior(%i)", iIndex, iUnit, iUnit_Prior)
 
 			# check if the unit we have is within the display bounds
-			if (iIndex < 0
-			or iIndex >= iMaxRows * self._getMaxCols()):
+			if (iIndex < iFirstPlot
+			or iIndex > iLastPlot):
 				iIndex += 1
 				continue
 
@@ -187,10 +192,10 @@ class BupPanel:
 				continue
 
 			# do we have to turn the arrows on?
-			if iIndex == 0: # looking at the top left cell
+			if iIndex == iFirstPlot: # looking at the top left cell
 				if CyInterface().getPlotListColumn() > 0: # still have units to show
 					bLeftArrow = True
-			elif iIndex == self.MaxCells - 1: # the bottom right cell
+			elif iIndex == iLastPlot: # the bottom right cell
 				if (iVisibleUnits - iIndex - CyInterface().getPlotListColumn() + iSkippedCells) > 1: # more units to show to right
 					bRightArrow = True
 
@@ -208,7 +213,7 @@ class BupPanel:
 			iX = self._getX(self._getCol(iIndex))
 			iY = self._getY(self._getRow(iIndex))
 
-#			BugUtil.debug("BupPanel unit(%i), index(%i), col(%i), row(%i), x(%i), y(%i)", iUnit, iIndex, self._getCol(iIndex), self._getRow(iIndex), iX, iY)
+			BugUtil.debug("BupPanel unit(%i), index(%i), col(%i), row(%i), x(%i), y(%i)", iUnit, iIndex, self._getCol(iIndex), self._getRow(iIndex), iX, iY)
 
 			if BupUnit.Owner == gc.getGame().getActivePlayer():
 				self._updatePromo(BupUnit, BupUnit_Prior, szBupCell)
