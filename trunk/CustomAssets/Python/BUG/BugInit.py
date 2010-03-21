@@ -8,7 +8,7 @@
 ##
 ## Author: EmperorFool
 
-import CvUtil
+from CvPythonExtensions import *
 import BugConfig
 import BugCore
 import BugPath
@@ -23,21 +23,16 @@ def init():
 	"""Performs the one-time initialization of the BUG core and all mods."""
 	global g_initDone
 	if g_initDone:
-		BugUtil.warn("BugInit - init() called again")
+		BugUtil.debug("BugInit - init() already complete")
+		return
+	if not CyGame().isFinalInitialized():
+		BugUtil.debug("BugInit - game not fully initialized")
 		return
 	global g_initRunning
 	if g_initRunning:
 		BugUtil.warn("BugInit - init() already running")
 		return
 	g_initRunning = True
-	
-	try:
-		# test to see if global context is ready
-		CvUtil.initDynamicFontIcons()
-	except:
-		BugUtil.debug("BugInit - global context not ready")
-		g_initRunning = False
-		return False
 	
 	BugUtil.debug("BugInit - initializing...")
 	timer = BugUtil.Timer("BUG init")
