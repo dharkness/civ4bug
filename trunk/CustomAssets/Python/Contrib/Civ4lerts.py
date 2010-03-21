@@ -187,6 +187,9 @@ class AbstractStatefulAlert:
 
 ## City Alert Managers
 
+def getCityId(city):
+	return (city.getOwner(), city.getID())
+
 class AbstractCityAlertManager(AbstractStatefulAlert):
 	"""
 	Triggered when cities are acquired or lost, this event manager passes 
@@ -221,7 +224,7 @@ class AbstractCityAlertManager(AbstractStatefulAlert):
 		ePlayer, player = PlayerUtil.getActivePlayerAndID()
 		for city in PlayerUtil.playerCities(player):
 			for alert in self.alerts:
-				alert.checkCity(city.getID(), city, ePlayer, player)
+				alert.checkCity(getCityId(city), city, ePlayer, player)
 
 	def _init(self):
 		"Initializes each alert."
@@ -281,7 +284,7 @@ class AbstractCityAlert:
 		"Performs static initialization that doesn't require game data."
 		pass
 	
-	def checkCity(self, iCityID, city, iPlayer, player):
+	def checkCity(self, cityId, city, iPlayer, player):
 		"Checks the city, updates its tracked state and possibly displays an alert."
 		pass
 	
@@ -318,18 +321,18 @@ class AbstractCityTestAlert(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 
-	def checkCity(self, iCityID, city, iPlayer, player):
+	def checkCity(self, cityId, city, iPlayer, player):
 		message = None
 		passes = self._passesTest(city)
-		passed = iCityID in self.cities
+		passed = cityId in self.cities
 		if (passes != passed):
 			# City switched this turn, save new state and display an alert
 			if (passes):
-				self.cities.add(iCityID)
+				self.cities.add(cityId)
 				if (self._isShowAlert(passes)):
 					message, icon = self._getAlertMessageIcon(city, passes)
 			else:
-				self.cities.discard(iCityID)
+				self.cities.discard(cityId)
 				if (self._isShowAlert(passes)):
 					message, icon = self._getAlertMessageIcon(city, passes)
 		elif (self._isShowPendingAlert(passes)):
@@ -340,9 +343,9 @@ class AbstractCityTestAlert(AbstractCityAlert):
 		if (message):
 			addMessageAtCity(iPlayer, message, icon, city)
 	
-	def _passedTest(self, iCityID):
+	def _passedTest(self, cityId):
 		"Returns true if the city passed the test last turn."
-		return iCityID in self.cities
+		return cityId in self.cities
 
 	def _passesTest(self, city):
 		"Returns true if the city passes the test."
@@ -357,10 +360,10 @@ class AbstractCityTestAlert(AbstractCityAlert):
 	
 	def resetCity(self, city):
 		if (self._passesTest(city)):
-			self.cities.add(city.getID())
+			self.cities.add(getCityId(city))
 	
 	def discardCity(self, city):
-		self.cities.discard(city.getID())
+		self.cities.discard(getCityId(city))
 	
 	def _isShowAlert(self, passes):
 		"Returns true if the alert is enabled."
@@ -388,7 +391,7 @@ class CityPendingGrowth(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 	
-	def checkCity(self, iCityID, city, iPlayer, player):
+	def checkCity(self, cityId, city, iPlayer, player):
 		if (Civ4lertsOpt.isShowCityPendingGrowthAlert()):
 			if (CityUtil.willGrowThisTurn(city)):
 				message = localText.getText(
@@ -411,16 +414,16 @@ class CityGrowth(AbstractCityAlert):
 	def __init__(self, eventManager):
 		AbstractCityAlert.__init__(self, eventManager)
 	
-	def checkCity(self, iCityID, city, iPlayer, player):
-		if (iCityID not in self.populations):
+	def checkCity(self, cityId, city, iPlayer, player):
+		if (cityId not in self.populations):
 			self.resetCity(city)
 		else:
 			iPop = city.getPopulation()
-			iOldPop = self.populations[iCityID]
+			iOldPop = self.populations[cityId]
 			iWhipCounter = city.getHurryAngerTimer()
-			iOldWhipCounter = self.CityWhipCounter[iCityID]
+			iOldWhipCounter = self.CityWhipCounter[cityId]
 			iConscriptCounter = city.getConscriptAngerTimer()
-			iOldConscriptCounter = self.CityConscriptCounter[iCityID]
+			iOldConscriptCounter = self.CityConscriptCounter[cityId]
 			
 			bWhipOrDraft = False
 			if (iWhipCounter > iOldWhipCounter
@@ -441,9 +444,9 @@ class CityGrowth(AbstractCityAlert):
 					icon = "Art/Interface/Symbols/Food/food05.dds"
 					addMessageAtCity(iPlayer, message, icon, city)
 
-			self.populations[iCityID] = iPop
-			self.CityWhipCounter[iCityID] = iWhipCounter
-			self.CityConscriptCounter[iCityID] = iConscriptCounter
+			self.populations[cityId] = iPop
+			self.CityWhipCounter[cityId] = iWhipCounter
+			self.CityConscriptCounter[cityId] = iConscriptCounter
 
 	def _beforeReset(self):
 		self.populations = dict()
@@ -451,16 +454,17 @@ class CityGrowth(AbstractCityAlert):
 		self.CityConscriptCounter = dict()
 	
 	def resetCity(self, city):
-		self.populations[city.getID()] = city.getPopulation()
-		self.CityWhipCounter[city.getID()] = city.getHurryAngerTimer()
-		self.CityConscriptCounter[city.getID()] = city.getConscriptAngerTimer()
+		cityId = getCityId(city)
+		self.populations[cityId] = city.getPopulation()
+		self.CityWhipCounter[cityId] = city.getHurryAngerTimer()
+		self.CityConscriptCounter[cityId] = city.getConscriptAngerTimer()
 	
 	def discardCity(self, city):
-		cityID = city.getID()
-		if (cityID in self.populations):
-			del self.populations[cityID]
-			del self.CityWhipCounter[cityID]
-			del self.CityConscriptCounter[cityID]
+		cityId = getCityId(city)
+		if (cityId in self.populations):
+			del self.populations[cityId]
+			del self.CityWhipCounter[cityId]
+			del self.CityConscriptCounter[cityId]
 
 # Happiness and Healthiness
 

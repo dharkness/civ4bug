@@ -60,6 +60,8 @@ Bug Fixes:
 - Worst Enemy
 	Fixed check in games with multiple players on a team
 	Alert ignores human teams instead of AIs
+- Multiplayer
+	Fixed city-related alerts for Hot Seat games
 
 
 MODDING
