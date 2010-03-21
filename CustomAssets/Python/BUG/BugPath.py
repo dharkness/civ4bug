@@ -314,8 +314,7 @@ def init():
 	BugUtil.debug("BugPath - initializing...")
 	initAppFolder()
 	initModName()
-# EF: delay until later since Mac crashes otherwise
-#	initModFolder()
+	initModFolder()
 	initNoCustomAssetsSetting()
 	initRootFolder()
 	initDataFolder()
