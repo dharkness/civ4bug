@@ -156,6 +156,14 @@
 		<Spanish>City Bar:</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_TILEHOVER</Tag>
+		<English>Tile Hover:</English>
+		<French>Tile Hover:</French>
+		<German>Tile Hover:</German>
+		<Italian>Tile Hover:</Italian>
+		<Spanish>Tile Hover:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAPFINDER</Tag>
 		<English>MapFinder:</English>
 		<French>MapFinder:</French>
