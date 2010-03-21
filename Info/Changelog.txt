@@ -77,6 +77,9 @@ New Features:
 
 Improvements:
 
+- Simplified Initialization
+	BugInit.init() alone guards against being called twice
+	CyGame.isFinalInitialized() used to check if Civ4 is ready
 - Removed EntryPoints Modules
 	CvAppInterface, CvDiplomacyInterface, CvOptionsScreenCallbackInterface, and CvRandomEventInterface
 	If your mod needs to add code to any of these modules, use <export> and <extend> or use the original BTS modules as a base

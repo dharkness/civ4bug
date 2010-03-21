@@ -45,7 +45,8 @@ def initAfterReload():
 	this will reinitialize BUG and the main interface.
 	"""
 	import BugInit
-	if BugInit.init():
+	import BugPath
+	if not BugPath.isMac() and BugInit.init():
 		try:
 			import CvScreensInterface
 			CvScreensInterface.reinitMainInterface()
@@ -54,7 +55,4 @@ def initAfterReload():
 			BugUtil.error("BugInit - failure rebuilding main interface after reloading Python modules")
 		getEventManager().fireEvent("PythonReloaded")
 
-# initialize BUG after Python modules have been reloaded
-import BugPath
-if not BugPath.isMac():
-	initAfterReload()
+initAfterReload()

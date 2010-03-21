@@ -199,8 +199,6 @@ class BugEventManager(CvEventManager.CvEventManager):
 		self.addEvent("combatLogCollateral")
 		self.addEvent("combatLogFlanking")
 		self.addEvent("playerRevolution")
-		
-		self.addEventHandler("playerRevolution", self.onPlayerRevolution)
 	
 	def setLogging(self, logging):
 		if logging is not None:
@@ -404,8 +402,10 @@ class BugEventManager(CvEventManager.CvEventManager):
 		return result
 
 	def _handleInitBugEvent(self, eventType, argsList):
-		"""Initializes BUG before handling event normally."""
-		initBug()
+		"""Initializes BUG before handling event normally.
+		"""
+		import BugInit
+		BugInit.init()
 		self._handleDefaultEvent(eventType, argsList)
 	
 	
@@ -570,12 +570,3 @@ def preGameStart(originalFunc):
 	originalFunc()
 
 hookupPreGameStartEvent()
-
-g_initDone = False
-def initBug():
-	"""Called once after Civ has initialized its data structures."""
-	global g_initDone
-	if not g_initDone:
-		import BugInit
-		if BugInit.init():
-			g_initDone = True
