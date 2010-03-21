@@ -273,14 +273,19 @@ def log(level, message, args=()):
 	The message is sent to each if the level is at least that of the destination.
 	The level of the message is prepended to the message, and if logTime is True, 
 	the current time in HH:MM:SS format is prepended as well.
+	
+	Any encoding errors are swallowed and no message is logged.
 	"""
 	if level >= minimumLogLevel:
-		if args:
-			message = message % args
-		if level >= screenLogLevel:
-			logToScreen(message)
-		if level >= fileLogLevel:
-			logToFile(LEVEL_PREFIXES[level] + message)
+		try:
+			if args:
+				message = message % args
+			if level >= screenLogLevel:
+				logToScreen(message)
+			if level >= fileLogLevel:
+				logToFile(LEVEL_PREFIXES[level] + message)
+		except UnicodeError:
+			pass
 
 def logToScreen(message):
 	"""
