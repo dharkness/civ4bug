@@ -90,6 +90,8 @@ Bug Fixes:
 	Removed unused EspionageEventManager
 - AttitudeUtil
 	Limits Worst Enemy checks to teams that are alive
+- BugUtil Logging
+	Unicode encoding errors are caught and ignored in log()
 
 
 ____________________________________________________________________________________________________
