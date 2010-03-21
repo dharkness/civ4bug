@@ -27,7 +27,9 @@ To install BUG as a mod so that you must load it to play, place the folder that 
       Sid Meier's Civilization 4
         Beyond the Sword
           Mods
-            BUG Mod
+            BUG Mod x.x
+              Readme.txt
+              ...
 
 __________________________________________________
 2.2. CUSTOM ASSETS
@@ -43,7 +45,8 @@ At each step it is important that you tell it to overwrite files.
             Beyond the Sword
               CustomAssets        <-- folders in Assets go here
               BUG Mod             <-- create this folder
-                Info              <-- coyp these two folders here
+                GameSetUpCheck    <-- copy these three folders here
+                Info
                 UserSettings
               PublicMaps          <-- copy files from PrivateMaps here
 
