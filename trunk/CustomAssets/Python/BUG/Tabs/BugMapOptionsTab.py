@@ -35,14 +35,16 @@ class BugMapOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, center, "CityBar__AirportIcons")
 		self.addCheckbox(screen, center, "CityBar__StarvationTurns")
 		
+		self.addLabel(screen, center, "TileHover", "Tile Hover:")
+		self.addCheckbox(screen, center, "MiscHover__LatLongCoords")
+		self.addCheckbox(screen, center, "MiscHover__PartialBuilds")
+		
 		
 		self.addLabel(screen, right, "Misc", "Misc:")
 		self.addCheckbox(screen, right, "MainInterface__FieldOfView")
 		self.addCheckbox(screen, right, "MainInterface__FieldOfView_Remember", True)
-		
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
-		self.addCheckbox(screen, right, "MiscHover__LatLongCoords")
-		self.addCheckbox(screen, right, "MiscHover__PartialBuilds")
+		self.addCheckbox(screen, right, "Actions__IgnoreHarmlessBarbarians")
 		
 		
 		screen.attachHSeparator(column, column + "Sep1")

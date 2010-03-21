@@ -61,6 +61,25 @@
 		<Spanish>When checked, if Sentry While Healing is enabled, units will awaken to danger only when in neutral territory. This stops your attacking force from waking up each turn outside an enemy city or your defenders inside friendly territory.</Spanish>
 	</TEXT>
 
+<!-- Ignore Harmless Barbarians -->
+
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__IGNOREHARMLESSBARBARIANS_TEXT</Tag>
+		<English>Ignore Harmless Barbarians</English>
+		<French>Ignore Harmless Barbarians</French>
+		<German>Ignore Harmless Barbarians</German>
+		<Italian>Ignore Harmless Barbarians</Italian>
+		<Spanish>Ignore Harmless Barbarians</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_ACTIONS__IGNOREHARMLESSBARBARIANS_HOVER</Tag>
+		<English>When checked, barbarian units adjacent to your borders will not trigger a warning if they cannot enter.</English>
+		<French>When checked, barbarian units adjacent to your borders will not trigger a warning if they cannot enter.</French>
+		<German>When checked, barbarian units adjacent to your borders will not trigger a warning if they cannot enter.</German>
+		<Italian>When checked, barbarian units adjacent to your borders will not trigger a warning if they cannot enter.</Italian>
+		<Spanish>When checked, barbarian units adjacent to your borders will not trigger a warning if they cannot enter.</Spanish>
+	</TEXT>
+
 <!-- PreChop -->
 
 	<TEXT>

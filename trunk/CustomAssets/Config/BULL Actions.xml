@@ -24,6 +24,10 @@
 					type="boolean" default="True"/>
 			<option id="SentryHealingOnlyNeutral" key="Sentry Healing Only Neutral" 
 					type="boolean" default="True"/>
+			
+			<!-- Ignore Harmless Barbarians (with Great Wall) -->
+			<option id="IgnoreHarmlessBarbarians" key="Ignore Harmless Barbarians" 
+					type="boolean" default="True" dll="2"/>
 		</section>
 		
 		<section id="Workers">
