@@ -926,15 +926,16 @@ class WorstEnemy(AbstractStatefulAlert):
 			return
 		eActivePlayer = PlayerUtil.getActivePlayerID()
 		eActiveTeam, activeTeam = PlayerUtil.getActiveTeamAndID()
-		enemies = AttitudeUtil.getWorstEnemyTeams()
-		newEnemies = {}
-		for eTeam, eNewEnemy in enemies.iteritems():
+		enemies = self.enemies[eActivePlayer]
+		newEnemies = AttitudeUtil.getWorstEnemyTeams()
+		delayedMessages = {}
+		for eTeam, eNewEnemy in newEnemies.iteritems():
 			if activeTeam.isHasMet(eTeam):
-				eOldEnemy = self.enemies[eTeam]
+				eOldEnemy = enemies[eTeam]
 				if eActiveTeam != eNewEnemy and not activeTeam.isHasMet(eNewEnemy):
 					eNewEnemy = -1
 				if eOldEnemy != eNewEnemy:
-					self.enemies[eTeam] = eNewEnemy
+					enemies[eTeam] = eNewEnemy
 					if eNewEnemy == -1:
 						if eOldEnemy == eActiveTeam:
 							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_YOU_NO_WORST_ENEMY", gc.getTeam(eTeam).getName())
@@ -943,10 +944,10 @@ class WorstEnemy(AbstractStatefulAlert):
 									(gc.getTeam(eTeam).getName(), gc.getTeam(eOldEnemy).getName()))
 					elif eOldEnemy == -1:
 						message = None # handled below
-						if eNewEnemy not in newEnemies:
-							newEnemies[eNewEnemy] = gc.getTeam(eTeam).getName()
+						if eNewEnemy not in delayedMessages:
+							delayedMessages[eNewEnemy] = gc.getTeam(eTeam).getName()
 						else:
-							newEnemies[eNewEnemy] += u", " + gc.getTeam(eTeam).getName()
+							delayedMessages[eNewEnemy] += u", " + gc.getTeam(eTeam).getName()
 					else:
 						if eOldEnemy == eActiveTeam:
 							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY_FROM_YOU", 
@@ -959,7 +960,7 @@ class WorstEnemy(AbstractStatefulAlert):
 									(gc.getTeam(eTeam).getName(), gc.getTeam(eNewEnemy).getName(), gc.getTeam(eOldEnemy).getName()))
 					if message:
 						addMessageNoIcon(eActivePlayer, message)
-		for eEnemy, haters in newEnemies.iteritems():
+		for eEnemy, haters in delayedMessages.iteritems():
 			if eActiveTeam == eEnemy:
 				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_YOU_WORST_ENEMY", haters)
 			else:
@@ -972,5 +973,5 @@ class WorstEnemy(AbstractStatefulAlert):
 		It will hold -1 for any team or enemy the active team hasn't met.
 		"""
 		self.enemies = {}
-		for eTeam in range(gc.getMAX_TEAMS()):
-			self.enemies[eTeam] = -1
+		for player in PlayerUtil.players(active=True):
+			self.enemies[player.getID()] = [-1] * gc.getMAX_TEAMS()
