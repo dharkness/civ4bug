@@ -45,6 +45,8 @@ Improvements:
 	Added headings and limited Current and Future techs to those that can be researched
 - Unit Naming
 	Can use multiple counters for a single naming code
+- Civ4lerts
+	Worst Enemy alerts show the old enemy along with the new one
 - BUG Button
 	Added option to hide the button and moved it slightly left
 - Translations

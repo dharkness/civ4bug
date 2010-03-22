@@ -928,33 +928,49 @@ class WorstEnemy(AbstractStatefulAlert):
 		eActiveTeam, activeTeam = PlayerUtil.getActiveTeamAndID()
 		enemies = AttitudeUtil.getWorstEnemyTeams()
 		newEnemies = {}
-		for eTeam, eOldEnemy in self.enemies.iteritems():
+		for eTeam, eNewEnemy in enemies.iteritems():
 			if activeTeam.isHasMet(eTeam):
-				if eTeam in enemies:
-					eNewEnemy = enemies[eTeam]
-				else:
+				eOldEnemy = self.enemies[eTeam]
+				if eActiveTeam != eNewEnemy and not activeTeam.isHasMet(eNewEnemy):
 					eNewEnemy = -1
 				if eOldEnemy != eNewEnemy:
+					self.enemies[eTeam] = eNewEnemy
 					if eNewEnemy == -1:
-						if activeTeam.isHasMet(eOldEnemy):
-							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY", gc.getTeam(eTeam).getName())
-							addMessageNoIcon(eActivePlayer, message)
-							self.enemies[eTeam] = eNewEnemy
+						if eOldEnemy == eActiveTeam:
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_YOU_NO_WORST_ENEMY", gc.getTeam(eTeam).getName())
+						else:
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_NO_WORST_ENEMY", 
+									(gc.getTeam(eTeam).getName(), gc.getTeam(eOldEnemy).getName()))
+					elif eOldEnemy == -1:
+						message = None # handled below
+						if eNewEnemy not in newEnemies:
+							newEnemies[eNewEnemy] = gc.getTeam(eTeam).getName()
+						else:
+							newEnemies[eNewEnemy] += u", " + gc.getTeam(eTeam).getName()
 					else:
-						if eActiveTeam == eNewEnemy or activeTeam.isHasMet(eNewEnemy):
-							self.enemies[eTeam] = eNewEnemy
-							if eNewEnemy not in newEnemies:
-								newEnemies[eNewEnemy] = gc.getTeam(eTeam).getName()
-							else:
-								newEnemies[eNewEnemy] += u", " + gc.getTeam(eTeam).getName()
+						if eOldEnemy == eActiveTeam:
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY_FROM_YOU", 
+									(gc.getTeam(eTeam).getName(), gc.getTeam(eNewEnemy).getName()))
+						elif eNewEnemy == eActiveTeam:
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY_TO_YOU", 
+									(gc.getTeam(eTeam).getName(), gc.getTeam(eOldEnemy).getName()))
+						else:
+							message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY", 
+									(gc.getTeam(eTeam).getName(), gc.getTeam(eNewEnemy).getName(), gc.getTeam(eOldEnemy).getName()))
+					if message:
+						addMessageNoIcon(eActivePlayer, message)
 		for eEnemy, haters in newEnemies.iteritems():
 			if eActiveTeam == eEnemy:
 				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_YOU_WORST_ENEMY", haters)
 			else:
-				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_WORST_ENEMY", (gc.getTeam(eEnemy).getName(), haters))
+				message = BugUtil.getText("TXT_KEY_CIV4LERTS_ON_WORST_ENEMY", (haters, gc.getTeam(eEnemy).getName()))
 			addMessageNoIcon(eActivePlayer, message)
 
 	def _reset(self):
+		"""
+		The enemies dictionary maps all teams to their worst enemy.
+		It will hold -1 for any team or enemy the active team hasn't met.
+		"""
 		self.enemies = {}
 		for eTeam in range(gc.getMAX_TEAMS()):
 			self.enemies[eTeam] = -1
