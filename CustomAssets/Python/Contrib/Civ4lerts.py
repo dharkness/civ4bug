@@ -855,13 +855,14 @@ class RefusesToTalk(AbstractStatefulAlert):
 		if (not Civ4lertsOpt.isShowRefusesToTalkAlert()):
 			return
 		eActivePlayer, activePlayer = PlayerUtil.getActivePlayerAndID()
+		refusals = self.refusals[eActivePlayer]
 		newRefusals = set()
 		for player in PlayerUtil.players(True, False, False, False):
 			if DiplomacyUtil.canContact(activePlayer, player) and not DiplomacyUtil.isWillingToTalk(player, eActivePlayer):
 				newRefusals.add(player.getID())
-		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_WILLING_TO_TALK", self.refusals.difference(newRefusals))
-		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK", newRefusals.difference(self.refusals))
-		self.refusals = newRefusals
+		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_WILLING_TO_TALK", refusals.difference(newRefusals))
+		self.display(eActivePlayer, "TXT_KEY_CIV4LERTS_ON_REFUSES_TO_TALK", newRefusals.difference(refusals))
+		self.refusals[eActivePlayer] = newRefusals
 	
 	def display(self, eActivePlayer, key, players):
 		for ePlayer in players:
@@ -871,7 +872,9 @@ class RefusesToTalk(AbstractStatefulAlert):
 				addMessageNoIcon(eActivePlayer, message)
 
 	def _reset(self):
-		self.refusals = set()
+		self.refusals = {}
+		for player in PlayerUtil.players(active=True):
+			self.refusals[player.getID()] = set()
 
 class WorstEnemy(AbstractStatefulAlert):
 	"""
