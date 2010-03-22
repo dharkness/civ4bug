@@ -200,7 +200,7 @@ def getActivePlayerAndTeamAndIDs():
 
 ## Players and Teams - Iteration
 
-def players(alive=None, human=None, barbarian=None, minor=None):
+def players(alive=None, human=None, barbarian=None, minor=None, active=None):
 	"""
 	Creates an iterator for all valid CyPlayers that were ever alive.
 	
@@ -208,6 +208,7 @@ def players(alive=None, human=None, barbarian=None, minor=None):
 	Pass in True or False for human to limit to human or AI players, respectively.
 	Pass in True or False for barbarian to limit to/from barbarian players, respectively.
 	Pass in True or False for minor to limit to/from minor players, respectively.
+	Pass in True or False for active to limit to/from players that can ever be active, respectively.
 	
 	for player in PlayerUtil.players():
 		...
@@ -215,10 +216,10 @@ def players(alive=None, human=None, barbarian=None, minor=None):
 	for ePlayer in range(gc.getMAX_PLAYERS()):
 		player = gc.getPlayer(ePlayer)
 		if not player.isNone() and player.isEverAlive():
-			if matchPlayerOrTeam(player, alive, human, barbarian, minor):
+			if matchPlayerOrTeam(player, alive, human, barbarian, minor, active):
 				yield player
 
-def teamPlayers(teamOrID, alive=None, human=None, barbarian=None, minor=None):
+def teamPlayers(teamOrID, alive=None, human=None, barbarian=None, minor=None, active=None):
 	"""
 	Creates an iterator for the CyPlayers on the given team.
 	
@@ -226,6 +227,7 @@ def teamPlayers(teamOrID, alive=None, human=None, barbarian=None, minor=None):
 	Pass in True or False for human to limit to human or AI players, respectively.
 	Pass in True or False for barbarian to limit to/from barbarian players, respectively.
 	Pass in True or False for minor to limit to/from minor players, respectively.
+	Pass in True or False for active to limit to/from players that can ever be active, respectively.
 	These restrictions are first applied to the CyTeam itself.
 	
 	for player in PlayerUtil.teamPlayers(PlayerUtil.getActiveTeamID()):
@@ -237,7 +239,7 @@ def teamPlayers(teamOrID, alive=None, human=None, barbarian=None, minor=None):
 			if player.getTeam() == eTeam:
 				yield player
 
-def teams(alive=None, human=None, barbarian=None, minor=None):
+def teams(alive=None, human=None, barbarian=None, minor=None, active=None):
 	"""
 	Creates an iterator for all valid CyTeams that were ever alive.
 	
@@ -245,6 +247,7 @@ def teams(alive=None, human=None, barbarian=None, minor=None):
 	Pass in True or False for human to limit to human or AI teams, respectively.
 	Pass in True or False for barbarian to limit to/from barbarian teams, respectively.
 	Pass in True or False for minor to limit to/from minor players, respectively.
+	Pass in True or False for active to limit to/from players that can ever be active, respectively.
 	
 	for team in PlayerUtil.teams():
 		...
@@ -255,7 +258,7 @@ def teams(alive=None, human=None, barbarian=None, minor=None):
 				and matchPlayerOrTeam(team, alive, human, barbarian, minor)):
 			yield team
 
-def matchPlayerOrTeam(teamOrPlayer, alive=None, human=None, barbarian=None, minor=None):
+def matchPlayerOrTeam(teamOrPlayer, alive=None, human=None, barbarian=None, minor=None, active=None):
 	"""
 	Returns True of the CyPlayer or CyTeam matches the selected filters.
 	
@@ -263,13 +266,25 @@ def matchPlayerOrTeam(teamOrPlayer, alive=None, human=None, barbarian=None, mino
 	Pass in True or False for human to limit to human or AI teams, respectively.
 	Pass in True or False for barbarian to limit to/from barbarian teams, respectively.
 	Pass in True or False for minor to limit to/from minor players, respectively.
+	Pass in True or False for active to limit to/from players that can ever be active, respectively.
 	
 	Pass None (or leave out) for any filter to ignore it.
 	"""
 	return ((alive is None or alive == teamOrPlayer.isAlive())
 			and (human is None or human == teamOrPlayer.isHuman())
 			and (barbarian is None or barbarian == teamOrPlayer.isBarbarian())
-			and (minor is None or minor == teamOrPlayer.isMinorCiv()))
+			and (minor is None or minor == teamOrPlayer.isMinorCiv())
+			and (active is None or active == isEverActive(teamOrPlayer)))
+
+def isEverActive(teamOrPlayer):
+	"""
+	Returns True if the given team/player can ever be the active team/player.
+	
+	For HotSeat games this includes all human players/teams. For all other game types there is only one.
+	"""
+	return ((gc.getGame().isHotSeat() and teamOrPlayer.isHuman()) 
+			or (isinstance(teamOrPlayer, CyPlayer) and teamOrPlayer.getID() == getActivePlayerID())
+			or (isinstance(teamOrPlayer, CyTeam) and teamOrPlayer.getID() == getActiveTeamID()))
 
 
 ## Player Information
