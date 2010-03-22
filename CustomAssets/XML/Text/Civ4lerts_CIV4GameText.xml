@@ -66,11 +66,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY_TO_YOU</Tag>
-		<English>[COLOR_YIELD_FOOD]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</English>
-		<French>[COLOR_YIELD_FOOD]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</French>
-		<German>[COLOR_YIELD_FOOD]Ihr seid  neue Erzfeind von %s1 (war %s2).[COLOR_REVERT]</German>
-		<Italian>[COLOR_YIELD_FOOD]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</Italian>
-		<Spanish>[COLOR_YIELD_FOOD]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</Spanish>
+		<English>[COLOR_NEGATIVE_TEXT]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</English>
+		<French>[COLOR_NEGATIVE_TEXT]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</French>
+		<German>[COLOR_NEGATIVE_TEXT]Ihr seid  neue Erzfeind von %s1 (war %s2).[COLOR_REVERT]</German>
+		<Italian>[COLOR_NEGATIVE_TEXT]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</Italian>
+		<Spanish>[COLOR_NEGATIVE_TEXT]You are the new worst enemy of %s1 (was %s2).[COLOR_REVERT]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV4LERTS_ON_SWITCH_WORST_ENEMY</Tag>
