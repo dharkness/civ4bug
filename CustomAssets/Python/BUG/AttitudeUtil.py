@@ -399,22 +399,20 @@ def getWorstEnemyTeams():
 	Loops over players because CyTeam does not have getWorstEnemyName().
 	"""
 	namesToID = {}
-	for team in PlayerUtil.teams():
+	for team in PlayerUtil.teams(alive=True, barbarian=False, minor=False):
 		namesToID[team.getName()] = team.getID()
 	enemies = {}
-	for player in PlayerUtil.players(True, False, False, False):
-		eTeam = player.getTeam()
-		if eTeam not in enemies:
-			team = gc.getTeam(eTeam)
-			if not team.isHuman():
-				worstEnemyName = player.getWorstEnemyName()
-			else:
-				worstEnemyName = None
+	for team in PlayerUtil.teams(alive=True, human=False, barbarian=False, minor=False):
+		eTeam = team.getID()
+		eLeader = team.getLeaderID()
+		if eLeader != -1:
+			player = PlayerUtil.getPlayer(eLeader)
+			worstEnemyName = player.getWorstEnemyName()
 			if worstEnemyName:
-				if worstEnemyName in namesToID:
+				try:
 					enemies[eTeam] = namesToID[worstEnemyName]
-				else:
-					BugUtil.warn("Cannot find team \"%s\"", worstEnemyName)
+				except KeyError:
+					BugUtil.debug("Cannot find team \"%s\"", worstEnemyName)
 					enemies[eTeam] = -1
 			else:
 				enemies[eTeam] = -1
