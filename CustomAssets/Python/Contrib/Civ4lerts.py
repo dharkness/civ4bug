@@ -873,7 +873,7 @@ class RefusesToTalk(AbstractStatefulAlert):
 
 	def _reset(self):
 		self.refusals = {}
-		for player in PlayerUtil.players(active=True):
+		for player in PlayerUtil.players():
 			self.refusals[player.getID()] = set()
 
 class WorstEnemy(AbstractStatefulAlert):
@@ -935,6 +935,9 @@ class WorstEnemy(AbstractStatefulAlert):
 		for eTeam, eNewEnemy in newEnemies.iteritems():
 			if activeTeam.isHasMet(eTeam):
 				eOldEnemy = enemies[eTeam]
+				if eOldEnemy != -1 and not gc.getTeam(eOldEnemy).isAlive():
+					eOldEnemy = -1
+					enemies[eTeam] = -1
 				if eActiveTeam != eNewEnemy and not activeTeam.isHasMet(eNewEnemy):
 					eNewEnemy = -1
 				if eOldEnemy != eNewEnemy:
@@ -976,5 +979,5 @@ class WorstEnemy(AbstractStatefulAlert):
 		It will hold -1 for any team or enemy the active team hasn't met.
 		"""
 		self.enemies = {}
-		for player in PlayerUtil.players(active=True):
+		for player in PlayerUtil.players():
 			self.enemies[player.getID()] = [-1] * gc.getMAX_TEAMS()
