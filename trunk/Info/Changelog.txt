@@ -62,8 +62,10 @@ Bug Fixes:
 - Worst Enemy
 	Fixed check in games with multiple players on a team
 	Alert ignores human teams instead of AIs
-- Hot Seat
-	City-related, Worst Enemy, and Refuses to Talk alerts work for each player
+- Civ4lerts
+	City-related, Worst Enemy, and Refuses to Talk alerts work for each player in Hot Seat games
+	Worst Enemy and Refuses to Talk alerts work with AI AutoPlay
+	Worst Enemy alert not shown when team is killed (was showing no-name team) 
 
 
 MODDING
