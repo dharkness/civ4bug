@@ -65,7 +65,9 @@ Bug Fixes:
 - Civ4lerts
 	City-related, Worst Enemy, and Refuses to Talk alerts work for each player in Hot Seat games
 	Worst Enemy and Refuses to Talk alerts work with AI AutoPlay
-	Worst Enemy alert not shown when team is killed (was showing no-name team) 
+	Worst Enemy alert not shown when team is killed (was showing no-name team)
+- Combat Log
+	Actual owner of hidden nationality units is not exposed
 
 
 MODDING
