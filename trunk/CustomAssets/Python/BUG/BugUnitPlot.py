@@ -202,8 +202,9 @@ class BupPanel:
 			# prior unit doesn't exist - just need to draw the new unit
 			# this is handled below in the '_update*' functions
 			if (len(self.BupUnits_Prior) != 0
-			and (iUnit_Prior >= 0
-			or  iUnit_Prior < len(self.BupUnits_Prior))):
+			and iUnit_Prior >= 0
+			and iUnit_Prior < len(self.BupUnits_Prior)):
+#			or  iUnit_Prior < len(self.BupUnits_Prior))):
 				BupUnit_Prior = self.BupUnits_Prior[iUnit_Prior]
 			else:
 				BupUnit_Prior = None
