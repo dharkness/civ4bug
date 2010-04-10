@@ -402,7 +402,7 @@ TYPE_DEFAULT = { "boolean": False,
 				 "int": 0,
 				 "float": 0.0,
 				 "color": "COLOR_WHITE" }
-TYPE_MAP = { "boolean": lambda x: (isinstance(x, types.StringTypes) and x.lower() in ('true', 't', 'yes', 'y', 'on', '1')) or (isinstance(x, bool) and x),
+TYPE_MAP = { "boolean": lambda x: bool(isinstance(x, types.StringTypes) and x.lower() in ('true', 't', 'yes', 'y', 'on', '1')) or bool(isinstance(x, bool) and x) or bool(isinstance(x, int) and x),
 			 "string": str,
 			 "int": int,
 			 "float": float,
@@ -668,6 +668,9 @@ class AbstractOption(object):
 		"""
 		if value is None:
 			value = self.getDefault()
+			BugUtil.debug("AbstractOption - setting %s to its default %s", self.getID(), value)
+		else:
+			BugUtil.debug("AbstractOption - setting %s to %s", self.getID(), value)
 		if self._setValue(value, *args):
 			self.onChanged(*args)
 	
@@ -1030,6 +1033,8 @@ class UnsavedMixin(object):
 		return self.value
 	
 	def _setValue(self, value, *args):
+		value = TYPE_MAP[self.type](value)
+		BugUtil.debug("BugOptions - setting %s to %r", self.getID(), value)
 		self.value = value
 		return True
 
@@ -1325,8 +1330,10 @@ class BaseOptionHandler(BugConfig.Handler):
 		andId = qualify(mod._id, andId)
 		dll = self.resolveDll(element, dll)
 		option = None
+		ini = element.getState("ini")
+		if ini and not key:
+			key = id
 		if key:
-			ini = element.getState("ini")
 			if not ini:
 				BugUtil.warn("BugConfig - <option> %s outside <options> element has a key attribute; making it unsaved", id)
 			else:
