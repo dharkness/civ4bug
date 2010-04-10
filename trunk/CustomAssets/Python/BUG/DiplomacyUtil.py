@@ -59,7 +59,7 @@ def canContact(playerOrID, toPlayerOrID):
 		return False
 	if not PlayerUtil.getPlayerTeam(player).isHasMet(toPlayer.getTeam()):
 		return False
-	if PlayerUtil.getTeam(player.getTeam()).isAtWar(toPlayer.getTeam()) and (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
+	if PlayerUtil.getPlayerTeam(player).isAtWar(toPlayer.getTeam()) and (GameUtil.isAlwaysWar() or GameUtil.isPermanentWarPeace()):
 		return False
 	return True
 
