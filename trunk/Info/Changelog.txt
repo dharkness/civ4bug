@@ -68,6 +68,8 @@ Bug Fixes:
 	Worst Enemy alert not shown when team is killed (was showing no-name team)
 - Combat Log
 	Actual owner of hidden nationality units is not exposed
+- Options Screen
+	Fixed options that were not being saved and/or could only turn off
 
 
 MODDING
@@ -102,6 +104,9 @@ Bug Fixes:
 	Limits Worst Enemy checks to teams that are alive
 - BugUtil Logging
 	Unicode encoding errors are caught and ignored in log()
+- Options
+	Unsaved options use TYPE_MAP to convert to correct real type (bool/int/etc) when setting
+	<option> key defaults to id if inside <options> so they are saved to the INI file
 
 
 ____________________________________________________________________________________________________
