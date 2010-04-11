@@ -122,5 +122,9 @@ class BugCityScreenOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addTextDropdown(screen, panel, panel, "CityScreen__Specialists", True)
 		#self.addCheckbox(screen, panel, "MiscHover__RemoveSpecialist")
 		
+		self.addCheckbox(screen, panel, "MiscHover__UnitExperience")
+		self.addCheckbox(screen, panel, "MiscHover__UnitExperienceModifiers")
+		self.addCheckbox(screen, panel, "MiscHover__ConscriptUnit")
+		self.addCheckbox(screen, panel, "MiscHover__ConscriptLimit")
 		self.addCheckbox(screen, panel, "CityScreen__ProductionPopupTrainCivilianUnitsForever")
 		self.addCheckbox(screen, panel, "CityScreen__ProductionPopupTrainMilitaryUnitsForever")

@@ -113,6 +113,39 @@
 		<Italian>Quando è selezionato, se il nome di una Unità contiene il suo tipo (p. es. "Arciere I di Roma"), questo viene rimpiazzato dal nuovo tipo quando l'Unità viene aggiornata (p. es. "Balestriere I di Roma").</Italian>
 		<Spanish>When checked, if a unit's name contains its type (e.g. "Swordsman 5 of London"), it is replaced by the new type when upgrading (e.g. "Maceman 5 of London").</Spanish>
 	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCE_TEXT</Tag>
+		<English>Starting Experience</English>
+		<French>Starting Experience</French>
+		<German>Starting Experience</German>
+		<Italian>Starting Experience</Italian>
+		<Spanish>Starting Experience</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCE_HOVER</Tag>
+		<English>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</English>
+		<French>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</French>
+		<German>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</German>
+		<Italian>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</Italian>
+		<Spanish>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCEMODIFIERS_TEXT</Tag>
+		<English>Starting Experience Modifiers</English>
+		<French>Starting Experience Modifiers</French>
+		<German>Starting Experience Modifiers</German>
+		<Italian>Starting Experience Modifiers</Italian>
+		<Spanish>Starting Experience Modifiers</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCEMODIFIERS_HOVER</Tag>
+		<English>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</English>
+		<French>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</French>
+		<German>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</German>
+		<Italian>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</Italian>
+		<Spanish>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</Spanish>
+	</TEXT>
 
 <!-- Building -->
 	
@@ -354,6 +387,39 @@
 
 
 <!-- Action Buttons -->
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTUNIT_TEXT</Tag>
+		<English>Draft Unit Details</English>
+		<French>Draft Unit Details</French>
+		<German>Draft Unit Details</German>
+		<Italian>Draft Unit Details</Italian>
+		<Spanish>Draft Unit Details</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTUNIT_HOVER</Tag>
+		<English>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</English>
+		<French>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</French>
+		<German>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</German>
+		<Italian>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</Italian>
+		<Spanish>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTLIMIT_TEXT</Tag>
+		<English>Draft Limit</English>
+		<French>Draft Limit</French>
+		<German>Draft Limit</German>
+		<Italian>Draft Limit</Italian>
+		<Spanish>Draft Limit</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTLIMIT_HOVER</Tag>
+		<English>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</English>
+		<French>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</French>
+		<German>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</German>
+		<Italian>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</Italian>
+		<Spanish>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</Spanish>
+	</TEXT>
 
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__HURRYOVERFLOW_TEXT</Tag>
