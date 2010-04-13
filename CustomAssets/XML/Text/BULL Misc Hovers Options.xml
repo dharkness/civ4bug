@@ -118,7 +118,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCE_TEXT</Tag>
 		<English>Starting Experience</English>
 		<French>Starting Experience</French>
-		<German>Starting Experience</German>
+		<German>Anfängliche Erfahrung</German>
 		<Italian>Starting Experience</Italian>
 		<Spanish>Starting Experience</Spanish>
 	</TEXT>
@@ -126,7 +126,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCE_HOVER</Tag>
 		<English>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</English>
 		<French>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</French>
-		<German>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</German>
+		<German>Zeigt die Erfahrungspunkte und die Anzahl der verfügbaren Beförderungen an, die eine neue Einheit erhalten wird, wenn der Mauszeiger im Baumenü einer Stadt über diese bewegt wird</German>
 		<Italian>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</Italian>
 		<Spanish>When checked, displays the experience points and number of available promotions a new unit will receive in the Train Unit button hover.</Spanish>
 	</TEXT>
@@ -134,7 +134,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCEMODIFIERS_TEXT</Tag>
 		<English>Starting Experience Modifiers</English>
 		<French>Starting Experience Modifiers</French>
-		<German>Starting Experience Modifiers</German>
+		<German>Anfängliche Erfahrung (Modifikatoren)</German>
 		<Italian>Starting Experience Modifiers</Italian>
 		<Spanish>Starting Experience Modifiers</Spanish>
 	</TEXT>
@@ -142,7 +142,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCEMODIFIERS_HOVER</Tag>
 		<English>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</English>
 		<French>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</French>
-		<German>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</German>
+		<German>Zeigt die Erfahrungspunkt-Modifikatoren (Gebäude, Militärausbilder, Gesellschaftsformen und Wunder) an, wenn der Mauszeiger im Baumenü einer Stadt über eine Einheit bewegt wird</German>
 		<Italian>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</Italian>
 		<Spanish>When checked, displays the experience point modifiers (buildings, military instructors, civics, and wonders) in the Train Unit button hover.</Spanish>
 	</TEXT>
@@ -392,7 +392,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTUNIT_TEXT</Tag>
 		<English>Draft Unit Details</English>
 		<French>Draft Unit Details</French>
-		<German>Draft Unit Details</German>
+		<German>Zwangsrekrutierung (Info)</German>
 		<Italian>Draft Unit Details</Italian>
 		<Spanish>Draft Unit Details</Spanish>
 	</TEXT>
@@ -400,7 +400,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTUNIT_HOVER</Tag>
 		<English>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</English>
 		<French>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</French>
-		<German>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</German>
+		<German>Zeigt alle Informationen über die Einheit an, die in einer Stadt rekrutiert werden kann, wenn der Mauszeiger über die entsprechende Schaltfläche im Stadt-Bildschirm bewegt wird</German>
 		<Italian>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</Italian>
 		<Spanish>When checked, displays the full details of the unit that will be drafted in the Draft button hover.</Spanish>
 	</TEXT>
@@ -408,7 +408,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTLIMIT_TEXT</Tag>
 		<English>Draft Limit</English>
 		<French>Draft Limit</French>
-		<German>Draft Limit</German>
+		<German>Zwangsrekrutierung (Obergrenze)</German>
 		<Italian>Draft Limit</Italian>
 		<Spanish>Draft Limit</Spanish>
 	</TEXT>
@@ -416,7 +416,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTLIMIT_HOVER</Tag>
 		<English>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</English>
 		<French>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</French>
-		<German>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</German>
+		<German>Zeigt die Anzahl der Einheiten an, die in dieser Runde rekrutiert werden können, und ob eine Stadt bereits rekrutiert hat, wenn der Mauszeiger über die entsprechende Schaltfläche im Stadt-Bildschirm bewegt wird</German>
 		<Italian>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</Italian>
 		<Spanish>When checked, displays the number of units you can draft this turn and whether the city has already drafted in the Draft button hover.</Spanish>
 	</TEXT>
