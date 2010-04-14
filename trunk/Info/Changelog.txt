@@ -107,6 +107,8 @@ Bug Fixes:
 - Options
 	Unsaved options use TYPE_MAP to convert to correct real type (bool/int/etc) when setting
 	<option> key defaults to id if inside <options> so they are saved to the INI file
+- Initialization
+	BUG now tells BULL that it has been initialized so BULL can query for options 
 
 
 ____________________________________________________________________________________________________
