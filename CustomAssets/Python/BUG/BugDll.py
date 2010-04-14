@@ -192,6 +192,18 @@ def init():
 			global IS_PRESENT, VERSION
 			IS_PRESENT = True
 			VERSION = gc.getBullApiVersion()
-			BugUtil.debug("%s %s, API version %d", gc.getBullName(), gc.getBullVersion(), VERSION)
+			BugUtil.info("BugDll - %s %s, API version %d", gc.getBullName(), gc.getBullVersion(), VERSION)
+			if hasattr(CyGlobalContext, "setIsBug"):
+				import BugInit
+				BugInit.addInit("setIsBug", setIsBug)
+			else:
+				BugUtil.debug("BugDll - setIsBug() not found")
 	except:
-		BugUtil.debug("BUG DLL not present")
+		BugUtil.debug("BugDll - BULL not present")
+
+def setIsBug():
+	"""
+	Tells BULL that BUG is ready to receive queries for options.
+	"""
+	BugUtil.debug("BugDll - calling setIsBug()")
+	gc.setIsBug(True)
