@@ -12,9 +12,7 @@
 ## Author: EmperorFool
 
 from CvPythonExtensions import *
-from CvOptionsScreen import CvOptionsScreen
 import CvEventInterface
-import CvOptionsScreenCallbackInterface
 import BugConfig
 import BugCore
 import BugErrorOptionsTab
