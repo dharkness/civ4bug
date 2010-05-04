@@ -35,6 +35,9 @@ CHANGES
 
 New Features:
 
+- Resource Deals
+	Resource icons in active import/export columns on the RESOURCES tab of the Foreign Advisor show the full deal they belong to and can be clicked to cancel the deal [BULL]
+
 Improvements:
 
 - Production Queue
