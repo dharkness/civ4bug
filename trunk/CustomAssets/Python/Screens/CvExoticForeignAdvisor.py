@@ -1084,42 +1084,48 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 					amount = 0
 					for iLoopDeal in range(gc.getGame().getIndexAfterLastDeal()):
 						deal = gc.getGame().getDeal(iLoopDeal)
-						if ( deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader 
-																  and not deal.isNone() ):
-							for iLoopTradeItem in range(deal.getLengthFirstTrades()):
-								tradeData2 = deal.getFirstTrade(iLoopTradeItem)
-								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
-									amount += tradeData2.iData
-								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
-									self.resIconGrid.addIcon( currentRow, self.activeImportCol
-															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
-							for iLoopTradeItem in range(deal.getLengthSecondTrades()):
-								tradeData2 = deal.getSecondTrade(iLoopTradeItem)
-								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
-									amount -= tradeData2.iData
-								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
-									self.resIconGrid.addIcon( currentRow, self.activeExportCol
-															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
-						
-						if ( deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader ):
-							for iLoopTradeItem in range(deal.getLengthFirstTrades()):
-								tradeData2 = deal.getFirstTrade(iLoopTradeItem)
-								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
-									amount -= tradeData2.iData
-								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
-									self.resIconGrid.addIcon( currentRow, self.activeExportCol
-															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
-							for iLoopTradeItem in range(deal.getLengthSecondTrades()):
-								tradeData2 = deal.getSecondTrade(iLoopTradeItem)
-								if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
-									amount += tradeData2.iData
-								if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
-									self.resIconGrid.addIcon( currentRow, self.activeImportCol
-															, gc.getBonusInfo(tradeData2.iData).getButton()
-															, 64, WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData )
+# BUG - Kill Deal - start
+						if not deal.isNone():
+							if ( deal.getFirstPlayer() == iLoopPlayer and deal.getSecondPlayer() == self.iActiveLeader):
+								for iLoopTradeItem in range(deal.getLengthFirstTrades()):
+									tradeData2 = deal.getFirstTrade(iLoopTradeItem)
+									if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
+										amount += tradeData2.iData
+									if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
+										self.resIconGrid.addIcon( currentRow, self.activeImportCol
+																, gc.getBonusInfo(tradeData2.iData).getButton()
+																, 64, *BugDll.widgetVersion(4, WidgetTypes.WIDGET_DEAL_KILL, iLoopDeal, iLoopTradeItem,
+																							   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData, -1) )
+								for iLoopTradeItem in range(deal.getLengthSecondTrades()):
+									tradeData2 = deal.getSecondTrade(iLoopTradeItem)
+									if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
+										amount -= tradeData2.iData
+									if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
+										self.resIconGrid.addIcon( currentRow, self.activeExportCol
+																, gc.getBonusInfo(tradeData2.iData).getButton()
+																, 64, *BugDll.widgetVersion(4, WidgetTypes.WIDGET_DEAL_KILL, iLoopDeal, iLoopTradeItem + deal.getLengthFirstTrades(),
+																							   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData, -1) )
+							
+							if ( deal.getSecondPlayer() == iLoopPlayer and deal.getFirstPlayer() == self.iActiveLeader ):
+								for iLoopTradeItem in range(deal.getLengthFirstTrades()):
+									tradeData2 = deal.getFirstTrade(iLoopTradeItem)
+									if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
+										amount -= tradeData2.iData
+									if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
+										self.resIconGrid.addIcon( currentRow, self.activeExportCol
+																, gc.getBonusInfo(tradeData2.iData).getButton()
+																, 64, *BugDll.widgetVersion(4, WidgetTypes.WIDGET_DEAL_KILL, iLoopDeal, iLoopTradeItem,
+																							   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData, -1) )
+								for iLoopTradeItem in range(deal.getLengthSecondTrades()):
+									tradeData2 = deal.getSecondTrade(iLoopTradeItem)
+									if (tradeData2.ItemType == TradeableItems.TRADE_GOLD_PER_TURN):
+										amount += tradeData2.iData
+									if (tradeData2.ItemType == TradeableItems.TRADE_RESOURCES):
+										self.resIconGrid.addIcon( currentRow, self.activeImportCol
+																, gc.getBonusInfo(tradeData2.iData).getButton()
+																, 64, *BugDll.widgetVersion(4, WidgetTypes.WIDGET_DEAL_KILL, iLoopDeal, iLoopTradeItem + deal.getLengthFirstTrades(),
+																							   WidgetTypes.WIDGET_PEDIA_JUMP_TO_BONUS, tradeData2.iData, -1) )
+# BUG - Kill Deal - end
 					if (amount != 0):
 						self.resIconGrid.setText(currentRow, self.payingCol, str(amount))
 				currentRow += 1
