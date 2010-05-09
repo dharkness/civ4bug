@@ -73,6 +73,8 @@ Bug Fixes:
 	Actual owner of hidden nationality units is not exposed
 - Options Screen
 	Fixed options that were not being saved and/or could only turn off
+- Foreign Advisor
+	INFO tab shows correct modifier total, including visible values from Show Hidden Attitude mod if active
 
 
 MODDING
