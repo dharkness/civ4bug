@@ -53,6 +53,13 @@ ATTITUDE_MODIFIERS = (
 	"TXT_KEY_MISC_ATTITUDE_RIVAL_TRADE",
 	"TXT_KEY_MISC_ATTITUDE_FREEDOM",
 	"TXT_KEY_MISC_ATTITUDE_EXTRA_GOOD",
+# Show Hidden Attitudes in BULL
+	"TXT_KEY_MISC_ATTITUDE_FIRST_IMPRESSION",
+	"TXT_KEY_MISC_ATTITUDE_TEAM_SIZE",
+	"TXT_KEY_MISC_ATTITUDE_BETTER_RANK",
+	"TXT_KEY_MISC_ATTITUDE_WORSE_RANK",
+	"TXT_KEY_MISC_ATTITUDE_LOW_RANK",
+	"TXT_KEY_MISC_ATTITUDE_LOST_WAR",
 )
 MODIFIER_STRING_TO_KEY = None
 
@@ -232,9 +239,9 @@ class Attitude:
 					#BugUtil.debug(u"MATCH: (%s) (%s)" %(pMatch.group(1), pMatch.group(2)))
 					iValue = int(pMatch.group(1))
 					sString = unicode(pMatch.group(2))
+					self.iAttitudeSum += iValue
 					if sString in MODIFIER_STRING_TO_KEY:
 						self.iAttitudeModifiers[MODIFIER_STRING_TO_KEY[sString]] = iValue
-						self.iAttitudeSum = self.iAttitudeSum + iValue
 						#BugUtil.debug(u"Attitude::init() - Added to dict: %s" % (sString))
 					else:
 						BugUtil.debug(u"Attitude::init() - Attitude string contains unknown modifier text: %s" % (sString))
