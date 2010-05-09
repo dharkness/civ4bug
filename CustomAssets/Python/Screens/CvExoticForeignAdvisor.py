@@ -585,6 +585,7 @@ class CvExoticForeignAdvisor (CvForeignAdvisor.CvForeignAdvisor):
 			
 			objLeaderHead = gc.getLeaderHeadInfo (objLoopPlayer.getLeaderType())
 			objAttitude = AttitudeUtil.Attitude(iLoopPlayer, self.iActiveLeader)
+			AttitudeUtil.getAttitudeText(j, iLoopPlayer, AdvisorOpt.isShowGlanceNumbers(), AdvisorOpt.isShowGlanceSmilies(), True, True)
 
 			# Player panel
 			playerPanelName = self.getNextWidgetName()
