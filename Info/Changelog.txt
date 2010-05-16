@@ -76,6 +76,11 @@ Bug Fixes:
 - Foreign Advisor
 	INFO tab shows correct modifier total, including visible values from Show Hidden Attitude mod if active
 
+Merged Mods:
+
+- Unofficial Patch
+	Updated to release version 1.50
+
 
 MODDING
 
