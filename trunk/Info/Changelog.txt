@@ -29,7 +29,7 @@ Note: Changes marked [BULL] only take effect when the optional BUG DLL is instal
 
 
 ____________________________________________________________________________________________________
-BUG 4.4 released May 16th, 2010
+BUG 4.4 released May 17th, 2010
 
 CHANGES
 
