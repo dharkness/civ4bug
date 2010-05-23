@@ -3524,7 +3524,9 @@ class CvMainInterface:
 
 				if ((pHeadSelectedCity.badHealth(False) > 0) or (pHeadSelectedCity.goodHealth() >= 0)):
 					if (pHeadSelectedCity.healthRate(False, 0) < 0):
-						szBuffer = localText.getText("INTERFACE_CITY_HEALTH_BAD", (pHeadSelectedCity.goodHealth(), pHeadSelectedCity.badHealth(False), pHeadSelectedCity.healthRate(False, 0)))
+# BUG - Negative Health Rate is Positive Eaten Food - start
+						szBuffer = localText.getText("INTERFACE_CITY_HEALTH_BAD", (pHeadSelectedCity.goodHealth(), pHeadSelectedCity.badHealth(False), - pHeadSelectedCity.healthRate(False, 0)))
+# BUG - Negative Health Rate is Positive Eaten Food - end
 					elif (pHeadSelectedCity.badHealth(False) > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_HEALTH_GOOD", (pHeadSelectedCity.goodHealth(), pHeadSelectedCity.badHealth(False)))
 					else:
@@ -3625,7 +3627,9 @@ class CvMainInterface:
 					if (pHeadSelectedCity.isDisorder()):
 						szBuffer = u"%d%c" %(pHeadSelectedCity.angryPopulation(0), CyGame().getSymbolID(FontSymbols.ANGRY_POP_CHAR))
 					elif (pHeadSelectedCity.angryPopulation(0) > 0):
+# BUG - Negative Happy Rate is Positive Angry Population - start
 						szBuffer = localText.getText("INTERFACE_CITY_UNHAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0), pHeadSelectedCity.angryPopulation(0)))
+# BUG - Negative Happy Rate is Positive Angry Population - end
 					elif (pHeadSelectedCity.unhappyLevel(0) > 0):
 						szBuffer = localText.getText("INTERFACE_CITY_HAPPY", (pHeadSelectedCity.happyLevel(), pHeadSelectedCity.unhappyLevel(0)))
 					else:
