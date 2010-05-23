@@ -3,6 +3,7 @@ CHANGELOG for BUG
 
 * Introduction
 
+* BUG x.x
 * BUG 4.4
 * BUG 4.3
 * BUG 4.2
@@ -26,6 +27,32 @@ The MODDING sections are mostly of interest to modders merging BUG into their ow
 
 Note: Changes marked [BULL] only take effect when the optional BUG DLL is installed.
       BULL features that don't require BUG are not listed here.
+
+
+____________________________________________________________________________________________________
+BUG x.x unreleased
+
+CHANGES
+
+New Features:
+
+- Stack Promotions
+	Added promotions possessed by at least one unit in a stack and how many have it when more than one
+
+Improvements:
+
+Bug Fixes:
+
+Merged Mods:
+
+
+MODDING
+
+New Features:
+
+Improvements:
+
+Bug Fixes:
 
 
 ____________________________________________________________________________________________________

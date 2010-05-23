@@ -29,13 +29,6 @@ import ReligionUtil
 # BUG - Limit/Extra Religions - end
 
 # BUG - PLE - start
-import MonkeyTools as mt
-import string
-from AStarTools import *
-import PyHelpers 
-import UnitUtil
-PyPlayer = PyHelpers.PyPlayer
-
 PleOpt = BugCore.game.PLE
 # BUG - PLE - end
 
@@ -988,10 +981,17 @@ class CvMainInterface:
 		# *********************************************************************************
 
 		i = 0
+		szCircleArt = ArtFileMgr.getInterfaceArtInfo("WHITE_CIRCLE_40").getPath()
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
-			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), 180, yResolution - 18, 24, 24, WidgetTypes.WIDGET_ACTION, gc.getPromotionInfo(i).getActionInfoIndex(), -1 )
+			screen.addDDSGFC( szName, gc.getPromotionInfo(i).getButton(), 180, yResolution - 18, 24, 24, WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, i, -1 )
 			screen.hide( szName )
+# BUG - Stack Promotions - start
+			szName = "PromotionButtonCircle" + str(i)
+			x, y = self.calculatePromotionButtonPosition(screen, i)
+			screen.addDDSGFC( szName, szCircleArt, x + 10, y + 10, 16, 16, WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, i, -1 )
+			screen.hide( szName )
+# BUG - Stack Promotions - end
 
 # BUG - PLE - begin
 			szName = self.PLE.PLE_PROMO_BUTTONS_UNITINFO + str(i)
@@ -1816,6 +1816,13 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
+# BUG - Stack Promotions - start
+		for i in range(gc.getNumPromotionInfos()):
+			szName = "PromotionButtonCircle" + str(i)
+			screen.moveToFront( szName )
+			szName = "PromotionButtonCount" + str(i)
+			screen.moveToFront( szName )
+# BUG - Stack Promotions - end
 
 		screen.hide( "PlotListMinus" )
 		screen.hide( "PlotListPlus" )
@@ -1938,6 +1945,13 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.moveToFront( szName )
+# BUG - Stack Promotions - start
+		for i in range(gc.getNumPromotionInfos()):
+			szName = "PromotionButtonCircle" + str(i)
+			screen.moveToFront( szName )
+			szName = "PromotionButtonCount" + str(i)
+			screen.moveToFront( szName )
+# BUG - Stack Promotions - end
 
 #		screen.hide( "PlotListMinus" )
 #		screen.hide( "PlotListPlus" )
@@ -4462,6 +4476,12 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButton" + str(i)
 			screen.hide( szName )
+# BUG - Stack Promotions - start
+			szName = "PromotionButtonCircle" + str(i)
+			screen.hide( szName )
+			szName = "PromotionButtonCount" + str(i)
+			screen.hide( szName )
+# BUG - Stack Promotions - end
 		
 		if CyEngine().isGlobeviewUp():
 			return
@@ -4587,6 +4607,38 @@ class CvMainInterface:
 				
 				screen.setText( "SelectedUnitLabel", "Background", szBuffer, CvUtil.FONT_LEFT_JUSTIFY, 18, yResolution - 137, -0.1, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_UNIT_NAME, -1, -1 )
 # BUG - Stack Movement Display - end
+				
+# BUG - Stack Promotions - start
+				if MainOpt.isShowStackPromotions():
+					iNumPromotions = gc.getNumPromotionInfos()
+					lPromotionCounts = [0] * iNumPromotions
+					for i in range(CyInterface().getLengthSelectionList()):
+						pUnit = CyInterface().getSelectionUnit(i)
+						if (pUnit is not None):
+							for j in range(iNumPromotions):
+								if (pUnit.isHasPromotion(j)):
+									lPromotionCounts[j] += 1
+					
+					iPromotionCount = 0
+					bShowCount = MainOpt.isShowStackPromotionCounts()
+					for i, iCount in enumerate(lPromotionCounts):
+						if (iCount > 0):
+							szName = "PromotionButton" + str(i)
+							self.setPromotionButtonPosition( szName, iPromotionCount )
+							screen.moveToFront( szName )
+							screen.show( szName )
+							if (bShowCount and iCount > 1):
+								szName = "PromotionButtonCircle" + str(iPromotionCount)
+								screen.moveToFront( szName )
+								screen.show( szName )
+								szName = "PromotionButtonCount" + str(iPromotionCount)
+								x, y = self.calculatePromotionButtonPosition(screen, iPromotionCount)
+								screen.setText( szName, "Background", BugUtil.colorText(u"<font=2>%i</font>" % iCount, "COLOR_WHITE"), CvUtil.FONT_CENTER_JUSTIFY, x + 17, y + 7, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, i, -1 )
+								screen.setHitTest( szName, HitTestTypes.HITTEST_NOHIT )
+								screen.moveToFront( szName )
+								screen.show( szName )
+							iPromotionCount += 1
+# BUG - Stack Promotions - end
 				
 				if ((pSelectedGroup == 0) or (pSelectedGroup.getLengthMissionQueue() <= 1)):
 					if (pHeadSelectedUnit):
@@ -5122,11 +5174,14 @@ class CvMainInterface:
 		
 		screen = CyGInterfaceScreen( "MainInterface", CvScreenEnums.MAIN_INTERFACE )
 		
-		# Find out our resolution
+# BUG - Stack Promotions - start
+		x, y = self.calculatePromotionButtonPosition(screen, iPromotionCount)
+		screen.moveItem( szName, x, y, -0.3 )
+# BUG - Stack Promotions - end
+	
+	def calculatePromotionButtonPosition( self, screen, iPromotionCount ):
 		yResolution = screen.getYResolution()
-
-		if ( CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW ):
-			screen.moveItem( szName, 266 - (24 * (iPromotionCount / 6)), yResolution - 144 + (24 * (iPromotionCount % 6)), -0.3 )
+		return (266 - (24 * (iPromotionCount / 6)), yResolution - 144 + (24 * (iPromotionCount % 6)))
 
 	# Will set the selection button position
 	def setResearchButtonPosition( self, szButtonID, iCount ):
