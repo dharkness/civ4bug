@@ -43,6 +43,9 @@ Improvements:
 
 Bug Fixes:
 
+- City Screen
+	Excess unhealthiness (eaten food) and unhappiness (angry population) are shown as red positive numbers
+
 Merged Mods:
 
 
