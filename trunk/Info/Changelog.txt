@@ -47,6 +47,8 @@ Bug Fixes:
 	Redrawn when loading a saved game while playing an active game
 - City Screen
 	Excess unhealthiness (eaten food) and unhappiness (angry population) are shown as red positive numbers
+- Customizable Domestic Advisor
+	Trade columns show correct rounded value when Fractional Trade Routes is enabled in BULL 
 
 Merged Mods:
 
