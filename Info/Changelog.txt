@@ -48,7 +48,9 @@ Bug Fixes:
 - City Screen
 	Excess unhealthiness (eaten food) and unhappiness (angry population) are shown as red positive numbers
 - Customizable Domestic Advisor
-	Trade columns show correct rounded value when Fractional Trade Routes is enabled in BULL 
+	Trade columns show correct rounded value when Fractional Trade Routes is enabled in BULL
+- Mac
+	Fixed "readonly attribute" error in BugUtil.extend()
 
 Merged Mods:
 
@@ -60,6 +62,9 @@ New Features:
 Improvements:
 
 Bug Fixes:
+
+- Miscellaneous
+	BugUtil.extend() sets the name of the new function to asName instead of its original name
 
 
 ____________________________________________________________________________________________________
