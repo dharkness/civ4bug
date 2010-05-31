@@ -51,6 +51,8 @@ Bug Fixes:
 	Trade columns show correct rounded value when Fractional Trade Routes is enabled in BULL
 - Mac
 	Fixed "readonly attribute" error in BugUtil.extend()
+- BTS Fixes
+	Added link to building in "Requires <building> (X Total)" in the Pedia
 
 Merged Mods:
 
