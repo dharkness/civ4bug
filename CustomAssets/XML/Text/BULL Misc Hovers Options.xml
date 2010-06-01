@@ -486,5 +486,22 @@
 		<Italian>Quando è selezionato, il testo a comparsa del Bottone di Zoom Cittadino nella schermata del 'Consigliere Interno' include informazioni dettagliate sulla Città, come quelle visualizzate quando si posiziona il cursore sulla Barra Cittadina sulla mappa.</Italian>
 		<Spanish>When checked, the Zoom to City button includes detailed information about the city as when hovering over a city bar on the map.</Spanish>
 	</TEXT>
+	
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTS_TEXT</Tag>
+		<English>Health Effects from Features</English>
+		<French>Health Effects from Features</French>
+		<German>Health Effects from Features</German>
+		<Italian>Health Effects from Features</Italian>
+		<Spanish>Health Effects from Features</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTS_HOVER</Tag>
+		<English>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</English>
+		<French>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</French>
+		<German>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</German>
+		<Italian>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Italian>
+		<Spanish>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Spanish>
+	</TEXT>
 
 </Civ4GameText>

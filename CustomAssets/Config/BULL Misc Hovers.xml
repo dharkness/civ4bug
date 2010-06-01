@@ -98,6 +98,9 @@
 					
 			<option id="CDAZoomCityDetails" key="CDA Zoom City Details" 
 					type="boolean" default="True"/>
+					
+			<option id="RemoveFeatureHealthEffects" key="Remove Feature Health Effects" 
+					type="boolean" default="True" dll="5"/>
 		</section>
 	</options>
 </mod>
