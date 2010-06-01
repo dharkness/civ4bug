@@ -45,6 +45,7 @@ class BugMapOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, right, "MainInterface__FieldOfView_Remember", True)
 		self.addCheckbox(screen, right, "EventSigns__Enabled")
 		self.addCheckbox(screen, right, "Actions__IgnoreHarmlessBarbarians")
+		self.addCheckbox(screen, right, "MiscHover__RemoveFeatureHealthEffects")
 		
 		
 		screen.attachHSeparator(column, column + "Sep1")
