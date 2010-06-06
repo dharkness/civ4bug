@@ -101,6 +101,8 @@
 					
 			<option id="RemoveFeatureHealthEffects" key="Remove Feature Health Effects" 
 					type="boolean" default="True" dll="5"/>
+			<option id="RemoveFeatureHealthEffectsCountOtherTiles" key="Remove Feature Health Effects Count Other Tiles" 
+					type="boolean" default="True" dll="5"/>
 		</section>
 	</options>
 </mod>
