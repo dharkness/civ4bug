@@ -503,5 +503,21 @@
 		<Italian>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Italian>
 		<Spanish>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTSCOUNTOTHERTILES_TEXT</Tag>
+		<English>Consider Other Workers</English>
+		<French>Consider Other Workers</French>
+		<German>Consider Other Workers</German>
+		<Italian>Consider Other Workers</Italian>
+		<Spanish>Consider Other Workers</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTSCOUNTOTHERTILES_HOVER</Tag>
+		<English>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</English>
+		<French>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</French>
+		<German>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</German>
+		<Italian>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</Italian>
+		<Spanish>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</Spanish>
+	</TEXT>
 
 </Civ4GameText>
