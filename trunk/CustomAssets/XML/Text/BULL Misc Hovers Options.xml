@@ -491,7 +491,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTS_TEXT</Tag>
 		<English>Health Effects from Features</English>
 		<French>Health Effects from Features</French>
-		<German>Health Effects from Features</German>
+		<German>Gesundheitseffekte von Gelände</German>
 		<Italian>Health Effects from Features</Italian>
 		<Spanish>Health Effects from Features</Spanish>
 	</TEXT>
@@ -499,7 +499,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTS_HOVER</Tag>
 		<English>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</English>
 		<French>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</French>
-		<German>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</German>
+		<German>Zeigt im Tooltip jeder Aktion eines Bautrupps, die eine Geländeeigenschaft mit Einfluss auf die Gesundheit von Städten entfernen würde (beispielsweise Wald oder Dschungel), die entsprechenden Auswirkungen auf nahegelegene Städte</German>
 		<Italian>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Italian>
 		<Spanish>When checked, the hover text for any Worker action that will remove a feature with health effects (e.g. Forest or Jungle) will list the effect on each nearby city.</Spanish>
 	</TEXT>
@@ -507,7 +507,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTSCOUNTOTHERTILES_TEXT</Tag>
 		<English>Consider Other Workers</English>
 		<French>Consider Other Workers</French>
-		<German>Consider Other Workers</German>
+		<German>Andere Bautrupps einbeziehen</German>
 		<Italian>Consider Other Workers</Italian>
 		<Spanish>Consider Other Workers</Spanish>
 	</TEXT>
@@ -515,7 +515,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__REMOVEFEATUREHEALTHEFFECTSCOUNTOTHERTILES_HOVER</Tag>
 		<English>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</English>
 		<French>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</French>
-		<German>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</German>
+		<German>Bezieht in die Anzeige der Gesundheitseffekte die Aktionen anderer Bautrupps ein, die ebenfalls Geländeeigenschaften entfernen</German>
 		<Italian>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</Italian>
 		<Spanish>When checked, the effect of removing a feature on each nearby city will take into account Workers performing actions that will remove a feature from other tiles.</Spanish>
 	</TEXT>
