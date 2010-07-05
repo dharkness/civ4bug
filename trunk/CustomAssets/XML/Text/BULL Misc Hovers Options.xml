@@ -118,7 +118,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCE_TEXT</Tag>
 		<English>Starting Experience</English>
 		<French>Starting Experience</French>
-		<German>Anfängliche Erfahrung</German>
+		<German>Anfängliche Erfahrungspunkte</German>
 		<Italian>Starting Experience</Italian>
 		<Spanish>Starting Experience</Spanish>
 	</TEXT>
@@ -134,7 +134,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__UNITEXPERIENCEMODIFIERS_TEXT</Tag>
 		<English>Starting Experience Modifiers</English>
 		<French>Starting Experience Modifiers</French>
-		<German>Anfängliche Erfahrung (Modifikatoren)</German>
+		<German>Anfängliche Erfahrungspunkte (Modifikatoren)</German>
 		<Italian>Starting Experience Modifiers</Italian>
 		<Spanish>Starting Experience Modifiers</Spanish>
 	</TEXT>
@@ -392,7 +392,7 @@
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__CONSCRIPTUNIT_TEXT</Tag>
 		<English>Draft Unit Details</English>
 		<French>Draft Unit Details</French>
-		<German>Zwangsrekrutierung (Info)</German>
+		<German>Zwangsrekrutierung (Informationen)</German>
 		<Italian>Draft Unit Details</Italian>
 		<Spanish>Draft Unit Details</Spanish>
 	</TEXT>
