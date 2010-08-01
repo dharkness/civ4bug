@@ -61,6 +61,9 @@ MODDING
 
 New Features:
 
+- Trigger Event
+	Hit CTRL + SHIFT + E to trigger a random event
+
 Improvements:
 
 Bug Fixes:
