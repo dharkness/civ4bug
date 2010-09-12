@@ -1820,6 +1820,7 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButtonCircle" + str(i)
 			screen.moveToFront( szName )
+		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButtonCount" + str(i)
 			screen.moveToFront( szName )
 # BUG - Stack Promotions - end
@@ -1949,6 +1950,7 @@ class CvMainInterface:
 		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButtonCircle" + str(i)
 			screen.moveToFront( szName )
+		for i in range(gc.getNumPromotionInfos()):
 			szName = "PromotionButtonCount" + str(i)
 			screen.moveToFront( szName )
 # BUG - Stack Promotions - end
@@ -4616,28 +4618,36 @@ class CvMainInterface:
 				if MainOpt.isShowStackPromotions():
 					iNumPromotions = gc.getNumPromotionInfos()
 					lPromotionCounts = [0] * iNumPromotions
-					for i in range(CyInterface().getLengthSelectionList()):
+					iNumUnits = CyInterface().getLengthSelectionList()
+					for i in range(iNumUnits):
 						pUnit = CyInterface().getSelectionUnit(i)
 						if (pUnit is not None):
 							for j in range(iNumPromotions):
 								if (pUnit.isHasPromotion(j)):
 									lPromotionCounts[j] += 1
 					
+					iSPColor = MainOpt.getStackPromotionColor()
+					iSPColorAll = MainOpt.getStackPromotionColorAll()
 					iPromotionCount = 0
 					bShowCount = MainOpt.isShowStackPromotionCounts()
 					for i, iCount in enumerate(lPromotionCounts):
 						if (iCount > 0):
 							szName = "PromotionButton" + str(i)
-							self.setPromotionButtonPosition( szName, iPromotionCount )
+							x, y = self.setPromotionButtonPosition( szName, iPromotionCount )
 							screen.moveToFront( szName )
 							screen.show( szName )
 							if (bShowCount and iCount > 1):
-								szName = "PromotionButtonCircle" + str(iPromotionCount)
+								szName = "PromotionButtonCircle" + str(i)
+								screen.moveItem( szName, x + 10, y + 10, -0.3 )
 								screen.moveToFront( szName )
 								screen.show( szName )
 								szName = "PromotionButtonCount" + str(iPromotionCount)
-								x, y = self.calculatePromotionButtonPosition(screen, iPromotionCount)
-								screen.setText( szName, "Background", BugUtil.colorText(u"<font=2>%i</font>" % iCount, "COLOR_WHITE"), CvUtil.FONT_CENTER_JUSTIFY, x + 17, y + 7, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, i, -1 )
+								szText = u"<font=2>%d</font>" % iCount
+								if iCount == iNumUnits:
+									szText = BugUtil.colorText(szText, iSPColorAll)
+								else:
+									szText = BugUtil.colorText(szText, iSPColor)
+								screen.setText( szName, "Background", szText, CvUtil.FONT_CENTER_JUSTIFY, x + 17, y + 7, -0.2, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_PEDIA_JUMP_TO_PROMOTION, i, -1 )
 								screen.setHitTest( szName, HitTestTypes.HITTEST_NOHIT )
 								screen.moveToFront( szName )
 								screen.show( szName )
@@ -5181,6 +5191,7 @@ class CvMainInterface:
 # BUG - Stack Promotions - start
 		x, y = self.calculatePromotionButtonPosition(screen, iPromotionCount)
 		screen.moveItem( szName, x, y, -0.3 )
+		return x, y
 # BUG - Stack Promotions - end
 	
 	def calculatePromotionButtonPosition( self, screen, iPromotionCount ):
