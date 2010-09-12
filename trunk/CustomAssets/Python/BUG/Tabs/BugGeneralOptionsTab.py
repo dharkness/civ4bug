@@ -82,7 +82,10 @@ class BugGeneralOptionsTab(BugOptionsTab.BugOptionsTab):
 		self.addCheckbox(screen, panel, "MainInterface__UnitMovementPointsFraction")
 		self.addCheckbox(screen, panel, "MainInterface__StackMovementPoints")
 		self.addCheckbox(screen, panel, "MainInterface__StackPromotions")
-		self.addCheckbox(screen, panel, "MainInterface__StackPromotionCounts", True)
+		left, center, right = self.addThreeColumnLayout(screen, panel, "StackPromotionColors")
+		self.addCheckbox(screen, left, "MainInterface__StackPromotionCounts", True)
+		self.addColorDropdown(screen, center, right, "MainInterface__StackPromotionColor", False)
+		self.addColorDropdown(screen, center, right, "MainInterface__StackPromotionColorAll", False)
 		
 	def createMiscellaneousPanel(self, screen, panel):
 		self.addLabel(screen, panel, "Misc", "Misc:")

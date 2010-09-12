@@ -273,6 +273,38 @@
 		<Italian>When checked, shows the number of units in a stack that possess each promotion if more than one.</Italian>
 		<Spanish>When checked, shows the number of units in a stack that possess each promotion if more than one.</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKPROMOTIONCOLOR_TEXT</Tag>
+		<English>Some</English>
+		<French>Some</French>
+		<German>Some</German>
+		<Italian>Some</Italian>
+		<Spanish>Some</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKPROMOTIONCOLOR_HOVER</Tag>
+		<English>When checked, shows the number of units in a stack that possess each promotion if more than one.</English>
+		<French>When checked, shows the number of units in a stack that possess each promotion if more than one.</French>
+		<German>Zeigt die Anzahl der Einheiten in einem Einheitenverband an, die über eine bestimmte Beförderung verfügen, falls dies bei mehr als einer der Fall ist</German>
+		<Italian>When checked, shows the number of units in a stack that possess each promotion if more than one.</Italian>
+		<Spanish>When checked, shows the number of units in a stack that possess each promotion if more than one.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKPROMOTIONCOLORALL_TEXT</Tag>
+		<English>All</English>
+		<French>All</French>
+		<German>All</German>
+		<Italian>All</Italian>
+		<Spanish>All</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__STACKPROMOTIONCOLORALL_HOVER</Tag>
+		<English>When checked, shows the number of units in a stack that possess each promotion if more than one.</English>
+		<French>When checked, shows the number of units in a stack that possess each promotion if more than one.</French>
+		<German>Zeigt die Anzahl der Einheiten in einem Einheitenverband an, die über eine bestimmte Beförderung verfügen, falls dies bei mehr als einer der Fall ist</German>
+		<Italian>When checked, shows the number of units in a stack that possess each promotion if more than one.</Italian>
+		<Spanish>When checked, shows the number of units in a stack that possess each promotion if more than one.</Spanish>
+	</TEXT>
 	
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MAININTERFACE__BUILDICONSIZE_TEXT</Tag>
