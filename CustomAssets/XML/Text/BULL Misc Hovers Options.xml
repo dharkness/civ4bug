@@ -79,6 +79,38 @@
 		<Spanish>When checked, the longitude and latitude are shown when hovering over a plot once you have centered the map.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PLOTWORKINGCITY_TEXT</Tag>
+		<English>Working City</English>
+		<French>Working City</French>
+		<German>Working City</German>
+		<Italian>Working City</Italian>
+		<Spanish>Working City</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PLOTWORKINGCITY_HOVER</Tag>
+		<English>When checked, hovering over a tile your team owns shows which city controls it, in cyan if it is being worked.</English>
+		<French>When checked, hovering over a tile your team owns shows which city controls it, in cyan if it is being worked.</French>
+		<German>When checked, hovering over a tile your team owns shows which city controls it, in cyan if it is being worked.</German>
+		<Italian>When checked, hovering over a tile your team owns shows which city controls it, in cyan if it is being worked.</Italian>
+		<Spanish>When checked, hovering over a tile your team owns shows which city controls it, in cyan if it is being worked.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PLOTRECOMMENDEDBUILD_TEXT</Tag>
+		<English>Recommended Build</English>
+		<French>Recommended Build</French>
+		<German>Recommended Build</German>
+		<Italian>Recommended Build</Italian>
+		<Spanish>Recommended Build</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PLOTRECOMMENDEDBUILD_HOVER</Tag>
+		<English>When checked, hovering over a tile you own shows the improvement or route an automated worker would build.</English>
+		<French>When checked, hovering over a tile you own shows the improvement or route an automated worker would build.</French>
+		<German>When checked, hovering over a tile you own shows the improvement or route an automated worker would build.</German>
+		<Italian>When checked, hovering over a tile you own shows the improvement or route an automated worker would build.</Italian>
+		<Spanish>When checked, hovering over a tile you own shows the improvement or route an automated worker would build.</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_TEXT</Tag>
 		<English>Partial Builds</English>
 		<French>Partial Builds</French>
@@ -88,11 +120,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUG_OPT_MISCHOVER__PARTIALBUILDS_HOVER</Tag>
-		<English>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</English>
-		<French>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</French>
+		<English>When checked, hovering over a tile that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</English>
+		<French>When checked, hovering over a tile that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</French>
 		<German>Zeigt, wenn der Mauszeiger über ein Geländefeld mit teilweise fertig gestellten Bauten (Modernisierungen, Straßen und Waldrodungen) bewegt wird, an, wie viele Runden ein Bautrupp noch benötigt, um sie fertig zu stellen, wenn der Bautrupp diese Aktionen beherrscht</German>
 		<Italian>Quando è selezionato, posizionare il cursore su una casella che contiene costruzioni (miglioramenti, strade, eccetera) parzialmente completate mostrerà quanti turni di lavoro sono necessari per completare l'opera.</Italian>
-		<Spanish>When checked, hovering over a plot that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Spanish>
+		<Spanish>When checked, hovering over a tile that has partially-completed builds (improvements, routes, and chops) will show how many worker turns are required to complete them as long as your workers can actually do so.</Spanish>
 	</TEXT>
 
 <!-- Unit -->
