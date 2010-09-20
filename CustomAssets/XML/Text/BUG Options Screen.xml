@@ -175,7 +175,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_CITYPLOTS</Tag>
 		<English>City Tiles:</English>
 		<French>City Tiles:</French>
-		<German>City Tiles:</German>
+		<German>Stadt-Geländefelder:</German>
 		<Italian>City Tiles:</Italian>
 		<Spanish>City Tiles:</Spanish>
 	</TEXT>
@@ -183,7 +183,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_WORKINGPLOTS</Tag>
 		<English>Working:</English>
 		<French>Working:</French>
-		<German>Working:</German>
+		<German>Bearbeitet:</German>
 		<Italian>Working:</Italian>
 		<Spanish>Working:</Spanish>
 	</TEXT>
@@ -191,7 +191,7 @@
 		<Tag>TXT_KEY_BUG_OPTLABEL_NOTWORKINGPLOTS</Tag>
 		<English>Not Working:</English>
 		<French>Not Working:</French>
-		<German>Not Working:</German>
+		<German>Nicht bearbeitet:</German>
 		<Italian>Not Working:</Italian>
 		<Spanish>Not Working:</Spanish>
 	</TEXT>
