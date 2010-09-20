@@ -172,6 +172,30 @@
 		<Spanish>Tile Hover:</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_CITYPLOTS</Tag>
+		<English>City Tiles:</English>
+		<French>City Tiles:</French>
+		<German>City Tiles:</German>
+		<Italian>City Tiles:</Italian>
+		<Spanish>City Tiles:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_WORKINGPLOTS</Tag>
+		<English>Working:</English>
+		<French>Working:</French>
+		<German>Working:</German>
+		<Italian>Working:</Italian>
+		<Spanish>Working:</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUG_OPTLABEL_NOTWORKINGPLOTS</Tag>
+		<English>Not Working:</English>
+		<French>Not Working:</French>
+		<German>Not Working:</German>
+		<Italian>Not Working:</Italian>
+		<Spanish>Not Working:</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_BUG_OPTLABEL_MAPFINDER</Tag>
 		<English>MapFinder:</English>
 		<French>MapFinder:</French>
