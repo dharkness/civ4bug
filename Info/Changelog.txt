@@ -3,7 +3,7 @@ CHANGELOG for BUG
 
 * Introduction
 
-* BUG x.x
+* BUG 4.5
 * BUG 4.4
 * BUG 4.3
 * BUG 4.2
@@ -30,7 +30,7 @@ Note: Changes marked [BULL] only take effect when the optional BUG DLL is instal
 
 
 ____________________________________________________________________________________________________
-BUG x.x unreleased
+BUG 4.5 released September 21st, 2010
 
 CHANGES
 
@@ -38,8 +38,6 @@ New Features:
 
 - Stack Promotions
 	Added promotions possessed by at least one unit in a stack and how many have it when more than one
-
-Improvements:
 
 Bug Fixes:
 
@@ -54,17 +52,13 @@ Bug Fixes:
 - BTS Fixes
 	Added link to building in "Requires <building> (X Total)" in the Pedia
 
-Merged Mods:
-
 
 MODDING
 
 New Features:
 
 - Trigger Event
-	Hit CTRL + SHIFT + E to trigger a random event
-
-Improvements:
+	Hit CTRL + SHIFT + E to trigger a random event (requires cheat mode)
 
 Bug Fixes:
 
